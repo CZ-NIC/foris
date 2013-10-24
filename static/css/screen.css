@@ -1,0 +1,107 @@
+@font-face{
+    font-family:'FontAwesome';
+    src: url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/font/fontawesome-webfont.eot?v=3.2.1');
+    src: url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
+    url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/font/fontawesome-webfont.woff?v=3.2.1') format('woff'),
+    url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'),
+    url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+    font-weight:normal;font-style:normal;
+}
+
+#page {
+    margin: 1em 2em;
+    min-width: 40em;
+}
+
+.treeview ul,
+.treeview li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.treeview input
+{
+    position: absolute;
+    opacity: 0;
+}
+
+.treeview input + label ~ ul
+{
+    margin-left: 32px;
+}
+
+.treeview input ~ ul
+{
+    display: none;
+}
+
+.treeview label,
+.treeview label::before
+{
+    cursor: pointer;
+}
+
+.treeview input:disabled + label
+{
+    cursor: default;
+    opacity: .6;
+}
+
+.treeview input:checked:not(:disabled) ~ ul
+{
+    display: block;
+}
+
+.treeview label::before
+{
+    font-family: FontAwesome;
+    font-size: 1.1em;
+    margin-right: 0.5em;
+}
+
+.treeview label,
+.treeview a,
+.treeview label::before
+{
+    height: 16px;
+    line-height: 16px;
+}
+
+.treeview label
+{
+    background-position: 18px 0;
+}
+
+.treeview label::before
+{
+    content: "\F116";
+    vertical-align: middle;
+}
+
+.treeview input:checked + label::before
+{
+    content: "\F117";
+}
+
+/* webkit adjacent element selector bugfix */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+    .treeview
+    {
+        -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+    }
+
+    @-webkit-keyframes webkit-adjacent-element-selector-bugfix
+    {
+        from
+        {
+            padding: 0;
+        }
+        to
+        {
+            padding: 0;
+        }
+    }
+}
