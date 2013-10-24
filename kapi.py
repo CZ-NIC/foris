@@ -219,11 +219,6 @@ class Section(KruciFormElement):
                % dict(title=self.title, description=self.description, content=content)
 
 
-validator_js_map = {
-    validators_module.IPv4: "ipv4"
-}
-
-
 class Field(KruciFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, callback=None, nuci_path=None,
                  nuci_preproc=lambda val: val.value, validators=None, **kwargs):
@@ -254,9 +249,10 @@ class Field(KruciFormElement):
             validators = [validators]
         self.validators = validators or []
         self._kwargs = kwargs
-        if required:
+        self.required = required
+        if self.required:
             self.validators.append(validators_module.NotEmpty())
-            self._kwargs["required"] = True
+        self._kwargs["required"] = self.required
         self._kwargs["description"] = label
         self.requirements = {}
         default = kwargs.pop("default", None)
@@ -271,15 +267,26 @@ class Field(KruciFormElement):
         classes = []
         if self.name in self._main_form.requirement_map:
             classes.append("has-requirements")
+        if self.required:
+            classes.append("required")
+        if len(self.validators) > 0:
+            classes.append("validate")
         return classes
 
     def _generate_html_data(self):
-        result = []
+        data = {}
+        validators = []
         for v in self.validators:
-            js_validator = validator_js_map.get(v)
-            if js_validator:
-                result.append("validate-%s" % js_validator)  # TODO: validators
-        return result
+            if v.js_validator:
+                validators.append("%s" % v.js_validator)
+                params = v.js_validator_params
+                logger.warning("%s" % v)
+                logger.warning("%s" % params)
+                if params:
+                    data['validator-%s' % v.js_validator] = params
+        if validators:
+            data['validators'] = " ".join(validators)
+        return data
 
     @property
     def form_input(self):
@@ -292,6 +299,10 @@ class Field(KruciFormElement):
         classes.extend(self._generate_html_classes())
         if classes:
             attrs['class'] = " ".join(classes)
+        # append HTML data
+        html_data = self._generate_html_data()
+        for key, value in html_data.iteritems():
+            attrs['data-%s' % key] = value
         # call the proper constructor (web.py Form API is not consistent in this)
         if issubclass(self.type, Dropdown):
             args = attrs.pop("args", ())
