@@ -1,6 +1,6 @@
-var KruciWizard = {};
+var ForisWizard = {};
 
-KruciWizard.validators = {
+ForisWizard.validators = {
     ipv4: function(value) {
         var re_ipv4 = /^(\d{1,3}\.){3}\d{1,3}$/;
         return value.search(re_ipv4) != -1;
@@ -24,7 +24,7 @@ KruciWizard.validators = {
     }
 };
 
-KruciWizard.runValidator = function(validator, value, mangledArgs) {
+ForisWizard.runValidator = function(validator, value, mangledArgs) {
     if (!mangledArgs)
         return this.validators[validator](value);
     var argsArray = mangledArgs.split("|");
@@ -38,7 +38,7 @@ KruciWizard.runValidator = function(validator, value, mangledArgs) {
         return this.validators[validator](value, argsArray[0], argsArray[1], argsArray[2]);
 };
 
-KruciWizard.validateField = function(field) {
+ForisWizard.validateField = function(field) {
     field = $(field);
 
     var markInvalid = function() {
@@ -58,9 +58,9 @@ KruciWizard.validateField = function(field) {
     var validators = field.data("validators").split(" ");
     for (var i in validators) {
         console.log("checking for validator " + validators[i]);
-        if (validators.hasOwnProperty(i) && KruciWizard.validators.hasOwnProperty(validators[i])) {
+        if (validators.hasOwnProperty(i) && ForisWizard.validators.hasOwnProperty(validators[i])) {
             var args = field.data("validator-" + validators[i]);
-            var result = KruciWizard.runValidator(validators[i], field.val(), args);
+            var result = ForisWizard.runValidator(validators[i], field.val(), args);
             if (result) {
                 markOk();
             }
@@ -74,18 +74,18 @@ KruciWizard.validateField = function(field) {
 };
 
 
-KruciWizard.validateForm = function(form) {
+ForisWizard.validateForm = function(form) {
     var inputs = $("input.validate", form);
     console.log(inputs);
     for (var i in inputs) {
-        if (inputs.hasOwnProperty(i) && !KruciWizard.validateField(inputs[i]))
+        if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i]))
             return false;
     }
     return true;
 };
 
 
-KruciWizard.updateForm = function() {
+ForisWizard.updateForm = function() {
     var form = $("#wizard-form");
     form.css("background-color", "red");
     $.post(form.attr("action"), form.serialize())
@@ -95,35 +95,35 @@ KruciWizard.updateForm = function() {
             });
 };
 
-KruciWizard.callAjaxAction = function(wizardStep, action) {
+ForisWizard.callAjaxAction = function(wizardStep, action) {
     return $.get("/wizard/step/" + wizardStep + "/ajax", {action: action});
 };
 
-KruciWizard.ntpUpdate = function() {
-    KruciWizard.callAjaxAction("3", "ntp_update")
+ForisWizard.ntpUpdate = function() {
+    ForisWizard.callAjaxAction("3", "ntp_update")
         .done(function(data) {
             if (data.success) {
                 $("#wizard-time").empty().append("<p>Bazinga! Jdeme dál.</p>")
             }
             else {
-                KruciWizard.showTimeForm();
+                ForisWizard.showTimeForm();
             }
         });
 };
 
-KruciWizard.runUpdater = function () {
-    KruciWizard.callAjaxAction("4", "run_updater")
+ForisWizard.runUpdater = function () {
+    ForisWizard.callAjaxAction("4", "run_updater")
         .done(function(data) {
             console.log(data);
             if (data.success)
-                KruciWizard.checkUpdaterStatus();
+                ForisWizard.checkUpdaterStatus();
             else
                 console.log("TODO: SHIT HAPPENED");
         });
 };
 
-KruciWizard.checkUpdaterStatus = function() {
-    KruciWizard.callAjaxAction("4", "updater_status")
+ForisWizard.checkUpdaterStatus = function() {
+    ForisWizard.callAjaxAction("4", "updater_status")
         .done(function(data) {
             var updaterStatus = $("#wizard-updater-status");
             updaterStatus.empty().append(data.status);
@@ -134,13 +134,13 @@ KruciWizard.checkUpdaterStatus = function() {
             else if (data.status == "running") {
                 // timeout is better, because we won't get multiple requests stuck processing
                 // real delay between status updates is then delay + request_processing_time
-                window.setTimeout(KruciWizard.checkUpdaterStatus, 1000);
+                window.setTimeout(ForisWizard.checkUpdaterStatus, 1000);
             }
         });
 };
 
-KruciWizard.showTimeForm = function() {
-    KruciWizard.callAjaxAction("3", "time_form")
+ForisWizard.showTimeForm = function() {
+    ForisWizard.callAjaxAction("3", "time_form")
         .done(function(data) {
             $("#wizard-time").empty().append(data.form);
         });
@@ -151,15 +151,15 @@ KruciWizard.showTimeForm = function() {
 // TODO: also, most of these "hooks" are not production-ready
 $(document).ready(function(){
     $(document).on("change", ".has-requirements", function(){
-        KruciWizard.updateForm();
+        ForisWizard.updateForm();
     });
 
     $(document).on("keyup", ".validate", function() {
-        KruciWizard.validateField(this);
+        ForisWizard.validateField(this);
     });
 
     $(document).on("submit", "form", function(e) {
-        if (KruciWizard.validateForm(this)) {
+        if (ForisWizard.validateForm(this)) {
             console.log("submitting!");
         }
         else {

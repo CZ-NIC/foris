@@ -9,6 +9,6 @@
 
 <script>
     $(document).ready(function() {
-        KruciWizard.runUpdater();
+        ForisWizard.runUpdater();
     });
 </script>

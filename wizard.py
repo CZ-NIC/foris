@@ -2,7 +2,7 @@ from bottle import Bottle, template, request
 import bottle
 import logging
 from form import Password, Textbox, Dropdown, Checkbox, Hidden
-import kapi
+import fapi
 from nuci import client
 from nuci.modules import time, uci_raw, updater
 from nuci.modules.uci_raw import Uci, Config, Section, Option
@@ -43,7 +43,7 @@ class BaseWizardStep(object):
         """
 
         :return:
-        :rtype: kapi.KruciForm
+        :rtype: fapi.ForisForm
         """
         raise NotImplementedError()
 
@@ -68,7 +68,7 @@ class WizardStep1(BaseWizardStep):
     """
     def get_form(self):
         # form definitions
-        pw_form = kapi.KruciForm("password", self.data)
+        pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title="Password",
                                       description="Set your password.")
         pw_main.add_field(Password, name="password", label="Password", required=True,
@@ -84,9 +84,9 @@ class WizardStep1(BaseWizardStep):
             uci = Uci()
             cznic = Config("cznic")
             uci.add(cznic)
-            kruci = Section("kruci", "config")
-            cznic.add(kruci)
-            kruci.add(Option("password", password))
+            foris = Section("foris", "config")
+            cznic.add(foris)
+            foris.add(Option("password", password))
 
             return "edit_config", uci
 
@@ -100,7 +100,7 @@ class WizardStep2(BaseWizardStep):
     """
     def get_form(self):
         # WAN
-        wan_form = kapi.KruciForm("wan", self.data, filter=uci_filter)
+        wan_form = fapi.ForisForm("wan", self.data, filter=uci_filter)
         wan_main = wan_form.add_section(name="set_wan", title="WAN")
 
         WAN_DHCP = "dhcp"
@@ -176,7 +176,7 @@ class WizardStep3(BaseWizardStep):
         raise ValueError("Unknown Wizard action.")
 
     def get_form(self):
-        time_form = kapi.KruciForm("time", self.data, filter=ET.Element(time.Time.qual_tag("time")))
+        time_form = fapi.ForisForm("time", self.data, filter=ET.Element(time.Time.qual_tag("time")))
         time_main = time_form.add_section(name="set_time", title="Time")
 
         time_main.add_field(Textbox, name="time", label="Time", nuci_path="time",
@@ -235,7 +235,7 @@ class WizardStep5(BaseWizardStep):
     """
     def get_form(self):
         # WAN
-        lan_form = kapi.KruciForm("lan", self.data, filter=uci_filter)
+        lan_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
         lan_main = lan_form.add_section(name="set_lan", title="LAN")
 
         lan_main.add_field(Checkbox, name="dhcp_enabled", label="Enable DHCP", nuci_path="uci.dhcp.lan.ignore",
@@ -278,7 +278,7 @@ class WizardStep6(BaseWizardStep):
     WiFi settings.
     """
     def get_form(self):
-        wifi_form = kapi.KruciForm("lan", self.data, filter=uci_filter)
+        wifi_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
         wifi_main = wifi_form.add_section(name="set_wifi", title="WiFi")
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[1]", nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label="Enable WiFi", default=True,

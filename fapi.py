@@ -7,10 +7,10 @@ from utils import Lazy
 import validators as validators_module
 
 
-logger = logging.getLogger("kapi")
+logger = logging.getLogger("fapi")
 
 
-class KruciFormElement(object):
+class ForisFormElement(object):
     def __init__(self):
         self.children = []
         self.parent = None
@@ -26,7 +26,7 @@ class KruciFormElement(object):
         child.parent = None
 
 
-class KruciForm(KruciFormElement):
+class ForisForm(ForisFormElement):
     def __init__(self, name, data=None, filter=None):
         """
 
@@ -36,7 +36,7 @@ class KruciForm(KruciFormElement):
         :type filter: Element
         :return:
         """
-        super(KruciForm, self).__init__()
+        super(ForisForm, self).__init__()
         self.name = name
         self._request_data = data or {}  # values from request
         self._nuci_data = {}  # values fetched from nuci
@@ -184,7 +184,7 @@ class KruciForm(KruciFormElement):
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
 
 
-class Section(KruciFormElement):
+class Section(ForisFormElement):
     def __init__(self, main_form, name, title, description=None):
         super(Section, self).__init__()
         self._main_form = main_form
@@ -219,13 +219,13 @@ class Section(KruciFormElement):
                % dict(title=self.title, description=self.description, content=content)
 
 
-class Field(KruciFormElement):
+class Field(ForisFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, callback=None, nuci_path=None,
                  nuci_preproc=lambda val: val.value, validators=None, **kwargs):
         """
 
         :param main_form: parent form of this field
-        :type main_form: KruciForm
+        :type main_form: ForisForm
         :param type: type of field
         :param name: field name (rendered also as HTML name attribute)
         :param label: display name of field

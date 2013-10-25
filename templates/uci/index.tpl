@@ -37,7 +37,7 @@
 %end
 
 %############################## PAGE ITSELF STARTS HERE ############################################
-<h1>KRUci</h1>
+<h1>Foris</h1>
 <h2>about:config</h2>
 
 %if tree:

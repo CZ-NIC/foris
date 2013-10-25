@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import bottle
 import logging
 from nuci import client
@@ -7,7 +9,7 @@ import uci
 import wizard
 
 
-logger = logging.getLogger("kruci")
+logger = logging.getLogger("foris")
 
 #def set_template_defaults(template):
 #    template.defaults.update({

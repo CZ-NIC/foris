@@ -1,5 +1,5 @@
 %rebase _layout **locals()
-<h1>KRUci!</h1>
+<h1>Foris</h1>
 <h2>roscesňýk</h2>
 
 <ul>

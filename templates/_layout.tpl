@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>KRUci is Remote Uci </title>
+    <title>Foris administration interface</title>
     <link href="/static/css/gumby.css" rel="stylesheet">
     <link href="/static/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/screen.css" rel="stylesheet">

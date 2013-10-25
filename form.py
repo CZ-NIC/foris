@@ -1,7 +1,7 @@
 """
 HTML forms, based on part of web.py with some customizations.
 
-Currently, it is used in KRUci for rendering and validating forms.
+Currently, it is used in Foris for rendering and validating forms.
 It might be replaced by our own solution in future, or get changed
 heavily to suit our needs...
 
@@ -13,7 +13,7 @@ Current major changes:
 - field is validated only if it's non-empty and Field.required is True (Field.required is
   also a new attribute)
 - Form.render() and Form.render_css() is not used anymore and throws NotImplementedError,
-  Form fields should be rendered by KAPI
+  Form fields should be rendered by FAPI
 - TODO: change signature of Field constructors, make it consistent (see Input vs. Dropdown)
 
 web.py is originally licensed under public domain

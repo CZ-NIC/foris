@@ -15,7 +15,7 @@
 
     <script>
         $(document).ready(function(){
-            KruciWizard.ntpUpdate();
+            ForisWizard.ntpUpdate();
         });
     </script>
 %end

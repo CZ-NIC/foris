@@ -2,7 +2,7 @@ import logging
 from xml.etree import cElementTree as ET
 
 
-logger = logging.getLogger("kruci.utils")
+logger = logging.getLogger("foris.utils")
 
 
 class Lazy(object):

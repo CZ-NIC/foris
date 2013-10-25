@@ -10,7 +10,7 @@ from utils import print_model
 from validators import NotEmpty, RegExp
 
 
-logger = logging.getLogger("kruci.uci")
+logger = logging.getLogger("foris.uci")
 
 
 class UciRawForm(Form):
