@@ -15,6 +15,7 @@ Current major changes:
 - Form.render() and Form.render_css() is not used anymore and throws NotImplementedError,
   Form fields should be rendered by FAPI
 - TODO: change signature of Field constructors, make it consistent (see Input vs. Dropdown)
+- HTML ID for inputs is mangled according to module variable ID_TEMPLATE
 
 web.py is originally licensed under public domain
 """
@@ -22,6 +23,9 @@ web.py is originally licensed under public domain
 import copy
 import itertools
 
+
+ID_TEMPLATE = "field-%s"
+# template for field IDs - gets one "%s" formatting argument
 
 class Storage(dict):
     """
@@ -292,7 +296,7 @@ class Input(object):
         raise NotImplementedError
 
     def get_default_id(self):
-        return self.name
+        return ID_TEMPLATE % self.name
 
     def validate(self, value):
         self.set_value(value)
@@ -327,6 +331,9 @@ class Input(object):
     def addatts(self):
         # add leading space for backward-compatibility
         return " " + str(self.attrs)
+
+    def __str__(self):
+        self.render()
 
 
 class AttributeList(dict):
@@ -497,7 +504,7 @@ class Checkbox(Input):
 
     def get_default_id(self):
         value = safestr(self.value or "")
-        return self.name + '_' + value.replace(' ', '_')
+        return ID_TEMPLATE % self.name + '_' + value.replace(' ', '_')
 
     def render(self):
         attrs = self.attrs.copy()

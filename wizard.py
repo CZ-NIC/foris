@@ -41,7 +41,7 @@ class BaseWizardStep(object):
         raise NotImplementedError()
 
     def get_form(self):
-        """
+        """Get form for this wizard. MUST be a single-section form.
 
         :return:
         :rtype: fapi.ForisForm
@@ -54,6 +54,10 @@ class BaseWizardStep(object):
     def render(self, **kwargs):
         try:
             form = self.form
+            # since wizard form is a single-section form...
+            first_section = self.form.sections[0]
+            kwargs['first_title'] = first_section.title
+            kwargs['first_description'] = first_section.description
             assert "form" not in kwargs
         except NotImplementedError:
             form = None
@@ -406,6 +410,10 @@ def step_post(number=1):
         return dict(html=wiz.render(is_xhr=True))
 
     if request.POST.pop("send", False):
-        if wiz.save():
-            bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
+        try:
+            if wiz.save():
+                bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
+        except TypeError:
+            # raised by Validator - could happen when the form is posted with wrong fields
+            pass
     return wiz.render(stepnumber=number)

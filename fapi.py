@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from form import Dropdown, Form, Checkbox, websafe
 from nuci import client
 import logging
@@ -11,18 +11,23 @@ logger = logging.getLogger("fapi")
 
 
 class ForisFormElement(object):
-    def __init__(self):
-        self.children = []
+    def __init__(self, name):
+        self.name = name
+        self.children = OrderedDict()
         self.parent = None
         self.callbacks = []
 
+    def __iter__(self):
+        for name in self.children:
+            yield self.children[name]
+
     def _add(self, child):
-        self.children.append(child)
+        self.children[child.name] = child
         child.parent = self
         return child
 
     def _remove(self, child):
-        self.children.remove(child)
+        del self.children[child.name]
         child.parent = None
 
 
@@ -36,18 +41,22 @@ class ForisForm(ForisFormElement):
         :type filter: Element
         :return:
         """
-        super(ForisForm, self).__init__()
-        self.name = name
+        super(ForisForm, self).__init__(name)
         self._request_data = data or {}  # values from request
         self._nuci_data = {}  # values fetched from nuci
         self.defaults = {}  # default values from field definitions
         self.__data_cache = None  # cached data
         self.__form_cache = None
         self.validators = []
-        self._validated = False
+        self.validated = False
         # _nuci_config is not required every time, lazy-evaluate it
         self._nuci_config = Lazy(lambda: client.get(filter))
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
+
+    @property
+    def sections(self):
+        filtered = filter(lambda x: isinstance(x, Section), self.children.itervalues())
+        return filtered
 
     @property
     def data(self):
@@ -86,7 +95,7 @@ class ForisForm(ForisFormElement):
     def _form(self):
         if self.__form_cache is not None:
             return self.__form_cache
-        inputs = map(lambda x: x.form_input, self._get_active_fields())
+        inputs = map(lambda x: x.field, self._get_active_fields())
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
         form = Form(*inputs)
@@ -102,7 +111,7 @@ class ForisForm(ForisFormElement):
     def _get_all_fields(self, element=None, fields=None):
         element = element or self
         fields = fields or []
-        for c in element.children:
+        for c in element.children.itervalues():
             if c.children:
                 fields = self._get_all_fields(c, fields)
             if isinstance(c, Field):
@@ -140,19 +149,25 @@ class ForisForm(ForisFormElement):
     def add_validator(self, validator):
         self.validators.append(validator)
 
+    @property
+    def active_fields(self):
+        return self._get_active_fields()
+
+    @property
+    def errors(self):
+        return self._form.note
+
     def render(self):
-        data = self.data
-        result = "<div class=\"errors\">%s</div>" % self._form.note
-        result += "\n".join(c.render(data, validate=self._validated) for c in self.children)
+        result = "<div class=\"errors\">%s</div>" % self.errors
+        result += "\n".join(c.render() for c in self.children.itervalues())
         return result
-        #return self._form.render()
 
     def save(self):
         self.process_callbacks(self.data)
         commit()
 
     def validate(self):
-        self._validated = True
+        self.validated = True
         return self._form.validates(self.data)
 
     def add_callback(self, cb):
@@ -186,7 +201,7 @@ class ForisForm(ForisFormElement):
 
 class Section(ForisFormElement):
     def __init__(self, main_form, name, title, description=None):
-        super(Section, self).__init__()
+        super(Section, self).__init__(name)
         self._main_form = main_form
         self.name = name
         self.title = title
@@ -212,9 +227,9 @@ class Section(ForisFormElement):
         """
         return self._add(Section(self._main_form, *args, **kwargs))
 
-    def render(self, data, validate=False):
-        content = "\n".join(c.render(data, validate=validate) for c in self.children
-                            if c.has_requirements(data))
+    def render(self):
+        content = "\n".join(c.render() for c in self.children.itervalues()
+                            if c.has_requirements(self._main_form.data))
         return "<section>\n<h2>%(title)s</h2>\n<p>%(description)s</p>\n%(content)s\n</section>" \
                % dict(title=self.title, description=self.description, content=content)
 
@@ -238,7 +253,7 @@ class Field(ForisFormElement):
         :type validators: validator or list
         :param kwargs: passed to Input constructor
         """
-        super(Field, self).__init__()
+        super(Field, self).__init__(name)
         #
         self.type = type
         self.name = name
@@ -262,6 +277,11 @@ class Field(ForisFormElement):
         # set defaults for main form
         self._main_form = main_form
         self._main_form.defaults.setdefault(name, default)
+        # cache for rendered field - remove after finishing TODO #2793
+        self.__field_cache = None
+
+    def __str__(self):
+        return self.render()
 
     def _generate_html_classes(self):
         classes = []
@@ -280,8 +300,6 @@ class Field(ForisFormElement):
             if v.js_validator:
                 validators.append("%s" % v.js_validator)
                 params = v.js_validator_params
-                logger.warning("%s" % v)
-                logger.warning("%s" % params)
                 if params:
                     data['validator-%s' % v.js_validator] = params
         if validators:
@@ -289,7 +307,10 @@ class Field(ForisFormElement):
         return data
 
     @property
-    def form_input(self):
+    def field(self):
+        if self.__field_cache is not None:
+            return self.__field_cache
+
         validators = self.validators
         # beware, altering self._kwargs might cause funky behaviour
         attrs = self._kwargs.copy()
@@ -307,17 +328,35 @@ class Field(ForisFormElement):
         if issubclass(self.type, Dropdown):
             args = attrs.pop("args", ())
             # Dropdowns - signature: def __init__(self, name, args, *validators, **attrs)
-            return self.type(self.name, args, *validators, **attrs)
-        # other - signature: def __init__(self, name, *validators, **attrs)
-        return self.type(self.name, *validators, **attrs)
-
-    def render(self, data, validate=False):
-        result = []
-        inp = self.form_input
-        if validate:
-            inp.validate(data.get(self.name) or "")
+            field = self.type(self.name, args, *validators, **attrs)
         else:
-            inp.set_value(data.get(self.name) or "")
+            # other - signature: def __init__(self, name, *validators, **attrs)
+            field = self.type(self.name, *validators, **attrs)
+        if self._main_form.validated:
+            field.validate(self._main_form.data.get(self.name) or "")
+        else:
+            field.set_value(self._main_form.data.get(self.name) or "")
+        self.__field_cache = field
+        return self.__field_cache
+
+    @property
+    def html_id(self):
+        return self.field.id
+
+    @property
+    def label_tag(self):
+        return "<label for=\"%s\">%s</label>" % (self.field.id, websafe(self.field.description))
+
+    @property
+    def errors(self):
+        return self.field.note
+
+    def render(self):
+        return self.field.render()
+
+    def autorender(self):
+        result = []
+        inp = self.field
         if not inp.is_hidden():
             result.append('<label for="%s">%s</label>' % (inp.id, websafe(inp.description)))
         result.append(inp.pre)
@@ -325,7 +364,7 @@ class Field(ForisFormElement):
         if inp.note:
             result.append("<span class=\"error\">%s</span>" % inp.note)
         result.append(inp.post)
-        result.append("\n")
+        result.append("<br>\n")
         return ''.join(result)
 
     def requires(self, field, value=None):
