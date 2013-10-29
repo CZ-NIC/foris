@@ -2,10 +2,10 @@
 %def render_buttons(element):
     %if not element.final:
         %if element.tag == "section":
-        <a href="/uci/{{ element.path }}/create?operation=add-option" title="Add option"><i class="icon-plus"></i></a>
-        <a href="/uci/{{ element.path }}/create?operation=add-list" title="Add list"><i class="icon-list-alt"></i></a>
+        <a href="/uci/{{ element.path }}/create?operation=add-option" title="Add option"><i class="icon-add"></i></a>
+        <a href="/uci/{{ element.path }}/create?operation=add-list" title="Add list"><i class="icon-add-list"></i></a>
         %else:
-        <a href="/uci/{{ element.path }}/create?operation=add" title="Add value"><i class="icon-plus"></i></a>
+        <a href="/uci/{{ element.path }}/create?operation=add" title="Add value"><i class="icon-add"></i></a>
         %end
     %end
     %if element.tag == "option" or element.tag == "value":
@@ -14,7 +14,7 @@
     %if element.tag != "config":
         <a href="/uci/{{ element.path }}/remove" title="Remove"><i class="icon-remove"></i></a>
     %end
-        <a href="/uci/{{ element.path }}/debug" title="Debug"><i class="icon-bug"></i></a>
+        <a href="/uci/{{ element.path }}/debug" title="Debug"><i class="icon-debug"></i></a>
 %end
 %def treenode(element, node_path, depth=0):
     <li>
