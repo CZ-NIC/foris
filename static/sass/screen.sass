@@ -1,7 +1,115 @@
-@import "compass/reset"
-@import "partial/icons"
-@import "partial/treeview"
+@import compass/css3
+@import compass/reset
+@import compass/typography/vertical_rhythm
+@import partial/icons
+@import partial/treeview
+
+// ---------------------------------------------------------------------------
+// Variables
+$background-color: #fff
+$foreground-color: #000
+$highlight-color: #a32027
+$highlight-color-active: lighten(desaturate($highlight-color, 20), 15)
+$link-color: #004477
+$stroke-color: #ccc
+$base-font: Helvetica, Arial, sans-serif
+$heading-font: $base-font
+$button-height: 2em
+$info-color: #3ab54a
+$error-color: #cc0000
+
+/* -------------------------------------------------------------------------
+/* Generic elements
+h1, h2, h3, h4, h5, h6
+  font-family: $heading-font
+  font-weight: bold
+  margin-bottom: 0.8em
+  margin-top: 0.5em
+
+em
+  font-style: italic
+
+strong
+  font-weight: bold
+
+h1
+  +adjust-font-size-to(38px)
+
+h2
+  +adjust-font-size-to(32px)
+
+h3
+  +adjust-font-size-to(26px)
+
+/* -------------------------------------------------------------------------
+/* Layout
+@include establish-baseline
+
+body, html
+  background-color: $background-color
+  color: $foreground-color
+  font:
+    family: $base-font
+
 
 #page
-  margin: 1em 2em
-  min-width: 40em
+  margin: 0 auto
+  width: 50em
+
+
+#wizard-header
+  border-bottom: 1px solid $stroke-color
+  padding: 1em 0
+
+  .stepno
+    +adjust-font-size-to(36px)
+    font-weight: bold
+    float: right
+
+  .stepno-current
+    font-weight: normal
+
+#wizard-icon
+  float: left
+  width: 120px
+
+#wizard-icon + #wizard-content
+  margin-left: 125px
+
+.button
+  background-color: $highlight-color
+  color: #fff
+  display: inline-block
+  font:
+    size: 90%
+    weight: bold
+  height: $button-height
+  line-height: $button-height
+  margin-right: $button-height / 2
+  padding: 0 1.5em 0 1em
+  position: relative
+  text-decoration: none
+  z-index: 999
+
+  &:hover
+    background-color: $highlight-color-active
+    color: #fff
+
+    &:before
+      background-color: $highlight-color-active
+
+.button-arrow-right
+  @extend .button
+
+  &:before
+    background: $highlight-color
+    border: none
+    content: " "
+    display: block
+    height: $button-height/sqrt(2)
+    width: $button-height/sqrt(2)
+    right: - $button-height / 2.8
+    position: absolute
+    top: 15%
+    +transform(rotate(45deg))
+    z-index: -1

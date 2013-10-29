@@ -19,7 +19,8 @@ updater_filter = ET.Element(updater.Updater.qual_tag("updater"))
 
 
 class BaseWizardStep(object):
-    template = "wizard/base"
+    template = "wizard/form"
+    name = None
 
     def __init__(self, data=None):
         self.data = data
@@ -47,10 +48,17 @@ class BaseWizardStep(object):
         """
         raise NotImplementedError()
 
+    def default_template(self, **kwargs):
+        return template(self.template, stepname=self.name, **kwargs)
+
     def render(self, **kwargs):
-        assert "form" not in kwargs
-        form = self.form
-        return template(self.template, form=form, **kwargs)
+        try:
+            form = self.form
+            assert "form" not in kwargs
+        except NotImplementedError:
+            form = None
+
+        return self.default_template(form=form, **kwargs)
 
     def save(self):
         form = self.form
@@ -66,6 +74,8 @@ class WizardStep1(BaseWizardStep):
     """
     Setting the password
     """
+    name = "password"
+
     def get_form(self):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
@@ -98,6 +108,8 @@ class WizardStep2(BaseWizardStep):
     """
     WAN settings.
     """
+    name = "wan"
+
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=uci_filter)
@@ -158,6 +170,7 @@ class WizardStep3(BaseWizardStep):
     Time settings.
     """
     template = "wizard/time.tpl"
+    name = "time"
 
     def _action_ntp_update(self):
         return client.ntp_update()
@@ -196,7 +209,7 @@ class WizardStep3(BaseWizardStep):
             form = self.form
         else:
             form = None
-        return template(self.template, form=form, **kwargs)
+        return self.default_template(form=form, **kwargs)
 
 
 class WizardStep4(BaseWizardStep):
@@ -204,6 +217,7 @@ class WizardStep4(BaseWizardStep):
     Updater.
     """
     template = "wizard/updater.tpl"
+    name = "updater"
 
     def _action_run_updater(self):
         return client.check_updates()
@@ -224,15 +238,13 @@ class WizardStep4(BaseWizardStep):
 
         raise ValueError("Unknown Wizard action.")
 
-    def render(self, **kwargs):
-        client.get(filter=updater_filter)
-        return template(self.template, **kwargs)
-
 
 class WizardStep5(BaseWizardStep):
     """
     LAN settings.
     """
+    name = "lan"
+
     def get_form(self):
         # WAN
         lan_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
@@ -277,6 +289,8 @@ class WizardStep6(BaseWizardStep):
     """
     WiFi settings.
     """
+    name = "wifi"
+
     def get_form(self):
         wifi_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
         wifi_main = wifi_form.add_section(name="set_wifi", title="WiFi")
@@ -334,9 +348,9 @@ class WizardStep7(BaseWizardStep):
     """
     template = "wizard/registration.html"
 
-    def render(self):
+    def render(self, **kwargs):
         registration = client.get_registration()
-        return template(self.template, code=registration.value)
+        return self.default_template(code=registration.value, **kwargs)
 
 
 app = Bottle()
@@ -370,11 +384,14 @@ def ajax(number=1):
 
 
 @app.route("/", name="wizard-step")
+def wizard():
+    bottle.redirect("/wizard/step/1")
+
 @app.route("/step/<number:re:\d+>", name="wizard-step")
 def step(number=1):
     Wizard = get_wizard(number)
     wiz = Wizard()
-    return wiz.render()
+    return wiz.render(stepnumber=number)
 
 
 @app.route("/", method="POST")
@@ -391,4 +408,4 @@ def step_post(number=1):
     if request.POST.pop("send", False):
         if wiz.save():
             bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
-    return wiz.render()
+    return wiz.render(stepnumber=number)

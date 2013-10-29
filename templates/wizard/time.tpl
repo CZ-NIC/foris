@@ -1,6 +1,4 @@
-%if not defined('is_xhr'):
-    %rebase _layout **locals()
-%end
+%rebase wizard/base **locals()
 
 %if form:
     <form action="" method="post">
@@ -9,8 +7,9 @@
     </form>
 %else:
     <div id="wizard-time">
-        Probíhá synchronizace času na routeru s časem v internetu. Chvilku strpení...
-        >>TODO: obrázek-loader<<
+        <h1>Nastavení času</h1>
+        Probíhá synchronizace času na routeru s časem v internetu. Chvilku strpení...<br>
+        <img src="/static/img/loader.gif" alt="Probíhá načítání...">
     </div>
 
     <script>
