@@ -1,23 +1,14 @@
 #!/usr/bin/env python
-
+from beaker.middleware import SessionMiddleware
 import bottle
 import logging
 from nuci import client
 import os
 import sys
-import uci
 import wizard
 
 
 logger = logging.getLogger("foris")
-
-#def set_template_defaults(template):
-#    template.defaults.update({
-#        'url': lambda *args, **kwargs: get_url(*args, **kwargs),
-#        'static': lambda filename: get_url("static", filename=filename)
-#    })
-#
-#set_template_defaults(bottle.SimpleTemplate)
 
 
 @bottle.route("/")
@@ -53,13 +44,22 @@ if __name__ == "__main__":
 
     if args.debug:
         # "about:config" is available only in debug mode
+        import uci
         app.mount("/uci", uci.app)
         # for nice debugging and profiling, try importing FireLogger support
         try:
             from firepython.middleware import FirePythonWSGI
             app = FirePythonWSGI(app)
         except ImportError:
-            firepython = None
+            FirePythonWSGI = None
+
+    # session middleware (note: session.auto does not work within Bottle)
+    session_options = {
+        'session.type': 'memory',
+        'session.cookie_expires': True,
+        'session.timeout': 600,
+    }
+    app = SessionMiddleware(app)
 
     # there are some threading-related errors caused by an issue in
     # Python <= 2.7.3 (Python issue #14308), this monkey-patch fixes them
