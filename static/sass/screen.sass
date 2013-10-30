@@ -57,25 +57,6 @@ body, html
   width: 50em
 
 
-#wizard-header
-  border-bottom: 1px solid $stroke-color
-  padding: 1em 0
-
-  .stepno
-    +adjust-font-size-to(36px)
-    font-weight: bold
-    float: right
-
-  .stepno-current
-    font-weight: normal
-
-#wizard-icon
-  float: left
-  width: 120px
-
-#wizard-icon + #wizard-content
-  margin-left: 125px
-
 .button
   background-color: $highlight-color
   color: #fff
@@ -113,3 +94,65 @@ body, html
     top: 15%
     +transform(rotate(45deg))
     z-index: -1
+
+/* -------------------------------------------------------------------------
+/* Wizard
+button
+  border: none
+
+#wizard-header
+  border-bottom: 1px solid $stroke-color
+  padding: 1em 0
+
+  .stepno
+    +adjust-font-size-to(36px)
+    font-weight: bold
+    float: right
+
+  .stepno-current
+    font-weight: normal
+
+#wizard-icon
+  float: left
+  width: 120px
+
+#wizard-icon + #wizard-content
+  margin-left: 125px
+
+  h1
+    margin-top: 1em
+
+.wizard-description
+  margin-bottom: 2em
+
+.wizard-form
+  div
+    padding: 0.25em 0
+
+  label
+    display: inline-block
+    font-weight: bold
+    width: 10em
+
+  input, textarea, select
+    background-color: $background-color
+    border: 1px solid $stroke-color
+    padding: 0.5em
+    width: 25em
+
+
+.button-next
+  @extend .button-arrow-right
+  float: right
+  margin-top: 1em
+
+.background-progress
+  color: #444
+  text-align: center
+
+  img
+    margin-bottom: 2em
+
+#time-success, #updater-success, #updater-fail
+  display: none
+  text-align: center

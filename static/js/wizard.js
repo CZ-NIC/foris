@@ -86,7 +86,7 @@ ForisWizard.validateForm = function(form) {
 
 
 ForisWizard.updateForm = function() {
-    var form = $("#wizard-form");
+    var form = $("#wizard-main-form");
     form.css("background-color", "red");
     $.post(form.attr("action"), form.serialize())
             .done(function(data){
@@ -103,7 +103,8 @@ ForisWizard.ntpUpdate = function() {
     ForisWizard.callAjaxAction("3", "ntp_update")
         .done(function(data) {
             if (data.success) {
-                $("#wizard-time").empty().append("<p>Bazinga! Jdeme dál.</p>")
+                $("#time-progress").hide();
+                $("#time-success").show();
             }
             else {
                 ForisWizard.showTimeForm();
@@ -117,24 +118,29 @@ ForisWizard.runUpdater = function () {
             console.log(data);
             if (data.success)
                 ForisWizard.checkUpdaterStatus();
-            else
-                console.log("TODO: SHIT HAPPENED");
+            else {
+                $("#updater-progress").hide();
+                $("#updater-fail").show();
+            }
         });
 };
 
 ForisWizard.checkUpdaterStatus = function() {
     ForisWizard.callAjaxAction("4", "updater_status")
         .done(function(data) {
-            var updaterStatus = $("#wizard-updater-status");
-            updaterStatus.empty().append(data.status);
             if (data.status == "failed") {
                 console.log(data.message);
-                updaterStatus.append("<p>Chyba: " + data.message + "</p>")
+                $("#updater-progress").hide();
+                $("#updater-fail").show(); // TODO: determine what caused the fail, maybe?
             }
             else if (data.status == "running") {
                 // timeout is better, because we won't get multiple requests stuck processing
                 // real delay between status updates is then delay + request_processing_time
                 window.setTimeout(ForisWizard.checkUpdaterStatus, 1000);
+            }
+            else if (data.status == "done") {
+                $("#updater-progress").hide();
+                $("#updater-success").show();
             }
         });
 };

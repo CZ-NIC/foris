@@ -209,11 +209,9 @@ class WizardStep3(BaseWizardStep):
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):
-            assert "form" not in kwargs
-            form = self.form
-        else:
-            form = None
-        return self.default_template(form=form, **kwargs)
+            return super(WizardStep3, self).render(**kwargs)
+
+        return self.default_template(form=None, **kwargs)
 
 
 class WizardStep4(BaseWizardStep):
@@ -409,11 +407,10 @@ def step_post(number=1):
         request.POST.pop("update", None)
         return dict(html=wiz.render(is_xhr=True))
 
-    if request.POST.pop("send", False):
-        try:
-            if wiz.save():
-                bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
-        except TypeError:
-            # raised by Validator - could happen when the form is posted with wrong fields
-            pass
+    try:
+        if wiz.save():
+            bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
+    except TypeError:
+        # raised by Validator - could happen when the form is posted with wrong fields
+        pass
     return wiz.render(stepnumber=number)
