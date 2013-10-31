@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 from beaker.middleware import SessionMiddleware
 import bottle
+from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
+import gettext
 import logging
 from nuci import client
 import os
@@ -10,11 +12,18 @@ import wizard
 
 logger = logging.getLogger("foris")
 
+BASE_DIR = os.path.dirname(__file__)
+
+# i18n-related, hardcoded for now
+i18n_defaults(bottle.SimpleTemplate, bottle.request)
+trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=["cs"])
+gettext = trans.ugettext
+
 
 @bottle.route("/")
 @bottle.view("index")
 def index():
-    pass
+    return dict()
 
 
 @bottle.route('/static/<filename:re:.*>', name="static")
@@ -36,16 +45,22 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # basic and bottle settings
-    template_dir = os.path.join(os.path.dirname(__file__), "templates")
+    template_dir = os.path.join(BASE_DIR, "templates")
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     app = bottle.app()
     app.mount("/wizard", wizard.app)
-
     if args.debug:
         # "about:config" is available only in debug mode
         import uci
+        # must be mounted before wrapping the app with middleware
         app.mount("/uci", uci.app)
+
+    # i18n middleware
+    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code="cs", default="cs",
+                                         locale_dir=os.path.join(BASE_DIR, "locale")))
+
+    if args.debug:
         # for nice debugging and profiling, try importing FireLogger support
         try:
             from firepython.middleware import FirePythonWSGI

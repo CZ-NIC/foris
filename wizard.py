@@ -1,6 +1,7 @@
 from bottle import Bottle, template, request
 import bottle
 import logging
+from foris import gettext as _
 from form import Password, Textbox, Dropdown, Checkbox, Hidden
 import fapi
 from nuci import client
@@ -83,9 +84,9 @@ class WizardStep1(BaseWizardStep):
     def get_form(self):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
-        pw_main = pw_form.add_section(name="set_password", title="Password",
+        pw_main = pw_form.add_section(name="set_password", title=_("Password"),
                                       description="Set your password.")
-        pw_main.add_field(Password, name="password", label="Password", required=True,
+        pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
         pw_main.add_field(Password, name="password_validation", label="Password (repeat)")
         pw_form.add_validator(validators.FieldsEqual("password", "password_validation",

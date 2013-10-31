@@ -6,5 +6,5 @@
     %for field in form.active_fields:
         <div>{{! field.label_tag }}{{! field.render() }}</div>
     %end
-    <button class="button-next" type="submit" name="send" class="button-arrow-right">Next</button>
+    <button class="button-next" type="submit" name="send" class="button-arrow-right">{{ _("Next") }}</button>
 </form>
