@@ -1,8 +1,26 @@
+import bottle
+from functools import wraps
 import logging
 from xml.etree import cElementTree as ET
 
 
 logger = logging.getLogger("foris.utils")
+
+
+def login_required(func=None, redirect_url="/"):
+    """Decorator for views that require login.
+
+    :param redirect_url:
+    :return:
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        session = bottle.request.environ['beaker.session']
+        if not session.get("user_authenticated", False):
+            # "raise" bottle redirect
+            bottle.redirect(redirect_url)
+        return func(*args, **kwargs)
+    return wrapper
 
 
 class Lazy(object):

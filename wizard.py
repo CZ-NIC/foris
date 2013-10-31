@@ -4,19 +4,14 @@ import logging
 from foris import gettext as _
 from form import Password, Textbox, Dropdown, Checkbox, Hidden
 import fapi
-from nuci import client
-from nuci.modules import time, uci_raw, updater
+from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option
+from utils import login_required
 from validators import LenRange
 import validators
-import xml.etree.cElementTree as ET
 
 
 logger = logging.getLogger("wizard")
-
-# filter later used for config filtering
-uci_filter = ET.Element(uci_raw.Uci.qual_tag("uci"))
-updater_filter = ET.Element(updater.Updater.qual_tag("updater"))
 
 
 class BaseWizardStep(object):
@@ -118,7 +113,7 @@ class WizardStep2(BaseWizardStep):
 
     def get_form(self):
         # WAN
-        wan_form = fapi.ForisForm("wan", self.data, filter=uci_filter)
+        wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
         wan_main = wan_form.add_section(name="set_wan", title="WAN")
 
         WAN_DHCP = "dhcp"
@@ -195,7 +190,7 @@ class WizardStep3(BaseWizardStep):
         raise ValueError("Unknown Wizard action.")
 
     def get_form(self):
-        time_form = fapi.ForisForm("time", self.data, filter=ET.Element(time.Time.qual_tag("time")))
+        time_form = fapi.ForisForm("time", self.data, filter=filters.time)
         time_main = time_form.add_section(name="set_time", title="Time")
 
         time_main.add_field(Textbox, name="time", label="Time", nuci_path="time",
@@ -251,7 +246,7 @@ class WizardStep5(BaseWizardStep):
 
     def get_form(self):
         # WAN
-        lan_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
+        lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
         lan_main = lan_form.add_section(name="set_lan", title="LAN")
 
         lan_main.add_field(Checkbox, name="dhcp_enabled", label="Enable DHCP", nuci_path="uci.dhcp.lan.ignore",
@@ -296,7 +291,7 @@ class WizardStep6(BaseWizardStep):
     name = "wifi"
 
     def get_form(self):
-        wifi_form = fapi.ForisForm("lan", self.data, filter=uci_filter)
+        wifi_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title="WiFi")
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[1]", nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label="Enable WiFi", default=True,
@@ -374,6 +369,7 @@ def get_wizard(number):
 
 
 @app.route("/step/<number:re:\d+>/ajax")
+@login_required
 def ajax(number=1):
     action = request.GET.get("action")
     if not action:
@@ -388,19 +384,21 @@ def ajax(number=1):
 
 
 @app.route("/", name="wizard-step")
+@login_required
 def wizard():
     bottle.redirect("/wizard/step/1")
 
 
 @app.route("/step/<number:re:\d+>", name="wizard-step")
+@login_required
 def step(number=1):
     Wizard = get_wizard(number)
     wiz = Wizard()
     return wiz.render(stepnumber=number)
 
 
-@app.route("/", method="POST")
 @app.route("/step/<number:re:\d+>", method="POST")
+@login_required
 def step_post(number=1):
     Wizard = get_wizard(number)
     wiz = Wizard(request.POST)

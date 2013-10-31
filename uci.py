@@ -6,7 +6,7 @@ from ncclient.operations import RPCError
 from nuci import client
 from nuci.client import edit_uci_config
 from nuci.modules import uci_raw
-from utils import print_model
+from utils import print_model, login_required
 from validators import NotEmpty, RegExp
 
 
@@ -73,6 +73,7 @@ app = Bottle()
 
 @app.get("/")
 @view("uci/index")
+@login_required
 def index():
     uci_model = client.get_uci_config()
     node_path = request.GET.get("node")
@@ -82,6 +83,7 @@ def index():
 
 @app.get("/<node:re:\w+(\.\w+)*>/edit", name="edit")
 @view("uci/edit")
+@login_required
 def edit(node):
     uci_model = client.get_uci_config()
     node_model = uci_model.find_child(node)
@@ -94,6 +96,7 @@ def edit(node):
 
 @app.post("/<node:re:\w+(\.\w+)*>/edit", name="edit_post")
 @view("uci/edit")
+@login_required
 def edit_post(node):
     uci_model = client.get_uci_config()
     node_model = uci_model.find_child(node)
@@ -109,6 +112,7 @@ def edit_post(node):
 
 @app.get("/<node:re:\w+(\.\w+)*>/create", name="create")
 @view("uci/edit")
+@login_required
 def create(node):
     operation = request.GET.get("operation")
     uci_model = client.get_uci_config()
@@ -135,6 +139,7 @@ def create(node):
 
 @app.post("/<node:re:\w+(\.\w+)*>/create", name="create_post")
 @view("uci/edit")
+@login_required
 def create_post(node):
     operation = request.GET.get("operation")
     uci_model = client.get_uci_config()
@@ -172,6 +177,7 @@ def create_post(node):
 
 
 @app.get("/<node:re:\w+(\.\w+)*>/remove", name="remove")
+@login_required
 def remove(node):
     uci_model = client.get_uci_config()
     node_model = uci_model.find_child(node)
@@ -185,6 +191,7 @@ def remove(node):
 
 
 @app.get("/<node:re:\w+(\.\w+)*>/debug", name="debug")
+@login_required
 def debug(node):
     uci_model = client.get_uci_config()
     node_model = uci_model.find_child(node)

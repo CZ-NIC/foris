@@ -4,7 +4,7 @@ import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 import gettext
 import logging
-from nuci import client
+from nuci import client, filters
 import os
 import sys
 import wizard
@@ -19,11 +19,35 @@ i18n_defaults(bottle.SimpleTemplate, bottle.request)
 trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=["cs"])
 gettext = trans.ugettext
 
+# template defaults
+# this is not really straight-forward, check for user_authenticated() (with brackets) in template,
+# because bool(user_authenticated) is always True - it means bool(<function ...>)
+bottle.SimpleTemplate.defaults["user_authenticated"] = lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
+
 
 @bottle.route("/")
 @bottle.view("index")
 def index():
     return dict()
+
+
+@bottle.route("/", method="POST")
+def login():
+    session = bottle.request.environ["beaker.session"]
+    if _check_password(bottle.request.POST.get("password")):
+        session["user_authenticated"] = True
+        session.save()
+        bottle.redirect("/wizard/")
+    bottle.redirect("/")
+
+
+@bottle.route("/logout")
+def logout():
+    session = bottle.request.environ["beaker.session"]
+    if "user_authenticated" in session:
+        del session["user_authenticated"]
+        session.save()
+    bottle.redirect("/")
 
 
 @bottle.route('/static/<filename:re:.*>', name="static")
@@ -32,6 +56,13 @@ def static(filename):
         logger.warning("Static files should be handled externally in production mode.")
     return bottle.static_file(filename, root=os.path.join(os.path.dirname(__file__), "static"))
 
+
+def _check_password(password):
+    import pbkdf2
+    data = client.get(filter=filters.uci)
+    password_hash = data.find_child("uci.cznic.foris.password").value
+    # crypt automatically extracts salt and iterations from formatted pw hash
+    return password_hash == pbkdf2.crypt(password, salt=password_hash)
 
 # ---------------------------------------------------------------------------- #
 #                                      MAIN                                    #
