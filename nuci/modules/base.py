@@ -57,8 +57,8 @@ class YinElement(object):
                     if child.key == key:
                         where = child
                         break
-                    else:
-                        where = None
+                else:
+                    where = None
         return where
 
     def _append_subelements(self, element):
