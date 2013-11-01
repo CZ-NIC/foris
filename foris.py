@@ -22,7 +22,8 @@ gettext = trans.ugettext
 # template defaults
 # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
 # because bool(user_authenticated) is always True - it means bool(<function ...>)
-bottle.SimpleTemplate.defaults["user_authenticated"] = lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
+bottle.SimpleTemplate.defaults["user_authenticated"] =\
+    lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
 
 
 @bottle.route("/")
@@ -37,7 +38,7 @@ def login():
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
         session.save()
-        bottle.redirect("/wizard/")
+        bottle.redirect("/")
     bottle.redirect("/")
 
 
@@ -60,7 +61,12 @@ def static(filename):
 def _check_password(password):
     import pbkdf2
     data = client.get(filter=filters.uci)
-    password_hash = data.find_child("uci.cznic.foris.password").value
+    password_hash = data.find_child("uci.cznic.foris.password")
+    if password_hash is None:
+        # consider unset password as successful auth
+        # maybe set some session variable in this case
+        return True
+    password_hash = password_hash.value
     # crypt automatically extracts salt and iterations from formatted pw hash
     return password_hash == pbkdf2.crypt(password, salt=password_hash)
 
