@@ -146,10 +146,33 @@ ForisWizard.checkUpdaterStatus = function() {
 };
 
 ForisWizard.showTimeForm = function() {
+    console.log(this);
     ForisWizard.callAjaxAction("3", "time_form")
         .done(function(data) {
-            $("#wizard-time").empty().append(data.form);
+            var timeField = $("#wizard-time").empty().append(data.form)
+                .find("input[name=\"time\"]");
+            $(".form-fields").hide();
+            $("#wizard-time-sync-auto").click(function() {
+                timeField.val(new Date().toISOString());
+                $("#wizard-time-sync-success").show();
+            });
+            $("#wizard-time-sync-manual").click(function() {
+                $(".form-fields").show();
+                $(this).hide();
+            });
+            ForisWizard.timeField = timeField;
+            // there's a slight time drift, but it's not an issue here...
+            window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
         });
+};
+
+ForisWizard.timeUpdateCallback = function() {
+    if (ForisWizard.timeField.is(":focus"))
+        return;
+    var newTime = new Date(ForisWizard.timeField.val());
+    newTime.setMilliseconds(newTime.getMilliseconds() + 1000);
+    ForisWizard.timeField.val(newTime.toISOString());
+    window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
 };
 
 

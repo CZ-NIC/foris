@@ -4,9 +4,18 @@
     <form class="wizard-form" action="" method="post">
         <h1>{{ first_title }}</h1>
         <p>{{ first_description }}</p>
+        <div class="form-fields">
         %for field in form.active_fields:
             <div>{{! field.label_tag }}{{! field.render() }}</div>
         %end
+        </div>
+
+        <div id="wizard-time-sync">
+            <a href="#" id="wizard-time-sync-auto" class="button">{{ _("Synchronize with computer clock") }}</a>
+            <a href="#" id="wizard-time-sync-manual" class="button">{{ _("Set time manually") }}</a>
+            <p id="wizard-time-sync-success">{{ _("Synchronization successful.") }}</p>
+        </div>
+
         <button class="button-next" type="submit" name="send" class="button-arrow-right">{{ _("Next") }}</button>
     </form>
 %else:
