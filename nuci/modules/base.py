@@ -26,6 +26,15 @@ class YinElement(object):
         self.children.append(child)
         child.parent = self
 
+    def add_removal(self, child):
+        """Add new child node marked for removal.
+
+        :param child:
+        :return:
+        """
+        child.operation = "remove"
+        return self.add(child)
+
     def remove(self, child):
         self.children.remove(child)
         child.parent = None
