@@ -171,6 +171,14 @@ class WizardStep2(BaseWizardStep):
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
                 wan.add(Option("ipv6", data['ppp_ipv6']))
+            elif data['static_ipv6'] is True:
+                wan.add(Option("ip6addr", data['ip6addr']))
+                wan.add(Option("ip6gw", data['ip6gw']))
+                wan.add(Option("ip6prefix", data['ip6prefix']))
+                # remove ipv4 settings
+                wan.add_removal(Option("ipaddr", None))
+                wan.add_removal(Option("netmask", None))
+                wan.add_removal(Option("gateway", None))
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
@@ -179,15 +187,6 @@ class WizardStep2(BaseWizardStep):
                 wan.add_removal(Option("ip6addr", None))
                 wan.add_removal(Option("ip6gw", None))
                 wan.add_removal(Option("ip6prefix", None))
-
-            elif data['static_ipv6'] == "1":
-                wan.add(Option("ip6addr", data['ip6addr']))
-                wan.add(Option("ip6gw", data['ip6gw']))
-                wan.add(Option("ip6prefix", data['ip6prefix']))
-                # remove ipv4 settings
-                wan.add_removal(Option("ipaddr", None))
-                wan.add_removal(Option("netmask", None))
-                wan.add_removal(Option("gateway", None))
 
             return "edit_config", uci
 
