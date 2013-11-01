@@ -127,20 +127,36 @@ class WizardStep2(BaseWizardStep):
 
         wan_main.add_field(Textbox, name="macaddr", label="MAC address", nuci_path="uci.network.wan.macaddr", validators=validators.MacAddress())
         wan_main.add_field(Dropdown, name="proto", label="Mode", nuci_path="uci.network.wan.proto", args=WAN_OPTIONS, default=WAN_DHCP)
+        wan_main.add_field(Checkbox, name="static_ipv6", label="Use IPv6", nuci_path="uci.network.wan.ip6addr",
+                           nuci_preproc=lambda val: bool(val.value))\
+            .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="ipaddr", label="IP address", nuci_path="uci.network.wan.ipaddr",
                            required=True, validators=validators.IPv4())\
-            .requires("proto", WAN_STATIC)
+            .requires("proto", WAN_STATIC)\
+            .requires("static_ipv6", False)
         wan_main.add_field(Textbox, name="netmask", label="Network mask", nuci_path="uci.network.wan.netmask",
                            required=True, validators=validators.IPv4())\
-            .requires("proto", WAN_STATIC)
+            .requires("proto", WAN_STATIC)\
+            .requires("static_ipv6", False)
         wan_main.add_field(Textbox, name="gateway", label="Gateway", nuci_path="uci.network.wan.gateway",
                            validators=validators.IPv4())\
-            .requires("proto", WAN_STATIC)
+            .requires("proto", WAN_STATIC)\
+            .requires("static_ipv6", False)
 
         wan_main.add_field(Textbox, name="username", label="DSL user", nuci_path="uci.network.wan.username",)\
             .requires("proto", WAN_PPPOE)
         wan_main.add_field(Textbox, name="password", label="DSL password", nuci_path="uci.network.wan.password",)\
             .requires("proto", WAN_PPPOE)
+        wan_main.add_field(Checkbox, name="ppp_ipv6", label="Enable IPv6", nuci_path="uci.network.wan.ipv6",
+                           nuci_preproc=lambda val: bool(int(val.value)))\
+            .requires("proto", WAN_PPPOE)
+
+        wan_main.add_field(Textbox, name="ip6addr", label="IPv6 address", nuci_path="uci.network.wan.ip6addr")\
+            .requires("static_ipv6", True)
+        wan_main.add_field(Textbox, name="ip6gw", label="IPv6 gateway", nuci_path="uci.network.wan.ip6gw")\
+            .requires("static_ipv6", True)
+        wan_main.add_field(Textbox, name="ip6prefix", label="IPv6 prefix", nuci_path="uci.network.wan.ip6prefix")\
+            .requires("static_ipv6", True)
 
         def wan_form_cb(data):
             uci = Uci()
@@ -154,10 +170,24 @@ class WizardStep2(BaseWizardStep):
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
+                wan.add(Option("ipv6", data['ppp_ipv6']))
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
                 wan.add(Option("gateway", data['gateway']))
+                # remove ipv6 settings
+                wan.add_removal(Option("ip6addr", None))
+                wan.add_removal(Option("ip6gw", None))
+                wan.add_removal(Option("ip6prefix", None))
+
+            elif data['static_ipv6'] == "1":
+                wan.add(Option("ip6addr", data['ip6addr']))
+                wan.add(Option("ip6gw", data['ip6gw']))
+                wan.add(Option("ip6prefix", data['ip6prefix']))
+                # remove ipv4 settings
+                wan.add_removal(Option("ipaddr", None))
+                wan.add_removal(Option("netmask", None))
+                wan.add_removal(Option("gateway", None))
 
             return "edit_config", uci
 
@@ -245,7 +275,6 @@ class WizardStep5(BaseWizardStep):
     name = "lan"
 
     def get_form(self):
-        # WAN
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
         lan_main = lan_form.add_section(name="set_lan", title="LAN")
 
