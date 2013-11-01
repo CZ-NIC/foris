@@ -80,13 +80,18 @@ class ForisForm(ForisFormElement):
         return data
 
     def clean_data(self, data):
+        new_data = {}
         fields = self._get_all_fields()
         for field in fields:
+            new_data[field.name] = data[field.name]
             if field.name in data:
                 if issubclass(field.type, Checkbox):
                     # coerce checkbox values to boolean
-                    data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
-        return data
+                    new_data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
+        # get names of active fields according to new_data
+        active_field_names = map(lambda x: x.name, self._get_active_fields(data=new_data))
+        # get new dict of data of active fields
+        return {k: v for k, v in new_data.iteritems() if k in active_field_names}
 
     def invalidate_data(self):
         self.__data_cache = None
@@ -118,14 +123,16 @@ class ForisForm(ForisFormElement):
                 fields.append(c)
         return fields
 
-    def _get_active_fields(self, element=None):
-        """Get all descendant fields that meet their requirements.
+    def _get_active_fields(self, element=None, data=None):
+        """Get all fields that meet their requirements.
 
         :param element:
+        :param data: data to check requirements against
         :return: list of fields
         """
         fields = self._get_all_fields(element)
-        return filter(lambda f: f.has_requirements(self.data), fields)
+        data = data or self.data
+        return filter(lambda f: f.has_requirements(data), fields)
 
     def _update_nuci_data(self):
         for field in self._get_all_fields():
