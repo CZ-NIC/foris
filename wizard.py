@@ -171,7 +171,7 @@ class WizardStep2(BaseWizardStep):
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
                 wan.add(Option("ipv6", data['ppp_ipv6']))
-            elif data['static_ipv6'] is True:
+            elif data.get("static_ipv6") is True:
                 wan.add(Option("ip6addr", data['ip6addr']))
                 wan.add(Option("ip6gw", data['ip6gw']))
                 wan.add(Option("ip6prefix", data['ip6prefix']))
