@@ -243,7 +243,7 @@ class Section(ForisFormElement):
 
 class Field(ForisFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, callback=None, nuci_path=None,
-                 nuci_preproc=lambda val: val.value, validators=None, **kwargs):
+                 nuci_preproc=lambda val: val.value, validators=None, hint="", **kwargs):
         """
 
         :param main_form: parent form of this field
@@ -258,6 +258,7 @@ class Field(ForisFormElement):
         :type nuci_preproc: callable
         :param validators: validator or list of validators
         :type validators: validator or list
+        :param hint: short descriptive text explaining the purpose of the field
         :param kwargs: passed to Input constructor
         """
         super(Field, self).__init__(name)
@@ -277,6 +278,7 @@ class Field(ForisFormElement):
         self._kwargs["required"] = self.required
         self._kwargs["description"] = label
         self.requirements = {}
+        self.hint = hint
         default = kwargs.pop("default", None)
         if issubclass(self.type, Checkbox):
             self._kwargs["value"] = "1"  # we need a non-empty value here
@@ -368,6 +370,7 @@ class Field(ForisFormElement):
             result.append('<label for="%s">%s</label>' % (inp.id, websafe(inp.description)))
         result.append(inp.pre)
         result.append(inp.render())
+        result.append("<abbr title=\"%s\">help</abbr>" % self.hint)
         if inp.note:
             result.append("<span class=\"error\">%s</span>" % inp.note)
         result.append(inp.post)

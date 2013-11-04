@@ -330,14 +330,16 @@ class WizardStep6(BaseWizardStep):
                             validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label="Hide network name", default=False,
-                            nuci_path="uci.wireless.@wifi-iface[1].hidden")\
+                            nuci_path="uci.wireless.@wifi-iface[1].hidden",
+                            hint=_("If set, network is not visible when scanning for available networks."))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Dropdown, name="channel", label="Network channel", default="1",
                             args=((str(i), str(i)) for i in range(1, 13)),
                             nuci_path="uci.wireless.radio1.channel")\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Textbox, name="key", label="Network password",
-                            nuci_path="uci.wireless.@wifi-iface[1].key")\
+                            nuci_path="uci.wireless.@wifi-iface[1].key",
+                            hint=_("WPA2 preshared key, that is required to connect to the network."))\
             .requires("wifi_enabled", True)
 
         def wifi_form_cb(data):
