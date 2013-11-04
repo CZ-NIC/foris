@@ -78,6 +78,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--server", choices=["wsgiref", "flup"], default="wsgiref")
     parser.add_argument("-d", "--debug", action="store_true")
+    parser.add_argument("--noauth", action="store_true",
+                        help="disable authentication (available only in debug mode)")
     parser.add_argument("--nucipath", help="path to Nuci binary")
     args = parser.parse_args()
 
@@ -92,6 +94,9 @@ if __name__ == "__main__":
         import uci
         # must be mounted before wrapping the app with middleware
         app.mount("/uci", uci.app)
+        if args.noauth:
+            logger.warning("authentication disabled")
+            app.config.no_auth = True
 
     # i18n middleware
     app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code="cs", default="cs",

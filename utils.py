@@ -16,7 +16,8 @@ def login_required(func=None, redirect_url="/"):
     @wraps(func)
     def wrapper(*args, **kwargs):
         session = bottle.request.environ['beaker.session']
-        if not session.get("user_authenticated", False):
+        no_auth = bottle.default_app().config.no_auth
+        if not no_auth and not session.get("user_authenticated", False):
             # "raise" bottle redirect
             bottle.redirect(redirect_url)
         return func(*args, **kwargs)
