@@ -49,17 +49,14 @@ def ntp_update():
         return False
 
 
-def set_time(time_string, is_utc=False):
-    set_tag = time.Time.qual_tag("set")
-    element = ET.Element(set_tag)
-    time_tag = time.Time.qual_tag("time")
-    time_elem = ET.SubElement(element, time_tag)
-    time_elem.text = time_string
-    if is_utc:
-        utc_tag = time.Time.qual_tag("utc")
-        ET.SubElement(element, utc_tag)
+def set_time(time_string):
+    """Set time on device.
+
+    :param time_string: time to set in ISO 8601 format
+    :return:
+    """
     try:
-        dispatch(element)
+        dispatch(time.Time.rpc_set_iso8601(time_string))
         return True
     except RPCError:
         return False
