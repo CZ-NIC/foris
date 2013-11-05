@@ -3,7 +3,7 @@ from ncclient.operations import RPCError
 from xml.etree import cElementTree as ET
 import logging
 
-from modules import registration, uci_raw, time, updater
+from modules import password as password_module, registration, uci_raw, time, updater
 from modules.base import Data, YinElement
 
 
@@ -61,6 +61,19 @@ def set_time(time_string):
     except RPCError:
         return False
 
+
+def set_password(user, password):
+    """Set password of system user.
+
+    :param user: user for which to set the password
+    :param password: password to set
+    :return: True on success, False otherwise
+    """
+    try:
+        dispatch(password_module.Password(user, password).rpc_set)
+        return True
+    except RPCError:
+        return False
 
 
 def check_updates():
