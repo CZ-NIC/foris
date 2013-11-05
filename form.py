@@ -186,20 +186,19 @@ class Form(object):
         return o
 
     def render(self):
-        #out = ''
-        #out += self.rendernote(self.note)
-        #out += '<table>\n'
-        #
-        #for i in self.inputs:
-        #    html = safeunicode(i.pre) + i.render() + self.rendernote(i.note) + safeunicode(i.post)
-        #    if i.is_hidden():
-        #        out += '    <tr style="display: none;"><th></th><td>%s</td></tr>\n' % (html)
-        #    else:
-        #        out += '    <tr><th><label for="%s">%s</label></th><td>%s</td></tr>\n' % (
-        #        i.id, websafe(i.description), html)
-        #out += "</table>"
-        #return out
-        raise NotImplementedError()
+        out = ''
+        out += self.rendernote(self.note)
+        out += '<table>\n'
+
+        for i in self.inputs:
+            html = safeunicode(i.pre) + i.render() + self.rendernote(i.note) + safeunicode(i.post)
+            if i.is_hidden():
+                out += '    <tr style="display: none;"><th></th><td>%s</td></tr>\n' % (html)
+            else:
+                out += '    <tr><th><label for="%s">%s</label></th><td>%s</td></tr>\n' % (
+                i.id, websafe(i.description), html)
+        out += "</table>"
+        return out
 
     def render_css(self):
         #out = []
