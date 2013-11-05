@@ -1,8 +1,8 @@
 from bottle import Bottle, request, template
 import bottle
+from config_handlers import PasswordHandler, WanHandler, LanHandler, WifiHandler
 import logging
 from utils import login_required
-import wizard
 
 
 logger = logging.getLogger("admin")
@@ -12,10 +12,10 @@ app = Bottle()
 
 
 handler_map = {
-    'password': wizard.WizardStep1,
-    'wan': wizard.WizardStep2,
-    'lan': wizard.WizardStep5,
-    'wifi': wizard.WizardStep6,
+    'password': PasswordHandler,
+    'wan': WanHandler,
+    'lan': LanHandler,
+    'wifi': WifiHandler,
 }
 
 

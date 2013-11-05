@@ -4,11 +4,9 @@ import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 import gettext
 import logging
-import config
 from nuci import client, filters
 import os
 import sys
-import wizard
 
 
 logger = logging.getLogger("foris")
@@ -89,6 +87,9 @@ if __name__ == "__main__":
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     app = bottle.app()
+    # mount apps
+    import config
+    import wizard
     app.mount("/config", config.app)
     app.mount("/wizard", wizard.app)
     if args.debug:
