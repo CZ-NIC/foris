@@ -106,7 +106,7 @@ class WizardStep7(BaseConfigHandler, WizardStepMixin):
     """
     Show the activation code.
     """
-    template = "wizard/registration.html"
+    template = "wizard/registration.tpl"
 
     def render(self, **kwargs):
         registration = client.get_registration()
