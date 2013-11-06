@@ -308,3 +308,26 @@ class WifiHandler(BaseConfigHandler):
         wifi_form.add_callback(wifi_form_cb)
 
         return wifi_form
+
+
+class SystemPasswordHandler(BaseConfigHandler):
+    """
+    Setting the password of a system user (currently only root's pw).
+    """
+    def get_form(self):
+        system_pw_form = fapi.ForisForm("system_password", self.data)
+        system_pw_main = system_pw_form.add_section(name="set_password", title=_("Advanced administration"),
+                                      description=_(
+                                          "To access the advanced administraion, you must set root user's password. "
+                                          "When the password is set, follow the link below."))
+        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True)
+        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
+        system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
+                                                            _("Passwords are not equal.")))
+
+        def system_pw_form_cb(data):
+            client.set_password("root", data["password"])
+            return "none", None
+
+        system_pw_form.add_callback(system_pw_form_cb)
+        return system_pw_form

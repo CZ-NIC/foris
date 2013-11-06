@@ -1,6 +1,6 @@
 from bottle import Bottle, request, template
 import bottle
-from config_handlers import PasswordHandler, WanHandler, LanHandler, WifiHandler
+from config_handlers import *
 import logging
 from utils import login_required
 
@@ -11,11 +11,14 @@ logger = logging.getLogger("admin")
 app = Bottle()
 
 
+# names of handlers used in their URL
+# use dash-separated names, underscores in URL are ugly
 handler_map = {
     'password': PasswordHandler,
     'wan': WanHandler,
     'lan': LanHandler,
     'wifi': WifiHandler,
+    'system-password': SystemPasswordHandler,
 }
 
 
@@ -32,6 +35,12 @@ def render_form(form, **kwargs):
     title = first_section.title
     description = first_section.description
     return template("config/main", form=form, title=title, description=description, **kwargs)
+
+
+@app.route("/")
+@login_required
+def index():
+    return template("config/index", handlers=handler_map.keys())
 
 
 @app.route("/<handler_name:re:.+>/")
@@ -56,7 +65,7 @@ def config_post(handler_name):
 
     try:
         if handler.save():
-            logger.info("saved")
+            bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         pass
