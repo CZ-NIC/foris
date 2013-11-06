@@ -1,5 +1,5 @@
 from collections import defaultdict, OrderedDict
-from form import Dropdown, Form, Checkbox, websafe
+from form import Dropdown, Form, Checkbox, websafe, Hidden
 from nuci import client
 import logging
 from nuci.configurator import add_config_update, commit
@@ -359,6 +359,10 @@ class Field(ForisFormElement):
     @property
     def errors(self):
         return self.field.note
+
+    @property
+    def hidden(self):
+        return self.type is Hidden
 
     def render(self):
         return self.field.render()
