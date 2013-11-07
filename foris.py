@@ -23,7 +23,7 @@ gettext = trans.ugettext
 # because bool(user_authenticated) is always True - it means bool(<function ...>)
 bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
-
+bottle.SimpleTemplate.defaults["request"] = bottle.request
 
 @bottle.route("/")
 @bottle.view("index")
