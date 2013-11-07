@@ -11,12 +11,17 @@ $foreground-color: #000
 $highlight-color: #a32027
 $highlight-color-active: lighten(desaturate($highlight-color, 20), 15)
 $link-color: #004477
-$stroke-color: #ccc
+$stroke-color: #888
 $base-font: Helvetica, Arial, sans-serif
 $heading-font: $base-font
 $button-height: 2em
 $info-color: #3ab54a
 $error-color: #cc0000
+
+// buttons
+$button-color: $highlight-color
+$button-color-active: $highlight-color-active
+$button-color-grayed: #808080
 
 /* -------------------------------------------------------------------------
 /* Generic elements
@@ -41,6 +46,8 @@ h2
 h3
   +adjust-font-size-to(26px)
 
+button
+  border: none
 /* -------------------------------------------------------------------------
 /* Layout
 @include establish-baseline
@@ -54,11 +61,11 @@ body, html
 
 #page
   margin: 0 auto
-  width: 50em
+  width: 60em
 
 
 .button
-  background-color: $highlight-color
+  background-color: $button-color
   color: #fff
   display: inline-block
   font:
@@ -73,11 +80,11 @@ body, html
   z-index: 999
 
   &:hover
-    background-color: $highlight-color-active
+    background-color: $button-color-active
     color: #fff
 
     &:before
-      background-color: $highlight-color-active
+      background-color: $button-color-active
 
 .button-arrow-right
   @extend .button
@@ -96,10 +103,86 @@ body, html
     z-index: -1
 
 /* -------------------------------------------------------------------------
-/* Wizard
-button
-  border: none
+/* Common config interface elements
+.field-hint
+  vertical-align: middle
 
+.button-next
+  @extend .button-arrow-right
+  float: right
+  margin-top: 1em
+
+.tabs
+  border-bottom: 1px solid $stroke-color
+  display: block
+  position: relative
+
+  li
+    background-color: #e6e6e6
+    border: 1px solid $stroke-color
+    border-bottom: none
+    display: inline-block
+
+    a
+      color: $foreground-color
+      display: block
+      line-height: 2.6em
+      height: 2.6em
+      padding: 0 1em
+      text-decoration: none
+
+    &:first-child
+      margin-left: 3em
+
+    &.active
+      background-color: $background-color
+      font-weight: bold
+      position: relative
+      top: 1px
+
+      a
+        padding-top: 0.25em
+
+.wizard-form, .config-form
+  div
+    padding: 0.25em 0
+
+  label
+    display: inline-block
+    font-weight: bold
+    width: 10em
+
+  input, textarea, select
+    background-color: $background-color
+    border: 1px solid $stroke-color
+    padding: 0.5em
+    width: 25em
+
+.background-progress
+  color: #444
+  text-align: center
+
+  img
+    margin-bottom: 2em
+
+.form-buttons
+  position: absolute
+  right: 0
+
+#time-success, #updater-success, #updater-fail
+  display: none
+  text-align: center
+
+#wizard-time-sync-success
+  display: none
+
+#logout
+  position: absolute
+  right: 1em
+  top: 1em
+
+/* -------------------------------------------------------------------------
+/* Wizard
 #wizard-header
   border-bottom: 1px solid $stroke-color
   padding: 1em 0
@@ -125,39 +208,38 @@ button
 .wizard-description
   margin-bottom: 2em
 
-.wizard-form
-  div
-    padding: 0.25em 0
+/* -------------------------------------------------------------------------
+/* Config
+#config-header
+  position: relative
 
-  label
+  h1
+    background: url('../img/wizard/step-wan.png') no-repeat
     display: inline-block
-    font-weight: bold
-    width: 10em
+    padding-left: 120px
+    height: 120px
+    line-height: 120px
 
-  input, textarea, select
-    background-color: $background-color
-    border: 1px solid $stroke-color
-    padding: 0.5em
-    width: 25em
+  .logo-turris
+    display: inline-block
+    position: absolute
+    right: 0
+    top: 55px
 
-.field-hint
-  vertical-align: middle
+.config-description
+  margin: 2.5em 0
 
-.button-next
-  @extend .button-arrow-right
-  float: right
-  margin-top: 1em
+.config-form
+  position: relative
 
-.background-progress
-  color: #444
-  text-align: center
+  .button
+    font-size: 100%
+    height: 3em
+    line-height: 3em
+    margin-right: 0.5em
 
-  img
-    margin-bottom: 2em
+    &.grayed
+      background-color: $button-color-grayed
 
-#time-success, #updater-success, #updater-fail
-  display: none
-  text-align: center
-
-#wizard-time-sync-success
-  display: none
+      &:hover
+        background-color: lighten(desaturate($button-color-grayed, 20), 15)

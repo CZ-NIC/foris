@@ -29,12 +29,13 @@ def get_handler(handler_name):
     return Handler
 
 
-def render_form(form, **kwargs):
+def render(form, **kwargs):
     # same premise as in wizard form - we are handling single-section ForisForm
     first_section = form.sections[0]
     title = first_section.title
     description = first_section.description
-    return template("config/main", form=form, title=title, description=description, **kwargs)
+    return template("config/main", form=form, title=title, description=description,
+                    handlers=handler_map.keys(), **kwargs)
 
 
 @app.route("/")
@@ -48,8 +49,7 @@ def index():
 def config_get(handler_name):
     Handler = get_handler(handler_name)
     handler = Handler()
-    form = handler.form
-    return render_form(form)
+    return render(handler.form, active_handler_key=handler_name)
 
 
 @app.route("/<handler_name:re:.+>/", method="POST")
@@ -61,7 +61,7 @@ def config_post(handler_name):
         # only update is allowed
         logger.debug("ajax request")
         request.POST.pop("update", None)
-        return dict(html=render_form(handler.form, is_xhr=True))
+        return dict(html=render(handler.form, is_xhr=True))
 
     try:
         if handler.save():
@@ -69,7 +69,7 @@ def config_post(handler_name):
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         pass
-    return render_form(handler.form)
+    return render(handler.form, active_handler_key=handler_name)
 
 
 @app.route("/<handler_name:re:.+>/ajax")

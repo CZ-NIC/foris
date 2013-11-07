@@ -15,4 +15,5 @@
 <ul>
     <li><a href="uci/">about:config</a></li>
     <li><a href="wizard/">kuzelňik</a></li>
+    <li><a href="config/">dlaší natavení</a></li>
 </ul>
