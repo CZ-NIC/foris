@@ -5,9 +5,9 @@
     <title>Foris administration interface</title>
     <link href="/static/css/screen.css" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
-        <script src="/static/js/html5.js"></script>
+        <script src="/static/js/contrib/html5.js"></script>
     <![endif]-->
-    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/contrib/jquery.js"></script>
     <script src="/static/js/wizard.js"></script>
 </head>
 <body>
