@@ -7,7 +7,7 @@
     <!--[if lt IE 9]>
         <script src="/static/js/contrib/html5.js"></script>
     <![endif]-->
-    <script src="/static/js/contrib/jquery.js"></script>
+    <script src="/static/js/contrib/jquery.min.js"></script>
     <script src="/static/js/wizard.js"></script>
 </head>
 <body>
