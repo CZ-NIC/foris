@@ -6,6 +6,9 @@
         <p>{{ first_description }}</p>
         <div class="form-fields">
         %for field in form.active_fields:
+            %if field.hidden:
+                {{! field.render() }}
+            %else:
             <div>
                 {{! field.label_tag }}
                 {{! field.render() }}
@@ -13,6 +16,7 @@
                     <img class="field-hint" src="/static/img/icon-help.png" title="{{ field.hint }}">
                 %end
             </div>
+            %end
         %end
         </div>
 

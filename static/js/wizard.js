@@ -57,7 +57,6 @@ ForisWizard.validateField = function(field) {
 
     var validators = field.data("validators").split(" ");
     for (var i in validators) {
-        console.log("checking for validator " + validators[i]);
         if (validators.hasOwnProperty(i) && ForisWizard.validators.hasOwnProperty(validators[i])) {
             var args = field.data("validator-" + validators[i]);
             var result = ForisWizard.runValidator(validators[i], field.val(), args);
@@ -73,7 +72,6 @@ ForisWizard.validateField = function(field) {
     return true;
 };
 
-
 ForisWizard.validateForm = function(form) {
     var inputs = $("input.validate", form);
     console.log(inputs);
@@ -84,9 +82,8 @@ ForisWizard.validateForm = function(form) {
     return true;
 };
 
-
 ForisWizard.updateForm = function() {
-    var form = $("#wizard-main-form");
+    var form = $("#main-form");
     form.css("background-color", "red");
     $.post(form.attr("action"), form.serialize())
             .done(function(data){
@@ -146,7 +143,6 @@ ForisWizard.checkUpdaterStatus = function() {
 };
 
 ForisWizard.showTimeForm = function() {
-    console.log(this);
     ForisWizard.callAjaxAction("3", "time_form")
         .done(function(data) {
             var timeField = $("#wizard-time").empty().append(data.form)
@@ -189,7 +185,6 @@ $(document).ready(function(){
 
     $(document).on("submit", "form", function(e) {
         if (ForisWizard.validateForm(this)) {
-            console.log("submitting!");
         }
         else {
             e.preventDefault();
