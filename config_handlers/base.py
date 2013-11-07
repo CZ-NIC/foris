@@ -52,12 +52,12 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_("Password"),
-                                      description="Set your password.")
+                                      description=_("Set your password."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
-        pw_main.add_field(Password, name="password_validation", label="Password (repeat)")
+        pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                     "Passwords are not equal."))
+                                                     _("Passwords are not equal.")))
 
         def pw_form_cb(data):
             import pbkdf2
@@ -81,61 +81,62 @@ class WanHandler(BaseConfigHandler):
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
-        wan_main = wan_form.add_section(name="set_wan", title="WAN")
+        wan_main = wan_form.add_section(name="set_wan", title=_("WAN"),
+                                        description=_("%% missing %%"))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
         WAN_PPPOE = "pppoe"
         WAN_OPTIONS = (
-            (WAN_DHCP, "DHCP"),
-            (WAN_STATIC, "Static"),
-            (WAN_PPPOE, "PPPoE"),
+            (WAN_DHCP, _("DHCP")),
+            (WAN_STATIC, _("Static")),
+            (WAN_PPPOE, _("PPPoE")),
         )
 
-        wan_main.add_field(Textbox, name="macaddr", label="MAC address",
+        wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            validators=validators.MacAddress())
-        wan_main.add_field(Dropdown, name="proto", label="Mode",
+        wan_main.add_field(Dropdown, name="proto", label=_("Mode"),
                            nuci_path="uci.network.wan.proto",
                            args=WAN_OPTIONS, default=WAN_DHCP)
-        wan_main.add_field(Checkbox, name="static_ipv6", label="Use IPv6",
+        wan_main.add_field(Checkbox, name="static_ipv6", label=_("Use IPv6"),
                            nuci_path="uci.network.wan.ip6addr",
                            nuci_preproc=lambda val: bool(val.value))\
             .requires("proto", WAN_STATIC)
-        wan_main.add_field(Textbox, name="ipaddr", label="IP address",
+        wan_main.add_field(Textbox, name="ipaddr", label=_("IP address"),
                            nuci_path="uci.network.wan.ipaddr",
                            required=True, validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", False)
-        wan_main.add_field(Textbox, name="netmask", label="Network mask",
+        wan_main.add_field(Textbox, name="netmask", label=_("Network mask"),
                            nuci_path="uci.network.wan.netmask",
                            required=True, validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", False)
-        wan_main.add_field(Textbox, name="gateway", label="Gateway",
+        wan_main.add_field(Textbox, name="gateway", label=_("Gateway"),
                            nuci_path="uci.network.wan.gateway",
                            validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", False)
 
-        wan_main.add_field(Textbox, name="username", label="DSL user",
+        wan_main.add_field(Textbox, name="username", label=_("DSL user"),
                            nuci_path="uci.network.wan.username",)\
             .requires("proto", WAN_PPPOE)
-        wan_main.add_field(Textbox, name="password", label="DSL password",
+        wan_main.add_field(Textbox, name="password", label=_("DSL password"),
                            nuci_path="uci.network.wan.password",)\
             .requires("proto", WAN_PPPOE)
-        wan_main.add_field(Checkbox, name="ppp_ipv6", label="Enable IPv6",
+        wan_main.add_field(Checkbox, name="ppp_ipv6", label=_("Enable IPv6"),
                            nuci_path="uci.network.wan.ipv6",
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
 
-        wan_main.add_field(Textbox, name="ip6addr", label="IPv6 address",
+        wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
                            nuci_path="uci.network.wan.ip6addr")\
             .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6gw", label="IPv6 gateway",
+        wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
                            nuci_path="uci.network.wan.ip6gw")\
             .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6prefix", label="IPv6 prefix",
+        wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
                            nuci_path="uci.network.wan.ip6prefix")\
             .requires("static_ipv6", True)
 
@@ -197,9 +198,10 @@ class TimeHandler(BaseConfigHandler):
 
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
-        time_main = time_form.add_section(name="set_time", title="Time")
+        time_main = time_form.add_section(name="set_time", title=_("Time"),
+                                          description=_("%% missing %%"))
 
-        time_main.add_field(Textbox, name="time", label="Time", nuci_path="time",
+        time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
                             nuci_preproc=lambda v: v.local)
 
         def time_form_cb(data):
@@ -214,18 +216,19 @@ class TimeHandler(BaseConfigHandler):
 class LanHandler(BaseConfigHandler):
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
-        lan_main = lan_form.add_section(name="set_lan", title="LAN")
+        lan_main = lan_form.add_section(name="set_lan", title=_("LAN"),
+                                        description=_("Most users don't need to change these settings."))
 
-        lan_main.add_field(Checkbox, name="dhcp_enabled", label="Enable DHCP",
+        lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
+                           nuci_path="uci.network.lan.ipaddr",
+                           hint="Also defines the range of assigned IP addresses.")
+        lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
                            nuci_path="uci.dhcp.lan.ignore",
                            nuci_preproc=lambda val: not bool(int(val.value)), default=True)
-        lan_main.add_field(Textbox, name="dhcp_subnet", label="DHCP subnet",
-                           nuci_path="uci.network.lan.ipaddr")\
-            .requires("dhcp_enabled", True)
-        lan_main.add_field(Textbox, name="dhcp_min", label="DHCP min",
+        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP min"),
                            nuci_path="uci.dhcp.lan.start")\
             .requires("dhcp_enabled", True)
-        lan_main.add_field(Textbox, name="dhcp_max", label="DHCP max",
+        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max"),
                            nuci_path="uci.dhcp.lan.limit")\
             .requires("dhcp_enabled", True)
 
@@ -257,26 +260,27 @@ class LanHandler(BaseConfigHandler):
 
 class WifiHandler(BaseConfigHandler):
     def get_form(self):
-        wifi_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
-        wifi_main = wifi_form.add_section(name="set_wifi", title="WiFi")
+        wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
+        wifi_main = wifi_form.add_section(name="set_wifi", title=_("WiFi"),
+                                          description=_("%% missing %%"))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[1]",
                             nuci_preproc=lambda val: val.name)
-        wifi_main.add_field(Checkbox, name="wifi_enabled", label="Enable WiFi", default=True,
+        wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable WiFi"), default=True,
                             nuci_path="uci.wireless.@wifi-iface[1].disabled",
                             nuci_preproc=lambda val: not bool(int(val.value)))
-        wifi_main.add_field(Textbox, name="ssid", label="Network name",
+        wifi_main.add_field(Textbox, name="ssid", label=_("Network name"),
                             nuci_path="uci.wireless.@wifi-iface[1].ssid",
                             validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Checkbox, name="ssid_hidden", label="Hide network name", default=False,
+        wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide network name"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[1].hidden",
                             hint=_("If set, network is not visible when scanning for available networks."))\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Dropdown, name="channel", label="Network channel", default="1",
+        wifi_main.add_field(Dropdown, name="channel", label=_("Network channel"), default="1",
                             args=((str(i), str(i)) for i in range(1, 13)),
                             nuci_path="uci.wireless.radio1.channel")\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Textbox, name="key", label="Network password",
+        wifi_main.add_field(Textbox, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[1].key",
                             hint=_("WPA2 preshared key, that is required to connect to the network."))\
             .requires("wifi_enabled", True)
@@ -316,10 +320,11 @@ class SystemPasswordHandler(BaseConfigHandler):
     """
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
-        system_pw_main = system_pw_form.add_section(name="set_password", title=_("Advanced administration"),
-                                      description=_(
-                                          "To access the advanced administraion, you must set root user's password. "
-                                          "When the password is set, follow the link below."))
+        system_pw_main = system_pw_form.add_section(name="set_password",
+                                                    title=_("Advanced administration"),
+                                                    description=_(
+                                                        "To access the advanced administration, you must set root user's password. "
+                                                        "When the password is set, follow the link below."))
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True)
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
