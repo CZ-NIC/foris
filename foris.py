@@ -60,7 +60,7 @@ def static(filename):
 def _check_password(password):
     import pbkdf2
     data = client.get(filter=filters.uci)
-    password_hash = data.find_child("uci.cznic.foris.password")
+    password_hash = data.find_child("uci.foris.auth.password")
     if password_hash is None:
         # consider unset password as successful auth
         # maybe set some session variable in this case

@@ -65,11 +65,11 @@ class PasswordHandler(BaseConfigHandler):
             password = pbkdf2.crypt(data['password'], iterations=1000)
 
             uci = Uci()
-            cznic = Config("cznic")
-            uci.add(cznic)
-            foris = Section("foris", "config")
-            cznic.add(foris)
-            foris.add(Option("password", password))
+            foris = Config("foris")
+            uci.add(foris)
+            auth = Section("auth", "config")
+            foris.add(auth)
+            auth.add(Option("password", password))
 
             return "edit_config", uci
 
