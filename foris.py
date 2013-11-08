@@ -115,11 +115,13 @@ if __name__ == "__main__":
 
     # session middleware (note: session.auto does not work within Bottle)
     session_options = {
-        'session.type': 'memory',
+        'session.type': 'file',
+        'session.data_dir': '/tmp/beaker/data',
+        'session.lock_dir': '/tmp/beaker/lock',
         'session.cookie_expires': True,
         'session.timeout': 600,
     }
-    app = SessionMiddleware(app)
+    app = SessionMiddleware(app, session_options)
 
     # there are some threading-related errors caused by an issue in
     # Python <= 2.7.3 (Python issue #14308), this monkey-patch fixes them
