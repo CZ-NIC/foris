@@ -42,18 +42,22 @@ ForisWizard.validateField = function(field) {
     field = $(field);
 
     var markInvalid = function() {
-        field.css("background", "red");
+        field.parent().find("[class|='field']").remove();
+        field.after('<div class="field-invalid"></div>');
     };
 
     var markOk = function() {
-        field.css("background", "inherit");
+        field.parent().find("[class|='field']").remove();
+        field.after('<div class="field-valid"></div>');
     };
 
     if (field.hasClass("required") && field.val() == "")
         markInvalid();
 
-    if (!field.hasClass("validate"))
+    if (!field.hasClass("validate") || !field.hasClass("required") && field.val() == "") {
+        markOk();
         return true;
+    }
 
     var validators = field.data("validators").split(" ");
     for (var i in validators) {
@@ -74,7 +78,6 @@ ForisWizard.validateField = function(field) {
 
 ForisWizard.validateForm = function(form) {
     var inputs = $("input.validate", form);
-    console.log(inputs);
     for (var i in inputs) {
         if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i]))
             return false;
@@ -85,11 +88,13 @@ ForisWizard.validateForm = function(form) {
 ForisWizard.updateForm = function() {
     var form = $("#main-form");
     form.css("background-color", "red");
-    $.post(form.attr("action"), form.serialize())
+    var serialized = form.serialize();
+    $.post(form.attr("action"), serialized)
             .done(function(data){
                 form.replaceWith(data.html);
                 form.css("background-color", "inherit");
             });
+    form.find("input, select, button").attr("disabled", "disabled");
 };
 
 ForisWizard.callAjaxAction = function(wizardStep, action) {
@@ -112,7 +117,6 @@ ForisWizard.ntpUpdate = function() {
 ForisWizard.runUpdater = function () {
     ForisWizard.callAjaxAction("4", "run_updater")
         .done(function(data) {
-            console.log(data);
             if (data.success)
                 ForisWizard.checkUpdaterStatus();
             else {
@@ -126,7 +130,6 @@ ForisWizard.checkUpdaterStatus = function() {
     ForisWizard.callAjaxAction("4", "updater_status")
         .done(function(data) {
             if (data.status == "failed") {
-                console.log(data.message);
                 $("#updater-progress").hide();
                 $("#updater-fail").show(); // TODO: determine what caused the fail, maybe?
             }

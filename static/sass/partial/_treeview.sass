@@ -32,7 +32,7 @@
   display: block
 
 
-.treeview label::before
+.treeview label:before
   font-family: FontAwesome
   font-size: 1.1em
   margin-right: 0.5em
@@ -40,7 +40,7 @@
 
 .treeview label,
 .treeview a,
-.treeview label::before
+.treeview label:before
   height: 16px
   line-height: 16px
 
@@ -49,12 +49,12 @@
   background-position: 18px 0
 
 
-.treeview label::before
+.treeview label:before
   content: $fa-var-expand-o
   vertical-align: middle
 
 
-.treeview input:checked + label::before
+.treeview input:checked + label:before
   content: $fa-var-collapse-o
 
 

@@ -48,6 +48,21 @@ h3
 
 button
   border: none
+
+a
+  color: $highlight-color
+
+  &:hover
+    color: $highlight-color-active
+
+::selection
+  background-color: $highlight-color
+  color: #fff
+
+::-moz-selection
+  background-color: $highlight-color
+  color: #fff
+
 /* -------------------------------------------------------------------------
 /* Layout
 @include establish-baseline
@@ -157,6 +172,24 @@ body, html
     border: 1px solid $stroke-color
     padding: 0.5em
     width: 25em
+
+  .field-valid, .field-invalid
+    display: inline-block
+    height: 22px
+    margin-left: 5px
+    margin-top: 5px
+    vertical-align: middle
+    width: 22px
+
+  .field-valid
+    background: url('../img/icon-success.png') no-repeat
+    border-color: $info-color
+    color: $info-color
+
+  .field-invalid
+    background: url('../img/icon-fail.png') no-repeat
+    border-color: $error-color
+    color: $error-color
 
 .background-progress
   color: #444
