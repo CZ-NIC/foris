@@ -5,6 +5,7 @@ from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, Time
     LanHandler, WifiHandler
 from nuci import client
 from utils import login_required
+from utils.routing import reverse
 
 
 logger = logging.getLogger("wizard")
@@ -144,13 +145,13 @@ def ajax(number=1):
         raise bottle.HTTPError(404, "Unknown Wizard action.")
 
 
-@app.route("/", name="wizard-step")
+@app.route("/", name="wizard_index")
 @login_required
 def wizard():
-    bottle.redirect("/wizard/step/1")
+    bottle.redirect(reverse("wizard_step", number=1))
 
 
-@app.route("/step/<number:re:\d+>", name="wizard-step")
+@app.route("/step/<number:re:\d+>", name="wizard_step")
 @login_required
 def step(number=1):
     Wizard = get_wizard(number)
@@ -171,7 +172,7 @@ def step_post(number=1):
 
     try:
         if wiz.save():
-            bottle.redirect("/wizard/step/%s" % str(int(number) + 1))
+            bottle.redirect(reverse("wizard_step", number=int(number) + 1))
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         pass

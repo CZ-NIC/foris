@@ -71,7 +71,7 @@ class UciRawForm(Form):
 app = Bottle()
 
 
-@app.get("/")
+@app.get("/", name="uci_index")
 @view("uci/index")
 @login_required
 def index():
@@ -81,7 +81,7 @@ def index():
                 node_path=node_path.split(".") if node_path else None)
 
 
-@app.get("/<node:re:\w+(\.\w+)*>/edit", name="edit")
+@app.get("/<node:re:\w+(\.\w+)*>/edit", name="uci_edit")
 @view("uci/edit")
 @login_required
 def edit(node):
@@ -94,7 +94,7 @@ def edit(node):
     return dict(form=form, node_path=node)
 
 
-@app.post("/<node:re:\w+(\.\w+)*>/edit", name="edit_post")
+@app.post("/<node:re:\w+(\.\w+)*>/edit")
 @view("uci/edit")
 @login_required
 def edit_post(node):
@@ -110,7 +110,7 @@ def edit_post(node):
     return dict(form=form, node_path=node)
 
 
-@app.get("/<node:re:\w+(\.\w+)*>/create", name="create")
+@app.get("/<node:re:\w+(\.\w+)*>/create", name="uci_create")
 @view("uci/edit")
 @login_required
 def create(node):
@@ -137,7 +137,7 @@ def create(node):
     return dict(node_path=node, form=form)
 
 
-@app.post("/<node:re:\w+(\.\w+)*>/create", name="create_post")
+@app.post("/<node:re:\w+(\.\w+)*>/create")
 @view("uci/edit")
 @login_required
 def create_post(node):
@@ -176,7 +176,7 @@ def create_post(node):
     bottle.redirect("/uci/")
 
 
-@app.get("/<node:re:\w+(\.\w+)*>/remove", name="remove")
+@app.get("/<node:re:\w+(\.\w+)*>/remove", name="uci_remove")
 @login_required
 def remove(node):
     uci_model = client.get_uci_config()
@@ -190,7 +190,7 @@ def remove(node):
     bottle.redirect("/uci/?error")
 
 
-@app.get("/<node:re:\w+(\.\w+)*>/debug", name="debug")
+@app.get("/<node:re:\w+(\.\w+)*>/debug", name="uci_debug")
 @login_required
 def debug(node):
     uci_model = client.get_uci_config()

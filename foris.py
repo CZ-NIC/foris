@@ -7,6 +7,7 @@ import logging
 from nuci import client, filters
 import os
 import sys
+from utils.routing import reverse
 
 
 logger = logging.getLogger("foris")
@@ -24,14 +25,16 @@ gettext = trans.ugettext
 bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
+bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
+bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
 
-@bottle.route("/")
+@bottle.route("/", name="index")
 @bottle.view("index")
 def index():
     return dict()
 
 
-@bottle.route("/", method="POST")
+@bottle.route("/", method="POST", name="login")
 def login():
     session = bottle.request.environ["beaker.session"]
     if _check_password(bottle.request.POST.get("password")):
@@ -41,7 +44,7 @@ def login():
     bottle.redirect("/")
 
 
-@bottle.route("/logout")
+@bottle.route("/logout", name="logout")
 def logout():
     session = bottle.request.environ["beaker.session"]
     if "user_authenticated" in session:

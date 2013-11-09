@@ -1,6 +1,6 @@
 %rebase config/base **locals()
 
-<form id="main-form" class="config-form" action="" method="post" autocomplete="off">
+<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off">
     <p class="config-description">{{ description }}</p>
     %for field in form.active_fields:
         %if field.hidden:
@@ -10,7 +10,7 @@
             {{! field.label_tag }}
             {{! field.render() }}
             %if field.hint:
-                <img class="field-hint" src="/static/img/icon-help.png" title="{{ field.hint }}">
+                <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}">
             %end
         </div>
         %end
