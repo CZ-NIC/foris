@@ -38,15 +38,15 @@ def render(form, **kwargs):
                     handlers=handler_map.keys(), **kwargs)
 
 
-@app.route("/")
+@app.route("/", name="config_index")
 @login_required
 def index():
     return template("config/index", handlers=handler_map.keys())
 
 
-@app.route("/<handler_name:re:.+>/")
+@app.route("/<handler_name:re:.+>/", name="config_handler")
 @login_required
-def config_get(handler_name):
+def handler_get(handler_name):
     Handler = get_handler(handler_name)
     handler = Handler()
     return render(handler.form, active_handler_key=handler_name)
@@ -54,7 +54,7 @@ def config_get(handler_name):
 
 @app.route("/<handler_name:re:.+>/", method="POST")
 @login_required
-def config_post(handler_name):
+def handler_post(handler_name):
     Handler = get_handler(handler_name)
     handler = Handler(request.POST)
     if request.is_xhr:

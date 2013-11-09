@@ -2,19 +2,19 @@
 %def render_buttons(element):
     %if not element.final:
         %if element.tag == "section":
-        <a href="/uci/{{ element.path }}/create?operation=add-option" title="Add option"><i class="icon-add"></i></a>
-        <a href="/uci/{{ element.path }}/create?operation=add-list" title="Add list"><i class="icon-add-list"></i></a>
+        <a href="{{ url("uci_create", node=element.path, operation="add-option") }}" title="Add option"><i class="icon-add"></i></a>
+        <a href="{{ url("uci_create", node=element.path, operation="add-list") }}" title="Add list"><i class="icon-add-list"></i></a>
         %else:
-        <a href="/uci/{{ element.path }}/create?operation=add" title="Add value"><i class="icon-add"></i></a>
+        <a href="{{ url("uci_create", node=element.path, operation="add") }}" title="Add value"><i class="icon-add"></i></a>
         %end
     %end
     %if element.tag == "option" or element.tag == "value":
-        <a href="/uci/{{ element.path }}/edit" title="Edit"><i class="icon-edit"></i></a>
+        <a href="{{ url("uci_edit", node=element.path) }}" title="Edit"><i class="icon-edit"></i></a>
     %end
     %if element.tag != "config":
-        <a href="/uci/{{ element.path }}/remove" title="Remove"><i class="icon-remove"></i></a>
+        <a href="{{ url("uci_remove", node=element.path) }}"><i class="icon-remove"></i></a>
     %end
-        <a href="/uci/{{ element.path }}/debug" title="Debug"><i class="icon-debug"></i></a>
+        <a href="{{ url("uci_debug", node=element.path) }}" title="Debug"><i class="icon-debug"></i></a>
 %end
 %def treenode(element, node_path, depth=0):
     <li>
