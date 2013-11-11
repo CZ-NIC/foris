@@ -34,9 +34,17 @@ class BaseConfigHandler(object):
         """
         raise NotImplementedError()
 
-    def save(self):
+    def save(self, extra_callbacks=None):
+        """
+
+        :param extra_callbacks: list of extra callbacks to call when saved
+        :return:
+        """
         form = self.form
         form.validate()
+        if extra_callbacks:
+            for cb in extra_callbacks:
+                form.add_callback(cb)
         if form.valid:
             form.save()
             return True

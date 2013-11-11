@@ -31,6 +31,18 @@ bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("stat
 @bottle.route("/", name="index")
 @bottle.view("index")
 def index():
+    session = bottle.request.environ['beaker.session']
+    import wizard
+    allowed_step_max = wizard.get_allowed_step_max()
+    if not allowed_step_max:
+        session["user_authenticated"] = True
+        session.save()
+        bottle.redirect(reverse("wizard_step", number=1))
+    else:
+        session[wizard.WizardStepMixin.next_step_allowed_key] = allowed_step_max
+        session.save()
+        # TODO: behavior when wizard is completed
+
     return dict()
 
 

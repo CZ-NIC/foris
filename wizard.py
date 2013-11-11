@@ -3,7 +3,8 @@ import bottle
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
-from nuci import client
+from nuci import client, filters
+from nuci.modules.uci_raw import Option, Section, Config, Uci
 from utils import login_required
 from utils.routing import reverse
 
@@ -14,7 +15,15 @@ logger = logging.getLogger("wizard")
 class WizardStepMixin(object):
     template = "wizard/form"
     name = None
+    next_step_allowed = None
+    next_step_allowed_key = "allowed_step_max"
     # wizard step name
+
+    def allow_next_step(self):
+        if self.next_step_allowed is not None:
+            session = request.environ['beaker.session']
+            session[WizardStepMixin.next_step_allowed_key] = self.next_step_allowed
+            session.save()
 
     def default_template(self, **kwargs):
         return template(self.template, stepname=self.name, **kwargs)
@@ -33,27 +42,53 @@ class WizardStepMixin(object):
 
         return self.default_template(form=form, **kwargs)
 
+    def save(self):
+        sup = super(WizardStepMixin, self)
+        if hasattr(sup, 'save'):
+            self.allow_next_step()
 
-class WizardStep1(PasswordHandler, WizardStepMixin):
+            def update_allowed_step_max_cb(data):
+                uci = Uci()
+                foris = Config("foris")
+                uci.add(foris)
+                wizard = Section("wizard", "config")
+                foris.add(wizard)
+                wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
+
+                return "edit_config", uci
+
+            return sup.save(extra_callbacks=[update_allowed_step_max_cb])
+
+
+class WizardStep1(WizardStepMixin, PasswordHandler):
     """
     Setting the password
     """
     name = "password"
+    next_step_allowed = 2
 
 
-class WizardStep2(WanHandler, WizardStepMixin):
+class WizardStep2(WizardStepMixin, WanHandler):
     """
     WAN settings.
     """
     name = "wan"
+    next_step_allowed = 3
 
 
-class WizardStep3(TimeHandler, WizardStepMixin):
+class WizardStep3(WizardStepMixin, TimeHandler):
     """
     Time settings.
     """
     template = "wizard/time.tpl"
     name = "time"
+    next_step_allowed = 4
+
+    def _action_ntp_update(self):
+        success = TimeHandler._action_ntp_update(self)
+        if success:
+            self.allow_next_step()
+        return success
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):
@@ -62,14 +97,18 @@ class WizardStep3(TimeHandler, WizardStepMixin):
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep4(BaseConfigHandler, WizardStepMixin):
+class WizardStep4(WizardStepMixin, BaseConfigHandler):
     """
     Updater.
     """
     template = "wizard/updater.tpl"
     name = "updater"
+    next_step_allowed = 5
 
     def _action_run_updater(self):
+        # this is called by XHR, so we are definitely unable to
+        # get past this step with disabled JS
+        self.allow_next_step()
         return client.check_updates()
 
     def _action_updater_status(self):
@@ -89,21 +128,23 @@ class WizardStep4(BaseConfigHandler, WizardStepMixin):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep5(LanHandler, WizardStepMixin):
+class WizardStep5(WizardStepMixin, LanHandler):
     """
     LAN settings.
     """
     name = "lan"
+    next_step_allowed = 6
 
 
-class WizardStep6(WifiHandler, WizardStepMixin):
+class WizardStep6(WizardStepMixin, WifiHandler):
     """
     WiFi settings.
     """
     name = "wifi"
+    next_step_allowed = 7
 
 
-class WizardStep7(BaseConfigHandler, WizardStepMixin):
+class WizardStep7(WizardStepMixin, BaseConfigHandler):
     """
     Show the activation code.
     """
@@ -127,12 +168,33 @@ def get_wizard(number):
     wiz = globals()[class_name]
     if not issubclass(wiz, WizardStepMixin):
         raise bottle.HTTPError(404, "Wizard step not found: %s" % number)
+    check_step_allowed_or_redirect(number)
     return wiz
+
+
+def get_allowed_step_max():
+    session = request.environ['beaker.session']
+    allowed_sess = session.get(WizardStepMixin.next_step_allowed_key, None)
+    if not allowed_sess:
+        data = client.get(filter=filters.foris_config)
+        return data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
+    return allowed_sess
+
+
+def check_step_allowed_or_redirect(step_number):
+    step_number = int(step_number)
+    session = request.environ['beaker.session']
+    allowed_step_max = int(session.get(WizardStepMixin.next_step_allowed_key, 1))
+    if step_number <= allowed_step_max:
+        return True
+    logger.warning("redirecting")
+    bottle.redirect(reverse("wizard_step", number=allowed_step_max))
 
 
 @app.route("/step/<number:re:\d+>/ajax")
 @login_required
 def ajax(number=1):
+    check_step_allowed_or_redirect(number)
     action = request.GET.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
@@ -165,8 +227,7 @@ def step_post(number=1):
     Wizard = get_wizard(number)
     wiz = Wizard(request.POST)
     if request.is_xhr:
-        # only update is allowed
-        logger.debug("ajax request")
+        # only update is allowed via XHR
         request.POST.pop("update", None)
         return dict(html=wiz.render(is_xhr=True))
 
