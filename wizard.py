@@ -177,7 +177,10 @@ def get_allowed_step_max():
     allowed_sess = session.get(WizardStepMixin.next_step_allowed_key, None)
     if not allowed_sess:
         data = client.get(filter=filters.foris_config)
-        return data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
+        next_step_option = data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
+        if next_step_option:
+            return next_step_option.value
+        return next_step_option
     return allowed_sess
 
 
