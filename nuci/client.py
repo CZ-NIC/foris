@@ -129,6 +129,14 @@ def edit_config(config):
         return m.edit_config("running", config=config_root)
 
 
+def edit_config_multiple(configs):
+    with manager.connect(BIN_PATH) as m:
+        for config in configs:
+            config_root = ET.Element(YinElement.qual_tag("config"))
+            config_root.append(config)
+            m.edit_config("running", config=config_root)
+
+
 def dispatch(*args, **kwargs):
     with manager.connect(BIN_PATH) as m:
         return m.dispatch(*args, **kwargs)

@@ -26,9 +26,6 @@ def clean_updates():
 
 
 def commit():
-    from xml.etree import cElementTree as ET
     logger.debug("Commiting changes.")
-    for cu in config_updates:
-        logger.debug("Commiting config update:\n%s" % ET.tostring(cu.get_xml()))
-        client.edit_config(cu.get_xml())
+    client.edit_config_multiple([cu.get_xml() for cu in config_updates])
     clean_updates()
