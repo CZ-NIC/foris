@@ -61,7 +61,7 @@ def static(filename):
 
 
 def _check_password(password):
-    import pbkdf2
+    from beaker.crypto import pbkdf2
     data = client.get(filter=filters.uci)
     password_hash = data.find_child("uci.foris.auth.password")
     if password_hash is None:
