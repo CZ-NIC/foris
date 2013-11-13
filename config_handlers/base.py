@@ -271,25 +271,25 @@ class WifiHandler(BaseConfigHandler):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title=_("WiFi"),
                                           description=_("%% missing %%"))
-        wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[1]",
+        wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable WiFi"), default=True,
-                            nuci_path="uci.wireless.@wifi-iface[1].disabled",
+                            nuci_path="uci.wireless.@wifi-iface[0].disabled",
                             nuci_preproc=lambda val: not bool(int(val.value)))
         wifi_main.add_field(Textbox, name="ssid", label=_("Network name"),
-                            nuci_path="uci.wireless.@wifi-iface[1].ssid",
+                            nuci_path="uci.wireless.@wifi-iface[0].ssid",
                             validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide network name"), default=False,
-                            nuci_path="uci.wireless.@wifi-iface[1].hidden",
+                            nuci_path="uci.wireless.@wifi-iface[0].hidden",
                             hint=_("If set, network is not visible when scanning for available networks."))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Dropdown, name="channel", label=_("Network channel"), default="1",
                             args=((str(i), str(i)) for i in range(1, 13)),
-                            nuci_path="uci.wireless.radio1.channel")\
+                            nuci_path="uci.wireless.radio0.channel")\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Textbox, name="key", label=_("Network password"),
-                            nuci_path="uci.wireless.@wifi-iface[1].key",
+                            nuci_path="uci.wireless.@wifi-iface[0].key",
                             hint=_("WPA2 preshared key, that is required to connect to the network."))\
             .requires("wifi_enabled", True)
 
@@ -300,7 +300,7 @@ class WifiHandler(BaseConfigHandler):
 
             iface = Section(data['iface_section'], "wifi-iface")
             wireless.add(iface)
-            device = Section("radio1", "wifi-device")
+            device = Section("radio0", "wifi-device")
             wireless.add(device)
             # we must toggle both wifi-iface and device
             iface.add(Option("disabled", not data['wifi_enabled']))
