@@ -91,9 +91,9 @@ def get_updater_status():
     updater_status = data.find_child("updater")
 
     if updater_status.running:
-        return "running", updater_status.running
+        return "running", updater_status.running, updater_status.last_activity
     elif updater_status.failed:
-        return "failed", updater_status.failed
+        return "failed", updater_status.failed, updater_status.last_activity
     else:
         return "done", None
 

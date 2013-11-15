@@ -119,8 +119,8 @@ class WizardStep4(WizardStepMixin, BaseConfigHandler):
             run_success = self._action_run_updater()
             return dict(success=run_success)
         elif action == "updater_status":
-            status, message = self._action_updater_status()
-            result = dict(success=True, status=status)
+            status, message, last_activity = self._action_updater_status()
+            result = dict(success=True, status=status, last_activity=last_activity)
             if message:
                 result['message'] = message
             return result
