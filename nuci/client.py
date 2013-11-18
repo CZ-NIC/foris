@@ -95,7 +95,7 @@ def get_updater_status():
     elif updater_status.failed:
         return "failed", updater_status.failed, updater_status.last_activity
     else:
-        return "done", None
+        return "done", None, updater_status.last_activity
 
 
 def get_uci_config():
