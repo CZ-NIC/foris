@@ -140,13 +140,18 @@ ForisWizard.checkUpdaterStatus = function() {
 		// Show what has been installed already
 		var log = data.last_activity;
 		// TODO: Is there a better way than to accumulate it? Some kind of map + join?
-		var log_html = "<ul>";
-		for (var i in log) {
-			var item = log[i];
-			log_html += "<li>" + $("<div/>").html(item[0] + ': ' + item[1]).text() + "</li>";
-		}
-		log_html += "</ul>";
-		$("#wizard-updater-status").innerHTML = log_html;
+                var div = $("#wizard-updater-status");
+                div.empty();
+                var ul = $("<ul>");
+                div.append(ul);
+                var log_html = "<ul>";
+                for (var i in log) {
+                        var item = log[i];
+                        var li = $("<li>");
+                        li.html(item[0] + ': ' + item[1]);
+                        ul.append(li);
+                }
+                div.show();
             }
             else if (data.status == "done") {
                 $("#updater-progress").hide();
