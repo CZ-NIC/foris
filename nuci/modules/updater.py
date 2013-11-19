@@ -18,7 +18,7 @@ class Updater(YinElement):
         running = running.text if running is not None else False
         failed = element.find(Updater.qual_tag("failed"))
         failed = failed.text if failed is not None else False
-        activities_elem = element.find(Updater.qual_tag("last-activity"))
+        activities_elem = element.find(Updater.qual_tag("last_activity"))
         last_activity = []
         if activities_elem is not None:
             for activity_elem in activities_elem.iter():
