@@ -137,9 +137,9 @@ ForisWizard.checkUpdaterStatus = function() {
                 // timeout is better, because we won't get multiple requests stuck processing
                 // real delay between status updates is then delay + request_processing_time
                 window.setTimeout(ForisWizard.checkUpdaterStatus, 1000);
-		// Show what has been installed already
-		var log = data.last_activity;
-		// TODO: Is there a better way than to accumulate it? Some kind of map + join?
+                // Show what has been installed already
+                var log = data.last_activity;
+                // TODO: Is there a better way than to accumulate it? Some kind of map + join?
                 var div = $("#wizard-updater-status");
                 div.empty();
                 var ul = $("<ul>");
@@ -148,7 +148,13 @@ ForisWizard.checkUpdaterStatus = function() {
                 for (var i in log) {
                         var item = log[i];
                         var li = $("<li>");
-                        li.html(item[0] + ': ' + item[1]);
+                        var mode;
+                        if (item[0] == 'remove') {
+                                mode = '-';
+                        } else {
+                                mode = '+';
+                        }
+                        li.html(mode + item[1]);
                         ul.append(li);
                 }
                 div.show();
