@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 15:18+0100\n"
+"POT-Creation-Date: 2013-11-19 11:43+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -16,29 +16,211 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Loading..."
-msgstr "Probíhá načítání..."
+msgid "Password"
+msgstr "Heslo"
 
-msgid "Done"
-msgstr "Hotovo"
+msgid ""
+"Welcome to the first start. Set your password for this administation site. "
+"The password must be at least 6 charaters long."
+msgstr ""
+"Vítejte při prvním spuštění. Zvolte si Vaše přístupové heslo pro toto "
+"administrační rozhraní. Heslo musí být dlouhé alespoň 6 znaků."
+
+msgid "Password (repeat)"
+msgstr "Heslo (zopakujte)"
+
+msgid "Passwords do not equal."
+msgstr "Hesla se neshodují."
+
+msgid "WAN"
+msgstr "WAN"
+
+msgid "TODO: write desc (wan mac)"
+msgstr "TODO: napsat popis (wan mac)"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "Static"
+msgstr "Statická"
+
+msgid "PPPoE"
+msgstr "PPPoE"
+
+msgid "MAC address"
+msgstr "MAC adresa"
+
+msgid "Protocol"
+msgstr "Protokol"
+
+msgid "Use IPv6"
+msgstr "Podpora IPv6"
+
+msgid "IP address"
+msgstr "IP adresa"
+
+msgid "Network mask"
+msgstr "Maska podsítě"
+
+msgid "Gateway"
+msgstr "Brána"
+
+msgid "DSL user"
+msgstr "DSL uživatelské jméno"
+
+msgid "DSL password"
+msgstr "DSL heslo"
+
+msgid "Enable IPv6"
+msgstr "Zapnout IPv6"
+
+msgid "IPv6 address"
+msgstr "IPv6 adresa"
+
+msgid "IPv6 gateway"
+msgstr "IPv6 brána"
+
+msgid "IPv6 prefix"
+msgstr "IPv6 prefix"
+
+msgid "Time"
+msgstr "Čas"
+
+msgid "TODO: write desc (time setup)"
+msgstr "TODO:  napsat popis (nastavení času)"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid "Most users don't need to change these settings."
+msgstr "Většina uživatelů nepotřebuje měnit toto nastavení."
+
+msgid "Router IP address"
+msgstr "IP adresa routeru"
+
+msgid "Enable DHCP"
+msgstr "Zapnout DHCP"
+
+msgid "DHCP min"
+msgstr "DHCP adresy od"
+
+msgid "DHCP max"
+msgstr "DHCP adresy do"
+
+msgid "WiFi"
+msgstr "WiFi"
+
+msgid "TODO: write desc (wifi)"
+msgstr "TODO: napsat popis (wifi)"
+
+msgid "Enable WiFi"
+msgstr "Povolit WiFi"
+
+msgid "Network name"
+msgstr "Název WiFi přístupového bodu"
+
+msgid "Hide SSID"
+msgstr "Skrýt SSID"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr "Je-li zaškrtnuto, síť se neukáže při hledání přístupných sítí."
+
+msgid "Network channel"
+msgstr "Kanál"
+
+msgid "Network password"
+msgstr "WiFi Heslo"
+
+msgid "WPA2 preshared key, that is required to connect to the network."
+msgstr "WPA2 klíč, který se bude používat na připojení k této síti."
+
+msgid "Advanced administration"
+msgstr "Pokročilejší nastavení"
+
+msgid ""
+"To access the advanced administration, you must set root user's password. "
+"When the password is set, follow the link below."
+msgstr ""
+"Aby jste mohli měnit pokročilejší nastavení, musíte si zvolit root-ovské "
+"heslo. Když ho nastavíte, pokračujte klikem na odkaz pod textem."
+
+msgid "Turris router administration interface"
+msgstr "Administrační rozhraní routeru Turris"
+
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Log out"
+msgstr "Odhlásit se"
+
+msgid "Log in"
+msgstr "Přihlásit se"
 
 msgid "Next"
 msgstr "Další"
 
-msgid "Error"
-msgstr "Chyba"
+msgid "Synchronize with your computer clock"
+msgstr "Synchronizovat s časem ve Vašem počítači"
+
+msgid "Set time manually"
+msgstr "Nastavit čas ručně"
+
+msgid "Synchronization successful."
+msgstr "Synchronizace proběhla úspěšně."
 
 msgid "Time settings"
 msgstr "Nastavení času"
 
-msgid "Synchronizing with time in the internet."
-msgstr "Probíhá synchronizace času na routeru s časem v internetu."
+msgid "Loading..."
+msgstr "Načítání..."
 
-msgid "Please wait..."
+msgid "Synchronizing router time with a timeserver."
+msgstr "Probíhá synchronizace času s časovým servrem."
+
+msgid "One moment, please..."
 msgstr "Chvilku strpení..."
+
+msgid "Done"
+msgstr "Hotovo"
 
 msgid "Time was successfully synchronized, you can move to the next step."
 msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
 
-msgid "Password"
-msgstr "Heslo"
+msgid "The end!"
+msgstr "A to je konec!"
+
+msgid ""
+"To finish the process of the router installation, fill in the following code "
+"<strong>{{ code }}</strong> on the EUKI website. TODO: add more explanation, "
+"link to EUKI,..."
+msgstr "poslední strana"
+
+msgid "Connection test and check for new updates."
+msgstr "Test připojení a kontrola aktualizací"
+
+msgid "Check of available updates in progress."
+msgstr "Probíhá kontrola aktualizací."
+
+msgid "Firmware update has succeeded, you can proceed to next step."
+msgstr ""
+"Aktualizace firmwaru proběhla v pořádku, můžete postoupit k dalšímu kroku."
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid ""
+"Firmware update has failed due to a connection or an installation error. "
+"TODO: what to do now? Check your cable connection..."
+msgstr ""
+"Aktualizace se nepodařilo stáhnout nebo došlo k chybě. TODO: co teď? "
+"Skontrolujte kábel,..."
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Discard changes"
+msgstr "Zahodit změny"
+
+msgid "Save changes"
+msgstr "Uložit změny"
+

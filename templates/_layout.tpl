@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Foris administration interface</title>
+    <title>{{ _("Turris router administration interface") }}</title>
     <link href="{{ static("css/screen.css") }}" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>

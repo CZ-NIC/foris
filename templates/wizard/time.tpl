@@ -21,7 +21,7 @@
         </div>
 
         <div id="wizard-time-sync">
-            <a href="#" id="wizard-time-sync-auto" class="button">{{ _("Synchronize with computer clock") }}</a>
+            <a href="#" id="wizard-time-sync-auto" class="button">{{ _("Synchronize with your computer clock") }}</a>
             <a href="#" id="wizard-time-sync-manual" class="button">{{ _("Set time manually") }}</a>
             <p id="wizard-time-sync-success">{{ _("Synchronization successful.") }}</p>
         </div>
@@ -33,8 +33,8 @@
         <h1>{{ _("Time settings") }}</h1>
         <div id="time-progress" class="background-progress">
             <img src="{{ static("img/loader.gif") }}" alt="{{ _("Loading...") }}"><br>
-            {{ _("Synchronizing with time in the internet.") }}<br>
-            {{ _("Please wait...")  }}
+            {{ _("Synchronizing router time with a timeserver.") }}<br>
+            {{ _("One moment, please...")  }}
         </div>
 
         <div id="time-success">

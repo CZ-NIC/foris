@@ -2,7 +2,7 @@
     %rebase _layout **locals()
 
     <div id="wizard-header">
-        <img src="{{ static("/img/logo-turris.png") }}" alt="Project:Turris">
+        <img src="{{ static("/img/logo-turris.png") }}" alt="{{ _("Project:Turris") }}">
         <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 7</span>
     </div>
 
