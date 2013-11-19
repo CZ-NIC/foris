@@ -18,14 +18,14 @@ class Updater(YinElement):
         running = running.text if running is not None else False
         failed = element.find(Updater.qual_tag("failed"))
         failed = failed.text if failed is not None else False
-        activities_elem = element.find(Updater.qual_tag("last-activity"))
-        last_activity = dict(install=[], remove=[])
+        activities_elem = element.find(Updater.qual_tag("last_activity"))
+        last_activity = []
         if activities_elem is not None:
             for activity_elem in activities_elem.iter():
                 if activity_elem.tag == Updater.qual_tag("install"):
-                    last_activity['install'].append(activity_elem.text)
+                    last_activity.append(('install', activity_elem.text))
                 elif activity_elem.tag == Updater.qual_tag("remove"):
-                    last_activity['remove'].append(activity_elem.text)
+                    last_activity.append(('remove', activity_elem.text))
         return Updater(running, failed, last_activity)
 
     @property
