@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 11:43+0100\n"
+"POT-Creation-Date: 2013-11-20 22:01+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -35,8 +35,16 @@ msgstr "Hesla se neshodují."
 msgid "WAN"
 msgstr "WAN"
 
-msgid "TODO: write desc (wan mac)"
-msgstr "TODO: napsat popis (wan mac)"
+msgid ""
+"Here you specify your WAN port settings. Usualy you can leave this options "
+"untouched unless explicitly specified otherwise by your internet service "
+"provider. And even in that case change it only if Turris is connected "
+"directly to your ISP and not through a cable or DSL modem."
+msgstr ""
+"Tady specifikujete nastavení WAN portu. Měnit toto nastavení "
+"musíte jen v případě když to Váš poskytovatel internetu vyžaduje pro "
+"fungování připojení. A to jen když je Turris router připojen přímo a ne "
+"přes modem (káblový nebo DSL), který máte od svého poskytovatele."
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -47,14 +55,8 @@ msgstr "Statická"
 msgid "PPPoE"
 msgstr "PPPoE"
 
-msgid "MAC address"
-msgstr "MAC adresa"
-
 msgid "Protocol"
 msgstr "Protokol"
-
-msgid "Use IPv6"
-msgstr "Podpora IPv6"
 
 msgid "IP address"
 msgstr "IP adresa"
@@ -65,14 +67,8 @@ msgstr "Maska podsítě"
 msgid "Gateway"
 msgstr "Brána"
 
-msgid "DSL user"
-msgstr "DSL uživatelské jméno"
-
-msgid "DSL password"
-msgstr "DSL heslo"
-
-msgid "Enable IPv6"
-msgstr "Zapnout IPv6"
+msgid "Use IPv6"
+msgstr "Podpora IPv6"
 
 msgid "IPv6 address"
 msgstr "IPv6 adresa"
@@ -82,6 +78,21 @@ msgstr "IPv6 brána"
 
 msgid "IPv6 prefix"
 msgstr "IPv6 prefix"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP uživatelské jméno"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP heslo"
+
+msgid "Enable IPv6"
+msgstr "Zapnout IPv6"
+
+msgid "custom MAC address"
+msgstr "uživatelská MAC adresa"
+
+msgid "MAC address"
+msgstr "MAC adresa"
 
 msgid "Time"
 msgstr "Čas"
@@ -189,12 +200,6 @@ msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kro
 msgid "The end!"
 msgstr "A to je konec!"
 
-msgid ""
-"To finish the process of the router installation, fill in the following code "
-"<strong>{{ code }}</strong> on the EUKI website. TODO: add more explanation, "
-"link to EUKI,..."
-msgstr "poslední strana"
-
 msgid "Connection test and check for new updates."
 msgstr "Test připojení a kontrola aktualizací"
 
@@ -223,4 +228,13 @@ msgstr "Zahodit změny"
 
 msgid "Save changes"
 msgstr "Uložit změny"
+
+#, python-format
+msgid ""
+"To finish the process of the router installation, fill in the following code "
+"<strong>%s</strong> on the EUKI website. TODO: add more explanation, link to "
+"EUKI,..."
+msgstr
+"Poslední strana, číslo je <strong>%s</strong>, musíte ho vyplnit na stránce"
+" EUKI."
 
