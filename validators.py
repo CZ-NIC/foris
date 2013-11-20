@@ -79,6 +79,8 @@ class LenRange(Validator):
 
 
 class FieldsEqual(Validator):
+    js_validator = "eqfields"
+    
     def __init__(self, field1, field2, message):
         Validator.__init__(self, message, lambda data: data[field1] == data[field2])
         self.js_validator_params = PARAM_DELIMITER.join([field1, field2, message])

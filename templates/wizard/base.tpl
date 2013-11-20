@@ -7,7 +7,7 @@
     </div>
 
 %if stepname:
-    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}"></div>
+    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="step {{ stepnumber }}"></div>
 %end
     <div id="wizard-content">
 %end

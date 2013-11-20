@@ -204,6 +204,17 @@ class ForisForm(ForisFormElement):
                 add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
+    
+    def render_js_validators_params(self):
+        fparams = []
+        funcs = []
+        for val in self.validators:
+            if val.js_validator:
+                funcs.append(val.js_validator)
+                fparams.append("data-validator-" + val.js_validator + "=\""
+                               + val.js_validator_params + "\"")
+        fparams.append("data-validators=\"" + " ".join(funcs) + "\"")
+        return " ".join(fparams)
 
 
 class Section(ForisFormElement):
