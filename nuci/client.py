@@ -34,8 +34,11 @@ def get(filter=None):
 def get_registration():
     get_tag = registration.RegNum.qual_tag("get")
     element = ET.Element(get_tag)
-    data = dispatch(element)
-    return registration.RegNum.from_element(ET.fromstring(data.xml))
+    try:
+        data = dispatch(element)
+        return registration.RegNum.from_element(ET.fromstring(data.xml))
+    except RPCError:
+        return None
 
 
 def ntp_update():
@@ -91,11 +94,11 @@ def get_updater_status():
     updater_status = data.find_child("updater")
 
     if updater_status.running:
-        return "running", updater_status.running
+        return "running", updater_status.running, updater_status.last_activity
     elif updater_status.failed:
-        return "failed", updater_status.failed
+        return "failed", updater_status.failed, updater_status.last_activity
     else:
-        return "done", None
+        return "done", None, updater_status.last_activity
 
 
 def get_uci_config():
