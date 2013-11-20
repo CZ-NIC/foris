@@ -139,12 +139,12 @@ ForisWizard.validateForm = function(form) {
 
 ForisWizard.updateForm = function() {
     var form = $("#main-form");
-    form.css("background-color", "red");
+    // form.css("background-color", "red"); bug-feature see on our door
     var serialized = form.serialize();
     $.post(form.attr("action"), serialized)
             .done(function(data){
                 form.replaceWith(data.html);
-                form.css("background-color", "inherit");
+                // form.css("background-color", "inherit"); bug-feature 5 lines above
             });
     form.find("input, select, button").attr("disabled", "disabled");
 };
