@@ -14,9 +14,10 @@ logger = logging.getLogger("foris")
 
 BASE_DIR = os.path.dirname(__file__)
 
-# i18n-related, hardcoded for now
+# internationalization
+LANGUAGE = 'en' # hardcoded for now, use session or better uci or $LANG to store the value
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
-trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=["cs"])
+trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=[LANGUAGE], fallback=True)
 gettext = trans.ugettext
 
 # template defaults
@@ -117,7 +118,7 @@ if __name__ == "__main__":
             app.config.no_auth = True
 
     # i18n middleware
-    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code="cs", default="cs",
+    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=LANGUAGE, default="en",
                                          locale_dir=os.path.join(BASE_DIR, "locale")))
 
     if args.debug:

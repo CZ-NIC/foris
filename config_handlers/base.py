@@ -60,12 +60,13 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_("Password"),
-                                      description=_("Set your password."))
+                                      description=_("Welcome to the first start. Set your password for this administation site."
+                                                    " The password must be at least 6 charaters long."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
         pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                     _("Passwords are not equal.")))
+                                                     _("Passwords do not equal.")))
 
         def pw_form_cb(data):
             import pbkdf2
@@ -90,7 +91,7 @@ class WanHandler(BaseConfigHandler):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
         wan_main = wan_form.add_section(name="set_wan", title=_("WAN"),
-                                        description=_("%% missing %%"))
+                                        description=_("TODO: write desc (wan mac)"))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
@@ -104,7 +105,7 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            validators=validators.MacAddress())
-        wan_main.add_field(Dropdown, name="proto", label=_("Mode"),
+        wan_main.add_field(Dropdown, name="proto", label=_("Protocol"),
                            nuci_path="uci.network.wan.proto",
                            args=WAN_OPTIONS, default=WAN_DHCP)
         wan_main.add_field(Checkbox, name="static_ipv6", label=_("Use IPv6"),
@@ -207,7 +208,7 @@ class TimeHandler(BaseConfigHandler):
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
         time_main = time_form.add_section(name="set_time", title=_("Time"),
-                                          description=_("%% missing %%"))
+                                          description=_("TODO: write desc (time setup)"))
 
         time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
                             nuci_preproc=lambda v: v.local)
@@ -270,7 +271,7 @@ class WifiHandler(BaseConfigHandler):
     def get_form(self):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title=_("WiFi"),
-                                          description=_("%% missing %%"))
+                                          description=_("TODO: write desc (wifi)"))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable WiFi"), default=True,
@@ -280,7 +281,7 @@ class WifiHandler(BaseConfigHandler):
                             nuci_path="uci.wireless.@wifi-iface[0].ssid",
                             validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide network name"), default=False,
+        wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
                             hint=_("If set, network is not visible when scanning for available networks."))\
             .requires("wifi_enabled", True)
@@ -336,7 +337,7 @@ class SystemPasswordHandler(BaseConfigHandler):
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True)
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                            _("Passwords are not equal.")))
+                                                            _("Passwords do not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])

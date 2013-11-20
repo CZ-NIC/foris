@@ -1,6 +1,5 @@
 %rebase wizard/base **locals()
 
-<h1>The end!</h1>
+<h1>{{ _("The end!") }}</h1>
 
-To finish the process of the router installation, enter {{ code }} on the EUKI website. Blabla,
-give comprehensive instruction.
+{{ _("To finish the process of the router installation, fill in the following code <strong>{{ code }}</strong> on the EUKI website. TODO: add more explanation, link to EUKI,...") }}

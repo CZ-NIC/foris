@@ -24,6 +24,32 @@ ForisWizard.validators = {
     }
 };
 
+ForisWizard.formValidators = {
+    eqfields: function(form, args) {
+        var argsArray = args.split("|");
+        if (argsArray.length != 3 || !argsArray[0]
+                || !argsArray[1] || !argsArray[2])
+            return true; // wrong arguments
+        var elOne = $("input[name=" + argsArray[0] + "]", form)
+        var elTwo = $("input[name=" + argsArray[1] + "]", form)
+        var errBox = $("#form-error-box");
+        if (elOne.val() == elTwo.val()) {
+            errBox.hide();
+            return true;
+        }
+        else {
+            errBox.text(argsArray[2]);
+            errBox.show();
+            elOne.val('');
+            elTwo.val('');
+            elOne.parent().find("div").remove();
+            elTwo.parent().find("div").remove();
+            elOne.focus();
+            return false;
+        }
+    }
+};
+
 ForisWizard.runValidator = function(validator, value, mangledArgs) {
     if (!mangledArgs)
         return this.validators[validator](value);
@@ -42,13 +68,19 @@ ForisWizard.validateField = function(field) {
     field = $(field);
 
     var markInvalid = function() {
-        field.parent().find("[class|='field']").remove();
-        field.after('<div class="field-invalid"></div>');
+        var fMarker = field.parent().find("[class|='field']");
+        if (fMarker.length)
+            fMarker.replaceWith('<div class="field-invalid"></div>');
+        else
+            field.parent().append('<div class="field-invalid"></div>');
     };
 
     var markOk = function() {
-        field.parent().find("[class|='field']").remove();
-        field.after('<div class="field-valid"></div>');
+        var fMarker = field.parent().find("[class|='field']");
+        if (fMarker.length)
+            fMarker.replaceWith('<div class="field-valid"></div>');
+        else
+            field.parent().append('<div class="field-valid"></div>');
     };
 
     if (field.hasClass("required") && field.val() == "")
@@ -77,11 +109,31 @@ ForisWizard.validateField = function(field) {
 };
 
 ForisWizard.validateForm = function(form) {
+    // validate inputs
     var inputs = $("input.validate", form);
     for (var i in inputs) {
-        if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i]))
+        if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i])) {
             return false;
+        }
     }
+    
+    // validate form itself (relations between fields,...)
+    var jQForm = $(form);
+    var validators = jQForm.data("validators");
+    if (validators)
+        validators = validators.split(" ");
+    else
+        return true; // no form validators
+    
+    for (var i = 0; i < validators.length; i++) {
+        if (ForisWizard.formValidators.hasOwnProperty(validators[i])) {
+            var args = jQForm.data("validator-" + validators[i]);
+            if (!ForisWizard.formValidators[validators[i]](form, args))
+                // fail-fast
+                return false;
+        }
+    }
+    
     return true;
 };
 
@@ -208,11 +260,9 @@ $(document).ready(function(){
     });
 
     $(document).on("submit", "form", function(e) {
-        if (ForisWizard.validateForm(this)) {
-        }
-        else {
+        if (!ForisWizard.validateForm(this)) {
             e.preventDefault();
-            console.log("TODO: error in validation");  // TODO: warn
+            // console.log("TODO: error in validation");
         }
     });
 });
