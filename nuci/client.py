@@ -37,7 +37,7 @@ def get_registration():
     try:
         data = dispatch(element)
         return registration.RegNum.from_element(ET.fromstring(data.xml))
-    except RPCError:
+    except (RPCError, TimeoutExpiredError):
         return None
 
 
