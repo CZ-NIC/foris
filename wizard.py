@@ -7,7 +7,7 @@ from nuci import client, filters
 from nuci.modules.uci_raw import Option, Section, Config, Uci
 from utils import login_required
 from utils.routing import reverse
-
+from foris import gettext as _
 
 logger = logging.getLogger("wizard")
 
@@ -153,9 +153,13 @@ class WizardStep7(WizardStepMixin, BaseConfigHandler):
     def render(self, **kwargs):
         registration = client.get_registration()
         if registration:
-             return self.default_template(code=registration.value, **kwargs)
+            msgtext = _("To finish the process of the router installation, fill "
+                        "in the following code <strong>%s</strong> on the EUKI "
+                        "website. TODO: add more explanation, link to EUKI,...")
+            msgtext = msgtext % registration.value
+            return self.default_template(msgtext=msgtext, **kwargs)
         else:
-             return template('wizard/registration-failure.tpl', stepname=self.name, **kwargs)
+            return template('wizard/registration-failure.tpl', stepname=self.name, **kwargs)
 
 
 app = Bottle()
