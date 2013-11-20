@@ -34,8 +34,11 @@ def get(filter=None):
 def get_registration():
     get_tag = registration.RegNum.qual_tag("get")
     element = ET.Element(get_tag)
-    data = dispatch(element)
-    return registration.RegNum.from_element(ET.fromstring(data.xml))
+    try:
+        data = dispatch(element)
+        return registration.RegNum.from_element(ET.fromstring(data.xml))
+    except RPCError:
+        return None
 
 
 def ntp_update():

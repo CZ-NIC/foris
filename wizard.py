@@ -152,7 +152,10 @@ class WizardStep7(WizardStepMixin, BaseConfigHandler):
 
     def render(self, **kwargs):
         registration = client.get_registration()
-        return self.default_template(code=registration.value, **kwargs)
+        if registration:
+             return self.default_template(code=registration.value, **kwargs)
+        else:
+             return template('wizard/registration-failure.tpl', stepname=self.name, **kwargs)
 
 
 app = Bottle()
