@@ -35,6 +35,15 @@ class YinElement(object):
         child.operation = "remove"
         return self.add(child)
 
+    def add_replace(self, child):
+        """Add a new child node to replace an existing one if it exists.
+
+        :param child:
+        :return:
+        """
+        child.operatino = "remove"
+        return self.add(child)
+
     def remove(self, child):
         self.children.remove(child)
         child.parent = None
