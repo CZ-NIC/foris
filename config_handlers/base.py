@@ -91,7 +91,10 @@ class WanHandler(BaseConfigHandler):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
         wan_main = wan_form.add_section(name="set_wan", title=_("WAN"),
-                                        description=_("TODO: write desc (wan mac)"))
+                                        description=_("Here you specify your WAN port settings. "
+                "Usualy you can leave this options untouched unless explicitly specified otherwise by your "
+                "internet service provider. And even in that case change it only if Turris is connected "
+                "directly to your ISP and not through a cable or DSL modem."))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
@@ -101,54 +104,65 @@ class WanHandler(BaseConfigHandler):
             (WAN_STATIC, _("Static")),
             (WAN_PPPOE, _("PPPoE")),
         )
-
-        wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
-                           nuci_path="uci.network.wan.macaddr",
-                           validators=validators.MacAddress())
+        
+        # protocol
         wan_main.add_field(Dropdown, name="proto", label=_("Protocol"),
                            nuci_path="uci.network.wan.proto",
                            args=WAN_OPTIONS, default=WAN_DHCP)
+        
+        # static ipv4
+        wan_main.add_field(Textbox, name="ipaddr", label=_("IP address"),
+                           nuci_path="uci.network.wan.ipaddr",
+                           required=True, validators=validators.IPv4())\
+            .requires("proto", WAN_STATIC)
+        wan_main.add_field(Textbox, name="netmask", label=_("Network mask"),
+                           nuci_path="uci.network.wan.netmask",
+                           required=True, validators=validators.IPv4())\
+            .requires("proto", WAN_STATIC)
+        wan_main.add_field(Textbox, name="gateway", label=_("Gateway"),
+                           nuci_path="uci.network.wan.gateway",
+                           validators=validators.IPv4())\
+            .requires("proto", WAN_STATIC)
+        
+        # static ipv6
         wan_main.add_field(Checkbox, name="static_ipv6", label=_("Use IPv6"),
                            nuci_path="uci.network.wan.ip6addr",
                            nuci_preproc=lambda val: bool(val.value))\
             .requires("proto", WAN_STATIC)
-        wan_main.add_field(Textbox, name="ipaddr", label=_("IP address"),
-                           nuci_path="uci.network.wan.ipaddr",
-                           required=True, validators=validators.IPv4())\
+        
+        wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
+                           nuci_path="uci.network.wan.ip6addr")\
             .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", False)
-        wan_main.add_field(Textbox, name="netmask", label=_("Network mask"),
-                           nuci_path="uci.network.wan.netmask",
-                           required=True, validators=validators.IPv4())\
+            .requires("static_ipv6", True)
+        wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
+                           nuci_path="uci.network.wan.ip6gw")\
             .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", False)
-        wan_main.add_field(Textbox, name="gateway", label=_("Gateway"),
-                           nuci_path="uci.network.wan.gateway",
-                           validators=validators.IPv4())\
+            .requires("static_ipv6", True)
+        wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
+                           nuci_path="uci.network.wan.ip6prefix")\
             .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", False)
-
-        wan_main.add_field(Textbox, name="username", label=_("DSL user"),
-                           nuci_path="uci.network.wan.username",)\
+            .requires("static_ipv6", True)
+        
+        wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
+                           nuci_path="uci.network.wan.username")\
             .requires("proto", WAN_PPPOE)
-        wan_main.add_field(Textbox, name="password", label=_("DSL password"),
-                           nuci_path="uci.network.wan.password",)\
+        wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password"),
+                           nuci_path="uci.network.wan.password")\
             .requires("proto", WAN_PPPOE)
         wan_main.add_field(Checkbox, name="ppp_ipv6", label=_("Enable IPv6"),
                            nuci_path="uci.network.wan.ipv6",
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
-
-        wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
-                           nuci_path="uci.network.wan.ip6addr")\
-            .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
-                           nuci_path="uci.network.wan.ip6gw")\
-            .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
-                           nuci_path="uci.network.wan.ip6prefix")\
-            .requires("static_ipv6", True)
-
+        
+        wan_main.add_field(Checkbox, name="custom_mac", label=_("custom MAC address"),
+                           nuci_path="uci.network.wan.macaddr",
+                           nuci_preproc=lambda val: bool(val.value))
+        
+        wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
+                           nuci_path="uci.network.wan.macaddr",
+                           validators=validators.MacAddress())\
+            .requires("custom_mac", True)
+        
         def wan_form_cb(data):
             uci = Uci()
             config = Config("network")
@@ -156,28 +170,29 @@ class WanHandler(BaseConfigHandler):
 
             wan = Section("wan", "interface")
             config.add(wan)
-            wan.add(Option("macaddr", data['macaddr']))
+            
             wan.add(Option("proto", data['proto']))
+            if data['custom_mac'] is True:
+                wan.add(Option("macaddr", data['macaddr']))
+            else:
+                wan.add_removal(Option("macaddr", None))
+            
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
                 wan.add(Option("ipv6", data['ppp_ipv6']))
-            elif data.get("static_ipv6") is True:
-                wan.add(Option("ip6addr", data['ip6addr']))
-                wan.add(Option("ip6gw", data['ip6gw']))
-                wan.add(Option("ip6prefix", data['ip6prefix']))
-                # remove ipv4 settings
-                wan.add_removal(Option("ipaddr", None))
-                wan.add_removal(Option("netmask", None))
-                wan.add_removal(Option("gateway", None))
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
                 wan.add(Option("gateway", data['gateway']))
-                # remove ipv6 settings
-                wan.add_removal(Option("ip6addr", None))
-                wan.add_removal(Option("ip6gw", None))
-                wan.add_removal(Option("ip6prefix", None))
+                if data.get("static_ipv6") is True:
+                    wan.add(Option("ip6addr", data['ip6addr']))
+                    wan.add(Option("ip6gw", data['ip6gw']))
+                    wan.add(Option("ip6prefix", data['ip6prefix']))
+                else:
+                    wan.add_removal(Option("ip6addr", None))
+                    wan.add_removal(Option("ip6gw", None))
+                    wan.add_removal(Option("ip6prefix", None))
 
             return "edit_config", uci
 
