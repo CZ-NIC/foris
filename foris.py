@@ -29,21 +29,35 @@ bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
 bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
 
+def login_redirect(step_num):
+    NUM_WIZZARD_STEPS = 7
+    if step_num >= NUM_WIZZARD_STEPS:
+        bottle.redirect(reverse("config_index"))
+    else:
+        bottle.redirect(reverse("wizard_step", number=step_num))
+
+
 @bottle.route("/", name="index")
 @bottle.view("index")
 def index():
     session = bottle.request.environ['beaker.session']
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
+    with open("/root/palilog", "w") as f:
+        f.write(str(type(allowed_step_max)))
+        f.write("\n")
+    
     if not allowed_step_max:
         session["user_authenticated"] = True
-        session.save()
-        bottle.redirect(reverse("wizard_step", number=1))
+        allowed_step_max = 1
     else:
-        session[wizard.WizardStepMixin.next_step_allowed_key] = allowed_step_max
-        session.save()
-        # TODO: behavior when wizard is completed
-
+        session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
+        allowed_step_max = int(allowed_step_max)
+    
+    session.save()
+    if session.get("user_authenticated"):
+        login_redirect(allowed_step_max)
+    
     return dict()
 
 
@@ -53,6 +67,7 @@ def login():
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
         session.save()
+        
         bottle.redirect("/")
     bottle.redirect("/")
 
