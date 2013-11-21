@@ -60,7 +60,7 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_("Password"),
-                                      description=_("Welcome to the first start. Set your password for this administation site."
+                                      description=_("Set your password for this administation site."
                                                     " The password must be at least 6 charaters long."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
@@ -241,7 +241,11 @@ class LanHandler(BaseConfigHandler):
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
         lan_main = lan_form.add_section(name="set_lan", title=_("LAN"),
-                                        description=_("Most users don't need to change these settings."))
+                                        description=_("This section specifies the settings of the local network. "
+            "Under normal conditions you can keep this settings as they are. Moreover, changing the router IP "
+            "address has one caveat. If you do it the computers in local network will not obtain new addresses "
+            "automatically; you will have to do it manually for each connected device. And as soon as you click "
+            "on 'next' button, the next page will not load until you obtain a new IP from DHCP (if DHCP enabled)."))
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
@@ -249,10 +253,10 @@ class LanHandler(BaseConfigHandler):
         lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
                            nuci_path="uci.dhcp.lan.ignore",
                            nuci_preproc=lambda val: not bool(int(val.value)), default=True)
-        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP min"),
+        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP start"),
                            nuci_path="uci.dhcp.lan.start")\
             .requires("dhcp_enabled", True)
-        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max"),
+        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max leases"),
                            nuci_path="uci.dhcp.lan.limit")\
             .requires("dhcp_enabled", True)
 
