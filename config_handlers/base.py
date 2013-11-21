@@ -271,6 +271,9 @@ class LanHandler(BaseConfigHandler):
                 dhcp.add(Option("ignore", "0"))
                 dhcp.add(Option("start", data['dhcp_min']))
                 dhcp.add(Option("limit", data['dhcp_max']))
+                # FIXME: this would overwrite any unrelated DHCP options the user might have set.
+                # Maybe we should get the current values, scan them and remove selectively the ones
+                # with 6 in front of them? Or have some support for higher level of stuff in nuci.
                 options = List("dhcp_option")
                 options.add(Value(0, "6," + data['dhcp_subnet']))
                 dhcp.add_replace(options)
