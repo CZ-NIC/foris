@@ -1,6 +1,6 @@
 from ncclient import manager
 from ncclient.operations import RPCError
-from ncclient.errors import TimeoutExpiredError
+from ncclient.operations.errors import TimeoutExpiredError
 from xml.etree import cElementTree as ET
 import logging
 
