@@ -319,6 +319,7 @@ class Input(object):
         if self.value is not None:
             attrs['value'] = self.value
         attrs['name'] = self.name
+        
         return '<input %s/>' % attrs
 
     def rendernote(self, note):
@@ -513,8 +514,9 @@ class Checkbox(Input):
 
         if self.checked:
             attrs['checked'] = 'checked'
-        return '<input type="hidden" name="%s" value="0"><input %s/>' % (attrs['name'], attrs)
-
+        return '<div class="checkbox-wrapper"><input type="hidden" '\
+            'name="%s" value="0"><input %s/></div>' % (attrs['name'], attrs)
+    
     def set_value(self, value):
         self.checked = bool(value)
 
