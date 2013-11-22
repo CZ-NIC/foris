@@ -15,7 +15,7 @@ logger = logging.getLogger("foris")
 BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
-LANGUAGE = 'en' # hardcoded for now, use session or better uci or $LANG to store the value
+LANGUAGE = 'cs' # hardcoded for now, use session or better uci or $LANG to store the value
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
 trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=[LANGUAGE], fallback=True)
 gettext = trans.ugettext
@@ -43,9 +43,6 @@ def index():
     session = bottle.request.environ['beaker.session']
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
-    with open("/root/palilog", "w") as f:
-        f.write(str(type(allowed_step_max)))
-        f.write("\n")
     
     if not allowed_step_max:
         session["user_authenticated"] = True
