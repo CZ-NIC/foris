@@ -41,7 +41,7 @@ class YinElement(object):
         :param child:
         :return:
         """
-        child.operatino = "remove"
+        child.operation = "replace"
         return self.add(child)
 
     def remove(self, child):
