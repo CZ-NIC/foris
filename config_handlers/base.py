@@ -5,6 +5,7 @@ from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
 from validators import LenRange
 import validators
+import bottle
 
 
 class BaseConfigHandler(object):
@@ -244,8 +245,8 @@ class LanHandler(BaseConfigHandler):
                                         description=_("This section specifies the settings of the local network. "
             "Under normal conditions you can keep this settings as they are. Moreover, changing the router IP "
             "address has one caveat. If you do it the computers in local network will not obtain new addresses "
-            "automatically; you will have to do it manually for each connected device. And as soon as you click "
-            "on 'next' button, the next page will not load until you obtain a new IP from DHCP (if DHCP enabled)."))
+            "automatically; you will have to do it manually for each connected device. And as you submit "
+            "your changes, the next page will not load until you obtain a new IP from DHCP (if DHCP enabled)."))
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
@@ -296,13 +297,17 @@ class WifiHandler(BaseConfigHandler):
     def get_form(self):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title=_("WiFi"),
-                                          description=_("TODO: write desc (wifi)"))
+                                          description=_(
+            "If you want to make from your router a WiFi access point, enable the WiFi here and "
+            "fill in an SSID (the name of the wifi access point) and the corresponding password. "
+            "Then choose a channel number which is not already used by other routers in "
+            "your neighbourhood."))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable WiFi"), default=True,
                             nuci_path="uci.wireless.@wifi-iface[0].disabled",
                             nuci_preproc=lambda val: not bool(int(val.value)))
-        wifi_main.add_field(Textbox, name="ssid", label=_("Network name"),
+        wifi_main.add_field(Textbox, name="ssid", label=_("SSID"),
                             nuci_path="uci.wireless.@wifi-iface[0].ssid",
                             validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
@@ -357,8 +362,12 @@ class SystemPasswordHandler(BaseConfigHandler):
         system_pw_main = system_pw_form.add_section(name="set_password",
                                                     title=_("Advanced administration"),
                                                     description=_(
-                                                        "To access the advanced administration, you must set root user's password. "
-                                                        "When the password is set, follow the link below."))
+            "In order to access the advanced configuration possibilities which are not present "
+            "here in this simple configuration interface, you have to set the root user password. "
+            "If you don't intend to change these advanced settings, please do not set this password "
+            "at all. (The advanced config can be managed either through the "
+            "<a href=\"http://%(ip)s:%(port)d/\">luci web interface</a> or over ssh")
+                    % {'ip': bottle.request.get_header('host'), 'port': 8080})
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True)
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
