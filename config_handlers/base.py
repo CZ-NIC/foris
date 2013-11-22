@@ -57,10 +57,14 @@ class PasswordHandler(BaseConfigHandler):
     """
     Setting the password
     """
+    
+    # _("Password") - for translation
+    userfriendly_title = "Password"
+    
     def get_form(self):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
-        pw_main = pw_form.add_section(name="set_password", title=_("Password"),
+        pw_main = pw_form.add_section(name="set_password", title=_(self.userfriendly_title),
                                       description=_("Set your password for this administation site."
                                                     " The password must be at least 6 charaters long."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
@@ -88,10 +92,13 @@ class PasswordHandler(BaseConfigHandler):
 
 
 class WanHandler(BaseConfigHandler):
+    # _("WAN") - for translation
+    userfriendly_title = "WAN"
+    
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
-        wan_main = wan_form.add_section(name="set_wan", title=_("WAN"),
+        wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
                                         description=_("Here you specify your WAN port settings. "
                 "Usualy you can leave this options untouched unless explicitly specified otherwise by your "
                 "internet service provider. And even in that case change it only if Turris is connected "
@@ -203,6 +210,9 @@ class WanHandler(BaseConfigHandler):
 
 
 class TimeHandler(BaseConfigHandler):
+    # _("Time") - for translation
+    userfriendly_title = "Time"
+    
     def _action_ntp_update(self):
         return client.ntp_update()
 
@@ -223,7 +233,7 @@ class TimeHandler(BaseConfigHandler):
 
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
-        time_main = time_form.add_section(name="set_time", title=_("Time"),
+        time_main = time_form.add_section(name="set_time", title=_(self.userfriendly_title),
                                           description=_("TODO: write desc (time setup)"))
 
         time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
@@ -239,9 +249,12 @@ class TimeHandler(BaseConfigHandler):
 
 
 class LanHandler(BaseConfigHandler):
+    # _("LAN") - for translation
+    userfriendly_title = "LAN"
+    
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
-        lan_main = lan_form.add_section(name="set_lan", title=_("LAN"),
+        lan_main = lan_form.add_section(name="set_lan", title=_(self.userfriendly_title),
                                         description=_("This section specifies the settings of the local network. "
             "Under normal conditions you can keep this settings as they are. Moreover, changing the router IP "
             "address has one caveat. If you do it the computers in local network will not obtain new addresses "
@@ -294,9 +307,12 @@ class LanHandler(BaseConfigHandler):
 
 
 class WifiHandler(BaseConfigHandler):
+    # _("WiFi") - for translation
+    userfriendly_title = "WiFi"
+    
     def get_form(self):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
-        wifi_main = wifi_form.add_section(name="set_wifi", title=_("WiFi"),
+        wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
                                           description=_(
             "If you want to make from your router a WiFi access point, enable the WiFi here and "
             "fill in an SSID (the name of the wifi access point) and the corresponding password. "
@@ -357,10 +373,14 @@ class SystemPasswordHandler(BaseConfigHandler):
     """
     Setting the password of a system user (currently only root's pw).
     """
+    
+    # _("Advanced administration") - for translation
+    userfriendly_title = "Advanced administration"
+    
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
         system_pw_main = system_pw_form.add_section(name="set_password",
-                                                    title=_("Advanced administration"),
+                                                    title=_(self.userfriendly_title),
                                                     description=_(
             "In order to access the advanced configuration possibilities which are not present "
             "here in this simple configuration interface, you have to set the root user password. "

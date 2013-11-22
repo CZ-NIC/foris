@@ -3,6 +3,7 @@ import bottle
 from config_handlers import *
 import logging
 from utils import login_required
+from collections import OrderedDict
 
 
 logger = logging.getLogger("admin")
@@ -13,13 +14,20 @@ app = Bottle()
 
 # names of handlers used in their URL
 # use dash-separated names, underscores in URL are ugly
-handler_map = {
-    'password': PasswordHandler,
-    'wan': WanHandler,
-    'lan': LanHandler,
-    'wifi': WifiHandler,
-    'system-password': SystemPasswordHandler,
-}
+
+
+class HandlerMapItems(OrderedDict):
+    def display_names(self):
+        return [{'slug': k, 'name': self[k].userfriendly_title} for k in self.keys()]
+
+
+handler_map = HandlerMapItems((
+    ('password', PasswordHandler),
+    ('wan', WanHandler),
+    ('lan', LanHandler),
+    ('wifi', WifiHandler),
+    ('system-password', SystemPasswordHandler),
+))
 
 
 def get_handler(handler_name):
@@ -34,14 +42,18 @@ def render(form, **kwargs):
     first_section = form.sections[0]
     title = first_section.title
     description = first_section.description
+    with open("/root/palilog", "w") as f:
+        for x in handler_map.keys():
+            f.write(x + ": " + handler_map[x].userfriendly_title)
+    
     return template("config/main", form=form, title=title, description=description,
-                    handlers=handler_map.keys(), **kwargs)
+                    handlers=handler_map.display_names(), **kwargs)
 
 
 @app.route("/", name="config_index")
 @login_required
 def index():
-    return template("config/index", handlers=handler_map.keys())
+    return template("config/index", handlers=handler_map.display_names())
 
 
 @app.route("/<handler_name:re:.+>/", name="config_handler")

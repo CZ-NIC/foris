@@ -12,10 +12,10 @@
     <ul class="tabs">
         %for handler in handlers:
             <li \\
-%if defined("active_handler_key") and handler == active_handler_key:
+%if defined("active_handler_key") and handler['slug'] == active_handler_key:
 class="active" \\
 %end\\
-><a href="{{ url("config_handler", handler_name=handler) }}">{{ handler }}</a></li>
+><a href="{{ url("config_handler", handler_name=handler['slug']) }}">{{ _(handler['name']) }}</a></li>
         %end
     </ul>
 %end
