@@ -58,7 +58,7 @@ class PasswordHandler(BaseConfigHandler):
     Setting the password
     """
     
-    # _("Password") - for translation
+    # {{ _("Password") }} - for translation
     userfriendly_title = "Password"
     
     def get_form(self):
@@ -92,7 +92,7 @@ class PasswordHandler(BaseConfigHandler):
 
 
 class WanHandler(BaseConfigHandler):
-    # _("WAN") - for translation
+    # {{ _("WAN") }} - for translation
     userfriendly_title = "WAN"
     
     def get_form(self):
@@ -210,7 +210,7 @@ class WanHandler(BaseConfigHandler):
 
 
 class TimeHandler(BaseConfigHandler):
-    # _("Time") - for translation
+    # {{ _("Time") }} - for translation
     userfriendly_title = "Time"
     
     def _action_ntp_update(self):
@@ -234,7 +234,11 @@ class TimeHandler(BaseConfigHandler):
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
         time_main = time_form.add_section(name="set_time", title=_(self.userfriendly_title),
-                                          description=_("TODO: write desc (time setup)"))
+                                          description=_(
+            "We could not synchronize the time with our timeserver, probably due to a loss of connection. "
+            "It is necessary for the router to have the exact time in order to function properly. Please, "
+            "synchronize it with your computer's time, or set it manually."
+            ))
 
         time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
                             nuci_preproc=lambda v: v.local)
@@ -249,7 +253,7 @@ class TimeHandler(BaseConfigHandler):
 
 
 class LanHandler(BaseConfigHandler):
-    # _("LAN") - for translation
+    # {{ _("LAN") }} - for translation
     userfriendly_title = "LAN"
     
     def get_form(self):
@@ -307,7 +311,7 @@ class LanHandler(BaseConfigHandler):
 
 
 class WifiHandler(BaseConfigHandler):
-    # _("WiFi") - for translation
+    # {{ _("WiFi") }} - for translation
     userfriendly_title = "WiFi"
     
     def get_form(self):
@@ -374,7 +378,7 @@ class SystemPasswordHandler(BaseConfigHandler):
     Setting the password of a system user (currently only root's pw).
     """
     
-    # _("Advanced administration") - for translation
+    # {{ _("Advanced administration") }} - for translation
     userfriendly_title = "Advanced administration"
     
     def get_form(self):

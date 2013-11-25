@@ -16,7 +16,7 @@
     <div id="updater-fail">
         <img src="{{ static("img/fail.png") }}" alt="{{ _("Error") }}"><br>
         <p>
-            {{ _("Firmware update has failed due to a connection or an installation error. TODO: what to do now? Check your cable connection...") }}
+            {{ _("Firmware update has failed due to a connection or an installation error. You should check your cable connection before proceeding to the next step. But do not worry much about the update as the router will run the updater regularly.") }}
         </p>
         <a class="button-next" href="{{ url("wizard_step", number=5) }}">{{ _("Next") }}</a>
     </div>

@@ -1,9 +1,9 @@
 %rebase wizard/base **locals()
 
 %if form:
-    <form class="wizard-form" action="{{ request.fullpath }}" method="post">
+    <form class="wizard-form" action="{{ url("wizard_step", number=3) }}" method="post">
         <h1>{{ first_title }}</h1>
-        <p>{{ first_description }}</p>
+        <p class="wizard-description">{{ first_description }}</p>
         <div class="form-fields">
         %for field in form.active_fields:
             %if field.hidden:
