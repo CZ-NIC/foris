@@ -48,7 +48,7 @@ def ntp_update():
     try:
         dispatch(element)
         return True
-    except RPCError:
+    except (RPCError, TimeoutExpiredError):
         # TODO: maybe be more precise and determine what happened
         return False
 
@@ -62,7 +62,7 @@ def set_time(time_string):
     try:
         dispatch(time.Time.rpc_set_iso8601(time_string))
         return True
-    except RPCError:
+    except (RPCError, TimeoutExpiredError):
         return False
 
 
@@ -76,7 +76,7 @@ def set_password(user, password):
     try:
         dispatch(password_module.Password(user, password).rpc_set)
         return True
-    except RPCError:
+    except (RPCError, TimeoutExpiredError):
         return False
 
 
@@ -86,7 +86,7 @@ def check_updates():
     try:
         dispatch(element)
         return True
-    except RPCError:
+    except (RPCError, TimeoutExpiredError):
         return False
 
 
