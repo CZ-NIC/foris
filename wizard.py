@@ -4,6 +4,7 @@ import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
 from nuci import client, filters
+from nuci.configurator import add_config_update, commit
 from nuci.modules.uci_raw import Option, Section, Config, Uci
 from utils import login_required
 from utils.routing import reverse
@@ -22,9 +23,32 @@ class WizardStepMixin(object):
     def allow_next_step(self):
         if self.next_step_allowed is not None:
             session = request.environ['beaker.session']
-            session[WizardStepMixin.next_step_allowed_key] = self.next_step_allowed
-            session.save()
-
+            # key in session on the following line should be always
+            # set except in the case of the very first start
+            session_max_step = session.get(WizardStepMixin.next_step_allowed_key, 0)
+            
+            if self.next_step_allowed > session_max_step:
+                # update session variable
+                session[WizardStepMixin.next_step_allowed_key] = self.next_step_allowed
+                session.save()
+                # and also uci config
+                uci = Uci()
+                foris = Config("foris")
+                uci.add(foris)
+                wizard = Section("wizard", "config")
+                foris.add(wizard)
+                wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
+                
+                return ("edit_config", uci)
+            else:
+                return ("none",)
+    
+    def nuci_write_next_step(self):
+        nuci_write = self.allow_next_step()
+        if nuci_write[0] == "edit_config" and len(nuci_write) == 2:
+            add_config_update(nuci_write[1])
+            commit()
+    
     def default_template(self, **kwargs):
         return template(self.template, stepname=self.name, **kwargs)
 
@@ -45,17 +69,18 @@ class WizardStepMixin(object):
     def save(self):
         sup = super(WizardStepMixin, self)
         if hasattr(sup, 'save'):
-            self.allow_next_step()
+            # self.allow_next_step()
 
             def update_allowed_step_max_cb(data):
-                uci = Uci()
-                foris = Config("foris")
-                uci.add(foris)
-                wizard = Section("wizard", "config")
-                foris.add(wizard)
-                wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
+            #    uci = Uci()
+            #    foris = Config("foris")
+            #    uci.add(foris)
+            #    wizard = Section("wizard", "config")
+            #    foris.add(wizard)
+            #    wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
+                return self.allow_next_step()
 
-                return "edit_config", uci
+            #    return "edit_config", uci
 
             return sup.save(extra_callbacks=[update_allowed_step_max_cb])
 
@@ -87,7 +112,7 @@ class WizardStep3(WizardStepMixin, TimeHandler):
     def _action_ntp_update(self):
         success = TimeHandler._action_ntp_update(self)
         if success:
-            self.allow_next_step()
+            self.nuci_write_next_step() # allow the next step and save it to uci
         return success
 
     def render(self, **kwargs):
@@ -108,7 +133,7 @@ class WizardStep4(WizardStepMixin, BaseConfigHandler):
     def _action_run_updater(self):
         # this is called by XHR, so we are definitely unable to
         # get past this step with disabled JS
-        self.allow_next_step()
+        self.nuci_write_next_step() # allow the next step and save it to uci
         return client.check_updates()
 
     def _action_updater_status(self):
