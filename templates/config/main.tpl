@@ -1,6 +1,6 @@
 %rebase config/base **locals()
 
-<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off">
+<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
     <p class="config-description">{{! description }}</p>
     %for field in form.active_fields:
         %if field.hidden:

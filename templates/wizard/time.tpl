@@ -1,7 +1,7 @@
 %rebase wizard/base **locals()
 
 %if form:
-    <form class="wizard-form" action="{{ url("wizard_step", number=3) }}" method="post">
+    <form class="wizard-form" action="{{ url("wizard_step", number=3) }}" method="post" {{! form.render_html_data() }}>
         <h1>{{ first_title }}</h1>
         <p class="wizard-description">{{ first_description }}</p>
         <div class="form-fields">

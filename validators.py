@@ -84,3 +84,17 @@ class FieldsEqual(Validator):
     def __init__(self, field1, field2, message):
         Validator.__init__(self, message, lambda data: data[field1] == data[field2])
         self.js_validator_params = PARAM_DELIMITER.join([field1, field2, message])
+
+
+def validators_as_data_dict(validators):
+    data = {}
+    data_validators = []
+    for v in validators:
+        if v.js_validator:
+            data_validators.append("%s" % v.js_validator)
+            params = v.js_validator_params
+            if params:
+                data['validator-%s' % v.js_validator] = params
+    if data_validators:
+        data['validators'] = " ".join(data_validators)
+    return data

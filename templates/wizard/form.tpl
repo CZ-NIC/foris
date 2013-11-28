@@ -1,6 +1,6 @@
 %rebase wizard/base **locals()
 
-<form id="main-form" class="wizard-form" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_js_validators_params() }}>
+<form id="main-form" class="wizard-form" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
     <h1>{{ first_title }}</h1>
     <p class="wizard-description">{{ first_description }}</p>
     %for field in form.active_fields:

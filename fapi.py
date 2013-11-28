@@ -1,5 +1,5 @@
 from collections import defaultdict, OrderedDict
-from form import Dropdown, Form, Checkbox, websafe, Hidden
+from form import Dropdown, Form, Checkbox, websafe, Hidden, AttributeList
 from nuci import client
 import logging
 from nuci.configurator import add_config_update, commit
@@ -204,17 +204,11 @@ class ForisForm(ForisFormElement):
                 add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
-    
-    def render_js_validators_params(self):
-        fparams = []
-        funcs = []
-        for val in self.validators:
-            if val.js_validator:
-                funcs.append(val.js_validator)
-                fparams.append("data-validator-" + val.js_validator + "=\""
-                               + val.js_validator_params + "\"")
-        fparams.append("data-validators=\"" + " ".join(funcs) + "\"")
-        return " ".join(fparams)
+
+    def render_html_data(self):
+        data = validators_module.validators_as_data_dict(self.validators)
+        # prefix dict keys with "data-" and convert the dict to string of HTML attributes
+        return unicode(AttributeList({"data-%s" % k: v for k, v in data.iteritems()}))
 
 
 class Section(ForisFormElement):
@@ -314,17 +308,7 @@ class Field(ForisFormElement):
         return classes
 
     def _generate_html_data(self):
-        data = {}
-        validators = []
-        for v in self.validators:
-            if v.js_validator:
-                validators.append("%s" % v.js_validator)
-                params = v.js_validator_params
-                if params:
-                    data['validator-%s' % v.js_validator] = params
-        if validators:
-            data['validators'] = " ".join(validators)
-        return data
+        return validators_module.validators_as_data_dict(self.validators)
 
     @property
     def field(self):
