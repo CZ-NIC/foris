@@ -21,11 +21,12 @@ class WizardStepMixin(object):
     # wizard step name
 
     def allow_next_step(self):
+        # this function can be used as a callback for a form
         if self.next_step_allowed is not None:
             session = request.environ['beaker.session']
             # key in session on the following line should be always
             # set except in the case of the very first start
-            session_max_step = session.get(WizardStepMixin.next_step_allowed_key, 0)
+            session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
             
             if self.next_step_allowed > session_max_step:
                 # update session variable
@@ -70,18 +71,10 @@ class WizardStepMixin(object):
         sup = super(WizardStepMixin, self)
         if hasattr(sup, 'save'):
             # self.allow_next_step()
-
+            
             def update_allowed_step_max_cb(data):
-            #    uci = Uci()
-            #    foris = Config("foris")
-            #    uci.add(foris)
-            #    wizard = Section("wizard", "config")
-            #    foris.add(wizard)
-            #    wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
                 return self.allow_next_step()
-
-            #    return "edit_config", uci
-
+            
             return sup.save(extra_callbacks=[update_allowed_step_max_cb])
 
 

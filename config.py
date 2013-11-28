@@ -42,9 +42,6 @@ def render(form, **kwargs):
     first_section = form.sections[0]
     title = first_section.title
     description = first_section.description
-    with open("/root/palilog", "w") as f:
-        for x in handler_map.keys():
-            f.write(x + ": " + handler_map[x].userfriendly_title)
     
     return template("config/main", form=form, title=title, description=description,
                     handlers=handler_map.display_names(), **kwargs)
