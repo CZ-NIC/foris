@@ -119,9 +119,6 @@ body, html
 
 /* -------------------------------------------------------------------------
 /* Common config interface elements
-.field-hint
-  vertical-align: middle
-
 .button-next
   @extend .button-arrow-right
   float: right
@@ -176,15 +173,16 @@ input[type="checkbox"]
   width: auto
 
 .wizard-form, .config-form
-  div
+  & > div
     padding: 0.25em 0
+
+  .field-hint, .field-loading, .field-validation-fail, .field-validation-pass
+    vertical-align: middle
 
   .field-validation-pass, .field-validation-fail
     display: inline-block
     height: 22px
     margin-left: 5px
-    padding: 0px
-    vertical-align: middle
     width: 22px
 
   .field-validation-pass
