@@ -514,8 +514,8 @@ class Checkbox(Input):
 
         if self.checked:
             attrs['checked'] = 'checked'
-        return '<div class="checkbox-wrapper"><input type="hidden" '\
-            'name="%s" value="0"><input %s/></div>' % (attrs['name'], attrs)
+        return '<input type="hidden" name="%s" value="0">' \
+               '<input %s/>' % (attrs['name'], attrs)
     
     def set_value(self, value):
         self.checked = bool(value)
