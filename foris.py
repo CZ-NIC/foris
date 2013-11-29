@@ -29,6 +29,7 @@ bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
 bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
 
+
 def login_redirect(step_num):
     NUM_WIZZARD_STEPS = 7
     if step_num >= NUM_WIZZARD_STEPS:
@@ -64,8 +65,10 @@ def login():
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
         session.save()
-        
-        bottle.redirect("/")
+        next = bottle.request.POST.get("next")
+        if next:
+            bottle.redirect(next)
+
     bottle.redirect("/")
 
 

@@ -6,6 +6,9 @@
         <a href="{{ url("logout") }}">{{ _("Log out") }}</a>
     %else:
         <form action="{{ request.fullpath }}" method="POST">
+        %if request.GET.get("next"):
+            <input type="hidden" name="next" value="{{ request.GET['next'] }}">
+        %end
             <label for="field-password">{{ _("Password") }}</label>
             <input id="field-password" type="password" name="password" placeholder="{{ _("Password") }}">
             <button class="button" type="submit">{{ _("Log in") }}</button>
