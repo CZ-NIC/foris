@@ -189,7 +189,7 @@ input, textarea, select
   div
     padding: 0.25em 0
 
-  .field-valid, .field-invalid
+  .field-validation-pass, .field-validation-fail
     display: inline-block
     height: 22px
     margin-left: 5px
@@ -197,12 +197,12 @@ input, textarea, select
     vertical-align: middle
     width: 22px
 
-  .field-valid
+  .field-validation-pass
     background: url('../img/icon-success.png') no-repeat
     border-color: $info-color
     color: $info-color
 
-  .field-invalid
+  .field-validation-fail
     background: url('../img/icon-fail.png') no-repeat
     border-color: $error-color
     color: $error-color
