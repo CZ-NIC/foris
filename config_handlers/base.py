@@ -131,7 +131,11 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.gateway",
                            validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)
-        
+        wan_main.add_field(Textbox, name="dns", label=_("DNS server"),
+                           nuci_path="uci.network.wan.dns",
+                           required=True, validators=validators.IPv4())\
+            .requires("proto", WAN_STATIC)
+
         # static ipv6
         wan_main.add_field(Checkbox, name="static_ipv6", label=_("Use IPv6"),
                            nuci_path="uci.network.wan.ip6addr",
