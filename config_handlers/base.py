@@ -1,5 +1,5 @@
 from foris import gettext as _
-from form import Password, Textbox, Dropdown, Checkbox, Hidden
+from form import Password, Textbox, Dropdown, Checkbox, Hidden, Radio
 import fapi
 from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
@@ -339,11 +339,27 @@ class WifiHandler(BaseConfigHandler):
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
                             hint=_("If set, network is not visible when scanning for available networks."))\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Dropdown, name="channel", label=_("Network channel"), default="1",
-                            args=((str(i), str(i)) for i in range(1, 13)),
-                            nuci_path="uci.wireless.radio0.channel")\
+
+        def wifi_mode_preproc(channel):
+            if int(channel.value) < 12:
+                return "2g4"
+            return "5g"
+
+        wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2.4 GHz",
+                            args=(("2g4", "2.4 GHz"), ("5g", "5 GHz")),
+                            nuci_path="uci.wireless.radio0.channel", nuci_preproc=wifi_mode_preproc)\
             .requires("wifi_enabled", True)
-        wifi_main.add_field(Textbox, name="key", label=_("Network password"),
+        # 2.4G channels
+        wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"), default="1",
+                            args=((str(i), str(i)) for i in range(1, 12)),
+                            nuci_path="uci.wireless.radio0.channel")\
+            .requires("wifi_mode", "2g4")
+        # 5G channels
+        wifi_main.add_field(Dropdown, name="channel5g", label=_("Network channel"), default="36",
+                            args=((str(i), str(i)) for i in range(36, 50, 4)),
+                            nuci_path="uci.wireless.radio0.channel")\
+            .requires("wifi_mode", "5g")
+        wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             hint=_("WPA2 preshared key, that is required to connect to the network."))\
             .requires("wifi_enabled", True)
@@ -365,8 +381,15 @@ class WifiHandler(BaseConfigHandler):
                 iface.add(Option("hidden", data['ssid_hidden']))
                 iface.add(Option("encryption", "psk2+tkip+aes"))  # TODO: find in docs
                 iface.add(Option("key", data['key']))
+                if data['wifi_mode'] == "2g4":
+                    channel = data['channel2g4']
+                    hwmode = "11ng"
+                else:
+                    channel = data['channel5g']
+                    hwmode = "11ag"
                 # channel is in wifi-device section
-                device.add(Option("channel", data['channel']))
+                device.add(Option("hwmode", hwmode))
+                device.add(Option("channel", channel))
             else:
                 pass  # wifi disabled
 
