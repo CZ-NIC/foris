@@ -466,21 +466,24 @@ class Radio(Input):
         self.args = args
         super(Radio, self).__init__(name, *validators, **attrs)
 
+    def get_default_id(self):
+        return ID_TEMPLATE % self.name + '_%s'
+
     def render(self):
-        x = '<span>'
+        x = ''
         for arg in self.args:
             if isinstance(arg, (tuple, list)):
                 value, desc = arg
             else:
                 value, desc = arg, arg
             attrs = self.attrs.copy()
+            attrs['id'] = self.attrs['id'] % safestr(value or "")
             attrs['name'] = self.name
             attrs['type'] = 'radio'
             attrs['value'] = value
             if self.value == value:
                 attrs['checked'] = 'checked'
-            x += '<input %s/> %s' % (attrs, websafe(desc))
-        x += '</span>'
+            x += '<label><input %s/> %s</label>' % (attrs, websafe(desc))
         return x
 
 
