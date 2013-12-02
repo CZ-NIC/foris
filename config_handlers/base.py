@@ -109,7 +109,7 @@ class WanHandler(BaseConfigHandler):
         WAN_PPPOE = "pppoe"
         WAN_OPTIONS = (
             (WAN_DHCP, _("DHCP")),
-            (WAN_STATIC, _("Static")),
+            (WAN_STATIC, _("Static IP address")),
             (WAN_PPPOE, _("PPPoE")),
         )
         
@@ -166,7 +166,7 @@ class WanHandler(BaseConfigHandler):
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
         
-        wan_main.add_field(Checkbox, name="custom_mac", label=_("custom MAC address"),
+        wan_main.add_field(Checkbox, name="custom_mac", label=_("Custom MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            nuci_preproc=lambda val: bool(val.value))
         
@@ -315,20 +315,19 @@ class LanHandler(BaseConfigHandler):
 
 
 class WifiHandler(BaseConfigHandler):
-    # {{ _("WiFi") }} - for translation
-    userfriendly_title = "WiFi"
+    # {{ _("Wi-Fi") }} - for translation
+    userfriendly_title = "Wi-Fi"
     
     def get_form(self):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
                                           description=_(
-            "If you want to make from your router a WiFi access point, enable the WiFi here and "
+            "If you want to make from your router a Wi-Fi access point, enable the WiFi here and "
             "fill in an SSID (the name of the wifi access point) and the corresponding password. "
-            "Then choose a channel number which is not already used by other routers in "
-            "your neighbourhood."))
+            "To set up a mobile device, you can scan the QR code shown next to the form."))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
-        wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable WiFi"), default=True,
+        wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
                             nuci_path="uci.wireless.@wifi-iface[0].disabled",
                             nuci_preproc=lambda val: not bool(int(val.value)))
         wifi_main.add_field(Textbox, name="ssid", label=_("SSID"),
