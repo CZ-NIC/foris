@@ -271,6 +271,42 @@ ForisWizard.timeUpdateCallback = function() {
     window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
 };
 
+ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
+    var codeElement = $("#wifi-qr");
+    codeElement.empty();
+
+    if (!$("#field-wifi_enabled_1").prop("checked"))
+        return;
+
+    if (hidden)
+        hidden = 'H:true';
+
+    codeElement.empty().qrcode({
+        width: 220,
+        height: 220,
+        text: 'WIFI:T:WPA;S:"' + ssid + '";P:"' + password + '";' + hidden + ';'
+    });
+};
+
+ForisWizard.initWiFiQR = function () {
+    // NOTE: make sure that jquery.qrcode is loaded on the page that's using
+    // this method. Alternatively, it could be loaded using $.getScript() here.
+
+    var doRender = function () {
+        doRender.debounceTimeout = null;
+        ForisWizard.updateWiFiQR(
+            $("#field-ssid").val(),
+            $("#field-key").val(),
+            $("#field-ssid_hidden_1").prop("checked"));
+    };
+    doRender();
+
+    $(document).on("change keyup", "#field-ssid, #field-key, #field-ssid_hidden_1", function () {
+        clearTimeout(doRender.debounceTimeout);
+        doRender.debounceTimeout = setTimeout(doRender, 500);
+    });
+};
+
 
 $(document).ready(function(){
     ForisWizard.initialize();

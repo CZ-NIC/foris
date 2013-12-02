@@ -158,6 +158,7 @@ class WizardStep6(WizardStepMixin, WifiHandler):
     """
     WiFi settings.
     """
+    template = "wizard/wifi"
     name = "wifi"
     next_step_allowed = 7
 
