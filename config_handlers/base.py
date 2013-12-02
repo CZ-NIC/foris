@@ -344,7 +344,7 @@ class WifiHandler(BaseConfigHandler):
                 return "2g4"
             return "5g"
 
-        wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2.4 GHz",
+        wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2g4",
                             args=(("2g4", "2.4 GHz"), ("5g", "5 GHz")),
                             nuci_path="uci.wireless.radio0.channel", nuci_preproc=wifi_mode_preproc)\
             .requires("wifi_enabled", True)
