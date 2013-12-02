@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-25 13:46+0100\n"
+"POT-Creation-Date: 2013-11-29 16:42+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -16,8 +16,93 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Log out"
+msgstr "Odhlásit se"
+
 msgid "Password"
 msgstr "Heslo"
+
+msgid "Log in"
+msgstr "Přihlásit se"
+
+msgid "Turris router administration interface"
+msgstr "Administrační rozhraní routeru Turris"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid ""
+"Welcome to the Turris administration site. Please, choose an above config "
+"section you wish to change."
+msgstr ""
+"Vítejte v administraci routeru Turris. Prosím, vyberte si sekci, kterou "
+"chcete změnit z možností uvedených výše."
+
+msgid "Discard changes"
+msgstr "Zahodit změny"
+
+msgid "Save changes"
+msgstr "Uložit změny"
+
+msgid "Connection test and check for new updates."
+msgstr "Test připojení a kontrola aktualizací"
+
+msgid "Loading..."
+msgstr "Načítání..."
+
+msgid "Check of available updates in progress."
+msgstr "Probíhá kontrola aktualizací."
+
+msgid "One moment, please..."
+msgstr "Chvilku strpení..."
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Firmware update has succeeded, you can proceed to next step."
+msgstr ""
+"Aktualizace firmwaru proběhla v pořádku, můžete postoupit k dalšímu kroku."
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid ""
+"Firmware update has failed due to a connection or an installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Aktualizace se nepodařilo stáhnout nebo došlo k chybě. Prosím, zkontrolujte "
+"si jestli máte správné zapojený kabel před tím, než se posunete na další "
+"krok. Když bude router připojený k internetu, proběhne update automaticky, "
+"takže se o to nemusíte aktivně starat."
+
+msgid "Synchronize with your computer clock"
+msgstr "Synchronizovat s časem ve Vašem počítači"
+
+msgid "Set time manually"
+msgstr "Nastavit čas ručně"
+
+msgid "Synchronization successful."
+msgstr "Synchronizace proběhla úspěšně."
+
+msgid "Time settings"
+msgstr "Nastavení času"
+
+msgid "Synchronizing router time with a timeserver."
+msgstr "Probíhá synchronizace času s časovým servrem."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
+
+msgid "The end!"
+msgstr "A to je konec!"
 
 msgid ""
 "Set your password for this administation site. The password must be at least "
@@ -41,16 +126,16 @@ msgid ""
 "provider. And even in that case change it only if Turris is connected "
 "directly to your ISP and not through a cable or DSL modem."
 msgstr ""
-"Tady specifikujete nastavení WAN portu. Měnit toto nastavení musíte jen v "
-"případě když to Váš poskytovatel internetu vyžaduje pro fungování připojení. "
-"A to jen když je Turris router připojen přímo a ne přes modem (kabelový nebo "
-"DSL), který máte od svého poskytovatele."
+"Na této stránce specifikujete nastavení WAN portu. Toto nastavení je nutné "
+"měnit jen v případě, že to po Vás vyžaduje Váš poskytovatel připojení. "
+"Pokud připojení k internetu zprostředkovává kabelový nebo DSL modem, toto "
+"nastavení pravděpodobně nebude nutné měnit."
 
 msgid "DHCP"
 msgstr "DHCP"
 
-msgid "Static"
-msgstr "Statická"
+msgid "Static IP address"
+msgstr "Statická IP adresa"
 
 msgid "PPPoE"
 msgstr "PPPoE"
@@ -66,6 +151,9 @@ msgstr "Maska podsítě"
 
 msgid "Gateway"
 msgstr "Brána"
+
+msgid "DNS server"
+msgstr "DNS server"
 
 msgid "Use IPv6"
 msgstr "Podpora IPv6"
@@ -88,8 +176,8 @@ msgstr "PAP/CHAP heslo"
 msgid "Enable IPv6"
 msgstr "Zapnout IPv6"
 
-msgid "custom MAC address"
-msgstr "uživatelská MAC adresa"
+msgid "Custom MAC address"
+msgstr "Vlastní MAC adresa"
 
 msgid "MAC address"
 msgstr "MAC adresa"
@@ -137,22 +225,22 @@ msgstr "DHCP začátek"
 msgid "DHCP max leases"
 msgstr "DHCP maximální počet"
 
-msgid "WiFi"
-msgstr "WiFi"
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
 
 msgid ""
-"If you want to make from your router a WiFi access point, enable the WiFi "
+"If you want to make from your router a Wi-Fi access point, enable the WiFi "
 "here and fill in an SSID (the name of the wifi access point) and the "
-"corresponding password. Then choose a channel number which is not already "
-"used by other routers in your neighbourhood."
+"corresponding password. To set up a mobile device, you can scan the QR code "
+"shown next to the form."
 msgstr ""
-"Pokud chete používat tento router pro připájení dalších WiFi zařízení k "
-"internetu, povolte WiFi a zvolte si SSID (název přístupového bodu) a "
-"příslušné heslo. Dále vyberte ideálně takový kanál, který ve Vašem okolí "
-"nepoužívá jiný WiFi přístupový bod."
+"Pokud chcete používat tento router pro připojování dalších Wi-Fi zařízení k "
+"internetu, povolte v následujícím formuláři Wi-Fi a zvolte si SSID (název "
+"přístupového bodu) a příslušné heslo.<br><br>Mobilní zařízení můžete "
+"jednoduše nastavit načtením QR kódu zobrazeného vedle formuláře."
 
-msgid "Enable WiFi"
-msgstr "Povolit WiFi"
+msgid "Enable Wi-Fi"
+msgstr "Povolit Wi-Fi"
 
 msgid "SSID"
 msgstr "SSID"
@@ -163,11 +251,14 @@ msgstr "Skrýt SSID"
 msgid "If set, network is not visible when scanning for available networks."
 msgstr "Je-li zaškrtnuto, síť se neukáže při hledání přístupných sítí."
 
+msgid "Wi-Fi mode"
+msgstr "Režim Wi-Fi"
+
 msgid "Network channel"
 msgstr "Kanál"
 
 msgid "Network password"
-msgstr "WiFi Heslo"
+msgstr "Wi-Fi heslo"
 
 msgid "WPA2 preshared key, that is required to connect to the network."
 msgstr "WPA2 klíč, který se bude používat na připojení k této síti."
@@ -190,91 +281,6 @@ msgstr ""
 "luci</a> nebo skrz ssh. Pokud neplánujete měnit pokročilá nastavení, vůbec "
 "nenastavujte tohle heslo."
 
-msgid "Turris router administration interface"
-msgstr "Administrační rozhraní routeru Turris"
-
-msgid "Project:Turris"
-msgstr "Project:Turris"
-
-msgid "Log out"
-msgstr "Odhlásit se"
-
-msgid "Log in"
-msgstr "Přihlásit se"
-
-msgid "Next"
-msgstr "Další"
-
-msgid "Synchronize with your computer clock"
-msgstr "Synchronizovat s časem ve Vašem počítači"
-
-msgid "Set time manually"
-msgstr "Nastavit čas ručně"
-
-msgid "Synchronization successful."
-msgstr "Synchronizace proběhla úspěšně."
-
-msgid "Time settings"
-msgstr "Nastavení času"
-
-msgid "Loading..."
-msgstr "Načítání..."
-
-msgid "Synchronizing router time with a timeserver."
-msgstr "Probíhá synchronizace času s časovým servrem."
-
-msgid "One moment, please..."
-msgstr "Chvilku strpení..."
-
-msgid "Done"
-msgstr "Hotovo"
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
-
-msgid "The end!"
-msgstr "A to je konec!"
-
-msgid "Connection test and check for new updates."
-msgstr "Test připojení a kontrola aktualizací"
-
-msgid "Check of available updates in progress."
-msgstr "Probíhá kontrola aktualizací."
-
-msgid "Firmware update has succeeded, you can proceed to next step."
-msgstr ""
-"Aktualizace firmwaru proběhla v pořádku, můžete postoupit k dalšímu kroku."
-
-msgid "Error"
-msgstr "Chyba"
-
-msgid ""
-"Firmware update has failed due to a connection or an installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"Aktualizace se nepodařilo stáhnout nebo došlo k chybě. Prosím, zkontrolujte "
-"si jestli máte správné zapojený kabel před tím, než se posunete na další krok. "
-"Když bude router připojený k internetu, proběhne update automaticky, takže se "
-"o to nemusíte aktivně starat."
-
-msgid "Settings"
-msgstr "Nastavení"
-
-msgid "Discard changes"
-msgstr "Zahodit změny"
-
-msgid "Save changes"
-msgstr "Uložit změny"
-
-msgid ""
-"Welcome to the Turris administration site. Please, choose an above config "
-"section you wish to change."
-msgstr ""
-"Vítejte v administraci routeru Turris. Prosím, vyberte si sekci, kterou "
-"chcete změnit z možností uvedených výše."
-
 #, python-format
 msgid ""
 "To finish the process of the router installation, fill in the following code "
@@ -283,4 +289,3 @@ msgid ""
 msgstr ""
 "Poslední strana, číslo je <strong>%s</strong>, musíte ho vyplnit na stránce "
 "EUKI."
-
