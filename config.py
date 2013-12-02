@@ -12,85 +12,110 @@ logger = logging.getLogger("admin")
 app = Bottle()
 
 
-# names of handlers used in their URL
-# use dash-separated names, underscores in URL are ugly
+class ConfigPageMixin(object):
+    template = "config/main"
+
+    def default_template(self, **kwargs):
+        return template(self.template, **kwargs)
+
+    def render(self, **kwargs):
+        # same premise as in wizard form - we are handling single-section ForisForm
+        form = self.form
+        first_section = form.sections[0]
+        title = first_section.title
+        description = first_section.description
+
+        return self.default_template(form=form, title=title, description=description, **kwargs)
 
 
-class HandlerMapItems(OrderedDict):
+class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
+    pass
+
+
+class WanConfigPage(ConfigPageMixin, WanHandler):
+    pass
+
+
+class LanConfigPage(ConfigPageMixin, LanHandler):
+    pass
+
+
+class WifiConfigPage(ConfigPageMixin, WifiHandler):
+    template = "config/wifi"
+
+
+class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
+    pass
+
+
+class ConfigPageMapItems(OrderedDict):
     def display_names(self):
         return [{'slug': k, 'name': self[k].userfriendly_title} for k in self.keys()]
 
 
-handler_map = HandlerMapItems((
-    ('password', PasswordHandler),
-    ('wan', WanHandler),
-    ('lan', LanHandler),
-    ('wifi', WifiHandler),
-    ('system-password', SystemPasswordHandler),
+# names of handlers used in their URL
+# use dash-separated names, underscores in URL are ugly
+config_page_map = ConfigPageMapItems((
+    ('password', PasswordConfigPage),
+    ('wan', WanConfigPage),
+    ('lan', LanConfigPage),
+    ('wifi', WifiConfigPage),
+    ('system-password', SystemPasswordConfigPage),
 ))
 
 
-def get_handler(handler_name):
-    Handler = handler_map.get(handler_name)
-    if Handler is None:
+def get_config_page(page_name):
+    ConfigPage = config_page_map.get(page_name)
+    if ConfigPage is None:
         raise bottle.HTTPError(404, "Unknown configuration page.")
-    return Handler
-
-
-def render(form, **kwargs):
-    # same premise as in wizard form - we are handling single-section ForisForm
-    first_section = form.sections[0]
-    title = first_section.title
-    description = first_section.description
-    
-    return template("config/main", form=form, title=title, description=description,
-                    handlers=handler_map.display_names(), **kwargs)
+    return ConfigPage
 
 
 @app.route("/", name="config_index")
 @login_required
 def index():
-    return template("config/index", handlers=handler_map.display_names())
+    return template("config/index", config_pages=config_page_map.display_names())
 
 
-@app.route("/<handler_name:re:.+>/", name="config_handler")
+@app.route("/<page_name:re:.+>/", name="config_page")
 @login_required
-def handler_get(handler_name):
-    Handler = get_handler(handler_name)
-    handler = Handler()
-    return render(handler.form, active_handler_key=handler_name)
+def config_page_get(page_name):
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage()
+    return config_page.render(config_pages=config_page_map.display_names(),
+                              active_config_page_key=page_name)
 
 
-@app.route("/<handler_name:re:.+>/", method="POST")
+@app.route("/<page_name:re:.+>/", method="POST")
 @login_required
-def handler_post(handler_name):
-    Handler = get_handler(handler_name)
-    handler = Handler(request.POST)
+def config_page_post(page_name):
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage(request.POST)
     if request.is_xhr:
         # only update is allowed
         logger.debug("ajax request")
         request.POST.pop("update", None)
-        return dict(html=render(handler.form, is_xhr=True))
+        return dict(html=config_page.render(is_xhr=True))
 
     try:
-        if handler.save():
+        if config_page.save():
             bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         pass
-    return render(handler.form, active_handler_key=handler_name)
+    return config_page.render(active_handler_key=page_name)
 
 
-@app.route("/<handler_name:re:.+>/ajax")
+@app.route("/<page_name:re:.+>/ajax")
 @login_required
-def config_ajax(handler_name):
+def config_ajax(page_name):
     action = request.GET.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
-    Handler = get_handler(handler_name)
-    handler = Handler()
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage()
     try:
-        result = handler.call_action(action)
+        result = config_page.call_action(action)
         return result
     except ValueError:
         raise bottle.HTTPError(404, "Unknown action.")

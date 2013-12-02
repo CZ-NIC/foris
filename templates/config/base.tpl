@@ -10,12 +10,12 @@
     <div id="config-content">
 
     <ul class="tabs">
-        %for handler in handlers:
+        %for config_page in config_pages:
             <li \\
-%if defined("active_handler_key") and handler['slug'] == active_handler_key:
+%if defined("active_config_page_key") and config_page['slug'] == active_config_page_key:
 class="active" \\
 %end\\
-><a href="{{ url("config_handler", handler_name=handler['slug']) }}">{{ _(handler['name']) }}</a></li>
+><a href="{{ url("config_page", page_name=config_page['slug']) }}">{{ _(config_page['name']) }}</a></li>
         %end
     </ul>
 %end
