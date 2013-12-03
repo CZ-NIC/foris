@@ -78,13 +78,15 @@ def index():
 @bottle.route("/", method="POST", name="login")
 def login():
     session = bottle.request.environ["beaker.session"]
+    next = bottle.request.POST.get("next")
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
         session.save()
-        next = bottle.request.POST.get("next")
         if next:
             bottle.redirect(next)
 
+    if next:
+        bottle.redirect("/?next=%s" % next)
     bottle.redirect("/")
 
 
