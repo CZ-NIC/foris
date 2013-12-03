@@ -1,6 +1,6 @@
 #!/bin/bash
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2013 CZ.NIC, z.s.p.o. <www.nic.cz>
+# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
