@@ -287,7 +287,7 @@ class LanHandler(BaseConfigHandler):
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
-                           hint="Also defines the range of assigned IP addresses.")
+                           hint=_("Also defines the range of assigned IP addresses."))
         lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
                            nuci_path="uci.dhcp.lan.ignore",
                            nuci_preproc=lambda val: not bool(int(val.value)), default=True)
@@ -430,16 +430,14 @@ class SystemPasswordHandler(BaseConfigHandler):
                                                     title=_(self.userfriendly_title),
                                                     description=_(
             "In order to access the advanced configuration possibilities which are not present "
-            "here in this simple configuration interface, you have to set the root user password. "
-            "If you don't intend to change these advanced settings, please do not set this password "
-            "at all. (The advanced config can be managed either through the "
-            "<a href=\"http://%(ip)s:%(port)d/\">luci web interface</a> or over ssh")
-                    % {'ip': bottle.request.get_header('host'), 'port': 8080})
+            "here, you must set the root user's password. The advanced configuration options can "
+            "be managed either through the <a href=\"http://%(ip)s:%(port)d/\">LuCI web interface"
+            "</a> or over SSH.") % {'ip': bottle.request.get_header('host'), 'port': 8080})
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=LenRange(6, 60))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                            _("Passwords do not equal.")))
+                                                            _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])

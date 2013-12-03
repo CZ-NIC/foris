@@ -24,7 +24,7 @@
         <script src="{{ static("js/contrib/html5.js") }}"></script>
     <![endif]-->
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
-    <script src="{{ static("js/wizard.min.js") }}"></script>
+    <script src="{{ static("js/wizard.js") }}"></script>
 </head>
 <body>
     <div id="page">

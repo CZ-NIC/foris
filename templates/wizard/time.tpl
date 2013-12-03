@@ -49,7 +49,7 @@
         <h1>{{ _("Time settings") }}</h1>
         <div id="time-progress" class="background-progress">
             <img src="{{ static("img/loader.gif") }}" alt="{{ _("Loading...") }}"><br>
-            {{ _("Synchronizing router time with a timeserver.") }}<br>
+            {{ _("Synchronizing router time with an internet time server.") }}<br>
             {{ _("One moment, please...")  }}
         </div>
 
