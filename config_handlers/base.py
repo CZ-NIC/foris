@@ -157,9 +157,9 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.ip6addr",
                            nuci_preproc=lambda val: bool(val.value))\
             .requires("proto", WAN_STATIC)
-        
         wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
-                           nuci_path="uci.network.wan.ip6addr")\
+                           nuci_path="uci.network.wan.ip6addr",
+                           required=True)\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
         wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
@@ -348,7 +348,7 @@ class WifiHandler(BaseConfigHandler):
                             nuci_preproc=lambda val: not bool(int(val.value)))
         wifi_main.add_field(Textbox, name="ssid", label=_("SSID"),
                             nuci_path="uci.wireless.@wifi-iface[0].ssid",
-                            validators=validators.LenRange(1, 32))\
+                            required=True, validators=validators.LenRange(1, 32))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
@@ -376,6 +376,7 @@ class WifiHandler(BaseConfigHandler):
             .requires("wifi_mode", "5g")
         wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
+                            required=True,
                             hint=_("WPA2 preshared key, that is required to connect to the network."))\
             .requires("wifi_enabled", True)
 
@@ -434,7 +435,8 @@ class SystemPasswordHandler(BaseConfigHandler):
             "at all. (The advanced config can be managed either through the "
             "<a href=\"http://%(ip)s:%(port)d/\">luci web interface</a> or over ssh")
                     % {'ip': bottle.request.get_header('host'), 'port': 8080})
-        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True)
+        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
+                                 validators=LenRange(6, 60))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
         system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
                                                             _("Passwords do not equal.")))
