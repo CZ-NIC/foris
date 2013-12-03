@@ -34,4 +34,3 @@
     %end
     <button class="button-next button-arrow-right" type="submit" name="send">{{ _("Next") }}</button>
 </form>
-<div id="form-error-box"></div>

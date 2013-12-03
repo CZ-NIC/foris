@@ -51,19 +51,21 @@ ForisWizard.formValidators = {
 
         var elOne = $("#field-" + argsArray[0], form);
         var elTwo = $("#field-" + argsArray[1], form);
-        var errBox = $("#form-error-box");
+        var errorBox = ForisWizard.getFormErrorBox(form);
+        console.log(errorBox);
         if (elOne.val() == elTwo.val()) {
-            errBox.hide();
+            errorBox.hide();
             return true;
         }
         else {
-            errBox.text(argsArray[2]);
-            errBox.show();
+            errorBox.text(argsArray[2]);
+            errorBox.show();
             ForisWizard.markInvalid(elTwo);
             // remove flag on focus
             $(document).on("focus", "#field-" + argsArray[1], function(e) {
                 $(document).off(e);
                 $("#field-" + argsArray[1]).parent().find("[class|='field-validation']").remove();
+                errorBox.hide();
             });
             return false;
         }
@@ -150,6 +152,15 @@ ForisWizard.validateField = function(field) {
     }
 
     return result;
+};
+
+ForisWizard.getFormErrorBox = function(form) {
+    var errorBox = $("#form-error-box");
+    if (errorBox.length)
+        return errorBox;
+
+    $(form).after('<div id="form-error-box"></div>');
+    return $("#form-error-box");
 };
 
 ForisWizard.validateForm = function(form) {
