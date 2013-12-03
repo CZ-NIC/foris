@@ -1,5 +1,4 @@
 Beaker==1.6.4
 bottle==0.11.6
 flup==1.0.2
-pbkdf2==1.3
-ncclient
+-e git+https://gitlab.labs.nic.cz/router/ncclient.git@c1de638790a368a3c39638b54f2c2ec4e009df50#egg=ncclient
