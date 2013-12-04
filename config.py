@@ -20,12 +20,14 @@ from config_handlers import *
 import logging
 from utils import login_required
 from collections import OrderedDict
+from utils.bottle_csrf import CSRFPlugin
 
 
 logger = logging.getLogger("admin")
 
 
 app = Bottle()
+app.install(CSRFPlugin())
 
 
 class ConfigPageMixin(object):

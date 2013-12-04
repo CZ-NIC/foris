@@ -23,10 +23,15 @@ from nuci import client, filters
 from nuci.configurator import add_config_update, commit
 from nuci.modules.uci_raw import Option, Section, Config, Uci
 from utils import login_required
+from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
 from foris import gettext as _
 
 logger = logging.getLogger("wizard")
+
+
+app = Bottle()
+app.install(CSRFPlugin())
 
 
 class WizardStepMixin(object):

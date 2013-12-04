@@ -23,10 +23,15 @@ from nuci import client
 from nuci.client import edit_uci_config
 from nuci.modules import uci_raw
 from utils import print_model, login_required
+from utils.bottle_csrf import CSRFPlugin
 from validators import NotEmpty, RegExp
 
 
 logger = logging.getLogger("foris.uci")
+
+
+app = Bottle()
+app.install(CSRFPlugin())
 
 
 class UciRawForm(Form):

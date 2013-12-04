@@ -23,6 +23,7 @@ import logging
 from nuci import client, filters
 import os
 import sys
+from utils.bottle_csrf import CSRFPlugin, update_csrf_token
 from utils.routing import reverse
 
 
@@ -81,6 +82,7 @@ def login():
     next = bottle.request.POST.get("next")
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
+        update_csrf_token()
         session.save()
         if next:
             bottle.redirect(next)

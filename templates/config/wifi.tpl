@@ -18,6 +18,7 @@
 
 <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
     <p class="config-description">{{! description }}</p>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
     %for field in form.active_fields:
         %if field.hidden:
             {{! field.render() }}
