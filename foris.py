@@ -82,7 +82,7 @@ def login():
     next = bottle.request.POST.get("next")
     if _check_password(bottle.request.POST.get("password")):
         session["user_authenticated"] = True
-        update_csrf_token()
+        update_csrf_token(save_session=False)
         session.save()
         if next:
             bottle.redirect(next)

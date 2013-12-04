@@ -3,7 +3,7 @@ import random
 import string
 
 
-def update_csrf_token():
+def update_csrf_token(save_session=True):
     """Generate new CSRF token, assign it to a template variable and save it to session.
 
     This should be called on every login.
@@ -13,7 +13,8 @@ def update_csrf_token():
 
     session = bottle.request.environ['beaker.session']
     session['csrf_token'] = bottle.SimpleTemplate.defaults['csrf_token'] = generate_token()
-    session.save()
+    if save_session:
+        session.save()
 
 
 class CSRFPlugin(object):
@@ -50,7 +51,10 @@ class CSRFPlugin(object):
             token = None
             if bottle.request.method == "POST":
                 token = bottle.request.POST.get("csrf_token")
-            if not token or token != valid_token:
+            # do not refer session from outer scope! we need to get new value
+            # in each call of the function
+            session = bottle.request.environ['beaker.session']
+            if not token or token != session.get("csrf_token"):
                 bottle.abort(403, "CSRF token validation failed.")
 
             return callback(*args, **kwargs)
