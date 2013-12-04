@@ -124,11 +124,14 @@ ForisWizard.validateField = function(field) {
     var result = true;
     field = $(field);
 
-    if (field.hasClass("required") && field.val() == "")
+    if (field.hasClass("required") && field.val() == "") {
         this.markInvalid(field);
+        return false;
+    }
 
     if (!field.hasClass("validate") || !field.hasClass("required") && field.val() == "") {
         this.markOk(field);
+        return true;
     }
 
 
