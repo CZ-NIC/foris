@@ -164,11 +164,12 @@ ForisWizard.getFormErrorBox = function(form) {
 };
 
 ForisWizard.validateForm = function(form) {
+    var result = true;
     // validate inputs
     var inputs = $("input.validate", form);
     for (var i in inputs) {
         if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i])) {
-            return false;
+            result = false;
         }
     }
     
@@ -178,18 +179,18 @@ ForisWizard.validateForm = function(form) {
     if (validators)
         validators = validators.split(" ");
     else
-        return true; // no form validators
-    
+        return result; // no form validators
+
     for (var i = 0; i < validators.length; i++) {
         if (ForisWizard.formValidators.hasOwnProperty(validators[i])) {
             var args = jQForm.data("validator-" + validators[i]);
             if (!ForisWizard.formValidators[validators[i]](form, args))
-                // fail-fast
-                return false;
+                result = false;
+                break;
         }
     }
     
-    return true;
+    return result;
 };
 
 ForisWizard.updateForm = function() {
