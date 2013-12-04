@@ -28,6 +28,9 @@ class CSRFPlugin(object):
     name = "csrf"
     api = 2
 
+    def setup(self, app):
+        bottle.SimpleTemplate.defaults['csrf_token'] = None
+
     def apply(self, callback, route):
         # make CSRF protection implicitly enabled (since it's more fool-proof)
         disable_csrf_protect = route.config.get("disable_csrf_protect", False)
@@ -36,6 +39,9 @@ class CSRFPlugin(object):
         valid_token = session.get("csrf_token")
         if not valid_token:
             update_csrf_token()
+
+        if bottle.SimpleTemplate.defaults['csrf_token'] is None:
+            bottle.SimpleTemplate.defaults['csrf_token'] = valid_token
 
         if disable_csrf_protect or bottle.request.method in ('GET', 'HEAD', 'OPTIONS', 'TRACE'):
             return callback
