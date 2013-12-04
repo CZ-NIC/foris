@@ -170,7 +170,7 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.ip6prefix")\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
-        
+
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
                            nuci_path="uci.network.wan.username")\
             .requires("proto", WAN_PPPOE)
@@ -181,11 +181,11 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.ipv6",
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
-        
+
         wan_main.add_field(Checkbox, name="custom_mac", label=_("Custom MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            nuci_preproc=lambda val: bool(val.value))
-        
+
         wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            validators=validators.MacAddress())\
@@ -205,10 +205,13 @@ class WanHandler(BaseConfigHandler):
             else:
                 wan.add_removal(Option("macaddr", None))
             
+            ucollect_ifname = "eth2"
+
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
                 wan.add(Option("ipv6", data['ppp_ipv6']))
+                ucollect_ifname = "pppoe-wan"
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
@@ -221,6 +224,14 @@ class WanHandler(BaseConfigHandler):
                     wan.add_removal(Option("ip6addr", None))
                     wan.add_removal(Option("ip6gw", None))
                     wan.add_removal(Option("ip6prefix", None))
+
+            # set interface for ucollect to listen on
+            ucollect = Config("ucollect")
+            # FIXME: replacing whole config is... an ugly work-around
+            uci.add_replace(ucollect)
+            interface = Section(None, "interface", True)
+            ucollect.add(interface)
+            interface.add(Option("ifname", ucollect_ifname))
 
             return "edit_config", uci
 
