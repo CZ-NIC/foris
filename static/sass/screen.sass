@@ -19,6 +19,7 @@
 @import compass/css3
 @import compass/reset
 @import compass/typography/vertical_rhythm
+@import compass/utilities/general/clearfix
 @import partial/icons
 @import partial/treeview
 
@@ -144,14 +145,20 @@ body, html
 
 .tabs
   border-bottom: 1px solid $stroke-color
-  display: block
   position: relative
+  +pie-clearfix
+
+  ul, li
+    vertical-align: bottom
 
   li
     background-color: #e6e6e6
     border: 1px solid $stroke-color
-    border-bottom: none
-    display: inline-block
+    display: block
+    float: left
+    margin-right: 0.5em
+    position: relative
+    top: 1px
 
     a
       color: $foreground-color
@@ -166,9 +173,9 @@ body, html
 
     &.active
       background-color: $background-color
+      border-bottom: 1px solid #fff
       font-weight: bold
-      position: relative
-      top: 1px
+      margin-top: -0.25em
 
       a
         padding-top: 0.25em
@@ -272,6 +279,7 @@ input[type="checkbox"]
     height: 3em
     line-height: 3em
     margin-right: 0
+    vertical-align: middle
 
 
 /* -------------------------------------------------------------------------
