@@ -18,7 +18,7 @@
 Adding/changing value at {{node_path}}:
 
 <form action="{{ request.fullpath }}" method="post">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     {{! form.render() }}
     <input type="submit" value="Send">
 </form>
