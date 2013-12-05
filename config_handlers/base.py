@@ -367,17 +367,21 @@ class WifiHandler(BaseConfigHandler):
             .requires("wifi_enabled", True)
 
         def wifi_mode_preproc(channel):
-            if int(channel.value) < 12:
-                return "2g4"
-            return "5g"
+            try:
+                if int(channel.value) > 13:
+                    return "5g"
+            except ValueError:
+                pass
+            # channel <= 12 and fallback for "auto" channel
+            return "2g4"
 
         wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2g4",
-                            args=(("2g4", "2.4 GHz"), ("5g", "5 GHz")),
+                            args=(("2g4", "2.4 GHz (g+n)"), ("5g", "5 GHz (a+n)")),
                             nuci_path="uci.wireless.radio0.channel", nuci_preproc=wifi_mode_preproc)\
             .requires("wifi_enabled", True)
         # 2.4G channels
         wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"), default="1",
-                            args=((str(i), str(i)) for i in range(1, 12)),
+                            args=(("auto", _("auto")),) + tuple((str(i), str(i)) for i in range(1, 12)),
                             nuci_path="uci.wireless.radio0.channel")\
             .requires("wifi_mode", "2g4")
         # 5G channels
