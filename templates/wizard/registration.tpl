@@ -23,4 +23,4 @@
 </p>
 <p class="activation-code">{{ code }}</p>
 <p>{{! _("<strong>Warning:</strong> this code has a limited validity. In case this code is refused, refresh this page to get a new one.") }}</p>
-<p>{{! _("If you wish to set advanced settings, activate the LuCI interface by following the steps described in the <a href=\"%(url)s\">configuration interface</a>.") % {'url': url("config_page", page_name="system-password")} }}</p>
+<p>{{! _("Any of these settings can be set in the <a href=\"%(url)s\">configuration interface</a>. You can use it to activate LuCI interface for setting the advanced configuration.") % {'url': url("config_index")} }}</p>
