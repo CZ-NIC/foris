@@ -280,11 +280,13 @@ ForisWizard.showTimeForm = function() {
             var timeField = $("#wizard-time").empty().append(data.form)
                 .find("input[name=\"time\"]");
             $(".form-fields").hide();
-            $("#wizard-time-sync-auto").click(function() {
+            $("#wizard-time-sync-auto").click(function(e) {
+                e.preventDefault()
                 timeField.val(new Date().toISOString());
                 $("#wizard-time-sync-success").show();
             });
-            $("#wizard-time-sync-manual").click(function() {
+            $("#wizard-time-sync-manual").click(function(e) {
+                e.preventDefault()
                 $(".form-fields").show();
                 $(this).hide();
             });
