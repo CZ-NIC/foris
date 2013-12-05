@@ -184,7 +184,9 @@ class WanHandler(BaseConfigHandler):
 
         wan_main.add_field(Checkbox, name="custom_mac", label=_("Custom MAC address"),
                            nuci_path="uci.network.wan.macaddr",
-                           nuci_preproc=lambda val: bool(val.value))
+                           nuci_preproc=lambda val: bool(val.value),
+                           hint=_("Useful in cases, when a specific MAC address is required by "
+                                  "your internet service provider."))
 
         wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
@@ -298,10 +300,13 @@ class LanHandler(BaseConfigHandler):
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
-                           hint=_("Also defines the range of assigned IP addresses."))
+                           hint=_("Router's IP address in inner network. Also defines the range of "
+                                  "assigned IP addresses."))
         lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
                            nuci_path="uci.dhcp.lan.ignore",
-                           nuci_preproc=lambda val: not bool(int(val.value)), default=True)
+                           nuci_preproc=lambda val: not bool(int(val.value)), default=True,
+                           hint=_("Enable this option to automatically assign IP addresses to "
+                                  "the devices connected to the router."))
         lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP start"),
                            nuci_path="uci.dhcp.lan.start")\
             .requires("dhcp_enabled", True)

@@ -193,11 +193,7 @@ class WizardStep7(WizardStepMixin, BaseConfigHandler):
     def render(self, **kwargs):
         registration = client.get_registration()
         if registration:
-            msgtext = _("To finish the process of the router installation, fill "
-                        "in the following code <strong>%s</strong> on the EUKI "
-                        "website. TODO: add more explanation, link to EUKI,...")
-            msgtext = msgtext % registration.value
-            return self.default_template(msgtext=msgtext, **kwargs)
+            return self.default_template(code=registration.value, **kwargs)
         else:
             return template('wizard/registration-failure.tpl', stepname=self.name, **kwargs)
 
