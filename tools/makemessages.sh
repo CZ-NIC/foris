@@ -23,7 +23,7 @@ then
 	then
 		mkdir -p $locale_dir
 	fi
-	find \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"*{{ _\(("[^"]*")\) }}"*/\n_\1\n/g' | \
+	find \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"*{{ _\(("[^"]*")\) }}"*/\n_\1\n#/g' | \
 		xgettext -d messages --no-location --language=Python --from-code=UTF-8 --output=$locale_dir/tmp_messages.pot -
 	if [ -f $locale_dir/messages.po ]
 	then
