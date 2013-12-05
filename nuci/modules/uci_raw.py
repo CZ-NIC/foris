@@ -117,7 +117,7 @@ class Option(Uci):
         self.name = name
         if isinstance(value, bool):
             value = "1" if value else "0"
-        self.value = str(value)
+        self.value = unicode(value)
 
     def __str__(self):
         return "Option %s: %s" % (self.name, self.value)
@@ -186,7 +186,7 @@ class Value(Uci):
     def __init__(self, index, content):
         super(Value, self).__init__()
         self.index = str(index)
-        self.content = str(content)
+        self.content = unicode(content)
 
     def __str__(self):
         return "Value #%s: %s" % (self.index, self.content)
