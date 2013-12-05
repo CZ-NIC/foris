@@ -74,7 +74,7 @@ ForisWizard.formValidators = {
 
 ForisWizard.initialize = function() {
     $(document).on("change", ".has-requirements", function() {
-        $(this).after('<img src="/static/img/icon-loading.gif" class="field-loading" alt="Loading...">');
+        $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="Loading...">');
         ForisWizard.updateForm();
     });
 

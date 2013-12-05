@@ -30,7 +30,7 @@
                 {{! field.label_tag }}
                 {{! field.render() }}
                 %if field.hint:
-                    <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}">
+                    <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ _("Hint") }}: {{ field.hint }}">
                 %end
             </div>
             %end

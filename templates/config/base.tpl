@@ -18,7 +18,7 @@
     %rebase _layout **locals()
     <div id="config-header">
         <h1>{{ _("Settings") }}</h1>
-        <div class="logo-turris"><img src="{{ static("img/logo-turris.png") }}"></div>
+        <div class="logo-turris"><img src="{{ static("img/logo-turris.png") }}" alt="{{ _("Project:Turris") }}"></div>
         <a id="logout" href="{{ url("logout") }}">{{ _("Log out") }}</a>
     </div>
 

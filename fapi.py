@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import defaultdict, OrderedDict
-from form import Dropdown, Form, Checkbox, websafe, Hidden, AttributeList
+from form import Dropdown, Form, Checkbox, websafe, Hidden, AttributeList, Radio
 from nuci import client
 import logging
 from nuci.configurator import add_config_update, commit
@@ -365,6 +365,9 @@ class Field(ForisFormElement):
 
     @property
     def label_tag(self):
+        if issubclass(self.type, Radio):
+            return "<label>%s</label>" % websafe(self.field.description)
+
         return "<label for=\"%s\">%s</label>" % (self.field.id, websafe(self.field.description))
 
     @property

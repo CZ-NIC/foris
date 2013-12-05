@@ -27,7 +27,7 @@
             {{! field.label_tag }}
             {{! field.render() }}
             %if field.hint:
-                <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}">
+                <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ _("Hint") }}: {{ field.hint }}">
             %end
         </div>
         %end
@@ -41,7 +41,7 @@
         });
     </script>
     <div class="form-buttons">
-        <a href="{{ request.fullpath }}" type="submit" class="button grayed">{{ _("Discard changes") }}</a>
+        <a href="{{ request.fullpath }}" class="button grayed">{{ _("Discard changes") }}</a>
         <button type="submit" name="send" class="button">{{ _("Save changes") }}</button>
     </div>
 </form>
