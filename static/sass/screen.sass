@@ -65,9 +65,6 @@ h2
 h3
   +adjust-font-size-to(26px)
 
-button
-  border: none
-
 a
   color: $highlight-color
 
@@ -98,7 +95,13 @@ body, html
   width: 60em
 
 
-.button
+/* -------------------------------------------------------------------------
+/* Common config interface elements
+button
+  border: none
+
+
+.button, button
   background-color: $button-color
   color: #fff
   display: inline-block
@@ -120,6 +123,13 @@ body, html
     &:before
       background-color: $button-color-active
 
+
+  &.grayed, &[disabled]
+    background-color: $button-color-grayed
+
+    &:hover
+      background-color: lighten(desaturate($button-color-grayed, 20), 15)
+
 .button-arrow-right
   @extend .button
 
@@ -136,8 +146,6 @@ body, html
     +transform(rotate(45deg))
     z-index: -1
 
-/* -------------------------------------------------------------------------
-/* Common config interface elements
 .button-next
   @extend .button-arrow-right
   float: right
@@ -266,6 +274,10 @@ input[type="checkbox"]
   padding-top: 2em
   text-align: center
 
+  p
+    margin: 0 auto 2em auto
+    width: 30em
+
   label
     display: none
 
@@ -347,8 +359,37 @@ input[type="checkbox"]
     line-height: 3em
     margin-right: 0.5em
 
-    &.grayed
-      background-color: $button-color-grayed
+/* -------------------------------------------------------------------------
+/* "About" page
+#page-about
+  p
+    margin-bottom: 1em
 
-      &:hover
-        background-color: lighten(desaturate($button-color-grayed, 20), 15)
+  table
+    width: 100%
+
+    th, td
+      padding: 0.2em 0
+
+    th
+      font-weight: bold
+
+  #registration-code-update
+    vertical-align: middle
+
+  #registration-code-loader
+    vertical-align: middle
+
+  #registration-code-fail
+    border: 1px solid $error-color
+    color: $error-color
+    display: none
+    margin-bottom: 1em
+    padding: 1em
+
+    p:last-child
+      margin-bottom: 0
+
+  #registration-code
+    font-size: 130%
+    font-weight: bold

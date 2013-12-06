@@ -22,6 +22,8 @@ import logging
 
 from modules import password as password_module, registration, uci_raw, time, updater
 from modules.base import Data, YinElement
+from nuci import filters
+from nuci.modules import stats
 
 
 logger = logging.getLogger("nuci.client")
@@ -45,6 +47,8 @@ def get(filter=None):
                 reply_data.add(time.Time.from_element(elem))
             elif elem.tag == updater.Updater.qual_tag("updater"):
                 reply_data.add(updater.Updater.from_element(elem))
+            elif elem.tag == stats.Stats.qual_tag("stats"):
+                reply_data.add(stats.Stats.from_element(elem))
         return reply_data
 
 
@@ -107,7 +111,7 @@ def check_updates():
 
 
 def get_updater_status():
-    data = get(filter=ET.Element(updater.Updater.qual_tag("updater")))
+    data = get(filter=filters.updater)
     updater_status = data.find_child("updater")
 
     if updater_status.running:

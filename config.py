@@ -18,6 +18,8 @@ from bottle import Bottle, request, template
 import bottle
 from config_handlers import *
 import logging
+from nuci import client
+from nuci.client import filters
 from utils import login_required
 from collections import OrderedDict
 from utils.bottle_csrf import CSRFPlugin
@@ -66,6 +68,34 @@ class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
     pass
 
 
+class AboutConfigPage(ConfigPageMixin):
+    template = "config/about"
+    # {{ _("About") }} - for translation
+    userfriendly_title = "About"
+
+    def _action_registration_code(self):
+        return client.get_registration()
+
+    def call_action(self, action):
+        """Call AJAX action.
+
+        :param action:
+        :return: dict of picklable AJAX results
+        """
+        if action == "registration_code":
+            regnum = self._action_registration_code()
+            if regnum:
+                data = regnum.value
+            else:
+                data = None
+            return dict(success=regnum is not None, data=data)
+        raise ValueError("Unknown AJAX action.")
+
+    def render(self, **kwargs):
+        stats = client.get(filter=filters.stats).find_child("stats")
+        return self.default_template(stats=stats.data,  **kwargs)
+
+
 class ConfigPageMapItems(OrderedDict):
     def display_names(self):
         return [{'slug': k, 'name': self[k].userfriendly_title} for k in self.keys()]
@@ -79,6 +109,7 @@ config_page_map = ConfigPageMapItems((
     ('lan', LanConfigPage),
     ('wifi', WifiConfigPage),
     ('system-password', SystemPasswordConfigPage),
+    ('about', AboutConfigPage),
 ))
 
 
