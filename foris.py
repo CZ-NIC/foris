@@ -23,7 +23,8 @@ import logging
 from nuci import client, filters
 import os
 import sys
-from utils.bottle_csrf import CSRFPlugin, update_csrf_token
+from utils.bottle_csrf import update_csrf_token
+from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
 
 
@@ -138,6 +139,7 @@ if __name__ == "__main__":
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     app = bottle.app()
+    app.catchall = False  # catched by LoggingMiddleware
     # mount apps
     import config
     import wizard
@@ -155,6 +157,12 @@ if __name__ == "__main__":
     # i18n middleware
     app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=LANGUAGE, default="en",
                                          locale_dir=os.path.join(BASE_DIR, "locale")))
+
+    # logging middleware for all mounted apps
+    config.app.catchall = False
+    wizard.app.catchall = False
+    app = ReportingMiddleware(app, sensitive_params=("key", "password", "password_validation"))
+    app.install_dump_route(bottle.app())
 
     if args.debug:
         # for nice debugging and profiling, try importing FireLogger support
