@@ -117,6 +117,8 @@ class Option(Uci):
         self.name = name
         if isinstance(value, bool):
             value = "1" if value else "0"
+        elif not isinstance(value, unicode):
+            value = value.decode("utf8")
         self.value = unicode(value)
 
     def __str__(self):
@@ -186,6 +188,8 @@ class Value(Uci):
     def __init__(self, index, content):
         super(Value, self).__init__()
         self.index = str(index)
+        if not isinstance(content, unicode):
+            content = content.decode("utf8")
         self.content = unicode(content)
 
     def __str__(self):

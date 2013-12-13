@@ -415,7 +415,7 @@ class WifiHandler(BaseConfigHandler):
             if data['wifi_enabled']:
                 iface.add(Option("ssid", data['ssid']))
                 iface.add(Option("hidden", data['ssid_hidden']))
-                iface.add(Option("encryption", "psk2+tkip+aes"))  # TODO: find in docs
+                iface.add(Option("encryption", "psk2+tkip+aes"))
                 iface.add(Option("key", data['key']))
                 if data['wifi_mode'] == "2g4":
                     channel = data['channel2g4']
