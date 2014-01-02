@@ -214,7 +214,7 @@ class ForisForm(ForisFormElement):
             cb_result = cb(form_data)
             operation = cb_result[0]
             if operation == "none":
-                return
+                continue
             data = cb_result[1:] if len(cb_result) > 1 else ()
             if operation == "edit_config":
                 add_config_update(*data)
