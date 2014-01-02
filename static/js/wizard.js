@@ -52,7 +52,6 @@ ForisWizard.formValidators = {
         var elOne = $("#field-" + argsArray[0], form);
         var elTwo = $("#field-" + argsArray[1], form);
         var errorBox = ForisWizard.getFormErrorBox(form);
-        console.log(errorBox);
         if (elOne.val() == elTwo.val()) {
             errorBox.hide();
             return true;
@@ -235,7 +234,10 @@ ForisWizard.runUpdater = function () {
         });
 };
 
-ForisWizard.checkUpdaterStatus = function() {
+ForisWizard.checkUpdaterStatus = function(retries) {
+    if (retries == null)
+        retries = 0;
+
     ForisWizard.callAjaxAction("4", "updater_status")
         .done(function(data) {
             if (data.status == "failed") {
@@ -271,7 +273,19 @@ ForisWizard.checkUpdaterStatus = function() {
                 $("#updater-progress").hide();
                 $("#updater-success").show();
             }
-        });
+        })
+        .fail(function() {
+            // wait 5 seconds (in one-second retries) in case the server is restarting
+            if (retries < 5) {
+                retries += 1;
+                window.setTimeout(function() {
+                    ForisWizard.checkUpdaterStatus(retries)}, 1000);
+            }
+            else {
+                $("#updater-progress").hide();
+                $("#updater-fail").show();
+            }
+        })
 };
 
 ForisWizard.showTimeForm = function() {
