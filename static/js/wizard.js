@@ -314,6 +314,8 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
 
     if (hidden)
         hidden = 'H:true';
+    else
+        hidden = '';
 
     codeElement.empty().qrcode({
         width: 220,
