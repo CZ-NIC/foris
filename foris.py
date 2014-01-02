@@ -204,7 +204,7 @@ if __name__ == "__main__":
         'session.data_dir': '/tmp/beaker/data',
         'session.lock_dir': '/tmp/beaker/lock',
         'session.cookie_expires': True,
-        'session.timeout': 600,
+        'session.timeout': 900,
     }
     app = SessionMiddleware(app, session_options)
 
