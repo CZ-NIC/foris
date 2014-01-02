@@ -38,6 +38,11 @@ def update_csrf_token(save_session=True):
         session.save()
 
 
+class CSRFValidationError(bottle.HTTPError):
+    def __init__(self, text="CSRF token validation failed."):
+        super(CSRFValidationError, self).__init__(403, text)
+
+
 class CSRFPlugin(object):
     """Bottle plugin for protection against CSRF attacks.
 
@@ -70,7 +75,7 @@ class CSRFPlugin(object):
             # do not refer session from outer scope! we need to get new value
             # in each call of the function
             if not token or token != get_csrf_token():
-                bottle.abort(403, "CSRF token validation failed.")
+                raise CSRFValidationError()
 
             return callback(*args, **kwargs)
         return wrapper

@@ -23,7 +23,8 @@ import logging
 from nuci import client, filters
 import os
 import sys
-from utils.bottle_csrf import update_csrf_token
+from utils import redirect_unauthenticated
+from utils.bottle_csrf import update_csrf_token, CSRFValidationError
 from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
 
@@ -73,7 +74,7 @@ def index():
     session.save()
     if session.get("user_authenticated"):
         login_redirect(allowed_step_max)
-    
+
     return dict()
 
 
@@ -121,6 +122,25 @@ def _check_password(password):
     # crypt automatically extracts salt and iterations from formatted pw hash
     return password_hash == pbkdf2.crypt(password, salt=password_hash)
 
+
+def foris_403_handler(error):
+    if isinstance(error, CSRFValidationError):
+        # maybe the session expired, if so, just redirect the user
+        redirect_unauthenticated()
+
+    # otherwise display the standard error page
+    bottle.app().default_error_handler(error)
+
+
+def init_foris_app(app):
+    """
+    Initializes Foris application - use this method to apply properties etc.
+    that should be set to main app and all the mounted apps (i.e. to the
+    Bottle() instances).
+    """
+    app.catchall = False  # catched by LoggingMiddleware
+    app.error_handler[403] = foris_403_handler
+
 # ---------------------------------------------------------------------------- #
 #                                      MAIN                                    #
 # ---------------------------------------------------------------------------- #
@@ -139,7 +159,6 @@ if __name__ == "__main__":
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     app = bottle.app()
-    app.catchall = False  # catched by LoggingMiddleware
     # mount apps
     import config
     import wizard
@@ -153,6 +172,13 @@ if __name__ == "__main__":
         if args.noauth:
             logger.warning("authentication disabled")
             app.config.no_auth = True
+
+    # set custom app attributes for main app and all mounted apps
+    init_foris_app(app)
+    for route in app.routes:
+        if route.config.get("mountpoint"):
+            mounted = route.config['mountpoint']['target']
+            init_foris_app(mounted)
 
     # i18n middleware
     app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=LANGUAGE, default="en",

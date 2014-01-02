@@ -23,7 +23,16 @@ from xml.etree import cElementTree as ET
 logger = logging.getLogger("foris.utils")
 
 
-def login_required(func=None, redirect_url="/"):
+def redirect_unauthenticated(redirect_url=None):
+    redirect_url = redirect_url or "/"
+    session = bottle.request.environ['beaker.session']
+    no_auth = bottle.default_app().config.no_auth
+    if not no_auth and not session.get("user_authenticated", False):
+        # "raise" bottle redirect
+        bottle.redirect("%s?next=%s" % (redirect_url, bottle.request.fullpath))
+
+
+def login_required(func=None, redirect_url=None):
     """Decorator for views that require login.
 
     :param redirect_url:
@@ -31,11 +40,7 @@ def login_required(func=None, redirect_url="/"):
     """
     @wraps(func)
     def wrapper(*args, **kwargs):
-        session = bottle.request.environ['beaker.session']
-        no_auth = bottle.default_app().config.no_auth
-        if not no_auth and not session.get("user_authenticated", False):
-            # "raise" bottle redirect
-            bottle.redirect("%s?next=%s" % (redirect_url, bottle.request.fullpath))
+        redirect_unauthenticated(redirect_url)
         return func(*args, **kwargs)
     return wrapper
 
