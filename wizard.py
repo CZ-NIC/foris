@@ -70,7 +70,7 @@ class WizardStepMixin(object):
         if nuci_write[0] == "edit_config" and len(nuci_write) == 2:
             add_config_update(nuci_write[1])
             commit()
-    
+
     def default_template(self, **kwargs):
         return template(self.template, stepname=self.name, **kwargs)
 
@@ -233,7 +233,6 @@ def check_step_allowed_or_redirect(step_number):
     allowed_step_max = int(session.get(WizardStepMixin.next_step_allowed_key, 1))
     if step_number <= allowed_step_max:
         return True
-    logger.warning("redirecting")
     bottle.redirect(reverse("wizard_step", number=allowed_step_max))
 
 
