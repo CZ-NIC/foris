@@ -86,8 +86,12 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
         pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
+        pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use this password for advanced configuration"),
+                          hint=_("Same password would be used for accessing this administration "
+                                 "site, for root user in LuCI web interface and for SSH login. "
+                                 "Use a strong password!"))
         pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                     _("Passwords do not equal.")))
+                                                     _("Passwords are not equal.")))
 
         def pw_form_cb(data):
             from beaker.crypto import pbkdf2
@@ -103,7 +107,14 @@ class PasswordHandler(BaseConfigHandler):
 
             return "edit_config", uci
 
+        def pw_form_system_pw_cb(data):
+            if data['set_system_pw'] is True:
+                client.set_password("root", data['password'])
+
+            return "none", None
+
         pw_form.add_callback(pw_form_cb)
+        pw_form.add_callback(pw_form_system_pw_cb)
         return pw_form
 
 
