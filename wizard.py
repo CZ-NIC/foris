@@ -34,6 +34,9 @@ app = Bottle()
 app.install(CSRFPlugin())
 
 
+NUM_WIZARD_STEPS = 7
+
+
 class WizardStepMixin(object):
     template = "wizard/form"
     name = None

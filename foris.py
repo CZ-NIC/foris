@@ -50,8 +50,8 @@ bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("stat
 
 
 def login_redirect(step_num):
-    NUM_WIZZARD_STEPS = 7
-    if step_num >= NUM_WIZZARD_STEPS:
+    from wizard import NUM_WIZARD_STEPS
+    if step_num >= NUM_WIZARD_STEPS:
         bottle.redirect(reverse("config_index"))
     else:
         bottle.redirect(reverse("wizard_step", number=step_num))
