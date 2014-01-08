@@ -25,7 +25,7 @@ JS_FILES = $(filter-out %.min.js $(wildcard static/js/contrib/*),$(wildcard \
 
 JS_MINIFIER = slimit -m
 
-SASS_COMPILER = compass compile
+SASS_COMPILER = compass compile -s compressed
 
 JS_MINIFIED = $(JS_FILES:.js=.min.js)
 
