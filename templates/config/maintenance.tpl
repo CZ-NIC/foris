@@ -20,6 +20,7 @@
     <h2>{{ _("Maintenance") }}</h2>
     <div class="maintenance-description">
         <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ _("Download configuration backup") }}</a>
+        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ _("Reboot") }}</a>
     </div>
 
 </div>

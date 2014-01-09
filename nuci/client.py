@@ -52,6 +52,15 @@ def get(filter=None):
         return reply_data
 
 
+def reboot():
+    try:
+        dispatch(maintain.Maintain.rpc_reboot())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        logger.exception("Reboot failed.")
+        return False
+
+
 def save_config_backup(filename):
     try:
         data = dispatch(maintain.Maintain.rpc_config_backup())

@@ -25,6 +25,7 @@ from nuci.client import filters
 from utils import login_required
 from collections import OrderedDict
 from utils.bottle_csrf import CSRFPlugin
+from utils.routing import reverse
 
 
 logger = logging.getLogger("admin")
@@ -102,9 +103,15 @@ class MaintenanceConfigPage(ConfigPageMixin):
         return bottle.static_file(filename, directory,
                                   mimetype="application/x-xz", download=True)
 
+    def _action_reboot(self):
+        client.reboot()
+        bottle.redirect(reverse("config_page", page_name="maintenance"))
+
     def call_action(self, action):
         if action == "config-backup":
             return self._action_config_backup()
+        elif action == "reboot":
+            return self._action_reboot()
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
