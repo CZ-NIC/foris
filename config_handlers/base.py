@@ -408,7 +408,9 @@ class WifiHandler(BaseConfigHandler):
         wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
-                            hint=_("WPA2 preshared key, that is required to connect to the network."))\
+                            validators=validators.LenRange(8, 63),
+                            hint=_("WPA2 preshared key, that is required to connect to the network. "
+                                   "Minimum length is 8 characters."))\
             .requires("wifi_enabled", True)
 
         def wifi_form_cb(data):
