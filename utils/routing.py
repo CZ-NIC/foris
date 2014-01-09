@@ -30,6 +30,7 @@ def reverse(name, **kargs):
                 try:
                     return "%s%s" % (mountpoint['prefix'].rstrip("/"),
                                      mountpoint['target'].router.build(name, **kargs))
-                except bottle.RouteBuildError:
-                    pass
+                except bottle.RouteBuildError as e:
+                    if str(e).startswith("Missing URL"):
+                        raise e
     raise bottle.RouteBuildError("No route with name '%s' in main app or mounted apps." % name)
