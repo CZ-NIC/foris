@@ -16,6 +16,8 @@
 
 from bottle import Bottle, request, template
 import bottle
+from datetime import datetime
+import os
 from config_handlers import *
 import logging
 from nuci import client
@@ -84,6 +86,31 @@ class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
     pass
 
 
+class MaintenanceConfigPage(ConfigPageMixin):
+    template = "config/maintenance"
+    # {{ _("Maintenance") }} - for translation
+    userfriendly_title = "Maintenance"
+
+    def _action_config_backup(self):
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        directory = "/tmp/foris_backups"
+        filename = "turris-backup-%s.tar.xz" % timestamp
+        # TODO: remove old backups, catch errors
+        if not os.path.isdir(directory):
+            os.mkdir(directory)
+        client.save_config_backup(os.path.join(directory, filename))
+        return bottle.static_file(filename, directory,
+                                  mimetype="application/x-xz", download=True)
+
+    def call_action(self, action):
+        if action == "config-backup":
+            return self._action_config_backup()
+        raise ValueError("Unknown AJAX action.")
+
+    def render(self, **kwargs):
+        return self.default_template(**kwargs)
+
+
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     # {{ _("About") }} - for translation
@@ -120,6 +147,7 @@ config_page_map = ConfigPageMapItems((
     ('lan', LanConfigPage),
     ('wifi', WifiConfigPage),
     ('system-password', SystemPasswordConfigPage),
+    ('maintenance', MaintenanceConfigPage),
     ('about', AboutConfigPage),
 ))
 
@@ -166,7 +194,7 @@ def config_page_post(page_name):
     return config_page.render(active_handler_key=page_name)
 
 
-@app.route("/<page_name:re:.+>/action/<action:re:.*>")
+@app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action")
 @login_required
 def config_action(page_name, action):
     ConfigPage = get_config_page(page_name)

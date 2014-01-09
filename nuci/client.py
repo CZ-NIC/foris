@@ -20,7 +20,7 @@ from ncclient.operations.errors import TimeoutExpiredError
 from xml.etree import cElementTree as ET
 import logging
 
-from modules import password as password_module, registration, uci_raw, time, updater
+from modules import maintain, password as password_module, registration, uci_raw, time, updater
 from modules.base import Data, YinElement
 from nuci import filters
 from nuci.modules import stats
@@ -50,6 +50,23 @@ def get(filter=None):
             elif elem.tag == stats.Stats.qual_tag("stats"):
                 reply_data.add(stats.Stats.from_element(elem))
         return reply_data
+
+
+def save_config_backup(filename):
+    try:
+        data = dispatch(maintain.Maintain.rpc_config_backup())
+        encoded_data = maintain.Maintain.from_element(ET.fromstring(data.xml)).data
+        with open(filename, "wb") as f:
+            # simple encoded_data.decode("base64") raises too general exceptions on failure
+            import base64
+            f.write(base64.b64decode(encoded_data))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        logger.exception("Config backup failed.")
+        return False
+    except TypeError:
+        logger.exception("Can't decode backup file, this is probably a bug in Nuci backend.")
+        return False
 
 
 def get_registration():
