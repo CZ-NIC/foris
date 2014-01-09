@@ -19,7 +19,13 @@
 
     <div id="wizard-header">
         <img src="{{ static("/img/logo-turris.png") }}" alt="{{ _("Project:Turris") }}">
-        <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 7</span>
+        <div class="wizard-steps">
+        %if can_skip_wizard:
+            <a href="{{ url("wizard_skip") }}">{{ _("Skip wizard") }}</a>
+        %end
+            <br>
+            <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 7</span>
+        </div>
     </div>
 
 %if stepname:

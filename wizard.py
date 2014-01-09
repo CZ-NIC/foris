@@ -25,7 +25,7 @@ from nuci.modules.uci_raw import Option, Section, Config, Uci
 from utils import login_required
 from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
-from foris import gettext as _
+
 
 logger = logging.getLogger("wizard")
 
@@ -43,6 +43,7 @@ class WizardStepMixin(object):
     next_step_allowed = None
     next_step_allowed_key = "allowed_step_max"
     # wizard step name
+    can_skip_wizard = True
 
     def allow_next_step(self):
         # this function can be used as a callback for a form
@@ -53,20 +54,12 @@ class WizardStepMixin(object):
             session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
             
             if self.next_step_allowed > session_max_step:
-                # update session variable
-                session[WizardStepMixin.next_step_allowed_key] = self.next_step_allowed
-                session.save()
-                # and also uci config
-                uci = Uci()
-                foris = Config("foris")
-                uci.add(foris)
-                wizard = Section("wizard", "config")
-                foris.add(wizard)
-                wizard.add(Option(WizardStepMixin.next_step_allowed_key, self.next_step_allowed))
-                
-                return ("edit_config", uci)
+                allow_next_step_session(self.next_step_allowed)
+                uci = get_allow_next_step_uci(self.next_step_allowed)
+
+                return "edit_config", uci
             else:
-                return ("none",)
+                return "none", None
     
     def nuci_write_next_step(self):
         nuci_write = self.allow_next_step()
@@ -75,7 +68,8 @@ class WizardStepMixin(object):
             commit()
 
     def default_template(self, **kwargs):
-        return template(self.template, stepname=self.name, **kwargs)
+        return template(self.template, can_skip_wizard=self.can_skip_wizard,
+                        stepname=self.name, **kwargs)
 
     def render(self, **kwargs):
         try:
@@ -108,6 +102,7 @@ class WizardStep1(WizardStepMixin, PasswordHandler):
     """
     name = "password"
     next_step_allowed = 2
+    can_skip_wizard = False
 
 
 class WizardStep2(WizardStepMixin, WanHandler):
@@ -198,7 +193,8 @@ class WizardStep7(WizardStepMixin, BaseConfigHandler):
         if registration:
             return self.default_template(code=registration.value, **kwargs)
         else:
-            return template('wizard/registration-failure.tpl', stepname=self.name, **kwargs)
+            return template('wizard/registration-failure.tpl', stepname=self.name,
+                            can_skip_wizard=self.can_skip_wizard, **kwargs)
 
 
 app = Bottle()
@@ -237,6 +233,36 @@ def check_step_allowed_or_redirect(step_number):
     if step_number <= allowed_step_max:
         return True
     bottle.redirect(reverse("wizard_step", number=allowed_step_max))
+
+
+def allow_next_step_session(step_number):
+    """
+    Allow step in session.
+
+    :param step_number: step to allow
+    """
+    session = request.environ['beaker.session']
+    # update session variable
+    session[WizardStepMixin.next_step_allowed_key] = step_number
+    session.save()
+
+
+def get_allow_next_step_uci(step_number):
+    """
+    Gets Uci element for allowing step with specified number.
+
+
+    :param step_number: step to allow
+    :return: Uci element for allowing specified step
+    """
+    uci = Uci()
+    foris = Config("foris")
+    uci.add(foris)
+    wizard = Section("wizard", "config")
+    foris.add(wizard)
+    wizard.add(Option(WizardStepMixin.next_step_allowed_key, step_number))
+
+    return uci
 
 
 @app.route("/step/<number:re:\d+>/ajax")
@@ -286,3 +312,17 @@ def step_post(number=1):
         # raised by Validator - could happen when the form is posted with wrong fields
         pass
     return wiz.render(stepnumber=number)
+
+
+@app.route("/skip", name="wizard_skip")
+def skip():
+    allowed_step_max = int(get_allowed_step_max())
+    last_step_number = min(NUM_WIZARD_STEPS, allowed_step_max)
+    Wizard = get_wizard(last_step_number)
+    if Wizard.can_skip_wizard:
+        allow_next_step_session(NUM_WIZARD_STEPS)
+        uci = get_allow_next_step_uci(NUM_WIZARD_STEPS)
+        client.edit_config(uci.get_xml())
+        bottle.redirect(reverse("config_index"))
+
+    raise bottle.HTTPError(403, "Action not allowed.")
