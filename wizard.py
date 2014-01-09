@@ -45,6 +45,22 @@ class WizardStepMixin(object):
     # wizard step name
     can_skip_wizard = True
 
+    def call_action(self, action):
+        """Call config page action.
+
+        :param action:
+        :return: object that can be passes as HTTP response to Bottle
+        """
+        raise bottle.HTTPError(404, "No actions specified for this page.")
+
+    def call_ajax_action(self, action):
+        """Call AJAX action.
+
+        :param action:
+        :return: dict of picklable AJAX results
+        """
+        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+
     def allow_next_step(self):
         # this function can be used as a callback for a form
         if self.next_step_allowed is not None:
@@ -151,7 +167,7 @@ class WizardStep4(WizardStepMixin, BaseConfigHandler):
     def _action_updater_status(self):
         return client.get_updater_status()
 
-    def call_action(self, action):
+    def call_ajax_action(self, action):
         if action == "run_updater":
             run_success = self._action_run_updater()
             return dict(success=run_success)
@@ -275,7 +291,7 @@ def ajax(number=1):
     Wizard = get_wizard(number)
     wiz = Wizard()
     try:
-        result = wiz.call_action(action)
+        result = wiz.call_ajax_action(action)
         return result
     except ValueError:
         raise bottle.HTTPError(404, "Unknown Wizard action.")

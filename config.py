@@ -35,6 +35,22 @@ app.install(CSRFPlugin())
 class ConfigPageMixin(object):
     template = "config/main"
 
+    def call_action(self, action):
+        """Call config page action.
+
+        :param action:
+        :return: object that can be passes as HTTP response to Bottle
+        """
+        raise bottle.HTTPError(404, "No actions specified for this page.")
+
+    def call_ajax_action(self, action):
+        """Call AJAX action.
+
+        :param action:
+        :return: dict of picklable AJAX results
+        """
+        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+
     def default_template(self, **kwargs):
         return template(self.template, **kwargs)
 
@@ -76,12 +92,7 @@ class AboutConfigPage(ConfigPageMixin):
     def _action_registration_code(self):
         return client.get_registration()
 
-    def call_action(self, action):
-        """Call AJAX action.
-
-        :param action:
-        :return: dict of picklable AJAX results
-        """
+    def call_ajax_action(self, action):
         if action == "registration_code":
             regnum = self._action_registration_code()
             if regnum:
@@ -155,6 +166,18 @@ def config_page_post(page_name):
     return config_page.render(active_handler_key=page_name)
 
 
+@app.route("/<page_name:re:.+>/action/<action:re:.*>")
+@login_required
+def config_action(page_name, action):
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage()
+    try:
+        result = config_page.call_action(action)
+        return result
+    except ValueError:
+        raise bottle.HTTPError(404, "Unknown action.")
+
+
 @app.route("/<page_name:re:.+>/ajax")
 @login_required
 def config_ajax(page_name):
@@ -164,7 +187,7 @@ def config_ajax(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     try:
-        result = config_page.call_action(action)
+        result = config_page.call_ajax_action(action)
         return result
     except ValueError:
         raise bottle.HTTPError(404, "Unknown action.")
