@@ -19,8 +19,7 @@
 <div id="page-maintenance">
     <h2>{{ _("Maintenance") }}</h2>
     <div class="maintenance-description">
-        <!-- TODO: reversing does not work yet <a href="{{ url("config_page", page_name="maintenance", action="config-backup") }}" class="button">{{ _("Download configuration backup") }}</a -->
-        <a href="/config/maintenance/action/config-backup" class="button">{{ _("Download configuration backup") }}</a>
+        <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ _("Download configuration backup") }}</a>
     </div>
 
 </div>
