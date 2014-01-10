@@ -201,7 +201,8 @@ def config_page_post(page_name):
             bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
-        pass
+        logger.exception("Error when saving form.")
+    logger.warning("Form not saved.")
     return config_page.render(config_pages=config_page_map.display_names(),
                               active_handler_key=page_name)
 

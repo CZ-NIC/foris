@@ -19,8 +19,24 @@ var ForisWizard = {};
 
 ForisWizard.validators = {
     ipv4: function(value) {
-        var re_ipv4 = /^(\d{1,3}\.){3}\d{1,3}$/;
-        return value.search(re_ipv4) != -1;
+        var bytes = value.split(".");
+        if (bytes.length != 4)
+            return false;
+        var intRE = /^[0-9]+$/;
+        for (var i = 0; i < bytes.length; i++) {
+            // check it's an integer number, not exponential format, hex number etc...
+            if (!intRE.test(bytes[i]))
+                return false;
+            if (bytes[i] < 0 || bytes[i] > 255)
+                return false;
+        }
+        return true;
+    },
+    ipv6: function(value) {
+        return true; // TODO: at least basic IPv6 check
+    },
+    ipv6prefix: function(value) {
+        return true; // TODO: at least basic IPv6 check
     },
     integer: function(value) {
         var re_integer = /^\d+$/;

@@ -21,7 +21,7 @@ import re
 PARAM_DELIMITER = "|"
 
 
-class Validator:
+class Validator(object):
     js_validator = None
 
     def __deepcopy__(self, memo):
@@ -42,7 +42,7 @@ class Validator:
 class RegExp(Validator):
     def __init__(self, msg, reg_exp):
         self.reg_exp = re.compile(reg_exp)
-        Validator.__init__(self, msg, lambda val: bool(self.reg_exp.match(val)))
+        super(RegExp, self).__init__(msg, lambda val: bool(self.reg_exp.match(val)))
 
     def valid(self, value):
         return bool(self.reg_exp.match(value))
@@ -52,28 +52,73 @@ class NotEmpty(Validator):
     js_validator = "notempty"
 
     def __init__(self):
-        Validator.__init__(self, "This field is required.", bool)
+        super(NotEmpty, self).__init__("This field is required.", bool)
 
 
-class IPv4(RegExp):
+class IPv4(Validator):
     js_validator = "ipv4"
 
     def __init__(self):
-        RegExp.__init__(self, "Not a valid IPv4 address.", r"(\d{1,3}\.){3}\d{1,3}")
+        super(IPv4, self).__init__("Not a valid IPv4 address.", None)
+
+    def valid(self, value):
+        import socket
+        try:
+            socket.inet_pton(socket.AF_INET, value)
+            return True
+        except socket.error:
+            pass
+        return False
+
+
+class IPv6(Validator):
+    js_validator = "ipv6"
+
+    def __init__(self):
+        super(IPv6, self).__init__("Not a valid IPv6 address.", None)
+
+    def valid(self, value):
+        import socket
+        try:
+            socket.inet_pton(socket.AF_INET6, value)
+            return True
+        except Exception:
+            pass
+        return False
+
+
+class IPv6Prefix(Validator):
+    js_validator = "ipv6prefix"
+
+    def __init__(self):
+        super(IPv6Prefix, self).__init__("Not a valid IPv6 prefix.", None)
+
+    def valid(self, value):
+        import socket
+        try:
+            address, length = value.split("/")
+            length = int(length)
+            socket.inet_pton(socket.AF_INET6, address)
+            if length < 0 or length > 128:
+                return False
+            return True
+        except Exception:
+            pass
+        return False
 
 
 class Integer(RegExp):
     js_validator = "integer"
 
     def __init__(self):
-        RegExp.__init__(self, "Is not a number.", r"\d+")
+        super(Integer, self).__init__("Is not a number.", r"\d+")
 
 
 class MacAddress(RegExp):
     js_validator = "macaddress"
 
     def __init__(self):
-        RegExp.__init__(self, "MAC address is not valid.", r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
+        super(MacAddress, self).__init__("MAC address is not valid.", r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
 
 
 class InRange(Validator):
@@ -90,7 +135,7 @@ class LenRange(Validator):
 
     def __init__(self, low, high):
         test = lambda val: low <= len(val) <= high
-        Validator.__init__(self, "Length must be from %s to %s characters." % (low, high), test)
+        super(LenRange, self).__init__("Length must be from %s to %s characters." % (low, high), test)
         self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
 
 
@@ -98,7 +143,7 @@ class FieldsEqual(Validator):
     js_validator = "eqfields"
     
     def __init__(self, field1, field2, message):
-        Validator.__init__(self, message, lambda data: data[field1] == data[field2])
+        super(FieldsEqual, self).__init__(message, lambda data: data[field1] == data[field2])
         self.js_validator_params = PARAM_DELIMITER.join([field1, field2, message])
 
 

@@ -178,14 +178,17 @@ class WanHandler(BaseConfigHandler):
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
                            nuci_path="uci.network.wan.ip6addr",
+                           validators=validators.IPv6(),
                            required=True)\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
         wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
+                           validators=validators.IPv6(),
                            nuci_path="uci.network.wan.ip6gw")\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
         wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
+                           validators=validators.IPv6Prefix(),
                            nuci_path="uci.network.wan.ip6prefix")\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
