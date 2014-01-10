@@ -2,3 +2,4 @@
 *.mo
 static/.sass-cache/*
 static/css/*
+static/js/wizard.min.js
