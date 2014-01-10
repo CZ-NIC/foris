@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-09 13:43+0100\n"
+"POT-Creation-Date: 2014-01-10 17:08+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -49,6 +49,21 @@ msgstr "Přihlásit se"
 msgid "Turris router administration interface"
 msgstr "Administrační rozhraní routeru Turris"
 
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgid "Download configuration backup"
+msgstr "Stáhnout zálohu konfigurace"
+
+msgid "Reboot"
+msgstr "Restartovat"
+
+msgid "Hint"
+msgstr "Nápověda"
+
+msgid "Restore from backup"
+msgstr "Obnovit ze zálohy"
+
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -58,9 +73,6 @@ msgid ""
 msgstr ""
 "Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím sekci, "
 "kterou chcete upravovat, z možností uvedených výše."
-
-msgid "Hint"
-msgstr "Nápověda"
 
 msgid "Discard changes"
 msgstr "Zahodit změny"
@@ -198,6 +210,32 @@ msgstr ""
 
 msgid "Registration failure"
 msgstr "Chyba při registraci"
+
+msgid "This field is required."
+msgstr "Toto pole je povinné."
+
+msgid "Not a valid IPv4 address."
+msgstr "Neplatná IPv4 adresa."
+
+msgid "Not a valid IPv6 address."
+msgstr "Neplatná IPv6 adresa."
+
+msgid "Not a valid IPv6 prefix."
+msgstr "Neplatný IPv6 prefix."
+
+msgid "Is not a number."
+msgstr "Není číslo."
+
+msgid "MAC address is not valid."
+msgstr "Není platná MAC adresa."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Musí být z rozsahu %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(low)s characters."
+msgstr "Délka musí být od %(low)s do %(low)s znaků."
 
 msgid ""
 "Set your password for this administation site. The password must be at least "
@@ -413,3 +451,6 @@ msgstr ""
 "nastavit, je nutné zvolit heslo uživatele root, pomocí kterého se následně "
 "můžete přihlásit do <a href=\"http://%(ip)s:%(port)d/\">webového rozhraní "
 "LuCI</a>. Stejné heslo je použito pro přístup na SSH."
+
+msgid "Backup file"
+msgstr "Soubor se zálohou"

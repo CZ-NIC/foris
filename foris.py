@@ -34,8 +34,9 @@ logger = logging.getLogger("foris")
 BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
-LANGUAGE = 'cs' # hardcoded for now, use session or better uci or $LANG to store the value
+LANGUAGE = 'cs'  # hardcoded for now, use session or better uci or $LANG to store the value
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
+bottle.SimpleTemplate.defaults['trans'] = lambda msgid: bottle.request.app._(msgid)  # workaround
 trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=[LANGUAGE], fallback=True)
 gettext = trans.ugettext
 
