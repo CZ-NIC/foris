@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import gettext as _
-from form import Password, Textbox, Dropdown, Checkbox, Hidden, Radio
+from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio
 import fapi
 from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
@@ -478,3 +478,21 @@ class SystemPasswordHandler(BaseConfigHandler):
 
         system_pw_form.add_callback(system_pw_form_cb)
         return system_pw_form
+
+
+class MaintenanceHandler(BaseConfigHandler):
+    # {{ _("Maintenance") }} - for translation
+    userfriendly_title = "Maintenance"
+
+    def get_form(self):
+        maintenance_form = fapi.ForisForm("maintenance", self.data)
+        maintenance_main = maintenance_form.add_section(name="restore_backup",
+                                                        title=_(self.userfriendly_title))
+        maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
+
+        def maintenance_form_cb(data):
+            client.load_config_backup(data['backup_file'].file)
+            return "none", None
+
+        maintenance_form.add_callback(maintenance_form_cb)
+        return maintenance_form

@@ -59,18 +59,19 @@ class Maintain(YinElement):
         return element
 
     @staticmethod
-    def rpc_config_restore(filename):
+    def rpc_config_restore(data):
         """
-        Request for a configuration restore from a file with a given
-        filename.
+        Request for a configuration restore from a base64 encoded .tar.xz
+        file returned by config-backup RPC.
 
-        :return:
+        :param data: string with base64 encoded backup file
+        :return: element with config-restore RPC
         """
         restore_tag = Maintain.qual_tag("config-restore")
         element = ET.Element(restore_tag)
         data_tag = Maintain.qual_tag("data")
         data_elem = ET.SubElement(element, data_tag)
-        data_elem.text = filename  # TODO: read and encode the file
+        data_elem.text = data
         return element
 
 ####################################################################################################

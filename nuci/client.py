@@ -61,6 +61,18 @@ def reboot():
         return False
 
 
+def load_config_backup(file):
+    try:
+        import base64
+        data = base64.b64encode(file.read())
+        logger.debug(ET.tostring(maintain.Maintain.rpc_config_restore(data)))
+        dispatch(maintain.Maintain.rpc_config_restore(data))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        logger.exception("Unable to restore backup.")
+        return False
+
+
 def save_config_backup(filename):
     try:
         data = dispatch(maintain.Maintain.rpc_config_backup())

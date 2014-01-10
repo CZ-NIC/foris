@@ -23,34 +23,22 @@
         <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ _("Reboot") }}</a>
     </div>
 
-</div>
+    <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" {{! form.render_html_data() }}>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        %for field in form.active_fields:
+            %if field.hidden:
+                {{! field.render() }}
+            %else:
+            <div>
+                {{! field.label_tag }}
+                {{! field.render() }}
+                %if field.hint:
+                    <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ _("Hint") }}: {{ field.hint }}">
+                %end
+            </div>
+            %end
+        %end
+        <button type="submit" name="send" class="button">{{ _("Restore from backup") }}</button>
+    </form>
 
-<script>
-    $(document).ready(function() {
-        $("#registration-code-update").click(function(e) {
-            var self = $(this);
-            e.preventDefault();
-            self.attr("disabled", "disabled");
-            self.after('<img src="/static/img/icon-loading.gif" id="registration-code-loader" alt="Loading...">');
-            $.get("/config/about/ajax", {action: "registration_code"})
-                    .done(function(response) {
-                        if (response.success) {
-                            $("#registration-code").text(response.data).show();
-                            $("#registration-code-fail").hide();
-                        }
-                        else {
-                            $("#registration-code").text("????????");
-                            $("#registration-code-fail").show();
-                        }
-                    })
-                    .fail(function() {
-                        $("#registration-code").text("????????");
-                        $("#registration-code-fail").show();
-                    })
-                    .always(function() {
-                        $("#registration-code-loader").remove();
-                        self.removeAttr("disabled");
-                    });
-        });
-    });
-</script>
+</div>

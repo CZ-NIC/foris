@@ -20,6 +20,7 @@ from datetime import datetime
 import os
 from config_handlers import *
 import logging
+from config_handlers.base import MaintenanceHandler
 from nuci import client
 from nuci.client import filters
 from utils import login_required
@@ -87,7 +88,7 @@ class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
     pass
 
 
-class MaintenanceConfigPage(ConfigPageMixin):
+class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
     template = "config/maintenance"
     # {{ _("Maintenance") }} - for translation
     userfriendly_title = "Maintenance"
@@ -113,9 +114,6 @@ class MaintenanceConfigPage(ConfigPageMixin):
         elif action == "reboot":
             return self._action_reboot()
         raise ValueError("Unknown AJAX action.")
-
-    def render(self, **kwargs):
-        return self.default_template(**kwargs)
 
 
 class AboutConfigPage(ConfigPageMixin):
@@ -198,7 +196,8 @@ def config_page_post(page_name):
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         pass
-    return config_page.render(active_handler_key=page_name)
+    return config_page.render(config_pages=config_page_map.display_names(),
+                              active_handler_key=page_name)
 
 
 @app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action")
