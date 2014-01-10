@@ -17,6 +17,7 @@
 import copy
 import re
 
+from foris import gettext as _
 
 PARAM_DELIMITER = "|"
 
@@ -52,14 +53,14 @@ class NotEmpty(Validator):
     js_validator = "notempty"
 
     def __init__(self):
-        super(NotEmpty, self).__init__("This field is required.", bool)
+        super(NotEmpty, self).__init__(_("This field is required."), bool)
 
 
 class IPv4(Validator):
     js_validator = "ipv4"
 
     def __init__(self):
-        super(IPv4, self).__init__("Not a valid IPv4 address.", None)
+        super(IPv4, self).__init__(_("Not a valid IPv4 address."), None)
 
     def valid(self, value):
         import socket
@@ -75,7 +76,7 @@ class IPv6(Validator):
     js_validator = "ipv6"
 
     def __init__(self):
-        super(IPv6, self).__init__("Not a valid IPv6 address.", None)
+        super(IPv6, self).__init__(_("Not a valid IPv6 address."), None)
 
     def valid(self, value):
         import socket
@@ -91,7 +92,7 @@ class IPv6Prefix(Validator):
     js_validator = "ipv6prefix"
 
     def __init__(self):
-        super(IPv6Prefix, self).__init__("Not a valid IPv6 prefix.", None)
+        super(IPv6Prefix, self).__init__(_("Not a valid IPv6 prefix."), None)
 
     def valid(self, value):
         import socket
@@ -111,14 +112,14 @@ class Integer(RegExp):
     js_validator = "integer"
 
     def __init__(self):
-        super(Integer, self).__init__("Is not a number.", r"\d+")
+        super(Integer, self).__init__(_("Is not a number."), r"\d+")
 
 
 class MacAddress(RegExp):
     js_validator = "macaddress"
 
     def __init__(self):
-        super(MacAddress, self).__init__("MAC address is not valid.", r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
+        super(MacAddress, self).__init__(_("MAC address is not valid."), r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
 
 
 class InRange(Validator):
@@ -126,7 +127,7 @@ class InRange(Validator):
 
     def __init__(self, low, high):
         test = lambda val: val in range(low, high)
-        Validator.__init__(self, "Not in a valid range %s - %s." % (low, high), test)
+        super(InRange, self).__init__(_("Not in a valid range %(low)s - %(high)s.") % dict(low=low, high=high), test)
         self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
 
 
@@ -135,7 +136,7 @@ class LenRange(Validator):
 
     def __init__(self, low, high):
         test = lambda val: low <= len(val) <= high
-        super(LenRange, self).__init__("Length must be from %s to %s characters." % (low, high), test)
+        super(LenRange, self).__init__(_("Length must be from %(low)s to %(low)s characters.") % dict(low=low, high=high), test)
         self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
 
 
