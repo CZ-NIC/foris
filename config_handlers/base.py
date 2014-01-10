@@ -36,6 +36,14 @@ class BaseConfigHandler(object):
         return self.__form_cache
 
     def call_action(self, action):
+        """Call config page action.
+
+        :param action:
+        :return: object that can be passed as HTTP response to Bottle
+        """
+        raise NotImplementedError()
+
+    def call_ajax_action(self, action):
         """Call AJAX action.
 
         :param action:
@@ -73,10 +81,10 @@ class PasswordHandler(BaseConfigHandler):
     """
     Setting the password
     """
-    
+
     # {{ _("Password") }} - for translation
     userfriendly_title = "Password"
-    
+
     def get_form(self):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
@@ -121,7 +129,7 @@ class PasswordHandler(BaseConfigHandler):
 class WanHandler(BaseConfigHandler):
     # {{ _("WAN") }} - for translation
     userfriendly_title = "WAN"
-    
+
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
@@ -139,12 +147,12 @@ class WanHandler(BaseConfigHandler):
             (WAN_STATIC, _("Static IP address")),
             (WAN_PPPOE, _("PPPoE")),
         )
-        
+
         # protocol
         wan_main.add_field(Dropdown, name="proto", label=_("Protocol"),
                            nuci_path="uci.network.wan.proto",
                            args=WAN_OPTIONS, default=WAN_DHCP)
-        
+
         # static ipv4
         wan_main.add_field(Textbox, name="ipaddr", label=_("IP address"),
                            nuci_path="uci.network.wan.ipaddr",
@@ -203,7 +211,7 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.macaddr",
                            validators=validators.MacAddress())\
             .requires("custom_mac", True)
-        
+
         def wan_form_cb(data):
             uci = Uci()
             config = Config("network")
@@ -211,13 +219,13 @@ class WanHandler(BaseConfigHandler):
 
             wan = Section("wan", "interface")
             config.add(wan)
-            
+
             wan.add(Option("proto", data['proto']))
             if data['custom_mac'] is True:
                 wan.add(Option("macaddr", data['macaddr']))
             else:
                 wan.add_removal(Option("macaddr", None))
-            
+
             ucollect_ifname = "eth2"
 
             if data['proto'] == WAN_PPPOE:
@@ -256,11 +264,11 @@ class WanHandler(BaseConfigHandler):
 class TimeHandler(BaseConfigHandler):
     # {{ _("Time") }} - for translation
     userfriendly_title = "Time"
-    
+
     def _action_ntp_update(self):
         return client.ntp_update()
 
-    def call_action(self, action):
+    def call_ajax_action(self, action):
         """Call AJAX action.
 
         :param action:

@@ -43,9 +43,12 @@ class ConfigPageMixin(object):
         """Call config page action.
 
         :param action:
-        :return: object that can be passes as HTTP response to Bottle
+        :return: object that can be passed as HTTP response to Bottle
         """
-        raise bottle.HTTPError(404, "No actions specified for this page.")
+        try:
+            return super(ConfigPageMixin, self).call_action(action)
+        except NotImplementedError:
+            raise bottle.HTTPError(404, "No actions specified for this page.")
 
     def call_ajax_action(self, action):
         """Call AJAX action.
@@ -53,7 +56,10 @@ class ConfigPageMixin(object):
         :param action:
         :return: dict of picklable AJAX results
         """
-        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+        try:
+            return super(ConfigPageMixin, self).call_ajax_action(action)
+        except NotImplementedError:
+            raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
         return template(self.template, **kwargs)
