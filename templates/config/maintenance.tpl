@@ -26,19 +26,9 @@
     <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" {{! form.render_html_data() }}>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %if field.hidden:
-                {{! field.render() }}
-            %else:
-            <div>
-                {{! field.label_tag }}
-                {{! field.render() }}
-                %if field.hint:
-                    <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ _("Hint") }}: {{ field.hint }}">
-                %end
-            </div>
-            %end
+            %include config/_field field=field
         %end
-        <button type="submit" name="send" class="button">{{ _("Restore from backup") }}</button>
+        <button type="submit" name="send" class="button">{{ trans("Restore from backup") }}</button>
     </form>
 
 </div>
