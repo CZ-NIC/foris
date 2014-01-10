@@ -136,7 +136,7 @@ class LenRange(Validator):
 
     def __init__(self, low, high):
         test = lambda val: low <= len(val) <= high
-        super(LenRange, self).__init__(_("Length must be from %(low)s to %(low)s characters.") % dict(low=low, high=high), test)
+        super(LenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high), test)
         self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
 
 

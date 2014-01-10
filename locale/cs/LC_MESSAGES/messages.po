@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-10 17:08+0100\n"
+"POT-Creation-Date: 2014-01-10 17:46+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -58,9 +58,6 @@ msgstr "Stáhnout zálohu konfigurace"
 msgid "Reboot"
 msgstr "Restartovat"
 
-msgid "Hint"
-msgstr "Nápověda"
-
 msgid "Restore from backup"
 msgstr "Obnovit ze zálohy"
 
@@ -73,6 +70,9 @@ msgid ""
 msgstr ""
 "Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím sekci, "
 "kterou chcete upravovat, z možností uvedených výše."
+
+msgid "Hint"
+msgstr "Nápověda"
 
 msgid "Discard changes"
 msgstr "Zahodit změny"
@@ -234,8 +234,8 @@ msgid "Not in a valid range %(low)s - %(high)s."
 msgstr "Musí být z rozsahu %(low)s - %(high)s."
 
 #, python-format
-msgid "Length must be from %(low)s to %(low)s characters."
-msgstr "Délka musí být od %(low)s do %(low)s znaků."
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Délka musí být od %(low)s do %(high)s znaků."
 
 msgid ""
 "Set your password for this administation site. The password must be at least "
