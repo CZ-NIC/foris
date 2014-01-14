@@ -17,16 +17,17 @@
 %rebase config/base **locals()
 
 <div id="page-maintenance">
-    <h2>{{ _("Maintenance") }}</h2>
+    <h2>{{ trans("Maintenance") }}</h2>
+    %include _messages
     <div class="maintenance-description">
-        <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ _("Download configuration backup") }}</a>
-        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ _("Reboot") }}</a>
+        <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ trans("Download configuration backup") }}</a>
+        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
 
     <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" {{! form.render_html_data() }}>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %include config/_field field=field
+            %include _field field=field
         %end
         <button type="submit" name="send" class="button">{{ trans("Restore from backup") }}</button>
     </form>

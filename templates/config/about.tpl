@@ -17,34 +17,35 @@
 %rebase config/base **locals()
 
 <div id="page-about">
-    <h2>{{ _("About") }}</h2>
+    <h2>{{ trans("About") }}</h2>
+        %include _messages
         <table>
             <tbody>
                 <tr>
-                    <th>{{ _("Device") }}</th>
-                    <td>{{ _("Router Turris - model RTRS01") }}</td>
+                    <th>{{ trans("Device") }}</th>
+                    <td>{{ trans("Router Turris - model RTRS01") }}</td>
                 </tr>
                 <tr>
-                    <th>{{ _("Kernel version") }}</th>
+                    <th>{{ trans("Kernel version") }}</th>
                     <td>{{ stats['kernel-version'] }}</td>
                 </tr>
             </tbody>
         </table>
 
-    <h2>{{ _("Device registration") }}</h2>
+    <h2>{{ trans("Device registration") }}</h2>
     <div class="about-description">
         <p>
-            {{! _("If you did not register your device before, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/"} }}
+            {{! trans("If you did not register your device before, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/"} }}
         </p>
         <p>
-            {{ _("Registration code") }}: <span id="registration-code">????????</span>
+            {{ trans("Registration code") }}: <span id="registration-code">????????</span>
         </p>
         <div id="registration-code-fail">
             <p>
-                {{ _("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
+                {{ trans("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
             </p>
         </div>
-        <button id="registration-code-update" class="button">{{ _("Get registration code") }}</button>
+        <button id="registration-code-update" class="button">{{ trans("Get registration code") }}</button>
     </div>
 
 </div>

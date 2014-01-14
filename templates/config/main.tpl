@@ -18,9 +18,10 @@
 
 <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
     <p class="config-description">{{! description }}</p>
+    %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in form.active_fields:
-        %include config/_field field=field
+        %include _field field=field
     %end
     <div class="form-buttons">
         <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>

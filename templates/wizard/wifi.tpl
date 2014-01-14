@@ -19,19 +19,10 @@
 <form id="main-form" class="wizard-form wizard-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
     <h1>{{ first_title }}</h1>
     <p class="wizard-description">{{! first_description }}</p>
+    %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
     %for field in form.active_fields:
-        %if field.hidden:
-            {{! field.render() }}
-        %else:
-        <div>
-            {{! field.label_tag }}
-            {{! field.render() }}
-            %if field.hint:
-                <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ _("Hint") }}: {{ field.hint }}">
-            %end
-        </div>
-        %end
+        %include _field field=field
     %end
     <div id="wifi-qr">
     </div>
@@ -41,5 +32,5 @@
             ForisWizard.initWiFiQR();
         });
     </script>
-    <button class="button-next button-arrow-right" type="submit" name="send">{{ _("Next") }}</button>
+    <button class="button-next button-arrow-right" type="submit" name="send">{{ trans("Next") }}</button>
 </form>

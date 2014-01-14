@@ -1,7 +1,7 @@
 %if field.hidden:
     {{! field.render() }}
 %else:
-<div>
+<div class="row">
     {{! field.label_tag }}
     {{! field.render() }}
     %if field.hint:
