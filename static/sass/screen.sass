@@ -188,6 +188,18 @@ button
       a
         padding-top: 0.25em
 
+.message
+  padding: 1em
+  margin-bottom: 0.5em
+
+  &.success
+    color: #488549
+    background-color: #deffde
+
+  &.error
+    background-color: #ffdbdf
+    color: #a80011
+
 input, textarea, select
   background-color: $background-color
   border: 1px solid $stroke-color
@@ -201,7 +213,7 @@ input[type="checkbox"], input[type="radio"]
   width: auto
 
 .wizard-form, .config-form
-  & > div
+  & > .row
     padding: 0.25em 0
 
   label
