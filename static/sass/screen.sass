@@ -189,16 +189,31 @@ button
         padding-top: 0.25em
 
 .message
-  padding: 1em
+  background:
+    position: 0.8em 50%
+    repeat: no-repeat
+
+  color: #000
+  padding: 1em 1em 1em 3.2em
   margin-bottom: 0.5em
 
   &.success
-    color: #488549
-    background-color: #deffde
+    background-image: url(../img/message-success.png)
+    background-color: #6b0
+
+  &.info
+    background-image: url(../img/message-info.png)
+    background-color: #0ac
+
+  &.warning
+    background-image: url(../img/message-warning.png)
+    background-color: #fc0
 
   &.error
-    background-color: #ffdbdf
-    color: #a80011
+    background-image: url(../img/message-error.png)
+    background-color: #c33
+    color: #fff
+
 
 input, textarea, select
   background-color: $background-color
