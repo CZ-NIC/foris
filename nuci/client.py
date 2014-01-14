@@ -23,6 +23,7 @@ import logging
 from modules import maintain, password as password_module, registration, uci_raw, time, updater
 from modules.base import Data, YinElement
 from nuci import filters
+from nuci.exceptions import ConfigRestoreError
 from nuci.modules import stats
 
 
@@ -68,9 +69,12 @@ def load_config_backup(file):
         logger.debug(ET.tostring(maintain.Maintain.rpc_config_restore(data)))
         dispatch(maintain.Maintain.rpc_config_restore(data))
         return True
-    except (RPCError, TimeoutExpiredError):
+    except RPCError:
         logger.exception("Unable to restore backup.")
-        return False
+        raise ConfigRestoreError("Unable to restore backup.")
+    except TimeoutExpiredError:
+        logger.exception("Timeout expired during backup restore.")
+        raise
 
 
 def save_config_backup(filename):

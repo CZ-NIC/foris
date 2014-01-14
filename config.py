@@ -23,6 +23,7 @@ from foris import gettext as _
 import logging
 from nuci import client
 from nuci.client import filters
+from nuci.exceptions import ConfigRestoreError
 from utils import login_required
 from collections import OrderedDict
 from utils import messages
@@ -74,6 +75,17 @@ class ConfigPageMixin(object):
 
         return self.default_template(form=form, title=title, description=description, **kwargs)
 
+    def save(self, *args, **kwargs):
+        no_messages = kwargs.pop("no_messages", False)
+        result = super(ConfigPageMixin, self).save(*args, **kwargs)
+        if no_messages:
+            return result
+        if result:
+            messages.add_message(_("Configuration was successfully saved."), messages.SUCCESS)
+        else:
+            messages.add_message(_("There were some errors in your input."), messages.WARNING)
+        return result
+
 
 class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
     pass
@@ -121,6 +133,16 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         elif action == "reboot":
             return self._action_reboot()
         raise ValueError("Unknown AJAX action.")
+
+    def save(self, *args, **kwargs):
+        result = False
+        try:
+            result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
+            messages.add_message(_("Configuration was successfully restored."), messages.SUCCESS)
+        except ConfigRestoreError:
+            messages.add_message(_("Configuration could not be loaded, backup file is probably corrupted."), messages.ERROR)
+            logger.exception("Error when restoring backup.")
+        return result
 
 
 class AboutConfigPage(ConfigPageMixin):
@@ -199,14 +221,12 @@ def config_page_post(page_name):
 
     try:
         if config_page.save():
-            messages.add_message(_("Configuration was successfully saved."), messages.SUCCESS)
             bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
         messages.add_message(_("Configuration could not be saved due to an internal error."), messages.ERROR)
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
-    messages.add_message(_("There were some errors in your input."), messages.ERROR)
     return config_page.render(config_pages=config_page_map.display_names(),
                               active_handler_key=page_name)
 
