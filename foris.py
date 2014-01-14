@@ -25,6 +25,7 @@ import os
 import sys
 from utils import redirect_unauthenticated
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
+from utils.messages import set_template_defaults
 from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
 
@@ -48,6 +49,9 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
 bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
+
+# messages
+set_template_defaults(bottle.SimpleTemplate)
 
 
 def login_redirect(step_num):
@@ -206,6 +210,7 @@ if __name__ == "__main__":
         'session.lock_dir': '/tmp/beaker/lock',
         'session.cookie_expires': True,
         'session.timeout': 900,
+        'session.auto': True,
     }
     app = SessionMiddleware(app, session_options)
 
