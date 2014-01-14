@@ -16,13 +16,14 @@
 
 from bottle import Bottle, template, request
 import bottle
+from foris import gettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
 from nuci import client, filters
 from nuci.configurator import add_config_update, commit
 from nuci.modules.uci_raw import Option, Section, Config, Uci
-from utils import login_required
+from utils import login_required, messages
 from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
 
@@ -332,7 +333,9 @@ def step_post(number=1):
             bottle.redirect(reverse("wizard_step", number=int(number) + 1))
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
+        messages.add_message(_("Configuration could not be saved due to an internal error."), messages.ERROR)
         logger.exception("Error when saving form.")
+    messages.add_message(_("There were some errors in your input."), messages.ERROR)
     logger.warning("Form not saved.")
     return wiz.render(stepnumber=number)
 

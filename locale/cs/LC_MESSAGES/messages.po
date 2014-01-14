@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-14 09:42+0100\n"
+"POT-Creation-Date: 2014-01-14 10:35+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -239,6 +239,9 @@ msgstr "Délka musí být od %(low)s do %(high)s znaků."
 
 msgid "Configuration was successfully saved."
 msgstr "Nastavení bylo úspěšně uloženo."
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
 
 msgid "There were some errors in your input."
 msgstr "Některé z Vámi zadaných údajů nejsou platné."

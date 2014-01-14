@@ -19,12 +19,13 @@ import bottle
 from datetime import datetime
 import os
 from config_handlers import *
+from foris import gettext as _
 import logging
-from config_handlers.base import MaintenanceHandler
 from nuci import client
 from nuci.client import filters
 from utils import login_required
 from collections import OrderedDict
+from utils import messages
 from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
 
@@ -198,11 +199,14 @@ def config_page_post(page_name):
 
     try:
         if config_page.save():
+            messages.add_message(_("Configuration was successfully saved."), messages.SUCCESS)
             bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
+        messages.add_message(_("Configuration could not be saved due to an internal error."), messages.ERROR)
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
+    messages.add_message(_("There were some errors in your input."), messages.ERROR)
     return config_page.render(config_pages=config_page_map.display_names(),
                               active_handler_key=page_name)
 
