@@ -391,7 +391,7 @@ ForisWizard.initWiFiQR = function () {
     };
     doRender();
 
-    $(document).on("change keyup", "#field-ssid, #field-key, #field-ssid_hidden_1", function () {
+    $(document).on("change keyup paste", "#field-ssid, #field-key, #field-ssid_hidden_1", function () {
         clearTimeout(doRender.debounceTimeout);
         doRender.debounceTimeout = setTimeout(doRender, 500);
     });
