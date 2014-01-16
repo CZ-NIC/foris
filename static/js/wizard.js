@@ -93,15 +93,24 @@ ForisWizard.initialize = function() {
         ForisWizard.updateForm();
     });
 
-    $(document).on("keyup", ".validate", function() {
-        ForisWizard.validateField(this);
-    });
+    ForisWizard.initParsley();
 
-    $(document).on("submit", "form", function(e) {
-        if (!ForisWizard.validateForm(this)) {
-            e.preventDefault();
-            // console.log("TODO: error in validation");
-        }
+//    $(document).on("keyup", ".validate", function() {
+//        ForisWizard.validateField(this);
+//    });
+
+//    $(document).on("submit", "form", function(e) {
+//        if (!ForisWizard.validateForm(this)) {
+//            e.preventDefault();
+//            // console.log("TODO: error in validation");
+//        }
+//    });
+};
+
+ForisWizard.initParsley = function() {
+    $("form").parsley({
+        namespace: "data-parsley-",
+        trigger: "keyup change paste"
     });
 };
 
@@ -217,6 +226,7 @@ ForisWizard.updateForm = function() {
     $.post(form.attr("action"), serialized)
             .done(function(data){
                 form.replaceWith(data.html);
+                ForisWizard.initParsley();
             });
     form.find("input, select, button").attr("disabled", "disabled");
 };

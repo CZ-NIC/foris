@@ -15,11 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import copy
+import logging
 import re
 
 from foris import gettext as _
 
 PARAM_DELIMITER = "|"
+logger = logging.getLogger(__name__)
 
 
 class Validator(object):
@@ -50,14 +52,14 @@ class RegExp(Validator):
 
 
 class NotEmpty(Validator):
-    js_validator = "notempty"
+    js_validator = ("notblank", "true")
 
     def __init__(self):
         super(NotEmpty, self).__init__(_("This field is required."), bool)
 
 
 class IPv4(Validator):
-    js_validator = "ipv4"
+    js_validator = ("foristype", "ipv4")
 
     def __init__(self):
         super(IPv4, self).__init__(_("Not a valid IPv4 address."), None)
@@ -73,7 +75,7 @@ class IPv4(Validator):
 
 
 class IPv6(Validator):
-    js_validator = "ipv6"
+    js_validator = ("foristype", "ipv6")
 
     def __init__(self):
         super(IPv6, self).__init__(_("Not a valid IPv6 address."), None)
@@ -89,7 +91,7 @@ class IPv6(Validator):
 
 
 class IPv6Prefix(Validator):
-    js_validator = "ipv6prefix"
+    js_validator = ("foristype", "ipv6prefix")
 
     def __init__(self):
         super(IPv6Prefix, self).__init__(_("Not a valid IPv6 prefix."), None)
@@ -109,38 +111,39 @@ class IPv6Prefix(Validator):
 
 
 class Integer(RegExp):
-    js_validator = "integer"
+    js_validator = ("type", "digits")
 
     def __init__(self):
         super(Integer, self).__init__(_("Is not a number."), r"\d+")
 
 
 class MacAddress(RegExp):
-    js_validator = "macaddress"
+    js_validator = ("foristype", "macaddress")
 
     def __init__(self):
         super(MacAddress, self).__init__(_("MAC address is not valid."), r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
 
 
 class InRange(Validator):
-    js_validator = "inrange"
+    js_validator = "range"
 
     def __init__(self, low, high):
         test = lambda val: val in range(low, high)
         super(InRange, self).__init__(_("Not in a valid range %(low)s - %(high)s.") % dict(low=low, high=high), test)
-        self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
+        self.js_validator_params = "[%s,%s]" % (low, high)
 
 
 class LenRange(Validator):
-    js_validator = "lenrange"
+    js_validator = "rangelength"
 
     def __init__(self, low, high):
         test = lambda val: low <= len(val) <= high
         super(LenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high), test)
-        self.js_validator_params = "%s%s%s" % (low, PARAM_DELIMITER, high)
+        self.js_validator_params = "[%s,%s]" % (low, high)
 
 
 class FieldsEqual(Validator):
+    # TODO: migrate to parsley
     js_validator = "eqfields"
     
     def __init__(self, field1, field2, message):
@@ -150,13 +153,12 @@ class FieldsEqual(Validator):
 
 def validators_as_data_dict(validators):
     data = {}
-    data_validators = []
     for v in validators:
         if v.js_validator:
-            data_validators.append("%s" % v.js_validator)
-            params = v.js_validator_params
-            if params:
-                data['validator-%s' % v.js_validator] = params
-    if data_validators:
-        data['validators'] = " ".join(data_validators)
+            if isinstance(v.js_validator, tuple):
+                data["parsley-%s" % v.js_validator[0]] = v.js_validator[1]
+            elif v.js_validator_params:
+                data["parsley-%s" % v.js_validator] = v.js_validator_params
+            else:
+                logger.warning("Uknown JS validator: %s" % v.js_validator)
     return data
