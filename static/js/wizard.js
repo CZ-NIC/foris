@@ -335,12 +335,36 @@ ForisWizard.timeUpdateCallback = function() {
     window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
 };
 
+ForisWizard.checkLowerAsciiString = function (string) {
+    for (var i=0; i < string.length; i++) {
+        var charCode = string.charCodeAt(i);
+        if (charCode < 32 || charCode > 127) {
+            return false;
+        }
+    }
+    return true;
+};
+
 ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
     var codeElement = $("#wifi-qr");
     codeElement.empty();
 
     if (!$("#field-wifi_enabled_1").prop("checked"))
         return;
+
+
+    var showQRError = function(message) {
+        codeElement.append("<div class=\"qr-error\">" + message + "</div>");
+    };
+
+    if (!ForisWizard.checkLowerAsciiString(ssid)) {
+        showQRError("Vámi zadané jméno sítě obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na nětkerých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        return;
+    }
+    if (!ForisWizard.checkLowerAsciiString(password)) {
+        showQRError("Vámi zadané heslo obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na nětkerých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        return;
+    }
 
     if (hidden)
         hidden = 'H:true';
