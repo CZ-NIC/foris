@@ -358,11 +358,11 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
     };
 
     if (!ForisWizard.checkLowerAsciiString(ssid)) {
-        showQRError("Vámi zadané jméno sítě obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na nětkerých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        showQRError("Vámi zadané jméno sítě obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na některých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
         return;
     }
     if (!ForisWizard.checkLowerAsciiString(password)) {
-        showQRError("Vámi zadané heslo obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na nětkerých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        showQRError("Vámi zadané heslo obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na některých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
         return;
     }
 
