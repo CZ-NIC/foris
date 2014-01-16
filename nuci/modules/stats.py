@@ -32,6 +32,9 @@ class Stats(YinElement):
          ---- 'MemTotal': total RAM
          ---- 'MemFree': free RAM
          ---- etc... (depending on content of meminfo element)
+         -- 'serial-number-raw': serial number as returned by Nuci
+         -- 'serial-number-decimal': serial number converted from base 16
+                                     to base 10 (or None, if failed)
     """
 
     tag = "stats"
@@ -49,6 +52,12 @@ class Stats(YinElement):
                 stats.data['uptime'] = elem.text
             elif elem.tag == Stats.qual_tag("kernel-version"):
                 stats.data['kernel-version'] = elem.text
+            elif elem.tag == Stats.qual_tag("serial-number"):
+                stats.data['serial-number-raw'] = elem.text
+                try:
+                    stats.data['serial-number-decimal'] = int(elem.text, 16)
+                except ValueError:
+                    stats.data['serial-number-decimal'] = None
             elif elem.tag == Stats.qual_tag("meminfo"):
                 stats.data['meminfo'] = {}
                 for meminfo_elem in elem:

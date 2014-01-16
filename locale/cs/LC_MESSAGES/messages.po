@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-14 15:33+0100\n"
+"POT-Creation-Date: 2014-01-16 11:12+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -88,6 +88,9 @@ msgstr "Zařízení"
 
 msgid "Router Turris - model RTRS01"
 msgstr "Router Turris - model RTRS01"
+
+msgid "Serial number"
+msgstr "Sériové číslo"
 
 msgid "Kernel version"
 msgstr "Verze jádra"

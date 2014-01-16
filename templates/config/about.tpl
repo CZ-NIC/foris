@@ -26,6 +26,10 @@
                     <td>{{ trans("Router Turris - model RTRS01") }}</td>
                 </tr>
                 <tr>
+                    <th>{{ trans("Serial number") }}</th>
+                    <td>{{ stats['serial-number-decimal'] }}</td>
+                </tr>
+                <tr>
                     <th>{{ trans("Kernel version") }}</th>
                     <td>{{ stats['kernel-version'] }}</td>
                 </tr>
