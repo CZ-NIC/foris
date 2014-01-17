@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-16 11:12+0100\n"
+"POT-Creation-Date: 2014-01-17 17:35+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -125,6 +125,9 @@ msgstr ""
 msgid "Get registration code"
 msgstr "Získat registrační kód"
 
+msgid "Skip wizard"
+msgstr "Přeskočit průvodce"
+
 msgid "Connection test and check for new updates."
 msgstr "Test připojení a kontrola aktualizací"
 
@@ -161,11 +164,11 @@ msgstr ""
 "zapojený do zdířky WAN. Jakmile budete mít připojení k internetu funkční, "
 "aktualizace se budou pravidelně instalovat samy."
 
-msgid "Skip wizard"
-msgstr "Přeskočit průvodce"
-
 msgid "Step"
 msgstr "Krok"
+
+msgid "Begin installation"
+msgstr "Zahájit instalaci"
 
 msgid "Synchronize with your computer clock"
 msgstr "Synchronizovat s časem ve Vašem počítači"
@@ -267,6 +270,9 @@ msgstr ""
 msgid "Password (repeat)"
 msgstr "Heslo (pro kontrolu)"
 
+msgid "Passwords are not equal."
+msgstr "Hesla se neshodují."
+
 msgid "Use this password for advanced configuration"
 msgstr "Používat toto heslo pro pokročilé nastavení"
 
@@ -277,9 +283,6 @@ msgstr ""
 "Stejné heslo bude použito pro přístup do tohoto administračního rozhraní, "
 "pro uživatele root ve webovém rozhraní LuCI a pro SSH přístup. Použijte "
 "silné heslo!"
-
-msgid "Passwords are not equal."
-msgstr "Hesla se neshodují."
 
 msgid "WAN"
 msgstr "WAN"

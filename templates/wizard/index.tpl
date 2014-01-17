@@ -14,19 +14,14 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%if not defined('is_xhr'):
-    %rebase _layout **locals()
+%rebase _layout **locals()
 
-    %include wizard/_header can_skip_wizard=can_skip_wizard, stepnumber=stepnumber
+%include wizard/_header can_skip_wizard=False, stepnumber=0
 
-%if stepname:
-    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ trans("Step") }} {{ stepnumber }}"></div>
-%end
-    <div id="wizard-content">
-%end
+<h1>Vítejte v nastavení routeru Turris</h1>
 
-    %include
+<p>Než začnete router používat, je třeba provést jeho prvotní nastavení. K tomu slouží tento jednoduchý průvodce základní konfigurací. Po jeho dokončení bude router připraven k běžnému použití.</p>
+<hr>
+<p>Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského hesla v prvním kroku průvodce.</p>
 
-%if not defined('is_xhr'):
-    </div>
-%end
+<a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>

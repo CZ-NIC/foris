@@ -58,6 +58,8 @@ def login_redirect(step_num):
     from wizard import NUM_WIZARD_STEPS
     if step_num >= NUM_WIZARD_STEPS:
         bottle.redirect(reverse("config_index"))
+    elif step_num == 1:
+        bottle.redirect(reverse("wizard_index"))
     else:
         bottle.redirect(reverse("wizard_step", number=step_num))
 
@@ -68,7 +70,7 @@ def index():
     session = bottle.request.environ['beaker.session']
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
-    
+
     if not allowed_step_max:
         session["user_authenticated"] = True
         allowed_step_max = 1

@@ -307,7 +307,7 @@ def ajax(number=1):
 @app.route("/", name="wizard_index")
 @login_required
 def wizard():
-    bottle.redirect(reverse("wizard_step", number=1))
+    return bottle.template("wizard/index")
 
 
 @app.route("/step/<number:re:\d+>", name="wizard_step")
