@@ -322,6 +322,7 @@ class LanHandler(BaseConfigHandler):
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
+                           validators=validators.IPv4(),
                            hint=_("Router's IP address in inner network. Also defines the range of "
                                   "assigned IP addresses."))
         lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
