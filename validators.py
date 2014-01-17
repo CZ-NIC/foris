@@ -59,7 +59,7 @@ class NotEmpty(Validator):
 
 
 class IPv4(Validator):
-    js_validator = ("foristype", "ipv4")
+    js_validator = ("type", "ipv4")
 
     def __init__(self):
         super(IPv4, self).__init__(_("Not a valid IPv4 address."), None)
@@ -75,7 +75,7 @@ class IPv4(Validator):
 
 
 class IPv6(Validator):
-    js_validator = ("foristype", "ipv6")
+    js_validator = ("type", "ipv6")
 
     def __init__(self):
         super(IPv6, self).__init__(_("Not a valid IPv6 address."), None)
@@ -91,7 +91,7 @@ class IPv6(Validator):
 
 
 class IPv6Prefix(Validator):
-    js_validator = ("foristype", "ipv6prefix")
+    js_validator = ("type", "ipv6prefix")
 
     def __init__(self):
         super(IPv6Prefix, self).__init__(_("Not a valid IPv6 prefix."), None)
@@ -118,7 +118,7 @@ class Integer(RegExp):
 
 
 class MacAddress(RegExp):
-    js_validator = ("foristype", "macaddress")
+    js_validator = ("type", "macaddress")
 
     def __init__(self):
         super(MacAddress, self).__init__(_("MAC address is not valid."), r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")

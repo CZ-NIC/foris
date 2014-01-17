@@ -3,9 +3,10 @@ window.ParsleyConfig = window.ParsleyConfig || {};
 (function ($) {
   window.ParsleyConfig = $.extend( true, {}, window.ParsleyConfig, {
     validators: {
-      foristype: function () {
+      type: function () {
         return {
           validate: function ( val, type ) {
+            var regExp;
             switch (type) {
               case 'ipv4':
                 var bytes = val.split(".");
@@ -21,24 +22,32 @@ window.ParsleyConfig = window.ParsleyConfig || {};
                 }
                 return true;
               case 'ipv6':
-                // TODO: implement validator
-                return true;
+                // source: http://home.deds.nl/~aeron/regex/
+                regExp = /^((?=.*::)(?!.*::.+::)(::)?([\dA-F]{1,4}:(:|\b)|){5}|([\dA-F]{1,4}:){6})((([\dA-F]{1,4}((?!\3)::|:\b|$))|(?!\2\3)){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})$/i;
+                break;
               case 'ipv6prefix':
-                // TODO: implement validator
-                return true;
+                // source: http://home.deds.nl/~aeron/regex/
+                regExp = /^((?=.*::)(?!.*::.+::)(::)?([\dA-F]{1,4}:(:|\b)|){5}|([\dA-F]{1,4}:){6})((([\dA-F]{1,4}((?!\3)::|:\b|$))|(?!\2\3)){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})$/i;
+                var splitVal = val.split("/");
+                if (splitVal.length != 2) return false;
+                if (!/^(\d|[1-9]\d|1[0-1]\d|12[0-8])$/.test(splitVal[1])) return false;
+                val = splitVal[0];
+                break;
               case 'macaddress':
-                // TODO: implement validator
-                return true;
+                regExp = /^([0-9A-F]{2}:){5}([0-9A-F]{2})$/i;
+                break;
               default:
                 return false;
             }
+
+            return val !== '' ? regExp.test(val) : false;
           }
           , priority: 32
         }
       }
     },
     messages: {
-      foristype: {
+      type: {
         ipv4: "This is not a valid IPv4 address.",
         ipv6: "This is not a valid IPv6 address.",
         ipv6prefix: "This is not a valid IPv6 prefix.",
