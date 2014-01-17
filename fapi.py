@@ -292,6 +292,8 @@ class Field(ForisFormElement):
         if validators and not isinstance(validators, list):
             validators = [validators]
         self.validators = validators or []
+        if not all(map(lambda x: isinstance(x, validators_module.Validator), self.validators)):
+            raise TypeError("Argument 'validators' must be Validator instance or list of them.")
         self._kwargs = kwargs
         self.required = required
         if self.required:
