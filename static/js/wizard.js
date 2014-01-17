@@ -17,76 +17,6 @@
 */
 var ForisWizard = {};
 
-ForisWizard.validators = {
-    ipv4: function(value) {
-        var bytes = value.split(".");
-        if (bytes.length != 4)
-            return false;
-        var intRE = /^[0-9]+$/;
-        for (var i = 0; i < bytes.length; i++) {
-            // check it's an integer number, not exponential format, hex number etc...
-            if (!intRE.test(bytes[i]))
-                return false;
-            if (bytes[i] < 0 || bytes[i] > 255)
-                return false;
-        }
-        return true;
-    },
-    ipv6: function(value) {
-        return true; // TODO: at least basic IPv6 check
-    },
-    ipv6prefix: function(value) {
-        return true; // TODO: at least basic IPv6 check
-    },
-    integer: function(value) {
-        var re_integer = /^\d+$/;
-        return value.search(re_integer) != -1;
-    },
-    notempty: function(value) {
-        return value != "";
-    },
-    macaddress: function(value) {
-        var re_macaddr = /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/;
-        return value.search(re_macaddr) != -1;
-    },
-    inrange: function(value, lo, hi) {
-        return value >= lo && value <= hi;
-    },
-    lenrange: function(value, lo, hi) {
-        return value.length >= lo && value.length <= hi;
-    }
-};
-
-ForisWizard.formValidators = {
-    eqfields: function(form, args) {
-        var argsArray = args.split("|");
-        if (argsArray.length != 3 || !argsArray[0] || !argsArray[1] || !argsArray[2]) {
-            console.error("eqfields validator received invalid arguments.");
-            return true;
-        }
-
-        var elOne = $("#field-" + argsArray[0], form);
-        var elTwo = $("#field-" + argsArray[1], form);
-        var errorBox = ForisWizard.getFormErrorBox(form);
-        if (elOne.val() == elTwo.val()) {
-            errorBox.hide();
-            return true;
-        }
-        else {
-            errorBox.text(argsArray[2]);
-            errorBox.show();
-            ForisWizard.markInvalid(elTwo);
-            // remove flag on focus
-            $(document).on("focus", "#field-" + argsArray[1], function(e) {
-                $(document).off(e);
-                $("#field-" + argsArray[1]).parent().find("[class|='field-validation']").remove();
-                errorBox.hide();
-            });
-            return false;
-        }
-    }
-};
-
 ForisWizard.initialize = function() {
     $(document).on("change", ".has-requirements", function() {
         $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="Loading...">');
@@ -94,17 +24,6 @@ ForisWizard.initialize = function() {
     });
 
     ForisWizard.initParsley();
-
-//    $(document).on("keyup", ".validate", function() {
-//        ForisWizard.validateField(this);
-//    });
-
-//    $(document).on("submit", "form", function(e) {
-//        if (!ForisWizard.validateForm(this)) {
-//            e.preventDefault();
-//            // console.log("TODO: error in validation");
-//        }
-//    });
 };
 
 ForisWizard.initParsley = function() {
@@ -129,112 +48,6 @@ ForisWizard.initParsley = function() {
           }
         }
     });
-};
-
-ForisWizard.markInvalid = function(field) {
-    var fMarker = field.parent().find("[class|='field-validation']");
-    if (fMarker.length)
-        fMarker.replaceWith('<div class="field-validation-fail"></div>');
-    else
-        field.parent().append('<div class="field-validation-fail"></div>');
-};
-
-ForisWizard.markOk = function(field) {
-    var fMarker = field.parent().find("[class|='field-validation']");
-    if (fMarker.length)
-        fMarker.replaceWith('<div class="field-validation-pass"></div>');
-    else
-        field.parent().append('<div class="field-validation-pass"></div>');
-};
-
-ForisWizard.runValidator = function(validator, value, mangledArgs) {
-    if (!mangledArgs)
-        return this.validators[validator](value);
-    var argsArray = mangledArgs.split("|");
-    if (mangledArgs && argsArray.length == 0)
-        return this.validators[validator](value);
-    if (argsArray.length == 1)
-        return this.validators[validator](value, argsArray[0]);
-    if (argsArray.length == 2)
-        return this.validators[validator](value, argsArray[0], argsArray[1]);
-    if (argsArray.length == 3)
-        return this.validators[validator](value, argsArray[0], argsArray[1], argsArray[2]);
-};
-
-ForisWizard.validateField = function(field) {
-    var result = true;
-    field = $(field);
-
-    if (field.hasClass("required") && field.val() == "") {
-        this.markInvalid(field);
-        return false;
-    }
-
-    if (!field.hasClass("validate") || !field.hasClass("required") && field.val() == "") {
-        this.markOk(field);
-        return true;
-    }
-
-
-    var validators = field.data("validators");
-    if (validators) {
-        validators = validators.split(" ");
-        for (var i in validators) {
-            if (validators.hasOwnProperty(i) && ForisWizard.validators.hasOwnProperty(validators[i])) {
-                var args = field.data("validator-" + validators[i]);
-                var res = ForisWizard.runValidator(validators[i], field.val(), args);
-                result = result && res;
-            }
-        }
-    }
-
-    if (result) {
-        this.markOk(field);
-    }
-    else {
-        this.markInvalid(field);
-    }
-
-    return result;
-};
-
-ForisWizard.getFormErrorBox = function(form) {
-    var errorBox = $("#form-error-box");
-    if (errorBox.length)
-        return errorBox;
-
-    $(form).after('<div id="form-error-box"></div>');
-    return $("#form-error-box");
-};
-
-ForisWizard.validateForm = function(form) {
-    var result = true;
-    // validate inputs
-    var inputs = $("input.validate", form);
-    for (var i in inputs) {
-        if (inputs.hasOwnProperty(i) && !ForisWizard.validateField(inputs[i])) {
-            result = false;
-        }
-    }
-    
-    // validate form itself (relations between fields,...)
-    var jQForm = $(form);
-    var validators = jQForm.data("validators");
-    if (validators)
-        validators = validators.split(" ");
-    else
-        return result; // no form validators
-
-    for (var i = 0; i < validators.length; i++) {
-        if (ForisWizard.formValidators.hasOwnProperty(validators[i])) {
-            var args = jQForm.data("validator-" + validators[i]);
-            if (!ForisWizard.formValidators[validators[i]](form, args))
-                result = false;
-                break;
-        }
-    }
-    
-    return result;
 };
 
 ForisWizard.updateForm = function() {
@@ -338,12 +151,12 @@ ForisWizard.showTimeForm = function() {
                 .find("input[name=\"time\"]");
             $(".form-fields").hide();
             $("#wizard-time-sync-auto").click(function(e) {
-                e.preventDefault()
+                e.preventDefault();
                 timeField.val(new Date().toISOString());
                 $("#wizard-time-sync-success").show();
             });
             $("#wizard-time-sync-manual").click(function(e) {
-                e.preventDefault()
+                e.preventDefault();
                 $(".form-fields").show();
                 $(this).hide();
             });
