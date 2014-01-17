@@ -24,7 +24,7 @@
         <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
 
-    <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" {{! form.render_html_data() }}>
+    <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
             %include _field field=field

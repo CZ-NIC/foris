@@ -240,11 +240,10 @@ class Form(object):
         source = source or kw
         out = True
         for i in self.inputs:
-            v = attrget(source, i.name)
             if _validate:
-                out = i.validate(v) and out
+                out = i.validate(source) and out
             else:
-                i.set_value(v)
+                i.set_value(attrget(source, i.name))
         if _validate:
             out = out and self._validate(source)
             self.valid = out
@@ -313,12 +312,13 @@ class Input(object):
     def get_default_id(self):
         return ID_TEMPLATE % self.name
 
-    def validate(self, value):
+    def validate(self, source, field_name=None):
+        value = attrget(source, field_name or self.name)
         self.set_value(value)
         if not self.required and value == "":
             return True
         for v in self.validators:
-            if not v.valid(value):
+            if not v.valid(source if v.validate_with_context else value):
                 self.note = v.msg
                 return False
         return True

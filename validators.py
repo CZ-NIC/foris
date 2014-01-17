@@ -19,6 +19,7 @@ import logging
 import re
 
 from foris import gettext as _
+import form
 
 PARAM_DELIMITER = "|"
 logger = logging.getLogger(__name__)
@@ -26,6 +27,7 @@ logger = logging.getLogger(__name__)
 
 class Validator(object):
     js_validator = None
+    validate_with_context = False  # gets dict of data instead of single value if True
 
     def __deepcopy__(self, memo):
         return copy.copy(self)
@@ -142,13 +144,13 @@ class LenRange(Validator):
         self.js_validator_params = "[%s,%s]" % (low, high)
 
 
-class FieldsEqual(Validator):
-    # TODO: migrate to parsley
-    js_validator = "eqfields"
-    
+class EqualTo(Validator):
+    js_validator = "equalto"
+    validate_with_context = True
+
     def __init__(self, field1, field2, message):
-        super(FieldsEqual, self).__init__(message, lambda data: data[field1] == data[field2])
-        self.js_validator_params = PARAM_DELIMITER.join([field1, field2, message])
+        super(EqualTo, self).__init__(message, lambda data: data[field1] == data[field2])
+        self.js_validator_params = "#%s" % (form.ID_TEMPLATE % field1)
 
 
 def validators_as_data_dict(validators):
@@ -160,5 +162,5 @@ def validators_as_data_dict(validators):
             elif v.js_validator_params:
                 data["parsley-%s" % v.js_validator] = v.js_validator_params
             else:
-                logger.warning("Uknown JS validator: %s" % v.js_validator)
+                logger.warning("Unknown JS validator: %s" % v.js_validator)
     return data

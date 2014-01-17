@@ -93,13 +93,13 @@ class PasswordHandler(BaseConfigHandler):
                                                     " The password must be at least 6 charaters long."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=LenRange(6, 60))
-        pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
+        pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
+                          validators=validators.EqualTo("password", "password_validation",
+                                                        _("Passwords are not equal.")))
         pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use this password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
                                  "site, for root user in LuCI web interface and for SSH login. "
                                  "Use a strong password!"))
-        pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                     _("Passwords are not equal.")))
 
         def pw_form_cb(data):
             from beaker.crypto import pbkdf2
@@ -480,9 +480,9 @@ class SystemPasswordHandler(BaseConfigHandler):
             "</a> or over SSH.") % {'ip': bottle.request.get_header('host'), 'port': 8080})
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=LenRange(6, 60))
-        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"))
-        system_pw_form.add_validator(validators.FieldsEqual("password", "password_validation",
-                                                            _("Passwords are not equal.")))
+        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
+                                 validators=validators.EqualTo("password", "password_validation",
+                                                               _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])

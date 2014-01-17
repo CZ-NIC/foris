@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import defaultdict, OrderedDict
-from form import Dropdown, Form, Checkbox, websafe, Hidden, AttributeList, Radio
+from form import Dropdown, Form, Checkbox, websafe, Hidden, Radio
 from nuci import client
 import logging
 from nuci.configurator import add_config_update, commit
@@ -63,7 +63,6 @@ class ForisForm(ForisFormElement):
         self.defaults = {}  # default values from field definitions
         self.__data_cache = None  # cached data
         self.__form_cache = None
-        self.validators = []
         self.validated = False
         # _nuci_config is not required every time, lazy-evaluate it
         self._nuci_config = Lazy(lambda: client.get(filter))
@@ -120,7 +119,6 @@ class ForisForm(ForisFormElement):
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
         form = Form(*inputs)
-        form.validators = self.validators
         form.fill(self.data)
         self.__form_cache = form
         return form
@@ -168,9 +166,6 @@ class ForisForm(ForisFormElement):
         :rtype: Section
         """
         return self._add(Section(self, *args, **kwargs))
-
-    def add_validator(self, validator):
-        self.validators.append(validator)
 
     @property
     def active_fields(self):
@@ -220,11 +215,6 @@ class ForisForm(ForisFormElement):
                 add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
-
-    def render_html_data(self):
-        data = validators_module.validators_as_data_dict(self.validators)
-        # prefix dict keys with "data-" and convert the dict to string of HTML attributes
-        return unicode(AttributeList({"data-%s" % k: v for k, v in data.iteritems()}))
 
 
 class Section(ForisFormElement):
@@ -355,7 +345,7 @@ class Field(ForisFormElement):
             # other - signature: def __init__(self, name, *validators, **attrs)
             field = self.type(self.name, *validators, **attrs)
         if self._main_form.validated:
-            field.validate(self._main_form.data.get(self.name) or "")
+            field.validate(self._main_form.data or {}, self.name)
         else:
             field.set_value(self._main_form.data.get(self.name) or "")
         if field.note:

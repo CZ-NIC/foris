@@ -16,7 +16,7 @@
 %#
 %rebase config/base **locals()
 
-<form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" {{! form.render_html_data() }}>
+<form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off">
     <p class="config-description">{{! description }}</p>
     %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
