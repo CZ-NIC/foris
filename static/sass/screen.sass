@@ -240,27 +240,23 @@ input[type="checkbox"], input[type="radio"]
   .field-hint, .field-loading, .field-validation-fail, .field-validation-pass
     vertical-align: middle
 
-  .field-validation-pass, .field-validation-fail
-    display: inline-block
-    height: 22px
-    margin-left: 5px
-    padding-left: 25px
-
   .field-validation-pass
-    background: url('../img/icon-success.png') no-repeat
+    background: url('../img/icon-success.png') no-repeat right 50%
     border-color: $info-color
     color: $info-color
 
   .field-validation-fail
-    background: url('../img/icon-fail.png') no-repeat
+    background: url('../img/icon-fail.png') no-repeat right 50%
     border-color: $error-color
     color: $error-color
 
-.parsley-error
-  color: $error-color
+  .validation-container
+    color: $error-color
+    margin-left: 12.5em
 
-.parsley-success
-  color: $info-color
+    ul
+      +adjust-font-size-to(14px)
+
 
 .wizard-form-wifi, .config-form-wifi
   position: relative

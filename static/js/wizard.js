@@ -110,7 +110,19 @@ ForisWizard.initialize = function() {
 ForisWizard.initParsley = function() {
     $("form").parsley({
         namespace: "data-parsley-",
-        trigger: "keyup change paste"
+        trigger: "keyup change paste",
+        successClass: "field-validation-pass",
+        errorClass: "field-validation-fail",
+        errorsWrapper: '<ul class="validation-errors"></ul>',
+        errors: {
+          container: function(elem, isRadioOrCheckbox) {
+            var container = elem.parent().find(".validation-container");
+            if (container.length === 0) {
+              container = $("<div class='validation-container'></div>").appendTo(elem.parent());
+            }
+            return container;
+          }
+        }
     });
 };
 
