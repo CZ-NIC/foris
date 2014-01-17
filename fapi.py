@@ -358,6 +358,8 @@ class Field(ForisFormElement):
             field.validate(self._main_form.data.get(self.name) or "")
         else:
             field.set_value(self._main_form.data.get(self.name) or "")
+        if field.note:
+            field.attrs['class'] = " ".join(field.attrs['class'].split(" ") + ["field-validation-fail"])
         self.__field_cache = field
         return self.__field_cache
 

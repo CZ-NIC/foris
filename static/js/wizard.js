@@ -122,6 +122,11 @@ ForisWizard.initParsley = function() {
             }
             return container;
           }
+        },
+        listeners: {
+          onFieldSuccess: function ( elem, constraints, ParsleyField ) {
+            elem.parent().find(".server-validation-container").remove();
+          }
         }
     });
 };
