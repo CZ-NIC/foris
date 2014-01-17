@@ -16,7 +16,7 @@
 %#
 %rebase wizard/base **locals()
 
-<h1>{{ _("Device registration") }}</h1>
+<h1>{{ trans("Device registration") }}</h1>
 
 <p>
     {{! _("Device was succesfully installed. Last step that is reqiured is a registration of your device in your user profile on the Turris site <a href=\"https://www.turris.cz/\">https://www.turris.cz/</a>.") }}

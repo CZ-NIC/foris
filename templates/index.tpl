@@ -16,19 +16,19 @@
 %#
 %rebase _layout **locals()
 <div id="login-page">
-    <h1><img src="{{ static("img/logo-turris.png") }}" alt="{{ _("Project:Turris") }}"></h1>
+    <h1><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></h1>
 
     %if user_authenticated():
-        <a href="{{ url("logout") }}">{{ _("Log out") }}</a>
+        <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
     %else:
-        <p>{{ _("Enter your password. If this is the first time you are accessing this administration interface, simply click on the Log in button to continue.") }}</p>
+        <p>{{ trans("Enter your password. If this is the first time you are accessing this administration interface, simply click on the Log in button to continue.") }}</p>
         <form action="{{ request.fullpath }}" method="POST">
         %if request.GET.get("next"):
             <input type="hidden" name="next" value="{{ request.GET['next'] }}">
         %end
-            <label for="field-password">{{ _("Password") }}</label>
-            <input id="field-password" type="password" name="password" placeholder="{{ _("Password") }}">
-            <button class="button" type="submit">{{ _("Log in") }}</button>
+            <label for="field-password">{{ trans("Password") }}</label>
+            <input id="field-password" type="password" name="password" placeholder="{{ trans("Password") }}">
+            <button class="button" type="submit">{{ trans("Log in") }}</button>
         </form>
     %end
 </div>

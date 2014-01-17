@@ -18,10 +18,10 @@
     %rebase _layout **locals()
 
     <div id="wizard-header">
-        <img src="{{ static("/img/logo-turris.png") }}" alt="{{ _("Project:Turris") }}">
+        <img src="{{ static("/img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}">
         <div class="wizard-steps">
         %if can_skip_wizard:
-            <a href="{{ url("wizard_skip") }}">{{ _("Skip wizard") }}</a>
+            <a href="{{ url("wizard_skip") }}">{{ trans("Skip wizard") }}</a>
         %end
             <br>
             <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 7</span>
@@ -29,7 +29,7 @@
     </div>
 
 %if stepname:
-    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ _("Step") }} {{ stepnumber }}"></div>
+    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ trans("Step") }} {{ stepnumber }}"></div>
 %end
     <div id="wizard-content">
 %end

@@ -16,8 +16,8 @@
 %#
 %rebase wizard/base **locals()
 
-<h1>{{ _("Registration failure") }}</h1>
+<h1>{{ trans("Registration failure") }}</h1>
 
 <p>
-{{ _("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
+{{ trans("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
 </p>
