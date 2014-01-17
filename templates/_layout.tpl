@@ -25,8 +25,8 @@
     <![endif]-->
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
-    <script src="{{ static("js/parsley.foris-extend.js") }}"></script>
-    <script src="{{ static("js/parsley.messages.cs.js") }}"></script>
+    <script src="{{ static("js/parsley.foris-extend.min.js") }}"></script>
+    <script src="{{ static("js/parsley.messages.cs.min.js") }}"></script>
     <script src="{{ static("js/wizard.min.js") }}"></script>
 </head>
 <body>
