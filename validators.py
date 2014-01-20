@@ -139,8 +139,20 @@ class LenRange(Validator):
     js_validator = "rangelength"
 
     def __init__(self, low, high):
-        test = lambda val: low <= len(val) <= high
+        test = lambda val: low <= len(unicode(val.decode("utf8"))) <= high
         super(LenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high), test)
+        self.js_validator_params = "[%s,%s]" % (low, high)
+
+
+class ByteLenRange(Validator):
+    """
+    Length range validator that takes each byte of string as a single character.
+    """
+    js_validator = "byterangelength"
+
+    def __init__(self, low, high):
+        test = lambda val: low <= len(str(val.encode("utf8"))) <= high
+        super(ByteLenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high), test)
         self.js_validator_params = "[%s,%s]" % (low, high)
 
 

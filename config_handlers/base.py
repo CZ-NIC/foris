@@ -19,7 +19,6 @@ from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio
 import fapi
 from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
-from validators import LenRange
 import validators
 import bottle
 
@@ -92,7 +91,7 @@ class PasswordHandler(BaseConfigHandler):
                                       description=_("Set your password for this administation site."
                                                     " The password must be at least 6 charaters long."))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
-                          validators=LenRange(6, 60))
+                          validators=validators.LenRange(6, 128))
         pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
                           validators=validators.EqualTo("password", "password_validation",
                                                         _("Passwords are not equal.")))
@@ -388,7 +387,7 @@ class WifiHandler(BaseConfigHandler):
                             nuci_preproc=lambda val: not bool(int(val.value)))
         wifi_main.add_field(Textbox, name="ssid", label=_("SSID"),
                             nuci_path="uci.wireless.@wifi-iface[0].ssid",
-                            required=True, validators=validators.LenRange(1, 32))\
+                            required=True, validators=validators.ByteLenRange(1, 32))\
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
@@ -421,7 +420,7 @@ class WifiHandler(BaseConfigHandler):
         wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
-                            validators=validators.LenRange(8, 63),
+                            validators=validators.ByteLenRange(8, 63),
                             hint=_("WPA2 preshared key, that is required to connect to the network. "
                                    "Minimum length is 8 characters."))\
             .requires("wifi_enabled", True)
@@ -480,7 +479,7 @@ class SystemPasswordHandler(BaseConfigHandler):
             "be managed either through the <a href=\"http://%(ip)s:%(port)d/\">LuCI web interface"
             "</a> or over SSH.") % {'ip': bottle.request.get_header('host'), 'port': 8080})
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
-                                 validators=LenRange(6, 60))
+                                 validators=validators.LenRange(6, 128))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
                                  validators=validators.EqualTo("password", "password_validation",
                                                                _("Passwords are not equal.")))

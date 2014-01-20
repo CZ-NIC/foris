@@ -45,6 +45,15 @@ window.ParsleyConfig = window.ParsleyConfig || {};
           , priority: 32
         }
       }
+      , byterangelength: function () {
+        return {
+          validate: function ( val, arrayRange ) {
+            var byteLength = encodeURI(val).split(/%..|./).length - 1;
+            return byteLength >= arrayRange[0] && byteLength <= arrayRange[1];
+          }
+          , priority: 32
+        }
+      }
     },
     messages: {
       type: {
@@ -53,6 +62,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         ipv6prefix: "This is not a valid IPv6 prefix.",
         macaddress: "This is not a valid MAC address."
       }
+      , byterangelength: "This value length is invalid. It should be between %s and %s characters long."
     }
   });
 }(window.jQuery || window.Zepto));

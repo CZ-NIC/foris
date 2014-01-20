@@ -45,6 +45,8 @@ window.ParsleyConfig = window.ParsleyConfig || {};
       , afterdate:       "Toto datum musí být po %s."
       , luhn:            "Tato hodnota by měla projít Luhnovým testem."
       , americandate:    "Toto datum by mělo být ve formátu MM/DD/YYYY."
+      // parsley.foris-extend ///////////////////////////////
+      , byterangelength:     "Tato položka musí mít délku od %s do %s znaků."
       }
   });
 }(window.jQuery || window.Zepto));
