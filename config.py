@@ -165,7 +165,8 @@ class AboutConfigPage(ConfigPageMixin):
 
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
-        return self.default_template(stats=stats.data,  **kwargs)
+        serial = client.get_serial()
+        return self.default_template(stats=stats.data, serial=serial, **kwargs)
 
 
 class ConfigPageMapItems(OrderedDict):

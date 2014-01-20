@@ -95,11 +95,17 @@ def save_config_backup(filename):
 
 
 def get_registration():
-    get_tag = registration.RegNum.qual_tag("get")
-    element = ET.Element(get_tag)
     try:
-        data = dispatch(element)
+        data = dispatch(registration.RegNum.rpc_get())
         return registration.RegNum.from_element(ET.fromstring(data.xml))
+    except (RPCError, TimeoutExpiredError):
+        return None
+
+
+def get_serial():
+    try:
+        data = dispatch(registration.Serial.rpc_serial())
+        return registration.Serial.from_element(ET.fromstring(data.xml))
     except (RPCError, TimeoutExpiredError):
         return None
 

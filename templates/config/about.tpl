@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <th>{{ trans("Serial number") }}</th>
-                    <td>{{ stats['serial-number-decimal'] }}</td>
+                    <td>{{ serial.decimal }}</td>
                 </tr>
                 <tr>
                     <th>{{ trans("Kernel version") }}</th>

@@ -31,10 +31,33 @@ class RegNum(YinElement):
         value = element.find(RegNum.qual_tag(RegNum.tag)).text
         return RegNum(value)
 
-    @property
-    def key(self):
-        return "reg-num"
+    @staticmethod
+    def rpc_get():
+        get_tag = RegNum.qual_tag("get")
+        return ET.Element(get_tag)
 
+
+class Serial(YinElement):
+    tag = "serial"
+    NS_URI = "http://www.nic.cz/ns/router/registration"
+
+    def __init__(self, value):
+        super(Serial, self).__init__()
+        self.raw = value
+        try:
+            self.decimal = int(value, 16)
+        except ValueError:
+            self.decimal = None
+
+    @staticmethod
+    def from_element(element):
+        value = element.find(Serial.qual_tag(Serial.tag)).text
+        return Serial(value)
+
+    @staticmethod
+    def rpc_serial():
+        get_tag = Serial.qual_tag("serial")
+        return ET.Element(get_tag)
 
 ####################################################################################################
 ET.register_namespace("registration", RegNum.NS_URI)
