@@ -309,10 +309,6 @@ class Field(ForisFormElement):
         classes = []
         if self.name in self._main_form.requirement_map:
             classes.append("has-requirements")
-        if self.required:
-            classes.append("required")
-        if len(self.validators) > 0:
-            classes.append("validate")
         return classes
 
     def _generate_html_data(self):
@@ -374,20 +370,6 @@ class Field(ForisFormElement):
 
     def render(self):
         return self.field.render()
-
-    def autorender(self):
-        result = []
-        inp = self.field
-        if not inp.is_hidden():
-            result.append('<label for="%s">%s</label>' % (inp.id, websafe(inp.description)))
-        result.append(inp.pre)
-        result.append(inp.render())
-        result.append("<abbr title=\"%s\">help</abbr>" % self.hint)
-        if inp.note:
-            result.append("<span class=\"error\">%s</span>" % inp.note)
-        result.append(inp.post)
-        result.append("<br>\n")
-        return ''.join(result)
 
     def requires(self, field, value=None):
         """Specify that field requires some other field
