@@ -31,7 +31,6 @@ class ForisFormElement(object):
         self.name = name
         self.children = OrderedDict()
         self.parent = None
-        self.callbacks = []
 
     def __iter__(self):
         for name in self.children:
@@ -67,6 +66,8 @@ class ForisForm(ForisFormElement):
         # _nuci_config is not required every time, lazy-evaluate it
         self._nuci_config = Lazy(lambda: client.get(filter))
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
+        self.callbacks = []
+        self.callback_results = {}  # name -> result
 
     @property
     def sections(self):
@@ -195,6 +196,9 @@ class ForisForm(ForisFormElement):
         a tuple `(action, *args)`.
         Action can be one of following:
             - edit_config: args is Uci instance - send command for modifying Uci structure
+            - save_result: arg[0] is dict of result_name->result - results are saved to
+                           dictionary callback_results (instance attribute)
+                           ValueError is raised when two callbacks use same result_name
             - none: do nothing, everything has been processed in the callback function
 
         :param cb: callback function
@@ -209,9 +213,14 @@ class ForisForm(ForisFormElement):
             cb_result = cb(form_data)
             operation = cb_result[0]
             if operation == "none":
-                continue
-            data = cb_result[1:] if len(cb_result) > 1 else ()
-            if operation == "edit_config":
+                pass
+            elif operation == "save_result":
+                for k, v in cb_result[1].iteritems():
+                    if k in self.callback_results:
+                        raise ValueError("save_result callback returned result with duplicate name: '%s'" % k)
+                    self.callback_results[k] = v
+            elif operation == "edit_config":
+                data = cb_result[1:] if len(cb_result) > 1 else ()
                 add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
@@ -253,7 +262,7 @@ class Section(ForisFormElement):
 
 
 class Field(ForisFormElement):
-    def __init__(self, main_form, type, name, label=None, required=False, callback=None, nuci_path=None,
+    def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
                  nuci_preproc=lambda val: val.value, validators=None, hint="", **kwargs):
         """
 
@@ -263,7 +272,6 @@ class Field(ForisFormElement):
         :param name: field name (rendered also as HTML name attribute)
         :param label: display name of field
         :param required: True if field is mandatory
-        :param callback: callback for saving the field
         :param nuci_path: path in Nuci get response
         :param nuci_preproc: function to process raw YinElement instance, returns field value
         :type nuci_preproc: callable
@@ -276,7 +284,6 @@ class Field(ForisFormElement):
         #
         self.type = type
         self.name = name
-        self.callback = callback
         self.nuci_path = nuci_path
         self.nuci_preproc = nuci_preproc
         if validators and not isinstance(validators, list):
