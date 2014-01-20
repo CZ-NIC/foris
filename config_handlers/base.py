@@ -189,7 +189,8 @@ class WanHandler(BaseConfigHandler):
             .requires("static_ipv6", True)
         wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
                            validators=validators.IPv6Prefix(),
-                           nuci_path="uci.network.wan.ip6prefix")\
+                           nuci_path="uci.network.wan.ip6prefix",
+                           hint=_("Address range for local network, e.g. 2001:db8:be13:37da::/64"))\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
 
