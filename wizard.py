@@ -333,9 +333,9 @@ def step_post(number=1):
             bottle.redirect(reverse("wizard_step", number=int(number) + 1))
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
-        messages.add_message(_("Configuration could not be saved due to an internal error."), messages.ERROR)
+        messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
-    messages.add_message(_("There were some errors in your input."), messages.ERROR)
+    messages.warning(_("There were some errors in your input."))
     logger.warning("Form not saved.")
     return wiz.render(stepnumber=number)
 

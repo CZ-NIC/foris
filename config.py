@@ -81,9 +81,9 @@ class ConfigPageMixin(object):
         if no_messages:
             return result
         if result:
-            messages.add_message(_("Configuration was successfully saved."), messages.SUCCESS)
+            messages.success(_("Configuration was successfully saved."))
         else:
-            messages.add_message(_("There were some errors in your input."), messages.WARNING)
+            messages.warning(_("There were some errors in your input."))
         return result
 
 
@@ -138,9 +138,9 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         result = False
         try:
             result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
-            messages.add_message(_("Configuration was successfully restored."), messages.SUCCESS)
+            messages.success(_("Configuration was successfully restored."))
         except ConfigRestoreError:
-            messages.add_message(_("Configuration could not be loaded, backup file is probably corrupted."), messages.ERROR)
+            messages.error(_("Configuration could not be loaded, backup file is probably corrupted."))
             logger.exception("Error when restoring backup.")
         return result
 
@@ -225,7 +225,7 @@ def config_page_post(page_name):
             bottle.redirect(request.fullpath)
     except TypeError:
         # raised by Validator - could happen when the form is posted with wrong fields
-        messages.add_message(_("Configuration could not be saved due to an internal error."), messages.ERROR)
+        messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
     return config_page.render(config_pages=config_page_map.display_names(),
