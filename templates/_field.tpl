@@ -7,10 +7,10 @@
     %if field.hint:
         <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ trans("Hint") }}: {{ field.hint }}">
     %end
-    %if field.field.note:
+    %if field.errors:
       <div class="server-validation-container">
         <ul>
-          <li>{{ field.field.note }}</li>
+          <li>{{ field.errors }}</li>
         </ul>
       </div>
     %end
