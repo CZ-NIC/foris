@@ -65,6 +65,9 @@ h2
 h3
   +adjust-font-size-to(26px)
 
+p
+  margin-bottom: 1.5em
+
 a
   color: $highlight-color
 
@@ -78,6 +81,9 @@ a
 ::-moz-selection
   background-color: $highlight-color
   color: #fff
+
+.footnote
+  +adjust-font-size-to(14px)
 
 /* -------------------------------------------------------------------------
 /* Layout
@@ -224,10 +230,11 @@ input, textarea, select
   box-sizing: content-box
   -moz-box-sizing: content-box
 
-input[type="checkbox"], input[type="radio"]
+input[type="checkbox"], input[type="radio"], input[type="file"]
+  border: none
   width: auto
 
-.wizard-form, .config-form
+.wizard-form, .config-form, .maintenance-form
   & > .row
     padding: 0.25em 0
 

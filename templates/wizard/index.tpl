@@ -22,6 +22,6 @@
 
 <p>Než začnete router používat, je třeba provést jeho prvotní nastavení. K tomu slouží tento jednoduchý průvodce základní konfigurací. Po jeho dokončení bude router připraven k běžnému použití.</p>
 <hr>
-<p>Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského hesla v prvním kroku průvodce.</p>
+<p class="footnote">Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského hesla v prvním kroku průvodce.</p>
 
 <a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>
