@@ -19,11 +19,15 @@
 <div id="page-maintenance">
     <h2>{{ trans("Maintenance") }}</h2>
     %include _messages
+
+    <h3>{{ trans("Configuration backup") }}</h3>
+    <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. Configuration is saved as an unencrypted compressed archive (.tar.xz). Password for this configuration interface and for the advanced configuration is not included in the backup.") }}</p>
     <div class="maintenance-description">
         <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ trans("Download configuration backup") }}</a>
-        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
 
+    <h3>{{ trans("Configuration restore") }}</h3>
+    <p>{{ trans("To restore the configuration from a backup file, upload it using following form. Keep in mind that IP address of this device might change during the process, causing unavailability of this interface.") }}</p>
     <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
@@ -32,4 +36,10 @@
         <button type="submit" name="send" class="button">{{ trans("Restore from backup") }}</button>
     </form>
 
+
+    <h3>{{ trans("Device reboot") }}</h3>
+    <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again when the router comes up.") }}</p>
+    <div>
+        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
+    </div>
 </div>
