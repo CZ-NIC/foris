@@ -138,7 +138,15 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         result = False
         try:
             result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
-            messages.success(_("Configuration was successfully restored."))
+            new_ip = self.form.callback_results.get('new_ip')
+            if new_ip:
+                messages.success(_("Configuration was successfully restored. After installing "
+                                   "the updates and rebooting, router will be available at "
+                                   "<a href=\"http://%(new_ip)s\">http://%(new_ip)s</a> in local "
+                                   "network.") % dict(new_ip=new_ip))
+            else:
+                messages.success(_("Configuration was successfully restored."))
+                messages.warning(_("IP address of the router could not be determined from the backup."))
         except ConfigRestoreError:
             messages.error(_("Configuration could not be loaded, backup file is probably corrupted."))
             logger.exception("Error when restoring backup.")

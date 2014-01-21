@@ -503,8 +503,8 @@ class MaintenanceHandler(BaseConfigHandler):
         maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
 
         def maintenance_form_cb(data):
-            client.load_config_backup(data['backup_file'].file)
-            return "none", None
+            result = client.load_config_backup(data['backup_file'].file)
+            return "save_result", {'new_ip': result}
 
         maintenance_form.add_callback(maintenance_form_cb)
         return maintenance_form
