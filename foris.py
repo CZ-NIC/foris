@@ -90,6 +90,8 @@ def login():
     session = bottle.request.environ["beaker.session"]
     next = bottle.request.POST.get("next")
     if _check_password(bottle.request.POST.get("password")):
+        # re-generate session to prevent session fixation
+        session.invalidate()
         session["user_authenticated"] = True
         update_csrf_token(save_session=False)
         session.save()
@@ -105,8 +107,7 @@ def login():
 def logout():
     session = bottle.request.environ["beaker.session"]
     if "user_authenticated" in session:
-        del session["user_authenticated"]
-        session.save()
+        session.delete()
     bottle.redirect("/")
 
 
