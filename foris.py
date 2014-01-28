@@ -23,7 +23,7 @@ import logging
 from nuci import client, filters
 import os
 import sys
-from utils import redirect_unauthenticated, is_safe_redirect
+from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
 from utils.messages import set_template_defaults
 from utils.reporting_middleware import ReportingMiddleware
@@ -148,6 +148,19 @@ def clickjacking_protection():
     bottle.response.headers['X-Frame-Options'] = 'DENY'
 
 
+@bottle.hook('after_request')
+def disable_caching(authenticated_only=True):
+    """
+    Hook for disabling caching.
+
+    :param authenticated_only: apply only if user is authenticated
+    """
+    if not authenticated_only or authenticated_only and is_user_authenticated():
+        bottle.response.headers['Cache-Control'] = "no-store, no-cache, must-revalidate, " \
+                                                   "no-transform, max-age=0, post-check=0, pre-check=0"
+        bottle.response.headers['Pragma'] = "no-cache"
+
+
 def init_foris_app(app):
     """
     Initializes Foris application - use this method to apply properties etc.
@@ -157,6 +170,7 @@ def init_foris_app(app):
     app.catchall = False  # catched by LoggingMiddleware
     app.error_handler[403] = foris_403_handler
     app.hooks.add('after_request', clickjacking_protection)
+    app.hooks.add('after_request', disable_caching)
 
 # ---------------------------------------------------------------------------- #
 #                                      MAIN                                    #

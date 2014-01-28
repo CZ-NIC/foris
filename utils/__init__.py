@@ -24,11 +24,15 @@ from xml.etree import cElementTree as ET
 logger = logging.getLogger("foris.utils")
 
 
+def is_user_authenticated():
+    session = bottle.request.environ['beaker.session']
+    return session.get("user_authenticated", False)
+
+
 def redirect_unauthenticated(redirect_url=None):
     redirect_url = redirect_url or "/"
-    session = bottle.request.environ['beaker.session']
     no_auth = bottle.default_app().config.no_auth
-    if not no_auth and not session.get("user_authenticated", False):
+    if not no_auth and not is_user_authenticated():
         # "raise" bottle redirect
         bottle.redirect("%s?next=%s" % (redirect_url, bottle.request.fullpath))
 
