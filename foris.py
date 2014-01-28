@@ -213,6 +213,7 @@ if __name__ == "__main__":
         'session.cookie_expires': True,
         'session.timeout': 900,
         'session.auto': True,
+        'session.httponly': True,
     }
     app = SessionMiddleware(app, session_options)
 
