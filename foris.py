@@ -23,7 +23,7 @@ import logging
 from nuci import client, filters
 import os
 import sys
-from utils import redirect_unauthenticated
+from utils import redirect_unauthenticated, is_safe_redirect
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
 from utils.messages import set_template_defaults
 from utils.reporting_middleware import ReportingMiddleware
@@ -95,11 +95,13 @@ def login():
         session["user_authenticated"] = True
         update_csrf_token(save_session=False)
         session.save()
-        if next:
+        if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
 
     if next:
-        bottle.redirect("/?next=%s" % next)
+        redirect = "/?next=%s" % next
+        if is_safe_redirect(redirect, bottle.request.get_header('host')):
+            bottle.redirect(redirect)
     bottle.redirect("/")
 
 

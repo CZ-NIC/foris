@@ -13,6 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import urlparse
 
 import bottle
 from functools import wraps
@@ -43,6 +44,29 @@ def login_required(func=None, redirect_url=None):
         redirect_unauthenticated(redirect_url)
         return func(*args, **kwargs)
     return wrapper
+
+
+def is_safe_redirect(url, host=None):
+    """
+    Checks if the redirect URL is safe, i.e. it uses HTTP(S) scheme
+    and points to the host specified.
+
+    Also checks for presence of newlines to avoid CRLF injection.
+
+    :param url: URL to check
+    :param host: host that has to match the URL's host, if specified
+    :return:
+    """
+    if "\r" in url or "\n" in url:
+        logger.warning("Possible CRLF injection attempt: \n%s" % bottle.request.environ)
+        return False
+    url_components = urlparse.urlparse(url)
+    logger.info(url_components)
+    logger.info(host)
+    return ((not url_components.scheme or url_components.scheme in ['http', 'https'])
+            and (not url_components.netloc or url_components.netloc == host))
+
+
 
 
 class Lazy(object):
