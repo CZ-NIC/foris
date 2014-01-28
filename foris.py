@@ -140,6 +140,12 @@ def foris_403_handler(error):
     bottle.app().default_error_handler(error)
 
 
+@bottle.hook('after_request')
+def clickjacking_protection():
+    # we don't use frames at all, we can safely deny opening pages in frames
+    bottle.response.headers['X-Frame-Options'] = 'DENY'
+
+
 def init_foris_app(app):
     """
     Initializes Foris application - use this method to apply properties etc.
@@ -148,6 +154,7 @@ def init_foris_app(app):
     """
     app.catchall = False  # catched by LoggingMiddleware
     app.error_handler[403] = foris_403_handler
+    app.hooks.add('after_request', clickjacking_protection)
 
 # ---------------------------------------------------------------------------- #
 #                                      MAIN                                    #
