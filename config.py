@@ -88,7 +88,19 @@ class ConfigPageMixin(object):
 
 
 class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
-    pass
+    def __init__(self, *args, **kwargs):
+        super(PasswordConfigPage, self).__init__(change=True, *args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        result = super(PasswordConfigPage, self).save(no_messages=True, *args, **kwargs)
+        wrong_old_password = self.form.callback_results.get('wrong_old_password', False)
+        if wrong_old_password:
+            messages.warning(_("Old password you entered was invalid."))
+        elif result:
+            messages.success(_("Password was successfully saved."))
+        else:
+            messages.warning(_("There were some errors in your input."))
+        return result
 
 
 class WanConfigPage(ConfigPageMixin, WanHandler):

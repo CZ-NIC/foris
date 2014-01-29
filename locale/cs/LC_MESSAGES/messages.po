@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 17:11+0100\n"
+"POT-Creation-Date: 2014-01-29 15:10+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -289,6 +289,12 @@ msgstr "Nastavení bylo úspěšně uloženo."
 msgid "There were some errors in your input."
 msgstr "Některé z Vámi zadaných údajů nejsou platné."
 
+msgid "Old password you entered was invalid."
+msgstr "Vámi zadané původní heslo je neplatné."
+
+msgid "Password was successfully saved."
+msgstr "Heslo bylo úspěšně uloženo."
+
 #, python-format
 msgid ""
 "Configuration was successfully restored. After installing the updates and "
@@ -319,6 +325,9 @@ msgid ""
 msgstr ""
 "Zvolte si Vaše přístupové heslo pro toto administrační rozhraní. Heslo musí "
 "být dlouhé alespoň 6 znaků."
+
+msgid "Old password"
+msgstr "Původní heslo"
 
 msgid "Password (repeat)"
 msgstr "Heslo (pro kontrolu)"
