@@ -45,6 +45,9 @@ ForisWizard.initParsley = function() {
         listeners: {
           onFieldSuccess: function ( elem, constraints, ParsleyField ) {
             elem.parent().find(".server-validation-container").remove();
+          },
+          onFieldError: function ( elem, constraints, ParsleyField ) {
+            elem.parent().find(".server-validation-container").remove();
           }
         }
     });
