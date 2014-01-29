@@ -20,7 +20,7 @@ from ncclient.operations.errors import TimeoutExpiredError
 from xml.etree import cElementTree as ET
 import logging
 
-from modules import maintain, password as password_module, registration, uci_raw, time, updater
+from modules import maintain, network, password as password_module, registration, uci_raw, time, updater
 from modules.base import Data, YinElement
 from nuci import filters
 from nuci.exceptions import ConfigRestoreError
@@ -146,6 +146,18 @@ def set_password(user, password):
         return True
     except (RPCError, TimeoutExpiredError):
         return False
+
+
+def check_connection():
+    """Check for connectivity features returned by network check RPC.
+
+    :return: Connection instance on success, None otherwise
+    """
+    try:
+        data = dispatch(network.Connection.rpc_check())
+        return network.Connection.from_element(ET.fromstring(data.xml))
+    except (RPCError, TimeoutExpiredError):
+        return None
 
 
 def check_updates():
