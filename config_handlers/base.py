@@ -99,8 +99,8 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                           validators=validators.LenRange(6, 128))
         pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                          validators=validators.EqualTo("password", "password_validation",
-                                                        _("Passwords are not equal.")))
+                          required=True, validators=validators.EqualTo("password", "password_validation",
+                                                                       _("Passwords are not equal.")))
         pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use this password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
                                  "site, for root user in LuCI web interface and for SSH login. "
@@ -493,8 +493,8 @@ class SystemPasswordHandler(BaseConfigHandler):
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=validators.LenRange(6, 128))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                                 validators=validators.EqualTo("password", "password_validation",
-                                                               _("Passwords are not equal.")))
+                                 required=True, validators=validators.EqualTo("password", "password_validation",
+                                                                              _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])
