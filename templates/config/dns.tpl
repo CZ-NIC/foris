@@ -19,8 +19,9 @@
 <div id="page-dns">
     <h2>{{ trans("DNS setup") }}</h2>
      %include _messages
-  <p>{{ trans("TODO: some text...") }}</p>
-  <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off">
+    <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can use your internet service provider's DNS resolver as a so called forwarder.") }}</p>
+    <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without a forwarder.") }}</p>
+    <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
             %include _field field=field
@@ -29,13 +30,16 @@
     </form>
 
     <h3>{{ trans("Connection test") }}</h3>
-    <p>{{ trans("TODO: some text, again") }}</p>
+    <p>{{! trans("Here you can test your internet connection. This test is also useful when you need to check that your DNS resolving works as expected. Remember to click on the <strong>Save</strong> button if you changed your forwarder setting.") }}</p>
     <div class="message error" id="connection-test-fail">
       {{ trans("Unable to verify network connection.") }}
     </div>
     <table id="test-results">
         <thead>
-            <tr><th>{{ trans("Test type") }}</th><th>{{ trans("Status") }}</th></tr>
+            <tr>
+              <th>{{ trans("Test type") }}</th>
+              <th>{{ trans("Status") }}</th>
+            </tr>
         </thead>
         <tbody>
             <tr><td>{{ trans("IPv4 connectivity") }}</td><td class="result" data-result-type="IPv4-connectivity">???</td></tr>

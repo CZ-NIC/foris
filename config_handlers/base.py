@@ -293,9 +293,7 @@ class DNSHandler(BaseConfigHandler):
         dns_form = fapi.ForisForm("dns", self.data)
         dns_main = dns_form.add_section(name="set_dns",
                                         title=_(self.userfriendly_title))
-        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Password"), required=True,
-                           validators=validators.LenRange(6, 128))
-        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Forward upstream"),
+        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarder"),
                            nuci_path="uci.unbound.server.forward_upstream",
                            nuci_preproc=lambda val: bool(int(val.value)), default=True)
 
