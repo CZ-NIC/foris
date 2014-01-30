@@ -65,8 +65,6 @@ def is_safe_redirect(url, host=None):
         logger.warning("Possible CRLF injection attempt: \n%s" % bottle.request.environ)
         return False
     url_components = urlparse.urlparse(url)
-    logger.info(url_components)
-    logger.info(host)
     return ((not url_components.scheme or url_components.scheme in ['http', 'https'])
             and (not url_components.netloc or url_components.netloc == host))
 
