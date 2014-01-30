@@ -281,6 +281,37 @@ class WanHandler(BaseConfigHandler):
         return wan_form
 
 
+class DNSHandler(BaseConfigHandler):
+    """
+    DNS-related settings, currently for enabling/disabling upstream forwarding
+    """
+
+    # {{ _("DNS") }} - for translation
+    userfriendly_title = "DNS"
+
+    def get_form(self):
+        dns_form = fapi.ForisForm("dns", self.data)
+        dns_main = dns_form.add_section(name="set_dns",
+                                        title=_(self.userfriendly_title))
+        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Password"), required=True,
+                           validators=validators.LenRange(6, 128))
+        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Forward upstream"),
+                           nuci_path="uci.unbound.server.forward_upstream",
+                           nuci_preproc=lambda val: bool(int(val.value)), default=True)
+
+        def dns_form_cb(data):
+            uci = Uci()
+            unbound = Config("unbound")
+            uci.add(unbound)
+            server = Section("server", "unbound")
+            unbound.add(server)
+            server.add(Option("forward_upstream", data['forward_upstream']))
+            return "edit_config", uci
+
+        dns_form.add_callback(dns_form_cb)
+        return dns_form
+
+
 class TimeHandler(BaseConfigHandler):
     # {{ _("Time") }} - for translation
     userfriendly_title = "Time"

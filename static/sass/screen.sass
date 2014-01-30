@@ -235,7 +235,7 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
   border: none
   width: auto
 
-.wizard-form, .config-form, .maintenance-form
+.wizard-form, .config-form, .maintenance-form, .dns-form
   & > .row
     padding: 0.25em 0
 
@@ -446,3 +446,37 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
   #registration-code
     font-size: 130%
     font-weight: bold
+
+/* -------------------------------------------------------------------------
+/* "DNS" page
+#connection-test-fail
+  display: none
+
+#test-results
+  margin-bottom: 1em
+
+  tr
+    td
+      padding: 0.3em 0
+
+    td:first-child
+      width: 16em
+
+  thead
+    th
+      font-weight: bold
+
+  .test-success, .test-fail
+    font-weight: bold
+    padding-left: 24px
+
+
+  .test-success
+    background: url('../img/icon-success.png') no-repeat left 50%
+    border-color: $info-color
+    color: $info-color
+
+  .test-fail
+    background: url('../img/icon-fail.png') no-repeat left 50%
+    border-color: $error-color
+    color: $error-color

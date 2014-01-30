@@ -15,7 +15,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from base import BaseConfigHandler, LanHandler, MaintenanceHandler, \
-    PasswordHandler, TimeHandler, WanHandler, WifiHandler, SystemPasswordHandler
+    PasswordHandler, TimeHandler, WanHandler, WifiHandler, SystemPasswordHandler, \
+    DNSHandler
 
 __all__ = ['BaseConfigHandler', 'LanHandler', 'MaintenanceHandler', 'PasswordHandler',
-           'TimeHandler', 'WanHandler', 'WifiHandler', 'SystemPasswordHandler']
+           'TimeHandler', 'WanHandler', 'WifiHandler', 'SystemPasswordHandler', 'DNSHandler']

@@ -112,6 +112,19 @@ class WanConfigPage(ConfigPageMixin, WanHandler):
     pass
 
 
+class DNSConfigPage(ConfigPageMixin, DNSHandler):
+    template = "config/dns"
+
+    def _action_check_connection(self):
+        return client.check_connection().check_results
+
+    def call_ajax_action(self, action):
+        if action == "check-connection":
+            check_results = self._action_check_connection()
+            return dict(success=check_results is not None, check_results=check_results)
+        raise ValueError("Unknown AJAX action.")
+
+
 class LanConfigPage(ConfigPageMixin, LanHandler):
     pass
 
@@ -204,6 +217,7 @@ class ConfigPageMapItems(OrderedDict):
 config_page_map = ConfigPageMapItems((
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
+    ('dns', DNSConfigPage),
     ('lan', LanConfigPage),
     ('wifi', WifiConfigPage),
     ('system-password', SystemPasswordConfigPage),
