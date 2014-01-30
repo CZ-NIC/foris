@@ -68,8 +68,46 @@ ForisWizard.callAjaxAction = function(wizardStep, action) {
     return $.get("/wizard/step/" + wizardStep + "/ajax", {action: action});
 };
 
+ForisWizard.connectivityCheck = function() {
+    ForisWizard.callAjaxAction("3", "check_connection")
+        .done(function(data) {
+            if (data.result == "ok") {
+                $("#connectivity-progress").hide();
+                $("#connectivity-success").show();
+            }
+            else if(data.result == "no_dns") {
+                ForisWizard.connectivityCheckNoForward();
+            }
+            else {
+                // no_connection or error
+                $("#connectivity-progress").hide();
+                $("#connectivity-fail").show();
+            }
+        });
+};
+
+ForisWizard.connectivityCheckNoForward = function() {
+    $("#wizard-connectivity-status").html("<p>Test připojení se nezdařil, probíhá test připojení s vypnutým forwardováním.</p>");
+    ForisWizard.callAjaxAction("3", "check_connection_noforward")
+        .done(function(data) {
+            if (data.result == "ok") {
+                $("#connectivity-progress").hide();
+                $("#connectivity-success").show();
+            }
+            else if(data.result == "no_dns") {
+                $("#connectivity-progress").hide();
+                $("#connectivity-nodns").show();
+            }
+            else {
+                // no_connection or error
+                $("#connectivity-progress").hide();
+                $("#connectivity-fail").show();
+            }
+        });
+};
+
 ForisWizard.ntpUpdate = function() {
-    ForisWizard.callAjaxAction("3", "ntp_update")
+    ForisWizard.callAjaxAction("4", "ntp_update")
         .done(function(data) {
             if (data.success) {
                 $("#time-progress").hide();
@@ -82,7 +120,7 @@ ForisWizard.ntpUpdate = function() {
 };
 
 ForisWizard.runUpdater = function () {
-    ForisWizard.callAjaxAction("4", "run_updater")
+    ForisWizard.callAjaxAction("5", "run_updater")
         .done(function(data) {
             if (data.success)
                 ForisWizard.checkUpdaterStatus();
@@ -97,7 +135,7 @@ ForisWizard.checkUpdaterStatus = function(retries) {
     if (retries == null)
         retries = 0;
 
-    ForisWizard.callAjaxAction("4", "updater_status")
+    ForisWizard.callAjaxAction("5", "updater_status")
         .done(function(data) {
             if (data.status == "failed") {
                 $("#updater-progress").hide();
@@ -148,7 +186,7 @@ ForisWizard.checkUpdaterStatus = function(retries) {
 };
 
 ForisWizard.showTimeForm = function() {
-    ForisWizard.callAjaxAction("3", "time_form")
+    ForisWizard.callAjaxAction("4", "time_form")
         .done(function(data) {
             var timeField = $("#wizard-time").empty().append(data.form)
                 .find("input[name=\"time\"]");

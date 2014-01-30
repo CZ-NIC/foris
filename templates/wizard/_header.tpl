@@ -21,6 +21,6 @@
         <a href="{{ url("wizard_skip") }}">{{ trans("Skip wizard") }}</a>
     %end
         <br>
-        <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 7</span>
+        <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 8</span>
     </div>
 </div>

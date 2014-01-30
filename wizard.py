@@ -16,6 +16,7 @@
 
 from bottle import Bottle, template, request
 import bottle
+from ncclient.operations import RPCError, TimeoutExpiredError
 from foris import gettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
@@ -35,7 +36,7 @@ app = Bottle()
 app.install(CSRFPlugin())
 
 
-NUM_WIZARD_STEPS = 7
+NUM_WIZARD_STEPS = 8
 
 
 class WizardStepMixin(object):
@@ -91,8 +92,9 @@ class WizardStepMixin(object):
             commit()
 
     def default_template(self, **kwargs):
+        next_step_url = reverse("wizard_step", number=self.next_step_allowed)
         return template(self.template, can_skip_wizard=self.can_skip_wizard,
-                        stepname=self.name, **kwargs)
+                        stepname=self.name, next_step_url=next_step_url, **kwargs)
 
     def render(self, **kwargs):
         try:
@@ -105,7 +107,6 @@ class WizardStepMixin(object):
             form = None
             kwargs['first_title'] = self.userfriendly_title
             kwargs['first_description'] = None
-            kwargs['next_step'] = reverse("wizard_step", number=self.next_step_allowed)
             self.nuci_write_next_step()
 
         return self.default_template(form=form, **kwargs)
@@ -138,41 +139,97 @@ class WizardStep2(WizardStepMixin, WanHandler):
     next_step_allowed = 3
 
 
-class WizardStep3(WizardStepMixin, TimeHandler):
+class WizardStep3(WizardStepMixin, BaseConfigHandler):
+    """
+    Network check.
+    """
+    template = "wizard/connectivity.tpl"
+    name = "connectivity"
+    next_step_allowed = 4
+    # {{ _("Connectivity test") }} - for translation
+    userfriendly_title = "Connectivity test"
+
+    def _disable_forwarding(self):
+        uci = Uci()
+        unbound = Config("unbound")
+        uci.add(unbound)
+        server = Section("server", "unbound")
+        unbound.add(server)
+        server.add(Option("forward_upstream", "0"))
+        try:
+            client.edit_config(uci.get_xml())
+            return True
+        except (RPCError, TimeoutExpiredError):
+            return False
+
+    @staticmethod
+    def _check_connection():
+        check_results = client.check_connection().check_results
+        if check_results:
+            has_connection = (check_results.get('IPv4-connectivity')
+                              or check_results.get('IPv6-connectivity'))
+            resolves = check_results.get('DNS') and check_results.get('DNSSEC')
+            if has_connection and resolves:
+                return "ok"
+            if has_connection:
+                return "no_dns"
+            return "no_connection"
+        return "error"
+
+    def _action_check_connection_noforward(self):
+        self._disable_forwarding()
+        return self._check_connection()
+
+    def _action_check_connection(self):
+        self.nuci_write_next_step()
+        return self._check_connection()
+
+    def call_ajax_action(self, action):
+        if action == "check_connection":
+            check_result = self._action_check_connection()
+            return dict(success=True, result=check_result)
+        elif action == "check_connection_noforward":
+            check_result = self._action_check_connection_noforward()
+            return dict(success=True, result=check_result)
+
+        raise ValueError("Unknown Wizard action.")
+
+
+class WizardStep4(WizardStepMixin, TimeHandler):
     """
     Time settings.
     """
     template = "wizard/time.tpl"
     name = "time"
-    next_step_allowed = 4
+    next_step_allowed = 5
 
     def _action_ntp_update(self):
         success = TimeHandler._action_ntp_update(self)
         if success:
-            self.nuci_write_next_step() # allow the next step and save it to uci
+            self.nuci_write_next_step()  # allow the next step and save it to uci
         return success
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):
-            return super(WizardStep3, self).render(**kwargs)
+            return super(WizardStep4, self).render(**kwargs)
 
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep4(WizardStepMixin, BaseConfigHandler):
+class WizardStep5(WizardStepMixin, BaseConfigHandler):
     """
     Updater.
     """
     template = "wizard/updater.tpl"
     name = "updater"
-    next_step_allowed = 5
+    next_step_allowed = 6
     # {{ _("System update") }} - for translation
     userfriendly_title = "System update"
 
     def _action_run_updater(self):
         # this is called by XHR, so we are definitely unable to
         # get past this step with disabled JS
-        self.nuci_write_next_step() # allow the next step and save it to uci
+        self.nuci_write_next_step()  # allow the next step and save it to uci
         return client.check_updates()
 
     def _action_updater_status(self):
@@ -192,24 +249,24 @@ class WizardStep4(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep5(WizardStepMixin, LanHandler):
+class WizardStep6(WizardStepMixin, LanHandler):
     """
     LAN settings.
     """
     name = "lan"
-    next_step_allowed = 6
+    next_step_allowed = 7
 
 
-class WizardStep6(WizardStepMixin, WifiHandler):
+class WizardStep7(WizardStepMixin, WifiHandler):
     """
     WiFi settings.
     """
     template = "wizard/wifi"
     name = "wifi"
-    next_step_allowed = 7
+    next_step_allowed = 8
 
 
-class WizardStep7(WizardStepMixin, BaseConfigHandler):
+class WizardStep8(WizardStepMixin, BaseConfigHandler):
     """
     Show the activation code.
     """

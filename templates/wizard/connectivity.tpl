@@ -16,23 +16,33 @@
 %#
 %rebase wizard/base **locals()
 
-<div id="wizard-updater">
+<div id="wizard-connectivity">
     <h1>{{ first_title }}</h1>
-    <div id="updater-progress" class="background-progress">
+    <div id="connectivity-progress" class="background-progress">
         <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"><br>
-        {{ trans("Check of available updates in progress.") }}<br>
-        {{ trans("One moment, please...") }}<br>
-        <div id="wizard-updater-status"></div>
+        <div id="wizard-connectivity-status">
+          <p>
+            {{ trans("Checking internet connectivity.") }}<br>
+            {{ trans("One moment, please...") }}
+          </p>
+        </div>
     </div>
-    <div id="updater-success">
+    <div id="connectivity-success">
         <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
-        <p>{{ trans("Firmware update has succeeded, you can proceed to next step.") }}</p>
+        <p>{{ trans("TODO: message that everything is OK") }}</p>
         <a class="button-next" href="{{ url("wizard_step", number=5) }}">{{ trans("Next") }}</a>
     </div>
-    <div id="updater-fail">
+    <div id="connectivity-nodns">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
         <p>
-            {{ trans("Firmware update has failed due to a connection or an installation error. You should check your cable connection before proceeding to the next step. But do not worry much about the update as the router will run the updater regularly.") }}
+            {{ trans("TODO: message that the connection works but something is wrong with DNS") }}
+        </p>
+        <a class="button-next" href="{{ url("wizard_step", number=5) }}">{{ trans("Next") }}</a>
+    </div>
+    <div id="connectivity-fail">
+        <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
+        <p>
+            {{ trans("TODO: message that user has no internet connectivity") }}
         </p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
@@ -40,6 +50,6 @@
 
 <script>
     $(document).ready(function() {
-        ForisWizard.runUpdater();
+        ForisWizard.connectivityCheck();
     });
 </script>

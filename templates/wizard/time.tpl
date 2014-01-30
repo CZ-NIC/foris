@@ -48,7 +48,7 @@
         <div id="time-success">
             <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
             <p>{{ trans("Time was successfully synchronized, you can move to the next step.") }}</p>
-            <a class="button-next" href="{{ url("wizard_step", number=4) }}">{{ trans("Next") }}</a>
+            <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
         </div>
     </div>
 

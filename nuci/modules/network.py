@@ -32,7 +32,7 @@ class Connection(YinElement):
         connection_el = element.find(Connection.qual_tag(Connection.tag))
         check_results = {}
         for elem in connection_el:
-            check_results[unqualify(elem.tag)] = elem.text
+            check_results[unqualify(elem.tag)] = True if elem.text == "true" else False
         return Connection(check_results)
 
     @staticmethod
