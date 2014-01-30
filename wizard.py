@@ -306,14 +306,13 @@ def get_allowed_step_max():
         next_step_option = data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
         if next_step_option:
             return next_step_option.value
-        return next_step_option
+        return 1  # if no value can be found
     return allowed_sess
 
 
 def check_step_allowed_or_redirect(step_number):
     step_number = int(step_number)
-    session = request.environ['beaker.session']
-    allowed_step_max = int(session.get(WizardStepMixin.next_step_allowed_key, 1))
+    allowed_step_max = int(get_allowed_step_max())
     if step_number <= allowed_step_max:
         return True
     bottle.redirect(reverse("wizard_step", number=allowed_step_max))
