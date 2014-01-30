@@ -16,7 +16,7 @@
 %#
 %rebase wizard/base **locals()
 
-<form id="main-form" class="wizard-form" action="{{ request.fullpath }}" method="post" autocomplete="off">
+<form id="main-form" class="wizard-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
     <h1>{{ first_title }}</h1>
     <p class="wizard-description">{{ first_description }}</p>
     %include _messages

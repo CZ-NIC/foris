@@ -296,6 +296,8 @@ class Input(object):
         self.post = attrs.pop('post', "")
         self.note = None
         self.required = attrs.pop('required', False)
+        if self.required is True:
+            attrs['required'] = "required"
 
         self.id = attrs.setdefault('id', self.get_default_id())
 

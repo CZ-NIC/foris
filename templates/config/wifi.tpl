@@ -19,7 +19,7 @@
 %if not form:
 <div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
 %else:
-<form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off">
+<form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
     <p class="config-description">{{! description }}</p>
     %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">

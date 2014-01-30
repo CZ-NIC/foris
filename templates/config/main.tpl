@@ -16,7 +16,7 @@
 %#
 %rebase config/base **locals()
 
-<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off">
+<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
     <p class="config-description">{{! description }}</p>
     %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
