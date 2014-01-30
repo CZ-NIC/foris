@@ -31,13 +31,16 @@ class Stats(YinElement):
          ---- 'MemTotal': total RAM
          ---- 'MemFree': free RAM
          ---- etc... (depending on content of meminfo element)
-         -- wireless-cards: list of wireless cards
+         -- 'wireless-cards': list of wireless cards
          ---- [item]: wireless card properties
          ------ 'name': name of device
          ------ 'channels': list of available channels
          -------- 'number': (int) channel number
          -------- 'frequency': (int) frequency in MHz
          -------- 'disabled': (boolean) is channel disabled?
+         -- 'interfaces': dict of interfaces
+         ---- `key:value` interface stats (key = interface name)
+         ------ 'is_up': link of interface - True if up, False if down, None else
     """
 
     tag = "stats"
@@ -70,6 +73,16 @@ class Stats(YinElement):
                         channel['disabled'] = True if channel_el.find(Stats.qual_tag("disabled")) is not None else False
                         wc['channels'].append(channel)
                     stats.data['wireless-cards'].append(wc)
+            elif elem.tag == Stats.qual_tag("interfaces"):
+                interfaces = stats.data['interfaces'] = {}
+                for interface_elem in elem:
+                    if_name = interface_elem.find(Stats.qual_tag("name")).text
+                    is_up = interface_elem.find(Stats.qual_tag("up")) is not None
+                    is_down = interface_elem.find(Stats.qual_tag("down")) is not None
+                    interfaces[if_name] = {
+                        'is_up': True if is_up else False if is_down else None
+                    }
+
         return stats
 
     @property
