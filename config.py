@@ -68,10 +68,15 @@ class ConfigPageMixin(object):
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm
-        form = self.form
-        first_section = form.sections[0]
-        title = first_section.title
-        description = first_section.description
+        try:
+            form = getattr(self, "form")
+            first_section = form.sections[0]
+            title = first_section.title
+            description = first_section.description
+        except (NotImplementedError, AttributeError):
+            form = None
+            title = self.userfriendly_title
+            description = None
 
         return self.default_template(form=form, title=title, description=description, **kwargs)
 

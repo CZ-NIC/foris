@@ -16,6 +16,13 @@
 %#
 %rebase wizard/base **locals()
 
+%if not form:
+<h1>{{ first_title }}</h1>
+<div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
+<form id="main-form" class="wizard-form wizard-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off">
+    <a href="{{ next_step }}" class="button-next button-arrow-right">{{ trans("Next") }}</a>
+</form>
+%else:
 <form id="main-form" class="wizard-form wizard-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off">
     <h1>{{ first_title }}</h1>
     <p class="wizard-description">{{! first_description }}</p>
@@ -34,3 +41,4 @@
     </script>
     <button class="button-next button-arrow-right" type="submit" name="send">{{ trans("Next") }}</button>
 </form>
+%end

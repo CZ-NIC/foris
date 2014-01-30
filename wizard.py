@@ -103,8 +103,10 @@ class WizardStepMixin(object):
             kwargs['first_description'] = first_section.description
         except (NotImplementedError, AttributeError):
             form = None
-            kwargs['first_title'] = None
+            kwargs['first_title'] = self.userfriendly_title
             kwargs['first_description'] = None
+            kwargs['next_step'] = reverse("wizard_step", number=self.next_step_allowed)
+            self.nuci_write_next_step()
 
         return self.default_template(form=form, **kwargs)
 
@@ -164,6 +166,8 @@ class WizardStep4(WizardStepMixin, BaseConfigHandler):
     template = "wizard/updater.tpl"
     name = "updater"
     next_step_allowed = 5
+    # {{ _("System update") }} - for translation
+    userfriendly_title = "System update"
 
     def _action_run_updater(self):
         # this is called by XHR, so we are definitely unable to

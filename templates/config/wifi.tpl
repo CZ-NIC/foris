@@ -16,6 +16,9 @@
 %#
 %rebase config/base **locals()
 
+%if not form:
+<div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
+%else:
 <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off">
     <p class="config-description">{{! description }}</p>
     %include _messages
@@ -36,3 +39,4 @@
         <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
     </div>
 </form>
+%end

@@ -13,7 +13,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import logging
 
 from base import YinElement
 from xml.etree import cElementTree as ET
@@ -32,6 +31,13 @@ class Stats(YinElement):
          ---- 'MemTotal': total RAM
          ---- 'MemFree': free RAM
          ---- etc... (depending on content of meminfo element)
+         -- wireless-cards: list of wireless cards
+         ---- [item]: wireless card properties
+         ------ 'name': name of device
+         ------ 'channels': list of available channels
+         -------- 'number': (int) channel number
+         -------- 'frequency': (int) frequency in MHz
+         -------- 'disabled': (boolean) is channel disabled?
     """
 
     tag = "stats"
@@ -53,7 +59,17 @@ class Stats(YinElement):
                 stats.data['meminfo'] = {}
                 for meminfo_elem in elem:
                     stats.data['meminfo'][unqualify(meminfo_elem.tag)] = meminfo_elem.text
-        logging.info(unicode(stats.data))
+            elif elem.tag == Stats.qual_tag("wireless-cards"):
+                stats.data['wireless-cards'] = []
+                for wc_elem in elem:
+                    wc = {'name': wc_elem.find(Stats.qual_tag("name")).text, 'channels': []}
+                    for channel_el in wc_elem.iter(Stats.qual_tag("channel")):
+                        channel = {}
+                        channel['number'] = int(channel_el.find(Stats.qual_tag("number")).text)
+                        channel['frequency'] = int(channel_el.find(Stats.qual_tag("frequency")).text)
+                        channel['disabled'] = True if channel_el.find(Stats.qual_tag("disabled")) is not None else False
+                        wc['channels'].append(channel)
+                    stats.data['wireless-cards'].append(wc)
         return stats
 
     @property
