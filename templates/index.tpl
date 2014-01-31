@@ -21,7 +21,6 @@
     %if user_authenticated():
         <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
     %else:
-        <p>{{ trans("Enter your password. If this is the first time you are accessing this administration interface, simply click on the Log in button to continue.") }}</p>
         <form action="{{ request.fullpath }}" method="POST">
         %if request.GET.get("next"):
             <input type="hidden" name="next" value="{{ request.GET['next'] }}">
