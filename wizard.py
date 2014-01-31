@@ -277,6 +277,7 @@ class WizardStep8(WizardStepMixin, BaseConfigHandler):
     """
     Show the activation code.
     """
+    can_skip_wizard = False
     template = "wizard/registration.tpl"
 
     def render(self, **kwargs):
