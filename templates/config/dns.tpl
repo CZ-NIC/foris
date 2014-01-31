@@ -19,8 +19,8 @@
 <div id="page-dns">
     <h2>{{ trans("DNS setup") }}</h2>
      %include _messages
-    <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can use your internet service provider's DNS resolver as a so called forwarder.") }}</p>
-    <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without a forwarder.") }}</p>
+    <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can forward your DNS queris through your internet service provider's DNS resolver.") }}</p>
+    <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without forwarding.") }}</p>
     <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
