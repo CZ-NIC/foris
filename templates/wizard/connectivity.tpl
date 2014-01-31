@@ -30,14 +30,14 @@
     <div id="connectivity-success">
         <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
         <p>{{ trans("Your network settings are alright.") }}</p>
-        <a class="button-next" href="{{ url("wizard_step", number=5) }}">{{ trans("Next") }}</a>
+        <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
     <div id="connectivity-nodns">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
         <p>
             {{ trans("Your internet connection has network connectivity but DNS resolving does not work. This is probably a problem with your ISP.") }}
         </p>
-        <a class="button-next" href="{{ url("wizard_step", number=5) }}">{{ trans("Next") }}</a>
+        <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
     <div id="connectivity-fail">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
