@@ -134,8 +134,11 @@ button
   &.grayed, &[disabled]
     background-color: $button-color-grayed
 
-    &:hover
+    &:hover, &:hover:before
       background-color: lighten(desaturate($button-color-grayed, 20), 15)
+
+    &:before
+      background-color: $button-color-grayed
 
 .button-arrow-right
   @extend .button
