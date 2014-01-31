@@ -182,9 +182,22 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.gateway",
                            validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)
-        wan_main.add_field(Textbox, name="dns", label=_("DNS server"),
+
+        def extract_dns_item(dns_string, index, default=None):
+            try:
+                return dns_string.split(" ")[index]
+            except IndexError:
+                return default
+
+        wan_main.add_field(Textbox, name="dns1", label=_("DNS server 1"),
                            nuci_path="uci.network.wan.dns",
-                           required=True, validators=validators.IPv4())\
+                           nuci_preproc=lambda val: extract_dns_item(val.value, 0),
+                           validators=validators.IPv4())\
+            .requires("proto", WAN_STATIC)
+        wan_main.add_field(Textbox, name="dns2", label=_("DNS server 2"),
+                           nuci_path="uci.network.wan.dns",
+                           nuci_preproc=lambda val: extract_dns_item(val.value, 1),
+                           validators=validators.IPv4())\
             .requires("proto", WAN_STATIC)
 
         # static ipv6
@@ -257,6 +270,8 @@ class WanHandler(BaseConfigHandler):
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
                 wan.add(Option("gateway", data['gateway']))
+                dns_string = " ".join([data.get("dns1", ""), data.get("dns2", "")]).strip()
+                wan.add(Option("dns", dns_string))
                 if data.get("static_ipv6") is True:
                     wan.add(Option("ip6addr", data['ip6addr']))
                     wan.add(Option("ip6gw", data['ip6gw']))
