@@ -179,9 +179,11 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
                                    "the updates and rebooting, router will be available at "
                                    "<a href=\"http://%(new_ip)s\">http://%(new_ip)s</a> in local "
                                    "network.") % dict(new_ip=new_ip))
-            else:
+            elif result:
                 messages.success(_("Configuration was successfully restored."))
                 messages.warning(_("IP address of the router could not be determined from the backup."))
+            else:
+                messages.warning(_("There were some errors in your input."))
         except ConfigRestoreError:
             messages.error(_("Configuration could not be loaded, backup file is probably corrupted."))
             logger.exception("Error when restoring backup.")
