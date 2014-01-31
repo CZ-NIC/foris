@@ -17,7 +17,7 @@
 %rebase wizard/base **locals()
 
 <div id="wizard-connectivity">
-    <h1>{{ first_title }}</h1>
+    <h1>{{ trans(first_title) }}</h1>
     <div id="connectivity-progress" class="background-progress">
         <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"><br>
         <div id="wizard-connectivity-status">

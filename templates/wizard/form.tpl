@@ -17,7 +17,7 @@
 %rebase wizard/base **locals()
 
 <form id="main-form" class="wizard-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-    <h1>{{ first_title }}</h1>
+    <h1>{{ trans(first_title) }}</h1>
     <p class="wizard-description">{{ first_description }}</p>
     %include _messages
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
