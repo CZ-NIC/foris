@@ -42,7 +42,7 @@
     <div id="connectivity-fail">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
         <p>
-            {{! trans("It seems that you have no internet connection. Maybe your WAN settings are not right. If you wish, you can <a href=\"%(link)s\">check them once again</a>.") % dict(link=reverse("wizard_step", number=2) }}
+            {{! trans("It seems that you have no internet connection. Maybe your WAN settings are not right. If you wish, you can <a href=\"%(link)s\">check them once again</a>.") % dict(link=url("wizard_step", number=2)) }}
         </p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
