@@ -71,7 +71,7 @@ def index():
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
 
-    if not allowed_step_max:
+    if allowed_step_max == 1:
         session["user_authenticated"] = True
         allowed_step_max = 1
     else:

@@ -306,20 +306,29 @@ def get_wizard(number):
 
 
 def get_allowed_step_max():
+    """Get number of the allowed step from session, or from Foris Uci config
+    if session is empty.
+
+    :return: step number of last allowed step (default is 1)
+    :rtype: int
+    """
     session = request.environ['beaker.session']
     allowed_sess = session.get(WizardStepMixin.next_step_allowed_key, None)
-    if not allowed_sess:
-        data = client.get(filter=filters.foris_config)
-        next_step_option = data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
-        if next_step_option:
-            return next_step_option.value
-        return 1  # if no value can be found
-    return allowed_sess
+    try:
+        if not allowed_sess:
+            data = client.get(filter=filters.foris_config)
+            next_step_option = data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
+            if next_step_option:
+                return int(next_step_option.value)
+            return 1  # if no value can be found
+        return int(allowed_sess)
+    except ValueError:
+        return 1
 
 
 def check_step_allowed_or_redirect(step_number):
     step_number = int(step_number)
-    allowed_step_max = int(get_allowed_step_max())
+    allowed_step_max = get_allowed_step_max()
     if step_number <= allowed_step_max:
         return True
     bottle.redirect(reverse("wizard_step", number=allowed_step_max))
@@ -409,7 +418,7 @@ def step_post(number=1):
 
 @app.route("/skip", name="wizard_skip")
 def skip():
-    allowed_step_max = int(get_allowed_step_max())
+    allowed_step_max = get_allowed_step_max()
     last_step_number = min(NUM_WIZARD_STEPS, allowed_step_max)
     Wizard = get_wizard(last_step_number)
     if Wizard.can_skip_wizard:
