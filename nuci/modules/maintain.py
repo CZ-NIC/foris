@@ -25,7 +25,7 @@ class Maintain(YinElement):
     def __init__(self, data):
         """
 
-        :param data: base64 encoded .tar.xz backup file
+        :param data: base64 encoded .tar.bz2 backup file
         :return:
         """
         super(Maintain, self).__init__()
@@ -61,7 +61,7 @@ class Maintain(YinElement):
     @staticmethod
     def rpc_config_restore(data):
         """
-        Request for a configuration restore from a base64 encoded .tar.xz
+        Request for a configuration restore from a base64 encoded .tar.bz2
         file returned by config-backup RPC.
 
         :param data: string with base64 encoded backup file

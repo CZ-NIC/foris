@@ -150,13 +150,13 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
     def _action_config_backup(self):
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         directory = "/tmp/foris_backups"
-        filename = "turris-backup-%s.tar.xz" % timestamp
+        filename = "turris-backup-%s.tar.bz2" % timestamp
         # TODO: remove old backups, catch errors
         if not os.path.isdir(directory):
             os.mkdir(directory)
         client.save_config_backup(os.path.join(directory, filename))
         return bottle.static_file(filename, directory,
-                                  mimetype="application/x-xz", download=True)
+                                  mimetype="application/x-bz2", download=True)
 
     def _action_reboot(self):
         client.reboot()

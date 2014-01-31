@@ -21,7 +21,7 @@
     %include _messages
 
     <h3>{{ trans("Configuration backup") }}</h3>
-    <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. Configuration is saved as an unencrypted compressed archive (.tar.xz). Password for this configuration interface and for the advanced configuration is not included in the backup.") }}</p>
+    <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. Configuration is saved as an unencrypted compressed archive (.tar.bz2). Password for this configuration interface and for the advanced configuration is not included in the backup.") }}</p>
     <div class="maintenance-description">
         <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ trans("Download configuration backup") }}</a>
     </div>
