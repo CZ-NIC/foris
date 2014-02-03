@@ -244,7 +244,8 @@ class WanHandler(BaseConfigHandler):
 
         wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
-                           validators=validators.MacAddress())\
+                           validators=validators.MacAddress(),
+                           required=True)\
             .requires("custom_mac", True)
 
         def wan_form_cb(data):
