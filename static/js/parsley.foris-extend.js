@@ -65,7 +65,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
     messages: {
       type: {
         ipv4: "This is not a valid IPv4 address.",
-        ipv6: "This is not a valid IPv6 address.",
+        ipv6: "This is not an IPv6 address with prefix length.",
         anyip: "This is not a valid IPv4 or IPv6 address.",
         ipv6prefix: "This is not a valid IPv6 prefix.",
         macaddress: "This is not a valid MAC address."

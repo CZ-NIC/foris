@@ -116,7 +116,7 @@ class IPv6Prefix(Validator):
     js_validator = ("type", "ipv6prefix")
 
     def __init__(self):
-        super(IPv6Prefix, self).__init__(_("Not a valid IPv6 prefix."), None)
+        super(IPv6Prefix, self).__init__(_("This is not an IPv6 address with prefix length."), None)
 
     def valid(self, value):
         import socket
