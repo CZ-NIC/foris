@@ -180,7 +180,8 @@ class WanHandler(BaseConfigHandler):
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="gateway", label=_("Gateway"),
                            nuci_path="uci.network.wan.gateway",
-                           validators=validators.IPv4())\
+                           validators=validators.IPv4(),
+                           required=True)\
             .requires("proto", WAN_STATIC)
 
         def extract_dns_item(dns_string, index, default=None):
