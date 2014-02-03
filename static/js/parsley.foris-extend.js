@@ -7,20 +7,27 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         return {
           validate: function ( val, type ) {
             var regExp;
+            var isIPv4 = function(val) {
+              var bytes = val.split(".");
+              if (bytes.length != 4)
+                return false;
+              var intRE = /^[0-9]+$/;
+              for (var i = 0; i < bytes.length; i++) {
+                // check it's an integer number, not exponential format, hex number etc...
+                if (!intRE.test(bytes[i]))
+                  return false;
+                if (bytes[i] < 0 || bytes[i] > 255)
+                  return false;
+              }
+              return true;
+            };
             switch (type) {
               case 'ipv4':
-                var bytes = val.split(".");
-                if (bytes.length != 4)
-                  return false;
-                var intRE = /^[0-9]+$/;
-                for (var i = 0; i < bytes.length; i++) {
-                  // check it's an integer number, not exponential format, hex number etc...
-                  if (!intRE.test(bytes[i]))
-                    return false;
-                  if (bytes[i] < 0 || bytes[i] > 255)
-                    return false;
-                }
-                return true;
+                return isIPv4(val);
+              case 'anyip':
+                if (isIPv4(val))
+                  return true;
+                // else fall through to ipv6
               case 'ipv6':
                 // source: http://home.deds.nl/~aeron/regex/
                 regExp = /^((?=.*::)(?!.*::.+::)(::)?([\dA-F]{1,4}:(:|\b)|){5}|([\dA-F]{1,4}:){6})((([\dA-F]{1,4}((?!\3)::|:\b|$))|(?!\2\3)){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})$/i;
@@ -59,6 +66,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
       type: {
         ipv4: "This is not a valid IPv4 address.",
         ipv6: "This is not a valid IPv6 address.",
+        anyip: "This is not a valid IPv4 or IPv6 address.",
         ipv6prefix: "This is not a valid IPv6 prefix.",
         macaddress: "This is not a valid MAC address."
       }

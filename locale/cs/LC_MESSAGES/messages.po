@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 15:12+0100\n"
+"POT-Creation-Date: 2014-02-03 11:03+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -358,6 +358,9 @@ msgstr "Neplatná IPv4 adresa."
 
 msgid "Not a valid IPv6 address."
 msgstr "Neplatná IPv6 adresa."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Toto není platná IPv4 nebo IPv6 adresa."
 
 msgid "Not a valid IPv6 prefix."
 msgstr "Neplatný IPv6 prefix."

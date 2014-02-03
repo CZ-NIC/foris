@@ -192,12 +192,12 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="dns1", label=_("DNS server 1"),
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 0),
-                           validators=validators.IPv4())\
+                           validators=validators.AnyIP())\
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="dns2", label=_("DNS server 2"),
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 1),
-                           validators=validators.IPv4())\
+                           validators=validators.AnyIP())\
             .requires("proto", WAN_STATIC)
 
         # static ipv6

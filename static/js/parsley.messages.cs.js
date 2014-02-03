@@ -17,6 +17,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         // parsley.foris-extend types /////////////////////////
         , ipv4:            "Toto není platná IPv4 adresa."
         , ipv6:          "Toto není platná IPv6 adresa."
+        , anyip:         "Toto není platná IPv4 nebo IPv6 adresa."
         , ipv6prefix:    "Toto není platný IPv6 prefix."
         , macaddress:    "Toto není platná MAC adresa."
       }

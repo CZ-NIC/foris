@@ -92,6 +92,26 @@ class IPv6(Validator):
         return False
 
 
+class AnyIP(Validator):
+    js_validator = ("type", "anyip")
+
+    def __init__(self):
+        super(AnyIP, self).__init__(_("This is not a valid IPv4 or IPv6 address."), None)
+
+    def valid(self, value):
+        import socket
+        try:
+            socket.inet_pton(socket.AF_INET, value)
+            return True
+        except Exception:
+            try:
+                socket.inet_pton(socket.AF_INET6, value)
+                return True
+            except Exception:
+                pass
+        return False
+
+
 class IPv6Prefix(Validator):
     js_validator = ("type", "ipv6prefix")
 
