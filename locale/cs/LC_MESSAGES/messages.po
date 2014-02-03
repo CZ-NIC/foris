@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-03 15:22+0100\n"
+"POT-Creation-Date: 2014-02-03 15:28+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -493,6 +493,9 @@ msgstr "Brána"
 
 msgid "DNS server 1"
 msgstr "DNS server 1"
+
+msgid "DNS server address is not required."
+msgstr "Adresa DNS serveru není povinná."
 
 msgid "DNS server 2"
 msgstr "DNS server 2"
