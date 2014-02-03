@@ -20,7 +20,9 @@
     %if can_skip_wizard:
         <a href="{{ url("wizard_skip") }}">{{ trans("Skip wizard") }}</a>
     %end
+    %if defined('stepnumber'):
         <br>
         <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 8</span>
+    %end
     </div>
 </div>

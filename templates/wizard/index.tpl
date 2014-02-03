@@ -16,7 +16,7 @@
 %#
 %rebase _layout **locals()
 
-%include wizard/_header can_skip_wizard=False, stepnumber=0
+%include wizard/_header can_skip_wizard=False
 
 <h1>Vítejte v nastavení routeru Turris</h1>
 
