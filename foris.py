@@ -25,7 +25,7 @@ import os
 import sys
 from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
-from utils.messages import set_template_defaults
+from utils import messages
 from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
 
@@ -40,6 +40,7 @@ i18n_defaults(bottle.SimpleTemplate, bottle.request)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: bottle.request.app._(msgid)  # workaround
 trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=[LANGUAGE], fallback=True)
 gettext = trans.ugettext
+_ = trans.ugettext
 
 # template defaults
 # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
@@ -51,7 +52,7 @@ bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **k
 bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
 
 # messages
-set_template_defaults(bottle.SimpleTemplate)
+messages.set_template_defaults(bottle.SimpleTemplate)
 
 
 def login_redirect(step_num):
@@ -97,6 +98,8 @@ def login():
         session.save()
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
+    else:
+        messages.error(_("Password you entered is invalid."))
 
     if next:
         redirect = "/?next=%s" % next

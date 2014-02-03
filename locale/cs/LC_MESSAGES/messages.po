@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-03 11:03+0100\n"
+"POT-Creation-Date: 2014-02-03 11:40+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -349,6 +349,9 @@ msgstr ""
 
 msgid "Registration failure"
 msgstr "Chyba při registraci"
+
+msgid "Password you entered is invalid."
+msgstr "Vámi zadané heslo je neplatné."
 
 msgid "This field is required."
 msgstr "Toto pole je povinné."

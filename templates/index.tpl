@@ -18,6 +18,8 @@
 <div id="login-page">
     <h1><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></h1>
 
+    %include _messages
+
     %if user_authenticated():
         <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
     %else:
