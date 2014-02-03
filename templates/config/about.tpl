@@ -16,7 +16,7 @@
 %#
 %rebase config/base **locals()
 
-<div id="page-about">
+<div id="page-about" class="config-page">
     <h2>{{ trans("About") }}</h2>
         %include _messages
         <table>
@@ -45,9 +45,7 @@
             {{ trans("Registration code") }}: <span id="registration-code">????????</span>
         </p>
         <div id="registration-code-fail">
-            <p>
-                {{ trans("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
-            </p>
+            {{ trans("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
         </div>
         <button id="registration-code-update" class="button">{{ trans("Get registration code") }}</button>
     </div>

@@ -16,15 +16,17 @@
 %#
 %rebase config/base **locals()
 
-<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-    <p class="config-description">{{! description }}</p>
-    %include _messages
-    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    %for field in form.active_fields:
-        %include _field field=field
-    %end
-    <div class="form-buttons">
-        <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
-        <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
-    </div>
-</form>
+<div id="page-config" class="config-page">
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <p class="config-description">{{! description }}</p>
+        %include _messages
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        %for field in form.active_fields:
+            %include _field field=field
+        %end
+        <div class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+            <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+        </div>
+    </form>
+</div>

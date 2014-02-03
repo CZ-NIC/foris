@@ -16,6 +16,8 @@
 %#
 %rebase config/base **locals()
 
-<p class="config-description">
-{{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from selection above.") }}
-</p>
+<div id="page-index" class="config-page">
+    <p class="config-description">
+    {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from selection above.") }}
+    </p>
+</div>

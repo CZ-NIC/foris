@@ -16,7 +16,7 @@
 %#
 %rebase config/base **locals()
 
-<div id="page-dns">
+<div id="page-dns" class="config-page">
     <h2>{{ trans("DNS setup") }}</h2>
      %include _messages
     <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can forward your DNS queris through your internet service provider's DNS resolver.") }}</p>

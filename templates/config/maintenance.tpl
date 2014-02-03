@@ -16,7 +16,7 @@
 %#
 %rebase config/base **locals()
 
-<div id="page-maintenance">
+<div id="page-maintenance" class="config-page">
     <h2>{{ trans("Maintenance") }}</h2>
     %include _messages
 

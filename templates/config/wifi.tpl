@@ -16,27 +16,29 @@
 %#
 %rebase config/base **locals()
 
-%if not form:
-<div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
-%else:
-<form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-    <p class="config-description">{{! description }}</p>
-    %include _messages
-    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    %for field in form.active_fields:
-        %include _field field=field
+<div id="page-wifi" class="config-page">
+    %if not form:
+    <div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
+    %else:
+    <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <p class="config-description">{{! description }}</p>
+        %include _messages
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        %for field in form.active_fields:
+            %include _field field=field
+        %end
+        <div id="wifi-qr">
+        </div>
+        <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
+        <script>
+            $(document).ready(function() {
+                ForisWizard.initWiFiQR();
+            });
+        </script>
+        <div class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+            <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+        </div>
+    </form>
     %end
-    <div id="wifi-qr">
-    </div>
-    <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
-    <script>
-        $(document).ready(function() {
-            ForisWizard.initWiFiQR();
-        });
-    </script>
-    <div class="form-buttons">
-        <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
-        <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
-    </div>
-</form>
-%end
+</div>

@@ -48,7 +48,6 @@ h1, h2, h3, h4, h5, h6
   font-family: $heading-font
   font-weight: bold
   margin-bottom: 0.8em
-  margin-top: 0.5em
 
 em
   font-style: italic
@@ -97,7 +96,7 @@ body, html
 
 
 #page
-  margin: 0 auto
+  margin: 0 auto 2em
   width: 60em
 
 
@@ -239,6 +238,8 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
   width: auto
 
 .wizard-form, .config-form, .maintenance-form, .dns-form
+  +pie-clearfix
+
   & > .row
     padding: 0.25em 0
 
@@ -274,8 +275,11 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
 
 #wifi-qr
   position: absolute
-  bottom: 0
+  bottom: 2.8em
   right: 0
+
+  .config-form &
+    bottom: 4em
 
   .qr-error
     color: $error-color
@@ -283,8 +287,7 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     text-align: center
     width: 200px
     position: relative
-    bottom: 1em
-    right: 1em
+    padding: 0 1em 1em 0
 
 
 
@@ -296,8 +299,7 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     margin-bottom: 2em
 
 .form-buttons
-  position: absolute
-  right: 0
+  float: right
   margin-top: 1.5em
 
 #time-success, #updater-success, #updater-fail, #connectivity-success, #connectivity-fail, #connectivity-nodns
@@ -410,7 +412,7 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     top: 55px
 
 .config-description
-  margin: 2.5em 0
+  margin-bottom: 2.5em
 
 .config-form
   position: relative
@@ -421,6 +423,9 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     line-height: 3em
     margin-right: 0.5em
 
+.config-page
+  padding-top: 2.5em
+
 /* -------------------------------------------------------------------------
 /* "About" page
 #page-about
@@ -428,6 +433,7 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     margin-bottom: 1em
 
   table
+    margin-bottom: 1em
     width: 100%
 
     th, td
@@ -443,11 +449,9 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     vertical-align: middle
 
   #registration-code-fail
-    border: 1px solid $error-color
-    color: $error-color
+    @extend .message
+    @extend .message.error
     display: none
-    margin-bottom: 1em
-    padding: 1em
 
     p:last-child
       margin-bottom: 0
@@ -458,8 +462,15 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
 
 /* -------------------------------------------------------------------------
 /* "DNS" page
+#page-dns
+  form
+    margin-bottom: 1em
+
 #connection-test-fail
   display: none
+
+#connection-test-loader
+  vertical-align: middle
 
 #test-results
   margin-bottom: 1em
