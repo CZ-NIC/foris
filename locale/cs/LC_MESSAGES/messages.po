@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-03 11:48+0100\n"
+"POT-Creation-Date: 2014-02-03 15:22+0100\n"
 "PO-Revision-Date: 2013-10-31 14:43+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -539,6 +539,9 @@ msgstr ""
 
 msgid "MAC address"
 msgstr "MAC adresa"
+
+msgid "Separators are colons, for example 00:11:22:33:44:55"
+msgstr "Oddělovače jsou dvojtečky, např. 00:11:22:33:44:55"
 
 msgid "Use forwarding"
 msgstr "Používat forwardování"
