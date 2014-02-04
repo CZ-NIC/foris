@@ -24,7 +24,9 @@ class Password(YinElement):
     def __init__(self, user, password):
         super(Password, self).__init__()
         self.user = user
-        self.password = password
+        if isinstance(password, str):
+            password = password.decode("utf8")
+        self.password = unicode(password)
 
     @property
     def rpc_set(self):
