@@ -29,3 +29,5 @@
 <h3>{{ trans("What next?") }}</h3>
 
 <p>{{! _("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
+
+<a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to configuration interface") }}</a>
