@@ -18,7 +18,7 @@ import copy
 import logging
 import re
 
-from foris import gettext as _
+from foris import ugettext as _
 import form
 
 PARAM_DELIMITER = "|"

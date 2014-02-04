@@ -19,7 +19,7 @@ import bottle
 from datetime import datetime
 import os
 from config_handlers import *
-from foris import gettext as _
+from foris import ugettext as _
 import logging
 from nuci import client
 from nuci.client import filters

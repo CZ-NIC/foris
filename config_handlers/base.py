@@ -17,7 +17,7 @@ import logging
 
 import bottle
 
-from foris import gettext as _
+from foris import ugettext as _
 from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio
 import fapi
 from nuci import client, filters

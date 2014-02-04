@@ -30,6 +30,7 @@
     <script src="{{ static("js/wizard.min.js") }}"></script>
 </head>
 <body>
+    <div><a href="{{ url("change_lang", lang="cs") }}">CZE</a> | <a href="{{ url("change_lang", lang="en") }}">ENG</a></div>
     <div id="page">
         %include
     </div>

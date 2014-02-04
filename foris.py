@@ -35,12 +35,18 @@ logger = logging.getLogger("foris")
 BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
-LANGUAGE = 'cs'  # hardcoded for now, use session or better uci or $LANG to store the value
+DEFAULT_LANGUAGE = 'cs'
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: bottle.request.app._(msgid)  # workaround
-trans = gettext.translation("messages", os.path.join(BASE_DIR, "locale"), languages=[LANGUAGE], fallback=True)
-gettext = trans.ugettext
-_ = trans.ugettext
+translations = {
+    'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
+                              languages=['cs'], fallback=True),
+    'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
+                              languages=['en'], fallback=True)
+}
+i18n_plugin = I18NPlugin(domain="messages", lang_code=DEFAULT_LANGUAGE, default="en", locale_dir=os.path.join(BASE_DIR, "locale"))
+ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
+_ = ugettext
 
 # template defaults
 # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
@@ -84,6 +90,15 @@ def index():
         login_redirect(allowed_step_max)
 
     return dict()
+
+
+@bottle.route("/lang/<lang:re:\w{2}>", name="change_lang")
+def change_lang(lang):
+    if lang in translations:
+        bottle.request.app.lang = lang
+        bottle.redirect("/")
+    else:
+        raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
 
 
 @bottle.route("/", method="POST", name="login")
@@ -215,8 +230,7 @@ if __name__ == "__main__":
             init_foris_app(mounted)
 
     # i18n middleware
-    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=LANGUAGE, default="en",
-                                         locale_dir=os.path.join(BASE_DIR, "locale")))
+    app = I18NMiddleware(app, i18n_plugin)
 
     # logging middleware for all mounted apps
     config.app.catchall = False

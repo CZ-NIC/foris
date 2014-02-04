@@ -17,7 +17,7 @@
 from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
-from foris import gettext as _
+from foris import ugettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
