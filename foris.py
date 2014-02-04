@@ -15,14 +15,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# builtins
+import gettext
+import logging
+import os
+import sys
+
+# 3rd party
 from beaker.middleware import SessionMiddleware
 import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
-import gettext
-import logging
+from ncclient.operations import TimeoutExpiredError, RPCError
+
+# local
 from nuci import client, filters
-import os
-import sys
+from nuci.modules.uci_raw import Uci, Config, Section, Option
 from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
 from utils import messages
@@ -35,16 +42,15 @@ logger = logging.getLogger("foris")
 BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
-DEFAULT_LANGUAGE = 'cs'
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: bottle.request.app._(msgid)  # workaround
+DEFAULT_LANGUAGE = 'cs'
 translations = {
     'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['cs'], fallback=True),
     'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['en'], fallback=True)
 }
-i18n_plugin = I18NPlugin(domain="messages", lang_code=DEFAULT_LANGUAGE, default="en", locale_dir=os.path.join(BASE_DIR, "locale"))
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
 _ = ugettext
 
@@ -94,11 +100,49 @@ def index():
 
 @bottle.route("/lang/<lang:re:\w{2}>", name="change_lang")
 def change_lang(lang):
+    """Change language of the interface.
+
+    :param lang: language to set
+    :raises: bottle.HTTPError if requested language is not installed
+    """
     if lang in translations:
         bottle.request.app.lang = lang
+        write_uci_lang(lang)
         bottle.redirect("/")
     else:
         raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
+
+
+def read_uci_lang(default):
+    """Read interface language saved in Uci config foris.settings.lang.
+
+    :param default: returned if no language is set in the config
+    :return: language code of interface language
+    """
+    data = client.get(filter=filters.foris_config)
+    lang = data.find_child("uci.foris.settings.lang")
+    if lang is None:
+        return default
+    return lang.value
+
+
+def write_uci_lang(lang):
+    """Save interface language to foris.settings.lang.
+
+    :param lang: language code to save
+    :return: True on success, False otherwise
+    """
+    uci = Uci()
+    foris = Config("foris")
+    uci.add(foris)
+    server = Section("settings", "config")
+    foris.add(server)
+    server.add(Option("lang", lang))
+    try:
+        client.edit_config(uci.get_xml())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
 
 
 @bottle.route("/", method="POST", name="login")
@@ -140,7 +184,7 @@ def static(filename):
 
 def _check_password(password):
     from beaker.crypto import pbkdf2
-    data = client.get(filter=filters.uci)
+    data = client.get(filter=filters.foris_config)
     password_hash = data.find_child("uci.foris.auth.password")
     if password_hash is None:
         # consider unset password as successful auth
@@ -229,12 +273,14 @@ if __name__ == "__main__":
             mounted = route.config['mountpoint']['target']
             init_foris_app(mounted)
 
+    # read language saved in Uci
+    lang = read_uci_lang(DEFAULT_LANGUAGE)
     # i18n middleware
-    app = I18NMiddleware(app, i18n_plugin)
+    if lang not in translations:
+        lang = DEFAULT_LANGUAGE
+    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE, locale_dir=os.path.join(BASE_DIR, "locale")))
 
     # logging middleware for all mounted apps
-    config.app.catchall = False
-    wizard.app.catchall = False
     app = ReportingMiddleware(app, sensitive_params=("key", "password", "password_validation"))
     app.install_dump_route(bottle.app())
 
