@@ -108,6 +108,9 @@ def change_lang(lang):
     if lang in translations:
         bottle.request.app.lang = lang
         write_uci_lang(lang)
+        backlink = bottle.request.GET.get('backlink')
+        if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
+            bottle.redirect(backlink)
         bottle.redirect("/")
     else:
         raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
