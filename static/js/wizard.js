@@ -15,7 +15,10 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-var ForisWizard = {};
+var ForisWizard = {
+  qrErrorPassword: "Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
+  qrErrorSSID: "Your SSID contains non-standard characters. These are not forbidden, but could cause problems on some devices."
+};
 
 ForisWizard.initialize = function() {
     $(document).on("change", ".has-requirements", function() {
@@ -239,11 +242,11 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
     };
 
     if (!ForisWizard.checkLowerAsciiString(ssid)) {
-        showQRError("Vámi zadané jméno sítě obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na některých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        showQRError(this.qrErrorSSID);
         return;
     }
     if (!ForisWizard.checkLowerAsciiString(password)) {
-        showQRError("Vámi zadané heslo obsahuje nestandardní znaky, které nejsou zakázané, avšak mohou na některých zařízeních způsobovat problémy.");  // TODO: l10n (see #3022)
+        showQRError(this.qrErrorPassword);
         return;
     }
 
