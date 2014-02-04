@@ -41,7 +41,8 @@ class Validator(object):
     def valid(self, value):
         try:
             return self.test(value)
-        except:
+        except Exception, e:
+            logger.exception(e)
             return False
 
 
@@ -175,7 +176,7 @@ class ByteLenRange(Validator):
     js_validator = "byterangelength"
 
     def __init__(self, low, high):
-        test = lambda val: low <= len(str(val.encode("utf8"))) <= high
+        test = lambda val: low <= len(val.decode("utf8")) <= high
         super(ByteLenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high), test)
         self.js_validator_params = "[%s,%s]" % (low, high)
 
