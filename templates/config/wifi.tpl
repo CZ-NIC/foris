@@ -16,7 +16,9 @@
 %#
 %rebase config/base **locals()
 
+%if not defined('is_xhr'):
 <div id="page-wifi" class="config-page">
+%end
     %if not form:
     <div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
     %else:
@@ -41,4 +43,6 @@
         </div>
     </form>
     %end
+%if not defined('is_xhr'):
 </div>
+%end

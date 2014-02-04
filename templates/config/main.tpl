@@ -16,7 +16,9 @@
 %#
 %rebase config/base **locals()
 
+%if not defined('is_xhr'):
 <div id="page-config" class="config-page">
+%end not defined('is_xhr'):
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{! description }}</p>
         %include _messages
@@ -29,4 +31,6 @@
             <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
         </div>
     </form>
+%if not defined('is_xhr'):
 </div>
+%end
