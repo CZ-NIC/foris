@@ -484,9 +484,9 @@ class WifiHandler(BaseConfigHandler):
         # hwmode choice for dual band devices
         if len(channels_2g4) > 1 and len(channels_5g) > 1:
             is_dual_band = True
-            wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2g4",
-                                args=(("2g4", "2.4 GHz (g+n)"), ("5g", "5 GHz (a+n)")),
-                                nuci_path="uci.wireless.radio0.channel", nuci_preproc=wifi_mode_preproc,
+            wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
+                                args=(("11ng", "2.4 GHz (g+n)"), ("11ag", "5 GHz (a+n)")),
+                                nuci_path="uci.wireless.radio0.hwmode",
                                 hint=_("2.4 GHz is more widely supported by clients, but tends to have "
                                        "more interference. 5 GHz is a newer standard and might not be "
                                        "supported by all your devices. It usually has less interference, "
