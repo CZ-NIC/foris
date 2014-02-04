@@ -21,9 +21,34 @@ window.ParsleyConfig = window.ParsleyConfig || {};
               }
               return true;
             };
+            var isIPv4Netmask = function(val) {
+              var bytes = val.split(".");
+              if (bytes.length != 4)
+                return false;
+              var intRE = /^[0-9]+$/;
+	      var was_zero = false;
+              for (var i = 0; i < bytes.length; i++) {
+                // check it's an integer number, not exponential format, hex number etc...
+                if (!intRE.test(bytes[i]))
+                  return false;
+                if (bytes[i] < 0 || bytes[i] > 255)
+                  return false;
+		for (var j = 7; j >= 0; j--) {
+		    if ((bytes[i] & 1<<j) == 0) {
+			was_zero = true;
+		    } else if (was_zero) {
+			// 1 and we have seen zero already
+			return false;
+		    }
+		}
+              }
+              return true;
+            };
             switch (type) {
               case 'ipv4':
                 return isIPv4(val);
+              case 'ipv4netmask':
+                return isIPv4Netmask(val);
               case 'anyip':
                 if (isIPv4(val))
                   return true;
@@ -65,6 +90,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
     messages: {
       type: {
         ipv4: "This is not a valid IPv4 address.",
+	ipv4netmask: "This is not a valid IPv4 netmask.",
         ipv6: "This is not an IPv6 address with prefix length.",
         anyip: "This is not a valid IPv4 or IPv6 address.",
         ipv6prefix: "This is not a valid IPv6 prefix.",

@@ -19,8 +19,13 @@
 <h1>{{ trans("Device registration") }}</h1>
 
 <p>
-    {{! _("Device was succesfully installed. Last step that is required is a registration of your device in your user profile on the Turris site <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
+    {{! _("Device was succesfully installed. Last step that is required is a registration of your device in your user profile on the Turris website <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
 </p>
 <p class="activation-code">{{ code }}</p>
-<p>{{! _("<strong>Warning:</strong> this code has a limited validity. In case this code is refused, refresh this page to get a new one.") }}</p>
-<p>{{! _("Any of these settings can be set in the <a href=\"%(url)s\">configuration interface</a>. You can use it to activate LuCI interface for setting the advanced configuration.") % {'url': url("config_index")} }}</p>
+<p>{{! _("<strong>Warning:</strong> this code is valid only for limited time. In case this code is refused, refresh this page to get a new one.") }}</p>
+
+<br />
+
+<h3>{{ trans("What next?") }}</h3>
+
+<p>{{! _("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
