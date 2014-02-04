@@ -488,7 +488,7 @@ class Radio(Input):
         return ID_TEMPLATE % self.name + '_%s'
 
     def render(self):
-        x = "<div>"
+        x = '<div class="radio-inputs">'
         for arg in self.args:
             if isinstance(arg, (tuple, list)):
                 value, desc = arg
