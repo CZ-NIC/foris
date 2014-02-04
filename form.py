@@ -488,7 +488,7 @@ class Radio(Input):
         return ID_TEMPLATE % self.name + '_%s'
 
     def render(self):
-        x = ''
+        x = "<div>"
         for arg in self.args:
             if isinstance(arg, (tuple, list)):
                 value, desc = arg
@@ -502,7 +502,7 @@ class Radio(Input):
             if self.value == value:
                 attrs['checked'] = 'checked'
             x += '<label><input %s/> %s</label>' % (attrs, websafe(desc))
-        return x
+        return x + "</div>"
 
 
 class Checkbox(Input):
