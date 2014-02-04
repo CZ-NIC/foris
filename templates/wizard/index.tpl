@@ -18,10 +18,12 @@
 
 %include wizard/_header can_skip_wizard=False
 
-<h1>Vítejte v nastavení routeru Turris</h1>
+<div id="wizard-content">
+    <h1>{{ trans("Welcome to configuration of router Turris") }}</h1>
 
-<p>Než začnete router používat, je třeba provést jeho prvotní nastavení. K tomu slouží tento jednoduchý průvodce základní konfigurací. Po jeho dokončení bude router připraven k běžnému použití.</p>
-<hr>
-<p class="footnote">Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského hesla v prvním kroku průvodce.</p>
+    <p>{{ trans("Before you start to use the router for the first time, it is necessary to set it up. The following simple wizard will take you through the configuration procedure. After it is finished, your router will be ready for operation.") }}</p>
+    <hr>
+    <p class="footnote">{{ trans("If you want to restore a previously saved configuration or for some other reason skip this wizard, you can do so after choosing a password in its first step.") }}</p>
 
-<a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>
+    <a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>
+</div>
