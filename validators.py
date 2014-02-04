@@ -78,6 +78,30 @@ class IPv4(Validator):
         return False
 
 
+class IPv4Netmask(Validator):
+    js_validator = ("type", "ipv4netmask")
+
+    def __init__(self):
+        super(IPv4Netmask, self).__init__(_("Not a valid IPv4 netmask address."), None)
+
+    def valid(self, value):
+        """The netmask must start with an uninterrupted sequence of 1s in its bit
+        representation and not contain any 1s after the first zero."""
+        import socket
+        try:
+            addr = socket.inet_aton(value)
+        except socket.error:
+            return False
+        was_zero = False
+        for byte in addr:
+            for i in range(8):
+                if not (ord(byte) & 1<<(7-i)):
+                    was_zero = True
+                elif was_zero: # 1 and we have seen zero already
+                    return False
+        return True
+
+
 class IPv6(Validator):
     js_validator = ("type", "ipv6")
 

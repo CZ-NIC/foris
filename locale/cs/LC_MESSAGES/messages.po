@@ -13,373 +13,30 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Beda Kosata <bedrich.kosata@nic.cz>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-04 16:05+0100\n"
-"PO-Revision-Date: 2013-10-31 14:43+0100\n"
-"Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
+"POT-Creation-Date: 2014-02-04 16:19+0100\n"
+"PO-Revision-Date: 2014-02-04 16:28+0100\n"
+"Last-Translator: Beda Kosata <bedrich.kosata@nic.cz>\n"
 "Language-Team: Czech <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Tato stránka potřebuje pro správnou funkci zapnutý JavaScript. Zapněte si "
-"prosím ve Vašem prohlížeči JavaScript a obnovte stránku."
-
-msgid "Project:Turris"
-msgstr "Project:Turris"
-
-msgid "Log out"
-msgstr "Odhlásit se"
-
-msgid "Password"
-msgstr "Heslo"
-
-msgid "Log in"
-msgstr "Přihlásit se"
-
-msgid "Hint"
-msgstr "Nápověda"
-
-msgid "Turris router administration interface"
-msgstr "Administrační rozhraní routeru Turris"
-
-msgid "DNS setup"
-msgstr "Nastavení DNS"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queris through your internet "
-"service provider's DNS resolver."
-msgstr ""
-"Router Turris používá vlastní DNS resolver s podporou DNSSEC. Ten je schopen "
-"pracovat jak naprosto samostatně, tak s využitím DNS resolveru "
-"poskytovatele, skrze který je prováděno tzv. forwardování."
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"Následující nastavení ovlivňuje právě nastavení DNS resolveru. V sítích, kde "
-"správně funguje DNS resolver poskytovatele je výhodnější jej používat, "
-"protože to většinou vede k rychlejší odezvě. Pokud však tento způsob "
-"nefunguje, je nutné použít variantu bez forwardování."
-
-msgid "Save"
-msgstr "Uložit"
-
-msgid "Connection test"
-msgstr "Test připojení"
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-"Zde si můžete otestovat funkčnost Vašeho internetového připojení. Tento test "
-"je užitečný také v případě, kdy chcete otestovat, zda správně funguje "
-"nastavení DNS. Nezapomeňte stisknout tlačítko <strong>Uložit</strong>, pokud "
-"jste změnili nastavení forwarderu výše."
-
-msgid "Unable to verify network connection."
-msgstr "Nepodařilo se ověřit stav připojení."
-
-msgid "Test type"
-msgstr "Typ testu"
-
-msgid "Status"
-msgstr "Stav"
-
-msgid "IPv4 connectivity"
-msgstr "Konektivita IPv4"
-
-msgid "IPv4 gateway connectivity"
-msgstr "Dostupnost IPv4 brány"
-
-msgid "IPv6 connectivity"
-msgstr "Konektivita IPv6"
-
-msgid "IPv6 gateway connectivity"
-msgstr "Dostupnost IPv6 brány"
-
-msgid "DNS"
-msgstr "DNS"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Otestovat připojení"
-
-msgid "Maintenance"
-msgstr "Údržba"
-
-msgid "Configuration backup"
-msgstr "Záloha nastavení"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. Configuration is saved as an unencrypted compressed "
-"archive (.tar.bz2). Password for this configuration interface and for the "
-"advanced configuration is not included in the backup."
-msgstr ""
-"Zde si můžete stáhnout zálohu současného nastavení zařízení. Záloha obsahuje "
-"volby nastavené prostřednictvím tohoto rozhraní a většinu voleb, které byly "
-"případně nastaveny v rozhraní LuCI. Nastavení je uloženo v nešifrovaném "
-"archivu (.tar.bz2). Heslo pro toto rozhraní a heslo do pokročilého nastavení "
-"zálohováno není."
-
-msgid "Download configuration backup"
-msgstr "Stáhnout zálohu konfigurace"
-
-msgid "Configuration restore"
-msgstr "Obnovení nastavení"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"Pomocí následujícího formuláře můžete obnovit nastavení z archivu sezálohou. "
-"Obnovení nastavení může způsobit změnu IP adresy tohoto zařízení a způsobit "
-"tak nedostupnost tohoto rozhraní na současné adrese."
-
-msgid "Restore from backup"
-msgstr "Obnovit ze zálohy"
-
-msgid "Device reboot"
-msgstr "Restart zařízení"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"when the router comes up."
-msgstr ""
-"Pokud potřebujete restartovat router, můžete tak učinit pomocí tlačítka "
-"níže. Restart zařízení trvá přibližně 30 vteřin a bude nutné se po něm opět "
-"přihlásit."
-
-msgid "Reboot"
-msgstr "Restartovat"
-
-msgid "Settings"
-msgstr "Nastavení"
-
-msgid ""
-"Welcome to the Turris administration site. Please, choose a config section "
-"you wish to change from selection above."
-msgstr ""
-"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím sekci, "
-"kterou chcete upravovat, z možností uvedených výše."
-
-msgid "Discard changes"
-msgstr "Zahodit změny"
-
-msgid "Save changes"
-msgstr "Uložit změny"
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
-
-msgid "About"
-msgstr "O routeru"
-
-msgid "Device"
-msgstr "Zařízení"
-
-msgid "Router Turris - model RTRS01"
-msgstr "Router Turris - model RTRS01"
-
-msgid "Serial number"
-msgstr "Sériové číslo"
-
-msgid "Kernel version"
-msgstr "Verze jádra"
-
-msgid "Device registration"
-msgstr "Registrace zařízení"
-
-#, python-format
-msgid ""
-"If you did not register your device before, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Pokud ještě nemáte Vaše zařízení zaregistrované v systému Turris, klikněte "
-"na následující tlačítko pro vygenerování registračního kódu. Ten následně "
-"vyplňte ve Vašem uživatelském profilu v systému Turris na adrese <a href="
-"\"%(url)s\">%(url)s</a>"
-
-msgid "Registration code"
-msgstr "Registrační kód"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"Při pokusu o vygenerování registračního kódu bohužel došlo k chybě. To "
-"většinou znamená, že Váš router není připojen k internetu. Prosím, zkuste "
-"registrační kód vygenerovat později v administračním rozhraní. Pokud problém "
-"přetrvává, kontaktujte prosím podporu."
-
-msgid "Get registration code"
-msgstr "Získat registrační kód"
-
-msgid "Skip wizard"
-msgstr "Přeskočit průvodce"
-
-msgid "Loading..."
-msgstr "Načítání..."
-
-msgid "Check of available updates in progress."
-msgstr "Probíhá kontrola aktualizací."
-
-msgid "One moment, please..."
-msgstr "Chvilku strpení..."
-
-msgid "Done"
-msgstr "Hotovo"
-
-msgid "Firmware update has succeeded, you can proceed to next step."
-msgstr ""
-"Aktualizace firmwaru proběhla v pořádku, můžete postoupit k dalšímu kroku."
-
-msgid "Next"
-msgstr "Další"
-
-msgid "Error"
-msgstr "Chyba"
-
-msgid ""
-"Firmware update has failed due to a connection or an installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"Aktualizace se nepodařilo stáhnout nebo došlo k jiné chybě. Prosíme, "
-"zkontrolujte, zda máte správně nastavené připojení do internetu a kabel "
-"zapojený do zdířky WAN. Jakmile budete mít připojení k internetu funkční, "
-"aktualizace se budou pravidelně instalovat samy."
-
-msgid "Checking internet connectivity."
-msgstr "Probíhá test internetového připojení."
-
-msgid "Your network settings are alright."
-msgstr "Vaše nastavení sítě je v pořádku."
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP."
-msgstr ""
-"Vaše internetové připojení je funkční, ale nedaří se překládat adresy pomocí "
-"DNS. Tento problém je zřejmě způsoben u Vašeho poskytovatele připojení."
-
-#, python-format
-msgid ""
-"It seems that you have no internet connection. Maybe your WAN settings are "
-"not right. If you wish, you can <a href=\"%(link)s\">check them once again</"
-"a>."
-msgstr ""
-"Zdá se, že nemáte připojení do internetu, to je pravděpodobně způsobeno "
-"špatným nastavením WAN. Pokud chcete, můžete si ho <a href=\"%(link)s"
-"\">ještě jednou zkontrolovat</a>."
-
-msgid "Step"
-msgstr "Krok"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Vítejte v nastavení routeru Turris"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"Než začnete router používat, je třeba provést jeho prvotní nastavení. K tomu "
-"slouží tento jednoduchý průvodce základní konfigurací. Po jeho dokončení "
-"bude router připraven k běžnému použití."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu "
-"přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského "
-"hesla v prvním kroku průvodce."
-
-msgid "Begin installation"
-msgstr "Zahájit instalaci"
-
-msgid "Synchronize with your computer clock"
-msgstr "Synchronizovat s časem ve Vašem počítači"
-
-msgid "Set time manually"
-msgstr "Nastavit čas ručně"
-
-msgid "Synchronization successful."
-msgstr "Synchronizace proběhla úspěšně."
-
-msgid "Time settings"
-msgstr "Nastavení času"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "Probíhá synchronizace času s internetovým serverem."
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
-
-#, python-format
-msgid ""
-"Device was succesfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris site <a href="
-"\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Zařízení bylo úspěšně nastaveno. K plnohodnotnému provozu již zbývá pouze "
-"jeho aktivace v systému Turris. Následující kód vyplňte ve Vašem profilu na "
-"stránce <a href=\"%(url)s\">%(url)s</a>."
-
-msgid ""
-"<strong>Warning:</strong> this code has a limited validity. In case this "
-"code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Upozornění:</strong> kód má omezenou časovou platnost - v případě, "
-"že nebude při aktivaci akceptován, obnovte tuto stránku pro získání nového."
-
-#, python-format
-msgid ""
-"Any of these settings can be set in the <a href=\"%(url)s\">configuration "
-"interface</a>. You can use it to activate LuCI interface for setting the "
-"advanced configuration."
-msgstr ""
-"Jakékoli z předchozích nastavení můžete kdykoli měnit v <a href=\"%(url)s"
-"\">konfiguračním rozhraní</a>. Tam také můžete aktivovat rozhraní LuCI pro "
-"pokročilé nastavení systému."
-
-msgid "Registration failure"
-msgstr "Chyba při registraci"
-
-msgid "Password you entered is invalid."
-msgstr "Vámi zadané heslo je neplatné."
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 msgid "This field is required."
 msgstr "Toto pole je povinné."
 
 msgid "Not a valid IPv4 address."
 msgstr "Neplatná IPv4 adresa."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Neplatná IPv4 síťová maska."
 
 msgid "Not a valid IPv6 address."
 msgstr "Neplatná IPv6 adresa."
@@ -404,6 +61,9 @@ msgstr "Musí být z rozsahu %(low)s - %(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Délka musí být od %(low)s do %(high)s znaků."
 
+msgid "Password you entered is invalid."
+msgstr "Vámi zadané heslo je neplatné."
+
 msgid "Configuration was successfully saved."
 msgstr "Nastavení bylo úspěšně uloženo."
 
@@ -420,6 +80,9 @@ msgid "WAN port has no link, your internet connection probably wouldn't work."
 msgstr ""
 "Do zdířky WAN není zapojený kabel, Vaše připojení do internetu zřejmě nebude "
 "fungovat."
+
+msgid "Maintenance"
+msgstr "Údržba"
 
 #, python-format
 msgid ""
@@ -448,8 +111,14 @@ msgstr ""
 "Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
 "poškozený."
 
+msgid "About"
+msgstr "O routeru"
+
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
+
+msgid "Password"
+msgstr "Heslo"
 
 msgid ""
 "Set your password for this administation site. The password must be at least "
@@ -472,34 +141,38 @@ msgstr "Používat toto heslo pro pokročilé nastavení"
 
 msgid ""
 "Same password would be used for accessing this administration site, for root "
-"user in LuCI web interface and for SSH login. Use a strong password!"
+"user in LuCI web interface and for SSH login. Use a strong password! (If you "
+"choose not to set the password for advanced configuration here, you will "
+"have the option to do so later. Until then, the root account will be "
+"blocked.)"
 msgstr ""
 "Stejné heslo bude použito pro přístup do tohoto administračního rozhraní, "
 "pro uživatele root ve webovém rozhraní LuCI a pro SSH přístup. Použijte "
-"silné heslo!"
+"silné heslo! (Pokud se rozhodnete zatím toto heslo nenastavit, můžete tak "
+"učinit později. Do té doby bude účet uživatele root zablokovaný.)"
 
 msgid "WAN"
 msgstr "WAN"
 
 msgid ""
-"Here you specify your WAN port settings. Usualy you can leave this options "
+"Here you specify your WAN port settings. Usually, you can leave this options "
 "untouched unless explicitly specified otherwise by your internet service "
-"provider. And even in that case change it only if Turris is connected "
+"provider. And even in that case, change it only if Turris is connected "
 "directly to your ISP and not through a cable or DSL modem."
 msgstr ""
 "Na této stránce specifikujete nastavení připojení k vnější síti (WAN port) "
 "podle požadavků Vašeho poskytovatele připojení. Pokud připojení k Internetu "
 "zprostředkovává kabelový nebo DSL modem, toto nastavení pravděpodobně nebude "
-"nutné měnit. "
+"nutné měnit."
 
-msgid "DHCP"
-msgstr "DHCP"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatická konfigurace)"
 
-msgid "Static IP address"
-msgstr "Statická IP adresa"
+msgid "Static IP address (manual configuration)"
+msgstr "Statická IP adresa (manuální konfigurace)"
 
-msgid "PPPoE"
-msgstr "PPPoE"
+msgid "PPPoE (for DSL bridges, etc.)"
+msgstr "PPPoE (pro DSL bridge, atp.)"
 
 msgid "Protocol"
 msgstr "Protokol"
@@ -516,8 +189,12 @@ msgstr "Brána"
 msgid "DNS server 1"
 msgstr "DNS server 1"
 
-msgid "DNS server address is not required."
-msgstr "Adresa DNS serveru není povinná."
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"Adresa DNS serveru není vyžadována - vestavěný DNS resolver je schopen "
+"pracovat bez ní."
 
 msgid "DNS server 2"
 msgstr "DNS server 2"
@@ -565,8 +242,11 @@ msgstr ""
 msgid "MAC address"
 msgstr "MAC adresa"
 
-msgid "Separators are colons, for example 00:11:22:33:44:55"
-msgstr "Oddělovače jsou dvojtečky, např. 00:11:22:33:44:55"
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Oddělovačem je dvojtečka, např. 00:11:22:33:44:55"
+
+msgid "DNS"
+msgstr "DNS"
 
 msgid "Use forwarding"
 msgstr "Používat forwardování"
@@ -633,15 +313,15 @@ msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
 msgid ""
-"If you want to make from your router a Wi-Fi access point, enable the WiFi "
-"here and fill in an SSID (the name of the wifi access point) and the "
-"corresponding password. To set up a mobile device, you can scan the QR code "
-"shown next to the form."
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. To set up a mobile device, you can scan the QR code available next "
+"to the form."
 msgstr ""
 "Pokud chcete používat tento router pro připojování dalších zařízení k "
 "internetu pomocí Wi-Fi, povolte v následujícím formuláři Wi-Fi a zvolte si "
 "SSID (název přístupového bodu) a příslušné heslo.<br><br>Mobilní zařízení "
-"můžete jednoduše nastavit načtením QR kódu zobrazeného vedle formuláře."
+"můžete jednoduše nastavit načtením QR kódu zobrazovaného vedle formuláře."
 
 msgid "Enable Wi-Fi"
 msgstr "Povolit Wi-Fi"
@@ -662,6 +342,16 @@ msgstr "automaticky"
 
 msgid "Wi-Fi mode"
 msgstr "Režim Wi-Fi"
+
+msgid ""
+"2.4 GHz is more widely supported by clients, but tends to have more "
+"interference. 5 GHz is a newer standard and might not be supported by all "
+"your devices. It usually has less interference, but does not carry so well "
+"indoors."
+msgstr ""
+"2,4 GHz je častěji podporováno klienty, ale pásmo bývá častěji zarušené. 5 "
+"GHz je novéjší standard, který nemusí být podporován všemi vašemi "
+"zařízeními. Obvykle je méně zarušené, ale signál se uvnitř budov hůře šíří."
 
 msgid "Network channel"
 msgstr "Kanál"
@@ -694,8 +384,358 @@ msgstr ""
 msgid "Backup file"
 msgstr "Soubor se zálohou"
 
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
+
+msgid "Discard changes"
+msgstr "Zahodit změny"
+
+msgid "Save changes"
+msgstr "Uložit změny"
+
+msgid "Device"
+msgstr "Zařízení"
+
+msgid "Router Turris - model RTRS01"
+msgstr "Router Turris - model RTRS01"
+
+msgid "Serial number"
+msgstr "Sériové číslo"
+
+msgid "Kernel version"
+msgstr "Verze jádra"
+
+msgid "Device registration"
+msgstr "Registrace zařízení"
+
+#, python-format
+msgid ""
+"If you did not register your device before, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Pokud ještě nemáte Vaše zařízení zaregistrované v systému Turris, klikněte "
+"na následující tlačítko pro vygenerování registračního kódu. Ten následně "
+"vyplňte ve Vašem uživatelském profilu v systému Turris na adrese <a href="
+"\"%(url)s\">%(url)s</a>"
+
+msgid "Registration code"
+msgstr "Registrační kód"
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+"Při pokusu o vygenerování registračního kódu bohužel došlo k chybě. To "
+"většinou znamená, že Váš router není připojen k internetu. Prosím, zkuste "
+"registrační kód vygenerovat později v administračním rozhraní. Pokud problém "
+"přetrvává, kontaktujte prosím podporu."
+
+msgid "Get registration code"
+msgstr "Získat registrační kód"
+
+msgid "Settings"
+msgstr "Nastavení"
+
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Log out"
+msgstr "Odhlásit se"
+
+msgid "Configuration backup"
+msgstr "Záloha nastavení"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. Configuration is saved as an unencrypted compressed "
+"archive (.tar.bz2). Password for this configuration interface and for the "
+"advanced configuration is not included in the backup."
+msgstr ""
+"Zde si můžete stáhnout zálohu současného nastavení zařízení. Záloha obsahuje "
+"volby nastavené prostřednictvím tohoto rozhraní a většinu voleb, které byly "
+"případně nastaveny v rozhraní LuCI. Nastavení je uloženo v nešifrovaném "
+"archivu (.tar.bz2). Heslo pro toto rozhraní a heslo do pokročilého nastavení "
+"zálohováno není."
+
+msgid "Download configuration backup"
+msgstr "Stáhnout zálohu konfigurace"
+
+msgid "Configuration restore"
+msgstr "Obnovení nastavení"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+"Pomocí následujícího formuláře můžete obnovit nastavení z archivu sezálohou. "
+"Obnovení nastavení může způsobit změnu IP adresy tohoto zařízení a způsobit "
+"tak nedostupnost tohoto rozhraní na současné adrese."
+
+msgid "Restore from backup"
+msgstr "Obnovit ze zálohy"
+
+msgid "Device reboot"
+msgstr "Restart zařízení"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"when the router comes up."
+msgstr ""
+"Pokud potřebujete restartovat router, můžete tak učinit pomocí tlačítka "
+"níže. Restart zařízení trvá přibližně 30 vteřin a bude nutné se po něm opět "
+"přihlásit."
+
+msgid "Reboot"
+msgstr "Restartovat"
+
+msgid "DNS setup"
+msgstr "Nastavení DNS"
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queris through your internet "
+"service provider's DNS resolver."
+msgstr ""
+"Router Turris používá vlastní DNS resolver s podporou DNSSEC. Ten je schopen "
+"pracovat jak naprosto samostatně, tak s využitím DNS resolveru "
+"poskytovatele, skrze který je prováděno tzv. forwardování."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"Následující nastavení ovlivňuje právě nastavení DNS resolveru. V sítích, kde "
+"správně funguje DNS resolver poskytovatele je výhodnější jej používat, "
+"protože to většinou vede k rychlejší odezvě. Pokud však tento způsob "
+"nefunguje, je nutné použít variantu bez forwardování."
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Connection test"
+msgstr "Test připojení"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Zde si můžete otestovat funkčnost Vašeho internetového připojení. Tento test "
+"je užitečný také v případě, kdy chcete otestovat, zda správně funguje "
+"nastavení DNS. Nezapomeňte stisknout tlačítko <strong>Uložit</strong>, pokud "
+"jste změnili nastavení forwarderu výše."
+
+msgid "Unable to verify network connection."
+msgstr "Nepodařilo se ověřit stav připojení."
+
+msgid "Test type"
+msgstr "Typ testu"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "IPv4 connectivity"
+msgstr "Konektivita IPv4"
+
+msgid "IPv4 gateway connectivity"
+msgstr "Dostupnost IPv4 brány"
+
+msgid "IPv6 connectivity"
+msgstr "Konektivita IPv6"
+
+msgid "IPv6 gateway connectivity"
+msgstr "Dostupnost IPv6 brány"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Test connection"
+msgstr "Otestovat připojení"
+
+msgid ""
+"Welcome to the Turris administration site. Please, choose a config section "
+"you wish to change from selection above."
+msgstr ""
+"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím sekci, "
+"kterou chcete upravovat, z možností uvedených výše."
+
+msgid "Hint"
+msgstr "Nápověda"
+
+msgid "Turris router administration interface"
+msgstr "Administrační rozhraní routeru Turris"
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Tato stránka potřebuje pro správnou funkci zapnutý JavaScript. Zapněte si "
+"prosím ve Vašem prohlížeči JavaScript a obnovte stránku."
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Step"
+msgstr "Krok"
+
+#, python-format
+msgid ""
+"Device was succesfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Zařízení bylo úspěšně nastaveno. K plnohodnotnému provozu již zbývá pouze "
+"jeho aktivace v systému Turris. Následující kód vyplňte ve Vašem profilu na "
+"stránce <a href=\"%(url)s\">%(url)s</a>."
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+"<strong>Upozornění:</strong> kód má omezenou časovou platnost - v případě, "
+"že nebude při aktivaci akceptován, obnovte tuto stránku pro získání nového."
+
+msgid "What next?"
+msgstr "Co dále?"
+
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+"Jakékoli z předchozích nastavení můžete kdykoli měnit ve <a href=\"%(url)s"
+"\">standardním konfiguračním rozhraní</a>. Pokud chcete nastavovat "
+"pokročilejší funkce systému, můžete využít rozhraní LuCi, které je přístupné "
+"ze záložky <a href=\"%(url2)s\">Pokročilé nastavení</a>."
+
+msgid "Loading..."
+msgstr "Načítání..."
+
+msgid "Check of available updates in progress."
+msgstr "Probíhá kontrola aktualizací."
+
+msgid "One moment, please..."
+msgstr "Chvilku strpení..."
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Firmware update has succeeded, you can proceed to the next step."
+msgstr ""
+"Aktualizace firmwaru proběhla v pořádku, můžete postoupit k dalšímu kroku."
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Aktualizace se nepodařilo stáhnout nebo došlo k jiné chybě. Prosíme, "
+"zkontrolujte, zda máte správně nastavené připojení do internetu a kabel "
+"zapojený do zdířky WAN. Jakmile budete mít připojení k internetu funkční, "
+"aktualizace se budou pravidelně instalovat samy."
+
+msgid "Registration failure"
+msgstr "Chyba při registraci"
+
+msgid "Checking internet connectivity."
+msgstr "Probíhá test internetového připojení."
+
+msgid "Your network settings are alright."
+msgstr "Vaše nastavení sítě je v pořádku."
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP."
+msgstr ""
+"Vaše internetové připojení je funkční, ale nedaří se překládat adresy pomocí "
+"DNS. Tento problém je zřejmě způsoben u Vašeho poskytovatele připojení."
+
+#, python-format
+msgid ""
+"It seems that you have no internet connection. Maybe your WAN settings are "
+"not right. If you wish, you can <a href=\"%(link)s\">check them once again</"
+"a>."
+msgstr ""
+"Zdá se, že nemáte připojení do internetu, to je pravděpodobně způsobeno "
+"špatným nastavením WAN. Pokud chcete, můžete si ho <a href=\"%(link)s"
+"\">ještě jednou zkontrolovat</a>."
+
+msgid "Skip wizard"
+msgstr "Přeskočit průvodce"
+
+msgid "Synchronize with your computer clock"
+msgstr "Synchronizovat s časem ve Vašem počítači"
+
+msgid "Set time manually"
+msgstr "Nastavit čas ručně"
+
+msgid "Synchronization successful."
+msgstr "Synchronizace proběhla úspěšně."
+
+msgid "Time settings"
+msgstr "Nastavení času"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Probíhá synchronizace času s internetovým serverem."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Vítejte v nastavení routeru Turris"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Než začnete router používat, je třeba provést jeho prvotní nastavení. K tomu "
+"slouží tento jednoduchý průvodce základní konfigurací. Po jeho dokončení "
+"bude router připraven k běžnému použití."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Pokud chcete obnovit dříve uložené nastavení routeru nebo z jiného důvodu "
+"přeskočit tohoto průvodce, můžete tak učinit po nastavení uživatelského "
+"hesla v prvním kroku průvodce."
+
+msgid "Begin installation"
+msgstr "Zahájit instalaci"
+
+msgid "Log in"
+msgstr "Přihlásit se"
+
 msgid "Connectivity test"
 msgstr "Test připojení"
 
 msgid "System update"
 msgstr "Kontrola aktualizací"
+
+#~ msgid "DHCP"
+#~ msgstr "DHCP"
+
+#~ msgid "Static IP address"
+#~ msgstr "Statická IP adresa"
+
+#~ msgid "PPPoE"
+#~ msgstr "PPPoE"
+
+#~ msgid "DNS server address is not required."
+#~ msgstr "Adresa DNS serveru není povinná."

@@ -109,7 +109,9 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use this password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
                                  "site, for root user in LuCI web interface and for SSH login. "
-                                 "Use a strong password!"))
+                                 "Use a strong password! (If you choose not to set the password "
+                                 "for advanced configuration here, you will have the option to do "
+                                 "so later. Until then, the root account will be blocked.)"))
 
         def pw_form_cb(data):
             from beaker.crypto import pbkdf2
@@ -151,17 +153,17 @@ class WanHandler(BaseConfigHandler):
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
         wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
                                         description=_("Here you specify your WAN port settings. "
-                "Usualy you can leave this options untouched unless explicitly specified otherwise by your "
-                "internet service provider. And even in that case change it only if Turris is connected "
+                "Usually, you can leave this options untouched unless explicitly specified otherwise by your "
+                "internet service provider. And even in that case, change it only if Turris is connected "
                 "directly to your ISP and not through a cable or DSL modem."))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
         WAN_PPPOE = "pppoe"
         WAN_OPTIONS = (
-            (WAN_DHCP, _("DHCP")),
-            (WAN_STATIC, _("Static IP address")),
-            (WAN_PPPOE, _("PPPoE")),
+            (WAN_DHCP, _("DHCP (automatic configuration)")),
+            (WAN_STATIC, _("Static IP address (manual configuration)")),
+            (WAN_PPPOE, _("PPPoE (for DSL bridges, etc.)")),
         )
 
         # protocol
@@ -176,7 +178,7 @@ class WanHandler(BaseConfigHandler):
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="netmask", label=_("Network mask"),
                            nuci_path="uci.network.wan.netmask",
-                           required=True, validators=validators.IPv4())\
+                           required=True, validators=validators.IPv4Netmask())\
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="gateway", label=_("Gateway"),
                            nuci_path="uci.network.wan.gateway",
@@ -194,13 +196,15 @@ class WanHandler(BaseConfigHandler):
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 0),
                            validators=validators.AnyIP(),
-                           hint=_("DNS server address is not required."))\
+                           hint=_("DNS server address is not required as the built-in "
+                                  "DNS resolver is capable of working without it."))\
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="dns2", label=_("DNS server 2"),
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 1),
                            validators=validators.AnyIP(),
-                           hint=_("DNS server address is not required."))\
+                           hint=_("DNS server address is not required as the built-in "
+                                  "DNS resolver is capable of working without it."))\
             .requires("proto", WAN_STATIC)
 
         # static ipv6
@@ -247,7 +251,7 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="macaddr", label=_("MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            validators=validators.MacAddress(),
-                           hint=_("Separators are colons, for example 00:11:22:33:44:55"),
+                           hint=_("Separator is a colon, for example 00:11:22:33:44:55"),
                            required=True)\
             .requires("custom_mac", True)
 
@@ -448,9 +452,9 @@ class WifiHandler(BaseConfigHandler):
         wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
         wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
                                           description=_(
-            "If you want to make from your router a Wi-Fi access point, enable the WiFi here and "
-            "fill in an SSID (the name of the wifi access point) and the corresponding password. "
-            "To set up a mobile device, you can scan the QR code shown next to the form."))
+            "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here and "
+            "fill in an SSID (the name of the access point) and a corresponding password. "
+            "To set up a mobile device, you can scan the QR code available next to the form."))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
@@ -480,9 +484,13 @@ class WifiHandler(BaseConfigHandler):
         # hwmode choice for dual band devices
         if len(channels_2g4) > 1 and len(channels_5g) > 1:
             is_dual_band = True
-            wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="2g4",
-                                args=(("11ng", "2.4 GHz (g+n)"), ("11ag", "5 GHz (a+n)")),
-                                nuci_path="uci.wireless.radio0.hwmode")\
+            wifi_main.add_field(Radio, name="wifi_mode", label=_("Wi-Fi mode"), default="2g4",
+                                args=(("2g4", "2.4 GHz (g+n)"), ("5g", "5 GHz (a+n)")),
+                                nuci_path="uci.wireless.radio0.channel", nuci_preproc=wifi_mode_preproc,
+                                hint=_("2.4 GHz is more widely supported by clients, but tends to have "
+                                       "more interference. 5 GHz is a newer standard and might not be "
+                                       "supported by all your devices. It usually has less interference, "
+                                       "but does not carry so well indoors."))\
                 .requires("wifi_enabled", True)
         # 2.4 GHz channels
         if len(channels_2g4) > 1:

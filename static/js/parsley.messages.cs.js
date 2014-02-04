@@ -16,6 +16,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         , phone:       "Tato položka musí být platné telefonní číslo."
         // parsley.foris-extend types /////////////////////////
         , ipv4:            "Toto není platná IPv4 adresa."
+	, ipv4netmask:     "Toto není platná IPv4 síťová maska."
         , ipv6:          "Toto není platná IPv6 adresa."
         , anyip:         "Toto není platná IPv4 nebo IPv6 adresa."
         , ipv6prefix:    "Toto není IPv6 adresa s délkou prefixu."
