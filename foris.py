@@ -70,6 +70,9 @@ messages.set_template_defaults(bottle.SimpleTemplate)
 def login_redirect(step_num):
     from wizard import NUM_WIZARD_STEPS
     if step_num >= NUM_WIZARD_STEPS:
+        next = bottle.request.GET.get("next")
+        if next and is_safe_redirect(next, bottle.request.get_header('host')):
+            bottle.redirect(next)
         bottle.redirect(reverse("config_index"))
     elif step_num == 1:
         bottle.redirect(reverse("wizard_index"))
@@ -80,9 +83,6 @@ def login_redirect(step_num):
 @bottle.route("/", name="index")
 @bottle.view("index")
 def index():
-    next = bottle.request.GET.get("next")
-    if next and is_safe_redirect(next, bottle.request.get_header('host')):
-        bottle.redirect(next)
     session = bottle.request.environ['beaker.session']
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
