@@ -15,7 +15,7 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-var ForisWizard = {
+var Foris = {
   messages: {
     qrErrorPassword: "Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
     qrErrorSSID: "Your SSID contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
@@ -26,16 +26,16 @@ var ForisWizard = {
   }
 };
 
-ForisWizard.initialize = function() {
+Foris.initialize = function() {
     $(document).on("change", ".has-requirements", function() {
-        $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + ForisWizard.messages.loading + '">');
-        ForisWizard.updateForm();
+        $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+        Foris.updateForm();
     });
 
-    ForisWizard.initParsley();
+    Foris.initParsley();
 };
 
-ForisWizard.initParsley = function() {
+Foris.initParsley = function() {
     $("form").parsley({
         namespace: "data-parsley-",
         trigger: "keyup change paste",
@@ -62,30 +62,30 @@ ForisWizard.initParsley = function() {
     });
 };
 
-ForisWizard.updateForm = function() {
+Foris.updateForm = function() {
     var form = $("#main-form");
     var serialized = form.serialize();
     $.post(form.attr("action"), serialized)
             .done(function(data){
                 form.replaceWith(data.html);
-                ForisWizard.initParsley();
+                Foris.initParsley();
             });
     form.find("input, select, button").attr("disabled", "disabled");
 };
 
-ForisWizard.callAjaxAction = function(wizardStep, action) {
+Foris.callAjaxAction = function(wizardStep, action) {
     return $.get("/wizard/step/" + wizardStep + "/ajax", {action: action});
 };
 
-ForisWizard.connectivityCheck = function() {
-    ForisWizard.callAjaxAction("3", "check_connection")
+Foris.connectivityCheck = function() {
+    Foris.callAjaxAction("3", "check_connection")
         .done(function(data) {
             if (data.result == "ok") {
                 $("#connectivity-progress").hide();
                 $("#connectivity-success").show();
             }
             else if(data.result == "no_dns") {
-                ForisWizard.connectivityCheckNoForward();
+                Foris.connectivityCheckNoForward();
             }
             else {
                 // no_connection or error
@@ -95,9 +95,9 @@ ForisWizard.connectivityCheck = function() {
         });
 };
 
-ForisWizard.connectivityCheckNoForward = function() {
-    $("#wizard-connectivity-status").html("<p>" + ForisWizard.messages.checkNoForward + "</p>");
-    ForisWizard.callAjaxAction("3", "check_connection_noforward")
+Foris.connectivityCheckNoForward = function() {
+    $("#wizard-connectivity-status").html("<p>" + Foris.messages.checkNoForward + "</p>");
+    Foris.callAjaxAction("3", "check_connection_noforward")
         .done(function(data) {
             if (data.result == "ok") {
                 $("#connectivity-progress").hide();
@@ -115,24 +115,24 @@ ForisWizard.connectivityCheckNoForward = function() {
         });
 };
 
-ForisWizard.ntpUpdate = function() {
-    ForisWizard.callAjaxAction("4", "ntp_update")
+Foris.ntpUpdate = function() {
+    Foris.callAjaxAction("4", "ntp_update")
         .done(function(data) {
             if (data.success) {
                 $("#time-progress").hide();
                 $("#time-success").show();
             }
             else {
-                ForisWizard.showTimeForm();
+                Foris.showTimeForm();
             }
         });
 };
 
-ForisWizard.runUpdater = function () {
-    ForisWizard.callAjaxAction("5", "run_updater")
+Foris.runUpdater = function () {
+    Foris.callAjaxAction("5", "run_updater")
         .done(function(data) {
             if (data.success)
-                ForisWizard.checkUpdaterStatus();
+                Foris.checkUpdaterStatus();
             else {
                 $("#updater-progress").hide();
                 $("#updater-fail").show();
@@ -140,11 +140,11 @@ ForisWizard.runUpdater = function () {
         });
 };
 
-ForisWizard.checkUpdaterStatus = function(retries) {
+Foris.checkUpdaterStatus = function(retries) {
     if (retries == null)
         retries = 0;
 
-    ForisWizard.callAjaxAction("5", "updater_status")
+    Foris.callAjaxAction("5", "updater_status")
         .done(function(data) {
             if (data.status == "failed") {
                 $("#updater-progress").hide();
@@ -153,7 +153,7 @@ ForisWizard.checkUpdaterStatus = function(retries) {
             else if (data.status == "running") {
                 // timeout is better, because we won't get multiple requests stuck processing
                 // real delay between status updates is then delay + request_processing_time
-                window.setTimeout(ForisWizard.checkUpdaterStatus, 1000);
+                window.setTimeout(Foris.checkUpdaterStatus, 1000);
                 // Show what has been installed already
                 var log = data.last_activity;
                 // TODO: Is there a better way than to accumulate it? Some kind of map + join?
@@ -185,7 +185,7 @@ ForisWizard.checkUpdaterStatus = function(retries) {
             if (retries < 5) {
                 retries += 1;
                 window.setTimeout(function() {
-                    ForisWizard.checkUpdaterStatus(retries)}, 1000);
+                    Foris.checkUpdaterStatus(retries)}, 1000);
             }
             else {
                 $("#updater-progress").hide();
@@ -194,8 +194,8 @@ ForisWizard.checkUpdaterStatus = function(retries) {
         })
 };
 
-ForisWizard.showTimeForm = function() {
-    ForisWizard.callAjaxAction("4", "time_form")
+Foris.showTimeForm = function() {
+    Foris.callAjaxAction("4", "time_form")
         .done(function(data) {
             var timeField = $("#wizard-time").empty().append(data.form)
                 .find("input[name=\"time\"]");
@@ -210,22 +210,22 @@ ForisWizard.showTimeForm = function() {
                 $(".form-fields").show();
                 $(this).hide();
             });
-            ForisWizard.timeField = timeField;
+            Foris.timeField = timeField;
             // there's a slight time drift, but it's not an issue here...
-            window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
+            window.setTimeout(Foris.timeUpdateCallback, 1000);
         });
 };
 
-ForisWizard.timeUpdateCallback = function() {
-    if (ForisWizard.timeField.is(":focus"))
+Foris.timeUpdateCallback = function() {
+    if (Foris.timeField.is(":focus"))
         return;
-    var newTime = new Date(ForisWizard.timeField.val());
+    var newTime = new Date(Foris.timeField.val());
     newTime.setMilliseconds(newTime.getMilliseconds() + 1000);
-    ForisWizard.timeField.val(newTime.toISOString());
-    window.setTimeout(ForisWizard.timeUpdateCallback, 1000);
+    Foris.timeField.val(newTime.toISOString());
+    window.setTimeout(Foris.timeUpdateCallback, 1000);
 };
 
-ForisWizard.checkLowerAsciiString = function (string) {
+Foris.checkLowerAsciiString = function (string) {
     for (var i=0; i < string.length; i++) {
         var charCode = string.charCodeAt(i);
         if (charCode < 32 || charCode > 127) {
@@ -235,7 +235,7 @@ ForisWizard.checkLowerAsciiString = function (string) {
     return true;
 };
 
-ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
+Foris.updateWiFiQR = function (ssid, password, hidden) {
     var codeElement = $("#wifi-qr");
     codeElement.empty();
 
@@ -247,12 +247,12 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
         codeElement.append("<div class=\"qr-error\">" + message + "</div>");
     };
 
-    if (!ForisWizard.checkLowerAsciiString(ssid)) {
-        showQRError(ForisWizard.messages.qrErrorSSID);
+    if (!Foris.checkLowerAsciiString(ssid)) {
+        showQRError(Foris.messages.qrErrorSSID);
         return;
     }
-    if (!ForisWizard.checkLowerAsciiString(password)) {
-        showQRError(ForisWizard.messages.qrErrorPassword);
+    if (!Foris.checkLowerAsciiString(password)) {
+        showQRError(Foris.messages.qrErrorPassword);
         return;
     }
 
@@ -268,13 +268,13 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
     });
 };
 
-ForisWizard.initWiFiQR = function () {
+Foris.initWiFiQR = function () {
     // NOTE: make sure that jquery.qrcode is loaded on the page that's using
     // this method. Alternatively, it could be loaded using $.getScript() here.
 
     var doRender = function () {
         doRender.debounceTimeout = null;
-        ForisWizard.updateWiFiQR(
+        Foris.updateWiFiQR(
             $("#field-ssid").val(),
             $("#field-key").val(),
             $("#field-ssid_hidden_1").prop("checked"));
@@ -289,5 +289,5 @@ ForisWizard.initWiFiQR = function () {
 
 
 $(document).ready(function(){
-    ForisWizard.initialize();
+    Foris.initialize();
 });

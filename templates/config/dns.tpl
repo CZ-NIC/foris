@@ -59,7 +59,7 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            self.after('<img src="/static/img/icon-loading.gif" id="connection-test-loader" alt="' + ForisWizard.messages.loading + '">');
+            self.after('<img src="/static/img/icon-loading.gif" id="connection-test-loader" alt="' + Foris.messages.loading + '">');
             $.get("/config/dns/ajax", {action: "check-connection"})
                     .done(function(response) {
                         if (response.success) {
@@ -68,9 +68,9 @@
                                 var resultBox = $("#test-results").find(".result[data-result-type=" + key + "]");
                                 if (resultBox) {
                                     if (response.check_results[key])
-                                        resultBox.removeClass("test-fail").addClass("test-success").text(ForisWizard.messages.ok);
+                                        resultBox.removeClass("test-fail").addClass("test-success").text(Foris.messages.ok);
                                     else
-                                        resultBox.removeClass("test-success").addClass("test-fail").text(ForisWizard.messages.error);
+                                        resultBox.removeClass("test-success").addClass("test-fail").text(Foris.messages.error);
                                 }
                               }
                             }
