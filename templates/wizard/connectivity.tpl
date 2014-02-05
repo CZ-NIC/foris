@@ -29,7 +29,7 @@
     </div>
     <div id="connectivity-success">
         <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
-        <p>{{ trans("Your network settings are alright.") }}</p>
+        <p>{{ trans("Internet connectivity test passed without error.") }}</p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
     <div id="connectivity-nodns">
