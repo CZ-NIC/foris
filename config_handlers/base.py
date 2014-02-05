@@ -478,7 +478,7 @@ class WifiHandler(BaseConfigHandler):
             .requires("wifi_enabled", True)
 
         channels_2g4 = [("auto", _("auto"))]
-        channels_5g = [("auto", _("auto"))]
+        channels_5g = []
         for channel in stats.data['wireless-cards'][0]['channels']:
             if channel['disabled']:
                 continue
@@ -493,7 +493,7 @@ class WifiHandler(BaseConfigHandler):
         if len(channels_2g4) > 1 and len(channels_5g) > 1:
             is_dual_band = True
             wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
-                                args=(("11ng", "2.4 GHz (g+n)"), ("11ag", "5 GHz (a+n)")),
+                                args=(("11ng", "2.4 GHz (g+n)"), ("11na", "5 GHz (a+n)")),
                                 nuci_path="uci.wireless.radio0.hwmode",
                                 hint=_("2.4 GHz is more widely supported by clients, but tends to have "
                                        "more interference. 5 GHz is a newer standard and might not be "
@@ -513,7 +513,7 @@ class WifiHandler(BaseConfigHandler):
                                            default=channels_5g[0][0], args=channels_5g,
                                            nuci_path="uci.wireless.radio0.channel")
             if is_dual_band:
-                field_5g.requires("hwmode", "11ag")
+                field_5g.requires("hwmode", "11na")
         wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
