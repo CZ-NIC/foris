@@ -100,10 +100,16 @@ class PasswordHandler(BaseConfigHandler):
                                       description=_("Set your password for this administration interface."
                                                     " The password must be at least 6 characters long."))
         if self.change:
-            pw_main.add_field(Password, name="old_password", label=_("Old password"))
-        pw_main.add_field(Password, name="password", label=_("Password"), required=True,
+            pw_main.add_field(Password, name="old_password", label=_("Current password"))
+            label_pass1 = _("New password")
+            label_pass2 = _("New password (repeat)")
+        else:
+            label_pass1 = _("Password")
+            label_pass2 = _("Password (repeat)")
+        
+        pw_main.add_field(Password, name="password", label=label_pass1, required=True,
                           validators=validators.LenRange(6, 128))
-        pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
+        pw_main.add_field(Password, name="password_validation", label=label_pass2,
                           required=True, validators=validators.EqualTo("password", "password_validation",
                                                                        _("Passwords are not equal.")))
         pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use the same password for advanced configuration"),
@@ -153,9 +159,9 @@ class WanHandler(BaseConfigHandler):
         wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
         wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
                                         description=_("Here you specify your WAN port settings. "
-                "Usually, you can leave this options untouched unless explicitly specified otherwise by your "
-                "internet service provider. And even in that case, change it only if Turris is connected "
-                "directly to your ISP and not through a cable or DSL modem."))
+                "Usually, you can leave this options untouched unless instructed otherwise by your "
+                "internet service provider. Also, in case there is a cable or DSL modem connecting "
+                "your router to the network, it is usually not necessary to change this setting."))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
@@ -215,7 +221,7 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
                            nuci_path="uci.network.wan.ip6addr",
                            validators=validators.IPv6Prefix(),
-                           hint=_("IPv6 address and prefix length for WAN interface, e.g. 2001:db8:be13:37da::/64"),
+                           hint=_("IPv6 address and prefix length for WAN interface, e.g. 2001:db8:be13:37da::1/64"),
                            required=True)\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
@@ -361,8 +367,8 @@ class TimeHandler(BaseConfigHandler):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
         time_main = time_form.add_section(name="set_time", title=_(self.userfriendly_title),
                                           description=_(
-            "We could not synchronize the time with our timeserver, probably due to a loss of connection. "
-            "It is necessary for the router to have the exact time in order to function properly. Please, "
+            "We could not synchronize the time with a timeserver, probably due to a loss of connection. "
+            "It is necessary for the router to have correct time in order to function properly. Please, "
             "synchronize it with your computer's time, or set it manually."
             ))
 
@@ -385,11 +391,13 @@ class LanHandler(BaseConfigHandler):
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
         lan_main = lan_form.add_section(name="set_lan", title=_(self.userfriendly_title),
-                                        description=_("This section specifies the settings of the local network. "
-            "Under normal conditions you can keep this settings as they are. Moreover, changing the router IP "
-            "address has one caveat. If you do it the computers in local network will not obtain new addresses "
-            "automatically; you will have to do it manually for each connected device. And as you submit "
-            "your changes, the next page will not load until you obtain a new IP from DHCP (if DHCP enabled)."))
+                                        description=_("This section contains settings for the local network (LAN). "
+            "The provided defaults are suitable for most networks. "
+            "<br><strong>Note:</strong> If you change the router IP address, all computers in LAN, probably including the one you "
+            "are using now, will need to obtain a <strong>new IP address</strong> which does <strong>not</strong> happen <strong>immediately</strong>. "
+            "It is recommended to disconnect and reconnect all LAN cables after submitting your changes "
+            "to force the update. The next page will not load until you obtain a new IP from DHCP "
+            "(if DHCP enabled) and you might need to <strong>refresh the page</strong> in your browser."))
 
         lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",

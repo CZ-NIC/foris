@@ -100,7 +100,7 @@ class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
         result = super(PasswordConfigPage, self).save(no_messages=True, *args, **kwargs)
         wrong_old_password = self.form.callback_results.get('wrong_old_password', False)
         if wrong_old_password:
-            messages.warning(_("Old password you entered was invalid."))
+            messages.warning(_("Old password you entered was not valid."))
         elif result:
             messages.success(_("Password was successfully saved."))
         else:
@@ -176,7 +176,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             new_ip = self.form.callback_results.get('new_ip')
             if new_ip:
                 messages.success(_("Configuration was successfully restored. After installing "
-                                   "the updates and rebooting, router will be available at "
+                                   "updates and rebooting, router will be available at "
                                    "<a href=\"http://%(new_ip)s\">http://%(new_ip)s</a> in local "
                                    "network. Please wait a while until router automatically "
                                    "restarts.") % dict(new_ip=new_ip))

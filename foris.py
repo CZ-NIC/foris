@@ -161,7 +161,7 @@ def login():
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
     else:
-        messages.error(_("Password you entered is invalid."))
+        messages.error(_("The password you entered was not valid."))
 
     if next:
         redirect = "/?next=%s" % next
