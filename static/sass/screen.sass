@@ -121,7 +121,7 @@ button
   height: $button-height
   line-height: $button-height
   margin-right: $button-height / 2
-  padding: 0 1.5em 0 1em
+  padding: 0 1.2em 0 1.2em
   position: relative
   text-decoration: none
   vertical-align: middle
@@ -156,13 +156,34 @@ button
     width: $button-height/sqrt(2)
     right: - $button-height / 2.8
     position: absolute
-    top: 15%
+    top: 14%
+    +transform(rotate(45deg))
+    z-index: -1
+
+.button-arrow-left
+  @extend .button
+
+  &:before
+    background: $highlight-color
+    border: none
+    content: " "
+    display: block
+    height: $button-height/sqrt(2)
+    width: $button-height/sqrt(2)
+    left: - $button-height / 2.8
+    position: absolute
+    top: 14%
     +transform(rotate(45deg))
     z-index: -1
 
 .button-next
   @extend .button-arrow-right
   float: right
+  margin-top: 1em
+
+.button-prev
+  @extend .button-arrow-left
+  float: left
   margin-top: 1em
 
 .tabs
@@ -319,6 +340,10 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
 #time-success, #updater-success, #updater-fail, #connectivity-success, #connectivity-fail, #connectivity-nodns
   display: none
   text-align: center
+
+#connectivity-retest
+  @extend .button
+  margin: 0 0 2em
 
 #wizard-time-sync-success
   display: none
