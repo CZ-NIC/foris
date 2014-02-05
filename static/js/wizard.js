@@ -16,13 +16,19 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 var ForisWizard = {
-  qrErrorPassword: "Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
-  qrErrorSSID: "Your SSID contains non-standard characters. These are not forbidden, but could cause problems on some devices."
+  messages: {
+    qrErrorPassword: "Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
+    qrErrorSSID: "Your SSID contains non-standard characters. These are not forbidden, but could cause problems on some devices.",
+    ok: "OK",
+    error: "Error",
+    loading: "Loading...",
+    checkNoForward: "Connectivity test failed, testing connection with disabled forwarding."
+  }
 };
 
 ForisWizard.initialize = function() {
     $(document).on("change", ".has-requirements", function() {
-        $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="Loading...">');
+        $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + ForisWizard.messages.loading + '">');
         ForisWizard.updateForm();
     });
 
@@ -90,7 +96,7 @@ ForisWizard.connectivityCheck = function() {
 };
 
 ForisWizard.connectivityCheckNoForward = function() {
-    $("#wizard-connectivity-status").html("<p>Test připojení se nezdařil, probíhá test připojení s vypnutým forwardováním.</p>");
+    $("#wizard-connectivity-status").html("<p>" + ForisWizard.messages.checkNoForward + "</p>");
     ForisWizard.callAjaxAction("3", "check_connection_noforward")
         .done(function(data) {
             if (data.result == "ok") {
@@ -242,11 +248,11 @@ ForisWizard.updateWiFiQR = function (ssid, password, hidden) {
     };
 
     if (!ForisWizard.checkLowerAsciiString(ssid)) {
-        showQRError(this.qrErrorSSID);
+        showQRError(ForisWizard.messages.qrErrorSSID);
         return;
     }
     if (!ForisWizard.checkLowerAsciiString(password)) {
-        showQRError(this.qrErrorPassword);
+        showQRError(ForisWizard.messages.qrErrorPassword);
         return;
     }
 

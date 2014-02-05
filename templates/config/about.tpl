@@ -58,7 +58,7 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            self.after('<img src="/static/img/icon-loading.gif" id="registration-code-loader" alt="Loading...">');
+            self.after('<img src="/static/img/icon-loading.gif" id="registration-code-loader" alt="' + ForisWizard.messages.loading +'">');
             $.get("/config/about/ajax", {action: "registration_code"})
                     .done(function(response) {
                         if (response.success) {
