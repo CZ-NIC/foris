@@ -399,7 +399,7 @@ class LanHandler(BaseConfigHandler):
             "to force the update. The next page will not load until you obtain a new IP from DHCP "
             "(if DHCP enabled) and you might need to <strong>refresh the page</strong> in your browser."))
 
-        lan_main.add_field(Textbox, name="dhcp_subnet", label=_("Router IP address"),
+        lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
                            validators=validators.IPv4(),
                            hint=_("Router's IP address in inner network. Also defines the range of "
@@ -427,13 +427,13 @@ class LanHandler(BaseConfigHandler):
             # Maybe we should get the current values, scan them and remove selectively the ones
             # with 6 in front of them? Or have some support for higher level of stuff in nuci.
             options = List("dhcp_option")
-            options.add(Value(0, "6," + data['dhcp_subnet']))
+            options.add(Value(0, "6," + data['lan_ipaddr']))
             dhcp.add_replace(options)
             network = Config("network")
             uci.add(network)
             interface = Section("lan", "interface")
             network.add(interface)
-            interface.add(Option("ipaddr", data['dhcp_subnet']))
+            interface.add(Option("ipaddr", data['lan_ipaddr']))
             if data['dhcp_enabled']:
                 dhcp.add(Option("ignore", "0"))
                 dhcp.add(Option("start", data['dhcp_min']))
