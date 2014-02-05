@@ -50,6 +50,6 @@
 
 <script>
     $(document).ready(function() {
-        ForisWizard.connectivityCheck();
+        Foris.connectivityCheck();
     });
 </script>

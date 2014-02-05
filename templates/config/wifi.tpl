@@ -34,7 +34,7 @@
         <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
         <script>
             $(document).ready(function() {
-                ForisWizard.initWiFiQR();
+                Foris.initWiFiQR();
             });
         </script>
         <div class="form-buttons">

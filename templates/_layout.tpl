@@ -26,10 +26,10 @@
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
     <script src="{{ static("js/parsley.foris-extend.min.js") }}"></script>
-    <script src="{{ static("js/wizard.min.js") }}"></script>
+    <script src="{{ static("js/foris.min.js") }}"></script>
 %if lang() == 'cs':
     <script src="{{ static("js/parsley.messages.cs.min.js") }}"></script>
-    <script src="{{ static("js/wizard.cs.min.js") }}"></script>
+    <script src="{{ static("js/foris.cs.min.js") }}"></script>
 %end
 </head>
 <body>

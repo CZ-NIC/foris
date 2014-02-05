@@ -40,6 +40,6 @@
 
 <script>
     $(document).ready(function() {
-        ForisWizard.runUpdater();
+        Foris.runUpdater();
     });
 </script>

@@ -54,7 +54,7 @@
 
     <script>
         $(document).ready(function(){
-            ForisWizard.ntpUpdate();
+            Foris.ntpUpdate();
         });
     </script>
 %end
