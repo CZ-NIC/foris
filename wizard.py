@@ -422,7 +422,7 @@ def skip():
     allowed_step_max = get_allowed_step_max()
     last_step_number = min(NUM_WIZARD_STEPS, allowed_step_max)
     Wizard = get_wizard(last_step_number)
-    if Wizard.can_skip_wizard:
+    if Wizard.can_skip_wizard or allowed_step_max == NUM_WIZARD_STEPS:
         allow_next_step_session(NUM_WIZARD_STEPS)
         uci = get_allow_next_step_uci(NUM_WIZARD_STEPS)
         client.edit_config(uci.get_xml())
