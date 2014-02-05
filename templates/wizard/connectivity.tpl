@@ -41,11 +41,12 @@
     </div>
     <div id="connectivity-fail">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
-        <div>
-          <a href="{{ request.fullpath }}" id="connectivity-retest">{{ trans("Try again") }}</a>
-        </div>
         <p>
-            {{! trans("It seems that you have no internet connection. Maybe your WAN settings are not right. If you wish, you can <a href=\"%(link)s\">check them once again</a>.") % dict(link=url("wizard_step", number=2)) }}
+          {{ trans("It seems that you have no internet connection, maybe your WAN settings are not right.") }}
+        </p>
+        <a href="{{ request.fullpath }}" id="connectivity-retest">{{ trans("Try again") }}</a>
+        <p>
+          {{ trans("In some cases, such as on a slower DSL connection or when DHCP is used, this error might be due to slow network start-up. You can retest your connection using the above button if you think this might be the case. You can also return to previous page to fix the problem by modifying WAN settings.") }}
         </p>
         <a class="button-prev" href="{{ url("wizard_step", number=2) }}">{{ trans("Adjust WAN settings") }}</a>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
