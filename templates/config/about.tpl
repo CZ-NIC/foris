@@ -39,7 +39,7 @@
     <h2>{{ trans("Device registration") }}</h2>
     <div class="about-description">
         <p>
-            {{! trans("If you did not register your device before, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
+            {{! trans("If you have not registered your device yet, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
         </p>
         <p>
             {{ trans("Registration code") }}: <span id="registration-code">????????</span>

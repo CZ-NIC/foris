@@ -26,7 +26,7 @@
     </div>
     <div id="updater-success">
         <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
-        <p>{{ trans("Firmware update has succeeded, you can proceed to the next step.") }}</p>
+        <p>{{ trans("Firmware update was successful, you can proceed to the next step.") }}</p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
     <div id="updater-fail">

@@ -462,7 +462,7 @@ class WifiHandler(BaseConfigHandler):
                                           description=_(
             "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here and "
             "fill in an SSID (the name of the access point) and a corresponding password. "
-            "To set up a mobile device, you can scan the QR code available next to the form."))
+            "You can then set up your mobile devices, using the QR code available next to the form."))
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
@@ -495,10 +495,10 @@ class WifiHandler(BaseConfigHandler):
             wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
                                 args=(("11ng", "2.4 GHz (g+n)"), ("11na", "5 GHz (a+n)")),
                                 nuci_path="uci.wireless.radio0.hwmode",
-                                hint=_("2.4 GHz is more widely supported by clients, but tends to have "
-                                       "more interference. 5 GHz is a newer standard and might not be "
+                                hint=_("The 2.4 GHz band is more widely supported by clients, but tends to have "
+                                       "more interference. The 5 GHz band is a newer standard and may not be "
                                        "supported by all your devices. It usually has less interference, "
-                                       "but does not carry so well indoors."))\
+                                       "but the signal does not carry so well indoors."))\
                 .requires("wifi_enabled", True)
         # 2.4 GHz channels
         if len(channels_2g4) > 1:

@@ -21,7 +21,7 @@
     %include _messages
 
     <h3>{{ trans("Configuration backup") }}</h3>
-    <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. Configuration is saved as an unencrypted compressed archive (.tar.bz2). Password for this configuration interface and for the advanced configuration is not included in the backup.") }}</p>
+    <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. The configuration is saved as an unencrypted compressed archive (.tar.bz2). Passwords for this configuration interface and for the advanced configuration are not included in the backup.") }}</p>
     <div class="maintenance-description">
         <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ trans("Download configuration backup") }}</a>
     </div>
@@ -38,7 +38,7 @@
 
 
     <h3>{{ trans("Device reboot") }}</h3>
-    <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again when the router comes up.") }}</p>
+    <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again after the reboot.") }}</p>
     <div>
         <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
