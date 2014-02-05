@@ -139,11 +139,18 @@ def write_uci_lang(lang):
     :return: True on success, False otherwise
     """
     uci = Uci()
+    # Foris language
     foris = Config("foris")
     uci.add(foris)
     server = Section("settings", "config")
     foris.add(server)
     server.add(Option("lang", lang))
+    # LuCI language
+    luci = Config("luci")
+    uci.add(luci)
+    main = Section("main", "core")
+    luci.add(main)
+    main.add(Option("lang", lang))
     try:
         client.edit_config(uci.get_xml())
         return True
