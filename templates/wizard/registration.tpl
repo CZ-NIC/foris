@@ -19,7 +19,7 @@
 <h1>{{ trans("Device registration") }}</h1>
 
 <p>
-    {{! _("Device was succesfully installed. Last step that is required is a registration of your device in your user profile on the Turris website <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
+    {{! _("Device was successfully installed. Last step that is required is a registration of your device in your user profile on the Turris website <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
 </p>
 <p class="activation-code">{{ code }}</p>
 <p>{{! _("<strong>Warning:</strong> this code is valid only for limited time. In case this code is refused, refresh this page to get a new one.") }}</p>

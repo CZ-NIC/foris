@@ -97,8 +97,8 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_(self.userfriendly_title),
-                                      description=_("Set your password for this administation site."
-                                                    " The password must be at least 6 charaters long."))
+                                      description=_("Set your password for this administration interface."
+                                                    " The password must be at least 6 characters long."))
         if self.change:
             pw_main.add_field(Password, name="old_password", label=_("Old password"))
         pw_main.add_field(Password, name="password", label=_("Password"), required=True,
@@ -106,9 +106,9 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
                           required=True, validators=validators.EqualTo("password", "password_validation",
                                                                        _("Passwords are not equal.")))
-        pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use this password for advanced configuration"),
+        pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use the same password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
-                                 "site, for root user in LuCI web interface and for SSH login. "
+                                 "interface, for root user in LuCI web interface and for SSH login. "
                                  "Use a strong password! (If you choose not to set the password "
                                  "for advanced configuration here, you will have the option to do "
                                  "so later. Until then, the root account will be blocked.)"))
@@ -510,7 +510,7 @@ class WifiHandler(BaseConfigHandler):
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
                             validators=validators.ByteLenRange(8, 63),
-                            hint=_("WPA2 preshared key, that is required to connect to the network. "
+                            hint=_("WPA2 pre-shared key, that is required to connect to the network. "
                                    "Minimum length is 8 characters."))\
             .requires("wifi_enabled", True)
 
