@@ -22,7 +22,8 @@ var Foris = {
     ok: "OK",
     error: "Error",
     loading: "Loading...",
-    checkNoForward: "Connectivity test failed, testing connection with disabled forwarding."
+    checkNoForward: "Connectivity test failed, testing connection with disabled forwarding.",
+    lanIpChanged: 'The IP address of your router has been changed. It should be accessible from <a href="%NEW_LOC%">%IP_ADDR%</a>. See the note above for more information about IP address change.'
   }
 };
 
@@ -33,6 +34,7 @@ Foris.initialize = function() {
     });
 
     Foris.initParsley();
+    Foris.initLanChangeDetection();
 };
 
 Foris.initParsley = function() {
@@ -59,6 +61,29 @@ Foris.initParsley = function() {
             elem.parent().find(".server-validation-container").remove();
           }
         }
+    });
+};
+
+Foris.initLanChangeDetection = function () {
+    var lanIpChanged = false;
+    $(document).on("change paste", "[name=lan_ipaddr]", function() {
+      var lanField = this;
+      if (!Foris.lanIpChanged) {
+        lanIpChanged = true;
+        $(document).on("submit", "#main-form", function() {
+          // if the value really changed from the default
+          if (lanField.defaultValue != lanField.value) {
+            var newLocation = document.location.protocol + "//" + lanField.value + "/?next=" + document.location.pathname;
+            $(".config-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%IP_ADDR%/g, lanField.value).replace(/%NEW_LOC%/g, newLocation) + '</div>');
+            // if the page was accessed from the old IP address, wait 10 seconds and do a redirect
+            window.setTimeout(function() {
+              if (lanField.defaultValue == document.location.hostname) {
+                document.location.href = newLocation;
+              }
+            }, 10000);
+          }
+        });
+      }
     });
 };
 

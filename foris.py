@@ -80,6 +80,9 @@ def login_redirect(step_num):
 @bottle.route("/", name="index")
 @bottle.view("index")
 def index():
+    next = bottle.request.GET.get("next")
+    if next and is_safe_redirect(next, bottle.request.get_header('host')):
+        bottle.redirect(next)
     session = bottle.request.environ['beaker.session']
     import wizard
     allowed_step_max = wizard.get_allowed_step_max()
