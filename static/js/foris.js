@@ -74,7 +74,7 @@ Foris.initLanChangeDetection = function () {
           // if the value really changed from the default
           if (lanField.defaultValue != lanField.value) {
             var newLocation = document.location.protocol + "//" + lanField.value + "/?next=" + document.location.pathname;
-            $(".config-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%IP_ADDR%/g, lanField.value).replace(/%NEW_LOC%/g, newLocation) + '</div>');
+            $(".config-description, .wizard-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%IP_ADDR%/g, lanField.value).replace(/%NEW_LOC%/g, newLocation) + '</div>');
             // if the page was accessed from the old IP address, wait 10 seconds and do a redirect
             window.setTimeout(function() {
               if (lanField.defaultValue == document.location.hostname) {
