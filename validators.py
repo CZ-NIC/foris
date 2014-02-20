@@ -63,7 +63,7 @@ class NotEmpty(Validator):
 
 
 class IPv4(Validator):
-    js_validator = ("type", "ipv4")
+    js_validator = ("extratype", "ipv4")
 
     def __init__(self):
         super(IPv4, self).__init__(_("Not a valid IPv4 address."), None)
@@ -79,7 +79,7 @@ class IPv4(Validator):
 
 
 class IPv4Netmask(Validator):
-    js_validator = ("type", "ipv4netmask")
+    js_validator = ("extratype", "ipv4netmask")
 
     def __init__(self):
         super(IPv4Netmask, self).__init__(_("Not a valid IPv4 netmask address."), None)
@@ -103,7 +103,7 @@ class IPv4Netmask(Validator):
 
 
 class IPv6(Validator):
-    js_validator = ("type", "ipv6")
+    js_validator = ("extratype", "ipv6")
 
     def __init__(self):
         super(IPv6, self).__init__(_("Not a valid IPv6 address."), None)
@@ -119,7 +119,7 @@ class IPv6(Validator):
 
 
 class AnyIP(Validator):
-    js_validator = ("type", "anyip")
+    js_validator = ("extratype", "anyip")
 
     def __init__(self):
         super(AnyIP, self).__init__(_("This is not a valid IPv4 or IPv6 address."), None)
@@ -139,7 +139,7 @@ class AnyIP(Validator):
 
 
 class IPv6Prefix(Validator):
-    js_validator = ("type", "ipv6prefix")
+    js_validator = ("extratype", "ipv6prefix")
 
     def __init__(self):
         super(IPv6Prefix, self).__init__(_("This is not an IPv6 address with prefix length."), None)
@@ -166,7 +166,7 @@ class Integer(RegExp):
 
 
 class MacAddress(RegExp):
-    js_validator = ("type", "macaddress")
+    js_validator = ("extratype", "macaddress")
     extra_data = {
         'parsley-validation-minlength': '17',
     }

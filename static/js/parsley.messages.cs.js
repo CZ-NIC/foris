@@ -14,13 +14,6 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         , dateIso:     "Tato položka musí být datum ve formátu YYYY-MM-DD."
         , alphanum:    "Tato položka musí být alfanumerická."
         , phone:       "Tato položka musí být platné telefonní číslo."
-        // parsley.foris-extend types /////////////////////////
-        , ipv4:            "Toto není platná IPv4 adresa."
-	, ipv4netmask:     "Toto není platná IPv4 síťová maska."
-        , ipv6:          "Toto není platná IPv6 adresa."
-        , anyip:         "Toto není platná IPv4 nebo IPv6 adresa."
-        , ipv6prefix:    "Toto není IPv6 adresa s délkou prefixu."
-        , macaddress:    "Toto není platná MAC adresa."
       }
       , notnull:         "Tato položka nesmí být null."
       , notblank:        "Tato položka nesmí být prázdná."
@@ -48,6 +41,14 @@ window.ParsleyConfig = window.ParsleyConfig || {};
       , luhn:            "Tato hodnota by měla projít Luhnovým testem."
       , americandate:    "Toto datum by mělo být ve formátu MM/DD/YYYY."
       // parsley.foris-extend ///////////////////////////////
+      , extratype: {
+        ipv4:            "Toto není platná IPv4 adresa."
+        , ipv4netmask:     "Toto není platná IPv4 síťová maska."
+        , ipv6:          "Toto není platná IPv6 adresa."
+        , anyip:         "Toto není platná IPv4 nebo IPv6 adresa."
+        , ipv6prefix:    "Toto není IPv6 adresa s délkou prefixu."
+        , macaddress:    "Toto není platná MAC adresa."
+      }
       , byterangelength:     "Tato položka musí mít délku od %s do %s znaků."
       }
   });
