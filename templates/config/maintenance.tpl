@@ -28,7 +28,7 @@
 
     <h3>{{ trans("Configuration restore") }}</h3>
     <p>{{ trans("To restore the configuration from a backup file, upload it using following form. Keep in mind that IP address of this device might change during the process, causing unavailability of this interface.") }}</p>
-    <form id="main-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+    <form id="restore-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
             %include _field field=field
@@ -42,4 +42,19 @@
     <div>
         <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
+
+    <h3>{{ trans("Notifications and reboots") }}</h3>
+    <p>{{ trans("This is the configuration of e-mail notifications and reboots.") }}</p>
+    <form id="notifications-form" class="maintenance-form" action="{{ url("config_action", page_name="maintenance", action="save_notifications") }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        %for section in notifications_form.sections:
+            %if section.active_fields:
+                <h4>{{ section.title }}</h4>
+                %for field in section.active_fields:
+                    %include _field field=field
+                %end
+            %end
+        %end
+        <button type="submit" name="send" class="button">{{ trans("Update") }}</button>
+    </form>
 </div>

@@ -31,7 +31,7 @@ from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
 
 
-logger = logging.getLogger("admin")
+logger = logging.getLogger(__name__)
 
 
 app = Bottle()
@@ -162,12 +162,31 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         client.reboot()
         bottle.redirect(reverse("config_page", page_name="maintenance"))
 
+    def _action_save_notifications(self):
+        if bottle.request.method != 'POST':
+            messages.error("Wrong HTTP method.")
+            bottle.redirect(reverse("config_page", page_name="maintenance"))
+        handler = NotificationsHandler(request.POST)
+        if handler.save():
+            messages.success(_("Configuration was successfully saved."))
+            bottle.redirect(reverse("config_page", page_name="maintenance"))
+        messages.warning(_("There were some errors in your input."))
+        return super(MaintenanceConfigPage, self).render(notifications_form=handler.form,
+                                                         config_pages=config_page_map.display_names())
+
     def call_action(self, action):
         if action == "config-backup":
             return self._action_config_backup()
         elif action == "reboot":
             return self._action_reboot()
+        elif action == "save_notifications":
+            return self._action_save_notifications()
         raise ValueError("Unknown AJAX action.")
+
+    def render(self, **kwargs):
+        notifications_handler = NotificationsHandler(self.data)
+        return super(MaintenanceConfigPage, self).render(notifications_form=notifications_handler.form,
+                                                         **kwargs)
 
     def save(self, *args, **kwargs):
         result = False
@@ -267,8 +286,7 @@ def config_page_post(page_name):
         # only update is allowed
         logger.debug("ajax request")
         request.POST.pop("update", None)
-        return dict(html=config_page.render(is_xhr=True))
-
+        return config_page.render(is_xhr=True)
     try:
         if config_page.save():
             bottle.redirect(request.fullpath)
@@ -288,6 +306,31 @@ def config_action(page_name, action):
     config_page = ConfigPage()
     try:
         result = config_page.call_action(action)
+        return result
+    except ValueError:
+        raise bottle.HTTPError(404, "Unknown action.")
+
+
+@app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST")
+@login_required
+def config_action_post(page_name, action):
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage(request.POST)
+    if request.is_xhr:
+        # only update is allowed
+        request.POST.pop("update", None)
+        return config_page.render(is_xhr=True)
+
+    try:
+        result = config_page.call_action(action)
+        try:
+            if not result:
+                bottle.redirect(reverse("config_page", page_name=page_name))
+        except TypeError:
+            # raised by Validator - could happen when the form is posted with wrong fields
+            messages.error(_("Configuration could not be saved due to an internal error."))
+            logger.exception("Error when saving form.")
+        logger.warning("Form not saved.")
         return result
     except ValueError:
         raise bottle.HTTPError(404, "Unknown action.")
