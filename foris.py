@@ -253,6 +253,8 @@ def init_foris_app(app):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
+    parser.add_argument("-H", "--host", default="0.0.0.0")
+    parser.add_argument("-p", "--port", type=int, default=8080)
     parser.add_argument("-s", "--server", choices=["wsgiref", "flup"], default="wsgiref")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("--noauth", action="store_true",
@@ -328,7 +330,7 @@ if __name__ == "__main__":
 
     # run the right server
     if args.server == "wsgiref":
-        bottle.run(app=app, host="0.0.0.0", port=8080, debug=args.debug)
+        bottle.run(app=app, host=args.host, port=args.port, debug=args.debug)
     elif args.server == "flup":
         # bindAddress is None - FCGI process must be spawned by the server
         bottle.run(app=app, server="flup", debug=args.debug, bindAddress=None)
