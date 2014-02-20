@@ -23,7 +23,7 @@ from utils import Lazy
 import validators as validators_module
 
 
-logger = logging.getLogger("fapi")
+logger = logging.getLogger(__name__)
 
 
 class ForisFormElement(object):
@@ -105,7 +105,7 @@ class ForisForm(ForisFormElement):
                     # coerce checkbox values to boolean
                     new_data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
         # get names of active fields according to new_data
-        active_field_names = map(lambda x: x.name, self._get_active_fields(data=new_data))
+        active_field_names = map(lambda x: x.name, self.get_active_fields(data=new_data))
         # get new dict of data of active fields
         return {k: v for k, v in new_data.iteritems() if k in active_field_names}
 
@@ -116,7 +116,7 @@ class ForisForm(ForisFormElement):
     def _form(self):
         if self.__form_cache is not None:
             return self.__form_cache
-        inputs = map(lambda x: x.field, self._get_active_fields())
+        inputs = map(lambda x: x.field, self.get_active_fields())
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
         form = Form(*inputs)
@@ -138,7 +138,7 @@ class ForisForm(ForisFormElement):
                 fields.append(c)
         return fields
 
-    def _get_active_fields(self, element=None, data=None):
+    def get_active_fields(self, element=None, data=None):
         """Get all fields that meet their requirements.
 
         :param element:
@@ -170,7 +170,7 @@ class ForisForm(ForisFormElement):
 
     @property
     def active_fields(self):
-        return self._get_active_fields()
+        return self.get_active_fields()
 
     @property
     def errors(self):
@@ -233,6 +233,10 @@ class Section(ForisFormElement):
         self.name = name
         self.title = title
         self.description = description
+
+    @property
+    def active_fields(self):
+        return self._main_form.get_active_fields(self)
 
     def add_field(self, *args, **kwargs):
         """
