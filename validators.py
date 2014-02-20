@@ -21,7 +21,6 @@ import re
 from foris import ugettext as _
 import form
 
-PARAM_DELIMITER = "|"
 logger = logging.getLogger(__name__)
 
 
@@ -179,7 +178,12 @@ class InRange(Validator):
     js_validator = "range"
 
     def __init__(self, low, high):
-        test = lambda val: val in range(low, high)
+        def test(val):
+            try:
+                val = int(val)
+                return val in range(low, high)
+            except ValueError:
+                return False
         super(InRange, self).__init__(_("Not in a valid range %(low)s - %(high)s.") % dict(low=low, high=high), test)
         self.js_validator_params = "[%s,%s]" % (low, high)
 
