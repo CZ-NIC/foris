@@ -29,8 +29,9 @@ var Foris = {
 
 Foris.initialize = function () {
   $(document).on("change", ".has-requirements", function () {
-    $(this).parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
-    Foris.updateForm();
+    var input = $(this);
+    input.parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+    Foris.updateForm(input.closest("form"));
   });
 
   Foris.initParsley();
@@ -38,31 +39,34 @@ Foris.initialize = function () {
 };
 
 Foris.initParsley = function () {
-  $("form").parsley({
-    namespace: "data-parsley-",
-    trigger: "keyup change paste",
-    successClass: "field-validation-pass",
-    errorClass: "field-validation-fail",
-    errorsWrapper: '<ul class="validation-errors"></ul>',
-    errors: {
-      container: function (elem, isRadioOrCheckbox) {
-        var container = elem.parent().find(".validation-container");
-        if (container.length === 0) {
-          container = $("<div class='validation-container'></div>").appendTo(elem.parent());
+  $("form").each(function () {
+    $(this).parsley({
+      namespace: "data-parsley-",
+      trigger: "keyup change paste",
+      successClass: "field-validation-pass",
+      errorClass: "field-validation-fail",
+      errorsWrapper: '<ul class="validation-errors"></ul>',
+      errors: {
+        container: function (elem, isRadioOrCheckbox) {
+          var container = elem.parent().find(".validation-container");
+          if (container.length === 0) {
+            container = $("<div class='validation-container'></div>").appendTo(elem.parent());
+          }
+          return container;
         }
-        return container;
-      }
-    },
-    listeners: {
-      onFieldSuccess: function (elem, constraints, ParsleyField) {
-        elem.parent().find(".server-validation-container").remove();
       },
-      onFieldError: function (elem, constraints, ParsleyField) {
-        elem.parent().find(".server-validation-container").remove();
+      listeners: {
+        onFieldSuccess: function (elem, constraints, ParsleyField) {
+          elem.parent().find(".server-validation-container").remove();
+        },
+        onFieldError: function (elem, constraints, ParsleyField) {
+          elem.parent().find(".server-validation-container").remove();
+        }
       }
-    }
-  });
-};
+    });
+  })
+}
+;
 
 Foris.initLanChangeDetection = function () {
   var lanIpChanged = false;
@@ -87,14 +91,13 @@ Foris.initLanChangeDetection = function () {
   });
 };
 
-Foris.updateForm = function () {
-  var form = $("#main-form");
-  var serialized = form.serialize();
-  $.post(form.attr("action"), serialized)
-      .done(function (data) {
-        form.replaceWith(data.html);
-        Foris.initParsley();
-      });
+Foris.updateForm = function (form) {
+  var serialized = form.serializeArray();
+  var idSelector = form.attr("id") ? " #" + form.attr("id") : "";
+  form.load(form.attr("action") + idSelector, serialized, function () {
+    $(this).children(':first').unwrap();
+    Foris.initParsley();
+  });
   form.find("input, select, button").attr("disabled", "disabled");
 };
 

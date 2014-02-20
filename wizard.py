@@ -403,7 +403,7 @@ def step_post(number=1):
     if request.is_xhr:
         # only update is allowed via XHR
         request.POST.pop("update", None)
-        return dict(html=wiz.render(is_xhr=True))
+        return wiz.render(is_xhr=True)
 
     try:
         if wiz.save():
