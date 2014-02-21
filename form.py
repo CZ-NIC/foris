@@ -397,7 +397,7 @@ class Password(Input):
 
 
 class Number(Input):
-    """Password input.
+    """Number input.
 
         >>> Number(name='number', value='123').render()
         u'<input type="number" id="field-number" value="123" name="number"/>'
@@ -408,7 +408,7 @@ class Number(Input):
 
 
 class Email(Input):
-    """Password input.
+    """Email input.
 
         >>> Email(name='email', value='mail@example.com').render()
         u'<input type="email" id="field-email" value="mail@example.com" name="email"/>'
@@ -416,6 +416,17 @@ class Email(Input):
 
     def get_type(self):
         return 'email'
+
+
+class Time(Input):
+    """Password input.
+
+        >>> Time(name='time', value='11:22').render()
+        u'<input type="time" id="field-time" value="11:22" name="time"/>'
+    """
+
+    def get_type(self):
+        return 'time'
 
 
 class Textarea(Input):

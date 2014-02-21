@@ -164,6 +164,14 @@ class Integer(RegExp):
         super(Integer, self).__init__(_("Is not a number."), r"\d+")
 
 
+class Time(RegExp):
+    def __init__(self):
+        pattern = r"^([01][0-9]|2[0-3]):([0-5][0-9])$"
+        super(Time, self).__init__(_("This is not valid time in HH:MM format."), pattern)
+        self.js_validator = ("regexp", pattern)
+        self.extra_data['parsley-error-message'] = self.msg
+
+
 class MacAddress(RegExp):
     js_validator = ("extratype", "macaddress")
     extra_data = {
