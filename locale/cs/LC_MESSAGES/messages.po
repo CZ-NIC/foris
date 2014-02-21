@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-05 15:15+0100\n"
+"POT-Creation-Date: 2014-02-21 15:42+0100\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Beda Kosata <bedrich.kosata@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -129,6 +129,33 @@ msgstr "Otestovat připojení"
 
 msgid "Maintenance"
 msgstr "Údržba"
+
+msgid "Notifications and automatic restarts"
+msgstr "Upozornění a automatické restarty"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. In order to receive emails, you must enter "
+"settings of your SMTP server. These settings are the same as you enter in "
+"your email client and you can get them from the provider of your email inbox."
+msgstr ""
+"Router můžete nastavit, aby Vás upozorňoval v případě, kdy nastane určitá "
+"událost, např. pokud je potřeba restartovat zařízení, na zařízení došlo "
+"místo nebo byla nainstalována aktualizace aplikace. Abyste mohli přijímat "
+"tyto emaily, je nutné zadat nastavení SMTP serveru (serveru pro odchozí "
+"poštu). Toto nastavení je stejné, jako zadáváte do Vašeho emailového klienta "
+"a můžete ho získat od poskytovatele Vaší emailové schránky."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"V případě, že je vyžadován automatický restart zařízení, můžete specifikovat "
+"čas, ve kterém si přejete, aby k němu došlo. Pokud máte nastavené "
+"upozorňování pomocí emailu, lze také stanovit interval mezi upozorněním a "
+"automatickým restartem, ke kterému dojde, pokud neprovedete restart ručně."
 
 msgid "Configuration backup"
 msgstr "Záloha nastavení"
@@ -291,15 +318,15 @@ msgstr ""
 "Vaše internetové připojení je funkční, ale nedaří se překládat adresy pomocí "
 "DNS. Tento problém je zřejmě způsoben u Vašeho poskytovatele připojení."
 
-msgid "Try again"
-msgstr "Zkusit znovu"
-
 msgid ""
 "It seems that you have no internet connection, maybe your WAN settings are "
 "not right."
 msgstr ""
 "Zdá se, že nemáte připojení do internetu, to je pravděpodobně způsobeno "
 "špatným nastavením WAN."
+
+msgid "Try again"
+msgstr "Zkusit znovu"
 
 msgid ""
 "In some cases, such as on a slower DSL connection or when DHCP is used, this "
@@ -423,6 +450,9 @@ msgstr "Toto není IPv6 adresa s délkou prefixu."
 
 msgid "Is not a number."
 msgstr "Není číslo."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Toto není platný čas ve formátu HH:MM."
 
 msgid "MAC address is not valid."
 msgstr "Není platná MAC adresa."
@@ -756,45 +786,88 @@ msgstr ""
 msgid "Backup file"
 msgstr "Soubor se zálohou"
 
+msgid "Notifications"
+msgstr "Upozornění"
+
+msgid "Notifications settings"
+msgstr "Nastavení upozornění"
+
+msgid "Enable notifications"
+msgstr "Zasílat upozornění"
+
+msgid "Recipient's email"
+msgstr "Adresát"
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr "Emailová adresa příjemce. Více adres oddělte pomocí mezer."
+
+msgid "Reboot is required"
+msgstr "Vyžadován restart"
+
+msgid "Reboot or attention is required"
+msgstr "Vyžadován restart nebo pozornost"
+
+msgid "Reboot or attention is required or update was installed"
+msgstr "Vyžadován restart, pozornost nebo byla nainstalována aktualizace"
+
+msgid "Importance"
+msgstr "Důležitost"
+
+msgid "Send news"
+msgstr "Zasílat novinky"
+
+msgid "Send emails about new features."
+msgstr "Zasílat také upozornění na nové funkce routeru"
+
+msgid "SMTP settings"
+msgstr "Nastavení SMTP"
+
+msgid "Sender address (From)"
+msgstr "Adresa odesílatele"
+
+msgid "This is the address notifications are send from."
+msgstr "Z této adresy budou zasílána upozornění."
+
+msgid "Server address"
+msgstr "Adresa serveru"
+
+msgid "Server port"
+msgstr "Port serveru"
+
+msgid "None"
+msgstr "Žádné"
+
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "Security"
+msgstr "Zabezpečení"
+
+msgid "Username"
+msgstr "Jméno"
+
+msgid "Automatic restarts"
+msgstr "Automatické restarty"
+
+msgid "Delay (days)"
+msgstr "Prodleva (dny)"
+
+msgid ""
+"Number of days that must pass between sending the notification email and the "
+"automatic restart."
+msgstr "Počet dní mezi odesláním upozornění a automatickým restartem."
+
+msgid "Reboot time"
+msgstr "Čas restartu"
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr "Denní čas automatického restartu ve formátu HH:MM."
+
 msgid "Connectivity test"
 msgstr "Test připojení"
 
 msgid "System update"
 msgstr "Kontrola aktualizací"
-
-#~ msgid "Your network settings are alright."
-#~ msgstr "Vaše nastavení sítě je v pořádku."
-
-#~ msgid "Old password"
-#~ msgstr "Původní heslo"
-
-#~ msgid ""
-#~ "This section specifies the settings of the local network. Under normal "
-#~ "conditions you can keep this settings as they are. Moreover, changing the "
-#~ "router IP address has one caveat. If you do it the computers in local "
-#~ "network will not obtain new addresses automatically; you will have to do "
-#~ "it manually for each connected device. And as you submit your changes, "
-#~ "the next page will not load until you obtain a new IP from DHCP (if DHCP "
-#~ "enabled)."
-#~ msgstr ""
-#~ "V této sekci specifikujete nastavení lokální sítě. Za normálních "
-#~ "okolností tato nastavení není nutné měnit. Pozor - v případě, že změníte "
-#~ "IP adresu routeru, pro opětovný přístup do administračního rozhraní bude "
-#~ "nutné ručně zadat tuto adresu do adresního řádku Vašeho prohlížeče. V "
-#~ "některých případech je také nutné obnovit IP adresu připojeného zařízení, "
-#~ "to je možné provést i odpojením a následovným připojením zařízení."
-
-#~ msgid "Password you entered is invalid."
-#~ msgstr "Vámi zadané heslo je neplatné."
-
-#~ msgid "DHCP"
-#~ msgstr "DHCP"
-
-#~ msgid "Static IP address"
-#~ msgstr "Statická IP adresa"
-
-#~ msgid "PPPoE"
-#~ msgstr "PPPoE"
-
-#~ msgid "DNS server address is not required."
-#~ msgstr "Adresa DNS serveru není povinná."
