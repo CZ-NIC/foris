@@ -27,7 +27,6 @@ logger = logging.getLogger(__name__)
 class Validator(object):
     js_validator = None
     validate_with_context = False  # gets dict of data instead of single value if True
-    extra_data = {}
 
     def __deepcopy__(self, memo):
         return copy.copy(self)
@@ -36,6 +35,7 @@ class Validator(object):
         self.msg = msg
         self.test = test
         self.js_validator_params = None
+        self.extra_data = {}
 
     def valid(self, value):
         try:
@@ -174,12 +174,10 @@ class Time(RegExp):
 
 class MacAddress(RegExp):
     js_validator = ("extratype", "macaddress")
-    extra_data = {
-        'parsley-validation-minlength': '17',
-    }
 
     def __init__(self):
         super(MacAddress, self).__init__(_("MAC address is not valid."), r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
+        self.extra_data['parsley-validation-minlength'] = '17'
 
 
 class InRange(Validator):
