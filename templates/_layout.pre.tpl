@@ -19,17 +19,17 @@
 <head>
     <meta charset="utf-8">
     <title>{{ trans("Turris router administration interface") }}</title>
-    <link href="{{ static("css/screen.css") }}?md5=0cdf1237be323a38cf5743245854320e" rel="stylesheet" media="screen">
+    <link href="{{ static("css/screen.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>
     <![endif]-->
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
-    <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=fbe4b5d9763a90ddf64047e915e434d8"></script>
-    <script src="{{ static("js/foris.min.js") }}?md5=d8220ceafa9075241fc8addd42aa5d3e"></script>
+    <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>
+    <script src="{{ static("js/foris.min.js") }}?md5=MD5SUM"></script>
 %if lang() == 'cs':
-    <script src="{{ static("js/parsley.messages.cs.min.js") }}?md5=689313b46ba1c335948c0624d04217f4"></script>
-    <script src="{{ static("js/foris.cs.min.js") }}?md5=63c3f645e13a69221d8aca6883fd0ca1"></script>
+    <script src="{{ static("js/parsley.messages.cs.min.js") }}?md5=MD5SUM"></script>
+    <script src="{{ static("js/foris.cs.min.js") }}?md5=MD5SUM"></script>
 %end
 </head>
 <body>

@@ -23,21 +23,32 @@ JS_FILES = $(filter-out %.min.js $(wildcard static/js/contrib/*),$(wildcard \
 	static/js/**/*.js \
 ))
 
+JS_MINIFIED = $(JS_FILES:.js=.min.js)
+
+
+PRE_TPL_FILES = $(wildcard \
+	templates/*.pre.tpl \
+	templates/**/*.pre.tpl \
+)
+
+TPL_FILES = $(PRE_TPL_FILES:.pre.tpl=.tpl)
+
 JS_MINIFIER = slimit -m
 
 SASS_COMPILER = compass compile -s compressed
 
-JS_MINIFIED = $(JS_FILES:.js=.min.js)
 
-all: compile-sass minify-js localization
+all: compile-sass minify-js localization preprocess-tpl
 
 # target: minify-js - Create minified JS files using slimit JS compressor.
 minify-js: $(JS_FILES) $(JS_MINIFIED)
 
+# target: preprocess-tpl - Do preprocessing of .pre.tpl files.
+preprocess-tpl: $(PRE_TPL_FILES) $(TPL_FILES)
+
 # target: compile-sass - Compile SASS files to CSS files using SASS/Compass compiler.
 compile-sass:
 	@cd static/; \
-	echo `pwd`; \
 	echo '-- Running compass $<';\
 	$(SASS_COMPILER)
 	@echo
@@ -49,6 +60,11 @@ localization:
 	@echo "Done."
 	@echo
 
+%.tpl: %.pre.tpl
+	@echo '-- Preprocessing template $<'
+	tools/preprocess_template.sh $< > $@
+	@echo
+
 %.min.js: %.js
 	@echo '-- Minifying $<'
 	$(JS_MINIFIER) $< > $@
@@ -56,7 +72,7 @@ localization:
 
 # target: clean - Remove all compiled CSS, JS and localization files.
 clean:
-	rm -rf $(COMPILED_CSS) $(COMPILED_L10N) $(JS_MINIFIED)
+	rm -rf $(COMPILED_CSS) $(COMPILED_L10N) $(JS_MINIFIED) $(TPL_FILES)
 
 # target: help - Show this help.
 help:
