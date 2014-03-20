@@ -480,7 +480,7 @@ class WifiHandler(BaseConfigHandler):
         channels_2g4 = [("auto", _("auto"))]
         channels_5g = []
         for channel in stats.data['wireless-cards'][0]['channels']:
-            if channel['disabled']:
+            if channel['disabled'] or channel['radar']:
                 continue
             pretty_channel = "%s (%s MHz)" % (channel['number'], channel['frequency'])
             if channel['frequency'] < 2500:
