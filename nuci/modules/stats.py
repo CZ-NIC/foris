@@ -38,6 +38,7 @@ class Stats(YinElement):
          -------- 'number': (int) channel number
          -------- 'frequency': (int) frequency in MHz
          -------- 'disabled': (boolean) is channel disabled?
+         -------- 'radar': (boolean) requires radar detection?
          -- 'interfaces': dict of interfaces
          ---- `key:value` interface stats (key = interface name)
          ------ 'is_up': link of interface - True if up, False if down, None else
@@ -71,6 +72,7 @@ class Stats(YinElement):
                         channel['number'] = int(channel_el.find(Stats.qual_tag("number")).text)
                         channel['frequency'] = int(channel_el.find(Stats.qual_tag("frequency")).text)
                         channel['disabled'] = True if channel_el.find(Stats.qual_tag("disabled")) is not None else False
+                        channel['radar'] = True if channel_el.find(Stats.qual_tag("radar")) is not None else False
                         wc['channels'].append(channel)
                     stats.data['wireless-cards'].append(wc)
             elif elem.tag == Stats.qual_tag("interfaces"):
