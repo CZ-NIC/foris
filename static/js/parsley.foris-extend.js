@@ -80,7 +80,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
       , byterangelength: function () {
         return {
           validate: function ( val, arrayRange ) {
-            var byteLength = encodeURI(val).split(/%..|./).length - 1;
+            var byteLength = encodeURI(val).replace(/%../g, "?").length;
             return byteLength >= arrayRange[0] && byteLength <= arrayRange[1];
           }
           , priority: 32
