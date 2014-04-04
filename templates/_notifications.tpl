@@ -14,16 +14,18 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase config/base **locals()
-
-<div id="page-index" class="config-page">
-    <p class="config-description">
-    {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from the above selection.") }}
-    </p>
-
-    %if len(notifications):
-        %include _notifications.tpl notifications=notifications
-    %else:
-        <strong>{{ trans("No new messages.") }}</strong>
-    %end
-</div>
+%for notification in notifications:
+    <div class="notification {{ notification.severity }}" id="notification_{{ notification.id }}">
+      {{! notification.escaped_body }}
+      %if notification.requires_restart:
+        <div class="buttons">
+            <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
+        </div>
+      %else:
+        <a href="#" class="dismiss" title="{{ trans("Dismiss") }}" data-id="{{ notification.id }}">&times;</a>
+      %end
+    </div>
+%end
+<script>
+    Foris.initNotifications("{{ get_csrf_token() }}");
+</script>
