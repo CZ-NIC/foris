@@ -20,7 +20,8 @@ from ncclient.operations.errors import TimeoutExpiredError
 from xml.etree import cElementTree as ET
 import logging
 
-from modules import maintain, network, password as password_module, registration, uci_raw, time, updater
+from modules import (maintain, network, password as password_module, registration,
+                     time, uci_raw, updater, user_notify)
 from modules.base import Data, YinElement
 from nuci import filters
 from nuci.exceptions import ConfigRestoreError
@@ -50,6 +51,8 @@ def get(filter=None):
                 reply_data.add(updater.Updater.from_element(elem))
             elif elem.tag == stats.Stats.qual_tag("stats"):
                 reply_data.add(stats.Stats.from_element(elem))
+            elif elem.tag == user_notify.UserNotify.qual_tag("messages"):
+                reply_data.add(user_notify.Messages.from_element(elem))
         return reply_data
 
 
@@ -108,6 +111,13 @@ def get_serial():
         return registration.Serial.from_element(ET.fromstring(data.xml))
     except (RPCError, TimeoutExpiredError):
         return None
+
+
+def get_messages():
+    try:
+        return get(filter=filters.messages).find_child("messages")
+    except (RPCError, TimeoutExpiredError):
+        return []
 
 
 def ntp_update():

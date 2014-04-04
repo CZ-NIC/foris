@@ -265,7 +265,9 @@ def get_config_page(page_name):
 @app.route("/", name="config_index")
 @login_required
 def index():
-    return template("config/index", config_pages=config_page_map.display_names())
+    notifications = client.get_messages()
+    return template("config/index", config_pages=config_page_map.display_names(),
+                    notifications=notifications.new)
 
 
 @app.route("/<page_name:re:.+>/", name="config_page")

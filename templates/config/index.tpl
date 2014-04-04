@@ -20,4 +20,15 @@
     <p class="config-description">
     {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from the above selection.") }}
     </p>
+
+    %if len(notifications):
+        %for notification in notifications:
+            <div class="notification {{ notification.severity }}">
+              {{! notification.escaped_body }}
+            </div>
+        %end
+    %else:
+        <strong>{{ trans("No new messages.") }}</strong>
+    %end
+
 </div>
