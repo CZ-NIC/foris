@@ -273,6 +273,22 @@ button
   margin-bottom: 1em
   position: relative
 
+  .button
+    background-color: #fff
+    color: $highlight-color
+
+  .buttons
+    margin-top: 1em
+
+  .dismiss
+    position: absolute
+    right: 0.2em
+    top: 0.2em
+    text-decoration: none
+    font-weight: bold
+    font-size: 200%
+    color: inherit
+
   &.restart
     background-color: $message-color-error
     color: #fff
@@ -480,6 +496,9 @@ input[type="checkbox"], input[type="radio"], input[type="file"]
     padding-left: 120px
     height: 120px
     line-height: 120px
+
+    a
+      color: inherit
 
   .logo-turris
     display: inline-block

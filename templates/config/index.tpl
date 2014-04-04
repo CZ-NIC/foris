@@ -23,12 +23,22 @@
 
     %if len(notifications):
         %for notification in notifications:
-            <div class="notification {{ notification.severity }}">
+            <div class="notification {{ notification.severity }}" id="notification_{{ notification.id }}">
               {{! notification.escaped_body }}
+              %if notification.requires_restart:
+                <div class="buttons">
+                    <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
+                </div>
+              %else:
+                <a href="#" class="dismiss" title="{{ trans("Dismiss") }}" data-id="{{ notification.id }}">&times;</a>
+              %end
             </div>
         %end
     %else:
         <strong>{{ trans("No new messages.") }}</strong>
     %end
 
+  <script>
+    Foris.initNotifications("{{ get_csrf_token() }}");
+  </script>
 </div>

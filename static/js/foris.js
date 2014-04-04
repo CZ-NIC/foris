@@ -23,7 +23,9 @@ var Foris = {
     error: "Error",
     loading: "Loading...",
     checkNoForward: "Connectivity test failed, testing connection with disabled forwarding.",
-    lanIpChanged: 'The IP address of your router has been changed. It should be accessible from <a href="%NEW_LOC%">%IP_ADDR%</a>. See the note above for more information about IP address change.'
+    lanIpChanged: 'The IP address of your router has been changed. It should be accessible from <a href="%NEW_LOC%">%IP_ADDR%</a>. See the note above for more information about IP address change.',
+    confirmRestart: "Are you sure you want to restart the router?",
+    confirmRestartExtra: "\nRemaining unread messages (%UNREAD%) will be deleted."
   }
 };
 
@@ -313,6 +315,34 @@ Foris.initWiFiQR = function () {
   $(document).on("change keyup paste", "#field-ssid, #field-key, #field-ssid_hidden_1", function () {
     clearTimeout(doRender.debounceTimeout);
     doRender.debounceTimeout = setTimeout(doRender, 500);
+  });
+};
+
+Foris.initNotifications = function (csrf_token) {
+  $(".notification .reboot").on("click", function() {
+    var unread = $(".notification:visible").length - 1;
+    var extraMessage = "";
+    if (unread > 0)
+      extraMessage = Foris.messages.confirmRestartExtra.replace(/%UNREAD%/g, unread);
+    return confirm(Foris.messages.confirmRestart + extraMessage);
+  });
+
+  $(".notification .dismiss").on("click", function(e) {
+    e.preventDefault();
+    var id = $(this).data("id");
+    $.post("/config/notifications/dismiss",
+        {
+          message_ids: [id],
+          csrf_token: csrf_token
+        },
+        function(data) {
+          if (data.success) {
+            for (var i=0; i < data.displayedIDs.length; i++) {
+              $("#notification_" + data.displayedIDs[i]).fadeOut(800);
+            }
+          }
+        }
+    );
   });
 };
 

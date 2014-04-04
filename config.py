@@ -270,6 +270,16 @@ def index():
                     notifications=notifications.new)
 
 
+@app.route("/notifications/dismiss", method="POST")
+@login_required
+def dismiss_notifications():
+    message_ids = request.POST.getall("message_ids[]")
+    result = client.dismiss_notifications(message_ids)
+    if result:
+        return {'success': True, 'displayedIDs': message_ids}
+    return {'success': False}
+
+
 @app.route("/<page_name:re:.+>/", name="config_page")
 @login_required
 def config_page_get(page_name):

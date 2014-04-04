@@ -17,7 +17,7 @@
 %if not defined('is_xhr'):
     %rebase _layout **locals()
     <div id="config-header">
-        <h1>{{ trans("Settings") }}</h1>
+        <h1><a href="{{ url("config_index") }}">{{ trans("Settings") }}</a></h1>
         <div class="logo-turris"><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></div>
         <a id="logout" href="{{ url("logout") }}">{{ trans("Log out") }}</a>
     </div>

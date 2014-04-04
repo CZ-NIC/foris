@@ -120,6 +120,16 @@ def get_messages():
         return []
 
 
+def dismiss_notifications(message_ids):
+    try:
+        logger.debug(message_ids)
+        logger.debug(ET.tostring(user_notify.UserNotify.rpc_display(message_ids)))
+        dispatch(user_notify.UserNotify.rpc_display(message_ids))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
 def ntp_update():
     get_tag = time.Time.qual_tag("ntp")
     element = ET.Element(get_tag)
