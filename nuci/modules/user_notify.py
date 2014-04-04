@@ -49,7 +49,7 @@ class UserNotify(YinElement):
         if not hasattr(message_ids, '__iter__'):
             # if it's not a sequence, wrap in in a list
             message_ids = [message_ids]
-        message_id_tag = UserNotify.qual_tag("message_id")
+        message_id_tag = UserNotify.qual_tag("message-id")
         for m_id in message_ids:
             m_id_elem = ET.SubElement(element, message_id_tag)
             m_id_elem.text = m_id
@@ -98,7 +98,11 @@ class Severity(object):
         return self.value[1]
 
     def __cmp__(self, other):
-        return cmp(self.value.priority, other.priority)
+        if isinstance(other, tuple):
+            return cmp(self.priority, other[0])
+        elif isinstance(other, Severity):
+            return cmp(self.priority, other.priority)
+        raise ValueError("Cannot compare Severity with %s" % type(other))
 
 
 class Messages(UserNotify):
@@ -166,6 +170,10 @@ class Message(UserNotify):
     @property
     def key(self):
         return self.id
+
+    @property
+    def requires_restart(self):
+        return self.severity == Severity.RESTART
 
     def __unicode__(self):
         return self.body
