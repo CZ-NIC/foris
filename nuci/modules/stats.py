@@ -71,8 +71,8 @@ class Stats(YinElement):
                         channel = {}
                         channel['number'] = int(channel_el.find(Stats.qual_tag("number")).text)
                         channel['frequency'] = int(channel_el.find(Stats.qual_tag("frequency")).text)
-                        channel['disabled'] = True if channel_el.find(Stats.qual_tag("disabled")) is not None else False
-                        channel['radar'] = True if channel_el.find(Stats.qual_tag("radar")) is not None else False
+                        channel['disabled'] = channel_el.find(Stats.qual_tag("disabled")) is not None
+                        channel['radar'] = channel_el.find(Stats.qual_tag("radar")) is not None
                         wc['channels'].append(channel)
                     stats.data['wireless-cards'].append(wc)
             elif elem.tag == Stats.qual_tag("interfaces"):
