@@ -21,3 +21,11 @@
 <p>
 {{ trans("Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.") }}
 </p>
+
+%if len(notifications):
+    <h2>{{ trans("Important updates") }}</h2>
+    <p>{{! trans("Important updates that require a device restart have been installed. Some services might not work if you don't restart the device. For details see below.")  }}</p>
+    %include _notifications.tpl notifications=notifications
+%end
+
+<a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to configuration interface") }}</a>

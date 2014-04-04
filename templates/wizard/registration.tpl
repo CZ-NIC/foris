@@ -19,15 +19,21 @@
 <h1>{{ trans("Device registration") }}</h1>
 
 <p>
-    {{! _("Device was successfully installed. Last step that is required is a registration of your device in your user profile on the Turris website <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
+    {{! trans("Device was successfully installed. Last step that is required is a registration of your device in your user profile on the Turris website <a href=\"%(url)s\">%(url)s</a>.") % {'url': "https://www.turris.cz/user/register-router"} }}
 </p>
 <p class="activation-code">{{ code }}</p>
-<p>{{! _("<strong>Warning:</strong> this code is valid only for limited time. In case this code is refused, refresh this page to get a new one.") }}</p>
+<p>{{! trans("<strong>Warning:</strong> this code is valid only for limited time. In case this code is refused, refresh this page to get a new one.") }}</p>
 
 <br />
 
-<h3>{{ trans("What next?") }}</h3>
+<h2>{{ trans("What next?") }}</h2>
 
-<p>{{! _("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
+<p>{{! trans("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
+
+%if len(notifications):
+    <h2>{{ trans("Important updates") }}</h2>
+    <p>{{! trans("Important updates that require a device restart have been installed. Some services might not work if you don't restart the device. For details see below.")  }}</p>
+    %include _notifications.tpl notifications=notifications
+%end
 
 <a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to configuration interface") }}</a>

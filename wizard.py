@@ -282,6 +282,8 @@ class WizardStep8(WizardStepMixin, BaseConfigHandler):
 
     def render(self, **kwargs):
         registration = client.get_registration()
+        # show only restart notifications
+        kwargs['notifications'] = client.get_messages().restarts
         if registration:
             return self.default_template(code=registration.value, **kwargs)
         else:
