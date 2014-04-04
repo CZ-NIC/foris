@@ -117,7 +117,8 @@ def get_messages():
     try:
         return get(filter=filters.messages).find_child("messages")
     except (RPCError, TimeoutExpiredError):
-        return []
+        logger.exception("Unable to fetch messages")
+        return user_notify.Messages()
 
 
 def dismiss_notifications(message_ids):
