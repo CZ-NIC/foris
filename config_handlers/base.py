@@ -577,8 +577,8 @@ class SystemPasswordHandler(BaseConfigHandler):
                                                     description=_(
             "In order to access the advanced configuration possibilities which are not present "
             "here, you must set the root user's password. The advanced configuration options can "
-            "be managed either through the <a href=\"http://%(ip)s:%(port)d/\">LuCI web interface"
-            "</a> or over SSH.") % {'ip': bottle.request.get_header('host'), 'port': 8080})
+            "be managed either through the <a href=\"http://%(host)s/%(path)s\">LuCI web interface"
+            "</a> or over SSH.") % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=validators.LenRange(6, 128))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),

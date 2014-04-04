@@ -98,7 +98,8 @@ def index():
     if session.get("user_authenticated"):
         login_redirect(allowed_step_max)
 
-    return dict()
+    return dict(luci_path="http://%(host)s/%(path)s"
+                          % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
 
 
 @bottle.route("/lang/<lang:re:\w{2}>", name="change_lang")

@@ -32,4 +32,8 @@
             <button class="button" type="submit">{{ trans("Log in") }}</button>
         </form>
     %end
+  <div class="footer">
+    {{ trans("Foris Configuration Interface") }}<br>
+    <a href="{{ luci_path }}">{{ trans("Go to LuCI") }}</a>
+  </div>
 </div>
