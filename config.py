@@ -160,7 +160,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
     def _action_reboot(self):
         client.reboot()
-        bottle.redirect(reverse("config_page", page_name="maintenance"))
+        bottle.redirect(reverse("config_index"))
 
     def _action_save_notifications(self):
         if bottle.request.method != 'POST':
