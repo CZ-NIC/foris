@@ -196,7 +196,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             if new_ip:
                 messages.success(_("Configuration was successfully restored. After installing "
                                    "updates and rebooting, router will be available at "
-                                   "<a href=\"http://%(new_ip)s\">http://%(new_ip)s</a> in local "
+                                   "<a href=\"//%(new_ip)s\">%(new_ip)s</a> in local "
                                    "network. Please wait a while until router automatically "
                                    "restarts.") % dict(new_ip=new_ip))
             elif result:
