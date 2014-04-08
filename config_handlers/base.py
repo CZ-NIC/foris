@@ -640,7 +640,8 @@ class NotificationsHandler(BaseConfigHandler):
         )
         notifications.add_field(Dropdown, name="severity", label=_("Importance"),
                                 nuci_path="uci.user_notify.notifications.severity",
-                                args=SEVERITY_OPTIONS, default=0)\
+                                nuci_preproc=lambda val: int(val.value),
+                                args=SEVERITY_OPTIONS, default=1)\
             .requires("enable_smtp", True)
         notifications.add_field(Checkbox, name="news", label=_("Send news"),
                                 hint=_("Send emails about new features."),
