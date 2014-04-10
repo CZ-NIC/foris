@@ -145,7 +145,7 @@ class Message(UserNotify):
     def __init__(self, message_id, body, severity, sent=False, displayed=False):
         super(Message, self).__init__()
         self.id = message_id
-        self.body = body
+        self.body = body or ""
         if isinstance(severity, Severity):
             self.severity = severity
         else:
