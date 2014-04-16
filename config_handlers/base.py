@@ -678,11 +678,11 @@ class NotificationsHandler(BaseConfigHandler):
             .requires("enable_smtp", True)
 
         smtp.add_field(Textbox, name="username", label=_("Username"),
-                                nuci_path="uci.user_notify.smtp.username",
-                                required=True).requires("enable_smtp", True)
+                                nuci_path="uci.user_notify.smtp.username")\
+            .requires("enable_smtp", True)
         smtp.add_field(Password, name="password", label=_("Password"),
-                                nuci_path="uci.user_notify.smtp.password",
-                                required=True).requires("enable_smtp", True)
+                                nuci_path="uci.user_notify.smtp.password")\
+            .requires("enable_smtp", True)
 
         # reboot time
         reboot = notifications_form.add_section(name="reboot",
