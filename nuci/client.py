@@ -131,6 +131,19 @@ def dismiss_notifications(message_ids):
         return False
 
 
+def test_notifications():
+    try:
+        dispatch(user_notify.UserNotify.rpc_test())
+        return True, None
+    except RPCError, e:
+        if e.tag == "operation-failed":
+            return False, e.message
+        logger.exception("Notifications testing failed.")
+    except TimeoutExpiredError:
+        logger.exception("Notifications testing timed out.")
+    return False, None
+
+
 def ntp_update():
     get_tag = time.Time.qual_tag("ntp")
     element = ET.Element(get_tag)

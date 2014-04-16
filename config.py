@@ -174,6 +174,22 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         return super(MaintenanceConfigPage, self).render(notifications_form=handler.form,
                                                          config_pages=config_page_map.display_names())
 
+    def _action_test_notifications(self):
+        if bottle.request.method != 'POST':
+            messages.error("Wrong HTTP method.")
+            bottle.redirect(reverse("config_page", page_name="maintenance"))
+        result, error_message = client.test_notifications()
+        if result:
+            messages.success(_("Testing message was sent, please check your inbox."))
+        else:
+            if error_message:
+                messages.error(_("Sending of the testing message failed, your configuration is possibly "
+                                 "wrong.<br>Error returned:<br><pre>%(error)s</pre>")
+                               % dict(error=error_message))
+            else:
+                messages.error(_("Sending of the testing message failed because of an internal error."))
+        bottle.redirect(reverse("config_page", page_name="maintenance"))
+
     def call_action(self, action):
         if action == "config-backup":
             return self._action_config_backup()
@@ -181,6 +197,8 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             return self._action_reboot()
         elif action == "save_notifications":
             return self._action_save_notifications()
+        elif action == "test_notifications":
+            return self._action_test_notifications()
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
@@ -332,7 +350,10 @@ def config_action_post(page_name, action):
         # only update is allowed
         request.POST.pop("update", None)
         return config_page.render(is_xhr=True)
-
+    # check if the button click wasn't any sub-action
+    subaction = request.POST.pop("action", None)
+    if subaction:
+        return config_action_post(page_name, subaction)
     try:
         result = config_page.call_action(action)
         try:

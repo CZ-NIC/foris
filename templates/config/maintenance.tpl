@@ -34,6 +34,9 @@
             %end
         %end
         <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
+        %if notifications_form.data['enable_smtp']:
+            <button type="submit" name="action" value="test_notifications" class="button">{{ trans("Send testing message") }}</button>
+        %end
     </form>
 
     <h3>{{ trans("Configuration backup") }}</h3>
