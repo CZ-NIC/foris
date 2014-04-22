@@ -723,7 +723,8 @@ class NotificationsHandler(BaseConfigHandler):
                 smtp.add(Option("security", data['security']))
                 to = List("to")
                 for i, to_item in enumerate(data['to'].split(" ")):
-                    to.add(Value(i, to_item))
+                    if to_item:
+                        to.add(Value(i, to_item))
                 smtp.add_replace(to)
                 # notifications section
                 notifications = Section("notifications", "notifications")
