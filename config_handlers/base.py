@@ -688,12 +688,11 @@ class NotificationsHandler(BaseConfigHandler):
         reboot = notifications_form.add_section(name="reboot",
                                                 title=_("Automatic restarts"))
         reboot.add_field(Number, name="delay", label=_("Delay (days)"),
-                         hint=_("Number of days that must pass between sending the notification "
-                                "email and the automatic restart."),
+                         hint=_("Number of days that must pass between receiving the request "
+                                "for restart and the automatic restart itself."),
                          nuci_path="uci.user_notify.reboot.delay",
                          validators=[validators.InRange(0, 10)],
-                         required=True)\
-            .requires("enable_smtp", True)
+                         required=True)
         reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
                          hint=_("Time of day of automatic reboot in HH:MM format."),
                          nuci_path="uci.user_notify.reboot.time",
@@ -712,6 +711,7 @@ class NotificationsHandler(BaseConfigHandler):
             reboot = Section("reboot", "reboot")
             user_notify.add(reboot)
             reboot.add(Option("time", data['reboot_time']))
+            reboot.add(Option("delay", data['delay']))
 
             if data['enable_smtp']:
                 # basic SMTP config
@@ -731,8 +731,6 @@ class NotificationsHandler(BaseConfigHandler):
                 user_notify.add(notifications)
                 notifications.add(Option("severity", data['severity']))
                 notifications.add(Option("news", data['news']))
-                # reboot section
-                reboot.add(Option("delay", data['delay']))
 
             return "edit_config", uci
 
