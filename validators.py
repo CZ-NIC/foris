@@ -187,7 +187,7 @@ class InRange(Validator):
         def test(val):
             try:
                 val = int(val)
-                return val in range(low, high)
+                return val in range(low, high + 1)
             except ValueError:
                 return False
         super(InRange, self).__init__(_("Not in a valid range %(low)s - %(high)s.") % dict(low=low, high=high), test)
