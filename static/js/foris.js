@@ -25,7 +25,8 @@ var Foris = {
     checkNoForward: "Connectivity test failed, testing connection with disabled forwarding.",
     lanIpChanged: 'The IP address of your router has been changed. It should be accessible from <a href="%NEW_LOC%">%IP_ADDR%</a>. See the note above for more information about IP address change.',
     confirmRestart: "Are you sure you want to restart the router?",
-    confirmRestartExtra: "\nRemaining unread messages (%UNREAD%) will be deleted."
+    confirmRestartExtra: "\nRemaining unread messages (%UNREAD%) will be deleted.",
+    unsavedNotificationsAlert: "There are some unsaved changes in the notifications settings.\nDo you want to discard them and test the notifications with the old settings?"
   }
 };
 
@@ -346,6 +347,23 @@ Foris.initNotifications = function (csrf_token) {
   });
 };
 
+Foris.initNotificationTestAlert = function () {
+  var showNotificationTestAlert = false;
+
+  $("input, select", "#notifications-form").on("change keyup paste", function () {
+    showNotificationTestAlert = true;
+  });
+
+  $("#notifications-test").on("click", function () {
+    if (showNotificationTestAlert) {
+      if (confirm(Foris.messages.unsavedNotificationsAlert)) {
+        $("#notifications-form")[0].reset();
+        return true;
+      }
+      return false;
+    }
+  });
+};
 
 $(document).ready(function () {
   Foris.initialize();
