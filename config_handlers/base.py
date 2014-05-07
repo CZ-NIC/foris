@@ -691,7 +691,7 @@ class NotificationsHandler(BaseConfigHandler):
                          hint=_("Number of days that must pass between sending the notification "
                                 "email and the automatic restart."),
                          nuci_path="uci.user_notify.reboot.delay",
-                         validators=[validators.Integer()],
+                         validators=[validators.InRange(0, 10)],
                          required=True)\
             .requires("enable_smtp", True)
         reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
