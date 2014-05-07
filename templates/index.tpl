@@ -28,7 +28,7 @@
             <input type="hidden" name="next" value="{{ request.GET['next'] }}">
         %end
             <label for="field-password">{{ trans("Password") }}</label>
-            <input id="field-password" type="password" name="password" placeholder="{{ trans("Password") }}">
+            <input id="field-password" type="password" name="password" placeholder="{{ trans("Password") }}" autofocus>
             <button class="button" type="submit">{{ trans("Log in") }}</button>
         </form>
     %end
