@@ -248,10 +248,13 @@ def init_foris_app(app):
     app.hooks.add('after_request', clickjacking_protection)
     app.hooks.add('after_request', disable_caching)
 
-# ---------------------------------------------------------------------------- #
-#                                      MAIN                                    #
-# ---------------------------------------------------------------------------- #
-if __name__ == "__main__":
+
+def get_arg_parser():
+    """
+    Create ArgumentParser instance with Foris arguments.
+
+    :return: instance of ArgumentParser
+    """
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("-H", "--host", default="0.0.0.0")
@@ -261,18 +264,29 @@ if __name__ == "__main__":
     parser.add_argument("--noauth", action="store_true",
                         help="disable authentication (available only in debug mode)")
     parser.add_argument("--nucipath", help="path to Nuci binary")
-    args = parser.parse_args()
+    return parser
+
+
+def prepare_main_app(args):
+    """
+    Prepare Foris main application - i.e. apply CLI arguments, mount applications,
+    install hooks and middleware etc...
+
+    :param args: arguments received from ArgumentParser.parse_args().
+    :return: bottle.app() for Foris
+    """
+    app = bottle.app()
 
     # basic and bottle settings
     template_dir = os.path.join(BASE_DIR, "templates")
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
-    app = bottle.app()
     # mount apps
     import config
     import wizard
     app.mount("/config", config.app)
     app.mount("/wizard", wizard.app)
+
     if args.debug:
         # "about:config" is available only in debug mode
         import uci
@@ -329,9 +343,20 @@ if __name__ == "__main__":
     if args.nucipath:
         client.set_bin_path(args.nucipath)
 
+    return app
+
+# ---------------------------------------------------------------------------- #
+#                                      MAIN                                    #
+# ---------------------------------------------------------------------------- #
+if __name__ == "__main__":
+    parser = get_arg_parser()
+    args = parser.parse_args()
+
+    main_app = prepare_main_app(args)
+
     # run the right server
     if args.server == "wsgiref":
-        bottle.run(app=app, host=args.host, port=args.port, debug=args.debug)
+        bottle.run(app=main_app, host=args.host, port=args.port, debug=args.debug)
     elif args.server == "flup":
         # bindAddress is None - FCGI process must be spawned by the server
-        bottle.run(app=app, server="flup", debug=args.debug, bindAddress=None)
+        bottle.run(app=main_app, server="flup", debug=args.debug, bindAddress=None)
