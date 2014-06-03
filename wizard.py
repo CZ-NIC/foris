@@ -76,7 +76,7 @@ class WizardStepMixin(object):
             # key in session on the following line should be always
             # set except in the case of the very first start
             session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
-            
+
             if self.next_step_allowed > session_max_step:
                 allow_next_step_session(self.next_step_allowed)
                 uci = get_allow_next_step_uci(self.next_step_allowed)
@@ -107,7 +107,6 @@ class WizardStepMixin(object):
             form = None
             kwargs['first_title'] = self.userfriendly_title
             kwargs['first_description'] = None
-            self.nuci_write_next_step()
 
         return self.default_template(form=form, **kwargs)
 
