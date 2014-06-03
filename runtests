@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$1" == "coverage" ]; then
+    nosetests --with-coverage  --cover-xml --cover-xml-file=/tmp/foris_coverage.xml --cover-erase --verbose $@
+else
+    nosetests --verbose $@
+fi
