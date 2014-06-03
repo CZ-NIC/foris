@@ -114,13 +114,15 @@ class TestWizard(ForisTest):
     def setUpClass(cls):
         super(TestWizard, cls).setUpClass()
 
-    def _test_wizard_step(self, number):
+    def _test_wizard_step(self, number, max_allowed=None):
+        max_allowed = max_allowed or number
         # test we are not allowed any further
-        page = self.app.get("/wizard/step/2").maybe_follow()
-        assert_equal(page.request.path, "//wizard/step/%s" % number)
+        page = self.app.get("/wizard/step/%s" % (max_allowed + 1)).maybe_follow()
+        assert_equal(page.request.path, "//wizard/step/%s" % max_allowed)
         # test that we are allowed where it's expected
-        page = self.app.get("/wizard/step/1")
+        page = self.app.get("/wizard/step/%s" % number)
         assert_equal(page.status_int, 200)
+        return page
 
     def test_step_0(self):
         # main page should redirect to Wizard index
@@ -147,10 +149,13 @@ class TestWizard(ForisTest):
         assert_equal(good_input.request.path, "//wizard/step/2")
 
     def test_step_2(self):
-        pass  # self._test_wizard_step(2)
+        page = self._test_wizard_step(2)
+        submit = page.forms['main-form'].submit().follow()
+        assert_equal(submit.status_int, 200, submit.body)
+        assert_equal(submit.request.path, "//wizard/step/3")
 
     def test_step_3(self):
-        pass  # self._test_wizard_step(3)
+        self._test_wizard_step(3)
 
     def test_step_4(self):
         pass  # self._test_wizard_step(4)
