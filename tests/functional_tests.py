@@ -106,6 +106,11 @@ class TestWizard(ForisTest):
     """
     Test all Wizard steps.
 
+    These tests are not comprehensive, test cases cover only few simple
+    "works when it should" and "doesn't work when it shouldn't" situations.
+    It doesn't mean that if all the test passed, there are not some errors
+    in form handling. Such cases should be tested by unit tests to save time.
+
     Note: nose framework is required in this test, because the tests
     MUST be executed in the correct order (= alphabetical).
     """
