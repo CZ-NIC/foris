@@ -1,10 +1,10 @@
 # coding=utf-8
-import json
 import os
 from subprocess import call
+from time import sleep
 from unittest import TestCase
 
-from nose.tools import assert_equal, assert_in, assert_true, nottest
+from nose.tools import assert_equal, assert_in, assert_true, timed
 from webtest import TestApp
 
 import foris
@@ -96,7 +96,7 @@ class TestConfig(ForisTest):
 
     def test_registration_code(self):
         res = self.app.get("/config/about/ajax?action=registration_code")
-        payload = json.loads(res.body)
+        payload = res.json
         assert_true(payload['success'])
         # check that code is not empty
         assert_true(payload['data'])
@@ -162,14 +162,48 @@ class TestWizard(ForisTest):
     def test_step_3(self):
         self._test_wizard_step(3)
 
-    def test_step_4(self):
-        pass  # self._test_wizard_step(4)
+        def check_connection(url):
+            res = self.app.get(url)
+            data = res.json
+            assert_true(data['success'])
+            assert_in(data['result'], ['ok', 'no_dns', 'no_connection'])
 
+        # this also enables the next step
+        check_connection("/wizard/step/3/ajax?action=check_connection")
+        check_connection("/wizard/step/3/ajax?action=check_connection_noforward")
+
+    def test_step_4(self):
+        self._test_wizard_step(4)
+        # WARN: only a case when NTP sync works is tested
+        res = self.app.get("/wizard/step/4/ajax?action=ntp_update")
+        data = res.json
+        assert_true(data['success'])
+
+    @timed(40)
     def test_step_5(self):
-        pass  # self._test_wizard_step(5)
+        # This test must be @timed with some reasonable timeout to check
+        # that the loop for checking updater status does not run infinitely.
+        self._test_wizard_step(5)
+
+        # start the updater on background - also enables next step
+        res = self.app.get("/wizard/step/5/ajax?action=run_updater")
+        assert_true(res.json['success'])
+
+        def check_updater():
+            updater_res = self.app.get("/wizard/step/5/ajax?action=updater_status")
+            data = updater_res.json
+            assert_true(data['success'])
+            return data
+
+        check_result = check_updater()
+        while check_result['status'] == "running":
+            sleep(2)
+            check_result = check_updater()
+
+        assert_equal(check_result['status'], "done")
 
     def test_step_6(self):
-        pass  # self._test_wizard_step(6)
+        self._test_wizard_step(6)
 
     def test_step_7(self):
         pass  # self._test_wizard_step(7)
