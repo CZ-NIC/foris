@@ -35,6 +35,7 @@ class ForisTest(TestCase):
         # load configs and monkey-patch env so Nuci uses them
         cls.restore_config()
         os.environ["NUCI_TEST_CONFIG_DIR"] = cls.config_directory
+        os.environ["NUCI_DONT_RESTART"] = "1"
         # initialize Foris WSGI app
         args = cls.make_args()
         cls.app = TestApp(foris.prepare_main_app(args))
