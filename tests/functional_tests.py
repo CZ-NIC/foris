@@ -8,12 +8,11 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in,
                         assert_true, assert_regexp_matches, timed)
 from webtest import TestApp
 
+from tests.utils import uci_get, uci_set, uci_commit
 import foris
 
 
 # dict of texts that are used to determine returned stated etc.
-from tests.utils import get_uci_value
-
 RESPONSE_TEXTS = {
     'form_invalid': "údajů nejsou platné",
     'invalid_old_pw': "původní heslo je neplatné",
@@ -55,16 +54,16 @@ class ForisTest(TestCase):
     def set_foris_password(cls, password):
         from beaker.crypto import pbkdf2
         encrypted_pwd = pbkdf2.crypt(password)
-        if not (call(["uci", "-c", cls.config_directory, "set", "foris.auth=config"]) == 0
-                and call(["uci", "-c", cls.config_directory, "set", "foris.auth.password=%s" % encrypted_pwd]) == 0
-                and call(["uci", "-c", cls.config_directory, "commit"]) == 0):
+        if not (uci_set("foris.auth", "config", cls.config_directory)
+                and uci_set("foris.auth.password", encrypted_pwd, cls.config_directory)
+                and uci_commit(cls.config_directory)):
             raise TestInitException("Cannot set Foris password.")
 
     @classmethod
     def mark_wizard_completed(cls):
-        if not (call(["uci", "-c", cls.config_directory, "set", "foris.wizard=config"]) == 0
-                and call(["uci", "-c", cls.config_directory, "set", "foris.wizard.allowed_step_max=%s" % 8]) == 0
-                and call(["uci", "-c", cls.config_directory, "commit"]) == 0):
+        if not (uci_set("foris.wizard", "config", cls.config_directory)
+                and uci_set("foris.wizard.allowed_step_max", 8, cls.config_directory)
+                and uci_commit(cls.config_directory)):
             raise TestInitException("Cannot mark Wizard as completed.")
 
     @staticmethod
@@ -122,14 +121,14 @@ class TestConfig(ForisTest):
         page = self.app.get("/config/password/")
 
         def test_pw_submit(old, new, validation, should_change, expect_text=None):
-            old_pw = get_uci_value("foris.auth.password", self.config_directory)
+            old_pw = uci_get("foris.auth.password", self.config_directory)
             form = page.forms['main-form']
             form.set("old_password", old)
             form.set("password", new)
             form.set("password_validation", validation)
             res = form.submit().maybe_follow()
             assert_equal(res.status_int, 200)
-            new_pw = get_uci_value("foris.auth.password", self.config_directory)
+            new_pw = uci_get("foris.auth.password", self.config_directory)
             if should_change:
                 assert_not_equal(old_pw, new_pw)
             else:
