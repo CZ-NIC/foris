@@ -126,9 +126,9 @@ class TestWizard(ForisTest):
     MUST be executed in the correct order (= alphabetical).
     """
 
-    @classmethod
-    def setUpClass(cls):
-        super(TestWizard, cls).setUpClass()
+    def __init__(self, *args, **kwargs):
+        super(TestWizard, self).__init__(*args, **kwargs)
+        self.password = "123456"
 
     def _test_wizard_step(self, number, max_allowed=None):
         max_allowed = max_allowed or number
@@ -157,8 +157,8 @@ class TestWizard(ForisTest):
         assert_in("nejsou platné", wrong_input.body)
         # good input
         good_input = self.app.post("/wizard/step/1", {
-            'password': "123456",
-            'password_validation': "123456",
+            'password': self.password,
+            'password_validation': self.password,
             # do not send 'set_system_pw'
         }).follow()
         assert_equal(good_input.status_int, 200)
@@ -239,3 +239,32 @@ class TestWizard(ForisTest):
 
     def test_step_nonexist(self):
         self.app.get("/wizard/step/9", status=404)
+
+    def test_wizard_set_password(self):
+        self.app.get("/logout")
+        assert_equal(self.app.get("/config/").follow().request.path, "/")
+        assert_equal(self.app.get("/wizard/").follow().request.path, "/")
+
+
+class TestWizardSkip(ForisTest):
+    def __init__(self, *args, **kwargs):
+        super(TestWizardSkip, self).__init__(*args, **kwargs)
+        self.password = "123456"
+
+    def test_skip_wizard(self):
+        # go to first page to init Wizard
+        assert_equal(self.app.get("/").follow().request.path, "//wizard/")
+        # set password
+        good_input = self.app.post("/wizard/step/1", {
+            'password': self.password,
+            'password_validation': self.password,
+            # do not send 'set_system_pw'
+        }).follow()
+        assert_equal(good_input.status_int, 200)
+        assert_equal(good_input.request.path, "//wizard/step/2")
+        # try to skip wizard
+        assert_equal(self.app.get("/wizard/skip").follow().request.path, "//config/")
+        # logout
+        assert_equal(self.app.get("/logout").follow().request.path, "/")
+        # try to get back into wizard
+        assert_equal(self.app.get("/wizard/step/2").follow().request.path, "/")
