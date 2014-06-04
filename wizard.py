@@ -300,9 +300,12 @@ def get_wizard(number):
     :return:
     """
     class_name = "WizardStep%s" % number
-    wiz = globals()[class_name]
-    if not issubclass(wiz, WizardStepMixin):
-        raise bottle.HTTPError(404, "Wizard step not found: %s" % number)
+    try:
+        wiz = globals()[class_name]
+        if not issubclass(wiz, WizardStepMixin):
+            raise AttributeError
+    except (KeyError, AttributeError):
+        raise bottle.HTTPError(404, "Wizard step '%s' not found" % number)
     check_step_allowed_or_redirect(number)
     return wiz
 
