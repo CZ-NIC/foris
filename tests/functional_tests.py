@@ -4,10 +4,22 @@ from subprocess import call
 from time import sleep
 from unittest import TestCase
 
-from nose.tools import assert_equal, assert_in, assert_true, assert_regexp_matches, timed
+from nose.tools import (assert_equal, assert_not_equal, assert_in,
+                        assert_true, assert_regexp_matches, timed)
 from webtest import TestApp
 
 import foris
+
+
+# dict of texts that are used to determine returned stated etc.
+from tests.utils import get_uci_value
+
+RESPONSE_TEXTS = {
+    'form_invalid': "údajů nejsou platné",
+    'invalid_old_pw': "původní heslo je neplatné",
+    'password_changed': "Heslo bylo úspěšně uloženo.",
+    'passwords_not_equal': "Hesla se neshodují.",
+}
 
 
 class TestInitException(Exception):
@@ -105,6 +117,37 @@ class TestConfig(ForisTest):
         # naive assumption - router's SN should be at least from 0x500000000 - 0x500F00000
         assert_in("<td>214", about_page.body)
 
+    def test_tab_password(self):
+        page = self.app.get("/config/password/")
+
+        def test_pw_submit(old, new, validation, should_change, expect_text=None):
+            old_pw = get_uci_value("foris.auth.password", self.config_directory)
+            form = page.forms['main-form']
+            form.set("old_password", old)
+            form.set("password", new)
+            form.set("password_validation", validation)
+            res = form.submit().maybe_follow()
+            assert_equal(res.status_int, 200)
+            new_pw = get_uci_value("foris.auth.password", self.config_directory)
+            if should_change:
+                assert_not_equal(old_pw, new_pw)
+            else:
+                assert_equal(old_pw, new_pw)
+            if expect_text:
+                assert_in(expect_text, res)
+
+        # incorrect old password must fail
+        test_pw_submit("bad" + self.password, self.password + "new", self.password + "new",
+                       False, RESPONSE_TEXTS['invalid_old_pw'])
+        # passwords must be equal
+        test_pw_submit(self.password, self.password + "a", self.password + "b",
+                       False, RESPONSE_TEXTS['passwords_not_equal'])
+        # finally try correct input
+        new_password = self.password + "new"
+        test_pw_submit(self.password, new_password, new_password,
+                       True, RESPONSE_TEXTS['password_changed'])
+        self.password = new_password
+
     def test_registration_code(self):
         res = self.app.get("/config/about/ajax?action=registration_code")
         payload = res.json
@@ -154,7 +197,7 @@ class TestWizard(ForisTest):
             # do not send 'set_system_pw'
         })
         assert_equal(wrong_input.status_int, 200)
-        assert_in("nejsou platné", wrong_input.body)
+        assert_in(RESPONSE_TEXTS['form_invalid'], wrong_input.body)
         # good input
         good_input = self.app.post("/wizard/step/1", {
             'password': self.password,
