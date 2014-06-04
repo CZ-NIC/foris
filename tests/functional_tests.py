@@ -60,6 +60,11 @@ class ForisTest(TestCase):
         args = parser.parse_args([])
         return args
 
+    @classmethod
+    def login(cls, password):
+        login_response = cls.app.post("/", {'password': password}).maybe_follow()
+        assert_equal(login_response.request.path, "//config/")
+
 
 class TestConfig(ForisTest):
     password = "123465"
@@ -69,13 +74,7 @@ class TestConfig(ForisTest):
         super(TestConfig, cls).setUpClass()
         cls.set_foris_password(cls.password)
         cls.mark_wizard_completed()
-        cls.login()
-
-    @classmethod
-    def login(cls):
-        # expect that login redirects back to itself and then to config
-        login_response = cls.app.post("/", {'password': cls.password}).maybe_follow()
-        assert_equal(login_response.request.path, "//config/")
+        cls.login(cls.password)
 
     def test_login(self):
         # we should be logged in now by the setup
@@ -85,7 +84,19 @@ class TestConfig(ForisTest):
         # check we are not allowed into config anymore
         assert_equal(self.app.get("/config/").follow().request.path, "/")
         # login again
-        self.login()
+        self.login(self.password)
+
+    def test_failed_login(self):
+        assert_equal(self.app.get("/logout").follow().request.path, "/")
+        res = self.app.post("/", {
+            'password': self.password + "fail"
+        }).maybe_follow()
+        # we should have been redirected
+        assert_equal(res.request.path, "/")
+        # thus we should not be able to get into config
+        assert_equal(self.app.get("/config/").maybe_follow().request.path, "/")
+        # login again
+        self.login(self.password)
 
     def test_tab_about(self):
         # look for serial number
