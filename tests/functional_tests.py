@@ -4,7 +4,7 @@ from subprocess import call
 from time import sleep
 from unittest import TestCase
 
-from nose.tools import assert_equal, assert_in, assert_true, timed
+from nose.tools import assert_equal, assert_in, assert_true, assert_regexp_matches, timed
 from webtest import TestApp
 
 import foris
@@ -214,7 +214,28 @@ class TestWizard(ForisTest):
         assert_equal(check_result['status'], "done")
 
     def test_step_6(self):
-        self._test_wizard_step(6)
+        page = self._test_wizard_step(6)
+        submit = page.forms['main-form'].submit().follow()
+        assert_equal(submit.status_int, 200)
+        assert_equal(submit.request.path, "//wizard/step/7")
 
     def test_step_7(self):
-        pass  # self._test_wizard_step(7)
+        page = self._test_wizard_step(7)
+        form = page.forms['main-form']
+        form.set("wifi_enabled", True, 1)  # index 1 contains "1"
+        form.set("ssid", "Valid SSID")
+        form.set("key", "validpassword")
+        submit = form.submit()
+        submit = submit.follow()
+        assert_equal(submit.status_int, 200)
+        assert_equal(submit.request.path, "//wizard/step/8")
+
+    def test_step_8(self):
+        # test that we are allowed where it's expected
+        page = self.app.get("/wizard/step/8")
+        assert_equal(page.status_int, 200)
+        assert_regexp_matches(page.body, r"activation-code\">[0-9A-F]{8}",
+                              "Activation code not found in last step.")
+
+    def test_step_nonexist(self):
+        self.app.get("/wizard/step/9", status=404)
