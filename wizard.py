@@ -406,7 +406,6 @@ def step_post(number=1):
     wiz = Wizard(request.POST)
     if request.is_xhr:
         # only update is allowed via XHR
-        request.POST.pop("update", None)
         return wiz.render(is_xhr=True)
 
     try:

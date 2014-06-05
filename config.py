@@ -314,8 +314,6 @@ def config_page_post(page_name):
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
         # only update is allowed
-        logger.debug("ajax request")
-        request.POST.pop("update", None)
         return config_page.render(is_xhr=True)
     try:
         if config_page.save():
