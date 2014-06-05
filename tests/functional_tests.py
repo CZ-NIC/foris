@@ -226,6 +226,33 @@ class TestConfig(ForisTest):
         self.check_uci_val("dhcp.lan.ignore", "1")
         self.check_uci_val("network.lan.ipaddr", expected_ip)
 
+    def test_tab_wifi(self):
+        page = self.app.get("/config/wifi/")
+        form = page.forms['main-form']
+
+        # check that radio0 is really disabled
+        self.check_uci_val("wireless.radio0.disabled", "1")
+
+        # invalid input
+        old_ssid = self.uci_get("wireless.@wifi-iface[0].ssid")
+        form.set("wifi_enabled", True, 1)  # index 1 contains "1"
+        invalid = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], invalid.body)
+        self.check_uci_val("wireless.@wifi-iface[0].ssid", old_ssid)
+
+        # valid input
+        form = page.forms['main-form']
+        form.set("wifi_enabled", True, 1)
+        expected_ssid = "Valid SSID"
+        expected_key = "validpassword"
+        form.set("ssid", expected_ssid)
+        form.set("key", expected_key)
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("wireless.@wifi-iface[0].ssid", expected_ssid)
+        self.check_uci_val("wireless.@wifi-iface[0].key", expected_key)
+        self.check_uci_val("wireless.radio0.disabled", "0")
+
     def test_tab_about(self):
         # look for serial number
         about_page = self.app.get("/config/about/")
