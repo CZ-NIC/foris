@@ -15,6 +15,7 @@ import foris
 # dict of texts that are used to determine returned stated etc.
 RESPONSE_TEXTS = {
     'form_invalid': "údajů nejsou platné",
+    'form_saved': "Nastavení bylo úspěšně",
     'invalid_old_pw': "původní heslo je neplatné",
     'password_changed': "Heslo bylo úspěšně uloženo.",
     'passwords_not_equal': "Hesla se neshodují.",
@@ -148,12 +149,39 @@ class TestConfig(ForisTest):
                        True, RESPONSE_TEXTS['password_changed'])
         self.password = new_password
 
+    def test_tab_wan(self):
+        page = self.app.get("/config/wan/")
+        assert_equal(page.status_int, 200)
+
+        form = page.forms['main-form']
+        form['proto'] = "static"
+
+        submit = form.submit(headers={'X-Requested-With': "XMLHttpRequest"})
+        assert_true(submit.body.lstrip().startswith("<form"))
+
+        # try invalid submission of the form
+        form = submit.forms['main-form']
+        invalid = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], invalid)
+
+        # fill the form returned
+        form = invalid.forms['main-form']
+        addr, mask, gw\
+            = form['ipaddr'], form['netmask'], form['gateway'] \
+            = "10.0.0.1", "255.0.0.0", "10.0.0.10"
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        assert_equal(uci_get("network.wan.ipaddr", self.config_directory), addr)
+        assert_equal(uci_get("network.wan.netmask", self.config_directory), mask)
+        assert_equal(uci_get("network.wan.gateway", self.config_directory), gw)
+
     def test_registration_code(self):
-        res = self.app.get("/config/about/ajax?action=registration_code")
+        res = self.app.get("/config/about/ajax?action=registration_code",
+                           headers={'X-Requested-With': "XMLHttpRequest"})
         payload = res.json
         assert_true(payload['success'])
         # check that code is not empty
-        assert_true(payload['data'])
+        assert_regexp_matches(payload['data'], r"[0-9A-F]{8}")
 
 
 class TestWizard(ForisTest):
