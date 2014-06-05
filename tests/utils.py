@@ -6,8 +6,8 @@ def uci_get(path, config_directory=None):
     if config_directory:
         args.extend(["-c", config_directory])
     args.append(path)
-    # crop "path.to.value=" and newline at the end
-    return check_output(args)[len(path)+1:-1]
+    # crop newline at the end
+    return check_output(args)[:-1]
 
 
 def uci_set(path, value, config_directory=None):
