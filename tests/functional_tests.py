@@ -81,6 +81,18 @@ class ForisTest(TestCase):
         login_response = cls.app.post("/", {'password': password}).maybe_follow()
         assert_equal(login_response.request.path, "//config/")
 
+    def uci_get(self, path):
+        return uci_get(path, self.config_directory)
+
+    def uci_set(self, path, value):
+        return uci_set(path, value, self.config_directory)
+
+    def uci_commit(self):
+        return uci_commit(self.config_directory)
+
+    def check_uci_val(self, path, value):
+        assert_equal(self.uci_get(path), value)
+
 
 class TestConfig(ForisTest):
     password = "123465"
@@ -118,14 +130,14 @@ class TestConfig(ForisTest):
         page = self.app.get("/config/password/")
 
         def test_pw_submit(old, new, validation, should_change, expect_text=None):
-            old_pw = uci_get("foris.auth.password", self.config_directory)
+            old_pw = self.uci_get("foris.auth.password")
             form = page.forms['main-form']
             form.set("old_password", old)
             form.set("password", new)
             form.set("password_validation", validation)
             res = form.submit().maybe_follow()
             assert_equal(res.status_int, 200)
-            new_pw = uci_get("foris.auth.password", self.config_directory)
+            new_pw = self.uci_get("foris.auth.password")
             if should_change:
                 assert_not_equal(old_pw, new_pw)
             else:
@@ -167,21 +179,21 @@ class TestConfig(ForisTest):
             = "10.0.0.1", "255.0.0.0", "10.0.0.10"
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
-        assert_equal(uci_get("network.wan.ipaddr", self.config_directory), addr)
-        assert_equal(uci_get("network.wan.netmask", self.config_directory), mask)
-        assert_equal(uci_get("network.wan.gateway", self.config_directory), gw)
+        assert_equal(self.uci_get("network.wan.ipaddr"), addr)
+        assert_equal(self.uci_get("network.wan.netmask"), mask)
+        assert_equal(self.uci_get("network.wan.gateway"), gw)
 
     def test_tab_dns(self):
         page = self.app.get("/config/dns/")
         form = page.forms['main-form']
 
         # check form for forwarding upstream
-        default_state = uci_get("unbound.server.forward_upstream", self.config_directory)
+        default_state = self.uci_get("unbound.server.forward_upstream")
         test_state = not bool(int(default_state))
         form.set("forward_upstream", test_state, 1)  # index 1 contains "1"
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
-        new_state = uci_get("unbound.server.forward_upstream", self.config_directory)
+        new_state = self.uci_get("unbound.server.forward_upstream")
         assert_equal(str(int(test_state)), new_state)
 
         res = self.app.get("/config/dns/ajax?action=check-connection", headers=XHR_HEADERS)
@@ -193,6 +205,26 @@ class TestConfig(ForisTest):
         for check, result in data['check_results'].iteritems():
             assert_true(result, "'%s' check result is not True" % check)
 
+    def test_tab_lan(self):
+        page = self.app.get("/config/lan/")
+        form = page.forms['main-form']
+
+        old_ip = self.uci_get("network.lan.ipaddr")
+        form['lan_ipaddr'] = "192.168.1."
+        invalid = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], invalid)
+        # nothing should change
+        self.check_uci_val("network.lan.ipaddr", old_ip)
+
+        # DHCP is by default enabled, change IP and disable it
+        form = invalid.forms['main-form']
+        expected_ip = "192.168.1.2"
+        form['lan_ipaddr'] = expected_ip
+        form.set("dhcp_enabled", False, 1)
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("dhcp.lan.ignore", "1")
+        self.check_uci_val("network.lan.ipaddr", expected_ip)
 
     def test_tab_about(self):
         # look for serial number
