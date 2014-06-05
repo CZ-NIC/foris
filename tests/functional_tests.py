@@ -21,6 +21,9 @@ RESPONSE_TEXTS = {
     'passwords_not_equal': "Hesla se neshodují.",
 }
 
+# header for XHR (AJAX requests)
+XHR_HEADERS = {'X-Requested-With': "XMLHttpRequest"}
+
 
 class TestInitException(Exception):
     pass
@@ -111,13 +114,6 @@ class TestConfig(ForisTest):
         # login again
         self.login(self.password)
 
-    def test_tab_about(self):
-        # look for serial number
-        about_page = self.app.get("/config/about/")
-        assert_equal(about_page.status_int, 200)
-        # naive assumption - router's SN should be at least from 0x500000000 - 0x500F00000
-        assert_in("<td>214", about_page.body)
-
     def test_tab_password(self):
         page = self.app.get("/config/password/")
 
@@ -156,7 +152,7 @@ class TestConfig(ForisTest):
         form = page.forms['main-form']
         form['proto'] = "static"
 
-        submit = form.submit(headers={'X-Requested-With': "XMLHttpRequest"})
+        submit = form.submit(headers=XHR_HEADERS)
         assert_true(submit.body.lstrip().startswith("<form"))
 
         # try invalid submission of the form
@@ -175,9 +171,39 @@ class TestConfig(ForisTest):
         assert_equal(uci_get("network.wan.netmask", self.config_directory), mask)
         assert_equal(uci_get("network.wan.gateway", self.config_directory), gw)
 
+    def test_tab_dns(self):
+        page = self.app.get("/config/dns/")
+        form = page.forms['main-form']
+
+        # check form for forwarding upstream
+        default_state = uci_get("unbound.server.forward_upstream", self.config_directory)
+        test_state = not bool(int(default_state))
+        form.set("forward_upstream", test_state, 1)  # index 1 contains "1"
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        new_state = uci_get("unbound.server.forward_upstream", self.config_directory)
+        assert_equal(str(int(test_state)), new_state)
+
+        res = self.app.get("/config/dns/ajax?action=check-connection", headers=XHR_HEADERS)
+        data = res.json
+        assert_true(data['success'])
+        assert_equal(len(data['check_results']), 6)  # we have 6 checks
+
+        # tests need working connection with IPv4 & IPv6 connectivity
+        for check, result in data['check_results'].iteritems():
+            assert_true(result, "'%s' check result is not True" % check)
+
+
+    def test_tab_about(self):
+        # look for serial number
+        about_page = self.app.get("/config/about/")
+        assert_equal(about_page.status_int, 200)
+        # naive assumption - router's SN should be at least from 0x500000000 - 0x500F00000
+        assert_in("<td>214", about_page.body)
+
     def test_registration_code(self):
         res = self.app.get("/config/about/ajax?action=registration_code",
-                           headers={'X-Requested-With': "XMLHttpRequest"})
+                           headers=XHR_HEADERS)
         payload = res.json
         assert_true(payload['success'])
         # check that code is not empty
