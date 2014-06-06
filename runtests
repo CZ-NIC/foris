@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ "$1" == "coverage" ]; then
     shift
-    nosetests --with-coverage  --cover-xml --cover-xml-file=/tmp/foris_coverage.xml --cover-erase --verbose $@
+    nosetests --with-coverage  --cover-xml --cover-xml-file=/tmp/foris_coverage.xml --cover-erase --cover-package=. --verbose $@
 else
     nosetests --verbose $@
 fi
