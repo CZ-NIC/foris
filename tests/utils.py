@@ -1,4 +1,4 @@
-from subprocess import check_output
+from subprocess import check_output, STDOUT
 
 
 def uci_get(path, config_directory=None):
@@ -8,6 +8,15 @@ def uci_get(path, config_directory=None):
     args.append(path)
     # crop newline at the end
     return check_output(args)[:-1]
+
+
+def uci_is_empty(path, config_directory=None):
+    args = ["uci", "get"]
+    if config_directory:
+        args.extend(["-c", config_directory])
+    args.append(path)
+    args.append("; exit 0")
+    return (check_output(" ".join(args), stderr=STDOUT, shell=True)) == "uci: Entry not found\n"
 
 
 def uci_set(path, value, config_directory=None):

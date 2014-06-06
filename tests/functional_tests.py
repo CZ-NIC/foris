@@ -8,7 +8,7 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in,
                         assert_true, assert_regexp_matches, timed)
 from webtest import TestApp
 
-from tests.utils import uci_get, uci_set, uci_commit
+from tests.utils import uci_get, uci_set, uci_commit, uci_is_empty
 import foris
 
 
@@ -83,6 +83,9 @@ class ForisTest(TestCase):
 
     def uci_get(self, path):
         return uci_get(path, self.config_directory)
+
+    def uci_is_empty(self, path):
+        return uci_is_empty(path, self.config_directory)
 
     def uci_set(self, path, value):
         return uci_set(path, value, self.config_directory)
@@ -217,6 +220,10 @@ class TestConfig(ForisTest):
         self.check_uci_val("network.lan.ipaddr", old_ip)
 
         # DHCP is by default enabled, change IP and disable it
+        try:
+            assert_true(self.uci_is_empty("dhcp.lan.ignore"))
+        except AssertionError:
+            self.check_uci_val("dhcp.lan.ignore", "0")
         form = invalid.forms['main-form']
         expected_ip = "192.168.1.2"
         form['lan_ipaddr'] = expected_ip
