@@ -20,7 +20,7 @@
 <div id="page-wifi" class="config-page">
 %end
     %if not form:
-    <div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
+    <div class="message warning">{{ trans("We were unable to detect any wireless cards in your router.") }}</div>
     %else:
     <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{! description }}</p>

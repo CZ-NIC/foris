@@ -245,8 +245,8 @@ def init_foris_app(app):
     """
     app.catchall = False  # catched by LoggingMiddleware
     app.error_handler[403] = foris_403_handler
-    app.hooks.add('after_request', clickjacking_protection)
-    app.hooks.add('after_request', disable_caching)
+    app.add_hook('after_request', clickjacking_protection)
+    app.add_hook('after_request', disable_caching)
 
 
 def get_arg_parser():

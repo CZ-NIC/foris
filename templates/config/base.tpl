@@ -30,7 +30,7 @@
             <li \\
 %if defined("active_config_page_key") and config_page['slug'] == active_config_page_key:
 class="active" \\
-%end\\
+%end
 ><a href="{{ url("config_page", page_name=config_page['slug']) }}">{{ trans(config_page['name']) }}</a></li>
         %end
     </ul>

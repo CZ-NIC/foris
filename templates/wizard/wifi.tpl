@@ -18,7 +18,7 @@
 
 %if not form:
 <h1>{{ trans(first_title) }}</h1>
-<div class="message warning">{{ _("We were unable to detect any wireless cards in your router.") }}</div>
+<div class="message warning">{{ trans("We were unable to detect any wireless cards in your router.") }}</div>
 <a href="{{ next_step_url }}" class="button-next button-arrow-right">{{ trans("Next") }}</a>
 %else:
 <form id="main-form" class="wizard-form wizard-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
