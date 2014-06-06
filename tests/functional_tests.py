@@ -4,8 +4,8 @@ from subprocess import call
 from time import sleep
 from unittest import TestCase
 
-from nose.tools import (assert_equal, assert_not_equal, assert_in,
-                        assert_true, assert_regexp_matches, timed)
+from nose.tools import (assert_equal, assert_not_equal, assert_in, assert_greater,
+                        assert_less, assert_true, assert_regexp_matches, timed)
 from webtest import TestApp
 
 from tests.utils import uci_get, uci_set, uci_commit, uci_is_empty
@@ -259,6 +259,59 @@ class TestConfig(ForisTest):
         self.check_uci_val("wireless.@wifi-iface[0].ssid", expected_ssid)
         self.check_uci_val("wireless.@wifi-iface[0].key", expected_key)
         self.check_uci_val("wireless.radio0.disabled", "0")
+
+    def test_tab_syspwd(self):
+        page = self.app.get("/config/system-password/")
+        form = page.forms['main-form']
+        # we don't want to change system password, just check
+        # that it can't be submitted with unequal fields
+        form.set("password", "123456")
+        form.set("password_validation", "111111")
+        submit = form.submit()
+        assert_in(RESPONSE_TEXTS['passwords_not_equal'], submit.body)
+
+    def test_tab_maintenance(self):
+        page = self.app.get("/config/maintenance/")
+        # test notifications form - SMTP is by default disabled
+        self.check_uci_val("user_notify.smtp.enable", "0")
+        form = page.forms['notifications-form']
+        form.set("enable_smtp", True, 1)
+        submit = form.submit(headers=XHR_HEADERS)
+
+        # submit with missing from and to
+        form = submit.forms['notifications-form']
+        submit = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
+
+        # submit valid form
+        form = submit.forms['notifications-form']
+        expected_to = "franta.novak@nic.cz"
+        expected_from = "pepa.novak@nic.cz"
+        form.set('to', expected_to)
+        form.set('from', expected_from)
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit)
+        self.check_uci_val("user_notify.smtp.enable", "1")
+        self.check_uci_val("user_notify.smtp.to", expected_to)
+        self.check_uci_val("user_notify.smtp.from", expected_from)
+
+        # check that backup can be downloaded
+        backup = self.app.get("/config/maintenance/action/config-backup")
+        # chet that it's huffman coded Bzip
+        assert_equal(backup.body[0:3], "BZh")
+        # this is quite obscure, but backup should not be suspiciously small or big
+        # in current test suite it's about 7 kB - value might need some adjustment later
+        backup_len = len(backup.body)
+        assert_greater(backup_len, 6750)
+        assert_less(backup_len, 7250)
+
+        # we can't test actual config restore, because it'd restart the router
+        form = page.forms['restore-form']
+        submit = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
+
+        # check that reboot button is present
+        assert_in('href="/config/maintenance/action/reboot"', page.body)
 
     def test_tab_about(self):
         # look for serial number
