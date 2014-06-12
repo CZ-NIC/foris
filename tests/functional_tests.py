@@ -297,13 +297,12 @@ class TestConfig(ForisTest):
 
         # check that backup can be downloaded
         backup = self.app.get("/config/maintenance/action/config-backup")
-        # chet that it's huffman coded Bzip
+        # check that it's huffman coded Bzip
         assert_equal(backup.body[0:3], "BZh")
-        # this is quite obscure, but backup should not be suspiciously small or big
-        # in current test suite it's about 7 kB - value might need some adjustment later
+        # this is quite obscure, but backup should not be suspiciously small
+        # FIXME: Nuci always returns content of /etc/config/, we can only test that the archive does not seem bad
         backup_len = len(backup.body)
-        assert_greater(backup_len, 6750)
-        assert_less(backup_len, 7250)
+        assert_greater(backup_len, 500)
 
         # we can't test actual config restore, because it'd restart the router
         form = page.forms['restore-form']
