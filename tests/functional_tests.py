@@ -283,15 +283,31 @@ class TestConfig(ForisTest):
         submit = form.submit()
         assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
 
-        # submit valid form
+        # submit valid form with Turris SMTP
         form = submit.forms['notifications-form']
+        expected_from = "router.turris"
         expected_to = "franta.novak@nic.cz"
-        expected_from = "pepa.novak@nic.cz"
+        form.set('custom_server', "0")
         form.set('to', expected_to)
         form.set('from', expected_from)
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit)
         self.check_uci_val("user_notify.smtp.enable", "1")
+        self.check_uci_val("user_notify.smtp.custom_server", "0")
+        self.check_uci_val("user_notify.smtp.to", expected_to)
+        self.check_uci_val("user_notify.smtp.from", expected_from)
+
+        # submit valid form with custom SMTP
+        form = submit.forms['notifications-form']
+        expected_to = "franta.novak@nic.cz"
+        expected_from = "pepa.novak@nic.cz"
+        form.set('custom_server', "1")
+        form.set('to', expected_to)
+        form.set('from', expected_from)
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit)
+        self.check_uci_val("user_notify.smtp.enable", "1")
+        self.check_uci_val("user_notify.smtp.custom_server", "1")
         self.check_uci_val("user_notify.smtp.to", expected_to)
         self.check_uci_val("user_notify.smtp.from", expected_from)
 
@@ -303,7 +319,7 @@ class TestConfig(ForisTest):
         # in current test suite it's about 7 kB - value might need some adjustment later
         backup_len = len(backup.body)
         assert_greater(backup_len, 6750)
-        assert_less(backup_len, 7250)
+        assert_less(backup_len, 7400)
 
         # we can't test actual config restore, because it'd restart the router
         form = page.forms['restore-form']
