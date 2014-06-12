@@ -350,11 +350,11 @@ Foris.initNotifications = function (csrf_token) {
 Foris.initNotificationTestAlert = function () {
   var showNotificationTestAlert = false;
 
-  $("input, select", "#notifications-form").on("change keyup paste", function () {
+  $(document).on("change keyup paste", "#notifications-form", function () {
     showNotificationTestAlert = true;
   });
 
-  $("#notifications-test").on("click", function () {
+  $(document).on("click", "#notifications-test", function () {
     if (showNotificationTestAlert) {
       if (confirm(Foris.messages.unsavedNotificationsAlert)) {
         $("#notifications-form")[0].reset();
