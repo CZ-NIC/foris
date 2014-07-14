@@ -626,12 +626,31 @@ class NotificationsHandler(BaseConfigHandler):
                                 nuci_preproc=lambda val: bool(int(val.value)),
                                 default=False)
 
+        notifications.add_field(Radio, name="use_turris_smtp", label=_("SMTP provider"), default="0",
+                                args=(("1", _("Turris")), ("0", _("Custom"))),
+                                nuci_path="uci.user_notify.smtp.use_turris_smtp",
+                                hint=_("If you set SMTP provider to \"Turris\", the servers provided to "
+                                       "members of the Turris project would be used. These servers do "
+                                       "not require any additional settings. If you want to set your "
+                                       "own SMTP server, please select \"Custom\" and enter required settings."))\
+            .requires("enable_smtp", True)
+
         notifications.add_field(Textbox, name="to", label=_("Recipient's email"),
                                 nuci_path="uci.user_notify.smtp.to",
                                 nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
                                 hint=_("Email address of recipient. Separate multiple addresses by spaces."),
                                 required=True)\
             .requires("enable_smtp", True)
+
+        # sender's name for CZ.NIC SMTP only
+        notifications.add_field(Textbox, name="from", label=_("Sender's name"),
+                                hint=_("This is the address notifications are send from."),
+                                nuci_path="uci.user_notify.smtp.from",
+                                # TODO: get requirements for address
+                                validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
+                                required=True)\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "1")
 
         SEVERITY_OPTIONS = (
             (1, _("Reboot is required")),
@@ -650,22 +669,25 @@ class NotificationsHandler(BaseConfigHandler):
                                 default=False)\
             .requires("enable_smtp", True)
 
-        # SMTP settings
+        # SMTP settings (custom server)
         smtp = notifications_form.add_section(name="smtp", title=_("SMTP settings"))
         smtp.add_field(Email, name="from", label=_("Sender address (From)"),
                        hint=_("This is the address notifications are send from."),
                        nuci_path="uci.user_notify.smtp.from",
                        required=True)\
-            .requires("enable_smtp", True)
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Textbox, name="server", label=_("Server address"),
                                 nuci_path="uci.user_notify.smtp.server",
                                 required=True)\
-            .requires("enable_smtp", True)
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Number, name="port", label=_("Server port"),
                                 nuci_path="uci.user_notify.smtp.port",
                                 validators=[validators.Integer()],
                                 required=True)\
-            .requires("enable_smtp", True)
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
 
         SECURITY_OPTIONS = (
             ("none", _("None")),
@@ -675,14 +697,16 @@ class NotificationsHandler(BaseConfigHandler):
         smtp.add_field(Dropdown, name="security", label=_("Security"),
                                 nuci_path="uci.user_notify.smtp.security",
                                 args=SECURITY_OPTIONS, default="none")\
-            .requires("enable_smtp", True)
+            .requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
         smtp.add_field(Textbox, name="username", label=_("Username"),
-                                nuci_path="uci.user_notify.smtp.username")\
-            .requires("enable_smtp", True)
+                       nuci_path="uci.user_notify.smtp.username")\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Password, name="password", label=_("Password"),
-                                nuci_path="uci.user_notify.smtp.password")\
-            .requires("enable_smtp", True)
+                       nuci_path="uci.user_notify.smtp.password")\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
 
         # reboot time
         reboot = notifications_form.add_section(name="reboot",
@@ -707,6 +731,7 @@ class NotificationsHandler(BaseConfigHandler):
             smtp = Section("smtp", "smtp")
             user_notify.add(smtp)
             smtp.add(Option("enable", data['enable_smtp']))
+            smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
 
             reboot = Section("reboot", "reboot")
             user_notify.add(reboot)
@@ -714,13 +739,13 @@ class NotificationsHandler(BaseConfigHandler):
             reboot.add(Option("delay", data['delay']))
 
             if data['enable_smtp']:
-                # basic SMTP config
+                if data['use_turris_smtp'] == "0":
+                    smtp.add(Option("server", data['server']))
+                    smtp.add(Option("port", data['port']))
+                    smtp.add(Option("username", data['username']))
+                    smtp.add(Option("password", data['password']))
+                    smtp.add(Option("security", data['security']))
                 smtp.add(Option("from", data['from']))
-                smtp.add(Option("server", data['server']))
-                smtp.add(Option("port", data['port']))
-                smtp.add(Option("username", data['username']))
-                smtp.add(Option("password", data['password']))
-                smtp.add(Option("security", data['security']))
                 to = List("to")
                 for i, to_item in enumerate(data['to'].split(" ")):
                     if to_item:

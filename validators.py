@@ -49,6 +49,8 @@ class RegExp(Validator):
     def __init__(self, msg, reg_exp):
         self.reg_exp = re.compile(reg_exp)
         super(RegExp, self).__init__(msg, lambda val: bool(self.reg_exp.match(val)))
+        self.js_validator = ("regexp", reg_exp)
+        self.extra_data['parsley-error-message'] = msg
 
     def valid(self, value):
         return bool(self.reg_exp.match(value))
