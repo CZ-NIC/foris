@@ -626,9 +626,9 @@ class NotificationsHandler(BaseConfigHandler):
                                 nuci_preproc=lambda val: bool(int(val.value)),
                                 default=False)
 
-        notifications.add_field(Radio, name="custom_server", label=_("SMTP provider"), default="0",
-                                args=(("0", _("Turris")), ("1", _("Custom"))),
-                                nuci_path="uci.user_notify.smtp.custom_server",
+        notifications.add_field(Radio, name="use_turris_smtp", label=_("SMTP provider"), default="0",
+                                args=(("1", _("Turris")), ("0", _("Custom"))),
+                                nuci_path="uci.user_notify.smtp.use_turris_smtp",
                                 hint=_("If you set SMTP provider to \"Turris\", the servers provided to "
                                        "members of the Turris project would be used. These servers do "
                                        "not require any additional settings. If you want to set your "
@@ -650,7 +650,7 @@ class NotificationsHandler(BaseConfigHandler):
                                 validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
                                 required=True)\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "0")
+            .requires("use_turris_smtp", "1")
 
         SEVERITY_OPTIONS = (
             (1, _("Reboot is required")),
@@ -676,18 +676,18 @@ class NotificationsHandler(BaseConfigHandler):
                        nuci_path="uci.user_notify.smtp.from",
                        required=True)\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "1")
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Textbox, name="server", label=_("Server address"),
                                 nuci_path="uci.user_notify.smtp.server",
                                 required=True)\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "1")
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Number, name="port", label=_("Server port"),
                                 nuci_path="uci.user_notify.smtp.port",
                                 validators=[validators.Integer()],
                                 required=True)\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "1")
+            .requires("use_turris_smtp", "0")
 
         SECURITY_OPTIONS = (
             ("none", _("None")),
@@ -697,16 +697,16 @@ class NotificationsHandler(BaseConfigHandler):
         smtp.add_field(Dropdown, name="security", label=_("Security"),
                                 nuci_path="uci.user_notify.smtp.security",
                                 args=SECURITY_OPTIONS, default="none")\
-            .requires("enable_smtp", True).requires("custom_server", "1")
+            .requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
         smtp.add_field(Textbox, name="username", label=_("Username"),
                        nuci_path="uci.user_notify.smtp.username")\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "1")
+            .requires("use_turris_smtp", "0")
         smtp.add_field(Password, name="password", label=_("Password"),
                        nuci_path="uci.user_notify.smtp.password")\
             .requires("enable_smtp", True)\
-            .requires("custom_server", "1")
+            .requires("use_turris_smtp", "0")
 
         # reboot time
         reboot = notifications_form.add_section(name="reboot",
@@ -731,7 +731,7 @@ class NotificationsHandler(BaseConfigHandler):
             smtp = Section("smtp", "smtp")
             user_notify.add(smtp)
             smtp.add(Option("enable", data['enable_smtp']))
-            smtp.add(Option("custom_server", data['custom_server']))
+            smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
 
             reboot = Section("reboot", "reboot")
             user_notify.add(reboot)
@@ -739,7 +739,7 @@ class NotificationsHandler(BaseConfigHandler):
             reboot.add(Option("delay", data['delay']))
 
             if data['enable_smtp']:
-                if data['custom_server'] == "1":
+                if data['use_turris_smtp'] == "0":
                     smtp.add(Option("server", data['server']))
                     smtp.add(Option("port", data['port']))
                     smtp.add(Option("username", data['username']))
