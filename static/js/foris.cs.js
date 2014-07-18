@@ -7,4 +7,4 @@ Foris.messages.checkNoForward = "Test připojení se nezdařil, probíhá test p
 Foris.messages.lanIpChanged = 'IP adresa Vašeho routeru se změnila. Router by měl nyní být dostupný na adrese <a href="%NEW_LOC%">%IP_ADDR%</a>. Více informací o změně IP adresy najdete výše.';
 Foris.messages.confirmRestart = "Opravdu chcete restartovat router?";
 Foris.messages.confirmRestartExtra = "\nZbývající nepřečtené zprávy (%UNREAD%) budou smazány.";
-Foris.messages.unsavedNotificationsAlert = "V nastavení byly provdeny změny, které nebyly uloženy.\nChcete změny zahodit a odeslat testovací zprávu s původním nastavením?";
+Foris.messages.unsavedNotificationsAlert = "V nastavení byly provedeny změny, které nebyly uloženy.\nChcete změny zahodit a odeslat testovací zprávu s původním nastavením?";

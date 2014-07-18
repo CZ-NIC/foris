@@ -646,7 +646,6 @@ class NotificationsHandler(BaseConfigHandler):
         notifications.add_field(Textbox, name="from", label=_("Sender's name"),
                                 hint=_("This is the address notifications are send from."),
                                 nuci_path="uci.user_notify.smtp.from",
-                                # TODO: get requirements for address
                                 validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
                                 required=True)\
             .requires("enable_smtp", True)\
