@@ -643,9 +643,9 @@ class NotificationsHandler(BaseConfigHandler):
             .requires("enable_smtp", True)
 
         # sender's name for CZ.NIC SMTP only
-        notifications.add_field(Textbox, name="from", label=_("Sender's name"),
-                                hint=_("This is the address notifications are send from."),
-                                nuci_path="uci.user_notify.smtp.from",
+        notifications.add_field(Textbox, name="sender_name", label=_("Sender's name"),
+                                hint=_("Name of the sender - will be used as a part of the sender's email address before the \"at\" sign."),
+                                nuci_path="uci.user_notify.smtp.sender_name",
                                 validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
                                 required=True)\
             .requires("enable_smtp", True)\
@@ -744,7 +744,9 @@ class NotificationsHandler(BaseConfigHandler):
                     smtp.add(Option("username", data['username']))
                     smtp.add(Option("password", data['password']))
                     smtp.add(Option("security", data['security']))
-                smtp.add(Option("from", data['from']))
+                    smtp.add(Option("from", data['from']))
+                else:
+                    smtp.add(Option("sender_name", data['sender_name']))
                 to = List("to")
                 for i, to_item in enumerate(data['to'].split(" ")):
                     if to_item:
