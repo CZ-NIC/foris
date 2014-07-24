@@ -280,34 +280,47 @@ class TestConfig(ForisTest):
 
         # submit with missing from and to
         form = submit.forms['notifications-form']
+        form.set('use_turris_smtp', "1")
         submit = form.submit()
         assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
 
         # submit valid form with Turris SMTP
         form = submit.forms['notifications-form']
-        expected_from = "router.turris"
+        expected_sender = "router.turris"
         expected_to = "franta.novak@nic.cz"
         form.set('use_turris_smtp', "1")
         form.set('to', expected_to)
-        form.set('from', expected_from)
+        form.set('sender_name', expected_sender)
         submit = form.submit().follow()
-        assert_in(RESPONSE_TEXTS['form_saved'], submit)
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
         self.check_uci_val("user_notify.smtp.enable", "1")
         self.check_uci_val("user_notify.smtp.use_turris_smtp", "1")
         self.check_uci_val("user_notify.smtp.to", expected_to)
-        self.check_uci_val("user_notify.smtp.from", expected_from)
+        self.check_uci_val("user_notify.smtp.sender_name", expected_sender)
+
+        # switch to custom SMTP (expect fail)
+        form = submit.forms['notifications-form']
+        form.set('use_turris_smtp', "0")
+        submit = form.submit()
+        assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
 
         # submit valid form with custom SMTP
         form = submit.forms['notifications-form']
         expected_to = "franta.novak@nic.cz"
         expected_from = "pepa.novak@nic.cz"
+        expected_server = "smtp.example.com"
+        expected_port = "25"
         form.set('use_turris_smtp', "0")
+        form.set('server', expected_server)
+        form.set('port', expected_port)
         form.set('to', expected_to)
         form.set('from', expected_from)
         submit = form.submit().follow()
-        assert_in(RESPONSE_TEXTS['form_saved'], submit)
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
         self.check_uci_val("user_notify.smtp.enable", "1")
         self.check_uci_val("user_notify.smtp.use_turris_smtp", "0")
+        self.check_uci_val("user_notify.smtp.server", expected_server)
+        self.check_uci_val("user_notify.smtp.port", expected_port)
         self.check_uci_val("user_notify.smtp.to", expected_to)
         self.check_uci_val("user_notify.smtp.from", expected_from)
 
