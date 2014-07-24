@@ -53,7 +53,7 @@ class RegExp(Validator):
         self.extra_data['parsley-error-message'] = msg
 
     def valid(self, value):
-        return bool(self.reg_exp.match(value))
+        return bool(self.reg_exp.match(value or ""))
 
 
 class NotEmpty(Validator):
