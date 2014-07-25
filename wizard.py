@@ -466,6 +466,7 @@ def step_post(number=1):
 
 
 @app.route("/skip", name="wizard_skip")
+@login_required
 def skip():
     allowed_step_max, wizard_finished = get_wizard_progress()
     last_step_number = min(NUM_WIZARD_STEPS, allowed_step_max)
