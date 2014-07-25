@@ -67,9 +67,9 @@ bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("stat
 messages.set_template_defaults(bottle.SimpleTemplate)
 
 
-def login_redirect(step_num):
+def login_redirect(step_num, wizard_finished=False):
     from wizard import NUM_WIZARD_STEPS
-    if step_num >= NUM_WIZARD_STEPS:
+    if step_num >= NUM_WIZARD_STEPS or wizard_finished:
         next = bottle.request.GET.get("next")
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
@@ -85,18 +85,19 @@ def login_redirect(step_num):
 def index():
     session = bottle.request.environ['beaker.session']
     import wizard
-    allowed_step_max = wizard.get_allowed_step_max()
+    allowed_step_max, wizard_finished = wizard.get_wizard_progress()
 
     if allowed_step_max == 1:
         session["user_authenticated"] = True
         allowed_step_max = 1
     else:
         session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
+        session["wizard_finished"] = wizard_finished
         allowed_step_max = int(allowed_step_max)
     
     session.save()
     if session.get("user_authenticated"):
-        login_redirect(allowed_step_max)
+        login_redirect(allowed_step_max, wizard_finished)
 
     return dict(luci_path="//%(host)s/%(path)s"
                           % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
