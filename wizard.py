@@ -17,7 +17,7 @@
 from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
-from foris import ugettext as _
+from foris import gettext_dummy as gettext, ugettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
@@ -168,8 +168,7 @@ class WizardStep3(WizardStepMixin, BaseConfigHandler):
     template = "wizard/connectivity.tpl"
     name = "connectivity"
     next_step_allowed = 4
-    # {{ _("Connectivity test") }} - for translation
-    userfriendly_title = "Connectivity test"
+    userfriendly_title = gettext("Connectivity test")
 
     def _disable_forwarding(self):
         uci = Uci()
@@ -245,8 +244,7 @@ class WizardStep5(WizardStepMixin, BaseConfigHandler):
     template = "wizard/updater.tpl"
     name = "updater"
     next_step_allowed = 6
-    # {{ _("System update") }} - for translation
-    userfriendly_title = "System update"
+    userfriendly_title = gettext("System update")
 
     def _action_run_updater(self):
         # this is called by XHR, so we are definitely unable to

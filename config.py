@@ -19,7 +19,7 @@ import bottle
 from datetime import datetime
 import os
 from config_handlers import *
-from foris import ugettext as _
+from foris import gettext_dummy as gettext, ugettext as _
 import logging
 from nuci import client
 from nuci.client import filters
@@ -144,8 +144,7 @@ class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
 
 class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
     template = "config/maintenance"
-    # {{ _("Maintenance") }} - for translation
-    userfriendly_title = "Maintenance"
+    userfriendly_title = gettext("Maintenance")
 
     def _action_config_backup(self):
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -232,8 +231,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
-    # {{ _("About") }} - for translation
-    userfriendly_title = "About"
+    userfriendly_title = gettext("About")
 
     def _action_registration_code(self):
         return client.get_registration()

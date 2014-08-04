@@ -17,7 +17,7 @@ import logging
 
 import bottle
 
-from foris import ugettext as _
+from foris import gettext_dummy as gettext, ugettext as _
 from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time
 import fapi
 from nuci import client, filters
@@ -86,8 +86,7 @@ class PasswordHandler(BaseConfigHandler):
     Setting the password
     """
 
-    # {{ _("Password") }} - for translation
-    userfriendly_title = "Password"
+    userfriendly_title = gettext("Password")
 
     def __init__(self, *args, **kwargs):
         self.change = kwargs.pop("change", False)
@@ -151,8 +150,7 @@ class PasswordHandler(BaseConfigHandler):
 
 
 class WanHandler(BaseConfigHandler):
-    # {{ _("WAN") }} - for translation
-    userfriendly_title = "WAN"
+    userfriendly_title = gettext("WAN")
 
     def get_form(self):
         # WAN
@@ -317,8 +315,7 @@ class DNSHandler(BaseConfigHandler):
     DNS-related settings, currently for enabling/disabling upstream forwarding
     """
 
-    # {{ _("DNS") }} - for translation
-    userfriendly_title = "DNS"
+    userfriendly_title = gettext("DNS")
 
     def get_form(self):
         dns_form = fapi.ForisForm("dns", self.data)
@@ -342,8 +339,7 @@ class DNSHandler(BaseConfigHandler):
 
 
 class TimeHandler(BaseConfigHandler):
-    # {{ _("Time") }} - for translation
-    userfriendly_title = "Time"
+    userfriendly_title = gettext("Time")
 
     def _action_ntp_update(self):
         return client.ntp_update()
@@ -385,8 +381,7 @@ class TimeHandler(BaseConfigHandler):
 
 
 class LanHandler(BaseConfigHandler):
-    # {{ _("LAN") }} - for translation
-    userfriendly_title = "LAN"
+    userfriendly_title = gettext("LAN")
     
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
@@ -449,8 +444,7 @@ class LanHandler(BaseConfigHandler):
 
 
 class WifiHandler(BaseConfigHandler):
-    # {{ _("Wi-Fi") }} - for translation
-    userfriendly_title = "Wi-Fi"
+    userfriendly_title = gettext("Wi-Fi")
     
     def get_form(self):
         stats = client.get(filter=filters.stats).find_child("stats")
@@ -567,8 +561,7 @@ class SystemPasswordHandler(BaseConfigHandler):
     Setting the password of a system user (currently only root's pw).
     """
     
-    # {{ _("Advanced administration") }} - for translation
-    userfriendly_title = "Advanced administration"
+    userfriendly_title = gettext("Advanced administration")
     
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
@@ -594,8 +587,7 @@ class SystemPasswordHandler(BaseConfigHandler):
 
 
 class MaintenanceHandler(BaseConfigHandler):
-    # {{ _("Maintenance") }} - for translation
-    userfriendly_title = "Maintenance"
+    userfriendly_title = gettext("Maintenance")
 
     def get_form(self):
         maintenance_form = fapi.ForisForm("maintenance", self.data)
@@ -612,8 +604,7 @@ class MaintenanceHandler(BaseConfigHandler):
 
 
 class NotificationsHandler(BaseConfigHandler):
-    # {{ _("Notifications") }} - for translation
-    userfriendly_title = "Notifications"
+    userfriendly_title = gettext("Notifications")
 
     def get_form(self):
         notifications_form = fapi.ForisForm("notifications", self.data)

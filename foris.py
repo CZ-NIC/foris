@@ -52,6 +52,7 @@ translations = {
                               languages=['en'], fallback=True)
 }
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
+gettext_dummy = lambda x: x
 _ = ugettext
 
 # template defaults
