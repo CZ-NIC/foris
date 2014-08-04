@@ -14,7 +14,7 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase wizard/base **locals()
+%rebase("wizard/base", **locals())
 
 <div id="wizard-updater">
     <h1>{{ trans(first_title) }}</h1>

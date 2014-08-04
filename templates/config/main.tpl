@@ -14,17 +14,17 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase config/base **locals()
+%rebase("config/base.tpl", **locals())
 
 %if not defined('is_xhr'):
 <div id="page-config" class="config-page">
 %end
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{! description }}</p>
-        %include _messages
+        %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %include _field field=field
+            %include("_field.tpl", field=field)
         %end
         <div class="form-buttons">
             <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>

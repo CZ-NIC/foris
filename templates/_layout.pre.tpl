@@ -39,7 +39,7 @@
       | <a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">ENG</a>
     </div>
     <div id="page">
-        %include
+        {{! base }}
     </div>
 </body>
 </html>

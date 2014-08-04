@@ -15,7 +15,7 @@
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
 %if not defined('is_xhr'):
-    %rebase _layout **locals()
+    %rebase("_layout.tpl", **locals())
     <div id="config-header">
         <h1><a href="{{ url("config_index") }}">{{ trans("Settings") }}</a></h1>
         <div class="logo-turris"><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></div>
@@ -36,7 +36,7 @@ class="active" \\
     </ul>
 %end
 
-    %include
+    {{! base }}
 
 %if not defined('is_xhr'):
     </div>

@@ -14,11 +14,11 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase _layout **locals()
+%rebase("_layout.tpl", **locals())
 <div id="login-page">
     <h1><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></h1>
 
-    %include _messages
+    %include("_messages")
 
     %if user_authenticated():
         <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>

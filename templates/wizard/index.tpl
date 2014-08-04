@@ -14,9 +14,9 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase _layout **locals()
+%rebase("_layout.tpl", **locals())
 
-%include wizard/_header can_skip_wizard=False
+%include("wizard/_header.tpl", can_skip_wizard=False)
 
 <div id="wizard-content">
     <h1>{{ trans("Welcome to configuration of router Turris") }}</h1>

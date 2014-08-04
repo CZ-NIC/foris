@@ -14,7 +14,7 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase _layout **locals()
+%rebase("_layout.tpl", **locals())
 %def render_buttons(element):
     %if not element.final:
         %if element.tag == "section":

@@ -15,9 +15,9 @@
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
 %if not defined('is_xhr'):
-    %rebase _layout **locals()
+    %rebase("_layout.tpl", **locals())
 
-    %include wizard/_header can_skip_wizard=can_skip_wizard, stepnumber=stepnumber
+    %include("wizard/_header.tpl", can_skip_wizard=can_skip_wizard, stepnumber=stepnumber)
 
 %if stepname:
     <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ trans("Step") }} {{ stepnumber }}"></div>
@@ -25,7 +25,7 @@
     <div id="wizard-content">
 %end
 
-    %include
+    {{! base }}
 
 %if not defined('is_xhr'):
     </div>

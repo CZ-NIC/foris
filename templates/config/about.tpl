@@ -14,11 +14,11 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase config/base **locals()
+%rebase("config/base.tpl", **locals())
 
 <div id="page-about" class="config-page">
     <h2>{{ trans("About") }}</h2>
-        %include _messages
+        %include("_messages.tpl")
         <table>
             <tbody>
                 <tr>

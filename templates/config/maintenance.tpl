@@ -14,11 +14,11 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase config/base **locals()
+%rebase("config/base.tpl", **locals())
 
 <div id="page-maintenance" class="config-page">
     <h2>{{ trans("Maintenance") }}</h2>
-    %include _messages
+    %include("_messages.tpl")
 
     <h3>{{ trans("Notifications and automatic restarts") }}</h3>
     <p>{{ trans("You can set the router to notify you when a specific event occurs, for example when a reboot is required, no space is left on device or an application update is installed. You can use Turris servers to send these emails. Alternatively, if you choose to use a custom server, you must enter some additional settings. These settings are the same as you enter in your email client and you can get them from the provider of your email inbox. In that case, because of security reasons, it is recommended to create a dedicated account for your router.") }}</p>
@@ -29,7 +29,7 @@
             %if section.active_fields:
                 <h4>{{ section.title }}</h4>
                 %for field in section.active_fields:
-                    %include _field field=field
+                    %include("_field.tpl", field=field)
                 %end
             %end
         %end
@@ -50,7 +50,7 @@
     <form id="restore-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %include _field field=field
+            %include("_field.tpl", field=field)
         %end
         <button type="submit" name="send" class="button">{{ trans("Restore from backup") }}</button>
     </form>

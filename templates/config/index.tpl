@@ -14,7 +14,7 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase config/base **locals()
+%rebase("config/base.tpl", **locals())
 
 <div id="page-index" class="config-page">
     <p class="config-description">
@@ -22,7 +22,7 @@
     </p>
 
     %if len(notifications):
-        %include _notifications.tpl notifications=notifications
+        %include("_notifications.tpl", notifications=notifications)
     %else:
         <strong>{{ trans("No new messages.") }}</strong>
     %end

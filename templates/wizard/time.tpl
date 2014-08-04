@@ -14,17 +14,17 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
-%rebase wizard/base **locals()
+%rebase("wizard/base", **locals())
 
 %if form:
     <form class="wizard-form" action="{{ url("wizard_step", number=4) }}" method="post" novalidate>
         <h1>{{ trans(first_title) }}</h1>
         <p class="wizard-description">{{ first_description }}</p>
-        %include _messages
+        %include("_messages.tpl")
         <div class="form-fields">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %include _field field=field
+            %include("_field.tpl", field=field)
         %end
         </div>
 
