@@ -296,13 +296,13 @@ def prepare_main_app(args):
         app.mount("/uci", uci.app)
         if args.noauth:
             logger.warning("authentication disabled")
-            app.config.no_auth = True
+            app.config["no_auth"] = True
 
     # set custom app attributes for main app and all mounted apps
     init_foris_app(app)
     for route in app.routes:
         if route.config.get("mountpoint"):
-            mounted = route.config['mountpoint']['target']
+            mounted = route.config['mountpoint.target']
             init_foris_app(mounted)
 
     # read language saved in Uci

@@ -26,10 +26,10 @@ def reverse(name, **kargs):
     except bottle.RouteBuildError:
         for route in bottle.app().routes:
             if route.config.get("mountpoint"):
-                mountpoint = route.config['mountpoint']
+                config = route.config
                 try:
-                    return "%s%s" % (mountpoint['prefix'].rstrip("/"),
-                                     mountpoint['target'].router.build(name, **kargs))
+                    return "%s%s" % (config['mountpoint.prefix'].rstrip("/"),
+                                     config['mountpoint.target'].router.build(name, **kargs))
                 except bottle.RouteBuildError as e:
                     if str(e).startswith("Missing URL"):
                         raise e
