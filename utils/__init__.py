@@ -13,6 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import json
 import urlparse
 
 import bottle
@@ -33,8 +34,15 @@ def redirect_unauthenticated(redirect_url=None):
     redirect_url = redirect_url or "/"
     no_auth = bottle.default_app().config.get("no_auth", False)
     if not no_auth and not is_user_authenticated():
-        # "raise" bottle redirect
-        bottle.redirect("%s?next=%s" % (redirect_url, bottle.request.fullpath))
+        if bottle.request.is_xhr:
+            # "raise" JSON response if requested by XHR
+            res = bottle.response.copy(cls=bottle.HTTPResponse)
+            res.content_type = 'application/json'
+            res.body = json.dumps(dict(success=False, loggedOut=True))
+            raise res
+        # "raise" standard bottle redirect
+        login_url = "%s?next=%s" % (redirect_url, bottle.request.fullpath)
+        bottle.redirect(login_url)
 
 
 def login_required(func=None, redirect_url=None):
