@@ -212,6 +212,8 @@ def get_updater_status():
         return "running", updater_status.running, updater_status.last_activity
     elif updater_status.failed:
         return "failed", updater_status.failed, updater_status.last_activity
+    elif updater_status.offline_pending:
+        return "offline_pending", None, updater_status.last_activity
     else:
         return "done", None, updater_status.last_activity
 

@@ -22,11 +22,12 @@ class Updater(YinElement):
     tag = "updater"
     NS_URI = "http://www.nic.cz/ns/router/updater"
 
-    def __init__(self, running, failed, last_activity):
+    def __init__(self, running, failed, last_activity, offline_pending):
         super(Updater, self).__init__()
         self.running = running
         self.failed = failed
         self.last_activity = last_activity
+        self.offline_pending = offline_pending
 
     @staticmethod
     def from_element(element):
@@ -34,6 +35,8 @@ class Updater(YinElement):
         running = running.text if running is not None else False
         failed = element.find(Updater.qual_tag("failed"))
         failed = failed.text if failed is not None else False
+        offline_pending = element.find(Updater.qual_tag("offline-pending"))
+        offline_pending = True if offline_pending is not None else False
         activities_elem = element.find(Updater.qual_tag("last_activity"))
         last_activity = []
         if activities_elem is not None:
@@ -42,7 +45,7 @@ class Updater(YinElement):
                     last_activity.append(('install', activity_elem.text))
                 elif activity_elem.tag == Updater.qual_tag("remove"):
                     last_activity.append(('remove', activity_elem.text))
-        return Updater(running, failed, last_activity)
+        return Updater(running, failed, last_activity, offline_pending)
 
     @property
     def key(self):
