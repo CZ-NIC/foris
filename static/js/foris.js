@@ -171,23 +171,34 @@ Foris.runUpdater = function () {
       });
 };
 
-Foris.checkUpdaterStatus = function (retries) {
+Foris.checkUpdaterStatus = function (retries, pageNumber) {
   if (retries == null)
     retries = 0;
 
-  Foris.callAjaxAction("5", "updater_status")
+  if (pageNumber == null)
+    pageNumber = 5;
+
+  Foris.callAjaxAction(pageNumber, "updater_status")
       .done(function (data) {
+        if (data.success === false) {
+          if (data.loggedOut && data.loggedOut === true) {
+            $("#updater-progress").hide();
+            $("#updater-login").show();
+          }
+          return;
+        }
         if (data.status == "failed") {
           $("#updater-progress").hide();
-          $("#updater-fail").show(); // TODO: determine what caused the fail, maybe?
+          $("#updater-fail").show();
         }
         else if (data.status == "running") {
           // timeout is better, because we won't get multiple requests stuck processing
           // real delay between status updates is then delay + request_processing_time
-          window.setTimeout(Foris.checkUpdaterStatus, 1000);
+          window.setTimeout(function() {
+            Foris.checkUpdaterStatus(retries, pageNumber)
+          }, 1000);
           // Show what has been installed already
           var log = data.last_activity;
-          // TODO: Is there a better way than to accumulate it? Some kind of map + join?
           var div = $("#wizard-updater-status");
           div.empty();
           var ul = $("<ul>");
@@ -206,6 +217,11 @@ Foris.checkUpdaterStatus = function (retries) {
           }
           div.show();
         }
+        else if (data.status == "offline_pending") {
+          window.setTimeout(function() {
+            Foris.checkUpdaterStatus(retries, pageNumber)
+          }, 1000);
+        }
         else if (data.status == "done") {
           $("#updater-progress").hide();
           $("#updater-success").show();
@@ -216,7 +232,7 @@ Foris.checkUpdaterStatus = function (retries) {
         if (retries < 5) {
           retries += 1;
           window.setTimeout(function () {
-            Foris.checkUpdaterStatus(retries)
+            Foris.checkUpdaterStatus(retries, pageNumber)
           }, 1000);
         }
         else {

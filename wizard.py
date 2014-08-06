@@ -36,7 +36,7 @@ app = Bottle()
 app.install(CSRFPlugin())
 
 
-NUM_WIZARD_STEPS = 8
+NUM_WIZARD_STEPS = 9
 
 
 class WizardStepMixin(object):
@@ -261,6 +261,10 @@ class WizardStep5(WizardStepMixin, BaseConfigHandler):
             return dict(success=run_success)
         elif action == "updater_status":
             status, message, last_activity = self._action_updater_status()
+            if status == "offline_pending":
+                # it's possible that frontend does not know about this status yet,
+                # pretend we are done and handle in the next step
+                status = "done"
             result = dict(success=True, status=status, last_activity=last_activity)
             if message:
                 result['message'] = message
@@ -269,25 +273,55 @@ class WizardStep5(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep6(WizardStepMixin, LanHandler):
+class WizardStep6(WizardStep5):
+    """
+    Updater - handling offline updates.
+    """
+    next_step_allowed = 7
+
+    def call_ajax_action(self, action):
+        if action == "updater_status":
+            status, message, last_activity = self._action_updater_status()
+            if status == "done":
+                self.nuci_write_next_step()
+            result = dict(success=True, status=status, last_activity=last_activity)
+            if message:
+                result['message'] = message
+            return result
+
+        raise ValueError("Unknown Wizard action.")
+
+    def render(self, **kwargs):
+        status = client.get_updater_status()
+        if status[0] == "offline_pending":
+            client.reboot()
+        elif status[0] == "done":
+            # write next step if updates were already done
+            # and AJAX wasn't get called for some reason
+            self.nuci_write_next_step()
+            bottle.redirect(reverse("wizard_step", number=self.next_step_allowed))
+        return super(WizardStep6, self).render(**kwargs)
+
+
+class WizardStep7(WizardStepMixin, LanHandler):
     """
     LAN settings.
     """
     name = "lan"
-    next_step_allowed = 7
+    next_step_allowed = 8
 
 
-class WizardStep7(WizardStepMixin, WifiHandler):
+class WizardStep8(WizardStepMixin, WifiHandler):
     """
     WiFi settings.
     """
     template = "wizard/wifi"
     name = "wifi"
-    next_step_allowed = 8
+    next_step_allowed = 9
     is_final_step = True
 
 
-class WizardStep8(WizardStepMixin, BaseConfigHandler):
+class WizardStep9(WizardStepMixin, BaseConfigHandler):
     """
     Show the activation code.
     """

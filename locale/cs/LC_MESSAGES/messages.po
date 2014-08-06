@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-23 14:47+0200\n"
+"POT-Creation-Date: 2014-08-06 11:09+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -906,6 +906,16 @@ msgstr ""
 "pokročilejší funkce systému, můžete využít rozhraní LuCI, které je přístupné "
 "ze záložky <a href=\"%(url2)s\">Pokročilé nastavení</a>."
 
+msgid ""
+"Installing additional updates. Router will be restarted to finish the "
+"process."
+msgstr ""
+"Probíhá instalace dalších aktualizací. Po jejím dokončení bude router "
+"restartován."
+
+msgid "Do not unplug the device during update!"
+msgstr "Během aktualizace router neodpojujte!"
+
 msgid "Check of available updates in progress."
 msgstr "Probíhá kontrola aktualizací."
 
@@ -923,6 +933,15 @@ msgstr ""
 "zkontrolujte, zda máte správně nastavené připojení do internetu a kabel "
 "zapojený do zdířky WAN. Jakmile budete mít připojení k internetu funkční, "
 "aktualizace se budou pravidelně instalovat samy."
+
+msgid "Device has been restarted."
+msgstr "Zařízení bylo restartováno."
+
+msgid "Please log in again to continue."
+msgstr "Pro pokračování se prosím přihlaste."
+
+msgid "Proceed to login"
+msgstr "Přejít na přihlášení"
 
 msgid "This field is required."
 msgstr "Toto pole je povinné."

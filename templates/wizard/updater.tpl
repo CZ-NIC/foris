@@ -20,7 +20,12 @@
     <h1>{{ trans(first_title) }}</h1>
     <div id="updater-progress" class="background-progress">
         <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"><br>
-        {{ trans("Check of available updates in progress.") }}<br>
+        %if stepnumber == "6":
+            {{ trans("Installing additional updates. Router will be restarted to finish the process.") }}<br>
+            {{ trans("Do not unplug the device during update!") }}<br>
+        %else:
+            {{ trans("Check of available updates in progress.") }}<br>
+        %end
         {{ trans("One moment, please...") }}<br>
         <div id="wizard-updater-status"></div>
     </div>
@@ -36,10 +41,20 @@
         </p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
+    <div id="updater-login">
+        <img src="{{ static("img/success.png") }}" alt="{{ trans("Done") }}"><br>
+        <p>{{ trans("Device has been restarted.") }}<br>
+        {{ trans("Please log in again to continue.") }}</p>
+        <a class="button" href="{{ url("index") }}?next={{ url("wizard_step", number=stepnumber) }}">{{ trans("Proceed to login") }}</a>
+    </div>
 </div>
 
 <script>
     $(document).ready(function() {
+    %if stepnumber == "6":
+        Foris.checkUpdaterStatus(null, {{ stepnumber }});
+    %else:
         Foris.runUpdater();
+    %end
     });
 </script>
