@@ -721,7 +721,6 @@ class NotificationsHandler(BaseConfigHandler):
             smtp = Section("smtp", "smtp")
             user_notify.add(smtp)
             smtp.add(Option("enable", data['enable_smtp']))
-            smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
 
             reboot = Section("reboot", "reboot")
             user_notify.add(reboot)
@@ -729,6 +728,7 @@ class NotificationsHandler(BaseConfigHandler):
             reboot.add(Option("delay", data['delay']))
 
             if data['enable_smtp']:
+                smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
                 if data['use_turris_smtp'] == "0":
                     smtp.add(Option("server", data['server']))
                     smtp.add(Option("port", data['port']))
