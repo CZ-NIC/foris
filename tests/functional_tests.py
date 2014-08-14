@@ -274,7 +274,16 @@ class TestConfig(ForisTest):
         page = self.app.get("/config/maintenance/")
         # test notifications form - SMTP is by default disabled
         self.check_uci_val("user_notify.smtp.enable", "0")
+
+        # try submitting with notifications disabled
         form = page.forms['notifications-form']
+        form.set("reboot_time", "08:42")
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("user_notify.reboot.time", "08:42")
+
+        # enable smtp
+        form = submit.forms['notifications-form']
         form.set("enable_smtp", True, 1)
         submit = form.submit(headers=XHR_HEADERS)
 
