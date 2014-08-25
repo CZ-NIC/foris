@@ -1,12 +1,13 @@
 # coding=utf-8
 import os
 from subprocess import call
+from tempfile import NamedTemporaryFile
 from time import sleep
 from unittest import TestCase
 
 from nose.tools import (assert_equal, assert_not_equal, assert_in, assert_greater,
                         assert_less, assert_true, assert_regexp_matches, timed)
-from webtest import TestApp
+from webtest import TestApp, Upload
 
 from tests.utils import uci_get, uci_set, uci_commit, uci_is_empty
 import foris
@@ -14,6 +15,7 @@ import foris
 
 # dict of texts that are used to determine returned stated etc.
 RESPONSE_TEXTS = {
+    'config_restored': "Nastavení bylo úspěšně obnoveno.",
     'form_invalid': "údajů nejsou platné",
     'form_saved': "Nastavení bylo úspěšně",
     'invalid_old_pw': "původní heslo je neplatné",
@@ -141,12 +143,12 @@ class TestConfig(ForisTest):
             res = form.submit().maybe_follow()
             assert_equal(res.status_int, 200)
             new_pw = self.uci_get("foris.auth.password")
+            if expect_text:
+                assert_in(expect_text, res)
             if should_change:
                 assert_not_equal(old_pw, new_pw)
             else:
                 assert_equal(old_pw, new_pw)
-            if expect_text:
-                assert_in(expect_text, res)
 
         # incorrect old password must fail
         test_pw_submit("bad" + self.password, self.password + "new", self.password + "new",
@@ -270,11 +272,20 @@ class TestConfig(ForisTest):
         submit = form.submit()
         assert_in(RESPONSE_TEXTS['passwords_not_equal'], submit.body)
 
-    def test_tab_maintenance(self):
+    def test_tab_maintenance_notifications(self):
         page = self.app.get("/config/maintenance/")
         # test notifications form - SMTP is by default disabled
         self.check_uci_val("user_notify.smtp.enable", "0")
+
+        # try submitting with notifications disabled
         form = page.forms['notifications-form']
+        form.set("reboot_time", "08:42")
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("user_notify.reboot.time", "08:42")
+
+        # enable smtp
+        form = submit.forms['notifications-form']
         form.set("enable_smtp", True, 1)
         submit = form.submit(headers=XHR_HEADERS)
 
@@ -324,19 +335,41 @@ class TestConfig(ForisTest):
         self.check_uci_val("user_notify.smtp.to", expected_to)
         self.check_uci_val("user_notify.smtp.from", expected_from)
 
+    def test_tab_maintenance_backups(self):
+        # check testing value
+        self.check_uci_val("test.test.test", "1")
+        page = self.app.get("/config/maintenance/")
         # check that backup can be downloaded
         backup = self.app.get("/config/maintenance/action/config-backup")
         # check that it's huffman coded Bzip
         assert_equal(backup.body[0:3], "BZh")
-        # this is quite obscure, but backup should not be suspiciously small
-        # FIXME: Nuci always returns content of /etc/config/, we can only test that the archive does not seem bad
         backup_len = len(backup.body)
-        assert_greater(backup_len, 500)
+        assert_greater(backup_len, 15000)
+        assert_less(backup_len, 17000)
 
-        # we can't test actual config restore, because it'd restart the router
+        # alter testing value
+        self.uci_set("test.test.test", "0")
+        self.uci_commit()
+        self.check_uci_val("test.test.test", "0")
+
+        # submit config restore form without file
         form = page.forms['restore-form']
         submit = form.submit()
         assert_in(RESPONSE_TEXTS['form_invalid'], submit.body)
+
+        backup_file = NamedTemporaryFile()
+        # restore backup
+        try:
+            # save backup to file
+            backup_file.write(backup.body)
+            form = page.forms['restore-form']
+            form['backup_file'] = Upload(backup_file.name)
+            submit = form.submit().follow()
+            assert_in(RESPONSE_TEXTS['config_restored'], submit.body)
+            # check that testing value was restored
+            self.check_uci_val("test.test.test", "1")
+        finally:
+            backup_file.close()
 
         # check that reboot button is present
         assert_in('href="/config/maintenance/action/reboot"', page.body)
