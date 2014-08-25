@@ -2,4 +2,4 @@ Beaker==1.6.4
 bottle==0.12.7
 bottle-i18n==0.1.5
 flup==1.0.2
--e git+https://gitlab.labs.nic.cz/router/ncclient.git@c1de638790a368a3c39638b54f2c2ec4e009df50#egg=ncclient
+-e git+https://gitlab.labs.nic.cz/turris/ncclient.git@c1de638790a368a3c39638b54f2c2ec4e009df50#egg=ncclient
