@@ -1,5 +1,4 @@
 # coding=utf-8
-import os
 from subprocess import call
 from tempfile import NamedTemporaryFile
 from time import sleep
@@ -9,9 +8,10 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in, assert_greate
                         assert_less, assert_true, assert_regexp_matches, timed)
 from webtest import TestApp, Upload
 
-from tests.utils import uci_get, uci_set, uci_commit, uci_is_empty
 import foris
+from nuci.client import StaticNetconfConnection
 
+from .utils import uci_get, uci_set, uci_commit, uci_is_empty
 
 # dict of texts that are used to determine returned stated etc.
 RESPONSE_TEXTS = {
@@ -39,8 +39,7 @@ class ForisTest(TestCase):
     def setUpClass(cls):
         # load configs and monkey-patch env so Nuci uses them
         cls.restore_config()
-        os.environ["NUCI_TEST_CONFIG_DIR"] = cls.config_directory
-        os.environ["NUCI_DONT_RESTART"] = "1"
+        StaticNetconfConnection.enable_test_environment(cls.config_directory)
         # initialize Foris WSGI app
         args = cls.make_args()
         cls.app = TestApp(foris.prepare_main_app(args))
@@ -64,6 +63,7 @@ class ForisTest(TestCase):
                 and uci_set("foris.auth.password", encrypted_pwd, cls.config_directory)
                 and uci_commit(cls.config_directory)):
             raise TestInitException("Cannot set Foris password.")
+        StaticNetconfConnection._connect()
 
     @classmethod
     def mark_wizard_completed(cls):
@@ -71,6 +71,7 @@ class ForisTest(TestCase):
                 and uci_set("foris.wizard.allowed_step_max", 9, cls.config_directory)
                 and uci_commit(cls.config_directory)):
             raise TestInitException("Cannot mark Wizard as completed.")
+        StaticNetconfConnection._connect()
 
     @staticmethod
     def make_args():

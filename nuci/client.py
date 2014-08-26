@@ -14,7 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from ncclient import manager
+from ncclient import operations, transport
+from ncclient.capabilities import Capabilities
+from ncclient.manager import OpExecutor, CAPABILITIES
 from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 from xml.etree import cElementTree as ET
@@ -30,30 +32,97 @@ from nuci.modules import stats
 
 logger = logging.getLogger("nuci.client")
 
-BIN_PATH = "/usr/bin/nuci"
+
+class StaticNetconfConnection(object):
+    """
+    Static connection to Netconf/Nuci, kept open during the whole run
+    of Foris. Same API as ncclient's Manager class.
+    """
+    BIN_PATH = "/usr/bin/nuci"
+
+    # instance of singleton
+    _inst = None
+
+    # Manager properties
+    _session = None
+    _timeout = 30
+    _async_mode = False
+    _raise_mode = operations.RaiseMode.ALL
+
+    __metaclass__ = OpExecutor
+
+    def __new__(cls, *args):
+        """Initialize singleton instance or return an existing one.
+
+        :return: instance of StaticNetconfConnection singleton
+        """
+        if cls._inst is None:
+            cls._inst = super(StaticNetconfConnection, cls).__new__(cls, *args)
+        return cls._inst
+
+    @classmethod
+    def _connect(cls):
+        if cls._session is not None:
+            cls._session.close()
+        session = transport.StdIOSession(Capabilities(CAPABILITIES))
+        session.connect(path=cls.BIN_PATH)
+        cls._session = session
+
+    @classmethod
+    def execute(cls, klass, *args, **kwargs):
+        if cls._session is None:
+            cls._connect()
+        return klass(cls._session,
+                     async=cls._async_mode,
+                     timeout=cls._timeout,
+                     raise_mode=cls._raise_mode).request(*args, **kwargs)
+
+    @classmethod
+    def set_bin_path(cls, path):
+        """
+        Set path to Netconf binary (when using StdIO transport).
+
+        :param path: path to Netconf binary
+        :return: None
+        """
+        cls.BIN_PATH = path
+        if cls._session:
+            # reconnect to new binary
+            cls._connect()
+
+    @classmethod
+    def enable_test_environment(cls, path):
+        """
+        Enable test environment - set environment variables read by Nuci.
+
+        :param path: path to directory with test config files
+        :return: None
+        """
+        import os
+        os.environ["NUCI_TEST_CONFIG_DIR"] = path
+        os.environ["NUCI_DONT_RESTART"] = "1"
+        cls._connect()
 
 
-def set_bin_path(path):
-    global BIN_PATH
-    BIN_PATH = path
+# open persistent connection to Nuci
+netconf = StaticNetconfConnection()
 
 
 def get(filter=None):
-    with manager.connect(BIN_PATH) as m:
-        data = m.get(filter=("subtree", filter) if filter is not None else None).data_ele
-        reply_data = Data()
-        for elem in data.iter():
-            if elem.tag == uci_raw.Uci.qual_tag("uci"):
-                reply_data.add(uci_raw.Uci.from_element(elem))
-            elif elem.tag == time.Time.qual_tag("time"):
-                reply_data.add(time.Time.from_element(elem))
-            elif elem.tag == updater.Updater.qual_tag("updater"):
-                reply_data.add(updater.Updater.from_element(elem))
-            elif elem.tag == stats.Stats.qual_tag("stats"):
-                reply_data.add(stats.Stats.from_element(elem))
-            elif elem.tag == user_notify.UserNotify.qual_tag("messages"):
-                reply_data.add(user_notify.Messages.from_element(elem))
-        return reply_data
+    data = netconf.get(filter=("subtree", filter) if filter is not None else None).data_ele
+    reply_data = Data()
+    for elem in data.iter():
+        if elem.tag == uci_raw.Uci.qual_tag("uci"):
+            reply_data.add(uci_raw.Uci.from_element(elem))
+        elif elem.tag == time.Time.qual_tag("time"):
+            reply_data.add(time.Time.from_element(elem))
+        elif elem.tag == updater.Updater.qual_tag("updater"):
+            reply_data.add(updater.Updater.from_element(elem))
+        elif elem.tag == stats.Stats.qual_tag("stats"):
+            reply_data.add(stats.Stats.from_element(elem))
+        elif elem.tag == user_notify.UserNotify.qual_tag("messages"):
+            reply_data.add(user_notify.Messages.from_element(elem))
+    return reply_data
 
 
 def reboot():
@@ -219,11 +288,10 @@ def get_updater_status():
 
 
 def get_uci_config():
-    with manager.connect(BIN_PATH) as m:
-        data = m.get_config("running").data_ele
-        reply_data = Data()
-        reply_data.add(uci_raw.Uci.from_element(data.find(uci_raw.Uci.qual_tag("uci"))))
-        return reply_data
+    data = netconf.get_config("running").data_ele
+    reply_data = Data()
+    reply_data.add(uci_raw.Uci.from_element(data.find(uci_raw.Uci.qual_tag("uci"))))
+    return reply_data
 
 
 def edit_uci_config(uci):
@@ -243,32 +311,17 @@ def edit_config(config):
     :param config: config to edit as an XML Element
     :return:
     """
-    with manager.connect(BIN_PATH) as m:
-        config_root = ET.Element(YinElement.qual_tag("config"))
-        config_root.append(config)
-        return m.edit_config("running", config=config_root)
+    config_root = ET.Element(YinElement.qual_tag("config"))
+    config_root.append(config)
+    return netconf.edit_config("running", config=config_root)
 
 
 def edit_config_multiple(configs):
-    with manager.connect(BIN_PATH) as m:
-        for config in configs:
-            config_root = ET.Element(YinElement.qual_tag("config"))
-            config_root.append(config)
-            m.edit_config("running", config=config_root)
+    for config in configs:
+        config_root = ET.Element(YinElement.qual_tag("config"))
+        config_root.append(config)
+        netconf.edit_config("running", config=config_root)
 
 
 def dispatch(*args, **kwargs):
-    with manager.connect(BIN_PATH) as m:
-        return m.dispatch(*args, **kwargs)
-
-
-if __name__ == '__main__':
-    # development tests
-    def _recursive_print(element, depth=0):
-        if depth > 0:
-            print "--" * depth,
-        print element, element.path
-        for child in element.children:
-            _recursive_print(child, depth + 1)
-
-    _recursive_print(get())
+    return netconf.dispatch(*args, **kwargs)
