@@ -336,14 +336,8 @@ def prepare_main_app(args):
     }
     app = SessionMiddleware(app, session_options)
 
-    # there are some threading-related errors caused by an issue in
-    # Python <= 2.7.3 (Python issue #14308), this monkey-patch fixes them
-    if sys.hexversion <= 0x020703f0:
-        import threading
-        threading._DummyThread._Thread__stop = lambda x: 42
-
     if args.nucipath:
-        client.set_bin_path(args.nucipath)
+        client.StaticNetconfConnection.set_bin_path(args.nucipath)
 
     return app
 
