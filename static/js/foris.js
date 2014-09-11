@@ -104,8 +104,13 @@ Foris.updateForm = function (form) {
   form.find("input, select, button").attr("disabled", "disabled");
 };
 
-Foris.callAjaxAction = function (wizardStep, action) {
-  return $.get("/wizard/step/" + wizardStep + "/ajax", {action: action});
+Foris.callAjaxAction = function (wizardStep, action, timeout) {
+  timeout = timeout || 0;
+  return $.ajax({
+    url:"/wizard/step/" + wizardStep + "/ajax",
+    data: {action: action},
+    timeout: timeout
+  });
 };
 
 Foris.connectivityCheck = function () {
@@ -178,8 +183,12 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
   if (pageNumber == null)
     pageNumber = 5;
 
-  Foris.callAjaxAction(pageNumber, "updater_status")
+  // we need longer retry time for second update page - router is restarted there
+  var maxRetries = pageNumber == 6 ? 45 : 10;
+
+  Foris.callAjaxAction(pageNumber, "updater_status", 3000)
       .done(function (data) {
+        retries = 0;  // reset retries in case of success
         if (data.success === false) {
           if (data.loggedOut && data.loggedOut === true) {
             $("#updater-progress").hide();
@@ -228,8 +237,8 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
         }
       })
       .fail(function () {
-        // wait 5 seconds (in one-second retries) in case the server is restarting
-        if (retries < 5) {
+        // try multiple times (in one-second retries) in case the server is restarting
+        if (retries < maxRetries) {
           retries += 1;
           window.setTimeout(function () {
             Foris.checkUpdaterStatus(retries, pageNumber)

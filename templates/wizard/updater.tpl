@@ -21,7 +21,7 @@
     <div id="updater-progress" class="background-progress">
         <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"><br>
         %if stepnumber == "6":
-            {{ trans("Installing additional updates. Router will be restarted to finish the process.") }}<br>
+            {{ trans("Installing additional updates. Router will be restarted several times to finish the process.") }}<br>
             {{ trans("Do not unplug the device during update!") }}<br>
         %else:
             {{ trans("Check of available updates in progress.") }}<br>
