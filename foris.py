@@ -305,6 +305,9 @@ def prepare_main_app(args):
             mounted = route.config['mountpoint.target']
             init_foris_app(mounted)
 
+    if args.nucipath:
+        client.StaticNetconfConnection.set_bin_path(args.nucipath)
+
     # read language saved in Uci
     lang = read_uci_lang(DEFAULT_LANGUAGE)
     # i18n middleware
@@ -335,9 +338,6 @@ def prepare_main_app(args):
         'session.httponly': True,
     }
     app = SessionMiddleware(app, session_options)
-
-    if args.nucipath:
-        client.StaticNetconfConnection.set_bin_path(args.nucipath)
 
     return app
 
