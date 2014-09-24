@@ -18,7 +18,7 @@
 <html lang="{{ lang() }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ trans("Turris router administration interface") }}</title>
+    <title>{{ title + " | " if defined('title') else "" }}{{ trans("Turris router administration interface") }}</title>
     <!--[if gt IE 8]><!--><link href="{{ static("css/screen.css") }}?md5=MD5SUM" rel="stylesheet" media="screen"><!--<![endif]-->
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>

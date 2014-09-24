@@ -102,6 +102,8 @@ class WizardStepMixin(object):
             commit()
 
     def default_template(self, **kwargs):
+        if kwargs.get("stepnumber"):
+            kwargs['title'] = _("Configuration wizard - step %s") % kwargs['stepnumber']
         next_step_url = reverse("wizard_step", number=self.next_step_allowed)
         return template(self.template, can_skip_wizard=self.can_skip_wizard,
                         stepname=self.name, next_step_url=next_step_url, **kwargs)

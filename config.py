@@ -64,7 +64,7 @@ class ConfigPageMixin(object):
             raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
-        return template(self.template, title=kwargs.pop('title', self.userfriendly_title),
+        return template(self.template, title=_(kwargs.pop('title', self.userfriendly_title)),
                         **kwargs)
 
     def render(self, **kwargs):
@@ -288,7 +288,7 @@ def get_config_page(page_name):
 @login_required
 def index():
     notifications = client.get_messages()
-    return template("config/index", config_pages=config_page_map, title="Home page",
+    return template("config/index", config_pages=config_page_map, title=_("Home page"),
                     active_config_page_key='',
                     notifications=notifications.new)
 

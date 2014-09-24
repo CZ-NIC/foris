@@ -27,7 +27,7 @@
     </div>
     <div id="content-wrap">
         <div id="content">
-          <h1>{{ trans(title) }}</h1>
+          <h1>{{ title }}</h1>
 %end
             {{! base }}
 %if not defined('is_xhr'):
