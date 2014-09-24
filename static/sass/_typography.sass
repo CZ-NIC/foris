@@ -1,0 +1,54 @@
+/* -------------------------------------------------------------------------
+/* Typography - styling of common textual elements
+
++establish-baseline
+
+body, html
+  color: $foreground-color
+  font:
+    family: $base-font
+
+h1, h2, h3, h4, h5, h6
+  font-family: $heading-font
+  font-weight: bold
+
+em
+  font-style: italic
+
+strong
+  font-weight: bold
+
+h1
+  +adjust-font-size-to(38px)
+
+h2
+  +adjust-font-size-to(32px)
+
+h3
+  +adjust-font-size-to(26px)
+
+h4
+  +adjust-font-size-to(20px)
+
+p
+  margin-bottom: 1.5em
+
+a
+  color: $highlight-color
+
+  &:hover
+    color: $highlight-color-active
+
+pre
+  font-family: "Courier New", Courier, monospace
+  font-size: 80%
+  line-height: 110%
+  margin: 0.5em 0
+
+::selection
+  background-color: $highlight-color
+  color: #fff
+
+::-moz-selection
+  background-color: $highlight-color
+  color: #fff

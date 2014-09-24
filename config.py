@@ -64,7 +64,8 @@ class ConfigPageMixin(object):
             raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
-        return template(self.template, **kwargs)
+        return template(self.template, title=kwargs.pop('title', self.userfriendly_title),
+                        **kwargs)
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm
@@ -171,7 +172,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             bottle.redirect(reverse("config_page", page_name="maintenance"))
         messages.warning(_("There were some errors in your input."))
         return super(MaintenanceConfigPage, self).render(notifications_form=handler.form,
-                                                         config_pages=config_page_map.display_names())
+                                                         config_pages=config_page_map)
 
     def _action_test_notifications(self):
         if bottle.request.method != 'POST':
@@ -252,14 +253,19 @@ class AboutConfigPage(ConfigPageMixin):
         return self.default_template(stats=stats.data, serial=serial, **kwargs)
 
 
+class VirtualConfigPage(ConfigPageMixin):
+    def __init__(self, title):
+        self.userfriendly_title = title
+
+
 class ConfigPageMapItems(OrderedDict):
-    def display_names(self):
-        return [{'slug': k, 'name': self[k].userfriendly_title} for k in self.keys()]
+    pass
 
 
 # names of handlers used in their URL
 # use dash-separated names, underscores in URL are ugly
 config_page_map = ConfigPageMapItems((
+    ('', VirtualConfigPage(gettext("Home page"))),
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
     ('dns', DNSConfigPage),
@@ -282,7 +288,8 @@ def get_config_page(page_name):
 @login_required
 def index():
     notifications = client.get_messages()
-    return template("config/index", config_pages=config_page_map.display_names(),
+    return template("config/index", config_pages=config_page_map, title="Home page",
+                    active_config_page_key='',
                     notifications=notifications.new)
 
 
@@ -301,7 +308,7 @@ def dismiss_notifications():
 def config_page_get(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
-    return config_page.render(config_pages=config_page_map.display_names(),
+    return config_page.render(config_pages=config_page_map,
                               active_config_page_key=page_name)
 
 
@@ -321,7 +328,7 @@ def config_page_post(page_name):
         messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
-    return config_page.render(config_pages=config_page_map.display_names(),
+    return config_page.render(config_pages=config_page_map,
                               active_handler_key=page_name)
 
 

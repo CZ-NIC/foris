@@ -16,6 +16,12 @@
 %#
 %rebase("_layout.tpl", **locals())
 <div id="login-page">
+    <div class="language-switch">
+      {{ trans("Language") }}:
+      <a href="{{ url("change_lang", lang="cs", backlink=request.fullpath) }}">CZE</a>
+      | <a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">ENG</a>
+    </div>
+
     <h1><img src="{{ static("img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}"></h1>
 
     %include("_messages")

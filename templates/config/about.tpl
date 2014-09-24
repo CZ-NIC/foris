@@ -17,24 +17,23 @@
 %rebase("config/base.tpl", **locals())
 
 <div id="page-about" class="config-page">
-    <h2>{{ trans("About") }}</h2>
-        %include("_messages.tpl")
-        <table>
-            <tbody>
-                <tr>
-                    <th>{{ trans("Device") }}</th>
-                    <td>{{ trans("Router Turris - model RTRS01") }}</td>
-                </tr>
-                <tr>
-                    <th>{{ trans("Serial number") }}</th>
-                    <td>{{ serial.decimal }}</td>
-                </tr>
-                <tr>
-                    <th>{{ trans("Kernel version") }}</th>
-                    <td>{{ stats['kernel-version'] }}</td>
-                </tr>
-            </tbody>
-        </table>
+    %include("_messages.tpl")
+    <table>
+        <tbody>
+            <tr>
+                <th>{{ trans("Device") }}</th>
+                <td>{{ trans("Router Turris - model RTRS01") }}</td>
+            </tr>
+            <tr>
+                <th>{{ trans("Serial number") }}</th>
+                <td>{{ serial.decimal }}</td>
+            </tr>
+            <tr>
+                <th>{{ trans("Kernel version") }}</th>
+                <td>{{ stats['kernel-version'] }}</td>
+            </tr>
+        </tbody>
+    </table>
 
     <h2>{{ trans("Device registration") }}</h2>
     <div class="about-description">

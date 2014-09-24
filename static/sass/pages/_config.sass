@@ -1,0 +1,100 @@
+/* -------------------------------------------------------------------------
+/* Config pages (i.e. most of the Foris)
+
+.config-description
+  margin-bottom: 2.5em
+
+.config-form
+  position: relative
+
+  .button
+    font-size: 100%
+    height: 3em
+    line-height: 3em
+    margin-right: 0.5em
+
+.config-page
+  h1, h2, h3, h4
+    margin-top: 0.8em
+
+    &:first-child
+      margin-top: 0
+
+/* -------------------------------------------------------------------------
+/* "About" page
+#page-about
+  p
+    margin-bottom: 1em
+
+  table
+    margin-bottom: 1em
+    width: 100%
+
+    th, td
+      padding: 0.2em 0
+
+    th
+      font-weight: bold
+
+  #registration-code-update
+    vertical-align: middle
+
+  #registration-code-loader
+    vertical-align: middle
+
+  #registration-code-fail
+    @extend .message
+    @extend .message.error
+    display: none
+
+    p:last-child
+      margin-bottom: 0
+
+  #registration-code
+    font-size: 130%
+    font-weight: bold
+
+/* -------------------------------------------------------------------------
+/* "DNS" page
+#page-dns
+  form
+    margin-bottom: 1em
+
+#connection-test-fail
+  display: none
+
+#connection-test-loader
+  vertical-align: middle
+
+#test-results
+  margin-bottom: 1em
+
+  tr
+    td
+      padding: 0.3em 0
+
+    td:first-child
+      width: 16em
+
+  thead
+    th
+      font-weight: bold
+
+  .test-success, .test-fail
+    font-weight: bold
+    padding-left: 24px
+
+
+  .test-success
+    background: inline-image('../.inline-assets/icon-success.png') no-repeat left 50%
+    border-color: $info-color
+    color: $info-color
+
+  .test-fail
+    background: inline-image('../.inline-assets/icon-fail.png') no-repeat left 50%
+    border-color: $error-color
+    color: $error-color
+
+#connectivity-retest
+  @extend .button
+  margin: 0 0 2em

@@ -17,10 +17,9 @@
 %rebase("config/base.tpl", **locals())
 
 <div id="page-maintenance" class="config-page">
-    <h2>{{ trans("Maintenance") }}</h2>
     %include("_messages.tpl")
 
-    <h3>{{ trans("Notifications and automatic restarts") }}</h3>
+    <h2>{{ trans("Notifications and automatic restarts") }}</h2>
     <p>{{ trans("You can set the router to notify you when a specific event occurs, for example when a reboot is required, no space is left on device or an application update is installed. You can use Turris servers to send these emails. Alternatively, if you choose to use a custom server, you must enter some additional settings. These settings are the same as you enter in your email client and you can get them from the provider of your email inbox. In that case, because of security reasons, it is recommended to create a dedicated account for your router.") }}</p>
     <p>{{ trans("Also, when an automatic restart is required, you can specify the time you want it to occur. If you have email notifications enabled, you can also specify the interval between notification and automatic restart.") }}</p>
     <form id="notifications-form" class="maintenance-form" action="{{ url("config_action", page_name="maintenance", action="save_notifications") }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
@@ -39,13 +38,13 @@
         %end
     </form>
 
-    <h3>{{ trans("Configuration backup") }}</h3>
+    <h2>{{ trans("Configuration backup") }}</h2>
     <p>{{ trans("If you need to save the current configuration of this device, you can download a backup file. The configuration is saved as an unencrypted compressed archive (.tar.bz2). Passwords for this configuration interface and for the advanced configuration are not included in the backup.") }}</p>
     <div class="maintenance-description">
         <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{{ trans("Download configuration backup") }}</a>
     </div>
 
-    <h3>{{ trans("Configuration restore") }}</h3>
+    <h2>{{ trans("Configuration restore") }}</h2>
     <p>{{ trans("To restore the configuration from a backup file, upload it using following form. Keep in mind that IP address of this device might change during the process, causing unavailability of this interface.") }}</p>
     <form id="restore-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
@@ -55,7 +54,7 @@
         <button type="submit" name="send" class="button">{{ trans("Restore from backup") }}</button>
     </form>
 
-    <h3>{{ trans("Device reboot") }}</h3>
+    <h2>{{ trans("Device reboot") }}</h2>
     <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again after the reboot.") }}</p>
     <div>
         <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>

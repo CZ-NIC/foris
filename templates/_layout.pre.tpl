@@ -15,31 +15,26 @@
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang() }}">
 <head>
     <meta charset="utf-8">
     <title>{{ trans("Turris router administration interface") }}</title>
-    <link href="{{ static("css/screen.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
+    <!--[if gt IE 8]><!--><link href="{{ static("css/screen.css") }}?md5=MD5SUM" rel="stylesheet" media="screen"><!--<![endif]-->
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>
+        <link href="{{ static("css/ie8.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
     <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
     <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>
     <script src="{{ static("js/foris.min.js") }}?md5=MD5SUM"></script>
-%if lang() == 'cs':
-    <script src="{{ static("js/parsley.messages.cs.min.js") }}?md5=MD5SUM"></script>
-    <script src="{{ static("js/foris.cs.min.js") }}?md5=MD5SUM"></script>
-%end
+    %if lang() == 'cs':
+        <script src="{{ static("js/parsley.messages.cs.min.js") }}?md5=MD5SUM"></script>
+        <script src="{{ static("js/foris.cs.min.js") }}?md5=MD5SUM"></script>
+    %end
 </head>
 <body>
-    <div id="language-switch">
-      {{ trans("Language") }}:
-      <a href="{{ url("change_lang", lang="cs", backlink=request.fullpath) }}">CZE</a>
-      | <a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">ENG</a>
-    </div>
-    <div id="page">
-        {{! base }}
-    </div>
+    {{! base }}
 </body>
 </html>

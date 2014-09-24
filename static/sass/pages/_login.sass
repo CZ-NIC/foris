@@ -1,0 +1,48 @@
+/* -------------------------------------------------------------------------
+/* Login page
+#login-page
+  padding-top: 3em
+  text-align: center
+
+  p
+    margin: 0 auto 2em auto
+    width: 30em
+
+  label
+    display: none
+
+  input
+    height: 3em
+    line-height: 3em
+    max-width: 25em
+
+  button
+    display: inline-block
+    font-size: 100%
+    height: 3em
+    line-height: 3em
+    margin: 0.5em 1em
+    vertical-align: middle
+    width: 90%
+
+    +respond-to('not-mobile', $no-query: true)
+      margin: 0
+      width: auto
+
+
+  .message
+    margin-left: auto
+    margin-right: auto
+    text-align: left
+    width: 25em
+
+  .footer
+    font-size: 90%
+    color: #333
+    line-height: 160%
+    margin-top: 2em
+
+  .language-switch
+    position: absolute
+    right: 0.3em
+    top: 0.3em
