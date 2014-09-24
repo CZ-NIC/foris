@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-10 15:43+0200\n"
+"POT-Creation-Date: 2014-09-24 16:12+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -92,6 +92,9 @@ msgstr ""
 
 msgid "About"
 msgstr "O routeru"
+
+msgid "Home page"
+msgstr "Hlavní stránka"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
@@ -511,6 +514,9 @@ msgstr "Restartovat nyní"
 msgid "Dismiss"
 msgstr "Zahodit"
 
+msgid "Language"
+msgstr "Jazyk"
+
 msgid "Project:Turris"
 msgstr "Project:Turris"
 
@@ -536,17 +542,14 @@ msgstr ""
 msgid "Turris router administration interface"
 msgstr "Administrační rozhraní routeru Turris"
 
-msgid "Language"
-msgstr "Jazyk"
-
 msgid "Discard changes"
 msgstr "Zahodit změny"
 
 msgid "Save changes"
 msgstr "Uložit změny"
 
-msgid "Settings"
-msgstr "Nastavení"
+msgid "Menu"
+msgstr "Menu"
 
 msgid ""
 "Welcome to the Turris administration site. Please, choose a config section "
@@ -602,9 +605,6 @@ msgstr "Získat registrační kód"
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
-
-msgid "DNS setup"
-msgstr "Nastavení DNS"
 
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
@@ -977,3 +977,9 @@ msgstr "Musí být z rozsahu %(low)s - %(high)s."
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Délka musí být od %(low)s do %(high)s znaků."
+
+#~ msgid "Settings"
+#~ msgstr "Nastavení"
+
+#~ msgid "DNS setup"
+#~ msgstr "Nastavení DNS"
