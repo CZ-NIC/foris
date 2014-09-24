@@ -18,10 +18,10 @@
     %rebase("_layout.tpl", **locals())
     <div id="header">
         <div class="sidebar-content">
-            <img src="{{ static("img/logo-side.png") }}" alt="Foris - administrační rozhraní routeru Turris" class="header-side">
+            <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-side.png") }}" alt="Foris - administrační rozhraní routeru Turris" class="header-side"></a>
             <div class="header-top">
               <a href="#menu" class="menu-link"><img src="{{ static("img/icon-menu.png") }}" alt="{{ trans("Menu") }}" title="{{ trans("Menu") }}"></a>
-              <img src="{{ static("img/logo-top.png") }}" alt="Foris - administrační rozhraní routeru Turris">
+              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-top.png") }}" alt="Foris - administrační rozhraní routeru Turris"></a>
             </div>
         </div>
     </div>
