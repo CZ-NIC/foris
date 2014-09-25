@@ -39,6 +39,7 @@ Foris.initialize = function () {
 
   Foris.initParsley();
   Foris.initLanChangeDetection();
+  Foris.initClickableHints();
 };
 
 Foris.initParsley = function () {
@@ -91,6 +92,23 @@ Foris.initLanChangeDetection = function () {
         }
       });
     }
+  });
+};
+
+Foris.initClickableHints = function () {
+  $(".field-hint").on("click", function() {
+    var $this = $(this);
+    var hintHTML = $this.next(".hint-text");
+    if (hintHTML.length) {
+      if (hintHTML.is(":visible"))
+        hintHTML.slideUp();
+      else
+        hintHTML.slideDown();
+      return;
+    }
+    hintHTML = $('<div class="hint-text">' + this.getAttribute("title") + '</div>');
+    $this.after(hintHTML);
+    hintHTML.slideDown();
   });
 };
 

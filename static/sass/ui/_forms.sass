@@ -50,6 +50,9 @@ input[type="file"]
     +respond-to('not-mobile', $no-query: true)
       max-width: 12em
 
+  .field-hint
+    cursor: pointer
+
   .field-hint, .field-loading, .field-validation-fail, .field-validation-pass
     vertical-align: middle
 
@@ -67,12 +70,19 @@ input[type="file"]
     color: $error-color
     width: 100%
 
+    ul
+      +adjust-font-size-to(14px)
+
+  .hint-text
+    display: none
+    background-color: $hint-color
+    margin: 0.5em 0
+    padding: 0.5em
+
+  .validation-container, .server-validation-container, .hint-text
     +respond-to('not-mobile', $no-query: true)
       margin-left: 12.5em
       max-width: 19.5em
-
-    ul
-      +adjust-font-size-to(14px)
 
 .form-buttons
   +respond-to('not-mobile', $no-query: true)
