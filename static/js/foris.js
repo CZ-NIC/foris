@@ -40,6 +40,7 @@ Foris.initialize = function () {
   Foris.initParsley();
   Foris.initLanChangeDetection();
   Foris.initClickableHints();
+  Foris.initSmoothScrolling();
 };
 
 Foris.initParsley = function () {
@@ -69,8 +70,7 @@ Foris.initParsley = function () {
       }
     });
   })
-}
-;
+};
 
 Foris.initLanChangeDetection = function () {
   var lanIpChanged = false;
@@ -109,6 +109,15 @@ Foris.initClickableHints = function () {
     hintHTML = $('<div class="hint-text">' + this.getAttribute("title") + '</div>');
     $this.after(hintHTML);
     hintHTML.slideDown();
+  });
+};
+
+Foris.initSmoothScrolling = function () {
+  $(".menu-link").click(function(e) {
+    e.preventDefault();
+    $('html,body').animate({
+      scrollTop: $(this.hash).offset().top
+    })
   });
 };
 
