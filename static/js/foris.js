@@ -319,8 +319,7 @@ Foris.updateWiFiQR = function (ssid, password, hidden) {
     hidden = '';
 
   codeElement.empty().qrcode({
-    width: 220,
-    height: 220,
+    size: 200,
     text: 'WIFI:T:WPA;S:"' + ssid + '";P:"' + password + '";' + hidden + ';'
   });
 };
