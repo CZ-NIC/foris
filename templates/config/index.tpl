@@ -18,7 +18,7 @@
 
 <div id="page-index" class="config-page">
     <p class="config-description">
-    {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from the above selection.") }}
+    {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from the menu.") }}
     </p>
 
     %if len(notifications):
