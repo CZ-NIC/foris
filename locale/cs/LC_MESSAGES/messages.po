@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-25 16:59+0200\n"
+"POT-Creation-Date: 2014-09-25 17:38+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -95,6 +95,25 @@ msgstr "O routeru"
 
 msgid "Home page"
 msgstr "Hlavní stránka"
+
+msgid "News"
+msgstr "Novinky"
+
+msgid "Update"
+msgstr "Aktualizace"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s z %(created_at)s"
+
+msgid "Notification"
+msgstr "Upozornění"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
@@ -793,9 +812,6 @@ msgstr "Probíhá test internetového připojení."
 
 msgid "Internet connectivity test passed without error."
 msgstr "Test připojení k internetu proběhl bez chyb."
-
-msgid "Error"
-msgstr "Chyba"
 
 msgid ""
 "Your internet connection has network connectivity but DNS resolving does not "

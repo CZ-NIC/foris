@@ -24,6 +24,7 @@ import logging
 from nuci import client
 from nuci.client import filters
 from nuci.exceptions import ConfigRestoreError
+from nuci.modules.user_notify import Severity
 from utils import login_required
 from collections import OrderedDict
 from utils import messages
@@ -284,11 +285,34 @@ def get_config_page(page_name):
     return ConfigPage
 
 
+def make_notification_title(notification):
+    """
+    Helper function for creating of human-readable notification title.
+
+    :param notification: notification to create title for
+    :return: translated string with notification title
+    """
+    notification_titles = {
+        Severity.NEWS: _("News"),
+        Severity.UPDATE: _("Update"),
+        Severity.ERROR: _("Error"),
+    }
+
+    # minor abuse of gettext follows...
+    locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
+
+    return _("%(notification)s from %(created_at)s") % dict(
+        notification=notification_titles.get(notification.severity.value, _("Notification")),
+        created_at=locale_date
+    )
+
+
 @app.route("/", name="config_index")
 @login_required
 def index():
     notifications = client.get_messages()
     return template("config/index", config_pages=config_page_map, title=_("Home page"),
+                    make_notification_title=make_notification_title,
                     active_config_page_key='',
                     notifications=notifications.new)
 
