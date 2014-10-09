@@ -41,6 +41,7 @@ Foris.initialize = function () {
   Foris.initLanChangeDetection();
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
+  Foris.applySVGFallback();
 };
 
 Foris.initParsley = function () {
@@ -119,6 +120,18 @@ Foris.initSmoothScrolling = function () {
       scrollTop: $(this.hash).offset().top
     })
   });
+};
+
+Foris.applySVGFallback = function() {
+  if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
+    $("img[src$='.svg']").attr("src", function() {
+      var src = this.src.split('.');
+      var ext = src.pop();
+      if (ext != "svg") return;
+      src.push("png");
+      this.src = src.join(".");
+    });
+  }
 };
 
 Foris.updateForm = function (form) {

@@ -62,7 +62,7 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
-bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
+bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename.replace("%LANG%", bottle.request.app.lang)) % args
 
 # messages
 messages.set_template_defaults(bottle.SimpleTemplate)

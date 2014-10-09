@@ -18,10 +18,10 @@
     %rebase("_layout.tpl", **locals())
     <div id="header">
         <div class="sidebar-content">
-            <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-side.png") }}" alt="Foris - administrační rozhraní routeru Turris" class="header-side"></a>
+            <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-side-%LANG%.svg") }}" alt="{{ trans("Foris - administration interface of router Turris") }}" class="header-side" width="180"></a>
             <div class="header-top">
               <a href="#menu" class="menu-link"><img src="{{ static("img/icon-menu.png") }}" alt="{{ trans("Menu") }}" title="{{ trans("Menu") }}"></a>
-              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-top.png") }}" alt="Foris - administrační rozhraní routeru Turris"></a>
+              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-top-%LANG%.svg") }}" alt="{{ trans("Foris - administration interface of router Turris") }}" width="240"></a>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="sidebar-cleaner"></div>
     <div id="footer">
         <div class="sidebar-content">
-            <img src="{{ static("img/logo-turris-small.png") }}" alt="{{ trans("Project:Turris") }}">
+            <img src="{{ static("img/logo-turris.svg") }}" alt="{{ trans("Project:Turris") }}" width="178">
         </div>
     </div>
 %end
