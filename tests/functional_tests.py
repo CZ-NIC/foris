@@ -375,6 +375,27 @@ class TestConfig(ForisTest):
         # check that reboot button is present
         assert_in('href="/config/maintenance/action/reboot"', page.body)
 
+    def test_tab_updater(self):
+        possible_lists = ["luci-controls", "nas", "printserver", "netutils",
+                          "shell-utils"]
+        # check for value from default config
+        self.check_uci_val("updater.pkglists.lists", "luci-controls nas "
+                                                     "printserver netutils")
+        page = self.app.get("/config/updater/")
+        form = page.forms['main-form']
+
+        # disable all lists
+        for l in possible_lists:
+            form.set("install_%s" % l, False, 1)
+
+        # select shell-utils and netutils
+        form.set("install_shell-utils", True, 1)
+        form.set("install_netutils", True, 1)
+
+        submit = form.submit().follow()
+        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("updater.pkglists.lists", "netutils shell-utils")
+
     def test_tab_about(self):
         # look for serial number
         about_page = self.app.get("/config/about/")
