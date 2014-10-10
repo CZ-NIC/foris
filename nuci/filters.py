@@ -40,3 +40,4 @@ def create_uci_config(config_name):
 
 
 foris_config = create_uci_config("foris")
+updater_config = create_uci_config("updater")

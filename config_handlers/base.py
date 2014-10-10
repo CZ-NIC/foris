@@ -762,7 +762,8 @@ class UpdaterHandler(BaseConfigHandler):
     def get_form(self):
         pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
 
-        package_lists_form = fapi.ForisForm("package_lists", self.data)
+        package_lists_form = fapi.ForisForm("package_lists", self.data,
+                                            filter=filters.updater_config)
         package_lists_main = package_lists_form.add_section(
             name="select_package_lists",
             title=_(self.userfriendly_title),
