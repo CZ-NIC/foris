@@ -20,3 +20,41 @@ def unqualify(tag):
     if index != -1:
         return tag[index+1:]
     return tag
+
+
+class LocalizableTextValue(object):
+    """
+    Object that can contain text string in multiple languages.
+
+    Access the strings either by getting dictionary item with  desired
+    language as key, e.g.:
+        value["cs"]
+    or by simply coercing value to string to get string in default language.
+    """
+    def __init__(self, text=None, default_lang="en"):
+        if text:
+            if isinstance(text, dict):
+                self._text = text
+            elif isinstance(text, basestring):
+                self._text = {default_lang: text}
+            else:
+                raise ValueError("Text must be either dict or string.")
+        else:
+            self._text = {}
+
+        self.default_lang = default_lang
+
+    def __getitem__(self, item):
+        return self._text[item]
+
+    def __str__(self):
+        return self._text[self.default_lang]
+
+    def set_translation(self, language, text):
+        """
+        Set value for a given language.
+
+        :param language: language of message
+        :param text: localized text
+        """
+        self._text[language] = text

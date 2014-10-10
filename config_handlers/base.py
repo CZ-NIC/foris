@@ -754,3 +754,56 @@ class NotificationsHandler(BaseConfigHandler):
         notifications_form.add_callback(notifications_form_cb)
 
         return notifications_form
+
+
+class UpdaterHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Updater")
+
+    def get_form(self):
+        pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
+
+        package_lists_form = fapi.ForisForm("package_lists", self.data)
+        package_lists_main = package_lists_form.add_section(
+            name="select_package_lists",
+            title=_(self.userfriendly_title),
+            description=_("TODO")
+        )
+
+        def make_preproc(list_name):
+            """Make function for preprocessing value of single pkglist."""
+            def preproc(list):
+                enabled_names = map(lambda x: x.content, list.children)
+                return list_name in enabled_names
+            return preproc
+
+        for pkg_list_item in pkg_list:
+            package_lists_main.add_field(
+                Checkbox,
+                name="install_%s" % pkg_list_item.name,
+                label=pkg_list_item.title,
+                hint=pkg_list_item.description,
+                nuci_path="uci.updater.pkglists.lists",
+                nuci_preproc=make_preproc(pkg_list_item.name)
+            )
+
+        def package_lists_form_cb(data):
+            uci = Uci()
+            updater = Config("updater")
+            uci.add(updater)
+
+            pkglists = Section("pkglists", "pkglists")
+            updater.add(pkglists)
+            lists = List("lists")
+
+            # create List with selected packages
+            i = 0
+            for k, v in data.iteritems():
+                if v and k.startswith("install_"):
+                    lists.add(Value(i, k[8:]))
+                    i += 1
+            pkglists.add_replace(lists)
+
+            return "edit_config", uci
+
+        package_lists_form.add_callback(package_lists_form_cb)
+        return package_lists_form

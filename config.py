@@ -231,6 +231,10 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         return result
 
 
+class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
+    pass
+
+
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     userfriendly_title = gettext("About")
@@ -274,6 +278,7 @@ config_page_map = ConfigPageMapItems((
     ('wifi', WifiConfigPage),
     ('system-password', SystemPasswordConfigPage),
     ('maintenance', MaintenanceConfigPage),
+    ('updater', UpdaterConfigPage),
     ('about', AboutConfigPage),
 ))
 
