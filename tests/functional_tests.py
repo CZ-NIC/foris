@@ -4,8 +4,10 @@ from tempfile import NamedTemporaryFile
 from time import sleep
 from unittest import TestCase
 
-from nose.tools import (assert_equal, assert_not_equal, assert_in, assert_greater,
-                        assert_less, assert_true, assert_regexp_matches, timed)
+from nose.tools import (assert_equal, assert_not_equal, assert_in,
+                        assert_greater, assert_less,
+                        assert_true, assert_false,
+                        assert_regexp_matches, timed)
 from webtest import TestApp, Upload
 
 import foris
@@ -378,11 +380,22 @@ class TestConfig(ForisTest):
     def test_tab_updater(self):
         possible_lists = ["luci-controls", "nas", "printserver", "netutils",
                           "shell-utils"]
+        default_enabled = ["luci-controls", "nas", "printserver", "netutils"]
         # check for value from default config
-        self.check_uci_val("updater.pkglists.lists", "luci-controls nas "
-                                                     "printserver netutils")
+        self.check_uci_val("updater.pkglists.lists", " ".join(default_enabled))
         page = self.app.get("/config/updater/")
         form = page.forms['main-form']
+
+        # check that enabled lists are checked
+        for l in default_enabled:
+            enabled = form.get("install_%s" % l, index=1).checked
+            assert_true(enabled, "'%s' list should by enabled")
+
+        # check that enabled lists are not checked
+        default_disabled = set(possible_lists).difference(default_enabled)
+        for l in default_disabled:
+            enabled = form.get("install_%s" % l, index=1).checked
+            assert_false(enabled, "'%s' list should by disabled")
 
         # disable all lists
         for l in possible_lists:
