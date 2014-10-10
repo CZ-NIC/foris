@@ -232,7 +232,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
-    pass
+    template = "config/updater"
 
 
 class AboutConfigPage(ConfigPageMixin):

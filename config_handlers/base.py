@@ -773,7 +773,17 @@ class UpdaterHandler(BaseConfigHandler):
         package_lists_main = package_lists_form.add_section(
             name="select_package_lists",
             title=_(self.userfriendly_title),
-            description=_("TODO")
+            description=_("Updater is a service that keeps all TurrisOS "
+                          "software up to date. Apart from standard standard "
+                          "installation, you can optionally select lists of "
+                          "additional software that'd be installed on the "
+                          "router. This software can be selected from the "
+                          "following list. "
+                          "Please note that only software that is part of "
+                          "TurrisOS or that has been installed from a package "
+                          "list is maintained by Updater. Software that has "
+                          "been installed manually or using opkg is not "
+                          "affected.")
         )
 
         def make_preproc(list_name):

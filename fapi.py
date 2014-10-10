@@ -19,6 +19,7 @@ from form import Dropdown, Form, Checkbox, websafe, Hidden, Radio
 from nuci import client
 import logging
 from nuci.configurator import add_config_update, commit
+from nuci.utils import LocalizableTextValue
 from utils import Lazy
 import validators as validators_module
 
@@ -366,10 +367,23 @@ class Field(ForisFormElement):
 
     @property
     def label_tag(self):
-        if issubclass(self.type, Radio):
-            return "<label>%s</label>" % websafe(self.field.description)
+        def create_label(text):
+            if issubclass(self.type, Radio):
+                label = "<label>%s</label>" % websafe(text)
+            else:
+                label = "<label for=\"%s\">%s</label>"\
+                        % (self.field.id, websafe(text))
+            return label
 
-        return "<label for=\"%s\">%s</label>" % (self.field.id, websafe(self.field.description))
+        description = self.field.description
+        # LocalizableTextValue needs must stay localizable
+        if isinstance(description, LocalizableTextValue):
+            description = self.field.description
+            for k, v in description.iteritems():
+                description[k] = create_label(v)
+            return description
+        # otherwise return normal label
+        return create_label(description)
 
     @property
     def errors(self):

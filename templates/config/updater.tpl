@@ -1,5 +1,5 @@
 %# Foris - web administration interface for OpenWrt based on NETCONF
-%# Copyright (C) 2014 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+%# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 %#
 %# This program is free software: you can redistribute it and/or modify
 %# it under the terms of the GNU General Public License as published by
@@ -24,7 +24,22 @@
         %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
-            %include("_field.tpl", field=field)
+            %if field.hidden:
+                {{! field.render() }}
+            %else:
+            <div class="row">
+                {{! field.render() }}
+                {{! field.label_tag[lang()] }}
+                {{ field.hint[lang()] }}
+                %if field.errors:
+                  <div class="server-validation-container">
+                    <ul>
+                      <li>{{ field.errors }}</li>
+                    </ul>
+                  </div>
+                %end
+            </div>
+            %end
         %end
         <div class="form-buttons">
             <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
