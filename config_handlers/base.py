@@ -21,6 +21,7 @@ from foris import gettext_dummy as gettext, ugettext as _
 from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time
 import fapi
 from nuci import client, filters
+from nuci.filters import create_config_filter
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
 import validators
 
@@ -122,7 +123,7 @@ class PasswordHandler(BaseConfigHandler):
             from beaker.crypto import pbkdf2
             if self.change:
                 # if changing password, check the old pw is right first
-                uci_data = client.get(filter=filters.uci)
+                uci_data = client.get(filter=filters.foris_config)
                 password_hash = uci_data.find_child("uci.foris.auth.password")
                 # allow changing the password if password_hash is empty
                 if password_hash:
@@ -154,7 +155,8 @@ class WanHandler(BaseConfigHandler):
 
     def get_form(self):
         # WAN
-        wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
+        wan_form = fapi.ForisForm("wan", self.data,
+                                  filter=create_config_filter("network"))
         wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
                                         description=_("Here you specify your WAN port settings. "
                 "Usually, you can leave this options untouched unless instructed otherwise by your "
@@ -318,7 +320,8 @@ class DNSHandler(BaseConfigHandler):
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        dns_form = fapi.ForisForm("dns", self.data)
+        dns_form = fapi.ForisForm("dns", self.data,
+                                  filter=create_config_filter("unbound"))
         dns_main = dns_form.add_section(name="set_dns",
                                         title=_(self.userfriendly_title))
         dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
@@ -384,7 +387,8 @@ class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
     
     def get_form(self):
-        lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
+        lan_form = fapi.ForisForm("lan", self.data,
+                                  filter=create_config_filter("dhcp", "network"))
         lan_main = lan_form.add_section(name="set_lan", title=_(self.userfriendly_title),
                                         description=_("This section contains settings for the local network (LAN). "
             "The provided defaults are suitable for most networks. "
@@ -451,7 +455,8 @@ class WifiHandler(BaseConfigHandler):
         if len(stats.data['wireless-cards']) < 1:
             return None
 
-        wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
+        wifi_form = fapi.ForisForm("wifi", self.data,
+                                   filter=create_config_filter("wireless"))
         wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
                                           description=_(
             "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here and "
@@ -607,7 +612,8 @@ class NotificationsHandler(BaseConfigHandler):
     userfriendly_title = gettext("Notifications")
 
     def get_form(self):
-        notifications_form = fapi.ForisForm("notifications", self.data)
+        notifications_form = fapi.ForisForm("notifications", self.data,
+                                            filter=create_config_filter("user_notify"))
 
         notifications = notifications_form.add_section(name="notifications",
                                                        title=_("Notifications settings"))
@@ -763,7 +769,7 @@ class UpdaterHandler(BaseConfigHandler):
         pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
 
         package_lists_form = fapi.ForisForm("package_lists", self.data,
-                                            filter=filters.updater_config)
+                                            filter=create_config_filter("updater"))
         package_lists_main = package_lists_form.add_section(
             name="select_package_lists",
             title=_(self.userfriendly_title),
