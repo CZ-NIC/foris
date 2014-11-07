@@ -13,14 +13,16 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import logging
+import shlex
+from time import sleep
+from xml.etree import cElementTree as ET
 
 from ncclient import operations, transport
 from ncclient.capabilities import Capabilities
 from ncclient.manager import OpExecutor, CAPABILITIES
 from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
-from xml.etree import cElementTree as ET
-import logging
 
 from modules import (maintain, network, password as password_module, registration,
                      time, uci_raw, updater, user_notify)
@@ -49,6 +51,9 @@ class StaticNetconfConnection(object):
     _async_mode = False
     _raise_mode = operations.RaiseMode.ALL
 
+    # flag for lock during command execution
+    _executing = False
+
     __metaclass__ = OpExecutor
 
     def __new__(cls, *args):
@@ -65,17 +70,24 @@ class StaticNetconfConnection(object):
         if cls._session is not None:
             cls._session.close()
         session = transport.StdIOSession(Capabilities(CAPABILITIES))
-        session.connect(path=cls.BIN_PATH)
+        session.connect(path=shlex.split(cls.BIN_PATH))
         cls._session = session
 
     @classmethod
     def execute(cls, klass, *args, **kwargs):
-        if cls._session is None:
-            cls._connect()
-        return klass(cls._session,
-                     async=cls._async_mode,
-                     timeout=cls._timeout,
-                     raise_mode=cls._raise_mode).request(*args, **kwargs)
+        while cls._executing:
+            sleep(0.1)
+        cls._executing = True
+        try:
+            if cls._session is None:
+                cls._connect()
+            result = klass(cls._session,
+                           async=cls._async_mode,
+                           timeout=cls._timeout,
+                           raise_mode=cls._raise_mode).request(*args, **kwargs)
+        finally:
+            cls._executing = False
+        return result
 
     @classmethod
     def set_bin_path(cls, path):
