@@ -363,6 +363,9 @@ def get_wizard_progress():
     """Get number of the allowed step and information whether wizard was finished
     from session, or from Foris Uci config if session is empty.
 
+    Updates session variables of max allowed step and wizard finished flag if value was
+    retrieved from Uci config.
+
     :return: step number of last allowed step (default is 1) and boolean flag - wizard is finished
     :rtype: tuple(int, bool)
     """
@@ -372,12 +375,16 @@ def get_wizard_progress():
     try:
         if not allowed_sess:
             data = client.get(filter=filters.foris_config)
-            next_step_option = data.find_child("uci.foris.wizard.%s" % WizardStepMixin.next_step_allowed_key)
+            next_step_option = data.find_child("uci.foris.wizard.%s"
+                                               % WizardStepMixin.next_step_allowed_key)
             is_finished_option = data.find_child("uci.foris.wizard.finished")
+            next_step_allowed = int(next_step_option.value) if next_step_option else 1
             is_finished = bool(int(is_finished_option.value)) if is_finished_option else False
-            if next_step_option:
-                return int(next_step_option.value), is_finished
-            return 1, is_finished  # if no value can be found
+            # write to session so we don't have to check config later
+            allow_next_step_session(next_step_allowed)
+            if is_finished:
+                mark_wizard_finished_session()
+            return next_step_allowed, is_finished
         return int(allowed_sess), is_finished
     except ValueError:
         return 1, False
