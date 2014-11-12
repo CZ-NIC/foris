@@ -286,6 +286,10 @@ def check_updates():
 
 
 def get_updater_status():
+    """Get current status of last/current run of updater.
+
+    :return: tuple of three: (status, status_message, list of last_activity)
+    """
     data = get(filter=filters.updater)
     updater_status = data.find_child("updater")
 
