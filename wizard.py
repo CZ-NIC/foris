@@ -54,10 +54,7 @@ class WizardStepMixin(object):
         :param action:
         :return: object that can be passed as HTTP response to Bottle
         """
-        try:
-            return super(WizardStepMixin, self).call_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No actions specified for this page.")
+        raise bottle.HTTPError(404, "No actions specified for this page.")
 
     def call_ajax_action(self, action):
         """Call AJAX action.
@@ -65,10 +62,7 @@ class WizardStepMixin(object):
         :param action:
         :return: dict of picklable AJAX results
         """
-        try:
-            return super(WizardStepMixin, self).call_ajax_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def allow_next_step(self):
         # this function can be used as a callback for a form
@@ -227,10 +221,18 @@ class WizardStep4(WizardStepMixin, TimeHandler):
     next_step_allowed = 5
 
     def _action_ntp_update(self):
-        success = TimeHandler._action_ntp_update(self)
+        success = client.ntp_update()
         if success:
             self.nuci_write_next_step()  # allow the next step and save it to uci
         return success
+
+    def call_ajax_action(self, action):
+        if action == "ntp_update":
+            ntp_ok = self._action_ntp_update()
+            return dict(success=ntp_ok)
+        elif action == "time_form":
+            return dict(success=True, form=self.render(is_xhr=True))
+        raise ValueError("Unknown Wizard action.")
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):

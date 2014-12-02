@@ -40,22 +40,6 @@ class BaseConfigHandler(object):
             self.__form_cache = self.get_form()
         return self.__form_cache
 
-    def call_action(self, action):
-        """Call config page action.
-
-        :param action:
-        :return: object that can be passed as HTTP response to Bottle
-        """
-        raise NotImplementedError()
-
-    def call_ajax_action(self, action):
-        """Call AJAX action.
-
-        :param action:
-        :return: dict of picklable AJAX results
-        """
-        raise NotImplementedError()
-
     def get_form(self):
         """Get form for this wizard. MUST be a single-section form.
 
@@ -343,24 +327,6 @@ class DNSHandler(BaseConfigHandler):
 
 class TimeHandler(BaseConfigHandler):
     userfriendly_title = gettext("Time")
-
-    def _action_ntp_update(self):
-        return client.ntp_update()
-
-    def call_ajax_action(self, action):
-        """Call AJAX action.
-
-        :param action:
-        :return: dict of picklable AJAX results
-        """
-        if action == "ntp_update":
-            ntp_ok = self._action_ntp_update()
-            return dict(success=ntp_ok)
-        elif action == "time_form":
-            if hasattr(self, 'render') and callable(self.render):
-                # only if the subclass implements render
-                return dict(success=True, form=self.render(is_xhr=True))
-        raise ValueError("Unknown Wizard action.")
 
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
