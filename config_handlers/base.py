@@ -81,8 +81,9 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_(self.userfriendly_title),
-                                      description=_("Set your password for this administration interface."
-                                                    " The password must be at least 6 characters long."))
+                                      description=_("Set your password for this administration "
+                                                    "interface. The password must be at least 6 "
+                                                    "characters long."))
         if self.change:
             pw_main.add_field(Password, name="old_password", label=_("Current password"))
             label_pass1 = _("New password")
@@ -94,14 +95,17 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Password, name="password", label=label_pass1, required=True,
                           validators=validators.LenRange(6, 128))
         pw_main.add_field(Password, name="password_validation", label=label_pass2,
-                          required=True, validators=validators.EqualTo("password", "password_validation",
-                                                                       _("Passwords are not equal.")))
-        pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use the same password for advanced configuration"),
+                          required=True,
+                          validators=validators.EqualTo("password", "password_validation",
+                                                        _("Passwords are not equal.")))
+        pw_main.add_field(Checkbox, name="set_system_pw",
+                          label=_("Use the same password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
-                                 "interface, for root user in LuCI web interface and for SSH login. "
-                                 "Use a strong password! (If you choose not to set the password "
-                                 "for advanced configuration here, you will have the option to do "
-                                 "so later. Until then, the root account will be blocked.)"))
+                                 "interface, for root user in LuCI web interface and for SSH "
+                                 "login. Use a strong password! (If you choose not to set the "
+                                 "password for advanced configuration here, you will have the "
+                                 "option to do so later. Until then, the root account will be "
+                                 "blocked.)"))
 
         def pw_form_cb(data):
             from beaker.crypto import pbkdf2
@@ -141,11 +145,14 @@ class WanHandler(BaseConfigHandler):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data,
                                   filter=create_config_filter("network"))
-        wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
-                                        description=_("Here you specify your WAN port settings. "
-                "Usually, you can leave this options untouched unless instructed otherwise by your "
-                "internet service provider. Also, in case there is a cable or DSL modem connecting "
-                "your router to the network, it is usually not necessary to change this setting."))
+        wan_main = wan_form.add_section(
+            name="set_wan",
+            title=_(self.userfriendly_title),
+            description=_("Here you specify your WAN port settings. Usually, you can leave this "
+                          "options untouched unless instructed otherwise by your internet service "
+                          "provider. Also, in case there is a cable or DSL modem connecting your "
+                          "router to the network, it is usually not necessary to change this "
+                          "setting."))
 
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
@@ -205,7 +212,8 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
                            nuci_path="uci.network.wan.ip6addr",
                            validators=validators.IPv6Prefix(),
-                           hint=_("IPv6 address and prefix length for WAN interface, e.g. 2001:db8:be13:37da::1/64"),
+                           hint=_("IPv6 address and prefix length for WAN interface, "
+                                  "e.g. 2001:db8:be13:37da::1/64"),
                            required=True)\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
@@ -217,7 +225,8 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
                            validators=validators.IPv6Prefix(),
                            nuci_path="uci.network.wan.ip6prefix",
-                           hint=_("Address range for local network, e.g. 2001:db8:be13:37da::/64"))\
+                           hint=_("Address range for local network, "
+                                  "e.g. 2001:db8:be13:37da::/64"))\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
 
@@ -330,12 +339,14 @@ class TimeHandler(BaseConfigHandler):
 
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
-        time_main = time_form.add_section(name="set_time", title=_(self.userfriendly_title),
-                                          description=_(
-            "We could not synchronize the time with a timeserver, probably due to a loss of connection. "
-            "It is necessary for the router to have correct time in order to function properly. Please, "
-            "synchronize it with your computer's time, or set it manually."
-            ))
+        time_main = time_form.add_section(
+            name="set_time",
+            title=_(self.userfriendly_title),
+            description=_("We could not synchronize the time with a timeserver, probably due to a "
+                          "loss of connection. It is necessary for the router to have correct time "
+                          "in order to function properly. Please, synchronize it with your "
+                          "computer's time, or set it manually.")
+        )
 
         time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
                             nuci_preproc=lambda v: v.local)
@@ -355,14 +366,20 @@ class LanHandler(BaseConfigHandler):
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data,
                                   filter=create_config_filter("dhcp", "network"))
-        lan_main = lan_form.add_section(name="set_lan", title=_(self.userfriendly_title),
-                                        description=_("This section contains settings for the local network (LAN). "
-            "The provided defaults are suitable for most networks. "
-            "<br><strong>Note:</strong> If you change the router IP address, all computers in LAN, probably including the one you "
-            "are using now, will need to obtain a <strong>new IP address</strong> which does <strong>not</strong> happen <strong>immediately</strong>. "
-            "It is recommended to disconnect and reconnect all LAN cables after submitting your changes "
-            "to force the update. The next page will not load until you obtain a new IP from DHCP "
-            "(if DHCP enabled) and you might need to <strong>refresh the page</strong> in your browser."))
+        lan_main = lan_form.add_section(
+            name="set_lan",
+            title=_(self.userfriendly_title),
+            description=_("This section contains settings for the local network (LAN). The provided"
+                          " defaults are suitable for most networks. <br><strong>Note:</strong> If "
+                          "you change the router IP address, all computers in LAN, probably "
+                          "including the one you are using now, will need to obtain a <strong>new "
+                          "IP address</strong> which does <strong>not</strong> happen <strong>"
+                          "immediately</strong>. It is recommended to disconnect and reconnect all "
+                          "LAN cables after submitting your changes to force the update. The next "
+                          "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
+                          " and you might need to <strong>refresh the page</strong> in your "
+                          "browser.")
+        )
 
         lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
@@ -423,11 +440,14 @@ class WifiHandler(BaseConfigHandler):
 
         wifi_form = fapi.ForisForm("wifi", self.data,
                                    filter=create_config_filter("wireless"))
-        wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
-                                          description=_(
-            "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here and "
-            "fill in an SSID (the name of the access point) and a corresponding password. "
-            "You can then set up your mobile devices, using the QR code available next to the form."))
+        wifi_main = wifi_form.add_section(
+            name="set_wifi",
+            title=_(self.userfriendly_title),
+            description=_("If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
+                          "here and fill in an SSID (the name of the access point) and a "
+                          "corresponding password. You can then set up your mobile devices, "
+                          "using the QR code available next to the form.")
+        )
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
@@ -439,7 +459,8 @@ class WifiHandler(BaseConfigHandler):
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
-                            hint=_("If set, network is not visible when scanning for available networks."))\
+                            hint=_("If set, network is not visible when scanning for available "
+                                   "networks."))\
             .requires("wifi_enabled", True)
 
         channels_2g4 = [("auto", _("auto"))]
@@ -460,10 +481,11 @@ class WifiHandler(BaseConfigHandler):
             wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
                                 args=(("11ng", "2.4 GHz (g+n)"), ("11na", "5 GHz (a+n)")),
                                 nuci_path="uci.wireless.radio0.hwmode",
-                                hint=_("The 2.4 GHz band is more widely supported by clients, but tends to have "
-                                       "more interference. The 5 GHz band is a newer standard and may not be "
-                                       "supported by all your devices. It usually has less interference, "
-                                       "but the signal does not carry so well indoors."))\
+                                hint=_("The 2.4 GHz band is more widely supported by clients, but "
+                                       "tends to have more interference. The 5 GHz band is a newer"
+                                       " standard and may not be supported by all your devices. It "
+                                       "usually has less interference, but the signal does not "
+                                       "carry so well indoors."))\
                 .requires("wifi_enabled", True)
         # 2.4 GHz channels
         if len(channels_2g4) > 1:
@@ -483,8 +505,8 @@ class WifiHandler(BaseConfigHandler):
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
                             validators=validators.ByteLenRange(8, 63),
-                            hint=_("WPA2 pre-shared key, that is required to connect to the network. "
-                                   "Minimum length is 8 characters."))\
+                            hint=_("WPA2 pre-shared key, that is required to connect to the "
+                                   "network. Minimum length is 8 characters."))\
             .requires("wifi_enabled", True)
 
         def wifi_form_cb(data):
@@ -536,18 +558,22 @@ class SystemPasswordHandler(BaseConfigHandler):
     
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
-        system_pw_main = system_pw_form.add_section(name="set_password",
-                                                    title=_(self.userfriendly_title),
-                                                    description=_(
-            "In order to access the advanced configuration possibilities which are not present "
-            "here, you must set the root user's password. The advanced configuration options can "
-            "be managed either through the <a href=\"//%(host)s/%(path)s\">LuCI web interface"
-            "</a> or over SSH.") % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+        system_pw_main = system_pw_form.add_section(
+            name="set_password",
+            title=_(self.userfriendly_title),
+            description=_("In order to access the advanced configuration possibilities which are "
+                          "not present here, you must set the root user's password. The advanced "
+                          "configuration options can be managed either through the "
+                          "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+                          "or over SSH.") % {'host': bottle.request.get_header('host'),
+                                             'path': 'cgi-bin/luci'}
+        )
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=validators.LenRange(6, 128))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                                 required=True, validators=validators.EqualTo("password", "password_validation",
-                                                                              _("Passwords are not equal.")))
+                                 required=True,
+                                 validators=validators.EqualTo("password", "password_validation",
+                                                               _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])
@@ -589,28 +615,43 @@ class NotificationsHandler(BaseConfigHandler):
                                 nuci_preproc=lambda val: bool(int(val.value)),
                                 default=False)
 
-        notifications.add_field(Radio, name="use_turris_smtp", label=_("SMTP provider"), default="0",
-                                args=(("1", _("Turris")), ("0", _("Custom"))),
-                                nuci_path="uci.user_notify.smtp.use_turris_smtp",
-                                hint=_("If you set SMTP provider to \"Turris\", the servers provided to "
-                                       "members of the Turris project would be used. These servers do "
-                                       "not require any additional settings. If you want to set your "
-                                       "own SMTP server, please select \"Custom\" and enter required settings."))\
+        notifications.add_field(
+            Radio,
+            name="use_turris_smtp",
+            label=_("SMTP provider"),
+            default="0",
+            args=(("1", _("Turris")), ("0", _("Custom"))),
+            nuci_path="uci.user_notify.smtp.use_turris_smtp",
+            hint=_("If you set SMTP provider to \"Turris\", the servers provided to members of the "
+                   "Turris project would be used. These servers do not require any additional "
+                   "settings. If you want to set your own SMTP server, please select \"Custom\" "
+                   "and enter required settings."))\
             .requires("enable_smtp", True)
 
-        notifications.add_field(Textbox, name="to", label=_("Recipient's email"),
-                                nuci_path="uci.user_notify.smtp.to",
-                                nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
-                                hint=_("Email address of recipient. Separate multiple addresses by spaces."),
-                                required=True)\
-            .requires("enable_smtp", True)
+        notifications.add_field(
+            Textbox,
+            name="to",
+            label=_("Recipient's email"),
+            nuci_path="uci.user_notify.smtp.to",
+            nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
+            hint=_("Email address of recipient. Separate multiple addresses by spaces."),
+            required=True
+        ).requires("enable_smtp", True)
 
         # sender's name for CZ.NIC SMTP only
-        notifications.add_field(Textbox, name="sender_name", label=_("Sender's name"),
-                                hint=_("Name of the sender - will be used as a part of the sender's email address before the \"at\" sign."),
-                                nuci_path="uci.user_notify.smtp.sender_name",
-                                validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
-                                required=True)\
+        notifications.add_field(
+            Textbox,
+            name="sender_name",
+            label=_("Sender's name"),
+            hint=_("Name of the sender - will be used as a part of the "
+                   "sender's email address before the \"at\" sign."),
+            nuci_path="uci.user_notify.smtp.sender_name",
+            validators=[validators.RegExp(_("Sender's name can contain only "
+                                            "alphanumeric characters, dots "
+                                            "and underscores."),
+                                          r"^[0-9a-zA-Z_\.-]+$")],
+            required=True
+        )\
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "1")
 
@@ -645,9 +686,9 @@ class NotificationsHandler(BaseConfigHandler):
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "0")
         smtp.add_field(Number, name="port", label=_("Server port"),
-                                nuci_path="uci.user_notify.smtp.port",
-                                validators=[validators.Integer()],
-                                required=True)\
+                       nuci_path="uci.user_notify.smtp.port",
+                       validators=[validators.Integer()],
+                       required=True) \
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "0")
 
@@ -657,8 +698,8 @@ class NotificationsHandler(BaseConfigHandler):
             ("starttls", _("STARTTLS")),
         )
         smtp.add_field(Dropdown, name="security", label=_("Security"),
-                                nuci_path="uci.user_notify.smtp.security",
-                                args=SECURITY_OPTIONS, default="none")\
+                       nuci_path="uci.user_notify.smtp.security",
+                       args=SECURITY_OPTIONS, default="none") \
             .requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
         smtp.add_field(Textbox, name="username", label=_("Username"),

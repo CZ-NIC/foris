@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-10 14:09+0200\n"
+"POT-Creation-Date: 2014-12-02 16:51+0100\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -96,6 +96,22 @@ msgstr "O routeru"
 msgid "Home page"
 msgstr "Hlavní stránka"
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Průvodce nastavením - krok %s"
+
+msgid "Connectivity test"
+msgstr "Test připojení"
+
+msgid "System update"
+msgstr "Kontrola aktualizací"
+
+msgid "The password you entered was not valid."
+msgstr "Vámi zadané heslo je neplatné."
+
 msgid "News"
 msgstr "Novinky"
 
@@ -114,22 +130,6 @@ msgstr "%(notification)s z %(created_at)s"
 
 msgid "Notification"
 msgstr "Upozornění"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
-
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Průvodce nastavením - krok %s"
-
-msgid "Connectivity test"
-msgstr "Test připojení"
-
-msgid "System update"
-msgstr "Kontrola aktualizací"
-
-msgid "The password you entered was not valid."
-msgstr "Vámi zadané heslo je neplatné."
 
 msgid "Password"
 msgstr "Heslo"
@@ -542,12 +542,12 @@ msgid ""
 msgstr ""
 "Updater je služba systému TurrisOS, která udržuje nainstalovaný software "
 "aktuální. Kromě běžných balíků, které jsou součástí systému, si můžete "
-"vybrat další balíky programů, které budou nainstalovány na router. "
-"Instalaci těchto balíků je možné povolit v následujícím seznamu. Mějte "
-"však na vědomí, že jsou Updaterem aktualizovány pouze ty programy, které "
-"jsou součástí TurrisOS nebo byly nainstalovány v rámci instalace z vybraných "
-"balíků. Software, který jste instalovali ručně nebo prostřednictvím opkg, "
-"Updaterem spravován není."
+"vybrat další balíky programů, které budou nainstalovány na router. Instalaci "
+"těchto balíků je možné povolit v následujícím seznamu. Mějte však na vědomí, "
+"že jsou Updaterem aktualizovány pouze ty programy, které jsou součástí "
+"TurrisOS nebo byly nainstalovány v rámci instalace z vybraných balíků. "
+"Software, který jste instalovali ručně nebo prostřednictvím opkg, Updaterem "
+"spravován není."
 
 msgid "Hint"
 msgstr "Nápověda"
