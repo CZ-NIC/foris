@@ -322,6 +322,15 @@ class WizardStep8(WizardStepMixin, WifiHandler):
     next_step_allowed = 9
     is_final_step = True
 
+    def get_form(self):
+        form = super(WizardStep8, self).get_form()
+
+        if not form:
+            # enable next step if no WiFi cards were detected
+            self.allow_next_step()
+
+        return form
+
 
 class WizardStep9(WizardStepMixin, BaseConfigHandler):
     """
