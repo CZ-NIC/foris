@@ -19,7 +19,6 @@
 import gettext
 import logging
 import os
-import sys
 
 # 3rd party
 from beaker.middleware import SessionMiddleware
@@ -30,6 +29,7 @@ from ncclient.operations import TimeoutExpiredError, RPCError
 # local
 from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option
+from nuci.modules.user_notify import Severity
 from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from utils.bottle_csrf import update_csrf_token, CSRFValidationError
 from utils import messages
@@ -237,6 +237,28 @@ def disable_caching(authenticated_only=True):
         bottle.response.headers['Cache-Control'] = "no-store, no-cache, must-revalidate, " \
                                                    "no-transform, max-age=0, post-check=0, pre-check=0"
         bottle.response.headers['Pragma'] = "no-cache"
+
+
+def make_notification_title(notification):
+    """
+    Helper function for creating of human-readable notification title.
+
+    :param notification: notification to create title for
+    :return: translated string with notification title
+    """
+    notification_titles = {
+        Severity.NEWS: _("News"),
+        Severity.UPDATE: _("Update"),
+        Severity.ERROR: _("Error"),
+    }
+
+    # minor abuse of gettext follows...
+    locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
+
+    return _("%(notification)s from %(created_at)s") % dict(
+        notification=notification_titles.get(notification.severity.value, _("Notification")),
+        created_at=locale_date
+    )
 
 
 def init_foris_app(app):

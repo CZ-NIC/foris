@@ -17,7 +17,7 @@
 from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
-from foris import gettext_dummy as gettext, ugettext as _
+from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
@@ -334,6 +334,7 @@ class WizardStep9(WizardStepMixin, BaseConfigHandler):
         registration = client.get_registration()
         # show only restart notifications
         kwargs['notifications'] = client.get_messages().restarts
+        kwargs['make_notification_title'] = make_notification_title
         if registration:
             return self.default_template(code=registration.value, **kwargs)
         else:
