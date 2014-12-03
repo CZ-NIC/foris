@@ -76,6 +76,10 @@ class ForisForm(ForisFormElement):
         return filtered
 
     @property
+    def nuci_config(self):
+        return self._nuci_config
+
+    @property
     def data(self):
         """
         Data are union of defaults + nuci values + request data.
@@ -155,9 +159,19 @@ class ForisForm(ForisFormElement):
             if field.nuci_path:
                 value = self._nuci_config.find_child(field.nuci_path)
                 if value:
-                    self._nuci_data[field.name] = field.nuci_preproc(value)
-            elif field.nuci_path:
-                NotImplementedError("Cannot map value from Nuci: '%s'" % field.nuci_path)
+                    if not field.nuci_preproc:
+                        preprocessed = value.value
+                    else:
+                        preprocessed = field.nuci_preproc(value)
+                    # update if result is not None
+                    if preprocessed is not None:
+                        self._nuci_data[field.name] = preprocessed
+            elif field.nuci_preproc:
+                # we have preproc method, but no path - just pass all the data to preproc function
+                preprocessed = field.nuci_preproc(self._nuci_config)
+                # update if result is not None
+                if preprocessed is not None:
+                    self._nuci_data[field.name] = preprocessed
 
     def add_section(self, *args, **kwargs):
         """
@@ -268,7 +282,7 @@ class Section(ForisFormElement):
 
 class Field(ForisFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
-                 nuci_preproc=lambda val: val.value, validators=None, hint="", **kwargs):
+                 nuci_preproc=None, validators=None, hint="", **kwargs):
         """
 
         :param main_form: parent form of this field
