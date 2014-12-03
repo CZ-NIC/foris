@@ -244,6 +244,21 @@ class EqualTo(Validator):
         return data[self._field1] == data[self._field2]
 
 
+class RequiredWithOtherFields(Validator):
+    validate_with_context = True
+
+    def __init__(self, fields, message):
+        self._fields = fields
+        super(RequiredWithOtherFields, self).__init__(message)
+
+    def valid(self, data):
+        fields_data = [data[field] for field in self._fields]
+
+        if any(fields_data):
+            return all(fields_data)
+        return True
+
+
 def validators_as_data_dict(validators):
     data = {}
     for v in validators:

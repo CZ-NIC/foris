@@ -286,15 +286,27 @@ class WanHandler(BaseConfigHandler):
                                nuci_preproc=get_smrtd_vlan,
                                validators=[validators.InRange(1, 4095)])\
                 .requires("use_smrt", True)
-            wan_main.add_field(Textbox, name="smrt_vpi", label=_("VPI"),
-                               nuci_path="uci.smrtd.eth2.connections",
-                               nuci_preproc=get_smrtd_param("VPI"),
-                               validators=[validators.InRange(0, 255)]) \
+
+            vpi_vci_validator = validators.RequiredWithOtherFields(
+                ("smrt_vpi", "smrt_vci"),
+                _("Both VPI and VCI must be filled or both must be empty.")
+            )
+
+            wan_main.add_field(
+                Textbox, name="smrt_vpi", label=_("VPI"),
+                nuci_path="uci.smrtd.eth2.connections",
+                nuci_preproc=get_smrtd_param("VPI"),
+                validators=[validators.InRange(0, 255),
+                            vpi_vci_validator]
+            ) \
                 .requires("use_smrt", True)
-            wan_main.add_field(Textbox, name="smrt_vci", label=_("VCI"),
-                               nuci_path="uci.smrtd.eth2.connections",
-                               nuci_preproc=get_smrtd_param("VCI"),
-                               validators=[validators.InRange(32, 65535)]) \
+            wan_main.add_field(
+                Textbox, name="smrt_vci", label=_("VCI"),
+                nuci_path="uci.smrtd.eth2.connections",
+                nuci_preproc=get_smrtd_param("VCI"),
+                validators=[validators.InRange(32, 65535),
+                            vpi_vci_validator]
+            )\
                 .requires("use_smrt", True)
 
         # custom MAC
