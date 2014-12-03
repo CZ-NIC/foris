@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import logging
+import re
 
 import bottle
 
@@ -144,7 +145,7 @@ class WanHandler(BaseConfigHandler):
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data,
-                                  filter=create_config_filter("network"))
+                                  filter=create_config_filter("network", "smrtd"))
         wan_main = wan_form.add_section(
             name="set_wan",
             title=_(self.userfriendly_title),
@@ -153,7 +154,6 @@ class WanHandler(BaseConfigHandler):
                           "provider. Also, in case there is a cable or DSL modem connecting your "
                           "router to the network, it is usually not necessary to change this "
                           "setting."))
-
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
         WAN_PPPOE = "pppoe"
@@ -189,6 +189,7 @@ class WanHandler(BaseConfigHandler):
             except IndexError:
                 return default
 
+        # DNS servers
         wan_main.add_field(Textbox, name="dns1", label=_("DNS server 1"),
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 0),
@@ -230,6 +231,7 @@ class WanHandler(BaseConfigHandler):
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
 
+        # xDSL settings
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
                            nuci_path="uci.network.wan.username")\
             .requires("proto", WAN_PPPOE)
@@ -241,6 +243,61 @@ class WanHandler(BaseConfigHandler):
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
 
+        # enable SMRT settings only if smrtd config is present
+        has_smrtd = wan_form.nuci_config.find_child("uci.smrtd") is not None
+
+        if has_smrtd:
+            wan_main.add_field(Hidden, name="has_smrtd", default="1")
+            wan_main.add_field(Checkbox, name="use_smrt", label=_("Use SMRT"),
+                               nuci_path="uci.smrtd.global.enabled",
+                               nuci_preproc=lambda val: bool(int(val.value)))\
+                .requires("proto", WAN_PPPOE)
+
+            def get_smrtd_param(param_name):
+                """Helper function for getting SMRTd params for "connections" list."""
+                def wrapped(conn_list):
+                    # internet connection must be always first list element
+                    vlan_id, vpi, vci = (conn_list.children[0].content.split(" ")
+                                         if conn_list else (None, None, None))
+                    if param_name == "VPI":
+                        return vpi
+                    elif param_name == "VCI":
+                        return vci
+                    elif param_name == "VLAN":
+                        return vlan_id
+                    raise ValueError("Unknown SMRTd connection parameter.")
+                return wrapped
+
+            def get_smrtd_vlan(data):
+                """Helper function for getting VLAN number from Uci data."""
+                ifname = data.find_child("uci.network.wan.ifname")
+                if ifname:
+                    ifname = ifname.value
+                    matches = re.match("eth2.(\d+)", ifname)
+                    if matches:
+                        return matches.group(1)
+
+                connections = data.find_child("uci.smrtd.eth2.connections")
+                result = get_smrtd_param("VLAN")(connections)
+                return result
+
+            # 802.1Q VLAN number is 12-bit, 0x0 and 0xFFF reserved
+            wan_main.add_field(Textbox, name="smrt_vlan", label=_("xDSL VLAN number"),
+                               nuci_preproc=get_smrtd_vlan,
+                               validators=[validators.InRange(1, 4095)])\
+                .requires("use_smrt", True)
+            wan_main.add_field(Textbox, name="smrt_vpi", label=_("VPI"),
+                               nuci_path="uci.smrtd.eth2.connections",
+                               nuci_preproc=get_smrtd_param("VPI"),
+                               validators=[validators.InRange(0, 255)]) \
+                .requires("use_smrt", True)
+            wan_main.add_field(Textbox, name="smrt_vci", label=_("VCI"),
+                               nuci_path="uci.smrtd.eth2.connections",
+                               nuci_preproc=get_smrtd_param("VCI"),
+                               validators=[validators.InRange(32, 65535)]) \
+                .requires("use_smrt", True)
+
+        # custom MAC
         wan_main.add_field(Checkbox, name="custom_mac", label=_("Custom MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            nuci_preproc=lambda val: bool(val.value),
@@ -256,11 +313,11 @@ class WanHandler(BaseConfigHandler):
 
         def wan_form_cb(data):
             uci = Uci()
-            config = Config("network")
-            uci.add(config)
+            network = Config("network")
+            uci.add(network)
 
             wan = Section("wan", "interface")
-            config.add(wan)
+            network.add(wan)
 
             wan.add(Option("proto", data['proto']))
             if data['custom_mac'] is True:
@@ -289,6 +346,39 @@ class WanHandler(BaseConfigHandler):
                     wan.add_removal(Option("ip6addr", None))
                     wan.add_removal(Option("ip6gw", None))
                     wan.add_removal(Option("ip6prefix", None))
+
+            if has_smrtd:
+                smrtd = Config("smrtd")
+                uci.add(smrtd)
+
+                smrt_vlan = data.get("smrt_vlan")
+                use_smrt = data.get("use_smrt", False)
+                wan_ifname = "eth2"
+
+                eth2 = Section("eth2", "interface")
+                smrtd.add(eth2)
+                eth2.add(Option("name", "eth2"))
+
+                if use_smrt:
+                    if not smrt_vlan:
+                        # "proprietary" number - and also a common VLAN ID in CZ
+                        smrt_vlan = "848"
+                    wan_ifname += ".%s" % smrt_vlan
+
+                vpi, vci = data.get("smrt_vpi"), data.get("smrt_vci")
+                connections = List("connections")
+                if vpi and vci:
+                    eth2.add(connections)
+                    connections.add(Value(1, "%s %s %s" % (smrt_vlan, vpi, vci)))
+                else:
+                    eth2.add_removal(connections)
+
+                smrtd_global = Section("global", "global")
+                smrtd.add(smrtd_global)
+                smrtd_global.add(Option("enabled", use_smrt))
+
+                # set correct ifname for WAN - must be changed when disabling SMRT
+                wan.add(Option("ifname", wan_ifname))
 
             # set interface for ucollect to listen on
             ucollect = Config("ucollect")
