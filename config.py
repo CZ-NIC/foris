@@ -329,7 +329,7 @@ def config_page_post(page_name):
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
     return config_page.render(config_pages=config_page_map,
-                              active_handler_key=page_name)
+                              active_config_page_key=page_name)
 
 
 @app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action")
