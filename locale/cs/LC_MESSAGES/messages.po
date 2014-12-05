@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-02 16:51+0100\n"
+"POT-Creation-Date: 2014-12-05 10:10+0100\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -89,6 +89,13 @@ msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
 "Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
 "poškozený."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Nastavení bylo úspěšně uloženo. Vybrané balíčky budou během chvíle "
+"nainstalovány nebo odstraněny."
 
 msgid "About"
 msgstr "O routeru"
@@ -249,6 +256,21 @@ msgstr "PAP/CHAP heslo"
 
 msgid "Enable IPv6"
 msgstr "Zapnout IPv6"
+
+msgid "Use SMRT"
+msgstr "Pužívat SMRT"
+
+msgid "xDSL VLAN number"
+msgstr "Číslo xDSL VLAN"
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr "Parametry VPI a VCI musí být vyplněny oba nebo musí být prázdné."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid "VCI"
+msgstr "VCI"
 
 msgid "Custom MAC address"
 msgstr "Vlastní MAC adresa"
