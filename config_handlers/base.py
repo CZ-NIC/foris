@@ -927,7 +927,10 @@ class UpdaterHandler(BaseConfigHandler):
                 if v and k.startswith("install_"):
                     lists.add(Value(i, k[8:]))
                     i += 1
-            pkglists.add_replace(lists)
+            if i == 0:
+                pkglists.add_removal(lists)
+            else:
+                pkglists.add_replace(lists)
 
             return "edit_config", uci
 
