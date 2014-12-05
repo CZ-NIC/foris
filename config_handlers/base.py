@@ -934,5 +934,11 @@ class UpdaterHandler(BaseConfigHandler):
 
             return "edit_config", uci
 
+        def package_lists_run_updater_cb(data):
+            logger.info("Checking for updates.")
+            client.check_updates()
+            return "none", None
+
         package_lists_form.add_callback(package_lists_form_cb)
+        package_lists_form.add_callback(package_lists_run_updater_cb)
         return package_lists_form

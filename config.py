@@ -227,6 +227,15 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
     template = "config/updater"
 
+    def save(self, *args, **kwargs):
+        result = super(UpdaterConfigPage, self).save(no_messages=True, *args, **kwargs)
+        if result:
+            messages.success(_("Configuration was successfully saved. Selected "
+                               "packages should be installed or removed shortly."))
+        else:
+            messages.warning(_("There were some errors in your input."))
+        return result
+
 
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
