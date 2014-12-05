@@ -157,11 +157,18 @@ class IPv6Prefix(Validator):
         return False
 
 
-class Integer(RegExp):
+class PositiveInteger(Validator):
     js_validator = ("type", "digits")
 
     def __init__(self):
-        super(Integer, self).__init__(_("Is not a number."), r"\d+")
+        super(PositiveInteger, self).__init__(_("Is not a number."))
+
+    def valid(self, value):
+        try:
+            int(value or 0) >= 0
+            return True
+        except ValueError:
+            return False
 
 
 class Time(RegExp):
@@ -200,7 +207,7 @@ class InRange(Validator):
 
 
 class LenRange(Validator):
-    js_validator = "rangelength"
+    js_validator = "length"
 
     def __init__(self, low, high):
         self._low = low
@@ -217,7 +224,7 @@ class ByteLenRange(Validator):
     """
     Length range validator that takes each byte of string as a single character.
     """
-    js_validator = "byterangelength"
+    js_validator = "bytelength"
 
     def __init__(self, low, high):
         self._low = low

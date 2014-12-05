@@ -233,7 +233,8 @@ class WanHandler(BaseConfigHandler):
 
         # xDSL settings
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
-                           nuci_path="uci.network.wan.username")\
+                           nuci_path="uci.network.wan.username",
+                           validators=[validators.PositiveInteger()])\
             .requires("proto", WAN_PPPOE)
         wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password"),
                            nuci_path="uci.network.wan.password")\
@@ -284,7 +285,8 @@ class WanHandler(BaseConfigHandler):
             # 802.1Q VLAN number is 12-bit, 0x0 and 0xFFF reserved
             wan_main.add_field(Textbox, name="smrt_vlan", label=_("xDSL VLAN number"),
                                nuci_preproc=get_smrtd_vlan,
-                               validators=[validators.InRange(1, 4095)])\
+                               validators=[validators.PositiveInteger(),
+                                           validators.InRange(1, 4095)])\
                 .requires("use_smrt", True)
 
             vpi_vci_validator = validators.RequiredWithOtherFields(
@@ -296,7 +298,8 @@ class WanHandler(BaseConfigHandler):
                 Textbox, name="smrt_vpi", label=_("VPI"),
                 nuci_path="uci.smrtd.eth2.connections",
                 nuci_preproc=get_smrtd_param("VPI"),
-                validators=[validators.InRange(0, 255),
+                validators=[validators.PositiveInteger(),
+                            validators.InRange(0, 255),
                             vpi_vci_validator]
             ) \
                 .requires("use_smrt", True)
@@ -304,7 +307,8 @@ class WanHandler(BaseConfigHandler):
                 Textbox, name="smrt_vci", label=_("VCI"),
                 nuci_path="uci.smrtd.eth2.connections",
                 nuci_preproc=get_smrtd_param("VCI"),
-                validators=[validators.InRange(32, 65535),
+                validators=[validators.PositiveInteger(),
+                            validators.InRange(32, 65535),
                             vpi_vci_validator]
             )\
                 .requires("use_smrt", True)
@@ -789,7 +793,7 @@ class NotificationsHandler(BaseConfigHandler):
             .requires("use_turris_smtp", "0")
         smtp.add_field(Number, name="port", label=_("Server port"),
                        nuci_path="uci.user_notify.smtp.port",
-                       validators=[validators.Integer()],
+                       validators=[validators.PositiveInteger()],
                        required=True) \
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "0")
@@ -820,7 +824,8 @@ class NotificationsHandler(BaseConfigHandler):
                          hint=_("Number of days that must pass between receiving the request "
                                 "for restart and the automatic restart itself."),
                          nuci_path="uci.user_notify.reboot.delay",
-                         validators=[validators.InRange(0, 10)],
+                         validators=[validators.PositiveInteger(),
+                                     validators.InRange(0, 10)],
                          required=True)
         reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
                          hint=_("Time of day of automatic reboot in HH:MM format."),

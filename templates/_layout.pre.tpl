@@ -27,6 +27,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
+    %if lang() == 'cs':
+        <script src="{{ static("js/parsley.messages.cs.min.js") }}?md5=MD5SUM"></script>
+    %end
     <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>
     <script src="{{ static("js/foris.min.js") }}?md5=MD5SUM"></script>
     %if lang() == 'cs':

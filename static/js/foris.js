@@ -47,20 +47,19 @@ Foris.initialize = function () {
 Foris.initParsley = function () {
   $("form").each(function () {
     $(this).parsley({
-      namespace: "data-parsley-",
+      excluded: 'input[type=button], input[type=submit], input[type=reset], input[type=hidden], input[type=radio]',
       trigger: "keyup change paste",
       successClass: "field-validation-pass",
       errorClass: "field-validation-fail",
       errorsWrapper: '<ul class="validation-errors"></ul>',
-      errors: {
-        container: function (elem, isRadioOrCheckbox) {
-          var container = elem.parent().find(".validation-container");
-          if (container.length === 0) {
-            container = $("<div class='validation-container'></div>").appendTo(elem.parent());
-          }
-          return container;
+      errorsContainer: function (parsleyField) {
+        var container = parsleyField.$element.parent().find(".validation-container");
+        if (container.length === 0) {
+          container = $("<div class='validation-container'></div>").appendTo(parsleyField.$element.parent());
         }
+        return container;
       },
+      // TODO: removed from Parsley 2.0
       listeners: {
         onFieldSuccess: function (elem, constraints, ParsleyField) {
           elem.parent().find(".server-validation-container").remove();
