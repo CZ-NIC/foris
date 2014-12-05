@@ -404,9 +404,10 @@ class TestConfig(ForisTest):
         # select shell-utils and netutils
         form.set("install_shell-utils", True, 1)
         form.set("install_netutils", True, 1)
-
-        submit = form.submit().follow()
-        assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        with patch("nuci.client.check_updates") as check_updates_mock:
+            check_updates_mock.return_value = True
+            submit = form.submit().follow()
+            assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
         self.check_uci_val("updater.pkglists.lists", "netutils shell-utils")
 
     def test_tab_about(self):
