@@ -160,7 +160,7 @@ class WanHandler(BaseConfigHandler):
         WAN_OPTIONS = (
             (WAN_DHCP, _("DHCP (automatic configuration)")),
             (WAN_STATIC, _("Static IP address (manual configuration)")),
-            (WAN_PPPOE, _("PPPoE (for DSL bridges, etc.)")),
+            (WAN_PPPOE, _("PPPoE (for DSL bridges, modem SMRT, etc.)")),
         )
 
         # protocol
@@ -251,7 +251,10 @@ class WanHandler(BaseConfigHandler):
             wan_main.add_field(Hidden, name="has_smrtd", default="1")
             wan_main.add_field(Checkbox, name="use_smrt", label=_("Use SMRT"),
                                nuci_path="uci.smrtd.global.enabled",
-                               nuci_preproc=lambda val: bool(int(val.value)))\
+                               nuci_preproc=lambda val: bool(int(val.value)),
+                               hint=_("SMRT is Small Modem for Router Turris, a simple ADSL/VDSL "
+                                      "modem designed specially for router Turris. Enable this "
+                                      "option if you have SMRT connected to your router."))\
                 .requires("proto", WAN_PPPOE)
 
             def get_smrtd_param(param_name):
@@ -286,7 +289,11 @@ class WanHandler(BaseConfigHandler):
             wan_main.add_field(Textbox, name="smrt_vlan", label=_("xDSL VLAN number"),
                                nuci_preproc=get_smrtd_vlan,
                                validators=[validators.PositiveInteger(),
-                                           validators.InRange(1, 4095)])\
+                                           validators.InRange(1, 4095)],
+                               hint=_("VLAN number for your internet connection. Your ISP might "
+                                      "have provided you this number. If you have VPI and VCI "
+                                      "numbers instead, leave this field empty, a default value "
+                                      "will be used automatically."))\
                 .requires("use_smrt", True)
 
             vpi_vci_validator = validators.RequiredWithOtherFields(
@@ -300,7 +307,10 @@ class WanHandler(BaseConfigHandler):
                 nuci_preproc=get_smrtd_param("VPI"),
                 validators=[validators.PositiveInteger(),
                             validators.InRange(0, 255),
-                            vpi_vci_validator]
+                            vpi_vci_validator],
+                hint=_("Virtual Path Identifier (VPI) is a parameter that you might have received "
+                       "from your ISP. If you have a VLAN number instead, leave this field empty. "
+                       "You need to fill in both VPI and VCI together.")
             ) \
                 .requires("use_smrt", True)
             wan_main.add_field(
@@ -309,7 +319,10 @@ class WanHandler(BaseConfigHandler):
                 nuci_preproc=get_smrtd_param("VCI"),
                 validators=[validators.PositiveInteger(),
                             validators.InRange(32, 65535),
-                            vpi_vci_validator]
+                            vpi_vci_validator],
+                hint=_("Virtual Circuit Identifier (VCI) is a parameter that you might have "
+                       "received from your ISP. If you have a VLAN number instead, leave this "
+                       "field empty. You need to fill in both VPI and VCI together.")
             )\
                 .requires("use_smrt", True)
 
