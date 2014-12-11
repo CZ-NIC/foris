@@ -399,7 +399,7 @@ class WanHandler(BaseConfigHandler):
                 if vpi and vci:
                     eth2.add(connections)
                     connections.add(Value(1, "%s %s %s" % (smrt_vlan, vpi, vci)))
-                else:
+                elif use_smrt:
                     eth2.add_removal(connections)
 
                 smrtd_global = Section("global", "global")
