@@ -34,6 +34,9 @@ def redirect_unauthenticated(redirect_url=None):
     redirect_url = redirect_url or "/"
     no_auth = bottle.default_app().config.get("no_auth", False)
     if not no_auth and not is_user_authenticated():
+        from foris import ugettext as _
+        import messages
+        messages.info(_("You have been logged out due to longer inactivity."))
         if bottle.request.is_xhr:
             # "raise" JSON response if requested by XHR
             res = bottle.response.copy(cls=bottle.HTTPResponse)
