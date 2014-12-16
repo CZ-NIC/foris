@@ -145,7 +145,18 @@ Foris.applySVGFallback = function() {
 Foris.updateForm = function (form) {
   var serialized = form.serializeArray();
   var idSelector = form.attr("id") ? " #" + form.attr("id") : "";
-  form.load(form.attr("action") + idSelector, serialized, function () {
+  form.load(form.attr("action") + idSelector, serialized, function (response, status, xhr) {
+    try {
+      var jsonResponse = JSON.parse(response);
+      if (jsonResponse.loggedOut && jsonResponse.loginUrl) {
+        window.location.replace(jsonResponse.loginUrl);
+        return;
+      }
+    }
+    catch (err) {
+      // SyntaxError when response is not JSON - do nothing
+    }
+
     $(this).children(':first').unwrap();
     Foris.initParsley();
   });
