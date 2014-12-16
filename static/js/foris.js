@@ -55,7 +55,15 @@ Foris.initParsley = function () {
       errorsContainer: function (parsleyField) {
         var container = parsleyField.$element.parent().find(".validation-container");
         if (container.length === 0) {
-          container = $("<div class='validation-container'></div>").appendTo(parsleyField.$element.parent());
+          // if field is not validated by Parsley
+          if (parsleyField.constraints && !parsleyField.constraints.length) {
+            // we must return something...
+            container = $("<div></div>");
+          }
+          else {
+            container = $("<div class='validation-container'></div>")
+                .appendTo(parsleyField.$element.parent());
+          }
         }
         return container;
       }
