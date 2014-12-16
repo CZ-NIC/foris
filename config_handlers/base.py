@@ -233,8 +233,7 @@ class WanHandler(BaseConfigHandler):
 
         # xDSL settings
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
-                           nuci_path="uci.network.wan.username",
-                           validators=[validators.PositiveInteger()])\
+                           nuci_path="uci.network.wan.username")\
             .requires("proto", WAN_PPPOE)
         wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password"),
                            nuci_path="uci.network.wan.password")\
