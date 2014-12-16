@@ -15,7 +15,7 @@
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
 <div id="wizard-header">
-    <img src="{{ static("/img/logo-turris.png") }}" alt="{{ trans("Project:Turris") }}">
+    <img src="{{ static("/img/logo-turris.svg") }}" alt="{{ trans("Project:Turris") }}" width="295">
     <div class="wizard-steps">
     %if can_skip_wizard:
         <a href="{{ url("wizard_skip") }}">{{ trans("Skip wizard") }}</a>

@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-10 15:43+0200\n"
+"POT-Creation-Date: 2014-12-16 15:24+0100\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -90,11 +90,25 @@ msgstr ""
 "Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
 "poškozený."
 
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Nastavení bylo úspěšně uloženo. Vybrané balíčky budou během chvíle "
+"nainstalovány nebo odstraněny."
+
 msgid "About"
 msgstr "O routeru"
 
+msgid "Home page"
+msgstr "Hlavní stránka"
+
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Průvodce nastavením - krok %s"
 
 msgid "Connectivity test"
 msgstr "Test připojení"
@@ -104,6 +118,25 @@ msgstr "Kontrola aktualizací"
 
 msgid "The password you entered was not valid."
 msgstr "Vámi zadané heslo je neplatné."
+
+msgid "News"
+msgstr "Novinky"
+
+msgid "Update"
+msgstr "Aktualizace"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s z %(created_at)s"
+
+msgid "Notification"
+msgstr "Upozornění"
 
 msgid "Password"
 msgstr "Heslo"
@@ -166,8 +199,8 @@ msgstr "DHCP (automatická konfigurace)"
 msgid "Static IP address (manual configuration)"
 msgstr "Statická IP adresa (manuální konfigurace)"
 
-msgid "PPPoE (for DSL bridges, etc.)"
-msgstr "PPPoE (pro DSL bridge, atp.)"
+msgid "PPPoE (for DSL bridges, modem SMRT, etc.)"
+msgstr "PPPoE (pro DSL bridge, modem SMRT, atp.)"
 
 msgid "Protocol"
 msgstr "Protokol"
@@ -223,6 +256,60 @@ msgstr "PAP/CHAP heslo"
 
 msgid "Enable IPv6"
 msgstr "Zapnout IPv6"
+
+msgid "Use SMRT"
+msgstr "Používat SMRT"
+
+msgid ""
+"SMRT is Small Modem for Router Turris, a simple ADSL/VDSL modem designed "
+"specially for router Turris. Enable this option if you have SMRT connected "
+"to your router."
+msgstr ""
+"SMRT (Small Modem for Router Turris) je jednoduchý ADSL/VDSL modem navržený "
+"speciálně pro router Turris. Povolte tuto volbu, pokud máte ke svému routeru "
+"tento modem připojený."
+
+msgid "xDSL VLAN number"
+msgstr "Číslo xDSL VLAN"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"Číslo VLAN pro Vaše internetové připojení. Váš poskytovatel Vám mohl dodat "
+"tento parametr. Pokud jste namísto toho obdrželi parametry VPI a VCI, můžete "
+"toto pole ponechat prázdné, na jeho místo bude automaticky doplněna výchozí "
+"hodnota."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr "Parametry VPI a VCI musí být vyplněny oba nebo musí být prázdné."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Path Identifier (VPI) je parametr připojení, který jste mohli "
+"obdržet od Vašeho poskytovatele. Pokud jste namísto toho dostali číslo VLAN, "
+"ponechte toto pole prázdné. V opačném případě je nutné vyplnit parametr VPI "
+"společně s parametrem VCI."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Circuit Identifier (VCI) je parametr připojení, který jste mohli "
+"obdržet od Vašeho poskytovatele. Pokud jste namísto toho dostali číslo VLAN, "
+"ponechte toto pole prázdné. V opačném případě je nutné vyplnit parametr VCI "
+"společně s parametrem VPI."
 
 msgid "Custom MAC address"
 msgstr "Vlastní MAC adresa"
@@ -502,6 +589,30 @@ msgstr "Čas restartu"
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Denní čas automatického restartu ve formátu HH:MM."
 
+msgid "Updater"
+msgstr "Updater"
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"standard standard installation, you can optionally select lists of "
+"additional software that'd be installed on the router. This software can be "
+"selected from the following list. Please note that only software that is "
+"part of TurrisOS or that has been installed from a package list is "
+"maintained by Updater. Software that has been installed manually or using "
+"opkg is not affected."
+msgstr ""
+"Updater je služba systému TurrisOS, která udržuje nainstalovaný software "
+"aktuální. Kromě běžných balíků, které jsou součástí systému, si můžete "
+"vybrat další balíky programů, které budou nainstalovány na router. Instalaci "
+"těchto balíků je možné povolit v následujícím seznamu. Mějte však na vědomí, "
+"že jsou Updaterem aktualizovány pouze ty programy, které jsou součástí "
+"TurrisOS nebo byly nainstalovány v rámci instalace z vybraných balíků. "
+"Software, který jste instalovali ručně nebo prostřednictvím opkg, Updaterem "
+"spravován není."
+
+msgid "You have been logged out due to longer inactivity."
+msgstr "Byl jste odhlášen z důvodu delší doby nečinnosti."
+
 msgid "Hint"
 msgstr "Nápověda"
 
@@ -510,6 +621,9 @@ msgstr "Restartovat nyní"
 
 msgid "Dismiss"
 msgstr "Zahodit"
+
+msgid "Language"
+msgstr "Jazyk"
 
 msgid "Project:Turris"
 msgstr "Project:Turris"
@@ -536,24 +650,24 @@ msgstr ""
 msgid "Turris router administration interface"
 msgstr "Administrační rozhraní routeru Turris"
 
-msgid "Language"
-msgstr "Jazyk"
-
 msgid "Discard changes"
 msgstr "Zahodit změny"
 
 msgid "Save changes"
 msgstr "Uložit změny"
 
-msgid "Settings"
-msgstr "Nastavení"
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - administrační rozhraní routeru Turris"
+
+msgid "Menu"
+msgstr "Menu"
 
 msgid ""
 "Welcome to the Turris administration site. Please, choose a config section "
-"you wish to change from the above selection."
+"you wish to change from the menu."
 msgstr ""
-"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím sekci, "
-"kterou chcete upravovat, z možností uvedených výše."
+"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím v menu "
+"sekci nastavení, kterou chcete upravovat."
 
 msgid "No new messages."
 msgstr "Žádné nové zprávy."
@@ -602,9 +716,6 @@ msgstr "Získat registrační kód"
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
-
-msgid "DNS setup"
-msgstr "Nastavení DNS"
 
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
@@ -790,9 +901,6 @@ msgstr "Probíhá test internetového připojení."
 msgid "Internet connectivity test passed without error."
 msgstr "Test připojení k internetu proběhl bez chyb."
 
-msgid "Error"
-msgstr "Chyba"
-
 msgid ""
 "Your internet connection has network connectivity but DNS resolving does not "
 "work. This is probably a problem with your ISP."
@@ -977,3 +1085,9 @@ msgstr "Musí být z rozsahu %(low)s - %(high)s."
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Délka musí být od %(low)s do %(high)s znaků."
+
+#~ msgid "Settings"
+#~ msgstr "Nastavení"
+
+#~ msgid "DNS setup"
+#~ msgstr "Nastavení DNS"

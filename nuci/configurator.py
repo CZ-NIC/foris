@@ -22,7 +22,6 @@ __all__ = ['add_config_update', 'commit']
 logger = logging.getLogger("nuci.configurator")
 
 config_updates = []
-field_updates = {}
 
 
 def add_config_update(yin_element):
@@ -36,12 +35,13 @@ def add_config_update(yin_element):
 
 
 def clean_updates():
-    global config_updates, field_updates
+    global config_updates
     config_updates = []
-    field_updates = {}
 
 
 def commit():
-    logger.debug("Commiting changes.")
-    client.edit_config_multiple([cu.get_xml() for cu in config_updates])
-    clean_updates()
+    logger.debug("Commiting changes (%s config updates).", len(config_updates))
+    try:
+        client.edit_config_multiple([cu.get_xml() for cu in config_updates])
+    finally:
+        clean_updates()

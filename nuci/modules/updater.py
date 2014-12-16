@@ -14,20 +14,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from xml.etree import ElementTree as ET
+
 from base import YinElement
-from xml.etree import cElementTree as ET
+from ..utils import LocalizableTextValue
 
 
 class Updater(YinElement):
     tag = "updater"
     NS_URI = "http://www.nic.cz/ns/router/updater"
 
-    def __init__(self, running, failed, last_activity, offline_pending):
+    def __init__(self, running, failed, last_activity, offline_pending, pkg_list):
         super(Updater, self).__init__()
         self.running = running
         self.failed = failed
         self.last_activity = last_activity
         self.offline_pending = offline_pending
+        self.pkg_list = pkg_list
 
     @staticmethod
     def from_element(element):
@@ -45,11 +48,42 @@ class Updater(YinElement):
                     last_activity.append(('install', activity_elem.text))
                 elif activity_elem.tag == Updater.qual_tag("remove"):
                     last_activity.append(('remove', activity_elem.text))
-        return Updater(running, failed, last_activity, offline_pending)
+        pkg_list_elements = element.findall(Updater.qual_tag("pkg-list"))
+        pkg_list = []
+        for item_el in pkg_list_elements:
+            pkg_list.append(PackageListItem.from_element(item_el))
+
+        return Updater(running, failed, last_activity, offline_pending, pkg_list)
 
     @property
     def key(self):
         return "updater"
+
+
+class PackageListItem(object):
+    def __init__(self, name, title, description):
+        self.name = name
+        self.title = title
+        self.description = description
+
+    @staticmethod
+    def from_element(element):
+        xml_lang_attr = "{http://www.w3.org/XML/1998/namespace}lang"
+
+        name = element.find(Updater.qual_tag("name")).text
+        title_els = element.findall(Updater.qual_tag("title"))
+        title = LocalizableTextValue()
+        for title_el in title_els:
+            lang = title_el.get(xml_lang_attr)
+            title.set_translation(lang, title_el.text)
+
+        description_els = element.findall(Updater.qual_tag("description"))
+        description = LocalizableTextValue()
+        for description_el in description_els:
+            lang = description_el.get(xml_lang_attr)
+            description.set_translation(lang, description_el.text)
+
+        return PackageListItem(name, title, description)
 
 ####################################################################################################
 ET.register_namespace("updater", Updater.NS_URI)

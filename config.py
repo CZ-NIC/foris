@@ -19,7 +19,7 @@ import bottle
 from datetime import datetime
 import os
 from config_handlers import *
-from foris import gettext_dummy as gettext, ugettext as _
+from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from nuci import client
 from nuci.client import filters
@@ -47,10 +47,7 @@ class ConfigPageMixin(object):
         :param action:
         :return: object that can be passed as HTTP response to Bottle
         """
-        try:
-            return super(ConfigPageMixin, self).call_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No actions specified for this page.")
+        raise bottle.HTTPError(404, "No actions specified for this page.")
 
     def call_ajax_action(self, action):
         """Call AJAX action.
@@ -58,13 +55,11 @@ class ConfigPageMixin(object):
         :param action:
         :return: dict of picklable AJAX results
         """
-        try:
-            return super(ConfigPageMixin, self).call_ajax_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
-        return template(self.template, **kwargs)
+        return template(self.template, title=_(kwargs.pop('title', self.userfriendly_title)),
+                        **kwargs)
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm
@@ -171,7 +166,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             bottle.redirect(reverse("config_page", page_name="maintenance"))
         messages.warning(_("There were some errors in your input."))
         return super(MaintenanceConfigPage, self).render(notifications_form=handler.form,
-                                                         config_pages=config_page_map.display_names())
+                                                         config_pages=config_page_map)
 
     def _action_test_notifications(self):
         if bottle.request.method != 'POST':
@@ -229,6 +224,19 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         return result
 
 
+class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
+    template = "config/updater"
+
+    def save(self, *args, **kwargs):
+        result = super(UpdaterConfigPage, self).save(no_messages=True, *args, **kwargs)
+        if result:
+            messages.success(_("Configuration was successfully saved. Selected "
+                               "packages should be installed or removed shortly."))
+        else:
+            messages.warning(_("There were some errors in your input."))
+        return result
+
+
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     userfriendly_title = gettext("About")
@@ -252,14 +260,19 @@ class AboutConfigPage(ConfigPageMixin):
         return self.default_template(stats=stats.data, serial=serial, **kwargs)
 
 
+class VirtualConfigPage(ConfigPageMixin):
+    def __init__(self, title):
+        self.userfriendly_title = title
+
+
 class ConfigPageMapItems(OrderedDict):
-    def display_names(self):
-        return [{'slug': k, 'name': self[k].userfriendly_title} for k in self.keys()]
+    pass
 
 
 # names of handlers used in their URL
 # use dash-separated names, underscores in URL are ugly
 config_page_map = ConfigPageMapItems((
+    ('', VirtualConfigPage(gettext("Home page"))),
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
     ('dns', DNSConfigPage),
@@ -267,6 +280,7 @@ config_page_map = ConfigPageMapItems((
     ('wifi', WifiConfigPage),
     ('system-password', SystemPasswordConfigPage),
     ('maintenance', MaintenanceConfigPage),
+    ('updater', UpdaterConfigPage),
     ('about', AboutConfigPage),
 ))
 
@@ -282,7 +296,9 @@ def get_config_page(page_name):
 @login_required
 def index():
     notifications = client.get_messages()
-    return template("config/index", config_pages=config_page_map.display_names(),
+    return template("config/index", config_pages=config_page_map, title=_("Home page"),
+                    make_notification_title=make_notification_title,
+                    active_config_page_key='',
                     notifications=notifications.new)
 
 
@@ -301,7 +317,7 @@ def dismiss_notifications():
 def config_page_get(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
-    return config_page.render(config_pages=config_page_map.display_names(),
+    return config_page.render(config_pages=config_page_map,
                               active_config_page_key=page_name)
 
 
@@ -321,8 +337,8 @@ def config_page_post(page_name):
         messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
-    return config_page.render(config_pages=config_page_map.display_names(),
-                              active_handler_key=page_name)
+    return config_page.render(config_pages=config_page_map,
+                              active_config_page_key=page_name)
 
 
 @app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action")

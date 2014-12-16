@@ -17,7 +17,7 @@
 from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
-from foris import gettext_dummy as gettext, ugettext as _
+from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
@@ -54,10 +54,7 @@ class WizardStepMixin(object):
         :param action:
         :return: object that can be passed as HTTP response to Bottle
         """
-        try:
-            return super(WizardStepMixin, self).call_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No actions specified for this page.")
+        raise bottle.HTTPError(404, "No actions specified for this page.")
 
     def call_ajax_action(self, action):
         """Call AJAX action.
@@ -65,10 +62,7 @@ class WizardStepMixin(object):
         :param action:
         :return: dict of picklable AJAX results
         """
-        try:
-            return super(WizardStepMixin, self).call_ajax_action(action)
-        except NotImplementedError:
-            raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+        raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def allow_next_step(self):
         # this function can be used as a callback for a form
@@ -102,6 +96,8 @@ class WizardStepMixin(object):
             commit()
 
     def default_template(self, **kwargs):
+        if kwargs.get("stepnumber"):
+            kwargs['title'] = _("Configuration wizard - step %s") % kwargs['stepnumber']
         next_step_url = reverse("wizard_step", number=self.next_step_allowed)
         return template(self.template, can_skip_wizard=self.can_skip_wizard,
                         stepname=self.name, next_step_url=next_step_url, **kwargs)
@@ -225,10 +221,18 @@ class WizardStep4(WizardStepMixin, TimeHandler):
     next_step_allowed = 5
 
     def _action_ntp_update(self):
-        success = TimeHandler._action_ntp_update(self)
+        success = client.ntp_update()
         if success:
             self.nuci_write_next_step()  # allow the next step and save it to uci
         return success
+
+    def call_ajax_action(self, action):
+        if action == "ntp_update":
+            ntp_ok = self._action_ntp_update()
+            return dict(success=ntp_ok)
+        elif action == "time_form":
+            return dict(success=True, form=self.render(is_xhr=True))
+        raise ValueError("Unknown Wizard action.")
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):
@@ -320,6 +324,15 @@ class WizardStep8(WizardStepMixin, WifiHandler):
     next_step_allowed = 9
     is_final_step = True
 
+    def get_form(self):
+        form = super(WizardStep8, self).get_form()
+
+        if not form:
+            # enable next step if no WiFi cards were detected
+            self.allow_next_step()
+
+        return form
+
 
 class WizardStep9(WizardStepMixin, BaseConfigHandler):
     """
@@ -332,6 +345,7 @@ class WizardStep9(WizardStepMixin, BaseConfigHandler):
         registration = client.get_registration()
         # show only restart notifications
         kwargs['notifications'] = client.get_messages().restarts
+        kwargs['make_notification_title'] = make_notification_title
         if registration:
             return self.default_template(code=registration.value, **kwargs)
         else:

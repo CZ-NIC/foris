@@ -16,8 +16,8 @@
 
 from base import BaseConfigHandler, LanHandler, MaintenanceHandler, \
     PasswordHandler, TimeHandler, WanHandler, WifiHandler, SystemPasswordHandler, \
-    DNSHandler, NotificationsHandler
+    DNSHandler, NotificationsHandler, UpdaterHandler
 
 __all__ = ['BaseConfigHandler', 'LanHandler', 'MaintenanceHandler', 'PasswordHandler',
            'TimeHandler', 'WanHandler', 'WifiHandler', 'SystemPasswordHandler', 'DNSHandler',
-           'NotificationsHandler']
+           'NotificationsHandler', 'UpdaterHandler']

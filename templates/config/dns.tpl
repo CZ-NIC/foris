@@ -17,7 +17,6 @@
 %rebase("config/base.tpl", **locals())
 
 <div id="page-dns" class="config-page">
-    <h2>{{ trans("DNS setup") }}</h2>
      %include("_messages.tpl")
     <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can forward your DNS queries through your internet service provider's DNS resolver.") }}</p>
     <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without forwarding.") }}</p>
@@ -29,7 +28,7 @@
         <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
     </form>
 
-    <h3>{{ trans("Connection test") }}</h3>
+    <h2>{{ trans("Connection test") }}</h2>
     <p>{{! trans("Here you can test your internet connection. This test is also useful when you need to check that your DNS resolving works as expected. Remember to click on the <strong>Save</strong> button if you changed your forwarder setting.") }}</p>
     <div class="message error" id="connection-test-fail">
       {{ trans("Unable to verify network connection.") }}

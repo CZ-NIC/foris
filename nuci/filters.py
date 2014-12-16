@@ -31,12 +31,13 @@ stats = ET.Element(stats.Stats.qual_tag(stats.Stats.tag))
 messages = ET.Element(user_notify.Messages.qual_tag(user_notify.Messages.tag))
 
 
-# factory for uci configs
-def create_uci_config(config_name):
+def create_config_filter(*args):
+    """Factory method for Uci configs - creates filters for one
+    or more configs"""
     _uci = uci_raw.Uci()
-    _config = uci_raw.Config(config_name)
-    _uci.add(_config)
-    return _config.get_tree()
+    for name in args:
+        _uci.add(uci_raw.Config(name))
+    return _uci.get_xml()
 
 
-foris_config = create_uci_config("foris")
+foris_config = create_config_filter("foris")

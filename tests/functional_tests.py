@@ -1,11 +1,13 @@
 # coding=utf-8
 from subprocess import call
 from tempfile import NamedTemporaryFile
-from time import sleep
 from unittest import TestCase
 
-from nose.tools import (assert_equal, assert_not_equal, assert_in, assert_greater,
-                        assert_less, assert_true, assert_regexp_matches, timed)
+from mock import patch
+from nose.tools import (assert_equal, assert_not_equal, assert_in,
+                        assert_greater, assert_less,
+                        assert_true, assert_false,
+                        assert_regexp_matches)
 from webtest import TestApp, Upload
 
 import foris
@@ -375,6 +377,39 @@ class TestConfig(ForisTest):
         # check that reboot button is present
         assert_in('href="/config/maintenance/action/reboot"', page.body)
 
+    def test_tab_updater(self):
+        possible_lists = ["luci-controls", "nas", "printserver", "netutils",
+                          "shell-utils"]
+        default_enabled = ["luci-controls", "nas", "printserver", "netutils"]
+        # check for value from default config
+        self.check_uci_val("updater.pkglists.lists", " ".join(default_enabled))
+        page = self.app.get("/config/updater/")
+        form = page.forms['main-form']
+
+        # check that enabled lists are checked
+        for l in default_enabled:
+            enabled = form.get("install_%s" % l, index=1).checked
+            assert_true(enabled, "'%s' list should by enabled")
+
+        # check that enabled lists are not checked
+        default_disabled = set(possible_lists).difference(default_enabled)
+        for l in default_disabled:
+            enabled = form.get("install_%s" % l, index=1).checked
+            assert_false(enabled, "'%s' list should by disabled")
+
+        # disable all lists
+        for l in possible_lists:
+            form.set("install_%s" % l, False, 1)
+
+        # select shell-utils and netutils
+        form.set("install_shell-utils", True, 1)
+        form.set("install_netutils", True, 1)
+        with patch("nuci.client.check_updates") as check_updates_mock:
+            check_updates_mock.return_value = True
+            submit = form.submit().follow()
+            assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
+        self.check_uci_val("updater.pkglists.lists", "netutils shell-utils")
+
     def test_tab_about(self):
         # look for serial number
         about_page = self.app.get("/config/about/")
@@ -468,34 +503,43 @@ class TestWizard(ForisTest):
         data = res.json
         assert_true(data['success'])
 
-    @timed(40)
     def test_step_5(self):
         # This test must be @timed with some reasonable timeout to check
         # that the loop for checking updater status does not run infinitely.
         self._test_wizard_step(5)
 
         # start the updater on background - also enables next step
-        res = self.app.get("/wizard/step/5/ajax?action=run_updater")
-        assert_true(res.json['success'])
+        # mock the method for starting the updater, we don't want to really run it
+        # maybe it'd be better to patch later and test if the RPC for update is really called
+        with patch("nuci.client.check_updates") as check_updates_mock:
+            check_updates_mock.return_value = True
+            res = self.app.get("/wizard/step/5/ajax?action=run_updater")
+            assert_true(res.json['success'])
 
-        def check_updater():
-            updater_res = self.app.get("/wizard/step/5/ajax?action=updater_status")
-            data = updater_res.json
-            assert_true(data['success'])
-            return data
+        with patch("nuci.client.get_updater_status") as updater_status_mock:
+            def check_updater():
+                updater_res = self.app.get("/wizard/step/5/ajax?action=updater_status")
+                data = updater_res.json
+                assert_true(data['success'])
+                return data
 
-        check_result = check_updater()
-        while check_result['status'] == "running":
-            sleep(2)
+            # simulate running updater in "examine" state
+            updater_status_mock.return_value = "running", "examine", []
             check_result = check_updater()
+            assert_equal(check_result['status'], "running")
 
-        assert_equal(check_result['status'], "done")
+            # simulate completed update
+            updater_status_mock.return_value = "done", None, []
+            check_result = check_updater()
+            assert_equal(check_result['status'], "done")
 
     def test_step_6(self):
-        # in current testing environment, this step is always skipped
-        page = self.app.get("/wizard/step/6").maybe_follow()
-        assert_equal(page.request.path, "//wizard/step/7")
-        assert_equal(page.status_int, 200)
+        # patch updater status to always allow the next step
+        with patch("nuci.client.get_updater_status") as updater_status_mock:
+            updater_status_mock.return_value = "done", None, []
+            page = self.app.get("/wizard/step/6").maybe_follow()
+            assert_equal(page.request.path, "//wizard/step/7")
+            assert_equal(page.status_int, 200)
 
     def test_step_7(self):
         page = self._test_wizard_step(7)

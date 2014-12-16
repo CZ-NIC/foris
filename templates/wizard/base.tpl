@@ -17,16 +17,21 @@
 %if not defined('is_xhr'):
     %rebase("_layout.tpl", **locals())
 
+    %include("wizard/_language-switch.tpl")
+
+    <div id="wizard-page">
+
     %include("wizard/_header.tpl", can_skip_wizard=can_skip_wizard, stepnumber=stepnumber)
 
-%if stepname:
-    <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ trans("Step") }} {{ stepnumber }}"></div>
-%end
-    <div id="wizard-content">
+    %if stepname:
+        <div id="wizard-icon"><img src="{{ static("img/wizard/step-%s.png", stepname) }}" alt="{{ trans("Step") }} {{ stepnumber }}"></div>
+    %end
+        <div id="wizard-content">
 %end
 
-    {{! base }}
+            {{! base }}
 
 %if not defined('is_xhr'):
+        </div>
     </div>
 %end

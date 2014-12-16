@@ -16,14 +16,18 @@
 %#
 %rebase("_layout.tpl", **locals())
 
-%include("wizard/_header.tpl", can_skip_wizard=False)
+%include("wizard/_language-switch.tpl")
 
-<div id="wizard-content">
-    <h1>{{ trans("Welcome to configuration of router Turris") }}</h1>
+<div id="wizard-page">
+    %include("wizard/_header.tpl", can_skip_wizard=False)
 
-    <p>{{ trans("Before you start to use the router for the first time, it is necessary to set it up. The following simple wizard will take you through the configuration procedure. After it is finished, your router will be ready for operation.") }}</p>
-    <hr>
-    <p class="footnote">{{ trans("If you want to restore a previously saved configuration or for some other reason skip this wizard, you can do so after choosing a password in its first step.") }}</p>
+    <div id="wizard-content">
+        <h1>{{ trans("Welcome to configuration of router Turris") }}</h1>
 
-    <a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>
+        <p>{{ trans("Before you start to use the router for the first time, it is necessary to set it up. The following simple wizard will take you through the configuration procedure. After it is finished, your router will be ready for operation.") }}</p>
+        <hr>
+        <p class="footnote">{{ trans("If you want to restore a previously saved configuration or for some other reason skip this wizard, you can do so after choosing a password in its first step.") }}</p>
+
+        <a href="{{ url("wizard_step", number=1) }}" class="button-next" type="submit" name="send" class="button-arrow-right">{{ trans("Begin installation") }}</a>
+    </div>
 </div>

@@ -13,6 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+from datetime import datetime
 
 from bottle import html_escape
 
@@ -142,7 +143,7 @@ class Messages(UserNotify):
 class Message(UserNotify):
     tag = "message"
 
-    def __init__(self, message_id, body, severity, sent=False, displayed=False):
+    def __init__(self, message_id, body, severity, timestamp, sent=False, displayed=False):
         super(Message, self).__init__()
         self.id = message_id
         self.body = body or ""
@@ -150,6 +151,7 @@ class Message(UserNotify):
             self.severity = severity
         else:
             self.severity = Severity(severity)
+        self.created_at = datetime.fromtimestamp(timestamp)
         self.sent = sent
         self.displayed = displayed
 
@@ -158,10 +160,11 @@ class Message(UserNotify):
         message_id = element.find(Message.qual_tag("id")).text
         body = element.find(Message.qual_tag("body")).text
         severity = element.find(Message.qual_tag("severity")).text
+        timestamp = int(element.find(Message.qual_tag("timestamp")).text)
         sent = element.find(Message.qual_tag("sent")) is not None
         displayed = element.find(Message.qual_tag("displayed")) is not None
 
-        return Message(message_id, body, severity, sent, displayed)
+        return Message(message_id, body, severity, timestamp, sent, displayed)
 
     @property
     def escaped_body(self):

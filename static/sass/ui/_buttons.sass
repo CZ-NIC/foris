@@ -1,0 +1,91 @@
+button
+  border: none
+
+@mixin standard-button
+  display: inline-block
+  height: $button-height
+  line-height: $button-height
+  margin-bottom: 0
+  width: auto
+
+.button, button
+  +box-sizing('border-box')
+  background-color: $button-color
+  color: #fff
+  cursor: default
+  display: block
+  width: 100%
+  text-align: center
+  font:
+    size: 90%
+    weight: bold
+  height: $button-height * $button-height-touch-multiplier
+  line-height: $button-height * $button-height-touch-multiplier
+  margin: 0 0.2em 0.5em 0
+  padding: 0 1.2em 0 1.2em
+  position: relative
+  text-decoration: none
+  vertical-align: middle
+  z-index: 999
+
+  +respond-to('not-mobile', $no-query: true)
+    +standard-button
+
+  &:hover
+    background-color: $button-color-active
+    color: #fff
+
+    &:before
+      background-color: $button-color-active
+
+
+  &.grayed, &[disabled]
+    background-color: $button-color-grayed
+
+    &:hover, &:hover:before
+      background-color: lighten(desaturate($button-color-grayed, 20), 15)
+
+    &:before
+      background-color: $button-color-grayed
+
+.button-arrow-right
+  @extend .button
+
+  &:before
+    background: $highlight-color
+    border: none
+    content: " "
+    display: block
+    height: $button-height/sqrt(2)
+    width: $button-height/sqrt(2)
+    right: - $button-height / 2.8
+    position: absolute
+    top: 14%
+    +transform(rotate(45deg))
+    z-index: -1
+
+.button-arrow-left
+  @extend .button
+
+  &:before
+    background: $highlight-color
+    border: none
+    content: " "
+    display: block
+    height: $button-height/sqrt(2)
+    width: $button-height/sqrt(2)
+    left: - $button-height / 2.8
+    position: absolute
+    top: 14%
+    +transform(rotate(45deg))
+    z-index: -1
+
+.button-next
+  @extend .button-arrow-right
+  float: right
+  margin-top: 1em
+
+.button-prev
+  @extend .button-arrow-left
+  float: left
+  margin-top: 1em

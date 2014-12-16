@@ -39,37 +39,47 @@ Foris.initialize = function () {
 
   Foris.initParsley();
   Foris.initLanChangeDetection();
+  Foris.initClickableHints();
+  Foris.initSmoothScrolling();
+  Foris.applySVGFallback();
 };
 
 Foris.initParsley = function () {
   $("form").each(function () {
     $(this).parsley({
-      namespace: "data-parsley-",
+      excluded: 'input[type=button], input[type=submit], input[type=reset], input[type=hidden], input[type=radio]',
       trigger: "keyup change paste",
       successClass: "field-validation-pass",
       errorClass: "field-validation-fail",
       errorsWrapper: '<ul class="validation-errors"></ul>',
-      errors: {
-        container: function (elem, isRadioOrCheckbox) {
-          var container = elem.parent().find(".validation-container");
-          if (container.length === 0) {
-            container = $("<div class='validation-container'></div>").appendTo(elem.parent());
+      errorsContainer: function (parsleyField) {
+        var container = parsleyField.$element.parent().find(".validation-container");
+        if (container.length === 0) {
+          // if field is not validated by Parsley
+          if (parsleyField.constraints && !parsleyField.constraints.length) {
+            // we must return something...
+            container = $("<div></div>");
           }
-          return container;
+          else {
+            container = $("<div class='validation-container'></div>")
+                .appendTo(parsleyField.$element.parent());
+          }
         }
-      },
-      listeners: {
-        onFieldSuccess: function (elem, constraints, ParsleyField) {
-          elem.parent().find(".server-validation-container").remove();
-        },
-        onFieldError: function (elem, constraints, ParsleyField) {
-          elem.parent().find(".server-validation-container").remove();
-        }
+        return container;
       }
     });
-  })
-}
-;
+  });
+
+  $.listen("parsley:field:success", function(parsleyField) {
+    parsleyField.$element.parent().parent().find(".server-validation-container").remove();
+
+  });
+
+  $.listen("parsley:field:error", function(parsleyField) {
+    parsleyField.$element.parent().parent().find(".server-validation-container").remove();
+  });
+
+};
 
 Foris.initLanChangeDetection = function () {
   var lanIpChanged = false;
@@ -94,10 +104,59 @@ Foris.initLanChangeDetection = function () {
   });
 };
 
+Foris.initClickableHints = function () {
+  $(document).on("click", ".field-hint", function() {
+    var $this = $(this);
+    var hintHTML = $this.next(".hint-text");
+    if (hintHTML.length) {
+      if (hintHTML.is(":visible"))
+        hintHTML.slideUp();
+      else
+        hintHTML.slideDown();
+      return;
+    }
+    hintHTML = $('<div class="hint-text">' + this.getAttribute("title") + '</div>');
+    $this.after(hintHTML);
+    hintHTML.slideDown();
+  });
+};
+
+Foris.initSmoothScrolling = function () {
+  $(".menu-link").click(function(e) {
+    e.preventDefault();
+    $('html,body').animate({
+      scrollTop: $(this.hash).offset().top
+    })
+  });
+};
+
+Foris.applySVGFallback = function() {
+  if (!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1")) {
+    $("img[src$='.svg']").attr("src", function() {
+      var src = this.src.split('.');
+      var ext = src.pop();
+      if (ext != "svg") return;
+      src.push("png");
+      this.src = src.join(".");
+    });
+  }
+};
+
 Foris.updateForm = function (form) {
   var serialized = form.serializeArray();
   var idSelector = form.attr("id") ? " #" + form.attr("id") : "";
-  form.load(form.attr("action") + idSelector, serialized, function () {
+  form.load(form.attr("action") + idSelector, serialized, function (response, status, xhr) {
+    try {
+      var jsonResponse = JSON.parse(response);
+      if (jsonResponse.loggedOut && jsonResponse.loginUrl) {
+        window.location.replace(jsonResponse.loginUrl);
+        return;
+      }
+    }
+    catch (err) {
+      // SyntaxError when response is not JSON - do nothing
+    }
+
     $(this).children(':first').unwrap();
     Foris.initParsley();
   });
@@ -319,8 +378,7 @@ Foris.updateWiFiQR = function (ssid, password, hidden) {
     hidden = '';
 
   codeElement.empty().qrcode({
-    width: 220,
-    height: 220,
+    size: 200,
     text: 'WIFI:T:WPA;S:"' + ssid + '";P:"' + password + '";' + hidden + ';'
   });
 };

@@ -35,7 +35,7 @@ TPL_FILES = $(PRE_TPL_FILES:.pre.tpl=.tpl)
 
 JS_MINIFIER = slimit -m
 
-SASS_COMPILER = compass compile -s compressed
+SASS_COMPILER = compass compile -s compressed -e production
 
 
 all: compile-sass minify-js localization preprocess-tpl

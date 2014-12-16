@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import logging
+import re
 
 import bottle
 
@@ -21,6 +22,7 @@ from foris import gettext_dummy as gettext, ugettext as _
 from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time
 import fapi
 from nuci import client, filters
+from nuci.filters import create_config_filter
 from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
 import validators
 
@@ -38,22 +40,6 @@ class BaseConfigHandler(object):
         if self.__form_cache is None:
             self.__form_cache = self.get_form()
         return self.__form_cache
-
-    def call_action(self, action):
-        """Call config page action.
-
-        :param action:
-        :return: object that can be passed as HTTP response to Bottle
-        """
-        raise NotImplementedError()
-
-    def call_ajax_action(self, action):
-        """Call AJAX action.
-
-        :param action:
-        :return: dict of picklable AJAX results
-        """
-        raise NotImplementedError()
 
     def get_form(self):
         """Get form for this wizard. MUST be a single-section form.
@@ -96,8 +82,9 @@ class PasswordHandler(BaseConfigHandler):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
         pw_main = pw_form.add_section(name="set_password", title=_(self.userfriendly_title),
-                                      description=_("Set your password for this administration interface."
-                                                    " The password must be at least 6 characters long."))
+                                      description=_("Set your password for this administration "
+                                                    "interface. The password must be at least 6 "
+                                                    "characters long."))
         if self.change:
             pw_main.add_field(Password, name="old_password", label=_("Current password"))
             label_pass1 = _("New password")
@@ -109,20 +96,23 @@ class PasswordHandler(BaseConfigHandler):
         pw_main.add_field(Password, name="password", label=label_pass1, required=True,
                           validators=validators.LenRange(6, 128))
         pw_main.add_field(Password, name="password_validation", label=label_pass2,
-                          required=True, validators=validators.EqualTo("password", "password_validation",
-                                                                       _("Passwords are not equal.")))
-        pw_main.add_field(Checkbox, name="set_system_pw", label=_("Use the same password for advanced configuration"),
+                          required=True,
+                          validators=validators.EqualTo("password", "password_validation",
+                                                        _("Passwords are not equal.")))
+        pw_main.add_field(Checkbox, name="set_system_pw",
+                          label=_("Use the same password for advanced configuration"),
                           hint=_("Same password would be used for accessing this administration "
-                                 "interface, for root user in LuCI web interface and for SSH login. "
-                                 "Use a strong password! (If you choose not to set the password "
-                                 "for advanced configuration here, you will have the option to do "
-                                 "so later. Until then, the root account will be blocked.)"))
+                                 "interface, for root user in LuCI web interface and for SSH "
+                                 "login. Use a strong password! (If you choose not to set the "
+                                 "password for advanced configuration here, you will have the "
+                                 "option to do so later. Until then, the root account will be "
+                                 "blocked.)"))
 
         def pw_form_cb(data):
             from beaker.crypto import pbkdf2
             if self.change:
                 # if changing password, check the old pw is right first
-                uci_data = client.get(filter=filters.uci)
+                uci_data = client.get(filter=filters.foris_config)
                 password_hash = uci_data.find_child("uci.foris.auth.password")
                 # allow changing the password if password_hash is empty
                 if password_hash:
@@ -154,20 +144,23 @@ class WanHandler(BaseConfigHandler):
 
     def get_form(self):
         # WAN
-        wan_form = fapi.ForisForm("wan", self.data, filter=filters.uci)
-        wan_main = wan_form.add_section(name="set_wan", title=_(self.userfriendly_title),
-                                        description=_("Here you specify your WAN port settings. "
-                "Usually, you can leave this options untouched unless instructed otherwise by your "
-                "internet service provider. Also, in case there is a cable or DSL modem connecting "
-                "your router to the network, it is usually not necessary to change this setting."))
-
+        wan_form = fapi.ForisForm("wan", self.data,
+                                  filter=create_config_filter("network", "smrtd"))
+        wan_main = wan_form.add_section(
+            name="set_wan",
+            title=_(self.userfriendly_title),
+            description=_("Here you specify your WAN port settings. Usually, you can leave this "
+                          "options untouched unless instructed otherwise by your internet service "
+                          "provider. Also, in case there is a cable or DSL modem connecting your "
+                          "router to the network, it is usually not necessary to change this "
+                          "setting."))
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
         WAN_PPPOE = "pppoe"
         WAN_OPTIONS = (
             (WAN_DHCP, _("DHCP (automatic configuration)")),
             (WAN_STATIC, _("Static IP address (manual configuration)")),
-            (WAN_PPPOE, _("PPPoE (for DSL bridges, etc.)")),
+            (WAN_PPPOE, _("PPPoE (for DSL bridges, modem SMRT, etc.)")),
         )
 
         # protocol
@@ -196,6 +189,7 @@ class WanHandler(BaseConfigHandler):
             except IndexError:
                 return default
 
+        # DNS servers
         wan_main.add_field(Textbox, name="dns1", label=_("DNS server 1"),
                            nuci_path="uci.network.wan.dns",
                            nuci_preproc=lambda val: extract_dns_item(val.value, 0),
@@ -219,7 +213,8 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
                            nuci_path="uci.network.wan.ip6addr",
                            validators=validators.IPv6Prefix(),
-                           hint=_("IPv6 address and prefix length for WAN interface, e.g. 2001:db8:be13:37da::1/64"),
+                           hint=_("IPv6 address and prefix length for WAN interface, "
+                                  "e.g. 2001:db8:be13:37da::1/64"),
                            required=True)\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
@@ -231,10 +226,12 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
                            validators=validators.IPv6Prefix(),
                            nuci_path="uci.network.wan.ip6prefix",
-                           hint=_("Address range for local network, e.g. 2001:db8:be13:37da::/64"))\
+                           hint=_("Address range for local network, "
+                                  "e.g. 2001:db8:be13:37da::/64"))\
             .requires("proto", WAN_STATIC)\
             .requires("static_ipv6", True)
 
+        # xDSL settings
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
                            nuci_path="uci.network.wan.username")\
             .requires("proto", WAN_PPPOE)
@@ -246,6 +243,89 @@ class WanHandler(BaseConfigHandler):
                            nuci_preproc=lambda val: bool(int(val.value)))\
             .requires("proto", WAN_PPPOE)
 
+        # enable SMRT settings only if smrtd config is present
+        has_smrtd = wan_form.nuci_config.find_child("uci.smrtd") is not None
+
+        if has_smrtd:
+            wan_main.add_field(Hidden, name="has_smrtd", default="1")
+            wan_main.add_field(Checkbox, name="use_smrt", label=_("Use SMRT"),
+                               nuci_path="uci.smrtd.global.enabled",
+                               nuci_preproc=lambda val: bool(int(val.value)),
+                               hint=_("SMRT is Small Modem for Router Turris, a simple ADSL/VDSL "
+                                      "modem designed specially for router Turris. Enable this "
+                                      "option if you have SMRT connected to your router."))\
+                .requires("proto", WAN_PPPOE)
+
+            def get_smrtd_param(param_name):
+                """Helper function for getting SMRTd params for "connections" list."""
+                def wrapped(conn_list):
+                    # internet connection must be always first list element
+                    vlan_id, vpi, vci = (conn_list.children[0].content.split(" ")
+                                         if conn_list else (None, None, None))
+                    if param_name == "VPI":
+                        return vpi
+                    elif param_name == "VCI":
+                        return vci
+                    elif param_name == "VLAN":
+                        return vlan_id
+                    raise ValueError("Unknown SMRTd connection parameter.")
+                return wrapped
+
+            def get_smrtd_vlan(data):
+                """Helper function for getting VLAN number from Uci data."""
+                ifname = data.find_child("uci.network.wan.ifname")
+                if ifname:
+                    ifname = ifname.value
+                    matches = re.match("eth2.(\d+)", ifname)
+                    if matches:
+                        return matches.group(1)
+
+                connections = data.find_child("uci.smrtd.eth2.connections")
+                result = get_smrtd_param("VLAN")(connections)
+                return result
+
+            # 802.1Q VLAN number is 12-bit, 0x0 and 0xFFF reserved
+            wan_main.add_field(Textbox, name="smrt_vlan", label=_("xDSL VLAN number"),
+                               nuci_preproc=get_smrtd_vlan,
+                               validators=[validators.PositiveInteger(),
+                                           validators.InRange(1, 4095)],
+                               hint=_("VLAN number for your internet connection. Your ISP might "
+                                      "have provided you this number. If you have VPI and VCI "
+                                      "numbers instead, leave this field empty, a default value "
+                                      "will be used automatically."))\
+                .requires("use_smrt", True)
+
+            vpi_vci_validator = validators.RequiredWithOtherFields(
+                ("smrt_vpi", "smrt_vci"),
+                _("Both VPI and VCI must be filled or both must be empty.")
+            )
+
+            wan_main.add_field(
+                Textbox, name="smrt_vpi", label=_("VPI"),
+                nuci_path="uci.smrtd.eth2.connections",
+                nuci_preproc=get_smrtd_param("VPI"),
+                validators=[validators.PositiveInteger(),
+                            validators.InRange(0, 255),
+                            vpi_vci_validator],
+                hint=_("Virtual Path Identifier (VPI) is a parameter that you might have received "
+                       "from your ISP. If you have a VLAN number instead, leave this field empty. "
+                       "You need to fill in both VPI and VCI together.")
+            ) \
+                .requires("use_smrt", True)
+            wan_main.add_field(
+                Textbox, name="smrt_vci", label=_("VCI"),
+                nuci_path="uci.smrtd.eth2.connections",
+                nuci_preproc=get_smrtd_param("VCI"),
+                validators=[validators.PositiveInteger(),
+                            validators.InRange(32, 65535),
+                            vpi_vci_validator],
+                hint=_("Virtual Circuit Identifier (VCI) is a parameter that you might have "
+                       "received from your ISP. If you have a VLAN number instead, leave this "
+                       "field empty. You need to fill in both VPI and VCI together.")
+            )\
+                .requires("use_smrt", True)
+
+        # custom MAC
         wan_main.add_field(Checkbox, name="custom_mac", label=_("Custom MAC address"),
                            nuci_path="uci.network.wan.macaddr",
                            nuci_preproc=lambda val: bool(val.value),
@@ -261,11 +341,11 @@ class WanHandler(BaseConfigHandler):
 
         def wan_form_cb(data):
             uci = Uci()
-            config = Config("network")
-            uci.add(config)
+            network = Config("network")
+            uci.add(network)
 
             wan = Section("wan", "interface")
-            config.add(wan)
+            network.add(wan)
 
             wan.add(Option("proto", data['proto']))
             if data['custom_mac'] is True:
@@ -295,6 +375,39 @@ class WanHandler(BaseConfigHandler):
                     wan.add_removal(Option("ip6gw", None))
                     wan.add_removal(Option("ip6prefix", None))
 
+            if has_smrtd:
+                smrtd = Config("smrtd")
+                uci.add(smrtd)
+
+                smrt_vlan = data.get("smrt_vlan")
+                use_smrt = data.get("use_smrt", False)
+                wan_ifname = "eth2"
+
+                eth2 = Section("eth2", "interface")
+                smrtd.add(eth2)
+                eth2.add(Option("name", "eth2"))
+
+                if use_smrt:
+                    if not smrt_vlan:
+                        # "proprietary" number - and also a common VLAN ID in CZ
+                        smrt_vlan = "848"
+                    wan_ifname += ".%s" % smrt_vlan
+
+                vpi, vci = data.get("smrt_vpi"), data.get("smrt_vci")
+                connections = List("connections")
+                if vpi and vci:
+                    eth2.add(connections)
+                    connections.add(Value(1, "%s %s %s" % (smrt_vlan, vpi, vci)))
+                elif use_smrt:
+                    eth2.add_removal(connections)
+
+                smrtd_global = Section("global", "global")
+                smrtd.add(smrtd_global)
+                smrtd_global.add(Option("enabled", use_smrt))
+
+                # set correct ifname for WAN - must be changed when disabling SMRT
+                wan.add(Option("ifname", wan_ifname))
+
             # set interface for ucollect to listen on
             ucollect = Config("ucollect")
             # FIXME: replacing whole config is... an ugly work-around
@@ -318,7 +431,8 @@ class DNSHandler(BaseConfigHandler):
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        dns_form = fapi.ForisForm("dns", self.data)
+        dns_form = fapi.ForisForm("dns", self.data,
+                                  filter=create_config_filter("unbound"))
         dns_main = dns_form.add_section(name="set_dns",
                                         title=_(self.userfriendly_title))
         dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
@@ -341,32 +455,16 @@ class DNSHandler(BaseConfigHandler):
 class TimeHandler(BaseConfigHandler):
     userfriendly_title = gettext("Time")
 
-    def _action_ntp_update(self):
-        return client.ntp_update()
-
-    def call_ajax_action(self, action):
-        """Call AJAX action.
-
-        :param action:
-        :return: dict of picklable AJAX results
-        """
-        if action == "ntp_update":
-            ntp_ok = self._action_ntp_update()
-            return dict(success=ntp_ok)
-        elif action == "time_form":
-            if hasattr(self, 'render') and callable(self.render):
-                # only if the subclass implements render
-                return dict(success=True, form=self.render(is_xhr=True))
-        raise ValueError("Unknown Wizard action.")
-
     def get_form(self):
         time_form = fapi.ForisForm("time", self.data, filter=filters.time)
-        time_main = time_form.add_section(name="set_time", title=_(self.userfriendly_title),
-                                          description=_(
-            "We could not synchronize the time with a timeserver, probably due to a loss of connection. "
-            "It is necessary for the router to have correct time in order to function properly. Please, "
-            "synchronize it with your computer's time, or set it manually."
-            ))
+        time_main = time_form.add_section(
+            name="set_time",
+            title=_(self.userfriendly_title),
+            description=_("We could not synchronize the time with a timeserver, probably due to a "
+                          "loss of connection. It is necessary for the router to have correct time "
+                          "in order to function properly. Please, synchronize it with your "
+                          "computer's time, or set it manually.")
+        )
 
         time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
                             nuci_preproc=lambda v: v.local)
@@ -384,15 +482,22 @@ class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
     
     def get_form(self):
-        lan_form = fapi.ForisForm("lan", self.data, filter=filters.uci)
-        lan_main = lan_form.add_section(name="set_lan", title=_(self.userfriendly_title),
-                                        description=_("This section contains settings for the local network (LAN). "
-            "The provided defaults are suitable for most networks. "
-            "<br><strong>Note:</strong> If you change the router IP address, all computers in LAN, probably including the one you "
-            "are using now, will need to obtain a <strong>new IP address</strong> which does <strong>not</strong> happen <strong>immediately</strong>. "
-            "It is recommended to disconnect and reconnect all LAN cables after submitting your changes "
-            "to force the update. The next page will not load until you obtain a new IP from DHCP "
-            "(if DHCP enabled) and you might need to <strong>refresh the page</strong> in your browser."))
+        lan_form = fapi.ForisForm("lan", self.data,
+                                  filter=create_config_filter("dhcp", "network"))
+        lan_main = lan_form.add_section(
+            name="set_lan",
+            title=_(self.userfriendly_title),
+            description=_("This section contains settings for the local network (LAN). The provided"
+                          " defaults are suitable for most networks. <br><strong>Note:</strong> If "
+                          "you change the router IP address, all computers in LAN, probably "
+                          "including the one you are using now, will need to obtain a <strong>new "
+                          "IP address</strong> which does <strong>not</strong> happen <strong>"
+                          "immediately</strong>. It is recommended to disconnect and reconnect all "
+                          "LAN cables after submitting your changes to force the update. The next "
+                          "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
+                          " and you might need to <strong>refresh the page</strong> in your "
+                          "browser.")
+        )
 
         lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
                            nuci_path="uci.network.lan.ipaddr",
@@ -451,12 +556,16 @@ class WifiHandler(BaseConfigHandler):
         if len(stats.data['wireless-cards']) < 1:
             return None
 
-        wifi_form = fapi.ForisForm("wifi", self.data, filter=filters.uci)
-        wifi_main = wifi_form.add_section(name="set_wifi", title=_(self.userfriendly_title),
-                                          description=_(
-            "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here and "
-            "fill in an SSID (the name of the access point) and a corresponding password. "
-            "You can then set up your mobile devices, using the QR code available next to the form."))
+        wifi_form = fapi.ForisForm("wifi", self.data,
+                                   filter=create_config_filter("wireless"))
+        wifi_main = wifi_form.add_section(
+            name="set_wifi",
+            title=_(self.userfriendly_title),
+            description=_("If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
+                          "here and fill in an SSID (the name of the access point) and a "
+                          "corresponding password. You can then set up your mobile devices, "
+                          "using the QR code available next to the form.")
+        )
         wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
                             nuci_preproc=lambda val: val.name)
         wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
@@ -468,7 +577,8 @@ class WifiHandler(BaseConfigHandler):
             .requires("wifi_enabled", True)
         wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
                             nuci_path="uci.wireless.@wifi-iface[0].hidden",
-                            hint=_("If set, network is not visible when scanning for available networks."))\
+                            hint=_("If set, network is not visible when scanning for available "
+                                   "networks."))\
             .requires("wifi_enabled", True)
 
         channels_2g4 = [("auto", _("auto"))]
@@ -489,10 +599,11 @@ class WifiHandler(BaseConfigHandler):
             wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
                                 args=(("11ng", "2.4 GHz (g+n)"), ("11na", "5 GHz (a+n)")),
                                 nuci_path="uci.wireless.radio0.hwmode",
-                                hint=_("The 2.4 GHz band is more widely supported by clients, but tends to have "
-                                       "more interference. The 5 GHz band is a newer standard and may not be "
-                                       "supported by all your devices. It usually has less interference, "
-                                       "but the signal does not carry so well indoors."))\
+                                hint=_("The 2.4 GHz band is more widely supported by clients, but "
+                                       "tends to have more interference. The 5 GHz band is a newer"
+                                       " standard and may not be supported by all your devices. It "
+                                       "usually has less interference, but the signal does not "
+                                       "carry so well indoors."))\
                 .requires("wifi_enabled", True)
         # 2.4 GHz channels
         if len(channels_2g4) > 1:
@@ -512,8 +623,8 @@ class WifiHandler(BaseConfigHandler):
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
                             validators=validators.ByteLenRange(8, 63),
-                            hint=_("WPA2 pre-shared key, that is required to connect to the network. "
-                                   "Minimum length is 8 characters."))\
+                            hint=_("WPA2 pre-shared key, that is required to connect to the "
+                                   "network. Minimum length is 8 characters."))\
             .requires("wifi_enabled", True)
 
         def wifi_form_cb(data):
@@ -565,18 +676,22 @@ class SystemPasswordHandler(BaseConfigHandler):
     
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
-        system_pw_main = system_pw_form.add_section(name="set_password",
-                                                    title=_(self.userfriendly_title),
-                                                    description=_(
-            "In order to access the advanced configuration possibilities which are not present "
-            "here, you must set the root user's password. The advanced configuration options can "
-            "be managed either through the <a href=\"//%(host)s/%(path)s\">LuCI web interface"
-            "</a> or over SSH.") % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+        system_pw_main = system_pw_form.add_section(
+            name="set_password",
+            title=_(self.userfriendly_title),
+            description=_("In order to access the advanced configuration possibilities which are "
+                          "not present here, you must set the root user's password. The advanced "
+                          "configuration options can be managed either through the "
+                          "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+                          "or over SSH.") % {'host': bottle.request.get_header('host'),
+                                             'path': 'cgi-bin/luci'}
+        )
         system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
                                  validators=validators.LenRange(6, 128))
         system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                                 required=True, validators=validators.EqualTo("password", "password_validation",
-                                                                              _("Passwords are not equal.")))
+                                 required=True,
+                                 validators=validators.EqualTo("password", "password_validation",
+                                                               _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
             client.set_password("root", data["password"])
@@ -607,7 +722,8 @@ class NotificationsHandler(BaseConfigHandler):
     userfriendly_title = gettext("Notifications")
 
     def get_form(self):
-        notifications_form = fapi.ForisForm("notifications", self.data)
+        notifications_form = fapi.ForisForm("notifications", self.data,
+                                            filter=create_config_filter("user_notify"))
 
         notifications = notifications_form.add_section(name="notifications",
                                                        title=_("Notifications settings"))
@@ -617,28 +733,43 @@ class NotificationsHandler(BaseConfigHandler):
                                 nuci_preproc=lambda val: bool(int(val.value)),
                                 default=False)
 
-        notifications.add_field(Radio, name="use_turris_smtp", label=_("SMTP provider"), default="0",
-                                args=(("1", _("Turris")), ("0", _("Custom"))),
-                                nuci_path="uci.user_notify.smtp.use_turris_smtp",
-                                hint=_("If you set SMTP provider to \"Turris\", the servers provided to "
-                                       "members of the Turris project would be used. These servers do "
-                                       "not require any additional settings. If you want to set your "
-                                       "own SMTP server, please select \"Custom\" and enter required settings."))\
+        notifications.add_field(
+            Radio,
+            name="use_turris_smtp",
+            label=_("SMTP provider"),
+            default="0",
+            args=(("1", _("Turris")), ("0", _("Custom"))),
+            nuci_path="uci.user_notify.smtp.use_turris_smtp",
+            hint=_("If you set SMTP provider to \"Turris\", the servers provided to members of the "
+                   "Turris project would be used. These servers do not require any additional "
+                   "settings. If you want to set your own SMTP server, please select \"Custom\" "
+                   "and enter required settings."))\
             .requires("enable_smtp", True)
 
-        notifications.add_field(Textbox, name="to", label=_("Recipient's email"),
-                                nuci_path="uci.user_notify.smtp.to",
-                                nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
-                                hint=_("Email address of recipient. Separate multiple addresses by spaces."),
-                                required=True)\
-            .requires("enable_smtp", True)
+        notifications.add_field(
+            Textbox,
+            name="to",
+            label=_("Recipient's email"),
+            nuci_path="uci.user_notify.smtp.to",
+            nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
+            hint=_("Email address of recipient. Separate multiple addresses by spaces."),
+            required=True
+        ).requires("enable_smtp", True)
 
         # sender's name for CZ.NIC SMTP only
-        notifications.add_field(Textbox, name="sender_name", label=_("Sender's name"),
-                                hint=_("Name of the sender - will be used as a part of the sender's email address before the \"at\" sign."),
-                                nuci_path="uci.user_notify.smtp.sender_name",
-                                validators=[validators.RegExp(_("Sender's name can contain only alphanumeric characters, dots and underscores."), r"^[0-9a-zA-Z_\.-]+$")],
-                                required=True)\
+        notifications.add_field(
+            Textbox,
+            name="sender_name",
+            label=_("Sender's name"),
+            hint=_("Name of the sender - will be used as a part of the "
+                   "sender's email address before the \"at\" sign."),
+            nuci_path="uci.user_notify.smtp.sender_name",
+            validators=[validators.RegExp(_("Sender's name can contain only "
+                                            "alphanumeric characters, dots "
+                                            "and underscores."),
+                                          r"^[0-9a-zA-Z_\.-]+$")],
+            required=True
+        )\
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "1")
 
@@ -673,9 +804,9 @@ class NotificationsHandler(BaseConfigHandler):
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "0")
         smtp.add_field(Number, name="port", label=_("Server port"),
-                                nuci_path="uci.user_notify.smtp.port",
-                                validators=[validators.Integer()],
-                                required=True)\
+                       nuci_path="uci.user_notify.smtp.port",
+                       validators=[validators.PositiveInteger()],
+                       required=True) \
             .requires("enable_smtp", True)\
             .requires("use_turris_smtp", "0")
 
@@ -685,8 +816,8 @@ class NotificationsHandler(BaseConfigHandler):
             ("starttls", _("STARTTLS")),
         )
         smtp.add_field(Dropdown, name="security", label=_("Security"),
-                                nuci_path="uci.user_notify.smtp.security",
-                                args=SECURITY_OPTIONS, default="none")\
+                       nuci_path="uci.user_notify.smtp.security",
+                       args=SECURITY_OPTIONS, default="none") \
             .requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
         smtp.add_field(Textbox, name="username", label=_("Username"),
@@ -705,7 +836,8 @@ class NotificationsHandler(BaseConfigHandler):
                          hint=_("Number of days that must pass between receiving the request "
                                 "for restart and the automatic restart itself."),
                          nuci_path="uci.user_notify.reboot.delay",
-                         validators=[validators.InRange(0, 10)],
+                         validators=[validators.PositiveInteger(),
+                                     validators.InRange(0, 10)],
                          required=True)
         reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
                          hint=_("Time of day of automatic reboot in HH:MM format."),
@@ -754,3 +886,76 @@ class NotificationsHandler(BaseConfigHandler):
         notifications_form.add_callback(notifications_form_cb)
 
         return notifications_form
+
+
+class UpdaterHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Updater")
+
+    def get_form(self):
+        pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
+
+        package_lists_form = fapi.ForisForm("package_lists", self.data,
+                                            filter=create_config_filter("updater"))
+        package_lists_main = package_lists_form.add_section(
+            name="select_package_lists",
+            title=_(self.userfriendly_title),
+            description=_("Updater is a service that keeps all TurrisOS "
+                          "software up to date. Apart from standard standard "
+                          "installation, you can optionally select lists of "
+                          "additional software that'd be installed on the "
+                          "router. This software can be selected from the "
+                          "following list. "
+                          "Please note that only software that is part of "
+                          "TurrisOS or that has been installed from a package "
+                          "list is maintained by Updater. Software that has "
+                          "been installed manually or using opkg is not "
+                          "affected.")
+        )
+
+        def make_preproc(list_name):
+            """Make function for preprocessing value of single pkglist."""
+            def preproc(list):
+                enabled_names = map(lambda x: x.content, list.children)
+                return list_name in enabled_names
+            return preproc
+
+        for pkg_list_item in pkg_list:
+            package_lists_main.add_field(
+                Checkbox,
+                name="install_%s" % pkg_list_item.name,
+                label=pkg_list_item.title,
+                hint=pkg_list_item.description,
+                nuci_path="uci.updater.pkglists.lists",
+                nuci_preproc=make_preproc(pkg_list_item.name)
+            )
+
+        def package_lists_form_cb(data):
+            uci = Uci()
+            updater = Config("updater")
+            uci.add(updater)
+
+            pkglists = Section("pkglists", "pkglists")
+            updater.add(pkglists)
+            lists = List("lists")
+
+            # create List with selected packages
+            i = 0
+            for k, v in data.iteritems():
+                if v and k.startswith("install_"):
+                    lists.add(Value(i, k[8:]))
+                    i += 1
+            if i == 0:
+                pkglists.add_removal(lists)
+            else:
+                pkglists.add_replace(lists)
+
+            return "edit_config", uci
+
+        def package_lists_run_updater_cb(data):
+            logger.info("Checking for updates.")
+            client.check_updates()
+            return "none", None
+
+        package_lists_form.add_callback(package_lists_form_cb)
+        package_lists_form.add_callback(package_lists_run_updater_cb)
+        return package_lists_form

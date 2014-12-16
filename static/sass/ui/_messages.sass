@@ -1,0 +1,25 @@
+.message
+  background:
+    position: 0.8em 50%
+    repeat: no-repeat
+
+  color: #000
+  padding: 1em 1em 1em 3.2em
+  margin-bottom: 0.5em
+
+  &.success
+    background-image: inline-image('../.inline-assets/message-success.png')
+    background-color: $message-color-success
+
+  &.info
+    background-image:  inline-image('../.inline-assets/message-info.png')
+    background-color: $message-color-info
+
+  &.warning
+    background-image:  inline-image('../.inline-assets/message-warning.png')
+    background-color: $message-color-warning
+
+  &.error
+    background-image:  inline-image('../.inline-assets/message-error.png')
+    background-color: $message-color-error
+    color: #fff

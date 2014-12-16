@@ -1,0 +1,61 @@
+$nav-item-height: 2em
+$nav-border: 1px solid $stroke-color
+
+#menu nav
+  ul
+    li
+      background: $sidebar-tab-color
+      border-bottom: $nav-border
+
+      &:first-child
+        border-top: $nav-border
+
+      &.active
+        background: $background-color
+        font-weight: bold
+
+        a
+          text-decoration: none
+
+      a
+        color: $sidebar-foreground-color
+        display: block
+        height: $nav-item-height + 1em
+        line-height: $nav-item-height + 1em
+        padding: 0.2em 0.5em
+
+      +respond-to('not-mobile', $no-query: true)
+        +background-image(linear-gradient(left, $sidebar-tab-color 0%, $sidebar-tab-color 98%, #aaa 100%))
+        border: $nav-border
+        border-right: none
+        margin-bottom: 0.5em
+        margin-left: 0.25em
+
+        &.active
+          margin-left: 0
+          border-right: none
+
+        a
+          height: $nav-item-height
+          line-height: $nav-item-height
+
+#subnav
+  +pie-clearfix
+  font-weight: bold
+  padding: 1em 0
+  text-align: center
+  height: 3em
+  line-height: 3em
+
+#language-switch
+  +box-sizing('border-box')
+  display: inline
+  float: left
+  width: 50%
+
+#logout
+  +box-sizing('border-box')
+  display: inline
+  float: left
+  border-left: 1px solid $stroke-color
+  width: 50%

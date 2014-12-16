@@ -16,6 +16,7 @@
 %#
 %for notification in notifications:
     <div class="notification {{ notification.severity }}" id="notification_{{ notification.id }}">
+      <h2>{{! make_notification_title(notification) }}</h2>
       {{! notification.escaped_body }}
       %if notification.requires_restart:
         <div class="buttons">

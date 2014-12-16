@@ -1,55 +1,32 @@
 window.ParsleyConfig = window.ParsleyConfig || {};
+window.ParsleyConfig.i18n = window.ParsleyConfig.i18n || {};
 
-(function ($) {
-  window.ParsleyConfig = $.extend( true, {}, window.ParsleyConfig, {
-    messages: {
-      // parsley //////////////////////////////////////
-      defaultMessage:  "Tato položka je neplatná."
-      , type: {
-        email:         "Tato položka musí být e-mailová adresa."
-        , url:         "Tato položka musí být url adresa."
-        , urlstrict:   "Tato položka musí být url adresa."
-        , number:      "Tato položka musí být platné číslo."
-        , digits:      "Tato položka musí být číslice."
-        , dateIso:     "Tato položka musí být datum ve formátu YYYY-MM-DD."
-        , alphanum:    "Tato položka musí být alfanumerická."
-        , phone:       "Tato položka musí být platné telefonní číslo."
-      }
-      , notnull:         "Tato položka nesmí být null."
-      , notblank:        "Tato položka nesmí být prázdná."
-      , required:        "Tato položka je povinná."
-      , regexp:          "Tato položka je neplatná."
-      , min:             "Tato položka musí být větší než %s."
-      , max:             "Tato položka musí byt menší než %s."
-      , range:           "Tato položka musí být v rozmezí %s a %s."
-      , minlength:       "Tato položka je příliš krátká. Musí mít %s nebo více znaků."
-      , maxlength:       "Tato položka je příliš dlouhá. Musí mít %s nebo méně znaků."
-      , rangelength:     "Tato položka musí mít délku od %s do %s znaků."
-      , mincheck:        "Je nutné vybrat nejméně %s možností."
-      , maxcheck:        "Je nutné vybrat nejvýše %s možností."
-      , rangecheck:      "Je nutné vybrat %s až %s možností."
-      , equalto:         "Tato položka by měla být stejná."
+// Define then the messages
+window.ParsleyConfig.i18n.cs = $.extend(window.ParsleyConfig.i18n.cs || {}, {
+  defaultMessage: "Tato položka je neplatná.",
+  type: {
+    email:        "Tato položka musí být e-mailová adresa.",
+    url:          "Tato položka musí být platná URL adresa.",
+    number:       "Tato položka musí být číslo.",
+    integer:      "Tato položka musí být celé číslo.",
+    digits:       "Tato položka musí být kladné celé číslo.",
+    alphanum:     "Tato položka musí být alfanumerická."
+  },
+  notblank:       "Tato položka nesmí být prázdná.",
+  required:       "Tato položka je povinná.",
+  pattern:        "Tato položka je neplatná.",
+  min:            "Tato položka musí být menší nebo rovna %s.",
+  max:            "Tato položka musí být větší nebo rovna %s.",
+  range:          "Tato položka musí být v rozsahu od %s do %s.",
+  minlength:      "Tato položka musí mít nejméně %s znaků.",
+  maxlength:      "Tato položka musí mít nejvíce %s znaků.",
+  length:         "Tato položka musí mít délku od %s do %s znaků.",
+  mincheck:       "Je nutné vybrat alespoň %s možností.",
+  maxcheck:       "Je nutné vybrat nejvýše %s možností.",
+  check:          "Je nutné vybrat od %s do %s možností.",
+  equalto:        "Tato položka musí být stejná."
+});
 
-      // parsley.extend ///////////////////////////////
-      , minwords:        "Tato položka musí obsahovat alespoň %s slov."
-      , maxwords:        "Tato položka nesmí přesánout %s slov."
-      , rangewords:      "Tato položka musí obsahovat %s až %s slov."
-      , greaterthan:     "Tato položka musí být větší než %s."
-      , lessthan:        "Tato položka musí být menší než %s."
-      , beforedate:      "Toto datum musí být před %s."
-      , afterdate:       "Toto datum musí být po %s."
-      , luhn:            "Tato hodnota by měla projít Luhnovým testem."
-      , americandate:    "Toto datum by mělo být ve formátu MM/DD/YYYY."
-      // parsley.foris-extend ///////////////////////////////
-      , extratype: {
-        ipv4:            "Toto není platná IPv4 adresa."
-        , ipv4netmask:     "Toto není platná IPv4 síťová maska."
-        , ipv6:          "Toto není platná IPv6 adresa."
-        , anyip:         "Toto není platná IPv4 nebo IPv6 adresa."
-        , ipv6prefix:    "Toto není IPv6 adresa s délkou prefixu."
-        , macaddress:    "Toto není platná MAC adresa."
-      }
-      , byterangelength:     "Tato položka musí mít délku od %s do %s znaků."
-      }
-  });
-}(window.jQuery || window.Zepto));
+// If file is loaded after Parsley main file, auto-load locale
+if ('undefined' !== typeof window.ParsleyValidator)
+  window.ParsleyValidator.addCatalog('cs', window.ParsleyConfig.i18n.cs, true);
