@@ -97,7 +97,7 @@ Foris.initLanChangeDetection = function () {
 };
 
 Foris.initClickableHints = function () {
-  $(".field-hint").on("click", function() {
+  $(document).on("click", ".field-hint", function() {
     var $this = $(this);
     var hintHTML = $this.next(".hint-text");
     if (hintHTML.length) {
