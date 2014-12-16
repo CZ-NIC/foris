@@ -58,18 +58,19 @@ Foris.initParsley = function () {
           container = $("<div class='validation-container'></div>").appendTo(parsleyField.$element.parent());
         }
         return container;
-      },
-      // TODO: removed from Parsley 2.0
-      listeners: {
-        onFieldSuccess: function (elem, constraints, ParsleyField) {
-          elem.parent().find(".server-validation-container").remove();
-        },
-        onFieldError: function (elem, constraints, ParsleyField) {
-          elem.parent().find(".server-validation-container").remove();
-        }
       }
     });
-  })
+  });
+
+  $.listen("parsley:field:success", function(parsleyField) {
+    parsleyField.$element.parent().parent().find(".server-validation-container").remove();
+
+  });
+
+  $.listen("parsley:field:error", function(parsleyField) {
+    parsleyField.$element.parent().parent().find(".server-validation-container").remove();
+  });
+
 };
 
 Foris.initLanChangeDetection = function () {
