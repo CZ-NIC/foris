@@ -160,7 +160,7 @@ class WanHandler(BaseConfigHandler):
         WAN_OPTIONS = (
             (WAN_DHCP, _("DHCP (automatic configuration)")),
             (WAN_STATIC, _("Static IP address (manual configuration)")),
-            (WAN_PPPOE, _("PPPoE (for DSL bridges, modem SMRT, etc.)")),
+            (WAN_PPPOE, _("PPPoE (for DSL bridges, Modem Turris, etc.)")),
         )
 
         # protocol
@@ -248,12 +248,13 @@ class WanHandler(BaseConfigHandler):
 
         if has_smrtd:
             wan_main.add_field(Hidden, name="has_smrtd", default="1")
-            wan_main.add_field(Checkbox, name="use_smrt", label=_("Use SMRT"),
+            wan_main.add_field(Checkbox, name="use_smrt", label=_("Use Modem Turris"),
                                nuci_path="uci.smrtd.global.enabled",
                                nuci_preproc=lambda val: bool(int(val.value)),
-                               hint=_("SMRT is Small Modem for Router Turris, a simple ADSL/VDSL "
-                                      "modem designed specially for router Turris. Enable this "
-                                      "option if you have SMRT connected to your router."))\
+                               hint=_("Modem Turris (aka SMRT - Small Modem for Router Turris), "
+                                      "a simple ADSL/VDSL modem designed specially for router "
+                                      "Turris. Enable this option if you have Modem Turris "
+                                      "connected to your router."))\
                 .requires("proto", WAN_PPPOE)
 
             def get_smrtd_param(param_name):
