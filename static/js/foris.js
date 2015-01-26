@@ -271,13 +271,13 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
           div.empty();
           var ul = $("<ul>");
           div.append(ul);
-          for (var i in log) {
+          for (var i = log.length - 1; i >= 0; i--) {
             var item = log[i];
             var li = $("<li>");
             var mode;
             if (item[0] == 'remove') {
               mode = '-';
-            } else if(item[0] == 'download') {
+            } else if (item[0] == 'download') {
               mode = '↓';
             }
             else {
