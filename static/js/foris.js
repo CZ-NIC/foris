@@ -277,7 +277,10 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
             var mode;
             if (item[0] == 'remove') {
               mode = '-';
-            } else {
+            } else if(item[0] == 'download') {
+              mode = '↓';
+            }
+            else {
               mode = '+';
             }
             li.html(mode + item[1]);
