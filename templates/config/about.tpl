@@ -22,7 +22,7 @@
         <tbody>
             <tr>
                 <th>{{ trans("Device") }}</th>
-                <td>{{ trans("Router Turris - model RTRS01") }}</td>
+                <td>{{ stats['model'] }} - {{ stats['board-name'] }}</td>
             </tr>
             <tr>
                 <th>{{ trans("Serial number") }}</th>

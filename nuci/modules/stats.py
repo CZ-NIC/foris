@@ -52,11 +52,22 @@ class Stats(YinElement):
         self.data = {}
 
     @staticmethod
+    def __postprocess_data(data):
+        # capitalize board-name of Turris boards
+        if data.get("model", "").lower() == "turris":
+            data['board-name'] = data.get("board-name", "").upper()
+        return data
+
+    @staticmethod
     def from_element(element):
         stats = Stats()
         for elem in element.findall("./*"):
             if elem.tag == Stats.qual_tag("uptime"):
                 stats.data['uptime'] = elem.text
+            elif elem.tag == Stats.qual_tag("model"):
+                stats.data['model'] = elem.text
+            elif elem.tag == Stats.qual_tag("board-name"):
+                stats.data['board-name'] = elem.text
             elif elem.tag == Stats.qual_tag("kernel-version"):
                 stats.data['kernel-version'] = elem.text
             elif elem.tag == Stats.qual_tag("meminfo"):
@@ -84,6 +95,9 @@ class Stats(YinElement):
                     interfaces[if_name] = {
                         'is_up': True if is_up else False if is_down else None
                     }
+
+        # do postprocessing of data
+        Stats.__postprocess_data(stats.data)
 
         return stats
 
