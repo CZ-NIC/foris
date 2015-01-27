@@ -35,7 +35,7 @@
     <div id="connectivity-nodns">
         <img src="{{ static("img/fail.png") }}" alt="{{ trans("Error") }}"><br>
         <p>
-            {{ trans("Your internet connection has network connectivity but DNS resolving does not work. This is probably a problem with your ISP.") }}
+            {{ trans("Your internet connection has network connectivity but DNS resolving does not work. This is probably a problem with your ISP. This might also be an issue with wrong time on your router - you can adjust it in the following step.") }}
         </p>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
