@@ -24,6 +24,7 @@ from nuci.client import edit_uci_config
 from nuci.modules import uci_raw
 from utils import print_model, login_required
 from utils.bottle_csrf import CSRFPlugin
+from utils.routing import reverse
 from validators import NotEmpty, RegExp
 
 
@@ -126,7 +127,7 @@ def edit_post(node):
     if form.validates(request.POST):
         form.save_to_model(node_model)
         edit_uci_config(node_model)
-        bottle.redirect("/uci/?done")
+        bottle.redirect(reverse("uci_index") + "?done")
 
     return dict(form=form, node_path=node)
 
@@ -194,7 +195,7 @@ def create_post(node):
     parent.add(new_element)
     print_model(new_element)
     edit_uci_config(new_element)
-    bottle.redirect("/uci/")
+    bottle.redirect(reverse("uci_index"))
 
 
 @app.get("/<node:re:\w+(\.\w+)*>/remove", name="uci_remove")
@@ -205,10 +206,10 @@ def remove(node):
     node_model.operation = "remove"
     try:
         edit_uci_config(node_model)
-        bottle.redirect("/uci/?done")
+        bottle.redirect(reverse("uci_index") + "?done")
     except RPCError, e:
         logger.error(e.message)
-    bottle.redirect("/uci/?error")
+    bottle.redirect(reverse("uci_index") + "?error")
 
 
 @app.get("/<node:re:\w+(\.\w+)*>/debug", name="uci_debug")

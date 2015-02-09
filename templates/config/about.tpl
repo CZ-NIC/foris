@@ -57,8 +57,8 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            self.after('<img src="/static/img/icon-loading.gif" id="registration-code-loader" alt="' + Foris.messages.loading +'">');
-            $.get("/config/about/ajax", {action: "registration_code"})
+            self.after('<img src="{{ static("img/icon-loading.gif") }}" id="registration-code-loader" alt="' + Foris.messages.loading +'">');
+            $.get('{{ url("config_ajax", page_name="about") }}', {action: "registration_code"})
                     .done(function(response) {
                         if (response.success) {
                             $("#registration-code").text(response.data).show();

@@ -14,22 +14,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from bottle import Bottle, request, template
-import bottle
+from collections import OrderedDict
 from datetime import datetime
 import os
+import logging
+from urlparse import urlunsplit
+
+from bottle import Bottle, request, template
+import bottle
+
 from config_handlers import *
 from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
-import logging
 from nuci import client
 from nuci.client import filters
 from nuci.exceptions import ConfigRestoreError
 from utils import login_required
-from collections import OrderedDict
 from utils import messages
 from utils.bottle_csrf import CSRFPlugin
 from utils.routing import reverse
-
 
 logger = logging.getLogger(__name__)
 
@@ -206,11 +208,14 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
             new_ip = self.form.callback_results.get('new_ip')
             if new_ip:
+                # rebuild current URL with new IP
+                old_urlparts = bottle.request.urlparts
+                new_url = urlunsplit((old_urlparts.scheme, new_ip, old_urlparts.path, "", ""))
                 messages.success(_("Configuration was successfully restored. After installing "
-                                   "updates and rebooting, router will be available at "
-                                   "<a href=\"//%(new_ip)s\">%(new_ip)s</a> in local "
+                                   "updates and rebooting you can return to this page at "
+                                   "<a href=\"%(new_url)s\">%(new_url)s</a> in local "
                                    "network. Please wait a while until router automatically "
-                                   "restarts.") % dict(new_ip=new_ip))
+                                   "restarts.") % dict(new_url=new_url))
             elif result:
                 messages.success(_("Configuration was successfully restored. Please wait a while "
                                    "for installation of updates and automatic restart of the "
@@ -381,7 +386,7 @@ def config_action_post(page_name, action):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
-@app.route("/<page_name:re:.+>/ajax")
+@app.route("/<page_name:re:.+>/ajax", name="config_ajax")
 @login_required
 def config_ajax(page_name):
     action = request.GET.get("action")

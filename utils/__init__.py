@@ -21,6 +21,8 @@ from functools import wraps
 import logging
 from xml.etree import cElementTree as ET
 
+from .routing import reverse
+
 
 logger = logging.getLogger("foris.utils")
 
@@ -31,7 +33,7 @@ def is_user_authenticated():
 
 
 def redirect_unauthenticated(redirect_url=None):
-    redirect_url = redirect_url or "/"
+    redirect_url = redirect_url or reverse("index")
     no_auth = bottle.default_app().config.get("no_auth", False)
     if not no_auth and not is_user_authenticated():
         from foris import ugettext as _

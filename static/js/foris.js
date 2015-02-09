@@ -30,10 +30,22 @@ var Foris = {
   }
 };
 
+// do some magic to find CGI SCRIPT_NAME - must be run exactly when script is parsed
+(function (window, Foris) {
+  try {
+    var scripts = window.document.getElementsByTagName('script');
+    var pathname = extractPathName(scripts[scripts.length - 1].src);
+    Foris.scriptname = pathname.substr(0, pathname.indexOf("/static"));
+  } catch (e) {
+    Foris.scriptname = "";
+  }
+})(window, Foris);
+
+
 Foris.initialize = function () {
   $(document).on("change", ".has-requirements", function () {
     var input = $(this);
-    input.parent().append('<img src="/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+    input.parent().append('<img src="' + Foris.scriptname + '/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
     Foris.updateForm(input.closest("form"));
   });
 
@@ -90,7 +102,7 @@ Foris.initLanChangeDetection = function () {
       $(document).on("submit", "#main-form", function () {
         // if the value really changed from the default
         if (lanField.defaultValue != lanField.value) {
-          var newLocation = document.location.protocol + "//" + lanField.value + "/?next=" + document.location.pathname;
+          var newLocation = document.location.protocol + "//" + lanField.value + Foris.scriptname + "/?next=" + document.location.pathname;
           $(".config-description, .wizard-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%IP_ADDR%/g, lanField.value).replace(/%NEW_LOC%/g, newLocation) + '</div>');
           // if the page was accessed from the old IP address, wait 10 seconds and do a redirect
           window.setTimeout(function () {
@@ -166,7 +178,7 @@ Foris.updateForm = function (form) {
 Foris.callAjaxAction = function (wizardStep, action, timeout) {
   timeout = timeout || 0;
   return $.ajax({
-    url:"/wizard/step/" + wizardStep + "/ajax",
+    url: Foris.scriptname + "/wizard/step/" + wizardStep + "/ajax",
     data: {action: action},
     timeout: timeout
   });
@@ -417,7 +429,7 @@ Foris.initNotifications = function (csrf_token) {
   $(".notification .dismiss").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
-    $.post("/config/notifications/dismiss",
+    $.post(Foris.scriptname + "/config/notifications/dismiss",
         {
           message_ids: [id],
           csrf_token: csrf_token
@@ -450,6 +462,13 @@ Foris.initNotificationTestAlert = function () {
     }
   });
 };
+
+function extractPathName(src) {
+  var a = document.createElement("a");
+  a.href = src;
+
+  return a.pathname;
+}
 
 $(document).ready(function () {
   Foris.initialize();

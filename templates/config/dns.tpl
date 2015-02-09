@@ -58,8 +58,8 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            self.after('<img src="/static/img/icon-loading.gif" id="connection-test-loader" alt="' + Foris.messages.loading + '">');
-            $.get("/config/dns/ajax", {action: "check-connection"})
+            self.after('<img src="{{ static("img/icon-loading.gif") }}" id="connection-test-loader" alt="' + Foris.messages.loading + '">');
+            $.get('{{ url("config_ajax", page_name="dns") }}', {action: "check-connection"})
                     .done(function(response) {
                         if (response.success) {
                             for (var key in response.check_results) {

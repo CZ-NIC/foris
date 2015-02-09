@@ -21,18 +21,22 @@ logger = logging.getLogger("utils.routing")
 
 
 def reverse(name, **kargs):
-    # Bottle sometimes builds URLs with two slashes
-    # and we do not build absolute URLs anyway
-    clean = lambda x: x.replace("//", "/")
+    script_name = bottle.request.script_name
+    prefix = bottle.request.app.config.get("prefix")
+    if prefix:
+        path_depth = len([p for p in prefix.split('/') if p])
+        script_name, path_info = bottle.path_shift(script_name, "/", -path_depth)
     try:
-        return clean(bottle.app().router.build(name, **kargs))
+        path = bottle.app().router.build(name, **kargs)
+        return "".join([script_name.rstrip("/"), path])
     except bottle.RouteBuildError:
         for route in bottle.app().routes:
             if route.config.get("mountpoint"):
                 config = route.config
                 try:
-                    return clean("%s%s" % (config['mountpoint.prefix'].rstrip("/"),
-                                 config['mountpoint.target'].router.build(name, **kargs)))
+                    prefix = config['mountpoint.prefix'].rstrip("/")
+                    path = config['mountpoint.target'].router.build(name, **kargs)
+                    return "".join([script_name.rstrip("/"), prefix, path])
                 except bottle.RouteBuildError as e:
                     if str(e).startswith("Missing URL"):
                         raise e

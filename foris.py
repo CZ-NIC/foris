@@ -117,7 +117,7 @@ def change_lang(lang):
         backlink = bottle.request.GET.get('backlink')
         if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
             bottle.redirect(backlink)
-        bottle.redirect("/")
+        bottle.redirect(reverse("index"))
     else:
         raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
 
@@ -180,7 +180,7 @@ def login():
         redirect = "/?next=%s" % next
         if is_safe_redirect(redirect, bottle.request.get_header('host')):
             bottle.redirect(redirect)
-    bottle.redirect("/")
+    bottle.redirect(reverse("index"))
 
 
 @bottle.route("/logout", name="logout")
@@ -188,7 +188,7 @@ def logout():
     session = bottle.request.environ["beaker.session"]
     if "user_authenticated" in session:
         session.delete()
-    bottle.redirect("/")
+    bottle.redirect(reverse("index"))
 
 
 @bottle.route('/static/<filename:re:.*>', name="static")
@@ -261,16 +261,21 @@ def make_notification_title(notification):
     )
 
 
-def init_foris_app(app):
+def init_foris_app(app, prefix):
     """
     Initializes Foris application - use this method to apply properties etc.
     that should be set to main app and all the mounted apps (i.e. to the
     Bottle() instances).
+
+
+    :param app: instance of bottle application to mount
+    :param prefix: prefix which has been used to mount the application
     """
-    app.catchall = False  # catched by LoggingMiddleware
+    app.catchall = False  # caught by LoggingMiddleware
     app.error_handler[403] = foris_403_handler
     app.add_hook('after_request', clickjacking_protection)
     app.add_hook('after_request', disable_caching)
+    app.config['prefix'] = prefix
 
 
 def get_arg_parser():
@@ -321,11 +326,12 @@ def prepare_main_app(args):
             app.config["no_auth"] = True
 
     # set custom app attributes for main app and all mounted apps
-    init_foris_app(app)
+    init_foris_app(app, None)
     for route in app.routes:
         if route.config.get("mountpoint"):
             mounted = route.config['mountpoint.target']
-            init_foris_app(mounted)
+            prefix = route.config['mountpoint.prefix']
+            init_foris_app(mounted, prefix)
 
     if args.nucipath:
         client.StaticNetconfConnection.set_bin_path(args.nucipath)
