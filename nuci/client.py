@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import logging
 import shlex
-from time import sleep
+from time import sleep, time
 from xml.etree import cElementTree as ET
 
 from ncclient import operations, transport
@@ -25,7 +25,7 @@ from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 
 from modules import (maintain, network, password as password_module, registration,
-                     time, uci_raw, updater, user_notify)
+                     time as time_module, uci_raw, updater, user_notify)
 from modules.base import Data, YinElement
 from nuci import filters
 from nuci.exceptions import ConfigRestoreError
@@ -42,6 +42,9 @@ class StaticNetconfConnection(object):
     """
     BIN_PATH = "/usr/bin/nuci"
 
+    # recycle session if older than MAXIMUM_SESSION_LIFE seconds
+    MAXIMUM_SESSION_LIFE = 300
+
     # instance of singleton
     _inst = None
 
@@ -53,6 +56,9 @@ class StaticNetconfConnection(object):
 
     # flag for lock during command execution
     _executing = False
+
+    # when to restart the current persistent session
+    session_kill_time = 0
 
     __metaclass__ = OpExecutor
 
@@ -79,8 +85,9 @@ class StaticNetconfConnection(object):
             sleep(0.1)
         cls._executing = True
         try:
-            if cls._session is None:
+            if cls._session is None or time() > cls.session_kill_time:
                 cls._connect()
+                cls.session_kill_time = time() + cls.MAXIMUM_SESSION_LIFE
             result = klass(cls._session,
                            async=cls._async_mode,
                            timeout=cls._timeout,
@@ -126,8 +133,8 @@ def get(filter=None):
     for elem in data.iter():
         if elem.tag == uci_raw.Uci.qual_tag("uci"):
             reply_data.add(uci_raw.Uci.from_element(elem))
-        elif elem.tag == time.Time.qual_tag("time"):
-            reply_data.add(time.Time.from_element(elem))
+        elif elem.tag == time_module.Time.qual_tag("time"):
+            reply_data.add(time_module.Time.from_element(elem))
         elif elem.tag == updater.Updater.qual_tag("updater"):
             reply_data.add(updater.Updater.from_element(elem))
         elif elem.tag == stats.Stats.qual_tag("stats"):
@@ -226,7 +233,7 @@ def test_notifications():
 
 
 def ntp_update():
-    get_tag = time.Time.qual_tag("ntp")
+    get_tag = time_module.Time.qual_tag("ntp")
     element = ET.Element(get_tag)
     try:
         dispatch(element)
@@ -243,7 +250,7 @@ def set_time(time_string):
     :return:
     """
     try:
-        dispatch(time.Time.rpc_set_iso8601(time_string))
+        dispatch(time_module.Time.rpc_set_iso8601(time_string))
         return True
     except (RPCError, TimeoutExpiredError):
         return False
