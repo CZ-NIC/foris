@@ -598,28 +598,41 @@ class WifiHandler(BaseConfigHandler):
         if len(channels_2g4) > 1 and len(channels_5g) > 1:
             is_dual_band = True
             wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
-                                args=(("11ng", "2.4 GHz (g+n)"), ("11na", "5 GHz (a+n)")),
+                                args=(("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)")),
                                 nuci_path="uci.wireless.radio0.hwmode",
+                                nuci_preproc=lambda x: x.value.replace("n", ""),  # old configs used
+                                                                                  # 11ng/11na
                                 hint=_("The 2.4 GHz band is more widely supported by clients, but "
                                        "tends to have more interference. The 5 GHz band is a newer"
                                        " standard and may not be supported by all your devices. It "
                                        "usually has less interference, but the signal does not "
                                        "carry so well indoors."))\
                 .requires("wifi_enabled", True)
+        wifi_main.add_field(
+            Dropdown, name="htmode", label=_("802.11n mode"),
+            args=(("NOHT", _("Disabled")),
+                  ("HT20", _("Enabled (20 MHz wide channel)")),
+                  ("HT40", _("Enabled (40 MHz wide channel)"))),
+            nuci_path="uci.wireless.radio0.htmode",
+            hint=_("Change this to adjust 802.11n mode of operation. 802.11n with 40 MHz wide "
+                   "channels can yield higher throughput but can cause more interference in the "
+                   "network. If you don't know what to choose, use the default option with "
+                   "20 MHz wide channel.")
+        )
         # 2.4 GHz channels
         if len(channels_2g4) > 1:
             field_2g4 = wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"),
                                             default=channels_2g4[0][0], args=channels_2g4,
                                             nuci_path="uci.wireless.radio0.channel")
             if is_dual_band:
-                field_2g4.requires("hwmode", "11ng")
+                field_2g4.requires("hwmode", "11g")
         # 5 GHz channels
         if len(channels_5g) > 1:
             field_5g = wifi_main.add_field(Dropdown, name="channel5g", label=_("Network channel"),
                                            default=channels_5g[0][0], args=channels_5g,
                                            nuci_path="uci.wireless.radio0.channel")
             if is_dual_band:
-                field_5g.requires("hwmode", "11na")
+                field_5g.requires("hwmode", "11a")
         wifi_main.add_field(Password, name="key", label=_("Network password"),
                             nuci_path="uci.wireless.@wifi-iface[0].key",
                             required=True,
@@ -656,6 +669,7 @@ class WifiHandler(BaseConfigHandler):
                 if hwmode:
                     # change hwmode only if we had the choice
                     device.add(Option("hwmode", hwmode))
+                device.add(Option("htmode", data['htmode']))
                 # channel is in wifi-device section
                 device.add(Option("channel", channel))
             else:
