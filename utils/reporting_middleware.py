@@ -40,7 +40,7 @@ ERROR_TEMPLATE = """<!DOCTYPE html>
 
         <p>Omlouváme se, ale během zpracování Vašeho požadavku došlo k nečekané chybě. Detailní informace naleznete níže.</p>
 
-        <p>Pokud nám chcete pomoci s odstraněním chyby, stáhněte následující <a href="/%(dump_file)s">protokol o chybě</a> a zašlete nám jej na adresu <a href="mailto:foris.podpora@turris.cz">foris.podpora@turris.cz</a> (protokol obsahuje pouze kopii informací uvedených na této stránce).</p>
+        <p>Pokud nám chcete pomoci s odstraněním chyby, stáhněte následující <a href="/%(dump_file)s">protokol o chybě</a> a zašlete nám jej s krátkým popisem okolností vzniku chyby na adresu <a href="mailto:foris.podpora@turris.cz">foris.podpora@turris.cz</a> (protokol obsahuje pouze kopii informací uvedených na této stránce).</p>
         <hr>
         <h2 class="error">%(error)s</h2>
         <h3>Stack trace</h3>
