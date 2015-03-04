@@ -96,7 +96,8 @@ class ForisForm(ForisFormElement):
         data.update(self._nuci_data)
         logger.debug("Updating with data: %s" % dict(self._request_data))
         data.update(self._request_data)
-        data = self.clean_data(data)
+        if data:
+            data = self.clean_data(data)
         self.__data_cache = data
         return data
 
