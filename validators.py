@@ -179,12 +179,11 @@ class Time(RegExp):
         self.extra_data['parsley-error-message'] = self.msg
 
 
-class MacAddress(RegExp):
+class MacAddress(Validator):
     js_validator = ("extratype", "macaddress")
 
     def __init__(self):
-        super(MacAddress, self).__init__(_("MAC address is not valid."),
-                                         r"([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}")
+        super(MacAddress, self).__init__(_("MAC address is not valid."))
         self.extra_data['parsley-validation-minlength'] = '17'
 
 
