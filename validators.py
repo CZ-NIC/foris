@@ -275,5 +275,5 @@ def validators_as_data_dict(validators):
             elif v.js_validator_params:
                 data["parsley-%s" % v.js_validator] = v.js_validator_params
             else:
-                logger.warning("Unknown JS validator: %s" % v.js_validator)
+                logger.warning("Unknown JS validator: %s", v.js_validator)
     return data

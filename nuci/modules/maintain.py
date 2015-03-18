@@ -76,11 +76,8 @@ class Maintain(YinElement):
 
     @staticmethod
     def get_new_ip(reply_element):
-        import logging
         new_ip_el = reply_element.find(Maintain.qual_tag("new-ip"))
-        logging.debug(new_ip_el)
         if new_ip_el is not None:
-            logging.debug(new_ip_el.text)
             return new_ip_el.text
         return None
 

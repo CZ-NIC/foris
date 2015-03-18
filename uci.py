@@ -69,7 +69,7 @@ class UciRawForm(Form):
                 input_value = getattr(uci_model, input_.name)  # TODO: catch AttributeError?
                 input_.value = input_value
             except AttributeError:
-                logger.error("Unable to bind: %s" % input_.name)
+                logger.error("Unable to bind: %s", input_.name)
 
     def save_to_model(self, model):
         for input_ in self.inputs:

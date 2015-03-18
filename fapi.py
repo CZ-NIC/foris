@@ -90,11 +90,11 @@ class ForisForm(ForisFormElement):
             return self.__data_cache
         self._update_nuci_data()
         data = {}
-        logger.debug("Updating with defaults: %s" % self.defaults)
+        logger.debug("Updating with defaults: %s", self.defaults)
         data.update(self.defaults)
-        logger.debug("Updating with Nuci data: %s" % self._nuci_data)
+        logger.debug("Updating with Nuci data: %s", self._nuci_data)
         data.update(self._nuci_data)
-        logger.debug("Updating with data: %s" % dict(self._request_data))
+        logger.debug("Updating with data: %s", dict(self._request_data))
         data.update(self._request_data)
         if data:
             data = self.clean_data(data)
@@ -225,7 +225,7 @@ class ForisForm(ForisFormElement):
     def process_callbacks(self, form_data):
         logger.debug("Processing callbacks")
         for cb in self.callbacks:
-            logger.debug("Processing callback: %s" % cb)
+            logger.debug("Processing callback: %s", cb)
             cb_result = cb(form_data)
             operation = cb_result[0]
             if operation == "none":

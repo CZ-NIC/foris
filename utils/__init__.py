@@ -75,7 +75,7 @@ def is_safe_redirect(url, host=None):
     :return:
     """
     if "\r" in url or "\n" in url:
-        logger.warning("Possible CRLF injection attempt: \n%s" % bottle.request.environ)
+        logger.warning("Possible CRLF injection attempt: \n%s", bottle.request.environ)
         return False
     url_components = urlparse.urlparse(url)
     return ((not url_components.scheme or url_components.scheme in ['http', 'https'])

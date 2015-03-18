@@ -663,7 +663,7 @@ class WifiHandler(BaseConfigHandler):
                 elif data.get('channel5g'):
                     channel = data['channel5g']
                 else:
-                    logger.critical("Saving form without Wi-Fi channel: %s" % data)
+                    logger.critical("Saving form without Wi-Fi channel: %s", data)
                     channel = "auto"
                 hwmode = data.get('hwmode')
                 if hwmode:
