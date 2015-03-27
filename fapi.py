@@ -15,9 +15,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import defaultdict, OrderedDict
+import logging
+
+from bottle import MultiDict
+
 from form import Dropdown, Form, Checkbox, websafe, Hidden, Radio
 from nuci import client
-import logging
 from nuci.configurator import add_config_update, commit
 from nuci.utils import LocalizableTextValue
 from utils import Lazy
@@ -58,7 +61,18 @@ class ForisForm(ForisFormElement):
         :return:
         """
         super(ForisForm, self).__init__(name)
-        self._request_data = data or {}  # values from request
+        if isinstance(data, MultiDict):
+            self._request_data = {}  # values from request
+            # convert MultiDict to normal dict with multiple values in lists
+            # if value is suffixed with '[]' (i.e. it is multifield)
+            for key, value in data.iteritems():
+                if key.endswith("[]"):
+                    # strip [] suffix
+                    self._request_data[key[:-2]] = data.getall(key)
+                else:
+                    self._request_data[key] = value
+        else:
+            self._request_data = data or {}
         self._nuci_data = {}  # values fetched from nuci
         self.defaults = {}  # default values from field definitions
         self.__data_cache = None  # cached data
@@ -283,7 +297,7 @@ class Section(ForisFormElement):
 
 class Field(ForisFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
-                 nuci_preproc=None, validators=None, hint="", **kwargs):
+                 nuci_preproc=None, validators=None, hint="", multifield=False, **kwargs):
         """
 
         :param main_form: parent form of this field
@@ -298,6 +312,7 @@ class Field(ForisFormElement):
         :param validators: validator or list of validators
         :type validators: validator or list
         :param hint: short descriptive text explaining the purpose of the field
+        :param multifield: whether multiple values can be returned
         :param kwargs: passed to Input constructor
         """
         super(Field, self).__init__(name)
@@ -319,6 +334,7 @@ class Field(ForisFormElement):
         self._kwargs["description"] = label
         self.requirements = {}
         self.hint = hint
+        self.multifield = multifield
         default = kwargs.pop("default", None)
         if issubclass(self.type, Checkbox):
             self._kwargs["value"] = "1"  # we need a non-empty value here
@@ -345,7 +361,6 @@ class Field(ForisFormElement):
     def field(self):
         if self.__field_cache is not None:
             return self.__field_cache
-
         validators = self.validators
         # beware, altering self._kwargs might cause funky behaviour
         attrs = self._kwargs.copy()
@@ -359,6 +374,13 @@ class Field(ForisFormElement):
         html_data = self._generate_html_data()
         for key, value in html_data.iteritems():
             attrs['data-%s' % key] = value
+        # multifield magic
+        if self.multifield:
+            # '[]' suffix is used for internal magic
+            # it is stripped when ForisForm is preparing data
+            self.name += "[]"
+            if issubclass(self.type, Dropdown):
+                attrs["multiple"] = "multiple"
         # call the proper constructor (web.py Form API is not consistent in this)
         if issubclass(self.type, Dropdown):
             args = attrs.pop("args", ())
