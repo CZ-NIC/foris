@@ -31,16 +31,30 @@ class YinElement(object):
         self.parent = None
         self.operation = None
 
+    def __iter__(self):
+        return iter(self.children)
+
+    def __hash__(self):
+        return hash(self.path)
+
+    def __cmp__(self, other):
+        return cmp(self.path, other.path)
+
     def add(self, child):
         """Add new child node.
+        Doesn't add the child if node with same path already exists.
 
-        :param child:
-        :return: self
+        :param child: child nde to add
+        :return: added child or existing with same path
         """
         if self.final:
             raise ValueError("Can't add child, '%s' is final node." % self.path)
-        self.children.append(child)
         child.parent = self
+        if child not in self.children:
+            self.children.append(child)
+            return child
+        else:
+            return self.children[self.children.index(child)]
 
     def add_removal(self, child):
         """Add new child node marked for removal.
