@@ -49,6 +49,11 @@ class ForisFormElement(object):
         del self.children[child.name]
         child.parent = None
 
+    @property
+    def sections(self):
+        filtered = filter(lambda x: isinstance(x, Section), self.children.itervalues())
+        return filtered
+
 
 class ForisForm(ForisFormElement):
     def __init__(self, name, data=None, filter=None):
@@ -83,11 +88,6 @@ class ForisForm(ForisFormElement):
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
         self.callbacks = []
         self.callback_results = {}  # name -> result
-
-    @property
-    def sections(self):
-        filtered = filter(lambda x: isinstance(x, Section), self.children.itervalues())
-        return filtered
 
     @property
     def nuci_config(self):
