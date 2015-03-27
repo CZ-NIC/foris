@@ -386,10 +386,10 @@ def config_action_post(page_name, action):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
-@app.route("/<page_name:re:.+>/ajax", name="config_ajax")
+@app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"))
 @login_required
 def config_ajax(page_name):
-    action = request.GET.get("action")
+    action = request.params.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
     ConfigPage = get_config_page(page_name)
