@@ -211,5 +211,17 @@ class Value(Uci):
         ET.SubElement(element, self.qual_tag("content")).text = self.content
 
 
+def parse_uci_bool(value):
+    """
+    Helper function to parse Uci bool values.
+
+    :param value: value - can be either Option instance or raw value
+    :return: True or False
+    """
+    if isinstance(value, Option):
+        value = value.value
+    return value in ("1", "true", "yes", "on", True)
+
+
 ####################################################################################################
 ET.register_namespace("uci", Uci.NS_URI)
