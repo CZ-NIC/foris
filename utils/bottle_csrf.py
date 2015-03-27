@@ -71,7 +71,8 @@ class CSRFPlugin(object):
         def wrapper(*args, **kwargs):
             token = None
             if bottle.request.method == "POST":
-                token = bottle.request.POST.get("csrf_token")
+                token = bottle.request.POST.get("csrf_token",
+                                                bottle.request.headers.get("X-CSRFToken"))
             # do not refer session from outer scope! we need to get new value
             # in each call of the function
             if not token or token != get_csrf_token():
