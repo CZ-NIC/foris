@@ -196,6 +196,8 @@ class ForisForm(ForisFormElement):
         :return: new Section
         :rtype: Section
         """
+        if len(args) and isinstance(args[0], Section):
+            return self._add(args[0])
         return self._add(Section(self, *args, **kwargs))
 
     @property
@@ -276,6 +278,8 @@ class Section(ForisFormElement):
         :return:
         :rtype: Field
         """
+        if len(args) and isinstance(args[0], Field):
+            return self._add(args[0])
         return self._add(Field(self._main_form, *args, **kwargs))
 
     def add_section(self, *args, **kwargs):
@@ -286,6 +290,8 @@ class Section(ForisFormElement):
         :return: new Section
         :rtype: Section
         """
+        if len(args) and isinstance(args[0], Section):
+            return self._add(args[0])
         return self._add(Section(self._main_form, *args, **kwargs))
 
     def render(self):
