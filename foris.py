@@ -31,7 +31,7 @@ from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option
 from nuci.modules.user_notify import Severity
 from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
-from utils.bottle_csrf import update_csrf_token, CSRFValidationError
+from utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError
 from utils import messages
 from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
@@ -63,6 +63,7 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
 bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename.replace("%LANG%", bottle.request.app.lang)) % args
+bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 
 # messages
 messages.set_template_defaults(bottle.SimpleTemplate)
@@ -95,7 +96,7 @@ def index():
         session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
         session["wizard_finished"] = wizard_finished
         allowed_step_max = int(allowed_step_max)
-    
+
     session.save()
     if session.get("user_authenticated"):
         login_redirect(allowed_step_max, wizard_finished)
