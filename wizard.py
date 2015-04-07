@@ -32,10 +32,6 @@ from utils.routing import reverse
 logger = logging.getLogger("wizard")
 
 
-app = Bottle()
-app.install(CSRFPlugin())
-
-
 NUM_WIZARD_STEPS = 9
 
 
@@ -353,9 +349,6 @@ class WizardStep9(WizardStepMixin, BaseConfigHandler):
                             can_skip_wizard=self.can_skip_wizard, **kwargs)
 
 
-app = Bottle()
-
-
 def get_wizard(number):
     """WizardStep class factory.
 
@@ -467,7 +460,7 @@ def mark_wizard_finished_session():
     session["wizard_finished"] = True
     session.save()
 
-@app.route("/step/<number:re:\d+>/ajax")
+
 @login_required
 def ajax(number=1):
     check_step_allowed_or_redirect(number)
@@ -483,13 +476,11 @@ def ajax(number=1):
         raise bottle.HTTPError(404, "Unknown Wizard action.")
 
 
-@app.route("/", name="wizard_index")
 @login_required
 def wizard():
     return bottle.template("wizard/index")
 
 
-@app.route("/step/<number:re:\d+>", name="wizard_step")
 @login_required
 def step(number=1):
     Wizard = get_wizard(number)
@@ -497,7 +488,6 @@ def step(number=1):
     return wiz.render(stepnumber=number)
 
 
-@app.route("/step/<number:re:\d+>", method="POST")
 @login_required
 def step_post(number=1):
     Wizard = get_wizard(number)
@@ -518,7 +508,6 @@ def step_post(number=1):
     return wiz.render(stepnumber=number)
 
 
-@app.route("/skip", name="wizard_skip")
 @login_required
 def skip():
     allowed_step_max, wizard_finished = get_wizard_progress()
@@ -535,3 +524,14 @@ def skip():
         bottle.redirect(reverse("config_index"))
 
     raise bottle.HTTPError(403, "Action not allowed.")
+
+
+def init():
+    app = Bottle()
+    app.install(CSRFPlugin())
+    app.route("/step/<number:re:\d+>/ajax", callback=ajax)
+    app.route("/", name="wizard_index", callback=wizard)
+    app.route("/step/<number:re:\d+>", name="wizard_step", callback=step)
+    app.route("/step/<number:re:\d+>", method="POST", callback=step_post)
+    app.route("/skip", name="wizard_skip", callback=skip)
+    return app

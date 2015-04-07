@@ -314,8 +314,8 @@ def prepare_main_app(args):
     # mount apps
     import config
     import wizard
-    app.mount("/config", config.app)
-    app.mount("/wizard", wizard.app)
+    app.mount("/config", config.init())
+    app.mount("/wizard", wizard.init())
 
     if args.debug:
         # "about:config" is available only in debug mode

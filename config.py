@@ -36,10 +36,6 @@ from utils.routing import reverse
 logger = logging.getLogger(__name__)
 
 
-app = Bottle()
-app.install(CSRFPlugin())
-
-
 class ConfigPageMixin(object):
     template = "config/main"
 
@@ -297,7 +293,6 @@ def get_config_page(page_name):
     return ConfigPage
 
 
-@app.route("/", name="config_index")
 @login_required
 def index():
     notifications = client.get_messages()
@@ -307,7 +302,6 @@ def index():
                     notifications=notifications.new)
 
 
-@app.route("/notifications/dismiss", method="POST")
 @login_required
 def dismiss_notifications():
     message_ids = request.POST.getall("message_ids[]")
@@ -317,7 +311,6 @@ def dismiss_notifications():
     return {'success': False}
 
 
-@app.route("/<page_name:re:.+>/", name="config_page")
 @login_required
 def config_page_get(page_name):
     ConfigPage = get_config_page(page_name)
@@ -326,7 +319,6 @@ def config_page_get(page_name):
                               active_config_page_key=page_name)
 
 
-@app.route("/<page_name:re:.+>/", method="POST")
 @login_required
 def config_page_post(page_name):
     ConfigPage = get_config_page(page_name)
@@ -346,7 +338,6 @@ def config_page_post(page_name):
                               active_config_page_key=page_name)
 
 
-@app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action")
 @login_required
 def config_action(page_name, action):
     ConfigPage = get_config_page(page_name)
@@ -358,7 +349,6 @@ def config_action(page_name, action):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
-@app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST")
 @login_required
 def config_action_post(page_name, action):
     ConfigPage = get_config_page(page_name)
@@ -386,7 +376,6 @@ def config_action_post(page_name, action):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
-@app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"))
 @login_required
 def config_ajax(page_name):
     action = request.params.get("action")
@@ -399,3 +388,22 @@ def config_ajax(page_name):
         return result
     except ValueError:
         raise bottle.HTTPError(404, "Unknown action.")
+
+
+def init():
+    app = Bottle()
+    app.install(CSRFPlugin())
+    app.route("/", name="config_index", callback=index)
+    app.route("/notifications/dismiss", method="POST",
+              callback=dismiss_notifications)
+    app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"),
+              callback=config_ajax)
+    app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST",
+              callback=config_action_post)
+    app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action",
+              callback=config_action)
+    app.route("/<page_name:re:.+>/", method="POST",
+              callback=config_page_post)
+    app.route("/<page_name:re:.+>/", name="config_page",
+              callback=config_page_get)
+    return app
