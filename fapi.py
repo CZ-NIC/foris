@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import defaultdict, OrderedDict
+import copy
 import logging
 
 from bottle import MultiDict
@@ -72,8 +73,17 @@ class ForisForm(ForisFormElement):
             # if value is suffixed with '[]' (i.e. it is multifield)
             for key, value in data.iteritems():
                 if key.endswith("[]"):
+                    # we don't want to alter lists in MultiDict instance
+                    values = copy.deepcopy(data.getall(key))
+                    logger.debug("%s: %s (%s)", key, values, value)
+                    # split value by \r\n - sent by textarea
+                    if "\r\n" in value:
+                        values = value.split("\r\n")
+                    # remove dummy value from hidden field
+                    elif len(values) and not values[0]:
+                        del values[0]
                     # strip [] suffix
-                    self._request_data[key[:-2]] = data.getall(key)
+                    self._request_data[key[:-2]] = values
                 else:
                     self._request_data[key] = value
         else:
@@ -341,7 +351,7 @@ class Field(ForisFormElement):
         self.requirements = {}
         self.hint = hint
         self.multifield = multifield
-        default = kwargs.pop("default", None)
+        default = kwargs.pop("default", [] if self.multifield else None)
         if issubclass(self.type, Checkbox):
             self._kwargs["value"] = "1"  # we need a non-empty value here
             self._kwargs["checked"] = False if default == "0" else bool(default)
@@ -381,20 +391,21 @@ class Field(ForisFormElement):
         for key, value in html_data.iteritems():
             attrs['data-%s' % key] = value
         # multifield magic
+        rendered_name = self.name
         if self.multifield:
             # '[]' suffix is used for internal magic
             # it is stripped when ForisForm is preparing data
-            self.name += "[]"
+            rendered_name = self.name + "[]"
             if issubclass(self.type, Dropdown):
                 attrs["multiple"] = "multiple"
         # call the proper constructor (web.py Form API is not consistent in this)
         if issubclass(self.type, Dropdown):
             args = attrs.pop("args", ())
             # Dropdowns - signature: def __init__(self, name, args, *validators, **attrs)
-            field = self.type(self.name, args, *validators, **attrs)
+            field = self.type(rendered_name, args, *validators, **attrs)
         else:
             # other - signature: def __init__(self, name, *validators, **attrs)
-            field = self.type(self.name, *validators, **attrs)
+            field = self.type(rendered_name, *validators, **attrs)
         if self._main_form.validated:
             field.validate(self._main_form.data or {}, self.name)
         else:

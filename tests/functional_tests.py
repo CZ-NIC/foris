@@ -170,7 +170,7 @@ class TestConfig(ForisTest):
         assert_equal(page.status_int, 200)
 
         form = page.forms['main-form']
-        form['proto'] = "static"
+        form.set("proto", "static", 1)
 
         submit = form.submit(headers=XHR_HEADERS)
         assert_true(submit.body.lstrip().startswith("<form"))
@@ -459,21 +459,19 @@ class TestWizard(ForisTest):
         assert_equal(home.request.path, "//wizard/")
 
     def test_step_1(self):
-        self._test_wizard_step(1)
+        page = self._test_wizard_step(1)
         # non-matching PWs
-        wrong_input = self.app.post("/wizard/step/1", {
-            'password': "123456",
-            'password_validation': "111111",
-            # do not send 'set_system_pw'
-        })
+        form = page.forms['main-form']
+        form.set("password", "123456")
+        form.set("password_validation", "111111")
+        wrong_input = form.submit()
         assert_equal(wrong_input.status_int, 200)
         assert_in(RESPONSE_TEXTS['form_invalid'], wrong_input.body)
         # good input
-        good_input = self.app.post("/wizard/step/1", {
-            'password': self.password,
-            'password_validation': self.password,
-            # do not send 'set_system_pw'
-        }).follow()
+        form = wrong_input.forms['main-form']
+        form.set('password', self.password)
+        form.set('password_validation', self.password)
+        good_input = form.submit().follow()
         assert_equal(good_input.status_int, 200)
         assert_equal(good_input.request.path, "//wizard/step/2")
 
@@ -583,11 +581,11 @@ class TestWizardSkip(ForisTest):
         # go to first page to init Wizard
         assert_equal(self.app.get("/").follow().request.path, "//wizard/")
         # set password
-        good_input = self.app.post("/wizard/step/1", {
-            'password': self.password,
-            'password_validation': self.password,
-            # do not send 'set_system_pw'
-        }).follow()
+        page = self.app.get("/wizard/step/1").maybe_follow()
+        form = page.forms['main-form']
+        form.set('password', self.password)
+        form.set('password_validation', self.password)
+        good_input = form.submit().follow()
         assert_equal(good_input.status_int, 200)
         assert_equal(good_input.request.path, "//wizard/step/2")
         # try to skip wizard

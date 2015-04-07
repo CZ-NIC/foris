@@ -337,7 +337,7 @@ class Input(object):
         if self.value is not None:
             attrs['value'] = self.value
         attrs['name'] = self.name
-        
+
         return '<input %s/>' % attrs
 
     def rendernote(self, note):
@@ -447,20 +447,23 @@ class Dropdown(Input):
     r"""Dropdown/select input.
 
         >>> Dropdown(name='foo', args=['a', 'b', 'c'], value='b').render()
-        u'<select id="field-foo" name="foo">\n  <option value="a">a</option>\n  <option selected="selected" value="b">b</option>\n  <option value="c">c</option>\n</select>\n'
+        u'<input type="hidden" name="foo" value=""><select id="field-foo" name="foo">\n  <option value="a">a</option>\n  <option selected="selected" value="b">b</option>\n  <option value="c">c</option>\n</select>\n'
         >>> Dropdown(name='foo', args=[('a', 'aa'), ('b', 'bb'), ('c', 'cc')], value='b').render()
-        u'<select id="field-foo" name="foo">\n  <option value="a">aa</option>\n  <option selected="selected" value="b">bb</option>\n  <option value="c">cc</option>\n</select>\n'
+        u'<input type="hidden" name="foo" value=""><select id="field-foo" name="foo">\n  <option value="a">aa</option>\n  <option selected="selected" value="b">bb</option>\n  <option value="c">cc</option>\n</select>\n'
     """
 
     def __init__(self, name, args, *validators, **attrs):
+        if isinstance(args, dict):
+            args = args.items()
         self.args = args
         super(Dropdown, self).__init__(name, *validators, **attrs)
 
     def render(self):
         attrs = self.attrs.copy()
         attrs['name'] = self.name
-
-        x = '<select %s>\n' % attrs
+        # dummy value to post when no item is selected
+        x = '<input type="hidden" name="%s" value="">' % self.name
+        x += '<select %s>\n' % attrs
 
         for arg in self.args:
             x += self._render_option(arg)
@@ -486,9 +489,9 @@ class GroupedDropdown(Dropdown):
     r"""Grouped Dropdown/select input.
 
         >>> GroupedDropdown(name='car_type', args=(('Swedish Cars', ('Volvo', 'Saab')), ('German Cars', ('Mercedes', 'Audi'))), value='Audi').render()
-        u'<select id="field-car_type" name="car_type">\n  <optgroup label="Swedish Cars">\n    <option value="Volvo">Volvo</option>\n    <option value="Saab">Saab</option>\n  </optgroup>\n  <optgroup label="German Cars">\n    <option value="Mercedes">Mercedes</option>\n    <option selected="selected" value="Audi">Audi</option>\n  </optgroup>\n</select>\n'
+        u'<input type="hidden" name="car_type" value=""><select id="field-car_type" name="car_type">\n  <optgroup label="Swedish Cars">\n    <option value="Volvo">Volvo</option>\n    <option value="Saab">Saab</option>\n  </optgroup>\n  <optgroup label="German Cars">\n    <option value="Mercedes">Mercedes</option>\n    <option selected="selected" value="Audi">Audi</option>\n  </optgroup>\n</select>\n'
         >>> GroupedDropdown(name='car_type', args=(('Swedish Cars', (('v', 'Volvo'), ('s', 'Saab'))), ('German Cars', (('m', 'Mercedes'), ('a', 'Audi')))), value='a').render()
-        u'<select id="field-car_type" name="car_type">\n  <optgroup label="Swedish Cars">\n    <option value="v">Volvo</option>\n    <option value="s">Saab</option>\n  </optgroup>\n  <optgroup label="German Cars">\n    <option value="m">Mercedes</option>\n    <option selected="selected" value="a">Audi</option>\n  </optgroup>\n</select>\n'
+        u'<input type="hidden" name="car_type" value=""><select id="field-car_type" name="car_type">\n  <optgroup label="Swedish Cars">\n    <option value="v">Volvo</option>\n    <option value="s">Saab</option>\n  </optgroup>\n  <optgroup label="German Cars">\n    <option value="m">Mercedes</option>\n    <option selected="selected" value="a">Audi</option>\n  </optgroup>\n</select>\n'
 
     """
 
@@ -500,7 +503,8 @@ class GroupedDropdown(Dropdown):
         attrs = self.attrs.copy()
         attrs['name'] = self.name
 
-        x = '<select %s>\n' % attrs
+        x = '<input type="hidden" name="%s" value="">' % self.name
+        x += '<select %s>\n' % attrs
 
         for label, options in self.args:
             x += '  <optgroup label="%s">\n' % websafe(label)
@@ -570,7 +574,7 @@ class Checkbox(Input):
             attrs['checked'] = 'checked'
         return '<input type="hidden" name="%s" value="0">' \
                '<input %s/>' % (attrs['name'], attrs)
-    
+
     def set_value(self, value):
         self.checked = bool(value)
 
