@@ -42,6 +42,15 @@ class Stats(YinElement):
          -- 'interfaces': dict of interfaces
          ---- `key:value` interface stats (key = interface name)
          ------ 'is_up': link of interface - True if up, False if down, None else
+         -- 'sending': dict of status of data sending
+         ---- 'ucollect': (dict) status of uCollect
+         ------ 'alive': (bool) whether sending works flawlessly
+         ------ 'status': (string) status code/name
+         ------ 'age': (int) last update of status in seconds
+         ---- 'firewall': (dict) status of firewall
+         ------ 'alive': (bool) whether sending works flawlessly
+         ------ 'status': (string) status code/name
+         ------ 'age': (int) last update of status in seconds
     """
 
     tag = "stats"
@@ -57,6 +66,19 @@ class Stats(YinElement):
         if data.get("model", "").lower() == "turris":
             data['board-name'] = data.get("board-name", "").upper()
         return data
+
+    @staticmethod
+    def _update_sending(elem, component, sending_dict):
+        component_dict = sending_dict.setdefault(component, {})
+        for field_el in elem:
+            if field_el.tag == Stats.qual_tag("status"):
+                component_dict['status'] = field_el.text
+                component_dict['alive'] = field_el.text == "online"
+            elif field_el.tag == Stats.qual_tag("age"):
+                try:
+                    component_dict['age'] = int(field_el.text)
+                except ValueError:
+                    pass
 
     @staticmethod
     def from_element(element):
@@ -95,6 +117,12 @@ class Stats(YinElement):
                     interfaces[if_name] = {
                         'is_up': True if is_up else False if is_down else None
                     }
+            elif elem.tag == Stats.qual_tag("ucollect-sending"):
+                sending = stats.data.setdefault("sending", {})
+                Stats._update_sending(elem, "ucollect", sending)
+            elif elem.tag == Stats.qual_tag("firewall-sending"):
+                sending = stats.data.setdefault("sending", {})
+                Stats._update_sending(elem, "firewall", sending)
 
         # do postprocessing of data
         Stats.__postprocess_data(stats.data)

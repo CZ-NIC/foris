@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-26 15:42+0100\n"
+"POT-Creation-Date: 2015-05-20 17:34+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -101,6 +101,24 @@ msgstr ""
 
 msgid "About"
 msgstr "O routeru"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Connecting"
+msgstr "Připojování"
+
+msgid "Invalid authentication"
+msgstr "Neplatná autentizace"
+
+msgid "Broken"
+msgstr "Nefunkční"
+
+msgid "Unknown status"
+msgstr "Neznámý stav"
 
 msgid "Home page"
 msgstr "Hlavní stránka"
@@ -705,6 +723,19 @@ msgstr "Sériové číslo"
 
 msgid "Kernel version"
 msgstr "Verze jádra"
+
+msgid "Sending of uCollect data"
+msgstr "Odesílání dat z uCollectu"
+
+#, python-format
+msgid "(updated %d second ago)"
+msgid_plural "(updated %d seconds ago)"
+msgstr[0] "(aktualizováno před %d sekundou)"
+msgstr[1] "(aktualizováno před %d sekundami)"
+msgstr[2] "(aktualizováno před %d sekundami)"
+
+msgid "Sending of firewall logs"
+msgstr "Odesílání firewallových záznamů"
 
 msgid "Device registration"
 msgstr "Registrace zařízení"

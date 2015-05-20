@@ -242,6 +242,15 @@ class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     userfriendly_title = gettext("About")
 
+    SENDING_STATUS_TRANSLATION = {
+        'online': gettext("Online"),
+        'offline': gettext("Offline"),
+        'connecting': gettext("Connecting"),
+        'bad-auth': gettext("Invalid authentication"),
+        'broken': gettext("Broken"),
+        'unknown': gettext("Unknown status"),
+    }
+
     def _action_registration_code(self):
         return client.get_registration()
 
@@ -255,10 +264,22 @@ class AboutConfigPage(ConfigPageMixin):
             return dict(success=regnum is not None, data=data)
         raise ValueError("Unknown AJAX action.")
 
+    @staticmethod
+    def translate_sending_status(status):
+        verbose = _(AboutConfigPage.SENDING_STATUS_TRANSLATION.get(
+            status,
+            AboutConfigPage.SENDING_STATUS_TRANSLATION['unknown']
+        ))
+        if status not in AboutConfigPage.SENDING_STATUS_TRANSLATION:
+            verbose += " (%s)" % status
+        return verbose
+
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         serial = client.get_serial()
-        return self.default_template(stats=stats.data, serial=serial, **kwargs)
+        return self.default_template(stats=stats.data, serial=serial,
+                                     translate_sending_status=self.translate_sending_status,
+                                     **kwargs)
 
 
 class VirtualConfigPage(ConfigPageMixin):

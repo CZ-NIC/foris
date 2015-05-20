@@ -32,6 +32,20 @@
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ stats['kernel-version'] }}</td>
             </tr>
+            <tr>
+                <th>{{ trans("Sending of uCollect data") }}</th>
+                <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
+                  {{ translate_sending_status(stats['sending']['ucollect']['status']) }}
+                  {{ ungettext("(updated %d second ago)", "(updated %d seconds ago)", stats['sending']['ucollect']['age']) % stats['sending']['ucollect']['age'] if stats['sending']['ucollect'].get('age') is not None else "" }}
+                </td>
+            </tr>
+            <tr>
+                <th>{{ trans("Sending of firewall logs") }}</th>
+                <td class="{{ "sending-ok" if stats['sending']['firewall']['alive'] else "sending-fail" }}">
+                  {{ translate_sending_status(stats['sending']['firewall']['status']) }}
+                  {{ ungettext("(updated %d second ago)", "(updated %d seconds ago)", stats['sending']['firewall']['age']) % stats['sending']['firewall']['age'] if stats['sending']['firewall'].get('age') is not None else "" }}
+                </td>
+            </tr>
         </tbody>
     </table>
 
