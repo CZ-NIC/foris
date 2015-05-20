@@ -59,12 +59,16 @@
             self.attr("disabled", "disabled");
             self.after('<img src="{{ static("img/icon-loading.gif") }}" id="registration-code-loader" alt="' + Foris.messages.loading +'">');
             $.get('{{ url("config_ajax", page_name="about") }}', {action: "registration_code"})
-                    .done(function(response) {
+                    .done(function(response, status, xhr) {
                         if (response.success) {
                             $("#registration-code").text(response.data).show();
                             $("#registration-code-fail").hide();
                         }
                         else {
+                            if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                              window.location.replace(xhr.responseJSON.loginUrl);
+                              return;
+                            }
                             $("#registration-code").text("????????");
                             $("#registration-code-fail").show();
                         }
