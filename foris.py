@@ -43,7 +43,6 @@ BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
-bottle.SimpleTemplate.defaults['trans'] = lambda msgid: bottle.request.app._(msgid)  # workaround
 DEFAULT_LANGUAGE = 'cs'
 translations = {
     'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
@@ -52,6 +51,9 @@ translations = {
                               languages=['en'], fallback=True)
 }
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
+ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
+bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
+bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 gettext_dummy = lambda x: x
 _ = ugettext
 
