@@ -83,7 +83,10 @@ class ForisTest(TestCase):
 
     @classmethod
     def login(cls, password):
-        login_response = cls.app.post("/", {'password': password}).maybe_follow()
+        page = cls.app.get("/")
+        login_form = page.forms[0]
+        login_form.set("password", password)
+        login_response = login_form.submit().maybe_follow()
         assert_equal(login_response.request.path, "//config/")
 
     def uci_get(self, path):

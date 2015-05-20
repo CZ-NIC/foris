@@ -19,9 +19,13 @@ import random
 import string
 
 
-def get_csrf_token(default=None):
+def get_csrf_token():
     session = bottle.request.environ['beaker.session']
-    return session.get("csrf_token", default)
+    csrf_token = session.get("csrf_token")
+    if not csrf_token:
+        # create new token if it's not present in this session
+        update_csrf_token()
+    return session.get("csrf_token")
 
 
 def update_csrf_token(save_session=True):

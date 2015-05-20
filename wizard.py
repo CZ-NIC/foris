@@ -526,7 +526,7 @@ def skip():
     raise bottle.HTTPError(403, "Action not allowed.")
 
 
-def init():
+def init_app():
     app = Bottle()
     app.install(CSRFPlugin())
     app.route("/step/<number:re:\d+>/ajax", callback=ajax)

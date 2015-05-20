@@ -390,7 +390,7 @@ def config_ajax(page_name):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
-def init():
+def init_app():
     app = Bottle()
     app.install(CSRFPlugin())
     app.route("/", name="config_index", callback=index)

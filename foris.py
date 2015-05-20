@@ -31,7 +31,7 @@ from nuci import client, filters
 from nuci.modules.uci_raw import Uci, Config, Section, Option
 from nuci.modules.user_notify import Severity
 from utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
-from utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError
+from utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
 from utils import messages
 from utils.reporting_middleware import ReportingMiddleware
 from utils.routing import reverse
@@ -82,7 +82,6 @@ def login_redirect(step_num, wizard_finished=False):
         bottle.redirect(reverse("wizard_step", number=step_num))
 
 
-@bottle.route("/", name="index")
 @bottle.view("index")
 def index():
     session = bottle.request.environ['beaker.session']
@@ -105,7 +104,6 @@ def index():
                           % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
 
 
-@bottle.route("/lang/<lang:re:\w{2}>", name="change_lang")
 def change_lang(lang):
     """Change language of the interface.
 
@@ -162,7 +160,6 @@ def write_uci_lang(lang):
         return False
 
 
-@bottle.route("/", method="POST", name="login")
 def login():
     session = bottle.request.environ["beaker.session"]
     next = bottle.request.POST.get("next")
@@ -184,7 +181,6 @@ def login():
     bottle.redirect(reverse("index"))
 
 
-@bottle.route("/logout", name="logout")
 def logout():
     session = bottle.request.environ["beaker.session"]
     if "user_authenticated" in session:
@@ -192,7 +188,6 @@ def logout():
     bottle.redirect(reverse("index"))
 
 
-@bottle.route('/static/<filename:re:.*>', name="static")
 def static(filename):
     if not bottle.DEBUG:
         logger.warning("Static files should be handled externally in production mode.")
@@ -214,20 +209,23 @@ def _check_password(password):
 
 def foris_403_handler(error):
     if isinstance(error, CSRFValidationError):
-        # maybe the session expired, if so, just redirect the user
-        redirect_unauthenticated()
+        try:
+            # maybe the session expired, if so, just redirect the user
+            redirect_unauthenticated()
+        except bottle.HTTPResponse as e:
+            # error handler must return the exception, otherwise it would
+            # be raised and not handled by Bottle
+            return e
 
     # otherwise display the standard error page
     bottle.app().default_error_handler(error)
 
 
-@bottle.hook('after_request')
 def clickjacking_protection():
     # we don't use frames at all, we can safely deny opening pages in frames
     bottle.response.headers['X-Frame-Options'] = 'DENY'
 
 
-@bottle.hook('after_request')
 def disable_caching(authenticated_only=True):
     """
     Hook for disabling caching.
@@ -297,6 +295,23 @@ def get_arg_parser():
     return parser
 
 
+def init_default_app():
+    """
+    Initialize top-level Foris app - register all routes etc.
+
+    :return: instance of Foris Bottle application
+    """
+
+    app = bottle.app()
+    app.install(CSRFPlugin())
+    app.route("/", name="index", callback=index)
+    app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
+    app.route("/", method="POST", name="login", callback=login)
+    app.route("/logout", name="logout", callback=logout)
+    app.route('/static/<filename:re:.*>', name="static", callback=static)
+    return app
+
+
 def prepare_main_app(args):
     """
     Prepare Foris main application - i.e. apply CLI arguments, mount applications,
@@ -305,7 +320,7 @@ def prepare_main_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
-    app = bottle.app()
+    app = init_default_app()
 
     # basic and bottle settings
     template_dir = os.path.join(BASE_DIR, "templates")
@@ -314,8 +329,8 @@ def prepare_main_app(args):
     # mount apps
     import config
     import wizard
-    app.mount("/config", config.init())
-    app.mount("/wizard", wizard.init())
+    app.mount("/config", config.init_app())
+    app.mount("/wizard", wizard.init_app())
 
     if args.debug:
         # "about:config" is available only in debug mode
