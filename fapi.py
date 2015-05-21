@@ -20,7 +20,7 @@ import logging
 
 from bottle import MultiDict
 
-from form import Dropdown, Form, Checkbox, websafe, Hidden, Radio
+from form import InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
 from nuci import client
 from nuci.configurator import add_config_update, commit
 from nuci.utils import LocalizableTextValue
@@ -399,9 +399,9 @@ class Field(ForisFormElement):
             if issubclass(self.type, Dropdown):
                 attrs["multiple"] = "multiple"
         # call the proper constructor (web.py Form API is not consistent in this)
-        if issubclass(self.type, Dropdown):
+        if issubclass(self.type, InputWithArgs):
             args = attrs.pop("args", ())
-            # Dropdowns - signature: def __init__(self, name, args, *validators, **attrs)
+            # InputWithArgs - signature: def __init__(self, name, args, *validators, **attrs)
             field = self.type(rendered_name, args, *validators, **attrs)
         else:
             # other - signature: def __init__(self, name, *validators, **attrs)

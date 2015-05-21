@@ -23,6 +23,7 @@ input[type="file"]
   +pie-clearfix
 
   & > .row
+    +pie-clearfix
     padding: 0.25em 0
     margin-bottom: 0.5em
 
@@ -40,15 +41,21 @@ input[type="file"]
       .radio-inputs
         width: 20.125em
 
-  label
-    display: inline-block
-    font-weight: bold
-    vertical-align: middle
-    min-width: 12em
-    max-width: 80%
+    & > label
+      float: left
+      display: inline-block
+      font-weight: bold
+      vertical-align: middle
+      min-width: 12em
+      max-width: 80%
 
-    +respond-to('not-mobile', $no-query: true)
-      max-width: 12em
+      +respond-to('not-mobile', $no-query: true)
+        max-width: 12em
+
+  .multicheckbox
+    float: left
+    label
+      display: block
 
   .field-hint
     cursor: pointer

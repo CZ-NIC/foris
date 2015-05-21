@@ -443,7 +443,15 @@ class Textarea(Input):
         return '<textarea %s>%s</textarea>' % (attrs, value)
 
 
-class Dropdown(Input):
+class InputWithArgs(Input):
+    def __init__(self, name, args, *validators, **attrs):
+        if isinstance(args, dict):
+            args = args.items()
+        self.args = args
+        super(InputWithArgs, self).__init__(name, *validators, **attrs)
+
+
+class Dropdown(InputWithArgs):
     r"""Dropdown/select input.
 
         >>> Dropdown(name='foo', args=['a', 'b', 'c'], value='b').render()
@@ -451,12 +459,6 @@ class Dropdown(Input):
         >>> Dropdown(name='foo', args=[('a', 'aa'), ('b', 'bb'), ('c', 'cc')], value='b').render()
         u'<input type="hidden" name="foo" value=""><select id="field-foo" name="foo">\n  <option value="a">aa</option>\n  <option selected="selected" value="b">bb</option>\n  <option value="c">cc</option>\n</select>\n'
     """
-
-    def __init__(self, name, args, *validators, **attrs):
-        if isinstance(args, dict):
-            args = args.items()
-        self.args = args
-        super(Dropdown, self).__init__(name, *validators, **attrs)
 
     def render(self):
         attrs = self.attrs.copy()
@@ -494,10 +496,6 @@ class GroupedDropdown(Dropdown):
         u'<input type="hidden" name="car_type" value=""><select id="field-car_type" name="car_type">\n  <optgroup label="Swedish Cars">\n    <option value="v">Volvo</option>\n    <option value="s">Saab</option>\n  </optgroup>\n  <optgroup label="German Cars">\n    <option value="m">Mercedes</option>\n    <option selected="selected" value="a">Audi</option>\n  </optgroup>\n</select>\n'
 
     """
-
-    def __init__(self, name, args, *validators, **attrs):
-        self.args = args
-        super(Dropdown, self).__init__(name, *validators, **attrs)
 
     def render(self):
         attrs = self.attrs.copy()
@@ -580,6 +578,30 @@ class Checkbox(Input):
 
     def get_value(self):
         return self.checked
+
+
+class MultiCheckbox(InputWithArgs):
+    def render(self):
+        attrs = self.attrs.copy()
+        attrs['name'] = self.name
+        x = '<input id="%s" type="hidden" name="%s" value="">' % (ID_TEMPLATE % self.name,
+                                                                  self.name)
+        x += '<div class="multicheckbox">'
+        for value, label in self.args:
+            x += self._render_checkbox(value, label)
+        x += '</div>'
+        return x
+
+    def _render_checkbox(self, value, label):
+        attrs = AttributeList({
+            'type': 'checkbox',
+            'name': self.name,
+            'value': value
+        })
+
+        if self.value == value or (isinstance(self.value, list) and value in self.value):
+            attrs['checked'] = 'checked'
+        return '<label><input %s/>%s</label>' % (attrs, label)
 
 
 class Button(Input):
