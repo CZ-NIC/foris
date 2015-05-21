@@ -19,11 +19,12 @@ import re
 import bottle
 
 from foris import gettext_dummy as gettext, ugettext as _
-from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time
+from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time, \
+    MultiCheckbox
 import fapi
 from nuci import client, filters
 from nuci.filters import create_config_filter
-from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
+from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 import validators
 
 
@@ -974,3 +975,78 @@ class UpdaterHandler(BaseConfigHandler):
         package_lists_form.add_callback(package_lists_form_cb)
         package_lists_form.add_callback(package_lists_run_updater_cb)
         return package_lists_form
+
+
+class UcollectHandler(BaseConfigHandler):
+    userfriendly_title = gettext("uCollect")
+
+    def get_form(self):
+        ucollect_form = fapi.ForisForm("ucollect", self.data,
+                                       filter=filters.create_config_filter("ucollect"))
+        fakes = ucollect_form.add_section(
+            name="fakes",
+            title=_("Emulated services"),
+            description=_("One of uCollect's features is emulation of some commonly abused "
+                          "services. If this function is enabled, uCollect is listening for "
+                          "incoming connection attempts to these services. Enabling of the "
+                          "emulated services has no effect if another service is already "
+                          "listening on its default port (port numbers are listed below).")
+        )
+
+        SERVICES_OPTIONS = (
+            ("23tcp", _("Telnet (23/TCP)")),
+        )
+
+        def get_enabled_services(disabled_list):
+            disabled_services = map(lambda value: value.content, disabled_list.children)
+            res = [x[0] for x in SERVICES_OPTIONS if x[0] not in disabled_services]
+            return res
+
+        fakes.add_field(
+            MultiCheckbox,
+            name="services",
+            label=_("Emulated services"),
+            args=SERVICES_OPTIONS,
+            multifield=True,
+            nuci_path="uci.ucollect.fakes.disable",
+            nuci_preproc=get_enabled_services,
+            default=[x[0] for x in SERVICES_OPTIONS]
+        )
+
+        fakes.add_field(
+            Checkbox,
+            name="log_credentials",
+            label=_("Collect passwords"),
+            hint=_("If this option is enabled, passwords are collected "
+                   "and sent to server as well as login attempts."),
+            nuci_path="uci.ucollect.fakes.log_credentials",
+            nuci_preproc=parse_uci_bool
+        )
+
+        def ucollect_form_cb(data):
+            uci = Uci()
+            ucollect = Config("ucollect")
+            uci.add(ucollect)
+
+            fakes = Section("fakes", "fakes")
+            ucollect.add(fakes)
+
+            disable = List("disable")
+
+            disabled_services = [x[0] for x in SERVICES_OPTIONS
+                                 if x[0] not in data['services']]
+            for i, service in enumerate(disabled_services):
+                disable.add(Value(i, service))
+
+            if len(disabled_services):
+                fakes.add_replace(disable)
+            else:
+                fakes.add_removal(disable)
+
+            fakes.add(Option("log_credentials", data['log_credentials']))
+
+            return "edit_config", uci
+
+        ucollect_form.add_callback(ucollect_form_cb)
+
+        return ucollect_form

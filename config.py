@@ -238,6 +238,14 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         return result
 
 
+class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
+    template = "config/data-collection"
+    userfriendly_title = gettext("Data collection")
+
+    def render(self, **kwargs):
+        return self.default_template(form=self.form, title=self.userfriendly_title,
+                                     description=None, **kwargs)
+
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     userfriendly_title = gettext("About")
@@ -303,6 +311,7 @@ config_page_map = ConfigPageMapItems((
     ('system-password', SystemPasswordConfigPage),
     ('maintenance', MaintenanceConfigPage),
     ('updater', UpdaterConfigPage),
+    ('data-collection', DataCollectionConfigPage),
     ('about', AboutConfigPage),
 ))
 
