@@ -92,7 +92,7 @@ class PasswordHandler(BaseConfigHandler):
         else:
             label_pass1 = _("Password")
             label_pass2 = _("Password (repeat)")
-        
+
         pw_main.add_field(Password, name="password", label=label_pass1, required=True,
                           validators=validators.LenRange(6, 128))
         pw_main.add_field(Password, name="password_validation", label=label_pass2,
@@ -481,7 +481,7 @@ class TimeHandler(BaseConfigHandler):
 
 class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
-    
+
     def get_form(self):
         lan_form = fapi.ForisForm("lan", self.data,
                                   filter=create_config_filter("dhcp", "network"))
@@ -551,7 +551,7 @@ class LanHandler(BaseConfigHandler):
 
 class WifiHandler(BaseConfigHandler):
     userfriendly_title = gettext("Wi-Fi")
-    
+
     def get_form(self):
         stats = client.get(filter=filters.stats).find_child("stats")
         if len(stats.data['wireless-cards']) < 1:
@@ -618,7 +618,7 @@ class WifiHandler(BaseConfigHandler):
                    "channels can yield higher throughput but can cause more interference in the "
                    "network. If you don't know what to choose, use the default option with "
                    "20 MHz wide channel.")
-        )
+        ).requires("wifi_enabled", True)
         # 2.4 GHz channels
         if len(channels_2g4) > 1:
             field_2g4 = wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"),
@@ -686,9 +686,9 @@ class SystemPasswordHandler(BaseConfigHandler):
     """
     Setting the password of a system user (currently only root's pw).
     """
-    
+
     userfriendly_title = gettext("Advanced administration")
-    
+
     def get_form(self):
         system_pw_form = fapi.ForisForm("system_password", self.data)
         system_pw_main = system_pw_form.add_section(
