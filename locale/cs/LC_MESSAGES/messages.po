@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-20 17:34+0200\n"
+"POT-Creation-Date: 2015-05-21 11:02+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -728,14 +728,21 @@ msgid "Sending of uCollect data"
 msgstr "Odesílání dat z uCollectu"
 
 #, python-format
-msgid "(updated %d second ago)"
-msgid_plural "(updated %d seconds ago)"
-msgstr[0] "(aktualizováno před %d sekundou)"
-msgstr[1] "(aktualizováno před %d sekundami)"
-msgstr[2] "(aktualizováno před %d sekundami)"
+msgid "Time of last update: %(datetime)s"
+msgstr "Čas poslední aktualizace: %(datetime)s"
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] "(stav aktualizován před %d sekundou)"
+msgstr[1] "(stav aktualizován před %d sekundami)"
+msgstr[2] "(stav aktualizován před %d sekundami)"
 
 msgid "Sending of firewall logs"
 msgstr "Odesílání firewallových záznamů"
+
+msgid "Refresh"
+msgstr "Aktualizovat"
 
 msgid "Device registration"
 msgstr "Registrace zařízení"

@@ -36,14 +36,28 @@
                 <th>{{ trans("Sending of uCollect data") }}</th>
                 <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
                   {{ translate_sending_status(stats['sending']['ucollect']['status']) }}
-                  {{ ungettext("(updated %d second ago)", "(updated %d seconds ago)", stats['sending']['ucollect']['age']) % stats['sending']['ucollect']['age'] if stats['sending']['ucollect'].get('age') is not None else "" }}
+                  % if stats['sending']['ucollect'].get('age') is not None:
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=stats['sending']['ucollect']['last_update'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", stats['sending']['ucollect']['age']) % stats['sending']['ucollect']['age'] }}
+                      </abbr>
+                  % end
                 </td>
             </tr>
             <tr>
                 <th>{{ trans("Sending of firewall logs") }}</th>
                 <td class="{{ "sending-ok" if stats['sending']['firewall']['alive'] else "sending-fail" }}">
                   {{ translate_sending_status(stats['sending']['firewall']['status']) }}
-                  {{ ungettext("(updated %d second ago)", "(updated %d seconds ago)", stats['sending']['firewall']['age']) % stats['sending']['firewall']['age'] if stats['sending']['firewall'].get('age') is not None else "" }}
+                  % if stats['sending']['firewall'].get('age') is not None:
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=stats['sending']['firewall']['last_update'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", stats['sending']['firewall']['age']) % stats['sending']['firewall']['age'] }}
+                      </abbr>
+                  % end
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                  <a href="{{ url("config_page", page_name="about") }}" class="reload">{{ trans("Refresh") }}</a>
                 </td>
             </tr>
         </tbody>

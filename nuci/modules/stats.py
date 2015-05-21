@@ -13,6 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+from datetime import datetime, timedelta
 
 from base import YinElement
 from xml.etree import cElementTree as ET
@@ -47,10 +48,12 @@ class Stats(YinElement):
          ------ 'alive': (bool) whether sending works flawlessly
          ------ 'status': (string) status code/name
          ------ 'age': (int) last update of status in seconds
+         ------ 'last_update': (datetime) time of last update
          ---- 'firewall': (dict) status of firewall
          ------ 'alive': (bool) whether sending works flawlessly
          ------ 'status': (string) status code/name
          ------ 'age': (int) last update of status in seconds
+         ------ 'last_update': (datetime) time of last update
     """
 
     tag = "stats"
@@ -76,7 +79,9 @@ class Stats(YinElement):
                 component_dict['alive'] = field_el.text == "online"
             elif field_el.tag == Stats.qual_tag("age"):
                 try:
-                    component_dict['age'] = int(field_el.text)
+                    age = int(field_el.text)
+                    component_dict['age'] = age
+                    component_dict['last_update'] = datetime.now() - timedelta(seconds=age)
                 except ValueError:
                     pass
 
