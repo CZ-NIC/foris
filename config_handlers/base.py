@@ -146,7 +146,7 @@ class WanHandler(BaseConfigHandler):
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data,
-                                  filter=create_config_filter("network", "smrtd"))
+                                  filter=create_config_filter("network", "smrtd", "ucollect"))
         wan_main = wan_form.add_section(
             name="set_wan",
             title=_(self.userfriendly_title),
@@ -411,10 +411,14 @@ class WanHandler(BaseConfigHandler):
                 wan.add(Option("ifname", wan_ifname))
 
             # set interface for ucollect to listen on
+            interface_if_name = None
+            ucollect_interface0 = wan_form.nuci_config.find_child("uci.ucollect.@interface[0]")
+            if ucollect_interface0:
+                interface_if_name = ucollect_interface0.name
+
             ucollect = Config("ucollect")
-            # FIXME: replacing whole config is... an ugly work-around
-            uci.add_replace(ucollect)
-            interface = Section(None, "interface", True)
+            uci.add(ucollect)
+            interface = Section(interface_if_name, "interface", True)
             ucollect.add(interface)
             interface.add(Option("ifname", ucollect_ifname))
 
