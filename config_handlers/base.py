@@ -1045,7 +1045,10 @@ class UcollectHandler(BaseConfigHandler):
             if len(disabled_services):
                 fakes.add_replace(disable)
             else:
-                fakes.add_removal(disable)
+                # TODO: workaround for Nuci bug #3984 - remove when fixed
+                fakes_section = ucollect_form.nuci_config.find_child("uci.ucollect.fakes")
+                if fakes_section:
+                    fakes.add_removal(disable)
 
             fakes.add(Option("log_credentials", data['log_credentials']))
 
