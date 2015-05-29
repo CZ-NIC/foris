@@ -1020,9 +1020,9 @@ class UcollectHandler(BaseConfigHandler):
         fakes.add_field(
             Checkbox,
             name="log_credentials",
-            label=_("Collect passwords"),
-            hint=_("If this option is enabled, passwords are collected "
-                   "and sent to server as well as login attempts."),
+            label=_("Collect credentials"),
+            hint=_("If this option is enabled, user names and passwords are collected "
+                   "and sent to server in addition to the IP address of the client."),
             nuci_path="uci.ucollect.fakes.log_credentials",
             nuci_preproc=parse_uci_bool
         )
