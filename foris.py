@@ -362,7 +362,7 @@ def prepare_main_app(args):
     app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE, locale_dir=os.path.join(BASE_DIR, "locale")))
 
     # logging middleware for all mounted apps
-    app = ReportingMiddleware(app, sensitive_params=("key", "password", "password_validation"))
+    app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
     if args.debug:

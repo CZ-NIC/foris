@@ -14,10 +14,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-from bottle import _e, tob, html_escape, static_file
+from fnmatch import fnmatch
 from pprint import pformat
 from traceback import format_exc
+
+from bottle import _e, tob, html_escape, static_file
 
 
 ERROR_TEMPLATE = """<!DOCTYPE html>
@@ -55,13 +56,21 @@ ERROR_TEMPLATE = """<!DOCTYPE html>
 
 def filter_sensitive_params(params_dict, sensitive_params):
     for k, v in params_dict.iteritems():
-        if k in sensitive_params:
-            params_dict[k] = "**********"
+        for pattern in sensitive_params:
+            if fnmatch(k, pattern):
+                params_dict[k] = "**********"
     return params_dict
 
 
 class ReportingMiddleware(object):
     def __init__(self, app, dump_file="foris-error.html", sensitive_params=None):
+        """
+        Initialize middleware for catching and reporting errors.
+
+        :param app: instance of bottle application to apply this middleware to
+        :param dump_file: filename of file with report which is saved to /tmp
+        :param sensitive_params: list of sensitive params - supports shell-style wildcards
+        """
         self.app = app
         self.dump_file = dump_file
         self.sensitive_params = sensitive_params or ()
