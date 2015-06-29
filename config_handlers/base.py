@@ -920,7 +920,7 @@ class UpdaterHandler(BaseConfigHandler):
             name="select_package_lists",
             title=_(self.userfriendly_title),
             description=_("Updater is a service that keeps all TurrisOS "
-                          "software up to date. Apart from standard standard "
+                          "software up to date. Apart from the standard "
                           "installation, you can optionally select lists of "
                           "additional software that'd be installed on the "
                           "router. This software can be selected from the "
