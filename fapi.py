@@ -176,7 +176,8 @@ class ForisForm(ForisFormElement):
         :return: list of fields
         """
         fields = self._get_all_fields(element)
-        data = data or self.data
+        if fields:
+            data = data or self.data
         return filter(lambda f: f.has_requirements(data), fields)
 
     def _update_nuci_data(self):
