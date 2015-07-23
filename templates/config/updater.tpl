@@ -41,10 +41,16 @@
             </div>
             %end
         %end
-        <div class="form-buttons">
-            <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
-            <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
-        </div>
+        %if len(form.active_fields) == 0:
+          <div class="message warning">
+            {{ trans("List of available software was not downloaded from the server yet. Please come back later.") }}
+          </div>
+        %else:
+          <div class="form-buttons">
+              <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+              <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+          </div>
+        %end
     </form>
 %if not defined('is_xhr'):
 </div>
