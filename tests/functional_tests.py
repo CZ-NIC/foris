@@ -1,4 +1,5 @@
 # coding=utf-8
+import re
 from subprocess import call
 from tempfile import NamedTemporaryFile
 from unittest import TestCase
@@ -417,8 +418,17 @@ class TestConfig(ForisTest):
         # look for serial number
         about_page = self.app.get("/config/about/")
         assert_equal(about_page.status_int, 200)
-        # naive assumption - router's SN should be at least from 0x500000000 - 0x500F00000
-        assert_in("<td>214", about_page.body)
+        assert_regexp_matches(about_page.body, r"<td>Turris - RTRS0[12]</td>",
+                              "This test suite is not adjusted for this device.")
+        sn_match = re.search(r"<td>(\d+)</td>", about_page.body)
+        assert_true(sn_match)
+        try:
+            sn = int(sn_match.group(1))
+        except ValueError:
+            raise AssertionError("Router serial number is not integer.")
+        # should work on routers from first production Turris 1.0 till new Turris 1.1
+        assert_greater(sn, 0x499999999)
+        assert_less(sn, 0x900F00000)
 
     def test_registration_code(self):
         res = self.app.get("/config/about/ajax?action=registration_code",
