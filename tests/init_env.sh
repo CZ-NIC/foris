@@ -20,5 +20,6 @@ else
 fi
 
 require_python_module Webtest webtest
+require_python_module mock mock
 require_python_module nose nose
 require_python_module coverage coverage
