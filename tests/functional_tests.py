@@ -175,6 +175,7 @@ class TestConfig(ForisTest):
 
         form = page.forms['main-form']
         form.set("proto", "static", 1)
+        form.set("custom_mac", True, 1)
 
         submit = form.submit(headers=XHR_HEADERS)
         assert_true(submit.body.lstrip().startswith("<form"))
@@ -186,14 +187,15 @@ class TestConfig(ForisTest):
 
         # fill the form returned
         form = invalid.forms['main-form']
-        addr, mask, gw\
-            = form['ipaddr'], form['netmask'], form['gateway'] \
-            = "10.0.0.1", "255.0.0.0", "10.0.0.10"
+        addr, mask, gw, macaddr\
+            = form['ipaddr'], form['netmask'], form['gateway'], form['macaddr'] \
+            = "10.0.0.1", "255.0.0.0", "10.0.0.10", "01:23:45:67:89:af"
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
         assert_equal(self.uci_get("network.wan.ipaddr"), addr)
         assert_equal(self.uci_get("network.wan.netmask"), mask)
         assert_equal(self.uci_get("network.wan.gateway"), gw)
+        assert_equal(self.uci_get("network.wan.macaddr"), macaddr)
 
     def test_tab_dns(self):
         page = self.app.get("/config/dns/")

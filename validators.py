@@ -185,6 +185,10 @@ class MacAddress(Validator):
     def __init__(self):
         super(MacAddress, self).__init__(_("MAC address is not valid."))
         self.extra_data['parsley-validation-minlength'] = '17'
+        self.reg_exp = re.compile(r"^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$")
+
+    def valid(self, value):
+        return bool(self.reg_exp.match(value or ""))
 
 
 class InRange(Validator):
