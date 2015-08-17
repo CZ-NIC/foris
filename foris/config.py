@@ -23,15 +23,15 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
-from config_handlers import *
+from .config_handlers import *
 from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
-from nuci import client
-from nuci.client import filters
-from nuci.exceptions import ConfigRestoreError
-from utils import login_required
-from utils import messages
-from utils.bottle_csrf import CSRFPlugin
-from utils.routing import reverse
+from .nuci import client
+from .nuci.client import filters
+from .nuci.exceptions import ConfigRestoreError
+from .utils import login_required
+from .utils import messages
+from .utils.bottle_csrf import CSRFPlugin
+from .utils.routing import reverse
 
 logger = logging.getLogger(__name__)
 

@@ -19,13 +19,13 @@ import re
 import bottle
 
 from foris import gettext_dummy as gettext, ugettext as _
-from form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time, \
+from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time, \
     MultiCheckbox
-import fapi
-from nuci import client, filters
-from nuci.filters import create_config_filter
-from nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
-import validators
+from foris import fapi
+from foris.nuci import client, filters
+from foris.nuci.filters import create_config_filter
+from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
+from foris import validators
 
 
 logger = logging.getLogger(__name__)

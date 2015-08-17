@@ -16,7 +16,8 @@
 
 from base import YinElement
 from xml.etree import cElementTree as ET
-from nuci.utils import unqualify
+
+from foris.nuci.utils import unqualify
 
 
 class Connection(YinElement):

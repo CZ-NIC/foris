@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 IFS=''
-RELPATH='./static/'
+RELPATH='./foris/static/'
 
 while read -r line; do
     if [[ $line != *MD5SUM* ]]

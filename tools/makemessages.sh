@@ -18,7 +18,7 @@
 if [ $# -eq 1 ]
 then
 	lang=$1
-	locale_dir="locale/$lang/LC_MESSAGES"
+	locale_dir="foris/locale/$lang/LC_MESSAGES"
 	if [ ! -d $locale_dir ]
 	then
 		mkdir -p $locale_dir

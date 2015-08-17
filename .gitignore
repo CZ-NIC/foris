@@ -1,6 +1,7 @@
 *.pyc
+*.sassc
+*.scssc
 *.mo
-static/.sass-cache/*
-static/css/*
-static/js/*.min.js
-templates/_layout.tpl
+foris/static/css/*
+foris/static/js/*.min.js
+foris/templates/_layout.tpl

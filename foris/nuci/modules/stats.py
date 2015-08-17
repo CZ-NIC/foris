@@ -15,9 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from datetime import datetime, timedelta
 
-from base import YinElement
 from xml.etree import cElementTree as ET
-from nuci.utils import unqualify
+
+from .base import YinElement
+from ..utils import unqualify
 
 
 class Stats(YinElement):

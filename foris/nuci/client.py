@@ -24,13 +24,12 @@ from ncclient.manager import OpExecutor, CAPABILITIES
 from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 
-from modules import (maintain, network, password as password_module, registration,
-                     time as time_module, uci_raw, updater, user_notify)
-from modules.base import Data, YinElement
-from nuci import filters
-from nuci.exceptions import ConfigRestoreError
-from nuci.modules import stats
 
+from . import filters
+from .exceptions import ConfigRestoreError
+from .modules import (maintain, network, password as password_module, registration,
+                      stats, time as time_module, uci_raw, updater, user_notify)
+from .modules.base import Data, YinElement
 
 logger = logging.getLogger("nuci.client")
 

@@ -17,7 +17,7 @@ from datetime import datetime
 
 from bottle import html_escape
 
-from base import YinElement
+from .base import YinElement
 from xml.etree import cElementTree as ET
 
 

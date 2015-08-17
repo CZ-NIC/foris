@@ -17,16 +17,17 @@
 from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
+
 from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
-from config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
+from .config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
     LanHandler, WifiHandler
-from nuci import client, filters
-from nuci.configurator import add_config_update, commit
-from nuci.modules.uci_raw import Option, Section, Config, Uci
-from utils import login_required, messages
-from utils.bottle_csrf import CSRFPlugin
-from utils.routing import reverse
+from .nuci import client, filters
+from .nuci.configurator import add_config_update, commit
+from .nuci.modules.uci_raw import Option, Section, Config, Uci
+from .utils import login_required, messages
+from .utils.bottle_csrf import CSRFPlugin
+from .utils.routing import reverse
 
 
 logger = logging.getLogger("wizard")

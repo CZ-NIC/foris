@@ -14,21 +14,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-COMPILED_CSS = $(wildcard static/css/*)
+COMPILED_CSS = $(wildcard foris/static/css/*)
 
-COMPILED_L10N = $(wildcard locale/*/LC_MESSAGES/*.mo)
+COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
 
-JS_FILES = $(filter-out %.min.js $(wildcard static/js/contrib/*),$(wildcard \
-	static/js/*.js \
-	static/js/**/*.js \
+JS_FILES = $(filter-out %.min.js $(wildcard foris/static/js/contrib/*),$(wildcard \
+	foris/static/js/*.js \
+	foris/static/js/**/*.js \
 ))
 
 JS_MINIFIED = $(JS_FILES:.js=.min.js)
 
 
 PRE_TPL_FILES = $(wildcard \
-	templates/*.pre.tpl \
-	templates/**/*.pre.tpl \
+	foris/templates/*.pre.tpl \
+	foris/templates/**/*.pre.tpl \
 )
 
 TPL_FILES = $(PRE_TPL_FILES:.pre.tpl=.tpl)
@@ -48,7 +48,7 @@ preprocess-tpl: $(PRE_TPL_FILES) $(TPL_FILES)
 
 # target: compile-sass - Compile SASS files to CSS files using SASS/Compass compiler.
 compile-sass:
-	@cd static/; \
+	@cd foris/static/; \
 	echo '-- Running compass $<';\
 	$(SASS_COMPILER)
 	@echo

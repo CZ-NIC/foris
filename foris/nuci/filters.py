@@ -18,9 +18,11 @@
 This module contains filters used for subtree filtering in nuci client. Filter is basically
 an XML element that is passed to client.get() function and appropriate subtree is returned.
 """
+from __future__ import absolute_import
 
-from nuci.modules import stats, time, uci_raw, updater, user_notify
 import xml.etree.cElementTree as ET
+
+from .modules import stats, time, uci_raw, updater, user_notify
 
 
 # top-level containers
