@@ -14,11 +14,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from datetime import datetime
-
-from bottle import html_escape
-
-from .base import YinElement
 from xml.etree import cElementTree as ET
+
+from bottle import html_escape, cached_property
+
+from foris.nuci.utils import LocalizableTextValue
+from .base import YinElement
+
 
 
 class UserNotify(YinElement):
@@ -146,7 +148,7 @@ class Message(UserNotify):
     def __init__(self, message_id, body, severity, timestamp, sent=False, displayed=False):
         super(Message, self).__init__()
         self.id = message_id
-        self.body = body or ""
+        self.body = body or LocalizableTextValue()
         if isinstance(severity, Severity):
             self.severity = severity
         else:
@@ -157,8 +159,15 @@ class Message(UserNotify):
 
     @staticmethod
     def from_element(element):
+        xml_lang_attr = "{http://www.w3.org/XML/1998/namespace}lang"
+
+        body_els = element.findall(Message.qual_tag("body"))
+        body = LocalizableTextValue()
+        for body_el in body_els:
+            lang = body_el.get(xml_lang_attr)
+            body.set_translation(lang, body_el.text)
+
         message_id = element.find(Message.qual_tag("id")).text
-        body = element.find(Message.qual_tag("body")).text
         severity = element.find(Message.qual_tag("severity")).text
         timestamp = int(element.find(Message.qual_tag("timestamp")).text)
         sent = element.find(Message.qual_tag("sent")) is not None
@@ -166,9 +175,12 @@ class Message(UserNotify):
 
         return Message(message_id, body, severity, timestamp, sent, displayed)
 
-    @property
+    @cached_property
     def escaped_body(self):
-        return html_escape(self.body).replace("\n", "<br />")
+        escaped = LocalizableTextValue()
+        for k, v in self.body.iteritems():
+            escaped[k] = html_escape(self.body[k]).replace("\n", "<br />")
+        return escaped
 
     @property
     def key(self):
@@ -179,7 +191,7 @@ class Message(UserNotify):
         return self.severity == Severity.RESTART
 
     def __unicode__(self):
-        return self.body
+        return unicode(self.body)
 
 ####################################################################################################
 ET.register_namespace("user-notify", UserNotify.NS_URI)

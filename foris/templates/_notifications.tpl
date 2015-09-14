@@ -17,7 +17,7 @@
 %for notification in notifications:
     <div class="notification {{ notification.severity }}" id="notification_{{ notification.id }}">
       <h2>{{! make_notification_title(notification) }}</h2>
-      {{! notification.escaped_body }}
+      {{! notification.escaped_body[lang()] }}
       %if notification.requires_restart:
         <div class="buttons">
             <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
