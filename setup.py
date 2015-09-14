@@ -9,7 +9,7 @@ setup(
     author="CZ.NIC, z. s. p. o.",
     author_email="jan.cermak@nic.cz",
     url="https://gitlab.labs.nic.cz/turris/foris/",
-    license="LICENSE",
+    license="GPL-3.0",
     requires=[
         "beaker",
         "bottle",
@@ -28,6 +28,7 @@ setup(
     ],
     package_data={
         '': [
+            "LICENSE",
             "locale/**/LC_MESSAGES/*.mo",
             "templates/**",
             "templates/**/*",
