@@ -1,8 +1,10 @@
 from distutils.core import setup
 
+from foris.const import __version__
+
 setup(
     name="Foris",
-    version="666",
+    version=__version__,
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
     author_email="jan.cermak@nic.cz",
