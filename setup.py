@@ -28,10 +28,12 @@ setup(
         '': [
             "locale/**/LC_MESSAGES/*.mo",
             "templates/**",
+            "templates/**/*",
             "static/css/*.css",
             "static/img/*",
             "static/img/wizard/*",
             "static/js/*.min.js",
+            "static/js/contrib/*",
         ]
     },
 )
