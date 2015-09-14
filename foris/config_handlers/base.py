@@ -18,7 +18,7 @@ import re
 
 import bottle
 
-from foris import gettext_dummy as gettext, ugettext as _
+from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time, \
     MultiCheckbox
 from foris import fapi

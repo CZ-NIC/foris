@@ -1,6 +1,6 @@
 import bottle
 
-from foris import get_arg_parser, prepare_main_app
+from foris.core import get_arg_parser, prepare_main_app
 
 
 def main():

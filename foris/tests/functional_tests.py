@@ -11,8 +11,8 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in,
                         assert_regexp_matches)
 from webtest import TestApp, Upload
 
-import foris
-from nuci.client import StaticNetconfConnection
+import foris.core
+from foris.nuci.client import StaticNetconfConnection
 
 from .utils import uci_get, uci_set, uci_commit, uci_is_empty
 
@@ -45,7 +45,7 @@ class ForisTest(TestCase):
         StaticNetconfConnection.enable_test_environment(cls.config_directory)
         # initialize Foris WSGI app
         args = cls.make_args()
-        cls.app = TestApp(foris.prepare_main_app(args))
+        cls.app = TestApp(foris.core.prepare_main_app(args))
 
     @classmethod
     def tearDownClass(cls):
@@ -78,7 +78,7 @@ class ForisTest(TestCase):
 
     @staticmethod
     def make_args():
-        parser = foris.get_arg_parser()
+        parser = foris.core.get_arg_parser()
         args = parser.parse_args([])
         return args
 

@@ -24,7 +24,7 @@ from bottle import Bottle, request, template
 import bottle
 
 from .config_handlers import *
-from foris import gettext_dummy as gettext, make_notification_title, ugettext as _
+from foris.core import gettext_dummy as gettext, make_notification_title, ugettext as _
 from .nuci import client
 from .nuci.client import filters
 from .nuci.exceptions import ConfigRestoreError

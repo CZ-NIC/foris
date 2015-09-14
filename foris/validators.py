@@ -18,7 +18,7 @@ import copy
 import logging
 import re
 
-from foris import ugettext as _
+from foris.core import ugettext as _
 import form
 
 logger = logging.getLogger(__name__)
