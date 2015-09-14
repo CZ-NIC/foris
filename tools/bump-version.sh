@@ -8,8 +8,8 @@ NEXT=$(( ${PREV} + 1 ))
     exit 1
 }
 
-sed -i "s/^__version__ = ${PREV}$/__version__ = ${NEXT}/" foris/const.py
-git commit -m "version: bumped to ${NEXT}" foris/const.py
+sed -i "s/^__version__ = ${PREV}$/__version__ = ${NEXT}/" foris/__init__.py
+git commit -m "version: bumped to ${NEXT}" foris/__init__.py
 git tag "package-v${NEXT}"
 echo "\nVersion bumped to ${NEXT}. Check the commit and push the code and tags to server using:"\
 "\n\n\tgit push\n\tgit push --tags\n"

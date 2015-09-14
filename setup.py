@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-from foris.const import __version__
+from foris import __version__
 
 setup(
     name="Foris",
