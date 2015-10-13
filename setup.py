@@ -1,10 +1,42 @@
 from distutils.core import setup
+import os
+import re
+import subprocess
 
-from foris import __version__
+import foris
+
+
+def update_version_file(version_file_path, version_number):
+    """Read file containing version variable and update it to version_number."""
+    with open(version_file_path, "r") as f:
+        content = f.readlines()
+    with open(version_file_path, "w") as f:
+        version_re = re.compile(r'^__version__ = "[^"]*"')
+        for line in content:
+            f.write(version_re.sub('__version__ = "%s"' % version_number, line))
+
+
+def get_version(update_file=True):
+    """Get version from Git tags, optionally save it to foris module."""
+    if foris.__version__ != "unknown":
+        return foris.__version__
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.isdir(os.path.join(base_dir, ".git")):
+        return "unknown"
+    p = subprocess.Popen(["git", "describe", "--tags"], stdout=subprocess.PIPE)
+    stdout = p.communicate()[0].strip()
+    # correct tags with version must start with "package-v"
+    assert stdout.startswith("package-v")
+    version_number = stdout[len("package-v"):]
+    if update_file:
+        init_file = os.path.join(base_dir, "foris", "__init__.py")
+        update_version_file(init_file, version_number)
+    return version_number
+
 
 setup(
     name="Foris",
-    version=__version__,
+    version=get_version(),
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
     author_email="jan.cermak@nic.cz",
