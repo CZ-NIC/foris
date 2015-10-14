@@ -23,7 +23,7 @@ def get_version(update_file=True):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     if not os.path.isdir(os.path.join(base_dir, ".git")):
         return "unknown"
-    p = subprocess.Popen(["git", "describe", "--tags"], stdout=subprocess.PIPE)
+    p = subprocess.Popen(["git", "describe", "--tags", "--dirty"], stdout=subprocess.PIPE)
     stdout = p.communicate()[0].strip()
     # correct tags with version must start with "package-v"
     assert stdout.startswith("package-v")
