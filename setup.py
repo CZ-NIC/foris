@@ -18,10 +18,11 @@ def update_version_file(version_file_path, version_number):
 
 def get_version(update_file=True):
     """Get version from Git tags, optionally save it to foris module."""
-    if foris.__version__ != "unknown":
-        return foris.__version__
     base_dir = os.path.dirname(os.path.abspath(__file__))
     if not os.path.isdir(os.path.join(base_dir, ".git")):
+        if foris.__version__ != "unknown":
+            # fallback to stored version (e.g. when making package)
+            return foris.__version__
         return "unknown"
     p = subprocess.Popen(["git", "describe", "--tags", "--dirty"], stdout=subprocess.PIPE)
     stdout = p.communicate()[0].strip()
