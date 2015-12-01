@@ -40,11 +40,21 @@ class Validator(object):
         raise NotImplementedError
 
 
+def convert_to_anchored_pattern(pattern):
+    """Convert regexp pattern to pattern with start and end anchors.
+    """
+    if pattern[0] != "^":
+        pattern = "^" + pattern
+    if pattern[-1] != "$":
+        pattern += "$"
+    return pattern
+
+
 class RegExp(Validator):
     def __init__(self, msg, reg_exp):
         self.reg_exp = re.compile(reg_exp)
         super(RegExp, self).__init__(msg)
-        self.js_validator = ("regexp", reg_exp)
+        self.js_validator = ("pattern", "%s" % convert_to_anchored_pattern(reg_exp))
         self.extra_data['parsley-error-message'] = msg
 
     def valid(self, value):
@@ -175,7 +185,7 @@ class Time(RegExp):
     def __init__(self):
         pattern = r"^([01][0-9]|2[0-3]):([0-5][0-9])$"
         super(Time, self).__init__(_("This is not valid time in HH:MM format."), pattern)
-        self.js_validator = ("regexp", pattern)
+        self.js_validator = ("pattern", pattern)
         self.extra_data['parsley-error-message'] = self.msg
 
 
