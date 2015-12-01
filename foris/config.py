@@ -315,9 +315,26 @@ config_page_map = ConfigPageMapItems((
     ('about', AboutConfigPage),
 ))
 
+# config pages added by plugins
+extra_config_pages = ConfigPageMapItems()
+
+
+def add_config_page(page_name, page_class, top_level=False):
+    """Register config page in /config/ URL namespace.
+
+    :param page_name: config page name (shown in url)
+    :param page_class: handler class
+    :param top_level: add to top-level navigation
+    """
+    if top_level:
+        config_page_map[page_name] = page_class
+    else:
+        extra_config_pages[page_name] = page_class
+
 
 def get_config_page(page_name):
-    ConfigPage = config_page_map.get(page_name)
+    ConfigPage = config_page_map.get(page_name,
+                                     extra_config_pages.get(page_name))
     if ConfigPage is None:
         raise bottle.HTTPError(404, "Unknown configuration page.")
     return ConfigPage

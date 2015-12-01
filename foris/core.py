@@ -29,6 +29,7 @@ from ncclient.operations import TimeoutExpiredError, RPCError
 from .nuci import client, filters
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
+from .plugins import ForisPluginLoader
 from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
 from .utils import messages
@@ -352,6 +353,10 @@ def prepare_main_app(args):
 
     if args.nucipath:
         client.StaticNetconfConnection.set_bin_path(args.nucipath)
+
+    # load Foris plugins before applying Bottle plugins to app
+    loader = ForisPluginLoader(app)
+    loader.autoload_plugins()
 
     # read language saved in Uci
     lang = read_uci_lang(DEFAULT_LANGUAGE)
