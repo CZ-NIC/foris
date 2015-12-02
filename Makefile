@@ -56,7 +56,7 @@ compile-sass:
 # target: localization - Create .mo files from .po fiels in locale directory
 localization:
 	@echo "-- Compiling localization files"
-	@tools/compilemessages.sh
+	@tools/compilemessages.sh foris
 	@echo "Done."
 	@echo
 

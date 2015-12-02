@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-for lang_dir in foris/locale/*; do
+for lang_dir in $1/locale/*; do
 	locale_dir=$lang_dir/LC_MESSAGES/
 	for file in $locale_dir/*.po; do
 		msgfmt $file -o ${file%.*}.mo
