@@ -24,6 +24,11 @@
         <script src="{{ static("js/contrib/html5.js") }}"></script>
         <link href="{{ static("css/ie8.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
     <![endif]-->
+    %if defined('PLUGIN_STYLES') and PLUGIN_STYLES:
+      %for static_filename in PLUGIN_STYLES:
+        <link href="{{ "/plugins/" + PLUGIN_NAME }}{{ static(static_filename) }}" rel="stylesheet" media="screen">
+      %end
+    %end
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
