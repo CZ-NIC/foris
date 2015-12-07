@@ -60,6 +60,8 @@ class ForisPluginLoader(object):
 
     def autoload_plugins(self):
         """Find and load plugins in ${PLUGIN_DIRECTORY}/plugin_name/*.py"""
+        if not os.path.isdir(self.PLUGIN_DIRECTORY):
+            return
         for subdir_name in os.listdir(self.PLUGIN_DIRECTORY):
             subdir_path = os.path.join(self.PLUGIN_DIRECTORY, subdir_name)
             if os.path.isdir(subdir_path):
