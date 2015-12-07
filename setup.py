@@ -57,6 +57,7 @@ setup(
         "foris.config_handlers",
         "foris.nuci",
         "foris.nuci.modules",
+        "foris.plugins",
         "foris.utils",
     ],
     package_data={
