@@ -628,14 +628,16 @@ class WifiHandler(BaseConfigHandler):
         if len(channels_2g4) > 1:
             field_2g4 = wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"),
                                             default=channels_2g4[0][0], args=channels_2g4,
-                                            nuci_path="uci.wireless.radio0.channel")
+                                            nuci_path="uci.wireless.radio0.channel")\
+                .requires("wifi_enabled", True)
             if is_dual_band:
                 field_2g4.requires("hwmode", "11g")
         # 5 GHz channels
         if len(channels_5g) > 1:
             field_5g = wifi_main.add_field(Dropdown, name="channel5g", label=_("Network channel"),
                                            default=channels_5g[0][0], args=channels_5g,
-                                           nuci_path="uci.wireless.radio0.channel")
+                                           nuci_path="uci.wireless.radio0.channel")\
+                .requires("wifi_enabled", True)
             if is_dual_band:
                 field_5g.requires("hwmode", "11a")
         wifi_main.add_field(Password, name="key", label=_("Network password"),
