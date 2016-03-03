@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+BRAND ?= turris
+
 COMPILED_CSS = $(wildcard foris/static/css/*)
 
 COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
@@ -38,13 +40,20 @@ JS_MINIFIER = slimit -m
 SASS_COMPILER = compass compile -s compressed -e production
 
 
-all: compile-sass minify-js localization preprocess-tpl
+all: branding compile-sass minify-js localization preprocess-tpl
 
 # target: minify-js - Create minified JS files using slimit JS compressor.
 minify-js: $(JS_FILES) $(JS_MINIFIED)
 
 # target: preprocess-tpl - Do preprocessing of .pre.tpl files.
 preprocess-tpl: $(PRE_TPL_FILES) $(TPL_FILES)
+
+# target: branding - Copy assets for a specified device to its location.
+branding:
+	@echo "-- Preparing branding for '$(BRAND)'"
+	@[ -d branding/$(BRAND) ] || (echo "Directory with '$(BRAND)' branding does not exist" && exit 1)
+	@cp -fr branding/$(BRAND)/. foris/static/
+	@echo
 
 # target: compile-sass - Compile SASS files to CSS files using SASS/Compass compiler.
 compile-sass:
@@ -77,3 +86,5 @@ clean:
 # target: help - Show this help.
 help:
 	@egrep "^# target:" Makefile
+
+.PHONY: all branding compile-sass minify-js localization preprocess-tpl
