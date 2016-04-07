@@ -14,6 +14,7 @@ from webtest import TestApp, Upload
 import foris.core
 from foris.nuci.client import StaticNetconfConnection
 
+from . import test_data
 from .utils import uci_get, uci_set, uci_commit, uci_is_empty
 
 # dict of texts that are used to determine returned stated etc.
@@ -55,7 +56,7 @@ class ForisTest(TestCase):
     def restore_config(cls):
         call(["rm", "-rf", cls.config_directory])
         call(["mkdir", cls.config_directory])
-        if call(["tar", "xzf", "/www2/tests/configs.tar.gz", "-C", cls.config_directory]) > 0:
+        if call(["tar", "xzf", "/usr/lib/python2.7/site-packages/foris/tests/configs.tar.gz", "-C", cls.config_directory]) > 0:
             raise TestInitException("Cannot extract configs.")
 
     @classmethod
@@ -244,7 +245,10 @@ class TestConfig(ForisTest):
         self.check_uci_val("dhcp.lan.ignore", "1")
         self.check_uci_val("network.lan.ipaddr", expected_ip)
 
-    def test_tab_wifi(self):
+    @patch("foris.config_handlers.base.WifiHandler._get_wireless_cards")
+    def test_tab_wifi(self, gwc):
+        gwc.return_value = test_data.stats_wireless_cards
+
         page = self.app.get("/config/wifi/")
         form = page.forms['main-form']
 
@@ -253,18 +257,18 @@ class TestConfig(ForisTest):
 
         # invalid input
         old_ssid = self.uci_get("wireless.@wifi-iface[0].ssid")
-        form.set("wifi_enabled", True, 1)  # index 1 contains "1"
+        form.set("radio0-wifi_enabled", True, 1)  # index 1 contains "1"
         invalid = form.submit()
         assert_in(RESPONSE_TEXTS['form_invalid'], invalid.body)
         self.check_uci_val("wireless.@wifi-iface[0].ssid", old_ssid)
 
         # valid input
         form = page.forms['main-form']
-        form.set("wifi_enabled", True, 1)
+        form.set("radio0-wifi_enabled", True, 1)
         expected_ssid = "Valid SSID"
         expected_key = "validpassword"
-        form.set("ssid", expected_ssid)
-        form.set("key", expected_key)
+        form.set("radio0-ssid", expected_ssid)
+        form.set("radio0-key", expected_key)
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
         self.check_uci_val("wireless.@wifi-iface[0].ssid", expected_ssid)
@@ -410,7 +414,7 @@ class TestConfig(ForisTest):
         # select shell-utils and netutils
         form.set("install_shell-utils", True, 1)
         form.set("install_netutils", True, 1)
-        with patch("nuci.client.check_updates") as check_updates_mock:
+        with patch("foris.nuci.client.check_updates") as check_updates_mock:
             check_updates_mock.return_value = True
             submit = form.submit().follow()
             assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
@@ -500,10 +504,12 @@ class TestWizard(ForisTest):
         self._test_wizard_step(3)
 
         def check_connection(url):
-            res = self.app.get(url)
-            data = res.json
-            assert_true(data['success'])
-            assert_in(data['result'], ['ok', 'no_dns', 'no_connection'])
+            with patch("foris.wizard.WizardStep3._check_connection") as check_mock:
+                check_mock.return_value = "ok"
+                res = self.app.get(url)
+                data = res.json
+                assert_true(data['success'])
+                assert_equal(data['result'], "ok")
 
         # this also enables the next step
         check_connection("/wizard/step/3/ajax?action=check_connection")
@@ -512,9 +518,11 @@ class TestWizard(ForisTest):
     def test_step_4(self):
         self._test_wizard_step(4)
         # WARN: only a case when NTP sync works is tested
-        res = self.app.get("/wizard/step/4/ajax?action=ntp_update")
-        data = res.json
-        assert_true(data['success'])
+        with patch("foris.nuci.client.ntp_update") as ntp_update:
+            ntp_update.return_value = True
+            res = self.app.get("/wizard/step/4/ajax?action=ntp_update")
+            data = res.json
+            assert_true(data['success'])
 
     def test_step_5(self):
         # This test must be @timed with some reasonable timeout to check
@@ -524,12 +532,12 @@ class TestWizard(ForisTest):
         # start the updater on background - also enables next step
         # mock the method for starting the updater, we don't want to really run it
         # maybe it'd be better to patch later and test if the RPC for update is really called
-        with patch("nuci.client.check_updates") as check_updates_mock:
+        with patch("foris.nuci.client.check_updates") as check_updates_mock:
             check_updates_mock.return_value = True
             res = self.app.get("/wizard/step/5/ajax?action=run_updater")
             assert_true(res.json['success'])
 
-        with patch("nuci.client.get_updater_status") as updater_status_mock:
+        with patch("foris.nuci.client.get_updater_status") as updater_status_mock:
             def check_updater():
                 updater_res = self.app.get("/wizard/step/5/ajax?action=updater_status")
                 data = updater_res.json
@@ -548,7 +556,7 @@ class TestWizard(ForisTest):
 
     def test_step_6(self):
         # patch updater status to always allow the next step
-        with patch("nuci.client.get_updater_status") as updater_status_mock:
+        with patch("foris.nuci.client.get_updater_status") as updater_status_mock:
             updater_status_mock.return_value = "done", None, []
             page = self.app.get("/wizard/step/6").maybe_follow()
             assert_equal(page.request.path, "//wizard/step/7")
@@ -556,17 +564,23 @@ class TestWizard(ForisTest):
 
     def test_step_7(self):
         page = self._test_wizard_step(7)
-        submit = page.forms['main-form'].submit().follow()
-        assert_equal(submit.status_int, 200)
-        assert_equal(submit.request.path, "//wizard/step/8")
+
+        with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
+            gwc.return_value = test_data.stats_wireless_cards
+            submit = page.forms['main-form'].submit().follow()
+            assert_equal(submit.status_int, 200)
+            assert_equal(submit.request.path, "//wizard/step/8")
 
     def test_step_8(self):
-        page = self._test_wizard_step(8)
-        form = page.forms['main-form']
-        form.set("wifi_enabled", True, 1)  # index 1 contains "1"
-        form.set("ssid", "Valid SSID")
-        form.set("key", "validpassword")
-        submit = form.submit()
+        with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
+            gwc.return_value = test_data.stats_wireless_cards
+            page = self._test_wizard_step(8)
+            form = page.forms['main-form']
+            form.set("radio0-wifi_enabled", True, 1)  # index 1 contains "1"
+            form.set("radio0-ssid", "Valid SSID")
+            form.set("radio0-key", "validpassword")
+            submit = form.submit()
+
         submit = submit.follow()
         assert_equal(submit.status_int, 200)
         assert_equal(submit.request.path, "//wizard/step/9")
