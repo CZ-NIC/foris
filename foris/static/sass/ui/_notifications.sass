@@ -7,10 +7,6 @@
   h2
     +adjust-font-size-to(18px)
 
-  .button
-    background-color: #fff
-    color: $highlight-color
-
   .buttons
     margin-top: 1em
 
@@ -26,6 +22,10 @@
   &.restart
     background-color: $message-color-error
     color: #fff
+
+    .button
+      background-color: #fff
+      color: $message-color-error
 
   &.error
     background-color: $message-color-warning
