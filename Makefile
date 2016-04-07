@@ -55,8 +55,8 @@ branding:
 	@cp -fr branding/$(BRAND)/. foris/static/
 	@echo
 
-# target: compile-sass - Compile SASS files to CSS files using SASS/Compass compiler.
-compile-sass:
+# target: sass - Compile SASS files to CSS files using SASS/Compass compiler.
+sass:
 	@cd foris/static/; \
 	echo '-- Running compass $<';\
 	$(SASS_COMPILER)
@@ -87,4 +87,4 @@ clean:
 help:
 	@egrep "^# target:" Makefile
 
-.PHONY: all branding compile-sass minify-js localization preprocess-tpl
+.PHONY: all branding sass minify-js localization preprocess-tpl
