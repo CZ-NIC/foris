@@ -171,6 +171,7 @@ Foris.updateForm = function (form) {
 
     $(this).children(':first').unwrap();
     Foris.initParsley();
+    $(document).trigger('formupdate', [form]);
   });
   form.find("input, select, button").attr("disabled", "disabled");
 };
@@ -366,11 +367,11 @@ Foris.checkLowerAsciiString = function (string) {
   return true;
 };
 
-Foris.updateWiFiQR = function (ssid, password, hidden) {
-  var codeElement = $("#wifi-qr");
+Foris.updateWiFiQR = function (radio, ssid, password, hidden) {
+  var codeElement = $("#wifi-qr-" + radio);
   codeElement.empty();
 
-  if (!$("#field-wifi_enabled_1").prop("checked"))
+  if (!$("#field-" + radio + "-wifi_enabled_1").prop("checked"))
     return;
 
 
@@ -402,18 +403,63 @@ Foris.initWiFiQR = function () {
   // NOTE: make sure that jquery.qrcode is loaded on the page that's using
   // this method. Alternatively, it could be loaded using $.getScript() here.
 
-  var doRender = function () {
-    doRender.debounceTimeout = null;
-    Foris.updateWiFiQR(
-        $("#field-ssid").val(),
-        $("#field-key").val(),
-        $("#field-ssid_hidden_1").prop("checked"));
-  };
-  doRender();
+  // determine present radios from wifi-enable checkboxes
+  var radios = [];
+  $("input[id$='-wifi_enabled_1']").each(function (i, el) {
+    radios.push(el.getAttribute('id').replace(/field-(radio\d+)-.*/, '$1'));
+  });
 
-  $(document).on("change keyup paste", "#field-ssid, #field-key, #field-ssid_hidden_1", function () {
-    clearTimeout(doRender.debounceTimeout);
-    doRender.debounceTimeout = setTimeout(doRender, 500);
+  var doRender = function (radio) {
+    console.log('blah');
+    doRender.debounceTimeout = null;
+
+    // create QR code for the radio and align its top with SSID input
+    if (!document.getElementById('wifi-qr-' + radio)) {
+      $('#wifi-qr').append('<div id="wifi-qr-' + radio + '" />');
+    }
+
+    var ssidInputPosition = $("input[id$='field-" + radio + "-ssid']").position();
+
+    if (!ssidInputPosition)
+      return;
+
+    $('#wifi-qr-' + radio)
+        .css('position', 'absolute')
+        .css('right', 0)
+        .css('top', ssidInputPosition.top);
+
+    Foris.updateWiFiQR(
+        radio,
+        $('#field-' + radio + '-ssid').val(),
+        $('#field-' + radio + '-key').val(),
+        $('#field-' + radio + '-ssid_hidden_1').prop('checked'));
+  };
+
+  for (var i=0; i < radios.length; i++) {
+    var radio = radios[i];
+
+    doRender(radio);
+
+    $(document).on('change keyup paste',
+        '#field-' + radio + '-ssid, ' +
+        '#field-' + radio + '-key, ' +
+        '#field-' + radio + '-ssid_hidden_1',
+        (function (r) {
+          return function () {
+            clearTimeout(doRender.debounceTimeout);
+            doRender.debounceTimeout = setTimeout(function () {
+              doRender(r)
+            }, 500);
+          }
+        })(radio)
+    );
+  }
+
+  $(document).on("formupdate", function () {
+    for (var i = 0; i < radios.length; i++) {
+      var radio = radios[i];
+      doRender(radio);
+    }
   });
 };
 

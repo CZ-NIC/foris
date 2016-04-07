@@ -18,15 +18,14 @@ import re
 
 import bottle
 
+from foris import fapi
+from foris import validators
 from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time, \
     MultiCheckbox
-from foris import fapi
 from foris.nuci import client, filters
 from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
-from foris import validators
-
 
 logger = logging.getLogger(__name__)
 
@@ -557,39 +556,45 @@ class LanHandler(BaseConfigHandler):
 class WifiHandler(BaseConfigHandler):
     userfriendly_title = gettext("Wi-Fi")
 
-    def get_form(self):
-        stats = client.get(filter=filters.stats).find_child("stats")
-        if len(stats.data['wireless-cards']) < 1:
+    def _add_wifi_section(self, wifi_form, wifi_card, radio_to_iface):
+        radio_index = int(wifi_card['name'][3:])
+        iface_index = radio_to_iface.get('radio%s' % radio_index)
+        if iface_index is None:
+            # Interface is not present in the wireless config - skip this radio
             return None
 
-        wifi_form = fapi.ForisForm("wifi", self.data,
-                                   filter=create_config_filter("wireless"))
+        def prefixed_name(name):
+            return "radio%s-%s" % (radio_index, name)
+
         wifi_main = wifi_form.add_section(
-            name="set_wifi",
+            name=prefixed_name("set_wifi"),
             title=_(self.userfriendly_title),
             description=_("If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
                           "here and fill in an SSID (the name of the access point) and a "
                           "corresponding password. You can then set up your mobile devices, "
                           "using the QR code available next to the form.")
         )
-        wifi_main.add_field(Hidden, name="iface_section", nuci_path="uci.wireless.@wifi-iface[0]",
+        wifi_main.add_field(Hidden, name=prefixed_name("iface_section"), nuci_path="uci.wireless.@wifi-iface[%s]" % iface_index,
                             nuci_preproc=lambda val: val.name)
-        wifi_main.add_field(Checkbox, name="wifi_enabled", label=_("Enable Wi-Fi"), default=True,
-                            nuci_path="uci.wireless.@wifi-iface[0].disabled",
+        # Use numbering starting from one. In rare cases, it may happen that the first radio
+        # is not radio0, or that there's a gap between radio numbers, but it should not happen
+        # on most of the setups.
+        wifi_main.add_field(Checkbox, name=prefixed_name("wifi_enabled"), label=_("Enable Wi-Fi %s") % (radio_index + 1), default=True,
+                            nuci_path="uci.wireless.@wifi-iface[%s].disabled" % iface_index,
                             nuci_preproc=lambda val: not bool(int(val.value)))
-        wifi_main.add_field(Textbox, name="ssid", label=_("SSID"),
-                            nuci_path="uci.wireless.@wifi-iface[0].ssid",
-                            required=True, validators=validators.ByteLenRange(1, 32))\
-            .requires("wifi_enabled", True)
-        wifi_main.add_field(Checkbox, name="ssid_hidden", label=_("Hide SSID"), default=False,
-                            nuci_path="uci.wireless.@wifi-iface[0].hidden",
+        wifi_main.add_field(Textbox, name=prefixed_name("ssid"), label=_("SSID"),
+                            nuci_path="uci.wireless.@wifi-iface[%s].ssid" % iface_index,
+                            required=True, validators=validators.ByteLenRange(1, 32)) \
+            .requires(prefixed_name("wifi_enabled"), True)
+        wifi_main.add_field(Checkbox, name=prefixed_name("ssid_hidden"), label=_("Hide SSID"), default=False,
+                            nuci_path="uci.wireless.@wifi-iface[%s].hidden" % iface_index,
                             hint=_("If set, network is not visible when scanning for available "
-                                   "networks."))\
-            .requires("wifi_enabled", True)
+                                   "networks.")) \
+            .requires(prefixed_name("wifi_enabled"), True)
 
         channels_2g4 = [("auto", _("auto"))]
         channels_5g = []
-        for channel in stats.data['wireless-cards'][0]['channels']:
+        for channel in wifi_card['channels']:
             if channel['disabled']:
                 continue
             pretty_channel = "%s (%s MHz)" % (channel['number'], channel['frequency'])
@@ -602,85 +607,130 @@ class WifiHandler(BaseConfigHandler):
         # hwmode choice for dual band devices
         if len(channels_2g4) > 1 and len(channels_5g) > 1:
             is_dual_band = True
-            wifi_main.add_field(Radio, name="hwmode", label=_("Wi-Fi mode"), default="11ng",
-                                args=(("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)")),
-                                nuci_path="uci.wireless.radio0.hwmode",
-                                nuci_preproc=lambda x: x.value.replace("n", ""),  # old configs used
-                                                                                  # 11ng/11na
-                                hint=_("The 2.4 GHz band is more widely supported by clients, but "
-                                       "tends to have more interference. The 5 GHz band is a newer"
-                                       " standard and may not be supported by all your devices. It "
-                                       "usually has less interference, but the signal does not "
-                                       "carry so well indoors."))\
-                .requires("wifi_enabled", True)
+            wifi_main.add_field(
+                Radio, name=prefixed_name("hwmode"), label=_("Wi-Fi mode"), default="11g",
+                args=(("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)")),
+                nuci_path="uci.wireless.radio%s.hwmode" % radio_index,
+                nuci_preproc=lambda x: x.value.replace("n", ""),  # old configs used
+                # 11ng/11na
+                hint=_("The 2.4 GHz band is more widely supported by clients, but "
+                       "tends to have more interference. The 5 GHz band is a newer"
+                       " standard and may not be supported by all your devices. It "
+                       "usually has less interference, but the signal does not "
+                       "carry so well indoors.")
+            ).requires(prefixed_name("wifi_enabled"), True)
+
         wifi_main.add_field(
-            Dropdown, name="htmode", label=_("802.11n mode"),
+            Dropdown, name=prefixed_name("htmode"), label=_("802.11n mode"),
             args=(("NOHT", _("Disabled")),
                   ("HT20", _("Enabled (20 MHz wide channel)")),
                   ("HT40", _("Enabled (40 MHz wide channel)"))),
-            nuci_path="uci.wireless.radio0.htmode",
+            nuci_path="uci.wireless.radio%s.htmode" % radio_index,
             hint=_("Change this to adjust 802.11n mode of operation. 802.11n with 40 MHz wide "
                    "channels can yield higher throughput but can cause more interference in the "
                    "network. If you don't know what to choose, use the default option with "
                    "20 MHz wide channel.")
-        ).requires("wifi_enabled", True)
+        ).requires(prefixed_name("wifi_enabled"), True)
+
         # 2.4 GHz channels
         if len(channels_2g4) > 1:
-            field_2g4 = wifi_main.add_field(Dropdown, name="channel2g4", label=_("Network channel"),
+            field_2g4 = wifi_main.add_field(Dropdown, name=prefixed_name("channel2g4"), label=_("Network channel"),
                                             default=channels_2g4[0][0], args=channels_2g4,
-                                            nuci_path="uci.wireless.radio0.channel")\
-                .requires("wifi_enabled", True)
+                                            nuci_path="uci.wireless.radio%s.channel" % radio_index) \
+                .requires(prefixed_name("wifi_enabled"), True)
             if is_dual_band:
-                field_2g4.requires("hwmode", "11g")
+                field_2g4.requires(prefixed_name("hwmode"), "11g")
         # 5 GHz channels
         if len(channels_5g) > 1:
-            field_5g = wifi_main.add_field(Dropdown, name="channel5g", label=_("Network channel"),
+            field_5g = wifi_main.add_field(Dropdown, name=prefixed_name("channel5g"), label=_("Network channel"),
                                            default=channels_5g[0][0], args=channels_5g,
-                                           nuci_path="uci.wireless.radio0.channel")\
-                .requires("wifi_enabled", True)
+                                           nuci_path="uci.wireless.radio%s.channel" % radio_index) \
+                .requires(prefixed_name("wifi_enabled"), True)
             if is_dual_band:
-                field_5g.requires("hwmode", "11a")
-        wifi_main.add_field(Password, name="key", label=_("Network password"),
-                            nuci_path="uci.wireless.@wifi-iface[0].key",
+                field_5g.requires(prefixed_name("hwmode"), "11a")
+
+        wifi_main.add_field(Password, name=prefixed_name("key"), label=_("Network password"),
+                            nuci_path="uci.wireless.@wifi-iface[%s].key" % iface_index,
                             required=True,
                             validators=validators.ByteLenRange(8, 63),
                             hint=_("WPA2 pre-shared key, that is required to connect to the "
-                                   "network. Minimum length is 8 characters."))\
-            .requires("wifi_enabled", True)
+                                   "network. Minimum length is 8 characters.")) \
+            .requires(prefixed_name("wifi_enabled"), True)
+
+    @staticmethod
+    def _get_wireless_cards(stats):
+        return stats.data.get('wireless-cards') or None
+
+    def get_form(self):
+        stats = client.get(filter=filters.stats).find_child("stats")
+        cards = self._get_wireless_cards(stats)
+
+        if not cards:
+            return None
+
+        wifi_form = fapi.ForisForm("wifi", self.data,
+                                   filter=create_config_filter("wireless"))
+
+        # Create mapping of radio_name -> iface_index
+        radio_to_iface = {}
+        i = 0
+        while True:
+            radio = wifi_form.nuci_config.find_child("uci.wireless.@wifi-iface[%s].device" % i)
+            if not radio:
+                break
+            # Remember the first interface assigned to the radio
+            radio_to_iface.setdefault(radio.value, i)
+            i += 1
+
+        # Get list of available radios
+        radios = []
+        for card in sorted(cards, key=lambda x: x['name']):
+            assert card['name'][0:3] == "phy", "Can not parse card name '%s'" % card['name']
+            self._add_wifi_section(wifi_form, card, radio_to_iface)
+            radios.append(card['name'][3:])
 
         def wifi_form_cb(data):
             uci = Uci()
             wireless = Config("wireless")
             uci.add(wireless)
 
-            iface = Section(data['iface_section'], "wifi-iface")
-            wireless.add(iface)
-            device = Section("radio0", "wifi-device")
-            wireless.add(device)
-            # we must toggle both wifi-iface and device
-            iface.add(Option("disabled", not data['wifi_enabled']))
-            device.add(Option("disabled", not data['wifi_enabled']))
-            if data['wifi_enabled']:
-                iface.add(Option("ssid", data['ssid']))
-                iface.add(Option("hidden", data['ssid_hidden']))
-                iface.add(Option("encryption", "psk2+tkip+aes"))
-                iface.add(Option("key", data['key']))
-                if data.get('channel2g4'):
-                    channel = data['channel2g4']
-                elif data.get('channel5g'):
-                    channel = data['channel5g']
+            for radio in radios:
+                def radio_data(name):
+                    return data.get("radio%s-%s" % (radio, name))
+
+                iface_section = radio_data('iface_section')
+                if not iface_section:
+                    # There's no section specified for this radio, skip it
+                    continue
+
+                iface = Section(iface_section, "wifi-iface")
+                wireless.add(iface)
+                device = Section("radio%s" % radio, "wifi-device")
+                wireless.add(device)
+                # we must toggle both wifi-iface and device
+                iface.add(Option("disabled", not radio_data('wifi_enabled')))
+                device.add(Option("disabled", not radio_data('wifi_enabled')))
+                if radio_data('wifi_enabled'):
+                    iface.add(Option("ssid", radio_data('ssid')))
+                    iface.add(Option("hidden", radio_data('ssid_hidden')))
+                    iface.add(Option("encryption", "psk2+tkip+aes"))
+                    iface.add(Option("key", radio_data('key')))
+                    if radio_data('channel2g4'):
+                        channel = radio_data('channel2g4')
+                    elif radio_data('channel5g'):
+                        channel = radio_data('channel5g')
+                    else:
+                        logger.critical("Saving form without Wi-Fi channel: %s", data)
+                        channel = "auto"
+                    hwmode = radio_data('hwmode')
+                    if hwmode:
+                        # change hwmode only if we had the choice
+                        device.add(Option("hwmode", hwmode))
+                    device.add(Option("htmode", radio_data('htmode')))
+                    # channel is in wifi-device section
+                    device.add(Option("channel", channel))
                 else:
-                    logger.critical("Saving form without Wi-Fi channel: %s", data)
-                    channel = "auto"
-                hwmode = data.get('hwmode')
-                if hwmode:
-                    # change hwmode only if we had the choice
-                    device.add(Option("hwmode", hwmode))
-                device.add(Option("htmode", data['htmode']))
-                # channel is in wifi-device section
-                device.add(Option("channel", channel))
-            else:
-                pass  # wifi disabled
+                    pass  # wifi disabled
 
             return "edit_config", uci
 
