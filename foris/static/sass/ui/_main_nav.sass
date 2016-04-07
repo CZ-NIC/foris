@@ -1,40 +1,52 @@
-$nav-item-height: 2em
-$nav-border: 1px solid $stroke-color
+$nav-item-height: 3em
+$nav-item-border: 2px solid #ddd
 
 #menu nav
   ul
     li
-      background: $sidebar-tab-color
-      border-bottom: $nav-border
+      background: $sidebar-background-color
 
-      &:first-child
-        border-top: $nav-border
-
-      &.active
-        background: $background-color
-        font-weight: bold
-
-        a
-          text-decoration: none
+      &::before
+        display: block
+        content: " "
+        border-top: $nav-item-border
+        margin: 0 0.7em
 
       a
+        font-weight: bold
+        font-size: 85%
+        text-decoration: none
+        text-transform: uppercase
         color: $sidebar-foreground-color
         display: block
         height: $nav-item-height + 1em
         line-height: $nav-item-height + 1em
-        padding: 0.2em 0.5em
+        padding: 0.2em 1.5em
+
+        &:hover
+          text-decoration: underline
+
+      &:last-child
+        &::after
+          display: block
+          content: " "
+          border-bottom: $nav-item-border
+          margin: 0 0.7em
+
+      &.active
+        background: $sidebar-active-tab-color
+        font-weight: bold
+
+        &::before, &::after
+          border-color: $sidebar-active-tab-color
+
+        & + li::before
+          border-color: $sidebar-background-color
+
+        a
+          color: #fff
 
       +respond-to('not-mobile', $no-query: true)
-        +background-image(linear-gradient(left, $sidebar-tab-color 0%, $sidebar-tab-color 98%, #aaa 100%))
-        border: $nav-border
-        border-right: none
-        margin-bottom: 0.5em
-        margin-left: 0.25em
-
-        &.active
-          margin-left: 0
-          border-right: none
-
         a
           height: $nav-item-height
           line-height: $nav-item-height
