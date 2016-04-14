@@ -87,9 +87,10 @@ class StaticNetconfConnection(object):
             if cls._session is None or time() > cls.session_kill_time:
                 cls._connect()
                 cls.session_kill_time = time() + cls.MAXIMUM_SESSION_LIFE
+            timeout = kwargs.pop("timeout", cls._timeout)
             result = klass(cls._session,
                            async=cls._async_mode,
-                           timeout=cls._timeout,
+                           timeout=timeout,
                            raise_mode=cls._raise_mode).request(*args, **kwargs)
         finally:
             cls._executing = False
@@ -235,7 +236,8 @@ def ntp_update():
     get_tag = time_module.Time.qual_tag("ntp")
     element = ET.Element(get_tag)
     try:
-        dispatch(element)
+        # Use longer timeout, because the NTP sync takes some time...
+        dispatch(element, timeout=60)
         return True
     except (RPCError, TimeoutExpiredError):
         # TODO: maybe be more precise and determine what happened
