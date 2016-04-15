@@ -55,9 +55,4 @@
         </div>
     </div>
     <div class="sidebar-cleaner"></div>
-    <div id="footer">
-        <div class="sidebar-content">
-            <img src="{{ static("img/logo-turris.svg") }}" alt="{{ trans("Project:Turris") }}" width="178">
-        </div>
-    </div>
 %end
