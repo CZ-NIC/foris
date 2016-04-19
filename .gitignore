@@ -6,3 +6,4 @@ foris/static/css/*
 foris/static/js/*.min.js
 foris/templates/_layout.tpl
 /plugins/
+/foris/static/sass/_branding.sass
