@@ -10,6 +10,7 @@ button
 
 .button, button
   +box-sizing('border-box')
+  +rounded-borders
   background-color: $button-color
   color: #fff
   cursor: default
@@ -50,6 +51,7 @@ button
 
 .button-arrow-right
   @extend .button
+  +border-right-radius(0)
 
   &:before
     background: $highlight-color
@@ -66,6 +68,7 @@ button
 
 .button-arrow-left
   @extend .button
+  +border-left-radius(0)
 
   &:before
     background: $highlight-color

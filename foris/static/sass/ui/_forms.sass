@@ -7,6 +7,7 @@ input, textarea, select
   width: 88%
   display: inline-block
   +box-sizing('content-box')
+  +rounded-borders
 
   +respond-to('not-mobile', $no-query: true)
     font-size: 80%
@@ -82,6 +83,7 @@ input[type="file"]
       +adjust-font-size-to(14px)
 
   .hint-text
+    +rounded-borders
     display: none
     background-color: $hint-color
     margin: 0.5em 0
