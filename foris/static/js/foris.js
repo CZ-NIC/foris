@@ -410,7 +410,6 @@ Foris.initWiFiQR = function () {
   });
 
   var doRender = function (radio) {
-    console.log('blah');
     doRender.debounceTimeout = null;
 
     // create QR code for the radio and align its top with SSID input
