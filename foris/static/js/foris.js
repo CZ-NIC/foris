@@ -518,4 +518,15 @@ function extractPathName(src) {
 
 $(document).ready(function () {
   Foris.initialize();
+
+  $(document).on('click touchstart', function (e) {
+    var langSwitch = document.getElementById('language-switch');
+    if (!langSwitch)
+      return true;
+
+    if (langSwitch.className == 'active' || e.target.id != 'language-switch' && e.target.parentNode.id != 'language-switch')
+      langSwitch.className = '';
+    else
+      langSwitch.className = 'active';
+  });
 });

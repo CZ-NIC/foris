@@ -1,73 +1,163 @@
 $nav-item-height: 3em
 $nav-item-border: 2px solid #ddd
 
-#menu nav
-  ul
-    li
-      background: $sidebar-background-color
+%nav-item-link
+  color: $sidebar-foreground-color
+  display: block
+  height: $nav-item-height + 1em
+  line-height: $nav-item-height + 1em
+  padding: 0.2em 1.5em
 
-      &::before
-        display: block
-        content: " "
-        border-top: $nav-item-border
-        margin: 0 0.7em
+%bottom-nav-border
+  &::after
+    display: block
+    content: " "
+    border-bottom: $nav-item-border
+    margin: 0 10px
 
-      a
-        font-weight: bold
-        font-size: 85%
-        text-decoration: none
-        text-transform: uppercase
-        color: $sidebar-foreground-color
-        display: block
-        height: $nav-item-height + 1em
-        line-height: $nav-item-height + 1em
-        padding: 0.2em 1.5em
 
-        &:hover
-          text-decoration: underline
+#menu
+  text-transform: uppercase
 
-      &:last-child
-        &::after
+  a
+    font-size: 80%
+    font-weight: bold
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  nav
+    ul
+      li
+        background: $sidebar-background-color
+
+        &::before
           display: block
           content: " "
-          border-bottom: $nav-item-border
-          margin: 0 0.7em
-
-      &.active
-        background: $sidebar-active-tab-color
-        font-weight: bold
-
-        &::before, &::after
-          border-color: $sidebar-active-tab-color
-
-        & + li::before
-          border-color: $sidebar-background-color
+          border-top: $nav-item-border
+          margin: 0 0.7rem
 
         a
-          color: #fff
+          @extend %nav-item-link
 
-      +respond-to('not-mobile', $no-query: true)
-        a
-          height: $nav-item-height
-          line-height: $nav-item-height
+        &:last-child
+          @extend %bottom-nav-border
+
+        &.active
+          background: $sidebar-active-tab-color
+          font-weight: bold
+
+          &::before, &::after
+            border-color: $sidebar-active-tab-color
+
+          & + li::before
+            border-color: $sidebar-background-color
+
+          a
+            color: #fff
+
+        +respond-to('not-mobile', $no-query: true)
+          a
+            height: $nav-item-height
+            line-height: $nav-item-height
 
 #subnav
   +pie-clearfix
   font-weight: bold
-  padding: 1em 0
-  text-align: center
-  height: 3em
-  line-height: 3em
+  color: #000
+  text-transform: uppercase
+  padding-bottom: 4em
+
+  a
+    @extend %nav-item-link
+    &:hover
+      text-decoration: underline
+
+  +respond-to('not-mobile', $no-query: true)
+    padding: 3em 0 5em
+
+    a
+      display: inline
+      height: inherit
+      line-height: inherit
+      padding: 0
+
+    &::after
+      display: none
+
+  // mimic same style as the main menu for mobile (underlining)
+  #logout, li
+    @extend %bottom-nav-border
+
+    // but hide on desktop
+    +respond-to('not-mobile', $no-query: true)
+      &::after
+        display: none
 
 #language-switch
   +box-sizing('border-box')
+  text-align: left
   display: inline
-  float: left
-  width: 50%
+  position: relative
+  color: #000
+  outline: none
+  cursor: pointer
 
-#logout
+  span
+    display: none
+
+  +respond-to('not-mobile', $no-query: true)
+    float: left
+    width: 50%
+
+    span
+      display: block
+      font-size: 80%
+      margin-left: 10px
+
+      &::after
+        content: ""
+        width: 0
+        height: 0
+        position: absolute
+        right: 8px
+        top: 60%
+        margin-top: -5px
+        border-style: solid
+        border-width: 5px 5px 0 5px
+        border-color: #000 transparent
+
+      &:hover
+        text-decoration: underline
+
+    ul
+      position: absolute
+      top: 100%
+      left: 0
+      right: 0
+      background: #e4e4e4
+      font-weight: normal
+      pointer-events: none
+      opacity: 0
+
+      li a
+        display: block
+        padding: 8px 10px
+
+        &:hover
+          background: #fff
+          text-decoration: none
+
+    &.active
+      ul
+        opacity: 1
+        pointer-events: auto
+
+#logout a
   +box-sizing('border-box')
-  display: inline
-  float: left
-  border-left: 1px solid $stroke-color
-  width: 50%
+  +respond-to('not-mobile', $no-query: true)
+    padding-left: 1em
+    float: right
+    width: 50%
+    border-left: $nav-item-border

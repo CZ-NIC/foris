@@ -46,11 +46,16 @@
             </nav>
 
             <div id="subnav">
-                <div id="language-switch">
-                  <a href="{{ url("change_lang", lang="cs", backlink=request.fullpath) }}">CZE</a>
-                  / <a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">ENG</a>
-                </div>
-                <a id="logout" href="{{ url("logout") }}">{{ trans("Log out") }}</a>
+              <div id="logout">
+                <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
+              </div>
+              <div id="language-switch">
+                <span>Language</span>
+                <ul>
+                  <li><a href="{{ url("change_lang", lang="cs", backlink=request.fullpath) }}">Česky</a></li>
+                  <li><a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">English</a></li>
+                </ul>
+              </div>
             </div>
         </div>
     </div>
