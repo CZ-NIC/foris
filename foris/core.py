@@ -1,3 +1,4 @@
+# coding=utf-8
 # Foris - web administration interface for OpenWrt based on NETCONF
 # Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
@@ -50,9 +51,14 @@ translations = {
     'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['en'], fallback=True)
 }
+translation_names = {
+    'cs': "Česky",
+    'en': "English",
+}
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
 ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
+bottle.SimpleTemplate.defaults['translation_names'] = translation_names
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 gettext_dummy = lambda x: x
 _ = ugettext

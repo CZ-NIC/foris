@@ -50,10 +50,13 @@
                 <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
               </div>
               <div id="language-switch">
-                <span>Language</span>
+                <span>{{ translation_names[lang()] }}</span>
                 <ul>
-                  <li><a href="{{ url("change_lang", lang="cs", backlink=request.fullpath) }}">Česky</a></li>
-                  <li><a href="{{ url("change_lang", lang="en", backlink=request.fullpath) }}">English</a></li>
+                  %for code, name in translation_names.iteritems():
+                    %if code != lang():
+                      <li><a href="{{ url("change_lang", lang=code, backlink=request.fullpath) }}">{{ name }}</a></li>
+                    %end
+                  %end
                 </ul>
               </div>
             </div>
