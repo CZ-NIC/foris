@@ -48,6 +48,8 @@ body
 
   +respond-to('not-mobile', $no-query: true)
     display: inline
+    max-width: 90%
+    margin: 0 0.2em
 
 // header in mobile version
 .header-top
@@ -56,6 +58,9 @@ body
 
   +respond-to('not-mobile', $no-query: true)
     display: none
+
+  img
+    padding-top: 0.4em
 
   a.menu-link
     float: left
