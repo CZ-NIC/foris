@@ -22,6 +22,7 @@ import logging
 from xml.etree import cElementTree as ET
 
 from .routing import reverse
+from .. import DEVICE_CUSTOMIZATION
 
 
 logger = logging.getLogger("foris.utils")
@@ -82,6 +83,22 @@ def is_safe_redirect(url, host=None):
             and (not url_components.netloc or url_components.netloc == host))
 
 
+def require_customization(required_customization=None):
+    """
+    Decorator for methods that require specific DEVICE_CUSTOMIZATION value.
+    Raises bottle HTTPError if current DEVICE_CUSTOMIZATION differs.
+
+    :param required_customization: required device customization string
+    :return: decorated function
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if DEVICE_CUSTOMIZATION != required_customization:
+                raise bottle.HTTPError(403, "Requested method is not available in this Foris build.")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 
 
 class Lazy(object):
