@@ -19,39 +19,65 @@
 %if not defined('is_xhr'):
 <div id="page-config" class="config-page">
 %end
-    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-        <p class="config-description">{{! description }}</p>
-        %include("_messages.tpl")
-        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        %for field in form.active_fields:
-            %if field.hidden:
-                {{! field.render() }}
-            %else:
-            <div class="row">
-                {{! field.render() }}
-                {{! field.label_tag[lang()] }}
-                {{ field.hint[lang()] }}
-                %if field.errors:
-                  <div class="server-validation-container">
-                    <ul>
-                      <li>{{ field.errors }}</li>
-                    </ul>
-                  </div>
-                %end
+    %include("_messages.tpl")
+
+    <p>{{! description }}</p>
+
+    %if defined('updater_toggle_form'):
+      <form id="updater-toggle-form" class="maintenance-form" action="{{ url("config_action", page_name="updater", action="toggle_updater") }}" method="post" autocomplete="off" novalidate>
+          <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+          %for section in updater_toggle_form.sections:
+              %if section.active_fields:
+                  <h2>{{ section.title }}</h2>
+                  <p>{{! section.description }}</p>
+                  %for field in section.active_fields:
+                      %include("_field.tpl", field=field)
+                  %end
+              %end
+          %end
+          <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
+      </form>
+      <h2>{{ trans("Package lists") }}</h2>
+    %end
+
+    %if updater_disabled:
+      <div class="message warning">
+        {{ trans("The Updater is currently disabled. You must enable it first to manage package lists.") }}
+      </div>
+    %else:
+      <form id="main-form" class="config-form" action="{{ url("config_page", page_name="updater") }}" method="post" autocomplete="off" novalidate>
+
+          <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+          %for field in form.active_fields:
+              %if field.hidden:
+                  {{! field.render() }}
+              %else:
+              <div class="row">
+                  {{! field.render() }}
+                  {{! field.label_tag[lang()] }}
+                  {{ field.hint[lang()] }}
+                  %if field.errors:
+                    <div class="server-validation-container">
+                      <ul>
+                        <li>{{ field.errors }}</li>
+                      </ul>
+                    </div>
+                  %end
+              </div>
+              %end
+          %end
+          %if len(form.active_fields) == 0:
+            <div class="message warning">
+              {{ trans("List of available software was not downloaded from the server yet. Please come back later.") }}
             </div>
-            %end
-        %end
-        %if len(form.active_fields) == 0:
-          <div class="message warning">
-            {{ trans("List of available software was not downloaded from the server yet. Please come back later.") }}
-          </div>
-        %else:
-          <div class="form-buttons">
-              <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
-              <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
-          </div>
-        %end
-    </form>
+          %else:
+            <div class="form-buttons">
+                <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+                <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+            </div>
+          %end
+      </form>
+    %end
 %if not defined('is_xhr'):
 </div>
 %end

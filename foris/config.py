@@ -23,13 +23,14 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
+from . import DEVICE_CUSTOMIZATION
+from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 from .config_handlers import *
-from foris.core import gettext_dummy as gettext, make_notification_title, ugettext as _
 from .nuci import client
 from .nuci.client import filters
 from .nuci.exceptions import ConfigRestoreError
 from .utils import login_required
-from .utils import messages
+from .utils import messages, require_customization
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
 
@@ -227,6 +228,31 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
 class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
     template = "config/updater"
+
+    @require_customization("omnia")
+    def _action_toggle_updater(self):
+        if bottle.request.method != 'POST':
+            messages.error("Wrong HTTP method.")
+            bottle.redirect(reverse("config_page", page_name="updater"))
+        handler = UpdaterToggleHandler(request.POST)
+        if handler.save():
+            messages.success(_("Configuration was successfully saved."))
+            bottle.redirect(reverse("config_page", page_name="updater"))
+        messages.warning(_("There were some errors in your input."))
+        return super(UpdaterConfigPage, self).render(notifications_form=handler.form,
+                                                     config_pages=config_page_map)
+
+    def call_action(self, action):
+        if action == "toggle_updater":
+            return self._action_toggle_updater()
+        raise ValueError("Unknown action.")
+
+    def render(self, **kwargs):
+        if DEVICE_CUSTOMIZATION == "omnia":
+            kwargs['updater_toggle_form'] = UpdaterToggleHandler(self.data).form
+        disabled_opt = self.form.nuci_config.find_child('uci.updater.override.disable')
+        kwargs['updater_disabled'] = disabled_opt and bool(int(disabled_opt.value))
+        return super(UpdaterConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):
         result = super(UpdaterConfigPage, self).save(no_messages=True, *args, **kwargs)

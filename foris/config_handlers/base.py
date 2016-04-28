@@ -1033,6 +1033,38 @@ class UpdaterHandler(BaseConfigHandler):
         return package_lists_form
 
 
+class UpdaterToggleHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Updater config")
+
+    def get_form(self):
+        toggle_form = fapi.ForisForm("updater_toggle", self.data,
+                                     filter=filters.create_config_filter("updater"))
+        toggle_main = toggle_form.add_section(
+            name="disable_updater", title=_(self.userfriendly_title),
+            description=_(
+                "If you want to disable the Updater, you can do so here. Disable it only if "
+                "you have a good reason to do so. Without the Updater, installed software will not "
+                "be kept up to date and you will also not be able to install Updater's package "
+                "lists."
+            )
+        )
+        toggle_main.add_field(Checkbox, name="disable", label=_("Disable Updater"),
+                              nuci_path="uci.updater.override.disable",
+                              nuci_preproc=lambda val: bool(int(val.value)))
+
+        def toggle_form_cb(data):
+            uci = Uci()
+            updater = Config("updater")
+            uci.add(updater)
+            override = Section("override", "override")
+            updater.add(override)
+            override.add(Option("disable", data.get('disable', False)))
+            return "edit_config", uci
+
+        toggle_form.add_callback(toggle_form_cb)
+        return toggle_form
+
+
 class UcollectHandler(BaseConfigHandler):
     userfriendly_title = gettext("uCollect")
 
