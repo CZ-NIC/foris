@@ -67,6 +67,292 @@ class BaseConfigHandler(object):
             return False
 
 
+class DNSHandler(BaseConfigHandler):
+    """
+    DNS-related settings, currently for enabling/disabling upstream forwarding
+    """
+
+    userfriendly_title = gettext("DNS")
+
+    def get_form(self):
+        dns_form = fapi.ForisForm("dns", self.data,
+                                  filter=create_config_filter("unbound"))
+        dns_main = dns_form.add_section(name="set_dns",
+                                        title=_(self.userfriendly_title))
+        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
+                           nuci_path="uci.unbound.server.forward_upstream",
+                           nuci_preproc=lambda val: bool(int(val.value)), default=True)
+
+        def dns_form_cb(data):
+            uci = Uci()
+            unbound = Config("unbound")
+            uci.add(unbound)
+            server = Section("server", "unbound")
+            unbound.add(server)
+            server.add(Option("forward_upstream", data['forward_upstream']))
+            return "edit_config", uci
+
+        dns_form.add_callback(dns_form_cb)
+        return dns_form
+
+
+class LanHandler(BaseConfigHandler):
+    userfriendly_title = gettext("LAN")
+
+    def get_form(self):
+        lan_form = fapi.ForisForm("lan", self.data,
+                                  filter=create_config_filter("dhcp", "network"))
+        lan_main = lan_form.add_section(
+            name="set_lan",
+            title=_(self.userfriendly_title),
+            description=_("This section contains settings for the local network (LAN). The provided"
+                          " defaults are suitable for most networks. <br><strong>Note:</strong> If "
+                          "you change the router IP address, all computers in LAN, probably "
+                          "including the one you are using now, will need to obtain a <strong>new "
+                          "IP address</strong> which does <strong>not</strong> happen <strong>"
+                          "immediately</strong>. It is recommended to disconnect and reconnect all "
+                          "LAN cables after submitting your changes to force the update. The next "
+                          "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
+                          " and you might need to <strong>refresh the page</strong> in your "
+                          "browser.")
+        )
+
+        lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
+                           nuci_path="uci.network.lan.ipaddr",
+                           validators=validators.IPv4(),
+                           hint=_("Router's IP address in inner network. Also defines the range of "
+                                  "assigned IP addresses."))
+        lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
+                           nuci_path="uci.dhcp.lan.ignore",
+                           nuci_preproc=lambda val: not bool(int(val.value)), default=True,
+                           hint=_("Enable this option to automatically assign IP addresses to "
+                                  "the devices connected to the router."))
+        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP start"),
+                           nuci_path="uci.dhcp.lan.start")\
+            .requires("dhcp_enabled", True)
+        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max leases"),
+                           nuci_path="uci.dhcp.lan.limit")\
+            .requires("dhcp_enabled", True)
+
+        def lan_form_cb(data):
+            uci = Uci()
+            config = Config("dhcp")
+            uci.add(config)
+
+            dhcp = Section("lan", "dhcp")
+            config.add(dhcp)
+            # FIXME: this would overwrite any unrelated DHCP options the user might have set.
+            # Maybe we should get the current values, scan them and remove selectively the ones
+            # with 6 in front of them? Or have some support for higher level of stuff in nuci.
+            options = List("dhcp_option")
+            options.add(Value(0, "6," + data['lan_ipaddr']))
+            dhcp.add_replace(options)
+            network = Config("network")
+            uci.add(network)
+            interface = Section("lan", "interface")
+            network.add(interface)
+            interface.add(Option("ipaddr", data['lan_ipaddr']))
+            if data['dhcp_enabled']:
+                dhcp.add(Option("ignore", "0"))
+                dhcp.add(Option("start", data['dhcp_min']))
+                dhcp.add(Option("limit", data['dhcp_max']))
+            else:
+                dhcp.add(Option("ignore", "1"))
+
+            return "edit_config", uci
+
+        lan_form.add_callback(lan_form_cb)
+
+        return lan_form
+
+
+class MaintenanceHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Maintenance")
+
+    def get_form(self):
+        maintenance_form = fapi.ForisForm("maintenance", self.data)
+        maintenance_main = maintenance_form.add_section(name="restore_backup",
+                                                        title=_(self.userfriendly_title))
+        maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
+
+        def maintenance_form_cb(data):
+            result = client.load_config_backup(data['backup_file'].file)
+            return "save_result", {'new_ip': result}
+
+        maintenance_form.add_callback(maintenance_form_cb)
+        return maintenance_form
+
+
+class NotificationsHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Notifications")
+
+    def get_form(self):
+        notifications_form = fapi.ForisForm("notifications", self.data,
+                                            filter=create_config_filter("user_notify"))
+
+        notifications = notifications_form.add_section(name="notifications",
+                                                       title=_("Notifications settings"))
+        # notifications settings
+        notifications.add_field(Checkbox, name="enable_smtp", label=_("Enable notifications"),
+                                nuci_path="uci.user_notify.smtp.enable",
+                                nuci_preproc=lambda val: bool(int(val.value)),
+                                default=False)
+
+        notifications.add_field(
+            Radio,
+            name="use_turris_smtp",
+            label=_("SMTP provider"),
+            default="0",
+            args=(("1", _("Turris")), ("0", _("Custom"))),
+            nuci_path="uci.user_notify.smtp.use_turris_smtp",
+            hint=_("If you set SMTP provider to \"Turris\", the servers provided to members of the "
+                   "Turris project would be used. These servers do not require any additional "
+                   "settings. If you want to set your own SMTP server, please select \"Custom\" "
+                   "and enter required settings."))\
+            .requires("enable_smtp", True)
+
+        notifications.add_field(
+            Textbox,
+            name="to",
+            label=_("Recipient's email"),
+            nuci_path="uci.user_notify.smtp.to",
+            nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
+            hint=_("Email address of recipient. Separate multiple addresses by spaces."),
+            required=True
+        ).requires("enable_smtp", True)
+
+        # sender's name for CZ.NIC SMTP only
+        notifications.add_field(
+            Textbox,
+            name="sender_name",
+            label=_("Sender's name"),
+            hint=_("Name of the sender - will be used as a part of the "
+                   "sender's email address before the \"at\" sign."),
+            nuci_path="uci.user_notify.smtp.sender_name",
+            validators=[validators.RegExp(_("Sender's name can contain only "
+                                            "alphanumeric characters, dots "
+                                            "and underscores."),
+                                          r"^[0-9a-zA-Z_\.-]+$")],
+            required=True
+        )\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "1")
+
+        SEVERITY_OPTIONS = (
+            (1, _("Reboot is required")),
+            (2, _("Reboot or attention is required")),
+            (3, _("Reboot or attention is required or update was installed")),
+        )
+        notifications.add_field(Dropdown, name="severity", label=_("Importance"),
+                                nuci_path="uci.user_notify.notifications.severity",
+                                nuci_preproc=lambda val: int(val.value),
+                                args=SEVERITY_OPTIONS, default=1)\
+            .requires("enable_smtp", True)
+        notifications.add_field(Checkbox, name="news", label=_("Send news"),
+                                hint=_("Send emails about new features."),
+                                nuci_path="uci.user_notify.notifications.news",
+                                nuci_preproc=lambda val: bool(int(val.value)),
+                                default=False)\
+            .requires("enable_smtp", True)
+
+        # SMTP settings (custom server)
+        smtp = notifications_form.add_section(name="smtp", title=_("SMTP settings"))
+        smtp.add_field(Email, name="from", label=_("Sender address (From)"),
+                       hint=_("This is the address notifications are send from."),
+                       nuci_path="uci.user_notify.smtp.from",
+                       required=True)\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
+        smtp.add_field(Textbox, name="server", label=_("Server address"),
+                                nuci_path="uci.user_notify.smtp.server",
+                                required=True)\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
+        smtp.add_field(Number, name="port", label=_("Server port"),
+                       nuci_path="uci.user_notify.smtp.port",
+                       validators=[validators.PositiveInteger()],
+                       required=True) \
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
+
+        SECURITY_OPTIONS = (
+            ("none", _("None")),
+            ("ssl", _("SSL/TLS")),
+            ("starttls", _("STARTTLS")),
+        )
+        smtp.add_field(Dropdown, name="security", label=_("Security"),
+                       nuci_path="uci.user_notify.smtp.security",
+                       args=SECURITY_OPTIONS, default="none") \
+            .requires("enable_smtp", True).requires("use_turris_smtp", "0")
+
+        smtp.add_field(Textbox, name="username", label=_("Username"),
+                       nuci_path="uci.user_notify.smtp.username")\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
+        smtp.add_field(Password, name="password", label=_("Password"),
+                       nuci_path="uci.user_notify.smtp.password")\
+            .requires("enable_smtp", True)\
+            .requires("use_turris_smtp", "0")
+
+        # reboot time
+        reboot = notifications_form.add_section(name="reboot",
+                                                title=_("Automatic restarts"))
+        reboot.add_field(Number, name="delay", label=_("Delay (days)"),
+                         hint=_("Number of days that must pass between receiving the request "
+                                "for restart and the automatic restart itself."),
+                         nuci_path="uci.user_notify.reboot.delay",
+                         validators=[validators.PositiveInteger(),
+                                     validators.InRange(0, 10)],
+                         required=True)
+        reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
+                         hint=_("Time of day of automatic reboot in HH:MM format."),
+                         nuci_path="uci.user_notify.reboot.time",
+                         validators=[validators.Time()],
+                         required=True)
+
+        def notifications_form_cb(data):
+            uci = Uci()
+            user_notify = Config("user_notify")
+            uci.add(user_notify)
+
+            smtp = Section("smtp", "smtp")
+            user_notify.add(smtp)
+            smtp.add(Option("enable", data['enable_smtp']))
+
+            reboot = Section("reboot", "reboot")
+            user_notify.add(reboot)
+            reboot.add(Option("time", data['reboot_time']))
+            reboot.add(Option("delay", data['delay']))
+
+            if data['enable_smtp']:
+                smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
+                if data['use_turris_smtp'] == "0":
+                    smtp.add(Option("server", data['server']))
+                    smtp.add(Option("port", data['port']))
+                    smtp.add(Option("username", data['username']))
+                    smtp.add(Option("password", data['password']))
+                    smtp.add(Option("security", data['security']))
+                    smtp.add(Option("from", data['from']))
+                else:
+                    smtp.add(Option("sender_name", data['sender_name']))
+                to = List("to")
+                for i, to_item in enumerate(data['to'].split(" ")):
+                    if to_item:
+                        to.add(Value(i, to_item))
+                smtp.add_replace(to)
+                # notifications section
+                notifications = Section("notifications", "notifications")
+                user_notify.add(notifications)
+                notifications.add(Option("severity", data['severity']))
+                notifications.add(Option("news", data['news']))
+
+            return "edit_config", uci
+
+        notifications_form.add_callback(notifications_form_cb)
+
+        return notifications_form
+
+
 class PasswordHandler(BaseConfigHandler):
     """
     Setting the password
@@ -137,6 +423,249 @@ class PasswordHandler(BaseConfigHandler):
 
         pw_form.add_callback(pw_form_cb)
         return pw_form
+
+
+class SystemPasswordHandler(BaseConfigHandler):
+    """
+    Setting the password of a system user (currently only root's pw).
+    """
+
+    userfriendly_title = gettext("Advanced administration")
+
+    def get_form(self):
+        system_pw_form = fapi.ForisForm("system_password", self.data)
+        system_pw_main = system_pw_form.add_section(
+            name="set_password",
+            title=_(self.userfriendly_title),
+            description=_("In order to access the advanced configuration possibilities which are "
+                          "not present here, you must set the root user's password. The advanced "
+                          "configuration options can be managed either through the "
+                          "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+                          "or over SSH.") % {'host': bottle.request.get_header('host'),
+                                             'path': 'cgi-bin/luci'}
+        )
+        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
+                                 validators=validators.LenRange(6, 128))
+        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
+                                 required=True,
+                                 validators=validators.EqualTo("password", "password_validation",
+                                                               _("Passwords are not equal.")))
+
+        def system_pw_form_cb(data):
+            client.set_password("root", data["password"])
+            return "none", None
+
+        system_pw_form.add_callback(system_pw_form_cb)
+        return system_pw_form
+
+
+class TimeHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Time")
+
+    def get_form(self):
+        time_form = fapi.ForisForm("time", self.data, filter=filters.time)
+        time_main = time_form.add_section(
+            name="set_time",
+            title=_(self.userfriendly_title),
+            description=_("We could not synchronize the time with a timeserver, probably due to a "
+                          "loss of connection. It is necessary for the router to have correct time "
+                          "in order to function properly. Please, synchronize it with your "
+                          "computer's time, or set it manually.")
+        )
+
+        time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
+                            nuci_preproc=lambda v: v.local)
+
+        def time_form_cb(data):
+            client.set_time(data['time'])
+            return "none", None
+
+        time_form.add_callback(time_form_cb)
+
+        return time_form
+
+
+class UcollectHandler(BaseConfigHandler):
+    userfriendly_title = gettext("uCollect")
+
+    def get_form(self):
+        ucollect_form = fapi.ForisForm("ucollect", self.data,
+                                       filter=filters.create_config_filter("ucollect"))
+        fakes = ucollect_form.add_section(
+            name="fakes",
+            title=_("Emulated services"),
+            description=_("One of uCollect's features is emulation of some commonly abused "
+                          "services. If this function is enabled, uCollect is listening for "
+                          "incoming connection attempts to these services. Enabling of the "
+                          "emulated services has no effect if another service is already "
+                          "listening on its default port (port numbers are listed below).")
+        )
+
+        SERVICES_OPTIONS = (
+            ("23tcp", _("Telnet (23/TCP)")),
+        )
+
+        def get_enabled_services(disabled_list):
+            disabled_services = map(lambda value: value.content, disabled_list.children)
+            res = [x[0] for x in SERVICES_OPTIONS if x[0] not in disabled_services]
+            return res
+
+        fakes.add_field(
+            MultiCheckbox,
+            name="services",
+            label=_("Emulated services"),
+            args=SERVICES_OPTIONS,
+            multifield=True,
+            nuci_path="uci.ucollect.fakes.disable",
+            nuci_preproc=get_enabled_services,
+            default=[x[0] for x in SERVICES_OPTIONS]
+        )
+
+        fakes.add_field(
+            Checkbox,
+            name="log_credentials",
+            label=_("Collect credentials"),
+            hint=_("If this option is enabled, user names and passwords are collected "
+                   "and sent to server in addition to the IP address of the client."),
+            nuci_path="uci.ucollect.fakes.log_credentials",
+            nuci_preproc=parse_uci_bool
+        )
+
+        def ucollect_form_cb(data):
+            uci = Uci()
+            ucollect = Config("ucollect")
+            uci.add(ucollect)
+
+            fakes = Section("fakes", "fakes")
+            ucollect.add(fakes)
+
+            disable = List("disable")
+
+            disabled_services = [x[0] for x in SERVICES_OPTIONS
+                                 if x[0] not in data['services']]
+            for i, service in enumerate(disabled_services):
+                disable.add(Value(i, service))
+
+            if len(disabled_services):
+                fakes.add_replace(disable)
+            else:
+                # TODO: workaround for Nuci bug #3984 - remove when fixed
+                fakes_section = ucollect_form.nuci_config.find_child("uci.ucollect.fakes")
+                if fakes_section:
+                    fakes.add_removal(disable)
+
+            fakes.add(Option("log_credentials", data['log_credentials']))
+
+            return "edit_config", uci
+
+        ucollect_form.add_callback(ucollect_form_cb)
+
+        return ucollect_form
+
+
+class UpdaterHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Updater")
+
+    def get_form(self):
+        pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
+
+        package_lists_form = fapi.ForisForm("package_lists", self.data,
+                                            filter=create_config_filter("updater"))
+        package_lists_main = package_lists_form.add_section(
+            name="select_package_lists",
+            title=_(self.userfriendly_title),
+            description=_("Updater is a service that keeps all TurrisOS "
+                          "software up to date. Apart from the standard "
+                          "installation, you can optionally select lists of "
+                          "additional software that'd be installed on the "
+                          "router. This software can be selected from the "
+                          "following list. "
+                          "Please note that only software that is part of "
+                          "TurrisOS or that has been installed from a package "
+                          "list is maintained by Updater. Software that has "
+                          "been installed manually or using opkg is not "
+                          "affected.")
+        )
+
+        def make_preproc(list_name):
+            """Make function for preprocessing value of single pkglist."""
+            def preproc(list):
+                enabled_names = map(lambda x: x.content, list.children)
+                return list_name in enabled_names
+            return preproc
+
+        for pkg_list_item in pkg_list:
+            package_lists_main.add_field(
+                Checkbox,
+                name="install_%s" % pkg_list_item.name,
+                label=pkg_list_item.title,
+                hint=pkg_list_item.description,
+                nuci_path="uci.updater.pkglists.lists",
+                nuci_preproc=make_preproc(pkg_list_item.name)
+            )
+
+        def package_lists_form_cb(data):
+            uci = Uci()
+            updater = Config("updater")
+            uci.add(updater)
+
+            pkglists = Section("pkglists", "pkglists")
+            updater.add(pkglists)
+            lists = List("lists")
+
+            # create List with selected packages
+            i = 0
+            for k, v in data.iteritems():
+                if v and k.startswith("install_"):
+                    lists.add(Value(i, k[8:]))
+                    i += 1
+            if i == 0:
+                pkglists.add_removal(lists)
+            else:
+                pkglists.add_replace(lists)
+
+            return "edit_config", uci
+
+        def package_lists_run_updater_cb(data):
+            logger.info("Checking for updates.")
+            client.check_updates()
+            return "none", None
+
+        package_lists_form.add_callback(package_lists_form_cb)
+        package_lists_form.add_callback(package_lists_run_updater_cb)
+        return package_lists_form
+
+
+class UpdaterToggleHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Updater config")
+
+    def get_form(self):
+        toggle_form = fapi.ForisForm("updater_toggle", self.data,
+                                     filter=filters.create_config_filter("updater"))
+        toggle_main = toggle_form.add_section(
+            name="disable_updater", title=_(self.userfriendly_title),
+            description=_(
+                "If you want to disable the Updater, you can do so here. Disable it only if "
+                "you have a good reason to do so. Without the Updater, installed software will not "
+                "be kept up to date and you will also not be able to install Updater's package "
+                "lists."
+            )
+        )
+        toggle_main.add_field(Checkbox, name="disable", label=_("Disable Updater"),
+                              nuci_path="uci.updater.override.disable",
+                              nuci_preproc=lambda val: bool(int(val.value)))
+
+        def toggle_form_cb(data):
+            uci = Uci()
+            updater = Config("updater")
+            uci.add(updater)
+            override = Section("override", "override")
+            updater.add(override)
+            override.add(Option("disable", data.get('disable', False)))
+            return "edit_config", uci
+
+        toggle_form.add_callback(toggle_form_cb)
+        return toggle_form
 
 
 class WanHandler(BaseConfigHandler):
@@ -428,131 +957,6 @@ class WanHandler(BaseConfigHandler):
         return wan_form
 
 
-class DNSHandler(BaseConfigHandler):
-    """
-    DNS-related settings, currently for enabling/disabling upstream forwarding
-    """
-
-    userfriendly_title = gettext("DNS")
-
-    def get_form(self):
-        dns_form = fapi.ForisForm("dns", self.data,
-                                  filter=create_config_filter("unbound"))
-        dns_main = dns_form.add_section(name="set_dns",
-                                        title=_(self.userfriendly_title))
-        dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
-                           nuci_path="uci.unbound.server.forward_upstream",
-                           nuci_preproc=lambda val: bool(int(val.value)), default=True)
-
-        def dns_form_cb(data):
-            uci = Uci()
-            unbound = Config("unbound")
-            uci.add(unbound)
-            server = Section("server", "unbound")
-            unbound.add(server)
-            server.add(Option("forward_upstream", data['forward_upstream']))
-            return "edit_config", uci
-
-        dns_form.add_callback(dns_form_cb)
-        return dns_form
-
-
-class TimeHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Time")
-
-    def get_form(self):
-        time_form = fapi.ForisForm("time", self.data, filter=filters.time)
-        time_main = time_form.add_section(
-            name="set_time",
-            title=_(self.userfriendly_title),
-            description=_("We could not synchronize the time with a timeserver, probably due to a "
-                          "loss of connection. It is necessary for the router to have correct time "
-                          "in order to function properly. Please, synchronize it with your "
-                          "computer's time, or set it manually.")
-        )
-
-        time_main.add_field(Textbox, name="time", label=_("Time"), nuci_path="time",
-                            nuci_preproc=lambda v: v.local)
-
-        def time_form_cb(data):
-            client.set_time(data['time'])
-            return "none", None
-
-        time_form.add_callback(time_form_cb)
-
-        return time_form
-
-
-class LanHandler(BaseConfigHandler):
-    userfriendly_title = gettext("LAN")
-
-    def get_form(self):
-        lan_form = fapi.ForisForm("lan", self.data,
-                                  filter=create_config_filter("dhcp", "network"))
-        lan_main = lan_form.add_section(
-            name="set_lan",
-            title=_(self.userfriendly_title),
-            description=_("This section contains settings for the local network (LAN). The provided"
-                          " defaults are suitable for most networks. <br><strong>Note:</strong> If "
-                          "you change the router IP address, all computers in LAN, probably "
-                          "including the one you are using now, will need to obtain a <strong>new "
-                          "IP address</strong> which does <strong>not</strong> happen <strong>"
-                          "immediately</strong>. It is recommended to disconnect and reconnect all "
-                          "LAN cables after submitting your changes to force the update. The next "
-                          "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
-                          " and you might need to <strong>refresh the page</strong> in your "
-                          "browser.")
-        )
-
-        lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
-                           nuci_path="uci.network.lan.ipaddr",
-                           validators=validators.IPv4(),
-                           hint=_("Router's IP address in inner network. Also defines the range of "
-                                  "assigned IP addresses."))
-        lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
-                           nuci_path="uci.dhcp.lan.ignore",
-                           nuci_preproc=lambda val: not bool(int(val.value)), default=True,
-                           hint=_("Enable this option to automatically assign IP addresses to "
-                                  "the devices connected to the router."))
-        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP start"),
-                           nuci_path="uci.dhcp.lan.start")\
-            .requires("dhcp_enabled", True)
-        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max leases"),
-                           nuci_path="uci.dhcp.lan.limit")\
-            .requires("dhcp_enabled", True)
-
-        def lan_form_cb(data):
-            uci = Uci()
-            config = Config("dhcp")
-            uci.add(config)
-
-            dhcp = Section("lan", "dhcp")
-            config.add(dhcp)
-            # FIXME: this would overwrite any unrelated DHCP options the user might have set.
-            # Maybe we should get the current values, scan them and remove selectively the ones
-            # with 6 in front of them? Or have some support for higher level of stuff in nuci.
-            options = List("dhcp_option")
-            options.add(Value(0, "6," + data['lan_ipaddr']))
-            dhcp.add_replace(options)
-            network = Config("network")
-            uci.add(network)
-            interface = Section("lan", "interface")
-            network.add(interface)
-            interface.add(Option("ipaddr", data['lan_ipaddr']))
-            if data['dhcp_enabled']:
-                dhcp.add(Option("ignore", "0"))
-                dhcp.add(Option("start", data['dhcp_min']))
-                dhcp.add(Option("limit", data['dhcp_max']))
-            else:
-                dhcp.add(Option("ignore", "1"))
-
-            return "edit_config", uci
-
-        lan_form.add_callback(lan_form_cb)
-
-        return lan_form
-
-
 class WifiHandler(BaseConfigHandler):
     userfriendly_title = gettext("Wi-Fi")
 
@@ -738,406 +1142,3 @@ class WifiHandler(BaseConfigHandler):
 
         return wifi_form
 
-
-class SystemPasswordHandler(BaseConfigHandler):
-    """
-    Setting the password of a system user (currently only root's pw).
-    """
-
-    userfriendly_title = gettext("Advanced administration")
-
-    def get_form(self):
-        system_pw_form = fapi.ForisForm("system_password", self.data)
-        system_pw_main = system_pw_form.add_section(
-            name="set_password",
-            title=_(self.userfriendly_title),
-            description=_("In order to access the advanced configuration possibilities which are "
-                          "not present here, you must set the root user's password. The advanced "
-                          "configuration options can be managed either through the "
-                          "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
-                          "or over SSH.") % {'host': bottle.request.get_header('host'),
-                                             'path': 'cgi-bin/luci'}
-        )
-        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
-                                 validators=validators.LenRange(6, 128))
-        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                                 required=True,
-                                 validators=validators.EqualTo("password", "password_validation",
-                                                               _("Passwords are not equal.")))
-
-        def system_pw_form_cb(data):
-            client.set_password("root", data["password"])
-            return "none", None
-
-        system_pw_form.add_callback(system_pw_form_cb)
-        return system_pw_form
-
-
-class MaintenanceHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Maintenance")
-
-    def get_form(self):
-        maintenance_form = fapi.ForisForm("maintenance", self.data)
-        maintenance_main = maintenance_form.add_section(name="restore_backup",
-                                                        title=_(self.userfriendly_title))
-        maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
-
-        def maintenance_form_cb(data):
-            result = client.load_config_backup(data['backup_file'].file)
-            return "save_result", {'new_ip': result}
-
-        maintenance_form.add_callback(maintenance_form_cb)
-        return maintenance_form
-
-
-class NotificationsHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Notifications")
-
-    def get_form(self):
-        notifications_form = fapi.ForisForm("notifications", self.data,
-                                            filter=create_config_filter("user_notify"))
-
-        notifications = notifications_form.add_section(name="notifications",
-                                                       title=_("Notifications settings"))
-        # notifications settings
-        notifications.add_field(Checkbox, name="enable_smtp", label=_("Enable notifications"),
-                                nuci_path="uci.user_notify.smtp.enable",
-                                nuci_preproc=lambda val: bool(int(val.value)),
-                                default=False)
-
-        notifications.add_field(
-            Radio,
-            name="use_turris_smtp",
-            label=_("SMTP provider"),
-            default="0",
-            args=(("1", _("Turris")), ("0", _("Custom"))),
-            nuci_path="uci.user_notify.smtp.use_turris_smtp",
-            hint=_("If you set SMTP provider to \"Turris\", the servers provided to members of the "
-                   "Turris project would be used. These servers do not require any additional "
-                   "settings. If you want to set your own SMTP server, please select \"Custom\" "
-                   "and enter required settings."))\
-            .requires("enable_smtp", True)
-
-        notifications.add_field(
-            Textbox,
-            name="to",
-            label=_("Recipient's email"),
-            nuci_path="uci.user_notify.smtp.to",
-            nuci_preproc=lambda x: " ".join(map(lambda value: value.content, x.children)),
-            hint=_("Email address of recipient. Separate multiple addresses by spaces."),
-            required=True
-        ).requires("enable_smtp", True)
-
-        # sender's name for CZ.NIC SMTP only
-        notifications.add_field(
-            Textbox,
-            name="sender_name",
-            label=_("Sender's name"),
-            hint=_("Name of the sender - will be used as a part of the "
-                   "sender's email address before the \"at\" sign."),
-            nuci_path="uci.user_notify.smtp.sender_name",
-            validators=[validators.RegExp(_("Sender's name can contain only "
-                                            "alphanumeric characters, dots "
-                                            "and underscores."),
-                                          r"^[0-9a-zA-Z_\.-]+$")],
-            required=True
-        )\
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "1")
-
-        SEVERITY_OPTIONS = (
-            (1, _("Reboot is required")),
-            (2, _("Reboot or attention is required")),
-            (3, _("Reboot or attention is required or update was installed")),
-        )
-        notifications.add_field(Dropdown, name="severity", label=_("Importance"),
-                                nuci_path="uci.user_notify.notifications.severity",
-                                nuci_preproc=lambda val: int(val.value),
-                                args=SEVERITY_OPTIONS, default=1)\
-            .requires("enable_smtp", True)
-        notifications.add_field(Checkbox, name="news", label=_("Send news"),
-                                hint=_("Send emails about new features."),
-                                nuci_path="uci.user_notify.notifications.news",
-                                nuci_preproc=lambda val: bool(int(val.value)),
-                                default=False)\
-            .requires("enable_smtp", True)
-
-        # SMTP settings (custom server)
-        smtp = notifications_form.add_section(name="smtp", title=_("SMTP settings"))
-        smtp.add_field(Email, name="from", label=_("Sender address (From)"),
-                       hint=_("This is the address notifications are send from."),
-                       nuci_path="uci.user_notify.smtp.from",
-                       required=True)\
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "0")
-        smtp.add_field(Textbox, name="server", label=_("Server address"),
-                                nuci_path="uci.user_notify.smtp.server",
-                                required=True)\
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "0")
-        smtp.add_field(Number, name="port", label=_("Server port"),
-                       nuci_path="uci.user_notify.smtp.port",
-                       validators=[validators.PositiveInteger()],
-                       required=True) \
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "0")
-
-        SECURITY_OPTIONS = (
-            ("none", _("None")),
-            ("ssl", _("SSL/TLS")),
-            ("starttls", _("STARTTLS")),
-        )
-        smtp.add_field(Dropdown, name="security", label=_("Security"),
-                       nuci_path="uci.user_notify.smtp.security",
-                       args=SECURITY_OPTIONS, default="none") \
-            .requires("enable_smtp", True).requires("use_turris_smtp", "0")
-
-        smtp.add_field(Textbox, name="username", label=_("Username"),
-                       nuci_path="uci.user_notify.smtp.username")\
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "0")
-        smtp.add_field(Password, name="password", label=_("Password"),
-                       nuci_path="uci.user_notify.smtp.password")\
-            .requires("enable_smtp", True)\
-            .requires("use_turris_smtp", "0")
-
-        # reboot time
-        reboot = notifications_form.add_section(name="reboot",
-                                                title=_("Automatic restarts"))
-        reboot.add_field(Number, name="delay", label=_("Delay (days)"),
-                         hint=_("Number of days that must pass between receiving the request "
-                                "for restart and the automatic restart itself."),
-                         nuci_path="uci.user_notify.reboot.delay",
-                         validators=[validators.PositiveInteger(),
-                                     validators.InRange(0, 10)],
-                         required=True)
-        reboot.add_field(Time, name="reboot_time", label=_("Reboot time"),
-                         hint=_("Time of day of automatic reboot in HH:MM format."),
-                         nuci_path="uci.user_notify.reboot.time",
-                         validators=[validators.Time()],
-                         required=True)
-
-        def notifications_form_cb(data):
-            uci = Uci()
-            user_notify = Config("user_notify")
-            uci.add(user_notify)
-
-            smtp = Section("smtp", "smtp")
-            user_notify.add(smtp)
-            smtp.add(Option("enable", data['enable_smtp']))
-
-            reboot = Section("reboot", "reboot")
-            user_notify.add(reboot)
-            reboot.add(Option("time", data['reboot_time']))
-            reboot.add(Option("delay", data['delay']))
-
-            if data['enable_smtp']:
-                smtp.add(Option("use_turris_smtp", data['use_turris_smtp']))
-                if data['use_turris_smtp'] == "0":
-                    smtp.add(Option("server", data['server']))
-                    smtp.add(Option("port", data['port']))
-                    smtp.add(Option("username", data['username']))
-                    smtp.add(Option("password", data['password']))
-                    smtp.add(Option("security", data['security']))
-                    smtp.add(Option("from", data['from']))
-                else:
-                    smtp.add(Option("sender_name", data['sender_name']))
-                to = List("to")
-                for i, to_item in enumerate(data['to'].split(" ")):
-                    if to_item:
-                        to.add(Value(i, to_item))
-                smtp.add_replace(to)
-                # notifications section
-                notifications = Section("notifications", "notifications")
-                user_notify.add(notifications)
-                notifications.add(Option("severity", data['severity']))
-                notifications.add(Option("news", data['news']))
-
-            return "edit_config", uci
-
-        notifications_form.add_callback(notifications_form_cb)
-
-        return notifications_form
-
-
-class UpdaterHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Updater")
-
-    def get_form(self):
-        pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
-
-        package_lists_form = fapi.ForisForm("package_lists", self.data,
-                                            filter=create_config_filter("updater"))
-        package_lists_main = package_lists_form.add_section(
-            name="select_package_lists",
-            title=_(self.userfriendly_title),
-            description=_("Updater is a service that keeps all TurrisOS "
-                          "software up to date. Apart from the standard "
-                          "installation, you can optionally select lists of "
-                          "additional software that'd be installed on the "
-                          "router. This software can be selected from the "
-                          "following list. "
-                          "Please note that only software that is part of "
-                          "TurrisOS or that has been installed from a package "
-                          "list is maintained by Updater. Software that has "
-                          "been installed manually or using opkg is not "
-                          "affected.")
-        )
-
-        def make_preproc(list_name):
-            """Make function for preprocessing value of single pkglist."""
-            def preproc(list):
-                enabled_names = map(lambda x: x.content, list.children)
-                return list_name in enabled_names
-            return preproc
-
-        for pkg_list_item in pkg_list:
-            package_lists_main.add_field(
-                Checkbox,
-                name="install_%s" % pkg_list_item.name,
-                label=pkg_list_item.title,
-                hint=pkg_list_item.description,
-                nuci_path="uci.updater.pkglists.lists",
-                nuci_preproc=make_preproc(pkg_list_item.name)
-            )
-
-        def package_lists_form_cb(data):
-            uci = Uci()
-            updater = Config("updater")
-            uci.add(updater)
-
-            pkglists = Section("pkglists", "pkglists")
-            updater.add(pkglists)
-            lists = List("lists")
-
-            # create List with selected packages
-            i = 0
-            for k, v in data.iteritems():
-                if v and k.startswith("install_"):
-                    lists.add(Value(i, k[8:]))
-                    i += 1
-            if i == 0:
-                pkglists.add_removal(lists)
-            else:
-                pkglists.add_replace(lists)
-
-            return "edit_config", uci
-
-        def package_lists_run_updater_cb(data):
-            logger.info("Checking for updates.")
-            client.check_updates()
-            return "none", None
-
-        package_lists_form.add_callback(package_lists_form_cb)
-        package_lists_form.add_callback(package_lists_run_updater_cb)
-        return package_lists_form
-
-
-class UpdaterToggleHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Updater config")
-
-    def get_form(self):
-        toggle_form = fapi.ForisForm("updater_toggle", self.data,
-                                     filter=filters.create_config_filter("updater"))
-        toggle_main = toggle_form.add_section(
-            name="disable_updater", title=_(self.userfriendly_title),
-            description=_(
-                "If you want to disable the Updater, you can do so here. Disable it only if "
-                "you have a good reason to do so. Without the Updater, installed software will not "
-                "be kept up to date and you will also not be able to install Updater's package "
-                "lists."
-            )
-        )
-        toggle_main.add_field(Checkbox, name="disable", label=_("Disable Updater"),
-                              nuci_path="uci.updater.override.disable",
-                              nuci_preproc=lambda val: bool(int(val.value)))
-
-        def toggle_form_cb(data):
-            uci = Uci()
-            updater = Config("updater")
-            uci.add(updater)
-            override = Section("override", "override")
-            updater.add(override)
-            override.add(Option("disable", data.get('disable', False)))
-            return "edit_config", uci
-
-        toggle_form.add_callback(toggle_form_cb)
-        return toggle_form
-
-
-class UcollectHandler(BaseConfigHandler):
-    userfriendly_title = gettext("uCollect")
-
-    def get_form(self):
-        ucollect_form = fapi.ForisForm("ucollect", self.data,
-                                       filter=filters.create_config_filter("ucollect"))
-        fakes = ucollect_form.add_section(
-            name="fakes",
-            title=_("Emulated services"),
-            description=_("One of uCollect's features is emulation of some commonly abused "
-                          "services. If this function is enabled, uCollect is listening for "
-                          "incoming connection attempts to these services. Enabling of the "
-                          "emulated services has no effect if another service is already "
-                          "listening on its default port (port numbers are listed below).")
-        )
-
-        SERVICES_OPTIONS = (
-            ("23tcp", _("Telnet (23/TCP)")),
-        )
-
-        def get_enabled_services(disabled_list):
-            disabled_services = map(lambda value: value.content, disabled_list.children)
-            res = [x[0] for x in SERVICES_OPTIONS if x[0] not in disabled_services]
-            return res
-
-        fakes.add_field(
-            MultiCheckbox,
-            name="services",
-            label=_("Emulated services"),
-            args=SERVICES_OPTIONS,
-            multifield=True,
-            nuci_path="uci.ucollect.fakes.disable",
-            nuci_preproc=get_enabled_services,
-            default=[x[0] for x in SERVICES_OPTIONS]
-        )
-
-        fakes.add_field(
-            Checkbox,
-            name="log_credentials",
-            label=_("Collect credentials"),
-            hint=_("If this option is enabled, user names and passwords are collected "
-                   "and sent to server in addition to the IP address of the client."),
-            nuci_path="uci.ucollect.fakes.log_credentials",
-            nuci_preproc=parse_uci_bool
-        )
-
-        def ucollect_form_cb(data):
-            uci = Uci()
-            ucollect = Config("ucollect")
-            uci.add(ucollect)
-
-            fakes = Section("fakes", "fakes")
-            ucollect.add(fakes)
-
-            disable = List("disable")
-
-            disabled_services = [x[0] for x in SERVICES_OPTIONS
-                                 if x[0] not in data['services']]
-            for i, service in enumerate(disabled_services):
-                disable.add(Value(i, service))
-
-            if len(disabled_services):
-                fakes.add_replace(disable)
-            else:
-                # TODO: workaround for Nuci bug #3984 - remove when fixed
-                fakes_section = ucollect_form.nuci_config.find_child("uci.ucollect.fakes")
-                if fakes_section:
-                    fakes.add_removal(disable)
-
-            fakes.add(Option("log_credentials", data['log_credentials']))
-
-            return "edit_config", uci
-
-        ucollect_form.add_callback(ucollect_form_cb)
-
-        return ucollect_form

@@ -14,10 +14,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from base import BaseConfigHandler, LanHandler, MaintenanceHandler, \
-    PasswordHandler, TimeHandler, WanHandler, WifiHandler, SystemPasswordHandler, \
-    DNSHandler, NotificationsHandler, UcollectHandler, UpdaterHandler, UpdaterToggleHandler
+from base import (
+    BaseConfigHandler,
+    DNSHandler,
+    LanHandler,
+    MaintenanceHandler,
+    NotificationsHandler,
+    PasswordHandler,
+    SystemPasswordHandler,
+    TimeHandler,
+    UcollectHandler,
+    UpdaterHandler,
+    UpdaterToggleHandler,
+    WanHandler,
+    WifiHandler,
+)
 
-__all__ = ['BaseConfigHandler', 'LanHandler', 'MaintenanceHandler', 'PasswordHandler',
-           'TimeHandler', 'WanHandler', 'WifiHandler', 'SystemPasswordHandler', 'DNSHandler',
-           'NotificationsHandler', 'UcollectHandler', 'UpdaterHandler', 'UpdaterToggleHandler']
+__all__ = [
+    'BaseConfigHandler',
+    'DNSHandler',
+    'LanHandler',
+    'MaintenanceHandler',
+    'NotificationsHandler',
+    'PasswordHandler',
+    'SystemPasswordHandler',
+    'TimeHandler',
+    'UcollectHandler',
+    'UpdaterHandler',
+    'UpdaterToggleHandler',
+    'WanHandler',
+    'WifiHandler',
+]
