@@ -455,6 +455,9 @@ class Field(ForisFormElement):
         """Specify that field requires some other field
         (optionally having some value).
 
+        `value` can be a callable, in that case, field's value
+        will be passed as the first argument to that callable.
+
         :param field: name of required field
         :param value: exact value of field
         :return: self
@@ -472,7 +475,11 @@ class Field(ForisFormElement):
         for req_name, req_value in self.requirements.iteritems():
             # requirement exists
             result = req_name in data
-            # requirement has defined value (value of None is ignored, thus result is True)
+            # if the required value is a callable, pass the value as the first argument
+            if callable(req_value):
+                return req_value(data.get(req_name))
+            # if the required value is not specified, consider as fulfilled,
+            # otherwise compare required and current value
             result = result and True if req_value is None else data.get(req_name) == req_value
             if not result:
                 return False
