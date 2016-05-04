@@ -15,11 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+shopt -s extglob
+
 for lang_dir in $1/locale/*; do
-	locale_dir=$lang_dir/LC_MESSAGES/
-	for file in $locale_dir/*.po; do
-		msgfmt $file -o ${file%.*}.mo
-		echo "Compiling messages in $locale_dir."
-	done
+	locale_dir=${lang_dir}/LC_MESSAGES
+	files=$(find ${locale_dir} -name "*.po" -not -name "messages.po")
+	msgcat ${files} > ${locale_dir}/messages.po
+	echo "Compiling translation files in $lang_dir."
+	msgfmt ${locale_dir}/messages.po -o ${locale_dir}/messages.mo
 done
 echo "All messages compiled."

@@ -2,6 +2,7 @@
 *.sassc
 *.scssc
 *.mo
+messages.po
 foris/static/css/*
 foris/static/js/*.min.js
 foris/templates/_layout.tpl

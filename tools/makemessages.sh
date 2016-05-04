@@ -23,15 +23,15 @@ if [[ ! $# -eq 3 ]]; then
 		mkdir -p $locale_dir
 	fi
 	find $1 \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"\?{{!* \(_\|trans\|\(\w*\)gettext\)\((".*")\).*}}"\?/\n\2gettext\3\n#/g' | \
-		xgettext -d messages --no-location --language=Python --from-code=UTF-8 --output=$locale_dir/tmp_messages.pot -
+		xgettext -d messages --no-location --language=Python --from-code=UTF-8 --output=$locale_dir/tmp_foris.pot -
 	find $1 -iname "*.tpl" -exec sh -c 'grep -zq "%include.*_(" $0 && echo "WARNING: _() after %include in $0"' {} \;
-	if [ -f $locale_dir/messages.po ]
+	if [ -f $locale_dir/foris.po ]
 	then
 		echo "Making messages in $locale_dir."
-		msgmerge -q -U $locale_dir/messages.po $locale_dir/tmp_messages.pot
-		rm $locale_dir/tmp_messages.pot
+		msgmerge -q -U $locale_dir/foris.po $locale_dir/tmp_foris.pot
+		rm $locale_dir/tmp_foris.pot
 	else
-		mv $locale_dir/tmp_messages.pot $locale_dir/messages.po
+		mv $locale_dir/tmp_foris.pot $locale_dir/foris.po
 	fi
 	echo "Message making completed."
 else
