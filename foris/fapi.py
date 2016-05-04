@@ -106,12 +106,23 @@ class ForisForm(ForisFormElement):
     @property
     def data(self):
         """
-        Data are union of defaults + nuci values + request data.
+        Current data, from defaults, nuci values and request data.
+        Caches the result on the first call.
 
-        :return: currently known form data
+        :return: dictionary with the Form's data
         """
-        if self.__data_cache is not None:
-            return self.__data_cache
+        if self.__data_cache is None:
+            self.__data_cache = self.current_data
+        return self.__data_cache
+
+    @property
+    def current_data(self):
+        """
+        Current data, from defaults, nuci values and request data.
+        Does not use caching.
+
+        :return: dictionary with the Form's data
+        """
         self._update_nuci_data()
         data = {}
         logger.debug("Updating with defaults: %s", self.defaults)
@@ -122,7 +133,6 @@ class ForisForm(ForisFormElement):
         data.update(self._request_data)
         if data:
             data = self.clean_data(data)
-        self.__data_cache = data
         return data
 
     def clean_data(self, data):
