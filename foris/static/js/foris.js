@@ -224,7 +224,7 @@ Foris.connectivityCheckNoForward = function () {
 };
 
 Foris.ntpUpdate = function () {
-  Foris.callAjaxAction("4", "ntp_update")
+  Foris.callAjaxAction("5", "ntp_update")
       .done(function (data) {
         if (data.success) {
           $("#time-progress").hide();
@@ -237,7 +237,7 @@ Foris.ntpUpdate = function () {
 };
 
 Foris.runUpdater = function () {
-  Foris.callAjaxAction("5", "run_updater")
+  Foris.callAjaxAction("6", "run_updater")
       .done(function (data) {
         if (data.success)
           Foris.checkUpdaterStatus();
@@ -327,7 +327,7 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
 };
 
 Foris.showTimeForm = function () {
-  Foris.callAjaxAction("4", "time_form")
+  Foris.callAjaxAction("5", "time_form")
       .done(function (data) {
         var timeField = $("#wizard-time").empty().append(data.form)
             .find("input[name=\"time\"]");

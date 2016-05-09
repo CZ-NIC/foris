@@ -20,8 +20,8 @@ from ncclient.operations import RPCError, TimeoutExpiredError
 
 from foris.core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
-from .config_handlers import BaseConfigHandler, PasswordHandler, WanHandler, TimeHandler,\
-    LanHandler, WifiHandler
+from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
+    WanHandler, TimeHandler, LanHandler, WifiHandler
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
 from .nuci.modules.uci_raw import Option, Section, Config, Uci
@@ -33,7 +33,7 @@ from .utils.routing import reverse
 logger = logging.getLogger("wizard")
 
 
-NUM_WIZARD_STEPS = 9
+NUM_WIZARD_STEPS = 10
 
 
 class WizardStepMixin(object):
@@ -209,13 +209,21 @@ class WizardStep3(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep4(WizardStepMixin, TimeHandler):
+class WizardStep4(WizardStepMixin, RegionHandler):
+    """
+    Setting of the region (timezone)
+    """
+    name = "region"
+    next_step_allowed = 5
+
+
+class WizardStep5(WizardStepMixin, TimeHandler):
     """
     Time settings.
     """
     template = "wizard/time.tpl"
     name = "time"
-    next_step_allowed = 5
+    next_step_allowed = 6
 
     def _action_ntp_update(self):
         success = client.ntp_update()
@@ -233,18 +241,18 @@ class WizardStep4(WizardStepMixin, TimeHandler):
 
     def render(self, **kwargs):
         if kwargs.get("is_xhr"):
-            return super(WizardStep4, self).render(**kwargs)
+            return super(WizardStep5, self).render(**kwargs)
 
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep5(WizardStepMixin, BaseConfigHandler):
+class WizardStep6(WizardStepMixin, BaseConfigHandler):
     """
     Updater.
     """
     template = "wizard/updater.tpl"
     name = "updater"
-    next_step_allowed = 6
+    next_step_allowed = 7
     userfriendly_title = gettext("System update")
 
     def _action_run_updater(self):
@@ -274,11 +282,11 @@ class WizardStep5(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep6(WizardStep5):
+class WizardStep7(WizardStep5):
     """
     Updater - handling offline updates.
     """
-    next_step_allowed = 7
+    next_step_allowed = 8
 
     def call_ajax_action(self, action):
         if action == "updater_status":
@@ -301,28 +309,28 @@ class WizardStep6(WizardStep5):
             # and AJAX wasn't get called for some reason
             self.nuci_write_next_step()
             bottle.redirect(reverse("wizard_step", number=self.next_step_allowed))
-        return super(WizardStep6, self).render(**kwargs)
+        return super(WizardStep7, self).render(**kwargs)
 
 
-class WizardStep7(WizardStepMixin, LanHandler):
+class WizardStep8(WizardStepMixin, LanHandler):
     """
     LAN settings.
     """
     name = "lan"
-    next_step_allowed = 8
+    next_step_allowed = 9
 
 
-class WizardStep8(WizardStepMixin, WifiHandler):
+class WizardStep9(WizardStepMixin, WifiHandler):
     """
     WiFi settings.
     """
     template = "wizard/wifi"
     name = "wifi"
-    next_step_allowed = 9
+    next_step_allowed = 10
     is_final_step = True
 
     def get_form(self):
-        form = super(WizardStep8, self).get_form()
+        form = super(WizardStep9, self).get_form()
 
         if not form:
             # enable next step if no WiFi cards were detected
@@ -331,7 +339,7 @@ class WizardStep8(WizardStepMixin, WifiHandler):
         return form
 
 
-class WizardStep9(WizardStepMixin, BaseConfigHandler):
+class WizardStep10(WizardStepMixin, BaseConfigHandler):
     """
     Show the activation code.
     """

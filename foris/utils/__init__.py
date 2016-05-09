@@ -1,3 +1,4 @@
+# coding=utf-8
 # Foris - web administration interface for OpenWrt based on NETCONF
 # Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
@@ -137,3 +138,39 @@ def indent(elem, level=0):
             e.tail = i
     if level and (not elem.tail or not elem.tail.strip()):
         elem.tail = i
+
+
+def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
+    """
+    Sorted method that can sort according to a language-specific alphabet.
+
+    :param iterable: iterable to sort
+    :param lang: alphabet to use
+    :param cmp: cmp argument for the sorted method
+    :param key: key argument for the sorted method
+    :param reverse: reverse argument for the sorted method
+    :return: sorted iterable
+    """
+    alphabet = {
+        'cs': u" AÁÅBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
+              u"aáåbcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
+    }
+
+    alphabet = alphabet.get(lang)
+    if not alphabet:
+        return sorted(iterable, cmp, key, reverse)
+
+    key = key or (lambda x: x)
+
+    def safe_index(c):
+        """Get index of a character in the alphabet, do not raise error."""
+        try:
+            return alphabet.index(c)
+        except ValueError:
+            return len(alphabet) + ord(c)
+
+    def key_fn(x):
+        """Key function for sorting using a custom alphabet."""
+        return map(safe_index, key(x))
+
+    return sorted(iterable, cmp, key_fn, reverse)

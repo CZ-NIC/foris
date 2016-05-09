@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-28 15:04+0200\n"
+"POT-Creation-Date: 2016-05-04 14:27+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -161,8 +161,184 @@ msgstr "%(notification)s z %(created_at)s"
 msgid "Notification"
 msgstr "Upozornění"
 
+msgid "DNS"
+msgstr "DNS"
+
+msgid "Use forwarding"
+msgstr "Používat forwardování"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+"Tato sekce obsahuje nastavení lokální sítě (LAN). Výchozí nastavení je "
+"vhodné pro většinu sítí a není třeba jej měnit. <br><strong>Upozornění:</"
+"strong> Pokud změníte IP adresu routeru, <strong>změní se adresy všech "
+"počítačů</strong> v LAN, pravděpodobně včetně toho, který právě používáte. "
+"To se <strong>nestane okamžitě</strong> a doporučujeme tedy odpojit a znovu "
+"připojit všechny síťové kabely poté, co odešlete změny v tomto formuláři. "
+"Následující stránka se nenahraje dokud nedojde ke změně adresy Vašeho "
+"počítače z DHCP (pokud je DHCP aktivováno). Může být také potřeba "
+"<strong>znovu nahrát stránku</strong> v prohlížeči."
+
+msgid "Router IP address"
+msgstr "IP adresa routeru"
+
+msgid ""
+"Router's IP address in inner network. Also defines the range of assigned IP "
+"addresses."
+msgstr ""
+"Vnitřní adresa routeru. Od této adresy je odvozen rozsah IP adres "
+"přidělovaných DHCP serverem."
+
+msgid "Enable DHCP"
+msgstr "Zapnout DHCP"
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+"Povolte tuto volbu, pokud chcete, aby router automaticky přidělovat IP "
+"adresy připojeným zařízením."
+
+msgid "DHCP start"
+msgstr "Začátek DHCP rozsahu"
+
+msgid "DHCP max leases"
+msgstr "Počet přidělovaných adres"
+
+msgid "Backup file"
+msgstr "Soubor se zálohou"
+
+msgid "Notifications"
+msgstr "Upozornění"
+
+msgid "Notifications settings"
+msgstr "Nastavení upozornění"
+
+msgid "Enable notifications"
+msgstr "Zasílat upozornění"
+
+msgid "SMTP provider"
+msgstr "Poskytovatel SMTP"
+
+msgid "Turris"
+msgstr "Turris"
+
+msgid "Custom"
+msgstr "Vlastní"
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members of "
+"the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please select "
+"\"Custom\" and enter required settings."
+msgstr ""
+"Pokud vyberete volbu \"Turris\", budou pro odesílání emailů použity servery "
+"poskytované účastníkům projektu Turris, které nevyžadují žádné dodatečné "
+"nastavení. Pokud chcete použít svůj vlastní SMTP server, vyberte prosím "
+"volbu \"Vlastní\" a následně zadejte požadované nastavení."
+
+msgid "Recipient's email"
+msgstr "Adresát"
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr "Emailová adresa příjemce. Více adres oddělte pomocí mezer."
+
+msgid "Sender's name"
+msgstr "Jméno odesílatele"
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address "
+"before the \"at\" sign."
+msgstr ""
+"Jméno odesílatele - použije se jako část emailové adresy odesílatele před "
+"zavináčem."
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and underscores."
+msgstr ""
+"Jméno odesílatele smí obsahovat pouze alfanumerické znaky, tečky a "
+"podtržítka."
+
+msgid "Reboot is required"
+msgstr "Vyžadován restart"
+
+msgid "Reboot or attention is required"
+msgstr "Vyžadován restart nebo pozornost"
+
+msgid "Reboot or attention is required or update was installed"
+msgstr "Vyžadován restart, pozornost nebo byla nainstalována aktualizace"
+
+msgid "Importance"
+msgstr "Důležitost"
+
+msgid "Send news"
+msgstr "Zasílat novinky"
+
+msgid "Send emails about new features."
+msgstr "Zasílat také upozornění na nové funkce routeru"
+
+msgid "SMTP settings"
+msgstr "Nastavení SMTP"
+
+msgid "Sender address (From)"
+msgstr "Adresa odesílatele"
+
+msgid "This is the address notifications are send from."
+msgstr "Z této adresy budou zasílána upozornění."
+
+msgid "Server address"
+msgstr "Adresa serveru"
+
+msgid "Server port"
+msgstr "Port serveru"
+
+msgid "None"
+msgstr "Žádné"
+
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "Security"
+msgstr "Zabezpečení"
+
+msgid "Username"
+msgstr "Jméno"
+
 msgid "Password"
 msgstr "Heslo"
+
+msgid "Automatic restarts"
+msgstr "Automatické restarty"
+
+msgid "Delay (days)"
+msgstr "Prodleva (dny)"
+
+msgid ""
+"Number of days that must pass between receiving the request for restart and "
+"the automatic restart itself."
+msgstr ""
+"Počet dní mezi obdržením požadavku na restart a automatickým restartem."
+
+msgid "Reboot time"
+msgstr "Čas restartu"
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr "Denní čas automatického restartu ve formátu HH:MM."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -200,6 +376,123 @@ msgstr ""
 "pro uživatele root ve webovém rozhraní LuCI a pro SSH přístup. Použijte "
 "silné heslo! (Pokud se rozhodnete zatím toto heslo nenastavit, můžete tak "
 "učinit později. Do té doby bude účet uživatele root zablokovaný.)"
+
+msgid "Region settings"
+msgstr "Nastavení umístění"
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct setting "
+"is required to display the right time and for related functions."
+msgstr ""
+"Vyberte prosím časovou zónu, ve které je router používán. Korektní "
+"nastavení je nutné pro zobrazování správného času a pro související funkce."
+
+msgid "Continent or ocean"
+msgstr "Kontinent nebo oceán"
+
+msgid "Country"
+msgstr "Země"
+
+msgid "Timezone"
+msgstr "Časová zóna"
+
+msgid "Advanced administration"
+msgstr "Pokročilé nastavení"
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration possibilities which are not "
+"present here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a href=\"//%(host)s/"
+"%(path)s\">LuCI web interface</a> or over SSH."
+msgstr ""
+"Pro přístup k pokročilému nastavení, které není možné pomocí tohoto rozhraní "
+"nastavit, je nutné zvolit heslo uživatele root, pomocí kterého se následně "
+"můžete přihlásit do <a href=\"//%(host)s/%(path)s\">webového rozhraní LuCI</"
+"a>. Stejné heslo je použito pro přístup na SSH."
+
+msgid "Time"
+msgstr "Čas"
+
+msgid ""
+"We could not synchronize the time with a timeserver, probably due to a loss "
+"of connection. It is necessary for the router to have correct time in order "
+"to function properly. Please, synchronize it with your computer's time, or "
+"set it manually."
+msgstr ""
+"Nepodařilo se připojit k časovému serveru, pravděpodobně kvůli chybě "
+"připojení. Prosím, nastavte čas ručně nebo ho synchronizujte se svým "
+"počítačem pomocí následujícího formuláře. Správný čas je vyžadován pro "
+"funkci určitých služeb routeru."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulované služby"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"Aplikace uCollect umožňuje emulovat některé často zneužívané služby. Pokud "
+"je tato funkce zapnuta, uCollect zaznamenává pokusy o přihlášení do těchto "
+"služeb. Zapnutí emulace služby nemá žádný efekt, pokud již na jejím portu "
+"naslouchá jiná aplikace (tyto porty jsou u jednotlivých služeb uvedeny)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Collect credentials"
+msgstr "Ukládat jména a hesla"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Pokud je tato volba povolena, budou kromě IP adres připojujících se klientů "
+"zaznamenávána i zadaná přihlašovací jména a hesla."
+
+msgid "Updater"
+msgstr "Updater"
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+"Updater je služba systému TurrisOS, která udržuje nainstalovaný software "
+"aktuální. Kromě běžných balíků, které jsou součástí systému, si můžete "
+"vybrat další balíky programů, které budou nainstalovány na router. Instalaci "
+"těchto balíků je možné povolit v následujícím seznamu. Mějte však na vědomí, "
+"že jsou Updaterem aktualizovány pouze ty programy, které jsou součástí "
+"TurrisOS nebo byly nainstalovány v rámci instalace z vybraných balíků. "
+"Software, který jste instalovali ručně nebo prostřednictvím opkg, Updaterem "
+"spravován není."
+
+msgid "Updater config"
+msgstr "Nastavení Updateru"
+
+msgid ""
+"If you want to disable the Updater, you can do so here. Disable it only if "
+"you have a good reason to do so. Without the Updater, installed software "
+"will not be kept up to date and you will also not be able to install "
+"Updater's package lists."
+msgstr ""
+"Pokud potřebujete vypnout Updater, můžete tak učinit zde. Doporučujeme ho "
+"vypínat pouze v případě, že k tomu máte vážný důvod. Bez Updateru nebude "
+"software na routeru udržován aktuální a zároveň nebude možné instalovat "
+"software pomocí seznamů balíčků."
+
+msgid "Disable Updater"
+msgstr "Vypnout Updater"
 
 msgid "WAN"
 msgstr "WAN"
@@ -350,76 +643,6 @@ msgstr "MAC adresa"
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr "Oddělovačem je dvojtečka, např. 00:11:22:33:44:55"
 
-msgid "DNS"
-msgstr "DNS"
-
-msgid "Use forwarding"
-msgstr "Používat forwardování"
-
-msgid "Time"
-msgstr "Čas"
-
-msgid ""
-"We could not synchronize the time with a timeserver, probably due to a loss "
-"of connection. It is necessary for the router to have correct time in order "
-"to function properly. Please, synchronize it with your computer's time, or "
-"set it manually."
-msgstr ""
-"Nepodařilo se připojit k časovému serveru, pravděpodobně kvůli chybě "
-"připojení. Prosím, nastavte čas ručně nebo ho synchronizujte se svým "
-"počítačem pomocí následujícího formuláře. Správný čas je vyžadován pro "
-"funkci určitých služeb routeru."
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-"Tato sekce obsahuje nastavení lokální sítě (LAN). Výchozí nastavení je "
-"vhodné pro většinu sítí a není třeba jej měnit. <br><strong>Upozornění:</"
-"strong> Pokud změníte IP adresu routeru, <strong>změní se adresy všech "
-"počítačů</strong> v LAN, pravděpodobně včetně toho, který právě používáte. "
-"To se <strong>nestane okamžitě</strong> a doporučujeme tedy odpojit a znovu "
-"připojit všechny síťové kabely poté, co odešlete změny v tomto formuláři. "
-"Následující stránka se nenahraje dokud nedojde ke změně adresy Vašeho "
-"počítače z DHCP (pokud je DHCP aktivováno). Může být také potřeba "
-"<strong>znovu nahrát stránku</strong> v prohlížeči."
-
-msgid "Router IP address"
-msgstr "IP adresa routeru"
-
-msgid ""
-"Router's IP address in inner network. Also defines the range of assigned IP "
-"addresses."
-msgstr ""
-"Vnitřní adresa routeru. Od této adresy je odvozen rozsah IP adres "
-"přidělovaných DHCP serverem."
-
-msgid "Enable DHCP"
-msgstr "Zapnout DHCP"
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-"Povolte tuto volbu, pokud chcete, aby router automaticky přidělovat IP "
-"adresy připojeným zařízením."
-
-msgid "DHCP start"
-msgstr "Začátek DHCP rozsahu"
-
-msgid "DHCP max leases"
-msgstr "Počet přidělovaných adres"
-
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
@@ -500,210 +723,6 @@ msgid ""
 msgstr ""
 "Heslo, které bude vyžadováno pro připojení k této síti, alespoň 8 znaků "
 "dlouhé."
-
-msgid "Advanced administration"
-msgstr "Pokročilé nastavení"
-
-#, python-format
-msgid ""
-"In order to access the advanced configuration possibilities which are not "
-"present here, you must set the root user's password. The advanced "
-"configuration options can be managed either through the <a href=\"//%(host)s/"
-"%(path)s\">LuCI web interface</a> or over SSH."
-msgstr ""
-"Pro přístup k pokročilému nastavení, které není možné pomocí tohoto rozhraní "
-"nastavit, je nutné zvolit heslo uživatele root, pomocí kterého se následně "
-"můžete přihlásit do <a href=\"//%(host)s/%(path)s\">webového rozhraní LuCI</"
-"a>. Stejné heslo je použito pro přístup na SSH."
-
-msgid "Backup file"
-msgstr "Soubor se zálohou"
-
-msgid "Notifications"
-msgstr "Upozornění"
-
-msgid "Notifications settings"
-msgstr "Nastavení upozornění"
-
-msgid "Enable notifications"
-msgstr "Zasílat upozornění"
-
-msgid "SMTP provider"
-msgstr "Poskytovatel SMTP"
-
-msgid "Turris"
-msgstr "Turris"
-
-msgid "Custom"
-msgstr "Vlastní"
-
-msgid ""
-"If you set SMTP provider to \"Turris\", the servers provided to members of "
-"the Turris project would be used. These servers do not require any "
-"additional settings. If you want to set your own SMTP server, please select "
-"\"Custom\" and enter required settings."
-msgstr ""
-"Pokud vyberete volbu \"Turris\", budou pro odesílání emailů použity servery "
-"poskytované účastníkům projektu Turris, které nevyžadují žádné dodatečné "
-"nastavení. Pokud chcete použít svůj vlastní SMTP server, vyberte prosím "
-"volbu \"Vlastní\" a následně zadejte požadované nastavení."
-
-msgid "Recipient's email"
-msgstr "Adresát"
-
-msgid "Email address of recipient. Separate multiple addresses by spaces."
-msgstr "Emailová adresa příjemce. Více adres oddělte pomocí mezer."
-
-msgid "Sender's name"
-msgstr "Jméno odesílatele"
-
-msgid ""
-"Name of the sender - will be used as a part of the sender's email address "
-"before the \"at\" sign."
-msgstr ""
-"Jméno odesílatele - použije se jako část emailové adresy odesílatele před "
-"zavináčem."
-
-msgid ""
-"Sender's name can contain only alphanumeric characters, dots and underscores."
-msgstr ""
-"Jméno odesílatele smí obsahovat pouze alfanumerické znaky, tečky a "
-"podtržítka."
-
-msgid "Reboot is required"
-msgstr "Vyžadován restart"
-
-msgid "Reboot or attention is required"
-msgstr "Vyžadován restart nebo pozornost"
-
-msgid "Reboot or attention is required or update was installed"
-msgstr "Vyžadován restart, pozornost nebo byla nainstalována aktualizace"
-
-msgid "Importance"
-msgstr "Důležitost"
-
-msgid "Send news"
-msgstr "Zasílat novinky"
-
-msgid "Send emails about new features."
-msgstr "Zasílat také upozornění na nové funkce routeru"
-
-msgid "SMTP settings"
-msgstr "Nastavení SMTP"
-
-msgid "Sender address (From)"
-msgstr "Adresa odesílatele"
-
-msgid "This is the address notifications are send from."
-msgstr "Z této adresy budou zasílána upozornění."
-
-msgid "Server address"
-msgstr "Adresa serveru"
-
-msgid "Server port"
-msgstr "Port serveru"
-
-msgid "None"
-msgstr "Žádné"
-
-msgid "SSL/TLS"
-msgstr "SSL/TLS"
-
-msgid "STARTTLS"
-msgstr "STARTTLS"
-
-msgid "Security"
-msgstr "Zabezpečení"
-
-msgid "Username"
-msgstr "Jméno"
-
-msgid "Automatic restarts"
-msgstr "Automatické restarty"
-
-msgid "Delay (days)"
-msgstr "Prodleva (dny)"
-
-msgid ""
-"Number of days that must pass between receiving the request for restart and "
-"the automatic restart itself."
-msgstr ""
-"Počet dní mezi obdržením požadavku na restart a automatickým restartem."
-
-msgid "Reboot time"
-msgstr "Čas restartu"
-
-msgid "Time of day of automatic reboot in HH:MM format."
-msgstr "Denní čas automatického restartu ve formátu HH:MM."
-
-msgid "Updater"
-msgstr "Updater"
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-"Updater je služba systému TurrisOS, která udržuje nainstalovaný software "
-"aktuální. Kromě běžných balíků, které jsou součástí systému, si můžete "
-"vybrat další balíky programů, které budou nainstalovány na router. Instalaci "
-"těchto balíků je možné povolit v následujícím seznamu. Mějte však na vědomí, "
-"že jsou Updaterem aktualizovány pouze ty programy, které jsou součástí "
-"TurrisOS nebo byly nainstalovány v rámci instalace z vybraných balíků. "
-"Software, který jste instalovali ručně nebo prostřednictvím opkg, Updaterem "
-"spravován není."
-
-msgid "Updater config"
-msgstr "Nastavení Updateru"
-
-msgid ""
-"If you want to disable the Updater, you can do so here. Disable it only if "
-"you have a good reason to do so. Without the Updater, installed software "
-"will not be kept up to date and you will also not be able to install "
-"Updater's package lists."
-msgstr ""
-"Pokud potřebujete vypnout Updater, můžete tak učinit zde. Doporučujeme ho "
-"vypínat pouze v případě, že k tomu máte vážný důvod. Bez Updateru nebude "
-"software na routeru udržován aktuální a zároveň nebude možné instalovat "
-"software pomocí seznamů balíčků."
-
-msgid "Disable Updater"
-msgstr "Vypnout Updater"
-
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Emulované služby"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"Aplikace uCollect umožňuje emulovat některé často zneužívané služby. Pokud "
-"je tato funkce zapnuta, uCollect zaznamenává pokusy o přihlášení do těchto "
-"služeb. Zapnutí emulace služby nemá žádný efekt, pokud již na jejím portu "
-"naslouchá jiná aplikace (tyto porty jsou u jednotlivých služeb uvedeny)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Collect credentials"
-msgstr "Ukládat jména a hesla"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Pokud je tato volba povolena, budou kromě IP adres připojujících se klientů "
-"zaznamenávána i zadaná přihlašovací jména a hesla."
 
 msgid "You have been logged out due to longer inactivity."
 msgstr "Byl jste odhlášen z důvodu delší doby nečinnosti."

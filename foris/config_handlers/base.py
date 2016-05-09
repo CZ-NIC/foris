@@ -26,6 +26,7 @@ from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radi
 from foris.nuci import client, filters
 from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
+from foris.utils import tzinfo, localized_sorted
 
 logger = logging.getLogger(__name__)
 
@@ -423,6 +424,97 @@ class PasswordHandler(BaseConfigHandler):
 
         pw_form.add_callback(pw_form_cb)
         return pw_form
+
+
+class RegionHandler(BaseConfigHandler):
+    """
+    Setting of the region information - currently only of the timezone.
+    """
+    userfriendly_title = gettext("Region settings")
+
+    def get_form(self):
+        region_form = fapi.ForisForm("region", self.data,
+                                     filter=filters.create_config_filter("system"))
+        timezone = region_form.add_section(
+            name="timezone", title=_(self.userfriendly_title),
+            description=_(
+                "Please select the timezone the router is being operated in. "
+                "Correct setting is required to display the right time and for related functions."
+            )
+        )
+
+        lang = bottle.request.app.lang
+
+        def construct_args(items, translation_function=_, key_getter=lambda x: x):
+            """
+            Helper function that builds args for country/timezone dropdowns.
+            If there's only one item, dropdown should contain only that item.
+            Otherwise the list of items should be prepended by an empty value.
+
+            :param items: list of filtered TZ data
+            :param translation_function: function that returns displayed choice from TZ data
+            :param key_getter:
+            :return: list of args
+            """
+            args = localized_sorted(((key_getter(x), translation_function(x)) for x in items),
+                                    lang=lang, key=lambda x: x[1])
+            if len(args) > 1:
+                return [(None, "-" * 16)] + args
+            return args
+
+        timezone.add_field(Hidden, name="system_name",
+                           nuci_path="uci.system.@system[0]",
+                           nuci_preproc=lambda val: val.name)
+
+        regions = localized_sorted(((x, _(x)) for x in tzinfo.regions),
+                                   lang=lang, key=lambda x: x[1])
+        timezone.add_field(Dropdown, name="region", label=_("Continent or ocean"), required=True,
+                           args=regions,
+                           nuci_path="uci.system.@system[0].zonename",
+                           nuci_preproc=lambda x: x.value.split("/")[0])
+
+        # Get region and offer available countries
+        region = region_form.current_data.get('region')
+        countries = construct_args(tzinfo.countries_in_region(region),
+                                   lambda x: _(tzinfo.countries[x]))
+        timezone.add_field(Dropdown, name="country", label=_("Country"), required=True,
+                           default=None, args=countries,
+                           nuci_path="uci.system.@system[0].zonename",
+                           nuci_preproc=lambda x: tzinfo.get_country_for_tz(x.value))\
+            .requires("region")
+
+        # Get country and offer available timezones
+        country = region_form.current_data.get("country", countries[0][0])
+
+        # It's possible that data contain country from the previous request,
+        # in that case fall back to the first item in list of available countries
+        if country not in (x[0] for x in countries):
+            country = countries[0][0]
+        timezones = construct_args(tzinfo.timezones_in_region_and_country(region, country),
+                                   translation_function=lambda x: _(x[2]),
+                                   key_getter=lambda x: x[0])
+
+        # Offer timezones - but only if a country is selected and is not None (ensured by the
+        # requires() method)
+        timezone.add_field(Dropdown, name="zonename", label=_("Timezone"), required=True,
+                           default=None,
+                           args=timezones, nuci_path="uci.system.@system[0].zonename")\
+            .requires("country", lambda x: country and x is not None)
+
+        def region_form_cb(data):
+            uci = Uci()
+            system = Config("system")
+            uci.add(system)
+            system_section = Section(data['system_name'], "system")
+            system.add(system_section)
+            zonename = data['zonename']
+            system_section.add(Option("zonename", zonename))
+            system_section.add(Option("timezone",
+                                      tzinfo.get_zoneinfo_for_tz(zonename)))
+            return "edit_config", uci
+
+        region_form.add_callback(region_form_cb)
+        return region_form
 
 
 class SystemPasswordHandler(BaseConfigHandler):
