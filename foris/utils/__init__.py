@@ -152,6 +152,7 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
     :return: sorted iterable
     """
     alphabet = {
+        # FIXME: "ch" should be sorted after h in Czech
         'cs': u" AÁÅBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
               u"aáåbcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
     }
