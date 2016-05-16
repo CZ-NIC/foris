@@ -22,7 +22,7 @@
     %end
     %if defined('stepnumber'):
         <br>
-        <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 9</span>
+        <span class="stepno"><span class="stepno-current">{{ stepnumber }}</span> / 10</span>
     %end
     </div>
 </div>
