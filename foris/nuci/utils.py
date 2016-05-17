@@ -46,7 +46,10 @@ class LocalizableTextValue(dict):
         self.update(text)
 
     def __getitem__(self, item):
-        return super(LocalizableTextValue, self).__getitem__(item)
+        try:
+            return super(LocalizableTextValue, self).__getitem__(item)
+        except KeyError:
+            return super(LocalizableTextValue, self).__getitem__(self.default_lang)
 
     def __str__(self):
         return self[self.default_lang]
