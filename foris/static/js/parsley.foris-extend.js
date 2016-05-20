@@ -4,6 +4,7 @@ window.ParsleyValidator
         return byteLength >= arrayRange[0] && byteLength <= arrayRange[1];
       }, 32)
     .addMessage('cs', 'bytelength', "Tato položka musí mít délku od %s do %s znaků.")
+    .addMessage('de', 'bytelength', "Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein.")
     .addMessage('en', 'bytelength', "This value length is invalid. It should be between %s and %s characters long.")
     .addValidator('extratype', function( val, type ) {
         var regExp;
@@ -83,6 +84,14 @@ window.ParsleyValidator
       anyip: "Toto není platná IPv4 nebo IPv6 adresa.",
       ipv6prefix: "Toto není IPv6 adresa s délkou prefixu.",
       macaddress: "Toto není platná MAC adresa."
+    })
+    .addMessage('de', 'extratype', {
+      ipv4: "Dies ist keine gültige IPv4-Adresse.",
+      ipv4netmask: "Dies ist keine gültige IPv4-Netzmaske.",
+      ipv6: "Dies ist keine gültige IPv6-Adresse.",
+      anyip: "Dies ist keine gültige IPv4- oder IPv6-Adresse.",
+      ipv6prefix: "Dies ist keine IPv6-Adresse mit einer Präfixlänge.",
+      macaddress: "Dies ist keine gültige MAC-Adresse."
     })
     .addMessage('en', 'extratype', {
       ipv4: "This is not a valid IPv4 address.",

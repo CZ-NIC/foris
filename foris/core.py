@@ -48,11 +48,14 @@ DEFAULT_LANGUAGE = 'cs'
 translations = {
     'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['cs'], fallback=True),
+    'de': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
+                              languages=['de'], fallback=True),
     'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
-                              languages=['en'], fallback=True)
+                              languages=['en'], fallback=True),
 }
 translation_names = {
     'cs': "Česky",
+    'de': "Deutsch",
     'en': "English",
 }
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
