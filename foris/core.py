@@ -33,7 +33,7 @@ from .nuci.modules.user_notify import Severity
 from .plugins import ForisPluginLoader
 from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
-from .utils import messages
+from .utils import DEVICE_CUSTOMIZATION, messages
 from .utils.reporting_middleware import ReportingMiddleware
 from .utils.routing import reverse
 
@@ -63,6 +63,7 @@ ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].un
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
 bottle.SimpleTemplate.defaults['translation_names'] = translation_names
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
+bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
 gettext_dummy = lambda x: x
 _ = ugettext
 
