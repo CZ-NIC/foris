@@ -26,7 +26,7 @@ from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radi
 from foris.nuci import client, filters
 from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
-from foris.utils import tzinfo, localized_sorted
+from foris.utils import DEVICE_CUSTOMIZATION, tzinfo, localized_sorted
 
 logger = logging.getLogger(__name__)
 
@@ -83,6 +83,10 @@ class DNSHandler(BaseConfigHandler):
         dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
                            nuci_path="uci.unbound.server.forward_upstream",
                            nuci_preproc=lambda val: bool(int(val.value)), default=True)
+        if DEVICE_CUSTOMIZATION == "omnia":
+            dns_main.add_field(Checkbox, name="ignore_root_key", label=_("Disable DNSSEC"),
+                               nuci_path="uci.unbound.server.ignore_root_key",
+                               nuci_preproc=lambda val: bool(int(val.value)), default=False)
 
         def dns_form_cb(data):
             uci = Uci()
@@ -91,6 +95,8 @@ class DNSHandler(BaseConfigHandler):
             server = Section("server", "unbound")
             unbound.add(server)
             server.add(Option("forward_upstream", data['forward_upstream']))
+            if DEVICE_CUSTOMIZATION == "omnia":
+                server.add(Option("ignore_root_key", data['ignore_root_key']))
             return "edit_config", uci
 
         dns_form.add_callback(dns_form_cb)
