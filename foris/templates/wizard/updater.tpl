@@ -20,7 +20,7 @@
     <h1>{{ trans(first_title) }}</h1>
     <div id="updater-progress" class="background-progress">
         <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Loading...") }}"><br>
-        %if stepnumber == "6":
+        %if stepnumber == "7":
             {{ trans("Installing additional updates. Router will be restarted several times to finish the process.") }}<br>
             {{ trans("Do not unplug the device during update!") }}<br>
         %else:
@@ -51,7 +51,7 @@
 
 <script>
     $(document).ready(function() {
-    %if stepnumber == "6":
+    %if stepnumber == "7":
         Foris.checkUpdaterStatus(null, {{ stepnumber }});
     %else:
         Foris.runUpdater();

@@ -253,10 +253,10 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
     retries = 0;
 
   if (pageNumber == null)
-    pageNumber = 5;
+    pageNumber = 6;
 
   // we need longer retry time for second update page - router is restarted there
-  var maxRetries = pageNumber == 6 ? 45 : 10;
+  var maxRetries = pageNumber == 7 ? 45 : 10;
 
   Foris.callAjaxAction(pageNumber, "updater_status", 3000)
       .done(function (data) {

@@ -282,7 +282,7 @@ class WizardStep6(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep7(WizardStep5):
+class WizardStep7(WizardStep6):
     """
     Updater - handling offline updates.
     """
