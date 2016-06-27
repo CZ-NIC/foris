@@ -72,7 +72,8 @@ class ForisTest(TestCase):
     @classmethod
     def mark_wizard_completed(cls):
         if not (uci_set("foris.wizard", "config", cls.config_directory)
-                and uci_set("foris.wizard.allowed_step_max", 9, cls.config_directory)
+                and uci_set("foris.wizard.allowed_step_max", 10, cls.config_directory)
+                and uci_set("foris.wizard.finished", 1, cls.config_directory)
                 and uci_commit(cls.config_directory)):
             raise TestInitException("Cannot mark Wizard as completed.")
         StaticNetconfConnection._connect()
@@ -472,12 +473,12 @@ class TestWizard(ForisTest):
         assert_equal(page.status_int, 200)
         return page
 
-    def test_step_0(self):
+    def test_step_00(self):
         # main page should redirect to Wizard index
         home = self.app.get("/").follow()
         assert_equal(home.request.path, "//wizard/")
 
-    def test_step_1(self):
+    def test_step_01(self):
         page = self._test_wizard_step(1)
         # non-matching PWs
         form = page.forms['main-form']
@@ -494,13 +495,13 @@ class TestWizard(ForisTest):
         assert_equal(good_input.status_int, 200)
         assert_equal(good_input.request.path, "//wizard/step/2")
 
-    def test_step_2(self):
+    def test_step_02(self):
         page = self._test_wizard_step(2)
         submit = page.forms['main-form'].submit().follow()
         assert_equal(submit.status_int, 200, submit.body)
         assert_equal(submit.request.path, "//wizard/step/3")
 
-    def test_step_3(self):
+    def test_step_03(self):
         self._test_wizard_step(3)
 
         def check_connection(url):
@@ -515,31 +516,37 @@ class TestWizard(ForisTest):
         check_connection("/wizard/step/3/ajax?action=check_connection")
         check_connection("/wizard/step/3/ajax?action=check_connection_noforward")
 
-    def test_step_4(self):
-        self._test_wizard_step(4)
+    def test_step_04(self):
+        page = self._test_wizard_step(4)
+        submit = page.forms['main-form'].submit().follow()
+        assert_equal(submit.status_int, 200, submit.body)
+        assert_equal(submit.request.path, "//wizard/step/5")
+
+    def test_step_05(self):
+        self._test_wizard_step(5)
         # WARN: only a case when NTP sync works is tested
         with patch("foris.nuci.client.ntp_update") as ntp_update:
             ntp_update.return_value = True
-            res = self.app.get("/wizard/step/4/ajax?action=ntp_update")
+            res = self.app.get("/wizard/step/5/ajax?action=ntp_update")
             data = res.json
             assert_true(data['success'])
 
-    def test_step_5(self):
+    def test_step_06(self):
         # This test must be @timed with some reasonable timeout to check
         # that the loop for checking updater status does not run infinitely.
-        self._test_wizard_step(5)
+        self._test_wizard_step(6)
 
         # start the updater on background - also enables next step
         # mock the method for starting the updater, we don't want to really run it
         # maybe it'd be better to patch later and test if the RPC for update is really called
         with patch("foris.nuci.client.check_updates") as check_updates_mock:
             check_updates_mock.return_value = True
-            res = self.app.get("/wizard/step/5/ajax?action=run_updater")
+            res = self.app.get("/wizard/step/6/ajax?action=run_updater")
             assert_true(res.json['success'])
 
         with patch("foris.nuci.client.get_updater_status") as updater_status_mock:
             def check_updater():
-                updater_res = self.app.get("/wizard/step/5/ajax?action=updater_status")
+                updater_res = self.app.get("/wizard/step/6/ajax?action=updater_status")
                 data = updater_res.json
                 assert_true(data['success'])
                 return data
@@ -554,27 +561,27 @@ class TestWizard(ForisTest):
             check_result = check_updater()
             assert_equal(check_result['status'], "done")
 
-    def test_step_6(self):
+    def test_step_07(self):
         # patch updater status to always allow the next step
         with patch("foris.nuci.client.get_updater_status") as updater_status_mock:
             updater_status_mock.return_value = "done", None, []
-            page = self.app.get("/wizard/step/6").maybe_follow()
-            assert_equal(page.request.path, "//wizard/step/7")
+            page = self.app.get("/wizard/step/7").maybe_follow()
+            assert_equal(page.request.path, "//wizard/step/8")
             assert_equal(page.status_int, 200)
 
-    def test_step_7(self):
-        page = self._test_wizard_step(7)
+    def test_step_08(self):
+        page = self._test_wizard_step(8)
 
         with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
             gwc.return_value = test_data.stats_wireless_cards
             submit = page.forms['main-form'].submit().follow()
             assert_equal(submit.status_int, 200)
-            assert_equal(submit.request.path, "//wizard/step/8")
+            assert_equal(submit.request.path, "//wizard/step/9")
 
-    def test_step_8(self):
+    def test_step_09(self):
         with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
             gwc.return_value = test_data.stats_wireless_cards
-            page = self._test_wizard_step(8)
+            page = self._test_wizard_step(9)
             form = page.forms['main-form']
             form.set("radio0-wifi_enabled", True, 1)  # index 1 contains "1"
             form.set("radio0-ssid", "Valid SSID")
@@ -583,17 +590,17 @@ class TestWizard(ForisTest):
 
         submit = submit.follow()
         assert_equal(submit.status_int, 200)
-        assert_equal(submit.request.path, "//wizard/step/9")
+        assert_equal(submit.request.path, "//wizard/step/10")
 
-    def test_step_9(self):
+    def test_step_10(self):
         # test that we are allowed where it's expected
-        page = self.app.get("/wizard/step/9")
+        page = self.app.get("/wizard/step/10")
         assert_equal(page.status_int, 200)
         assert_regexp_matches(page.body, r"activation-code\">[0-9A-F]{8}",
                               "Activation code not found in last step.")
 
     def test_step_nonexist(self):
-        self.app.get("/wizard/step/10", status=404)
+        self.app.get("/wizard/step/11", status=404)
 
     def test_wizard_set_password(self):
         self.app.get("/logout")
