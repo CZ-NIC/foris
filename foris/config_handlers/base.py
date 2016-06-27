@@ -790,8 +790,17 @@ class WanHandler(BaseConfigHandler):
             (WAN_PPPOE, _("PPPoE (for DSL bridges, Modem Turris, etc.)")),
         )
 
+        WAN6_NONE = "none"
+        WAN6_DHCP = "dhcpv6"
+        WAN6_STATIC = "static"
+        WAN6_OPTIONS = (
+            (WAN6_NONE, _("Disable IPv6")),
+            (WAN6_DHCP, _("DHCPv6 (automatic configuration)")),
+            (WAN6_STATIC, _("Static IP address (manual configuration)")),
+        )
+
         # protocol
-        wan_main.add_field(Dropdown, name="proto", label=_("Protocol"),
+        wan_main.add_field(Dropdown, name="proto", label=_("IPv4 protocol"),
                            nuci_path="uci.network.wan.proto",
                            args=WAN_OPTIONS, default=WAN_DHCP)
 
@@ -832,32 +841,6 @@ class WanHandler(BaseConfigHandler):
                                   "DNS resolver is capable of working without it."))\
             .requires("proto", WAN_STATIC)
 
-        # static ipv6
-        wan_main.add_field(Checkbox, name="static_ipv6", label=_("Use IPv6"),
-                           nuci_path="uci.network.wan.ip6addr",
-                           nuci_preproc=lambda val: bool(val.value))\
-            .requires("proto", WAN_STATIC)
-        wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
-                           nuci_path="uci.network.wan.ip6addr",
-                           validators=validators.IPv6Prefix(),
-                           hint=_("IPv6 address and prefix length for WAN interface, "
-                                  "e.g. 2001:db8:be13:37da::1/64"),
-                           required=True)\
-            .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
-                           validators=validators.IPv6(),
-                           nuci_path="uci.network.wan.ip6gw")\
-            .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", True)
-        wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
-                           validators=validators.IPv6Prefix(),
-                           nuci_path="uci.network.wan.ip6prefix",
-                           hint=_("Address range for local network, "
-                                  "e.g. 2001:db8:be13:37da::/64"))\
-            .requires("proto", WAN_STATIC)\
-            .requires("static_ipv6", True)
-
         # xDSL settings
         wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username"),
                            nuci_path="uci.network.wan.username")\
@@ -865,10 +848,28 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password"),
                            nuci_path="uci.network.wan.password")\
             .requires("proto", WAN_PPPOE)
-        wan_main.add_field(Checkbox, name="ppp_ipv6", label=_("Enable IPv6"),
-                           nuci_path="uci.network.wan.ipv6",
-                           nuci_preproc=lambda val: bool(int(val.value)))\
-            .requires("proto", WAN_PPPOE)
+
+        # IPv6 configuration
+        wan_main.add_field(Dropdown, name="wan6_proto", label=_("IPv6 protocol"),
+                           args=WAN6_OPTIONS, default=WAN6_NONE,
+                           nuci_path="uci.network.wan6.proto")
+        wan_main.add_field(Textbox, name="ip6addr", label=_("IPv6 address"),
+                           nuci_path="uci.network.wan6.ip6addr",
+                           validators=validators.IPv6Prefix(),
+                           hint=_("IPv6 address and prefix length for WAN interface, "
+                                  "e.g. 2001:db8:be13:37da::1/64"),
+                           required=True)\
+            .requires("wan6_proto", WAN6_STATIC)
+        wan_main.add_field(Textbox, name="ip6gw", label=_("IPv6 gateway"),
+                           validators=validators.IPv6(),
+                           nuci_path="uci.network.wan6.ip6gw")\
+            .requires("wan6_proto", WAN6_STATIC)
+        wan_main.add_field(Textbox, name="ip6prefix", label=_("IPv6 prefix"),
+                           validators=validators.IPv6Prefix(),
+                           nuci_path="uci.network.wan6.ip6prefix",
+                           hint=_("Address range for local network, "
+                                  "e.g. 2001:db8:be13:37da::/64"))\
+            .requires("wan6_proto", WAN6_STATIC)
 
         # enable SMRT settings only if smrtd config is present
         has_smrtd = wan_form.nuci_config.find_child("uci.smrtd") is not None
@@ -986,7 +987,8 @@ class WanHandler(BaseConfigHandler):
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
-                wan.add(Option("ipv6", data['ppp_ipv6']))
+                if data.get("wan6_proto"):
+                    wan.add(Option("ipv6", data['ppp_ipv6']))
                 ucollect_ifname = "pppoe-wan"
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
@@ -994,14 +996,21 @@ class WanHandler(BaseConfigHandler):
                 wan.add(Option("gateway", data['gateway']))
                 dns_string = " ".join([data.get("dns1", ""), data.get("dns2", "")]).strip()
                 wan.add(Option("dns", dns_string))
-                if data.get("static_ipv6") is True:
-                    wan.add(Option("ip6addr", data['ip6addr']))
-                    wan.add(Option("ip6gw", data['ip6gw']))
-                    wan.add(Option("ip6prefix", data['ip6prefix']))
-                else:
-                    wan.add_removal(Option("ip6addr", None))
-                    wan.add_removal(Option("ip6gw", None))
-                    wan.add_removal(Option("ip6prefix", None))
+
+            # IPv6 configuration
+            wan6 = Section("wan6", "interface")
+            network.add(wan6)
+            wan6.add(Option("ifname", "@wan"))
+            wan6.add(Option("proto", data['wan6_proto']))
+
+            if data.get("wan6_proto"):
+                wan6.add(Option("ip6addr", data['ip6addr']))
+                wan6.add(Option("ip6gw", data['ip6gw']))
+                wan6.add(Option("ip6prefix", data['ip6prefix']))
+            else:
+                wan6.add_removal(Option("ip6addr", None))
+                wan6.add_removal(Option("ip6gw", None))
+                wan6.add_removal(Option("ip6prefix", None))
 
             if has_smrtd:
                 smrtd = Config("smrtd")

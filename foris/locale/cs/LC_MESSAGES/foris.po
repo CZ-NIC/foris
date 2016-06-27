@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-30 14:22+0200\n"
+"POT-Creation-Date: 2016-06-27 14:26+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -521,8 +521,14 @@ msgstr "Statická IP adresa (manuální konfigurace)"
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr "PPPoE (pro DSL bridge, modem Turris, atp.)"
 
-msgid "Protocol"
-msgstr "Protokol"
+msgid "Disable IPv6"
+msgstr "Nepoužívat IPv6"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatická konfigurace)"
+
+msgid "IPv4 protocol"
+msgstr "Protokol IPv4"
 
 msgid "IP address"
 msgstr "IP adresa"
@@ -546,8 +552,14 @@ msgstr ""
 msgid "DNS server 2"
 msgstr "DNS server 2"
 
-msgid "Use IPv6"
-msgstr "Podpora IPv6"
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP jméno"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP heslo"
+
+msgid "IPv6 protocol"
+msgstr "Protokol IPv6"
 
 msgid "IPv6 address"
 msgstr "IPv6 adresa"
@@ -566,15 +578,6 @@ msgstr "IPv6 prefix"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresní rozsah pro vnitřní síť, např. 2001:db8:be13:37da::/64"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP jméno"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP heslo"
-
-msgid "Enable IPv6"
-msgstr "Zapnout IPv6"
 
 msgid "Use Modem Turris"
 msgstr "Používat modem Turris"
@@ -1250,3 +1253,6 @@ msgstr "Musí být z rozsahu %(low)s - %(high)s."
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Délka musí být od %(low)s do %(high)s znaků."
+
+#~ msgid "Use IPv6"
+#~ msgstr "Podpora IPv6"
