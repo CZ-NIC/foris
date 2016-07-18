@@ -237,6 +237,7 @@ Foris.ntpUpdate = function () {
 };
 
 Foris.runUpdater = function () {
+  $("#updater-progress").show();
   Foris.callAjaxAction("6", "run_updater")
       .done(function (data) {
         if (data.success)
@@ -247,6 +248,32 @@ Foris.runUpdater = function () {
         }
       });
 };
+
+Foris.initEulaForm = function () {
+  $("#updater-eula").show();
+  var eulaForm = $("#eula-form");
+  eulaForm.submit(function (e) {
+    e.preventDefault();
+    eulaForm.find("button").attr('disabled', 'disabled');
+    $.ajax({
+      url: eulaForm.attr('action'),
+      method: 'post',
+      data: eulaForm.serialize()
+    })
+        .done(function (data) {
+          if (data.success) {
+            if (data.redirect) {
+              document.location.href  = data.redirect;
+              return;
+            }
+            $('#updater-eula').hide();
+            $("#updater-progress").show();
+            Foris.checkUpdaterStatus();
+          }
+        });
+  });
+};
+
 
 Foris.checkUpdaterStatus = function (retries, pageNumber) {
   if (retries == null)

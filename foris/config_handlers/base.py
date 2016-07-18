@@ -25,8 +25,9 @@ from foris.form import File, Password, Textbox, Dropdown, Checkbox, Hidden, Radi
     MultiCheckbox
 from foris.nuci import client, filters
 from foris.nuci.filters import create_config_filter
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
-from foris.utils import DEVICE_CUSTOMIZATION, tzinfo, localized_sorted
+from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool,\
+    build_option_uci_tree
+from foris.utils import DEVICE_CUSTOMIZATION, tzinfo, localized_sorted, require_customization
 
 logger = logging.getLogger(__name__)
 
@@ -66,6 +67,41 @@ class BaseConfigHandler(object):
             return True
         else:
             return False
+
+
+class CollectionToggleHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Data Collection")
+
+    def get_form(self):
+        form = fapi.ForisForm("enable_collection", self.data,
+                              filter=filters.create_config_filter("foris"))
+        section = form.add_section(
+            name="collection_toggle", title=_(self.userfriendly_title),
+        )
+        section.add_field(Checkbox, name="enable", label=_("Enable data collection"),
+                          nuci_path="uci.foris.eula.agreed_collect",
+                          nuci_preproc=lambda val: bool(int(val.value)))
+
+        def form_cb(data):
+            uci = build_option_uci_tree("foris.eula.agreed_collect", "config",
+                                        data.get("enable"))
+            return "edit_config", uci
+
+        def adjust_lists_cb(data):
+            uci = Uci()
+            # TODO: logic for adding/removing i_agree_datacollect
+            return "edit_config", uci
+
+        def run_updater_cb(data):
+            logger.info("Checking for updates.")
+            client.check_updates()
+            return "none", None
+
+        form.add_callback(form_cb)
+        # TODO: form.add_callback(adjust_lists_cb)
+        # TODO: form.add_callback(run_updater_cb)
+
+        return form
 
 
 class DNSHandler(BaseConfigHandler):
@@ -523,6 +559,34 @@ class RegionHandler(BaseConfigHandler):
         return region_form
 
 
+class RegistrationCheckHandler(BaseConfigHandler):
+    """
+    Handler for checking of the registration status and assignment to a queried email address.
+    """
+
+    userfriendly_title = gettext("Data Collection")
+
+    @require_customization("omnia")
+    def get_form(self):
+        form = fapi.ForisForm("registration_check", self.data,
+                              filter=create_config_filter("foris"))
+        main_section = form.add_section(name="check_email", title=_(self.userfriendly_title))
+        main_section.add_field(
+            Email, name="email", label=_("Email")
+        )
+
+        def form_cb(data):
+            result = client.get_registration_status(data.get("email"),
+                                                    bottle.request.app.lang)
+            return "save_result", {
+                'success': result[0],
+                'response': result[1],
+            }
+
+        form.add_callback(form_cb)
+        return form
+
+
 class SystemPasswordHandler(BaseConfigHandler):
     """
     Setting the password of a system user (currently only root's pw).
@@ -661,6 +725,53 @@ class UcollectHandler(BaseConfigHandler):
         return ucollect_form
 
 
+class UpdaterEulaHandler(BaseConfigHandler):
+    """
+    Ask whether user agrees with the updater EULA and toggle updater status
+    according to that.
+    """
+
+    userfriendly_title = gettext("Updater")
+
+    @require_customization("omnia")
+    def get_form(self):
+        form = fapi.ForisForm("updater_eula", self.data,
+                              filter=create_config_filter("foris"))
+        main_section = form.add_section(name="agree_eula",
+                                        title=_(self.userfriendly_title))
+        main_section.add_field(
+            Radio, name="agreed", label=_("I agree"), default="",
+            args=(("1", _("I agree and I want to receive automatic updates.")),
+                  ("0", _("I do not agree and I do not want to receive automatic updates."))),
+            nuci_path="uci.foris.eula.agreed_updater",
+            nuci_preproc=lambda val: bool(int(val.value))
+        )
+
+        def form_cb(data):
+            agreed = bool(int(data.get("agreed", "0")))
+
+            uci = Uci()
+            foris = uci.add(Config("foris"))
+            eula = foris.add(Section("eula", "config"))
+            eula.add(Option("agreed_updater", agreed))
+
+            # Also toggle updater - we don't want a disagreed EULA and enabled updater
+            updater = uci.add(Config("updater"))
+            override = updater.add(Section("override", "override"))
+            override.add(Option("disable", not agreed))
+
+            # TODO: and also uninstall all i_agree_ lists
+
+            return "edit_config", uci
+
+        def save_result_cb(data):
+            return "save_result", {'agreed': bool(int(data.get("agreed", "0")))}
+
+        form.add_callback(form_cb)
+        form.add_callback(save_result_cb)
+        return form
+
+
 class UpdaterHandler(BaseConfigHandler):
     userfriendly_title = gettext("Updater")
 
@@ -668,7 +779,7 @@ class UpdaterHandler(BaseConfigHandler):
         pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
 
         package_lists_form = fapi.ForisForm("package_lists", self.data,
-                                            filter=create_config_filter("updater"))
+                                            filter=create_config_filter("updater", "foris"))
         package_lists_main = package_lists_form.add_section(
             name="select_package_lists",
             title=_(self.userfriendly_title),
@@ -692,7 +803,20 @@ class UpdaterHandler(BaseConfigHandler):
                 return list_name in enabled_names
             return preproc
 
+        agreed_collect = None
+        if DEVICE_CUSTOMIZATION == "omnia":
+            agreed_collect_opt = package_lists_form.nuci_config \
+                .find_child("uci.foris.eula.agreed_collect")
+            agreed_collect = agreed_collect_opt and bool(int(agreed_collect_opt.value))
+
         for pkg_list_item in pkg_list:
+            if DEVICE_CUSTOMIZATION == "omnia":
+                if pkg_list_item.name == "i_agree_datacollect":
+                    # This has special meaning - it's affected by foris.eula.agreed_collect
+                    continue
+                elif pkg_list_item.name.startswith("i_agree_") and not agreed_collect:
+                    # Data collection is not enabled - do not show items prefixed i_agree_
+                    continue
             package_lists_main.add_field(
                 Checkbox,
                 name="install_%s" % pkg_list_item.name,
@@ -717,6 +841,10 @@ class UpdaterHandler(BaseConfigHandler):
                 if v and k.startswith("install_"):
                     lists.add(Value(i, k[8:]))
                     i += 1
+            # If user agreed with data collection, add i_agree_datacollect list
+            if agreed_collect:
+                lists.add(Value(i, "i_agree_datacollect"))
+                i += 1
             if i == 0:
                 pkglists.add_removal(lists)
             else:

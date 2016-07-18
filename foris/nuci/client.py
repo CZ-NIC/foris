@@ -201,6 +201,16 @@ def get_serial():
         return None
 
 
+def get_registration_status(email, lang=None):
+    try:
+        data = dispatch(registration.RegistrationStatus.rpc_get_status(email, lang))
+        return True, registration.RegistrationStatus.from_element(ET.fromstring(data.xml))
+    except RPCError, e:
+        return False, e.message
+    except TimeoutExpiredError:
+        return False, "Timed out."
+
+
 def get_messages():
     try:
         return get(filter=filters.messages).find_child("messages")

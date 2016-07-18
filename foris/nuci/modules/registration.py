@@ -59,5 +59,52 @@ class Serial(YinElement):
         get_tag = Serial.qual_tag("serial")
         return ET.Element(get_tag)
 
+
+class RegistrationStatus(YinElement):
+        tag = "get-status"
+        NS_URI = "http://www.nic.cz/ns/router/registration"
+
+        OWNED = "owned"
+        FOREIGN = "foreign"
+        FREE = "free"
+        UNKNOWN = "unknown"
+
+        STATUS_VALUES = {
+            'owned': OWNED,
+            'foreign': FOREIGN,
+            'free': FREE,
+        }
+
+        def __init__(self, status, url=None, reg_num=None):
+            super(RegistrationStatus, self).__init__()
+            self.status = status
+            self.url = url
+            self.reg_num = reg_num
+
+        @staticmethod
+        def from_element(element):
+            container = element.find(RegistrationStatus.qual_tag(RegistrationStatus.tag))
+            status_raw = container.find(RegistrationStatus.qual_tag("status")).text
+            status = RegistrationStatus.STATUS_VALUES.get(status_raw, RegistrationStatus.UNKNOWN)
+            url_el = container.find(RegistrationStatus.qual_tag("url"))
+            url = url_el.text if url_el is not None else None
+            reg_num = container.find(RegistrationStatus.qual_tag("reg-num")).text
+
+            return RegistrationStatus(status, url=url, reg_num=reg_num)
+
+        @staticmethod
+        def rpc_get_status(email, lang=None):
+            get_status_tag = RegistrationStatus.qual_tag("get-status")
+            element = ET.Element(get_status_tag)
+            email_tag = RegistrationStatus.qual_tag("email")
+            email_elem = ET.SubElement(element, email_tag)
+            email_elem.text = email
+            if lang:
+                lang_tag = RegistrationStatus.qual_tag("lang")
+                lang_elem = ET.SubElement(element, lang_tag)
+                lang_elem.text = lang
+            return element
+
+
 ####################################################################################################
 ET.register_namespace("registration", RegNum.NS_URI)

@@ -58,7 +58,7 @@ class ConfigPageMixin(object):
 
     def default_template(self, **kwargs):
         return template(self.template, title=_(kwargs.pop('title', self.userfriendly_title)),
-                        **kwargs)
+                        config_pages=config_page_map, **kwargs)
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm
@@ -269,8 +269,87 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
     userfriendly_title = gettext("Data collection")
 
     def render(self, **kwargs):
+        status = kwargs.pop("status", None)
+        if DEVICE_CUSTOMIZATION == "omnia":
+            uci_config = client.get(filter=filters.create_config_filter("foris", "updater"))
+
+            disabled_opt = uci_config.find_child('uci.updater.override.disable')
+            updater_disabled = disabled_opt and bool(int(disabled_opt.value))
+            kwargs['updater_disabled'] = updater_disabled
+
+            if not updater_disabled:
+                agreed_opt = uci_config.find_child('uci.foris.eula.agreed_collect')
+                if agreed_opt and bool(int(agreed_opt.value)):
+                    handler = CollectionToggleHandler(request.POST)
+                    kwargs['collection_toggle_form'] = handler.form
+                    kwargs['agreed'] = bool(int(agreed_opt.value))
+                else:
+                    handler = RegistrationCheckHandler(request.POST)
+                    kwargs['registration_check_form'] = handler.form
+
         return self.default_template(form=self.form, title=self.userfriendly_title,
-                                     description=None, **kwargs)
+                                     description=None, status=status,
+                                     **kwargs)
+
+    @require_customization("omnia")
+    def _action_check_registration(self):
+        handler = RegistrationCheckHandler(request.POST)
+        if not handler.save():
+            messages.warning(_("There were some errors in your input."))
+            return self.render(registration_check_form=handler.form)
+
+        success = handler.form.callback_results['success']
+        response = handler.form.callback_results['response']
+        kwargs = {}
+        if not success:
+            messages.error("An error ocurred when checking the registration: "
+                           "<br><pre>%(response)s</pre>" % dict(response=response))
+            return self.render()
+        else:
+            if response.status == "owned":
+                messages.success("Registration for the entered email is valid. "
+                                 "Now you can enable the data collection.")
+                collection_toggle_handler = CollectionToggleHandler(request.POST)
+                kwargs['collection_toggle_form'] = collection_toggle_handler.form
+            elif response.status == "foreign":
+                messages.warning(
+                    'This router is currently assigned to a different email address. Please '
+                    'continue to the <a href="%(url)s">Turris website</a> and use the registration '
+                    'code <strong>%(reg_num)s</strong> for a re-assignment to your email address.'
+                    % dict(url=response.url, reg_num=response.reg_num))
+                bottle.redirect(reverse("config_page", page_name="data-collection"))
+            elif response.status == "free":
+                messages.info(
+                    'This email address is not registered yet. Please continue to the '
+                    '<a href="%(url)s">Turris website</a> and use the registration code '
+                    '<strong>%(reg_num)s</strong> to create a new account.'
+                    % dict(url=response.url, reg_num=response.reg_num))
+                bottle.redirect(reverse("config_page", page_name="data-collection"))
+        return self.render(status=response.status,
+                           registration_url=response.url,
+                           reg_num=response.reg_num, **kwargs)
+
+    @require_customization("omnia")
+    def _action_toggle_collecting(self):
+        if bottle.request.method != 'POST':
+            messages.error("Wrong HTTP method.")
+            bottle.redirect(reverse("config_page", page_name="data-collection"))
+
+        handler = CollectionToggleHandler(request.POST)
+        if handler.save():
+            messages.success(_("Configuration was successfully saved."))
+            bottle.redirect(reverse("config_page", page_name="data-collection"))
+
+        messages.warning(_("There were some errors in your input."))
+        return super(DataCollectionConfigPage, self).render(collection_toggle_form=handler.form)
+
+    def call_action(self, action):
+        if action == "check_registration":
+            return self._action_check_registration()
+        elif action == "toggle_collecting":
+            return self._action_toggle_collecting()
+        raise ValueError("Unknown action.")
+
 
 class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
@@ -388,8 +467,7 @@ def dismiss_notifications():
 def config_page_get(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
-    return config_page.render(config_pages=config_page_map,
-                              active_config_page_key=page_name)
+    return config_page.render(active_config_page_key=page_name)
 
 
 @login_required

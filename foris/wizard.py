@@ -18,14 +18,14 @@ from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
-from foris.core import gettext_dummy as gettext, make_notification_title, ugettext as _
+from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
-    WanHandler, TimeHandler, LanHandler, WifiHandler
+    WanHandler, TimeHandler, LanHandler, UpdaterEulaHandler, WifiHandler
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
 from .nuci.modules.uci_raw import Option, Section, Config, Uci, build_option_uci_tree
-from .utils import login_required, messages
+from .utils import login_required, messages, require_customization
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
 
@@ -61,17 +61,18 @@ class WizardStepMixin(object):
         """
         raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
-    def allow_next_step(self):
+    def allow_next_step(self, next_step_number=None):
         # this function can be used as a callback for a form
-        if self.next_step_allowed is not None:
+        next_step_number = next_step_number or self.next_step_allowed
+        if next_step_number is not None:
             session = request.environ['beaker.session']
             # key in session on the following line should be always
             # set except in the case of the very first start
             session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
 
-            if self.next_step_allowed > session_max_step:
-                allow_next_step_session(self.next_step_allowed)
-                uci = get_allow_next_step_uci(self.next_step_allowed)
+            if next_step_number > session_max_step:
+                allow_next_step_session(next_step_number)
+                uci = get_allow_next_step_uci(next_step_number)
 
                 return "edit_config", uci
             else:
@@ -246,7 +247,7 @@ class WizardStep5(WizardStepMixin, TimeHandler):
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep6(WizardStepMixin, BaseConfigHandler):
+class WizardStep6(WizardStepMixin, UpdaterEulaHandler):
     """
     Updater.
     """
@@ -254,6 +255,27 @@ class WizardStep6(WizardStepMixin, BaseConfigHandler):
     name = "updater"
     next_step_allowed = 7
     userfriendly_title = gettext("System update")
+
+    @require_customization("omnia")
+    def _action_submit_eula(self):
+        # Save form from handler
+        self.form.save()
+        agreed = self.form.callback_results['agreed']
+
+        if self.form.callback_results['agreed']:
+            next_step = self.next_step_allowed
+        else:
+            next_step = self.next_step_allowed + 1
+        # Allow the next step (if it should be enabled)
+        nuci_write = self.allow_next_step(next_step_number=next_step)
+        if nuci_write[0] == "edit_config" and len(nuci_write) == 2:
+            add_config_update(nuci_write)
+            commit()
+        # Finally, run the updater
+        if agreed:
+            return dict(success=client.check_updates())
+        # Skip to next step if the updater is disabled
+        return dict(success=True, redirect=reverse("wizard_step", number=next_step))
 
     def _action_run_updater(self):
         # this is called by XHR, so we are definitely unable to
@@ -278,6 +300,8 @@ class WizardStep6(WizardStepMixin, BaseConfigHandler):
             if message:
                 result['message'] = message
             return result
+        elif action == "submit_eula":
+            return self._action_submit_eula()
 
         raise ValueError("Unknown Wizard action.")
 
@@ -464,7 +488,7 @@ def ajax(number=1):
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
     Wizard = get_wizard(number)
-    wiz = Wizard()
+    wiz = Wizard(request.POST)
     try:
         result = wiz.call_ajax_action(action)
         return result
@@ -525,7 +549,7 @@ def skip():
 def init_app():
     app = Bottle()
     app.install(CSRFPlugin())
-    app.route("/step/<number:re:\d+>/ajax", callback=ajax)
+    app.route("/step/<number:re:\d+>/ajax", method=['GET', 'POST'], name="wizard_ajax", callback=ajax)
     app.route("/", name="wizard_index", callback=wizard)
     app.route("/step/<number:re:\d+>", name="wizard_step", callback=step)
     app.route("/step/<number:re:\d+>", method="POST", callback=step_post)
