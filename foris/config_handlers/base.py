@@ -1003,7 +1003,7 @@ class WanHandler(BaseConfigHandler):
             wan6.add(Option("ifname", "@wan"))
             wan6.add(Option("proto", data['wan6_proto']))
 
-            if data.get("wan6_proto"):
+            if data.get("wan6_proto") == WAN6_STATIC:
                 wan6.add(Option("ip6addr", data['ip6addr']))
                 wan6.add(Option("ip6gw", data['ip6gw']))
                 wan6.add(Option("ip6prefix", data['ip6prefix']))
