@@ -67,6 +67,7 @@ setup(
             "templates/**",
             "templates/**/*",
             "static/css/*.css",
+            "static/fonts/*",
             "static/img/*",
             "static/img/wizard/*",
             "static/js/*.min.js",
