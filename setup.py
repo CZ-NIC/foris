@@ -71,6 +71,7 @@ setup(
             "static/img/wizard/*",
             "static/js/*.min.js",
             "static/js/contrib/*",
+            "utils/*.pickle2",
         ]
     },
 )
