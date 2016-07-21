@@ -24,7 +24,7 @@ from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, 
     WanHandler, TimeHandler, LanHandler, WifiHandler
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
-from .nuci.modules.uci_raw import Option, Section, Config, Uci
+from .nuci.modules.uci_raw import Option, Section, Config, Uci, build_option_uci_tree
 from .utils import login_required, messages
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
@@ -434,14 +434,8 @@ def get_allow_next_step_uci(step_number):
     :param step_number: step to allow
     :return: Uci element for allowing specified step
     """
-    uci = Uci()
-    foris = Config("foris")
-    uci.add(foris)
-    wizard = Section("wizard", "config")
-    foris.add(wizard)
-    wizard.add(Option(WizardStepMixin.next_step_allowed_key, step_number))
-
-    return uci
+    return build_option_uci_tree("foris.wizard.%s" % WizardStepMixin.next_step_allowed_key,
+                                 "config", step_number)
 
 
 def get_wizard_finished_uci():
@@ -450,14 +444,7 @@ def get_wizard_finished_uci():
 
     :return: Uci element for marking wizard finished
     """
-    uci = Uci()
-    foris = Config("foris")
-    uci.add(foris)
-    wizard = Section("wizard", "config")
-    foris.add(wizard)
-    wizard.add(Option("finished", "1"))
-
-    return uci
+    return build_option_uci_tree("foris.wizard.finished", "config", True)
 
 
 def mark_wizard_finished_session():

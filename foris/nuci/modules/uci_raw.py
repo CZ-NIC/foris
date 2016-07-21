@@ -223,5 +223,29 @@ def parse_uci_bool(value):
     return value in ("1", "true", "yes", "on", True)
 
 
+def build_option_uci_tree(uci_path, section_type, value):
+    """
+    Build a tree of Uci objects representing the hierarchy for a single
+    Uci Option.
+
+    :param uci_path: path to the Uci option
+    :param section_type: type of the section (second part of the path)
+    :param value: value for the option
+    :return: Uci element containing the tree
+    """
+    chunks = uci_path.split(".")
+    if len(chunks) != 3:
+        raise ValueError("uci_path must have three elements")
+    if "@" in chunks[1]:
+        raise ValueError("Anonymous sections are not supported.")
+    uci = Uci()
+    config = Config(chunks[0])
+    uci.add(config)
+    section = Section(chunks[1], section_type)
+    config.add(section)
+    section.add(Option(chunks[2], value))
+
+    return uci
+
 ####################################################################################################
 ET.register_namespace("uci", Uci.NS_URI)
