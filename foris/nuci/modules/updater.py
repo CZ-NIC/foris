@@ -48,6 +48,8 @@ class Updater(YinElement):
                     last_activity.append(('install', activity_elem.text))
                 elif activity_elem.tag == Updater.qual_tag("remove"):
                     last_activity.append(('remove', activity_elem.text))
+                elif activity_elem.tag == Updater.qual_tag("download"):
+                    last_activity.append(('download', activity_elem.text))
         pkg_list_elements = element.findall(Updater.qual_tag("pkg-list"))
         pkg_list = []
         for item_el in pkg_list_elements:
