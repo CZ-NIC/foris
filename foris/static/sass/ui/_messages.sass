@@ -8,6 +8,9 @@
   padding: 1em 1em 1em 3.2em
   margin-bottom: 0.5em
 
+  a
+    color: #000
+
   &.success
     background-image: inline-image('../.inline-assets/message-success.png')
     background-color: $message-color-success
@@ -23,4 +26,6 @@
   &.error
     background-image:  inline-image('../.inline-assets/message-error.png')
     background-color: $message-color-error
-    color: #fff
+
+    &, & a
+      color: #fff
