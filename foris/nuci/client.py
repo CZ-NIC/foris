@@ -313,7 +313,7 @@ def get_updater_status():
 
     if updater_status.running:
         return "running", updater_status.running, updater_status.last_activity
-    elif updater_status.failed:
+    elif updater_status.failed is not False:
         return "failed", updater_status.failed, updater_status.last_activity
     elif updater_status.offline_pending:
         return "offline_pending", None, updater_status.last_activity
