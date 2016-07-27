@@ -32,6 +32,7 @@
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ stats['kernel-version'] }}</td>
             </tr>
+          %if DEVICE_CUSTOMIZATION == "omnia" and agreed_collect:
             <tr>
                 <th>{{ trans("Sending of uCollect data") }}</th>
                 <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
@@ -54,6 +55,7 @@
                   % end
                 </td>
             </tr>
+          %end
             <tr>
                 <th></th>
                 <td>
@@ -63,6 +65,9 @@
         </tbody>
     </table>
 
+%if DEVICE_CUSTOMIZATION != "turris":
+</div>
+%else:
     <h2>{{ trans("Device registration") }}</h2>
     <div class="about-description">
         <p>
@@ -76,9 +81,7 @@
         </div>
         <button id="registration-code-update" class="button">{{ trans("Get registration code") }}</button>
     </div>
-
 </div>
-
 <script>
     $(document).ready(function() {
         $("#registration-code-update").click(function(e) {
@@ -112,3 +115,4 @@
         });
     });
 </script>
+%end

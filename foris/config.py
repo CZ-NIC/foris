@@ -364,6 +364,7 @@ class AboutConfigPage(ConfigPageMixin):
         'unknown': gettext("Unknown status"),
     }
 
+    @require_customization("turris")
     def _action_registration_code(self):
         return client.get_registration()
 
@@ -390,6 +391,10 @@ class AboutConfigPage(ConfigPageMixin):
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         serial = client.get_serial()
+        if DEVICE_CUSTOMIZATION == "omnia":
+            foris_conf = client.get(filter=filters.create_config_filter("foris"))
+            agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_collect")
+            kwargs['agreed_collect'] = agreed_opt and bool(int(agreed_opt.value))
         return self.default_template(stats=stats.data, serial=serial,
                                      translate_sending_status=self.translate_sending_status,
                                      **kwargs)
