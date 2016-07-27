@@ -18,6 +18,7 @@ from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
+from foris import DEVICE_CUSTOMIZATION
 from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
@@ -371,10 +372,20 @@ class WizardStep10(WizardStepMixin, BaseConfigHandler):
     template = "wizard/registration.tpl"
 
     def render(self, **kwargs):
-        registration = client.get_registration()
-        # show only restart notifications
         kwargs['notifications'] = client.get_messages().restarts
         kwargs['make_notification_title'] = make_notification_title
+        if DEVICE_CUSTOMIZATION == "omnia":
+            foris_conf = client.get(filter=filters.create_config_filter("foris"))
+            agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_updater")
+            agreed_updater = agreed_opt and bool(int(agreed_opt.value))
+            return template("wizard/finished.tpl",
+                            title=_("Installation finished"),
+                            stepname=self.name,
+                            can_skip_wizard=self.can_skip_wizard,
+                            agreed_updater=agreed_updater, **kwargs)
+
+        registration = client.get_registration()
+        # show only restart notifications
         if registration:
             return self.default_template(code=registration.value, **kwargs)
         else:
