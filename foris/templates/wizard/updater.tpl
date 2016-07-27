@@ -19,8 +19,7 @@
 <div id="wizard-updater">
     <h1>{{ trans(first_title) }}</h1>
     %if DEVICE_CUSTOMIZATION == "omnia":
-      <!-- TODO: translation of the following block -->
-      <div id="updater-eula" style="text-align: left">
+      <div id="updater-eula">
         %include("includes/updater_eula.tpl")
         <form id="eula-form" class="wizard-form wizard-form-eula" action="{{ url("wizard_ajax", number=6) }}?action=submit_eula" method="post" autocomplete="off" novalidate>
             %include("_messages.tpl")

@@ -1,8 +1,8 @@
 <p>
-  {{ trans("Router Turris Omnia is equipped with unique function of automatic system updates. Thanks to this function your router’s software stays up to date and offers better protection against attacks from the Internet. Before you turn this function on, please read the following key points:") }}
+  {{ trans("Router Turris Omnia is equipped with unique function of automatic system updates. Thanks to this function your router's software stays up to date and offers better protection against attacks from the Internet. Before you turn this function on, please read the following key points:") }}
 </p>
 
-<ul style="list-style: disc; margin-left: 1.5em">
+<ul>
   <li>{{ trans("Thanks to the Turris Omnia router you have a unique opportunity to have an additional security measure in your network for free.") }}</li>
   <li>{{ trans("Updates are prepared exclusively by CZ.NIC, z. s. p. o.") }}</li>
   <li>{{ trans("Enabling of the automatic updates is a prerequisite for additional security features of Turris Omnia.") }}</li>
@@ -13,7 +13,6 @@
 
 <br>
 
-<p style="font-weight: bold">
-  {{ trans('By enabling of the automatic updates, you confirm that you are the owner of this Turris Omnia router and you agree with the full text of the <a href="#">license agreement</a>.') }}
-  <!-- TODO: add link -->
+<p class="eula-summary">
+  {{! trans('By enabling of the automatic updates, you confirm that you are the owner of this Turris Omnia router and you agree with the full text of the <a href="https://www.turris.cz/omnia-updater-eula">license agreement</a>.') }}
 </p>
