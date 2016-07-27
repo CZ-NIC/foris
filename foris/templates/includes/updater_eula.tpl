@@ -1,20 +1,19 @@
-<!-- TODO: translate -->
 <p>
-  Router Turris Omnia je vybaven unikátní funkcí automatických aktualizací. Díky nim je software ve Vašem routeru stále aktuální, čímž je jak router samotný, tak Vaše domácí síť odolnější vůči útokům ze sítě Internet.  Dříve než tuto funkci zapnete, bychom Vás rádi seznámili s několika pravidly:
+  {{ trans("Router Turris Omnia is equipped with unique function of automatic system updates. Thanks to this function your router’s software stays up to date and offers better protection against attacks from the Internet. Before you turn this function on, please read the following key points:") }}
 </p>
 
 <ul style="list-style: disc; margin-left: 1.5em">
-  <li>Díky routeru Turris Omnia získáváte možnost bezplatného dodatečného zabezpečení Vaší sítě, skrze bezpečnostní aktualizace.</li>
-  <li>Aktualizace jsou připravovány výhradně společností CZ.NIC z.s.p.o.</li>
-  <li>Povolení automatických aktualizací je podmínkou pro zapnutí dalších bezpečnostních funkcí routeru Turris Omnia.</li>
-  <li>V souvislosti se stahováním aktualizací můžete zaznamenat zvýšení datových přenosů, které by nemělo přesáhnout 400 MB měsíčně; náklady spojené s těmito zvýšenými datovými přenosy jdou na Váš účet.</li>
-  <li>Bezpečnostní aktualizace nejsou všespásné; nezapomínejte jak na řádné zabezpečení Vaší sítě a pracovních stanic antivirem, tak na osvětu uživatelů. Sdružení CZ.NIC Vám neposkytuje ochranu proti síťovým útokům, škodlivým datovým tokům a dalším bezpečnostním incidentům, ke kterým může v rámci sítě internet docházet.</li>
-  <li>CZ.NIC z.s.p.o. negarantuje dostupnost služby a nepřebírá zodpovědnost za škody způsobené aktualizacemi.</li>
+  <li>{{ trans("Thanks to the Turris Omnia router you have a unique opportunity to have an additional security measure in your network for free.") }}</li>
+  <li>{{ trans("Updates are prepared exclusively by CZ.NIC, z. s. p. o.") }}</li>
+  <li>{{ trans("Enabling of the automatic updates is a prerequisite for additional security features of Turris Omnia.") }}</li>
+  <li>{{ trans("Having the automatic updates turned on can result in increased Internet traffic on your router. Expenses related to this increase are covered by you.") }}</li>
+  <li>{{ trans("Automatic updates cannot protect you against every attack coming from the Internet. Please do not forget to protect your workstations and other devices by installing an antivirus software and explain to your family members how to stay safe on the Internet.") }}</li>
+  <li>{{ trans("CZ.NIC, z. s. p. o. does not guarantee the availability of this service and is not responsible for any damages caused by the automatic updates.") }}</li>
 </ul>
 
 <br>
 
 <p style="font-weight: bold">
-  Povolením instalace aktualizací potvrzujete, že jste vlastníkem tohoto routeru Turris Omnia a seznámil jste se s <a href="#">kompletními podmínkami účasti</a> v tomto projektu.
+  {{ trans('By enabling of the automatic updates, you confirm that you are the owner of this Turris Omnia router and you agree with the full text of the <a href="#">license agreement</a>.') }}
   <!-- TODO: add link -->
 </p>
