@@ -140,6 +140,11 @@ class WizardStep1(WizardStepMixin, PasswordHandler):
     next_step_allowed = 2
     can_skip_wizard = False
 
+    def __init__(self, *args, **kwargs):
+        allowed_step_max, wizard_finished = get_wizard_progress()
+        require_old = wizard_finished or allowed_step_max >= self.next_step_allowed
+        super(WizardStep1, self).__init__(change=require_old, *args, **kwargs)
+
 
 class WizardStep2(WizardStepMixin, WanHandler):
     """
