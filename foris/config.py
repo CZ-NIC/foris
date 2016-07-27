@@ -234,7 +234,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         if bottle.request.method != 'POST':
             messages.error("Wrong HTTP method.")
             bottle.redirect(reverse("config_page", page_name="updater"))
-        handler = UpdaterToggleHandler(request.POST)
+        handler = UpdaterEulaHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="updater"))
@@ -249,9 +249,12 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
 
     def render(self, **kwargs):
         if DEVICE_CUSTOMIZATION == "omnia":
-            kwargs['updater_toggle_form'] = UpdaterToggleHandler(self.data).form
-        disabled_opt = self.form.nuci_config.find_child('uci.updater.override.disable')
-        kwargs['updater_disabled'] = disabled_opt and bool(int(disabled_opt.value))
+            eula_handler = UpdaterEulaHandler(self.data)
+            kwargs['updater_eula_form'] = eula_handler.form
+            agreed_opt = eula_handler.form.nuci_config.find_child('uci.foris.eula.agreed_updater')
+            kwargs['updater_disabled'] = not (agreed_opt and bool(int(agreed_opt.value)))
+            collecting_opt = eula_handler.form.nuci_config.find_child('uci.foris.eula.agreed_collect')
+            kwargs['collecting_enabled'] = collecting_opt and bool(int(collecting_opt.value))
         return super(UpdaterConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):

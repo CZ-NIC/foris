@@ -29,7 +29,6 @@ from base import (
     UcollectHandler,
     UpdaterEulaHandler,
     UpdaterHandler,
-    UpdaterToggleHandler,
     WanHandler,
     WifiHandler,
 )
@@ -49,7 +48,6 @@ __all__ = [
     'UcollectHandler',
     'UpdaterEulaHandler',
     'UpdaterHandler',
-    'UpdaterToggleHandler',
     'WanHandler',
     'WifiHandler',
 ]
