@@ -769,7 +769,6 @@ class UpdaterEulaHandler(BaseConfigHandler):
 
     userfriendly_title = gettext("Updater")
 
-    @require_customization("omnia")
     def get_form(self):
         form = fapi.ForisForm("updater_eula", self.data,
                               filter=create_config_filter("foris"))
