@@ -58,7 +58,7 @@ class ConfigPageMixin(object):
 
     def default_template(self, **kwargs):
         return template(self.template, title=_(kwargs.pop('title', self.userfriendly_title)),
-                        config_pages=config_page_map, **kwargs)
+                        **kwargs)
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm
@@ -164,8 +164,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
         messages.warning(_("There were some errors in your input."))
-        return super(MaintenanceConfigPage, self).render(notifications_form=handler.form,
-                                                         config_pages=config_page_map)
+        return super(MaintenanceConfigPage, self).render(notifications_form=handler.form)
 
     def _action_test_notifications(self):
         if bottle.request.method != 'POST':
@@ -239,8 +238,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="updater"))
         messages.warning(_("There were some errors in your input."))
-        return super(UpdaterConfigPage, self).render(notifications_form=handler.form,
-                                                     config_pages=config_page_map)
+        return super(UpdaterConfigPage, self).render(notifications_form=handler.form)
 
     def call_action(self, action):
         if action == "toggle_updater":
@@ -476,7 +474,7 @@ def dismiss_notifications():
 def config_page_get(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
-    return config_page.render(active_config_page_key=page_name)
+    return config_page.render(config_pages=config_page_map, active_config_page_key=page_name)
 
 
 @login_required
@@ -494,8 +492,7 @@ def config_page_post(page_name):
         messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
-    return config_page.render(config_pages=config_page_map,
-                              active_config_page_key=page_name)
+    return config_page.render(config_pages=config_page_map, active_config_page_key=page_name)
 
 
 @login_required
