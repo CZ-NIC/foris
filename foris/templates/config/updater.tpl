@@ -27,9 +27,7 @@
       %if collecting_enabled:
         <div class="message info">{{ trans("Data collection is currently enabled. You can not disable updater without disabling the data collection first.") }}</div>
       %else:
-          <p class="eula-summary">
-            {{! trans('By enabling of the automatic updates, you confirm that you are the owner of this Turris Omnia router and you agree with the full text of the <a href="https://www.turris.cz/omnia-updater-eula">license agreement</a>.') }}
-          </p>
+          %include("includes/updater_eula_summary.tpl")
 
           <form id="updater-eula-form" class="maintenance-form" action="{{ url("config_action", page_name="updater", action="toggle_updater") }}" method="post" autocomplete="off" novalidate>
               %include("_messages.tpl")

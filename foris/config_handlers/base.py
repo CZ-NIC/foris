@@ -70,7 +70,7 @@ class BaseConfigHandler(object):
 
 
 class CollectionToggleHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Data Collection")
+    userfriendly_title = gettext("Data collection")
 
     def get_form(self):
         form = fapi.ForisForm("enable_collection", self.data,
@@ -600,7 +600,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
     Handler for checking of the registration status and assignment to a queried email address.
     """
 
-    userfriendly_title = gettext("Data Collection")
+    userfriendly_title = gettext("Data collection")
 
     @require_customization("omnia")
     def get_form(self):
