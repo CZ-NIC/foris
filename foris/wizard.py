@@ -275,7 +275,7 @@ class WizardStep6(WizardStepMixin, UpdaterEulaHandler):
         # Allow the next step (if it should be enabled)
         nuci_write = self.allow_next_step(next_step_number=next_step)
         if nuci_write[0] == "edit_config" and len(nuci_write) == 2:
-            add_config_update(nuci_write)
+            add_config_update(nuci_write[1])
             commit()
         # Finally, run the updater
         if agreed:
