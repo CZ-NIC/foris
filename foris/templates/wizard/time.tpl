@@ -17,7 +17,7 @@
 %rebase("wizard/base", **locals())
 
 %if form:
-    <form class="wizard-form" action="{{ url("wizard_step", number=4) }}" method="post" novalidate>
+    <form class="wizard-form" action="{{ request.fullpath }}" method="post" novalidate>
         <h1>{{ trans(first_title) }}</h1>
         <p class="wizard-description">{{ first_description }}</p>
         %include("_messages.tpl")
