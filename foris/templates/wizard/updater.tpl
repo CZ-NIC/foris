@@ -21,6 +21,7 @@
     %if DEVICE_CUSTOMIZATION == "omnia":
       <div id="updater-eula">
         %include("includes/updater_eula.tpl")
+        <br>
         %include("includes/updater_eula_summary.tpl")
 
         <form id="eula-form" class="wizard-form wizard-form-eula" action="{{ url("wizard_ajax", number=6) }}?action=submit_eula" method="post" autocomplete="off" novalidate>

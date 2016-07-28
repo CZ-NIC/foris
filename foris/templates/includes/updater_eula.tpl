@@ -10,7 +10,3 @@
   <li>{{ trans("Automatic updates cannot protect you against every attack coming from the Internet. Please do not forget to protect your workstations and other devices by installing antivirus software and explaining to your family members how to stay safe on the Internet.") }}</li>
   <li>{{ trans("CZ.NIC, z. s. p. o. does not guarantee the availability of this service and is not responsible for any damages caused by the automatic updates.") }}</li>
 </ul>
-
-<br>
-
-%include("includes/updater_eula_summary.tpl")
