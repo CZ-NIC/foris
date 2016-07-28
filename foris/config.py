@@ -157,7 +157,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
     def _action_save_notifications(self):
         if bottle.request.method != 'POST':
-            messages.error("Wrong HTTP method.")
+            messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
         handler = NotificationsHandler(request.POST)
         if handler.save():
@@ -169,7 +169,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
     def _action_test_notifications(self):
         if bottle.request.method != 'POST':
-            messages.error("Wrong HTTP method.")
+            messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
         result, error_message = client.test_notifications()
         if result:
@@ -232,7 +232,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
     @require_customization("omnia")
     def _action_toggle_updater(self):
         if bottle.request.method != 'POST':
-            messages.error("Wrong HTTP method.")
+            messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="updater"))
         handler = UpdaterEulaHandler(request.POST)
         if handler.save():
@@ -305,27 +305,28 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
         response = handler.form.callback_results['response']
         kwargs = {}
         if not success:
-            messages.error("An error ocurred when checking the registration: "
-                           "<br><pre>%(response)s</pre>" % dict(response=response))
+            messages.error(_("An error ocurred when checking the registration: "
+                             "<br><pre>%(response)s</pre>" % dict(response=response)))
             return self.render()
         else:
             if response.status == "owned":
-                messages.success("Registration for the entered email is valid. "
-                                 "Now you can enable the data collection.")
+                messages.success(_("Registration for the entered email is valid. "
+                                   "Now you can enable the data collection."))
                 collection_toggle_handler = CollectionToggleHandler(request.POST)
                 kwargs['collection_toggle_form'] = collection_toggle_handler.form
             elif response.status == "foreign":
                 messages.warning(
-                    'This router is currently assigned to a different email address. Please '
-                    'continue to the <a href="%(url)s">Turris website</a> and use the registration '
-                    'code <strong>%(reg_num)s</strong> for a re-assignment to your email address.'
+                    _('This router is currently assigned to a different email address. Please '
+                      'continue to the <a href="%(url)s">Turris website</a> and use the '
+                      'registration code <strong>%(reg_num)s</strong> for a re-assignment to your '
+                      'email address.')
                     % dict(url=response.url, reg_num=response.reg_num))
                 bottle.redirect(reverse("config_page", page_name="data-collection"))
             elif response.status == "free":
                 messages.info(
-                    'This email address is not registered yet. Please continue to the '
-                    '<a href="%(url)s">Turris website</a> and use the registration code '
-                    '<strong>%(reg_num)s</strong> to create a new account.'
+                    _('This email address is not registered yet. Please continue to the '
+                      '<a href="%(url)s">Turris website</a> and use the registration code '
+                      '<strong>%(reg_num)s</strong> to create a new account.')
                     % dict(url=response.url, reg_num=response.reg_num))
                 bottle.redirect(reverse("config_page", page_name="data-collection"))
         return self.render(status=response.status,
@@ -335,7 +336,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
     @require_customization("omnia")
     def _action_toggle_collecting(self):
         if bottle.request.method != 'POST':
-            messages.error("Wrong HTTP method.")
+            messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="data-collection"))
 
         handler = CollectionToggleHandler(request.POST)
