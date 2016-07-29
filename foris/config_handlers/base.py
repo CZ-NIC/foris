@@ -898,6 +898,12 @@ class UpdaterHandler(BaseConfigHandler):
 class WanHandler(BaseConfigHandler):
     userfriendly_title = gettext("WAN")
 
+    def __init__(self, *args, **kwargs):
+        super(WanHandler, self).__init__(*args, **kwargs)
+        self.wan_ifname = "eth2"
+        if DEVICE_CUSTOMIZATION == "omnia":
+            self.wan_ifname = "eth1"
+
     def get_form(self):
         # WAN
         wan_form = fapi.ForisForm("wan", self.data,
@@ -1034,11 +1040,11 @@ class WanHandler(BaseConfigHandler):
                 ifname = data.find_child("uci.network.wan.ifname")
                 if ifname:
                     ifname = ifname.value
-                    matches = re.match("eth2.(\d+)", ifname)
+                    matches = re.match("%s.(\d+)" % self.wan_ifname, ifname)
                     if matches:
                         return matches.group(1)
 
-                connections = data.find_child("uci.smrtd.eth2.connections")
+                connections = data.find_child("uci.smrtd.%s.connections" % self.wan_ifname)
                 result = get_smrtd_param("VLAN")(connections)
                 return result
 
@@ -1060,7 +1066,7 @@ class WanHandler(BaseConfigHandler):
 
             wan_main.add_field(
                 Textbox, name="smrt_vpi", label=_("VPI"),
-                nuci_path="uci.smrtd.eth2.connections",
+                nuci_path="uci.smrtd.%s.connections" % self.wan_ifname,
                 nuci_preproc=get_smrtd_param("VPI"),
                 validators=[validators.PositiveInteger(),
                             validators.InRange(0, 255),
@@ -1072,7 +1078,7 @@ class WanHandler(BaseConfigHandler):
                 .requires("use_smrt", True)
             wan_main.add_field(
                 Textbox, name="smrt_vci", label=_("VCI"),
-                nuci_path="uci.smrtd.eth2.connections",
+                nuci_path="uci.smrtd.%s.connections" % self.wan_ifname,
                 nuci_preproc=get_smrtd_param("VCI"),
                 validators=[validators.PositiveInteger(),
                             validators.InRange(32, 65535),
@@ -1111,7 +1117,7 @@ class WanHandler(BaseConfigHandler):
             else:
                 wan.add_removal(Option("macaddr", None))
 
-            ucollect_ifname = "eth2"
+            ucollect_ifname = self.wan_ifname
 
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
@@ -1147,32 +1153,31 @@ class WanHandler(BaseConfigHandler):
 
                 smrt_vlan = data.get("smrt_vlan")
                 use_smrt = data.get("use_smrt", False)
-                wan_ifname = "eth2"
 
-                eth2 = Section("eth2", "interface")
-                smrtd.add(eth2)
-                eth2.add(Option("name", "eth2"))
+                wan_if = Section(self.wan_ifname, "interface")
+                smrtd.add(wan_if)
+                wan_if.add(Option("name", self.wan_ifname))
 
                 if use_smrt:
                     if not smrt_vlan:
                         # "proprietary" number - and also a common VLAN ID in CZ
                         smrt_vlan = "848"
-                    wan_ifname += ".%s" % smrt_vlan
+                        self.wan_ifname += ".%s" % smrt_vlan
 
                 vpi, vci = data.get("smrt_vpi"), data.get("smrt_vci")
                 connections = List("connections")
                 if vpi and vci:
-                    eth2.add(connections)
+                    wan_if.add(connections)
                     connections.add(Value(1, "%s %s %s" % (smrt_vlan, vpi, vci)))
                 elif use_smrt:
-                    eth2.add_removal(connections)
+                    wan_if.add_removal(connections)
 
                 smrtd_global = Section("global", "global")
                 smrtd.add(smrtd_global)
                 smrtd_global.add(Option("enabled", use_smrt))
 
                 # set correct ifname for WAN - must be changed when disabling SMRT
-                wan.add(Option("ifname", wan_ifname))
+                wan.add(Option("ifname", self.wan_ifname))
 
             # set interface for ucollect to listen on
             interface_if_name = None

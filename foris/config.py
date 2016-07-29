@@ -105,8 +105,8 @@ class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
 class WanConfigPage(ConfigPageMixin, WanHandler):
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
-        if_eth2 = stats.data['interfaces'].get('eth2')
-        if not (if_eth2 and if_eth2.get('is_up')):
+        wan_if = stats.data['interfaces'].get(self.wan_ifname)
+        if not (wan_if and wan_if.get('is_up')):
             messages.warning(_("WAN port has no link, your internet connection probably won't work."))
         return super(WanConfigPage, self).render(**kwargs)
 
