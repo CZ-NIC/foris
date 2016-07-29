@@ -331,13 +331,11 @@ class WizardStep7(WizardStep6):
         raise ValueError("Unknown Wizard action.")
 
     def render(self, **kwargs):
+        self.allow_next_step()
         status = client.get_updater_status()
         if status[0] == "offline_pending":
             client.reboot()
         elif status[0] == "done":
-            # write next step if updates were already done
-            # and AJAX wasn't get called for some reason
-            self.nuci_write_next_step()
             bottle.redirect(reverse("wizard_step", number=self.next_step_allowed))
         return super(WizardStep7, self).render(**kwargs)
 
