@@ -55,6 +55,10 @@
         <p>
             {{ trans("Firmware update has failed due to a connection or installation error. You should check your cable connection before proceeding to the next step. But do not worry much about the update as the router will run the updater regularly.") }}
         </p>
+        <div id="updater-fail-message">
+          {{ trans("Updater has returned the following error:") }}
+          <pre></pre>
+        </div>
         <a class="button-next" href="{{ next_step_url }}">{{ trans("Next") }}</a>
     </div>
     <div id="updater-login">

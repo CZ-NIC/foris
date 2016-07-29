@@ -244,9 +244,17 @@ Foris.runUpdater = function () {
           Foris.checkUpdaterStatus();
         else {
           $("#updater-progress").hide();
-          $("#updater-fail").show();
         }
       });
+};
+
+Foris.showUpdaterFail = function (data) {
+  $("#updater-fail").show();
+  if (data && data.message) {
+    var messageEl = $('#updater-fail-message');
+    messageEl.find('pre').text(data.message);
+    messageEl.show();
+  }
 };
 
 Foris.initEulaForm = function () {
@@ -297,7 +305,7 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
         }
         if (data.status == "failed") {
           $("#updater-progress").hide();
-          $("#updater-fail").show();
+          Foris.showUpdaterFail(data);
         }
         else if (data.status == "running") {
           // timeout is better, because we won't get multiple requests stuck processing
@@ -348,7 +356,7 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
         }
         else {
           $("#updater-progress").hide();
-          $("#updater-fail").show();
+          Foris.showUpdaterFail();
         }
       })
 };
