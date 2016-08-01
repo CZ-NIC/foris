@@ -455,7 +455,7 @@ def get_config_page(page_name):
 @login_required
 def index():
     notifications = client.get_messages()
-    return template("config/index", config_pages=config_page_map, title=_("Home page"),
+    return template("config/index", title=_("Home page"),
                     make_notification_title=make_notification_title,
                     active_config_page_key='',
                     notifications=notifications.new)
@@ -472,13 +472,15 @@ def dismiss_notifications():
 
 @login_required
 def config_page_get(page_name):
+    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
-    return config_page.render(config_pages=config_page_map, active_config_page_key=page_name)
+    return config_page.render(active_config_page_key=page_name)
 
 
 @login_required
 def config_page_post(page_name):
+    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
@@ -492,11 +494,12 @@ def config_page_post(page_name):
         messages.error(_("Configuration could not be saved due to an internal error."))
         logger.exception("Error when saving form.")
     logger.warning("Form not saved.")
-    return config_page.render(config_pages=config_page_map, active_config_page_key=page_name)
+    return config_page.render(active_config_page_key=page_name)
 
 
 @login_required
 def config_action(page_name, action):
+    bottle.SimpleTemplate.defaults['active_config_page'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     try:
@@ -508,6 +511,7 @@ def config_action(page_name, action):
 
 @login_required
 def config_action_post(page_name, action):
+    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
@@ -535,6 +539,7 @@ def config_action_post(page_name, action):
 
 @login_required
 def config_ajax(page_name):
+    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     action = request.params.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
@@ -563,4 +568,5 @@ def init_app():
               callback=config_page_post)
     app.route("/<page_name:re:.+>/", name="config_page",
               callback=config_page_get)
+    bottle.SimpleTemplate.defaults['config_pages'] = config_page_map
     return app
