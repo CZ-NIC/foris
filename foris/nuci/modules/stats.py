@@ -67,7 +67,7 @@ class Stats(YinElement):
     @staticmethod
     def __postprocess_data(data):
         # capitalize board-name of Turris boards
-        if data.get("model", "").lower() == "turris":
+        if data.get("model", "").lower().startswith("turris"):
             data['board-name'] = data.get("board-name", "").upper()
         return data
 
