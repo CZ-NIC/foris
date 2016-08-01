@@ -185,12 +185,23 @@ Foris.callAjaxAction = function (wizardStep, action, timeout) {
   });
 };
 
-Foris.connectivityCheck = function () {
+Foris.connectivityCheck = function (retries) {
+  var maxRetries = 1;
+  if (retries == null)
+    retries = 0;
+
   Foris.callAjaxAction("3", "check_connection")
       .done(function (data) {
         if (data.result == "ok") {
           $("#connectivity-progress").hide();
           $("#connectivity-success").show();
+        }
+        else if (!retries || retries < maxRetries) {
+          // Because the restart of the networking in the previous step takes
+          // a while, it can take about ~10 seconds for the network to come up.
+          // If the test fails, wait a few seconds and retry the test, so we
+          // don't bother the user by forcing her to do a manual retry.
+          window.setTimeout(function() { Foris.connectivityCheck(retries + 1) }, 6000);
         }
         else if (data.result == "no_dns") {
           Foris.connectivityCheckNoForward();
