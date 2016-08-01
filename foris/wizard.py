@@ -92,6 +92,8 @@ class WizardStepMixin(object):
         nuci_write = self.allow_next_step()
         if nuci_write[0] == "edit_config" and len(nuci_write) == 2:
             add_config_update(nuci_write[1])
+            if self.is_final_step:
+                add_config_update(self.mark_wizard_finished()[1])
             commit()
 
     def default_template(self, **kwargs):
@@ -331,7 +333,7 @@ class WizardStep7(WizardStep6):
         raise ValueError("Unknown Wizard action.")
 
     def render(self, **kwargs):
-        self.allow_next_step()
+        self.nuci_write_next_step()
         status = client.get_updater_status()
         if status[0] == "offline_pending":
             client.reboot()
@@ -362,7 +364,7 @@ class WizardStep9(WizardStepMixin, WifiHandler):
 
         if not form:
             # enable next step if no WiFi cards were detected
-            self.allow_next_step()
+            self.nuci_write_next_step()
 
         return form
 
