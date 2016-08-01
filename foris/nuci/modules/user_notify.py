@@ -22,7 +22,6 @@ from foris.nuci.utils import LocalizableTextValue
 from .base import YinElement
 
 
-
 class UserNotify(YinElement):
     NS_URI = "http://www.nic.cz/ns/router/user-notify"
 
@@ -165,7 +164,7 @@ class Message(UserNotify):
         body = LocalizableTextValue()
         for body_el in body_els:
             lang = body_el.get(xml_lang_attr)
-            body.set_translation(lang, body_el.text)
+            body.set_translation(lang, body_el.text or "")
 
         message_id = element.find(Message.qual_tag("id")).text
         severity = element.find(Message.qual_tag("severity")).text
