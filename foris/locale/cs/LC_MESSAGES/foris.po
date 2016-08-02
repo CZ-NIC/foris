@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 14:04+0200\n"
+"POT-Creation-Date: 2016-08-02 16:19+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -733,28 +733,37 @@ msgstr ""
 "Pásmo 5 GHz je novější standard, který nemusí být podporován všemi Vašimi "
 "zařízeními. Obvykle je méně zarušené, ale signál se uvnitř budov hůře šíří."
 
-msgid "802.11n mode"
-msgstr "Režim 802.11n"
-
 msgid "Disabled"
 msgstr "Vypnuto"
 
-msgid "Enabled (20 MHz wide channel)"
-msgstr "Zapnuto (20 MHz široký kanál)"
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz široký kanál"
 
-msgid "Enabled (40 MHz wide channel)"
-msgstr "Zapnuto (40 MHz široký kanál)"
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz široký kanál"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz široký kanál"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz široký kanál"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz široký kanál"
+
+msgid "802.11n/ac mode"
+msgstr "Režim 802.11n/ac"
 
 msgid ""
-"Change this to adjust 802.11n mode of operation. 802.11n with 40 MHz wide "
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
 "channels can yield higher throughput but can cause more interference in the "
 "network. If you don't know what to choose, use the default option with 20 "
 "MHz wide channel."
 msgstr ""
-"Touto volbou můžete upravit režim 802.11n. V režimu 802.11n s 40 MHz širokým "
-"kanálem můžete dosáhnout vyšší datové propustnosti, ale zároveň dochází k "
-"vyššímu zarušení sítě. Pokud nevíte, jakou možnost zde vybrat, ponechte "
-"vybranou výchozí volbu s 20 MHz širokým kanálem."
+"Touto volbou můžete upravit režim 802.11n/ac. V režimu 802.11n s 40 MHz "
+"širokým kanálem můžete dosáhnout vyšší datové propustnosti, ale zároveň "
+"dochází k vyššímu zarušení sítě. Pokud nevíte, jakou možnost zde vybrat, "
+"ponechte vybranou výchozí volbu s 20 MHz širokým kanálem."
 
 msgid "Network channel"
 msgstr "Kanál"
@@ -942,6 +951,9 @@ msgstr "Zařízení"
 
 msgid "Serial number"
 msgstr "Sériové číslo"
+
+msgid "Turris OS version"
+msgstr "Verze Turris OS"
 
 msgid "Kernel version"
 msgstr "Verze jádra"
