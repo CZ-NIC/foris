@@ -1242,7 +1242,8 @@ class WifiHandler(BaseConfigHandler):
         for channel in wifi_card['channels']:
             if channel['disabled']:
                 continue
-            pretty_channel = "%s (%s MHz)" % (channel['number'], channel['frequency'])
+            pretty_channel = "%s (%s MHz%s)" % (channel['number'], channel['frequency'],
+                                                ", DFS" if channel['radar'] else "")
             if channel['frequency'] < 2500:
                 channels_2g4.append((str(channel['number']), pretty_channel))
             else:
@@ -1265,16 +1266,31 @@ class WifiHandler(BaseConfigHandler):
                        "carry so well indoors.")
             ).requires(prefixed_name("wifi_enabled"), True)
 
+        htmodes = (
+            ("NOHT", _("Disabled")),
+            ("HT20", _("802.11n - 20 MHz wide channel")),
+            ("HT40", _("802.11n - 40 MHz wide channel"))
+        )
+
+        # Allow VHT modes only if the card has the capabilities and 5 GHz band is selected
+        allow_vht = wifi_card['vht-capabilities']\
+            and wifi_form.current_data.get("radio%s-hwmode" % radio_index) == "11a"
+
+        if allow_vht:
+            htmodes += (
+                ("VHT20", _("802.11ac - 20 MHz wide channel")),
+                ("VHT40", _("802.11ac - 40 MHz wide channel")),
+                ("VHT80", _("802.11ac - 80 MHz wide channel")),
+            )
+
         wifi_main.add_field(
-            Dropdown, name=prefixed_name("htmode"), label=_("802.11n mode"),
-            args=(("NOHT", _("Disabled")),
-                  ("HT20", _("Enabled (20 MHz wide channel)")),
-                  ("HT40", _("Enabled (40 MHz wide channel)"))),
+            Dropdown, name=prefixed_name("htmode"), label=_("802.11n/ac mode"),
+            args=htmodes,
             nuci_path="uci.wireless.radio%s.htmode" % radio_index,
-            hint=_("Change this to adjust 802.11n mode of operation. 802.11n with 40 MHz wide "
+            hint=_("Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
                    "channels can yield higher throughput but can cause more interference in the "
-                   "network. If you don't know what to choose, use the default option with "
-                   "20 MHz wide channel.")
+                   "network. If you don't know what to choose, use the default option with 20 MHz "
+                   "wide channel.")
         ).requires(prefixed_name("wifi_enabled"), True)
 
         # 2.4 GHz channels
