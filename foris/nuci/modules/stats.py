@@ -37,6 +37,7 @@ class Stats(YinElement):
          -- 'wireless-cards': list of wireless cards
          ---- [item]: wireless card properties
          ------ 'name': name of device
+         ------ 'vte-capabilities': (boolean) whether the device has VTE capabilities
          ------ 'channels': list of available channels
          -------- 'number': (int) channel number
          -------- 'frequency': (int) frequency in MHz
@@ -108,13 +109,18 @@ class Stats(YinElement):
             elif elem.tag == Stats.qual_tag("wireless-cards"):
                 stats.data['wireless-cards'] = []
                 for wc_elem in elem:
-                    wc = {'name': wc_elem.find(Stats.qual_tag("name")).text, 'channels': []}
+                    wc = {
+                        'name': wc_elem.find(Stats.qual_tag("name")).text,
+                        'vht-capabilities': wc_elem.find(Stats.qual_tag("vht-capabilities")) is not None,
+                        'channels': [],
+                    }
                     for channel_el in wc_elem.iter(Stats.qual_tag("channel")):
-                        channel = {}
-                        channel['number'] = int(channel_el.find(Stats.qual_tag("number")).text)
-                        channel['frequency'] = int(channel_el.find(Stats.qual_tag("frequency")).text)
-                        channel['disabled'] = channel_el.find(Stats.qual_tag("disabled")) is not None
-                        channel['radar'] = channel_el.find(Stats.qual_tag("radar")) is not None
+                        channel = {
+                            'number': int(channel_el.find(Stats.qual_tag("number")).text),
+                            'frequency': int(channel_el.find(Stats.qual_tag("frequency")).text),
+                            'disabled': channel_el.find(Stats.qual_tag("disabled")) is not None,
+                            'radar': channel_el.find(Stats.qual_tag("radar")) is not None
+                        }
                         wc['channels'].append(channel)
                     stats.data['wireless-cards'].append(wc)
             elif elem.tag == Stats.qual_tag("interfaces"):
