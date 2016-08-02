@@ -29,6 +29,10 @@
                 <td>{{ serial.decimal }}</td>
             </tr>
             <tr>
+                <th>{{ trans("Turris OS version") }}</th>
+                <td>{{ stats['turris-os-version'] }}</td>
+            </tr>
+            <tr>
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ stats['kernel-version'] }}</td>
             </tr>

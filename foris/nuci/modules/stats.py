@@ -29,6 +29,7 @@ class Stats(YinElement):
      Stats.data:
          -- 'uptime': system uptime (string)
          -- 'kernel-version': kernel version (string)
+         -- 'turris-os-version': Turris OS version (string)
          -- 'meminfo': dict of memory information
          ---- 'MemTotal': total RAM
          ---- 'MemFree': free RAM
@@ -98,6 +99,8 @@ class Stats(YinElement):
                 stats.data['board-name'] = elem.text
             elif elem.tag == Stats.qual_tag("kernel-version"):
                 stats.data['kernel-version'] = elem.text
+            elif elem.tag == Stats.qual_tag("turris-os-version"):
+                stats.data['turris-os-version'] = elem.text
             elif elem.tag == Stats.qual_tag("meminfo"):
                 stats.data['meminfo'] = {}
                 for meminfo_elem in elem:
