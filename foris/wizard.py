@@ -155,6 +155,9 @@ class WizardStep2(WizardStepMixin, WanHandler):
     name = "wan"
     next_step_allowed = 3
 
+    def __init__(self, *args, **kwargs):
+        super(WizardStep2, self).__init__(hide_no_wan=True, *args, **kwargs)
+
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         wan_if = stats.data['interfaces'].get(self.wan_ifname)

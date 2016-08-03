@@ -899,6 +899,8 @@ class WanHandler(BaseConfigHandler):
     userfriendly_title = gettext("WAN")
 
     def __init__(self, *args, **kwargs):
+        # Do not display "none" options for WAN protocol if hide_no_wan is True
+        self.hide_no_wan = kwargs.pop("hide_no_wan", False)
         super(WanHandler, self).__init__(*args, **kwargs)
         self.wan_ifname = "eth2"
         if DEVICE_CUSTOMIZATION == "omnia":
@@ -928,11 +930,14 @@ class WanHandler(BaseConfigHandler):
         WAN6_NONE = "none"
         WAN6_DHCP = "dhcpv6"
         WAN6_STATIC = "static"
+
         WAN6_OPTIONS = (
-            (WAN6_NONE, _("Disable IPv6")),
             (WAN6_DHCP, _("DHCPv6 (automatic configuration)")),
             (WAN6_STATIC, _("Static IP address (manual configuration)")),
         )
+
+        if not self.hide_no_wan:
+            WAN6_OPTIONS = ((WAN6_NONE, _("Disable IPv6")),) + WAN6_OPTIONS
 
         # protocol
         wan_main.add_field(Dropdown, name="proto", label=_("IPv4 protocol"),
