@@ -2,6 +2,7 @@
 stats_wireless_cards = [
     {
         'name': 'phy0',
+        'vht-capabilities': True,
         'channels': [{'disabled': False, 'radar': False, 'frequency': 2412,
                       'number': 1},
                      {'disabled': False, 'radar': False, 'frequency': 2417,
@@ -81,6 +82,7 @@ stats_wireless_cards = [
     },
     {
         'name': 'phy1',
+        'vht-capabilities': False,
         'channels': [{'disabled': False, 'radar': False, 'frequency': 2412, 'number': 1},
                      {'disabled': False, 'radar': False, 'frequency': 2417, 'number': 2},
                      {'disabled': False, 'radar': False, 'frequency': 2422, 'number': 3},
