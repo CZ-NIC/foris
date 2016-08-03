@@ -59,13 +59,13 @@
                   % end
                 </td>
             </tr>
-          %end
             <tr>
                 <th></th>
                 <td>
                   <a href="{{ url("config_page", page_name="about") }}" class="reload">{{ trans("Refresh") }}</a>
                 </td>
             </tr>
+          %end
         </tbody>
     </table>
 
