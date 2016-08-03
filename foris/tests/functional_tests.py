@@ -19,12 +19,12 @@ from .utils import uci_get, uci_set, uci_commit, uci_is_empty
 
 # dict of texts that are used to determine returned stated etc.
 RESPONSE_TEXTS = {
-    'config_restored': "Nastavení bylo úspěšně obnoveno.",
-    'form_invalid': "údajů nejsou platné",
-    'form_saved': "Nastavení bylo úspěšně",
-    'invalid_old_pw': "původní heslo je neplatné",
-    'password_changed': "Heslo bylo úspěšně uloženo.",
-    'passwords_not_equal': "Hesla se neshodují.",
+    'config_restored': "Configuration was successfully restored.",
+    'form_invalid': "some errors in your input",
+    'form_saved': "Configuration was successfully saved",
+    'invalid_old_pw': "Old password you entered was not valid",
+    'password_changed': "Password was successfully saved.",
+    'passwords_not_equal': "Passwords are not equal.",
 }
 
 # header for XHR (AJAX requests)

@@ -44,7 +44,7 @@ BASE_DIR = os.path.dirname(__file__)
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
-DEFAULT_LANGUAGE = 'cs'
+DEFAULT_LANGUAGE = 'en'
 translations = {
     'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['cs'], fallback=True),
