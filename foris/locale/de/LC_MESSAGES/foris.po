@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-02 10:10+0200\n"
+"POT-Creation-Date: 2016-08-03 13:24+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Karel Slaný <karel.slany@nic.cz>\n"
 "Language-Team: German <>\n"
@@ -109,8 +109,8 @@ msgstr "Datenerfassung"
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
 msgstr ""
-"Ein Fehler ist während der Kontrolle der Registrierung aufgetreten: "
-"<br><pre>%(response)s</pre>"
+"Ein Fehler ist während der Kontrolle der Registrierung aufgetreten: <br><pre>"
+"%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -128,8 +128,8 @@ msgid ""
 msgstr ""
 "Der Router ist zurzeit zu einer anderen E-Mail-Adresse zugeordnet. Gehen Sie "
 "bitte auf die <a href=\"%(url)s\">Turris-Webseite</a> und benutzen Sie den "
-"Registrierungscode <strong>%(reg_num)s</strong>, um eine andere "
-"E-Mail-Adresse zuordnen zu können."
+"Registrierungscode <strong>%(reg_num)s</strong>, um eine andere E-Mail-"
+"Adresse zuordnen zu können."
 
 #, python-format
 msgid ""
@@ -137,10 +137,9 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
-"Diese E-Mail-Adresse ist noch nicht registriert. Gehen Sie bitte auf die "
-"<a href=\"%(url)s\">Turris-Webseite</a> und benutzen Sie den "
-"Registrierungscode <strong>%(reg_num)s</strong>, um ein neues Benutzerkonto "
-"zu erstellen."
+"Diese E-Mail-Adresse ist noch nicht registriert. Gehen Sie bitte auf die <a "
+"href=\"%(url)s\">Turris-Webseite</a> und benutzen Sie den Registrierungscode "
+"<strong>%(reg_num)s</strong>, um ein neues Benutzerkonto zu erstellen."
 
 msgid "About"
 msgstr "Über"
@@ -205,7 +204,6 @@ msgstr "%(notification)s von %(created_at)s"
 msgid "Notification"
 msgstr "Notifikation"
 
-#, fuzzy
 msgid "Enable data collection"
 msgstr "Datenerfassung aktivieren"
 
@@ -215,7 +213,6 @@ msgstr "DNS"
 msgid "Use forwarding"
 msgstr "Weiterleitung benutzen"
 
-#, fuzzy
 msgid "Disable DNSSEC"
 msgstr "DNSSEC deaktivieren"
 
@@ -582,15 +579,12 @@ msgstr "Statische IP-Adresse (manuelle Konfiguration)"
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr "PPoE (für DSL Bridge, Turris-Modem, usw.)"
 
-#, fuzzy
-msgid "Disable IPv6"
-msgstr "IPv6 deaktivieren"
-
-#, fuzzy
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatische Konfiguration)"
 
-#, fuzzy
+msgid "Disable IPv6"
+msgstr "IPv6 deaktivieren"
+
 msgid "IPv4 protocol"
 msgstr "IPv4-Protokoll"
 
@@ -622,7 +616,6 @@ msgstr "PAP/CHAP-Benutzername"
 msgid "PAP/CHAP password"
 msgstr "PAP/CHAP-Kennwort"
 
-#, fuzzy
 msgid "IPv6 protocol"
 msgstr "IPv6-Protokoll"
 
@@ -765,28 +758,37 @@ msgstr ""
 "unterstützt sein mag. Gewöhnlich ist dieses Frequenzband weniger gestört, es "
 "breitet sich aber in Gebäuden schlechter aus."
 
-msgid "802.11n mode"
-msgstr "802.11n-Modus"
-
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-msgid "Enabled (20 MHz wide channel)"
-msgstr "Aktiviert (20 MHz breiter Kanal)"
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz breiter Kanal"
 
-msgid "Enabled (40 MHz wide channel)"
-msgstr "Aktiviert (40 MHz breiter Kanal)"
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz breiter Kanal"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz breiter Kanal"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz breiter Kanal"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz breiter Kanal"
+
+msgid "802.11n/ac mode"
+msgstr "802.11n/ac-Modus"
 
 msgid ""
-"Change this to adjust 802.11n mode of operation. 802.11n with 40 MHz wide "
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
 "channels can yield higher throughput but can cause more interference in the "
 "network. If you don't know what to choose, use the default option with 20 "
 "MHz wide channel."
 msgstr ""
-"Diese Option ändert den 802.11n-Betriebsmodus. Im 802.11n-Modus mit 40 MHz "
-"Kanalbreite könnt Ihr einen größeren Datendurchsatz erreichen, es mag aber "
-"dabei zu größeren Kommunikationsstörungen kommen. Im Zweifelsfall ist 20 MHz "
-"die zuverlässigere Wahl."
+"Diese Option ändert den 802.11n/ac-Betriebsmodus. Im 802.11n-Modus mit 40 "
+"MHz Kanalbreite könnt Ihr einen größeren Datendurchsatz erreichen, es mag "
+"aber dabei zu größeren Kommunikationsstörungen kommen. Im Zweifelsfall ist "
+"20 MHz die zuverlässigere Wahl."
 
 msgid "Network channel"
 msgstr "Netzwerkkanal"
@@ -869,8 +871,8 @@ msgid ""
 "\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Mit der Aktivierung der automatischen Aktualisierungen bestätigen Sie, dass "
-"Sie der Eigentümer dieses Turris-Omnia-Routers sind und dass Sie der "
-"<a href=\"https://www.turris.cz/omnia-updater-eula\">Lizenzvereinbarung</a> "
+"Sie der Eigentümer dieses Turris-Omnia-Routers sind und dass Sie der <a href="
+"\"https://www.turris.cz/omnia-updater-eula\">Lizenzvereinbarung</a> "
 "zustimmen."
 
 msgid "Reboot now"
@@ -931,7 +933,6 @@ msgstr ""
 "welche dann in alle Turris-Geräte hochgeladen werden, um alle Geräte zu "
 "schützen."
 
-#, fuzzy
 msgid ""
 "The Updater is currently disabled. You must enable it first to enable data "
 "collection."
@@ -982,6 +983,9 @@ msgstr "Gerät"
 
 msgid "Serial number"
 msgstr "Seriennummer"
+
+msgid "Turris OS version"
+msgstr "Version von Turris OS"
 
 msgid "Kernel version"
 msgstr "Kernelversion"
@@ -1126,8 +1130,8 @@ msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
 "package lists."
 msgstr ""
-"Updater ist zurzeit deaktiviert. Aktivieren Sie ihn, damit Sie die Liste "
-"der Softwarepakete verwalten können."
+"Updater ist zurzeit deaktiviert. Aktivieren Sie ihn, damit Sie die Liste der "
+"Softwarepakete verwalten können."
 
 msgid ""
 "List of available software was not downloaded from the server yet. Please "
@@ -1324,22 +1328,21 @@ msgstr ""
 "Sie haben sich entschlossen, den Updater-Dienst während des "
 "Installationsvorgangs zu deaktivieren."
 
-#, fuzzy
 msgid ""
 "Without the Updater, installed software will not be kept up to date and you "
 "will also not be able to install Updater's package lists."
 msgstr ""
 "Ohne den Updater-Dienst wird die Installierte Software nicht aktualisiert. "
-"Es wird auch nicht möglich sein, Listen der Softwarepakete, die zu "
-"Updater-Dienst gehören, zu installieren."
+"Es wird auch nicht möglich sein, Listen der Softwarepakete, die zu Updater-"
+"Dienst gehören, zu installieren."
 
 msgid ""
 "By enabling of the Updater, you can also join our research project: <a href="
 "\"https://www.turris.cz/\">Project Turris</a>."
 msgstr ""
 "Wenn Sie Updater aktivieren, dann erhalten Sie die Möglichkeit unserem "
-"Forschungsprojekt beizutreten: <a href=\"https://www.turris.cz/\">"
-"Turris-Projekt</a>."
+"Forschungsprojekt beizutreten: <a href=\"https://www.turris.cz/\">Turris-"
+"Projekt</a>."
 
 #, python-format
 msgid ""
@@ -1355,8 +1358,8 @@ msgid ""
 "become a probe that analyzes the traffic between internet and the home "
 "network and identifies suspicious data flows."
 msgstr ""
-"Mit dem Turris-Omnia-Router können Sie sich an unserem Forschungsprojekt "
-"<a href=\"https://www.turris.cz/\">Turris-Projekt</a> beteiligen. In diesem "
+"Mit dem Turris-Omnia-Router können Sie sich an unserem Forschungsprojekt <a "
+"href=\"https://www.turris.cz/\">Turris-Projekt</a> beteiligen. In diesem "
 "Projekt wird Ihr Router zu einer Sonde, welche den Datenfluss analysiert und "
 "verdächtige Datenströme identifiziert."
 
@@ -1365,8 +1368,8 @@ msgid ""
 "You can enable these additional features by following the instructions on "
 "the <a href=\"%(url)s\">Data collection</a> page."
 msgstr ""
-"Folgen Sie den Anweisungen auf der <a href=\"%(url)s\">Datenerfassung"
-"</a>-Webseite, um die Zusatzfunktionen zu aktivieren."
+"Folgen Sie den Anweisungen auf der <a href=\"%(url)s\">Datenerfassung</a>-"
+"Webseite, um die Zusatzfunktionen zu aktivieren."
 
 msgid "Important updates"
 msgstr "Wichtige Aktualisierungen"
@@ -1380,7 +1383,6 @@ msgstr ""
 "Einige Dienste können außer Betrieb bleiben, bis das Gerät neu gestartet "
 "wird. Für weitere Einzelheiten siehe unten."
 
-#, fuzzy
 msgid "Continue to the configuration interface"
 msgstr "Zur Konfigurationsschnittstelle gehen"
 
@@ -1512,12 +1514,3 @@ msgstr "Nicht im Bereich %(low)s - %(high)s."
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Die Länge muss zwischen %(low)s bis %(high)s Zeichen liegen."
-
-#~ msgid "Updater config"
-#~ msgstr "Updater-Einstellungen"
-
-#~ msgid "Disable Updater"
-#~ msgstr "Updater deaktivieren"
-
-#~ msgid "Use IPv6"
-#~ msgstr "IPv6 benutzen"
