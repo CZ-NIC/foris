@@ -176,12 +176,7 @@ class WizardStep3(WizardStepMixin, BaseConfigHandler):
     userfriendly_title = gettext("Connectivity test")
 
     def _disable_forwarding(self):
-        uci = Uci()
-        unbound = Config("unbound")
-        uci.add(unbound)
-        server = Section("server", "unbound")
-        unbound.add(server)
-        server.add(Option("forward_upstream", "0"))
+        uci = build_option_uci_tree("resolver.common.forward_upstream", "resolver", "0")
         try:
             client.edit_config(uci.get_xml())
             return True

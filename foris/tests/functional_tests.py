@@ -204,12 +204,12 @@ class TestConfig(ForisTest):
         form = page.forms['main-form']
 
         # check form for forwarding upstream
-        default_state = self.uci_get("unbound.server.forward_upstream")
+        default_state = self.uci_get("resolver.common.forward_upstream")
         test_state = not bool(int(default_state))
         form.set("forward_upstream", test_state, 1)  # index 1 contains "1"
         submit = form.submit().follow()
         assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
-        new_state = self.uci_get("unbound.server.forward_upstream")
+        new_state = self.uci_get("resolver.common.forward_upstream")
         assert_equal(str(int(test_state)), new_state)
 
         res = self.app.get("/config/dns/ajax?action=check-connection", headers=XHR_HEADERS)
