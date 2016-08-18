@@ -5,6 +5,8 @@ Foris.messages.error = "Fehler";
 Foris.messages.loading = "Wird geladen...";
 Foris.messages.checkNoForward = "Test der Internetverbindung scheiterte, versuche Verbindungstest ohne IP-Weiterleitung.";
 Foris.messages.lanIpChanged = 'Die IP-Adresse Ihres Routers wurde geändert. Der Router sollte jetzt auf der Adresse <a href="%NEW_LOC%">%IP_ADDR%</a> verfügbar sein. Für mehr Informationen über die IP-Adressenänderung siehe Hinweis oben.';
+Foris.messages.confirmDisabledUpdates = 'Warnung: Sie haben die automatischen Aktualisierungen deaktiviert. Dass kann für die Netzwerksicherheit gefährlich werden.\n\nSind Sie sicher, dass Sie die Aktualisierungen deaktivieren wollen?';
+Foris.messages.confirmDisabledDNSSEC = 'DNSSEC gewährleistet, dass Sie mit Servern kommunizieren, mit denen Sie wirklich kommunizieren wollen. Wenn sie DNSSEC deaktivieren, dann erhöhen Sie die Wahrscheinlichkeit, dass Sie ein Opfer eines Man-in-the-Middle-Angriffs werden.\n\nWollen Sie wirklich DNSSEC deaktivieren?';
 Foris.messages.confirmRestart = "Wollen Sie wirklich den Router neu starten?";
 Foris.messages.confirmRestartExtra = "\nAlle übrigen ungelesenen Nachrichten (%UNREAD%) werden gelöscht.";
 Foris.messages.unsavedNotificationsAlert = "Änderungen in den Einstellungen wurden durchgeführt, welche aber nicht gespeichert wurden.\nWollen Sie die Änderungen verwerfen und eine neue Testnachricht mit ursprünglichen Einstellungen absenden?";

@@ -81,4 +81,9 @@
     %end
 %if not defined('is_xhr'):
 </div>
+<script>
+  $('#field-agreed_0').click(function () {
+    return confirm(Foris.messages.confirmDisabledUpdates);
+  });
+</script>
 %end

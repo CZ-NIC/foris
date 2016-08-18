@@ -89,5 +89,10 @@
                         self.removeAttr("disabled");
                     });
         });
+        $('#field-ignore_root_key_1').click(function () {
+          if (this.checked)
+            return confirm(Foris.messages.confirmDisabledDNSSEC);
+          return true;
+        });
     });
 </script>

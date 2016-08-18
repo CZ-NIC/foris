@@ -24,6 +24,8 @@ var Foris = {
     loading: "Loading...",
     checkNoForward: "Connectivity test failed, testing connection with disabled forwarding.",
     lanIpChanged: 'The IP address of your router has been changed. It should be accessible from <a href="%NEW_LOC%">%IP_ADDR%</a>. See the note above for more information about IP address change.',
+    confirmDisabledUpdates: 'You have chosen to not receive security updates. We strongly advice you to keep the automatic security updates enabled to receive all recommended updates for your device. Updating your router on regular basis is the only way how to ensure you will be protected against known threats that might target your home router device.\n\nDo you still want to continue and stay unprotected?',
+    confirmDisabledDNSSEC: 'DNSSEC is a security technology that protects the DNS communication against attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC validation enabled unless you know that you will be connecting your device in the network where DNSSEC is broken.\n\nDo you still want to continue and stay unprotected?',
     confirmRestart: "Are you sure you want to restart the router?",
     confirmRestartExtra: "\nRemaining unread messages (%UNREAD%) will be deleted.",
     unsavedNotificationsAlert: "There are some unsaved changes in the notifications settings.\nDo you want to discard them and test the notifications with the old settings?"
@@ -270,6 +272,11 @@ Foris.showUpdaterFail = function (data) {
 
 Foris.initEulaForm = function () {
   $("#updater-eula").show();
+
+  $('#field-agreed_0').click(function () {
+    return confirm(Foris.messages.confirmDisabledUpdates);
+  });
+
   var eulaForm = $("#eula-form");
   eulaForm.submit(function (e) {
     e.preventDefault();
