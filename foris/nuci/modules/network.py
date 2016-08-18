@@ -34,6 +34,14 @@ class Connection(YinElement):
         check_results = {}
         for elem in connection_el:
             check_results[unqualify(elem.tag)] = True if elem.text == "true" else False
+
+        # It is confusing that DNSSEC test reports OK even if DNS does not work.
+        # It's better to report DNSSEC as broken then, because we can't effectively
+        # check its status.
+        if "DNS" in check_results and "DNSSEC" in check_results:
+            if not check_results['DNS']:
+                check_results['DNSSEC'] = False
+
         return Connection(check_results)
 
     @staticmethod
