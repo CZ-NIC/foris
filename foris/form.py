@@ -536,7 +536,7 @@ class Radio(Input):
             attrs['value'] = value
             if self.value == value:
                 attrs['checked'] = 'checked'
-            x += '<label><input %s/> %s</label>' % (attrs, websafe(desc))
+            x += '<label for="%s"><input %s/> %s</label>' % (attrs['id'], attrs, websafe(desc))
         return x + "</div>"
 
 
