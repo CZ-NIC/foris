@@ -260,7 +260,7 @@ class WizardStep6(WizardStepMixin, UpdaterEulaHandler):
     template = "wizard/updater.tpl"
     name = "updater"
     next_step_allowed = 7
-    userfriendly_title = gettext("System update")
+    userfriendly_title = gettext("Automatic updates")
 
     @require_customization("omnia")
     def _action_submit_eula(self):

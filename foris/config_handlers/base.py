@@ -775,9 +775,9 @@ class UpdaterEulaHandler(BaseConfigHandler):
         main_section = form.add_section(name="agree_eula",
                                         title=_(self.userfriendly_title))
         main_section.add_field(
-            Radio, name="agreed", label=_("I agree"), default="",
-            args=(("1", _("I agree and I want to receive automatic updates.")),
-                  ("0", _("I do not agree and I do not want to receive automatic updates."))),
+            Radio, name="agreed", label=_("I agree"), default="1",
+            args=(("1", _("Use automatic updates (recommended)")),
+                  ("0", _("Turn automatic updates off"))),
             nuci_path="uci.foris.eula.agreed_updater",
             nuci_preproc=lambda val: str(val.value)
         )
