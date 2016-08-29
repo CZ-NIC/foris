@@ -27,7 +27,7 @@
       %if collecting_enabled:
         <div class="message info">{{ trans("Data collection is currently enabled. You can not disable updater without disabling the data collection first.") }}</div>
       %else:
-          %include("includes/updater_eula_summary.tpl")
+          %include("includes/updater_eula.tpl")
 
           <form id="updater-eula-form" class="maintenance-form" action="{{ url("config_action", page_name="updater", action="toggle_updater") }}" method="post" autocomplete="off" novalidate>
               %include("_messages.tpl")
