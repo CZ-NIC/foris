@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-03 12:11+0200\n"
+"POT-Creation-Date: 2016-08-29 09:56+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -31,175 +31,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-msgid "Configuration was successfully saved."
-msgstr "Nastavení bylo úspěšně uloženo."
-
-msgid "There were some errors in your input."
-msgstr "Některé z Vámi zadaných údajů nejsou platné."
-
-msgid "Old password you entered was not valid."
-msgstr "Vámi zadané původní heslo je neplatné."
-
-msgid "Password was successfully saved."
-msgstr "Heslo bylo úspěšně uloženo."
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"Do zdířky WAN není zapojený kabel, Vaše připojení do internetu zřejmě nebude "
-"fungovat."
-
-msgid "Maintenance"
-msgstr "Údržba"
-
-msgid "Wrong HTTP method."
-msgstr "Neplatná HTTP metoda"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "Testovací zpráva byla odeslána, zkontrolujte si prosím svou schránku."
-
-#, python-format
-msgid ""
-"Sending of the testing message failed, your configuration is possibly wrong."
-"<br>Error returned:<br><pre>%(error)s</pre>"
-msgstr ""
-"Odesílání testovací zprávy selhalo. Selhání bylo pravděpodobně způsobeno "
-"špatným nastavením.<br>Navrácená chyba:<br><pre>%(error)s</pre>"
-
-msgid "Sending of the testing message failed because of an internal error."
-msgstr "Testovací zprávu se nepodařilo odeslat kvůli vnitřní chybě."
-
-#, python-format
-msgid ""
-"Configuration was successfully restored. After installing updates and "
-"rebooting you can return to this page at <a href=\"%(new_url)s\">"
-"%(new_url)s</a> in local network. Please wait a while until router "
-"automatically restarts."
-msgstr ""
-"Nastavení bylo úspěšně obnoveno. Po instalaci aktualizací a restartu "
-"zařízení bude router z vnitřní sítě dostupný na adrese <a href=\"%(new_url)s"
-"\">%(new_url)s</a>. Vyčkejte prosím na automatický restart routeru."
-
-msgid ""
-"Configuration was successfully restored. Please wait a while for "
-"installation of updates and automatic restart of the device."
-msgstr ""
-"Nastavení bylo úspěšně obnoveno.  Vyčkejte prosím na aktualizaci zařízení a "
-"automatický restart routeru."
-
-msgid "IP address of the router could not be determined from the backup."
-msgstr "Ze zálohy se nepodařilo určit IP adresu routeru."
-
-msgid "Configuration could not be loaded, backup file is probably corrupted."
-msgstr ""
-"Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
-"poškozený."
-
-msgid ""
-"Configuration was successfully saved. Selected packages should be installed "
-"or removed shortly."
-msgstr ""
-"Nastavení bylo úspěšně uloženo. Vybrané balíčky budou během chvíle "
-"nainstalovány nebo odstraněny."
-
 msgid "Data collection"
 msgstr "Sběr dat"
-
-#, python-format
-msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
-msgstr ""
-"Při ověřování registrace došlo k následující chybě: <br><pre>%(response)s</"
-"pre>"
-
-msgid ""
-"Registration for the entered email is valid. Now you can enable the data "
-"collection."
-msgstr ""
-"Registrace pro tuto emailovou adresu je platná. Nyní můžete aktivovat sběr "
-"dat."
-
-#, python-format
-msgid ""
-"This router is currently assigned to a different email address. Please "
-"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
-"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
-"email address."
-msgstr ""
-"Tento router je v současnosti přiřazen k jiné emailové adrese. Pokračujte "
-"prosím na <a href=\"%(url)s\">portál Turris</a> a použijte registrační kód "
-"<strong>%(reg_num)s</strong> pro přiřazení k Vaší emailové adrese."
-
-#, python-format
-msgid ""
-"This email address is not registered yet. Please continue to the <a href="
-"\"%(url)s\">Turris website</a> and use the registration code <strong>"
-"%(reg_num)s</strong> to create a new account."
-msgstr ""
-"Tato emailová adresa zatím není zaregistrována. Pokračujte prosím na <a href="
-"\"%(url)s\">portál Turris</a> a použijte registrační kód <strong>"
-"%(reg_num)s</strong> pro vytvoření nového účtu."
-
-msgid "About"
-msgstr "O routeru"
-
-msgid "Online"
-msgstr "Online"
-
-msgid "Offline"
-msgstr "Offline"
-
-msgid "Connecting"
-msgstr "Připojování"
-
-msgid "Invalid authentication"
-msgstr "Neplatná autentizace"
-
-msgid "Broken"
-msgstr "Nefunkční"
-
-msgid "Unknown status"
-msgstr "Neznámý stav"
-
-msgid "Home page"
-msgstr "Hlavní stránka"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
-
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Průvodce nastavením - krok %s"
-
-msgid "Connectivity test"
-msgstr "Test připojení"
-
-msgid "System update"
-msgstr "Kontrola aktualizací"
-
-msgid "Installation finished"
-msgstr "Instalace dokončena"
-
-msgid "The password you entered was not valid."
-msgstr "Vámi zadané heslo je neplatné."
-
-msgid "News"
-msgstr "Novinky"
-
-msgid "Update"
-msgstr "Aktualizace"
-
-msgid "Error"
-msgstr "Chyba"
-
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
-
-#, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s z %(created_at)s"
-
-msgid "Notification"
-msgstr "Upozornění"
 
 msgid "Enable data collection"
 msgstr "Povolit sběr dat"
@@ -262,6 +95,9 @@ msgstr "Začátek DHCP rozsahu"
 
 msgid "DHCP max leases"
 msgstr "Počet přidělovaných adres"
+
+msgid "Maintenance"
+msgstr "Údržba"
 
 msgid "Backup file"
 msgstr "Soubor se zálohou"
@@ -559,11 +395,11 @@ msgstr "Statická IP adresa (manuální konfigurace)"
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr "PPPoE (pro DSL bridge, modem Turris, atp.)"
 
-msgid "Disable IPv6"
-msgstr "Nepoužívat IPv6"
-
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatická konfigurace)"
+
+msgid "Disable IPv6"
+msgstr "Nepoužívat IPv6"
 
 msgid "IPv4 protocol"
 msgstr "Protokol IPv4"
@@ -777,174 +613,6 @@ msgstr ""
 "Heslo, které bude vyžadováno pro připojení k této síti, alespoň 8 znaků "
 "dlouhé."
 
-msgid "You have been logged out due to longer inactivity."
-msgstr "Byl jste odhlášen z důvodu delší doby nečinnosti."
-
-msgid "Hint"
-msgstr "Nápověda"
-
-msgid ""
-"Router Turris Omnia is equipped with the unique function of automatic system "
-"updates. Thanks to this function your router's software stays up to date and "
-"offers better protection against attacks from the Internet. Before you turn "
-"this function on, please read the following key points:"
-msgstr ""
-"Router Turris Omnia je vybaven unikátní funkcí automatických aktualizací. "
-"Díky nim je software ve Vašem routeru stále aktuální, čímž je jak router "
-"samotný, tak Vaše domácí síť odolnější vůči útokům ze sítě Internet. Dříve, "
-"než tuto funkci zapnete, bychom Vás rádi seznámili s několika pravidly:"
-
-msgid ""
-"Thanks to the Turris Omnia router you have a unique opportunity to have an "
-"additional security measure in your network for free."
-msgstr ""
-"Díky routeru Turris Omnia získáváte možnost bezplatného dodatečného "
-"zabezpečení Vaší sítě skrze bezpečnostní aktualizace."
-
-msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr "Aktualizace jsou připravovány výhradně společností CZ.NIC, z. s. p. o."
-
-msgid ""
-"Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
-msgstr ""
-"Povolení automatických aktualizací je podmínkou pro zapnutí dalších "
-"bezpečnostních funkcí routeru Turris Omnia."
-
-msgid ""
-"Having the automatic updates turned on can result in increased Internet "
-"traffic on your router. Expenses related to this increase are covered by you."
-msgstr ""
-"V souvislosti se stahováním aktualizací můžete zaznamenat zvýšení datových "
-"přenosů. Náklady spojené s těmito zvýšenými datovými přenosy jdou na Váš "
-"účet."
-
-msgid ""
-"Automatic updates cannot protect you against every attack coming from the "
-"Internet. Please do not forget to protect your workstations and other "
-"devices by installing antivirus software and explaining to your family "
-"members how to stay safe on the Internet."
-msgstr ""
-"Bezpečnostní aktualizace nejsou všespásné; nezapomínejte jak na řádné "
-"zabezpečení Vaší sítě a pracovních stanic antivirem, tak na osvětu "
-"uživatelů. Sdružení CZ.NIC Vám neposkytuje ochranu proti síťovým útokům, "
-"škodlivým datovým tokům a dalším bezpečnostním incidentům, ke kterým může "
-"v rámci sítě internet docházet."
-
-msgid ""
-"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
-"is not responsible for any damages caused by the automatic updates."
-msgstr ""
-"CZ.NIC, z. s. p. o. negarantuje dostupnost služby a nepřebírá zodpovědnost "
-"za škody způsobené aktualizacemi."
-
-msgid ""
-"By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
-msgstr ""
-"Povolením instalace aktualizací potvrzujete, že jste vlastníkem tohoto "
-"routeru Turris Omnia a seznámil(a) jste se s <a href=\"https://www.turris.cz/"
-"omnia-updater-eula\">kompletními podmínkami účasti</a> v tomto projektu."
-
-msgid "Reboot now"
-msgstr "Restartovat nyní"
-
-msgid "Dismiss"
-msgstr "Zahodit"
-
-msgid "Language"
-msgstr "Jazyk"
-
-msgid "Project:Turris"
-msgstr "Project:Turris"
-
-msgid "Log out"
-msgstr "Odhlásit se"
-
-msgid "Log in"
-msgstr "Přihlásit se"
-
-msgid "Foris Configuration Interface"
-msgstr "Konfigurační rozhraní Foris"
-
-msgid "Go to LuCI"
-msgstr "Přejít na LuCI"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Tato stránka potřebuje pro správnou funkci zapnutý JavaScript. Zapněte si "
-"prosím v prohlížeči JavaScript a stránku obnovte."
-
-msgid "Turris router administration interface"
-msgstr "Administrační rozhraní routeru Turris"
-
-msgid ""
-"With the Turris Omnia router you can join Project Turris which is a non-"
-"profit research project founded by the CZ.NIC association, a .CZ domain "
-"registry. By joining the project, your router will act as a probe which "
-"analyzes traffic between your home network and the Internet and helps to "
-"identify malicious data flows. Once such a flow is detected your router "
-"notifies the Turris headquarters which can compare the flow with data from "
-"the rest of the probes and assign it a threat level. If the flow is "
-"identified as an attack Turris headquarters can prepare an update which is "
-"distributed to every Turris router and helps them to protect themselves "
-"against the attack."
-msgstr ""
-"S routerem Turris Omnia je možné zapojit se do projektu Turris, což je "
-"neziskový výzkumný projekt sdružení CZ.NIC, z. s. p. o., správce české "
-"národní domény .CZ. Tím se stane Váš nový router současně sondou, která "
-"analyzuje provoz mezi internetem a domácí sítí a pomáhá identifikovat "
-"podezřelé datové toky. Při jejich detekci pak upozorní centrálu Turris na "
-"možný útok. Centrála systému umožňuje porovnat data z mnoha připojených "
-"routerů Turris a vyhodnotit nebezpečnost detekovaného provozu. V případě, že "
-"je útok odhalen, jsou vytvořeny aktualizace, které jsou distribuovány do "
-"celé sítě Turris a pomáhají tak chránit její uživatele."
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr "Updater je vypnutý, pro povolení sběru dat ho musíte nejprve zapnout."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Chcete-li plně využívat výhod tohoto projektu, je nutné se nejprve "
-"zaregistrovat na portálu Turris. Zde zadejte Vaši emailovou adresu, kterou "
-"si chcete zaregistrovat nebo která byla použita pro registraci v minulosti:"
-
-msgid "Validate email"
-msgstr "Ověřit email"
-
-msgid "Save"
-msgstr "Uložit"
-
-msgid "Discard changes"
-msgstr "Zahodit změny"
-
-msgid "Save changes"
-msgstr "Uložit změny"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - administrační rozhraní routeru Turris"
-
-msgid "Menu"
-msgstr "Menu"
-
-msgid ""
-"Welcome to the Turris administration site. Please, choose a config section "
-"you wish to change from the menu."
-msgstr ""
-"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím v menu "
-"sekci nastavení, kterou chcete upravovat."
-
-msgid "No new messages."
-msgstr "Žádné nové zprávy."
-
 msgid "Device"
 msgstr "Zařízení"
 
@@ -1007,104 +675,72 @@ msgstr ""
 msgid "Get registration code"
 msgstr "Získat registrační kód"
 
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - administrační rozhraní routeru Turris"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Log out"
+msgstr "Odhlásit se"
 
 msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
+"With the Turris Omnia router you can join Project Turris which is a non-"
+"profit research project founded by the CZ.NIC association, a .CZ domain "
+"registry. By joining the project, your router will act as a probe which "
+"analyzes traffic between your home network and the Internet and helps to "
+"identify malicious data flows. Once such a flow is detected your router "
+"notifies the Turris headquarters which can compare the flow with data from "
+"the rest of the probes and assign it a threat level. If the flow is "
+"identified as an attack Turris headquarters can prepare an update which is "
+"distributed to every Turris router and helps them to protect themselves "
+"against the attack."
 msgstr ""
-"Router Turris používá vlastní DNS resolver s podporou DNSSEC. Ten je schopen "
-"pracovat jak naprosto samostatně, tak s využitím DNS resolveru "
-"poskytovatele, skrze který je prováděno tzv. forwardování."
+"S routerem Turris Omnia je možné zapojit se do projektu Turris, což je "
+"neziskový výzkumný projekt sdružení CZ.NIC, z. s. p. o., správce české "
+"národní domény .CZ. Tím se stane Váš nový router současně sondou, která "
+"analyzuje provoz mezi internetem a domácí sítí a pomáhá identifikovat "
+"podezřelé datové toky. Při jejich detekci pak upozorní centrálu Turris na "
+"možný útok. Centrála systému umožňuje porovnat data z mnoha připojených "
+"routerů Turris a vyhodnotit nebezpečnost detekovaného provozu. V případě, že "
+"je útok odhalen, jsou vytvořeny aktualizace, které jsou distribuovány do "
+"celé sítě Turris a pomáhají tak chránit její uživatele."
 
 msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"Následující nastavení ovlivňuje právě nastavení DNS resolveru. V sítích, kde "
-"správně funguje DNS resolver poskytovatele je výhodnější jej používat, "
-"protože to většinou vede k rychlejší odezvě. Pokud však tento způsob "
-"nefunguje, je nutné použít variantu bez forwardování."
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr "Updater je vypnutý, pro povolení sběru dat ho musíte nejprve zapnout."
 
 msgid ""
-"If you encounter problems with the DNSSEC validation, you can try disabling "
-"it. However, it is strongly recommended not do to so. Most common cause for "
-"problems with the DNSSEC is invalid configuration of your ISP's network. Try "
-"contacting them first to resolve the issues."
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
 msgstr ""
-"Pokud se setkáte s problémy s DNSSEC validací, můžete se pokusit ji vypnout. "
-"Tato možnost se však důrazně nedoporučuje. Nejčastější příčinou nefunkční "
-"DNSSEC validace je špatná konfigurace na straně poskytovatele připojení, "
-"proto je vhodné nejprve zkusit kontaktovat jeho."
+"Chcete-li plně využívat výhod tohoto projektu, je nutné se nejprve "
+"zaregistrovat na portálu Turris. Zde zadejte Vaši emailovou adresu, kterou "
+"si chcete zaregistrovat nebo která byla použita pro registraci v minulosti:"
 
-msgid "Connection test"
-msgstr "Test připojení"
+msgid "Validate email"
+msgstr "Ověřit email"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Discard changes"
+msgstr "Zahodit změny"
+
+msgid "Save changes"
+msgstr "Uložit změny"
 
 msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
+"Welcome to the Turris administration site. Please, choose a config section "
+"you wish to change from the menu."
 msgstr ""
-"Zde si můžete otestovat funkčnost internetového připojení. Tento test je "
-"užitečný také v případě, kdy chcete otestovat, zda správně funguje nastavení "
-"DNS. Nezapomeňte stisknout tlačítko <strong>Uložit</strong>, pokud jste "
-"změnili nastavení forwardování výše."
+"Vítejte v administračním rozhraní routeru Turris. Vyberte si prosím v menu "
+"sekci nastavení, kterou chcete upravovat."
 
-msgid "Unable to verify network connection."
-msgstr "Nepodařilo se ověřit stav připojení."
-
-msgid "Test type"
-msgstr "Typ testu"
-
-msgid "Status"
-msgstr "Stav"
-
-msgid "IPv4 connectivity"
-msgstr "Konektivita IPv4"
-
-msgid "IPv4 gateway connectivity"
-msgstr "Dostupnost IPv4 brány"
-
-msgid "IPv6 connectivity"
-msgstr "Konektivita IPv6"
-
-msgid "IPv6 gateway connectivity"
-msgstr "Dostupnost IPv6 brány"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Otestovat připojení"
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Aktuálně máte povolený sběr dat. Pokud chcete vypnout updater, zakažte "
-"nejprve sběr dat."
-
-msgid "Package lists"
-msgstr "Seznamy balíčků"
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to manage "
-"package lists."
-msgstr ""
-"Updater je vypnutý, abyste mohli spravovat seznamy balíčků, musíte ho "
-"nejprve zapnout."
-
-msgid ""
-"List of available software was not downloaded from the server yet. Please "
-"come back later."
-msgstr ""
-"Ze serveru zatím nebyl stažen seznam dostupného softwaru. Vraťte se prosím "
-"později, až bude stažen."
+msgid "No new messages."
+msgstr "Žádné nové zprávy."
 
 msgid "Notifications and automatic restarts"
 msgstr "Upozornění a automatické restarty"
@@ -1190,26 +826,193 @@ msgstr ""
 msgid "Reboot"
 msgstr "Restartovat"
 
-msgid "Synchronize with your computer clock"
-msgstr "Synchronizovat s časem ve Vašem počítači"
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "Ve Vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
 
-msgid "Set time manually"
-msgstr "Nastavit čas ručně"
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Aktuálně máte povolený sběr dat. Pokud chcete vypnout updater, zakažte "
+"nejprve sběr dat."
 
-msgid "Synchronization successful."
-msgstr "Synchronizace proběhla úspěšně."
+msgid "Package lists"
+msgstr "Seznamy balíčků"
 
-msgid "Next"
-msgstr "Další"
+msgid ""
+"The Updater is currently disabled. You must enable it first to manage "
+"package lists."
+msgstr ""
+"Updater je vypnutý, abyste mohli spravovat seznamy balíčků, musíte ho "
+"nejprve zapnout."
 
-msgid "Time settings"
-msgstr "Nastavení času"
+msgid ""
+"List of available software was not downloaded from the server yet. Please "
+"come back later."
+msgstr ""
+"Ze serveru zatím nebyl stažen seznam dostupného softwaru. Vraťte se prosím "
+"později, až bude stažen."
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
+msgstr ""
+"Router Turris používá vlastní DNS resolver s podporou DNSSEC. Ten je schopen "
+"pracovat jak naprosto samostatně, tak s využitím DNS resolveru "
+"poskytovatele, skrze který je prováděno tzv. forwardování."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"Následující nastavení ovlivňuje právě nastavení DNS resolveru. V sítích, kde "
+"správně funguje DNS resolver poskytovatele je výhodnější jej používat, "
+"protože to většinou vede k rychlejší odezvě. Pokud však tento způsob "
+"nefunguje, je nutné použít variantu bez forwardování."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes "
+"with DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+"Ve výjimečných případech se může stát, že má poskytovatel nevhodnou "
+"konfiguraci sítě, která znemožňuje DNSSEC validaci. Pokud máte problémy s "
+"funkčností DNS, můžete <strong>dočasně</strong> zkusit DNSSEC validaci "
+"vypnout, abyste zjistili příčinu problému. Mějte však na paměti, že jste bez "
+"DNSSEC validace náchylní na útoky podvržením DNS překladu. Proto důrazně "
+"doporučujeme, abyste <strong>ponechali DNSSEC validaci zapnutou</strong> a "
+"problém řešili se svým poskytovatelem připojení, protože se jedná o závažnou "
+"chybu na jeho straně."
+
+msgid "Connection test"
+msgstr "Test připojení"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Zde si můžete otestovat funkčnost internetového připojení. Tento test je "
+"užitečný také v případě, kdy chcete otestovat, zda správně funguje nastavení "
+"DNS. Nezapomeňte stisknout tlačítko <strong>Uložit</strong>, pokud jste "
+"změnili nastavení forwardování výše."
+
+msgid "Unable to verify network connection."
+msgstr "Nepodařilo se ověřit stav připojení."
+
+msgid "Test type"
+msgstr "Typ testu"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "IPv4 connectivity"
+msgstr "Konektivita IPv4"
+
+msgid "IPv4 gateway connectivity"
+msgstr "Dostupnost IPv4 brány"
+
+msgid "IPv6 connectivity"
+msgstr "Konektivita IPv6"
+
+msgid "IPv6 gateway connectivity"
+msgstr "Dostupnost IPv6 brány"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Test connection"
+msgstr "Otestovat připojení"
+
+msgid ""
+"Router Turris Omnia is equipped with the unique function of automatic system "
+"updates. Thanks to this function your router's software stays up to date and "
+"offers better protection against attacks from the Internet. Before you turn "
+"this function on, please read the following key points:"
+msgstr ""
+"Router Turris Omnia je vybaven unikátní funkcí automatických aktualizací. "
+"Díky nim je software ve Vašem routeru stále aktuální, čímž je jak router "
+"samotný, tak Vaše domácí síť odolnější vůči útokům ze sítě Internet. Dříve, "
+"než tuto funkci zapnete, bychom Vás rádi seznámili s několika pravidly:"
+
+msgid ""
+"Thanks to the Turris Omnia router you have a unique opportunity to have an "
+"additional security measure in your network for free."
+msgstr ""
+"Díky routeru Turris Omnia získáváte možnost bezplatného dodatečného "
+"zabezpečení Vaší sítě skrze bezpečnostní aktualizace."
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr "Aktualizace jsou připravovány výhradně společností CZ.NIC, z. s. p. o."
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional security "
+"features of Turris Omnia."
+msgstr ""
+"Povolení automatických aktualizací je podmínkou pro zapnutí dalších "
+"bezpečnostních funkcí routeru Turris Omnia."
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by you."
+msgstr ""
+"V souvislosti se stahováním aktualizací můžete zaznamenat zvýšení datových "
+"přenosů. Náklady spojené s těmito zvýšenými datovými přenosy jdou na Váš "
+"účet."
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the "
+"Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+"Bezpečnostní aktualizace nejsou všespásné; nezapomínejte jak na řádné "
+"zabezpečení Vaší sítě a pracovních stanic antivirem, tak na osvětu "
+"uživatelů. Sdružení CZ.NIC Vám neposkytuje ochranu proti síťovým útokům, "
+"škodlivým datovým tokům a dalším bezpečnostním incidentům, ke kterým může "
+"v rámci sítě internet docházet."
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
+"is not responsible for any damages caused by the automatic updates."
+msgstr ""
+"CZ.NIC, z. s. p. o. negarantuje dostupnost služby a nepřebírá zodpovědnost "
+"za škody způsobené aktualizacemi."
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner of "
+"this Turris Omnia router and you agree with the full text of the <a href="
+"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+"Povolením instalace aktualizací potvrzujete, že jste vlastníkem tohoto "
+"routeru Turris Omnia a seznámil(a) jste se s <a href=\"https://www.turris.cz/"
+"omnia-updater-eula\">kompletními podmínkami účasti</a> v tomto projektu."
+
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Skip wizard"
+msgstr "Přeskočit průvodce"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Step"
+msgstr "Krok"
 
 msgid "Loading..."
 msgstr "Načítání..."
 
-msgid "Synchronizing router time with an internet time server."
-msgstr "Probíhá synchronizace času s internetovým serverem."
+msgid "Checking internet connectivity."
+msgstr "Probíhá test internetového připojení."
 
 msgid "One moment, please..."
 msgstr "Chvilku strpení..."
@@ -1217,14 +1020,14 @@ msgstr "Chvilku strpení..."
 msgid "Done"
 msgstr "Hotovo"
 
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
-
-msgid "Checking internet connectivity."
-msgstr "Probíhá test internetového připojení."
-
 msgid "Internet connectivity test passed without error."
 msgstr "Test připojení k internetu proběhl bez chyb."
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Error"
+msgstr "Chyba"
 
 msgid ""
 "Your internet connection has network connectivity but DNS resolving does not "
@@ -1261,8 +1064,8 @@ msgstr ""
 msgid "Adjust WAN settings"
 msgstr "Upravit nastavení WAN"
 
-msgid "Skip wizard"
-msgstr "Přeskočit průvodce"
+msgid "Installation finished"
+msgstr "Instalace dokončena"
 
 #, python-format
 msgid ""
@@ -1339,15 +1142,6 @@ msgstr ""
 msgid "Continue to the configuration interface"
 msgstr "Pokračovat do konfiguračního rozhraní"
 
-msgid "Registration failure"
-msgstr "Chyba při registraci"
-
-msgid "Continue to configuration interface"
-msgstr "Pokračovat do konfiguračního rozhraní"
-
-msgid "Step"
-msgstr "Krok"
-
 msgid "Welcome to configuration of router Turris"
 msgstr "Vítejte v nastavení routeru Turris"
 
@@ -1373,6 +1167,12 @@ msgstr ""
 msgid "Begin installation"
 msgstr "Zahájit instalaci"
 
+msgid "Registration failure"
+msgstr "Chyba při registraci"
+
+msgid "Continue to configuration interface"
+msgstr "Pokračovat do konfiguračního rozhraní"
+
 #, python-format
 msgid ""
 "Device was successfully installed. Last step that is required is a "
@@ -1389,6 +1189,24 @@ msgid ""
 msgstr ""
 "<strong>Upozornění:</strong> kód má omezenou časovou platnost - v případě, "
 "že nebude při aktivaci akceptován, obnovte tuto stránku pro získání nového."
+
+msgid "Synchronize with your computer clock"
+msgstr "Synchronizovat s časem ve Vašem počítači"
+
+msgid "Set time manually"
+msgstr "Nastavit čas ručně"
+
+msgid "Synchronization successful."
+msgstr "Synchronizace proběhla úspěšně."
+
+msgid "Time settings"
+msgstr "Nastavení času"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Probíhá synchronizace času s internetovým serverem."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Čas byl úspěšně synchronizován, můžete postoupit k dalšímu kroku."
 
 msgid ""
 "Installing additional updates. Router will be restarted several times to "
@@ -1430,6 +1248,56 @@ msgstr "Pro pokračování se prosím přihlaste."
 msgid "Proceed to login"
 msgstr "Přejít na přihlášení"
 
+msgid "Hint"
+msgstr "Nápověda"
+
+msgid "Turris router administration interface"
+msgstr "Administrační rozhraní routeru Turris"
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Tato stránka potřebuje pro správnou funkci zapnutý JavaScript. Zapněte si "
+"prosím v prohlížeči JavaScript a stránku obnovte."
+
+msgid "Reboot now"
+msgstr "Restartovat nyní"
+
+msgid "Dismiss"
+msgstr "Zahodit"
+
+msgid "Log in"
+msgstr "Přihlásit se"
+
+msgid "Foris Configuration Interface"
+msgstr "Konfigurační rozhraní Foris"
+
+msgid "Go to LuCI"
+msgstr "Přejít na LuCI"
+
+msgid "You have been logged out due to longer inactivity."
+msgstr "Byl jste odhlášen z důvodu delší doby nečinnosti."
+
+msgid "The password you entered was not valid."
+msgstr "Vámi zadané heslo je neplatné."
+
+msgid "News"
+msgstr "Novinky"
+
+msgid "Update"
+msgstr "Aktualizace"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s z %(created_at)s"
+
+msgid "Notification"
+msgstr "Upozornění"
+
 msgid "This field is required."
 msgstr "Toto pole je povinné."
 
@@ -1464,3 +1332,142 @@ msgstr "Musí být z rozsahu %(low)s - %(high)s."
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Délka musí být od %(low)s do %(high)s znaků."
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Průvodce nastavením - krok %s"
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"Do zdířky WAN není zapojený kabel, Vaše připojení do internetu zřejmě nebude "
+"fungovat."
+
+msgid "Connectivity test"
+msgstr "Test připojení"
+
+msgid "System update"
+msgstr "Kontrola aktualizací"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
+
+msgid "There were some errors in your input."
+msgstr "Některé z Vámi zadaných údajů nejsou platné."
+
+msgid "Configuration was successfully saved."
+msgstr "Nastavení bylo úspěšně uloženo."
+
+msgid "Old password you entered was not valid."
+msgstr "Vámi zadané původní heslo je neplatné."
+
+msgid "Password was successfully saved."
+msgstr "Heslo bylo úspěšně uloženo."
+
+msgid "Wrong HTTP method."
+msgstr "Neplatná HTTP metoda"
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Testovací zpráva byla odeslána, zkontrolujte si prosím svou schránku."
+
+#, python-format
+msgid ""
+"Sending of the testing message failed, your configuration is possibly wrong."
+"<br>Error returned:<br><pre>%(error)s</pre>"
+msgstr ""
+"Odesílání testovací zprávy selhalo. Selhání bylo pravděpodobně způsobeno "
+"špatným nastavením.<br>Navrácená chyba:<br><pre>%(error)s</pre>"
+
+msgid "Sending of the testing message failed because of an internal error."
+msgstr "Testovací zprávu se nepodařilo odeslat kvůli vnitřní chybě."
+
+#, python-format
+msgid ""
+"Configuration was successfully restored. After installing updates and "
+"rebooting you can return to this page at <a href=\"%(new_url)s\">"
+"%(new_url)s</a> in local network. Please wait a while until router "
+"automatically restarts."
+msgstr ""
+"Nastavení bylo úspěšně obnoveno. Po instalaci aktualizací a restartu "
+"zařízení bude router z vnitřní sítě dostupný na adrese <a href=\"%(new_url)s"
+"\">%(new_url)s</a>. Vyčkejte prosím na automatický restart routeru."
+
+msgid ""
+"Configuration was successfully restored. Please wait a while for "
+"installation of updates and automatic restart of the device."
+msgstr ""
+"Nastavení bylo úspěšně obnoveno.  Vyčkejte prosím na aktualizaci zařízení a "
+"automatický restart routeru."
+
+msgid "IP address of the router could not be determined from the backup."
+msgstr "Ze zálohy se nepodařilo určit IP adresu routeru."
+
+msgid "Configuration could not be loaded, backup file is probably corrupted."
+msgstr ""
+"Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
+"poškozený."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Nastavení bylo úspěšně uloženo. Vybrané balíčky budou během chvíle "
+"nainstalovány nebo odstraněny."
+
+#, python-format
+msgid ""
+"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+msgstr ""
+"Při ověřování registrace došlo k následující chybě: <br><pre>%(response)s</"
+"pre>"
+
+msgid ""
+"Registration for the entered email is valid. Now you can enable the data "
+"collection."
+msgstr ""
+"Registrace pro tuto emailovou adresu je platná. Nyní můžete aktivovat sběr "
+"dat."
+
+#, python-format
+msgid ""
+"This router is currently assigned to a different email address. Please "
+"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
+"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
+"email address."
+msgstr ""
+"Tento router je v současnosti přiřazen k jiné emailové adrese. Pokračujte "
+"prosím na <a href=\"%(url)s\">portál Turris</a> a použijte registrační kód "
+"<strong>%(reg_num)s</strong> pro přiřazení k Vaší emailové adrese."
+
+#, python-format
+msgid ""
+"This email address is not registered yet. Please continue to the <a href="
+"\"%(url)s\">Turris website</a> and use the registration code <strong>"
+"%(reg_num)s</strong> to create a new account."
+msgstr ""
+"Tato emailová adresa zatím není zaregistrována. Pokračujte prosím na <a href="
+"\"%(url)s\">portál Turris</a> a použijte registrační kód <strong>"
+"%(reg_num)s</strong> pro vytvoření nového účtu."
+
+msgid "About"
+msgstr "O routeru"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Connecting"
+msgstr "Připojování"
+
+msgid "Invalid authentication"
+msgstr "Neplatná autentizace"
+
+msgid "Broken"
+msgstr "Nefunkční"
+
+msgid "Unknown status"
+msgstr "Neznámý stav"
+
+msgid "Home page"
+msgstr "Hlavní stránka"
