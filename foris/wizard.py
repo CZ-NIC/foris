@@ -185,8 +185,9 @@ class WizardStep3(WizardStepMixin, BaseConfigHandler):
 
     @staticmethod
     def _check_connection():
-        check_results = client.check_connection().check_results
-        if check_results:
+        connection_check = client.check_connection()
+        if connection_check:
+            check_results = connection_check.check_results
             has_connection = (check_results.get('IPv4-connectivity')
                               or check_results.get('IPv6-connectivity'))
             resolves = check_results.get('DNS') and check_results.get('DNSSEC')
