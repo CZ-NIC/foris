@@ -277,7 +277,7 @@ Foris.initEulaForm = function () {
     return confirm(Foris.messages.confirmDisabledUpdates);
   });
 
-  var eulaForm = $("#eula-form");
+  var eulaForm = $('#updater-eula-form');
   eulaForm.submit(function (e) {
     e.preventDefault();
     eulaForm.find("button").attr('disabled', 'disabled');
