@@ -42,10 +42,10 @@ SASS_COMPILER = compass compile -s compressed -e production
 
 all: branding sass js localization tpl
 
-# target: minify-js - Create minified JS files using slimit JS compressor.
+# target: js - Create minified JS files using slimit JS compressor.
 js: $(JS_FILES) $(JS_MINIFIED)
 
-# target: preprocess-tpl - Do preprocessing of .pre.tpl files.
+# target: tpl - Do preprocessing of .pre.tpl files.
 tpl: $(PRE_TPL_FILES) $(TPL_FILES)
 
 # target: branding - Copy assets for a specified device to its location.
