@@ -19,12 +19,17 @@ IFS=''
 RELPATH='./foris/static/'
 
 while read -r line; do
-    if [[ $line != *MD5SUM* ]]
+    if [[ "$line" != *MD5SUM* ]]
     then
-        echo $line
+        echo "$line"
     else
-        filename=`echo $line | sed 's/.*static("\(.*\)").*/\1/'`
-        hash=`md5sum $RELPATH$filename | cut -d ' ' -f 1`
-        echo $line | sed "s/MD5SUM/$hash/"
+        filename=$(echo "$line" | sed 's/.*static("\(.*\)"\( % lang()\)*).*/\1/')
+        filename=${filename/\%s/*}
+        if [[ $filename == *"*"* ]]; then
+            hash=$(cat ${RELPATH}${filename} | md5sum | cut -d' ' -f1)
+        else
+            hash=$(md5sum "$RELPATH$filename" | cut -d ' ' -f 1)
+        fi
+        echo "$line" | sed "s/MD5SUM/$hash/"
     fi
 done < $1
