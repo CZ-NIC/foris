@@ -701,6 +701,7 @@ class UcollectHandler(BaseConfigHandler):
 
         SERVICES_OPTIONS = (
             ("23tcp", _("Telnet (23/TCP)")),
+            ("80tcp", _("HTTP (80/TCP)")),
         )
 
         def get_enabled_services(disabled_list):
@@ -747,10 +748,7 @@ class UcollectHandler(BaseConfigHandler):
             if len(disabled_services):
                 fakes.add_replace(disable)
             else:
-                # TODO: workaround for Nuci bug #3984 - remove when fixed
-                fakes_section = ucollect_form.nuci_config.find_child("uci.ucollect.fakes")
-                if fakes_section:
-                    fakes.add_removal(disable)
+                fakes.add_removal(disable)
 
             fakes.add(Option("log_credentials", data['log_credentials']))
 
