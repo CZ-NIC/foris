@@ -1127,8 +1127,7 @@ class WanHandler(BaseConfigHandler):
             if data['proto'] == WAN_PPPOE:
                 wan.add(Option("username", data['username']))
                 wan.add(Option("password", data['password']))
-                if data.get("wan6_proto"):
-                    wan.add(Option("ipv6", data['ppp_ipv6']))
+                wan.add(Option("ipv6", data.get("wan6_proto") is not WAN6_NONE))
                 ucollect_ifname = "pppoe-wan"
             elif data['proto'] == WAN_STATIC:
                 wan.add(Option("ipaddr", data['ipaddr']))
