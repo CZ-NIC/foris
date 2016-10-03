@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 16:28+0200\n"
+"POT-Creation-Date: 2016-10-03 11:04+0200\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Karel Slaný <karel.slany@nic.cz>\n"
 "Language-Team: German <>\n"
@@ -342,6 +342,12 @@ msgstr ""
 
 msgid "Telnet (23/TCP)"
 msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternativer Port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
 
 msgid "Collect credentials"
 msgstr "Benutzernamen und Kennwörter speichern"
