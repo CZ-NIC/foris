@@ -701,6 +701,7 @@ class UcollectHandler(BaseConfigHandler):
 
         SERVICES_OPTIONS = (
             ("23tcp", _("Telnet (23/TCP)")),
+            ("2323tcp", _("Telnet - alternative port (2323/TCP)")),
             ("80tcp", _("HTTP (80/TCP)")),
         )
 
