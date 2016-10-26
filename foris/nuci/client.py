@@ -24,12 +24,12 @@ from ncclient.manager import OpExecutor, CAPABILITIES
 from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 
-
 from . import filters
 from .exceptions import ConfigRestoreError
 from .modules import (maintain, network, password as password_module, registration,
                       stats, time as time_module, uci_raw, updater, user_notify)
 from .modules.base import Data, YinElement
+from .utils import LocalizableTextValue
 
 logger = logging.getLogger("nuci.client")
 
@@ -213,10 +213,18 @@ def get_registration_status(email, lang=None):
 
 def get_messages():
     try:
-        return get(filter=filters.messages).find_child("messages")
+        return get(filter=filters.messages).find_child("messages") or user_notify.Messages()
     except (RPCError, TimeoutExpiredError):
+        from foris.core import ugettext as _
         logger.exception("Unable to fetch messages")
-        return user_notify.Messages()
+        error_message = user_notify.Message(
+            message_id=None,
+            body=LocalizableTextValue(_("Unable to retrieve notifications, "
+                                        "please try refreshing the page.")),
+            severity="error",
+            timestamp=int(time())
+        )
+        return user_notify.Messages(messages=[error_message])
 
 
 def dismiss_notifications(message_ids):
