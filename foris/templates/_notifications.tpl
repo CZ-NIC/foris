@@ -15,14 +15,14 @@
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
 %for notification in notifications:
-    <div class="notification {{ notification.severity }}" id="notification_{{ notification.id }}">
+    <div class="notification {{ notification.severity }}" id="notification_{{ notification.id or id(notification) }}">
       <h2>{{! make_notification_title(notification) }}</h2>
       {{! notification.escaped_body[lang()] }}
       %if notification.requires_restart:
         <div class="buttons">
             <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
         </div>
-      %else:
+      %elif notification.id:
         <a href="#" class="dismiss" title="{{ trans("Dismiss") }}" data-id="{{ notification.id }}">&times;</a>
       %end
     </div>
