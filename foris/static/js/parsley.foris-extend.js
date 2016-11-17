@@ -6,6 +6,7 @@ window.ParsleyValidator
     .addMessage('cs', 'bytelength', "Tato položka musí mít délku od %s do %s znaků.")
     .addMessage('de', 'bytelength', "Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein.")
     .addMessage('en', 'bytelength', "This value length is invalid. It should be between %s and %s characters long.")
+    .addMessage('sk', 'bytelength', "Táto položka musí mať dĺžku od %s do %s znakov.")
     .addValidator('extratype', function( val, type ) {
         var regExp;
         var isIPv4 = function(val) {
@@ -100,6 +101,14 @@ window.ParsleyValidator
       anyip: "This is not a valid IPv4 or IPv6 address.",
       ipv6prefix: "This is not a valid IPv6 prefix.",
       macaddress: "This is not a valid MAC address."
+    })
+    .addMessage('sk', 'extratype', {
+      ipv4: "Toto nie je platná IPv4 adresa.",
+      ipv4netmask: "Toto nie je platná IPv4 sieťová maska.",
+      ipv6: "Toto nie je platná IPv6 adresa.",
+      anyip: "Toto nie je platná IPv4 alebo IPv6 adresa.",
+      ipv6prefix: "Toto nie je IPv6 adresa s dĺžkou prefixu.",
+      macaddress: "Toto nie je platná MAC adresa."
     });
 
 // patch method for getting error messages so it can get extratype messages from object structure
