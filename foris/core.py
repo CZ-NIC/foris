@@ -54,11 +54,14 @@ translations = {
                               languages=['de'], fallback=True),
     'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
                               languages=['en'], fallback=True),
+    'sk': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
+                              languages=['sk'], fallback=True),
 }
 translation_names = {
     'cs': "Česky",
     'de': "Deutsch",
     'en': "English",
+    'sk': "Slovenský",
 }
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
 ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
