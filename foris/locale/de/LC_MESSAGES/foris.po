@@ -549,7 +549,7 @@ msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
 
 msgid "Wi-Fi"
-msgstr "Wi-Fi"
+msgstr "WLAN"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
@@ -581,7 +581,7 @@ msgid "auto"
 msgstr "automatisch"
 
 msgid "Wi-Fi mode"
-msgstr "Wi-Fi-Betriebsmodus"
+msgstr "WLAN-Betriebsmodus"
 
 msgid ""
 "The 2.4 GHz band is more widely supported by clients, but tends to have more "
