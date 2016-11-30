@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-26 15:37+0200\n"
+"POT-Creation-Date: 2016-11-30 12:14+0100\n"
 "PO-Revision-Date: 2014-02-05 13:55+0100\n"
 "Last-Translator: Jan Cermak <jan.cermak@nic.cz>\n"
 "Language-Team: Czech <>\n"
@@ -336,6 +336,15 @@ msgstr "Telnet - alternativní port (2323/TCP)"
 
 msgid "HTTP (80/TCP)"
 msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
 
 msgid "Collect credentials"
 msgstr "Ukládat jména a hesla"
@@ -1298,12 +1307,6 @@ msgstr ""
 "Tato stránka potřebuje pro správnou funkci zapnutý JavaScript. Zapněte si "
 "prosím v prohlížeči JavaScript a stránku obnovte."
 
-msgid "Reboot now"
-msgstr "Restartovat nyní"
-
-msgid "Dismiss"
-msgstr "Zahodit"
-
 msgid "Log in"
 msgstr "Přihlásit se"
 
@@ -1312,6 +1315,12 @@ msgstr "Konfigurační rozhraní Foris"
 
 msgid "Go to LuCI"
 msgstr "Přejít na LuCI"
+
+msgid "Reboot now"
+msgstr "Restartovat nyní"
+
+msgid "Dismiss"
+msgstr "Zahodit"
 
 msgid "You have been logged out due to longer inactivity."
 msgstr "Byl jste odhlášen z důvodu delší doby nečinnosti."
