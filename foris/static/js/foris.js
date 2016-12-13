@@ -158,6 +158,8 @@ Foris.applySVGFallback = function() {
 
 Foris.updateForm = function (form) {
   var serialized = form.serializeArray();
+  serialized.push({name: 'update', value: '1'});
+
   var idSelector = form.attr("id") ? " #" + form.attr("id") : "";
   form.load(form.attr("action") + idSelector, serialized, function (response, status, xhr) {
     try {
