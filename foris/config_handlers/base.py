@@ -703,6 +703,9 @@ class UcollectHandler(BaseConfigHandler):
             ("23tcp", _("Telnet (23/TCP)")),
             ("2323tcp", _("Telnet - alternative port (2323/TCP)")),
             ("80tcp", _("HTTP (80/TCP)")),
+            ("3128tcp", _("Squid HTTP proxy (3128/TCP)")),
+            ("8123tcp", _("Polipo HTTP proxy (8123/TCP)")),
+            ("8080tcp", _("HTTP proxy (8080/TCP)")),
         )
 
         def get_enabled_services(disabled_list):

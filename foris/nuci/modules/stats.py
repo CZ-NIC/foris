@@ -30,6 +30,10 @@ class Stats(YinElement):
          -- 'uptime': system uptime (string)
          -- 'kernel-version': kernel version (string)
          -- 'turris-os-version': Turris OS version (string)
+         -- 'model': router model - e.g. Turris, Turris Omnia, ... (string)
+         -- 'board-name': board name - e.g. RTRS01, RTRS02, RTROM01, ... (string)
+                          (please note that this name is capitalized by postprocessing method)
+         -- 'hostname': router hostname (string)
          -- 'meminfo': dict of memory information
          ---- 'MemTotal': total RAM
          ---- 'MemFree': free RAM
@@ -98,6 +102,8 @@ class Stats(YinElement):
                 stats.data['model'] = elem.text
             elif elem.tag == Stats.qual_tag("board-name"):
                 stats.data['board-name'] = elem.text
+            elif elem.tag == Stats.qual_tag("hostname"):
+                stats.data['hostname'] = elem.text
             elif elem.tag == Stats.qual_tag("kernel-version"):
                 stats.data['kernel-version'] = elem.text
             elif elem.tag == Stats.qual_tag("turris-os-version"):

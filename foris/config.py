@@ -484,8 +484,9 @@ def config_page_post(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
-        # only update is allowed
-        return config_page.render(is_xhr=True)
+        if request.POST.pop("update", None):
+            # if update was requested, just render the page - otherwise handle actions as usual
+            return config_page.render(is_xhr=True)
     try:
         if config_page.save():
             bottle.redirect(request.fullpath)
@@ -515,9 +516,9 @@ def config_action_post(page_name, action):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
-        # only update is allowed
-        request.POST.pop("update", None)
-        return config_page.render(is_xhr=True)
+        if request.POST.pop("update", None):
+            # if update was requested, just render the page - otherwise handle actions as usual
+            return config_page.render(is_xhr=True)
     # check if the button click wasn't any sub-action
     subaction = request.POST.pop("action", None)
     if subaction:
