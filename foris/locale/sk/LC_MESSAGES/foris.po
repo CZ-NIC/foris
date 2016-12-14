@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-26 15:37+0200\n"
-"PO-Revision-Date: 2016-11-19 16:16+0100\n"
+"POT-Creation-Date: 2016-11-30 12:14+0100\n"
+"PO-Revision-Date: 2016-12-14 20:31+0100\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak\n"
 "Language: sk\n"
@@ -337,6 +337,15 @@ msgstr "Telnet - alternatívny port (2323/TCP)"
 
 msgid "HTTP (80/TCP)"
 msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
 
 msgid "Collect credentials"
 msgstr "Ukladať mená a heslá"
@@ -1303,12 +1312,6 @@ msgstr ""
 "Táto stránka potrebuje pre správnu funkčnosť zapnutý JavaScript. Zapnite si, "
 "prosím, v prehliadači JavaScript a stránku obnovte."
 
-msgid "Reboot now"
-msgstr "Reštartovať teraz"
-
-msgid "Dismiss"
-msgstr "Zahodiť"
-
 msgid "Log in"
 msgstr "Prihlásiť sa"
 
@@ -1317,6 +1320,12 @@ msgstr "Konfiguračné rozhranie Foris"
 
 msgid "Go to LuCI"
 msgstr "Prejsť na LuCI"
+
+msgid "Reboot now"
+msgstr "Reštartovať teraz"
+
+msgid "Dismiss"
+msgstr "Zahodiť"
 
 msgid "You have been logged out due to longer inactivity."
 msgstr "Boli ste odhlásení z dôvodu dlhšej doby nečinnosti."
