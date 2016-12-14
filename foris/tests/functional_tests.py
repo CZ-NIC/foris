@@ -9,7 +9,7 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in,
                         assert_greater, assert_less,
                         assert_true, assert_false,
                         assert_regexp_matches)
-from webtest import TestApp, Upload
+from webtest import TestApp, Upload, Text
 
 import foris.core
 from foris.nuci.client import StaticNetconfConnection
@@ -178,6 +178,11 @@ class TestConfig(ForisTest):
         form = page.forms['main-form']
         form.set("proto", "static", 1)
         form.set("custom_mac", True, 1)
+
+        # add update flag (normally done by JS) - this is quite awkward in WebTest
+        field = Text(form, "input", None, None, "1")
+        form.fields['update'] = field
+        form.field_order.append(("update", field))
 
         submit = form.submit(headers=XHR_HEADERS)
         assert_true(submit.body.lstrip().startswith("<form"))
