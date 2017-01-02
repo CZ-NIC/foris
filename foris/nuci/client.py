@@ -23,6 +23,7 @@ from ncclient.capabilities import Capabilities
 from ncclient.manager import OpExecutor, CAPABILITIES
 from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
+from ncclient.transport import TransportError
 
 from . import filters
 from .exceptions import ConfigRestoreError
@@ -44,6 +45,9 @@ class StaticNetconfConnection(object):
     # recycle session if older than MAXIMUM_SESSION_LIFE seconds
     MAXIMUM_SESSION_LIFE = 300
 
+    # maximum retries for reconnection if NETCONF server dies unexpectedly
+    MAXIMUM_CONNECTION_RETRIES = 3
+
     # instance of singleton
     _inst = None
 
@@ -59,6 +63,9 @@ class StaticNetconfConnection(object):
     # when to restart the current persistent session
     session_kill_time = 0
 
+    # remaining connection retries counter
+    remaining_connection_retries = MAXIMUM_CONNECTION_RETRIES
+
     __metaclass__ = OpExecutor
 
     def __new__(cls, *args):
@@ -69,6 +76,10 @@ class StaticNetconfConnection(object):
         if cls._inst is None:
             cls._inst = super(StaticNetconfConnection, cls).__new__(cls, *args)
         return cls._inst
+
+    @classmethod
+    def reset_connection_retries(cls):
+        cls.remaining_connection_retries = cls.MAXIMUM_CONNECTION_RETRIES
 
     @classmethod
     def _connect(cls):
@@ -92,6 +103,20 @@ class StaticNetconfConnection(object):
                            async=cls._async_mode,
                            timeout=timeout,
                            raise_mode=cls._raise_mode).request(*args, **kwargs)
+            # Everything OK, reset retries counter
+            cls.reset_connection_retries()
+        except (IOError, TransportError) as e:
+            if cls.remaining_connection_retries <= 0:
+                # Fail with an error...
+                logger.critical("Unable to revive the NETCONF server.")
+                # ... but make it possible to reconnect in the next call
+                cls.reset_connection_retries()
+                raise e
+            logger.exception("Connection to NETCONF failed, retrying.")
+            cls.remaining_connection_retries -= 1
+            cls._session = None
+            cls._executing = False
+            return cls.execute(klass, *args, **kwargs)
         finally:
             cls._executing = False
         return result
