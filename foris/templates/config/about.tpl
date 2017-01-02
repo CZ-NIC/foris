@@ -36,7 +36,7 @@
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ stats['kernel-version'] }}</td>
             </tr>
-          %if DEVICE_CUSTOMIZATION == "omnia" and agreed_collect:
+          %if DEVICE_CUSTOMIZATION == "turris" or agreed_collect:
             <tr>
                 <th>{{ trans("Sending of uCollect data") }}</th>
                 <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
