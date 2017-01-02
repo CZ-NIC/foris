@@ -282,7 +282,7 @@ def init_foris_app(app, prefix):
     :param app: instance of bottle application to mount
     :param prefix: prefix which has been used to mount the application
     """
-    app.catchall = False  # caught by LoggingMiddleware
+    app.catchall = False  # caught by ReportingMiddleware
     app.error_handler[403] = foris_403_handler
     app.add_hook('after_request', clickjacking_protection)
     app.add_hook('after_request', disable_caching)
@@ -375,7 +375,7 @@ def prepare_main_app(args):
         lang = DEFAULT_LANGUAGE
     app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE, locale_dir=os.path.join(BASE_DIR, "locale")))
 
-    # logging middleware for all mounted apps
+    # reporting middleware for all mounted apps
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
