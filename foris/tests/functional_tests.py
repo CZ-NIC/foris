@@ -37,7 +37,7 @@ class TestInitException(Exception):
 
 class ForisTest(TestCase):
     app = None
-    config_directory = "/tmp/test-etc_config/"
+    config_directory = "/tmp/foris_test-root/etc/config"
 
     @classmethod
     def setUpClass(cls):
@@ -55,7 +55,7 @@ class ForisTest(TestCase):
     @classmethod
     def restore_config(cls):
         call(["rm", "-rf", cls.config_directory])
-        call(["mkdir", cls.config_directory])
+        call(["mkdir", "-p", cls.config_directory])
         if call(["tar", "xzf", "/usr/lib/python2.7/site-packages/foris/tests/configs.tar.gz", "-C", cls.config_directory]) > 0:
             raise TestInitException("Cannot extract configs.")
 
@@ -364,7 +364,7 @@ class TestConfig(ForisTest):
         assert_equal(backup.body[0:3], "BZh")
         backup_len = len(backup.body)
         assert_greater(backup_len, 15000)
-        assert_less(backup_len, 17000)
+        assert_less(backup_len, 18000)
 
         # alter testing value
         self.uci_set("test.test.test", "0")
