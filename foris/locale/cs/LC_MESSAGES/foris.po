@@ -372,8 +372,8 @@ msgstr "Jméno"
 msgid "Password"
 msgstr "Heslo"
 
-msgid "Automatic restarts"
-msgstr "Automatické restarty"
+msgid "Automatic restarts after software update"
+msgstr "Automatické restarty po aktualizaci software"
 
 msgid "Delay (days)"
 msgstr "Prodleva (dny)"

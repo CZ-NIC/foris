@@ -375,7 +375,7 @@ class NotificationsHandler(BaseConfigHandler):
 
         # reboot time
         reboot = notifications_form.add_section(name="reboot",
-                                                title=_("Automatic restarts"))
+                                                title=_("Automatic restarts after software update"))
         reboot.add_field(Number, name="delay", label=_("Delay (days)"),
                          hint=_("Number of days that must pass between receiving the request "
                                 "for restart and the automatic restart itself."),

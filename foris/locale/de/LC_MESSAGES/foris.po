@@ -384,8 +384,8 @@ msgstr "Benutzername"
 msgid "Password"
 msgstr "Kennwort"
 
-msgid "Automatic restarts"
-msgstr "Automatischer Neustart"
+msgid "Automatic restarts after software update"
+msgstr "Automatische Neustarts nach Software-Update"
 
 msgid "Delay (days)"
 msgstr "Verzögerung (Tage)"
