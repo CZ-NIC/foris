@@ -315,16 +315,18 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
 
   Foris.callAjaxAction(pageNumber, "updater_status", 3000)
       .done(function (data) {
+        var progressContainer = $("#updater-progress");
+        progressContainer.show();
         retries = 0;  // reset retries in case of success
         if (data.success === false) {
           if (data.loggedOut && data.loggedOut === true) {
-            $("#updater-progress").hide();
+            progressContainer.hide();
             $("#updater-login").show();
           }
           return;
         }
         if (data.status == "failed") {
-          $("#updater-progress").hide();
+          progressContainer.hide();
           Foris.showUpdaterFail(data);
         }
         else if (data.status == "running") {
@@ -362,7 +364,7 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
           }, 1000);
         }
         else if (data.status == "done") {
-          $("#updater-progress").hide();
+          progressContainer.hide();
           $("#updater-success").show();
         }
       })
