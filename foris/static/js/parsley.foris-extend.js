@@ -52,7 +52,7 @@ window.ParsleyValidator
             var prefix = parseInt(splitVal[1], 10);
             if (!isIPv4(splitVal[0]) || prefix < 0 || prefix > 32) return false;
             return true;
-        );
+        };
         switch (type) {
           case 'ipv4':
             return isIPv4(val);
@@ -91,7 +91,7 @@ window.ParsleyValidator
     .addMessage('cs', 'extratype', {
       ipv4: "Toto není platná IPv4 adresa.",
       ipv4netmask: "Toto není platná IPv4 síťová maska.",
-      ipv6prefix: "Toto není IPv4 adresa s délkou prefixu.",
+      ipv4prefix: "Toto není IPv4 adresa s délkou prefixu.",
       ipv6: "Toto není platná IPv6 adresa.",
       anyip: "Toto není platná IPv4 nebo IPv6 adresa.",
       ipv6prefix: "Toto není IPv6 adresa s délkou prefixu.",
