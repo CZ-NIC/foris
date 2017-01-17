@@ -167,6 +167,26 @@ class IPv6Prefix(Validator):
         return False
 
 
+class IPv4Prefix(Validator):
+    js_validator = ("extratype", "ipv4prefix")
+
+    def __init__(self):
+        super(IPv4Prefix, self).__init__(_("This is not an IPv4 address with prefix length."))
+
+    def valid(self, value):
+        import socket
+        try:
+            address, length = value.split("/")
+            length = int(length)
+            socket.inet_pton(socket.AF_INET, address)
+            if length < 0 or length > 32:
+                return False
+            return True
+        except Exception:
+            pass
+        return False
+
+
 class PositiveInteger(Validator):
     js_validator = ("type", "digits")
 
