@@ -299,6 +299,8 @@ def get_arg_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("-H", "--host", default="0.0.0.0")
     parser.add_argument("-p", "--port", type=int, default=8080)
+    parser.add_argument("--session-timeout", type=int, default=900,
+                        help="session timeout (in seconds)")
     parser.add_argument("-s", "--server", choices=["wsgiref", "flup"], default="wsgiref")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("--noauth", action="store_true",
@@ -393,7 +395,7 @@ def prepare_main_app(args):
         'session.data_dir': '/tmp/beaker/data',
         'session.lock_dir': '/tmp/beaker/lock',
         'session.cookie_expires': True,
-        'session.timeout': 900,
+        'session.timeout': args.session_timeout,
         'session.auto': True,
         'session.httponly': True,
     }
