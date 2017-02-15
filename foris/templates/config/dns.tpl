@@ -81,7 +81,11 @@
                           $("#connection-test-fail").show();
                         }
                     })
-                    .fail(function() {
+                    .fail(function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                            window.location.replace(xhr.responseJSON.loginUrl);
+                            return;
+                        }
                         $("#connection-test-fail").show();
                     })
                     .always(function() {

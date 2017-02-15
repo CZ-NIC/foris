@@ -100,15 +100,15 @@
                             $("#registration-code-fail").hide();
                         }
                         else {
-                            if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
-                              window.location.replace(xhr.responseJSON.loginUrl);
-                              return;
-                            }
                             $("#registration-code").text("????????");
                             $("#registration-code-fail").show();
                         }
                     })
-                    .fail(function() {
+                    .fail(function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                            window.location.replace(xhr.responseJSON.loginUrl);
+                            return;
+                        }
                         $("#registration-code").text("????????");
                         $("#registration-code-fail").show();
                     })

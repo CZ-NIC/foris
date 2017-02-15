@@ -319,10 +319,6 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
         progressContainer.show();
         retries = 0;  // reset retries in case of success
         if (data.success === false) {
-          if (data.loggedOut && data.loggedOut === true) {
-            progressContainer.hide();
-            $("#updater-login").show();
-          }
           return;
         }
         if (data.status == "failed") {
@@ -368,7 +364,7 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
           $("#updater-success").show();
         }
       })
-      .fail(function () {
+      .fail(function (xhr) {
         // try multiple times (in one-second retries) in case the server is restarting
         if (retries < maxRetries) {
           retries += 1;
@@ -378,7 +374,11 @@ Foris.checkUpdaterStatus = function (retries, pageNumber) {
         }
         else {
           $("#updater-progress").hide();
-          Foris.showUpdaterFail();
+          if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+            $("#updater-login").show();
+          } else {
+            Foris.showUpdaterFail();
+          }
         }
       })
 };

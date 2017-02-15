@@ -46,6 +46,7 @@ def redirect_unauthenticated(redirect_url=None):
             res = bottle.response.copy(cls=bottle.HTTPResponse)
             res.content_type = 'application/json'
             res.body = json.dumps(dict(success=False, loggedOut=True, loginUrl=redirect_url))
+            res.status = 403
             raise res
         # "raise" standard bottle redirect
         login_url = "%s?next=%s" % (redirect_url, bottle.request.fullpath)
