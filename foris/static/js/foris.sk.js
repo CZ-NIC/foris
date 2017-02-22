@@ -1,0 +1,12 @@
+Foris.messages.qrErrorPassword = "Vami zadané heslo obsahuje neštandardné znaky, ktoré nie sú zakázané, avšak môžu na niektorých zariadeniach spôsobovať problémy.";
+Foris.messages.qrErrorSSID = "Vami zadaný názov siete obsahuje neštandardné znaky, ktoré nie sú zakázané, avšak môžu na niektorých zariadeniach spôsobovať problémy.";
+Foris.messages.ok = "OK";
+Foris.messages.error = "Chyba";
+Foris.messages.loading = "Načíta sa...";
+Foris.messages.checkNoForward = "Test pripojenia sa nepodaril, prebieha test pripojenia s vypnutým forwardovaním.";
+Foris.messages.lanIpChanged = 'IP adresa Vášho routera sa zmenila. Router by mal byť teraz dostupný na adrese <a href="%NEW_LOC%">%IP_ADDR%</a>. Viac informácií o zmene IP adresy nájdete vyššie.';
+Foris.messages.confirmDisabledUpdates = 'Rozhodli ste sa deaktivovať bezpečnostné aktualizácie. Dôrazne Vám odporúčame, aby ste nechali automatické bezpečnostné aktualizácie zapnuté. Iba vďaka pravidelným aktualizáciám softvéru Vášho zariadenia je možné zaistiť ochranu pred útokmi, ktoré naňho môžu byť zamerané.\n\nSkutočne chcete pokračovať a zostať nechránení?';
+Foris.messages.confirmDisabledDNSSEC = 'DNSSEC je bezpečnostná technológia, ktorá chráni DNS komunikáciu pred útokmi na jej infraštruktúru. Dôrazne Vám odporúčame, aby ste nechali DNSSEC validáciu zapnutú, pokiaľ svoj router Turris nebudete pripájať do siete, v ktorej technológia DNSSEC nefunguje.\n\nSkutočne chcete pokračovať a zostať nechránení?';
+Foris.messages.confirmRestart = "Skutočne chcete reštartovať router?";
+Foris.messages.confirmRestartExtra = "\nZostávajúce neprečítané správy (%UNREAD%) sa vymažú.";
+Foris.messages.unsavedNotificationsAlert = "V nastavení boli vykonané zmeny, ktoré neboli uložené.\nChcete zmeny zahodiť a poslať testovaciu správu s pôvodným nastavením?";
