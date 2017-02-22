@@ -331,7 +331,7 @@ class NotificationsHandler(BaseConfigHandler):
                                 hint=_("Send emails about new features."),
                                 nuci_path="uci.user_notify.notifications.news",
                                 nuci_preproc=lambda val: bool(int(val.value)),
-                                default=False)\
+                                default=True)\
             .requires("enable_smtp", True)
 
         # SMTP settings (custom server)
