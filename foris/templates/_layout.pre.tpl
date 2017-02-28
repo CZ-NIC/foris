@@ -34,10 +34,8 @@
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
     <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>
     <script src="{{ static("js/foris.min.js") }}?md5=MD5SUM"></script>
-    %if lang() != 'en':
-        <script src="{{ static("js/parsley.messages.%s.min.js" % lang()) }}?md5=MD5SUM"></script>
-        <script src="{{ static("js/foris.%s.min.js" % lang()) }}?md5=MD5SUM"></script>
-    %end
+    <script src="{{ url("translate_js", filename="foris.js") }}?md5={{ trans_js_md5('foris.js') }}"></script>
+    <script src="{{ url("translate_js", filename="parsley.messages.js") }}?md5={{ trans_js_md5('parsley.messages.js') }}"></script>
 </head>
 <body>
     {{! base }}

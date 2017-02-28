@@ -17,8 +17,10 @@
 
 # builtins
 import gettext
+import hashlib
 import logging
 import os
+import time
 
 # 3rd party
 from beaker.middleware import SessionMiddleware
@@ -74,7 +76,7 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
-bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename.replace("%LANG%", bottle.request.app.lang)) % args
+bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
 bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 
 # messages
@@ -114,6 +116,43 @@ def index():
 
     return dict(luci_path="//%(host)s/%(path)s"
                           % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+
+
+def translate_js(filename):
+    """ Render javascript template to insert a translation
+        :param filename: name of the file to be translated
+    """
+
+    # check the template file
+    path = bottle.SimpleTemplate.search("javascript/%s" % filename, bottle.TEMPLATE_PATH)
+    if not path:
+        return bottle.HTTPError(404, "File does not exist.")
+
+    # test last modification date (mostly copied from bottle.py)
+    stats = os.stat(path)
+    lm = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime(stats.st_mtime))
+    bottle.response.headers['Last-Modified'] = lm
+
+    ims = bottle.request.environ.get('HTTP_IF_MODIFIED_SINCE')
+    if ims:
+        ims = bottle.parse_date(ims.split(";")[0].strip())
+    if ims is not None and ims >= int(stats.st_mtime):
+        bottle.response.headers['Date'] = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
+        return bottle.HTTPResponse(status=304, **bottle.response.headers)
+
+    # set the content type to javascript
+    bottle.response.headers['Content-Type'] = "application/javascript; charset=UTF-8"
+
+    # TODO if you are sadistic enough you can try to minify the content
+    return bottle.template("javascript/%s" % filename)
+
+
+def translate_js_md5(filename):
+    # calculate the hash of the rendered template
+    return hashlib.md5(bottle.template("javascript/%s" % filename).encode('utf-8')).hexdigest()
+
+
+bottle.SimpleTemplate.defaults['trans_js_md5'] = lambda filename: translate_js_md5(filename)
 
 
 def change_lang(lang):
@@ -323,6 +362,7 @@ def init_default_app():
     app.route("/", method="POST", name="login", callback=login)
     app.route("/logout", name="logout", callback=logout)
     app.route('/static/<filename:re:.*>', name="static", callback=static)
+    app.route("/translate_js/<filename:re:.*>", name="translate_js", callback=translate_js)
     return app
 
 
