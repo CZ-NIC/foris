@@ -1,0 +1,1390 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Foris - web administration interface for OpenWrt based on NETCONF
+# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Jan Cermak <jan.cermak@nic.cz>, 2014.
+# Beda Kosata <bedrich.kosata@nic.cz>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Foris 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-01 14:48+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "Data collection"
+msgstr ""
+
+msgid "Enable data collection"
+msgstr ""
+
+msgid "DNS"
+msgstr ""
+
+msgid "Use forwarding"
+msgstr ""
+
+msgid "Disable DNSSEC"
+msgstr ""
+
+msgid "LAN"
+msgstr ""
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+
+msgid "Router IP address"
+msgstr ""
+
+msgid ""
+"Router's IP address in inner network. Also defines the range of assigned IP "
+"addresses."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr ""
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+
+msgid "DHCP start"
+msgstr ""
+
+msgid "DHCP max leases"
+msgstr ""
+
+msgid "Maintenance"
+msgstr ""
+
+msgid "Backup file"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Notifications settings"
+msgstr ""
+
+msgid "Enable notifications"
+msgstr ""
+
+msgid "SMTP provider"
+msgstr ""
+
+msgid "Turris"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members of "
+"the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please select "
+"\"Custom\" and enter required settings."
+msgstr ""
+
+msgid "Recipient's email"
+msgstr ""
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr ""
+
+msgid "Sender's name"
+msgstr ""
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address "
+"before the \"at\" sign."
+msgstr ""
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and underscores."
+msgstr ""
+
+msgid "Reboot is required"
+msgstr ""
+
+msgid "Reboot or attention is required"
+msgstr ""
+
+msgid "Reboot or attention is required or update was installed"
+msgstr ""
+
+msgid "Importance"
+msgstr ""
+
+msgid "Send news"
+msgstr ""
+
+msgid "Send emails about new features."
+msgstr ""
+
+msgid "SMTP settings"
+msgstr ""
+
+msgid "Sender address (From)"
+msgstr ""
+
+msgid "This is the address notifications are send from."
+msgstr ""
+
+msgid "Server address"
+msgstr ""
+
+msgid "Server port"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "SSL/TLS"
+msgstr ""
+
+msgid "STARTTLS"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Automatic restarts"
+msgstr ""
+
+msgid "Delay (days)"
+msgstr ""
+
+msgid ""
+"Number of days that must pass between receiving the request for restart and "
+"the automatic restart itself."
+msgstr ""
+
+msgid "Reboot time"
+msgstr ""
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr ""
+
+msgid ""
+"Set your password for this administration interface. The password must be at "
+"least 6 characters long."
+msgstr ""
+
+msgid "Current password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "New password (repeat)"
+msgstr ""
+
+msgid "Password (repeat)"
+msgstr ""
+
+msgid "Passwords are not equal."
+msgstr ""
+
+msgid "Use the same password for advanced configuration"
+msgstr ""
+
+msgid ""
+"Same password would be used for accessing this administration interface, for "
+"root user in LuCI web interface and for SSH login. Use a strong password! "
+"(If you choose not to set the password for advanced configuration here, you "
+"will have the option to do so later. Until then, the root account will be "
+"blocked.)"
+msgstr ""
+
+msgid "Region settings"
+msgstr ""
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct setting "
+"is required to display the right time and for related functions."
+msgstr ""
+
+msgid "Continent or ocean"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Timezone"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Advanced administration"
+msgstr ""
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration possibilities which are not "
+"present here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a href=\"//%(host)s/"
+"%(path)s\">LuCI web interface</a> or over SSH."
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid ""
+"We could not synchronize the time with a timeserver, probably due to a loss "
+"of connection. It is necessary for the router to have correct time in order "
+"to function properly. Please, synchronize it with your computer's time, or "
+"set it manually."
+msgstr ""
+
+msgid "uCollect"
+msgstr ""
+
+msgid "Emulated services"
+msgstr ""
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+
+msgid "Telnet (23/TCP)"
+msgstr ""
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr ""
+
+msgid "HTTP (80/TCP)"
+msgstr ""
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr ""
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr ""
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr ""
+
+msgid "Collect credentials"
+msgstr ""
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+
+msgid "Updater"
+msgstr ""
+
+msgid "I agree"
+msgstr ""
+
+msgid "Use automatic updates (recommended)"
+msgstr ""
+
+msgid "Turn automatic updates off"
+msgstr ""
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+
+msgid "WAN"
+msgstr ""
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+
+msgid "DHCP (automatic configuration)"
+msgstr ""
+
+msgid "Static IP address (manual configuration)"
+msgstr ""
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr ""
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr ""
+
+msgid "Disable IPv6"
+msgstr ""
+
+msgid "IPv4 protocol"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "Network mask"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "DNS server 1"
+msgstr ""
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+
+msgid "DNS server 2"
+msgstr ""
+
+msgid "PAP/CHAP username"
+msgstr ""
+
+msgid "PAP/CHAP password"
+msgstr ""
+
+msgid "IPv6 protocol"
+msgstr ""
+
+msgid "IPv6 address"
+msgstr ""
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+
+msgid "IPv6 gateway"
+msgstr ""
+
+msgid "IPv6 prefix"
+msgstr ""
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr ""
+
+msgid "Use Modem Turris"
+msgstr ""
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+
+msgid "xDSL VLAN number"
+msgstr ""
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr ""
+
+msgid "VPI"
+msgstr ""
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+
+msgid "VCI"
+msgstr ""
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+
+msgid "Custom MAC address"
+msgstr ""
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+
+msgid "MAC address"
+msgstr ""
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr ""
+
+msgid "Wi-Fi"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+msgid "Hide SSID"
+msgstr ""
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "Wi-Fi mode"
+msgstr ""
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have more "
+"interference. The 5 GHz band is a newer standard and may not be supported by "
+"all your devices. It usually has less interference, but the signal does not "
+"carry so well indoors."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr ""
+
+msgid "802.11n/ac mode"
+msgstr ""
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
+"channels can yield higher throughput but can cause more interference in the "
+"network. If you don't know what to choose, use the default option with 20 "
+"MHz wide channel."
+msgstr ""
+
+msgid "Network channel"
+msgstr ""
+
+msgid "Network password"
+msgstr ""
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+
+msgid "You have been logged out due to longer inactivity."
+msgstr ""
+
+msgid "Hint"
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save changes"
+msgstr ""
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "Serial number"
+msgstr ""
+
+msgid "Turris OS version"
+msgstr ""
+
+msgid "Kernel version"
+msgstr ""
+
+msgid "Sending of uCollect data"
+msgstr ""
+
+#, python-format
+msgid "Time of last update: %(datetime)s"
+msgstr ""
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Sending of firewall logs"
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Device registration"
+msgstr ""
+
+#, python-format
+msgid ""
+"If you have not registered your device yet, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
+msgid "Registration code"
+msgstr ""
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+
+msgid "Get registration code"
+msgstr ""
+
+msgid "Notifications and automatic restarts"
+msgstr ""
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these "
+"emails. Alternatively, if you choose to use a custom server, you must enter "
+"some additional settings. These settings are the same as you enter in your "
+"email client and you can get them from the provider of your email inbox. In "
+"that case, because of security reasons, it is recommended to create a "
+"dedicated account for your router."
+msgstr ""
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Send testing message"
+msgstr ""
+
+msgid "Configuration backup"
+msgstr ""
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface "
+"and for the advanced configuration are not included in the backup."
+msgstr ""
+
+msgid "Download configuration backup"
+msgstr ""
+
+msgid "Configuration restore"
+msgstr ""
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+
+msgid "Restore from backup"
+msgstr ""
+
+msgid "Device reboot"
+msgstr ""
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"after the reboot."
+msgstr ""
+
+msgid "Reboot"
+msgstr ""
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
+msgstr ""
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+
+msgid "Connection test"
+msgstr ""
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+
+msgid "Unable to verify network connection."
+msgstr ""
+
+msgid "Test type"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "IPv4 connectivity"
+msgstr ""
+
+msgid "IPv4 gateway connectivity"
+msgstr ""
+
+msgid "IPv6 connectivity"
+msgstr ""
+
+msgid "IPv6 gateway connectivity"
+msgstr ""
+
+msgid "DNSSEC"
+msgstr ""
+
+msgid "Test connection"
+msgstr ""
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+
+msgid "Package lists"
+msgstr ""
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to manage "
+"package lists."
+msgstr ""
+
+msgid ""
+"List of available software was not downloaded from the server yet. Please "
+"come back later."
+msgstr ""
+
+msgid "Foris - administration interface of router Turris"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid ""
+"With the Turris Omnia router you can join Project Turris which is a non-"
+"profit research project founded by the CZ.NIC association, a .CZ domain "
+"registry. By joining the project, your router will act as a probe which "
+"analyzes traffic between your home network and the Internet and helps to "
+"identify malicious data flows. Once such a flow is detected your router "
+"notifies the Turris headquarters which can compare the flow with data from "
+"the rest of the probes and assign it a threat level. If the flow is "
+"identified as an attack Turris headquarters can prepare an update which is "
+"distributed to every Turris router and helps them to protect themselves "
+"against the attack."
+msgstr ""
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr ""
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+
+msgid "Validate email"
+msgstr ""
+
+msgid ""
+"Welcome to the Turris administration site. Please, choose a config section "
+"you wish to change from the menu."
+msgstr ""
+
+msgid "No new messages."
+msgstr ""
+
+msgid "Reboot now"
+msgstr ""
+
+msgid "Dismiss"
+msgstr ""
+
+msgid "Turris router administration interface"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Project:Turris"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Foris Configuration Interface"
+msgstr ""
+
+msgid "Go to LuCI"
+msgstr ""
+
+msgid ""
+"One of the most important features of router Turris Omnia are automatic "
+"system updates. Thanks to this function your router's software stays up to "
+"date and offers better protection against attacks from the Internet."
+msgstr ""
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that this "
+"might weaken the security of your router and network in case flaws in the "
+"software are found."
+msgstr ""
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
+"\">here</a>."
+msgstr ""
+
+msgid "Most important points from the license agreement:"
+msgstr ""
+
+msgid ""
+"Automatic updates are offered to the Turris Omnia owners free of charge."
+msgstr ""
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr ""
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional security "
+"features of Turris Omnia."
+msgstr ""
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by you."
+msgstr ""
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the "
+"Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
+"is not responsible for any damages caused by the automatic updates."
+msgstr ""
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner of "
+"this Turris Omnia router and you agree with the full text of the <a href="
+"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Checking internet connectivity."
+msgstr ""
+
+msgid "One moment, please..."
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Internet connectivity test passed without error."
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+
+msgid "Try again"
+msgstr ""
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+
+msgid "Adjust WAN settings"
+msgstr ""
+
+#, python-format
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+
+msgid "What next?"
+msgstr ""
+
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+
+msgid "Important updates"
+msgstr ""
+
+msgid ""
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
+msgstr ""
+
+msgid "Continue to configuration interface"
+msgstr ""
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+
+msgid "Do not unplug the device during update!"
+msgstr ""
+
+msgid "Check of available updates in progress."
+msgstr ""
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr ""
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+
+msgid "Updater has returned the following error:"
+msgstr ""
+
+msgid "Device has been restarted."
+msgstr ""
+
+msgid "Please log in again to continue."
+msgstr ""
+
+msgid "Proceed to login"
+msgstr ""
+
+msgid "Registration failure"
+msgstr ""
+
+msgid "Installation finished"
+msgstr ""
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr ""
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://www.turris.cz/\">Project Turris</a>."
+msgstr ""
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+
+msgid ""
+"With Turris Omnia you can join the research project called <a href=\"https://"
+"www.turris.cz/\">Project Turris</a>. Thanks to this project, your router can "
+"become a probe that analyzes the traffic between internet and the home "
+"network and identifies suspicious data flows."
+msgstr ""
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+
+msgid "Continue to the configuration interface"
+msgstr ""
+
+msgid "Synchronize with your computer clock"
+msgstr ""
+
+msgid "Set time manually"
+msgstr ""
+
+msgid "Synchronization successful."
+msgstr ""
+
+msgid "Time settings"
+msgstr ""
+
+msgid "Synchronizing router time with an internet time server."
+msgstr ""
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr ""
+
+msgid "Step"
+msgstr ""
+
+msgid "Skip wizard"
+msgstr ""
+
+msgid "Welcome to configuration of router Turris"
+msgstr ""
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+
+msgid "Begin installation"
+msgstr ""
+
+msgid "This value seems to be invalid."
+msgstr ""
+
+msgid "This value should be a valid email."
+msgstr ""
+
+msgid "This value should be a valid url."
+msgstr ""
+
+msgid "This value should be a valid number."
+msgstr ""
+
+msgid "This value should be a valid integer."
+msgstr ""
+
+msgid "This value should be digits."
+msgstr ""
+
+msgid "This value should be alphanumeric."
+msgstr ""
+
+msgid "This value should not be blank."
+msgstr ""
+
+msgid "This value is required."
+msgstr ""
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr ""
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr ""
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr ""
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr ""
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr ""
+
+#, python-format
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr ""
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr ""
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr ""
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr ""
+
+msgid "This value should be the same."
+msgstr ""
+
+msgid "This is not a valid IPv4 address."
+msgstr ""
+
+msgid "This is not a valid IPv4 netmask."
+msgstr ""
+
+msgid "This is not a valid IPv4 prefix."
+msgstr ""
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr ""
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr ""
+
+msgid "This is not a valid IPv6 prefix."
+msgstr ""
+
+msgid "This is not a valid MAC address."
+msgstr ""
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
+msgstr ""
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
+msgstr ""
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
+msgstr ""
+
+msgid "Are you sure you want to restart the router?"
+msgstr ""
+
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr ""
+
+msgid ""
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
+msgstr ""
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+
+msgid "This field is required."
+msgstr ""
+
+msgid "Not a valid IPv4 address."
+msgstr ""
+
+msgid "Not a valid IPv4 netmask address."
+msgstr ""
+
+msgid "Not a valid IPv6 address."
+msgstr ""
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr ""
+
+msgid "Is not a number."
+msgstr ""
+
+msgid "This is not valid time in HH:MM format."
+msgstr ""
+
+msgid "MAC address is not valid."
+msgstr ""
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr ""
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr ""
+
+msgid "The password you entered was not valid."
+msgstr ""
+
+msgid "News"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr ""
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr ""
+
+msgid "Notification"
+msgstr ""
+
+msgid "Configuration was successfully saved."
+msgstr ""
+
+msgid "There were some errors in your input."
+msgstr ""
+
+msgid "Old password you entered was not valid."
+msgstr ""
+
+msgid "Password was successfully saved."
+msgstr ""
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+
+msgid "Wrong HTTP method."
+msgstr ""
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+
+#, python-format
+msgid ""
+"Sending of the testing message failed, your configuration is possibly wrong."
+"<br>Error returned:<br><pre>%(error)s</pre>"
+msgstr ""
+
+msgid "Sending of the testing message failed because of an internal error."
+msgstr ""
+
+#, python-format
+msgid ""
+"Configuration was successfully restored. After installing updates and "
+"rebooting you can return to this page at <a href=\"%(new_url)s\">"
+"%(new_url)s</a> in local network. Please wait a while until router "
+"automatically restarts."
+msgstr ""
+
+msgid ""
+"Configuration was successfully restored. Please wait a while for "
+"installation of updates and automatic restart of the device."
+msgstr ""
+
+msgid "IP address of the router could not be determined from the backup."
+msgstr ""
+
+msgid "Configuration could not be loaded, backup file is probably corrupted."
+msgstr ""
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+
+#, python-format
+msgid ""
+"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+msgstr ""
+
+msgid ""
+"Registration for the entered email is valid. Now you can enable the data "
+"collection."
+msgstr ""
+
+#, python-format
+msgid ""
+"This router is currently assigned to a different email address. Please "
+"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
+"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
+"email address."
+msgstr ""
+
+#, python-format
+msgid ""
+"This email address is not registered yet. Please continue to the <a href="
+"\"%(url)s\">Turris website</a> and use the registration code <strong>"
+"%(reg_num)s</strong> to create a new account."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Online"
+msgstr ""
+
+msgid "Offline"
+msgstr ""
+
+msgid "Connecting"
+msgstr ""
+
+msgid "Invalid authentication"
+msgstr ""
+
+msgid "Broken"
+msgstr ""
+
+msgid "Unknown status"
+msgstr ""
+
+msgid "Home page"
+msgstr ""
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr ""
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr ""
+
+msgid "Connectivity test"
+msgstr ""
+
+msgid "Automatic updates"
+msgstr ""
+
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr ""
