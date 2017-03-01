@@ -123,6 +123,8 @@ def translate_js(filename):
         :param filename: name of the file to be translated
     """
 
+    headers = {}
+
     # check the template file
     path = bottle.SimpleTemplate.search("javascript/%s" % filename, bottle.TEMPLATE_PATH)
     if not path:
@@ -131,20 +133,22 @@ def translate_js(filename):
     # test last modification date (mostly copied from bottle.py)
     stats = os.stat(path)
     lm = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime(stats.st_mtime))
-    bottle.response.headers['Last-Modified'] = lm
+    headers['Last-Modified'] = lm
 
     ims = bottle.request.environ.get('HTTP_IF_MODIFIED_SINCE')
     if ims:
         ims = bottle.parse_date(ims.split(";")[0].strip())
     if ims is not None and ims >= int(stats.st_mtime):
-        bottle.response.headers['Date'] = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
+        headers['Date'] = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
         return bottle.HTTPResponse(status=304, **bottle.response.headers)
 
     # set the content type to javascript
-    bottle.response.headers['Content-Type'] = "application/javascript; charset=UTF-8"
+    headers['Content-Type'] = "application/javascript; charset=UTF-8"
 
+    body = bottle.template("javascript/%s" % filename)
     # TODO if you are sadistic enough you can try to minify the content
-    return bottle.template("javascript/%s" % filename)
+
+    return bottle.HTTPResponse(body, **headers)
 
 
 def translate_js_md5(filename):
