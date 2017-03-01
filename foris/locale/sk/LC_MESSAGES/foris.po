@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-30 12:14+0100\n"
+"POT-Creation-Date: 2017-03-01 15:58+0100\n"
 "PO-Revision-Date: 2016-12-14 20:31+0100\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak\n"
@@ -30,8 +30,180 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+msgid "This field is required."
+msgstr "Toto pole je povinné."
+
+msgid "Not a valid IPv4 address."
+msgstr "Neplatná IPv4 adresa."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Neplatná IPv4 sieťová maska."
+
+msgid "Not a valid IPv6 address."
+msgstr "Neplatná IPv6 adresa."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Toto nie je platná IPv4 alebo IPv6 adresa."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Toto nie je IPv6 adresa s dĺžkou prefixu."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Toto nie je IPv4 adresa s dĺžkou prefixu."
+
+msgid "Is not a number."
+msgstr "Nie je číslo."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Toto nie je platný čas vo formáte HH:MM."
+
+msgid "MAC address is not valid."
+msgstr "Nie je platná MAC adresa."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Musí byť z rozsahu %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Dĺžka musí byť od %(low)s do %(high)s znakov."
+
+msgid "Configuration was successfully saved."
+msgstr "Nastavenie bolo úspešne uložené."
+
+msgid "There were some errors in your input."
+msgstr "Niektoré z Vami zadaných údajov nie sú platné."
+
+msgid "Old password you entered was not valid."
+msgstr "Vami zadané pôvodné heslo je neplatné."
+
+msgid "Password was successfully saved."
+msgstr "Heslo bolo úspešne uložené."
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"Do konektoru WAN nie je zapojený kábel, Vaše pripojenie do internetu zrejme "
+"nebude fungovať."
+
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgid "Wrong HTTP method."
+msgstr "Neplatná HTTP metóda"
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+"Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju schránku."
+
+#, python-format
+msgid ""
+"Sending of the testing message failed, your configuration is possibly wrong."
+"<br>Error returned:<br><pre>%(error)s</pre>"
+msgstr ""
+"Posielanie testovacej správy zlyhalo. Zlyhanie bolo pravdepodobne spôsobené "
+"nesprávnym nastavením.<br>Vrátená chyba:<br><pre>%(error)s</pre>"
+
+msgid "Sending of the testing message failed because of an internal error."
+msgstr "Testovaciu správu sa nepodarilo poslať kvôli vnútornej chybe."
+
+#, python-format
+msgid ""
+"Configuration was successfully restored. After installing updates and "
+"rebooting you can return to this page at <a href=\"%(new_url)s\">"
+"%(new_url)s</a> in local network. Please wait a while until router "
+"automatically restarts."
+msgstr ""
+"Nastavenie bolo úspešne obnovené. Po inštalácii aktualizácií a reštartu "
+"zariadenia bude router z vnútornej siete dostupný na adrese <a href="
+"\"%(new_url)s\">%(new_url)s</a>. Počkajte, prosím, na automatické "
+"reštartovanie routera."
+
+msgid ""
+"Configuration was successfully restored. Please wait a while for "
+"installation of updates and automatic restart of the device."
+msgstr ""
+"Nastavenie bolo úspešne obnovené. Počkajte, prosím, na aktualizáciu "
+"zariadenia a automatické reštartovanie routera."
+
+msgid "IP address of the router could not be determined from the backup."
+msgstr "Zo zálohy sa nepodarilo určiť IP adresu routera."
+
+msgid "Configuration could not be loaded, backup file is probably corrupted."
+msgstr ""
+"Nastavenie sa nepodarilo obnoviť, súbor so zálohou je pravdepodobne "
+"poškodený."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Nastavenie bolo úspešne uložené. Vybrané balíčky by sa mali v krátkom čase "
+"nainštalovať alebo odstrániť."
+
 msgid "Data collection"
 msgstr "Zber dát"
+
+#, python-format
+msgid ""
+"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+msgstr ""
+"Pri overovaní registrácie došlo k nasledujúcej chybe: <br><pre>%(response)s</"
+"pre>"
+
+msgid ""
+"Registration for the entered email is valid. Now you can enable the data "
+"collection."
+msgstr ""
+"Registrácia pre túto emailovú adresu je platná. Teraz môžete aktivovať zber "
+"dát."
+
+#, python-format
+msgid ""
+"This router is currently assigned to a different email address. Please "
+"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
+"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
+"email address."
+msgstr ""
+"Tento router je v súčasnosti priradený k inej emailovej adrese. Pokračujte, "
+"prosím, na <a href=\"%(url)s\">portál Turris</a> a použite registračný kód "
+"<strong>%(reg_num)s</strong> na priradenie k Vašej emailovej adrese."
+
+#, python-format
+msgid ""
+"This email address is not registered yet. Please continue to the <a href="
+"\"%(url)s\">Turris website</a> and use the registration code <strong>"
+"%(reg_num)s</strong> to create a new account."
+msgstr ""
+"Táto emailová adresa zatiaľ nie je zaregistrovaná. Pokračujte, prosím, na <a "
+"href=\"%(url)s\">portál Turris</a> a použite registračný kód <strong>"
+"%(reg_num)s</strong> na vytvorenie nového účtu."
+
+msgid "About"
+msgstr "O routeri"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Connecting"
+msgstr "Pripája sa"
+
+msgid "Invalid authentication"
+msgstr "Neplatná autentifikácia"
+
+msgid "Broken"
+msgstr "Nefunkčný"
+
+msgid "Unknown status"
+msgstr "Neznámy stav"
+
+msgid "Home page"
+msgstr "Hlavná stránka"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
 
 msgid "Enable data collection"
 msgstr "Povoliť zber dát"
@@ -95,9 +267,6 @@ msgstr "Začiatok DHCP rozsahu"
 
 msgid "DHCP max leases"
 msgstr "Počet prideľovaných adries"
-
-msgid "Maintenance"
-msgstr "Údržba"
 
 msgid "Backup file"
 msgstr "Súbor so zálohou"
@@ -630,10 +799,154 @@ msgstr ""
 "Heslo, ktoré sa bude vyžadovať pre pripojenie k tejto sieti, dlhé aspoň 8 "
 "znakov."
 
-msgid "Unable to retrieve notifications, please try refreshing the page."
+msgid "The password you entered was not valid."
+msgstr "Vami zadané heslo je neplatné."
+
+msgid "News"
+msgstr "Novinky"
+
+msgid "Update"
+msgstr "Aktualizácia"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s z %(created_at)s"
+
+msgid "Notification"
+msgstr "Upozornenie"
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
 msgstr ""
-"Nepodarilo sa načítať upozornenia od routera. Skúste, prosím, stránku "
-"obnoviť."
+"Router Turris používa vlastný DNS resolver s podporou DNSSEC. Ten je schopný "
+"pracovať úplne samostatne, ako aj s využitím DNS resolvera poskytovateľa, "
+"prostredníctvom ktorého sa vykonáva tzv. forwardovanie."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"Nasledujúce nastavenie ovplyvňuje práve nastavenie DNS resolvera. V sieťach, "
+"kde správne funguje DNS resolver poskytovateľa, je výhodnejšie ho používať, "
+"pretože to väčšinou vedie k rýchlejšej odozve. Pokiaľ však tento spôsob "
+"nefunguje, je nutné použiť variant bez forwardovania."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+"Vo výnimočných prípadoch sa môže stať, že má poskytovateľ nevhodnú "
+"konfiguráciu siete, ktorá znemožňuje DNSSEC validáciu. Pokiaľ máte problémy "
+"s funkčnosťou DNS, môžete skúsiť DNSSEC validáciu <strong>dočasne</strong> "
+"vypnúť, aby ste zistili príčinu problému. Majte však na pamäti, že ste bez "
+"DNSSEC validácie náchylní na útoky podvrhnutím DNS prekladu. Preto dôrazne "
+"odporúčame, aby ste <strong>ponechali DNSSEC validáciu zapnutú</strong> a "
+"problém riešili so svojim poskytovateľom pripojenia, pretože ide o závažnú "
+"chybu na jeho strane."
+
+msgid "Save"
+msgstr "Uložiť"
+
+msgid "Connection test"
+msgstr "Test pripojenia"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Tu si môžete otestovať funkčnosť internetového pripojenia. Tento test je "
+"užitočný tiež v prípade, keď chcete otestovať, že správne funguje nastavenie "
+"DNS. Nezabudnite stlačiť tlačidlo <strong>Uložiť</strong>, pokiaľ ste "
+"zmenili nastavenie forwardovania vyššie."
+
+msgid "Unable to verify network connection."
+msgstr "Nepodarilo sa overiť stav pripojenia."
+
+msgid "Test type"
+msgstr "Typ testu"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "IPv4 connectivity"
+msgstr "Konektivita IPv4"
+
+msgid "IPv4 gateway connectivity"
+msgstr "Dostupnosť IPv4 brány"
+
+msgid "IPv6 connectivity"
+msgstr "Konektivita IPv6"
+
+msgid "IPv6 gateway connectivity"
+msgstr "Dostupnosť IPv6 brány"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Test connection"
+msgstr "Otestovať pripojenie"
+
+msgid "Discard changes"
+msgstr "Zahodiť zmeny"
+
+msgid "Save changes"
+msgstr "Uložiť zmeny"
+
+msgid ""
+"With the Turris Omnia router you can join Project Turris which is a non-"
+"profit research project founded by the CZ.NIC association, a .CZ domain "
+"registry. By joining the project, your router will act as a probe which "
+"analyzes traffic between your home network and the Internet and helps to "
+"identify malicious data flows. Once such a flow is detected your router "
+"notifies the Turris headquarters which can compare the flow with data from "
+"the rest of the probes and assign it a threat level. If the flow is "
+"identified as an attack Turris headquarters can prepare an update which is "
+"distributed to every Turris router and helps them to protect themselves "
+"against the attack."
+msgstr ""
+"S routerom Turris Omnia je možné sa zapojiť do projektu Turris, čo je "
+"neziskový výskumný projekt združenia CZ.NIC, z. s. p. o., správcu českej "
+"národnej domény .CZ. Tým sa stane Váš nový router súčasne sondou, ktorá "
+"analyzuje prevádzku medzi internetom a domácou sieťou a pomáha identifikovať "
+"podozrivé dátové toky. Pri ich detekcii potom upozorní centrálu Turris na "
+"možný útok. Centrála systému umožňuje porovnať dáta z mnohých pripojených "
+"routerov Turris a vyhodnotiť nebezpečnosť detegovanej prevádzky. V prípade, "
+"že sa odhalí útok, vytvoria sa aktualizácie, ktoré sa distribuujú do celej "
+"siete Turris a pomáhajú tak chrániť jej používateľov."
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr "Updater je vypnutý, pre povolenie zberu dát ho musíte najskôr zapnúť."
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+"Pokiaľ chcete naplno využívať výhody tohto projektu, je potrebné sa najskôr "
+"zaregistrovať na portále Turris. Tu zadajte Vašu emailovú adresu, ktorú si "
+"chcete zaregistrovať alebo ktorú ste použili pri registrácii v minulosti:"
+
+msgid "Validate email"
+msgstr "Overiť email"
 
 msgid "Device"
 msgstr "Zariadenie"
@@ -697,62 +1010,29 @@ msgstr ""
 msgid "Get registration code"
 msgstr "Získať registračný kód"
 
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - administračné rozhranie routera Turris"
-
-msgid "Menu"
-msgstr "Menu"
-
-msgid "Log out"
-msgstr "Odhlásiť se"
-
 msgid ""
-"With the Turris Omnia router you can join Project Turris which is a non-"
-"profit research project founded by the CZ.NIC association, a .CZ domain "
-"registry. By joining the project, your router will act as a probe which "
-"analyzes traffic between your home network and the Internet and helps to "
-"identify malicious data flows. Once such a flow is detected your router "
-"notifies the Turris headquarters which can compare the flow with data from "
-"the rest of the probes and assign it a threat level. If the flow is "
-"identified as an attack Turris headquarters can prepare an update which is "
-"distributed to every Turris router and helps them to protect themselves "
-"against the attack."
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
 msgstr ""
-"S routerom Turris Omnia je možné sa zapojiť do projektu Turris, čo je "
-"neziskový výskumný projekt združenia CZ.NIC, z. s. p. o., správcu českej "
-"národnej domény .CZ. Tým sa stane Váš nový router súčasne sondou, ktorá "
-"analyzuje prevádzku medzi internetom a domácou sieťou a pomáha identifikovať "
-"podozrivé dátové toky. Pri ich detekcii potom upozorní centrálu Turris na "
-"možný útok. Centrála systému umožňuje porovnať dáta z mnohých pripojených "
-"routerov Turris a vyhodnotiť nebezpečnosť detegovanej prevádzky. V prípade, "
-"že sa odhalí útok, vytvoria sa aktualizácie, ktoré sa distribuujú do celej "
-"siete Turris a pomáhajú tak chrániť jej používateľov."
+"Aktuálne máte povolený zber dát. Pokiaľ chcete updater vypnúť, zakážte "
+"najskôr zber dát."
+
+msgid "Package lists"
+msgstr "Zoznamy balíčkov"
 
 msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr "Updater je vypnutý, pre povolenie zberu dát ho musíte najskôr zapnúť."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
+"The Updater is currently disabled. You must enable it first to manage "
+"package lists."
 msgstr ""
-"Pokiaľ chcete naplno využívať výhody tohto projektu, je potrebné sa najskôr "
-"zaregistrovať na portále Turris. Tu zadajte Vašu emailovú adresu, ktorú si "
-"chcete zaregistrovať alebo ktorú ste použili pri registrácii v minulosti:"
+"Updater je vypnutý. Aby ste mohli spravovať zoznamy balíčkov, musíte ho "
+"najskôr zapnúť."
 
-msgid "Validate email"
-msgstr "Overiť email"
-
-msgid "Save"
-msgstr "Uložiť"
-
-msgid "Discard changes"
-msgstr "Zahodiť zmeny"
-
-msgid "Save changes"
-msgstr "Uložiť zmeny"
+msgid ""
+"List of available software was not downloaded from the server yet. Please "
+"come back later."
+msgstr ""
+"Zo serveru sa zatiaľ neprevzal zoznam dostupného softvéru. Vráťte sa, "
+"prosím, neskôr, až sa prevezme."
 
 msgid ""
 "Welcome to the Turris administration site. Please, choose a config section "
@@ -763,6 +1043,9 @@ msgstr ""
 
 msgid "No new messages."
 msgstr "Žiadne nové správy."
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "Vo Vašom zariadení sa nenašli žiadne Wi-Fi karty."
 
 msgid "Notifications and automatic restarts"
 msgstr "Upozornenia a automatické reštarty"
@@ -848,111 +1131,412 @@ msgstr ""
 msgid "Reboot"
 msgstr "Reštartovať"
 
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "Vo Vašom zariadení sa nenašli žiadne Wi-Fi karty."
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - administračné rozhranie routera Turris"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Log out"
+msgstr "Odhlásiť se"
 
 msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
 msgstr ""
-"Router Turris používa vlastný DNS resolver s podporou DNSSEC. Ten je schopný "
-"pracovať úplne samostatne, ako aj s využitím DNS resolvera poskytovateľa, "
-"prostredníctvom ktorého sa vykonáva tzv. forwardovanie."
+"Táto stránka potrebuje pre správnu funkčnosť zapnutý JavaScript. Zapnite si, "
+"prosím, v prehliadači JavaScript a stránku obnovte."
+
+msgid "This value seems to be invalid."
+msgstr "Táto položka je neplatná."
+
+msgid "This value should be a valid email."
+msgstr "Táto položka musí byť e-mailová adresa."
+
+msgid "This value should be a valid url."
+msgstr "Táto položka musí byť platná URL adresa."
+
+msgid "This value should be a valid number."
+msgstr "Táto položka musí byť číslo."
+
+msgid "This value should be a valid integer."
+msgstr "Táto položka musí byť celé číslo."
+
+msgid "This value should be digits."
+msgstr "Táto položka musí byť kladné celé číslo."
+
+msgid "This value should be alphanumeric."
+msgstr "Táto položka musí byť alfanumerická."
+
+msgid "This value should not be blank."
+msgstr "Táto položka nesmie byť prázdna."
+
+msgid "This value is required."
+msgstr "Táto položka je povinná."
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr "Táto položka musí byť väčšia alebo rovná %s."
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr "Táto položka musí byť menšia alebo rovná %s."
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr "Táto položka musí byť v rozsahu od %s do %s."
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr "Táto položka musí mať najmenej %s znakov."
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr "Táto položka musí mať najviac %s znakov."
+
+#, python-format
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr "Táto položka musí mať dĺžku od %s do %s znakov."
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr "Je nutné vybrať aspoň %s možností."
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr "Je nutné vybrať najviac %s možností."
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr "Je nutné vybrať od %s do %s možností."
+
+msgid "This value should be the same."
+msgstr "Táto položka musí byť rovnaká."
+
+msgid "This is not a valid IPv4 address."
+msgstr "Toto nie je platná IPv4 adresa."
+
+msgid "This is not a valid IPv4 netmask."
+msgstr "Toto nie je platná IPv4 sieťová maska."
+
+msgid "This is not a valid IPv4 prefix."
+msgstr "Toto nie je platný IPv4 prefix."
+
+msgid "This is not a valid IPv6 prefix."
+msgstr "Toto nie je IPv6 adresa s dĺžkou prefixu."
+
+msgid "This is not a valid MAC address."
+msgstr "Toto nie je platná MAC adresa."
 
 msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
 msgstr ""
-"Nasledujúce nastavenie ovplyvňuje práve nastavenie DNS resolvera. V sieťach, "
-"kde správne funguje DNS resolver poskytovateľa, je výhodnejšie ho používať, "
-"pretože to väčšinou vedie k rýchlejšej odozve. Pokiaľ však tento spôsob "
-"nefunguje, je nutné použiť variant bez forwardovania."
+"Vami zadané heslo obsahuje neštandardné znaky, ktoré nie sú zakázané, avšak môžu na niektorých zariadeniach spôsobovať problémy."
 
 msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
 msgstr ""
-"Vo výnimočných prípadoch sa môže stať, že má poskytovateľ nevhodnú "
-"konfiguráciu siete, ktorá znemožňuje DNSSEC validáciu. Pokiaľ máte problémy "
-"s funkčnosťou DNS, môžete skúsiť DNSSEC validáciu <strong>dočasne</strong> "
-"vypnúť, aby ste zistili príčinu problému. Majte však na pamäti, že ste bez "
-"DNSSEC validácie náchylní na útoky podvrhnutím DNS prekladu. Preto dôrazne "
-"odporúčame, aby ste <strong>ponechali DNSSEC validáciu zapnutú</strong> a "
-"problém riešili so svojim poskytovateľom pripojenia, pretože ide o závažnú "
-"chybu na jeho strane."
+"Vami zadaný názov siete obsahuje neštandardné znaky, ktoré nie sú zakázané, avšak môžu na niektorých zariadeniach spôsobovať problémy."
 
-msgid "Connection test"
-msgstr "Test pripojenia"
+msgid "OK"
+msgstr "OK"
+
+msgid "Loading..."
+msgstr "Načíta sa..."
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr "Test pripojenia sa nepodaril, prebieha test pripojenia s vypnutým forwardovaním."
 
 msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
 msgstr ""
-"Tu si môžete otestovať funkčnosť internetového pripojenia. Tento test je "
-"užitočný tiež v prípade, keď chcete otestovať, že správne funguje nastavenie "
-"DNS. Nezabudnite stlačiť tlačidlo <strong>Uložiť</strong>, pokiaľ ste "
-"zmenili nastavenie forwardovania vyššie."
-
-msgid "Unable to verify network connection."
-msgstr "Nepodarilo sa overiť stav pripojenia."
-
-msgid "Test type"
-msgstr "Typ testu"
-
-msgid "Status"
-msgstr "Stav"
-
-msgid "IPv4 connectivity"
-msgstr "Konektivita IPv4"
-
-msgid "IPv4 gateway connectivity"
-msgstr "Dostupnosť IPv4 brány"
-
-msgid "IPv6 connectivity"
-msgstr "Konektivita IPv6"
-
-msgid "IPv6 gateway connectivity"
-msgstr "Dostupnosť IPv6 brány"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Otestovať pripojenie"
+"IP adresa Vášho routera sa zmenila. Router by mal byť teraz dostupný na adrese %NEW_IP_LINK%. Viac informácií o zmene IP adresy nájdete vyššie."
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
 msgstr ""
-"Aktuálne máte povolený zber dát. Pokiaľ chcete updater vypnúť, zakážte "
-"najskôr zber dát."
-
-msgid "Package lists"
-msgstr "Zoznamy balíčkov"
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to manage "
-"package lists."
-msgstr ""
-"Updater je vypnutý. Aby ste mohli spravovať zoznamy balíčkov, musíte ho "
-"najskôr zapnúť."
+"Rozhodli ste sa deaktivovať bezpečnostné aktualizácie. Dôrazne Vám odporúčame, aby ste nechali automatické bezpečnostné aktualizácie zapnuté. Iba vďaka pravidelným aktualizáciám softvéru Vášho zariadenia je možné zaistiť ochranu pred útokmi, ktoré naňho môžu byť zamerané.\\n\\nSkutočne chcete pokračovať a zostať nechránení?"
 
 msgid ""
-"List of available software was not downloaded from the server yet. Please "
-"come back later."
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
 msgstr ""
-"Zo serveru sa zatiaľ neprevzal zoznam dostupného softvéru. Vráťte sa, "
-"prosím, neskôr, až sa prevezme."
+"DNSSEC je bezpečnostná technológia, ktorá chráni DNS komunikáciu pred útokmi na jej infraštruktúru. Dôrazne Vám odporúčame, aby ste nechali DNSSEC validáciu zapnutú, pokiaľ svoj router Turris nebudete pripájať do siete, v ktorej technológia DNSSEC nefunguje.\\n\\nSkutočne chcete pokračovať a zostať nechránení?"
+
+msgid "Are you sure you want to restart the router?"
+msgstr "Skutočne chcete reštartovať router?"
+
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr "\\nZostávajúce neprečítané správy (%UNREAD%) sa vymažú."
+
+msgid ""
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
+msgstr ""
+"V nastavení boli vykonané zmeny, ktoré neboli uložené.\\nChcete zmeny zahodiť a poslať testovaciu správu s pôvodným nastavením?"
+
+msgid "Next"
+msgstr "Ďalej"
+
+#, python-format
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Zariadenie bolo úspešne nastavené. K plnohodnotnej prevádzke už ostáva iba "
+"jeho aktivácia v systéme Turris. Nasledujúci kód vyplňte v svojom profile na "
+"stránke <a href=\"%(url)s\">%(url)s</a>."
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+"<strong>Upozornenie:</strong> kód má obmedzenú časovú platnosť - v prípade, "
+"že nebude pri aktivácii akceptovaný, obnovte túto stránku pre získanie "
+"nového."
+
+msgid "What next?"
+msgstr "Čo ďalej?"
+
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+"Akékoľvek z predchádzajúcich nastavení môžete kedykoľvek zmeniť v <a href="
+"\"%(url)s\">štandardnom konfiguračnom rozhraní</a>. Pokiaľ chcete nastavovať "
+"pokročilejšie funkcie systému, môžete využiť rozhranie LuCI, ktoré je "
+"prístupné z karty <a href=\"%(url2)s\">Pokročilé nastavenie</a>."
+
+msgid "Important updates"
+msgstr "Dôležité aktualizácie"
+
+msgid ""
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
+msgstr ""
+"Boli nainštalované niektoré dôležité aktualizácie, ktoré vyžadujú reštart "
+"routera. Bez reštartu zariadenia nemusia niektoré služby správne fungovať. "
+"Podrobnejšie informácie o týchto aktualizáciách nájdete nižšie."
+
+msgid "Continue to configuration interface"
+msgstr "Pokračovať do konfiguračného rozhrania"
+
+msgid "Checking internet connectivity."
+msgstr "Prebieha test internetového pripojenia."
+
+msgid "One moment, please..."
+msgstr "Vydržte chvíľu..."
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Internet connectivity test passed without error."
+msgstr "Test pripojenia k internetu prebehol bez chýb."
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+"Vaše internetové pripojenie je funkčné, ale nedarí sa prekladať adresy "
+"pomocou DNS. Tento problém je zrejme spôsobený u Vášho poskytovateľa "
+"pripojenia. Príčinou môže byť tiež nesprávne nastavený čas na Vašom routeri. "
+"V tom prípade budete môcť nastaviť správny čas v nasledujúcom kroku."
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+"Zdá sa, že nemáte pripojenie k internetu. To je pravdepodobne spôsobené "
+"nesprávnym nastavením WAN."
+
+msgid "Try again"
+msgstr "Skúsiť znovu"
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+"V niektorých prípadoch, ako je pomalšie DSL pripojenie alebo pri použití "
+"DHCP, môže byť táto chyba spôsobená pomalým štartom pripojenia. Pokiaľ si "
+"myslíte, že by to mohol byť tento prípad, môžete spojenie opäť otestovať "
+"tlačidlom \"Skúsiť znovu\". Môžete sa tiež vrátiť na predchádzajúcu stránku "
+"a pokúsiť sa problém napraviť zmenou nastavenia WAN."
+
+msgid "Adjust WAN settings"
+msgstr "Upraviť nastavenie WAN"
+
+msgid "Registration failure"
+msgstr "Chyba pri registrácii"
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+"Prebieha inštalácia ďalších aktualizácií. V priebehu tohto procesu bude "
+"router niekoľkokrát reštartovaný."
+
+msgid "Do not unplug the device during update!"
+msgstr "Počas aktualizácie zariadenie neodpájajte!"
+
+msgid "Check of available updates in progress."
+msgstr "Prebieha kontrola aktualizácií."
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr ""
+"Aktualizácia firmvéru prebehla v poriadku, môžete prejsť k ďalšiemu kroku."
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Aktualizácie sa nepodarilo prevziať alebo došlo k inej chybe. Skontrolujte, "
+"prosím, či máte správne nastavené pripojenie k internetu a kábel zapojený do "
+"konektoru WAN. Akonáhle budete mať pripojenie k internetu funkčné, "
+"aktualizácie sa budú pravidelne inštalovať samé."
+
+msgid "Updater has returned the following error:"
+msgstr "Updater vrátil nasledujúcu chybu:"
+
+msgid "Device has been restarted."
+msgstr "Zariadenie sa reštartovalo."
+
+msgid "Please log in again to continue."
+msgstr "Pre pokračovanie sa, prosím, prihláste."
+
+msgid "Proceed to login"
+msgstr "Prejsť na prihlásenie"
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Vitajte v nastavení routera Turris"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Skôr než začnete router používať, je potrebné vykonať jeho prvotné "
+"nastavenie. K tomu slúži tento jednoduchý sprievodca základnou "
+"konfiguráciou. Po jeho dokončení bude router pripravený na bežné použitie."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Pokiaľ chcete obnoviť skôr uložené nastavenie routera alebo z iného dôvodu "
+"preskočiť tohto sprievodcu, môžete tak urobiť po nastavení používateľského "
+"heslo v prvom kroku sprievodcu."
+
+msgid "Begin installation"
+msgstr "Začať inštaláciu"
+
+msgid "Installation finished"
+msgstr "Inštalácia dokončená"
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr "Počas inštalácie nebola povolená služba Updater."
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+"Bez Updatera nebude softvér na routeri udržiavaný v aktuálnom stave a "
+"zároveň nebude možné inštalovať softvér pomocou zoznamu balíčkov."
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://www.turris.cz/\">Project Turris</a>."
+msgstr ""
+"Po zapnutí Updateru sa tiež môžete zapojiť do nášho výskumného projektu: <a "
+"href=\"https://www.turris.cz/\">Project Turris</a>."
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+"Updater môžete kedykoľvek povoliť na konfiguračnej stránke <a href=\"%(url)s"
+"\">Updater</a>."
+
+msgid ""
+"With Turris Omnia you can join the research project called <a href=\"https://"
+"www.turris.cz/\">Project Turris</a>. Thanks to this project, your router can "
+"become a probe that analyzes the traffic between internet and the home "
+"network and identifies suspicious data flows."
+msgstr ""
+"S routerom Turris Omnia sa môžete stáť súčasťou výskumného projektu <a href="
+"\"https://www.turris.cz/\">Project Turris</a>. Vďaka tomuto projektu sa Váš "
+"router môže stať sondou, ktorá analyzuje prevádzku medzi sieťou internet a "
+"Vašou domácou sieťou a identifikuje podozrivé dátové toky."
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+"Tieto rozširujúce funkcie si môžete zapnúť podľa postupu uvedeného na "
+"stránke <a href=\"%(url)s\">Zber dát</a>."
+
+msgid "Continue to the configuration interface"
+msgstr "Pokračovať do konfiguračného rozhrania"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Synchronize with your computer clock"
+msgstr "Synchronizovať s časom vo Vašom počítači"
+
+msgid "Set time manually"
+msgstr "Nastaviť čas ručne"
+
+msgid "Synchronization successful."
+msgstr "Synchronizácia prebehla úspešne."
+
+msgid "Time settings"
+msgstr "Nastavenia času"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Prebieha synchronizácia času s internetovým serverom."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Čas bol úspešne synchronizovaný, môžete prejsť k ďalšiemu kroku."
+
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Skip wizard"
+msgstr "Preskočiť sprievodcu"
+
+msgid "Step"
+msgstr "Krok"
+
+msgid "Hint"
+msgstr "Pomocník"
 
 msgid ""
 "One of the most important features of router Turris Omnia are automatic "
@@ -1046,272 +1630,6 @@ msgstr ""
 "routera Turris Omnia a oboznámili ste sa s <a href=\"https://www.turris.cz/"
 "omnia-updater-eula\">kompletnými podmienkami účasti</a> v tomto projekte."
 
-msgid "Project:Turris"
-msgstr "Project:Turris"
-
-msgid "Skip wizard"
-msgstr "Preskočiť sprievodcu"
-
-msgid "Language"
-msgstr "Jazyk"
-
-msgid "Step"
-msgstr "Krok"
-
-msgid "Loading..."
-msgstr "Načíta sa..."
-
-msgid "Checking internet connectivity."
-msgstr "Prebieha test internetového pripojenia."
-
-msgid "One moment, please..."
-msgstr "Vydržte chvíľu..."
-
-msgid "Done"
-msgstr "Hotovo"
-
-msgid "Internet connectivity test passed without error."
-msgstr "Test pripojenia k internetu prebehol bez chýb."
-
-msgid "Next"
-msgstr "Ďalej"
-
-msgid "Error"
-msgstr "Chyba"
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
-msgstr ""
-"Vaše internetové pripojenie je funkčné, ale nedarí sa prekladať adresy "
-"pomocou DNS. Tento problém je zrejme spôsobený u Vášho poskytovateľa "
-"pripojenia. Príčinou môže byť tiež nesprávne nastavený čas na Vašom routeri. "
-"V tom prípade budete môcť nastaviť správny čas v nasledujúcom kroku."
-
-msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
-msgstr ""
-"Zdá sa, že nemáte pripojenie k internetu. To je pravdepodobne spôsobené "
-"nesprávnym nastavením WAN."
-
-msgid "Try again"
-msgstr "Skúsiť znovu"
-
-msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
-msgstr ""
-"V niektorých prípadoch, ako je pomalšie DSL pripojenie alebo pri použití "
-"DHCP, môže byť táto chyba spôsobená pomalým štartom pripojenia. Pokiaľ si "
-"myslíte, že by to mohol byť tento prípad, môžete spojenie opäť otestovať "
-"tlačidlom \"Skúsiť znovu\". Môžete sa tiež vrátiť na predchádzajúcu stránku "
-"a pokúsiť sa problém napraviť zmenou nastavenia WAN."
-
-msgid "Adjust WAN settings"
-msgstr "Upraviť nastavenie WAN"
-
-msgid "Installation finished"
-msgstr "Inštalácia dokončená"
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"Akékoľvek z predchádzajúcich nastavení môžete kedykoľvek zmeniť v <a href="
-"\"%(url)s\">štandardnom konfiguračnom rozhraní</a>. Pokiaľ chcete nastavovať "
-"pokročilejšie funkcie systému, môžete využiť rozhranie LuCI, ktoré je "
-"prístupné z karty <a href=\"%(url2)s\">Pokročilé nastavenie</a>."
-
-msgid "What next?"
-msgstr "Čo ďalej?"
-
-msgid ""
-"You have decided to disable the Updater service during the installation."
-msgstr "Počas inštalácie nebola povolená služba Updater."
-
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"Bez Updatera nebude softvér na routeri udržiavaný v aktuálnom stave a "
-"zároveň nebude možné inštalovať softvér pomocou zoznamu balíčkov."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://www.turris.cz/\">Project Turris</a>."
-msgstr ""
-"Po zapnutí Updateru sa tiež môžete zapojiť do nášho výskumného projektu: <a "
-"href=\"https://www.turris.cz/\">Project Turris</a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"Updater môžete kedykoľvek povoliť na konfiguračnej stránke <a href=\"%(url)s"
-"\">Updater</a>."
-
-msgid ""
-"With Turris Omnia you can join the research project called <a href=\"https://"
-"www.turris.cz/\">Project Turris</a>. Thanks to this project, your router can "
-"become a probe that analyzes the traffic between internet and the home "
-"network and identifies suspicious data flows."
-msgstr ""
-"S routerom Turris Omnia sa môžete stáť súčasťou výskumného projektu <a href="
-"\"https://www.turris.cz/\">Project Turris</a>. Vďaka tomuto projektu sa Váš "
-"router môže stať sondou, ktorá analyzuje prevádzku medzi sieťou internet a "
-"Vašou domácou sieťou a identifikuje podozrivé dátové toky."
-
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
-msgstr ""
-"Tieto rozširujúce funkcie si môžete zapnúť podľa postupu uvedeného na "
-"stránke <a href=\"%(url)s\">Zber dát</a>."
-
-msgid "Important updates"
-msgstr "Dôležité aktualizácie"
-
-msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
-msgstr ""
-"Boli nainštalované niektoré dôležité aktualizácie, ktoré vyžadujú reštart "
-"routera. Bez reštartu zariadenia nemusia niektoré služby správne fungovať. "
-"Podrobnejšie informácie o týchto aktualizáciách nájdete nižšie."
-
-msgid "Continue to the configuration interface"
-msgstr "Pokračovať do konfiguračného rozhrania"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Vitajte v nastavení routera Turris"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"Skôr než začnete router používať, je potrebné vykonať jeho prvotné "
-"nastavenie. K tomu slúži tento jednoduchý sprievodca základnou "
-"konfiguráciou. Po jeho dokončení bude router pripravený na bežné použitie."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Pokiaľ chcete obnoviť skôr uložené nastavenie routera alebo z iného dôvodu "
-"preskočiť tohto sprievodcu, môžete tak urobiť po nastavení používateľského "
-"heslo v prvom kroku sprievodcu."
-
-msgid "Begin installation"
-msgstr "Začať inštaláciu"
-
-msgid "Registration failure"
-msgstr "Chyba pri registrácii"
-
-msgid "Continue to configuration interface"
-msgstr "Pokračovať do konfiguračného rozhrania"
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Zariadenie bolo úspešne nastavené. K plnohodnotnej prevádzke už ostáva iba "
-"jeho aktivácia v systéme Turris. Nasledujúci kód vyplňte v svojom profile na "
-"stránke <a href=\"%(url)s\">%(url)s</a>."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Upozornenie:</strong> kód má obmedzenú časovú platnosť - v prípade, "
-"že nebude pri aktivácii akceptovaný, obnovte túto stránku pre získanie "
-"nového."
-
-msgid "Synchronize with your computer clock"
-msgstr "Synchronizovať s časom vo Vašom počítači"
-
-msgid "Set time manually"
-msgstr "Nastaviť čas ručne"
-
-msgid "Synchronization successful."
-msgstr "Synchronizácia prebehla úspešne."
-
-msgid "Time settings"
-msgstr "Nastavenia času"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "Prebieha synchronizácia času s internetovým serverom."
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Čas bol úspešne synchronizovaný, môžete prejsť k ďalšiemu kroku."
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"Prebieha inštalácia ďalších aktualizácií. V priebehu tohto procesu bude "
-"router niekoľkokrát reštartovaný."
-
-msgid "Do not unplug the device during update!"
-msgstr "Počas aktualizácie zariadenie neodpájajte!"
-
-msgid "Check of available updates in progress."
-msgstr "Prebieha kontrola aktualizácií."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr ""
-"Aktualizácia firmvéru prebehla v poriadku, môžete prejsť k ďalšiemu kroku."
-
-msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"Aktualizácie sa nepodarilo prevziať alebo došlo k inej chybe. Skontrolujte, "
-"prosím, či máte správne nastavené pripojenie k internetu a kábel zapojený do "
-"konektoru WAN. Akonáhle budete mať pripojenie k internetu funkčné, "
-"aktualizácie sa budú pravidelne inštalovať samé."
-
-msgid "Updater has returned the following error:"
-msgstr "Updater vrátil nasledujúcu chybu:"
-
-msgid "Device has been restarted."
-msgstr "Zariadenie sa reštartovalo."
-
-msgid "Please log in again to continue."
-msgstr "Pre pokračovanie sa, prosím, prihláste."
-
-msgid "Proceed to login"
-msgstr "Prejsť na prihlásenie"
-
-msgid "Hint"
-msgstr "Pomocník"
-
-msgid "Turris router administration interface"
-msgstr "Administračné rozhranie routera Turris"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Táto stránka potrebuje pre správnu funkčnosť zapnutý JavaScript. Zapnite si, "
-"prosím, v prehliadači JavaScript a stránku obnovte."
-
 msgid "Log in"
 msgstr "Prihlásiť sa"
 
@@ -1321,199 +1639,22 @@ msgstr "Konfiguračné rozhranie Foris"
 msgid "Go to LuCI"
 msgstr "Prejsť na LuCI"
 
+msgid "Turris router administration interface"
+msgstr "Administračné rozhranie routera Turris"
+
 msgid "Reboot now"
 msgstr "Reštartovať teraz"
 
 msgid "Dismiss"
 msgstr "Zahodiť"
 
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr ""
+"Nepodarilo sa načítať upozornenia od routera. Skúste, prosím, stránku "
+"obnoviť."
+
 msgid "You have been logged out due to longer inactivity."
 msgstr "Boli ste odhlásení z dôvodu dlhšej doby nečinnosti."
-
-msgid "The password you entered was not valid."
-msgstr "Vami zadané heslo je neplatné."
-
-msgid "News"
-msgstr "Novinky"
-
-msgid "Update"
-msgstr "Aktualizácia"
-
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
-
-#, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s z %(created_at)s"
-
-msgid "Notification"
-msgstr "Upozornenie"
-
-msgid "This field is required."
-msgstr "Toto pole je povinné."
-
-msgid "Not a valid IPv4 address."
-msgstr "Neplatná IPv4 adresa."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Neplatná IPv4 sieťová maska."
-
-msgid "Not a valid IPv6 address."
-msgstr "Neplatná IPv6 adresa."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Toto nie je platná IPv4 alebo IPv6 adresa."
-
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Toto nie je IPv6 adresa s dĺžkou prefixu."
-
-msgid "Is not a number."
-msgstr "Nie je číslo."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Toto nie je platný čas vo formáte HH:MM."
-
-msgid "MAC address is not valid."
-msgstr "Nie je platná MAC adresa."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Musí byť z rozsahu %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Dĺžka musí byť od %(low)s do %(high)s znakov."
-
-msgid "Configuration was successfully saved."
-msgstr "Nastavenie bolo úspešne uložené."
-
-msgid "There were some errors in your input."
-msgstr "Niektoré z Vami zadaných údajov nie sú platné."
-
-msgid "Old password you entered was not valid."
-msgstr "Vami zadané pôvodné heslo je neplatné."
-
-msgid "Password was successfully saved."
-msgstr "Heslo bolo úspešne uložené."
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"Do konektoru WAN nie je zapojený kábel, Vaše pripojenie do internetu zrejme "
-"nebude fungovať."
-
-msgid "Wrong HTTP method."
-msgstr "Neplatná HTTP metóda"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr ""
-"Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju schránku."
-
-#, python-format
-msgid ""
-"Sending of the testing message failed, your configuration is possibly wrong."
-"<br>Error returned:<br><pre>%(error)s</pre>"
-msgstr ""
-"Posielanie testovacej správy zlyhalo. Zlyhanie bolo pravdepodobne spôsobené "
-"nesprávnym nastavením.<br>Vrátená chyba:<br><pre>%(error)s</pre>"
-
-msgid "Sending of the testing message failed because of an internal error."
-msgstr "Testovaciu správu sa nepodarilo poslať kvôli vnútornej chybe."
-
-#, python-format
-msgid ""
-"Configuration was successfully restored. After installing updates and "
-"rebooting you can return to this page at <a href=\"%(new_url)s\">"
-"%(new_url)s</a> in local network. Please wait a while until router "
-"automatically restarts."
-msgstr ""
-"Nastavenie bolo úspešne obnovené. Po inštalácii aktualizácií a reštartu "
-"zariadenia bude router z vnútornej siete dostupný na adrese <a href="
-"\"%(new_url)s\">%(new_url)s</a>. Počkajte, prosím, na automatické "
-"reštartovanie routera."
-
-msgid ""
-"Configuration was successfully restored. Please wait a while for "
-"installation of updates and automatic restart of the device."
-msgstr ""
-"Nastavenie bolo úspešne obnovené. Počkajte, prosím, na aktualizáciu "
-"zariadenia a automatické reštartovanie routera."
-
-msgid "IP address of the router could not be determined from the backup."
-msgstr "Zo zálohy sa nepodarilo určiť IP adresu routera."
-
-msgid "Configuration could not be loaded, backup file is probably corrupted."
-msgstr ""
-"Nastavenie sa nepodarilo obnoviť, súbor so zálohou je pravdepodobne "
-"poškodený."
-
-msgid ""
-"Configuration was successfully saved. Selected packages should be installed "
-"or removed shortly."
-msgstr ""
-"Nastavenie bolo úspešne uložené. Vybrané balíčky by sa mali v krátkom čase "
-"nainštalovať alebo odstrániť."
-
-#, python-format
-msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
-msgstr ""
-"Pri overovaní registrácie došlo k nasledujúcej chybe: <br><pre>%(response)s</"
-"pre>"
-
-msgid ""
-"Registration for the entered email is valid. Now you can enable the data "
-"collection."
-msgstr ""
-"Registrácia pre túto emailovú adresu je platná. Teraz môžete aktivovať zber "
-"dát."
-
-#, python-format
-msgid ""
-"This router is currently assigned to a different email address. Please "
-"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
-"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
-"email address."
-msgstr ""
-"Tento router je v súčasnosti priradený k inej emailovej adrese. Pokračujte, "
-"prosím, na <a href=\"%(url)s\">portál Turris</a> a použite registračný kód "
-"<strong>%(reg_num)s</strong> na priradenie k Vašej emailovej adrese."
-
-#, python-format
-msgid ""
-"This email address is not registered yet. Please continue to the <a href="
-"\"%(url)s\">Turris website</a> and use the registration code <strong>"
-"%(reg_num)s</strong> to create a new account."
-msgstr ""
-"Táto emailová adresa zatiaľ nie je zaregistrovaná. Pokračujte, prosím, na <a "
-"href=\"%(url)s\">portál Turris</a> a použite registračný kód <strong>"
-"%(reg_num)s</strong> na vytvorenie nového účtu."
-
-msgid "About"
-msgstr "O routeri"
-
-msgid "Online"
-msgstr "Online"
-
-msgid "Offline"
-msgstr "Offline"
-
-msgid "Connecting"
-msgstr "Pripája sa"
-
-msgid "Invalid authentication"
-msgstr "Neplatná autentifikácia"
-
-msgid "Broken"
-msgstr "Nefunkčný"
-
-msgid "Unknown status"
-msgstr "Neznámy stav"
-
-msgid "Home page"
-msgstr "Hlavná stránka"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
 
 #, python-format
 msgid "Configuration wizard - step %s"
