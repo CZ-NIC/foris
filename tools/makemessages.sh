@@ -15,26 +15,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if [[ ! $# -eq 3 ]]; then
+if [[ ! $# -eq 4 ]]; then
 	lang=$2
 	locale_dir="$1/locale/$lang/LC_MESSAGES"
+	pot="$1/locale/foris.pot"
 	if [ ! -d $locale_dir ]
 	then
 		mkdir -p $locale_dir
 	fi
 	find $1 \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"\?{{!* \(_\|trans\|\(\w*\)gettext\)\((".*")\|(''.*'')\).*}}"\?/\n\2gettext\3\n#/g' | \
-		xgettext -d messages --no-location --language=Python --from-code=UTF-8 --output=$locale_dir/tmp_foris.pot -
+		xgettext --package-name="$3" -d messages --no-location --language=Python --from-code=UTF-8 --output="$pot" -
 	find $1 -iname "*.tpl" -exec sh -c 'grep -zq "%include.*_(" $0 && echo "WARNING: _() after %include in $0"' {} \;
 	if [ -f $locale_dir/foris.po ]
 	then
 		echo "Making messages in $locale_dir."
-		msgmerge -q -U $locale_dir/foris.po $locale_dir/tmp_foris.pot
-		rm $locale_dir/tmp_foris.pot
+		msgmerge -q -U $locale_dir/foris.po "$pot"
 	else
-		mv $locale_dir/tmp_foris.pot $locale_dir/foris.po
+		msginit -i "$pot" -l $lang --no-translator -o $locale_dir/foris.po
 	fi
 	echo "Message making completed."
 else
     echo "$1 -- $2"
-	>&2 echo "Usage: $0 PATH LANGUAGE"
+	>&2 echo "Usage: $0 PATH LANGUAGE PACKAGE"
 fi
