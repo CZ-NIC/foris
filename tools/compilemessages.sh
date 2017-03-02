@@ -17,7 +17,7 @@
 
 shopt -s extglob
 
-for lang_dir in $1/locale/*; do
+for lang_dir in $1/locale/??; do
 	locale_dir=${lang_dir}/LC_MESSAGES
 	files=$(find ${locale_dir} -name "*.po" -not -name "messages.po")
 	msgcat ${files} > ${locale_dir}/messages.po
