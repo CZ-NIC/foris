@@ -136,7 +136,7 @@ def index():
                           % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
 
 
-def translate_js(filename):
+def render_js(filename):
     """ Render javascript template to insert a translation
         :param filename: name of the file to be translated
     """
@@ -169,12 +169,12 @@ def translate_js(filename):
     return bottle.HTTPResponse(body, **headers)
 
 
-def translate_js_md5(filename):
+def render_js_md5(filename):
     # calculate the hash of the rendered template
     return hashlib.md5(bottle.template("javascript/%s" % filename).encode('utf-8')).hexdigest()
 
 
-bottle.SimpleTemplate.defaults['trans_js_md5'] = lambda filename: translate_js_md5(filename)
+bottle.SimpleTemplate.defaults['js_md5'] = lambda filename: render_js_md5(filename)
 
 
 def change_lang(lang):
@@ -384,7 +384,7 @@ def init_default_app():
     app.route("/", method="POST", name="login", callback=login)
     app.route("/logout", name="logout", callback=logout)
     app.route('/static/<filename:re:.*>', name="static", callback=static)
-    app.route("/translate_js/<filename:re:.*>", name="translate_js", callback=translate_js)
+    app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
     return app
 
 
