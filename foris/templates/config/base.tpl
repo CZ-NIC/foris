@@ -50,11 +50,11 @@
                 <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
               </div>
               <div id="language-switch">
-                <span>{{ translation_names[lang()] }}</span>
+                <span>{{ translation_names.get(lang(), lang()) }}</span>
                 <ul>
-                  %for code, name in translation_names.iteritems():
+                  %for code in translations:
                     %if code != lang():
-                      <li><a href="{{ url("change_lang", lang=code, backlink=request.fullpath) }}">{{ name }}</a></li>
+                      <li><a href="{{ url("change_lang", lang=code, backlink=request.fullpath) }}">{{ translation_names.get(code, code) }}</a></li>
                     %end
                   %end
                 </ul>

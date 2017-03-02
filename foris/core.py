@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # builtins
+import collections
 import gettext
 import hashlib
 import logging
@@ -47,26 +48,40 @@ BASE_DIR = os.path.dirname(__file__)
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
 DEFAULT_LANGUAGE = 'en'
-translations = {
-    'cs': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
-                              languages=['cs'], fallback=True),
-    'de': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
-                              languages=['de'], fallback=True),
-    'en': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
-                              languages=['en'], fallback=True),
-    'sk': gettext.translation("messages", os.path.join(BASE_DIR, "locale"),
-                              languages=['sk'], fallback=True),
-}
+
+# read locale directory
+locale_directory = os.path.join(BASE_DIR, "locale")
+translations = sorted([
+    d for d in os.listdir(locale_directory) + [DEFAULT_LANGUAGE]
+    if os.path.isdir(os.path.join(locale_directory, d))
+])
+translations.insert(0, DEFAULT_LANGUAGE)  # no folder for default language (en)
+
+translations = collections.OrderedDict(
+    (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
+    for e in translations
+)
+
 translation_names = {
     'cs': "Česky",
     'de': "Deutsch",
     'en': "English",
-    'sk': "Slovenský",
+    'sk': "Slovensky",
 }
+
+iso2to3 = {
+    'cs': "cze",
+    'de': "deu",
+    'en': "eng",
+    'sk': "svk",
+}
+
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
 ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
 bottle.SimpleTemplate.defaults['translation_names'] = translation_names
+bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
+bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
 gettext_dummy = lambda x: x
