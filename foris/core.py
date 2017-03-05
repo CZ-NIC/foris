@@ -66,7 +66,7 @@ translation_names = {
     'cs': "Česky",
     'de': "Deutsch",
     'en': "English",
-    'sk': "Slovensky",
+    'sk': "Slovenský",
 }
 
 iso2to3 = {
