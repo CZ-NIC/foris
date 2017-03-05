@@ -89,7 +89,7 @@ msgid "Maintenance"
 msgstr "Údržba"
 
 msgid "Wrong HTTP method."
-msgstr "Neplatná HTTP metóda"
+msgstr "Neplatná HTTP metóda."
 
 msgid "Testing message was sent, please check your inbox."
 msgstr ""
@@ -338,7 +338,7 @@ msgid "Send news"
 msgstr "Posielať novinky"
 
 msgid "Send emails about new features."
-msgstr "Posielať tiež upozornenia ohľadom nových funkcií routera"
+msgstr "Posielať tiež upozornenia ohľadom nových funkcií routera."
 
 msgid "SMTP settings"
 msgstr "Nastavenie SMTP"
@@ -373,8 +373,8 @@ msgstr "Meno"
 msgid "Password"
 msgstr "Heslo"
 
-msgid "Automatic restarts"
-msgstr "Automatické reštarty"
+msgid "Automatic restarts after software update"
+msgstr "Automatické reštarty po aktualizácii softvéru"
 
 msgid "Delay (days)"
 msgstr "Odklad (dni)"
@@ -992,7 +992,7 @@ msgstr ""
 "Pokiaľ ešte nemáte zariadenie zaregistrované v systéme Turris, kliknite na "
 "nasledujúce tlačidlo pre vygenerovanie registračného kódu. Ten následne "
 "vyplňte v svojom používateľskom profile v systéme Turris na adrese <a href="
-"\"%(url)s\">%(url)s</a>"
+"\"%(url)s\">%(url)s</a>."
 
 msgid "Registration code"
 msgstr "Registračný kód"
@@ -1527,7 +1527,7 @@ msgid "Time was successfully synchronized, you can move to the next step."
 msgstr "Čas bol úspešne synchronizovaný, môžete prejsť k ďalšiemu kroku."
 
 msgid "Project:Turris"
-msgstr "Project:Turris"
+msgstr "Projekt:Turris"
 
 msgid "Skip wizard"
 msgstr "Preskočiť sprievodcu"
