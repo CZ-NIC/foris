@@ -63,10 +63,10 @@ translations = collections.OrderedDict(
 )
 
 translation_names = {
-    'cs': "Česky",
+    'cs': "Čeština",
     'de': "Deutsch",
     'en': "English",
-    'sk': "Slovenský",
+    'sk': "Slovenčina",
 }
 
 iso2to3 = {
