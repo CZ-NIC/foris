@@ -371,7 +371,7 @@ def get_arg_parser():
     parser.add_argument("-p", "--port", type=int, default=8080)
     parser.add_argument("--session-timeout", type=int, default=900,
                         help="session timeout (in seconds)")
-    parser.add_argument("-s", "--server", choices=["wsgiref", "flup"], default="wsgiref")
+    parser.add_argument("-s", "--server", choices=["wsgiref", "flup", "cgi"], default="wsgiref")
     parser.add_argument("-d", "--debug", action="store_true")
     parser.add_argument("--noauth", action="store_true",
                         help="disable authentication (available only in debug mode)")

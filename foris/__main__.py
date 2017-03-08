@@ -15,6 +15,8 @@ def main():
     elif args.server == "flup":
         # bindAddress is None - FCGI process must be spawned by the server
         bottle.run(app=main_app, server="flup", debug=args.debug, bindAddress=None)
+    elif args.server == "cgi":
+        bottle.run(app=main_app, server="cgi", debug=args.debug)
 
 
 if __name__ == "__main__":
