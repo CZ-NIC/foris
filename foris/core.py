@@ -30,7 +30,7 @@ from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 from ncclient.operations import TimeoutExpiredError, RPCError
 
 # local
-from .nuci import client, filters
+from .nuci import client, filters, cache
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
 from .plugins import ForisPluginLoader
@@ -44,6 +44,9 @@ from .utils.routing import reverse
 logger = logging.getLogger("foris")
 
 BASE_DIR = os.path.dirname(__file__)
+
+# init cache
+nuci_cache = cache.NuciCache()
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)

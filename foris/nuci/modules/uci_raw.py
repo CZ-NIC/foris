@@ -91,7 +91,26 @@ class Section(Uci):
     @staticmethod
     def from_element(element):
         name = element.find(Section.qual_tag("name")).text
-        type_ = element.find(Section.qual_tag("type")).text
+
+        # Note the type could be empty (when we filter the option - foris.settings.lang)
+        #  <nc:data xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:uci="http://www.nic.cz/ns/router/uci-raw">
+        #    <uci:uci>
+        #      <uci:config>
+        #        <uci:name>foris</uci:name>
+        #        <uci:section>
+        #          <uci:name>settings</uci:name>
+        #          <uci:option>
+        #            <uci:name>lang</uci:name>
+        #            <uci:value>en</uci:value>
+        #          </uci:option>
+        #        </uci:section>
+        #      </uci:config>
+        #    </uci:uci>
+        #  </nc:data>
+
+        type_node = element.find(Section.qual_tag("type"))
+        type_ = type_node.text if type_node is not None else None
+
         anonymous = element.find(Section.qual_tag("anonymous")) is not None
         section = Section(name, type_, anonymous)
         for elem in element.iter():
@@ -103,7 +122,8 @@ class Section(Uci):
 
     def _append_subelements(self, element):
         ET.SubElement(element, self.qual_tag("name")).text = self.name
-        ET.SubElement(element, self.qual_tag("type")).text = self.type
+        if self.type is not None:
+            ET.SubElement(element, self.qual_tag("type")).text = self.type
         if self.anonymous:
             ET.SubElement(element, self.qual_tag("anonymous"))
 

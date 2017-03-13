@@ -42,4 +42,18 @@ def create_config_filter(*args):
     return _uci.get_xml()
 
 
+def create_uci_filter(config, section=None, option=None):
+    uci_et = ET.Element(uci_raw.Uci.qual_tag(uci_raw.Uci.tag))
+    config_et = ET.SubElement(uci_et, uci_raw.Uci.qual_tag("config"))
+    ET.SubElement(config_et, uci_raw.Uci.qual_tag("name")).text = config
+    if section:
+        section_et = ET.SubElement(config_et, uci_raw.Uci.qual_tag("section"))
+        ET.SubElement(section_et, uci_raw.Uci.qual_tag("name")).text = section
+        if option:
+            option_et = ET.SubElement(section_et, uci_raw.Uci.qual_tag("option"))
+            ET.SubElement(option_et, uci_raw.Uci.qual_tag("name")).text = option
+
+    return uci_et
+
+
 foris_config = create_config_filter("foris")
