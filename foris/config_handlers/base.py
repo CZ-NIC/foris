@@ -27,7 +27,9 @@ from foris.nuci import client, filters
 from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool,\
     build_option_uci_tree
-from foris.utils import DEVICE_CUSTOMIZATION, tzinfo, localized_sorted, require_customization
+from foris.utils import (
+    contract_valid, DEVICE_CUSTOMIZATION, tzinfo, localized_sorted, require_contract_valid
+)
 
 logger = logging.getLogger(__name__)
 
@@ -155,7 +157,7 @@ class DNSHandler(BaseConfigHandler):
         dns_main.add_field(Checkbox, name="forward_upstream", label=_("Use forwarding"),
                            nuci_path="uci.resolver.common.forward_upstream",
                            nuci_preproc=lambda val: bool(int(val.value)), default=True)
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             dns_main.add_field(Checkbox, name="ignore_root_key", label=_("Disable DNSSEC"),
                                nuci_path="uci.resolver.common.ignore_root_key",
                                nuci_preproc=lambda val: bool(int(val.value)), default=False)
@@ -167,7 +169,7 @@ class DNSHandler(BaseConfigHandler):
             server = Section("common", "resolver")
             resolver.add(server)
             server.add(Option("forward_upstream", data['forward_upstream']))
-            if DEVICE_CUSTOMIZATION == "omnia":
+            if not contract_valid():
                 server.add(Option("ignore_root_key", data['ignore_root_key']))
             return "edit_config", uci
 
@@ -602,7 +604,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
 
     userfriendly_title = gettext("Data collection")
 
-    @require_customization("omnia")
+    @require_contract_valid(False)
     def get_form(self):
         form = fapi.ForisForm("registration_check", self.data,
                               filter=create_config_filter("foris"))
@@ -839,13 +841,13 @@ class UpdaterHandler(BaseConfigHandler):
             return preproc
 
         agreed_collect = None
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             agreed_collect_opt = package_lists_form.nuci_config \
                 .find_child("uci.foris.eula.agreed_collect")
             agreed_collect = agreed_collect_opt and bool(int(agreed_collect_opt.value))
 
         for pkg_list_item in pkg_list:
-            if DEVICE_CUSTOMIZATION == "omnia":
+            if not contract_valid():
                 if pkg_list_item.name == "i_agree_datacollect":
                     # This has special meaning - it's affected by foris.eula.agreed_collect
                     continue

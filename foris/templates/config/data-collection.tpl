@@ -21,6 +21,8 @@
     <p>
       {{ trans("With the Turris Omnia router you can join Project Turris which is a non-profit research project founded by the CZ.NIC association, a .CZ domain registry. By joining the project, your router will act as a probe which analyzes traffic between your home network and the Internet and helps to identify malicious data flows. Once such a flow is detected your router notifies the Turris headquarters which can compare the flow with data from the rest of the probes and assign it a threat level. If the flow is identified as an attack Turris headquarters can prepare an update which is distributed to every Turris router and helps them to protect themselves against the attack.") }}
     </p>
+  %end
+  %if not contract_valid():
     %if updater_disabled:
       <div class="message warning">
         {{ trans("The Updater is currently disabled. You must enable it first to enable data collection.") }}
@@ -57,7 +59,7 @@
     %include("_messages.tpl")
   %end
 
-  %if DEVICE_CUSTOMIZATION == "turris" or (defined('agreed') and agreed):
+  %if contract_valid() or (defined('agreed') and agreed):
     <h2>{{ form.sections[0].title }}</h2>
 
     <form id="ucollect-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>

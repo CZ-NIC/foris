@@ -18,7 +18,7 @@
 
 <div id="wizard-updater">
     <h1>{{ trans(first_title) }}</h1>
-    %if DEVICE_CUSTOMIZATION == "omnia":
+    %if not contract_valid():
       <div id="updater-eula">
         %include("includes/updater_eula.tpl")
 
@@ -71,7 +71,7 @@
     $(document).ready(function() {
     %if stepnumber == "7":
         Foris.checkUpdaterStatus(null, {{ stepnumber }});
-    %elif DEVICE_CUSTOMIZATION == "omnia":
+    %elif not contract_valid():
         Foris.initEulaForm();
     %else:
       Foris.runUpdater();

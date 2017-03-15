@@ -18,15 +18,14 @@ from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
-from foris import DEVICE_CUSTOMIZATION
 from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
     WanHandler, TimeHandler, LanHandler, UpdaterEulaHandler, WifiHandler
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
-from .nuci.modules.uci_raw import Option, Section, Config, Uci, build_option_uci_tree
-from .utils import login_required, messages, require_customization
+from .nuci.modules.uci_raw import build_option_uci_tree
+from .utils import contract_valid, login_required, messages, require_contract_valid
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
 
@@ -263,7 +262,7 @@ class WizardStep6(WizardStepMixin, UpdaterEulaHandler):
     next_step_allowed = 7
     userfriendly_title = gettext("Automatic updates")
 
-    @require_customization("omnia")
+    @require_contract_valid(False)
     def _action_submit_eula(self):
         # Save form from handler
         self.form.save()
@@ -378,7 +377,7 @@ class WizardStep10(WizardStepMixin, BaseConfigHandler):
     def render(self, **kwargs):
         kwargs['notifications'] = client.get_messages().restarts
         kwargs['make_notification_title'] = make_notification_title
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             foris_conf = client.get(filter=filters.create_config_filter("foris"))
             agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_updater")
             agreed_updater = agreed_opt and bool(int(agreed_opt.value))

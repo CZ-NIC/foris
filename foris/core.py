@@ -36,7 +36,7 @@ from .nuci.modules.user_notify import Severity
 from .plugins import ForisPluginLoader
 from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
-from .utils import DEVICE_CUSTOMIZATION, messages
+from .utils import DEVICE_CUSTOMIZATION, messages, contract_valid
 from .utils.reporting_middleware import ReportingMiddleware
 from .utils.routing import reverse
 
@@ -87,6 +87,7 @@ bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
 bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
+bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
 gettext_dummy = lambda x: x
 _ = ugettext
 

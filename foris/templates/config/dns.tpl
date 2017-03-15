@@ -20,7 +20,7 @@
      %include("_messages.tpl")
     <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can forward your DNS queries through your internet service provider's DNS resolver.") }}</p>
     <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without forwarding.") }}</p>
-    %if DEVICE_CUSTOMIZATION == "omnia":
+    %if not contract_valid():
       <p>{{! trans("In rare cases ISP's have improperly configured network which interferes with DNSSEC validation. If you experience problems with DNS, you can <strong>temporarily</strong> disable DNSSEC validation to determine the source of the problem. However, keep in mind that without DNSSEC validation, you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend keeping DNSSEC turned on</strong> and resolving the situation with your ISP as this is a serious flaw on their side.") }}</p>
     %end
     <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>

@@ -36,7 +36,7 @@
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ stats['kernel-version'] }}</td>
             </tr>
-          %if DEVICE_CUSTOMIZATION == "turris" or agreed_collect:
+          %if contract_valid() or agreed_collect:
             <tr>
                 <th>{{ trans("Sending of uCollect data") }}</th>
                 <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
@@ -69,7 +69,7 @@
         </tbody>
     </table>
 
-%if DEVICE_CUSTOMIZATION != "turris":
+%if not contract_valid():
 </div>
 %else:
     <h2>{{ trans("Device registration") }}</h2>

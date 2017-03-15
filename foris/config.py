@@ -23,14 +23,12 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
-from . import DEVICE_CUSTOMIZATION
 from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 from .config_handlers import *
 from .nuci import client
 from .nuci.client import filters
 from .nuci.exceptions import ConfigRestoreError
-from .utils import login_required
-from .utils import messages, require_customization
+from .utils import login_required, messages, require_contract_valid, contract_valid
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
 
@@ -228,7 +226,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
     template = "config/updater"
 
-    @require_customization("omnia")
+    @require_contract_valid(False)
     def _action_toggle_updater(self):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
@@ -246,7 +244,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             eula_handler = UpdaterEulaHandler(self.data)
             kwargs['updater_eula_form'] = eula_handler.form
             agreed_opt = eula_handler.form.nuci_config.find_child('uci.foris.eula.agreed_updater')
@@ -271,7 +269,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
 
     def render(self, **kwargs):
         status = kwargs.pop("status", None)
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             uci_config = client.get(filter=filters.create_config_filter("foris", "updater"))
 
             disabled_opt = uci_config.find_child('uci.updater.override.disable')
@@ -292,7 +290,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
                                      description=None, status=status,
                                      **kwargs)
 
-    @require_customization("omnia")
+    @require_contract_valid(False)
     def _action_check_registration(self):
         handler = RegistrationCheckHandler(request.POST)
         if not handler.save():
@@ -331,7 +329,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
                            registration_url=response.url,
                            reg_num=response.reg_num, **kwargs)
 
-    @require_customization("omnia")
+    @require_contract_valid(False)
     def _action_toggle_collecting(self):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
@@ -366,7 +364,7 @@ class AboutConfigPage(ConfigPageMixin):
         'unknown': gettext("Unknown status"),
     }
 
-    @require_customization("turris")
+    @require_contract_valid(True)
     def _action_registration_code(self):
         return client.get_registration()
 
@@ -393,7 +391,7 @@ class AboutConfigPage(ConfigPageMixin):
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         serial = client.get_serial()
-        if DEVICE_CUSTOMIZATION == "omnia":
+        if not contract_valid():
             foris_conf = client.get(filter=filters.create_config_filter("foris"))
             agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_collect")
             kwargs['agreed_collect'] = agreed_opt and bool(int(agreed_opt.value))
