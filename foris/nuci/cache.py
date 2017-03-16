@@ -14,11 +14,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
+
 from datetime import datetime, timedelta
 
 from .client import netconf
 from .filters import create_uci_filter
 from .modules.uci_raw import Uci
+
+logger = logging.getLogger("nuci.cache")
 
 
 class NuciCache(object):
@@ -48,6 +52,8 @@ class NuciCache(object):
 
         self.results = {k: v for k, v in self.results.items() if not k.startswith(path)}
 
+        logger.debug("records for %s invalidated in cache" % path)
+
     def get(self, nuci_path, cache_valid_period):
         """ Get the record from the cache
 
@@ -66,6 +72,8 @@ class NuciCache(object):
         if cache_valid_period and nuci_path in self.results:
             if self.results[nuci_path]['stored'] >= \
                     datetime.now() - timedelta(seconds=cache_valid_period):
+
+                logger.debug("uci path %s was loaded from cache" % nuci_path)
                 return self.results[nuci_path]['data']
 
         # create record
@@ -81,9 +89,12 @@ class NuciCache(object):
         data = netconf.get(filter=("subtree", create_uci_filter(config, section, option))).data_ele
         uci_elem = data.find(Uci.qual_tag("uci"))
         if not uci_elem:
+            logger.debug("failed to load uci path %s for caching" % nuci_path)
             return None
 
         data = Uci.from_element(data.find(Uci.qual_tag("uci")))
         self.results[nuci_path] = {'data': data, 'stored': datetime.now()}
+
+        logger.debug("uci path %s loaded for caching" % nuci_path)
 
         return data
