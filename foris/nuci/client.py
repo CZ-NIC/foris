@@ -314,6 +314,18 @@ def set_password(user, password):
         return False
 
 
+def update_contract_status():
+    """Triggers a script which updates contract validity status in uci
+
+    :return: True on success, False otherwise
+    """
+    try:
+        dispatch(registration.ContractUpdate().rcp_update_contract)
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
 def check_connection():
     """Check for connectivity features returned by network check RPC.
 

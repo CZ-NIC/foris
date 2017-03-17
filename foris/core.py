@@ -248,6 +248,11 @@ def login():
         session.save()
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
+
+        # update contract status
+        client.update_contract_status()
+        nuci_cache.invalidate("foris.contract")
+
     else:
         messages.error(_("The password you entered was not valid."))
 
