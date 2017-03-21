@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the Foris package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-01 16:27+0100\n"
+"POT-Creation-Date: 2017-03-21 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-msgid "Automatic restarts"
+msgid "Automatic restarts after software update"
 msgstr ""
 
 msgid "Delay (days)"
@@ -867,6 +867,13 @@ msgstr ""
 msgid "We were unable to detect any wireless cards in your router."
 msgstr ""
 
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+
 msgid "Notifications and automatic restarts"
 msgstr ""
 
@@ -1244,9 +1251,6 @@ msgstr ""
 msgid "Continue to the configuration interface"
 msgstr ""
 
-msgid "Language"
-msgstr ""
-
 msgid "Synchronize with your computer clock"
 msgstr ""
 
@@ -1272,6 +1276,9 @@ msgid "Skip wizard"
 msgstr ""
 
 msgid "Step"
+msgstr ""
+
+msgid "Language"
 msgstr ""
 
 msgid "Hint"
