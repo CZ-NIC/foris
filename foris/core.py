@@ -452,14 +452,6 @@ def prepare_main_app(args):
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
-    if args.debug:
-        # for nice debugging and profiling, try importing FireLogger support
-        try:
-            from firepython.middleware import FirePythonWSGI
-            app = FirePythonWSGI(app)
-        except ImportError:
-            FirePythonWSGI = None
-
     # session middleware (note: session.auto does not work within Bottle)
     session_options = {
         'session.type': 'file',
