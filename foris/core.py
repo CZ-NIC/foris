@@ -105,6 +105,17 @@ bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 messages.set_template_defaults(bottle.SimpleTemplate)
 
 
+def route_list(app, prefix=""):
+    res = []
+    for route in app.routes:
+        path = prefix + route.rule
+        if route.method == 'PROXY':
+            res += route_list(route.config['mountpoint.target'], prefix=path)
+        else:
+            res.append("%4s %s" % (route.method, path))
+    return res
+
+
 def login_redirect(step_num, wizard_finished=False):
     from wizard import NUM_WIZARD_STEPS
     if step_num >= NUM_WIZARD_STEPS or wizard_finished:
@@ -441,6 +452,9 @@ def prepare_main_app(args):
     loader = ForisPluginLoader(app)
     loader.autoload_plugins()
 
+    # store the app reference for further use
+    foris_app = app
+
     # read language saved in Uci
     lang = read_uci_lang(DEFAULT_LANGUAGE)
     # i18n middleware
@@ -451,6 +465,10 @@ def prepare_main_app(args):
     # reporting middleware for all mounted apps
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
+
+    if args.debug:
+        routes = route_list(foris_app)
+        logger.debug("Routes:\n%s", "\n".join(routes))
 
     # session middleware (note: session.auto does not work within Bottle)
     session_options = {
