@@ -105,14 +105,37 @@ bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 messages.set_template_defaults(bottle.SimpleTemplate)
 
 
-def route_list(app, prefix=""):
+def route_list(app, prefix1="", prefix2=""):
     res = []
     for route in app.routes:
-        path = prefix + route.rule
+        path1 = prefix1 + route.rule
+        path2 = prefix2
+        for name, filter, token in app.router._itertokens(route.rule):
+            if not filter:
+                # simple token
+                path2 += name
+            elif filter == 're':
+                # insert regexp
+                path2 += token
+
         if route.method == 'PROXY':
-            res += route_list(route.config['mountpoint.target'], prefix=path)
+            res += route_list(route.config['mountpoint.target'], prefix1=path1, prefix2=path2)
         else:
-            res.append("%4s %s" % (route.method, path))
+            res.append((route.method, path1, path2))
+    return res
+
+
+def route_list_debug(app):
+    res = []
+    for method, bottle_path, regex_path in route_list(app):
+        res.append("%s %s" % (method, bottle_path))
+    return res
+
+
+def route_list_cmdline(app):
+    res = []
+    for method, bottle_path, regex_path in route_list(app):
+        res.append(regex_path)
     return res
 
 
@@ -378,15 +401,17 @@ def get_arg_parser():
     """
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("-H", "--host", default="0.0.0.0")
-    parser.add_argument("-p", "--port", type=int, default=8080)
-    parser.add_argument("--session-timeout", type=int, default=900,
-                        help="session timeout (in seconds)")
-    parser.add_argument("-s", "--server", choices=["wsgiref", "flup", "cgi"], default="wsgiref")
-    parser.add_argument("-d", "--debug", action="store_true")
-    parser.add_argument("--noauth", action="store_true",
-                        help="disable authentication (available only in debug mode)")
-    parser.add_argument("--nucipath", help="path to Nuci binary")
+    group = parser.add_argument_group("run server")
+    group.add_argument("-H", "--host", default="0.0.0.0")
+    group.add_argument("-p", "--port", type=int, default=8080)
+    group.add_argument("--session-timeout", type=int, default=900,
+                       help="session timeout (in seconds)")
+    group.add_argument("-s", "--server", choices=["wsgiref", "flup", "cgi"], default="wsgiref")
+    group.add_argument("-d", "--debug", action="store_true")
+    group.add_argument("--noauth", action="store_true",
+                       help="disable authentication (available only in debug mode)")
+    group.add_argument("--nucipath", help="path to Nuci binary")
+    parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
     return parser
 
 
@@ -452,23 +477,31 @@ def prepare_main_app(args):
     loader = ForisPluginLoader(app)
     loader.autoload_plugins()
 
-    # store the app reference for further use
-    foris_app = app
+    # print routes to console and exit
+    if args.routes:
+        routes = route_list_cmdline(app)
+        print("\n".join(sorted(set(routes))))
+        return app
+
+    # print routes in debug mode
+    if args.debug:
+        routes = route_list_debug(app)
+        logger.debug("Routes:\n%s", "\n".join(routes))
 
     # read language saved in Uci
     lang = read_uci_lang(DEFAULT_LANGUAGE)
     # i18n middleware
     if lang not in translations:
         lang = DEFAULT_LANGUAGE
-    app = I18NMiddleware(app, I18NPlugin(domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE, locale_dir=os.path.join(BASE_DIR, "locale")))
+    app = I18NMiddleware(app, I18NPlugin(
+        domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE,
+        locale_dir=os.path.join(BASE_DIR, "locale")
+    ))
 
     # reporting middleware for all mounted apps
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
-    if args.debug:
-        routes = route_list(foris_app)
-        logger.debug("Routes:\n%s", "\n".join(routes))
 
     # session middleware (note: session.auto does not work within Bottle)
     session_options = {

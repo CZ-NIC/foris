@@ -9,6 +9,10 @@ def main():
 
     main_app = prepare_main_app(args)
 
+    if args.routes:
+        # routes should be printed and we can safely exit
+        return True
+
     # run the right server
     if args.server == "wsgiref":
         bottle.run(app=main_app, host=args.host, port=args.port, debug=args.debug)
