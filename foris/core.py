@@ -39,7 +39,7 @@ from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authentic
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
 from .utils import DEVICE_CUSTOMIZATION, messages, contract_valid
 from .utils.reporting_middleware import ReportingMiddleware
-from .utils.routing import reverse
+from .utils.routing import reverse, static
 
 
 logger = logging.getLogger("foris")
@@ -99,7 +99,7 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
-bottle.SimpleTemplate.defaults["static"] = lambda filename, *args: reverse("static", filename=filename) % args
+bottle.SimpleTemplate.defaults["static"] = static
 bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 
 # messages
@@ -309,7 +309,7 @@ def static(filename):
     """ return static file
     :param filename: url path
     :type filename: str
-    :returns: http response
+    :return: http response
     """
 
     if not bottle.DEBUG:
@@ -430,13 +430,19 @@ def get_arg_parser():
                        help="disable authentication (available only in debug mode)")
     group.add_argument("--nucipath", help="path to Nuci binary")
     parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
+    group.add_argument(
+        "-S", "--static", action="store_true",
+        help="serve static files directly through foris app (should be used for debug only)"
+    )
     return parser
 
 
-def init_default_app():
+def init_default_app(include_static=False):
     """
     Initialize top-level Foris app - register all routes etc.
 
+    :param include_static: include route to static files
+    :type include_static: bool
     :return: instance of Foris Bottle application
     """
 
@@ -446,7 +452,8 @@ def init_default_app():
     app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
     app.route("/", method="POST", name="login", callback=login)
     app.route("/logout", name="logout", callback=logout)
-    app.route('/static/<filename:re:.*>', name="static", callback=static)
+    if include_static:
+        app.route('/static/<filename:re:.*>', name="static", callback=static)
     app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
     return app
 
@@ -459,7 +466,7 @@ def prepare_main_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
-    app = init_default_app()
+    app = init_default_app(args.static)
 
     # basic and bottle settings
     template_dir = os.path.join(BASE_DIR, "templates")
