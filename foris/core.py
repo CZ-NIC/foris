@@ -21,6 +21,7 @@ import gettext
 import hashlib
 import logging
 import os
+import re
 import time
 
 # 3rd party
@@ -305,8 +306,25 @@ def logout():
 
 
 def static(filename):
+    """ return static file
+    :param filename: url path
+    :type filename: str
+    :returns: http response
+    """
+
     if not bottle.DEBUG:
         logger.warning("Static files should be handled externally in production mode.")
+
+    match = re.match(r'/*plugins/+(\w+)/+(.+)', filename)
+    if match:
+        plugin_name, plugin_file = match.groups()
+
+        # find correspoding plugin
+        for plugin in bottle.app().foris_plugin_loader.plugins:
+            if plugin.PLUGIN_NAME == plugin_name:
+                return bottle.static_file(
+                    plugin_file, root=os.path.join(plugin.DIRNAME, "static"))
+
     return bottle.static_file(filename, root=os.path.join(os.path.dirname(__file__), "static"))
 
 
@@ -501,7 +519,6 @@ def prepare_main_app(args):
     # reporting middleware for all mounted apps
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
-
 
     # session middleware (note: session.auto does not work within Bottle)
     session_options = {

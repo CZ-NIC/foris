@@ -26,7 +26,7 @@
     <![endif]-->
     %if defined('PLUGIN_STYLES') and PLUGIN_STYLES:
       %for static_filename in PLUGIN_STYLES:
-        <link href="{{ "/plugins/" + PLUGIN_NAME }}{{ static(static_filename) }}" rel="stylesheet" media="screen">
+        <link href="{{ static("plugins/%s/%s" % (PLUGIN_NAME, static_filename)) }}" rel="stylesheet" media="screen">
       %end
     %end
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,7 @@
     <script src="{{ url("render_js", filename="parsley.messages.js") }}?md5={{ js_md5('parsley.messages.js') }}"></script>
     %if defined('PLUGIN_STATIC_SCRIPTS') and PLUGIN_STATIC_SCRIPTS:
       %for static_filename in PLUGIN_STATIC_SCRIPTS:
-        <script src="{{ "/plugins/" + PLUGIN_NAME }}{{ static(static_filename) }}"></script>
+        <script src="{{ static("plugins/%s/%s" % (PLUGIN_NAME, static_filename)) }}"></script>
       %end
     %end
     %if defined('PLUGIN_DYNAMIC_SCRIPTS') and PLUGIN_DYNAMIC_SCRIPTS:
