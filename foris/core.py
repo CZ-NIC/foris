@@ -31,6 +31,7 @@ from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 from ncclient.operations import TimeoutExpiredError, RPCError
 
 # local
+from . import __version__ as foris_version
 from .nuci import client, filters, cache
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
@@ -89,6 +90,7 @@ bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
 bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
+bottle.SimpleTemplate.defaults['foris_version'] = foris_version
 gettext_dummy = lambda x: x
 _ = ugettext
 

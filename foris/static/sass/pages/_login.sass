@@ -52,3 +52,11 @@
 
     a
       text-transform: uppercase
+
+  .foris-version
+    position: absolute
+    display: none
+    +respond-to('not-mobile', $no-query: true)
+      left: 0.3em
+      top: 0.3em
+      display: block

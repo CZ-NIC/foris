@@ -16,6 +16,9 @@
 %#
 %rebase("_layout.tpl", **locals())
 <div id="login-page">
+    <div class="foris-version">
+        <span class="minor-text">foris version: {{ foris_version }} </span>
+    </div>
     <div class="language-switch">
       %include("_lang_flat", translations=translations, iso2to3=iso2to3)
     </div>

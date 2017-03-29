@@ -17,6 +17,8 @@
 %if not defined('is_xhr'):
     %rebase("_layout.tpl", **locals())
 
+    %include("wizard/_version.tpl")
+
     %include("wizard/_language-switch.tpl")
 
     <div id="wizard-page">

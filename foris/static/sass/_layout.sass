@@ -69,6 +69,15 @@ body
     padding: 0.7em 1em
     margin-right: 0.4em
 
+.config-foris-version
+  display: none
+  +respond-to('not-mobile', $no-query: true)
+    display: block
+    position: relative
+    top: -1.5em
+    text-align: right
+    text-decoration: none
+    margin: 0 0.5em
 
 #content-wrap
   background: $background-color
