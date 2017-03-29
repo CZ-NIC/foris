@@ -22,7 +22,7 @@
                 <img src="{{ static("img/logo-turris.svg") }}" alt="{{ trans("Foris - administration interface of router Turris") }}" class="header-side" height="65">
             </a>
             <div class="config-foris-version">
-                <span class="minor-text">foris version: {{ foris_version }} </span>
+                %include("_foris_version.tpl")
             </div>
             <div class="header-top">
               <a href="#menu" class="menu-link"><img src="{{ static("img/icon-menu.png") }}" alt="{{ trans("Menu") }}" title="{{ trans("Menu") }}"></a>

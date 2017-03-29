@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-21 15:29+0100\n"
+"POT-Creation-Date: 2017-03-29 17:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1282,6 +1282,9 @@ msgid "Language"
 msgstr ""
 
 msgid "Hint"
+msgstr ""
+
+msgid "foris version:"
 msgstr ""
 
 msgid ""
