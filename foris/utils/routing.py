@@ -48,8 +48,8 @@ def reverse(name, **kargs):
     raise bottle.RouteBuildError("No route with name '%s' in main app or mounted apps." % name)
 
 
-def static(name):
+def static(name, *args):
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip('/')
     script_name = "/%s" % script_name if script_name else ""
-    return "%s/static/%s" % (script_name, name)
+    return ("%s/static/%s" % (script_name, name)) % args
