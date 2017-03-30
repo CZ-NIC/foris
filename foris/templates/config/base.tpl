@@ -42,7 +42,7 @@
         <div class="sidebar-content">
             <nav>
                 <ul>
-                %for slug, config_page in config_pages.iteritems():
+                %for slug, config_page in config_pages.menu_list():
                     <li{{! ' class="active"' if defined("active_config_page_key") and slug == active_config_page_key else "" }}>
                       <a href="{{ url("config_page", page_name=slug) }}">{{ trans(config_page.userfriendly_title) }}</a>
                     </li>

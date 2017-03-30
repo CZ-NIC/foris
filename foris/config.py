@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from collections import OrderedDict
 from datetime import datetime
 import os
 import logging
@@ -36,6 +35,7 @@ logger = logging.getLogger(__name__)
 
 
 class ConfigPageMixin(object):
+    menu_order = 50
     template = "config/main"
 
     def call_action(self, action):
@@ -85,6 +85,8 @@ class ConfigPageMixin(object):
 
 
 class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
+    menu_order = 11
+
     def __init__(self, *args, **kwargs):
         super(PasswordConfigPage, self).__init__(change=True, *args, **kwargs)
 
@@ -101,6 +103,8 @@ class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
 
 
 class WanConfigPage(ConfigPageMixin, WanHandler):
+    menu_order = 12
+
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         wan_if = stats.data['interfaces'].get(self.wan_ifname)
@@ -110,6 +114,8 @@ class WanConfigPage(ConfigPageMixin, WanHandler):
 
 
 class DNSConfigPage(ConfigPageMixin, DNSHandler):
+    menu_order = 13
+
     template = "config/dns"
 
     def _action_check_connection(self):
@@ -123,18 +129,26 @@ class DNSConfigPage(ConfigPageMixin, DNSHandler):
 
 
 class LanConfigPage(ConfigPageMixin, LanHandler):
+    menu_order = 14
+
     pass
 
 
 class WifiConfigPage(ConfigPageMixin, WifiHandler):
+    menu_order = 15
+
     template = "config/wifi"
 
 
 class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
+    menu_order = 16
+
     pass
 
 
 class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
+    menu_order = 17
+
     template = "config/maintenance"
     userfriendly_title = gettext("Maintenance")
 
@@ -224,6 +238,8 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
+    menu_order = 18
+
     template = "config/updater"
 
     @require_contract_valid(False)
@@ -264,6 +280,8 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
 
 
 class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
+    menu_order = 19
+
     template = "config/data-collection"
     userfriendly_title = gettext("Data collection")
 
@@ -352,6 +370,8 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
 
 
 class AboutConfigPage(ConfigPageMixin):
+    menu_order = 99
+
     template = "config/about"
     userfriendly_title = gettext("About")
 
@@ -401,18 +421,21 @@ class AboutConfigPage(ConfigPageMixin):
 
 
 class VirtualConfigPage(ConfigPageMixin):
-    def __init__(self, title):
+    def __init__(self, title, menu_order):
         self.userfriendly_title = title
+        self.menu_order = menu_order
 
 
-class ConfigPageMapItems(OrderedDict):
-    pass
+class ConfigPageMapItems(dict):
+    def menu_list(self):
+        res = [(slug, page) for slug, page in self.items()]
+        return sorted(res, key=lambda e: (e[1].menu_order, e[0]))
 
 
 # names of handlers used in their URL
 # use dash-separated names, underscores in URL are ugly
 config_page_map = ConfigPageMapItems((
-    ('', VirtualConfigPage(gettext("Home page"))),
+    ('', VirtualConfigPage(gettext("Home page"), 10)),
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
     ('dns', DNSConfigPage),
@@ -425,7 +448,7 @@ config_page_map = ConfigPageMapItems((
     ('about', AboutConfigPage),
 ))
 
-# config pages added by plugins
+# config pages that are not shown in the menu
 extra_config_pages = ConfigPageMapItems()
 
 
