@@ -22,6 +22,7 @@ class ForisPlugin(object):
     """Simple class that all Foris plugins should inherit from."""
 
     DIRNAME = None
+    LOAD_ORDER = 100  # smaller number means that the plugin will be loaded sooner
     plugin_translations = None
 
     def __init__(self, app):
@@ -62,12 +63,21 @@ class ForisPluginLoader(object):
         """Find and load plugins in ${PLUGIN_DIRECTORY}/plugin_name/*.py"""
         if not os.path.isdir(self.PLUGIN_DIRECTORY):
             return
+
+        plugin_classes = []
         for subdir_name in os.listdir(self.PLUGIN_DIRECTORY):
             subdir_path = os.path.join(self.PLUGIN_DIRECTORY, subdir_name)
             if os.path.isdir(subdir_path):
                 if "__init__.py" in os.listdir(subdir_path):
                     logger.debug("Found Python package in '%s'.", subdir_path)
-                    self._load_plugins_in_package(subdir_name)
+                    plugin_classes += self._get_plugin_classes(subdir_name)
+
+        # sort plugin classes
+        plugin_classes.sort(key=lambda x: (x.LOAD_ORDER, x.PLUGIN_NAME))
+
+        # load the plugin
+        for plugin_class in plugin_classes:
+            self.load_plugin(plugin_class)
 
     @staticmethod
     def is_foris_plugin(klass):
@@ -82,14 +92,16 @@ class ForisPluginLoader(object):
         mro_names = [c.__name__ for c in inspect.getmro(klass)][1:]
         return ForisPlugin.__name__ in mro_names
 
-    def _load_plugins_in_package(self, package_name):
-        """Import package and load all plugins in its __init__.py"""
+    def _get_plugin_classes(self, package_name):
+        """Reads all plugin classes in package (in its __init__.py)"""
         try:
             logger.info("Looking for plugins in package '%s'", package_name)
             package = import_module("%s" % package_name)
             classes = inspect.getmembers(package, self.is_foris_plugin)
-            for _, klass in classes:
-                self.load_plugin(klass)
+            classes = [klass for _, klass in classes]
+            for klass in classes:
+                logger.debug("Plugin found %s", klass)
+            return classes
         except ImportError:
             logger.exception("Unable to import package '%s'.", package_name)
         except:
