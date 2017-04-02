@@ -8,29 +8,31 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 17:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-04-02 12:39+0000\n"
+"Last-Translator: Florian <floflr@zaclys.net>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.13-dev\n"
 
 msgid "This field is required."
-msgstr ""
+msgstr "Ce champ est obligatoire."
 
 msgid "Not a valid IPv4 address."
-msgstr ""
+msgstr "Adresse IPv4 non valide."
 
 msgid "Not a valid IPv4 netmask address."
 msgstr ""
 
 msgid "Not a valid IPv6 address."
-msgstr ""
+msgstr "Adresse IPV6 non valide."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr ""
+msgstr "Ce n’est pas une adresse IPv4 ou IPv6 valide."
 
 msgid "This is not an IPv6 address with prefix length."
 msgstr ""
@@ -39,13 +41,13 @@ msgid "This is not an IPv4 address with prefix length."
 msgstr ""
 
 msgid "Is not a number."
-msgstr ""
+msgstr "Ce n'est pas un nombre."
 
 msgid "This is not valid time in HH:MM format."
 msgstr ""
 
 msgid "MAC address is not valid."
-msgstr ""
+msgstr "Adresse MAC non valide."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -56,28 +58,28 @@ msgid "Length must be from %(low)s to %(high)s characters."
 msgstr ""
 
 msgid "Configuration was successfully saved."
-msgstr ""
+msgstr "Configuration sauvegardée avec succès."
 
 msgid "There were some errors in your input."
 msgstr ""
 
 msgid "Old password you entered was not valid."
-msgstr ""
+msgstr "L'ancien mot de passe n'est pas valable."
 
 msgid "Password was successfully saved."
-msgstr ""
+msgstr "Mot de passe enregistré avec succès."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
 
 msgid "Maintenance"
-msgstr ""
+msgstr "Maintenance"
 
 msgid "Wrong HTTP method."
 msgstr ""
 
 msgid "Testing message was sent, please check your inbox."
-msgstr ""
+msgstr "Le message de test a été envoyé, vérifiez votre boîte de réception."
 
 #, python-format
 msgid ""
@@ -103,9 +105,12 @@ msgstr ""
 
 msgid "IP address of the router could not be determined from the backup."
 msgstr ""
+"L'adresse IP du routeur n'a pu être déterminée à partir de la sauvegarde."
 
 msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
+"La configuration n’a pas pu être chargée, le fichier de sauvegarde est "
+"probablement endommagé."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -141,13 +146,13 @@ msgid ""
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 msgid "Online"
-msgstr ""
+msgstr "En ligne"
 
 msgid "Offline"
-msgstr ""
+msgstr "Hors-ligne"
 
 msgid "Connecting"
 msgstr ""
@@ -162,7 +167,7 @@ msgid "Unknown status"
 msgstr ""
 
 msgid "Home page"
-msgstr ""
+msgstr "Page d’accueil"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr ""
@@ -171,16 +176,16 @@ msgid "Enable data collection"
 msgstr ""
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
 msgstr ""
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Désactiver DNSSEC"
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -195,7 +200,7 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr ""
+msgstr "Adresse IP du routeur"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
@@ -203,12 +208,14 @@ msgid ""
 msgstr ""
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "Activer DHCP"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
+"Activer cette option pour attribuer automatiquement des adresses IP aux "
+"périphériques connectés au routeur."
 
 msgid "DHCP start"
 msgstr ""
@@ -217,22 +224,22 @@ msgid "DHCP max leases"
 msgstr ""
 
 msgid "Backup file"
-msgstr ""
+msgstr "Fichier de sauvegarde"
 
 msgid "Notifications"
-msgstr ""
+msgstr "Notifications"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Paramètres de notifications"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Activer les notifications"
 
 msgid "SMTP provider"
 msgstr ""
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
 msgstr ""
@@ -245,13 +252,15 @@ msgid ""
 msgstr ""
 
 msgid "Recipient's email"
-msgstr ""
+msgstr "E-mail du destinataire"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr ""
+"Adresse e-mail du destinataire. Séparer les différentes adresses par des "
+"espaces."
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Nom de l’expéditeur"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
@@ -263,7 +272,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Redémarrage nécessaire"
 
 msgid "Reboot or attention is required"
 msgstr ""
@@ -290,7 +299,7 @@ msgid "This is the address notifications are send from."
 msgstr ""
 
 msgid "Server address"
-msgstr ""
+msgstr "Adresse du serveur"
 
 msgid "Server port"
 msgstr ""
@@ -308,13 +317,13 @@ msgid "Security"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 msgid "Automatic restarts after software update"
-msgstr ""
+msgstr "Redémarrage automatique après mise à jour"
 
 msgid "Delay (days)"
 msgstr ""
@@ -336,10 +345,10 @@ msgid ""
 msgstr ""
 
 msgid "Current password"
-msgstr ""
+msgstr "Mot de passe actuel"
 
 msgid "New password"
-msgstr ""
+msgstr "Nouveau mot de passe"
 
 msgid "New password (repeat)"
 msgstr ""
@@ -373,10 +382,10 @@ msgid "Continent or ocean"
 msgstr ""
 
 msgid "Country"
-msgstr ""
+msgstr "Pays"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Fuseau horaire"
 
 msgid "Email"
 msgstr ""
@@ -443,10 +452,10 @@ msgid ""
 msgstr ""
 
 msgid "Updater"
-msgstr ""
+msgstr "Mettre à jour"
 
 msgid "I agree"
-msgstr ""
+msgstr "J'accepte"
 
 msgid "Use automatic updates (recommended)"
 msgstr ""
@@ -465,7 +474,7 @@ msgid ""
 msgstr ""
 
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 msgid ""
 "Here you specify your WAN port settings. Usually, you can leave this options "
@@ -484,16 +493,16 @@ msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr ""
 
 msgid "DHCPv6 (automatic configuration)"
-msgstr ""
+msgstr "DHCPv6 (configuration automatique)"
 
 msgid "Disable IPv6"
-msgstr ""
+msgstr "Désactiver IPv6"
 
 msgid "IPv4 protocol"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
+msgstr "Adresse IP"
 
 msgid "Network mask"
 msgstr ""
@@ -522,7 +531,7 @@ msgid "IPv6 protocol"
 msgstr ""
 
 msgid "IPv6 address"
-msgstr ""
+msgstr "Adresse IPv6"
 
 msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
@@ -586,13 +595,14 @@ msgid ""
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "Adresse MAC"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr ""
 
+#, fuzzy
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
@@ -603,10 +613,10 @@ msgstr ""
 
 #, python-format
 msgid "Enable Wi-Fi %s"
-msgstr ""
+msgstr "Activer Wi-Fi %s"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
 msgstr ""
@@ -628,7 +638,7 @@ msgid ""
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Désactiver"
 
 msgid "802.11n - 20 MHz wide channel"
 msgstr ""
@@ -667,19 +677,19 @@ msgid ""
 msgstr ""
 
 msgid "The password you entered was not valid."
-msgstr ""
+msgstr "Le mot de passe saisi n'est pas valide."
 
 msgid "News"
 msgstr ""
 
 msgid "Update"
-msgstr ""
+msgstr "Mise à jour"
 
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 msgid "%Y/%m/%d %H:%M:%S"
-msgstr ""
+msgstr "%Y/%m/%d %H:%M:%S"
 
 #, python-format
 msgid "%(notification)s from %(created_at)s"
@@ -712,7 +722,7 @@ msgid ""
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 msgid "Connection test"
 msgstr ""
@@ -746,7 +756,7 @@ msgid "IPv6 gateway connectivity"
 msgstr ""
 
 msgid "DNSSEC"
-msgstr ""
+msgstr "DNSSEC"
 
 msgid "Test connection"
 msgstr ""
