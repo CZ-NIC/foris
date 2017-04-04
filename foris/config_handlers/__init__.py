@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from base import (
+from .base import (
     BaseConfigHandler,
     CollectionToggleHandler,
     DNSHandler,
@@ -30,8 +30,9 @@ from base import (
     UpdaterEulaHandler,
     UpdaterHandler,
     WanHandler,
-    WifiHandler,
 )
+
+from .wifi import WifiHandler
 
 __all__ = [
     'BaseConfigHandler',
