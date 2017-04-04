@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 17:30+0200\n"
-"PO-Revision-Date: 2017-04-04 16:34+0000\n"
+"PO-Revision-Date: 2017-04-04 17:05+0000\n"
 "Last-Translator: Sm0ke0ut <sm0ke0ut@fayntic.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
@@ -162,11 +162,12 @@ msgstr "Bezig met verbinden"
 msgid "Invalid authentication"
 msgstr "Ongeldige authenticatie"
 
+#, fuzzy
 msgid "Broken"
-msgstr ""
+msgstr "Kapot"
 
 msgid "Unknown status"
-msgstr ""
+msgstr "Status onbekend"
 
 msgid "Home page"
 msgstr ""
@@ -178,16 +179,16 @@ msgid "Enable data collection"
 msgstr ""
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr ""
+msgstr "Gebruik forwarding"
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "DNSSEC uitschakelen"
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -202,7 +203,7 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr ""
+msgstr "Router IP adres"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
@@ -210,7 +211,7 @@ msgid ""
 msgstr ""
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "DHCP inschakelen"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
@@ -227,22 +228,22 @@ msgid "Backup file"
 msgstr ""
 
 msgid "Notifications"
-msgstr ""
+msgstr "Notificaties"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Notificatie instellingen"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Notificaties inschakelen"
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "SMTP provider"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
-msgstr ""
+msgstr "Custom"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members of "
@@ -251,14 +252,17 @@ msgid ""
 "\"Custom\" and enter required settings."
 msgstr ""
 
+#, fuzzy
 msgid "Recipient's email"
-msgstr ""
+msgstr "Ontvanger e-mail"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr ""
+"E-mail adres van de ontvanger. Er kunnen meerdere e-mail adressen opgegeven "
+"worden door deze te scheiden met spaties."
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Afzendernaam"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
@@ -285,46 +289,46 @@ msgid "Send news"
 msgstr ""
 
 msgid "Send emails about new features."
-msgstr ""
+msgstr "Stuur een e-mail bij nieuwe features."
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "SMTP instellingen"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Afzender adres (From)"
 
 msgid "This is the address notifications are send from."
 msgstr ""
 
 msgid "Server address"
-msgstr ""
+msgstr "Server adres"
 
 msgid "Server port"
-msgstr ""
+msgstr "Server poort"
 
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Beveiliging"
 
 msgid "Username"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 msgid "Automatic restarts after software update"
-msgstr ""
+msgstr "Automatisch herstarten na het installeren van software updates"
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Vertraging (dagen)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
@@ -332,7 +336,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot time"
-msgstr ""
+msgstr "Herstart tijd"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr ""
@@ -343,22 +347,22 @@ msgid ""
 msgstr ""
 
 msgid "Current password"
-msgstr ""
+msgstr "Huidig wachtwoord"
 
 msgid "New password"
-msgstr ""
+msgstr "Nieuw wachtwoord"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Nieuw wachtwoord (herhaling)"
 
 msgid "Password (repeat)"
-msgstr ""
+msgstr "Wachtwoord (herhaling)"
 
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "De opgegeven wachtwoorden komen niet overeen."
 
 msgid "Use the same password for advanced configuration"
-msgstr ""
+msgstr "Hetzelfde wachtwoord gebruiken voor geavanceerde instellingen"
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -369,7 +373,7 @@ msgid ""
 msgstr ""
 
 msgid "Region settings"
-msgstr ""
+msgstr "Regio instellingen"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
@@ -380,16 +384,17 @@ msgid "Continent or ocean"
 msgstr ""
 
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Tijdzone"
 
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
+#, fuzzy
 msgid "Advanced administration"
-msgstr ""
+msgstr "Geavanceerde administratie"
 
 #, python-format
 msgid ""
@@ -400,7 +405,7 @@ msgid ""
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
@@ -410,10 +415,10 @@ msgid ""
 msgstr ""
 
 msgid "uCollect"
-msgstr ""
+msgstr "uCollect"
 
 msgid "Emulated services"
-msgstr ""
+msgstr "Geëmuleerde services"
 
 msgid ""
 "One of uCollect's features is emulation of some commonly abused services. If "
@@ -424,25 +429,25 @@ msgid ""
 msgstr ""
 
 msgid "Telnet (23/TCP)"
-msgstr ""
+msgstr "Telnet (23/TCP)"
 
 msgid "Telnet - alternative port (2323/TCP)"
-msgstr ""
+msgstr "Telnet - alternatieve poort (2323/TCP)"
 
 msgid "HTTP (80/TCP)"
-msgstr ""
+msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
-msgstr ""
+msgstr "Squid HTTP proxy (3128/TCP)"
 
 msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr ""
+msgstr "Polipo HTTP proxy (8123/TCP)"
 
 msgid "HTTP proxy (8080/TCP)"
-msgstr ""
+msgstr "HTTP proxy (8080/TCP)"
 
 msgid "Collect credentials"
-msgstr ""
+msgstr "Login informatie verzamelen"
 
 msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
@@ -450,16 +455,16 @@ msgid ""
 msgstr ""
 
 msgid "Updater"
-msgstr ""
+msgstr "Updater"
 
 msgid "I agree"
-msgstr ""
+msgstr "Ik ga akkoord"
 
 msgid "Use automatic updates (recommended)"
-msgstr ""
+msgstr "Automatische updates inschakelen (aanbevolen)"
 
 msgid "Turn automatic updates off"
-msgstr ""
+msgstr "Automatische updates uitschakelen"
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -472,7 +477,7 @@ msgid ""
 msgstr ""
 
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 msgid ""
 "Here you specify your WAN port settings. Usually, you can leave this options "
@@ -494,22 +499,22 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr ""
 
 msgid "Disable IPv6"
-msgstr ""
+msgstr "IPv6 uitschakelen"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "IPv4 protocol"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP adres"
 
 msgid "Network mask"
 msgstr ""
 
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 msgid "DNS server 1"
-msgstr ""
+msgstr "Primaire nameserver"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -517,30 +522,31 @@ msgid ""
 msgstr ""
 
 msgid "DNS server 2"
-msgstr ""
+msgstr "Secundaire nameserver"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "PAP/CHAP gebruikersnaam"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "PAP/CHAP wachtwoord"
 
 msgid "IPv6 protocol"
-msgstr ""
+msgstr "IPv6 protocol"
 
 msgid "IPv6 address"
-msgstr ""
+msgstr "IPv6 adres"
 
 msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
 "be13:37da::1/64"
 msgstr ""
+"IPv6 adres en prefix length voor WAN interface, b.v. 2001:db8:be13:37da::1/64"
 
 msgid "IPv6 gateway"
-msgstr ""
+msgstr "IPv6 gateway"
 
 msgid "IPv6 prefix"
-msgstr ""
+msgstr "IPv6 prefix"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr ""
@@ -593,7 +599,7 @@ msgid ""
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC adres"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr ""
@@ -613,7 +619,7 @@ msgid "Enable Wi-Fi %s"
 msgstr ""
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
 msgstr ""
@@ -1387,4 +1393,4 @@ msgid "Connectivity test"
 msgstr ""
 
 msgid "Automatic updates"
-msgstr ""
+msgstr "Automatische updates"
