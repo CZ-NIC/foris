@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 17:30+0200\n"
-"PO-Revision-Date: 2017-04-05 08:51+0000\n"
-"Last-Translator: Olivier Bonaventure <bonaventure@acm.org>\n"
+"PO-Revision-Date: 2017-04-05 15:30+0000\n"
+"Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
 "Language: fr\n"
@@ -318,13 +318,13 @@ msgid "None"
 msgstr ""
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Sécurité"
 
 msgid "Username"
 msgstr "Nom d'utilisateur"
@@ -344,7 +344,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot time"
-msgstr ""
+msgstr "Temps de redémarrage"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr ""
@@ -367,7 +367,7 @@ msgid "Password (repeat)"
 msgstr ""
 
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "Les mots de passe ne sont pas identiques."
 
 msgid "Use the same password for advanced configuration"
 msgstr ""
@@ -441,8 +441,9 @@ msgstr ""
 msgid "Telnet - alternative port (2323/TCP)"
 msgstr ""
 
+#, fuzzy
 msgid "HTTP (80/TCP)"
-msgstr ""
+msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
 msgstr ""
@@ -497,7 +498,7 @@ msgid "DHCP (automatic configuration)"
 msgstr ""
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Adresse IP statique (configuration manuelle)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr ""
@@ -521,7 +522,7 @@ msgid "Gateway"
 msgstr ""
 
 msgid "DNS server 1"
-msgstr ""
+msgstr "Serveur DNS 1"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -529,7 +530,7 @@ msgid ""
 msgstr ""
 
 msgid "DNS server 2"
-msgstr ""
+msgstr "Serveur DNS 2"
 
 msgid "PAP/CHAP username"
 msgstr ""
@@ -735,7 +736,7 @@ msgid "Save"
 msgstr "Enregistrer"
 
 msgid "Connection test"
-msgstr ""
+msgstr "Test de connexion"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when "
@@ -769,13 +770,13 @@ msgid "DNSSEC"
 msgstr "DNSSEC"
 
 msgid "Test connection"
-msgstr ""
+msgstr "Test de connexion"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Annuler les modifications"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Enregistrer les modifications"
 
 msgid ""
 "With the Turris Omnia router you can join Project Turris which is a non-"
@@ -808,7 +809,7 @@ msgid "Device"
 msgstr ""
 
 msgid "Serial number"
-msgstr ""
+msgstr "Numéro de série"
 
 msgid "Turris OS version"
 msgstr ""
@@ -833,7 +834,7 @@ msgid "Sending of firewall logs"
 msgstr ""
 
 msgid "Refresh"
-msgstr ""
+msgstr "Actualiser"
 
 msgid "Device registration"
 msgstr ""
