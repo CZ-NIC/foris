@@ -18,11 +18,18 @@ from foris import fapi
 from foris import validators
 from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox
-from foris.nuci import client, filters
-
+from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, List, Section, Option, Value, parse_uci_bool
+from foris.utils.addresses import (
+    ip_num_to_str_4, ip_str_to_num_4, prefix_to_mask_4, mask_to_prefix_4
+)
 
 from .base import BaseConfigHandler, logger
+
+
+DEFAULT_GUEST_NETWORK = "10.111.222.0"
+DEFAULT_GUEST_MASK = "255.255.255.0"
+DEFAULT_GUEST_PREFIX = mask_to_prefix_4(DEFAULT_GUEST_MASK)
 
 
 class WifiHandler(BaseConfigHandler):
@@ -63,13 +70,7 @@ class WifiHandler(BaseConfigHandler):
 
         wifi_main = wifi_form.add_section(
             name=prefixed_name("set_wifi"),
-            title=_(self.userfriendly_title),
-            description=_(
-                "If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
-                "here and fill in an SSID (the name of the access point) and a "
-                "corresponding password. You can then set up your mobile devices, "
-                "using the QR code available next to the form."
-            )
+            title=None,
         )
 
         wifi_main.add_field(
@@ -193,7 +194,7 @@ class WifiHandler(BaseConfigHandler):
             hint=_(
                 "TODO Enables guest wifi: SSID -> SSID-guest, ..."
             )
-        ).requires(prefixed_name("wifi_enabled"), True)
+        ).requires(prefixed_name("wifi_enabled"), True).requires("guest_network_enabled", True)
         guest_section.add_field(
             Password, name=prefixed_name("guest_key"), label=_("Guest password"),
             nuci_path="uci.wireless.guest_iface_%s.key" % iface_index,
@@ -229,7 +230,7 @@ class WifiHandler(BaseConfigHandler):
         return radio_to_iface
 
     @staticmethod
-    def _prepare_radio_cb(data, uci, wireless, radio):
+    def _prepare_radio_cb(data, wireless, radio):
         """ prepares cb for a signle radio part
             :returns: True if guest Wi-Fi is enabled False othewise
             :rtype: bool
@@ -292,6 +293,88 @@ class WifiHandler(BaseConfigHandler):
                 # disable guest wifi
                 guest_iface.add(Option("disabled", "1"))
 
+    @staticmethod
+    def _prepare_guest_configs(uci, data, enabled):
+        ignore = "0" if enabled else "1"
+        enabled = "1" if enabled else "0"
+
+        guest_network_subnet = data.get("guest_network_subnet")
+        if guest_network_subnet:
+            network, prefix = data.get("guest_network_subnet").split("/")
+        else:
+            network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
+
+        # parse router ip address (192.168.1.0 -> 192.168.1.1)
+        router_ip = ip_num_to_str_4(ip_str_to_num_4(network) + 1)
+        netmask = prefix_to_mask_4(int(prefix))
+
+        # update network interface list
+        network_conf = Config("network")
+        uci.add(network_conf)
+        interface_section = Section("guest_turris", "interface")
+        network_conf.add_replace(interface_section)
+        interface_section.add(Option("enabled", enabled))
+        interface_section.add(Option("ifname", "guest_turris"))
+        interface_section.add(Option("proto", "static"))
+        interface_section.add(Option("ipaddr", router_ip))
+        interface_section.add(Option("netmask", netmask))
+
+        # update firewall config
+        firewall_conf = Config("firewall")
+        uci.add(firewall_conf)
+
+        zone_section = Section("guest_turris", "zone")
+        firewall_conf.add_replace(zone_section)
+        zone_section.add(Option("enabled", enabled))
+        zone_section.add(Option("name", "guest_turris"))
+        network_list = List("network")
+        network_list.add(Value(0, "guest_turris"))
+        zone_section.add(network_list)
+        zone_section.add(Option("input", "REJECT"))
+        zone_section.add(Option("forward", "REJECT"))
+        zone_section.add(Option("output", "ACCEPT"))
+
+        wan_forwarding_section = Section("guest_turris_forward_wan", "forwarding")
+        firewall_conf.add_replace(wan_forwarding_section)
+        wan_forwarding_section.add(Option("enabled", enabled))
+        wan_forwarding_section.add(Option("name", "guest to wan forward"))
+        wan_forwarding_section.add(Option("src", "guest_turris"))
+        wan_forwarding_section.add(Option("dest", "wan"))
+
+        dns_rule_section = Section("guest_turris_dns_rule", "rule")
+        firewall_conf.add_replace(dns_rule_section)
+        dns_rule_section.add(Option("enabled", enabled))
+        dns_rule_section.add(Option("name", "guest dns rule"))
+        dns_rule_section.add(Option("src", "guest_turris"))
+        dns_rule_section.add(Option("proto", "tcpudp"))
+        dns_rule_section.add(Option("dest_port", 53))
+        dns_rule_section.add(Option("target", "ACCEPT"))
+
+        dhcp_rule_section = Section("guest_turris_dhcp_rule", "rule")
+        firewall_conf.add_replace(dhcp_rule_section)
+        dhcp_rule_section.add(Option("enabled", enabled))
+        dhcp_rule_section.add(Option("name", "guest dhcp rule"))
+        dhcp_rule_section.add(Option("src", "guest_turris"))
+        dhcp_rule_section.add(Option("proto", "udp"))
+        dhcp_rule_section.add(Option("src_port", "67-68"))
+        dhcp_rule_section.add(Option("dest_port", "67-68"))
+        dhcp_rule_section.add(Option("target", "ACCEPT"))
+
+        # update dhcp config
+        dhcp_conf = Config("dhcp")
+        uci.add(dhcp_conf)
+
+        dhcp_section = Section("guest_turris", "dhcp")
+        dhcp_conf.add(dhcp_section)
+        dhcp_section.add(Option("interface", "guest_turris"))
+        dhcp_section.add(Option("start", "200"))
+        dhcp_section.add(Option("limit", "50"))
+        dhcp_section.add(Option("leasetime", "1h"))
+        dhcp_section.add(Option("ignore", ignore))
+        dhcp_option_list = List("dhcp_option")
+        dhcp_option_list.add(Value(0, "6,%s" % router_ip))
+        dhcp_section.add(dhcp_option_list)
+
     def get_form(self):
         stats = client.get(filter=filters.stats).find_child("stats")
         cards = self._get_wireless_cards(stats)
@@ -300,13 +383,57 @@ class WifiHandler(BaseConfigHandler):
             return None
 
         wifi_form = fapi.ForisForm(
-            "wifi", self.data, filter=filters.create_config_filter("wireless"))
+            "wifi", self.data, filter=filters.wifi_filter())
 
         # Create mapping of radio_name -> iface_index
         radio_to_iface = self._get_radio_to_iface(wifi_form)
 
+        # Add header section (used for page title)
+        wifi_form.add_section(
+            name="wifi",
+            title=_(self.userfriendly_title),
+            description=_(
+                "If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
+                "here and fill in an SSID (the name of the access point) and a "
+                "corresponding password. You can then set up your mobile devices, "
+                "using the QR code available next to the form."
+            )
+        )
+
+        # Add wifi section
+        wifi_section = wifi_form.add_section(
+            name="wifi_settings",
+            title=_("Wi-Fi settings"),
+        )
+
         # Get list of available radios
-        radios = self._get_radios(cards, wifi_form, radio_to_iface)
+        radios = self._get_radios(cards, wifi_section, radio_to_iface)
+
+        guest_network_section = wifi_form.add_section(
+            name="guest_network",
+            title=_("Guest network"),
+            description=_(
+                "TODO"
+            )
+        )
+        guest_network_section.add_field(
+            Checkbox, name="guest_network_enabled",
+            label=_("Enable guest network"), default=False,
+            nuci_preproc=preprocessors.guest_network_enabled,
+        )
+        guest_network_section.add_field(
+            Textbox, name="guest_network_subnet", label=_("Guest Network"),
+            nuci_preproc=preprocessors.generate_network_preprocessor(
+                "uci.network.guest_turris.ipaddr",
+                "uci.network.guest_turris.netmask",
+                DEFAULT_GUEST_NETWORK,
+                DEFAULT_GUEST_MASK,
+            ),
+            validators=[validators.IPv4Prefix()],
+            hint=_(
+                "TODO"
+            ),
+        ).requires("guest_network_enabled", True)
 
         def wifi_form_cb(data):
             uci = Uci()
@@ -314,7 +441,14 @@ class WifiHandler(BaseConfigHandler):
             uci.add(wireless)
 
             for radio in radios:
-                self._prepare_radio_cb(data, uci, wireless, radio)
+                self._prepare_radio_cb(data, wireless, radio)
+
+            # test whether it is required to pass update guest network
+            set_enabled_to = data.get("guest_network_enabled")
+            current_data = client.get(filter=filters.wifi_filter())
+            current_enabled = preprocessors.guest_network_enabled(current_data)
+            if current_enabled != set_enabled_to:
+                self._prepare_guest_configs(uci, data, set_enabled_to)
 
             return "edit_config", uci
 

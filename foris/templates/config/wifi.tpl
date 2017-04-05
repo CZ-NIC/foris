@@ -26,16 +26,7 @@
         <p class="config-description">{{! description }}</p>
         %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        %for field in form.active_fields:
-            %include("_field.tpl", field=field)
-            %if field.name == "radio0-hwmode" and DEVICE_CUSTOMIZATION == "omnia" and field.field.value == "11g":
-                <div class="row">
-                    <p class="form-note">
-                    {{ trans("If you want to use this card for 2.4GHz bands, correction of cables connected to diplexers is needed! Factory default setting: Cables from big card connected to 5GHz, cables from small card connected to 2.4GHz diplexer part.") }}
-                    <p>
-               </div>
-            %end
-        %end
+        %include("config/_wifi_form.tpl", form=form)
         <div id="wifi-qr">
         </div>
         <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>

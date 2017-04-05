@@ -26,9 +26,7 @@
     <p class="wizard-description">{{! first_description }}</p>
     %include("_messages.tpl")
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-    %for field in form.active_fields:
-        %include("_field.tpl", field=field)
-    %end
+    %include("config/_wifi_form.tpl", form=form)
     <div id="wifi-qr">
     </div>
     <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
