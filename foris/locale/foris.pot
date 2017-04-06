@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-29 17:30+0200\n"
+"POT-Creation-Date: 2017-04-06 15:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -595,11 +595,12 @@ msgstr ""
 msgid "Wi-Fi"
 msgstr ""
 
+msgid "auto"
+msgstr ""
+
 msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available next to the form."
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
 msgstr ""
 
 #, python-format
@@ -613,9 +614,6 @@ msgid "Hide SSID"
 msgstr ""
 
 msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-
-msgid "auto"
 msgstr ""
 
 msgid "Wi-Fi mode"
@@ -662,9 +660,50 @@ msgstr ""
 msgid "Network password"
 msgstr ""
 
+msgid "Guest Wi-Fi"
+msgstr ""
+
+msgid "Set guest Wi-Fi here."
+msgstr ""
+
 msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
+"Enables the guest Wi-Fi. You don't need to set an SSID. The SSID will be "
+"derived from SSID of your ordinary Wi-Fi by adding `-guest` suffix."
+msgstr ""
+
+msgid "Guest password"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+
+msgid "Wi-Fi settings"
+msgstr ""
+
+msgid "Guest network"
+msgstr ""
+
+msgid ""
+"Is a network for guest devices. It is separated from your ordinary LAN "
+"network and it is not possible to access the administration interface from "
+"the guest network. The devices connected to the guest network are only "
+"allowed to access the internet."
+msgstr ""
+
+msgid "Enable guest network"
+msgstr ""
+
+msgid "Guest Network"
+msgstr ""
+
+msgid ""
+"You need to set the IP range of your guest network. Note that the range "
+"should be different than the ranges on your other networks (LAN, WAN, "
+"OpenVPN, ...)."
 msgstr ""
 
 msgid "The password you entered was not valid."
@@ -857,6 +896,13 @@ msgid ""
 msgstr ""
 
 msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+
+msgid ""
 "Welcome to the Turris administration site. Please, choose a config section "
 "you wish to change from the menu."
 msgstr ""
@@ -865,13 +911,6 @@ msgid "No new messages."
 msgstr ""
 
 msgid "We were unable to detect any wireless cards in your router."
-msgstr ""
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
 msgstr ""
 
 msgid "Notifications and automatic restarts"
