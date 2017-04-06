@@ -192,7 +192,9 @@ class WifiHandler(BaseConfigHandler):
             nuci_path="uci.wireless.guest_iface_%s.disabled" % iface_index,
             nuci_preproc=lambda value: not parse_uci_bool(value),
             hint=_(
-                "TODO Enables guest wifi: SSID -> SSID-guest, ..."
+                "Enables the guest Wi-Fi. You don't need to set an SSID. "
+                "The SSID will be derived from SSID of your ordinary Wi-Fi "
+                "by adding `-guest` suffix."
             )
         ).requires(prefixed_name("wifi_enabled"), True).requires("guest_network_enabled", True)
         guest_section.add_field(
@@ -413,7 +415,10 @@ class WifiHandler(BaseConfigHandler):
             name="guest_network",
             title=_("Guest network"),
             description=_(
-                "TODO"
+                "Is a network for guest devices. It is separated from your ordinary LAN network "
+                "and it is not possible to access the administration interface from the guest "
+                "network. The devices connected to the guest network are only allowed to access "
+                "the internet."
             )
         )
         guest_network_section.add_field(
@@ -431,7 +436,8 @@ class WifiHandler(BaseConfigHandler):
             ),
             validators=[validators.IPv4Prefix()],
             hint=_(
-                "TODO"
+                "You need to set the IP range of your guest network. Note that the range should "
+                "be different than the ranges on your other networks (LAN, WAN, OpenVPN, ...)."
             ),
         ).requires("guest_network_enabled", True)
 
