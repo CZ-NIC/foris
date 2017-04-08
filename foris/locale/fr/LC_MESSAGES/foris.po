@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-29 17:30+0200\n"
-"PO-Revision-Date: 2017-04-05 15:30+0000\n"
+"PO-Revision-Date: 2017-04-08 19:51+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
@@ -82,7 +82,7 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Le message de test a été envoyé, vérifiez votre boîte mail de réception."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 "<br>Error returned:<br><pre>%(error)s</pre>"
@@ -228,7 +228,7 @@ msgstr ""
 "périphériques connectés au routeur."
 
 msgid "DHCP start"
-msgstr ""
+msgstr "Démarrage DHCP"
 
 msgid "DHCP max leases"
 msgstr ""
@@ -300,10 +300,10 @@ msgid "Send emails about new features."
 msgstr ""
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "Paramètres SMTP"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Adresse de l'expéditeur (De)"
 
 msgid "This is the address notifications are send from."
 msgstr ""
@@ -312,10 +312,10 @@ msgid "Server address"
 msgstr "Adresse du serveur"
 
 msgid "Server port"
-msgstr ""
+msgstr "Port du serveur"
 
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 msgid "SSL/TLS"
 msgstr "SSL/TLS"
@@ -336,7 +336,7 @@ msgid "Automatic restarts after software update"
 msgstr "Redémarrage automatique après mise à jour"
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Délai (en jours)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
@@ -361,7 +361,7 @@ msgid "New password"
 msgstr "Nouveau mot de passe"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Nouveau mot de passe (répéter)"
 
 msgid "Password (repeat)"
 msgstr ""
@@ -370,7 +370,7 @@ msgid "Passwords are not equal."
 msgstr "Les mots de passe ne sont pas identiques."
 
 msgid "Use the same password for advanced configuration"
-msgstr ""
+msgstr "Utiliser le même mot de passe pour la configuration avancée"
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -381,7 +381,7 @@ msgid ""
 msgstr ""
 
 msgid "Region settings"
-msgstr ""
+msgstr "Paramètres régionaux"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
@@ -398,7 +398,7 @@ msgid "Timezone"
 msgstr "Fuseau horaire"
 
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 msgid "Advanced administration"
 msgstr ""
@@ -412,7 +412,7 @@ msgid ""
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Heure"
 
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
@@ -435,8 +435,9 @@ msgid ""
 "are listed below)."
 msgstr ""
 
+#, fuzzy
 msgid "Telnet (23/TCP)"
-msgstr ""
+msgstr "Telnet (23/TCP)"
 
 msgid "Telnet - alternative port (2323/TCP)"
 msgstr ""
@@ -472,7 +473,7 @@ msgid "Use automatic updates (recommended)"
 msgstr ""
 
 msgid "Turn automatic updates off"
-msgstr ""
+msgstr "Désactiver les mises à jour automatiques"
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -495,7 +496,7 @@ msgid ""
 msgstr ""
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (configuration automatique)"
 
 msgid "Static IP address (manual configuration)"
 msgstr "Adresse IP statique (configuration manuelle)"
@@ -510,13 +511,13 @@ msgid "Disable IPv6"
 msgstr "Désactiver IPv6"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "Protocole IPv4"
 
 msgid "IP address"
 msgstr "Adresse IP"
 
 msgid "Network mask"
-msgstr ""
+msgstr "Masque réseau"
 
 msgid "Gateway"
 msgstr ""
@@ -533,10 +534,10 @@ msgid "DNS server 2"
 msgstr "Serveur DNS 2"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "Nom d’utilisateur PAP/CHAP"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "Mot de passe PAP/CHAP"
 
 msgid "IPv6 protocol"
 msgstr "Protocole IPv6"
@@ -559,7 +560,7 @@ msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr ""
 
 msgid "Use Modem Turris"
-msgstr ""
+msgstr "Utiliser le modem Turris"
 
 msgid ""
 "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
@@ -579,8 +580,9 @@ msgstr ""
 msgid "Both VPI and VCI must be filled or both must be empty."
 msgstr ""
 
+#, fuzzy
 msgid "VPI"
-msgstr ""
+msgstr "VPI"
 
 msgid ""
 "Virtual Path Identifier (VPI) is a parameter that you might have received "
@@ -975,7 +977,7 @@ msgid "This value should be a valid email."
 msgstr ""
 
 msgid "This value should be a valid url."
-msgstr ""
+msgstr "Cette valeur doit être une url valide."
 
 msgid "This value should be a valid number."
 msgstr ""
@@ -993,11 +995,11 @@ msgid "This value should not be blank."
 msgstr ""
 
 msgid "This value is required."
-msgstr ""
+msgstr "Cette valeur est obligatoire."
 
 #, python-format
 msgid "This value should be greater than or equal to %s."
-msgstr ""
+msgstr "Cette valeur doit être supérieure ou égale à %s."
 
 #, python-format
 msgid "This value should be lower than or equal to %s."
@@ -1061,7 +1063,7 @@ msgid ""
 msgstr ""
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Loading..."
 msgstr ""
@@ -1104,7 +1106,7 @@ msgid ""
 msgstr ""
 
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #, python-format
 msgid ""
@@ -1130,7 +1132,7 @@ msgid ""
 msgstr ""
 
 msgid "Important updates"
-msgstr ""
+msgstr "Mises à jour importantes"
 
 msgid ""
 "Important updates that require a device restart have been installed. Some "
@@ -1142,10 +1144,10 @@ msgid "Continue to configuration interface"
 msgstr ""
 
 msgid "Checking internet connectivity."
-msgstr ""
+msgstr "Vérification de la connexion internet."
 
 msgid "One moment, please..."
-msgstr ""
+msgstr "Veuillez patienter..."
 
 msgid "Done"
 msgstr ""
@@ -1165,7 +1167,7 @@ msgid ""
 msgstr ""
 
 msgid "Try again"
-msgstr ""
+msgstr "Réessayez"
 
 msgid ""
 "In some cases, such as on a slower DSL connection or when DHCP is used, this "
@@ -1189,7 +1191,7 @@ msgid "Do not unplug the device during update!"
 msgstr ""
 
 msgid "Check of available updates in progress."
-msgstr ""
+msgstr "Vérification des mises à jour disponibles en cours."
 
 msgid "Firmware update was successful, you can proceed to the next step."
 msgstr ""
@@ -1230,14 +1232,16 @@ msgid ""
 msgstr ""
 
 msgid "Begin installation"
-msgstr ""
+msgstr "Commencer l’installation"
 
 msgid "Installation finished"
-msgstr ""
+msgstr "Installation terminé"
 
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr ""
+"Vous avez décidé de désactiver le service de mise à jour lors de "
+"l’installation."
 
 msgid ""
 "Without the Updater, installed software will not be kept up to date and you "
@@ -1278,7 +1282,7 @@ msgid "Set time manually"
 msgstr ""
 
 msgid "Synchronization successful."
-msgstr ""
+msgstr "Synchronisation réussie."
 
 msgid "Time settings"
 msgstr ""
@@ -1290,7 +1294,7 @@ msgid "Time was successfully synchronized, you can move to the next step."
 msgstr ""
 
 msgid "Project:Turris"
-msgstr ""
+msgstr "Projet:Turris"
 
 msgid "Skip wizard"
 msgstr ""
@@ -1299,10 +1303,10 @@ msgid "Step"
 msgstr ""
 
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 msgid "Hint"
-msgstr ""
+msgstr "Astuce"
 
 msgid "foris version:"
 msgstr ""
@@ -1370,28 +1374,28 @@ msgid ""
 msgstr ""
 
 msgid "Log in"
-msgstr ""
+msgstr "Se connecter"
 
 msgid "Foris Configuration Interface"
-msgstr ""
+msgstr "Interface de configuration de Foris"
 
 msgid "Go to LuCI"
-msgstr ""
+msgstr "Aller sur LuCI"
 
 msgid "Turris router administration interface"
-msgstr ""
+msgstr "Interface d’administration du routeur Turris"
 
 msgid "Reboot now"
 msgstr "Redémarrer maintenant"
 
 msgid "Dismiss"
-msgstr ""
+msgstr "Ignorer"
 
 msgid "Unable to retrieve notifications, please try refreshing the page."
 msgstr ""
 
 msgid "You have been logged out due to longer inactivity."
-msgstr ""
+msgstr "Vous avez été déconnecté en raison d'une longue période d'inactivité."
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -1401,4 +1405,4 @@ msgid "Connectivity test"
 msgstr ""
 
 msgid "Automatic updates"
-msgstr ""
+msgstr "Mises à jour automatiques"
