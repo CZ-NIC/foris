@@ -20,11 +20,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-30 12:14+0100\n"
+"POT-Creation-Date: 2017-04-10 14:42+0200\n"
 "PO-Revision-Date: 2017-04-03 11:29+0000\n"
 "Last-Translator: Robin Marx <github@takky.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
-"\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
+">\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -733,16 +733,15 @@ msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
 msgid "Wi-Fi"
 msgstr "WLAN"
 
+msgid "auto"
+msgstr "automatisch"
+
 msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available next to the form."
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
 msgstr ""
-"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann aktivieren "
-"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und ein "
-"dazugehöriges Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte "
-"mittels des angezeigten QR-Codes einfach konfigurieren."
+"Das Kennwort (WPA2 pre-shared key) wird beim Verbinden mit dem WLAN "
+"verlangt, es muss mindestens 8 Zeichen lang sein."
 
 #, python-format
 msgid "Enable Wi-Fi %s"
@@ -758,9 +757,6 @@ msgid "If set, network is not visible when scanning for available networks."
 msgstr ""
 "Falls aktiviert, wird das Netzwerk nicht in der Liste der verfügbaren "
 "drahtlosen Netzwerke angezeigt."
-
-msgid "auto"
-msgstr "automatisch"
 
 msgid "Wi-Fi mode"
 msgstr "WLAN-Betriebsmodus"
@@ -815,12 +811,58 @@ msgstr "Netzwerkkanal"
 msgid "Network password"
 msgstr "Netzwerk-Kennwort"
 
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
+#, fuzzy
+msgid "Guest Wi-Fi"
+msgstr "WLAN"
+
+msgid "Set guest Wi-Fi here."
 msgstr ""
-"Das Kennwort (WPA2 pre-shared key) wird beim Verbinden mit dem WLAN "
-"verlangt, es muss mindestens 8 Zeichen lang sein."
+
+msgid ""
+"Enables the guest Wi-Fi. You don't need to set an SSID. The SSID will be "
+"derived from SSID of your ordinary Wi-Fi by adding `-guest` suffix."
+msgstr ""
+
+#, fuzzy
+msgid "Guest password"
+msgstr "Aktuelles Kennwort"
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann aktivieren "
+"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und ein "
+"dazugehöriges Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte "
+"mittels des angezeigten QR-Codes einfach konfigurieren."
+
+#, fuzzy
+msgid "Wi-Fi settings"
+msgstr "Uhrzeiteinstellungen"
+
+msgid "Guest network"
+msgstr ""
+
+msgid ""
+"Is a network for guest devices. It is separated from your ordinary LAN "
+"network and it is not possible to access the administration interface from "
+"the guest network. The devices connected to the guest network are only "
+"allowed to access the internet."
+msgstr ""
+
+msgid "Enable guest network"
+msgstr ""
+
+msgid "Guest Network"
+msgstr ""
+
+msgid ""
+"You need to set the IP range of your guest network. Note that the range "
+"should be different than the ranges on your other networks (LAN, WAN, "
+"OpenVPN, ...)."
+msgstr ""
 
 msgid "The password you entered was not valid."
 msgstr "Das eingegebene Kennwort ist ungültig."
@@ -1064,6 +1106,13 @@ msgstr ""
 "bitte versuchen Sie es zu einem späteren Zeitpunkt erneut."
 
 msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+
+msgid ""
 "Welcome to the Turris administration site. Please, choose a config section "
 "you wish to change from the menu."
 msgstr ""
@@ -1207,32 +1256,42 @@ msgstr "Die Eingabe darf nicht leer sein."
 msgid "This value is required."
 msgstr "Dies ist ein Pflichtfeld."
 
+#, python-format
 msgid "This value should be greater than or equal to %s."
 msgstr "Die Eingabe muss größer oder gleich %s sein."
 
+#, python-format
 msgid "This value should be lower than or equal to %s."
 msgstr "Die Eingabe muss kleiner oder gleich %s sein."
 
+#, python-format
 msgid "This value should be between %s and %s."
 msgstr "Die Eingabe muss zwischen %s und %s liegen."
 
+#, python-format
 msgid "This value is too short. It should have %s characters or more."
-msgstr "Die Eingabe ist zu kurz. Es müssen mindestens %s Zeichen eingegeben werden."
+msgstr ""
+"Die Eingabe ist zu kurz. Es müssen mindestens %s Zeichen eingegeben werden."
 
+#, python-format
 msgid "This value is too long. It should have %s characters or fewer."
-msgstr "Die Eingabe ist zu lang. Es dürfen höchstens %s Zeichen eingegeben werden."
+msgstr ""
+"Die Eingabe ist zu lang. Es dürfen höchstens %s Zeichen eingegeben werden."
 
+#, python-format
 msgid ""
 "This value length is invalid. It should be between %s and %s characters long."
-msgstr ""
-"Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein."
+msgstr "Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein."
 
+#, python-format
 msgid "You must select at least %s choices."
 msgstr "Wählen Sie mindestens %s Angaben aus."
 
+#, python-format
 msgid "You must select %s choices or fewer."
 msgstr "Wählen Sie maximal %s Angaben aus."
 
+#, python-format
 msgid "You must select between %s and %s choices."
 msgstr "Wählen Sie zwischen %s und %s Angaben."
 
@@ -1300,9 +1359,8 @@ msgstr ""
 "Wir empfehlen Ihnen dringend automatische Sicherheitsaktualisierungen "
 "einzuschalten um alle empfohlenen Updates zu erhalten. Nur regelmäßige "
 "Aktualisierungen können einen ausreichenden Schutz gegen eventuelle "
-"Sicherheitslücken gewährleisten.\\n"
-"\\n"
-"Wollen Sie dennoch, ohne Schutz, fortfahren?"
+"Sicherheitslücken gewährleisten.\\n\\nWollen Sie dennoch, ohne Schutz, "
+"fortfahren?"
 
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication against "
@@ -1316,17 +1374,14 @@ msgid "Are you sure you want to restart the router?"
 msgstr "Wollen Sie den Router wirklich neu starten?"
 
 msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr ""
-"\\n"
-"(%UNREAD%) Verbleibende ungelesene Nachrichten werden gelöscht."
+msgstr "\\n(%UNREAD%) Verbleibende ungelesene Nachrichten werden gelöscht."
 
 msgid ""
 "There are some unsaved changes in the notifications settings.\\nDo you want "
 "to discard them and test the notifications with the old settings?"
 msgstr ""
-"Einige Ändeungen wurden noch nicht gespeichert.\\n"
-"Wollen Sie diese verwerfen und mit den alten Benachrichtigungseinstellungen "
-"fortfahren?"
+"Einige Ändeungen wurden noch nicht gespeichert.\\nWollen Sie diese verwerfen "
+"und mit den alten Benachrichtigungseinstellungen fortfahren?"
 
 msgid "Next"
 msgstr "Weiter"
@@ -1554,9 +1609,6 @@ msgstr ""
 msgid "Continue to the configuration interface"
 msgstr "Zur Konfigurationsschnittstelle gehen"
 
-msgid "Language"
-msgstr "Sprache"
-
 msgid "Synchronize with your computer clock"
 msgstr "Mit der Uhrzeit Ihres Computers synchronisieren"
 
@@ -1586,8 +1638,15 @@ msgstr "Assistenten überspringen"
 msgid "Step"
 msgstr "Schritt"
 
+msgid "Language"
+msgstr "Sprache"
+
 msgid "Hint"
 msgstr "Hilfe"
+
+#, fuzzy
+msgid "foris version:"
+msgstr "Turris OS Version"
 
 msgid ""
 "One of the most important features of router Turris Omnia are automatic "
