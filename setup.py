@@ -55,6 +55,7 @@ setup(
     packages=[
         "foris",
         "foris.config_handlers",
+        "foris.langs",
         "foris.nuci",
         "foris.nuci.modules",
         "foris.plugins",
