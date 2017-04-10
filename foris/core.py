@@ -35,6 +35,7 @@ from . import __version__ as foris_version
 from .nuci import client, filters, cache
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
+from .langs import iso2to3, translation_names, translations, DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
 from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
@@ -52,34 +53,14 @@ nuci_cache = cache.NuciCache()
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
-DEFAULT_LANGUAGE = 'en'
 
 # read locale directory
 locale_directory = os.path.join(BASE_DIR, "locale")
-translations = sorted([
-    d for d in os.listdir(locale_directory) + [DEFAULT_LANGUAGE]
-    if os.path.isdir(os.path.join(locale_directory, d))
-])
-translations.insert(0, DEFAULT_LANGUAGE)  # no folder for default language (en)
 
 translations = collections.OrderedDict(
     (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
     for e in translations
 )
-
-translation_names = {
-    'cs': "Čeština",
-    'de': "Deutsch",
-    'en': "English",
-    'sk': "Slovenčina",
-}
-
-iso2to3 = {
-    'cs': "cze",
-    'de': "deu",
-    'en': "eng",
-    'sk': "svk",
-}
 
 ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
 ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
