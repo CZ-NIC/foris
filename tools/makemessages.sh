@@ -15,26 +15,51 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-if [[ ! $# -eq 4 ]]; then
-	lang=$2
-	locale_dir="$1/locale/$lang/LC_MESSAGES"
-	pot="$1/locale/foris.pot"
-	if [ ! -d $locale_dir ]
-	then
-		mkdir -p $locale_dir
-	fi
-	find $1 \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"\?{{!* \(_\|trans\|\(\w*\)gettext\)\((".*")\|(''.*'')\).*}}"\?/\n\2gettext\3\n#/g' | \
-		xgettext --package-name="$3" -d messages --no-location --language=Python --from-code=UTF-8 --output="$pot" -
+set -e
+
+function make_pot() {
+	local path="$1"
+	local package="$2"
+	local output="$3"
+	echo "Creating/overriding pot file in '$output'."
+	find "$path" \( -iname "*.py" -o -iname "*.tpl" \) -exec cat {} \; | sed 's/"\?{{!* \(_\|trans\|\(\w*\)gettext\)\((".*")\|(''.*'')\).*}}"\?/\n\2gettext\3\n#/g' | \
+		xgettext --package-name="$package" -d messages --no-location --language=Python --from-code=UTF-8 --output="$output" -
 	find $1 -iname "*.tpl" -exec sh -c 'grep -zq "%include.*_(" $0 && echo "WARNING: _() after %include in $0"' {} \;
+}
+
+function make_po() {
+	local locale_dir="$1"
+	local pot_path="$2"
+	local lang="$3"
 	if [ -f $locale_dir/foris.po ]
 	then
-		echo "Making messages in $locale_dir."
-		msgmerge -q -U $locale_dir/foris.po "$pot"
+		echo "Merging messages in '$locale_dir'."
+		msgmerge -q -U "$locale_dir"/foris.po "$pot_path"
 	else
-		msginit -i "$pot" -l $lang --no-translator -o $locale_dir/foris.po
+		echo "Creating messages in '$locale_dir'."
+		msginit -i "$pot_path" -l $lang --no-translator -o "$locale_dir"/foris.po
 	fi
+}
+
+function make_messages() {
+	local path="$1"
+	local package="$2"
+	local lang="$3"
+	local locale_dir="$path/locale/$lang/LC_MESSAGES"
+	local pot_path="$path/locale/foris.pot"
+
+	[ -d "$locale_dir" ] || mkdir -p "$locale_dir"
+	make_pot "$path" "$package" "$pot_path"
+	make_po "$locale_dir" "$pot_path" "$lang"
+}
+
+if [ $# -eq 3 ]; then
+	make_messages "$1" "${2:-Foris}" "$3"
 	echo "Message making completed."
+elif [ $# -lt 3 -a $# -gt 0 ]; then
+	for dir in "$1"/locale/?? ; do
+		make_messages "$1" "${2:-Foris}" "$(basename "$dir")"
+	done
 else
-    echo "$1 -- $2"
-	>&2 echo "Usage: $0 PATH LANGUAGE PACKAGE"
+	echo "Usage: $0 PATH [PACKAGE [LANGUAGE]] "
 fi
