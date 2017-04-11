@@ -4,9 +4,7 @@ $nav-item-border: 2px solid #ddd
 %nav-item-link
   color: $sidebar-foreground-color
   display: block
-  height: $nav-item-height + 1em
-  line-height: $nav-item-height + 1em
-  padding: 0.2em 1.5em
+  padding: 0.8em 1.5em
 
 %bottom-nav-border
   &::after
@@ -56,11 +54,6 @@ $nav-item-border: 2px solid #ddd
 
           a
             color: #fff
-
-        +respond-to('not-mobile', $no-query: true)
-          a
-            height: $nav-item-height
-            line-height: $nav-item-height
 
 #subnav
   +pie-clearfix
