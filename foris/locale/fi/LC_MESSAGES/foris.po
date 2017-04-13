@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:42+0200\n"
-"PO-Revision-Date: 2017-04-06 06:46+0000\n"
+"PO-Revision-Date: 2017-04-13 09:26+0000\n"
 "Last-Translator: Tomi <tomi.poutanen@gmail.com>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/turris/foris/fi/"
-">\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/turris/foris/fi/>"
+"\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 msgid "This field is required."
 msgstr "Tämä kenttä on pakollinen."
@@ -35,19 +35,19 @@ msgid "This is not a valid IPv4 or IPv6 address."
 msgstr "Tämä ei ole oikea IPv4- tai IPv6-osoite."
 
 msgid "This is not an IPv6 address with prefix length."
-msgstr ""
+msgstr "Tämä ei ole IPv6-osoite prefiksillä."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr ""
+msgstr "Tämä ei ole IPv4-osoite prefiksillä"
 
 msgid "Is not a number."
 msgstr "Ei ole numero."
 
 msgid "This is not valid time in HH:MM format."
-msgstr ""
+msgstr "Aika ei ole HH:MM muodossa."
 
 msgid "MAC address is not valid."
-msgstr ""
+msgstr "MAC-osoite ei ole kelvollinen."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -58,16 +58,16 @@ msgid "Length must be from %(low)s to %(high)s characters."
 msgstr ""
 
 msgid "Configuration was successfully saved."
-msgstr ""
+msgstr "Asetukset tallennettu."
 
 msgid "There were some errors in your input."
 msgstr ""
 
 msgid "Old password you entered was not valid."
-msgstr ""
+msgstr "Syöttämäsi vanha salasana ei kelpaa."
 
 msgid "Password was successfully saved."
-msgstr ""
+msgstr "Salasana tallennettu."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
