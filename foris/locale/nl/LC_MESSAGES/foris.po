@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-10 14:42+0200\n"
-"PO-Revision-Date: 2017-04-04 17:05+0000\n"
-"Last-Translator: Sm0ke0ut <sm0ke0ut@fayntic.com>\n"
+"PO-Revision-Date: 2017-04-14 06:04+0000\n"
+"Last-Translator: Peter Kruger <peter@pkruger.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.13-dev\n"
+"X-Generator: Weblate 2.14-dev\n"
 
 msgid "This field is required."
 msgstr "Dit is een verplicht veld."
@@ -33,14 +33,15 @@ msgstr "Ongeldig IPv6 adres."
 msgid "This is not a valid IPv4 or IPv6 address."
 msgstr "Ongeldig IPv6 netmask adres."
 
+#, fuzzy
 msgid "This is not an IPv6 address with prefix length."
-msgstr ""
+msgstr "Dit IPv6 adres bevat geen geldige prefix lengte."
 
 msgid "This is not an IPv4 address with prefix length."
 msgstr ""
 
 msgid "Is not a number."
-msgstr "Ongeldig getal."
+msgstr "Dit is geen getal."
 
 msgid "This is not valid time in HH:MM format."
 msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
@@ -48,13 +49,13 @@ msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
 msgid "MAC address is not valid."
 msgstr "ongeldig MAC adres."
 
-#, python-format
+#, fuzzy, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
-msgstr ""
+msgstr "Buiten het toegestane bereik %(low)s - %(high)s."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr ""
+msgstr "De lengte moet tussen %(lage)s en %(hoog)s posities liggen."
 
 msgid "Configuration was successfully saved."
 msgstr "De instellingen zijn succesvol opgeslagen."
@@ -100,17 +101,25 @@ msgid ""
 "%(new_url)s</a> in local network. Please wait a while until router "
 "automatically restarts."
 msgstr ""
+"Herstellen configuratie is geslaagd. Na het installeren van updates en "
+"opnieuw opstarten kunt u via het lokale netwerk terugkeren naar deze pagina "
+"op <a href=\"%(new_url)s\"> %s (new_url)</a>. Even geduld a.u.b. totdat de "
+"router automatisch opnieuw opgestart is."
 
 msgid ""
 "Configuration was successfully restored. Please wait a while for "
 "installation of updates and automatic restart of the device."
 msgstr ""
+"De configuratie is succesvol hersteld. Gelieve een tijdje wachten voor de "
+"installatie van updates en automatische herstart van het apparaat."
 
 msgid "IP address of the router could not be determined from the backup."
-msgstr ""
+msgstr "IP-adres van de router kan niet worden bepaald vanuit de back-up."
 
 msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
+"Configuratie kon niet worden geladen, back-up-bestand is waarschijnlijk "
+"beschadigd."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -243,7 +252,7 @@ msgid "Turris"
 msgstr "Turris"
 
 msgid "Custom"
-msgstr "Custom"
+msgstr "Aangepast"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members of "
