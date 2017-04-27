@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2017-04-27 09:52+0000\n"
+"PO-Revision-Date: 2017-04-27 11:35+0000\n"
 "Last-Translator: Easylarveur <easylarveur@hotmail.fr>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/turris/foris-"
 "tzinfo/fr/>\n"
@@ -297,7 +297,7 @@ msgid "Tell City, Indiana"
 msgstr "Tell City, Indiana"
 
 msgid "Oral"
-msgstr ""
+msgstr "Oural"
 
 msgid "Yerevan"
 msgstr "Erevan"
@@ -311,7 +311,6 @@ msgstr "Port Moresby"
 msgid "Estonia"
 msgstr "Estonie"
 
-#, fuzzy
 msgid "Faroe"
 msgstr "Féroé"
 
