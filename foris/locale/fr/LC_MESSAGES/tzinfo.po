@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2017-04-27 11:35+0000\n"
+"PO-Revision-Date: 2017-04-27 11:47+0000\n"
 "Last-Translator: Easylarveur <easylarveur@hotmail.fr>\n"
 "Language-Team: French <http://hosted.weblate.org/projects/turris/foris-"
 "tzinfo/fr/>\n"
@@ -622,7 +622,7 @@ msgstr "Mexique"
 
 #, fuzzy
 msgid "El Aaiun"
-msgstr "El Aaiun"
+msgstr "Laâyoune"
 
 msgid "China"
 msgstr "Chine"
@@ -1187,10 +1187,10 @@ msgid "Ireland"
 msgstr "Irlande"
 
 msgid "Muscat"
-msgstr ""
+msgstr "Mascate"
 
 msgid "Aqtau"
-msgstr ""
+msgstr "Aktau"
 
 msgid "Slovenia"
 msgstr "Slovénie"
@@ -1235,10 +1235,10 @@ msgid "Poland"
 msgstr "Pologne"
 
 msgid "Moldova"
-msgstr ""
+msgstr "Moldavie"
 
 msgid "Malta"
-msgstr ""
+msgstr "Malte"
 
 msgid "Guernsey"
 msgstr ""
