@@ -51,7 +51,7 @@ class WifiHandler(BaseConfigHandler):
                 channels_5g.append((str(channel['number']), pretty_channel))
         return channels_2g4, channels_5g
 
-    def _add_wifi_section(self, wifi_form, wifi_card, radio_to_iface):
+    def _add_wifi_section(self, wifi_section, wifi_card, radio_to_iface, current_data):
         HINTS = {
             'password': _(
                 "WPA2 pre-shared key, that is required to connect to the "
@@ -68,7 +68,7 @@ class WifiHandler(BaseConfigHandler):
         def prefixed_name(name):
             return "radio%s-%s" % (radio_index, name)
 
-        wifi_main = wifi_form.add_section(
+        wifi_main = wifi_section.add_section(
             name=prefixed_name("set_wifi"),
             title=None,
         )
@@ -129,7 +129,7 @@ class WifiHandler(BaseConfigHandler):
 
         # Allow VHT modes only if the card has the capabilities and 5 GHz band is selected
         allow_vht = wifi_card['vht-capabilities']\
-            and wifi_form.current_data.get("radio%s-hwmode" % radio_index) == "11a"
+            and current_data.get("radio%s-hwmode" % radio_index) == "11a"
 
         if allow_vht:
             htmodes += (
@@ -210,11 +210,11 @@ class WifiHandler(BaseConfigHandler):
     def _get_wireless_cards(stats):
         return stats.data.get('wireless-cards') or None
 
-    def _get_radios(self, cards, wifi_form, radio_to_iface):
+    def _get_radios(self, cards, wifi_section, radio_to_iface, current_data):
         radios = []
         for card in sorted(cards, key=lambda x: x['name']):
             assert card['name'][0:3] == "phy", "Can not parse card name '%s'" % card['name']
-            self._add_wifi_section(wifi_form, card, radio_to_iface)
+            self._add_wifi_section(wifi_section, card, radio_to_iface, current_data)
             radios.append(card['name'][3:])
         return radios
 
@@ -409,7 +409,7 @@ class WifiHandler(BaseConfigHandler):
         )
 
         # Get list of available radios
-        radios = self._get_radios(cards, wifi_section, radio_to_iface)
+        radios = self._get_radios(cards, wifi_section, radio_to_iface, wifi_form.current_data)
 
         guest_network_section = wifi_form.add_section(
             name="guest_network",
