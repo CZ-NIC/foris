@@ -966,23 +966,30 @@ class WanHandler(BaseConfigHandler):
                            required=True)\
             .requires("proto", WAN_STATIC)
 
-        def extract_dns_item(dns_string, index, default=None):
+        def extract_dns_item(dns_option, index, default=None):
+            if isinstance(dns_option, List):
+                dns_list = [e.content for e in dns_option.children]
+            elif isinstance(dns_option, Option):
+                dns_list = dns_option.value.split(" ")
+            else:
+                return default
+
             try:
-                return dns_string.split(" ")[index]
+                return dns_list[index]
             except IndexError:
                 return default
 
         # DNS servers
         wan_main.add_field(Textbox, name="dns1", label=_("DNS server 1"),
                            nuci_path="uci.network.wan.dns",
-                           nuci_preproc=lambda val: extract_dns_item(val.value, 0),
+                           nuci_preproc=lambda val: extract_dns_item(val, 0),
                            validators=validators.AnyIP(),
                            hint=_("DNS server address is not required as the built-in "
                                   "DNS resolver is capable of working without it."))\
             .requires("proto", WAN_STATIC)
         wan_main.add_field(Textbox, name="dns2", label=_("DNS server 2"),
                            nuci_path="uci.network.wan.dns",
-                           nuci_preproc=lambda val: extract_dns_item(val.value, 1),
+                           nuci_preproc=lambda val: extract_dns_item(val, 1),
                            validators=validators.AnyIP(),
                            hint=_("DNS server address is not required as the built-in "
                                   "DNS resolver is capable of working without it."))\
@@ -1140,8 +1147,14 @@ class WanHandler(BaseConfigHandler):
                 wan.add(Option("ipaddr", data['ipaddr']))
                 wan.add(Option("netmask", data['netmask']))
                 wan.add(Option("gateway", data['gateway']))
-                dns_string = " ".join([data.get("dns1", ""), data.get("dns2", "")]).strip()
-                wan.add(Option("dns", dns_string))
+                dns_list = List("dns")
+                dns1 = data.get("dns1", None)
+                if dns1:
+                    dns_list.add(Value(0, dns1))
+                dns2 = data.get("dns2", None)
+                if dns2:
+                    dns_list.add(Value(1, dns2))
+                wan.add_replace(dns_list)
 
             # IPv6 configuration
             wan6 = Section("wan6", "interface")
