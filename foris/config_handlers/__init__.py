@@ -27,11 +27,10 @@ from .base import (
     SystemPasswordHandler,
     TimeHandler,
     UcollectHandler,
-    UpdaterEulaHandler,
-    UpdaterHandler,
     WanHandler,
 )
 
+from .updater import UpdaterEulaHandler, UpdaterHandler
 from .wifi import WifiHandler
 
 __all__ = [

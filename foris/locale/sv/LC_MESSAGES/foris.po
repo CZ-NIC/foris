@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-10 14:42+0200\n"
+"POT-Creation-Date: 2017-05-05 11:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -442,28 +442,6 @@ msgid ""
 "to server in addition to the IP address of the client."
 msgstr ""
 
-msgid "Updater"
-msgstr ""
-
-msgid "I agree"
-msgstr ""
-
-msgid "Use automatic updates (recommended)"
-msgstr ""
-
-msgid "Turn automatic updates off"
-msgstr ""
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-
 msgid "WAN"
 msgstr ""
 
@@ -589,6 +567,33 @@ msgid "MAC address"
 msgstr ""
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr ""
+
+msgid "Updater"
+msgstr ""
+
+msgid "I agree"
+msgstr ""
+
+msgid "Use automatic updates (recommended)"
+msgstr ""
+
+msgid "Turn automatic updates off"
+msgstr ""
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+
+msgid ""
+"If you want to use other language than English you can select it from the "
+"following list:"
 msgstr ""
 
 msgid "Wi-Fi"

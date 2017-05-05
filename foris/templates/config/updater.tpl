@@ -49,7 +49,7 @@
       <form id="main-form" class="config-form" action="{{ url("config_page", page_name="updater") }}" method="post" autocomplete="off" novalidate>
 
           <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-          %for field in form.active_fields:
+          %for field in form.sections[0].sections[0].active_fields:
               %if field.hidden:
                   {{! field.render() }}
               %else:
@@ -67,7 +67,13 @@
               </div>
               %end
           %end
-          %if len(form.active_fields) == 0:
+          <div id="language-install">
+          <h5>{{ form.sections[0].sections[1].title }}</h5>
+          %for field in form.sections[0].sections[1].active_fields:
+            <div class="language-install-box">{{! field.render() }} {{! field.label_tag }}</div>
+          %end
+          </div>
+          %if len(form.sections[0].sections[0].active_fields) == 0:
             <div class="message warning">
               {{ trans("List of available software was not downloaded from the server yet. Please come back later.") }}
             </div>
