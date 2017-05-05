@@ -840,6 +840,9 @@ class WanHandler(BaseConfigHandler):
             else:
                 return default
 
+            # Server with higher priority should be last
+            dns_list.reverse()
+
             try:
                 return dns_list[index]
             except IndexError:
@@ -1014,13 +1017,16 @@ class WanHandler(BaseConfigHandler):
                 wan.add(Option("netmask", data['netmask']))
                 wan.add(Option("gateway", data['gateway']))
                 dns_list = List("dns")
-                dns1 = data.get("dns1", None)
-                if dns1:
-                    dns_list.add(Value(0, dns1))
                 dns2 = data.get("dns2", None)
                 if dns2:
-                    dns_list.add(Value(1, dns2))
-                wan.add_replace(dns_list)
+                    dns_list.add(Value(0, dns2))
+                dns1 = data.get("dns1", None)
+                if dns1:
+                    dns_list.add(Value(1, dns1))  # dns with higher priority should be added last
+                if not dns_list.children:
+                    wan.add_removal(dns_list)
+                else:
+                    wan.add_replace(dns_list)
 
             # IPv6 configuration
             wan6 = Section("wan6", "interface")
