@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2017-04-14 11:34+0000\n"
-"Last-Translator: Gleb <70b6efd8@opayq.com>\n"
+"PO-Revision-Date: 2017-05-20 16:59+0000\n"
+"Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris-"
 "tzinfo/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.14.1-dev\n"
 
 msgid "Kinshasa"
 msgstr "Киншаса"
@@ -116,96 +116,95 @@ msgstr "Боливия"
 msgid "Karachi"
 msgstr "Карачи"
 
-#, fuzzy
 msgid "Choibalsan"
-msgstr "Choibalsan"
+msgstr "Чойбалсан"
 
 msgid "Denver"
-msgstr ""
+msgstr "Денвер"
 
 msgid "Slovakia"
-msgstr ""
+msgstr "Словакия"
 
 msgid "Ho Chi Minh City"
 msgstr ""
 
 msgid "Chisinau"
-msgstr ""
+msgstr "Кишинёв"
 
 msgid "Thimphu"
-msgstr ""
+msgstr "Тхимпху"
 
 msgid "Cordoba"
-msgstr ""
+msgstr "Кордова"
 
 msgid "Montenegro"
-msgstr ""
+msgstr "Черногория"
 
 msgid "Bratislava"
-msgstr ""
+msgstr "Братислава"
 
 msgid "Wallis"
 msgstr ""
 
 msgid "Honolulu"
-msgstr ""
+msgstr "Гонолулу"
 
 msgid "America"
-msgstr ""
+msgstr "Америка"
 
 msgid "Cayman Islands"
 msgstr ""
 
 msgid "Colombia"
-msgstr ""
+msgstr "Колумбия"
 
 msgid "Libya"
-msgstr ""
+msgstr "Ливия"
 
 msgid "Porto Velho"
-msgstr ""
+msgstr "Порту-Велью"
 
 msgid "Syowa"
 msgstr ""
 
 msgid "Finland"
-msgstr ""
+msgstr "Финляндия"
 
 msgid "Central African Republic"
 msgstr ""
 
 msgid "Uzhhorod"
-msgstr ""
+msgstr "Ужгород"
 
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Лихтенштейн"
 
 msgid "Libreville"
 msgstr ""
 
 msgid "Merida"
-msgstr ""
+msgstr "Мерида"
 
 msgid "United States"
 msgstr ""
 
 msgid "Ashgabat"
-msgstr ""
+msgstr "Ашхабад"
 
 msgid "Portugal"
-msgstr ""
+msgstr "Португалия"
 
 msgid "Zurich"
-msgstr ""
+msgstr "Цюрих"
 
 msgid "Cyprus"
-msgstr ""
+msgstr "Кипр"
 
 msgid "Caribbean Netherlands"
 msgstr ""
 
 msgid "Vietnam"
-msgstr ""
+msgstr "Вьетнам"
 
 msgid "Center, North Dakota"
 msgstr ""
@@ -214,19 +213,19 @@ msgid "British Virgin Islands"
 msgstr ""
 
 msgid "Istanbul"
-msgstr ""
+msgstr "Стамбул"
 
 msgid "Pitcairn"
 msgstr ""
 
 msgid "Kuwait"
-msgstr ""
+msgstr "Кувейт"
 
 msgid "Cayenne"
 msgstr ""
 
 msgid "Costa Rica"
-msgstr ""
+msgstr "Коста-Рика"
 
 msgid "Dar es Salaam"
 msgstr ""
@@ -235,28 +234,28 @@ msgid "Louisville"
 msgstr ""
 
 msgid "Manila"
-msgstr ""
+msgstr "Манила"
 
 msgid "Hovd"
 msgstr ""
 
 msgid "Nigeria"
-msgstr ""
+msgstr "Нигерия"
 
 msgid "Ecuador"
-msgstr ""
+msgstr "Эквадор"
 
 msgid "Europe"
-msgstr ""
+msgstr "Европа"
 
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
 msgid "Indianapolis"
-msgstr ""
+msgstr "Индианаполис"
 
 msgid "Tuvalu"
-msgstr ""
+msgstr "Тувалу"
 
 msgid "Pitcairn Islands"
 msgstr ""
@@ -265,7 +264,7 @@ msgid "Palestinian Territories"
 msgstr ""
 
 msgid "Hong Kong"
-msgstr ""
+msgstr "Гонконг"
 
 msgid "St. Kitts"
 msgstr ""
@@ -274,16 +273,16 @@ msgid "Petersburg, Indiana"
 msgstr ""
 
 msgid "Denmark"
-msgstr ""
+msgstr "Дания"
 
 msgid "Philippines"
-msgstr ""
+msgstr "Филиппины"
 
 msgid "Romania"
-msgstr ""
+msgstr "Румыния"
 
 msgid "Athens"
-msgstr ""
+msgstr "Афины"
 
 msgid "Morocco"
 msgstr ""
@@ -298,7 +297,7 @@ msgid "Oral"
 msgstr ""
 
 msgid "Yerevan"
-msgstr ""
+msgstr "Ереван"
 
 msgid "Ittoqqortoormiit"
 msgstr ""
@@ -307,13 +306,13 @@ msgid "Port Moresby"
 msgstr ""
 
 msgid "Estonia"
-msgstr ""
+msgstr "Эстония"
 
 msgid "Faroe"
 msgstr ""
 
 msgid "Lebanon"
-msgstr ""
+msgstr "Ливан"
 
 msgid "Pacific"
 msgstr ""
@@ -334,16 +333,16 @@ msgid "Palau"
 msgstr ""
 
 msgid "Novokuznetsk"
-msgstr ""
+msgstr "Новокузнецк"
 
 msgid "Nepal"
-msgstr ""
+msgstr "Непал"
 
 msgid "Matamoros"
 msgstr ""
 
 msgid "Havana"
-msgstr ""
+msgstr "Гавана"
 
 msgid "Suriname"
 msgstr ""
@@ -358,7 +357,7 @@ msgid "Phoenix"
 msgstr ""
 
 msgid "Zagreb"
-msgstr ""
+msgstr "Загреб"
 
 msgid "Noronha"
 msgstr ""
@@ -388,25 +387,25 @@ msgid "Managua"
 msgstr ""
 
 msgid "Sarajevo"
-msgstr ""
+msgstr "Сараево"
 
 msgid "Magadan"
-msgstr ""
+msgstr "Магадан"
 
 msgid "Syria"
-msgstr ""
+msgstr "Сирия"
 
 msgid "Dili"
 msgstr ""
 
 msgid "Belgrade"
-msgstr ""
+msgstr "Белград"
 
 msgid "Equatorial Guinea"
 msgstr ""
 
 msgid "Serbia"
-msgstr ""
+msgstr "Сербия"
 
 msgid "Santo Domingo"
 msgstr ""
@@ -418,10 +417,10 @@ msgid "Christmas Island"
 msgstr ""
 
 msgid "Chicago"
-msgstr ""
+msgstr "Чикаго"
 
 msgid "Tahiti"
-msgstr ""
+msgstr "Таити"
 
 msgid "Monterrey"
 msgstr ""
@@ -433,7 +432,7 @@ msgid "Lord Howe"
 msgstr ""
 
 msgid "Monaco"
-msgstr ""
+msgstr "Монако"
 
 msgid "Bahamas"
 msgstr ""
@@ -442,13 +441,13 @@ msgid "Glace Bay"
 msgstr ""
 
 msgid "Perth"
-msgstr ""
+msgstr "Перт"
 
 msgid "Mawson"
 msgstr ""
 
 msgid "Srednekolymsk"
-msgstr ""
+msgstr "Среднеколымск"
 
 msgid "Sao Paulo"
 msgstr ""
@@ -457,13 +456,13 @@ msgid "Hong Kong SAR China"
 msgstr ""
 
 msgid "Simferopol"
-msgstr ""
+msgstr "Симферополь"
 
 msgid "Ghana"
-msgstr ""
+msgstr "Гана"
 
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Саудовская Аравия"
 
 msgid "Bangui"
 msgstr ""
@@ -475,28 +474,28 @@ msgid "Malabo"
 msgstr ""
 
 msgid "Guatemala"
-msgstr ""
+msgstr "Гватемала"
 
 msgid "Kerguelen"
 msgstr ""
 
 msgid "Brussels"
-msgstr ""
+msgstr "Брюссель"
 
 msgid "Rio Gallegos"
 msgstr ""
 
 msgid "Kamchatka"
-msgstr ""
+msgstr "Камчатка"
 
 msgid "Dubai"
-msgstr ""
+msgstr "Дубай"
 
 msgid "Addis Ababa"
 msgstr ""
 
 msgid "Norfolk"
-msgstr ""
+msgstr "Норфолк"
 
 msgid "Lome"
 msgstr ""
@@ -505,7 +504,7 @@ msgid "Trinidad & Tobago"
 msgstr ""
 
 msgid "Oman"
-msgstr ""
+msgstr "Оман"
 
 msgid "Côte d’Ivoire"
 msgstr ""
@@ -523,7 +522,7 @@ msgid "Niue"
 msgstr ""
 
 msgid "Vatican"
-msgstr ""
+msgstr "Ватикан"
 
 msgid "Mogadishu"
 msgstr ""
@@ -535,7 +534,7 @@ msgid "Mazatlan"
 msgstr ""
 
 msgid "Greenland"
-msgstr ""
+msgstr "Гренландия"
 
 msgid "Pontianak"
 msgstr ""
@@ -544,13 +543,13 @@ msgid "Cuiaba"
 msgstr ""
 
 msgid "Cairo"
-msgstr ""
+msgstr "Каир"
 
 msgid "India"
-msgstr ""
+msgstr "Индия"
 
 msgid "Abidjan"
-msgstr ""
+msgstr "Абиджан"
 
 msgid "Lesotho"
 msgstr ""
@@ -589,31 +588,31 @@ msgid "Mbabane"
 msgstr ""
 
 msgid "Tripoli"
-msgstr ""
+msgstr "Триполи"
 
 msgid "Thunder Bay"
 msgstr ""
 
 msgid "Damascus"
-msgstr ""
+msgstr "Дамаск"
 
 msgid "Bermuda"
 msgstr ""
 
 msgid "Peru"
-msgstr ""
+msgstr "Перу"
 
 msgid "Madagascar"
-msgstr ""
+msgstr "Мадагаскар"
 
 msgid "Bissau"
 msgstr ""
 
 msgid "Benin"
-msgstr ""
+msgstr "Бенин"
 
 msgid "Stockholm"
-msgstr ""
+msgstr "Стокгольм"
 
 msgid "Mexico"
 msgstr ""
@@ -622,13 +621,13 @@ msgid "El Aaiun"
 msgstr ""
 
 msgid "China"
-msgstr ""
+msgstr "Китай"
 
 msgid "Omsk"
-msgstr ""
+msgstr "Омск"
 
 msgid "Anchorage"
-msgstr ""
+msgstr "Анкоридж"
 
 msgid "Miquelon"
 msgstr ""
@@ -637,7 +636,7 @@ msgid "Chatham"
 msgstr ""
 
 msgid "Ukraine"
-msgstr ""
+msgstr "Украина"
 
 msgid "Tonga"
 msgstr ""
@@ -649,7 +648,7 @@ msgid "Western Sahara"
 msgstr ""
 
 msgid "Indonesia"
-msgstr ""
+msgstr "Индонезия"
 
 msgid "Mauritius"
 msgstr ""
@@ -661,40 +660,40 @@ msgid "Gambier"
 msgstr ""
 
 msgid "Mali"
-msgstr ""
+msgstr "Мали"
 
 msgid "Urumqi"
-msgstr ""
+msgstr "Урумчи"
 
 msgid "Turks & Caicos Islands"
 msgstr ""
 
 msgid "Bulgaria"
-msgstr ""
+msgstr "Болгария"
 
 msgid "Angola"
-msgstr ""
+msgstr "Ангола"
 
 msgid "French Southern Territories"
 msgstr ""
 
 msgid "Chad"
-msgstr ""
+msgstr "Чад"
 
 msgid "South Africa"
-msgstr ""
+msgstr "Южная Африка"
 
 msgid "Tokelau"
 msgstr ""
 
 msgid "Madrid"
-msgstr ""
+msgstr "Мадрид"
 
 msgid "Metlakatla"
 msgstr ""
 
 msgid "Baku"
-msgstr ""
+msgstr "Баку"
 
 msgid "La Rioja"
 msgstr ""
@@ -703,28 +702,28 @@ msgid "South Georgia & South Sandwich Islands"
 msgstr ""
 
 msgid "Senegal"
-msgstr ""
+msgstr "Сенегал"
 
 msgid "Latvia"
-msgstr ""
+msgstr "Латвия"
 
 msgid "Uganda"
-msgstr ""
+msgstr "Уганда"
 
 msgid "Hungary"
-msgstr ""
+msgstr "Венгрия"
 
 msgid "Niger"
-msgstr ""
+msgstr "Нигер"
 
 msgid "Pangnirtung"
 msgstr ""
 
 msgid "Adelaide"
-msgstr ""
+msgstr "Аделаида"
 
 msgid "Brazil"
-msgstr ""
+msgstr "Бразилия"
 
 msgid "Mexico City"
 msgstr ""
@@ -733,13 +732,13 @@ msgid "Chihuahua"
 msgstr ""
 
 msgid "Mendoza"
-msgstr ""
+msgstr "Мендоса"
 
 msgid "Lindeman"
 msgstr ""
 
 msgid "Asia"
-msgstr ""
+msgstr "Азия"
 
 msgid "Whitehorse"
 msgstr ""
@@ -757,7 +756,7 @@ msgid "Tongatapu"
 msgstr ""
 
 msgid "Algeria"
-msgstr ""
+msgstr "Алжир"
 
 msgid "Palmer"
 msgstr ""
@@ -772,16 +771,16 @@ msgid "Moncton"
 msgstr ""
 
 msgid "Belgium"
-msgstr ""
+msgstr "Бельгия"
 
 msgid "Kiribati"
 msgstr ""
 
 msgid "Haiti"
-msgstr ""
+msgstr "Гаити"
 
 msgid "Iraq"
-msgstr ""
+msgstr "Ирак"
 
 msgid "Kosrae"
 msgstr ""
@@ -790,10 +789,10 @@ msgid "Danmarkshavn"
 msgstr ""
 
 msgid "Liberia"
-msgstr ""
+msgstr "Либерия"
 
 msgid "Helsinki"
-msgstr ""
+msgstr "Хельсинки"
 
 msgid "Gambia"
 msgstr ""
@@ -805,10 +804,10 @@ msgid "Makassar"
 msgstr ""
 
 msgid "Podgorica"
-msgstr ""
+msgstr "Подгорица"
 
 msgid "Albania"
-msgstr ""
+msgstr "Албания"
 
 msgid "Guinea-Bissau"
 msgstr ""
@@ -817,16 +816,16 @@ msgid "Congo - Brazzaville"
 msgstr ""
 
 msgid "Nairobi"
-msgstr ""
+msgstr "Найроби"
 
 msgid "Port-au-Prince"
 msgstr ""
 
 msgid "Isle of Man"
-msgstr ""
+msgstr "Остров Мэн"
 
 msgid "North Korea"
-msgstr ""
+msgstr "Северная Корея"
 
 msgid "Dumont d’Urville"
 msgstr ""
@@ -844,19 +843,19 @@ msgid "South Georgia"
 msgstr ""
 
 msgid "Volgograd"
-msgstr ""
+msgstr "Волгоград"
 
 msgid "Ceuta"
 msgstr ""
 
 msgid "Lima"
-msgstr ""
+msgstr "Лима"
 
 msgid "Nicaragua"
-msgstr ""
+msgstr "Никарагуа"
 
 msgid "Zaporozhye"
-msgstr ""
+msgstr "Запорожье"
 
 msgid "St. Vincent"
 msgstr ""
@@ -865,10 +864,10 @@ msgid "Vanuatu"
 msgstr ""
 
 msgid "Winnipeg"
-msgstr ""
+msgstr "Виннипег"
 
 msgid "Venezuela"
-msgstr ""
+msgstr "Венесуэла"
 
 msgid "Nauru"
 msgstr ""
@@ -877,22 +876,22 @@ msgid "Réunion"
 msgstr ""
 
 msgid "Tashkent"
-msgstr ""
+msgstr "Ташкент"
 
 msgid "Cayman"
 msgstr ""
 
 msgid "Zambia"
-msgstr ""
+msgstr "Замбия"
 
 msgid "Germany"
-msgstr ""
+msgstr "Германия"
 
 msgid "Guayaquil"
 msgstr ""
 
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Казахстан"
 
 msgid "Kyrgyzstan"
 msgstr ""
@@ -904,7 +903,7 @@ msgid "Thule"
 msgstr ""
 
 msgid "Greece"
-msgstr ""
+msgstr "Греция"
 
 msgid "Montserrat"
 msgstr ""
@@ -916,7 +915,7 @@ msgid "Cambridge Bay"
 msgstr ""
 
 msgid "Tbilisi"
-msgstr ""
+msgstr "Тбилиси"
 
 msgid "Asunción"
 msgstr ""
@@ -928,40 +927,40 @@ msgid "Enderbury"
 msgstr ""
 
 msgid "Honduras"
-msgstr ""
+msgstr "Гондурас"
 
 msgid "Egypt"
-msgstr ""
+msgstr "Египет"
 
 msgid "Prague"
-msgstr ""
+msgstr "Прага"
 
 msgid "Sofia"
-msgstr ""
+msgstr "София"
 
 msgid "Antarctica"
-msgstr ""
+msgstr "Антарктида"
 
 msgid "Lisbon"
-msgstr ""
+msgstr "Лиссабон"
 
 msgid "Amsterdam"
-msgstr ""
+msgstr "Амстердам"
 
 msgid "Copenhagen"
-msgstr ""
+msgstr "Копенгаген"
 
 msgid "Comoros"
 msgstr ""
 
 msgid "Kiev"
-msgstr ""
+msgstr "Киев"
 
 msgid "Paris"
-msgstr ""
+msgstr "Париж"
 
 msgid "Ethiopia"
-msgstr ""
+msgstr "Эфиопия"
 
 msgid "Johannesburg"
 msgstr ""
@@ -1003,10 +1002,10 @@ msgid "Comoro"
 msgstr ""
 
 msgid "Tanzania"
-msgstr ""
+msgstr "Танзания"
 
 msgid "Dublin"
-msgstr ""
+msgstr "Дублин"
 
 msgid "Antananarivo"
 msgstr ""
@@ -1027,7 +1026,7 @@ msgid "Grand Turk"
 msgstr ""
 
 msgid "Croatia"
-msgstr ""
+msgstr "Хорватия"
 
 msgid "Rankin Inlet"
 msgstr ""
@@ -1048,13 +1047,13 @@ msgid "San Juan"
 msgstr ""
 
 msgid "Afghanistan"
-msgstr ""
+msgstr "Афганистан"
 
 msgid "Boise"
 msgstr ""
 
 msgid "Caracas"
-msgstr ""
+msgstr "Каракас"
 
 msgid "Nome"
 msgstr ""
@@ -1069,10 +1068,10 @@ msgid "Ouagadougou"
 msgstr ""
 
 msgid "France"
-msgstr ""
+msgstr "Франция"
 
 msgid "Sydney"
-msgstr ""
+msgstr "Сидней"
 
 msgid "Amman"
 msgstr ""
@@ -1084,10 +1083,10 @@ msgid "Ndjamena"
 msgstr ""
 
 msgid "Beirut"
-msgstr ""
+msgstr "Бейрут"
 
 msgid "Irkutsk"
-msgstr ""
+msgstr "Иркутск"
 
 msgid "Broken Hill"
 msgstr ""
@@ -1096,16 +1095,16 @@ msgid "Tarawa"
 msgstr ""
 
 msgid "Berlin"
-msgstr ""
+msgstr "Берлин"
 
 msgid "Apia"
 msgstr ""
 
 msgid "Los Angeles"
-msgstr ""
+msgstr "Лос-Анджелес"
 
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Доминиканская Республика"
 
 msgid "St. Pierre & Miquelon"
 msgstr ""
@@ -1114,7 +1113,7 @@ msgid "Inuvik"
 msgstr ""
 
 msgid "Sakhalin"
-msgstr ""
+msgstr "Сахалин"
 
 msgid "Maceio"
 msgstr ""
@@ -1129,7 +1128,7 @@ msgid "Belem"
 msgstr ""
 
 msgid "Kathmandu"
-msgstr ""
+msgstr "Катманду"
 
 msgid "Vevay, Indiana"
 msgstr ""
@@ -1141,7 +1140,7 @@ msgid "Bujumbura"
 msgstr ""
 
 msgid "Malaysia"
-msgstr ""
+msgstr "Малайзия"
 
 msgid "Araguaina"
 msgstr ""
@@ -1159,28 +1158,28 @@ msgid "Aqtobe"
 msgstr ""
 
 msgid "Guinea"
-msgstr ""
+msgstr "Гвинея"
 
 msgid "Panama"
-msgstr ""
+msgstr "Панама"
 
 msgid "Luxembourg"
-msgstr ""
+msgstr "Люксембург"
 
 msgid "American Samoa"
 msgstr ""
 
 msgid "Andorra"
-msgstr ""
+msgstr "Андорра"
 
 msgid "Norway"
-msgstr ""
+msgstr "Норвегия"
 
 msgid "Gibraltar"
-msgstr ""
+msgstr "Гибралтар"
 
 msgid "Ireland"
-msgstr ""
+msgstr "Ирландия"
 
 msgid "Muscat"
 msgstr ""
@@ -1189,7 +1188,7 @@ msgid "Aqtau"
 msgstr ""
 
 msgid "Slovenia"
-msgstr ""
+msgstr "Словения"
 
 msgid "El Salvador"
 msgstr ""
@@ -1207,16 +1206,16 @@ msgid "Thailand"
 msgstr ""
 
 msgid "Belize"
-msgstr ""
+msgstr "Белиз"
 
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Сьерра-Леоне"
 
 msgid "Toronto"
-msgstr ""
+msgstr "Торонто"
 
 msgid "Dushanbe"
-msgstr ""
+msgstr "Душанбе"
 
 msgid "Georgia"
 msgstr ""
@@ -1225,58 +1224,58 @@ msgid "Blanc-Sablon"
 msgstr ""
 
 msgid "Tokyo"
-msgstr ""
+msgstr "Токио"
 
 msgid "Poland"
-msgstr ""
+msgstr "Польша"
 
 msgid "Moldova"
 msgstr ""
 
 msgid "Malta"
-msgstr ""
+msgstr "Мальта"
 
 msgid "Guernsey"
 msgstr ""
 
 msgid "Chita"
-msgstr ""
+msgstr "Чита"
 
 msgid "Vostok"
 msgstr ""
 
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Узбекистан"
 
 msgid "Spain"
-msgstr ""
+msgstr "Испания"
 
 msgid "Asmara"
 msgstr ""
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Тайвань"
 
 msgid "Fiji"
-msgstr ""
+msgstr "Фиджи"
 
 msgid "Barbados"
-msgstr ""
+msgstr "Барбадос"
 
 msgid "Qatar"
-msgstr ""
+msgstr "Катар"
 
 msgid "Italy"
-msgstr ""
+msgstr "Италия"
 
 msgid "Sudan"
-msgstr ""
+msgstr "Судан"
 
 msgid "Santarem"
 msgstr ""
 
 msgid "Shanghai"
-msgstr ""
+msgstr "Шанхай"
 
 msgid "Galapagos"
 msgstr ""
@@ -1285,13 +1284,13 @@ msgid "Vincennes, Indiana"
 msgstr ""
 
 msgid "Micronesia"
-msgstr ""
+msgstr "Микронезия"
 
 msgid "Marengo, Indiana"
 msgstr ""
 
 msgid "Kabul"
-msgstr ""
+msgstr "Кабул"
 
 msgid "Tallinn"
 msgstr ""
@@ -1303,25 +1302,25 @@ msgid "Anguilla"
 msgstr ""
 
 msgid "Montevideo"
-msgstr ""
+msgstr "Монтевидео"
 
 msgid "Israel"
-msgstr ""
+msgstr "Израиль"
 
 msgid "Noumea"
 msgstr ""
 
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Буэнос-Айрес"
 
 msgid "Papua New Guinea"
 msgstr ""
 
 msgid "Bangkok"
-msgstr ""
+msgstr "Бангкок"
 
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Зимбабве"
 
 msgid "British Indian Ocean Territory"
 msgstr ""
@@ -1336,16 +1335,16 @@ msgid "Macau SAR China"
 msgstr ""
 
 msgid "Mauritania"
-msgstr ""
+msgstr "Мавритания"
 
 msgid "Budapest"
-msgstr ""
+msgstr "Будапешт"
 
 msgid "Jakarta"
-msgstr ""
+msgstr "Джакарта"
 
 msgid "Turkey"
-msgstr ""
+msgstr "Турция"
 
 msgid "Nipigon"
 msgstr ""
@@ -1360,13 +1359,13 @@ msgid "McMurdo"
 msgstr ""
 
 msgid "Guadeloupe"
-msgstr ""
+msgstr "Гваделупа"
 
 msgid "La Paz"
 msgstr ""
 
 msgid "Tijuana"
-msgstr ""
+msgstr "Тихуана"
 
 msgid "Jujuy"
 msgstr ""
@@ -1375,7 +1374,7 @@ msgid "Falkland Islands"
 msgstr ""
 
 msgid "Bogota"
-msgstr ""
+msgstr "Богота"
 
 msgid "Jayapura"
 msgstr ""
@@ -1393,52 +1392,52 @@ msgid "Blantyre"
 msgstr ""
 
 msgid "Iceland"
-msgstr ""
+msgstr "Исландия"
 
 msgid "Paraguay"
-msgstr ""
+msgstr "Парагвай"
 
 msgid "Curaçao"
 msgstr ""
 
 msgid "Jerusalem"
-msgstr ""
+msgstr "Иерусалим"
 
 msgid "Botswana"
-msgstr ""
+msgstr "Ботсвана"
 
 msgid "Santa Isabel"
 msgstr ""
 
 msgid "Oslo"
-msgstr ""
+msgstr "Осло"
 
 msgid "Lithuania"
-msgstr ""
+msgstr "Литва"
 
 msgid "Cambodia"
-msgstr ""
+msgstr "Камбоджа"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "Швейцария"
 
 msgid "Rothera"
 msgstr ""
 
 msgid "Fortaleza"
-msgstr ""
+msgstr "Форталеза"
 
 msgid "Aruba"
 msgstr ""
 
 msgid "Argentina"
-msgstr ""
+msgstr "Аргентина"
 
 msgid "Nicosia"
 msgstr ""
 
 msgid "Bahrain"
-msgstr ""
+msgstr "Бахрейн"
 
 msgid "Wallis & Futuna"
 msgstr ""
@@ -1450,13 +1449,13 @@ msgid "U.S. Virgin Islands"
 msgstr ""
 
 msgid "Baghdad"
-msgstr ""
+msgstr "Багдад"
 
 msgid "Kampala"
 msgstr ""
 
 msgid "Pakistan"
-msgstr ""
+msgstr "Пакистан"
 
 msgid "Pohnpei"
 msgstr ""
@@ -1465,13 +1464,13 @@ msgid "Juba"
 msgstr ""
 
 msgid "Yekaterinburg"
-msgstr ""
+msgstr "Екатеринбург"
 
 msgid "Dawson Creek"
 msgstr ""
 
 msgid "Krasnoyarsk"
-msgstr ""
+msgstr "Красноярск"
 
 msgid "French Guiana"
 msgstr ""
@@ -1480,37 +1479,37 @@ msgid "Antigua"
 msgstr ""
 
 msgid "New Zealand"
-msgstr ""
+msgstr "Новая Зеландия"
 
 msgid "Yemen"
-msgstr ""
+msgstr "Йемен"
 
 msgid "Jamaica"
-msgstr ""
+msgstr "Ямайка"
 
 msgid "Ulaanbaatar"
-msgstr ""
+msgstr "Улан-Батор"
 
 msgid "Samoa"
-msgstr ""
+msgstr "Самоа"
 
 msgid "Casablanca"
-msgstr ""
+msgstr "Касабланка"
 
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Остров Норфолк"
 
 msgid "Guam"
 msgstr ""
 
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Азербайджан"
 
 msgid "São Tomé & Príncipe"
 msgstr ""
 
 msgid "London"
-msgstr ""
+msgstr "Лондон"
 
 msgid "Windhoek"
 msgstr ""
@@ -1519,34 +1518,34 @@ msgid "United Arab Emirates"
 msgstr ""
 
 msgid "Douala"
-msgstr ""
+msgstr "Дуала"
 
 msgid "Rio Branco"
 msgstr ""
 
 msgid "Bangladesh"
-msgstr ""
+msgstr "Бангладеш"
 
 msgid "Auckland"
 msgstr ""
 
 msgid "Rome"
-msgstr ""
+msgstr "Рим"
 
 msgid "Samarkand"
 msgstr ""
 
 msgid "Rwanda"
-msgstr ""
+msgstr "Руанда"
 
 msgid "Somalia"
-msgstr ""
+msgstr "Сомали"
 
 msgid "Laos"
-msgstr ""
+msgstr "Лаос"
 
 msgid "Dakar"
-msgstr ""
+msgstr "Дакар"
 
 msgid "Kuching"
 msgstr ""
@@ -1558,7 +1557,7 @@ msgid "Guadalcanal"
 msgstr ""
 
 msgid "Vienna"
-msgstr ""
+msgstr "Вена"
 
 msgid "Saipan"
 msgstr ""
@@ -1567,28 +1566,28 @@ msgid "Goose Bay"
 msgstr ""
 
 msgid "Seoul"
-msgstr ""
+msgstr "Сеул"
 
 msgid "Singapore"
-msgstr ""
+msgstr "Сингапур"
 
 msgid "Moscow"
-msgstr ""
+msgstr "Москва"
 
 msgid "Togo"
-msgstr ""
+msgstr "Того"
 
 msgid "Wake"
 msgstr ""
 
 msgid "Armenia"
-msgstr ""
+msgstr "Армения"
 
 msgid "Easter Island"
-msgstr ""
+msgstr "Остров Пасхи"
 
 msgid "French Polynesia"
-msgstr ""
+msgstr "Французская Полинезия"
 
 msgid "Boa Vista"
 msgstr ""
@@ -1597,7 +1596,7 @@ msgid "Knox, Indiana"
 msgstr ""
 
 msgid "Netherlands"
-msgstr ""
+msgstr "Нидерланды"
 
 msgid "Majuro"
 msgstr ""
@@ -1612,16 +1611,16 @@ msgid "Monrovia"
 msgstr ""
 
 msgid "Sweden"
-msgstr ""
+msgstr "Швеция"
 
 msgid "Australia"
-msgstr ""
+msgstr "Австралия"
 
 msgid "St. Martin"
 msgstr ""
 
 msgid "Kenya"
-msgstr ""
+msgstr "Кения"
 
 msgid "Davis"
 msgstr ""
@@ -1630,7 +1629,7 @@ msgid "Vatican City"
 msgstr ""
 
 msgid "Russia"
-msgstr ""
+msgstr "Россия"
 
 msgid "Khandyga"
 msgstr ""
@@ -1642,19 +1641,19 @@ msgid "Antigua & Barbuda"
 msgstr ""
 
 msgid "Austria"
-msgstr ""
+msgstr "Австрия"
 
 msgid "Mozambique"
-msgstr ""
+msgstr "Мозамбик"
 
 msgid "Novosibirsk"
-msgstr ""
+msgstr "Новосибирск"
 
 msgid "Currie"
 msgstr ""
 
 msgid "Japan"
-msgstr ""
+msgstr "Япония"
 
 msgid "Sint Maarten"
 msgstr ""
@@ -1678,61 +1677,61 @@ msgid "Sitka"
 msgstr ""
 
 msgid "Vladivostok"
-msgstr ""
+msgstr "Владивосток"
 
 msgid "Ljubljana"
-msgstr ""
+msgstr "Любляна"
 
 msgid "Almaty"
-msgstr ""
+msgstr "Алматы"
 
 msgid "Czech Republic"
 msgstr ""
 
 msgid "Brunei"
-msgstr ""
+msgstr "Бруней"
 
 msgid "Belarus"
-msgstr ""
+msgstr "Беларусь"
 
 msgid "Cancun"
-msgstr ""
+msgstr "Канкун"
 
 msgid "Congo - Kinshasa"
 msgstr ""
 
 msgid "Chile"
-msgstr ""
+msgstr "Чили"
 
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Пуэрто-Рико"
 
 msgid "Rarotonga"
 msgstr ""
 
 msgid "Bishkek"
-msgstr ""
+msgstr "Бишкек"
 
 msgid "Rangoon"
 msgstr ""
 
 msgid "Anadyr"
-msgstr ""
+msgstr "Анадырь"
 
 msgid "Yakutsk"
-msgstr ""
+msgstr "Якутск"
 
 msgid "Detroit"
-msgstr ""
+msgstr "Детройт"
 
 msgid "Tunis"
-msgstr ""
+msgstr "Тунис"
 
 msgid "Mongolia"
-msgstr ""
+msgstr "Монголия"
 
 msgid "Namibia"
-msgstr ""
+msgstr "Намибия"
 
 msgid "Johnston"
 msgstr ""
@@ -1744,19 +1743,19 @@ msgid "Åland Islands"
 msgstr ""
 
 msgid "Bucharest"
-msgstr ""
+msgstr "Бухарест"
 
 msgid "Reykjavik"
-msgstr ""
+msgstr "Рейкьявик"
 
 msgid "Uruguay"
-msgstr ""
+msgstr "Уругвай"
 
 msgid "Catamarca"
 msgstr ""
 
 msgid "Africa"
-msgstr ""
+msgstr "Африка"
 
 msgid "Hebron"
 msgstr ""
@@ -1765,16 +1764,16 @@ msgid "Burundi"
 msgstr ""
 
 msgid "Kaliningrad"
-msgstr ""
+msgstr "Калининград"
 
 msgid "Bhutan"
 msgstr ""
 
 msgid "Riga"
-msgstr ""
+msgstr "Рига"
 
 msgid "Algiers"
-msgstr ""
+msgstr "Алжир"
 
 msgid "Maputo"
 msgstr ""
@@ -1786,10 +1785,10 @@ msgid "Bosnia & Herzegovina"
 msgstr ""
 
 msgid "San Luis"
-msgstr ""
+msgstr "Сан-Луис"
 
 msgid "Vancouver"
-msgstr ""
+msgstr "Ванкувер"
 
 msgid "Northern Mariana Islands"
 msgstr ""
@@ -1798,7 +1797,7 @@ msgid "Gaza"
 msgstr ""
 
 msgid "Darwin"
-msgstr ""
+msgstr "Дарвин"
 
 msgid "Marigot"
 msgstr ""
@@ -1831,22 +1830,22 @@ msgid "Vaduz"
 msgstr ""
 
 msgid "New Caledonia"
-msgstr ""
+msgstr "Новая Каледония"
 
 msgid "Macedonia"
-msgstr ""
+msgstr "Македония"
 
 msgid "Porto-Novo"
 msgstr ""
 
 msgid "Melbourne"
-msgstr ""
+msgstr "Мельбурн"
 
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Шри-Ланка"
 
 msgid "Minsk"
-msgstr ""
+msgstr "Минск"
 
 msgid "South Sudan"
 msgstr ""
@@ -1855,7 +1854,7 @@ msgid "Recife"
 msgstr ""
 
 msgid "Menominee"
-msgstr ""
+msgstr "Меномини"
 
 msgid "Iqaluit"
 msgstr ""
@@ -1864,31 +1863,31 @@ msgid "Banjul"
 msgstr ""
 
 msgid "Riyadh"
-msgstr ""
+msgstr "Эр-Рияд"
 
 msgid "Tunisia"
 msgstr ""
 
 msgid "Cuba"
-msgstr ""
+msgstr "Куба"
 
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Буркина-Фасо"
 
 msgid "São Tomé"
 msgstr ""
 
 msgid "Samara"
-msgstr ""
+msgstr "Самара"
 
 msgid "Nouakchott"
 msgstr ""
 
 msgid "Pyongyang"
-msgstr ""
+msgstr "Пхеньян"
 
 msgid "Juneau"
 msgstr ""
 
 msgid "Warsaw"
-msgstr ""
+msgstr "Варшава"
