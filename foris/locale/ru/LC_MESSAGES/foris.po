@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-05 11:04+0200\n"
-"PO-Revision-Date: 2017-05-08 08:33+0000\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2017-05-20 17:46+0000\n"
+"Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
 "Language: ru\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.14.1-dev\n"
 
 msgid "This field is required."
 msgstr "Обязательное поле."
 
 msgid "Not a valid IPv4 address."
-msgstr "Некорректный Ipv4 адрес."
+msgstr "Некорректный адрес IPv4."
 
 msgid "Not a valid IPv4 netmask address."
 msgstr "Некорректная маска подсети IPv4."
@@ -33,7 +33,7 @@ msgid "Not a valid IPv6 address."
 msgstr "Некорректная маска подсети IPv6."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Некорректный IPv4 или IPv6 адрес."
+msgstr "Некорректный адрес IPv4 или IPv6."
 
 msgid "This is not an IPv6 address with prefix length."
 msgstr ""
@@ -48,7 +48,7 @@ msgid "This is not valid time in HH:MM format."
 msgstr "Некорректный формат времени HH:MM"
 
 msgid "MAC address is not valid."
-msgstr "Некорректный MAC адрес"
+msgstr "Некорректный MAC-адрес."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -199,7 +199,7 @@ msgid "Use forwarding"
 msgstr ""
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Отключить DNSSEC"
 
 msgid "LAN"
 msgstr ""
@@ -225,7 +225,7 @@ msgid ""
 msgstr ""
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "Включить DHCP"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
@@ -242,7 +242,7 @@ msgid "Backup file"
 msgstr ""
 
 msgid "Notifications"
-msgstr ""
+msgstr "Уведомления"
 
 msgid "Notifications settings"
 msgstr ""
@@ -251,10 +251,10 @@ msgid "Enable notifications"
 msgstr ""
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "Провайдер SMTP"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
 msgstr ""
@@ -273,7 +273,7 @@ msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr ""
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Имя отправителя"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
@@ -285,7 +285,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Требуется перезагрузка"
 
 msgid "Reboot or attention is required"
 msgstr ""
@@ -303,37 +303,37 @@ msgid "Send emails about new features."
 msgstr ""
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "Настройки SMTP"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Адрес отправителя (From)"
 
 msgid "This is the address notifications are send from."
 msgstr ""
 
 msgid "Server address"
-msgstr ""
+msgstr "Адрес сервера"
 
 msgid "Server port"
-msgstr ""
+msgstr "Порт сервера"
 
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Безопасность"
 
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 msgid "Automatic restarts after software update"
 msgstr ""
@@ -358,19 +358,19 @@ msgid ""
 msgstr ""
 
 msgid "Current password"
-msgstr ""
+msgstr "Текущий пароль"
 
 msgid "New password"
-msgstr ""
+msgstr "Новый пароль"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Новый пароль (ещё раз)"
 
 msgid "Password (repeat)"
-msgstr ""
+msgstr "Пароль (ещё раз)"
 
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "Пароли не совпадают."
 
 msgid "Use the same password for advanced configuration"
 msgstr ""
@@ -395,7 +395,7 @@ msgid "Continent or ocean"
 msgstr ""
 
 msgid "Country"
-msgstr ""
+msgstr "Страна"
 
 msgid "Timezone"
 msgstr ""
@@ -415,7 +415,7 @@ msgid ""
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Время"
 
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
@@ -445,7 +445,7 @@ msgid "Telnet - alternative port (2323/TCP)"
 msgstr ""
 
 msgid "HTTP (80/TCP)"
-msgstr ""
+msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
 msgstr ""
@@ -475,34 +475,34 @@ msgid ""
 msgstr ""
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (автоматическая настройка)"
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Статический IP-адрес (ручная настройка)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr ""
 
 msgid "DHCPv6 (automatic configuration)"
-msgstr ""
+msgstr "DHCPv6 (автоматическая настройка)"
 
 msgid "Disable IPv6"
-msgstr ""
+msgstr "Отключить IPv6"
 
 msgid "IPv4 protocol"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
+msgstr "IP-адрес"
 
 msgid "Network mask"
-msgstr ""
+msgstr "Маска сети"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Шлюз"
 
 msgid "DNS server 1"
-msgstr ""
+msgstr "DNS-сервер 1"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -510,7 +510,7 @@ msgid ""
 msgstr ""
 
 msgid "DNS server 2"
-msgstr ""
+msgstr "DNS-сервер 2"
 
 msgid "PAP/CHAP username"
 msgstr ""
@@ -519,7 +519,7 @@ msgid "PAP/CHAP password"
 msgstr ""
 
 msgid "IPv6 protocol"
-msgstr ""
+msgstr "Протокол IPv6"
 
 msgid "IPv6 address"
 msgstr ""
@@ -530,10 +530,10 @@ msgid ""
 msgstr ""
 
 msgid "IPv6 gateway"
-msgstr ""
+msgstr "Шлюз IPv6"
 
 msgid "IPv6 prefix"
-msgstr ""
+msgstr "Префикс IPv6"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr ""
@@ -586,7 +586,7 @@ msgid ""
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC-адрес"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr ""
@@ -619,10 +619,10 @@ msgid ""
 msgstr ""
 
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 msgid "auto"
-msgstr ""
+msgstr "авто"
 
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
@@ -643,7 +643,7 @@ msgid "If set, network is not visible when scanning for available networks."
 msgstr ""
 
 msgid "Wi-Fi mode"
-msgstr ""
+msgstr "Режим Wi-Fi"
 
 msgid ""
 "The 2.4 GHz band is more widely supported by clients, but tends to have more "
@@ -687,7 +687,7 @@ msgid "Network password"
 msgstr ""
 
 msgid "Guest Wi-Fi"
-msgstr ""
+msgstr "Гостевой Wi-Fi"
 
 msgid "Set guest Wi-Fi here."
 msgstr ""
@@ -708,7 +708,7 @@ msgid ""
 msgstr ""
 
 msgid "Wi-Fi settings"
-msgstr ""
+msgstr "Настройки Wi-Fi"
 
 msgid "Guest network"
 msgstr ""
@@ -736,13 +736,13 @@ msgid "The password you entered was not valid."
 msgstr ""
 
 msgid "News"
-msgstr ""
+msgstr "Новости"
 
 msgid "Update"
 msgstr ""
 
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 msgid "%Y/%m/%d %H:%M:%S"
 msgstr ""
@@ -778,7 +778,7 @@ msgid ""
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 msgid "Connection test"
 msgstr ""
@@ -812,7 +812,7 @@ msgid "IPv6 gateway connectivity"
 msgstr ""
 
 msgid "DNSSEC"
-msgstr ""
+msgstr "DNSSEC"
 
 msgid "Test connection"
 msgstr ""
@@ -821,7 +821,7 @@ msgid "Discard changes"
 msgstr ""
 
 msgid "Save changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 msgid ""
 "With the Turris Omnia router you can join Project Turris which is a non-"
@@ -851,16 +851,16 @@ msgid "Validate email"
 msgstr ""
 
 msgid "Device"
-msgstr ""
+msgstr "Устройство"
 
 msgid "Serial number"
-msgstr ""
+msgstr "Серийный номер"
 
 msgid "Turris OS version"
 msgstr ""
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Версия ядра"
 
 msgid "Sending of uCollect data"
 msgstr ""
@@ -880,10 +880,10 @@ msgid "Sending of firewall logs"
 msgstr ""
 
 msgid "Refresh"
-msgstr ""
+msgstr "Обновить"
 
 msgid "Device registration"
-msgstr ""
+msgstr "Регистрация устройства"
 
 #, python-format
 msgid ""
@@ -935,7 +935,7 @@ msgid ""
 msgstr ""
 
 msgid "No new messages."
-msgstr ""
+msgstr "Нет новых сообщений."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr ""
@@ -1004,7 +1004,7 @@ msgid "Foris - administration interface of router Turris"
 msgstr ""
 
 msgid "Menu"
-msgstr ""
+msgstr "Меню"
 
 msgid "Log out"
 msgstr ""
@@ -1110,7 +1110,7 @@ msgid "OK"
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка…"
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
@@ -1165,7 +1165,7 @@ msgid ""
 msgstr ""
 
 msgid "What next?"
-msgstr ""
+msgstr "Что дальше?"
 
 #, python-format
 msgid ""
@@ -1191,10 +1191,10 @@ msgid "Checking internet connectivity."
 msgstr ""
 
 msgid "One moment, please..."
-msgstr ""
+msgstr "Один момент…"
 
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 msgid "Internet connectivity test passed without error."
 msgstr ""
@@ -1211,7 +1211,7 @@ msgid ""
 msgstr ""
 
 msgid "Try again"
-msgstr ""
+msgstr "Попробовать снова"
 
 msgid ""
 "In some cases, such as on a slower DSL connection or when DHCP is used, this "
@@ -1276,10 +1276,10 @@ msgid ""
 msgstr ""
 
 msgid "Begin installation"
-msgstr ""
+msgstr "Начать установку"
 
 msgid "Installation finished"
-msgstr ""
+msgstr "Установка завершена"
 
 msgid ""
 "You have decided to disable the Updater service during the installation."
@@ -1318,16 +1318,16 @@ msgid "Continue to the configuration interface"
 msgstr ""
 
 msgid "Synchronize with your computer clock"
-msgstr ""
+msgstr "Синхронизировать с часами на вашем компьютере"
 
 msgid "Set time manually"
-msgstr ""
+msgstr "Установить время вручную"
 
 msgid "Synchronization successful."
 msgstr ""
 
 msgid "Time settings"
-msgstr ""
+msgstr "Настройки времени"
 
 msgid "Synchronizing router time with an internet time server."
 msgstr ""
@@ -1342,10 +1342,10 @@ msgid "Skip wizard"
 msgstr ""
 
 msgid "Step"
-msgstr ""
+msgstr "Шаг"
 
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 msgid "Hint"
 msgstr "Подсказка"
@@ -1428,7 +1428,7 @@ msgid "Turris router administration interface"
 msgstr ""
 
 msgid "Reboot now"
-msgstr ""
+msgstr "Перезагрузить сейчас"
 
 msgid "Dismiss"
 msgstr ""
@@ -1447,4 +1447,4 @@ msgid "Connectivity test"
 msgstr ""
 
 msgid "Automatic updates"
-msgstr ""
+msgstr "Автоматические обновления"
