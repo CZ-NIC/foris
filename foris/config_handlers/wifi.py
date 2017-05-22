@@ -17,7 +17,7 @@
 from foris import fapi
 from foris import validators
 from foris.core import gettext_dummy as gettext, ugettext as _
-from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox
+from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, List, Section, Option, Value, parse_uci_bool
 from foris.utils.addresses import (
@@ -51,7 +51,8 @@ class WifiHandler(BaseConfigHandler):
                 channels_5g.append((str(channel['number']), pretty_channel))
         return channels_2g4, channels_5g
 
-    def _add_wifi_section(self, wifi_section, wifi_card, radio_to_iface, current_data):
+    def _add_wifi_section(
+            self, wifi_section, wifi_card, radio_to_iface, current_data, last=False):
         HINTS = {
             'password': _(
                 "WPA2 pre-shared key, that is required to connect to the "
@@ -206,15 +207,22 @@ class WifiHandler(BaseConfigHandler):
             hint=HINTS['password'],
         ).requires(prefixed_name("guest_enabled"), True)
 
+        # Horizontal line separating wi-fi cards
+        if not last:
+            wifi_main.add_field(
+                HorizontalLine, name=prefixed_name("wifi-separator"), class_="wifi-separator"
+            ).requires(prefixed_name("wifi_enabled"), True)
+
     @staticmethod
     def _get_wireless_cards(stats):
         return stats.data.get('wireless-cards') or None
 
     def _get_radios(self, cards, wifi_section, radio_to_iface, current_data):
         radios = []
-        for card in sorted(cards, key=lambda x: x['name']):
+        for idx, card in enumerate(sorted(cards, key=lambda x: x['name'])):
             assert card['name'][0:3] == "phy", "Can not parse card name '%s'" % card['name']
-            self._add_wifi_section(wifi_section, card, radio_to_iface, current_data)
+            self._add_wifi_section(
+                wifi_section, card, radio_to_iface, current_data, len(cards) - 1 == idx)
             radios.append(card['name'][3:])
         return radios
 

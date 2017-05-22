@@ -18,7 +18,6 @@ from .base import (
     BaseConfigHandler,
     CollectionToggleHandler,
     DNSHandler,
-    LanHandler,
     MaintenanceHandler,
     NotificationsHandler,
     PasswordHandler,
@@ -32,6 +31,7 @@ from .base import (
 
 from .updater import UpdaterEulaHandler, UpdaterHandler
 from .wifi import WifiHandler
+from .lan import LanHandler
 
 __all__ = [
     'BaseConfigHandler',

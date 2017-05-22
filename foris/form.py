@@ -355,7 +355,7 @@ class Input(object):
 
 
 class AttributeList(dict):
-    """List of atributes of input.
+    """List of atributes.
 
     >>> a = AttributeList(type='text', name='x', value=20)
     >>> a
@@ -649,6 +649,58 @@ class File(Input):
 
     def get_type(self):
         return 'file'
+
+
+class HorizontalLine(object):
+    def __init__(self, name, *validators, **attrs):
+        self.name = name
+
+        self.description = attrs.pop('description', name)
+        self.value = attrs.pop('value', None)
+        self.pre = attrs.pop('pre', "")
+        self.post = attrs.pop('post', "")
+        self.note = None
+        self.required = attrs.pop('required', False)
+        self.attrs = attrs = AttributeList(attrs)
+
+        self.id = attrs.setdefault('id', self.get_default_id())
+
+        if 'class_' in attrs:
+            attrs['class'] = attrs['class_']
+            del attrs['class_']
+
+    def is_hidden(self):
+        return False
+
+    def get_type(self):
+        raise NotImplementedError
+
+    def get_default_id(self):
+        return "hr-%s" % self.name
+
+    def validate(self, source, field_name=None):
+        # Don't need to validate HorizontalLine
+        return True
+
+    def set_value(self, value):
+        pass
+
+    def get_value(self):
+        pass
+
+    def render(self):
+        attrs = self.attrs.copy()
+        return '<div %s><hr /></div>' % attrs
+
+    def rendernote(self, note):
+        return ""
+
+    def addatts(self):
+        # add leading space for backward-compatibility
+        return " " + str(self.attrs)
+
+    def __str__(self):
+        self.render()
 
 
 if __name__ == "__main__":

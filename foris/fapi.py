@@ -20,7 +20,7 @@ import logging
 
 from bottle import MultiDict
 
-from form import InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
+from form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
 from nuci import client
 from nuci.configurator import add_config_update, commit
 from nuci.utils import LocalizableTextValue
@@ -435,9 +435,12 @@ class Field(ForisFormElement):
         def create_label(text):
             if issubclass(self.type, Radio):
                 label = "<label>%s</label>" % websafe(text)
-            else:
+            if issubclass(self.type, Input):
                 label = "<label for=\"%s\">%s</label>"\
                         % (self.field.id, websafe(text))
+            else:
+                label = ""
+
             return label
 
         description = self.field.description
