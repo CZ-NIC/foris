@@ -131,8 +131,6 @@ class DNSConfigPage(ConfigPageMixin, DNSHandler):
 class LanConfigPage(ConfigPageMixin, LanHandler):
     menu_order = 14
 
-    pass
-
 
 class WifiConfigPage(ConfigPageMixin, WifiHandler):
     menu_order = 15
@@ -142,8 +140,6 @@ class WifiConfigPage(ConfigPageMixin, WifiHandler):
 
 class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
     menu_order = 16
-
-    pass
 
 
 class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
