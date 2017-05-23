@@ -29,6 +29,16 @@ class WifiHandler(BaseConfigHandler):
     userfriendly_title = gettext("Wi-Fi")
 
     @staticmethod
+    def _get_value(post_data, nuci_data, field, nuci_path, default=None):
+        # first try to obtain it from post data then from nuci
+        if post_data and field in post_data:
+            return post_data[field]
+        nuci_res = nuci_data.find_child(nuci_path)
+        if nuci_res:
+            return nuci_res.value
+        return default
+
+    @staticmethod
     def _get_channels(wifi_card):
         channels_2g4 = [("auto", _("auto"))]
         channels_5g = []
@@ -45,7 +55,7 @@ class WifiHandler(BaseConfigHandler):
         return channels_2g4, channels_5g
 
     def _add_wifi_section(
-            self, wifi_section, wifi_card, radio_to_iface, current_data, last=False):
+            self, wifi_section, wifi_card, radio_to_iface, post_data, nuci_data, last=False):
         HINTS = {
             'password': _(
                 "WPA2 pre-shared key, that is required to connect to the "
@@ -122,8 +132,11 @@ class WifiHandler(BaseConfigHandler):
         )
 
         # Allow VHT modes only if the card has the capabilities and 5 GHz band is selected
-        allow_vht = wifi_card['vht-capabilities']\
-            and current_data.get("radio%s-hwmode" % radio_index) == "11a"
+        hwmode = self._get_value(
+            post_data, nuci_data,
+            "radio%s-hwmode" % radio_index, "uci.wireless.radio%s.hwmode" % radio_index
+        )
+        allow_vht = wifi_card['vht-capabilities'] and hwmode == "11a"
 
         if allow_vht:
             htmodes += (
@@ -180,6 +193,7 @@ class WifiHandler(BaseConfigHandler):
             title=_("Guest Wi-Fi"),
             description=_("Set guest Wi-Fi here.")
         )
+
         guest_section.add_field(
             Checkbox, name=prefixed_name("guest_enabled"),
             label=_("Guest Wi-Fi"), default=False,
@@ -191,6 +205,24 @@ class WifiHandler(BaseConfigHandler):
                 "by adding `-guest` suffix."
             )
         ).requires(prefixed_name("wifi_enabled"), True)
+
+        default_ssid = self._get_value(
+            post_data, nuci_data,
+            prefixed_name("ssid"), "uci.wireless.@wifi-iface[%s].ssid" % iface_index,
+            "Turris",
+        )
+        default_guest_ssid = self._get_value(
+            post_data, nuci_data,
+            prefixed_name("guest_ssid"), "uci.wireless.guest_iface_%s.ssid" % iface_index,
+            "%s-guest" % default_ssid
+        )
+        guest_section.add_field(
+            Textbox, name=prefixed_name("guest_ssid"), label=_("Guest SSID"),
+            nuci_path="uci.wireless.guest_iface_%s.ssid" % iface_index,
+            required=True, validators=validators.ByteLenRange(1, 32),
+            default=default_guest_ssid
+        ).requires(prefixed_name("guest_enabled"), True)
+
         guest_section.add_field(
             Password, name=prefixed_name("guest_key"), label=_("Guest password"),
             nuci_path="uci.wireless.guest_iface_%s.key" % iface_index,
@@ -210,12 +242,12 @@ class WifiHandler(BaseConfigHandler):
     def _get_wireless_cards(stats):
         return stats.data.get('wireless-cards') or None
 
-    def _get_radios(self, cards, wifi_section, radio_to_iface, current_data):
+    def _get_radios(self, cards, wifi_section, radio_to_iface, post_data, nuci_data):
         radios = []
         for idx, card in enumerate(sorted(cards, key=lambda x: x['name'])):
             assert card['name'][0:3] == "phy", "Can not parse card name '%s'" % card['name']
             self._add_wifi_section(
-                wifi_section, card, radio_to_iface, current_data, len(cards) - 1 == idx)
+                wifi_section, card, radio_to_iface, post_data, nuci_data, len(cards) - 1 == idx)
             radios.append(card['name'][3:])
         return radios
 
@@ -284,7 +316,7 @@ class WifiHandler(BaseConfigHandler):
             if guest_enabled:
                 guest_iface.add(Option("device", "radio%s" % radio))
                 guest_iface.add(Option("mode", "ap"))
-                guest_iface.add(Option("ssid", u"%s-guest" % radio_data('ssid')))
+                guest_iface.add(Option("ssid", radio_data('guest_ssid')))
                 guest_iface.add(Option("encryption", "psk2+tkip+aes"))
                 guest_iface.add(Option("key", radio_data('guest_key')))
                 guest_iface.add(Option("disabled", "0"))
@@ -330,7 +362,8 @@ class WifiHandler(BaseConfigHandler):
         )
 
         # Get list of available radios
-        radios = self._get_radios(cards, wifi_section, radio_to_iface, wifi_form.current_data)
+        radios = self._get_radios(
+            cards, wifi_section, radio_to_iface, self.data or {}, wifi_form.nuci_config())
 
         def wifi_form_cb(data):
             uci = Uci()
