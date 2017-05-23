@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-05 11:04+0200\n"
+"POT-Creation-Date: 2017-05-23 16:13+0200\n"
 "PO-Revision-Date: 2017-04-13 09:26+0000\n"
 "Last-Translator: Tomi <tomi.poutanen@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/turris/foris/fi/"
@@ -179,43 +179,6 @@ msgid "Use forwarding"
 msgstr ""
 
 msgid "Disable DNSSEC"
-msgstr ""
-
-msgid "LAN"
-msgstr ""
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-
-msgid "Router IP address"
-msgstr ""
-
-msgid ""
-"Router's IP address in inner network. Also defines the range of assigned IP "
-"addresses."
-msgstr ""
-
-msgid "Enable DHCP"
-msgstr ""
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-
-msgid "DHCP start"
-msgstr ""
-
-msgid "DHCP max leases"
 msgstr ""
 
 msgid "Backup file"
@@ -598,6 +561,63 @@ msgid ""
 "following list:"
 msgstr ""
 
+msgid "LAN"
+msgstr ""
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+
+msgid "Router IP address"
+msgstr ""
+
+msgid ""
+"Router's IP address in inner network. Also defines the range of assigned IP "
+"addresses."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr ""
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+
+msgid "DHCP start"
+msgstr ""
+
+msgid "DHCP max leases"
+msgstr ""
+
+msgid "Guest network"
+msgstr ""
+
+msgid "Enable guest network"
+msgstr ""
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN network. Devices connected to this network "
+"are allowed to access the internet, but are not allowed to access other "
+"devices and the configuration interface of the router."
+msgstr ""
+
+msgid ""
+"You need to set the IP range for your guest network. It is necessary that "
+"the range is different than ranges on your other networks (LAN, WAN, VPN, "
+"etc.)."
+msgstr ""
+
 msgid "Wi-Fi"
 msgstr ""
 
@@ -672,12 +692,22 @@ msgstr ""
 msgid "Set guest Wi-Fi here."
 msgstr ""
 
-msgid ""
-"Enables the guest Wi-Fi. You don't need to set an SSID. The SSID will be "
-"derived from SSID of your ordinary Wi-Fi by adding `-guest` suffix."
+msgid "Enable guest Wi-Fi"
 msgstr ""
 
-msgid "Guest password"
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
+"LAN tab</a>. "
+msgstr ""
+
+msgid "SSID for guests"
+msgstr ""
+
+msgid "Password for guests"
 msgstr ""
 
 msgid ""
@@ -688,28 +718,6 @@ msgid ""
 msgstr ""
 
 msgid "Wi-Fi settings"
-msgstr ""
-
-msgid "Guest network"
-msgstr ""
-
-msgid ""
-"Is a network for guest devices. It is separated from your ordinary LAN "
-"network and it is not possible to access the administration interface from "
-"the guest network. The devices connected to the guest network are only "
-"allowed to access the internet."
-msgstr ""
-
-msgid "Enable guest network"
-msgstr ""
-
-msgid "Guest Network"
-msgstr ""
-
-msgid ""
-"You need to set the IP range of your guest network. Note that the range "
-"should be different than the ranges on your other networks (LAN, WAN, "
-"OpenVPN, ...)."
 msgstr ""
 
 msgid "The password you entered was not valid."

@@ -27,6 +27,7 @@ from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
 from foris.utils.addresses import (
     ip_num_to_str_4, ip_str_to_num_4, prefix_to_mask_4, mask_to_prefix_4
 )
+from foris.utils.routing import reverse
 
 
 from .base import BaseConfigHandler
@@ -83,15 +84,15 @@ class LanHandler(BaseConfigHandler):
             Checkbox, name="guest_network_enabled",
             label=_("Enable guest network"), default=False,
             hint=_(
-                "Is a network for guest devices. It is separated from your ordinary LAN network "
-                "and it is not possible to access the administration interface from the guest "
-                "network. The devices connected to the guest network are only allowed to access "
-                "the internet."
-            ),
+                "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is separated  "
+                "from your ordinary LAN network. Devices connected to this network are allowed "
+                "to access the internet, but are not allowed to access other devices and "
+                "the configuration interface of the router."
+            ) % dict(url=reverse("config_page", page_name="wifi")),
             nuci_preproc=guest_network_enabled,
         )
         guest_network_section.add_field(
-            Textbox, name="guest_network_subnet", label=_("Guest Network"),
+            Textbox, name="guest_network_subnet", label=_("Guest network"),
             nuci_preproc=generate_network_preprocessor(
                 "uci.network.guest_turris.ipaddr",
                 "uci.network.guest_turris.netmask",
@@ -100,8 +101,8 @@ class LanHandler(BaseConfigHandler):
             ),
             validators=[validators.IPv4Prefix()],
             hint=_(
-                "You need to set the IP range of your guest network. Note that the range should "
-                "be different than the ranges on your other networks (LAN, WAN, OpenVPN, ...)."
+                "You need to set the IP range for your guest network. It is necessary that "
+                "the range is different than ranges on your other networks (LAN, WAN, VPN, etc.)."
             ),
         ).requires("guest_network_enabled", True)
 
