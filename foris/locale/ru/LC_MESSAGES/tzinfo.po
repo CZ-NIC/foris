@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2017-05-20 16:59+0000\n"
+"PO-Revision-Date: 2017-05-23 07:50+0000\n"
 "Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris-"
 "tzinfo/ru/>\n"
@@ -153,7 +153,7 @@ msgid "America"
 msgstr "Америка"
 
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Каймановы острова"
 
 msgid "Colombia"
 msgstr "Колумбия"
@@ -186,7 +186,7 @@ msgid "Merida"
 msgstr "Мерида"
 
 msgid "United States"
-msgstr ""
+msgstr "США"
 
 msgid "Ashgabat"
 msgstr "Ашхабад"
@@ -210,13 +210,13 @@ msgid "Center, North Dakota"
 msgstr ""
 
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Британские Виргинские острова"
 
 msgid "Istanbul"
 msgstr "Стамбул"
 
 msgid "Pitcairn"
-msgstr ""
+msgstr "Питкэрн"
 
 msgid "Kuwait"
 msgstr "Кувейт"
@@ -228,7 +228,7 @@ msgid "Costa Rica"
 msgstr "Коста-Рика"
 
 msgid "Dar es Salaam"
-msgstr ""
+msgstr "Дар-эс-Салам"
 
 msgid "Louisville"
 msgstr ""
@@ -258,10 +258,10 @@ msgid "Tuvalu"
 msgstr "Тувалу"
 
 msgid "Pitcairn Islands"
-msgstr ""
+msgstr "Острова Питкэрн"
 
 msgid "Palestinian Territories"
-msgstr ""
+msgstr "Палестинские территории"
 
 msgid "Hong Kong"
 msgstr "Гонконг"
@@ -270,7 +270,7 @@ msgid "St. Kitts"
 msgstr ""
 
 msgid "Petersburg, Indiana"
-msgstr ""
+msgstr "Петербург, Индиана"
 
 msgid "Denmark"
 msgstr "Дания"
@@ -285,7 +285,7 @@ msgid "Athens"
 msgstr "Афины"
 
 msgid "Morocco"
-msgstr ""
+msgstr "Марокко"
 
 msgid "Atikokan"
 msgstr ""
@@ -318,7 +318,7 @@ msgid "Pacific"
 msgstr ""
 
 msgid "Hermosillo"
-msgstr ""
+msgstr "Эрмосильо"
 
 msgid "Halifax"
 msgstr ""
@@ -327,10 +327,10 @@ msgid "Troll"
 msgstr ""
 
 msgid "Ust-Nera"
-msgstr ""
+msgstr "Усть-Нера"
 
 msgid "Palau"
-msgstr ""
+msgstr "Палау"
 
 msgid "Novokuznetsk"
 msgstr "Новокузнецк"
@@ -345,34 +345,34 @@ msgid "Havana"
 msgstr "Гавана"
 
 msgid "Suriname"
-msgstr ""
+msgstr "Суринам"
 
 msgid "Christmas"
 msgstr ""
 
 msgid "Myanmar (Burma)"
-msgstr ""
+msgstr "Мьянма (Бирма)"
 
 msgid "Phoenix"
-msgstr ""
+msgstr "Феникс"
 
 msgid "Zagreb"
 msgstr "Загреб"
 
 msgid "Noronha"
-msgstr ""
+msgstr "Норонья"
 
 msgid "Luanda"
-msgstr ""
+msgstr "Луанда"
 
 msgid "Jordan"
-msgstr ""
+msgstr "Иордания"
 
 msgid "Campo Grande"
 msgstr ""
 
 msgid "Fakaofo"
-msgstr ""
+msgstr "Факаофо"
 
 msgid "Eritrea"
 msgstr ""
