@@ -20,6 +20,7 @@ from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool
+from foris.utils.routing import reverse
 
 from .base import BaseConfigHandler, logger
 from .lan import DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX, LanHandler
@@ -196,14 +197,15 @@ class WifiHandler(BaseConfigHandler):
 
         guest_section.add_field(
             Checkbox, name=prefixed_name("guest_enabled"),
-            label=_("Guest Wi-Fi"), default=False,
+            label=_("Enable guest Wi-Fi"), default=False,
             nuci_path="uci.wireless.guest_iface_%s.disabled" % iface_index,
             nuci_preproc=lambda value: not parse_uci_bool(value),
             hint=_(
-                "Enables the guest Wi-Fi. You don't need to set an SSID. "
-                "The SSID will be derived from SSID of your ordinary Wi-Fi "
-                "by adding `-guest` suffix."
-            )
+                "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+                "connected to this network are allowed to access the internet, but aren't "
+                "allowed to access other devices and the configuration interface of the router. "
+                "Parameters of the guest network can be set in <a href='%(url)s'>the LAN tab</a>. "
+            ) % dict(url=reverse("config_page", page_name="lan"))
         ).requires(prefixed_name("wifi_enabled"), True)
 
         default_ssid = self._get_value(
@@ -217,14 +219,14 @@ class WifiHandler(BaseConfigHandler):
             "%s-guest" % default_ssid
         )
         guest_section.add_field(
-            Textbox, name=prefixed_name("guest_ssid"), label=_("Guest SSID"),
+            Textbox, name=prefixed_name("guest_ssid"), label=_("SSID for guests"),
             nuci_path="uci.wireless.guest_iface_%s.ssid" % iface_index,
             required=True, validators=validators.ByteLenRange(1, 32),
             default=default_guest_ssid
         ).requires(prefixed_name("guest_enabled"), True)
 
         guest_section.add_field(
-            Password, name=prefixed_name("guest_key"), label=_("Guest password"),
+            Password, name=prefixed_name("guest_key"), label=_("Password for guests"),
             nuci_path="uci.wireless.guest_iface_%s.key" % iface_index,
             required=True,
             default="",
