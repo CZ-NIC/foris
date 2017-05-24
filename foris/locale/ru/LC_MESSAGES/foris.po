@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-05 11:04+0200\n"
-"PO-Revision-Date: 2017-05-20 17:46+0000\n"
+"PO-Revision-Date: 2017-05-24 12:47+0000\n"
 "Last-Translator: Anton Shestakov <av6@dwimlabs.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14.1-dev\n"
+"X-Generator: Weblate 2.14.1\n"
 
 msgid "This field is required."
 msgstr "Обязательное поле."
@@ -217,7 +217,7 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr ""
+msgstr "IP-адрес маршрутизатора"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
@@ -245,10 +245,10 @@ msgid "Notifications"
 msgstr "Уведомления"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Настройки уведомлений"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Включить уведомления"
 
 msgid "SMTP provider"
 msgstr "Провайдер SMTP"
@@ -339,7 +339,7 @@ msgid "Automatic restarts after software update"
 msgstr ""
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Задержка (в днях)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
@@ -392,7 +392,7 @@ msgid ""
 msgstr ""
 
 msgid "Continent or ocean"
-msgstr ""
+msgstr "Континент или океан"
 
 msgid "Country"
 msgstr "Страна"
@@ -490,7 +490,7 @@ msgid "Disable IPv6"
 msgstr "Отключить IPv6"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "Протокол IPv4"
 
 msgid "IP address"
 msgstr "IP-адрес"
@@ -508,15 +508,17 @@ msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
 "of working without it."
 msgstr ""
+"Адрес DNS-сервера не требуется, так как встроенная система разрешения "
+"доменных имён может работать без него."
 
 msgid "DNS server 2"
 msgstr "DNS-сервер 2"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "Имя пользователя PAP/CHAP"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "Пароль PAP/CHAP"
 
 msgid "IPv6 protocol"
 msgstr "Протокол IPv6"
@@ -536,10 +538,10 @@ msgid "IPv6 prefix"
 msgstr "Префикс IPv6"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
+msgstr "Диапазон адресов для локальной сети, например, 2001:db8:be13:37da::/64"
 
 msgid "Use Modem Turris"
-msgstr ""
+msgstr "Использовать Modem Turris"
 
 msgid ""
 "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
@@ -560,7 +562,7 @@ msgid "Both VPI and VCI must be filled or both must be empty."
 msgstr ""
 
 msgid "VPI"
-msgstr ""
+msgstr "VPI"
 
 msgid ""
 "Virtual Path Identifier (VPI) is a parameter that you might have received "
@@ -569,7 +571,7 @@ msgid ""
 msgstr ""
 
 msgid "VCI"
-msgstr ""
+msgstr "VCI"
 
 msgid ""
 "Virtual Circuit Identifier (VCI) is a parameter that you might have received "
@@ -634,10 +636,10 @@ msgid "Enable Wi-Fi %s"
 msgstr ""
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "Скрыть SSID"
 
 msgid "If set, network is not visible when scanning for available networks."
 msgstr ""
@@ -671,7 +673,7 @@ msgid "802.11ac - 80 MHz wide channel"
 msgstr ""
 
 msgid "802.11n/ac mode"
-msgstr ""
+msgstr "Режим 802.11n/ac"
 
 msgid ""
 "Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
@@ -681,10 +683,10 @@ msgid ""
 msgstr ""
 
 msgid "Network channel"
-msgstr ""
+msgstr "Канал сети"
 
 msgid "Network password"
-msgstr ""
+msgstr "Пароль сети"
 
 msgid "Guest Wi-Fi"
 msgstr "Гостевой Wi-Fi"
@@ -698,7 +700,7 @@ msgid ""
 msgstr ""
 
 msgid "Guest password"
-msgstr ""
+msgstr "Гостевой пароль"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
@@ -711,7 +713,7 @@ msgid "Wi-Fi settings"
 msgstr "Настройки Wi-Fi"
 
 msgid "Guest network"
-msgstr ""
+msgstr "Гостевая сеть"
 
 msgid ""
 "Is a network for guest devices. It is separated from your ordinary LAN "
@@ -724,7 +726,7 @@ msgid "Enable guest network"
 msgstr ""
 
 msgid "Guest Network"
-msgstr ""
+msgstr "Гостевая сеть"
 
 msgid ""
 "You need to set the IP range of your guest network. Note that the range "
@@ -797,7 +799,7 @@ msgid "Test type"
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 msgid "IPv4 connectivity"
 msgstr ""
@@ -818,7 +820,7 @@ msgid "Test connection"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Отменить изменения"
 
 msgid "Save changes"
 msgstr "Сохранить изменения"
@@ -867,14 +869,14 @@ msgstr ""
 
 #, python-format
 msgid "Time of last update: %(datetime)s"
-msgstr ""
+msgstr "Время последнего обновления: %(datetime)s"
 
 #, python-format
 msgid "(status updated %d second ago)"
 msgid_plural "(status updated %d seconds ago)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(статус обновлён %d секунду назад)"
+msgstr[1] "(статус обновлён %d секунды назад)"
+msgstr[2] "(статус обновлён %d секунд назад)"
 
 msgid "Sending of firewall logs"
 msgstr ""
@@ -910,7 +912,7 @@ msgid ""
 msgstr ""
 
 msgid "Package lists"
-msgstr ""
+msgstr "Списки пакетов"
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
@@ -964,7 +966,7 @@ msgid "Send testing message"
 msgstr ""
 
 msgid "Configuration backup"
-msgstr ""
+msgstr "Резервное копирование настроек"
 
 msgid ""
 "If you need to save the current configuration of this device, you can "
@@ -986,7 +988,7 @@ msgid ""
 msgstr ""
 
 msgid "Restore from backup"
-msgstr ""
+msgstr "Восстановить из резервной копии"
 
 msgid "Device reboot"
 msgstr ""
@@ -1007,7 +1009,7 @@ msgid "Menu"
 msgstr "Меню"
 
 msgid "Log out"
-msgstr ""
+msgstr "Выйти"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1107,7 +1109,7 @@ msgid ""
 msgstr ""
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Loading..."
 msgstr "Загрузка…"
@@ -1176,13 +1178,16 @@ msgid ""
 msgstr ""
 
 msgid "Important updates"
-msgstr ""
+msgstr "Важные обновления"
 
 msgid ""
 "Important updates that require a device restart have been installed. Some "
 "services might not work if you don't restart the device. For details see "
 "below."
 msgstr ""
+"Были установлены важные обновления, которые требуют перезагрузки устройства. "
+"Некоторые службы могут не работать, если вы не перезагрузите устройство. "
+"Подробнее смотрите ниже."
 
 msgid "Continue to configuration interface"
 msgstr ""
@@ -1230,12 +1235,14 @@ msgid ""
 "Installing additional updates. Router will be restarted several times to "
 "finish the process."
 msgstr ""
+"Установка дополнительных обновлений. Маршрутизатор будет перезагружен "
+"несколько раз, чтобы завершить процесс."
 
 msgid "Do not unplug the device during update!"
-msgstr ""
+msgstr "Не отключайте устройство во время обновления!"
 
 msgid "Check of available updates in progress."
-msgstr ""
+msgstr "Проверяются доступные обновления."
 
 msgid "Firmware update was successful, you can proceed to the next step."
 msgstr ""
@@ -1251,7 +1258,7 @@ msgid "Updater has returned the following error:"
 msgstr ""
 
 msgid "Device has been restarted."
-msgstr ""
+msgstr "Устройство было перезапущено."
 
 msgid "Please log in again to continue."
 msgstr ""
@@ -1260,7 +1267,7 @@ msgid "Proceed to login"
 msgstr ""
 
 msgid "Welcome to configuration of router Turris"
-msgstr ""
+msgstr "Добро пожаловать в настройки маршрутизатора Turris"
 
 msgid ""
 "Before you start to use the router for the first time, it is necessary to "
@@ -1324,7 +1331,7 @@ msgid "Set time manually"
 msgstr "Установить время вручную"
 
 msgid "Synchronization successful."
-msgstr ""
+msgstr "Синхронизация прошла успешно."
 
 msgid "Time settings"
 msgstr "Настройки времени"
