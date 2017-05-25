@@ -29,7 +29,7 @@ from .base import (
     WanHandler,
 )
 
-from .updater import UpdaterEulaHandler, UpdaterHandler
+from .updater import UpdaterAutoUpdatesHandler, UpdaterHandler
 from .wifi import WifiHandler
 from .lan import LanHandler
 
@@ -46,7 +46,7 @@ __all__ = [
     'SystemPasswordHandler',
     'TimeHandler',
     'UcollectHandler',
-    'UpdaterEulaHandler',
+    'UpdaterAutoUpdatesHandler',
     'UpdaterHandler',
     'WanHandler',
     'WifiHandler',

@@ -523,21 +523,44 @@ class Radio(Input):
         return ID_TEMPLATE % self.name + '_%s'
 
     def render(self):
-        x = '<div class="radio-inputs">'
+        rendered = []
         for arg in self.args:
             if isinstance(arg, (tuple, list)):
                 value, desc = arg
             else:
                 value, desc = arg, arg
             attrs = self.attrs.copy()
-            attrs['id'] = self.attrs['id'] % safestr(value or "")
-            attrs['name'] = self.name
-            attrs['type'] = 'radio'
-            attrs['value'] = value
-            if self.value == value:
-                attrs['checked'] = 'checked'
-            x += '<label for="%s"><input %s/> %s</label>' % (attrs['id'], attrs, websafe(desc))
-        return x + "</div>"
+            rendered_input = RadioSingle.render_single(value, self.name, self.value, attrs)
+            rendered.append(
+                '<label for="%s">%s %s</label>' % (attrs['id'], rendered_input, websafe(desc))
+            )
+        return '<div class="radio-inputs">%s</div>' % "\n".join(rendered)
+
+
+class RadioSingle(Input):
+    def __init__(self, name, *validators, **attrs):
+        self.name = name
+        self.group = attrs.pop("group", name)
+        super(RadioSingle, self).__init__(name, *validators, **attrs)
+        self.id = self.id % self.name
+
+    def get_default_id(self):
+        return ID_TEMPLATE % self.group + '_%s'
+
+    @staticmethod
+    def render_single(name, group, current_value, attrs):
+        attrs['id'] = attrs['id'] % safestr(name or "")
+        attrs['name'] = group
+        attrs['type'] = 'radio'
+        attrs['value'] = name
+        if current_value == attrs['value']:
+            attrs['checked'] = 'checked'
+
+        return '<input %s />' % attrs
+
+    def render(self):
+        return RadioSingle.render_single(
+            self.name, self.group, self.value, self.attrs)
 
 
 class Checkbox(Input):

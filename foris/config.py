@@ -243,7 +243,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="updater"))
-        handler = UpdaterEulaHandler(request.POST)
+        handler = UpdaterAutoUpdatesHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="updater"))
@@ -257,11 +257,11 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
 
     def render(self, **kwargs):
         if not contract_valid():
-            eula_handler = UpdaterEulaHandler(self.data)
-            kwargs['updater_eula_form'] = eula_handler.form
-            agreed_opt = eula_handler.form.nuci_config.find_child('uci.foris.eula.agreed_updater')
+            auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
+            kwargs['auto_updates_form'] = auto_updates_handler.form
+            agreed_opt = auto_updates_handler.form.nuci_config.find_child('uci.foris.eula.agreed_updater')
             kwargs['updater_disabled'] = not (agreed_opt and bool(int(agreed_opt.value)))
-            collecting_opt = eula_handler.form.nuci_config.find_child('uci.foris.eula.agreed_collect')
+            collecting_opt = auto_updates_handler.form.nuci_config.find_child('uci.foris.eula.agreed_collect')
             kwargs['collecting_enabled'] = collecting_opt and bool(int(collecting_opt.value))
         return super(UpdaterConfigPage, self).render(**kwargs)
 

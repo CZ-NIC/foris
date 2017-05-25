@@ -15,27 +15,61 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import fapi
+from foris import validators
 from foris.core import gettext_dummy as gettext, ugettext as _
-from foris.form import Checkbox, Radio
+from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
+from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.utils import contract_valid
 
 from .base import BaseConfigHandler, logger
 
 L10N_SUPPORTED_PATH = '/usr/share/updater/l10n_supported'
 
-class UpdaterEulaHandler(BaseConfigHandler):
+
+class UpdaterAutoUpdatesHandler(BaseConfigHandler):
     """
     Ask whether user agrees with the updater EULA and toggle updater status
     according to that.
+    And sets the approval status
     """
+
+    APPROVAL_NO = "no_approvals"
+    APPROVAL_TIMEOUT = "timeout"
+    APPROVAL_NEEDED = "needed"
+    APPROVAL_DEFAULT = APPROVAL_NO
 
     userfriendly_title = gettext("Updater")
 
     def get_form(self):
+
+        def approval_preproc_approve_status(nuci_config):
+            """Preprocess approval status """
+            # try to obtain status from the form data
+            if self.data and "approval_status" in self.data:
+                return self.data["approval_status"]
+
+            need_item = nuci_config.find_child("uci.updater.approvals.need")
+            if not need_item:
+                return UpdaterAutoUpdatesHandler.APPROVAL_NO
+            if not parse_uci_bool(need_item.value):
+                return UpdaterAutoUpdatesHandler.APPROVAL_NO
+            seconds_item = nuci_config.find_child("uci.updater.approvals.auto_grant_seconds")
+            if not seconds_item:
+                return UpdaterAutoUpdatesHandler.APPROVAL_NEEDED
+
+            try:
+                hours = int(seconds_item.value)
+            except ValueError:
+                return UpdaterAutoUpdatesHandler.APPROVAL_NEEDED
+
+            if hours < 0:
+                return UpdaterAutoUpdatesHandler.APPROVAL_NEEDED
+
+            return UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT
+
         form = fapi.ForisForm("updater_eula", self.data,
-                              filter=filters.create_config_filter("foris"))
+                              filter=filters.create_config_filter("foris", "updater"))
         main_section = form.add_section(name="agree_eula",
                                         title=_(self.userfriendly_title))
         main_section.add_field(
@@ -45,9 +79,51 @@ class UpdaterEulaHandler(BaseConfigHandler):
             nuci_path="uci.foris.eula.agreed_updater",
             nuci_preproc=lambda val: str(val.value)
         )
+        approval_section = form.add_section(name="approvals", title=_("Update approvals"))
+        main_section.add_section(approval_section)
+        approval_section.add_field(
+            RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_NO, group="approval_status",
+            label=_("No approvals needed"),
+            hint=_("Update will be performed right away without user confirmation."),
+            nuci_preproc=lambda e: approval_preproc_approve_status(e),
+        ).requires("agreed", "1")
+
+        approval_section.add_field(
+            RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT, group="approval_status",
+            label=_("Delayed approval"),
+            hint=_("Updates will be delayed for a while before performing."),
+            nuci_preproc=lambda e: approval_preproc_approve_status(e),
+        ).requires("agreed", "1")
+        approval_section.add_field(
+            Number,
+            name="approval_timeout",
+            nuci_path="uci.updater.approvals.auto_grant_seconds",
+            nuci_preproc=lambda val: int(val.value) / 60 / 60,  # seconds to hours
+            validators=[validators.InRange(1, 24 * 7)],
+            default=24,
+            required=True,
+            min=1,
+            max=24 * 7,
+        ).requires(
+            UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT, UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT
+        ).requires(
+            UpdaterAutoUpdatesHandler.APPROVAL_NO, UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT
+        ).requires(
+            UpdaterAutoUpdatesHandler.APPROVAL_NEEDED, UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT
+        )
+
+        approval_section.add_field(
+            RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_NEEDED, group="approval_status",
+            label=_("Approval needed"),
+            hint=_("User always needs to confirm the updates."),
+            nuci_preproc=lambda e: approval_preproc_approve_status(e),
+        ).requires("agreed", "1")
 
         def form_cb(data):
             agreed = bool(int(data.get("agreed", "0")))
+            approval_status = data.get(
+                UpdaterAutoUpdatesHandler.APPROVAL_NO, UpdaterAutoUpdatesHandler.APPROVAL_NO)
+            auto_grant_seconds = int(data.get("approval_timeout", 24)) * 60 * 60
 
             uci = Uci()
             foris = uci.add(Config("foris"))
@@ -58,6 +134,15 @@ class UpdaterEulaHandler(BaseConfigHandler):
             updater = uci.add(Config("updater"))
             override = updater.add(Section("override", "override"))
             override.add(Option("disable", not agreed))
+
+            approvals = updater.add_replace(Section("approvals", "approvals"))
+            if approval_status == UpdaterAutoUpdatesHandler.APPROVAL_NO:
+                approvals.add(Option("need", "0"))
+            elif approval_status == UpdaterAutoUpdatesHandler.APPROVAL_NEEDED:
+                approvals.add(Option("need", "1"))
+            elif approval_status == UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT:
+                approvals.add(Option("need", "1"))
+                approvals.add(Option("auto_grant_seconds", auto_grant_seconds))
 
             return "edit_config", uci
 

@@ -117,7 +117,7 @@
 .eula-summary
   font-weight: bold
 
-#updater-eula-form
+#updater-auto-updates-form
   label
     display: block
     margin-left: 3em
@@ -125,7 +125,22 @@
 
   .radio-inputs
     width: 100%
-    margin-bottom: 1em
+    margin-bottom: 0.5em
+
+  .hint-text
+    margin-left: 3em
+
+  #updater-approvals
+    margin-bottom: 0.5em
+
+    label
+      display: inline-block
+
+    input[name="approval_timeout"]
+      width: 5em
+
+    #approval-timeout-line
+      margin-left: 2em
 
 #language-install
   margin-top: 1ex

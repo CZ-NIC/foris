@@ -21,7 +21,7 @@ from ncclient.operations import RPCError, TimeoutExpiredError
 from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
-    WanHandler, TimeHandler, LanHandler, UpdaterEulaHandler, WifiHandler
+    WanHandler, TimeHandler, LanHandler, UpdaterAutoUpdatesHandler, WifiHandler
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
 from .nuci.modules.uci_raw import build_option_uci_tree
@@ -253,7 +253,7 @@ class WizardStep5(WizardStepMixin, TimeHandler):
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep6(WizardStepMixin, UpdaterEulaHandler):
+class WizardStep6(WizardStepMixin, UpdaterAutoUpdatesHandler):
     """
     Updater.
     """
