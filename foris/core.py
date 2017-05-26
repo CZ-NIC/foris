@@ -37,7 +37,7 @@ from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
 from .langs import iso2to3, translation_names, translations, DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
-from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated
+from .utils import redirect_unauthenticated, is_safe_redirect, is_user_authenticated, LazyCache
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
 from .utils import DEVICE_CUSTOMIZATION, messages, contract_valid
 from .utils.reporting_middleware import ReportingMiddleware
@@ -50,6 +50,7 @@ BASE_DIR = os.path.dirname(__file__)
 
 # init cache
 nuci_cache = cache.NuciCache()
+lazy_cache = LazyCache()
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)

@@ -160,6 +160,26 @@ class Lazy(object):
         return getattr(self.value, item)
 
 
+class LazyCache(object):
+    def __init__(self):
+        super(LazyCache, self).__setattr__('_attr_dict', {})
+
+    def __getattr__(self, name):
+        res = self._attr_dict[name]
+        logger.debug("Lazy cache object '%s' obtained." % name)
+        return res
+
+    def __setattr__(self, name, func):
+        if not callable(func):
+            raise TypeError("Expected callable")
+        self._attr_dict[name] = Lazy(func)
+        logger.debug("Lazy cache object '%s' initialized." % name)
+
+    def __delattr__(self, name):
+        del self._attr_dict[name]
+        logger.debug("Lazy cache object '%s' removed." % name)
+
+
 def print_model(model):
     import copy
     toprint = copy.deepcopy(model.get_tree())
