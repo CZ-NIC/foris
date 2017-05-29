@@ -17,12 +17,13 @@
 from datetime import datetime
 import os
 import logging
+import time
 from urlparse import urlunsplit
 
 from bottle import Bottle, request, template
 import bottle
 
-from .core import gettext_dummy as gettext, make_notification_title, ugettext as _
+from .core import lazy_cache, gettext_dummy as gettext, make_notification_title, ugettext as _
 from .config_handlers import *
 from .nuci import client
 from .nuci.client import filters
@@ -250,19 +251,58 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         messages.warning(_("There were some errors in your input."))
         return super(UpdaterConfigPage, self).render(notifications_form=handler.form)
 
+    def _action_process_approval(self):
+        if bottle.request.method != 'POST':
+            messages.error(_("Wrong HTTP method."))
+            bottle.redirect(reverse("config_page", page_name="updater"))
+
+        if not request.POST.get("call", None) or not request.POST.get("approval-id", None) or \
+                not request.POST["call"] in ["approve", "deny"]:
+            messages.error(_("Invalid reguest arguments."))
+            bottle.redirect(reverse("config_page", page_name="updater"))
+
+        if request.POST["call"] == "approve":
+            if client.approve_approval(request.POST["approval-id"]):
+                messages.success(_("Update was approved."))
+                client.check_updates()
+            else:
+                messages.error(_("Failed to approve update."))
+        elif request.POST["call"] == "deny":
+            if client.deny_approval(request.POST["approval-id"]):
+                messages.success(_("Update was denied."))
+                client.check_updates()
+            else:
+                messages.error(_("Failed to deny update."))
+
+        bottle.redirect(reverse("config_page", page_name="updater"))
+
     def call_action(self, action):
         if action == "toggle_updater":
             return self._action_toggle_updater()
+        if action == "process_approval":
+            return self._action_process_approval()
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
         if not contract_valid():
+            lazy_cache.nuci_updater = lambda: client.get(
+                filter=filters.updater).find_child("updater")
             auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
             kwargs['auto_updates_form'] = auto_updates_handler.form
-            agreed_opt = auto_updates_handler.form.nuci_config.find_child('uci.foris.eula.agreed_updater')
+            agreed_opt = auto_updates_handler.form.nuci_config.find_child(
+                'uci.foris.eula.agreed_updater')
             kwargs['updater_disabled'] = not (agreed_opt and bool(int(agreed_opt.value)))
-            collecting_opt = auto_updates_handler.form.nuci_config.find_child('uci.foris.eula.agreed_collect')
+            collecting_opt = auto_updates_handler.form.nuci_config.find_child(
+                'uci.foris.eula.agreed_collect')
             kwargs['collecting_enabled'] = collecting_opt and bool(int(collecting_opt.value))
+            current_approvals = [e for e in lazy_cache.nuci_updater.approval_list if e["current"]]
+            approval = current_approvals[0] if current_approvals else None
+            if approval:
+                # convert time to some readable form
+                approval["time"] = time.strftime(
+                    "%Y-%m-%d %H:%M:%S", time.localtime(int(approval["time"])))
+            kwargs['approval'] = approval
+
         return super(UpdaterConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):

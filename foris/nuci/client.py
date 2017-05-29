@@ -27,8 +27,10 @@ from ncclient.transport import TransportError
 
 from . import filters
 from .exceptions import ConfigRestoreError
-from .modules import (maintain, network, password as password_module, registration,
-                      stats, time as time_module, uci_raw, updater, user_notify)
+from .modules import (
+    maintain, network, password as password_module, registration, updater,
+    stats, time as time_module, uci_raw, updater, user_notify
+)
 from .modules.base import Data, YinElement
 from .utils import LocalizableTextValue
 
@@ -309,6 +311,32 @@ def set_password(user, password):
     """
     try:
         dispatch(password_module.Password(user, password).rpc_set)
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
+def deny_approval(approval_id):
+    """Deny updater approval
+
+    :param approval_id: an id of an approval
+    :return: True on success, False otherwise
+    """
+    try:
+        dispatch(updater.Updater.rpc_deny(approval_id))
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
+
+
+def approve_approval(approval_id):
+    """Approve updater approval
+
+    :param approval_id: an id of an approval
+    :return: True on success, False otherwise
+    """
+    try:
+        dispatch(updater.Updater.rpc_grant(approval_id))
         return True
     except (RPCError, TimeoutExpiredError):
         return False

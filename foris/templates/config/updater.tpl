@@ -39,7 +39,7 @@
         %if auto_updates_form.active_fields[0].field.value == "1":
         <h4>{{ trans("Update approvals") }}</h4>
         <div id="updater-approvals">
-        %for field in auto_updates_form.sections[1].active_fields:
+          %for field in auto_updates_form.sections[1].active_fields:
             <div>
             %if field.name == "approval_timeout":
               <div id="approval-timeout-line">
@@ -64,9 +64,9 @@
               </div>
             %end
             </div>
-        %end
-        %end
+          %end
         </div>
+        %end
             <div class="row">
               <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
             </div>
@@ -75,10 +75,37 @@
     %end
 
     %if defined('updater_disabled') and updater_disabled:
-      <div class="message warning">
+      <div class="message warning" id="updater-disabled-warning">
         {{ trans("The Updater is currently disabled. You must enable it first to manage package lists.") }}
       </div>
     %else:
+      %if approval and approval['status'] == 'asked':
+      <h4>{{ trans("Approve update from %(when)s") % dict(when=approval["time"]) }}</h4>
+      <form id="updater-approve-form" method="post" action="{{ url("config_action", page_name="updater", action="process_approval") }}" novalidate>
+          <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+          <input type="hidden" name="approval-id" value="{{ approval["id"] }}">
+          <div class="row">
+          <h5>List of changes</h5>
+          <ul id="updater-approve-changes">
+          %for item in approval["remove_list"]:
+            <li class="tooltip" title="{{ item }}">• {{ trans("Uninstall") }} {{ helpers.shorten_text(item, 40) }}</li>
+          %end
+          %for item in approval["install_list"]:
+            <li class="tooltip" title="{{ item }}">• {{ trans("Install") }} {{ helpers.shorten_text(item, 40) }}</li>
+          %end
+          </ul>
+          %if approval["reboot"]:
+          <div id="updater-reboot-text">
+          <strong>{{ trans("Note that a reboot will be triggered after the update.") }}</strong>
+          </div>
+          %end
+          </div>
+          <div class="row">
+            <button type="submit" name="call" class="button" value="approve">{{ trans("Approve") }}</button>
+            <button type="submit" name="call" class="button" value="deny">{{ trans("Deny") }}</button>
+          </div>
+      </form>
+      %end
       <h2>{{ trans("Package lists") }}</h2>
       <form id="main-form" class="config-form" action="{{ url("config_page", page_name="updater") }}" method="post" autocomplete="off" novalidate>
 

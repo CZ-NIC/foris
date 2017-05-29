@@ -142,6 +142,26 @@
     #approval-timeout-line
       margin-left: 2em
 
+#updater-approve-form
+
+  #updater-approve-changes
+    overflow: hidden
+    margin-bottom: .5em
+    border: 1px solid #999
+    padding: 1em
+
+    li
+      +respond-to('not-mobile', $no-query: true)
+        float: left
+        display: inline
+        width: 50%
+
+  #updater-reboot-text
+    margin-bottom: .5em
+
+#updater-disabled-warning
+  margin-top: .5em
+
 #language-install
   margin-top: 1ex
   margin-bottom: 1ex

@@ -14,9 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from foris import fapi
-from foris import validators
-from foris.core import gettext_dummy as gettext, ugettext as _
+from foris import fapi, validators
+from foris.core import lazy_cache, gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
@@ -83,15 +82,15 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
         main_section.add_section(approval_section)
         approval_section.add_field(
             RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_NO, group="approval_status",
-            label=_("No approvals needed"),
-            hint=_("Update will be performed right away without user confirmation."),
+            label=_("No approval needed"),
+            hint=_("Updates will be performed immediatelly without a user confirmation."),
             nuci_preproc=lambda e: approval_preproc_approve_status(e),
         ).requires("agreed", "1")
 
         approval_section.add_field(
             RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT, group="approval_status",
             label=_("Delayed approval"),
-            hint=_("Updates will be delayed for a while before performing."),
+            hint=_("Updates will be performed in a while without a user confirmation."),
             nuci_preproc=lambda e: approval_preproc_approve_status(e),
         ).requires("agreed", "1")
         approval_section.add_field(
@@ -158,7 +157,7 @@ class UpdaterHandler(BaseConfigHandler):
     userfriendly_title = gettext("Updater")
 
     def get_form(self):
-        pkg_list = client.get(filter=filters.updater).find_child("updater").pkg_list
+        pkg_list = lazy_cache.nuci_updater.pkg_list
 
         updater_form = fapi.ForisForm(
             "package_lists", self.data, filter=filters.create_config_filter("updater", "foris")

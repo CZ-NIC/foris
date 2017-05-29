@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from xml.etree import ElementTree as ET
+from xml.etree import cElementTree as ET
 
 from base import YinElement
 from ..utils import LocalizableTextValue
@@ -24,13 +24,14 @@ class Updater(YinElement):
     tag = "updater"
     NS_URI = "http://www.nic.cz/ns/router/updater"
 
-    def __init__(self, running, failed, last_activity, offline_pending, pkg_list):
+    def __init__(self, running, failed, last_activity, offline_pending, pkg_list, approval_list):
         super(Updater, self).__init__()
         self.running = running
         self.failed = failed
         self.last_activity = last_activity
         self.offline_pending = offline_pending
         self.pkg_list = pkg_list
+        self.approval_list = approval_list
 
     @staticmethod
     def from_element(element):
@@ -55,11 +56,47 @@ class Updater(YinElement):
         for item_el in pkg_list_elements:
             pkg_list.append(PackageListItem.from_element(item_el))
 
-        return Updater(running, failed, last_activity, offline_pending, pkg_list)
+        approval_list = []
+        approvals_elements = element.findall(Updater.qual_tag("approval-request"))
+        for approval_element in approvals_elements:
+            id = approval_element.find(Updater.qual_tag("id")).text
+            status = approval_element.find(Updater.qual_tag("status")).text
+            time = approval_element.find(Updater.qual_tag("time")).text
+            current = approval_element.find(Updater.qual_tag("current")) is not None
+            install_list = [e.text for e in approval_element.findall(Updater.qual_tag('install'))]
+            remove_list = [e.text for e in approval_element.findall(Updater.qual_tag('remove'))]
+            reboot = approval_element.find(Updater.qual_tag("reboot")) is not None
+            approval_list.append({
+                "id": id,
+                "status": status,
+                "time": time,
+                "current": current,
+                "install_list": install_list,
+                "remove_list": remove_list,
+                "reboot": reboot,
+            })
+
+        return Updater(running, failed, last_activity, offline_pending, pkg_list, approval_list)
 
     @property
     def key(self):
         return "updater"
+
+    @staticmethod
+    def rpc_deny(approval_id):
+        deny_tag = Updater.qual_tag("deny")
+        element = ET.Element(deny_tag)
+        id_elem = ET.SubElement(element, Updater.qual_tag("id"))
+        id_elem.text = approval_id
+        return element
+
+    @staticmethod
+    def rpc_grant(approval_id):
+        grant_tag = Updater.qual_tag("grant")
+        element = ET.Element(grant_tag)
+        id_elem = ET.SubElement(element, Updater.qual_tag("id"))
+        id_elem.text = approval_id
+        return element
 
 
 class PackageListItem(object):
