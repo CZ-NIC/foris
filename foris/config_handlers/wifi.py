@@ -322,7 +322,7 @@ class WifiHandler(BaseConfigHandler):
                 guest_iface.add(Option("encryption", "psk2+tkip+aes"))
                 guest_iface.add(Option("key", radio_data('guest_key')))
                 guest_iface.add(Option("disabled", "0"))
-                guest_iface.add(Option("ifname", "guest_turris"))
+                guest_iface.add(Option("ifname", "guest_turris_%s" % radio))
                 guest_iface.add(Option("network", "guest_turris"))
                 guest_iface.add(Option("isolate", "1"))
                 return True
