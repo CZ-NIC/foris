@@ -222,7 +222,7 @@ class LanHandler(BaseConfigHandler):
         uci.add(dhcp_conf)
 
         dhcp_section = Section("guest_turris", "dhcp")
-        dhcp_conf.add(dhcp_section)
+        dhcp_conf.add_replace(dhcp_section)
         dhcp_section.add(Option("interface", "guest_turris"))
         dhcp_section.add(Option("start", "200"))
         dhcp_section.add(Option("limit", "50"))
