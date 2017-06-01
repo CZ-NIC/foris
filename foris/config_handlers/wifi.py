@@ -377,6 +377,8 @@ class WifiHandler(BaseConfigHandler):
                 if self._prepare_radio_cb(data, wireless, radio):
                     guest_wifi_enabled = True
 
+            guest_interfaces = ["guest_turris_%s" % e for e in sorted(radios)]
+
             # test whether it is required to pass update guest network
             current_data = client.get(filter=filters.wifi_filter())
             current_enabled = preprocessors.guest_network_enabled(current_data)
@@ -387,7 +389,14 @@ class WifiHandler(BaseConfigHandler):
                     network, prefix = data.get("guest_network_subnet").split("/")
                 else:
                     network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
-                LanHandler.prepare_guest_configs(uci, True, network, prefix)
+                LanHandler.prepare_guest_configs(uci, True, network, prefix, guest_interfaces)
+            elif guest_wifi_enabled:
+                # try to update guest interfaces if the differs
+                stored = current_data.find_child("uci.network.guest_turris.ifname").value
+                if set(stored.split(" ")) != set(guest_interfaces):
+                    network_conf = uci.add(Config("network"))
+                    interface_section = network_conf.add(Section("guest_turris", "interface"))
+                    interface_section.add(Option("ifname", " ".join(guest_interfaces)))
 
             return "edit_config", uci
 

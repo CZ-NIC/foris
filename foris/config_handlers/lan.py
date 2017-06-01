@@ -138,17 +138,20 @@ class LanHandler(BaseConfigHandler):
                 network, prefix = data.get("guest_network_subnet").split("/")
             else:
                 network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
-            LanHandler.prepare_guest_configs(uci, guest_enabled, network, prefix)
 
             # disable guest wifi when guest network is not enabled
+            data = client.get(filter=wifi_filter())
+            card_count = 0
+            while data.find_child("uci.wireless.@wifi-device[%d]" % card_count):
+                card_count += 1
             if not guest_enabled:
                 wireless = uci.add(Config("wireless"))
-                data = client.get(filter=wifi_filter())
-                idx = 0
-                while data.find_child("uci.wireless.@wifi-device[%d]" % idx):
-                    guest_iface = wireless.add(Section("guest_iface_%d" % idx, "wifi-iface"))
+                for i in range(card_count):
+                    guest_iface = wireless.add(Section("guest_iface_%d" % i, "wifi-iface"))
                     guest_iface.add(Option("disabled", "1"))
-                    idx += 1
+
+            guest_interfaces = ["guest_turris_%d" % e for e in range(card_count)]
+            LanHandler.prepare_guest_configs(uci, guest_enabled, network, prefix, guest_interfaces)
 
             return "edit_config", uci
 
@@ -157,7 +160,7 @@ class LanHandler(BaseConfigHandler):
         return lan_form
 
     @staticmethod
-    def prepare_guest_configs(uci, enabled, network, prefix):
+    def prepare_guest_configs(uci, enabled, network, prefix, interfaces=[]):
         ignore = "0" if enabled else "1"
         enabled = "1" if enabled else "0"
 
@@ -171,7 +174,9 @@ class LanHandler(BaseConfigHandler):
         interface_section = Section("guest_turris", "interface")
         network_conf.add_replace(interface_section)
         interface_section.add(Option("enabled", enabled))
-        interface_section.add(Option("ifname", "guest_turris"))
+        interface_section.add(Option("type", "bridge"))
+        if interfaces:
+            interface_section.add(Option("ifname", " ".join(interfaces)))
         interface_section.add(Option("proto", "static"))
         interface_section.add(Option("ipaddr", router_ip))
         interface_section.add(Option("netmask", netmask))
