@@ -33,7 +33,8 @@ window.ParsleyConfig.i18n.{{ lang() }} = $.extend(window.ParsleyConfig.i18n.{{ l
     ipv6:         '{{ trans("This is not an IPv6 address with prefix length.") }}',
     anyip:        '{{ trans("This is not a valid IPv4 or IPv6 address.") }}',
     ipv6prefix:   '{{ trans("This is not a valid IPv6 prefix.") }}',
-    macaddress:   '{{ trans("This is not a valid MAC address.") }}'
+    macaddress:   '{{ trans("This is not a valid MAC address.") }}',
+    domain:       '{{ trans("This is not a valid domain name.") }}'
   }
 });
 

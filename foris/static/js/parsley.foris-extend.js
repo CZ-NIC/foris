@@ -77,6 +77,9 @@ window.ParsleyValidator
           case 'macaddress':
             regExp = /^([0-9A-F]{2}:){5}([0-9A-F]{2})$/i;
             break;
+          case 'domain':
+            regExp = /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/g;
+            break;
           default:
               console.dir(window.ParsleyValidator.validators.type(type));
             return window.ParsleyValidator.validators.type(type);
