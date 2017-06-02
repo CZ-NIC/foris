@@ -1,12 +1,13 @@
 from .base import BaseConfigHandler
 
-from foris.nuci.filters import create_config_filter
-from foris.utils import contract_valid
-from foris.form import Checkbox, Textbox
-
 from foris import fapi
+from foris import validators
+
 from foris.core import gettext_dummy as gettext, ugettext as _
+from foris.form import Checkbox, Textbox
+from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
+from foris.utils import contract_valid
 
 
 class DNSHandler(BaseConfigHandler):
@@ -52,7 +53,8 @@ class DNSHandler(BaseConfigHandler):
                     "`android-1234.lan`."
                 ),
                 nuci_path="uci.dhcp.@dnsmasq[0].local",
-                nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan"
+                nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan",
+                validators=[validators.Domain()],
             ).requires("dynamic_dns", True)
 
         resolver = dns_form.nuci_config.find_child("uci.dhcp.@dnsmasq[0]")
