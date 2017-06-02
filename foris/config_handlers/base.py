@@ -409,7 +409,7 @@ class PasswordHandler(BaseConfigHandler):
                                  "blocked.)"))
 
         def pw_form_cb(data):
-            from beaker.crypto import pbkdf2
+            import pbkdf2
             if self.change:
                 # if changing password, check the old pw is right first
                 uci_data = client.get(filter=filters.foris_config)
