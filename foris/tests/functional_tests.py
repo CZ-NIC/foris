@@ -62,7 +62,7 @@ class ForisTest(TestCase):
 
     @classmethod
     def set_foris_password(cls, password):
-        from beaker.crypto import pbkdf2
+        import pbkdf2
         encrypted_pwd = pbkdf2.crypt(password)
         if not (uci_set("foris.auth", "config", cls.config_directory)
                 and uci_set("foris.auth.password", encrypted_pwd, cls.config_directory)
