@@ -8,159 +8,161 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-06-05 17:33+0000\n"
+"Last-Translator: Sergiu Cozma <lssjbrolli@gmail.com>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/turris/foris-"
+"tzinfo/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 msgid "Kinshasa"
-msgstr ""
+msgstr "Kinshasa"
 
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 msgid "Swaziland"
-msgstr ""
+msgstr "Swaziland"
 
 msgid "Cameroon"
-msgstr ""
+msgstr "Camerun"
 
 msgid "Aden"
-msgstr ""
+msgstr "Aden"
 
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmenistan"
 
 msgid "Azores"
-msgstr ""
+msgstr "Azore"
 
 msgid "St. John’s"
-msgstr ""
+msgstr "St. John’s"
 
 msgid "Bougainville Island"
-msgstr ""
+msgstr "Insula Bougainville"
 
 msgid "Casey"
-msgstr ""
+msgstr "Casey"
 
 msgid "Niamey"
-msgstr ""
+msgstr "Niamey"
 
 msgid "Skopje"
-msgstr ""
+msgstr "Skopje"
 
 msgid "U.S. Outlying Islands"
-msgstr ""
+msgstr "Insulele Minore Îndepărtate ale Statelor Unite"
 
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 msgid "Kigali"
-msgstr ""
+msgstr "Kigali"
 
 msgid "Yellowknife"
-msgstr ""
+msgstr "Yellowknife"
 
 msgid "St. Kitts & Nevis"
-msgstr ""
+msgstr "St. Kitts & Nevis"
 
 msgid "Bahia Banderas"
-msgstr ""
+msgstr "Bahia Banderas"
 
 msgid "Lubumbashi"
-msgstr ""
+msgstr "Lubumbashi"
 
 msgid "Accra"
-msgstr ""
+msgstr "Accra"
 
 msgid "Bamako"
-msgstr ""
+msgstr "Bamako"
 
 msgid "Jersey"
-msgstr ""
+msgstr "Jersey"
 
 msgid "Macau"
-msgstr ""
+msgstr "Macau"
 
 msgid "Brisbane"
-msgstr ""
+msgstr "Brisbane"
 
 msgid "Edmonton"
-msgstr ""
+msgstr "Edmonton"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canare"
 
 msgid "South Korea"
-msgstr ""
+msgstr "Korea de Sud"
 
 msgid "Ushuaia"
-msgstr ""
+msgstr "Ushuaia"
 
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajikistan"
 
 msgid "Vilnius"
-msgstr ""
+msgstr "Vilnius"
 
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivia"
 
 msgid "Karachi"
-msgstr ""
+msgstr "Karachi"
 
 msgid "Choibalsan"
-msgstr ""
+msgstr "Choibalsan"
 
 msgid "Denver"
-msgstr ""
+msgstr "Denver"
 
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovacia"
 
 msgid "Ho Chi Minh City"
-msgstr ""
+msgstr "Ho Și Min"
 
 msgid "Chisinau"
-msgstr ""
+msgstr "Chisinau"
 
 msgid "Thimphu"
-msgstr ""
+msgstr "Thimphu"
 
 msgid "Cordoba"
-msgstr ""
+msgstr "Cordoba"
 
 msgid "Montenegro"
-msgstr ""
+msgstr "Muntenegru"
 
 msgid "Bratislava"
-msgstr ""
+msgstr "Bratislava"
 
 msgid "Wallis"
-msgstr ""
+msgstr "Wallis"
 
 msgid "Honolulu"
-msgstr ""
+msgstr "Honolulu"
 
 msgid "America"
-msgstr ""
+msgstr "America"
 
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Insulele Cayman"
 
 msgid "Colombia"
-msgstr ""
+msgstr "Columbia"
 
 msgid "Libya"
-msgstr ""
+msgstr "Libia"
 
 msgid "Porto Velho"
-msgstr ""
+msgstr "Porto Velho"
 
 msgid "Syowa"
 msgstr ""
