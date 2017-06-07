@@ -36,26 +36,26 @@ class DNSHandler(BaseConfigHandler):
         resolver = dns_form.nuci_config.find_child("uci.resolver.common.prefered_resolver")
         if resolver and resolver.value == "kresd":
             dns_main.add_field(
-                Checkbox, name="dynamic_dns", label=_("Enable dynamic DNS"),
+                Checkbox, name="dhcp_from_dns", label=_("Enable DNS from DHCP"),
                 hint=_(
-                    "This will enable your DNS resolver to insert dhcp client names among "
+                    "This will enable your DNS resolver to insert DHCP client names among "
                     "the local DNS records."
                 ),
                 nuci_path="uci.resolver.kresd.dynamic_domains",
                 nuci_preproc=lambda val: bool(int(val.value)), default=False,
             )
             dns_main.add_field(
-                Textbox, name="local_domain", label=_("Dynamic DNS domain"),
+                Textbox, name="dhcp_dns_domain", label=_("DNS domain of DHCP"),
                 hint=_(
                     "This domain name will be used as a TLD (top level domain) of your "
-                    "dynamic dns records. E.g. if you have a client called `android-1234` and "
-                    "domain set to `lan`, the client will be reachable under domain name "
-                    "`android-1234.lan`."
+                    "DNS records obtained using DHCP. E.g. if you have a client called "
+                    "`android-1234` and domain set to `lan`, the client will be reachable "
+                    "under domain name `android-1234.lan`."
                 ),
                 nuci_path="uci.dhcp.@dnsmasq[0].local",
                 nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan",
                 validators=[validators.Domain()],
-            ).requires("dynamic_dns", True)
+            ).requires("dhcp_from_dns", True)
 
         resolver = dns_form.nuci_config.find_child("uci.dhcp.@dnsmasq[0]")
 
