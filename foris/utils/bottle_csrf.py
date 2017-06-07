@@ -20,7 +20,7 @@ import string
 
 
 def get_csrf_token():
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     csrf_token = session.get("csrf_token")
     if not csrf_token:
         # create new token if it's not present in this session
@@ -36,7 +36,7 @@ def update_csrf_token(save_session=True):
     def generate_token():
         return "".join(random.choice(string.ascii_letters + string.digits) for i in range(32))
 
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     session['csrf_token'] = generate_token()
     if save_session:
         session.save()

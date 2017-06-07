@@ -44,7 +44,6 @@ setup(
     url="https://gitlab.labs.nic.cz/turris/foris/",
     license="GPL-3.0",
     requires=[
-        "beaker",
         "bottle",
         "bottle_i18n",
         "ncclient",
@@ -61,6 +60,8 @@ setup(
         "foris.nuci.modules",
         "foris.plugins",
         "foris.utils",
+        "foris.ubus",
+        "foris.middleware",
     ],
     package_data={
         '': [

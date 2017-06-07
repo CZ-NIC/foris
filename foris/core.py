@@ -1,6 +1,6 @@
 # coding=utf-8
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,13 +25,13 @@ import re
 import time
 
 # 3rd party
-from beaker.middleware import SessionMiddleware
 import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 from ncclient.operations import TimeoutExpiredError, RPCError
 
 # local
 from . import __version__ as foris_version
+from .middleware.sessions import SessionMiddleware
 from .nuci import client, filters, cache
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
 from .nuci.modules.user_notify import Severity
@@ -82,7 +82,7 @@ _ = ugettext
 # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
 # because bool(user_authenticated) is always True - it means bool(<function ...>)
 bottle.SimpleTemplate.defaults["user_authenticated"] =\
-    lambda: bottle.request.environ["beaker.session"].get("user_authenticated")
+    lambda: bottle.request.environ["foris.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
 bottle.SimpleTemplate.defaults["static"] = static
@@ -142,13 +142,14 @@ def login_redirect(step_num, wizard_finished=False):
 
 @bottle.view("index")
 def index():
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     import wizard
     allowed_step_max, wizard_finished = wizard.get_wizard_progress()
 
     if allowed_step_max == 1:
+        if session.is_anonymous:
+            session.recreate()
         session["user_authenticated"] = True
-        allowed_step_max = 1
     else:
         session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
         session["wizard_finished"] = wizard_finished
@@ -260,12 +261,14 @@ def write_uci_lang(lang):
 
 
 def login():
-    session = bottle.request.environ["beaker.session"]
+    session = bottle.request.environ["foris.session"]
+
     next = bottle.request.POST.get("next")
     if _check_password(bottle.request.POST.get("password")):
         # re-generate session to prevent session fixation
-        session.invalidate()
+        session.recreate()
         session["user_authenticated"] = True
+
         update_csrf_token(save_session=False)
         session.save()
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
@@ -286,9 +289,11 @@ def login():
 
 
 def logout():
-    session = bottle.request.environ["beaker.session"]
+    session = bottle.request.environ["foris.session"]
+
     if "user_authenticated" in session:
-        session.delete()
+        session.load_anonymous()
+
     bottle.redirect(reverse("index"))
 
 
@@ -519,16 +524,6 @@ def prepare_main_app(args):
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
-    # session middleware (note: session.auto does not work within Bottle)
-    session_options = {
-        'session.type': 'file',
-        'session.data_dir': '/tmp/beaker/data',
-        'session.lock_dir': '/tmp/beaker/lock',
-        'session.cookie_expires': True,
-        'session.timeout': args.session_timeout,
-        'session.auto': True,
-        'session.httponly': True,
-    }
-    app = SessionMiddleware(app, session_options)
+    app = SessionMiddleware(app, args.session_timeout)
 
     return app

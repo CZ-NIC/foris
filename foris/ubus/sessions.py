@@ -72,15 +72,17 @@ class UbusSession(object):
             self._obtain(session_id)
         self.destroyed = False
         self.readonly = False
+        self.filtered_keys = []
 
     @not_readonly
     @not_destroyed
     def save(self):
         try:
+            filtered_data = {k: v for k, v in self._data.items() if k not in self.filtered_keys}
             call("session", "set", {
-                "ubus_rpc_session": self.session_id, "values": {"foris": self._data}}
-            )
-            logger.debug("foris session '%s' stored: %s" % (self.session_id, self._data))
+                "ubus_rpc_session": self.session_id, "values": {"foris": filtered_data}
+            })
+            logger.debug("foris session '%s' stored: %s" % (self.session_id, filtered_data))
         except RuntimeError:
             logger.debug("Failed to store session data.")
             return False

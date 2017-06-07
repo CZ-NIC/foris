@@ -26,6 +26,17 @@ class Message(object):
         self.level = level
         self.extra_classes = extra_classes
 
+    def to_json(self):
+        return {
+            "text": self.text,
+            "level": self.level,
+            "extra_classes": self.extra_classes,
+        }
+
+    @staticmethod
+    def from_json(json):
+        return Message(json["text"], json["level"], json["extra_classes"])
+
     @property
     def classes(self):
         """
@@ -54,14 +65,14 @@ def get_messages(level=None, min_level=None):
             return True
         return False
 
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     messages = session.get(_SESSION_KEY, [])
     all_messages = messages[:]
     for msg in all_messages:
         if should_show():
             messages.remove(msg)
             session[_SESSION_KEY] = messages
-            yield msg
+            yield Message.from_json(msg)
 
 
 def info(text, extra_classes=None):
@@ -112,9 +123,9 @@ def add_message(text, level=INFO, extra_classes=None):
     :param level: severity level
     :param extra_classes: extra classes of the message
     """
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     messages = session.get(_SESSION_KEY, [])
-    messages.append(Message(text, level, extra_classes))
+    messages.append(Message(text, level, extra_classes).to_json())
     session[_SESSION_KEY] = messages
 
 
