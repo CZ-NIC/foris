@@ -1,8 +1,16 @@
 #!/bin/sh
+
+# to run the tests you'd need to have following packages installed:
+# * pytest
+# * nose
+# * mock
+#
+# you can install it via pip
+
 cd foris
 if [ "$1" == "coverage" ]; then
     shift
     nosetests --with-coverage  --cover-xml --cover-xml-file=/tmp/foris_coverage.xml --cover-erase --cover-package=. --verbose $@
 else
-    nosetests --verbose $@
+    pytest --verbose $@
 fi

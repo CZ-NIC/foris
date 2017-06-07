@@ -10,7 +10,7 @@ from nose.tools import (assert_equal, assert_not_equal, assert_in,
                         assert_greater, assert_less,
                         assert_true, assert_false,
                         assert_regexp_matches)
-from webtest import TestApp, Upload, Text
+from webtest import TestApp as WebApp, Upload, Text
 
 import foris.core
 from foris.nuci.client import StaticNetconfConnection
@@ -32,11 +32,20 @@ RESPONSE_TEXTS = {
 XHR_HEADERS = {'X-Requested-With': "XMLHttpRequest"}
 
 
-class TestInitException(Exception):
+class InitException(Exception):
     pass
 
 
 class ForisTest(TestCase):
+    AVAILABLE_DEVICES = [
+        "Turris Omnia - RTROM01",
+        "Turris - RTRS01",
+        "Turris - RTRS02",
+    ]
+    AVAILABLE_SERIALS = [
+        (0x499999999, 0x900F00000),
+        (0xA00000000, 0xC00000000),
+    ]
     app = None
     config_directory = "/tmp/foris_test-root/etc/config"
 
@@ -47,7 +56,7 @@ class ForisTest(TestCase):
         StaticNetconfConnection.enable_test_environment(cls.config_directory)
         # initialize Foris WSGI app
         args = cls.make_args()
-        cls.app = TestApp(foris.core.prepare_main_app(args))
+        cls.app = WebApp(foris.core.prepare_main_app(args))
 
     @classmethod
     def tearDownClass(cls):
@@ -58,7 +67,7 @@ class ForisTest(TestCase):
         call(["rm", "-rf", cls.config_directory])
         call(["mkdir", "-p", cls.config_directory])
         if call(["tar", "xzf", "/usr/lib/python2.7/site-packages/foris/tests/configs.tar.gz", "-C", cls.config_directory]) > 0:
-            raise TestInitException("Cannot extract configs.")
+            raise InitException("Cannot extract configs.")
 
     @classmethod
     def set_foris_password(cls, password):
@@ -67,7 +76,7 @@ class ForisTest(TestCase):
         if not (uci_set("foris.auth", "config", cls.config_directory)
                 and uci_set("foris.auth.password", encrypted_pwd, cls.config_directory)
                 and uci_commit(cls.config_directory)):
-            raise TestInitException("Cannot set Foris password.")
+            raise InitException("Cannot set Foris password.")
         StaticNetconfConnection._connect()
 
     @classmethod
@@ -76,7 +85,7 @@ class ForisTest(TestCase):
                 and uci_set("foris.wizard.allowed_step_max", 10, cls.config_directory)
                 and uci_set("foris.wizard.finished", 1, cls.config_directory)
                 and uci_commit(cls.config_directory)):
-            raise TestInitException("Cannot mark Wizard as completed.")
+            raise InitException("Cannot mark Wizard as completed.")
         StaticNetconfConnection._connect()
 
     @staticmethod
@@ -107,6 +116,9 @@ class ForisTest(TestCase):
 
     def check_uci_val(self, path, value):
         assert_equal(self.uci_get(path), value)
+
+    def check_uci_list(self, path, values):
+        assert_equal(set(self.uci_get(path).split(" ")), set(values))
 
 
 class TestConfig(ForisTest):
@@ -252,7 +264,7 @@ class TestConfig(ForisTest):
         self.check_uci_val("dhcp.lan.ignore", "1")
         self.check_uci_val("network.lan.ipaddr", expected_ip)
 
-    @patch("foris.config_handlers.base.WifiHandler._get_wireless_cards")
+    @patch("foris.config_handlers.wifi.WifiHandler._get_wireless_cards")
     def test_tab_wifi(self, gwc):
         gwc.return_value = test_data.stats_wireless_cards
 
@@ -399,7 +411,7 @@ class TestConfig(ForisTest):
                           "shell-utils"]
         default_enabled = ["luci-controls", "nas", "printserver", "netutils"]
         # check for value from default config
-        self.check_uci_val("updater.pkglists.lists", " ".join(default_enabled))
+        self.check_uci_list("updater.pkglists.lists", default_enabled)
         page = self.app.get("/config/updater/")
         form = page.forms['main-form']
 
@@ -425,13 +437,13 @@ class TestConfig(ForisTest):
             check_updates_mock.return_value = True
             submit = form.submit().follow()
             assert_in(RESPONSE_TEXTS['form_saved'], submit.body)
-        self.check_uci_val("updater.pkglists.lists", "netutils shell-utils")
+        self.check_uci_list("updater.pkglists.lists", ("netutils", "shell-utils"))
 
     def test_tab_about(self):
         # look for serial number
         about_page = self.app.get("/config/about/")
         assert_equal(about_page.status_int, 200)
-        assert_regexp_matches(about_page.body, r"<td>Turris - RTRS0[12]</td>",
+        assert_regexp_matches(about_page.body, r"|".join(self.AVAILABLE_DEVICES),
                               "This test suite is not adjusted for this device.")
         sn_match = re.search(r"<td>(\d+)</td>", about_page.body)
         assert_true(sn_match)
@@ -440,8 +452,16 @@ class TestConfig(ForisTest):
         except ValueError:
             raise AssertionError("Router serial number is not integer.")
         # should work on routers from first production Turris 1.0 till new Turris 1.1
-        assert_greater(sn, 0x499999999)
-        assert_less(sn, 0x900F00000)
+        in_range = False
+        for first, last in self.AVAILABLE_SERIALS:
+            if first < sn < last:
+                in_range = True
+        assert_true(
+            in_range,
+            "Serial %d not in range %s " % (
+                sn, ", ".join([repr(e) for e in self.AVAILABLE_SERIALS])
+            )
+        )
 
     def test_registration_code(self):
         res = self.app.get("/config/about/ajax?action=registration_code",
@@ -578,14 +598,14 @@ class TestWizard(ForisTest):
     def test_step_08(self):
         page = self._test_wizard_step(8)
 
-        with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
+        with patch("foris.config_handlers.wifi.WifiHandler._get_wireless_cards") as gwc:
             gwc.return_value = test_data.stats_wireless_cards
             submit = page.forms['main-form'].submit().follow()
             assert_equal(submit.status_int, 200)
             assert_equal(submit.request.path, "//wizard/step/9")
 
     def test_step_09(self):
-        with patch("foris.config_handlers.base.WifiHandler._get_wireless_cards") as gwc:
+        with patch("foris.config_handlers.wifi.WifiHandler._get_wireless_cards") as gwc:
             gwc.return_value = test_data.stats_wireless_cards
             page = self._test_wizard_step(9)
             form = page.forms['main-form']
