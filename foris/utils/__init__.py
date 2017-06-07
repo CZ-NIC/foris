@@ -33,7 +33,7 @@ logger = logging.getLogger("foris.utils")
 
 
 def is_user_authenticated():
-    session = bottle.request.environ['beaker.session']
+    session = bottle.request.environ['foris.session']
     return session.get("user_authenticated", False)
 
 
