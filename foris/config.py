@@ -266,13 +266,13 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
                 messages.success(_("Update was approved."))
                 client.check_updates()
             else:
-                messages.error(_("Failed to approve update."))
+                messages.error(_("Failed to approve the update."))
         elif request.POST["call"] == "deny":
             if client.deny_approval(request.POST["approval-id"]):
-                messages.success(_("Update was denied."))
+                messages.success(_("Update was postponed."))
                 client.check_updates()
             else:
-                messages.error(_("Failed to deny update."))
+                messages.error(_("Failed to postpone the update."))
 
         bottle.redirect(reverse("config_page", page_name="updater"))
 
