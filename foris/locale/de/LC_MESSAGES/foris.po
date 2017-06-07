@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-23 16:13+0200\n"
+"POT-Creation-Date: 2017-06-07 15:43+0200\n"
 "PO-Revision-Date: 2017-04-11 09:27+0000\n"
 "Last-Translator: NoR nIc <nora.cznic@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
@@ -135,6 +135,21 @@ msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
 "Einstellungen konnten nicht geladen werden, die Sicherheitskopie ist "
 "wahrscheinlich beschädigt."
+
+msgid "Invalid reguest arguments."
+msgstr ""
+
+msgid "Update was approved."
+msgstr ""
+
+msgid "Failed to approve the update."
+msgstr ""
+
+msgid "Update was postponed."
+msgstr ""
+
+msgid "Failed to postpone the update."
+msgstr ""
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -659,6 +674,28 @@ msgstr "Automatische Aktualisierungen benutzen (empfohlen)"
 msgid "Turn automatic updates off"
 msgstr "Automatische Aktualisierungen deaktivieren"
 
+#, fuzzy
+msgid "Update approvals"
+msgstr "Updater"
+
+msgid "No approval needed"
+msgstr ""
+
+msgid "Updates will be performed immediatelly without a user confirmation."
+msgstr ""
+
+msgid "Delayed approval"
+msgstr ""
+
+msgid "Updates will be performed in a while without a user confirmation."
+msgstr ""
+
+msgid "Approval needed"
+msgstr ""
+
+msgid "User always needs to confirm the updates."
+msgstr ""
+
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
 "the standard installation, you can optionally select lists of additional "
@@ -1104,8 +1141,30 @@ msgstr ""
 "Datenerfassung ist zurzeit aktiviert. Sie können nicht den Updater "
 "deaktivieren, ohne dass zuerst die Datenerfassung deaktiviert wird."
 
-msgid "Package lists"
-msgstr "Liste der Softwarepakete"
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can postpone the "
+"questionable update temporarily and install them when you are prepared. It "
+"is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can e.g. install "
+"updates when you are prepared for a possible <a href='https://www.turris.cz/"
+"doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to "
+"the previous snapshot</a> and postpone the questionable update temporarily. "
+"It is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr ""
+
+msgid "Hint"
+msgstr "Hilfe"
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
@@ -1113,6 +1172,28 @@ msgid ""
 msgstr ""
 "Updater ist zurzeit deaktiviert. Aktivieren Sie ihn, damit Sie die Liste der "
 "Softwarepakete verwalten können."
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr ""
+
+msgid "Uninstall"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Postpone"
+msgstr ""
+
+msgid "Package lists"
+msgstr "Liste der Softwarepakete"
 
 msgid ""
 "List of available software was not downloaded from the server yet. Please "
@@ -1666,9 +1747,6 @@ msgstr "Schritt"
 
 msgid "Language"
 msgstr "Sprache"
-
-msgid "Hint"
-msgstr "Hilfe"
 
 msgid "foris version:"
 msgstr "Foris Version:"

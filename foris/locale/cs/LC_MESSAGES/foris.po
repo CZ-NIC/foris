@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-23 16:13+0200\n"
+"POT-Creation-Date: 2017-06-07 15:43+0200\n"
 "PO-Revision-Date: 2017-06-02 10:31+0000\n"
 "Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
@@ -132,6 +132,21 @@ msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
 "Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
 "poškozený."
+
+msgid "Invalid reguest arguments."
+msgstr ""
+
+msgid "Update was approved."
+msgstr ""
+
+msgid "Failed to approve the update."
+msgstr ""
+
+msgid "Update was postponed."
+msgstr ""
+
+msgid "Failed to postpone the update."
+msgstr ""
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -638,6 +653,28 @@ msgstr "Instalovat aktualizace automaticky (doporučeno)"
 msgid "Turn automatic updates off"
 msgstr "Vypnout automatické aktualizace"
 
+#, fuzzy
+msgid "Update approvals"
+msgstr "Updater"
+
+msgid "No approval needed"
+msgstr ""
+
+msgid "Updates will be performed immediatelly without a user confirmation."
+msgstr ""
+
+msgid "Delayed approval"
+msgstr ""
+
+msgid "Updates will be performed in a while without a user confirmation."
+msgstr ""
+
+msgid "Approval needed"
+msgstr ""
+
+msgid "User always needs to confirm the updates."
+msgstr ""
+
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
 "the standard installation, you can optionally select lists of additional "
@@ -735,8 +772,9 @@ msgid ""
 "the range is different than ranges on your other networks (LAN, WAN, VPN, "
 "etc.)."
 msgstr ""
-"Potřebujete nastavit rozsah IP adres pro Vaši síť pro hosty. Aby vše fungovalo, "
-"měl by být jiný, než rozsahy vašich dalších sítí (LAN, WAN, VPN, atd.)."
+"Potřebujete nastavit rozsah IP adres pro Vaši síť pro hosty. Aby vše "
+"fungovalo, měl by být jiný, než rozsahy vašich dalších sítí (LAN, WAN, VPN, "
+"atd.)."
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -826,6 +864,7 @@ msgstr "Zde nastav Wi-Fi pro hosty."
 msgid "Enable guest Wi-Fi"
 msgstr "Povolit Wi-Fi pro hosty"
 
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1076,8 +1115,30 @@ msgstr ""
 "Aktuálně máte povolený sběr dat. Pokud chcete vypnout updater, zakažte "
 "nejprve sběr dat."
 
-msgid "Package lists"
-msgstr "Seznamy balíčků"
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can postpone the "
+"questionable update temporarily and install them when you are prepared. It "
+"is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can e.g. install "
+"updates when you are prepared for a possible <a href='https://www.turris.cz/"
+"doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to "
+"the previous snapshot</a> and postpone the questionable update temporarily. "
+"It is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr ""
+
+msgid "Hint"
+msgstr "Nápověda"
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
@@ -1085,6 +1146,28 @@ msgid ""
 msgstr ""
 "Updater je vypnutý, abyste mohli spravovat seznamy balíčků, musíte ho "
 "nejprve zapnout."
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr ""
+
+msgid "Uninstall"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr ""
+
+msgid "Approve"
+msgstr ""
+
+msgid "Postpone"
+msgstr ""
+
+msgid "Package lists"
+msgstr "Seznamy balíčků"
 
 msgid ""
 "List of available software was not downloaded from the server yet. Please "
@@ -1616,9 +1699,6 @@ msgstr "Krok"
 
 msgid "Language"
 msgstr "Jazyk"
-
-msgid "Hint"
-msgstr "Nápověda"
 
 msgid "foris version:"
 msgstr "verze forisu:"
