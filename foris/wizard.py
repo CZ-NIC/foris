@@ -66,7 +66,7 @@ class WizardStepMixin(object):
         # this function can be used as a callback for a form
         next_step_number = next_step_number or self.next_step_allowed
         if next_step_number is not None:
-            session = request.environ['beaker.session']
+            session = request.environ['foris.session']
             # key in session on the following line should be always
             # set except in the case of the very first start
             session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
@@ -423,7 +423,7 @@ def get_wizard_progress():
     :return: step number of last allowed step (default is 1) and boolean flag - wizard is finished
     :rtype: tuple(int, bool)
     """
-    session = request.environ['beaker.session']
+    session = request.environ['foris.session']
     allowed_sess = session.get(WizardStepMixin.next_step_allowed_key, None)
     is_finished = session.get("wizard_finished", False)
     try:
@@ -458,7 +458,7 @@ def allow_next_step_session(step_number):
 
     :param step_number: step to allow
     """
-    session = request.environ['beaker.session']
+    session = request.environ['foris.session']
     # update session variable
     session[WizardStepMixin.next_step_allowed_key] = step_number
     session.save()
@@ -490,7 +490,7 @@ def mark_wizard_finished_session():
 
     :return: None
     """
-    session = request.environ['beaker.session']
+    session = request.environ['foris.session']
     session["wizard_finished"] = True
     session.save()
 
