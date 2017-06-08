@@ -285,6 +285,8 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
+        lazy_cache.nuci_updater = lambda: client.get(
+            filter=filters.updater).find_child("updater")
         if not contract_valid():
             auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
             kwargs['auto_updates_form'] = auto_updates_handler.form

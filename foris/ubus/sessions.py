@@ -136,3 +136,15 @@ class UbusSession(object):
     @not_destroyed
     def get(self, *args, **kwargs):
         return self._data.get(*args, **kwargs)
+
+    @not_readonly
+    @not_destroyed
+    def grant(self, obj, function, scope="ubus"):
+        call("session", "grant", {
+            "ubus_rpc_session": self.session_id,
+            "scope": scope,
+            "objects": [[obj, function]],
+        })
+        logger.debug(
+            "Session '%s' (scope='%s') granted '%s'.'%s'" % (self.session_id, scope, obj, function)
+        )
