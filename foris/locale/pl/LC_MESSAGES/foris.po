@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: 2017-05-31 19:33+0000\n"
+"PO-Revision-Date: 2017-06-08 15:33+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
-">\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,19 +123,19 @@ msgstr ""
 "uszkodzony."
 
 msgid "Invalid reguest arguments."
-msgstr ""
+msgstr "Nieprawidłowe argumenty żądania."
 
 msgid "Update was approved."
-msgstr ""
+msgstr "Aktualizacja została zatwierdzona."
 
 msgid "Failed to approve the update."
-msgstr ""
+msgstr "Nie można zatwierdzić aktualizacji."
 
 msgid "Update was postponed."
-msgstr ""
+msgstr "Aktualizacja została odłożona."
 
 msgid "Failed to postpone the update."
-msgstr ""
+msgstr "Nie udało się odłożyć aktualizacji."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -644,27 +644,29 @@ msgstr "Użyj automatycznych aktualizacji (zalecane)"
 msgid "Turn automatic updates off"
 msgstr "Wyłącz automatyczne aktualizacje"
 
-#, fuzzy
 msgid "Update approvals"
-msgstr "Updater"
+msgstr "Zaktualizuj zgody"
 
 msgid "No approval needed"
-msgstr ""
+msgstr "Nie wymaga zgody"
 
 msgid "Updates will be performed immediatelly without a user confirmation."
 msgstr ""
+"Aktualizacje będą przeprowadzane natychmiast bez potwierdzenia przez "
+"użytkownika."
 
 msgid "Delayed approval"
-msgstr ""
+msgstr "Odroczenie zgody"
 
 msgid "Updates will be performed in a while without a user confirmation."
 msgstr ""
+"Aktualizacje będą wykonane za jakiś czas bez potwierdzenia przez użytkownika."
 
 msgid "Approval needed"
-msgstr ""
+msgstr "Potrzebna zgoda"
 
 msgid "User always needs to confirm the updates."
-msgstr ""
+msgstr "Użytkownik musi zawsze potwierdzić aktualizacje."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -1118,6 +1120,11 @@ msgid ""
 "is not possible to deny the update forever, it will be proposed to you "
 "together with the next update again."
 msgstr ""
+"Zatwierdzanie aktualizacji może być przydatne, jeśli chcesz mieć pewność, że "
+"aktualizacje nie uszkodzą niektórych Twoich konfiguracji. Możesz tymczasowo "
+"odroczyć wątpliwą aktualizację i zainstalować ją, gdy jesteś na to "
+"przygotowany. Nie można odroczyć aktualizacji na zawsze, zostanie ona "
+"zaproponowana wraz z następną aktualizacją."
 
 msgid ""
 "Update approvals can be handy in case you want to be sure that updates will "
@@ -1128,10 +1135,17 @@ msgid ""
 "It is not possible to deny the update forever, it will be proposed to you "
 "together with the next update again."
 msgstr ""
+"Zatwierdzanie aktualizacji może być przydatne, jeśli chcesz mieć pewność, że "
+"aktualizacje nie uszkodzą niektórych Twoich konfiguracji. Możesz np. "
+"zainstalować aktualizacje, gdy jesteś przygotowany na możliwość <a href='http"
+"s://www.turris.cz/doc/en/howto/omnia_factory_reset#rollback_to_latest_snapsho"
+"t'>powrotu do poprzedniej migawki</a> i odłożenie wątpliwej aktualizacji "
+"tymczasowo. Nie można odroczyć aktualizacji na zawsze, zostanie ona "
+"zaproponowana wraz z następną aktualizacją."
 
 #, python-format
 msgid "after %(input)s hours"
-msgstr ""
+msgstr "po %(input)s godzinach"
 
 msgid "Hint"
 msgstr "Wskazówka"
@@ -1145,22 +1159,22 @@ msgstr ""
 
 #, python-format
 msgid "Approve update from %(when)s"
-msgstr ""
+msgstr "Zatwierdź aktualizację od %(when)s"
 
 msgid "Uninstall"
-msgstr ""
+msgstr "Odinstaluj"
 
 msgid "Install"
-msgstr ""
+msgstr "Zainstaluj"
 
 msgid "Note that a reboot will be triggered after the update."
-msgstr ""
+msgstr "Należy pamiętać, że po aktualizacji nastąpi ponowne uruchomienie."
 
 msgid "Approve"
-msgstr ""
+msgstr "Zatwierdzanie"
 
 msgid "Postpone"
-msgstr ""
+msgstr "Odracz"
 
 msgid "Package lists"
 msgstr "Listy pakietów"
