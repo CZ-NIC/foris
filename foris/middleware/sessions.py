@@ -209,6 +209,8 @@ class SessionMiddleware(object):
         session.ws_session = ws_session
 
         environ["foris.session"] = session
+        environ["foris.session.id"] = session.session_id
+        environ["foris.session.data"] = session._session._data
 
         def session_start_response(status, headers, exc_info=None):
             response = start_response(status, headers, exc_info)
