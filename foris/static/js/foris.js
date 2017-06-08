@@ -56,6 +56,7 @@ Foris.initialize = function () {
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
   Foris.applySVGFallback();
+  Foris.initWebsockets();
 };
 
 Foris.initParsley = function () {
@@ -154,6 +155,44 @@ Foris.applySVGFallback = function() {
       this.src = src.join(".");
     });
   }
+};
+
+
+Foris.WS = {
+};
+
+Foris.initWebsockets = function() {
+  var protocol = window.location.protocol == "http:" ? "ws:" : "wss:";
+  var port = window.location.protocol == "http:" ? "9080" : "9443";
+  var url = protocol + "//" + window.location.hostname + ":" + port + "/";
+
+  // Connect to ubus-ws
+  ws = new WebSocket(url);
+
+  ws.onopen = function () {
+    var output = JSON.stringify({"action": "register", "params": {"kinds": Object.keys(Foris.WS)}});
+    ws.send(output);
+    console.log("WS registering for: " + Object.keys(Foris.WS));
+  };
+
+  ws.onmessage = function (e) {
+    console.log("WS message received: " + e.data);
+    var parsed = JSON.parse(e.data);
+    for (var key in parsed) {
+      if (Foris.WS.hasOwnProperty(key)) {
+        Foris.WS[key](parsed[key]);
+      }
+    }
+  };
+
+  ws.onerror = function(e) {
+    console.log("WS error occured:" + e);
+  };
+
+  ws.onclose = function() {
+    console.log("WS connection closed.");
+  };
+
 };
 
 Foris.updateForm = function (form) {
