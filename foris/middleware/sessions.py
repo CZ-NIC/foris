@@ -24,22 +24,24 @@ logger = logging.getLogger("middleware.sessions")
 
 
 class SessionProxy(object):
-    DONT_STORE_IN_ANONYMOUS = [
-        "user_authenticated",
-        "allowed_step_max",
-        "wizard_finished",
-    ]
 
-    def __init__(self, env_key, timeout, session_id):
+    def __init__(self, env_key, timeout):
         self.cookie_set_needed = False
         self.cookie_unset_needed = False
         self.env_key = env_key
         self.timeout = timeout
-        self._session = UbusSession(self.timeout, session_id)
-        self.tainted = False
-        if self.is_anonymous:
-            self._session.filtered_keys = list(SessionProxy.DONT_STORE_IN_ANONYMOUS)
-        logger.debug("session '%s' loaded" % self.session_id)
+
+    @property
+    def session_id(self):
+        return self._session.session_id
+
+    @property
+    def destroyed(self):
+        return self._session.destroyed
+
+    @property
+    def is_anonymous(self):
+        return self.session_id == UbusSession.ANONYMOUS
 
     def set_cookie(self):
         self.cookie_set_needed = True
@@ -66,17 +68,52 @@ class SessionProxy(object):
     def unset_cookie_text(self):
         return self._cookie_unset_text
 
-    @property
-    def session_id(self):
-        return self._session.session_id
+    def unload(self):
+        self.unset_cookie()
+        logger.debug("session '%s' cookies will be unloaded" % self.session_id)
 
-    @property
-    def destroyed(self):
-        return self._session.destroyed
+    def load(self):
+        self.set_cookie()
+        logger.debug("session '%s' cookies will be loaded" % self.session_id)
 
-    @property
-    def is_anonymous(self):
-        return self.session_id == UbusSession.ANONYMOUS
+    def destroy(self):
+        self._session.destroy()
+        self.tainted = False
+        logger.debug("ws session '%s' destroyed" % self.session_id)
+
+
+class SessionWsProxy(SessionProxy):
+    def __init__(self, env_key, timeout, session_id=None):
+        super(SessionWsProxy, self).__init__(env_key, timeout)
+        self._session = UbusSession(self.timeout, session_id)
+
+        if session_id is None:
+            # grant listen for the new session
+            self.grant_listen()
+            # set the cookie
+            self.set_cookie()
+
+        logger.debug("ws session '%s' loaded" % self.session_id)
+
+    def grant_listen(self):
+        self._session.grant("websocket-listen", "listen-allowed")
+
+
+class SessionForisProxy(SessionProxy):
+    DONT_STORE_IN_ANONYMOUS = [
+        "user_authenticated",
+        "allowed_step_max",
+        "wizard_finished",
+    ]
+
+    def __init__(self, env_key, timeout, session_id):
+        super(SessionForisProxy, self).__init__(env_key, timeout)
+        self._session = UbusSession(self.timeout, session_id)
+        self.tainted = False
+        if self.is_anonymous:
+            self._session.filtered_keys = list(SessionForisProxy.DONT_STORE_IN_ANONYMOUS)
+        self.ws_session = None
+        logger.debug("session '%s' loaded" % self.session_id)
 
     def __len__(self):
         return self._session.__len__()
@@ -110,18 +147,13 @@ class SessionProxy(object):
         self._session.destroy()
         self.tainted = False
         logger.debug("session '%s' destroyed" % self.session_id)
-
-    def unload(self):
-        self.unset_cookie()
-        logger.debug("session '%s' unloaded" % self.session_id)
-
-    def load(self):
-        self.set_cookie()
-        logger.debug("session '%s' loaded" % self.session_id)
+        if self.ws_session:
+            self.ws_session.destroy()
 
     def recreate(self):
         if not self.is_anonymous:
             self.unload()
+            self.ws_session.unload()
             self.destroy()
 
         self._session = UbusSession(self.timeout)
@@ -136,36 +168,57 @@ class SessionProxy(object):
         self.destroy()
         self.unload()
         self._session = UbusSession(self.timeout, session_id=UbusSession.ANONYMOUS)
-        self._session.filtered_keys = list(SessionProxy.DONT_STORE_IN_ANONYMOUS)
+        self._session.filtered_keys = list(SessionForisProxy.DONT_STORE_IN_ANONYMOUS)
+        self.ws_session = None
 
 
 class SessionMiddleware(object):
 
-    def __init__(self, wrap_app, timeout, env_key="foris.session"):
+    @staticmethod
+    def _get_cookie(name, cookies):
+        filtered = [
+            e.strip() for e in cookies.split(";") if e.strip().startswith("%s=" % name)
+        ]
+        return filtered[0][len(name) + 1:] if filtered else None
+
+    def __init__(self, wrap_app, timeout, env_key="foris.session", ws_key="ubus.ws.session"):
         self.timeout = timeout
         self.env_key = env_key
+        self.ws_key = ws_key
         self.wrap_app = self.app = wrap_app
 
     def __call__(self, environ, start_response):
         cookies = environ.get('HTTP_COOKIE', "")
-        cookie_data = [
-            e.strip() for e in cookies.split(";") if e.strip().startswith("%s=" % self.env_key)
-        ]
-
-        if cookie_data:
-            session_key = cookie_data[0][len(self.env_key) + 1:]
-        else:
-            session_key = UbusSession.ANONYMOUS
+        session_key = self._get_cookie(self.env_key, cookies)
+        session_key = session_key if session_key else UbusSession.ANONYMOUS
+        ws_session_key = self._get_cookie(self.ws_key, cookies)
 
         try:
-            session = SessionProxy(self.env_key, self.timeout, session_key)
+            session = SessionForisProxy(self.env_key, self.timeout, session_key)
         except SessionNotFound:
-            session = SessionProxy(self.env_key, self.timeout, UbusSession.ANONYMOUS)
+            session = SessionForisProxy(self.env_key, self.timeout, UbusSession.ANONYMOUS)
+
+        if not session.is_anonymous:
+            try:
+                ws_session = SessionWsProxy(self.ws_key, self.timeout, ws_session_key)
+            except SessionNotFound:
+                ws_session = SessionWsProxy(self.ws_key, self.timeout)
+        else:
+            ws_session = None
+
+        session.ws_session = ws_session
 
         environ["foris.session"] = session
 
         def session_start_response(status, headers, exc_info=None):
             response = start_response(status, headers, exc_info)
+            # update ws session cookies
+            if ws_session and ws_session.cookie_set_needed:
+                headers.append(('Set-cookie', ws_session.set_cookie_text))
+            elif ws_session and ws_session.cookie_unset_needed:
+                headers.append(('Set-cookie', ws_session.unset_cookie_text))
+
+            # update foris session cookies
             if session.cookie_set_needed:
                 headers.append(('Set-cookie', session.set_cookie_text))
             elif session.cookie_unset_needed:
