@@ -19,6 +19,7 @@ from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Radio
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
+from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import contract_valid
 
 from .base import BaseConfigHandler, logger
@@ -35,26 +36,20 @@ class UpdaterEulaHandler(BaseConfigHandler):
 
     def get_form(self):
         form = fapi.ForisForm("updater_eula", self.data,
-                              filter=filters.create_config_filter("foris"))
+                              filter=filters.create_config_filter("updater", "foris"))
         main_section = form.add_section(name="agree_eula",
                                         title=_(self.userfriendly_title))
         main_section.add_field(
             Radio, name="agreed", label=_("I agree"), default="1",
             args=(("1", _("Use automatic updates (recommended)")),
                   ("0", _("Turn automatic updates off"))),
-            nuci_path="uci.foris.eula.agreed_updater",
-            nuci_preproc=lambda val: str(val.value)
+            nuci_preproc=lambda x: "1" if preproc_disabled_to_agreed(x) else "0"
         )
 
         def form_cb(data):
             agreed = bool(int(data.get("agreed", "0")))
 
             uci = Uci()
-            foris = uci.add(Config("foris"))
-            eula = foris.add(Section("eula", "config"))
-            eula.add(Option("agreed_updater", agreed))
-
-            # Also toggle updater - we don't want a disagreed EULA and enabled updater
             updater = uci.add(Config("updater"))
             override = updater.add(Section("override", "override"))
             override.add(Option("disable", not agreed))

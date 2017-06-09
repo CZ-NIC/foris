@@ -25,6 +25,7 @@ from .config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, 
 from .nuci import client, filters
 from .nuci.configurator import add_config_update, commit
 from .nuci.modules.uci_raw import build_option_uci_tree
+from .nuci.preprocessors import preproc_disabled_to_agreed
 from .utils import contract_valid, login_required, messages, require_contract_valid
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
@@ -378,9 +379,8 @@ class WizardStep10(WizardStepMixin, BaseConfigHandler):
         kwargs['notifications'] = client.get_messages().restarts
         kwargs['make_notification_title'] = make_notification_title
         if not contract_valid():
-            foris_conf = client.get(filter=filters.create_config_filter("foris"))
-            agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_updater")
-            agreed_updater = agreed_opt and bool(int(agreed_opt.value))
+            updater_conf = client.get(filter=filters.create_config_filter("foris"))
+            agreed_updater = preproc_disabled_to_agreed(updater_conf)
             return template("wizard/finished.tpl",
                             title=_("Installation finished"),
                             stepname=self.name,
