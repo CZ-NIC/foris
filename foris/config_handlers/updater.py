@@ -19,6 +19,7 @@ from foris.core import lazy_cache, gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
+from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import contract_valid
 
 from .base import BaseConfigHandler, logger
@@ -68,15 +69,14 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
             return UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT
 
         form = fapi.ForisForm("updater_eula", self.data,
-                              filter=filters.create_config_filter("foris", "updater"))
+                              filter=filters.create_config_filter("updater", "foris"))
         main_section = form.add_section(name="agree_eula",
                                         title=_(self.userfriendly_title))
         main_section.add_field(
             Radio, name="agreed", label=_("I agree"), default="1",
             args=(("1", _("Use automatic updates (recommended)")),
                   ("0", _("Turn automatic updates off"))),
-            nuci_path="uci.foris.eula.agreed_updater",
-            nuci_preproc=lambda val: str(val.value)
+            nuci_preproc=lambda x: "1" if preproc_disabled_to_agreed(x) else "0"
         )
         approval_section = form.add_section(name="approvals", title=_("Update approvals"))
         main_section.add_section(approval_section)
@@ -125,11 +125,6 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
             auto_grant_seconds = int(data.get("approval_timeout", 24)) * 60 * 60
 
             uci = Uci()
-            foris = uci.add(Config("foris"))
-            eula = foris.add(Section("eula", "config"))
-            eula.add(Option("agreed_updater", agreed))
-
-            # Also toggle updater - we don't want a disagreed EULA and enabled updater
             updater = uci.add(Config("updater"))
             override = updater.add(Section("override", "override"))
             override.add(Option("disable", not agreed))

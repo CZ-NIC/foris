@@ -28,6 +28,7 @@ from .config_handlers import *
 from .nuci import client
 from .nuci.client import filters
 from .nuci.exceptions import ConfigRestoreError
+from .nuci.preprocessors import preproc_disabled_to_agreed
 from .utils import login_required, messages, require_contract_valid, contract_valid
 from .utils.bottle_csrf import CSRFPlugin
 from .utils.routing import reverse
@@ -289,9 +290,8 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
                 filter=filters.updater).find_child("updater")
             auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
             kwargs['auto_updates_form'] = auto_updates_handler.form
-            agreed_opt = auto_updates_handler.form.nuci_config.find_child(
-                'uci.foris.eula.agreed_updater')
-            kwargs['updater_disabled'] = not (agreed_opt and bool(int(agreed_opt.value)))
+            kwargs['updater_disabled'] = \
+                not preproc_disabled_to_agreed(auto_updates_handler.form.nuci_config)
             collecting_opt = auto_updates_handler.form.nuci_config.find_child(
                 'uci.foris.eula.agreed_collect')
             kwargs['collecting_enabled'] = collecting_opt and bool(int(collecting_opt.value))

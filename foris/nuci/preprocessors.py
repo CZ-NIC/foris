@@ -88,3 +88,18 @@ def generate_network_preprocessor(address_path, netmask_path, default_network, d
 
     return network_preprocessor
 
+
+def preproc_disabled_to_agreed(data):
+    """ Processes the data obtained by from `uci.updater.override.disable`
+    and decides whether the auto updates are agreed
+
+    :param data: obtained option
+    :type data: nuci.modules.base.Data
+    :return: True if autoupdates are enabled False otherwise
+    :rtype: bool
+    """
+    disabled_opt = data.find_child("uci.updater.override.disable")
+    if disabled_opt and bool(int(disabled_opt.value)):
+        return False  # not agreed only if option disabled option is turned on
+    else:
+        return True
