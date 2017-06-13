@@ -144,7 +144,7 @@ class LanHandler(BaseConfigHandler):
             card_count = 0
             while data.find_child("uci.wireless.@wifi-device[%d]" % card_count):
                 card_count += 1
-            if not guest_enabled:
+            if not guest_enabled and card_count > 0:
                 wireless = uci.add(Config("wireless"))
                 for i in range(card_count):
                     guest_iface = wireless.add(Section("guest_iface_%d" % i, "wifi-iface"))
