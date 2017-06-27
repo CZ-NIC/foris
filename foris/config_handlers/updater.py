@@ -192,11 +192,12 @@ class UpdaterHandler(BaseConfigHandler):
                 return list_name in enabled_names
             return preproc
 
-        agreed_collect = None
         if not contract_valid():
             agreed_collect_opt = updater_form.nuci_config \
                 .find_child("uci.foris.eula.agreed_collect")
             agreed_collect = agreed_collect_opt and bool(int(agreed_collect_opt.value))
+        else:
+            agreed_collect = True
 
         for pkg_list_item in pkg_list:
             if not contract_valid():
