@@ -8,86 +8,90 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-06-28 06:00+0000\n"
+"Last-Translator: Fln <weblate.org@fln.lt>\n"
+"Language-Team: Lithuanian "
+"<https://hosted.weblate.org/projects/turris/foris/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
 "n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 2.15-dev\n"
 
 msgid "This field is required."
-msgstr ""
+msgstr "Privalomas užpildyti laukas."
 
 msgid "Not a valid IPv4 address."
-msgstr ""
+msgstr "Netinkamas IPv4 adresas."
 
 msgid "Not a valid IPv4 netmask address."
-msgstr ""
+msgstr "Netinkama IPv4 adreso tinklo kaukė (netmask)."
 
 msgid "Not a valid IPv6 address."
-msgstr ""
+msgstr "Netinkamas IPv6 adresas."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr ""
+msgstr "Tai nėra nei tinkamas IPv4, nei IPv6 adresas."
 
 msgid "This is not an IPv6 address with prefix length."
-msgstr ""
+msgstr "Tai nėra IPv6 adresas su tinklo prefiksu."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr ""
+msgstr "Tai nėra IPv4 adresas su tinklo prefiksu."
 
 msgid "Is not a number."
-msgstr ""
+msgstr "Nėra skaičius."
 
 msgid "This is not valid time in HH:MM format."
-msgstr ""
+msgstr "Laikas neatitinka HH:MM šablono."
 
 msgid "MAC address is not valid."
-msgstr ""
+msgstr "Netinkamas MAC adresas."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
-msgstr ""
+msgstr "Nėra iš leidžiamo intervalo %(low)s - %(high)s."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr ""
+msgstr "Ilgis turi būti nuo %(low)s iki %(high)s simbolių."
 
 msgid "Configuration was successfully saved."
-msgstr ""
+msgstr "Konfigūracija sėkmingai išsaugota."
 
 msgid "There were some errors in your input."
-msgstr ""
+msgstr "Įvestuose duomenyse yra klaidų."
 
 msgid "Old password you entered was not valid."
-msgstr ""
+msgstr "Netinkamas senas slaptažodis."
 
 msgid "Password was successfully saved."
-msgstr ""
+msgstr "Slaptažodis sėkmingai išsaugotas."
 
 msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
+msgstr "WAN lizde nėra signalo, interneto ryšys tikriausiai neveiks."
 
 msgid "Maintenance"
-msgstr ""
+msgstr "Priežiūra"
 
 msgid "Wrong HTTP method."
-msgstr ""
+msgstr "Klaidingas HTTP metodas."
 
 msgid "Testing message was sent, please check your inbox."
-msgstr ""
+msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
 
 #, python-format
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 "<br>Error returned:<br><pre>%(error)s</pre>"
 msgstr ""
+"Testinio pranešimo siuntimas nepavyko, tikriausiai netinkama "
+"konfigūracija.<br>Gauta klaida:<br><pre>%(error)s</pre>"
 
 msgid "Sending of the testing message failed because of an internal error."
-msgstr ""
+msgstr "Testinio pranešimo siuntimas nepavyko dėl vidinės klaidos."
 
 #, python-format
 msgid ""
@@ -96,50 +100,61 @@ msgid ""
 "%(new_url)s</a> in local network. Please wait a while until router "
 "automatically restarts."
 msgstr ""
+"Konfigūracija sėkmingai atkurta. Po atnaujinimų diegimo ir perkrovimo galite "
+"grįžti į šį puslapį <a href=\"%(new_url)s\">%(new_url)s</a> vietiniame "
+"tinkle. Palaukite, kol maršrutizatorius persikraus automatiškai."
 
 msgid ""
 "Configuration was successfully restored. Please wait a while for "
 "installation of updates and automatic restart of the device."
 msgstr ""
+"Konfigūracija sėkmingai atkurta. Palaukite kol bus įdiegti atnaujinimai ir "
+"atliktas automatinis įrenginio perkrovimas."
 
 msgid "IP address of the router could not be determined from the backup."
-msgstr ""
+msgstr "Iš atsarginės kopijos nepavyko nustatyti maršrutizatoriaus IP adreso."
 
 msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
+"Nepavyko įkelti konfigūracijos, tikriausiai sugadintas atsarginės kopijos "
+"failas."
 
 msgid "Invalid reguest arguments."
-msgstr ""
+msgstr "Netinkami užklausos argumentai."
 
 msgid "Update was approved."
-msgstr ""
+msgstr "Atnaujinimas patvirtintas."
 
 msgid "Failed to approve the update."
-msgstr ""
+msgstr "Nepavyko patvirtinti atnaujinimo."
 
 msgid "Update was postponed."
-msgstr ""
+msgstr "Atnaujinimas buvo atidėtas."
 
 msgid "Failed to postpone the update."
-msgstr ""
+msgstr "Nepavyko atidėti atnaujinimo."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
 "or removed shortly."
 msgstr ""
+"Konfigūracija išsaugota sėkmingai. Pasirinkti paketai greitu metu bus "
+"įdiegti arba pašalinti."
 
 msgid "Data collection"
-msgstr ""
+msgstr "Duomenų rinkimas"
 
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
-msgstr ""
+msgstr "Tikrinant registraciją Įvyko klaida: <br><pre>%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
 "collection."
 msgstr ""
+"Registracija įvestam el. pašto adresui patikrinta. Dabar galite įjungti "
+"duomenų rinkimą."
 
 #, python-format
 msgid ""
@@ -148,6 +163,9 @@ msgid ""
 "registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
 "email address."
 msgstr ""
+"Šis maršutizatorius šiuo metu priskirtas kitam el. pašto adresui. "
+"Priskyrimui prie jūsų el. pašto adreso eikite į <a href=\"%(url)s\">Turris "
+"svetainę</a> ir panaudokite <strong>%(reg_num)s</strong> registracijos kodą."
 
 #, python-format
 msgid ""
@@ -155,66 +173,69 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
+"Šis el. pašto adresas dar nėra registruotas. Naujos paskyros sukūrimui "
+"eikite į <a href=\"%(url)s\">Turris svetainę</a> ir panaudokite "
+"<strong>%(reg_num)s</strong> registracijos kodą."
 
 msgid "About"
-msgstr ""
+msgstr "Apie"
 
 msgid "Online"
-msgstr ""
+msgstr "Ryšys yra"
 
 msgid "Offline"
-msgstr ""
+msgstr "Ryšio nėra"
 
 msgid "Connecting"
-msgstr ""
+msgstr "Jungiasi"
 
 msgid "Invalid authentication"
-msgstr ""
+msgstr "Netinkama autentifikacija"
 
 msgid "Broken"
-msgstr ""
+msgstr "Neveikiantis"
 
 msgid "Unknown status"
-msgstr ""
+msgstr "Nežinoma būklė"
 
 msgid "Home page"
-msgstr ""
+msgstr "Pradinis puslapis"
 
 msgid "Configuration could not be saved due to an internal error."
-msgstr ""
+msgstr "Nepavyko išsaugoti konfigūracijos dėl vidinės sistemos klaidos."
 
 msgid "Enable data collection"
-msgstr ""
+msgstr "Įjungti duomenų rinkimą"
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr ""
+msgstr "Naudoti persiuntimą"
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Išjungti DNSSEC"
 
 msgid "Backup file"
-msgstr ""
+msgstr "Atsarginės kopijos failas"
 
 msgid "Notifications"
-msgstr ""
+msgstr "Pranešimai"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Pranešimų nustatymai"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Įjungti pranešimus"
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "SMTP tiekėjas"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
-msgstr ""
+msgstr "Konfigūruojamas"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members of "
@@ -222,115 +243,128 @@ msgid ""
 "additional settings. If you want to set your own SMTP server, please select "
 "\"Custom\" and enter required settings."
 msgstr ""
+"Jei pasirinksite \"Turris\" SMTP tiekėją, bus naudojami Turris projekto "
+"nariams skirti serveriai. Šių serverių nereikia papildomai konfigūruoti. Jei "
+"norite naudoti savo SMTP serverį, pasirinkite \"Konfigūruojamas\" ir "
+"įveskite reikiamus nustatymus."
 
 msgid "Recipient's email"
-msgstr ""
+msgstr "Gavėjo el. pašto adresas"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr ""
+"Gavėjo el. pašto adresas. Naudojant daugiau nei vieną adresai atskiriami "
+"tarpo simboliais."
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Siuntėjo vardas"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
 "before the \"at\" sign."
 msgstr ""
+"Siuntėjo vardas bus naudojamas siuntėjo el. pašto adrese prieš @ simbolį."
 
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and underscores."
 msgstr ""
+"Siuntėjo varde gali būti tik raidės, skaičiai, taškas ir apatinio pabraukimo "
+"simbolis."
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Reikia perkrovimo"
 
 msgid "Reboot or attention is required"
-msgstr ""
+msgstr "Reikia perkrovimo arba atkreipti dėmesį"
 
 msgid "Reboot or attention is required or update was installed"
-msgstr ""
+msgstr "Reikia perkrovimo arba atkreipti dėmesį arba buvo įdiegti atnaujinimai"
 
 msgid "Importance"
-msgstr ""
+msgstr "Svarba"
 
 msgid "Send news"
-msgstr ""
+msgstr "Siųsti naujienas"
 
 msgid "Send emails about new features."
-msgstr ""
+msgstr "Siųsti el. laiškus apie naujas funkcijas."
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "SMTP nustatymai"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Siuntėjo adresas (From)"
 
 msgid "This is the address notifications are send from."
-msgstr ""
+msgstr "Pranešimai bus siunčiami iš šio adreso."
 
 msgid "Server address"
-msgstr ""
+msgstr "Serverio adresas"
 
 msgid "Server port"
-msgstr ""
+msgstr "Serverio portas"
 
 msgid "None"
-msgstr ""
+msgstr "Jokios"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Apsauga"
 
 msgid "Username"
-msgstr ""
+msgstr "Prisijungimo vardas"
 
 msgid "Password"
-msgstr ""
+msgstr "Slaptažodis"
 
 msgid "Automatic restarts after software update"
-msgstr ""
+msgstr "Automatinis perkrovimas po programinės įrangos atnaujinimo"
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Uždelsimas (dienos)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
 "the automatic restart itself."
 msgstr ""
+"Laikas dienomis nuo užklausos perkrauti gavimo iki automatinio persikrovimo."
 
 msgid "Reboot time"
-msgstr ""
+msgstr "Perkrovimo laikas"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr ""
+"Paros laikas HH:MM formatu, kada bus atliekamas automatinis perkrovimas."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
 "least 6 characters long."
 msgstr ""
+"Nustatykite slaptažodį priėjimui prie šio valdymo interfeiso. Slaptažodis "
+"turi būti mažiausiai 6 simbolių ilgio."
 
 msgid "Current password"
-msgstr ""
+msgstr "Dabartinis slaptažodis"
 
 msgid "New password"
-msgstr ""
+msgstr "Naujas slaptažodis"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Naujas slaptažodis (pakartokite)"
 
 msgid "Password (repeat)"
-msgstr ""
+msgstr "Slaptažodis (pakartokite)"
 
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "Slaptažodžiai nesutampa."
 
 msgid "Use the same password for advanced configuration"
-msgstr ""
+msgstr "Platesniame valdymo interfeise naudoti tą patį slaptažodį"
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -339,29 +373,37 @@ msgid ""
 "will have the option to do so later. Until then, the root account will be "
 "blocked.)"
 msgstr ""
+"Toks pat slaptažodis būtų naudojamas priėjimui prie šio valdymo interfeiso, "
+"root prisijungimui per LuCI web interfeisą ir SSH. Naudokite stiprų "
+"slaptažodį! (Nepasirinkus nenustatyti slaptažodžio platesniam konfigūravimui "
+"dabar, galėsite tai padaryti vėliau. Iki tol prisijungimas prie root "
+"paskyros bus blokuojamas.)"
 
 msgid "Region settings"
-msgstr ""
+msgstr "Regiono nustatymai"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
 "is required to display the right time and for related functions."
 msgstr ""
+"Pasirinkite laiko zoną, kuri naudojama valdant maršrutizatorių. Teisingam "
+"laiko išvedimui ir su tuo susijusioms funkcijom reikia, kad būtų parinkta "
+"teisinga laiko zona."
 
 msgid "Continent or ocean"
-msgstr ""
+msgstr "Žemynas arba vandenynas"
 
 msgid "Country"
-msgstr ""
+msgstr "Šalis"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Laiko zona"
 
 msgid "Email"
-msgstr ""
+msgstr "El. paštas"
 
 msgid "Advanced administration"
-msgstr ""
+msgstr "Platesnis valdymas"
 
 #, python-format
 msgid ""
@@ -370,9 +412,13 @@ msgid ""
 "configuration options can be managed either through the <a href=\"//%(host)s/"
 "%(path)s\">LuCI web interface</a> or over SSH."
 msgstr ""
+"Jei norite valdyti daugiau konfigūracijos parametrų ar funkcijų kurių nėra "
+"šiame valdymo interfeise, reikia nustatyti root paskyros slaptažodį. "
+"Platesnis įrenginio valdymas pasiekiamas per <a href=\"//%(host)s/%(path)s\">"
+"LuCI web interfeisą</a> arba per SSH."
 
 msgid "Time"
-msgstr ""
+msgstr "Laikas"
 
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
@@ -380,12 +426,16 @@ msgid ""
 "to function properly. Please, synchronize it with your computer's time, or "
 "set it manually."
 msgstr ""
+"Nepavyko sinchronizuoti laiko su laiko serveriu, tikriausiai dėl ryšio "
+"problemų. Tikslus laikas yra būtinas teisingam maršrutizatoriaus veikimui. "
+"Reikia, kad laiką sinchronizuotumėte su laiku jūsų kompiuteryje, arba "
+"nustatytumėte rankiniu būdu."
 
 msgid "uCollect"
-msgstr ""
+msgstr "uCollect"
 
 msgid "Emulated services"
-msgstr ""
+msgstr "Emuliuojami servisai"
 
 msgid ""
 "One of uCollect's features is emulation of some commonly abused services. If "
@@ -394,35 +444,41 @@ msgid ""
 "if another service is already listening on its default port (port numbers "
 "are listed below)."
 msgstr ""
+"Viena iš uCollect funkcijų yra dažnai išnaudojamų servisų emuliavimas. Jei "
+"ši funkcija įjungta, uCollect priims bandymus prisijungti prie šių servisų. "
+"Emuliuojamų servisų įjungimas netrukdys jau esamiems servisams kurie naudoja "
+"tuos pačius portus (portų sąrašas pateiktas žemiau)."
 
 msgid "Telnet (23/TCP)"
-msgstr ""
+msgstr "Telnet (23/TCP)"
 
 msgid "Telnet - alternative port (2323/TCP)"
-msgstr ""
+msgstr "Telnet - kitas portas (2323/TCP)"
 
 msgid "HTTP (80/TCP)"
-msgstr ""
+msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
-msgstr ""
+msgstr "Squid HTTP proxy (3128/TCP)"
 
 msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr ""
+msgstr "Polipo HTTP proxy (8123/TCP)"
 
 msgid "HTTP proxy (8080/TCP)"
-msgstr ""
+msgstr "HTTP proxy (8080/TCP)"
 
 msgid "Collect credentials"
-msgstr ""
+msgstr "Rinkti prisijungimo duomenis"
 
 msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
 "to server in addition to the IP address of the client."
 msgstr ""
+"Jei ši funkcija įjungta, siunčiami ne tik klientų IP adresai bet ir surinkti "
+"prisijungimo vardai bei slaptažodžiai."
 
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 msgid ""
 "Here you specify your WAN port settings. Usually, you can leave this options "
@@ -430,156 +486,177 @@ msgid ""
 "Also, in case there is a cable or DSL modem connecting your router to the "
 "network, it is usually not necessary to change this setting."
 msgstr ""
+"Čia nurodomi WAN lizdo nustatymai. Dažniausiai šių nustatymų galima "
+"nekeisti, nebent turite specialių nurodymų iš savo interneto paslaugų "
+"tiekėjo. Jei interneto paslaugų tiekėjas jums atvedė tinklo kabelį ar "
+"prijungė DSL modemą, labai tikėtina, kad šių nustatymų keisti nereikės."
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (automatinė konfigūracija)"
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Statinis IP adresas (ne-automatinė konfigūracija)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr ""
+msgstr "PPPoE (skirta DSL bridge rėžmui, Modem Turris, kt.)"
 
 msgid "DHCPv6 (automatic configuration)"
-msgstr ""
+msgstr "DHCPv6 (automatinė konfigūracija)"
 
 msgid "Disable IPv6"
-msgstr ""
+msgstr "Išjungti IPv6"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "IPv4 protokolas"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP adresas"
 
 msgid "Network mask"
-msgstr ""
+msgstr "Tinklo adreso kaukė"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway adresas"
 
 msgid "DNS server 1"
-msgstr ""
+msgstr "DNS serveris 1"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
 "of working without it."
 msgstr ""
+"DNS serverio adresas yra nebūtinas, integruotas DNS serveris gali veikti ir "
+"be jo."
 
 msgid "DNS server 2"
-msgstr ""
+msgstr "DNS serveris 2"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "PAP/CHAP prisijungimo vardas"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "PAP/CHAP slaptažodis"
 
 msgid "IPv6 protocol"
-msgstr ""
+msgstr "IPv6 protokolas"
 
 msgid "IPv6 address"
-msgstr ""
+msgstr "IPv6 adresas"
 
 msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
 "be13:37da::1/64"
-msgstr ""
+msgstr "IPv6 adresas ir prefikas WAN interfeisui, pvz. 2001:db8:be13:37da::1/64"
 
 msgid "IPv6 gateway"
-msgstr ""
+msgstr "IPv6 gateway adresas"
 
 msgid "IPv6 prefix"
-msgstr ""
+msgstr "IPv6 prefiksas"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
+msgstr "Adresų ruožas vietiniam tinklui, pvz. 2001:db8:be13:37da::/64"
 
 msgid "Use Modem Turris"
-msgstr ""
+msgstr "Naudoti Modem Turris"
 
 msgid ""
 "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
 "modem designed specially for router Turris. Enable this option if you have "
 "Modem Turris connected to your router."
 msgstr ""
+"Modem Turris (dar žinomas kaip SMRT - Small Modem for Router Turris), "
+"paprastas ADSL/VDSL modemas pritaikytas specialiai Turris maršrutizatoriui. "
+"Įjunkite šį nustatymą jei Modem Turris prijungtas prie jūsų "
+"maršrutizatoriaus."
 
 msgid "xDSL VLAN number"
-msgstr ""
+msgstr "xDSL VLAN numeris"
 
 msgid ""
 "VLAN number for your internet connection. Your ISP might have provided you "
 "this number. If you have VPI and VCI numbers instead, leave this field "
 "empty, a default value will be used automatically."
 msgstr ""
+"VLAN numeris interneto ryšiui. Interneto paslaugų tiekėjas galėjo jums "
+"nurodyti šį numerį. Jei vietoje jo turite VPI ir VCI numerius, palikite šį "
+"lauką tuščią, standartinė reikšmė bus naudojama automatiškai."
 
 msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
+msgstr "VPI ir VCI abu privalo būti arba užpildyti arba tušti."
 
 msgid "VPI"
-msgstr ""
+msgstr "VPI"
 
 msgid ""
 "Virtual Path Identifier (VPI) is a parameter that you might have received "
 "from your ISP. If you have a VLAN number instead, leave this field empty. "
 "You need to fill in both VPI and VCI together."
 msgstr ""
+"Virtual Path Identifier (VPI) jums galėjo nurodyti jūsų interneto paslaugų "
+"tiekėjas. Jei vietoje jo turite VLAN numerį, palikite šį lauką tuščią. Jei "
+"nurodytas VPI, tai VCI irgi turi būti nurodytas."
 
 msgid "VCI"
-msgstr ""
+msgstr "VCI"
 
 msgid ""
 "Virtual Circuit Identifier (VCI) is a parameter that you might have received "
 "from your ISP. If you have a VLAN number instead, leave this field empty. "
 "You need to fill in both VPI and VCI together."
 msgstr ""
+"Virtual Circuit Identifier (VCI) jums galėjo nurodyti jūsų interneto "
+"paslaugų tiekėjas. Jei vietoje jo turite VLAN numerį, palikite šį lauką "
+"tuščią. Jei nurodutas VPI, tai VCI irgi turi būti nurodytas."
 
 msgid "Custom MAC address"
-msgstr ""
+msgstr "Kitoks MAC adresas"
 
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet "
 "service provider."
 msgstr ""
+"Naudojamas, kai interneto paslaugų tiekėjas teikia paslaugas tik įrenginiui "
+"su konkrečiu MAC adresu."
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC adresas"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr ""
+msgstr "Reikšmės atskiriamos dvitaškiu, pavyzdžiui 00:11:22:33:44:55"
 
 msgid "Updater"
-msgstr ""
+msgstr "Atnaujinimai"
 
 msgid "I agree"
-msgstr ""
+msgstr "Sutinku"
 
 msgid "Use automatic updates (recommended)"
-msgstr ""
+msgstr "Atnaujinimus diegti automatiškai (rekomenduojama)"
 
 msgid "Turn automatic updates off"
-msgstr ""
+msgstr "Išjungti automatinius atnaujinimus"
 
 msgid "Update approvals"
-msgstr ""
+msgstr "Atnaujinimo patvirtinimai"
 
 msgid "No approval needed"
-msgstr ""
+msgstr "Patvirtinimo nereikia"
 
 msgid "Updates will be performed immediatelly without a user confirmation."
-msgstr ""
+msgstr "Atnaujinimai bus diegiami iškarto, be naudotojo patvirtinimo."
 
 msgid "Delayed approval"
-msgstr ""
+msgstr "Pavėlintas patvirtinimas"
 
 msgid "Updates will be performed in a while without a user confirmation."
-msgstr ""
+msgstr "Atnaujinimai bus diegiami po kurio laiko, be naudotojo patvirtinimo."
 
 msgid "Approval needed"
-msgstr ""
+msgstr "Reikalingas patvirtinimas"
 
 msgid "User always needs to confirm the updates."
-msgstr ""
+msgstr "Naudotojas visada privalo patvirtinti atnaujinimų diegimą."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -590,14 +667,23 @@ msgid ""
 "Updater. Software that has been installed manually or using opkg is not "
 "affected."
 msgstr ""
+"Atnaujinimų servisas užtikrina, kad TurrisOS programinė įranga visada būtų "
+"naujausia. Čia galite pasirinkti papildomus sąrašus programinės įrangos, "
+"kuri bus įdiegta papildomai prie standartinės instaliacijos. Atkreipkite "
+"dėmesį, kad tik TurrisOS programinė įranga ar įranga įdiegta iš šių sąrašų "
+"yra automatiškai prižiūrima atnaujinimų serviso. Programinė įranga, kuri "
+"buvo įdiegta rankiniu būdu arba naudojant opkg nebus automatiškai "
+"atnaujinama."
 
 msgid ""
 "If you want to use other language than English you can select it from the "
 "following list:"
 msgstr ""
+"Jei norite naudoti ne Anglų kalbą, kitą kalbą galite pasirinkite iš šio "
+"sąrašo:"
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -610,34 +696,47 @@ msgid ""
 "new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
 "page</strong> in your browser."
 msgstr ""
+"Čia galite keisti vietinio tinklo (LAN) nustatymus. Didžiajai daliai tinklų "
+"tinka standartinė konfigūracija. <br><strong>Pastaba:</strong> Jei pakeisite "
+"maršrutizatoriaus IP adresą, visi LAN kompiuteriai, tikriausiai ir tas kurį "
+"naudojate dabar, turės gauti <strong>naują maršrutizatoriaus IP "
+"adresą</strong> ir tai <strong>neįvyksta iš karto</strong>. Rekomenduojama "
+"trumpam atjungti ir vėl prijungti visus laidus LAN lizduose po nustatymų "
+"pakeitimo, tai padės įrenginiams greičiau gauti naujus tinklo nustatymus. "
+"Kitas puslapis neužsikraus kol negausite naujo IP adreso per DHCP (jei DHCP "
+"įjungtas), taip pat jums gali reikėti <strong>perkrauti šį puslapį</strong>."
 
 msgid "Router IP address"
-msgstr ""
+msgstr "Maršrutizatoriaus IP adresas"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
 "addresses."
 msgstr ""
+"Maršrutizatoriaus IP adresas vidiniame tinkle. Jis taip pat naudojamas "
+"dalinamų IP ruožo nustatymui."
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "Įjungti DHCP"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
+"Įjungus šį nustatymą maršrutizatorius automatiškai priskirs IP adresus "
+"prijungtiems įrenginiams."
 
 msgid "DHCP start"
-msgstr ""
+msgstr "DHCP pradžia"
 
 msgid "DHCP max leases"
-msgstr ""
+msgstr "DHCP max rezervacijų"
 
 msgid "Guest network"
-msgstr ""
+msgstr "Svečių tinklas"
 
 msgid "Enable guest network"
-msgstr ""
+msgstr "Įjungti svečių tinklą"
 
 #, python-format
 msgid ""
@@ -646,39 +745,47 @@ msgid ""
 "are allowed to access the internet, but are not allowed to access other "
 "devices and the configuration interface of the router."
 msgstr ""
+"Svečių tinklas naudojamas <a href='%(url)s'>svečių bevieliame tinkle</a>. "
+"Jis yra atskiras nuo įprasto vietinio tinklo. Įrenginiams prisijungusiems "
+"prie šio tinklo leidžiama naudotis internetu, tačiau neleidžiama pasiekti "
+"kitus įrenginius ir maršrutizatoriaus konfigūravimo interfeisą."
 
 msgid ""
 "You need to set the IP range for your guest network. It is necessary that "
 "the range is different than ranges on your other networks (LAN, WAN, VPN, "
 "etc.)."
 msgstr ""
+"Svečių tinklui reikia nurodyti IP adresų ruožą. Šis ruožas privalo skirtis "
+"nuo adresų naudojamų kituose tinkluose (LAN, WAN, VPN, kt.)."
 
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 msgid "auto"
-msgstr ""
+msgstr "automatinis"
 
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
 "length is 8 characters."
 msgstr ""
+"WPA2 bendras raktas, jo reikia jungiantis prie tinklo. Minimalus leidžiamas "
+"ilgis yra 8 simboliai."
 
 #, python-format
 msgid "Enable Wi-Fi %s"
-msgstr ""
+msgstr "Įjungti Wi-Fi %s"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "Slėpti SSID"
 
 msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
+msgstr "Jei įjungta, šis tinklas nebus matomas skenuojant Wi-Fi tinklus."
 
 msgid "Wi-Fi mode"
-msgstr ""
+msgstr "Wi-Fi režimas"
 
 msgid ""
 "The 2.4 GHz band is more widely supported by clients, but tends to have more "
@@ -686,27 +793,31 @@ msgid ""
 "all your devices. It usually has less interference, but the signal does not "
 "carry so well indoors."
 msgstr ""
+"2.4 GHz dažnių juosta yra palaikoma didesnės dalies klientų, tačiau dažniau "
+"turi daugiau trukdžių. 5 GHz dažnių juosta naujesnė ir ne visi įrenginiai "
+"gali turėti galimybę ją naudoti. Ji dažniausiai turi mažiau trukdžių, bet "
+"signalas ne taip gerai perduodamas patalpų viduje."
 
 msgid "Disabled"
-msgstr ""
+msgstr "Išjungta"
 
 msgid "802.11n - 20 MHz wide channel"
-msgstr ""
+msgstr "802.11n - 20 MHz pločio kanalas"
 
 msgid "802.11n - 40 MHz wide channel"
-msgstr ""
+msgstr "802.11n - 40 MHz pločio kanalas"
 
 msgid "802.11ac - 20 MHz wide channel"
-msgstr ""
+msgstr "802.11ac - 20 MHz pločio kanalas"
 
 msgid "802.11ac - 40 MHz wide channel"
-msgstr ""
+msgstr "802.11ac - 40 MHz pločio kanalas"
 
 msgid "802.11ac - 80 MHz wide channel"
-msgstr ""
+msgstr "802.11ac - 80 MHz pločio kanalas"
 
 msgid "802.11n/ac mode"
-msgstr ""
+msgstr "802.11n/ac rėžimas"
 
 msgid ""
 "Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
@@ -714,21 +825,24 @@ msgid ""
 "network. If you don't know what to choose, use the default option with 20 "
 "MHz wide channel."
 msgstr ""
+"Čia galite 802.11n/ac darbo rėžimą. 802.11n su 40 MHz pločio kanalu gali "
+"turėti didesnė pralaidumą tačiau sukelti daugiau trukdžių tinkle. Jei "
+"nežinote ką pasirinkti, naudokite standartinį 20 MHz pločio kanalą."
 
 msgid "Network channel"
-msgstr ""
+msgstr "Tinklo kanalas"
 
 msgid "Network password"
-msgstr ""
+msgstr "Tinklo slaptažodis"
 
 msgid "Guest Wi-Fi"
-msgstr ""
+msgstr "Svečių Wi-Fi"
 
 msgid "Set guest Wi-Fi here."
-msgstr ""
+msgstr "Čia galite keisti svečių Wi-Fi."
 
 msgid "Enable guest Wi-Fi"
-msgstr ""
+msgstr "Įjungti svečių Wi-Fi"
 
 #, python-format
 msgid ""
