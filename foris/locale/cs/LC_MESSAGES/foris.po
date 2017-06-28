@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: 2017-06-02 10:31+0000\n"
+"PO-Revision-Date: 2017-06-07 14:05+0000\n"
 "Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
@@ -134,19 +134,19 @@ msgstr ""
 "poškozený."
 
 msgid "Invalid reguest arguments."
-msgstr ""
+msgstr "Špatné argumenty požadavku."
 
 msgid "Update was approved."
-msgstr ""
+msgstr "Update byl schválen."
 
 msgid "Failed to approve the update."
-msgstr ""
+msgstr "Nepodařilo se schválit update."
 
 msgid "Update was postponed."
-msgstr ""
+msgstr "Update byl odložen."
 
 msgid "Failed to postpone the update."
-msgstr ""
+msgstr "Nepodařilo se odložit update."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
@@ -653,27 +653,26 @@ msgstr "Instalovat aktualizace automaticky (doporučeno)"
 msgid "Turn automatic updates off"
 msgstr "Vypnout automatické aktualizace"
 
-#, fuzzy
 msgid "Update approvals"
-msgstr "Updater"
+msgstr "Schvalování updatů"
 
 msgid "No approval needed"
-msgstr ""
+msgstr "Schválení není potřeba"
 
 msgid "Updates will be performed immediatelly without a user confirmation."
-msgstr ""
+msgstr "Updaty se vykonají ihned bez potvrzení od uživatele."
 
 msgid "Delayed approval"
-msgstr ""
+msgstr "Odložené schválení"
 
 msgid "Updates will be performed in a while without a user confirmation."
-msgstr ""
+msgstr "Updaty se vykonají za chvíli. Potvrzení od uživatele není potřeba."
 
 msgid "Approval needed"
-msgstr ""
+msgstr "Schválení je nutné"
 
 msgid "User always needs to confirm the updates."
-msgstr ""
+msgstr "Uživatel musí vždy potvrdit updaty."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -1122,6 +1121,11 @@ msgid ""
 "is not possible to deny the update forever, it will be proposed to you "
 "together with the next update again."
 msgstr ""
+"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
+"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
+"diskutabilní aktualizaci odložit a nainstalovat jej, až budete připraveni. "
+"Aktualizace není možné odmítnout napořád, odložená aktualizace Vám bude "
+"znovu nabídnuta společně s tou následující."
 
 msgid ""
 "Update approvals can be handy in case you want to be sure that updates will "
@@ -1132,10 +1136,17 @@ msgid ""
 "It is not possible to deny the update forever, it will be proposed to you "
 "together with the next update again."
 msgstr ""
+"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
+"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
+"například instalovat aktualizace, když jste připraveni na případný <a href='h"
+"ttps://www.turris.cz/doc/cs/howto/omnia_factory_reset#navrat_na_predchozi_sna"
+"pshot_operacniho_systemu'>návrat na předchozí snapshot</a> a diskutabilní "
+"update odložit. Aktualizace není možné odmítnout napořád, odložená "
+"aktualizace Vám bude znovu nabídnuta společně s tou následující."
 
 #, python-format
 msgid "after %(input)s hours"
-msgstr ""
+msgstr "za %(input)s hodin"
 
 msgid "Hint"
 msgstr "Nápověda"
@@ -1149,22 +1160,22 @@ msgstr ""
 
 #, python-format
 msgid "Approve update from %(when)s"
-msgstr ""
+msgstr "Schválení updatu z %(when)s"
 
 msgid "Uninstall"
-msgstr ""
+msgstr "Odinstaluj"
 
 msgid "Install"
-msgstr ""
+msgstr "Nainstaluj"
 
 msgid "Note that a reboot will be triggered after the update."
-msgstr ""
+msgstr "Pozor! Po updatu bude následovat restart zařízení."
 
 msgid "Approve"
-msgstr ""
+msgstr "Schvaluji"
 
 msgid "Postpone"
-msgstr ""
+msgstr "Odlož"
 
 msgid "Package lists"
 msgstr "Seznamy balíčků"

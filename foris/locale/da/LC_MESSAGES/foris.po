@@ -1,0 +1,1831 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Foris package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Foris\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-07 15:43+0200\n"
+"PO-Revision-Date: 2017-06-28 08:16+0000\n"
+"Last-Translator: Henrik Kramshoej <hlk@kramse.org>\n"
+"Language-Team: Danish <https://hosted.weblate.org/projects/turris/foris/da/>"
+"\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.15-dev\n"
+
+msgid "This field is required."
+msgstr "Dette felt skal udfyldes."
+
+msgid "Not a valid IPv4 address."
+msgstr "Ikke en gyldig IPv4 adresse."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Ikke en gyldig IPv4 netmaske."
+
+msgid "Not a valid IPv6 address."
+msgstr "Ikke en gyldig IPv6 adresse."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Det er ikke en gyldig IPv4 eller IPv6 adresse."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Det er ikke en IPv6 adresse med præfikslængde."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Det er ikke en IPv4 adresse med præfiks længde."
+
+msgid "Is not a number."
+msgstr "Er ikke et nummer."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Dette er ikke gyldigt timeformat i TT:MM."
+
+msgid "MAC address is not valid."
+msgstr "MAC adressen er ikke gyldig."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Ikke i et gyldigt interval %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Længden skal være mellem %(low)s og %(high)s tegn."
+
+msgid "Configuration was successfully saved."
+msgstr "Konfigurationen er blevet gemt."
+
+msgid "There were some errors in your input."
+msgstr "Der var fejl i dine indtastninger."
+
+msgid "Old password you entered was not valid."
+msgstr "Det gamle kodeord du indtastede er ikke gyldigt."
+
+msgid "Password was successfully saved."
+msgstr "Kodeordet er blevet gemt."
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"WAN porten har ikke noget link, din internetforbindelse vil formentlig ikke "
+"virke."
+
+msgid "Maintenance"
+msgstr "Vedligeholdelse"
+
+msgid "Wrong HTTP method."
+msgstr "Forkert HTTP metode."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Testbeskeden er sendt, check venligst din indbakke."
+
+#, python-format
+msgid ""
+"Sending of the testing message failed, your configuration is possibly wrong."
+"<br>Error returned:<br><pre>%(error)s</pre>"
+msgstr ""
+"Afsendelse af testbeskeden fejlede, din konfiguration er måske forkert. <br>"
+"Fejlen der kom retur:<br><pre>%(error)s 1</pre>"
+
+msgid "Sending of the testing message failed because of an internal error."
+msgstr "Afsendelse af testbeskeden fejlede på grund af en intern fejl."
+
+#, python-format
+msgid ""
+"Configuration was successfully restored. After installing updates and "
+"rebooting you can return to this page at <a href=\"%(new_url)s\">"
+"%(new_url)s</a> in local network. Please wait a while until router "
+"automatically restarts."
+msgstr ""
+"Konfigurationen er indlæst korrekt. Efter installation af opdateringer og "
+"genstart kan du komme retur til denne side på <a href=\"%(new_url)s\""
+">%(new_url)s</a> på dit lokale netværk. Vent venligst på at routeren "
+"automatisk genstarter."
+
+msgid ""
+"Configuration was successfully restored. Please wait a while for "
+"installation of updates and automatic restart of the device."
+msgstr ""
+"Konfigurationen er indlæst korrekt. Vent venligst mens der installeres "
+"opdateringer og automatisk genstart af enheden."
+
+msgid "IP address of the router could not be determined from the backup."
+msgstr "IP adressen for routeren kunne ikke bestemmes ud fra backuppen."
+
+msgid "Configuration could not be loaded, backup file is probably corrupted."
+msgstr ""
+"Konfigurationen kunne ikke indlæses, backupfilen er formentlig fejlbehæftet."
+
+msgid "Invalid reguest arguments."
+msgstr "Ugyldige argumenter i forespørgslen."
+
+msgid "Update was approved."
+msgstr "Opdateringen blev godkendt."
+
+msgid "Failed to approve the update."
+msgstr "Fejl under godkendelse af opdateringen."
+
+msgid "Update was postponed."
+msgstr "Opdateringen blev udskudt."
+
+msgid "Failed to postpone the update."
+msgstr "Fejl under udskydelsen af opdatering."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Konfigurationen blev gemt korrekt. De valgte pakker bliver installeret eller "
+"fjernet snarest."
+
+msgid "Data collection"
+msgstr "Dataindsamling"
+
+#, python-format
+msgid ""
+"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+msgstr ""
+"Der opstod en fejl under check af registreringen: <br><pre>%(response)s</pre>"
+
+msgid ""
+"Registration for the entered email is valid. Now you can enable the data "
+"collection."
+msgstr ""
+"Registreringen for den indtastede email adresse er gyldig. Du kan nu "
+"aktivere dataindsamling."
+
+#, python-format
+msgid ""
+"This router is currently assigned to a different email address. Please "
+"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
+"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
+"email address."
+msgstr ""
+"Denne router er allerede registreret til en anden email adresse. Fortsæt "
+"venligst til <a href=\"%(url)s\">Turris hjemmesiden</a> og brug "
+"registreringskoden <strong>%(reg_num)s</strong> for at forbinde til din "
+"email adresse."
+
+#, python-format
+msgid ""
+"This email address is not registered yet. Please continue to the <a href="
+"\"%(url)s\">Turris website</a> and use the registration code <strong>"
+"%(reg_num)s</strong> to create a new account."
+msgstr ""
+"Denne email adresse er ikke registreret endnu. Fortsæt venligst til <a href="
+"\"%(url)s\">Turris hjemmesiden</a> og brug registreringskoden  "
+"<strong>%(reg_num)s</strong> for at oprette en ny konto."
+
+msgid "About"
+msgstr "Om"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Connecting"
+msgstr "Forbinder"
+
+msgid "Invalid authentication"
+msgstr "Ugyldig autentikering"
+
+msgid "Broken"
+msgstr "Afbrudt"
+
+msgid "Unknown status"
+msgstr "Ukendt status"
+
+msgid "Home page"
+msgstr "Startside"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Konfigurationen kunne ikke gemmes på grund af en intern fejl."
+
+msgid "Enable data collection"
+msgstr "Aktivér dataindsamling"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "Use forwarding"
+msgstr "Brug videresendelse (forwarding)"
+
+msgid "Disable DNSSEC"
+msgstr "Deaktiver DNSSEC"
+
+msgid "Backup file"
+msgstr "Sikkerhedskopier fil"
+
+msgid "Notifications"
+msgstr "Meddelelser"
+
+msgid "Notifications settings"
+msgstr "Meddelelsesindstillinger"
+
+msgid "Enable notifications"
+msgstr "Aktiver meddelelser"
+
+msgid "SMTP provider"
+msgstr "SMTP udbyder"
+
+msgid "Turris"
+msgstr "Turris"
+
+msgid "Custom"
+msgstr "Tilpasset"
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members of "
+"the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please select "
+"\"Custom\" and enter required settings."
+msgstr ""
+"Hvis du sætter SMTP udbyder til \"Turris\", så vil servere som tilbydes til "
+"medlemmer af Turris projektet blive brugt. Disse servere kræver ingen "
+"yderligere indstillinger. Hvis du vil sætte din egen SMTP server, vælg "
+"venligst \"Speciel\" og indtast de krævede indstillinger."
+
+msgid "Recipient's email"
+msgstr "Modtager-email"
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr "Modtager-email. Adskil flere adresser med mellemrum."
+
+msgid "Sender's name"
+msgstr "Afsenders navn"
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address "
+"before the \"at\" sign."
+msgstr ""
+"Navn på afsender - vil blive brugt som den del af afsenders email adresse "
+"foran snabel-a."
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and underscores."
+msgstr ""
+"Afsenders navn må kun indeholde alfanumeriske tegn, punktum og underscore."
+
+msgid "Reboot is required"
+msgstr "Genstart er nødvendig"
+
+msgid "Reboot or attention is required"
+msgstr "Genstart eller anden opmærksomhed er nødvendig"
+
+msgid "Reboot or attention is required or update was installed"
+msgstr ""
+"Genstart eller anden opmærksomhed er nødvendig eller en opdatering "
+"installeret"
+
+msgid "Importance"
+msgstr "Vigtighed"
+
+msgid "Send news"
+msgstr "Send nyheder"
+
+msgid "Send emails about new features."
+msgstr "Send email om nye funktioner."
+
+msgid "SMTP settings"
+msgstr "SMTP indstillinger"
+
+msgid "Sender address (From)"
+msgstr "Afsender adresse (From)"
+
+msgid "This is the address notifications are send from."
+msgstr "Dette er adressen som meddelelser sendes fra."
+
+msgid "Server address"
+msgstr "Server adresse"
+
+msgid "Server port"
+msgstr "Server port"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "Security"
+msgstr "Sikkerhed"
+
+msgid "Username"
+msgstr "Brugernavn"
+
+msgid "Password"
+msgstr "Kodeord"
+
+msgid "Automatic restarts after software update"
+msgstr "Automatisk genstart efter softwareopdatering"
+
+msgid "Delay (days)"
+msgstr "Forsinkelse (Dage)"
+
+msgid ""
+"Number of days that must pass between receiving the request for restart and "
+"the automatic restart itself."
+msgstr ""
+"Antal dage som der skal gå mellem ønske om genstart og den automatiske "
+"genstart udføres."
+
+msgid "Reboot time"
+msgstr "Tidspunkt for genstart"
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr "Tid på dagen for automatisk genstart i TT:MM format."
+
+msgid ""
+"Set your password for this administration interface. The password must be at "
+"least 6 characters long."
+msgstr ""
+"Sæt kodeord for dette administrationsinterface. Kodeordet skal være mindst 6 "
+"tegn langt."
+
+msgid "Current password"
+msgstr "Nuværende kodeord"
+
+msgid "New password"
+msgstr "Nye kodeord"
+
+msgid "New password (repeat)"
+msgstr "Nye kodeord (gentag)"
+
+msgid "Password (repeat)"
+msgstr "Kodeord (Gentag)"
+
+msgid "Passwords are not equal."
+msgstr "Kodeord er ikke ens."
+
+msgid "Use the same password for advanced configuration"
+msgstr "Brug det samme kodeord for avanceret konfiguration"
+
+msgid ""
+"Same password would be used for accessing this administration interface, for "
+"root user in LuCI web interface and for SSH login. Use a strong password! "
+"(If you choose not to set the password for advanced configuration here, you "
+"will have the option to do so later. Until then, the root account will be "
+"blocked.)"
+msgstr ""
+"Samme kodeord vil blive brugt for at tilgå dette administrationsinterface, "
+"for root brugeren i LuCI web interface og til SSH login. Brug et stærkt "
+"kodeord! (Hvis du vælger ikke at sætte kodeordet for avanceret konfiguration "
+"her, vil du have mulighed for at gøre dette senere. Indtil da, vil root "
+"brugeren være blokeret.)"
+
+msgid "Region settings"
+msgstr "Landeindstillinger"
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct setting "
+"is required to display the right time and for related functions."
+msgstr ""
+"Vælg venligst den tidszone som routeren opsættes i. Korrekt indstilling er "
+"nødvendig for at vise den korrekte tid og til relaterede funktioner."
+
+msgid "Continent or ocean"
+msgstr "Kontinent eller ocean"
+
+msgid "Country"
+msgstr "Land"
+
+msgid "Timezone"
+msgstr "Tidszone"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Advanced administration"
+msgstr "Avanceret administration"
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration possibilities which are not "
+"present here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a href=\"//%(host)s/"
+"%(path)s\">LuCI web interface</a> or over SSH."
+msgstr ""
+"For at kunnne tilgå den avancerede konfiguration som ikke er her, skal du "
+"sætte et kodeord for root brugeren. Den avancerede konfigurtation kan "
+"derefter findes enten gennem <a href=\"//%(host)s/%(path)s\">LuCI web "
+"interface</a> eller over SSH."
+
+msgid "Time"
+msgstr "Tid"
+
+msgid ""
+"We could not synchronize the time with a timeserver, probably due to a loss "
+"of connection. It is necessary for the router to have correct time in order "
+"to function properly. Please, synchronize it with your computer's time, or "
+"set it manually."
+msgstr ""
+"Kunne ikke synkronisere tiden med en tidsserver, formentlig på grund af "
+"manglende forbindelse. Det er nødvendigt for routeren at have den korrekte "
+"tid for at kunne fungere korrekt. Venligst, synkroniser den med din "
+"computers tid, eller sæt den manuelt."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulerede services"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"En af uCollects funktioner er at emulere nogle ofte misbrugte tjenester. "
+"Hvis denne funktion er aktiveret, vil uCollect lytte til indkommende "
+"forbindelsesforsøg til disse tjenester. Aktivering af de emulerede tjenester "
+"har ingen effekt hvis en anden tjeneste allerede lytter på standardporten ("
+"port numre er vist nedenfor)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternativ port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Indsamling af loginoplysninger"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Hvis denne er aktiveret, vil brugernavne og kodeord bliver indsamlet og "
+"sendt til serveren sammen med IP-adressen for klienten."
+
+msgid "WAN"
+msgstr "WAN"
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Her kan du angive dine WAN indstillinger. Ofte kan du lade denne være urørt "
+"undtagen hvis du har fået andre instruktioner fra din internetudbyder. Hvis "
+"der er et kabel eller DSL model der forbinder din router to netværket, er "
+"det typisk ikke nødvendigt at ændre denne indstlling."
+
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatisk konfiguration)"
+
+msgid "Static IP address (manual configuration)"
+msgstr "Statisk IP konfiguration (manuel indstilling)"
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (for DSL bridge, Turris Modem, etc.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatisk konfiguration)"
+
+msgid "Disable IPv6"
+msgstr "Deaktiver IPv6"
+
+msgid "IPv4 protocol"
+msgstr "IPv4 protokollen"
+
+msgid "IP address"
+msgstr "IP-adresse"
+
+msgid "Network mask"
+msgstr "Netværksmaske"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "DNS server 1"
+msgstr "DNS server 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"DNS serveradressen er ikke krævet da den indbyggede DNS resolver kan fungere "
+"uden denne."
+
+msgid "DNS server 2"
+msgstr "DNS server 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP brugernavn"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP kodeord"
+
+msgid "IPv6 protocol"
+msgstr "IPv6 protokollen"
+
+msgid "IPv6 address"
+msgstr "IPv6-adresse"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"IPv6-adresse og præfiks længde for WAN interface, eks. "
+"2001:db8:be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6 gateway"
+
+msgid "IPv6 prefix"
+msgstr "IPv6 præfiks"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Addresser for det lokale netværk, eks. 2001:db8:be13:37da::/64"
+
+msgid "Use Modem Turris"
+msgstr "Brug Turris Modem"
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), et simpel ADSL/VDSL "
+"modem designet specielt til Turris router. Aktiver denne mulighed hvis du "
+"har Turris Modem forbundet til din router."
+
+msgid "xDSL VLAN number"
+msgstr "xDSL VLAN id"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"VLAN id for dine internetforbindelse. Din ISP har måske givet dig et sådant. "
+"Hvis du har VPI og VCI id istedet, så lad dette felt være tomt, en "
+"standardværdi vil blive brugt automatisk."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr "Både VPI og VCI skal være udfyldt, eller begge skal være tomme."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Path Identifier (VPI) er en parameter som du måske har modtaget fra "
+"din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du skal "
+"udfylde både VPI og VCI sammen."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Circuit Identifier (VCI) er en parameter som du måske har modtaget "
+"fra din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du "
+"skal udfylde både VPI og VCI sammen."
+
+msgid "Custom MAC address"
+msgstr "Selvvalgt MAC adresse"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Bruges i de tilfælde hvor en specifik MAC adresse kræves af din "
+"internetudbyder."
+
+msgid "MAC address"
+msgstr "MAC adresse"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Adskilles a kolon, eksempelvis 00:11:22:33:44:55"
+
+msgid "Updater"
+msgstr "Opdateringsfunktion"
+
+msgid "I agree"
+msgstr "Jeg accepterer"
+
+msgid "Use automatic updates (recommended)"
+msgstr "Brug automatiske opdateringer (anbefales)"
+
+msgid "Turn automatic updates off"
+msgstr "Slå automatiske opdateringer fra"
+
+msgid "Update approvals"
+msgstr "Opdateringsgodkendelser"
+
+msgid "No approval needed"
+msgstr "Ingen godkendelse kræves"
+
+msgid "Updates will be performed immediatelly without a user confirmation."
+msgstr "Opdateringer vil blive udført straks uden brugerbekræftelse."
+
+msgid "Delayed approval"
+msgstr "Forsinket godkendelse"
+
+msgid "Updates will be performed in a while without a user confirmation."
+msgstr "Opdateringer vil blive udført om kort tid uden brugerbekræftelse."
+
+msgid "Approval needed"
+msgstr "Brugerbekræftelse er nødvendig"
+
+msgid "User always needs to confirm the updates."
+msgstr "Brugeren skal altid bekræfte opdateringerne."
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+"Opdateringsfunktionen er en tjeneste som holder al TurrisOS software "
+"opdateret. Undtagen standardinstallationen, så kan du valgfrit vælge til fra "
+"lister af tilgængelig software som kan installeres på routeren. Denne "
+"software kan vælges fra den følgende liste. Bemærk venligst at kun software "
+"som er en del af TurrisOS eller er installeret fra en pakkeliste bliver "
+"vedligeholdt af opdateringsfunktionen. Software som er installeret manuelt "
+"eller med opkg bliver ikke påvirket."
+
+msgid ""
+"If you want to use other language than English you can select it from the "
+"following list:"
+msgstr ""
+"Hvis du vil bruge et andet sprog end engelsk kan du vælge det fra den "
+"følgende liste:"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+"Dette afsnit indeholder indstillingerne for det lokale netværk (LAN). De "
+"viste standardindstillinger er passende for de fleste netværk. "
+"<br><strong>Note:</strong> Hvis du ændrer routerens IP-adresse, skal alle "
+"computere på lokalnetværket, inklusiv den du bruger nu, have <strong>ny IP-"
+"addresse</strong> hvilket <strong>ikke</strong> sker "
+"<strong>øjeblikkeligt</strong>. Det anbefales at afbryde og forbinde alle "
+"LAN kabler efter ændringerne for at tvinge ændringen igennem. Den næste side "
+"vil ikke indlæse før du har fået en ny IP fra DHCP (hvis DHCP er aktiveret) "
+"og du skal måske <strong>geindlæse siden</strong> i din browser."
+
+msgid "Router IP address"
+msgstr "Router IP-adresse"
+
+msgid ""
+"Router's IP address in inner network. Also defines the range of assigned IP "
+"addresses."
+msgstr ""
+"Routerens IP-adresse i det lokale netværk. Definerer også rækken af tildelte "
+"IP-adresser."
+
+msgid "Enable DHCP"
+msgstr "Aktiver DHCP"
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+"Aktiver denne indstilling for automatisk at tildele IP-adresser til "
+"enhederne som er forbundet til routeren."
+
+msgid "DHCP start"
+msgstr "DHCP start-adresse"
+
+msgid "DHCP max leases"
+msgstr "DHCP max antal tildelinger"
+
+msgid "Guest network"
+msgstr "Gæstenetværk"
+
+msgid "Enable guest network"
+msgstr "Aktiver gæstenetværk"
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN network. Devices connected to this network "
+"are allowed to access the internet, but are not allowed to access other "
+"devices and the configuration interface of the router."
+msgstr ""
+"Gæstenetværk bruges til <a href='%(url)s'>gæste Wi-Fi</a>. Det er adskilt "
+"fra dit normale LAN netværk. Enheder som forbindes til dette netværk har lov "
+"til at komme på internet, men har ikke lov til at tilgå andre enheder eller "
+"konfigurationsinterfacet på routeren."
+
+msgid ""
+"You need to set the IP range for your guest network. It is necessary that "
+"the range is different than ranges on your other networks (LAN, WAN, VPN, "
+"etc.)."
+msgstr ""
+"Du skal indstille IP netværk for dit gæstenetværk. Det er krævet at dette er "
+"anderledes end de andre netværk (LAN, WAN, VPN osv.)."
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid "auto"
+msgstr "auto"
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+"WPA2 pre-shared key, der kræves for at forbinde til netværket. "
+"Minimumslængden er 8 tegn."
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr "Aktiver Wi-Fi %s"
+
+#, fuzzy
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Skjul SSID"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+"Hvis denne sættes, vises netværket ikke når man scanner efter tilgængelige "
+"netværk."
+
+msgid "Wi-Fi mode"
+msgstr "Wi-Fi mode"
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have more "
+"interference. The 5 GHz band is a newer standard and may not be supported by "
+"all your devices. It usually has less interference, but the signal does not "
+"carry so well indoors."
+msgstr ""
+"Frekvensbåndet 2.4GHz er understøttet af flere klienter, men har ofte mere "
+"interferens. Frekvensbåndet 5GHz er en nyere standard og er måske ikke "
+"understøttet af alle dine enheder. Det har ofte mere interferens, men "
+"signalet rækker ikke så langt indendørs."
+
+msgid "Disabled"
+msgstr "Deaktiveret"
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz wide channel"
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz wide channel"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz wide channel"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz wide channel"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz wide channel"
+
+msgid "802.11n/ac mode"
+msgstr "802.11n/ac mode"
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
+"channels can yield higher throughput but can cause more interference in the "
+"network. If you don't know what to choose, use the default option with 20 "
+"MHz wide channel."
+msgstr ""
+"Skift denne for at tilpasse 802.11n/ac mode. 802.11n with 40 MHz wide "
+"channels kan give bedre højere båndbredde, men mere interferens i netværket. "
+"Hvis du ikke ved hvad du skal vælge, brug standardindstillingen med 20MHz "
+"wide channel."
+
+msgid "Network channel"
+msgstr "Netværkskanal"
+
+msgid "Network password"
+msgstr "Netværkskode"
+
+msgid "Guest Wi-Fi"
+msgstr "Gæste Wi-Fi"
+
+msgid "Set guest Wi-Fi here."
+msgstr "Indstil gæste Wi-Fi her."
+
+msgid "Enable guest Wi-Fi"
+msgstr "Aktiver gæste Wi-Fi"
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
+"LAN tab</a>. "
+msgstr ""
+"Aktiverer Wi-Fi for gæster, som er adskilt fra LAN netværket. Enheder som "
+"forbindes til dette netværk har lov til at komme på internet, men har ikke "
+"lov til at tilgå andre enheder eller konfigurationsinterfacet på routeren.\n"
+"Parametre for gæstenetværk kan sættes på <a href='%(url)s'> LAN tab</a>. "
+
+msgid "SSID for guests"
+msgstr "SSID for gæster"
+
+msgid "Password for guests"
+msgstr "Kode til gæster"
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+"Hvis du vil bruge din router som et Wi-Fi access point, aktiver Wi-Fi her og "
+"udfyld et SSID (navnet på access point) og en tilhørende kode. Du kan "
+"derefter opsætte mobile enheder, ved at bruge QR koden ved siden af "
+"formularen."
+
+msgid "Wi-Fi settings"
+msgstr "Wi-Fi indstillinger"
+
+msgid "The password you entered was not valid."
+msgstr "Kodeordet du har indtastet er ikke gyldigt."
+
+msgid "News"
+msgstr "Nyheder"
+
+msgid "Update"
+msgstr "Opdater"
+
+msgid "Error"
+msgstr "Fejl"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y/%m/%d %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s fra %(created_at)s"
+
+msgid "Notification"
+msgstr "Meddelelser"
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
+msgstr ""
+"Turris routeren bruger sin egen DNS resolver med DNSSEC understøttelse. Den "
+"kan arbejde uafhængigt eller kan videresende dine DNS forespørgsler gennem "
+"din internetudbyders DNS server."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"Denne indstilling bestemmer opførslen for DNS navneopløftning. Det er ofte "
+"bedre at bruge internetudbyderens server i netværk hvor den virker korrekt. "
+"I de tilfælde den ikke virker af en eller anden årsag, er det nødvendigt at "
+"bruge direkte navneopløftning uden videresendelse."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+"I nogle tilfælde har internetudbydere forkert konfigurerede netværk som "
+"interfererer med DNSSEC validering. Hvis du oplever problemer med DNS, kan "
+"du <strong>midlertidigt</strong> deaktivere DNSSEC validering for at finde "
+"årsagen til problemet. Husk dog, at uden DNSSEC validering, er du sårbar "
+"overfor DNS spoofing angreb! Derfor <strong>anbefaler vi at lade DNSSEC være "
+"slået til</strong> og løse problemet med din ISP da det er en alvorlig fejl "
+"på deres side."
+
+msgid "Save"
+msgstr "Gem"
+
+msgid "Connection test"
+msgstr "Forbindelsestest"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Her kan du teste din internetforbindelse. Denne test er også nyttig, når du "
+"skal kontrollere, at DNS-opløftning fungerer som forventet. Husk at klikke "
+"på knappen <strong>Gem</strong>, hvis du har ændret din "
+"videresendelsesindstilling."
+
+msgid "Unable to verify network connection."
+msgstr "Ikke i stand til at kontrollere netværksforbindelsen."
+
+msgid "Test type"
+msgstr "Testtype"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "IPv4 connectivity"
+msgstr "IPv4 forbindelse"
+
+msgid "IPv4 gateway connectivity"
+msgstr "IPv4 gateway forbindelse"
+
+msgid "IPv6 connectivity"
+msgstr "IPv6 forbindelse"
+
+msgid "IPv6 gateway connectivity"
+msgstr "IPv6 gateway forbindelse"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Test connection"
+msgstr "Test forbindelsen"
+
+msgid "Discard changes"
+msgstr "Glem ændringer"
+
+msgid "Save changes"
+msgstr "Gem ændringer"
+
+msgid ""
+"With the Turris Omnia router you can join Project Turris which is a non-"
+"profit research project founded by the CZ.NIC association, a .CZ domain "
+"registry. By joining the project, your router will act as a probe which "
+"analyzes traffic between your home network and the Internet and helps to "
+"identify malicious data flows. Once such a flow is detected your router "
+"notifies the Turris headquarters which can compare the flow with data from "
+"the rest of the probes and assign it a threat level. If the flow is "
+"identified as an attack Turris headquarters can prepare an update which is "
+"distributed to every Turris router and helps them to protect themselves "
+"against the attack."
+msgstr ""
+"Med Turris Omnia router, kan du deltage i Projektet Turris, som er et non-"
+"profit forsknings-projekt som blev grundlagt af CZ.NIC, som er .CZ domain "
+"registry. Ved at deltage i projektet, vil din router fungere som en probe, "
+"som analyserer trafik mellem dit hjemmenetværk og Internet, og hjælper med "
+"til at identificere ondsindede data-strømme. Når sådan et flow opdages, vil "
+"din router meddele Turris hovedkvarter, som kan sammenligne data med data "
+"fra andre prober og tildele det et trusselsniveau. Hvis data identificeres "
+"som et angreb kan Turris hovedkvarter forberede en opdatering, som "
+"distribueres til alle Turris routere og hjælper dem til at beskytte sig selv "
+"mod angreb."
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr ""
+"Opdateringsfunktionen er deaktiveret. Du skal aktivere den først for at "
+"kunne aktivere dataindsamling."
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+"Hvis du ønsker at deltage i Turris projektet skal du registrere dig på "
+"Turris-portalen først. Indtast den emailadresse du ønsker at registrere med, "
+"eller som du har brugt til dette formål før:"
+
+msgid "Validate email"
+msgstr "Valider email"
+
+msgid "Device"
+msgstr "Enhed"
+
+msgid "Serial number"
+msgstr "Serienummer"
+
+msgid "Turris OS version"
+msgstr "Turris OS version"
+
+msgid "Kernel version"
+msgstr "Kerneversion"
+
+msgid "Sending of uCollect data"
+msgstr "Afsendelse af uCollect data"
+
+#, python-format
+msgid "Time of last update: %(datetime)s"
+msgstr "Tidspunkt for seneste opdatering: %(datetime)s"
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] "(status opdateret for %d sekund siden )"
+msgstr[1] "(status opdateret for %d sekunder siden )"
+
+msgid "Sending of firewall logs"
+msgstr "Afsendelse af firewall log"
+
+msgid "Refresh"
+msgstr "Opdater"
+
+msgid "Device registration"
+msgstr "Enhedsregistrering"
+
+#, python-format
+msgid ""
+"If you have not registered your device yet, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Hvis du ikke har registreret din enhed endnu, klik på knappen for at få en "
+"registreringskode. Denne kode skal indsendes på Turris hjemmesiden i "
+"brugerprofilen som findes på: <a href=\"%(url)s\"> %(url)s</a>."
+
+msgid "Registration code"
+msgstr "Registreringskode"
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+"Desværre var det ikke muligt at generere registreringskoden. Dette betyder "
+"normalt, at routeren ikke er tilsluttet internettet. Prøv venligst, at "
+"registrere senere. Hvis problemet fortsætter, skal du kontakte support."
+
+msgid "Get registration code"
+msgstr "Få en registreringskode"
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Dataindsamling er aktiveret. Du kan ikke deaktivere opdateringsfunktionen "
+"uden at deaktivere dataindsamling først."
+
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can postpone the "
+"questionable update temporarily and install them when you are prepared. It "
+"is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+"Godkendelser af opdateringer kan være praktisk, hvis du vil være sikker på, "
+"at opdateringer ikke vil skade nogle af dine særlige indstillinger. Du kan "
+"udskyde den opdateringen midlertidigt og installere dem når du er parat. Det "
+"er ikke muligt at nægte opdateringen for evigt, den vil blive foreslået til "
+"dig sammen med den næste opdatering igen."
+
+msgid ""
+"Update approvals can be handy in case you want to be sure that updates will "
+"not harm some of your very special configurations. You can e.g. install "
+"updates when you are prepared for a possible <a href='https://www.turris.cz/"
+"doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to "
+"the previous snapshot</a> and postpone the questionable update temporarily. "
+"It is not possible to deny the update forever, it will be proposed to you "
+"together with the next update again."
+msgstr ""
+"Godkendelse af opdateringer kan være en god ide, hvis du ønsker at være "
+"sikker på, at opdateringer vil ikke skade nogle af dine specielle "
+"indstillinger. Du kan fx installere opdateringer, når du er forberedt på en "
+"eventuel <a href='https://www.turris.cz/doc/en/howto/omnia_factory_reset#roll"
+"back_to_latest_snapshot'>rollback til et tidligere snapshot</a> og udskyde "
+"den opdateringen midlertidigt. Det er ikke muligt at nægte opdateringen for "
+"evigt, den vil blive foreslået til dig sammen med den næste opdatering igen."
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr "efter %(input)s timer"
+
+msgid "Hint"
+msgstr "Tip"
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to manage "
+"package lists."
+msgstr ""
+"Opdateringsfunktionen er deaktiveret. Du skal først aktivere den for at "
+"kunne administrere pakkelister."
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr "Godkend opdatering fra %(when)s"
+
+msgid "Uninstall"
+msgstr "Afinstaller"
+
+msgid "Install"
+msgstr "Installer"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr "Bemærk at en genstart vil bliver udført efter opdateringen."
+
+msgid "Approve"
+msgstr "Godkend"
+
+msgid "Postpone"
+msgstr "Udskyd"
+
+msgid "Package lists"
+msgstr "Pakkelister"
+
+msgid ""
+"List of available software was not downloaded from the server yet. Please "
+"come back later."
+msgstr ""
+"Listen af tilgængelig software er ikke hentet fra serveren. Prøv venligst at "
+"komme igen senere."
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+"Hvis du vil bruge dette kort til 2.4GHz frekvensbåndet, skal kablerne "
+"forbundet til diplexere korrigeres! Fabriksindstillingen: kablerne fra det "
+"store kort er forbundet til 5GHz, kablerne fra det lille kort er forbundet "
+"til 2.4GHz diplexer delen."
+
+msgid ""
+"Welcome to the Turris administration site. Please, choose a config section "
+"you wish to change from the menu."
+msgstr ""
+"Velkommen til Turris router administrationen. Vælg venligst en "
+"konfigurationsindstilling som du vil ændre fra menuen."
+
+msgid "No new messages."
+msgstr "Ingen nye beskeder."
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr ""
+"Vi var ikke i stand til at detektere nogle wireless netkort i din router."
+
+msgid "Notifications and automatic restarts"
+msgstr "Notifikation og automatisk genstart"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these "
+"emails. Alternatively, if you choose to use a custom server, you must enter "
+"some additional settings. These settings are the same as you enter in your "
+"email client and you can get them from the provider of your email inbox. In "
+"that case, because of security reasons, it is recommended to create a "
+"dedicated account for your router."
+msgstr ""
+"Du kan indstille routeren til at give dig besked, når en bestemt hændelse "
+"indtræffer, for eksempel når en genstart er påkrævet, ingen plads er tilbage "
+"på enheden eller en opdatering til programmer er installeret. Du kan bruge "
+"Turris servere til at sende disse e-mails. Alternativt, hvis du vælger at "
+"bruge en brugerdefineret server, skal du angive yderligere indstillinger. "
+"Disse indstillinger er de samme som du indtaster i din e-mail-klient og du "
+"kan få dem fra udbyderen af din e-mail. I dette tilfælde, på grund af "
+"sikkerheden, anbefales det at oprette en dedikeret konto til din router."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"Når en automatisk genstart er nødvendig, kan du også angive det tidspunkt, "
+"du ønsker det skal ske. Hvis du har e-mail-meddelelser aktiveret, kan du "
+"også angive intervallet mellem meddelelsen og automatisk genstart."
+
+msgid "Send testing message"
+msgstr "Send test besked"
+
+msgid "Configuration backup"
+msgstr "Sikkerhedskopiering af konfiguration"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface "
+"and for the advanced configuration are not included in the backup."
+msgstr ""
+"Hvis du vil gemme den aktuelle konfiguration af denne enhed, kan du hente en "
+"backup-fil. Konfigurationen er gemt som en ukrypteret komprimeret arkiv (. "
+"tar.bz2). Adgangskoder for dette konfigurationsinterface og den avancerede "
+"konfiguration er ikke inkluderet i sikkerhedskopien."
+
+msgid "Download configuration backup"
+msgstr "Hent sikkerhedskopi af konfigurationen"
+
+msgid "Configuration restore"
+msgstr "Indlæs sikkerhedskopi af konfiguration"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+"Hvis du vil indlæse konfigurationen fra en sikkerhedskopi, kan du indlæse "
+"den ved at benytte formularen nedenfor. Husk på, at IP-adressen på denne "
+"enhed kan ændres under processen, og forårsage at dette interface bliver "
+"utilgængeligt."
+
+msgid "Restore from backup"
+msgstr "Indlæs fra sikkerhedskopi"
+
+msgid "Device reboot"
+msgstr "Genstart af enheden"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"after the reboot."
+msgstr ""
+"Hvis du har brug at genstarte enheden, klik på knappen nedenfor. Genstart "
+"vil tage omkring 30 sekunder, du vil blive bedt om at logge på igen efter "
+"genstart."
+
+msgid "Reboot"
+msgstr "Genstart"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - administrationsinterface for Turris routeren"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Log out"
+msgstr "Logout"
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Denne side kræver JavaScript for korrekt funktion. Aktiver venligst "
+"JavaScript og opdater siden."
+
+msgid "This value seems to be invalid."
+msgstr "Denne værdi ser ud til at være ugyldig."
+
+msgid "This value should be a valid email."
+msgstr "Denne værdi skal være en gyldig e-mail adresse."
+
+msgid "This value should be a valid url."
+msgstr "Denne værdi skal være en gyldig url."
+
+msgid "This value should be a valid number."
+msgstr "Denne værdi skal være et gyldigt tal."
+
+msgid "This value should be a valid integer."
+msgstr "Denne værdi skal være et gyldigt heltal."
+
+msgid "This value should be digits."
+msgstr "Denne værdi skal være cifre."
+
+msgid "This value should be alphanumeric."
+msgstr "Denne værdi skal være alfanumerisk."
+
+msgid "This value should not be blank."
+msgstr "Denne værdi må ikke være tom."
+
+msgid "This value is required."
+msgstr "Denne værdi skal udfyldes."
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr "Denne værdi skal være større end eller lig med %s."
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr "Denne værdi skal være mindre end eller lig med %s."
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr "Denne værdi skal være mellem %s og %s."
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr "Denne værdi er for kort. Den skal have %s tegn eller mere."
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr "Denne værdi er for lang. Den skal have %s tegn eller færre."
+
+#, python-format
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr "Denne værdis længde er ugyldige. Den skal være mellem %s og %s tegn."
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr "Du skal vælge mindst %s valg."
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr "Du skal vælge %s valg eller færre."
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr "Du skal vælge mellem %s og %s valg."
+
+msgid "This value should be the same."
+msgstr "Denne værdi skal være den samme."
+
+msgid "This is not a valid IPv4 address."
+msgstr "Dette er ikke en gyldig IPv4-adresse."
+
+msgid "This is not a valid IPv4 netmask."
+msgstr "Dette er ikke en gyldig IPv4 netmaske."
+
+msgid "This is not a valid IPv4 prefix."
+msgstr "Dette er ikke et gyldigt IPv4-præfiks."
+
+msgid "This is not a valid IPv6 prefix."
+msgstr "Dette er ikke et gyldigt IPv6-præfiks."
+
+msgid "This is not a valid MAC address."
+msgstr "Dette er ikke en gyldig MAC-adresse."
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Din kode indeholder ikke-standard tegn. Disse er ikke forbudt, men kan give "
+"problemer på nogle enheder."
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Dit SSID indeholder tegn, der ikke er standard. Disse er ikke forbudt, men "
+"kan forårsage problemer på visse enheder."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Loading..."
+msgstr "Indlæser..."
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+"Forbindelsestest fejlede, tester forbindelse med forwarding deaktiveret."
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
+msgstr ""
+"Din routers IP-adresse er blevet ændret. Den bør være tilgængelig på % "
+"NEW_IP_LINK %. Se bemærkning ovenfor for mere information om IP "
+"adresseændring."
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
+msgstr ""
+"Du har valgt ikke modtage sikkerhedsopdateringer. Vi anbefaler kraftigt at "
+"du beholder de automatiske sikkerhedsopdateringer aktiveret, for at modtage "
+"alle anbefalede opdateringer til din enhed. Opdatering af din router på "
+"regelmæssig basis er den eneste måde at sikre, at du vil være beskyttet imod "
+"kendte trusler, der kan ramme din hjemme-router.\\n"
+"\\n"
+"Ønsker du stadig at fortsætte og forblive ubeskyttet?"
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
+msgstr ""
+"DNSSEC er en sikkerhedsteknologi, der beskytter DNS-kommunikation mod angreb "
+"på DNS-infrastrukturen. Vi anbefaler stærkt at holde DNSSEC-validering "
+"aktiveret, medmindre du ved, at du forbinder din enhed på netværk, hvor "
+"DNSSEC er umulig på grund af fejl.\\n"
+"\\n"
+"Ønsker du stadig at fortsætte og forblive ubeskyttet?"
+
+msgid "Are you sure you want to restart the router?"
+msgstr "Er du sikker på at du vil genstarte routeren?"
+
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr ""
+"\\n"
+"Resterende ulæste beskeder (%ULÆSTE%) vil blive slettet."
+
+msgid ""
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
+msgstr ""
+"Der er nogle ændringer som ikke er gemt i meddelelsesindstillinger.\\n"
+"Ønsker du at kassere dem og teste meddelelser med de gamle indstillinger?"
+
+msgid "Next"
+msgstr "Næste"
+
+#, python-format
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Enheden blev installeret succesfuldt. Sidste trin, der kræves er en "
+"registrering af din enhed i din brugerprofil på Turris hjemmesiden <a href=\""
+"%(url)s\"> %(url)s</a>."
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+"<strong>Advarsel:</strong> denne kode gælder kun i begrænset tid. I tilfælde "
+"af at denne kode afvises, opdater denne side for at få en ny."
+
+msgid "What next?"
+msgstr "Næste skridt?"
+
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+"Du kan ændre alle de tidligere konfigurerede indstillinger i <a href=\"%(url)"
+"s\"> standard konfigurationsinterface</a>. Hvis du er interesseret i mere "
+"avancerede indstillinger, kan du bruge LuCI grænsefladen, som er tilgængelig "
+"fra fanen <a href=\"%(url2)s\">Avanceret Administration</a>."
+
+msgid "Important updates"
+msgstr "Vigtige opdateringer"
+
+msgid ""
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
+msgstr ""
+"Vigtige opdateringer, der kræver en genstart af enheden er installeret. "
+"Nogle tjenester fungerer muligvis ikke, hvis du ikke genstarter enheden. For "
+"nærmere oplysninger se nedenstående."
+
+msgid "Continue to configuration interface"
+msgstr "Fortsæt til konfigurationsinterface"
+
+msgid "Checking internet connectivity."
+msgstr "Kontrollerer internetforbindelsen."
+
+msgid "One moment, please..."
+msgstr "Vent venligst, et øjeblik ..."
+
+msgid "Done"
+msgstr "Færdig"
+
+msgid "Internet connectivity test passed without error."
+msgstr "Internet forbindelsestest gennemført uden fejl."
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+"Internetforbindelsen har forbindelse, men DNS navneopløftning virker ikke. "
+"Dette er sandsynligvis et problem med din internetudbyder. Dette kan også "
+"være et problem med forkert tid på din router - du kan justere tiden i de "
+"følgende trin."
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+"Det ser ud til, at du ikke har internetforbindelse, måske er din WAN-"
+"indstillinger ikke rigtige."
+
+msgid "Try again"
+msgstr "Prøv igen"
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+"I nogle tilfælde, såsom på en langsommere DSL-forbindelse eller når DHCP "
+"bruges, kan denne fejl skyldes langsom netværksopstart. Du kan genteste din "
+"forbindelse ved hjælp af knappen ovenfor, hvis du tror dette kunne være "
+"tilfældet. Du kan også vende tilbage til forrige side for at forsøge at løse "
+"problemet ved at ændre indstillinger for WAN."
+
+msgid "Adjust WAN settings"
+msgstr "Tilpas WAN indstillinger"
+
+msgid "Registration failure"
+msgstr "Registreringsfejl"
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+"Installerer yderligere opdateringer. Routeren genstartes flere gange for at "
+"afslutte processen."
+
+msgid "Do not unplug the device during update!"
+msgstr "Sluk ikke enheden under opdatering!"
+
+msgid "Check of available updates in progress."
+msgstr "Check for tilgængelige opdateringer er i gang."
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr ""
+"Firmware opdatering gennemført med succes, du kan fortsætte til næste tring."
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Firmware opdatering har fejlet på grund af forbindelsesfejl eller "
+"installationsfejl. Du bør checke dine kabelforbindelse før du fortsætter til "
+"næste trin. Men vær ikke bekymret routeren vil afvikle opdateringsfunktionen "
+"regelmæssigt."
+
+msgid "Updater has returned the following error:"
+msgstr "Opdateringen har returneret med følgende fejl:"
+
+msgid "Device has been restarted."
+msgstr "Enheden er blevet genstartet."
+
+msgid "Please log in again to continue."
+msgstr "Log venligst ind igen for at fortsætte."
+
+msgid "Proceed to login"
+msgstr "Fortsæt til log ind"
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Velkommen til konfiguration af Turris routeren"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Før du begynder at bruge routeren, for første gang, er det nødvendigt at "
+"sætte den op. Følgende simple konfigurationsguide vil føre dig gennem "
+"konfigurationsproceduren. Efter den er færdig, vil din router være klar til "
+"brug."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Hvis du vil indlæse en tidligere gemt konfiguration eller af anden årsag "
+"ønsker at springe over denne guide, kan du gøre det når du har valgt et "
+"kodeord i det første trin."
+
+msgid "Begin installation"
+msgstr "Start installation"
+
+msgid "Installation finished"
+msgstr "Installation færdig"
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr "Du har valgt at deaktivere opdateringsfunktionen under installationen."
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+"Uden opdateringsfunktionen, vil den installerede software ikke blive holdt "
+"opdateret og du vil heller ikke være i stand til at installere pakke lister."
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://www.turris.cz/\">Project Turris</a>."
+msgstr ""
+"Ved aktivering af opdateringsfunktionen, kan du også tilmelde dig vores "
+"forskningsprojekt: <a href=\"https://www.turris.cz/\"> Projekt Turris</a>."
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+"Du kan aktivere opdateringsfunktionen når som helst på konfigurationssiden <"
+"a href=\"%(url)s\"> Opdateringsfunktion</a>."
+
+msgid ""
+"With Turris Omnia you can join the research project called <a href=\"https://"
+"www.turris.cz/\">Project Turris</a>. Thanks to this project, your router can "
+"become a probe that analyzes the traffic between internet and the home "
+"network and identifies suspicious data flows."
+msgstr ""
+"Med Turris Omnia du kan deltage i det forskningsprojekt, kaldet <a href=\""
+"https://www.turris.cz/\">Projekt Turris</a>. På grund af dette projekt, kan "
+"din router blive en probe, der analyserer trafikken mellem internettet og "
+"hjemmenetværket, og identificerer mistænkelige data-strømme."
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+"Du kan aktivere disse ekstra funktioner ved at følge anvisningerne på siden "
+"for <a href=\"%(url)s\"> dataindsamling</a>."
+
+msgid "Continue to the configuration interface"
+msgstr "Fortsæt til konfigurationsinterfacet"
+
+msgid "Synchronize with your computer clock"
+msgstr "Synkroniser med din computers ur"
+
+msgid "Set time manually"
+msgstr "Sæt tiden manuelt"
+
+msgid "Synchronization successful."
+msgstr "Synkronisering udført med success."
+
+msgid "Time settings"
+msgstr "Tidsindstillinger"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Synkronisering af routerens tid med en internet tidserver."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Tiden var succesfuldt synkroniseret, du kan gå videre til næste trin."
+
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Skip wizard"
+msgstr "Spring hjælpeguiden over"
+
+msgid "Step"
+msgstr "Trin"
+
+msgid "Language"
+msgstr "Sprog"
+
+msgid "foris version:"
+msgstr "foris-version:"
+
+msgid ""
+"One of the most important features of router Turris Omnia are automatic "
+"system updates. Thanks to this function your router's software stays up to "
+"date and offers better protection against attacks from the Internet."
+msgstr ""
+"En af de vigtigste funktioner i Turris Omnia routeren er automatiske "
+"systemopdateringer. Takket være denne funktion vil din routers software "
+"forblive opdateret og give bedre beskyttelse mod angreb fra internet."
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that this "
+"might weaken the security of your router and network in case flaws in the "
+"software are found."
+msgstr ""
+"Det er <strong>stærkt anbefalet</strong> at have denne funktion "
+"<strong>aktiveret</strong>. Hvis du beslutter at deaktivere den, vær "
+"opmærksom på dette kan svække sikkerheden på din router og netværk, i "
+"tilfælde af der findes fejl i softwaren."
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
+"\">here</a>."
+msgstr ""
+"Ved at slå de automatiske opdateringer til, accepterer du denne funktions "
+"licensaftale. Flere oplysninger kan findes <a href=\"#\" id=\"toggle-eula\"> "
+"her</a>."
+
+msgid "Most important points from the license agreement:"
+msgstr "De vigtigste punkter fra licensaftalen:"
+
+msgid ""
+"Automatic updates are offered to the Turris Omnia owners free of charge."
+msgstr "Automatiske opdateringer tilbydes til Turris Omnia ejere gratis."
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr "Opdateringer er udelukkende udarbejdet af CZ.NIC, z. s. p. o."
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional security "
+"features of Turris Omnia."
+msgstr ""
+"Aktivering af automatiske opdateringer er en forudsætning for yderligere "
+"sikkerhedsfunktioner for Turris Omnia."
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+"Automatiske opdateringer finder sted på tidspunktet for deres frigivelse, "
+"installationen ikke kan påvirkes af brugeren."
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by you."
+msgstr ""
+"Ved at have de automatiske opdateringer slået til kan det resultere i øget "
+"internettrafik på din router. Udgifterne til denne stigning betales af dig."
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the "
+"Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+"Automatiske opdateringer kan ikke beskytte dig mod ethvert angreb fra "
+"internet. Glem ikke med til at beskytte dine arbejdsstationer og andre "
+"enheder ved at installere antivirusprogrammer og forklare dine "
+"familiemedlemmer hvordan man sikkert kan færdes på internet."
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
+"is not responsible for any damages caused by the automatic updates."
+msgstr ""
+"CZ. NIC, z. s. p. o. garanterer ikke tilgængeligheden af denne tjeneste og "
+"er ikke ansvarlig for eventuelle skader forårsaget af de automatiske "
+"opdateringer."
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner of "
+"this Turris Omnia router and you agree with the full text of the <a href="
+"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+"Ved aktivering af de automatiske opdateringer, bekræfter du at du er ejeren "
+"af denne Turris Omnia router og du er enig med den fulde ordlyd af <a href=\""
+"https://www.turris.cz/omnia-updater-eula\"> licensaftalen</a>."
+
+msgid "Log in"
+msgstr "Log ind"
+
+msgid "Foris Configuration Interface"
+msgstr "Foris konfigurationsinterface"
+
+msgid "Go to LuCI"
+msgstr "Gå til LuCI"
+
+msgid "Turris router administration interface"
+msgstr "Turris router administrationsinterface"
+
+msgid "Reboot now"
+msgstr "Genstart nu"
+
+msgid "Dismiss"
+msgstr "Afvis"
+
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr "Ude af stand til at hente meddelelser, prøv venligst at opdatere siden."
+
+msgid "You have been logged out due to longer inactivity."
+msgstr "Du er blevet logget ud, på grund af længere inaktivitet."
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Konfigurationsguiden trin %s"
+
+msgid "Connectivity test"
+msgstr "Forbindelsestest"
+
+msgid "Automatic updates"
+msgstr "Automatiske opdateringer"
