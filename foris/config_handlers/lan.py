@@ -18,12 +18,12 @@ from foris import fapi
 from foris import validators
 from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import (
-    Textbox, Checkbox
+    Textbox, Checkbox, Number
 )
 from foris.nuci import client
 from foris.nuci.filters import create_config_filter, wifi_filter
 from foris.nuci.preprocessors import guest_network_enabled, generate_network_preprocessor
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value
+from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.utils.addresses import (
     ip_num_to_str_4, ip_str_to_num_4, prefix_to_mask_4, mask_to_prefix_4
 )
@@ -42,8 +42,8 @@ class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
 
     def get_form(self):
-        lan_form = fapi.ForisForm("lan", self.data,
-                                  filter=create_config_filter("dhcp", "network", "firewall"))
+        lan_form = fapi.ForisForm(
+            "lan", self.data, filter=create_config_filter("dhcp", "network", "firewall", "sqm"))
         lan_main = lan_form.add_section(
             name="set_lan",
             title=_(self.userfriendly_title),
@@ -105,6 +105,35 @@ class LanHandler(BaseConfigHandler):
                 "the range is different than ranges on your other networks (LAN, WAN, VPN, etc.)."
             ),
         ).requires("guest_network_enabled", True)
+        guest_network_section.add_field(
+            Checkbox, name="guest_network_shapping", label=_("QoS"),
+            nuci_preproc=parse_uci_bool,
+            nuci_path="uci.sqm.guest_limit_turris.enabled",
+            hint=_(
+                "You can limit the speed of your guest network to make sure that you have "
+                "enough bandwidth for your regular network.",
+            ),
+        ).requires("guest_network_enabled", True)
+        guest_network_section.add_field(
+            Number,
+            name="guest_network_download", label=_("Download (kb/s)"),
+            validators=[validators.PositiveInteger()],
+            hint=_(
+                "Upload speed in guest network (in kilobits per second)."
+            ),
+            default=1024,
+            nuci_path="uci.sqm.guest_limit_turris.download",
+        ).requires("guest_network_shapping", True)
+        guest_network_section.add_field(
+            Number,
+            name="guest_network_upload", label=_("Upload (kb/s)"),
+            validators=[validators.PositiveInteger()],
+            hint=_(
+                "Download speed in guest network (in kilobits per second)."
+            ),
+            default=1024,
+            nuci_path="uci.sqm.guest_limit_turris.upload",
+        ).requires("guest_network_shapping", True)
 
         def lan_form_cb(data):
             uci = Uci()
@@ -131,6 +160,13 @@ class LanHandler(BaseConfigHandler):
             else:
                 dhcp.add(Option("ignore", "1"))
 
+            # qos data
+            qos = {'enabled': False}
+            if 'guest_network_shapping' in data and data['guest_network_shapping']:
+                qos['enabled'] = True
+                qos['download'] = data['guest_network_download']
+                qos['upload'] = data['guest_network_upload']
+
             # update guest network configs
             guest_enabled = data.get("guest_network_enabled")
             guest_network_subnet = data.get("guest_network_subnet")
@@ -151,7 +187,9 @@ class LanHandler(BaseConfigHandler):
                     guest_iface.add(Option("disabled", "1"))
 
             guest_interfaces = ["guest_turris_%d" % e for e in range(card_count)]
-            LanHandler.prepare_guest_configs(uci, guest_enabled, network, prefix, guest_interfaces)
+
+            LanHandler.prepare_guest_configs(
+                uci, guest_enabled, network, prefix, guest_interfaces, qos)
 
             return "edit_config", uci
 
@@ -160,7 +198,7 @@ class LanHandler(BaseConfigHandler):
         return lan_form
 
     @staticmethod
-    def prepare_guest_configs(uci, enabled, network, prefix, interfaces=[]):
+    def prepare_guest_configs(uci, enabled, network, prefix, interfaces=[], qos={}):
         ignore = "0" if enabled else "1"
         enabled = "1" if enabled else "0"
 
@@ -180,6 +218,7 @@ class LanHandler(BaseConfigHandler):
         interface_section.add(Option("proto", "static"))
         interface_section.add(Option("ipaddr", router_ip))
         interface_section.add(Option("netmask", netmask))
+        interface_section.add(Option("bridge_empty", "1"))
 
         # update firewall config
         firewall_conf = uci.find_child("firewall") or Config("firewall")
@@ -236,3 +275,20 @@ class LanHandler(BaseConfigHandler):
         dhcp_option_list = List("dhcp_option")
         dhcp_option_list.add(Value(0, "6,%s" % router_ip))
         dhcp_section.add(dhcp_option_list)
+
+        # update qos part
+        if qos:
+            qos_conf = uci.find_child("sqm") or Config("sqm")
+            uci.add(qos_conf)
+
+            queue_section = qos_conf.add_replace(Section("guest_limit_turris", "queue"))
+            queue_section.add(Option("enabled", qos["enabled"]))
+            if qos["enabled"]:
+                queue_section.add(Option("interface", "br-guest_turris"))
+                queue_section.add(Option("qdisc", "fq_codel"))
+                queue_section.add(Option("script", "simple.qos"))
+                queue_section.add(Option("link_layer", "none"))
+                queue_section.add(Option("verbosity", "5"))
+                queue_section.add(Option("debug_logging", "1"))
+                queue_section.add(Option("download", qos["download"]))
+                queue_section.add(Option("upload", qos["upload"]))

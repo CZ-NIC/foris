@@ -392,8 +392,8 @@ class WifiHandler(BaseConfigHandler):
                 LanHandler.prepare_guest_configs(uci, True, network, prefix, guest_interfaces)
             elif guest_wifi_enabled:
                 # try to update guest interfaces if the differs
-                stored = current_data.find_child("uci.network.guest_turris.ifname").value
-                if set(stored.split(" ")) != set(guest_interfaces):
+                stored = current_data.find_child("uci.network.guest_turris.ifname")
+                if not stored or set(stored.value.split(" ")) != set(guest_interfaces):
                     network_conf = uci.add(Config("network"))
                     interface_section = network_conf.add(Section("guest_turris", "interface"))
                     interface_section.add(Option("ifname", " ".join(guest_interfaces)))
