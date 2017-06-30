@@ -161,8 +161,11 @@ class Lazy(object):
 
 
 class LazyCache(object):
+    """
+    Simple per request cache of lazy objects
+    """
     def __init__(self):
-        super(LazyCache, self).__setattr__('_attr_dict', {})
+        self.clear()
 
     def __getattr__(self, name):
         res = self._attr_dict[name]
@@ -178,6 +181,9 @@ class LazyCache(object):
     def __delattr__(self, name):
         del self._attr_dict[name]
         logger.debug("Lazy cache object '%s' removed." % name)
+
+    def clear(self):
+        super(LazyCache, self).__setattr__('_attr_dict', {})
 
 
 def print_model(model):

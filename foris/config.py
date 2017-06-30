@@ -286,8 +286,6 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
 
     def render(self, **kwargs):
         if not contract_valid():
-            lazy_cache.nuci_updater = lambda: client.get(
-                filter=filters.updater).find_child("updater")
             auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
             kwargs['auto_updates_form'] = auto_updates_handler.form
             kwargs['updater_disabled'] = \

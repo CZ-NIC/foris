@@ -359,6 +359,10 @@ def disable_caching(authenticated_only=True):
         bottle.response.headers['Pragma'] = "no-cache"
 
 
+def clear_lazy_cache():
+    lazy_cache.clear()
+
+
 def make_notification_title(notification):
     """
     Helper function for creating of human-readable notification title.
@@ -395,6 +399,7 @@ def init_foris_app(app, prefix):
     app.error_handler[403] = foris_403_handler
     app.add_hook('after_request', clickjacking_protection)
     app.add_hook('after_request', disable_caching)
+    app.add_hook('after_request', clear_lazy_cache)
     app.config['prefix'] = prefix
 
 

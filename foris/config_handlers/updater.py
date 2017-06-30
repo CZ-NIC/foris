@@ -151,6 +151,10 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
 class UpdaterHandler(BaseConfigHandler):
     userfriendly_title = gettext("Updater")
 
+    def __init__(self, *args, **kwargs):
+        super(UpdaterHandler, self).__init__(*args, **kwargs)
+        lazy_cache.nuci_updater = lambda: client.get(filter=filters.updater).find_child("updater")
+
     def get_form(self):
         pkg_list = lazy_cache.nuci_updater.pkg_list
 
