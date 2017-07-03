@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: 2017-07-03 11:08+0000\n"
+"PO-Revision-Date: 2017-07-03 11:57+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
@@ -988,9 +988,8 @@ msgstr "Работоспособность шлюза IPv6"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Test connection"
-msgstr "Тестовое соединение"
+msgstr "Проверка соединения"
 
 msgid "Discard changes"
 msgstr "Отменить изменения"
@@ -1033,7 +1032,7 @@ msgid ""
 "have used for this purpose before:"
 msgstr ""
 "Если вы хотите присоединиться к проекту Turris, вам необходимо сначала "
-"зарегистрироваться на портале Turris. введите адрес электронной почты, на "
+"зарегистрироваться на портале Turris. Введите адрес электронной почты, на "
 "который вы хотите зарегистрироваться или который вы использовали до этого:"
 
 msgid "Validate email"
@@ -1251,12 +1250,12 @@ msgid ""
 "and for the advanced configuration are not included in the backup."
 msgstr ""
 "Если вам нужно сохранить текущую конфигурацию этого устройства, вы можете "
-"загрузить файл резервной копии. Конфигурация сохраняется как незашифрованный "
+"скачать файл резервной копии. Конфигурация сохраняется как незашифрованный "
 "сжатый архив (.tar.bz2). Пароли для этого интерфейса конфигурации и для "
 "расширенной конфигурации не включены в резервную копию."
 
 msgid "Download configuration backup"
-msgstr "Загрузить резервную копию конфигурации"
+msgstr "Скачать резервную копию конфигурации"
 
 msgid "Configuration restore"
 msgstr "Восстановить конфигурацию"
@@ -1375,19 +1374,19 @@ msgid "This value should be the same."
 msgstr "Это значение должно быть тем же."
 
 msgid "This is not a valid IPv4 address."
-msgstr "Это не действительный IPv4-адрес."
+msgstr "Это некорректный IPv4-адрес."
 
 msgid "This is not a valid IPv4 netmask."
-msgstr "Это не действительная маска подсети IPv4."
+msgstr "Это некорректная маска подсети IPv4."
 
 msgid "This is not a valid IPv4 prefix."
-msgstr "Это не действительный префикс IPv4."
+msgstr "Это некорректный префикс IPv4."
 
 msgid "This is not a valid IPv6 prefix."
-msgstr "Это не действительный префикс IPv6."
+msgstr "Это некорректный префикс IPv6."
 
 msgid "This is not a valid MAC address."
-msgstr "Это не действительный MAC-адрес."
+msgstr "Это некорректный MAC-адрес."
 
 msgid ""
 "Your password contains non-standard characters. These are not forbidden, but "
@@ -1517,7 +1516,6 @@ msgstr ""
 "Некоторые службы могут не работать, если вы не перезагрузите устройство. "
 "Подробнее смотрите ниже."
 
-#, fuzzy
 msgid "Continue to configuration interface"
 msgstr "Перейдите к интерфейсу конфигурации"
 
