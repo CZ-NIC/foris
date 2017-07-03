@@ -24,6 +24,7 @@
         <script src="{{ static("js/contrib/html5.js") }}"></script>
         <link href="{{ static("css/ie8.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
     <![endif]-->
+    <link rel="shortcut icon" href="{{ static("img/favicon.ico") }}">
     %if defined('PLUGIN_STYLES') and PLUGIN_STYLES:
       %for static_filename in PLUGIN_STYLES:
         <link href="{{ static("plugins/%s/%s" % (PLUGIN_NAME, static_filename)) }}" rel="stylesheet" media="screen">
