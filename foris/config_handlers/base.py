@@ -20,6 +20,7 @@ import bottle
 
 from foris import fapi
 from foris import validators
+from foris.config.request_decorator import require_contract_valid
 from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import (
     File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time,
@@ -31,7 +32,7 @@ from foris.nuci.filters import create_config_filter
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool,\
     build_option_uci_tree
 from foris.utils import (
-    contract_valid, DEVICE_CUSTOMIZATION, tzinfo, localized_sorted, require_contract_valid
+    DEVICE_CUSTOMIZATION, tzinfo, localized_sorted
 )
 
 logger = logging.getLogger(__name__)

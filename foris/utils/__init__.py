@@ -17,16 +17,12 @@
 import json
 import urlparse
 
-from datetime import datetime, timedelta
-
 import bottle
 from functools import wraps
 import logging
-from xml.etree import cElementTree as ET
 
 from .routing import reverse
 from .. import DEVICE_CUSTOMIZATION
-from ..nuci.modules.uci_raw import parse_uci_bool
 
 
 logger = logging.getLogger("foris.utils")
@@ -54,25 +50,6 @@ def redirect_unauthenticated(redirect_url=None):
         # "raise" standard bottle redirect
         login_url = "%s?next=%s" % (redirect_url, bottle.request.fullpath)
         bottle.redirect(login_url)
-
-
-def contract_valid():
-    """Read whether the contract related with the current router is valid from uci
-
-    :return: whether the contract is still valid
-    """
-    if DEVICE_CUSTOMIZATION == "omnia":
-        return False
-
-    from foris.core import nuci_cache
-    data = nuci_cache.get("foris.contract", 60 * 60)  # once per hour should be enought
-    valid = data.find_child("foris.contract.valid")
-
-    if not valid:  # valid record
-        # valid record not found, assuming that the contract is still valid
-        return True
-
-    return parse_uci_bool(valid)
 
 
 def login_required(func=None, redirect_url=None):
@@ -120,25 +97,6 @@ def require_customization(required_customization=None):
         def wrapper(*args, **kwargs):
             if DEVICE_CUSTOMIZATION != required_customization:
                 raise bottle.HTTPError(403, "Requested method is not available in this Foris build.")
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
-
-
-def require_contract_valid(valid=True):
-    """
-    Decorator for methods that require valid contract.
-    Raises bottle HTTPError if validity differs.
-
-    :param valid: should be contrat valid
-    :type valid: bool
-    :return: decorated function
-    """
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            if not (contract_valid() == valid):
-                raise bottle.HTTPError(403, "Contract validity mismatched.")
             return func(*args, **kwargs)
         return wrapper
     return decorator
