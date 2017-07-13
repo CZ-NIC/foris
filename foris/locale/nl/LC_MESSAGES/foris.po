@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: 2017-05-08 08:31+0000\n"
-"Last-Translator: Michal Čihař <michal@cihar.com>\n"
+"PO-Revision-Date: 2017-06-30 19:42+0000\n"
+"Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 msgid "This field is required."
 msgstr "Dit is een verplicht veld."
@@ -33,12 +33,11 @@ msgstr "Ongeldig IPv6 adres."
 msgid "This is not a valid IPv4 or IPv6 address."
 msgstr "Ongeldig IPv6 netmask adres."
 
-#, fuzzy
 msgid "This is not an IPv6 address with prefix length."
-msgstr "Dit IPv6 adres bevat geen geldige prefix lengte."
+msgstr "Dit is geen IPv6-adres met een prefix-lengte."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr ""
+msgstr "Dit is geen IPv4-adres met een prefix-lengte."
 
 msgid "Is not a number."
 msgstr "Dit is geen getal."
@@ -47,9 +46,9 @@ msgid "This is not valid time in HH:MM format."
 msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
 
 msgid "MAC address is not valid."
-msgstr "ongeldig MAC adres."
+msgstr "Ongeldig MAC-adres."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
 msgstr "Buiten het toegestane bereik %(low)s - %(high)s."
 
@@ -64,21 +63,21 @@ msgid "There were some errors in your input."
 msgstr "Niet alle velden zijn correct ingevuld."
 
 msgid "Old password you entered was not valid."
-msgstr "Het oude wachtwoord komt niet overeen."
+msgstr "Het oude wachtwoord is ongeldig."
 
 msgid "Password was successfully saved."
 msgstr "Het wachtwoord is succesvol gewijzigd."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
-"De WAN poort heeft geen verbinding, de internet verbinding zal mogelijk niet "
-"werken."
+"De WAN-poort heeft geen verbinding, de internetverbinding zal waarschijnlijk "
+"niet werken."
 
 msgid "Maintenance"
 msgstr "Onderhoud"
 
 msgid "Wrong HTTP method."
-msgstr "Ongeldige HTTP method."
+msgstr "Ongeldige HTTP-methode."
 
 msgid "Testing message was sent, please check your inbox."
 msgstr "Het testbericht is verzonden, controleer je e-mail."
@@ -101,60 +100,64 @@ msgid ""
 "%(new_url)s</a> in local network. Please wait a while until router "
 "automatically restarts."
 msgstr ""
-"Herstellen configuratie is geslaagd. Na het installeren van updates en "
+"De configuratie is succesvol hersteld. Na het installeren van updates en "
 "opnieuw opstarten kunt u via het lokale netwerk terugkeren naar deze pagina "
 "op <a href=\"%(new_url)s\">%(new_url)s</a>. Even geduld a.u.b. totdat de "
-"router automatisch opnieuw opgestart is."
+"router automatisch opnieuw is opgestart."
 
 msgid ""
 "Configuration was successfully restored. Please wait a while for "
 "installation of updates and automatic restart of the device."
 msgstr ""
-"De configuratie is succesvol hersteld. Gelieve een tijdje wachten voor de "
-"installatie van updates en automatische herstart van het apparaat."
+"De configuratie is succesvol hersteld. Wacht a.u.b. even op de installatie "
+"van updates en automatische herstart van het apparaat."
 
 msgid "IP address of the router could not be determined from the backup."
 msgstr "IP-adres van de router kan niet worden bepaald vanuit de back-up."
 
 msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
-"Configuratie kon niet worden geladen, back-up-bestand is waarschijnlijk "
+"Configuratie kon niet worden geladen, back-upbestand is waarschijnlijk "
 "beschadigd."
 
 msgid "Invalid reguest arguments."
-msgstr ""
+msgstr "Ongeldige verzoekargumenten."
 
 msgid "Update was approved."
-msgstr ""
+msgstr "Update werd goedgekeurd."
 
 msgid "Failed to approve the update."
-msgstr ""
+msgstr "Het goedkeuren van de update is mislukt."
 
 msgid "Update was postponed."
-msgstr ""
+msgstr "Update werd uitgesteld."
 
 msgid "Failed to postpone the update."
-msgstr ""
+msgstr "Het uitstellen van de update is mislukt."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
 "or removed shortly."
 msgstr ""
-"De instellingen zijn succesvol opgeslagen. De geselecteerde software zal z.s."
-"m. geinstalleerd en/of verwijderd worden."
+"De instellingen zijn succesvol opgeslagen. De geselecteerde software zal "
+"z.s.m. geïnstalleerd of verwijderd worden."
 
 msgid "Data collection"
-msgstr ""
+msgstr "Verzameling van gegevens"
 
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
 msgstr ""
+"Er is een fout opgetreden bij het controleren van de registratie: "
+"<br><pre>%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
 "collection."
 msgstr ""
+"Registratie voor het ingevoerde e-mailadres is geldig. Nu kunt u het "
+"verzamelen van gegevens inschakelen."
 
 #, python-format
 msgid ""
@@ -163,6 +166,10 @@ msgid ""
 "registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
 "email address."
 msgstr ""
+"Deze router is toegewezen aan een ander e-mailadres. Ga verder naar de <a "
+"href=\"%(url)s\">Turris website</a> en gebruik de registratiecode "
+"<strong>%(reg_num)s</strong> om de router opnieuw aan uw e-mailadres toe te "
+"wijzen."
 
 #, python-format
 msgid ""
@@ -170,6 +177,9 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
+"Dit e-mailadres is nog niet geregistreerd. Ga verder naar de <a href=\"%(url)"
+"s\">Turris website</a> en gebruik de registratiecode "
+"<strong>%(reg_num)s</strong> om een nieuw account te maken."
 
 msgid "About"
 msgstr "Over ons"
@@ -186,45 +196,44 @@ msgstr "Bezig met verbinden"
 msgid "Invalid authentication"
 msgstr "Ongeldige authenticatie"
 
-#, fuzzy
 msgid "Broken"
-msgstr "Kapot"
+msgstr "Defect"
 
 msgid "Unknown status"
 msgstr "Status onbekend"
 
 msgid "Home page"
-msgstr ""
+msgstr "Startpagina"
 
 msgid "Configuration could not be saved due to an internal error."
-msgstr ""
+msgstr "De configuratie kon niet worden opgeslagen vanwege een interne fout."
 
 msgid "Enable data collection"
-msgstr ""
+msgstr "Het verzamelen van gegevens inschakelen"
 
 msgid "DNS"
 msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr "Gebruik forwarding"
+msgstr "Forwarding gebruiken"
 
 msgid "Disable DNSSEC"
 msgstr "DNSSEC uitschakelen"
 
 msgid "Backup file"
-msgstr ""
+msgstr "Back-upbestand"
 
 msgid "Notifications"
 msgstr "Notificaties"
 
 msgid "Notifications settings"
-msgstr "Notificatie instellingen"
+msgstr "Notificatie-instellingen"
 
 msgid "Enable notifications"
 msgstr "Notificaties inschakelen"
 
 msgid "SMTP provider"
-msgstr "SMTP provider"
+msgstr "SMTP-aanbieder"
 
 msgid "Turris"
 msgstr "Turris"
@@ -238,6 +247,10 @@ msgid ""
 "additional settings. If you want to set your own SMTP server, please select "
 "\"Custom\" and enter required settings."
 msgstr ""
+"Als u de SMTP-aanbieder op \"Turris\" instelt, dan worden de servers van het "
+"Turris-project gebruikt. Deze servers vereisen geen eventuele aanvullende "
+"instellingen. Als u uw eigen SMTP-server wilt gebruiken, selecteer dan "
+"'Aangepast' en voer de vereiste instellingen in."
 
 #, fuzzy
 msgid "Recipient's email"
@@ -249,49 +262,54 @@ msgstr ""
 "worden door deze te scheiden met spaties."
 
 msgid "Sender's name"
-msgstr "Afzendernaam"
+msgstr "Naam afzender"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
 "before the \"at\" sign."
 msgstr ""
+"Naam van de afzender - zal worden gebruikt als deel van het e-mailadres van "
+"de afzender voor het @-teken."
 
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and underscores."
 msgstr ""
+"De naam van de afzender mag alleen alfanumerieke tekens, punten en platte "
+"streepjes bevatten."
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Opnieuw opstarten is vereist"
 
 msgid "Reboot or attention is required"
-msgstr ""
+msgstr "Opnieuw opstarten of aandacht is vereist"
 
 msgid "Reboot or attention is required or update was installed"
 msgstr ""
+"Opnieuw opstarten of aandacht is vereist, of een update is geïnstalleerd"
 
 msgid "Importance"
-msgstr ""
+msgstr "Belangrijkheid"
 
 msgid "Send news"
-msgstr ""
+msgstr "Nieuws versturen"
 
 msgid "Send emails about new features."
-msgstr "Stuur een e-mail bij nieuwe features."
+msgstr "Stuur een e-mail bij nieuwe functies."
 
 msgid "SMTP settings"
-msgstr "SMTP instellingen"
+msgstr "SMTP-instellingen"
 
 msgid "Sender address (From)"
-msgstr "Afzender adres (From)"
+msgstr "Adres afzender (Van)"
 
 msgid "This is the address notifications are send from."
-msgstr ""
+msgstr "Notificaties worden vanaf dit adres verzonden."
 
 msgid "Server address"
-msgstr "Server adres"
+msgstr "Serveradres"
 
 msgid "Server port"
-msgstr "Server poort"
+msgstr "Serverpoort"
 
 msgid "None"
 msgstr "Geen"
@@ -321,17 +339,21 @@ msgid ""
 "Number of days that must pass between receiving the request for restart and "
 "the automatic restart itself."
 msgstr ""
+"Aantal dagen die voorbij moeten gaan tussen het ontvangen van een verzoek om "
+"herstart en de automatisch herstart."
 
 msgid "Reboot time"
-msgstr "Herstart tijd"
+msgstr "Herstarttijd"
 
 msgid "Time of day of automatic reboot in HH:MM format."
-msgstr ""
+msgstr "Tijd van automatische herstart in UU:MM-formaat."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
 "least 6 characters long."
 msgstr ""
+"Stel uw wachtwoord voor de administratieve interface in. Het wachtwoord moet "
+"ten minste 6 tekens lang zijn."
 
 msgid "Current password"
 msgstr "Huidig wachtwoord"
@@ -349,7 +371,7 @@ msgid "Passwords are not equal."
 msgstr "De opgegeven wachtwoorden komen niet overeen."
 
 msgid "Use the same password for advanced configuration"
-msgstr "Hetzelfde wachtwoord gebruiken voor geavanceerde instellingen"
+msgstr "Hetzelfde wachtwoord voor geavanceerde instellingen gebruiken"
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -358,17 +380,24 @@ msgid ""
 "will have the option to do so later. Until then, the root account will be "
 "blocked.)"
 msgstr ""
+"Hetzelfde wachtwoord zal worden gebruikt voor toegang tot deze administratie-"
+"interface, voor de root-gebruiker in LuCI web-interface en voor SSH-login. "
+"Gebruik een sterk wachtwoord! (Als u ervoor kiest om hier geen wachtwoord in "
+"te stellen voor geavanceerde configuratie, dan hebt u de optie om dat later "
+"te doen. Tot die tijd zal root-account worden geblokkeerd.)"
 
 msgid "Region settings"
-msgstr "Regio instellingen"
+msgstr "Regio-instellingen"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
 "is required to display the right time and for related functions."
 msgstr ""
+"Selecteer de tijdzone waar de router gebruikt wordt. Dit is nodig om de "
+"juiste tijd weer te geven en voor gerelateerde functies."
 
 msgid "Continent or ocean"
-msgstr ""
+msgstr "Continent of oceaan"
 
 msgid "Country"
 msgstr "Land"
@@ -425,16 +454,16 @@ msgid "HTTP (80/TCP)"
 msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP-proxy (3128/TCP)"
 
 msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP-proxy (8123/TCP)"
 
 msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
+msgstr "HTTP-proxy (8080/TCP)"
 
 msgid "Collect credentials"
-msgstr "Login informatie verzamelen"
+msgstr "Login-informatie verzamelen"
 
 msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
@@ -452,93 +481,102 @@ msgid ""
 msgstr ""
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (automatische configuratie)"
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Statisch IP-adres (handmatige configuratie)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr ""
+msgstr "PPPoE (voor DSL-bridges, modem Turris, etc.)"
 
 msgid "DHCPv6 (automatic configuration)"
-msgstr ""
+msgstr "DHCPv6 (automatisch configuratie)"
 
 msgid "Disable IPv6"
 msgstr "IPv6 uitschakelen"
 
 msgid "IPv4 protocol"
-msgstr "IPv4 protocol"
+msgstr "IPv4-protocol"
 
 msgid "IP address"
-msgstr "IP adres"
+msgstr "IP-adres"
 
 msgid "Network mask"
-msgstr ""
+msgstr "Subnetmasker"
 
 msgid "Gateway"
 msgstr "Gateway"
 
 msgid "DNS server 1"
-msgstr "Primaire nameserver"
+msgstr "Primaire DNS"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
 "of working without it."
 msgstr ""
+"Er is geen DNS-serveradres vereist omdat de ingebouwde DNS-resolver ook "
+"zonder deze kan werken."
 
 msgid "DNS server 2"
-msgstr "Secundaire nameserver"
+msgstr "Secundaire DNS"
 
 msgid "PAP/CHAP username"
-msgstr "PAP/CHAP gebruikersnaam"
+msgstr "PAP/CHAP-gebruikersnaam"
 
 msgid "PAP/CHAP password"
-msgstr "PAP/CHAP wachtwoord"
+msgstr "PAP/CHAP-wachtwoord"
 
 msgid "IPv6 protocol"
-msgstr "IPv6 protocol"
+msgstr "IPv6-protocol"
 
 msgid "IPv6 address"
-msgstr "IPv6 adres"
+msgstr "IPv6-adres"
 
 msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
 "be13:37da::1/64"
 msgstr ""
-"IPv6 adres en prefix length voor WAN interface, b.v. 2001:db8:be13:37da::1/64"
+"IPv6-adres en prefix-lengte voor WAN-interface, bijv. "
+"2001:db8:be13:37da::1/64"
 
 msgid "IPv6 gateway"
-msgstr "IPv6 gateway"
+msgstr "IPv6-gateway"
 
 msgid "IPv6 prefix"
-msgstr "IPv6 prefix"
+msgstr "IPv6-prefix"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
+msgstr "Adresbereik voor het lokale netwerk, bijv."
 
 msgid "Use Modem Turris"
-msgstr ""
+msgstr "Modem Turris gebruiken"
 
 msgid ""
 "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
 "modem designed specially for router Turris. Enable this option if you have "
 "Modem Turris connected to your router."
 msgstr ""
+"Modem Turris (ook bekend als SMRT - Small Modem for Router Turris), een "
+"simpel ADSL.VDSL-modem dat specifiek ontworpen is voor de Turris-router. "
+"Schakel dit in als u Modem Turris met de router hebt verbonden."
 
 msgid "xDSL VLAN number"
-msgstr ""
+msgstr "xDSL VLAN-nummer"
 
 msgid ""
 "VLAN number for your internet connection. Your ISP might have provided you "
 "this number. If you have VPI and VCI numbers instead, leave this field "
 "empty, a default value will be used automatically."
 msgstr ""
+"VLAN-nummer van uw internetverbinding. Uw internetprovider heeft u mogelijk "
+"dit nummer gegeven. Als uw in plaats daarvan VPI- en VCI-nummers hebt, laat "
+"dit veld dan leeg. Er wordt automatisch een standaardwaarde gebruikt."
 
 msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
+msgstr "VPI en VCI moeten beide worden ingevuld of beide leeg zijn."
 
 msgid "VPI"
-msgstr ""
+msgstr "VPI"
 
 msgid ""
 "Virtual Path Identifier (VPI) is a parameter that you might have received "
@@ -547,7 +585,7 @@ msgid ""
 msgstr ""
 
 msgid "VCI"
-msgstr ""
+msgstr "VCI"
 
 msgid ""
 "Virtual Circuit Identifier (VCI) is a parameter that you might have received "
@@ -556,7 +594,7 @@ msgid ""
 msgstr ""
 
 msgid "Custom MAC address"
-msgstr ""
+msgstr "Aangepast MAC-adres"
 
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet "
@@ -564,7 +602,7 @@ msgid ""
 msgstr ""
 
 msgid "MAC address"
-msgstr "MAC adres"
+msgstr "MAC-adres"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr ""
@@ -581,27 +619,26 @@ msgstr "Automatische updates inschakelen (aanbevolen)"
 msgid "Turn automatic updates off"
 msgstr "Automatische updates uitschakelen"
 
-#, fuzzy
 msgid "Update approvals"
-msgstr "Updater"
+msgstr "Goedkeuringen voor update"
 
 msgid "No approval needed"
-msgstr ""
+msgstr "Geen goedkeuring nodig"
 
 msgid "Updates will be performed immediatelly without a user confirmation."
 msgstr ""
 
 msgid "Delayed approval"
-msgstr ""
+msgstr "Vertraagde goedkeuring"
 
 msgid "Updates will be performed in a while without a user confirmation."
 msgstr ""
 
 msgid "Approval needed"
-msgstr ""
+msgstr "Goedkeuring nodig"
 
 msgid "User always needs to confirm the updates."
-msgstr ""
+msgstr "De gebruiker moet altijd de updates bevestigen."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -634,7 +671,7 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr "Router IP adres"
+msgstr "Router IP-adres"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
@@ -653,13 +690,13 @@ msgid "DHCP start"
 msgstr ""
 
 msgid "DHCP max leases"
-msgstr ""
+msgstr "DHCP max. aantal leases"
 
 msgid "Guest network"
-msgstr ""
+msgstr "Gastnetwerk"
 
 msgid "Enable guest network"
-msgstr ""
+msgstr "Gastnetwerk inschakelen"
 
 #, python-format
 msgid ""
@@ -676,10 +713,10 @@ msgid ""
 msgstr ""
 
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 msgid "auto"
-msgstr ""
+msgstr "auto"
 
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
@@ -694,13 +731,13 @@ msgid "SSID"
 msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "SSID verbergen"
 
 msgid "If set, network is not visible when scanning for available networks."
 msgstr ""
 
 msgid "Wi-Fi mode"
-msgstr ""
+msgstr "Wi-Fi-modus"
 
 msgid ""
 "The 2.4 GHz band is more widely supported by clients, but tends to have more "
@@ -710,7 +747,7 @@ msgid ""
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Uitgeschakeld"
 
 msgid "802.11n - 20 MHz wide channel"
 msgstr ""
@@ -728,7 +765,7 @@ msgid "802.11ac - 80 MHz wide channel"
 msgstr ""
 
 msgid "802.11n/ac mode"
-msgstr ""
+msgstr "802.11n/ac-modus"
 
 msgid ""
 "Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
@@ -738,13 +775,13 @@ msgid ""
 msgstr ""
 
 msgid "Network channel"
-msgstr ""
+msgstr "Netwerkkanaal"
 
 msgid "Network password"
-msgstr ""
+msgstr "Netwerkwachtwoord"
 
 msgid "Guest Wi-Fi"
-msgstr ""
+msgstr "Gast-Wi-Fi"
 
 msgid "Set guest Wi-Fi here."
 msgstr ""
@@ -762,11 +799,10 @@ msgid ""
 msgstr ""
 
 msgid "SSID for guests"
-msgstr ""
+msgstr "SSID voor gasten"
 
-#, fuzzy
 msgid "Password for guests"
-msgstr "Wachtwoord (herhaling)"
+msgstr "Wachtwoord voor gasten"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
@@ -775,31 +811,30 @@ msgid ""
 "available next to the form."
 msgstr ""
 
-#, fuzzy
 msgid "Wi-Fi settings"
-msgstr "Regio instellingen"
+msgstr "W-Fi-instellingen"
 
 msgid "The password you entered was not valid."
 msgstr ""
 
 msgid "News"
-msgstr ""
+msgstr "Nieuws"
 
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 msgid "%Y/%m/%d %H:%M:%S"
 msgstr ""
 
 #, python-format
 msgid "%(notification)s from %(created_at)s"
-msgstr ""
+msgstr "%(notification)s van %(created_at)s"
 
 msgid "Notification"
-msgstr ""
+msgstr "Notificatie"
 
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
@@ -825,10 +860,10 @@ msgid ""
 msgstr ""
 
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 msgid "Connection test"
-msgstr ""
+msgstr "Verbindingstest"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when "
@@ -838,13 +873,13 @@ msgid ""
 msgstr ""
 
 msgid "Unable to verify network connection."
-msgstr ""
+msgstr "Kon de netwerkverbinding niet verifiëren."
 
 msgid "Test type"
-msgstr ""
+msgstr "Testtype"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "IPv4 connectivity"
 msgstr ""
@@ -859,16 +894,16 @@ msgid "IPv6 gateway connectivity"
 msgstr ""
 
 msgid "DNSSEC"
-msgstr ""
+msgstr "DNSSEC"
 
 msgid "Test connection"
 msgstr ""
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Wijzigingen verwerpen"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Wijzigingen opslaan"
 
 msgid ""
 "With the Turris Omnia router you can join Project Turris which is a non-"
@@ -886,7 +921,7 @@ msgstr ""
 msgid ""
 "The Updater is currently disabled. You must enable it first to enable data "
 "collection."
-msgstr ""
+msgstr "De updates is momenteel uitgeschakeld."
 
 msgid ""
 "If you want to join the Turris project you need to register on the Turris "
@@ -895,19 +930,19 @@ msgid ""
 msgstr ""
 
 msgid "Validate email"
-msgstr ""
+msgstr "E-mailadres valideren"
 
 msgid "Device"
-msgstr ""
+msgstr "Apparaat"
 
 msgid "Serial number"
-msgstr ""
+msgstr "Serienummer"
 
 msgid "Turris OS version"
-msgstr ""
+msgstr "Versie Turris-OS"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Kernel-versie"
 
 msgid "Sending of uCollect data"
 msgstr ""
@@ -926,7 +961,7 @@ msgid "Sending of firewall logs"
 msgstr ""
 
 msgid "Refresh"
-msgstr ""
+msgstr "Verversen"
 
 msgid "Device registration"
 msgstr ""
@@ -939,7 +974,7 @@ msgid ""
 msgstr ""
 
 msgid "Registration code"
-msgstr ""
+msgstr "Registratiecode"
 
 msgid ""
 "Unfortunately, it wasn't possible to generate the registration code. This "
@@ -948,7 +983,7 @@ msgid ""
 msgstr ""
 
 msgid "Get registration code"
-msgstr ""
+msgstr "Registratiecode ophalen"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -978,7 +1013,7 @@ msgid "after %(input)s hours"
 msgstr ""
 
 msgid "Hint"
-msgstr ""
+msgstr "Hint"
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
@@ -990,22 +1025,22 @@ msgid "Approve update from %(when)s"
 msgstr ""
 
 msgid "Uninstall"
-msgstr ""
+msgstr "Deïnstalleren"
 
 msgid "Install"
-msgstr ""
+msgstr "Installeren"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr ""
 
 msgid "Approve"
-msgstr ""
+msgstr "Goedkeuren"
 
 msgid "Postpone"
-msgstr ""
+msgstr "Uitstellen"
 
 msgid "Package lists"
-msgstr ""
+msgstr "Pakketlijsten"
 
 msgid ""
 "List of available software was not downloaded from the server yet. Please "
@@ -1025,7 +1060,7 @@ msgid ""
 msgstr ""
 
 msgid "No new messages."
-msgstr ""
+msgstr "Geen nieuwe berichten."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr ""
@@ -1051,10 +1086,10 @@ msgid ""
 msgstr ""
 
 msgid "Send testing message"
-msgstr ""
+msgstr "Testbericht versturen"
 
 msgid "Configuration backup"
-msgstr ""
+msgstr "Configuratie back-uppen"
 
 msgid ""
 "If you need to save the current configuration of this device, you can "
@@ -1064,10 +1099,10 @@ msgid ""
 msgstr ""
 
 msgid "Download configuration backup"
-msgstr ""
+msgstr "Configuratie-back-up downloaden"
 
 msgid "Configuration restore"
-msgstr ""
+msgstr "Configuratie herstellen"
 
 msgid ""
 "To restore the configuration from a backup file, upload it using following "
@@ -1079,7 +1114,7 @@ msgid "Restore from backup"
 msgstr ""
 
 msgid "Device reboot"
-msgstr ""
+msgstr "Apparaat herstarten"
 
 msgid ""
 "If you need to reboot the device, click on the following button. The reboot "
@@ -1088,16 +1123,16 @@ msgid ""
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "Herstart"
 
 msgid "Foris - administration interface of router Turris"
 msgstr ""
 
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 msgid "Log out"
-msgstr ""
+msgstr "Afmelden"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1129,7 +1164,7 @@ msgid "This value should not be blank."
 msgstr ""
 
 msgid "This value is required."
-msgstr ""
+msgstr "Deze waarde is vereist."
 
 #, python-format
 msgid "This value should be greater than or equal to %s."
