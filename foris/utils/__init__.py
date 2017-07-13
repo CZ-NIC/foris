@@ -186,28 +186,6 @@ class LazyCache(object):
         super(LazyCache, self).__setattr__('_attr_dict', {})
 
 
-def print_model(model):
-    import copy
-    toprint = copy.deepcopy(model.get_tree())
-    indent(toprint)
-    data = ET.tostring(toprint)
-    logger.debug(data)
-    return data
-
-
-def indent(elem, level=0):
-    i = "\n" + level*"  "
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = i + "  "
-        for e in elem:
-            indent(e, level+1)
-        if not e.tail or not e.tail.strip():
-            e.tail = i
-    if level and (not elem.tail or not elem.tail.strip()):
-        elem.tail = i
-
-
 def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
     """
     Sorted method that can sort according to a language-specific alphabet.
