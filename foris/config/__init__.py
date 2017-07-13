@@ -23,15 +23,17 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
-from .core import lazy_cache, gettext_dummy as gettext, make_notification_title, ugettext as _
-from .config_handlers import *
-from .nuci import client
-from .nuci.client import filters
-from .nuci.exceptions import ConfigRestoreError
-from .nuci.preprocessors import preproc_disabled_to_agreed
-from .utils import login_required, messages, require_contract_valid, contract_valid
-from .utils.bottle_csrf import CSRFPlugin
-from .utils.routing import reverse
+from foris.core import lazy_cache, gettext_dummy as gettext, make_notification_title, ugettext as _
+from foris.config_handlers import *
+from foris.nuci import client
+from foris.nuci.client import filters, contract_valid
+from foris.nuci.exceptions import ConfigRestoreError
+from foris.nuci.preprocessors import preproc_disabled_to_agreed
+from foris.utils import login_required, messages
+from foris.utils.bottle_csrf import CSRFPlugin
+from foris.utils.routing import reverse
+
+from .request_decorator import require_contract_valid
 
 logger = logging.getLogger(__name__)
 

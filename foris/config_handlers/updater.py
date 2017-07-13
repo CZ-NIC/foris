@@ -22,7 +22,6 @@ from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
-from foris.utils import contract_valid
 
 from .base import BaseConfigHandler, logger
 
@@ -198,7 +197,7 @@ class UpdaterHandler(BaseConfigHandler):
                 return list_name in enabled_names
             return preproc
 
-        if not contract_valid():
+        if not client.contract_valid():
             agreed_collect_opt = updater_form.nuci_config \
                 .find_child("uci.foris.eula.agreed_collect")
             agreed_collect = agreed_collect_opt and bool(int(agreed_collect_opt.value))
@@ -206,7 +205,7 @@ class UpdaterHandler(BaseConfigHandler):
             agreed_collect = True
 
         for pkg_list_item in pkg_list:
-            if not contract_valid():
+            if not client.contract_valid():
                 if pkg_list_item.name == "i_agree_datacollect":
                     # This has special meaning - it's affected by foris.eula.agreed_collect
                     continue

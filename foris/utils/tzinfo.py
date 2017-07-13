@@ -3,10 +3,10 @@ import pickle
 
 
 # Load directory of countries country_code: country_name
-countries = pickle.load(file(os.path.join(os.path.dirname(__file__), "countries.pickle2"), "rb"))
+countries = pickle.load(open(os.path.join(os.path.dirname(__file__), "countries.pickle2"), "rb"))
 
 # Load TZ data tuple of tuples: (luci_tz, country, city, zoneinfo)
-tz_data = pickle.load(file(os.path.join(os.path.dirname(__file__), "tzdata.pickle2"), "rb"))
+tz_data = pickle.load(open(os.path.join(os.path.dirname(__file__), "tzdata.pickle2"), "rb"))
 
 
 # Set of existing regions
