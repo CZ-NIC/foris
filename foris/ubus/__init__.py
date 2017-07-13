@@ -18,6 +18,7 @@ from __future__ import absolute_import
 
 import ubus
 import logging
+import json
 
 logger = logging.getLogger("ubus")
 
@@ -28,5 +29,5 @@ if not ubus.get_connected():
 
 
 def call(obj, func, params):
-    logger.debug("Calling function '%s'.'%s' with params '%s'" % (obj, func, params))
+    logger.debug("Calling function '%s'.'%s' with params '%s'" % (obj, func, json.dumps(params)))
     return ubus.call(obj, func, params)

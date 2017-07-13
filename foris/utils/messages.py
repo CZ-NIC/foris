@@ -14,7 +14,7 @@ ERROR = (30, "error")
 
 
 class Message(object):
-    def __init__(self, text, level, extra_classes=None):
+    def __init__(self, text, level, extra_classes=[]):
         """
         Create new message instance.
 
@@ -75,7 +75,7 @@ def get_messages(level=None, min_level=None):
             yield Message.from_json(msg)
 
 
-def info(text, extra_classes=None):
+def info(text, extra_classes=[]):
     """
     Add new info message.
 
@@ -85,7 +85,7 @@ def info(text, extra_classes=None):
     add_message(text, INFO, extra_classes)
 
 
-def success(text, extra_classes=None):
+def success(text, extra_classes=[]):
     """
     Add new success message.
 
@@ -95,7 +95,7 @@ def success(text, extra_classes=None):
     add_message(text, SUCCESS, extra_classes)
 
 
-def warning(text, extra_classes=None):
+def warning(text, extra_classes=[]):
     """
     Add new warning message.
 
@@ -105,7 +105,7 @@ def warning(text, extra_classes=None):
     add_message(text, WARNING, extra_classes)
 
 
-def error(text, extra_classes=None):
+def error(text, extra_classes=[]):
     """
     Add new error message.
 
@@ -115,7 +115,7 @@ def error(text, extra_classes=None):
     add_message(text, ERROR, extra_classes)
 
 
-def add_message(text, level=INFO, extra_classes=None):
+def add_message(text, level=INFO, extra_classes=[]):
     """
     Add new message.
 
