@@ -476,10 +476,6 @@ def prepare_main_app(args):
     app.mount("/wizard", wizard.init_app())
 
     if args.debug:
-        # "about:config" is available only in debug mode
-        import uci
-        # must be mounted before wrapping the app with middleware
-        app.mount("/uci", uci.app)
         if args.noauth:
             logger.warning("authentication disabled")
             app.config["no_auth"] = True
