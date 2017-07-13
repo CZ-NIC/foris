@@ -55,6 +55,7 @@ setup(
     packages=[
         "foris",
         "foris.config_handlers",
+        "foris.config",
         "foris.langs",
         "foris.nuci",
         "foris.nuci.modules",
@@ -62,6 +63,7 @@ setup(
         "foris.utils",
         "foris.ubus",
         "foris.middleware",
+        "foris.wizard",
     ],
     package_data={
         '': [

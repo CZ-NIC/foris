@@ -25,6 +25,8 @@ from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 from ncclient.transport import TransportError
 
+from foris import DEVICE_CUSTOMIZATION
+
 from . import filters
 from .exceptions import ConfigRestoreError
 from .modules import (
@@ -32,6 +34,7 @@ from .modules import (
     stats, time as time_module, uci_raw, updater, user_notify
 )
 from .modules.base import Data, YinElement
+from .modules.uci_raw import parse_uci_bool
 from .utils import LocalizableTextValue
 
 logger = logging.getLogger("nuci.client")
@@ -428,6 +431,25 @@ def edit_config_multiple(configs):
         config_root = ET.Element(YinElement.qual_tag("config"))
         config_root.append(config)
         netconf.edit_config("running", config=config_root)
+
+
+def contract_valid():
+    """Read whether the contract related with the current router is valid from uci
+
+    :return: whether the contract is still valid
+    """
+    if DEVICE_CUSTOMIZATION == "omnia":
+        return False
+
+    from foris.core import nuci_cache
+    data = nuci_cache.get("foris.contract", 60 * 60)  # once per hour should be enought
+    valid = data.find_child("foris.contract.valid")
+
+    if not valid:  # valid record
+        # valid record not found, assuming that the contract is still valid
+        return True
+
+    return parse_uci_bool(valid)
 
 
 def dispatch(*args, **kwargs):
