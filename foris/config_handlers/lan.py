@@ -122,7 +122,7 @@ class LanHandler(BaseConfigHandler):
                 "Upload speed in guest network (in kilobits per second)."
             ),
             default=1024,
-            nuci_path="uci.sqm.guest_limit_turris.download",
+            nuci_path="uci.sqm.guest_limit_turris.upload",
         ).requires("guest_network_shapping", True)
         guest_network_section.add_field(
             Number,
@@ -132,7 +132,7 @@ class LanHandler(BaseConfigHandler):
                 "Download speed in guest network (in kilobits per second)."
             ),
             default=1024,
-            nuci_path="uci.sqm.guest_limit_turris.upload",
+            nuci_path="uci.sqm.guest_limit_turris.download",
         ).requires("guest_network_shapping", True)
 
         def lan_form_cb(data):
@@ -290,5 +290,9 @@ class LanHandler(BaseConfigHandler):
                 queue_section.add(Option("link_layer", "none"))
                 queue_section.add(Option("verbosity", "5"))
                 queue_section.add(Option("debug_logging", "1"))
-                queue_section.add(Option("download", qos["download"]))
-                queue_section.add(Option("upload", qos["upload"]))
+                # We need to swap dowload and upload
+                # "upload" means upload to the guest network
+                # "download" means dowload from the guest network
+                # so it would be confusing for a client who tries to run some speedtest
+                queue_section.add(Option("download", qos["upload"]))
+                queue_section.add(Option("upload", qos["download"]))
