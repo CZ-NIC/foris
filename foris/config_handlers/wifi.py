@@ -16,11 +16,11 @@
 
 from foris import fapi
 from foris import validators
-from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool
 from foris.utils.routing import reverse
+from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler, logger
 from .lan import DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX, LanHandler

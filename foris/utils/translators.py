@@ -16,24 +16,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-from foris.nuci.helpers import contract_valid
-from functools import wraps
+import collections
+import gettext
+import os
 
+from foris.langs import translations
 
-def require_contract_valid(valid=True):
-    """
-    Decorator for methods that require valid contract.
-    Raises bottle HTTPError if validity differs.
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-    :param valid: should be contrat valid
-    :type valid: bool
-    :return: decorated function
-    """
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            if not (contract_valid() == valid):
-                raise bottle.HTTPError(403, "Contract validity mismatched.")
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
+# read locale directory
+locale_directory = os.path.join(BASE_DIR, "locale")
+
+translations = collections.OrderedDict(
+    (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
+    for e in translations
+)
+
+ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
+ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
+gettext_dummy = lambda x: x
+
+_ = ugettext
