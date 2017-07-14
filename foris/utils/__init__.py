@@ -22,7 +22,9 @@ from functools import wraps
 import logging
 
 from .routing import reverse
+from . import messages
 from .. import DEVICE_CUSTOMIZATION
+from .translators import _
 
 
 logger = logging.getLogger("foris.utils")
@@ -37,8 +39,6 @@ def redirect_unauthenticated(redirect_url=None):
     redirect_url = redirect_url or reverse("index")
     no_auth = bottle.default_app().config.get("no_auth", False)
     if not no_auth and not is_user_authenticated():
-        from foris.core import ugettext as _
-        import messages
         messages.info(_("You have been logged out due to longer inactivity."))
         if bottle.request.is_xhr:
             # "raise" JSON response if requested by XHR
@@ -96,7 +96,8 @@ def require_customization(required_customization=None):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if DEVICE_CUSTOMIZATION != required_customization:
-                raise bottle.HTTPError(403, "Requested method is not available in this Foris build.")
+                raise bottle.HTTPError(
+                    403, "Requested method is not available in this Foris build.")
             return func(*args, **kwargs)
         return wrapper
     return decorator

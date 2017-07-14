@@ -18,10 +18,7 @@
 
 from foris import fapi
 from foris import validators
-from foris.core import gettext_dummy as gettext, ugettext as _
-from foris.form import (
-    Textbox, Checkbox, Number
-)
+from foris.form import Textbox, Checkbox, Number
 from foris.nuci import client
 from foris.nuci.filters import create_config_filter, wifi_filter
 from foris.nuci.preprocessors import guest_network_enabled, generate_network_preprocessor
@@ -30,6 +27,7 @@ from foris.utils.addresses import (
     ip_num_to_str_4, ip_str_to_num_4, prefix_to_mask_4, mask_to_prefix_4
 )
 from foris.utils.routing import reverse
+from foris.utils.translators import gettext_dummy as gettext, _
 
 
 from .base import BaseConfigHandler

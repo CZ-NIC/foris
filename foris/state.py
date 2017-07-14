@@ -15,25 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import bottle
-from foris.nuci.helpers import contract_valid
-from functools import wraps
+from foris.nuci import cache
+from foris.utils import LazyCache
 
-
-def require_contract_valid(valid=True):
-    """
-    Decorator for methods that require valid contract.
-    Raises bottle HTTPError if validity differs.
-
-    :param valid: should be contrat valid
-    :type valid: bool
-    :return: decorated function
-    """
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            if not (contract_valid() == valid):
-                raise bottle.HTTPError(403, "Contract validity mismatched.")
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
+# init cache
+nuci_cache = cache.NuciCache()
+lazy_cache = LazyCache()

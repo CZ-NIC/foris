@@ -16,13 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # builtins
-import collections
-import gettext
 import hashlib
 import logging
 import os
 import re
 import time
+
+import config as config_app
+import wizard as wizard_app
 
 # 3rd party
 import bottle
@@ -32,51 +33,39 @@ from ncclient.operations import TimeoutExpiredError, RPCError
 # local
 from . import __version__ as foris_version
 from .middleware.sessions import SessionMiddleware
-from .nuci import client, filters, cache
+from .middleware.reporting import ReportingMiddleware
+from .nuci import client, filters
+from .nuci.helpers import contract_valid
 from .nuci.modules.uci_raw import Uci, Config, Section, Option
-from .nuci.modules.user_notify import Severity
-from .langs import iso2to3, translation_names, translations, DEFAULT_LANGUAGE
+from .langs import iso2to3, translation_names, DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
 from .utils import (
-    redirect_unauthenticated, is_safe_redirect, is_user_authenticated, template_helpers, LazyCache
+    redirect_unauthenticated, is_safe_redirect, is_user_authenticated, template_helpers
 )
 from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
 from .utils import DEVICE_CUSTOMIZATION, messages
-from .utils.reporting_middleware import ReportingMiddleware
 from .utils.routing import reverse, static
+from .utils.translators import translations, ugettext, ungettext, _
+
+from .state import nuci_cache, lazy_cache
 
 
 logger = logging.getLogger("foris")
 
 BASE_DIR = os.path.dirname(__file__)
 
-# init cache
-nuci_cache = cache.NuciCache()
-lazy_cache = LazyCache()
 
 # internationalization
 i18n_defaults(bottle.SimpleTemplate, bottle.request)
 
-# read locale directory
-locale_directory = os.path.join(BASE_DIR, "locale")
-
-translations = collections.OrderedDict(
-    (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
-    for e in translations
-)
-
-ugettext = lambda x: translations[bottle.request.app.lang].ugettext(x)
-ungettext = lambda singular, plural, n: translations[bottle.request.app.lang].ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
 bottle.SimpleTemplate.defaults['translation_names'] = translation_names
 bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
 bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
 bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
 bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
-bottle.SimpleTemplate.defaults['contract_valid'] = client.contract_valid
+bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
 bottle.SimpleTemplate.defaults['foris_version'] = foris_version
-gettext_dummy = lambda x: x
-_ = ugettext
 
 # template defaults
 # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
@@ -368,32 +357,6 @@ def clear_lazy_cache():
     lazy_cache.clear()
 
 
-def make_notification_title(notification):
-    """
-    Helper function for creating of human-readable notification title.
-
-    :param notification: notification to create title for
-    :return: translated string with notification title
-    """
-    notification_titles = {
-        Severity.NEWS: _("News"),
-        Severity.UPDATE: _("Update"),
-        Severity.ERROR: _("Error"),
-    }
-
-    # minor abuse of gettext follows...
-    try:
-        locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
-    except UnicodeEncodeError:
-        # Unicode characters in translated format -> fallback to %Y/%m/%d %H:%M:%S
-        locale_date = notification.created_at.strftime("%Y/%m/%d %H:%M:%S")
-
-    return _("%(notification)s from %(created_at)s") % dict(
-        notification=notification_titles.get(notification.severity.value, _("Notification")),
-        created_at=locale_date
-    )
-
-
 def init_foris_app(app, prefix):
     """
     Initializes Foris application - use this method to apply properties etc.
@@ -473,11 +436,10 @@ def prepare_main_app(args):
     template_dir = os.path.join(BASE_DIR, "templates")
     bottle.TEMPLATE_PATH.append(template_dir)
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
+
     # mount apps
-    import config
-    import wizard
-    app.mount("/config", config.init_app())
-    app.mount("/wizard", wizard.init_app())
+    app.mount("/config", config_app.init_app())
+    app.mount("/wizard", wizard_app.init_app())
 
     if args.debug:
         if args.noauth:

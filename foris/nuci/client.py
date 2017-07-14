@@ -25,17 +25,16 @@ from ncclient.operations import RPCError
 from ncclient.operations.errors import TimeoutExpiredError
 from ncclient.transport import TransportError
 
-from foris import DEVICE_CUSTOMIZATION
 
 from . import filters
 from .exceptions import ConfigRestoreError
 from .modules import (
-    maintain, network, password as password_module, registration, updater,
+    maintain, network, password as password_module, registration,
     stats, time as time_module, uci_raw, updater, user_notify
 )
 from .modules.base import Data, YinElement
-from .modules.uci_raw import parse_uci_bool
 from .utils import LocalizableTextValue
+from foris.utils.translators import _
 
 logger = logging.getLogger("nuci.client")
 
@@ -235,7 +234,7 @@ def get_registration_status(email, lang=None):
     try:
         data = dispatch(registration.RegistrationStatus.rpc_get_status(email, lang))
         return True, registration.RegistrationStatus.from_element(ET.fromstring(data.xml))
-    except RPCError, e:
+    except RPCError as e:
         return False, e.message
     except TimeoutExpiredError:
         return False, "Timed out."
@@ -245,7 +244,6 @@ def get_messages():
     try:
         return get(filter=filters.messages).find_child("messages") or user_notify.Messages()
     except (RPCError, TimeoutExpiredError):
-        from foris.core import ugettext as _
         logger.exception("Unable to fetch messages")
         error_message = user_notify.Message(
             message_id=None,
@@ -271,7 +269,7 @@ def test_notifications():
     try:
         dispatch(user_notify.UserNotify.rpc_test())
         return True, None
-    except RPCError, e:
+    except RPCError as e:
         if e.tag == "operation-failed":
             return False, e.message
         logger.exception("Notifications testing failed.")
@@ -431,25 +429,6 @@ def edit_config_multiple(configs):
         config_root = ET.Element(YinElement.qual_tag("config"))
         config_root.append(config)
         netconf.edit_config("running", config=config_root)
-
-
-def contract_valid():
-    """Read whether the contract related with the current router is valid from uci
-
-    :return: whether the contract is still valid
-    """
-    if DEVICE_CUSTOMIZATION == "omnia":
-        return False
-
-    from foris.core import nuci_cache
-    data = nuci_cache.get("foris.contract", 60 * 60)  # once per hour should be enought
-    valid = data.find_child("foris.contract.valid")
-
-    if not valid:  # valid record
-        # valid record not found, assuming that the contract is still valid
-        return True
-
-    return parse_uci_bool(valid)
 
 
 def dispatch(*args, **kwargs):

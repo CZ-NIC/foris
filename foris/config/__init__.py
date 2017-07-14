@@ -23,11 +23,14 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
-from foris.core import lazy_cache, gettext_dummy as gettext, make_notification_title, ugettext as _
+from foris.utils.translators import gettext_dummy as gettext, _
+from foris.nuci.notifications import make_notification_title
+from foris.state import lazy_cache
 from foris.config_handlers import *
 from foris.nuci import client
-from foris.nuci.client import filters, contract_valid
+from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
+from foris.nuci.helpers import contract_valid
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages
 from foris.utils.bottle_csrf import CSRFPlugin
@@ -59,8 +62,8 @@ class ConfigPageMixin(object):
         raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
-        return template(self.template, title=_(kwargs.pop('title', self.userfriendly_title)),
-                        **kwargs)
+        return template(
+            self.template, title=_(kwargs.pop('title', self.userfriendly_title)), **kwargs)
 
     def render(self, **kwargs):
         # same premise as in wizard form - we are handling single-section ForisForm

@@ -18,18 +18,20 @@ from bottle import Bottle, template, request
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
-from foris.core import gettext_dummy as gettext, make_notification_title, ugettext as _
 import logging
 from foris.config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
     WanHandler, TimeHandler, LanHandler, UpdaterAutoUpdatesHandler, WifiHandler
 from foris.config.request_decorator import require_contract_valid
 from foris.nuci import client, filters
 from foris.nuci.configurator import add_config_update, commit
+from foris.nuci.helpers import contract_valid
 from foris.nuci.modules.uci_raw import build_option_uci_tree
+from foris.nuci.notifications import make_notification_title
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages
 from foris.utils.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
+from foris.utils.translators import gettext_dummy as gettext, _
 
 
 logger = logging.getLogger("wizard")
@@ -379,7 +381,7 @@ class WizardStep10(WizardStepMixin, BaseConfigHandler):
     def render(self, **kwargs):
         kwargs['notifications'] = client.get_messages().restarts
         kwargs['make_notification_title'] = make_notification_title
-        if not client.contract_valid():
+        if not contract_valid():
             updater_conf = client.get(filter=filters.create_config_filter("foris"))
             agreed_updater = preproc_disabled_to_agreed(updater_conf)
             return template("wizard/finished.tpl",
