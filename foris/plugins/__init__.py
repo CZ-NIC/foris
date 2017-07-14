@@ -14,6 +14,8 @@ import sys
 
 import bottle
 
+from foris.utils.translators import translations
+
 
 logger = logging.getLogger(__name__)
 
@@ -42,10 +44,11 @@ class ForisPlugin(object):
         the whole app. This is not an issue now, but it should be examined
         later and replaced by a better solution.
         """
-        from foris.core import translations
         for lang, default_translation in translations.iteritems():
-            local_translation = gettext.translation("messages", os.path.join(self.DIRNAME, "locale"),
-                                                    languages=[lang], fallback=True)
+            local_translation = gettext.translation(
+                "messages", os.path.join(self.DIRNAME, "locale"),
+                languages=[lang], fallback=True
+            )
             default_translation.add_fallback(local_translation)
 
 

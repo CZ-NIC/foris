@@ -18,7 +18,7 @@
 def unqualify(tag):
     index = tag.index("}")
     if index != -1:
-        return tag[index+1:]
+        return tag[index + 1:]
     return tag
 
 

@@ -15,11 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import fapi, validators
-from foris.core import lazy_cache, gettext_dummy as gettext, ugettext as _
+from foris.state import lazy_cache
 from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
+from foris.nuci.helpers import contract_valid
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
+from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler, logger
 
@@ -195,7 +197,7 @@ class UpdaterHandler(BaseConfigHandler):
                 return list_name in enabled_names
             return preproc
 
-        if not client.contract_valid():
+        if not contract_valid():
             agreed_collect_opt = updater_form.nuci_config \
                 .find_child("uci.foris.eula.agreed_collect")
             agreed_collect = agreed_collect_opt and bool(int(agreed_collect_opt.value))
@@ -203,7 +205,7 @@ class UpdaterHandler(BaseConfigHandler):
             agreed_collect = True
 
         for pkg_list_item in pkg_list:
-            if not client.contract_valid():
+            if not contract_valid():
                 if pkg_list_item.name == "i_agree_datacollect":
                     # This has special meaning - it's affected by foris.eula.agreed_collect
                     continue

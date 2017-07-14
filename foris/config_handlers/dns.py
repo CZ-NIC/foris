@@ -3,11 +3,11 @@ from .base import BaseConfigHandler
 from foris import fapi
 from foris import validators
 
-from foris.core import gettext_dummy as gettext, ugettext as _
 from foris.form import Checkbox, Textbox
 from foris.nuci.filters import create_config_filter
+from foris.nuci.helpers import contract_valid
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
-from foris.utils import contract_valid
+from foris.utils.translators import gettext_dummy as gettext, _
 
 
 class DNSHandler(BaseConfigHandler):
