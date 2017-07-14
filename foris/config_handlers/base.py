@@ -21,7 +21,7 @@ import bottle
 from foris import fapi
 from foris import validators
 from foris.config.request_decorator import require_contract_valid
-from foris.core import gettext_dummy as gettext, ugettext as _
+from foris.utils.translators import gettext_dummy as gettext, _
 from foris.form import (
     File, Password, Textbox, Dropdown, Checkbox, Hidden, Radio, Number, Email, Time,
     MultiCheckbox
