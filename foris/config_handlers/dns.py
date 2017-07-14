@@ -69,15 +69,15 @@ class DNSHandler(BaseConfigHandler):
             if not contract_valid():
                 server.add(Option("ignore_root_key", data['ignore_root_key']))
 
-            if 'dynamic_dns' in data:
+            if 'dhcp_from_dns' in data:
                 kresd = resolver.add(Section("kresd", "resolver"))
-                kresd.add(Option("dynamic_domains", data['dynamic_dns']))
+                kresd.add(Option("dynamic_domains", data['dhcp_from_dns']))
 
-            if 'local_domain' in data:
+            if 'dhcp_dns_domain' in data:
                 dhcp = uci.add(Config("dhcp"))
                 dnsmasq_section = dns_form.nuci_config.find_child("uci.dhcp.@dnsmasq[0]")
                 dnsmasq = dhcp.add(Section(dnsmasq_section.name, "dnsmasq", anonymous=True))
-                dnsmasq.add(Option("local", "/%s/" % data["local_domain"].strip("/")))
+                dnsmasq.add(Option("local", "/%s/" % data["dhcp_dns_domain"].strip("/")))
 
             return "edit_config", uci
 
