@@ -16,11 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # builtins
-import hashlib
 import logging
 import os
-import re
-import time
 
 import config as config_app
 import wizard as wizard_app
@@ -31,21 +28,24 @@ from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 # local
 from . import __version__ as foris_version
+from .common import (
+    index, login, foris_403_handler, render_js_md5, render_js, logout, change_lang, static
+)
 from .middleware.sessions import SessionMiddleware
 from .middleware.reporting import ReportingMiddleware
-from .nuci import client, filters
-from .nuci.helpers import contract_valid, read_uci_lang, write_uci_lang
+from .nuci import client
+from .nuci.helpers import contract_valid, read_uci_lang
 from .langs import iso2to3, translation_names, DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
 from .utils import (
-    redirect_unauthenticated, is_safe_redirect, is_user_authenticated, template_helpers
+    is_user_authenticated, template_helpers
 )
-from .utils.bottle_csrf import get_csrf_token, update_csrf_token, CSRFValidationError, CSRFPlugin
+from .utils.bottle_csrf import get_csrf_token, CSRFPlugin
 from .utils import DEVICE_CUSTOMIZATION, messages
-from .utils.routing import reverse, static
-from .utils.translators import translations, ugettext, ungettext, _
+from .utils.routing import reverse, static as static_path
+from .utils.translators import translations, ugettext, ungettext
 
-from .state import nuci_cache, lazy_cache
+from .state import lazy_cache
 
 
 logger = logging.getLogger("foris")
@@ -72,9 +72,10 @@ bottle.SimpleTemplate.defaults["user_authenticated"] =\
     lambda: bottle.request.environ["foris.session"].get("user_authenticated")
 bottle.SimpleTemplate.defaults["request"] = bottle.request
 bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
-bottle.SimpleTemplate.defaults["static"] = static
+bottle.SimpleTemplate.defaults["static"] = static_path
 bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
 bottle.SimpleTemplate.defaults["helpers"] = template_helpers
+bottle.SimpleTemplate.defaults['js_md5'] = lambda filename: render_js_md5(filename)
 
 # messages
 messages.set_template_defaults(bottle.SimpleTemplate)
@@ -112,187 +113,6 @@ def route_list_cmdline(app):
     for method, bottle_path, regex_path in route_list(app):
         res.append(regex_path)
     return res
-
-
-def login_redirect(step_num, wizard_finished=False):
-    from wizard import NUM_WIZARD_STEPS
-    if step_num >= NUM_WIZARD_STEPS or wizard_finished:
-        next = bottle.request.GET.get("next")
-        if next and is_safe_redirect(next, bottle.request.get_header('host')):
-            bottle.redirect(next)
-        bottle.redirect(reverse("config_index"))
-    elif step_num == 1:
-        bottle.redirect(reverse("wizard_index"))
-    else:
-        bottle.redirect(reverse("wizard_step", number=step_num))
-
-
-@bottle.view("index")
-def index():
-    session = bottle.request.environ['foris.session']
-    import wizard
-    allowed_step_max, wizard_finished = wizard.get_wizard_progress()
-
-    if allowed_step_max == 1:
-        if session.is_anonymous:
-            session.recreate()
-        session["user_authenticated"] = True
-    else:
-        session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
-        session["wizard_finished"] = wizard_finished
-        allowed_step_max = int(allowed_step_max)
-
-    session.save()
-    if session.get("user_authenticated"):
-        login_redirect(allowed_step_max, wizard_finished)
-
-    return dict(luci_path="//%(host)s/%(path)s"
-                          % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
-
-
-def render_js(filename):
-    """ Render javascript template to insert a translation
-        :param filename: name of the file to be translated
-    """
-
-    headers = {}
-
-    # check the template file
-    path = bottle.SimpleTemplate.search("javascript/%s" % filename, bottle.TEMPLATE_PATH)
-    if not path:
-        return bottle.HTTPError(404, "File does not exist.")
-
-    # test last modification date (mostly copied from bottle.py)
-    stats = os.stat(path)
-    lm = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime(stats.st_mtime))
-    headers['Last-Modified'] = lm
-
-    ims = bottle.request.environ.get('HTTP_IF_MODIFIED_SINCE')
-    if ims:
-        ims = bottle.parse_date(ims.split(";")[0].strip())
-    if ims is not None and ims >= int(stats.st_mtime):
-        headers['Date'] = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
-        return bottle.HTTPResponse(status=304, **bottle.response.headers)
-
-    # set the content type to javascript
-    headers['Content-Type'] = "application/javascript; charset=UTF-8"
-
-    body = bottle.template("javascript/%s" % filename)
-    # TODO if you are sadistic enough you can try to minify the content
-
-    return bottle.HTTPResponse(body, **headers)
-
-
-def render_js_md5(filename):
-    # calculate the hash of the rendered template
-    return hashlib.md5(bottle.template("javascript/%s" % filename).encode('utf-8')).hexdigest()
-
-
-bottle.SimpleTemplate.defaults['js_md5'] = lambda filename: render_js_md5(filename)
-
-
-def change_lang(lang):
-    """Change language of the interface.
-
-    :param lang: language to set
-    :raises: bottle.HTTPError if requested language is not installed
-    """
-    if lang in translations:
-        bottle.request.app.lang = lang
-        write_uci_lang(lang)
-        backlink = bottle.request.GET.get('backlink')
-        if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
-            bottle.redirect(backlink)
-        bottle.redirect(reverse("index"))
-    else:
-        raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
-
-
-def login():
-    session = bottle.request.environ["foris.session"]
-
-    next = bottle.request.POST.get("next")
-    if _check_password(bottle.request.POST.get("password")):
-        # re-generate session to prevent session fixation
-        session.recreate()
-        session["user_authenticated"] = True
-
-        update_csrf_token(save_session=False)
-        session.save()
-        if next and is_safe_redirect(next, bottle.request.get_header('host')):
-            bottle.redirect(next)
-
-        # update contract status
-        client.update_contract_status()
-        nuci_cache.invalidate("foris.contract")
-
-    else:
-        messages.error(_("The password you entered was not valid."))
-
-    if next:
-        redirect = "/?next=%s" % next
-        if is_safe_redirect(redirect, bottle.request.get_header('host')):
-            bottle.redirect(redirect)
-    bottle.redirect(reverse("index"))
-
-
-def logout():
-    session = bottle.request.environ["foris.session"]
-
-    if "user_authenticated" in session:
-        session.load_anonymous()
-
-    bottle.redirect(reverse("index"))
-
-
-def static(filename):
-    """ return static file
-    :param filename: url path
-    :type filename: str
-    :return: http response
-    """
-
-    if not bottle.DEBUG:
-        logger.warning("Static files should be handled externally in production mode.")
-
-    match = re.match(r'/*plugins/+(\w+)/+(.+)', filename)
-    if match:
-        plugin_name, plugin_file = match.groups()
-
-        # find correspoding plugin
-        for plugin in bottle.app().foris_plugin_loader.plugins:
-            if plugin.PLUGIN_NAME == plugin_name:
-                return bottle.static_file(
-                    plugin_file, root=os.path.join(plugin.DIRNAME, "static"))
-
-    return bottle.static_file(filename, root=os.path.join(os.path.dirname(__file__), "static"))
-
-
-def _check_password(password):
-    import pbkdf2
-    data = client.get(filter=filters.foris_config)
-    password_hash = data.find_child("uci.foris.auth.password")
-    if password_hash is None:
-        # consider unset password as successful auth
-        # maybe set some session variable in this case
-        return True
-    password_hash = password_hash.value
-    # crypt automatically extracts salt and iterations from formatted pw hash
-    return password_hash == pbkdf2.crypt(password, salt=password_hash)
-
-
-def foris_403_handler(error):
-    if isinstance(error, CSRFValidationError):
-        try:
-            # maybe the session expired, if so, just redirect the user
-            redirect_unauthenticated()
-        except bottle.HTTPResponse as e:
-            # error handler must return the exception, otherwise it would
-            # be raised and not handled by Bottle
-            return e
-
-    # otherwise display the standard error page
-    bottle.app().default_error_handler(error)
 
 
 def clickjacking_protection():
