@@ -14,13 +14,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from ncclient.operations import TimeoutExpiredError, RPCError
 
 from foris import DEVICE_CUSTOMIZATION
 from foris.utils.translators import _
 from foris.state import nuci_cache
 
+from .client import get as nuci_get, edit_config as nuci_edit_config
+from .filters import foris_config
 from .modules.user_notify import Severity
-from .modules.uci_raw import parse_uci_bool
+from .modules.uci_raw import parse_uci_bool, Uci, Config, Section, Option
 
 
 def make_notification_title(notification):
@@ -61,3 +64,42 @@ def contract_valid():
         return True
 
     return parse_uci_bool(valid)
+
+
+def read_uci_lang(default):
+    """Read interface language saved in Uci config foris.settings.lang.
+
+    :param default: returned if no language is set in the config
+    :return: language code of interface language
+    """
+    data = nuci_get(filter=foris_config)
+    lang = data.find_child("uci.foris.settings.lang")
+    if lang is None:
+        return default
+    return lang.value
+
+
+def write_uci_lang(lang):
+    """Save interface language to foris.settings.lang.
+
+    :param lang: language code to save
+    :return: True on success, False otherwise
+    """
+    uci = Uci()
+    # Foris language
+    foris = Config("foris")
+    uci.add(foris)
+    server = Section("settings", "config")
+    foris.add(server)
+    server.add(Option("lang", lang))
+    # LuCI language
+    luci = Config("luci")
+    uci.add(luci)
+    main = Section("main", "core")
+    luci.add(main)
+    main.add(Option("lang", lang))
+    try:
+        nuci_edit_config(uci.get_xml())
+        return True
+    except (RPCError, TimeoutExpiredError):
+        return False
