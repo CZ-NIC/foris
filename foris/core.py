@@ -28,15 +28,13 @@ import wizard as wizard_app
 # 3rd party
 import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
-from ncclient.operations import TimeoutExpiredError, RPCError
 
 # local
 from . import __version__ as foris_version
 from .middleware.sessions import SessionMiddleware
 from .middleware.reporting import ReportingMiddleware
 from .nuci import client, filters
-from .nuci.helpers import contract_valid
-from .nuci.modules.uci_raw import Uci, Config, Section, Option
+from .nuci.helpers import contract_valid, read_uci_lang, write_uci_lang
 from .langs import iso2to3, translation_names, DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
 from .utils import (
@@ -208,45 +206,6 @@ def change_lang(lang):
         bottle.redirect(reverse("index"))
     else:
         raise bottle.HTTPError(404, "Language '%s' is not available." % lang)
-
-
-def read_uci_lang(default):
-    """Read interface language saved in Uci config foris.settings.lang.
-
-    :param default: returned if no language is set in the config
-    :return: language code of interface language
-    """
-    data = client.get(filter=filters.foris_config)
-    lang = data.find_child("uci.foris.settings.lang")
-    if lang is None:
-        return default
-    return lang.value
-
-
-def write_uci_lang(lang):
-    """Save interface language to foris.settings.lang.
-
-    :param lang: language code to save
-    :return: True on success, False otherwise
-    """
-    uci = Uci()
-    # Foris language
-    foris = Config("foris")
-    uci.add(foris)
-    server = Section("settings", "config")
-    foris.add(server)
-    server.add(Option("lang", lang))
-    # LuCI language
-    luci = Config("luci")
-    uci.add(luci)
-    main = Section("main", "core")
-    luci.add(main)
-    main.add(Option("lang", lang))
-    try:
-        client.edit_config(uci.get_xml())
-        return True
-    except (RPCError, TimeoutExpiredError):
-        return False
 
 
 def login():
