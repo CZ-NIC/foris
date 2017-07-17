@@ -56,6 +56,7 @@ setup(
         "foris",
         "foris.config_handlers",
         "foris.config",
+        "foris.common",
         "foris.langs",
         "foris.nuci",
         "foris.nuci.modules",
