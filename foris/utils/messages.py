@@ -129,12 +129,13 @@ def add_message(text, level=INFO, extra_classes=[]):
     session[_SESSION_KEY] = messages
 
 
-def set_template_defaults(template):
+def set_template_defaults():
     """
     Add template functions as template defaults to supplied Bottle template
     adapter.
 
     :param template: Bottle template adapter - class inheriting from BaseTemplate
     """
-    template.defaults['get_messages'] = get_messages
-    template.defaults['get_alert_messages'] = functools.partial(get_messages, min_level=WARNING)
+    bottle.SimpleTemplate.defaults['get_messages'] = get_messages
+    bottle.SimpleTemplate.defaults['get_alert_messages'] = \
+        functools.partial(get_messages, min_level=WARNING)
