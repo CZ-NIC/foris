@@ -29,7 +29,7 @@ from foris.nuci.modules.uci_raw import build_option_uci_tree
 from foris.nuci.notifications import make_notification_title
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages
-from foris.utils.bottle_csrf import CSRFPlugin
+from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 

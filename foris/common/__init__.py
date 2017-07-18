@@ -32,7 +32,7 @@ from foris.utils import (
     redirect_unauthenticated, is_safe_redirect, messages
 )
 from foris.utils.routing import reverse
-from foris.utils.bottle_csrf import update_csrf_token, CSRFValidationError
+from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError
 from foris.utils.translators import _, translations
 
 

@@ -40,7 +40,7 @@ from .plugins import ForisPluginLoader
 from .utils import (
     is_user_authenticated, template_helpers
 )
-from .utils.bottle_csrf import get_csrf_token, CSRFPlugin
+from .middleware.bottle_csrf import get_csrf_token, CSRFPlugin
 from .utils import DEVICE_CUSTOMIZATION, messages
 from .utils.routing import reverse, static as static_path
 from .utils.translators import translations, ugettext, ungettext
