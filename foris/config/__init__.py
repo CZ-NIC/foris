@@ -33,7 +33,7 @@ from foris.nuci.exceptions import ConfigRestoreError
 from foris.nuci.helpers import contract_valid
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages
-from foris.utils.bottle_csrf import CSRFPlugin
+from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 
 from .request_decorator import require_contract_valid
