@@ -22,8 +22,10 @@ from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_b
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
-from .base import BaseConfigHandler, logger
-from .lan import DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX, LanHandler
+from .base import (
+    logger, prepare_guest_configs,
+    BaseConfigHandler, DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
+)
 
 
 class WifiHandler(BaseConfigHandler):
@@ -389,7 +391,7 @@ class WifiHandler(BaseConfigHandler):
                     network, prefix = data.get("guest_network_subnet").split("/")
                 else:
                     network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
-                LanHandler.prepare_guest_configs(uci, True, network, prefix, guest_interfaces)
+                prepare_guest_configs(uci, True, network, prefix, guest_interfaces)
             elif guest_wifi_enabled:
                 # try to update guest interfaces if the differs
                 stored = current_data.find_child("uci.network.guest_turris.ifname")
