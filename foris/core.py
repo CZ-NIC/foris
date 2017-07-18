@@ -27,7 +27,6 @@ import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 # local
-from . import __version__ as foris_version
 from .common import (
     index, login, foris_403_handler, render_js_md5, render_js, logout, change_lang, static
 )
@@ -35,17 +34,19 @@ from .middleware.sessions import SessionMiddleware
 from .middleware.reporting import ReportingMiddleware
 from .nuci import client
 from .nuci.helpers import contract_valid, read_uci_lang
-from .langs import iso2to3, translation_names, DEFAULT_LANGUAGE
+from .langs import DEFAULT_LANGUAGE
 from .plugins import ForisPluginLoader
-from .utils import (
-    is_user_authenticated, template_helpers
+from .middleware.bottle_csrf import CSRFPlugin
+from .utils import messages
+from .utils.translators import translations
+from .utils.bottle_stuff import (
+    prepare_template_defaults,
+    clickjacking_protection,
+    clear_lazy_cache,
+    disable_caching,
+    route_list_cmdline,
+    route_list_debug,
 )
-from .middleware.bottle_csrf import get_csrf_token, CSRFPlugin
-from .utils import DEVICE_CUSTOMIZATION, messages
-from .utils.routing import reverse, static as static_path
-from .utils.translators import translations, ugettext, ungettext
-
-from .state import lazy_cache
 
 
 logger = logging.getLogger("foris")
@@ -53,87 +54,8 @@ logger = logging.getLogger("foris")
 BASE_DIR = os.path.dirname(__file__)
 
 
-# internationalization
-i18n_defaults(bottle.SimpleTemplate, bottle.request)
-
-bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
-bottle.SimpleTemplate.defaults['translation_names'] = translation_names
-bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
-bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
-bottle.SimpleTemplate.defaults['ungettext'] = lambda singular, plural, n: ungettext(singular, plural, n)
-bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
 bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
-bottle.SimpleTemplate.defaults['foris_version'] = foris_version
-
-# template defaults
-# this is not really straight-forward, check for user_authenticated() (with brackets) in template,
-# because bool(user_authenticated) is always True - it means bool(<function ...>)
-bottle.SimpleTemplate.defaults["user_authenticated"] =\
-    lambda: bottle.request.environ["foris.session"].get("user_authenticated")
-bottle.SimpleTemplate.defaults["request"] = bottle.request
-bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
-bottle.SimpleTemplate.defaults["static"] = static_path
-bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
-bottle.SimpleTemplate.defaults["helpers"] = template_helpers
 bottle.SimpleTemplate.defaults['js_md5'] = lambda filename: render_js_md5(filename)
-
-# messages
-messages.set_template_defaults(bottle.SimpleTemplate)
-
-
-def route_list(app, prefix1="", prefix2=""):
-    res = []
-    for route in app.routes:
-        path1 = prefix1 + route.rule
-        path2 = prefix2
-        for name, filter, token in app.router._itertokens(route.rule):
-            if not filter:
-                # simple token
-                path2 += name
-            elif filter == 're':
-                # insert regexp
-                path2 += token
-
-        if route.method == 'PROXY':
-            res += route_list(route.config['mountpoint.target'], prefix1=path1, prefix2=path2)
-        else:
-            res.append((route.method, path1, path2))
-    return res
-
-
-def route_list_debug(app):
-    res = []
-    for method, bottle_path, regex_path in route_list(app):
-        res.append("%s %s" % (method, bottle_path))
-    return res
-
-
-def route_list_cmdline(app):
-    res = []
-    for method, bottle_path, regex_path in route_list(app):
-        res.append(regex_path)
-    return res
-
-
-def clickjacking_protection():
-    # we don't use frames at all, we can safely deny opening pages in frames
-    bottle.response.headers['X-Frame-Options'] = 'DENY'
-
-
-def disable_caching(authenticated_only=True):
-    """
-    Hook for disabling caching.
-
-    :param authenticated_only: apply only if user is authenticated
-    """
-    if not authenticated_only or authenticated_only and is_user_authenticated():
-        bottle.response.headers['Cache-Control'] = "no-store, no-cache, must-revalidate, " \
-                                                   "no-transform, max-age=0, post-check=0, pre-check=0"
-        bottle.response.headers['Pragma'] = "no-cache"
-
-
-def clear_lazy_cache():
-    lazy_cache.clear()
 
 
 def init_foris_app(app, prefix):
@@ -209,6 +131,16 @@ def prepare_main_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
+
+    # internationalization
+    i18n_defaults(bottle.SimpleTemplate, bottle.request)
+
+    # setup default template defaults
+    prepare_template_defaults()
+
+    # init messaging template
+    messages.set_template_defaults()
+
     app = init_default_app(args.static)
 
     # basic and bottle settings
