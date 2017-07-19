@@ -19,8 +19,8 @@
 import logging
 import os
 
-import config as config_app
-import wizard as wizard_app
+import foris.config as config_app
+import foris.wizard as wizard_app
 
 # 3rd party
 import bottle

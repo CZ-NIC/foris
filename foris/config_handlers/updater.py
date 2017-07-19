@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import fapi, validators
-from foris.state import lazy_cache
+from foris.caches import lazy_cache
 from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
 from foris.nuci.helpers import contract_valid

@@ -21,9 +21,10 @@ import bottle
 from functools import wraps
 import logging
 
+from foris.state import info
+
 from .routing import reverse
 from . import messages
-from .. import DEVICE_CUSTOMIZATION
 from .translators import _
 
 
@@ -89,8 +90,8 @@ def is_safe_redirect(url, host=None):
 
 def require_customization(required_customization=None):
     """
-    Decorator for methods that require specific DEVICE_CUSTOMIZATION value.
-    Raises bottle HTTPError if current DEVICE_CUSTOMIZATION differs.
+    Decorator for methods that require specific device_customization value.
+    Raises bottle HTTPError if current device_customization differs.
 
     :param required_customization: required device customization string
     :return: decorated function
@@ -98,7 +99,7 @@ def require_customization(required_customization=None):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if DEVICE_CUSTOMIZATION != required_customization:
+            if info.device_customization != required_customization:
                 raise bottle.HTTPError(
                     403, "Requested method is not available in this Foris build.")
             return func(*args, **kwargs)

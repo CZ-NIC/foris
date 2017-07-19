@@ -16,10 +16,10 @@
 
 from ncclient.operations import TimeoutExpiredError, RPCError
 
-from foris import DEVICE_CUSTOMIZATION
+from foris.caches import nuci_cache
+from foris.state import info
 from foris.utils import WIZARD_NEXT_STEP_ALLOWED_KEY
 from foris.utils.translators import _
-from foris.state import nuci_cache
 
 from .client import get as nuci_get, edit_config as nuci_edit_config
 from .filters import foris_config
@@ -54,7 +54,7 @@ def contract_valid():
 
     :return: whether the contract is still valid
     """
-    if DEVICE_CUSTOMIZATION == "omnia":
+    if info.device_customization == "omnia":
         return False
 
     data = nuci_cache.get("foris.contract", 60 * 60)  # once per hour should be enought
@@ -75,9 +75,12 @@ def read_uci_lang(default):
     """
     data = nuci_get(filter=foris_config)
     lang = data.find_child("uci.foris.settings.lang")
-    if lang is None:
-        return default
-    return lang.value
+    lang = lang.value if lang else default
+
+    # Update info variable
+    info.update_lang(lang)
+
+    return lang
 
 
 def write_uci_lang(lang):
@@ -101,6 +104,10 @@ def write_uci_lang(lang):
     main.add(Option("lang", lang))
     try:
         nuci_edit_config(uci.get_xml())
+
+        # Update info variable
+        info.update_lang(lang)
+
         return True
     except (RPCError, TimeoutExpiredError):
         return False
