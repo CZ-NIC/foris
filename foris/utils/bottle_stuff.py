@@ -18,13 +18,13 @@
 
 import bottle
 
-from foris.langs import iso2to3, translation_names
-from foris.state import info
 from foris.caches import lazy_cache
+from foris.langs import iso2to3, translation_names
+from foris.middleware.bottle_csrf import get_csrf_token
+from foris.state import info
 
 from .routing import reverse, static as static_path
 from .translators import translations, ugettext, ungettext
-from ..middleware.bottle_csrf import get_csrf_token
 from . import is_user_authenticated, template_helpers
 
 

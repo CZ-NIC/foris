@@ -17,6 +17,7 @@
 import copy
 import logging
 import re
+import socket
 
 from foris.utils.translators import _
 import form
@@ -78,7 +79,6 @@ class IPv4(Validator):
         super(IPv4, self).__init__(_("Not a valid IPv4 address."))
 
     def valid(self, value):
-        import socket
         try:
             socket.inet_pton(socket.AF_INET, value)
             return True
@@ -96,7 +96,6 @@ class IPv4Netmask(Validator):
     def valid(self, value):
         """The netmask must start with an uninterrupted sequence of 1s in its bit
         representation and not contain any 1s after the first zero."""
-        import socket
         try:
             addr = socket.inet_aton(value)
         except socket.error:
@@ -118,7 +117,6 @@ class IPv6(Validator):
         super(IPv6, self).__init__(_("Not a valid IPv6 address."))
 
     def valid(self, value):
-        import socket
         try:
             socket.inet_pton(socket.AF_INET6, value)
             return True
@@ -134,7 +132,6 @@ class AnyIP(Validator):
         super(AnyIP, self).__init__(_("This is not a valid IPv4 or IPv6 address."))
 
     def valid(self, value):
-        import socket
         try:
             socket.inet_pton(socket.AF_INET, value)
             return True
@@ -154,7 +151,6 @@ class IPv6Prefix(Validator):
         super(IPv6Prefix, self).__init__(_("This is not an IPv6 address with prefix length."))
 
     def valid(self, value):
-        import socket
         try:
             address, length = value.split("/")
             length = int(length)
@@ -174,7 +170,6 @@ class IPv4Prefix(Validator):
         super(IPv4Prefix, self).__init__(_("This is not an IPv4 address with prefix length."))
 
     def valid(self, value):
-        import socket
         try:
             address, length = value.split("/")
             length = int(length)
