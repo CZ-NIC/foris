@@ -16,8 +16,9 @@
 
 from xml.etree import cElementTree as ET
 
-from base import YinElement
 from ..utils import LocalizableTextValue
+
+from base import YinElement
 
 
 class Updater(YinElement):

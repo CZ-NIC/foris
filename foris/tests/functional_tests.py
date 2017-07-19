@@ -1,6 +1,8 @@
 # coding=utf-8
-import re
+import pbkdf2
 import time
+import re
+
 from subprocess import call
 from tempfile import NamedTemporaryFile
 from unittest import TestCase
@@ -71,7 +73,6 @@ class ForisTest(TestCase):
 
     @classmethod
     def set_foris_password(cls, password):
-        import pbkdf2
         encrypted_pwd = pbkdf2.crypt(password)
         if not (uci_set("foris.auth", "config", cls.config_directory)
                 and uci_set("foris.auth.password", encrypted_pwd, cls.config_directory)
