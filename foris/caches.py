@@ -15,25 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import collections
-import gettext
-import os
 
-from foris.langs import translations
-from foris.state import info
+from foris.nuci import cache
+from foris.utils import LazyCache
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# read locale directory
-locale_directory = os.path.join(BASE_DIR, "locale")
-
-translations = collections.OrderedDict(
-    (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
-    for e in translations
-)
-
-ugettext = lambda x: translations[info.language].ugettext(x)
-ungettext = lambda singular, plural, n: translations[info.language].ungettext(singular, plural, n)
-gettext_dummy = lambda x: x
-
-_ = ugettext
+# init caches
+nuci_cache = cache.NuciCache()
+lazy_cache = LazyCache()

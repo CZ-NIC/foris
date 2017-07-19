@@ -15,9 +15,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from foris.nuci import cache
-from foris.utils import LazyCache
+import logging
 
-# init cache
-nuci_cache = cache.NuciCache()
-lazy_cache = LazyCache()
+from foris import DEVICE_CUSTOMIZATION, __version__ as version
+from foris.langs import DEFAULT_LANGUAGE
+
+logger = logging.getLogger("foris.state")
+
+
+class ForisStateInfo(object):
+    def __init__(self):
+        self.device_customization = DEVICE_CUSTOMIZATION
+        self.foris_version = version
+        self.language = DEFAULT_LANGUAGE
+
+    def update_lang(self, lang):
+        logger.debug("current lang updated to '%s'" % lang)
+        self.language = lang
+
+    def repr(self):
+        return "%s (%s)" % (self.__class__, str(vars(self)))
+
+
+info = ForisStateInfo()

@@ -661,7 +661,7 @@ class TestWizardSkip(ForisTest):
 class TestNuciCache(ForisTest):
 
     def test_cache_non_existing(self):
-        data = foris.state.nuci_cache.get("not.exists", 60)
+        data = foris.caches.nuci_cache.get("not.exists", 60)
         assert_equal(data, None)
 
     def test_cache_get(self):
@@ -670,24 +670,24 @@ class TestNuciCache(ForisTest):
         self.uci_set("test.cache.test", "first")
         self.uci_commit()
 
-        data = foris.state.nuci_cache.get("test.cache.test", 60)
+        data = foris.caches.nuci_cache.get("test.cache.test", 60)
         assert_equal(data.find_child("test.cache.test").value, "first")
 
         self.uci_set("test.cache.test", "second")
         self.uci_commit()
 
-        data = foris.state.nuci_cache.get("test.cache.test", 60)
+        data = foris.caches.nuci_cache.get("test.cache.test", 60)
         assert_equal(data.find_child("test.cache.test").value, "first")
 
         time.sleep(2)
 
-        data = foris.state.nuci_cache.get("test.cache.test", 1)
+        data = foris.caches.nuci_cache.get("test.cache.test", 1)
         assert_equal(data.find_child("test.cache.test").value, "second")
 
         self.uci_set("test.cache.test", "third")
         self.uci_commit()
 
-        data = foris.state.nuci_cache.get("test.cache.test", 0)
+        data = foris.caches.nuci_cache.get("test.cache.test", 0)
         assert_equal(data.find_child("test.cache.test").value, "third")
 
     def test_cache_invalidate(self):
@@ -702,24 +702,24 @@ class TestNuciCache(ForisTest):
             self.uci_commit()
 
         def reload_cache():
-            foris.state.nuci_cache.get("test", 0)
-            foris.state.nuci_cache.get("test.cache1", 0)
-            foris.state.nuci_cache.get("test.cache2", 0)
-            foris.state.nuci_cache.get("test.cache1.test1", 0)
-            foris.state.nuci_cache.get("test.cache1.test2", 0)
-            foris.state.nuci_cache.get("test.cache2.test1", 0)
-            foris.state.nuci_cache.get("test.cache2.test2", 0)
+            foris.caches.nuci_cache.get("test", 0)
+            foris.caches.nuci_cache.get("test.cache1", 0)
+            foris.caches.nuci_cache.get("test.cache2", 0)
+            foris.caches.nuci_cache.get("test.cache1.test1", 0)
+            foris.caches.nuci_cache.get("test.cache1.test2", 0)
+            foris.caches.nuci_cache.get("test.cache2.test1", 0)
+            foris.caches.nuci_cache.get("test.cache2.test2", 0)
 
         def test_option(cache_item, nuci_path, result):
-            data = foris.state.nuci_cache.get(cache_item, 60)
+            data = foris.caches.nuci_cache.get(cache_item, 60)
             assert_equal(data.find_child(nuci_path).value, result)
 
         # invalidate values
         uci_assign("first")
         reload_cache()
         uci_assign("second")
-        foris.state.nuci_cache.invalidate("test.cache1.test1")
-        foris.state.nuci_cache.invalidate("test.cache2.test1")
+        foris.caches.nuci_cache.invalidate("test.cache1.test1")
+        foris.caches.nuci_cache.invalidate("test.cache2.test1")
         test_option("test", "test.cache1.test1", "first")
         test_option("test", "test.cache1.test2", "first")
         test_option("test", "test.cache2.test1", "first")
@@ -737,7 +737,7 @@ class TestNuciCache(ForisTest):
         uci_assign("first")
         reload_cache()
         uci_assign("second")
-        foris.state.nuci_cache.invalidate("test.cache1")
+        foris.caches.nuci_cache.invalidate("test.cache1")
         test_option("test", "test.cache1.test1", "first")
         test_option("test", "test.cache1.test2", "first")
         test_option("test", "test.cache2.test1", "first")
@@ -755,7 +755,7 @@ class TestNuciCache(ForisTest):
         uci_assign("first")
         reload_cache()
         uci_assign("second")
-        foris.state.nuci_cache.invalidate("test")
+        foris.caches.nuci_cache.invalidate("test")
         test_option("test", "test.cache1.test1", "second")
         test_option("test", "test.cache1.test2", "second")
         test_option("test", "test.cache2.test1", "second")
