@@ -16,30 +16,31 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # builtins
+import argparse
 import logging
 import os
-
-import foris.config as config_app
-import foris.wizard as wizard_app
 
 # 3rd party
 import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 # local
-from .common import (
+from foris.config import init_app as init_app_config
+from foris.wizard import init_app as init_app_wizard
+
+from foris.common import (
     index, login, foris_403_handler, render_js_md5, render_js, logout, change_lang, static
 )
-from .middleware.sessions import SessionMiddleware
-from .middleware.reporting import ReportingMiddleware
-from .nuci import client
-from .nuci.helpers import contract_valid, read_uci_lang
-from .langs import DEFAULT_LANGUAGE
-from .plugins import ForisPluginLoader
-from .middleware.bottle_csrf import CSRFPlugin
-from .utils import messages
-from .utils.translators import translations
-from .utils.bottle_stuff import (
+from foris.middleware.sessions import SessionMiddleware
+from foris.middleware.reporting import ReportingMiddleware
+from foris.nuci import client
+from foris.nuci.helpers import contract_valid, read_uci_lang
+from foris.langs import DEFAULT_LANGUAGE
+from foris.plugins import ForisPluginLoader
+from foris.middleware.bottle_csrf import CSRFPlugin
+from foris.utils import messages
+from foris.utils.translators import translations
+from foris.utils.bottle_stuff import (
     prepare_template_defaults,
     clickjacking_protection,
     clear_lazy_cache,
@@ -82,7 +83,6 @@ def get_arg_parser():
 
     :return: instance of ArgumentParser
     """
-    import argparse
     parser = argparse.ArgumentParser()
     group = parser.add_argument_group("run server")
     group.add_argument("-H", "--host", default="0.0.0.0")
@@ -149,8 +149,8 @@ def prepare_main_app(args):
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
 
     # mount apps
-    app.mount("/config", config_app.init_app())
-    app.mount("/wizard", wizard_app.init_app())
+    app.mount("/config", init_app_config())
+    app.mount("/wizard", init_app_wizard())
 
     if args.debug:
         if args.noauth:

@@ -13,8 +13,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import base64
 import logging
+import os
 import shlex
+
 from time import sleep, time
 from xml.etree import cElementTree as ET
 
@@ -146,7 +150,6 @@ class StaticNetconfConnection(object):
         :param path: path to directory with test config files
         :return: None
         """
-        import os
         os.environ["NUCI_TEST_CONFIG_DIR"] = path
         os.environ["NUCI_DONT_RESTART"] = "1"
         cls._connect()
@@ -184,7 +187,6 @@ def reboot():
 
 def load_config_backup(file):
     try:
-        import base64
         data = base64.b64encode(file.read())
         logger.debug(ET.tostring(maintain.Maintain.rpc_config_restore(data)))
         data = dispatch(maintain.Maintain.rpc_config_restore(data))
@@ -203,7 +205,6 @@ def save_config_backup(filename):
         encoded_data = maintain.Maintain.from_element(ET.fromstring(data.xml)).data
         with open(filename, "wb") as f:
             # simple encoded_data.decode("base64") raises too general exceptions on failure
-            import base64
             f.write(base64.b64decode(encoded_data))
         return True
     except (RPCError, TimeoutExpiredError):
