@@ -23,10 +23,13 @@ from urlparse import urlunsplit
 from bottle import Bottle, request, template
 import bottle
 
+from foris.common import require_contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.nuci.notifications import make_notification_title
 from foris.state import lazy_cache
-from foris.config_handlers import backups, collect, dns, misc, wan, lan, updater, wifi
+from foris.config_handlers import (
+    backups, collect, dns, misc, notifications, wan, lan, updater, wifi
+)
 from foris.nuci import client
 from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
@@ -36,7 +39,6 @@ from foris.utils import login_required, messages
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 
-from .request_decorator import require_contract_valid
 
 logger = logging.getLogger(__name__)
 
@@ -174,7 +176,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
-        handler = misc.NotificationsHandler(request.POST)
+        handler = notifications.NotificationsHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
@@ -209,7 +211,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
-        notifications_handler = misc.NotificationsHandler(self.data)
+        notifications_handler = notifications.NotificationsHandler(self.data)
         return super(MaintenanceConfigPage, self).render(notifications_form=notifications_handler.form,
                                                          **kwargs)
 

@@ -29,6 +29,9 @@ from .translators import _
 
 logger = logging.getLogger("foris.utils")
 
+WIZARD_NEXT_STEP_ALLOWED_KEY = "allowed_step_max"
+NUM_WIZARD_STEPS = 10
+
 
 def is_user_authenticated():
     session = bottle.request.environ['foris.session']
