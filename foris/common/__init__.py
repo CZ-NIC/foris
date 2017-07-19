@@ -23,13 +23,14 @@ import os
 import re
 import time
 
-from foris import wizard
+from functools import wraps
 
 from foris.nuci import client, filters
-from foris.nuci.helpers import write_uci_lang
+from foris.nuci.helpers import write_uci_lang, contract_valid, get_wizard_progress
 from foris.state import nuci_cache
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages
+    redirect_unauthenticated, is_safe_redirect, messages,
+    WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS,
 )
 from foris.utils.routing import reverse
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError
@@ -105,7 +106,7 @@ def foris_403_handler(error):
 
 
 def login_redirect(step_num, wizard_finished=False):
-    if step_num >= wizard.NUM_WIZARD_STEPS or wizard_finished:
+    if step_num >= NUM_WIZARD_STEPS or wizard_finished:
         next = bottle.request.GET.get("next")
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
@@ -119,14 +120,14 @@ def login_redirect(step_num, wizard_finished=False):
 @bottle.view("index")
 def index():
     session = bottle.request.environ['foris.session']
-    allowed_step_max, wizard_finished = wizard.get_wizard_progress()
+    allowed_step_max, wizard_finished = get_wizard_progress(session)
 
     if allowed_step_max == 1:
         if session.is_anonymous:
             session.recreate()
         session["user_authenticated"] = True
     else:
-        session[wizard.WizardStepMixin.next_step_allowed_key] = str(allowed_step_max)
+        session[WIZARD_NEXT_STEP_ALLOWED_KEY] = str(allowed_step_max)
         session["wizard_finished"] = wizard_finished
         allowed_step_max = int(allowed_step_max)
 
@@ -134,8 +135,9 @@ def index():
     if session.get("user_authenticated"):
         login_redirect(allowed_step_max, wizard_finished)
 
-    return dict(luci_path="//%(host)s/%(path)s"
-                          % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+    return dict(
+        luci_path="//%(host)s/%(path)s"
+        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
 
 
 def render_js(filename):
@@ -214,3 +216,22 @@ def static(filename):
                     plugin_file, root=os.path.join(plugin.DIRNAME, "static"))
 
     return bottle.static_file(filename, root=os.path.join(BASE_DIR, "static"))
+
+
+def require_contract_valid(valid=True):
+    """
+    Decorator for methods that require valid contract.
+    Raises bottle HTTPError if validity differs.
+
+    :param valid: should be contrat valid
+    :type valid: bool
+    :return: decorated function
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            if not (contract_valid() == valid):
+                raise bottle.HTTPError(403, "Contract validity mismatched.")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
