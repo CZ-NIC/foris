@@ -19,15 +19,17 @@ import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
 import logging
+from foris.common import require_contract_valid
 from foris.config_handlers import base, lan, misc, updater, wan, wifi
-from foris.config.request_decorator import require_contract_valid
 from foris.nuci import client, filters
 from foris.nuci.configurator import add_config_update, commit
-from foris.nuci.helpers import contract_valid
+from foris.nuci.helpers import (
+    contract_valid, mark_wizard_finished_session, allow_next_step_session, get_wizard_progress
+)
 from foris.nuci.modules.uci_raw import build_option_uci_tree
 from foris.nuci.notifications import make_notification_title
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
-from foris.utils import login_required, messages
+from foris.utils import login_required, messages, WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -36,14 +38,10 @@ from foris.utils.translators import gettext_dummy as gettext, _
 logger = logging.getLogger("wizard")
 
 
-NUM_WIZARD_STEPS = 10
-
-
 class WizardStepMixin(object):
     template = "wizard/form"
     name = None
     next_step_allowed = None
-    next_step_allowed_key = "allowed_step_max"
     is_final_step = False
     # wizard step name
     can_skip_wizard = True
@@ -71,7 +69,7 @@ class WizardStepMixin(object):
             session = request.environ['foris.session']
             # key in session on the following line should be always
             # set except in the case of the very first start
-            session_max_step = int(session.get(WizardStepMixin.next_step_allowed_key, 0))
+            session_max_step = int(session.get(WIZARD_NEXT_STEP_ALLOWED_KEY, 0))
 
             if next_step_number > session_max_step:
                 allow_next_step_session(next_step_number)
@@ -86,7 +84,7 @@ class WizardStepMixin(object):
 
         :return: tuple for Fapi Form callback
         """
-        mark_wizard_finished_session()
+        mark_wizard_finished_session(request.environ['foris.session'])
 
         return "edit_config", get_wizard_finished_uci()
 
@@ -145,7 +143,7 @@ class WizardStep1(WizardStepMixin, misc.PasswordHandler):
     can_skip_wizard = False
 
     def __init__(self, *args, **kwargs):
-        allowed_step_max, wizard_finished = get_wizard_progress()
+        allowed_step_max, wizard_finished = get_wizard_progress(request.environ['foris.session'])
         require_old = wizard_finished or allowed_step_max >= self.next_step_allowed
         super(WizardStep1, self).__init__(change=require_old, *args, **kwargs)
 
@@ -415,55 +413,12 @@ def get_wizard(number):
     return wiz
 
 
-def get_wizard_progress():
-    """Get number of the allowed step and information whether wizard was finished
-    from session, or from Foris Uci config if session is empty.
-
-    Updates session variables of max allowed step and wizard finished flag if value was
-    retrieved from Uci config.
-
-    :return: step number of last allowed step (default is 1) and boolean flag - wizard is finished
-    :rtype: tuple(int, bool)
-    """
-    session = request.environ['foris.session']
-    allowed_sess = session.get(WizardStepMixin.next_step_allowed_key, None)
-    is_finished = session.get("wizard_finished", False)
-    try:
-        if not allowed_sess:
-            data = client.get(filter=filters.foris_config)
-            next_step_option = data.find_child("uci.foris.wizard.%s"
-                                               % WizardStepMixin.next_step_allowed_key)
-            is_finished_option = data.find_child("uci.foris.wizard.finished")
-            next_step_allowed = int(next_step_option.value) if next_step_option else 1
-            is_finished = bool(int(is_finished_option.value)) if is_finished_option else False
-            # write to session so we don't have to check config later
-            allow_next_step_session(next_step_allowed)
-            if is_finished:
-                mark_wizard_finished_session()
-            return next_step_allowed, is_finished
-        return int(allowed_sess), is_finished
-    except ValueError:
-        return 1, False
-
-
 def check_step_allowed_or_redirect(step_number):
     step_number = int(step_number)
-    allowed_step_max, wizard_finished = get_wizard_progress()
+    allowed_step_max, wizard_finished = get_wizard_progress(request.environ['foris.session'])
     if step_number <= allowed_step_max:
         return True
     bottle.redirect(reverse("wizard_step", number=allowed_step_max))
-
-
-def allow_next_step_session(step_number):
-    """
-    Allow step in session.
-
-    :param step_number: step to allow
-    """
-    session = request.environ['foris.session']
-    # update session variable
-    session[WizardStepMixin.next_step_allowed_key] = step_number
-    session.save()
 
 
 def get_allow_next_step_uci(step_number):
@@ -474,8 +429,8 @@ def get_allow_next_step_uci(step_number):
     :param step_number: step to allow
     :return: Uci element for allowing specified step
     """
-    return build_option_uci_tree("foris.wizard.%s" % WizardStepMixin.next_step_allowed_key,
-                                 "config", step_number)
+    return build_option_uci_tree(
+        "foris.wizard.%s" % WIZARD_NEXT_STEP_ALLOWED_KEY, "config", step_number)
 
 
 def get_wizard_finished_uci():
@@ -485,16 +440,6 @@ def get_wizard_finished_uci():
     :return: Uci element for marking wizard finished
     """
     return build_option_uci_tree("foris.wizard.finished", "config", True)
-
-
-def mark_wizard_finished_session():
-    """Mark wizard as finished in session.
-
-    :return: None
-    """
-    session = request.environ['foris.session']
-    session["wizard_finished"] = True
-    session.save()
 
 
 @login_required
@@ -546,15 +491,16 @@ def step_post(number=1):
 
 @login_required
 def skip():
-    allowed_step_max, wizard_finished = get_wizard_progress()
+    session = request.environ['foris.session']
+    allowed_step_max, wizard_finished = get_wizard_progress(session)
     last_step_number = min(NUM_WIZARD_STEPS, allowed_step_max)
     Wizard = get_wizard(last_step_number)
     if Wizard.can_skip_wizard or allowed_step_max >= NUM_WIZARD_STEPS or wizard_finished:
         # mark wizard as finished
-        mark_wizard_finished_session()
+        mark_wizard_finished_session(session)
         add_config_update(get_wizard_finished_uci())
         # update last step number
-        allow_next_step_session(NUM_WIZARD_STEPS)
+        allow_next_step_session(session, NUM_WIZARD_STEPS)
         add_config_update(get_allow_next_step_uci(NUM_WIZARD_STEPS))
         commit()
         bottle.redirect(reverse("config_index"))

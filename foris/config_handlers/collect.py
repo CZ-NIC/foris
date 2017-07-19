@@ -19,8 +19,6 @@ import bottle  # TODO rework this dep
 from foris import fapi
 from foris.form import Checkbox, MultiCheckbox
 
-from foris.config.request_decorator import require_contract_valid  # TODO rework this dep
-
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import (
     Uci, Config, Section, Option, List, Value, parse_uci_bool, build_option_uci_tree,
@@ -189,7 +187,6 @@ class RegistrationCheckHandler(BaseConfigHandler):
 
     userfriendly_title = gettext("Data collection")
 
-    @require_contract_valid(False)
     def get_form(self):
         form = fapi.ForisForm(
             "registration_check", self.data, filter=filters.create_config_filter("foris")
