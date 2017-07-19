@@ -26,7 +26,7 @@ import bottle
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.nuci.notifications import make_notification_title
 from foris.state import lazy_cache
-from foris.config_handlers import *
+from foris.config_handlers import backups, collect, dns, misc, wan, lan, updater, wifi
 from foris.nuci import client
 from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
@@ -91,7 +91,7 @@ class ConfigPageMixin(object):
         return result
 
 
-class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
+class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     menu_order = 11
 
     def __init__(self, *args, **kwargs):
@@ -109,7 +109,7 @@ class PasswordConfigPage(ConfigPageMixin, PasswordHandler):
         return result
 
 
-class WanConfigPage(ConfigPageMixin, WanHandler):
+class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     menu_order = 12
 
     def render(self, **kwargs):
@@ -120,7 +120,7 @@ class WanConfigPage(ConfigPageMixin, WanHandler):
         return super(WanConfigPage, self).render(**kwargs)
 
 
-class DNSConfigPage(ConfigPageMixin, DNSHandler):
+class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     menu_order = 13
 
     template = "config/dns"
@@ -135,21 +135,21 @@ class DNSConfigPage(ConfigPageMixin, DNSHandler):
         raise ValueError("Unknown AJAX action.")
 
 
-class LanConfigPage(ConfigPageMixin, LanHandler):
+class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     menu_order = 14
 
 
-class WifiConfigPage(ConfigPageMixin, WifiHandler):
+class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
     menu_order = 15
 
     template = "config/wifi"
 
 
-class SystemPasswordConfigPage(ConfigPageMixin, SystemPasswordHandler):
+class SystemPasswordConfigPage(ConfigPageMixin, misc.SystemPasswordHandler):
     menu_order = 16
 
 
-class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
+class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
     menu_order = 17
 
     template = "config/maintenance"
@@ -174,7 +174,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
-        handler = NotificationsHandler(request.POST)
+        handler = misc.NotificationsHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
@@ -209,7 +209,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
-        notifications_handler = NotificationsHandler(self.data)
+        notifications_handler = misc.NotificationsHandler(self.data)
         return super(MaintenanceConfigPage, self).render(notifications_form=notifications_handler.form,
                                                          **kwargs)
 
@@ -240,7 +240,7 @@ class MaintenanceConfigPage(ConfigPageMixin, MaintenanceHandler):
         return result
 
 
-class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
+class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
     menu_order = 18
 
     template = "config/updater"
@@ -250,7 +250,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="updater"))
-        handler = UpdaterAutoUpdatesHandler(request.POST)
+        handler = updater.UpdaterAutoUpdatesHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="updater"))
@@ -293,7 +293,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         lazy_cache.nuci_updater = lambda: client.get(
             filter=filters.updater).find_child("updater")
         if not contract_valid():
-            auto_updates_handler = UpdaterAutoUpdatesHandler(self.data)
+            auto_updates_handler = updater.UpdaterAutoUpdatesHandler(self.data)
             kwargs['auto_updates_form'] = auto_updates_handler.form
             kwargs['updater_disabled'] = \
                 not preproc_disabled_to_agreed(auto_updates_handler.form.nuci_config)
@@ -325,7 +325,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
         return result
 
 
-class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
+class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
     menu_order = 19
 
     template = "config/data-collection"
@@ -343,11 +343,11 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
             if not updater_disabled:
                 agreed_opt = uci_config.find_child('uci.foris.eula.agreed_collect')
                 if agreed_opt and bool(int(agreed_opt.value)):
-                    handler = CollectionToggleHandler(request.POST)
+                    handler = collect.CollectionToggleHandler(request.POST)
                     kwargs['collection_toggle_form'] = handler.form
                     kwargs['agreed'] = bool(int(agreed_opt.value))
                 else:
-                    handler = RegistrationCheckHandler(request.POST)
+                    handler = collect.RegistrationCheckHandler(request.POST)
                     kwargs['registration_check_form'] = handler.form
 
         return self.default_template(form=self.form, title=self.userfriendly_title,
@@ -356,7 +356,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
 
     @require_contract_valid(False)
     def _action_check_registration(self):
-        handler = RegistrationCheckHandler(request.POST)
+        handler = collect.RegistrationCheckHandler(request.POST)
         if not handler.save():
             messages.warning(_("There were some errors in your input."))
             return self.render(registration_check_form=handler.form)
@@ -372,7 +372,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
             if response.status == "owned":
                 messages.success(_("Registration for the entered email is valid. "
                                    "Now you can enable the data collection."))
-                collection_toggle_handler = CollectionToggleHandler(request.POST)
+                collection_toggle_handler = collect.CollectionToggleHandler(request.POST)
                 kwargs['collection_toggle_form'] = collection_toggle_handler.form
             elif response.status == "foreign":
                 messages.warning(
@@ -399,7 +399,7 @@ class DataCollectionConfigPage(ConfigPageMixin, UcollectHandler):
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="data-collection"))
 
-        handler = CollectionToggleHandler(request.POST)
+        handler = collect.CollectionToggleHandler(request.POST)
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="data-collection"))
