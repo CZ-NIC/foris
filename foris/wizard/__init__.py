@@ -19,8 +19,7 @@ import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
 import logging
-from foris.config_handlers import BaseConfigHandler, PasswordHandler, RegionHandler, \
-    WanHandler, TimeHandler, LanHandler, UpdaterAutoUpdatesHandler, WifiHandler
+from foris.config_handlers import base, lan, misc, updater, wan, wifi
 from foris.config.request_decorator import require_contract_valid
 from foris.nuci import client, filters
 from foris.nuci.configurator import add_config_update, commit
@@ -137,7 +136,7 @@ class WizardStepMixin(object):
             return sup.save(extra_callbacks=extra_callbacks)
 
 
-class WizardStep1(WizardStepMixin, PasswordHandler):
+class WizardStep1(WizardStepMixin, misc.PasswordHandler):
     """
     Setting the password
     """
@@ -151,7 +150,7 @@ class WizardStep1(WizardStepMixin, PasswordHandler):
         super(WizardStep1, self).__init__(change=require_old, *args, **kwargs)
 
 
-class WizardStep2(WizardStepMixin, WanHandler):
+class WizardStep2(WizardStepMixin, wan.WanHandler):
     """
     WAN settings.
     """
@@ -169,7 +168,7 @@ class WizardStep2(WizardStepMixin, WanHandler):
         return super(WizardStep2, self).render(**kwargs)
 
 
-class WizardStep3(WizardStepMixin, BaseConfigHandler):
+class WizardStep3(WizardStepMixin, base.BaseConfigHandler):
     """
     Network check.
     """
@@ -220,7 +219,7 @@ class WizardStep3(WizardStepMixin, BaseConfigHandler):
         raise ValueError("Unknown Wizard action.")
 
 
-class WizardStep4(WizardStepMixin, RegionHandler):
+class WizardStep4(WizardStepMixin, misc.RegionHandler):
     """
     Setting of the region (timezone)
     """
@@ -228,7 +227,7 @@ class WizardStep4(WizardStepMixin, RegionHandler):
     next_step_allowed = 5
 
 
-class WizardStep5(WizardStepMixin, TimeHandler):
+class WizardStep5(WizardStepMixin, misc.TimeHandler):
     """
     Time settings.
     """
@@ -257,7 +256,7 @@ class WizardStep5(WizardStepMixin, TimeHandler):
         return self.default_template(form=None, **kwargs)
 
 
-class WizardStep6(WizardStepMixin, UpdaterAutoUpdatesHandler):
+class WizardStep6(WizardStepMixin, updater.UpdaterAutoUpdatesHandler):
     """
     Updater.
     """
@@ -344,7 +343,7 @@ class WizardStep7(WizardStep6):
         return super(WizardStep7, self).render(**kwargs)
 
 
-class WizardStep8(WizardStepMixin, LanHandler):
+class WizardStep8(WizardStepMixin, lan.LanHandler):
     """
     LAN settings.
     """
@@ -352,7 +351,7 @@ class WizardStep8(WizardStepMixin, LanHandler):
     next_step_allowed = 9
 
 
-class WizardStep9(WizardStepMixin, WifiHandler):
+class WizardStep9(WizardStepMixin, wifi.WifiHandler):
     """
     WiFi settings.
     """
@@ -371,7 +370,7 @@ class WizardStep9(WizardStepMixin, WifiHandler):
         return form
 
 
-class WizardStep10(WizardStepMixin, BaseConfigHandler):
+class WizardStep10(WizardStepMixin, base.BaseConfigHandler):
     """
     Show the activation code.
     """
