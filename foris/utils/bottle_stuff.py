@@ -19,14 +19,13 @@
 import bottle
 
 from foris.langs import iso2to3, translation_names
+from foris.state import info
+from foris.caches import lazy_cache
 
 from .routing import reverse, static as static_path
 from .translators import translations, ugettext, ungettext
 from ..middleware.bottle_csrf import get_csrf_token
 from . import is_user_authenticated, template_helpers
-from .. import DEVICE_CUSTOMIZATION
-from .. import __version__ as foris_version
-from .. import state
 
 
 def prepare_template_defaults():
@@ -36,8 +35,7 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
     bottle.SimpleTemplate.defaults['ungettext'] = \
         lambda singular, plural, n: ungettext(singular, plural, n)
-    bottle.SimpleTemplate.defaults['DEVICE_CUSTOMIZATION'] = DEVICE_CUSTOMIZATION
-    bottle.SimpleTemplate.defaults['foris_version'] = foris_version
+    bottle.SimpleTemplate.defaults['foris_info'] = info
 
     # template defaults
     # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
@@ -69,7 +67,7 @@ def clickjacking_protection():
 
 
 def clear_lazy_cache():
-    state.lazy_cache.clear()
+    lazy_cache.clear()
 
 
 def route_list(app, prefix1="", prefix2=""):
