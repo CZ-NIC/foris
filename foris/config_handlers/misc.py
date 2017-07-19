@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import bottle  # TODO rework this import
+import bottle
 
 from foris import fapi, validators
 from foris.nuci import client, filters
@@ -22,6 +22,7 @@ from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
 from foris.form import (
     Hidden, Password, Textbox, Dropdown, Checkbox,
 )
+from foris.state import info
 from foris.utils import (
     tzinfo, localized_sorted
 )
@@ -119,7 +120,7 @@ class RegionHandler(BaseConfigHandler):
             )
         )
 
-        lang = bottle.request.app.lang
+        lang = info.language
 
         def construct_args(items, translation_function=_, key_getter=lambda x: x):
             """

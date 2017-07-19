@@ -27,7 +27,7 @@ from functools import wraps
 
 from foris.nuci import client, filters
 from foris.nuci.helpers import write_uci_lang, contract_valid, get_wizard_progress
-from foris.state import nuci_cache
+from foris.caches import nuci_cache
 from foris.utils import (
     redirect_unauthenticated, is_safe_redirect, messages,
     WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS,
@@ -185,7 +185,6 @@ def change_lang(lang):
     :raises: bottle.HTTPError if requested language is not installed
     """
     if lang in translations:
-        bottle.request.app.lang = lang
         write_uci_lang(lang)
         backlink = bottle.request.GET.get('backlink')
         if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):

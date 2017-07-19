@@ -17,7 +17,7 @@
 %if collecting_enabled or form.active_fields[0].field.value == "1":
   <h4>{{ trans("Update approvals") }}</h4>
   <div id="updater-approvals">
-  %if DEVICE_CUSTOMIZATION == "turris":
+  %if foris_info.device_customization == "turris":
     <p>{{! trans("Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can refuse the questionable update temporarily and install it when you are ready. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.") }}</p>
   %else:
     <p>{{! trans("Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can e.g. install updates when you're prepared for a possible rollback to a previous snapshot and deny the questionable update temporarily. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.") }}</p>

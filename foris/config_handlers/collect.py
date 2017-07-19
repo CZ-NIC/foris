@@ -14,17 +14,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import bottle  # TODO rework this dep
-
 from foris import fapi
 from foris.form import Checkbox, MultiCheckbox
 
+from foris.form import Email
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import (
     Uci, Config, Section, Option, List, Value, parse_uci_bool, build_option_uci_tree,
 )
 from foris.utils.translators import gettext_dummy as gettext, _
-from foris.form import Email
+from foris.state import info
 
 from .base import BaseConfigHandler, logger
 
@@ -197,8 +196,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
         )
 
         def form_cb(data):
-            result = client.get_registration_status(data.get("email"),
-                                                    bottle.request.app.lang)
+            result = client.get_registration_status(data.get("email"), info.language)
             return "save_result", {
                 'success': result[0],
                 'response': result[1],
@@ -206,5 +204,3 @@ class RegistrationCheckHandler(BaseConfigHandler):
 
         form.add_callback(form_cb)
         return form
-
-

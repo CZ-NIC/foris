@@ -26,7 +26,7 @@ import bottle
 from foris.common import require_contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.nuci.notifications import make_notification_title
-from foris.state import lazy_cache
+from foris.caches import lazy_cache
 from foris.config_handlers import (
     backups, collect, dns, misc, notifications, wan, lan, updater, wifi
 )
