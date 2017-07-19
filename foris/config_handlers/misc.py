@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
+import pbkdf2
 
 from foris import fapi, validators
 from foris.nuci import client, filters
@@ -73,7 +74,6 @@ class PasswordHandler(BaseConfigHandler):
                                  "blocked.)"))
 
         def pw_form_cb(data):
-            import pbkdf2
             if self.change:
                 # if changing password, check the old pw is right first
                 uci_data = client.get(filter=filters.foris_config)

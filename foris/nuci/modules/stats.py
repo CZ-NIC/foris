@@ -14,11 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from datetime import datetime, timedelta
-
 from xml.etree import cElementTree as ET
 
-from .base import YinElement
 from ..utils import unqualify
+
+from .base import YinElement
 
 
 class Stats(YinElement):
