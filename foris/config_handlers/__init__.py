@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,22 +16,17 @@
 
 from .base import (
     BaseConfigHandler,
-    CollectionToggleHandler,
-    MaintenanceHandler,
-    NotificationsHandler,
-    PasswordHandler,
-    RegionHandler,
-    RegistrationCheckHandler,
-    SystemPasswordHandler,
-    TimeHandler,
-    UcollectHandler,
-    WanHandler,
 )
 
-from .updater import UpdaterAutoUpdatesHandler, UpdaterHandler
-from .wifi import WifiHandler
-from .lan import LanHandler
+from .backups import MaintenanceHandler
 from .dns import DNSHandler
+from .lan import LanHandler
+from .misc import PasswordHandler, RegionHandler, SystemPasswordHandler, TimeHandler
+from .notifications import NotificationsHandler
+from .collect import CollectionToggleHandler, UcollectHandler, RegistrationCheckHandler
+from .updater import UpdaterAutoUpdatesHandler, UpdaterHandler
+from .wan import WanHandler
+from .wifi import WifiHandler
 
 __all__ = [
     'BaseConfigHandler',
