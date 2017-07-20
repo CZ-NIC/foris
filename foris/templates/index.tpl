@@ -42,6 +42,8 @@
     %end
   <div class="footer">
     {{ trans("Foris Configuration Interface") }}<br>
+    %if defined("luci_path"):
     <a href="{{ luci_path }}">{{ trans("Go to LuCI") }}</a>
+    %end
   </div>
 </div>
