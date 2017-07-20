@@ -96,12 +96,13 @@ def write_uci_lang(lang):
     server = Section("settings", "config")
     foris.add(server)
     server.add(Option("lang", lang))
-    # LuCI language
-    luci = Config("luci")
-    uci.add(luci)
-    main = Section("main", "core")
-    luci.add(main)
-    main.add(Option("lang", lang))
+    if info.app == "config":
+        # LuCI language (only in config app)
+        luci = Config("luci")
+        uci.add(luci)
+        main = Section("main", "core")
+        luci.add(main)
+        main.add(Option("lang", lang))
     try:
         nuci_edit_config(uci.get_xml())
 

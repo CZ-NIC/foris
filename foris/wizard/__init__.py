@@ -552,6 +552,4 @@ def top_index():
     if session.get("user_authenticated"):
         login_redirect(allowed_step_max, wizard_finished)
 
-    return dict(
-        luci_path="//%(host)s/%(path)s"
-        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+    return {}
