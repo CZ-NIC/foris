@@ -33,9 +33,9 @@ from foris.config_handlers import (
 from foris.nuci import client
 from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
-from foris.nuci.helpers import contract_valid
+from foris.nuci.helpers import contract_valid, get_wizard_progress
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
-from foris.utils import login_required, messages
+from foris.utils import login_required, messages, is_safe_redirect
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 
@@ -168,10 +168,6 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         return bottle.static_file(filename, directory,
                                   mimetype="application/x-bz2", download=True)
 
-    def _action_reboot(self):
-        client.reboot()
-        bottle.redirect(reverse("config_index"))
-
     def _action_save_notifications(self):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
@@ -202,8 +198,6 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
     def call_action(self, action):
         if action == "config-backup":
             return self._action_config_backup()
-        elif action == "reboot":
-            return self._action_reboot()
         elif action == "save_notifications":
             return self._action_save_notifications()
         elif action == "test_notifications":
@@ -640,3 +634,29 @@ def init_app():
               callback=config_page_get)
     bottle.SimpleTemplate.defaults['config_pages'] = config_page_map
     return app
+
+
+def login_redirect():
+    next_url = bottle.request.GET.get("next")
+    if next_url and is_safe_redirect(next_url, bottle.request.get_header('host')):
+        bottle.redirect(next_url)
+    bottle.redirect(reverse("config_index"))
+
+
+@bottle.view("index")
+def top_index():
+    session = bottle.request.environ['foris.session']
+    allowed_step_max, wizard_finished = get_wizard_progress(session)
+
+    if allowed_step_max == 1:
+        if session.is_anonymous:
+            session.recreate()
+        session["user_authenticated"] = True
+        session.save()
+
+    if session.get("user_authenticated"):
+        login_redirect()
+
+    return dict(
+        luci_path="//%(host)s/%(path)s"
+        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
