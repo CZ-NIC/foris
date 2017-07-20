@@ -26,15 +26,19 @@ import time
 from functools import wraps
 
 from foris.nuci import client, filters
-from foris.nuci.helpers import write_uci_lang, contract_valid, get_wizard_progress
+from foris.nuci.helpers import write_uci_lang, contract_valid
 from foris.caches import nuci_cache
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages,
-    WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS,
+    redirect_unauthenticated, is_safe_redirect, messages, login_required
 )
+from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
-from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError
 from foris.utils.translators import _, translations
+from foris.utils.bottle_stuff import (
+    clickjacking_protection,
+    clear_lazy_cache,
+    disable_caching,
+)
 
 
 logger = logging.getLogger("foris.common")
@@ -103,41 +107,6 @@ def foris_403_handler(error):
 
     # otherwise display the standard error page
     bottle.app().default_error_handler(error)
-
-
-def login_redirect(step_num, wizard_finished=False):
-    if step_num >= NUM_WIZARD_STEPS or wizard_finished:
-        next = bottle.request.GET.get("next")
-        if next and is_safe_redirect(next, bottle.request.get_header('host')):
-            bottle.redirect(next)
-        bottle.redirect(reverse("config_index"))
-    elif step_num == 1:
-        bottle.redirect(reverse("wizard_index"))
-    else:
-        bottle.redirect(reverse("wizard_step", number=step_num))
-
-
-@bottle.view("index")
-def index():
-    session = bottle.request.environ['foris.session']
-    allowed_step_max, wizard_finished = get_wizard_progress(session)
-
-    if allowed_step_max == 1:
-        if session.is_anonymous:
-            session.recreate()
-        session["user_authenticated"] = True
-    else:
-        session[WIZARD_NEXT_STEP_ALLOWED_KEY] = str(allowed_step_max)
-        session["wizard_finished"] = wizard_finished
-        allowed_step_max = int(allowed_step_max)
-
-    session.save()
-    if session.get("user_authenticated"):
-        login_redirect(allowed_step_max, wizard_finished)
-
-    return dict(
-        luci_path="//%(host)s/%(path)s"
-        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
 
 
 def render_js(filename):
@@ -234,3 +203,49 @@ def require_contract_valid(valid=True):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+
+
+@login_required
+def reboot():
+    client.reboot()
+    bottle.redirect(reverse("/"))
+
+
+def init_default_app(index, include_static=False):
+    """
+    Initialize top-level Foris app - register all routes etc.
+
+    :param include_static: include route to static files
+    :type include_static: bool
+    :return: instance of Foris Bottle application
+    """
+
+    app = bottle.app()
+    app.install(CSRFPlugin())
+    app.route("/", name="index", callback=index)
+    app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
+    app.route("/", method="POST", name="login", callback=login)
+    app.route("/logout", name="logout", callback=logout)
+    app.route("/reboot", name="reboot", callback=reboot)
+    if include_static:
+        app.route('/static/<filename:re:.*>', name="static", callback=static)
+    app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
+    return app
+
+
+def init_common_app(app, prefix):
+    """
+    Initializes Foris application - use this method to apply properties etc.
+    that should be set to main app and all the mounted apps (i.e. to the
+    Bottle() instances).
+
+
+    :param app: instance of bottle application to mount
+    :param prefix: prefix which has been used to mount the application
+    """
+    app.catchall = False  # caught by ReportingMiddleware
+    app.error_handler[403] = foris_403_handler
+    app.add_hook('after_request', clickjacking_protection)
+    app.add_hook('after_request', disable_caching)
+    app.add_hook('after_request', clear_lazy_cache)
+    app.config['prefix'] = prefix

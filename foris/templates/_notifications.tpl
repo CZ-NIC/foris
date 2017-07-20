@@ -20,7 +20,7 @@
       {{! notification.escaped_body[lang()] }}
       %if notification.requires_restart:
         <div class="buttons">
-            <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
+            <a href="{{ url("reboot") }}" class="button reboot">{{ trans("Reboot now") }}</a>
         </div>
       %elif notification.id:
         <a href="#" class="dismiss" title="{{ trans("Dismiss") }}" data-id="{{ notification.id }}">&times;</a>

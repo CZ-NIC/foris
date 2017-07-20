@@ -29,7 +29,9 @@ from foris.nuci.helpers import (
 from foris.nuci.modules.uci_raw import build_option_uci_tree
 from foris.nuci.notifications import make_notification_title
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
-from foris.utils import login_required, messages, WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS
+from foris.utils import (
+    login_required, messages, WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS, is_safe_redirect
+)
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -517,3 +519,38 @@ def init_app():
     app.route("/step/<number:re:\d+>", method="POST", callback=step_post)
     app.route("/skip", name="wizard_skip", callback=skip)
     return app
+
+
+def login_redirect(step_num, wizard_finished=False):
+    if step_num >= NUM_WIZARD_STEPS or wizard_finished:
+        next = bottle.request.GET.get("next")
+        if next and is_safe_redirect(next, bottle.request.get_header('host')):
+            bottle.redirect(next)
+        bottle.redirect(reverse("wizard_step", number=NUM_WIZARD_STEPS))
+    elif step_num == 1:
+        bottle.redirect(reverse("wizard_index"))
+    else:
+        bottle.redirect(reverse("wizard_step", number=step_num))
+
+
+@bottle.view("index")
+def top_index():
+    session = bottle.request.environ['foris.session']
+    allowed_step_max, wizard_finished = get_wizard_progress(session)
+
+    if allowed_step_max == 1:
+        if session.is_anonymous:
+            session.recreate()
+        session["user_authenticated"] = True
+    else:
+        session[WIZARD_NEXT_STEP_ALLOWED_KEY] = str(allowed_step_max)
+        session["wizard_finished"] = wizard_finished
+        allowed_step_max = int(allowed_step_max)
+
+    session.save()
+    if session.get("user_authenticated"):
+        login_redirect(allowed_step_max, wizard_finished)
+
+    return dict(
+        luci_path="//%(host)s/%(path)s"
+        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
