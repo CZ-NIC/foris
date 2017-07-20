@@ -33,6 +33,7 @@ from foris.nuci import client
 from foris.nuci.helpers import contract_valid, read_uci_lang
 from foris.langs import DEFAULT_LANGUAGE
 from foris.plugins import ForisPluginLoader
+from foris.state import info
 from foris.utils import messages
 from foris.utils.translators import translations
 from foris.utils.bottle_stuff import (
@@ -59,6 +60,9 @@ def prepare_wizard_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
+
+    # set app
+    info.set_app("wizard")
 
     # internationalization
     i18n_defaults(bottle.SimpleTemplate, bottle.request)

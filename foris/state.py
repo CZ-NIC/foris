@@ -28,10 +28,15 @@ class ForisStateInfo(object):
         self.device_customization = DEVICE_CUSTOMIZATION
         self.foris_version = version
         self.language = DEFAULT_LANGUAGE
+        self.app = None
 
     def update_lang(self, lang):
         logger.debug("current lang updated to '%s'" % lang)
         self.language = lang
+
+    def set_app(self, app):
+        logger.debug("current app updated to '%s'" % app)
+        self.app = app
 
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))
