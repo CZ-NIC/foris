@@ -16,13 +16,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from foris import fapi
-from foris import validators
+from foris import fapi, validators
 from foris.form import Textbox, Checkbox, Number
 from foris.nuci import client
 from foris.nuci.filters import create_config_filter, wifi_filter
 from foris.nuci.preprocessors import guest_network_enabled, generate_network_preprocessor
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
+from foris.state import info
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -71,64 +71,65 @@ class LanHandler(BaseConfigHandler):
                            nuci_path="uci.dhcp.lan.limit")\
             .requires("dhcp_enabled", True)
 
-        guest_network_section = lan_form.add_section(
-            name="guest_network",
-            title=_("Guest network"),
-        )
-        guest_network_section.add_field(
-            Checkbox, name="guest_network_enabled",
-            label=_("Enable guest network"), default=False,
-            hint=_(
-                "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is separated  "
-                "from your ordinary LAN network. Devices connected to this network are allowed "
-                "to access the internet, but are not allowed to access other devices and "
-                "the configuration interface of the router."
-            ) % dict(url=reverse("config_page", page_name="wifi")),
-            nuci_preproc=guest_network_enabled,
-        )
-        guest_network_section.add_field(
-            Textbox, name="guest_network_subnet", label=_("Guest network"),
-            nuci_preproc=generate_network_preprocessor(
-                "uci.network.guest_turris.ipaddr",
-                "uci.network.guest_turris.netmask",
-                DEFAULT_GUEST_NETWORK,
-                DEFAULT_GUEST_MASK,
-            ),
-            validators=[validators.IPv4Prefix()],
-            hint=_(
-                "You need to set the IP range for your guest network. It is necessary that "
-                "the range is different than ranges on your other networks (LAN, WAN, VPN, etc.)."
-            ),
-        ).requires("guest_network_enabled", True)
-        guest_network_section.add_field(
-            Checkbox, name="guest_network_shapping", label=_("Guest Lan QoS"),
-            nuci_preproc=parse_uci_bool,
-            nuci_path="uci.sqm.guest_limit_turris.enabled",
-            hint=_(
-                "This option enables you to set a bandwidth limit for the guest network, "
-                "so that your main network doesn't get slowed-down by it."
-            ),
-        ).requires("guest_network_enabled", True)
-        guest_network_section.add_field(
-            Number,
-            name="guest_network_download", label=_("Download (kb/s)"),
-            validators=[validators.PositiveInteger()],
-            hint=_(
-                "Download speed in guest network (in kilobits per second)."
-            ),
-            default=1024,
-            nuci_path="uci.sqm.guest_limit_turris.upload",
-        ).requires("guest_network_shapping", True)
-        guest_network_section.add_field(
-            Number,
-            name="guest_network_upload", label=_("Upload (kb/s)"),
-            validators=[validators.PositiveInteger()],
-            hint=_(
-                "Upload speed in guest network (in kilobits per second)."
-            ),
-            default=1024,
-            nuci_path="uci.sqm.guest_limit_turris.download",
-        ).requires("guest_network_shapping", True)
+        if info.app == "config":
+            guest_network_section = lan_form.add_section(
+                name="guest_network",
+                title=_("Guest network"),
+            )
+            guest_network_section.add_field(
+                Checkbox, name="guest_network_enabled",
+                label=_("Enable guest network"), default=False,
+                hint=_(
+                    "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is separated  "
+                    "from your ordinary LAN network. Devices connected to this network are allowed "
+                    "to access the internet, but are not allowed to access other devices and "
+                    "the configuration interface of the router."
+                ) % dict(url=reverse("config_page", page_name="wifi")),
+                nuci_preproc=guest_network_enabled,
+            )
+            guest_network_section.add_field(
+                Textbox, name="guest_network_subnet", label=_("Guest network"),
+                nuci_preproc=generate_network_preprocessor(
+                    "uci.network.guest_turris.ipaddr",
+                    "uci.network.guest_turris.netmask",
+                    DEFAULT_GUEST_NETWORK,
+                    DEFAULT_GUEST_MASK,
+                ),
+                validators=[validators.IPv4Prefix()],
+                hint=_(
+                    "You need to set the IP range for your guest network. It is necessary that "
+                    "the range is different than ranges on your other networks (LAN, WAN, VPN, etc.)."
+                ),
+            ).requires("guest_network_enabled", True)
+            guest_network_section.add_field(
+                Checkbox, name="guest_network_shapping", label=_("Guest Lan QoS"),
+                nuci_preproc=parse_uci_bool,
+                nuci_path="uci.sqm.guest_limit_turris.enabled",
+                hint=_(
+                    "This option enables you to set a bandwidth limit for the guest network, "
+                    "so that your main network doesn't get slowed-down by it."
+                ),
+            ).requires("guest_network_enabled", True)
+            guest_network_section.add_field(
+                Number,
+                name="guest_network_download", label=_("Download (kb/s)"),
+                validators=[validators.PositiveInteger()],
+                hint=_(
+                    "Download speed in guest network (in kilobits per second)."
+                ),
+                default=1024,
+                nuci_path="uci.sqm.guest_limit_turris.upload",
+            ).requires("guest_network_shapping", True)
+            guest_network_section.add_field(
+                Number,
+                name="guest_network_upload", label=_("Upload (kb/s)"),
+                validators=[validators.PositiveInteger()],
+                hint=_(
+                    "Upload speed in guest network (in kilobits per second)."
+                ),
+                default=1024,
+                nuci_path="uci.sqm.guest_limit_turris.download",
+            ).requires("guest_network_shapping", True)
 
         def lan_form_cb(data):
             uci = Uci()
@@ -155,36 +156,37 @@ class LanHandler(BaseConfigHandler):
             else:
                 dhcp.add(Option("ignore", "1"))
 
-            # qos data
-            qos = {'enabled': False}
-            if 'guest_network_shapping' in data and data['guest_network_shapping']:
-                qos['enabled'] = True
-                qos['download'] = data['guest_network_download']
-                qos['upload'] = data['guest_network_upload']
+            if info.app == "config":
+                # qos data
+                qos = {'enabled': False}
+                if 'guest_network_shapping' in data and data['guest_network_shapping']:
+                    qos['enabled'] = True
+                    qos['download'] = data['guest_network_download']
+                    qos['upload'] = data['guest_network_upload']
 
-            # update guest network configs
-            guest_enabled = data.get("guest_network_enabled")
-            guest_network_subnet = data.get("guest_network_subnet")
-            if guest_network_subnet:
-                network, prefix = data.get("guest_network_subnet").split("/")
-            else:
-                network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
+                # update guest network configs
+                guest_enabled = data.get("guest_network_enabled")
+                guest_network_subnet = data.get("guest_network_subnet")
+                if guest_network_subnet:
+                    network, prefix = data.get("guest_network_subnet").split("/")
+                else:
+                    network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
 
-            # disable guest wifi when guest network is not enabled
-            data = client.get(filter=wifi_filter())
-            card_count = 0
-            while data.find_child("uci.wireless.@wifi-device[%d]" % card_count):
-                card_count += 1
-            if not guest_enabled and card_count > 0:
-                wireless = uci.add(Config("wireless"))
-                for i in range(card_count):
-                    guest_iface = wireless.add(Section("guest_iface_%d" % i, "wifi-iface"))
-                    guest_iface.add(Option("disabled", "1"))
+                # disable guest wifi when guest network is not enabled
+                data = client.get(filter=wifi_filter())
+                card_count = 0
+                while data.find_child("uci.wireless.@wifi-device[%d]" % card_count):
+                    card_count += 1
+                if not guest_enabled and card_count > 0:
+                    wireless = uci.add(Config("wireless"))
+                    for i in range(card_count):
+                        guest_iface = wireless.add(Section("guest_iface_%d" % i, "wifi-iface"))
+                        guest_iface.add(Option("disabled", "1"))
 
-            guest_interfaces = ["guest_turris_%d" % e for e in range(card_count)]
+                guest_interfaces = ["guest_turris_%d" % e for e in range(card_count)]
 
-            prepare_guest_configs(
-                uci, guest_enabled, network, prefix, guest_interfaces, qos)
+                prepare_guest_configs(
+                    uci, guest_enabled, network, prefix, guest_interfaces, qos)
 
             return "edit_config", uci
 

@@ -74,7 +74,8 @@ class WizardStepMixin(object):
             session_max_step = int(session.get(WIZARD_NEXT_STEP_ALLOWED_KEY, 0))
 
             if next_step_number > session_max_step:
-                allow_next_step_session(next_step_number)
+                session = request.environ['foris.session']
+                allow_next_step_session(session, next_step_number)
                 uci = get_allow_next_step_uci(next_step_number)
 
                 return "edit_config", uci
@@ -505,7 +506,7 @@ def skip():
         allow_next_step_session(session, NUM_WIZARD_STEPS)
         add_config_update(get_allow_next_step_uci(NUM_WIZARD_STEPS))
         commit()
-        bottle.redirect(reverse("config_index"))
+        bottle.redirect(reverse("wizard_step", number=NUM_WIZARD_STEPS))
 
     raise bottle.HTTPError(403, "Action not allowed.")
 
