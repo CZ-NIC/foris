@@ -18,7 +18,7 @@
 
 <h1>{{ trans("Installation finished") }}</h1>
 
-<p>{{! trans("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
+<p>{{! trans("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': "TODO", 'url2': "TODO"} }}</p>
 
 <h2>{{ trans("What next?") }}</h2>
 
@@ -28,10 +28,10 @@
     {{ trans("Without the Updater, installed software will not be kept up to date and you will also not be able to install Updater's package lists.") }}
     {{! trans('By enabling of the Updater, you can also join our research project: <a href="https://www.turris.cz/">Project Turris</a>.') }}
   </p>
-  <p>{{! trans('You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> configuration page.') % dict(url=url("config_page", page_name="updater")) }}</p>
+  <p>{{! trans('You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> configuration page.') % dict(url="TODO") }}</p>
 %else:
   <p>{{! trans('With Turris Omnia you can join the research project called <a href="https://www.turris.cz/">Project Turris</a>. Thanks to this project, your router can become a probe that analyzes the traffic between internet and the home network and identifies suspicious data flows.') }}</p>
-  <p>{{! trans('You can enable these additional features by following the instructions on the <a href="%(url)s">Data collection</a> page.') % dict(url=url("config_page", page_name="data-collection")) }}</p>
+  <p>{{! trans('You can enable these additional features by following the instructions on the <a href="%(url)s">Data collection</a> page.') % dict(url="TODO") }}</p>
 %end
 
 %if len(notifications):
@@ -40,4 +40,4 @@
     %include("_notifications.tpl", notifications=notifications)
 %end
 
-<a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to the configuration interface") }}</a>
+<a class="button-next" href="{{ "TODO" }}">{{ trans("Continue to the configuration interface") }}</a>

@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # builtins
-import argparse
 import logging
 import os
 
@@ -25,32 +24,25 @@ import bottle
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 # local
-from foris.config import init_app as init_app_config
-from foris.wizard import init_app as init_app_wizard
+from foris.config import init_app as init_app_config, top_index
 
-from foris.common import (
-    index, login, foris_403_handler, render_js_md5, render_js, logout, change_lang, static
-)
+from foris.common import render_js_md5, init_common_app, init_default_app
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
 from foris.nuci import client
 from foris.nuci.helpers import contract_valid, read_uci_lang
 from foris.langs import DEFAULT_LANGUAGE
 from foris.plugins import ForisPluginLoader
-from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils import messages
 from foris.utils.translators import translations
 from foris.utils.bottle_stuff import (
     prepare_template_defaults,
-    clickjacking_protection,
-    clear_lazy_cache,
-    disable_caching,
     route_list_cmdline,
     route_list_debug,
 )
 
 
-logger = logging.getLogger("foris")
+logger = logging.getLogger("foris.config")
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -59,71 +51,7 @@ bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
 bottle.SimpleTemplate.defaults['js_md5'] = lambda filename: render_js_md5(filename)
 
 
-def init_foris_app(app, prefix):
-    """
-    Initializes Foris application - use this method to apply properties etc.
-    that should be set to main app and all the mounted apps (i.e. to the
-    Bottle() instances).
-
-
-    :param app: instance of bottle application to mount
-    :param prefix: prefix which has been used to mount the application
-    """
-    app.catchall = False  # caught by ReportingMiddleware
-    app.error_handler[403] = foris_403_handler
-    app.add_hook('after_request', clickjacking_protection)
-    app.add_hook('after_request', disable_caching)
-    app.add_hook('after_request', clear_lazy_cache)
-    app.config['prefix'] = prefix
-
-
-def get_arg_parser():
-    """
-    Create ArgumentParser instance with Foris arguments.
-
-    :return: instance of ArgumentParser
-    """
-    parser = argparse.ArgumentParser()
-    group = parser.add_argument_group("run server")
-    group.add_argument("-H", "--host", default="0.0.0.0")
-    group.add_argument("-p", "--port", type=int, default=8080)
-    group.add_argument("--session-timeout", type=int, default=900,
-                       help="session timeout (in seconds)")
-    group.add_argument("-s", "--server", choices=["wsgiref", "flup", "cgi"], default="wsgiref")
-    group.add_argument("-d", "--debug", action="store_true")
-    group.add_argument("--noauth", action="store_true",
-                       help="disable authentication (available only in debug mode)")
-    group.add_argument("--nucipath", help="path to Nuci binary")
-    parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
-    group.add_argument(
-        "-S", "--static", action="store_true",
-        help="serve static files directly through foris app (should be used for debug only)"
-    )
-    return parser
-
-
-def init_default_app(include_static=False):
-    """
-    Initialize top-level Foris app - register all routes etc.
-
-    :param include_static: include route to static files
-    :type include_static: bool
-    :return: instance of Foris Bottle application
-    """
-
-    app = bottle.app()
-    app.install(CSRFPlugin())
-    app.route("/", name="index", callback=index)
-    app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
-    app.route("/", method="POST", name="login", callback=login)
-    app.route("/logout", name="logout", callback=logout)
-    if include_static:
-        app.route('/static/<filename:re:.*>', name="static", callback=static)
-    app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
-    return app
-
-
-def prepare_main_app(args):
+def prepare_config_app(args):
     """
     Prepare Foris main application - i.e. apply CLI arguments, mount applications,
     install hooks and middleware etc...
@@ -141,7 +69,7 @@ def prepare_main_app(args):
     # init messaging template
     messages.set_template_defaults()
 
-    app = init_default_app(args.static)
+    app = init_default_app(top_index, args.static)
 
     # basic and bottle settings
     template_dir = os.path.join(BASE_DIR, "templates")
@@ -150,7 +78,6 @@ def prepare_main_app(args):
 
     # mount apps
     app.mount("/config", init_app_config())
-    app.mount("/wizard", init_app_wizard())
 
     if args.debug:
         if args.noauth:
@@ -158,12 +85,12 @@ def prepare_main_app(args):
             app.config["no_auth"] = True
 
     # set custom app attributes for main app and all mounted apps
-    init_foris_app(app, None)
+    init_common_app(app, None)
     for route in app.routes:
         if route.config.get("mountpoint"):
             mounted = route.config['mountpoint.target']
             prefix = route.config['mountpoint.prefix']
-            init_foris_app(mounted, prefix)
+            init_common_app(mounted, prefix)
 
     if args.nucipath:
         client.StaticNetconfConnection.set_bin_path(args.nucipath)
