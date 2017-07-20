@@ -19,6 +19,7 @@ from foris import validators
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool
+from foris.state import info
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -190,51 +191,52 @@ class WifiHandler(BaseConfigHandler):
             hint=HINTS['password']
         ).requires(prefixed_name("wifi_enabled"), True)
 
-        # Guest wi-fi part
-        guest_section = wifi_main.add_section(
-            name=prefixed_name("set_guest_wifi"),
-            title=_("Guest Wi-Fi"),
-            description=_("Set guest Wi-Fi here.")
-        )
+        if info.app == "config":
+            # Guest wi-fi part
+            guest_section = wifi_main.add_section(
+                name=prefixed_name("set_guest_wifi"),
+                title=_("Guest Wi-Fi"),
+                description=_("Set guest Wi-Fi here.")
+            )
 
-        guest_section.add_field(
-            Checkbox, name=prefixed_name("guest_enabled"),
-            label=_("Enable guest Wi-Fi"), default=False,
-            nuci_path="uci.wireless.guest_iface_%s.disabled" % iface_index,
-            nuci_preproc=lambda value: not parse_uci_bool(value),
-            hint=_(
-                "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-                "connected to this network are allowed to access the internet, but aren't "
-                "allowed to access other devices and the configuration interface of the router. "
-                "Parameters of the guest network can be set in <a href='%(url)s'>the LAN tab</a>. "
-            ) % dict(url=reverse("config_page", page_name="lan"))
-        ).requires(prefixed_name("wifi_enabled"), True)
+            guest_section.add_field(
+                Checkbox, name=prefixed_name("guest_enabled"),
+                label=_("Enable guest Wi-Fi"), default=False,
+                nuci_path="uci.wireless.guest_iface_%s.disabled" % iface_index,
+                nuci_preproc=lambda value: not parse_uci_bool(value),
+                hint=_(
+                    "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+                    "connected to this network are allowed to access the internet, but aren't "
+                    "allowed to access other devices and the configuration interface of the router. "
+                    "Parameters of the guest network can be set in <a href='%(url)s'>the LAN tab</a>. "
+                ) % dict(url=reverse("config_page", page_name="lan"))
+            ).requires(prefixed_name("wifi_enabled"), True)
 
-        default_ssid = self._get_value(
-            post_data, nuci_data,
-            prefixed_name("ssid"), "uci.wireless.@wifi-iface[%s].ssid" % iface_index,
-            "Turris",
-        )
-        default_guest_ssid = self._get_value(
-            post_data, nuci_data,
-            prefixed_name("guest_ssid"), "uci.wireless.guest_iface_%s.ssid" % iface_index,
-            "%s-guest" % default_ssid
-        )
-        guest_section.add_field(
-            Textbox, name=prefixed_name("guest_ssid"), label=_("SSID for guests"),
-            nuci_path="uci.wireless.guest_iface_%s.ssid" % iface_index,
-            required=True, validators=validators.ByteLenRange(1, 32),
-            default=default_guest_ssid
-        ).requires(prefixed_name("guest_enabled"), True)
+            default_ssid = self._get_value(
+                post_data, nuci_data,
+                prefixed_name("ssid"), "uci.wireless.@wifi-iface[%s].ssid" % iface_index,
+                "Turris",
+            )
+            default_guest_ssid = self._get_value(
+                post_data, nuci_data,
+                prefixed_name("guest_ssid"), "uci.wireless.guest_iface_%s.ssid" % iface_index,
+                "%s-guest" % default_ssid
+            )
+            guest_section.add_field(
+                Textbox, name=prefixed_name("guest_ssid"), label=_("SSID for guests"),
+                nuci_path="uci.wireless.guest_iface_%s.ssid" % iface_index,
+                required=True, validators=validators.ByteLenRange(1, 32),
+                default=default_guest_ssid
+            ).requires(prefixed_name("guest_enabled"), True)
 
-        guest_section.add_field(
-            Password, name=prefixed_name("guest_key"), label=_("Password for guests"),
-            nuci_path="uci.wireless.guest_iface_%s.key" % iface_index,
-            required=True,
-            default="",
-            validators=validators.ByteLenRange(8, 63),
-            hint=HINTS['password'],
-        ).requires(prefixed_name("guest_enabled"), True)
+            guest_section.add_field(
+                Password, name=prefixed_name("guest_key"), label=_("Password for guests"),
+                nuci_path="uci.wireless.guest_iface_%s.key" % iface_index,
+                required=True,
+                default="",
+                validators=validators.ByteLenRange(8, 63),
+                hint=HINTS['password'],
+            ).requires(prefixed_name("guest_enabled"), True)
 
         # Horizontal line separating wi-fi cards
         if not last:
@@ -287,15 +289,19 @@ class WifiHandler(BaseConfigHandler):
         wireless.add(iface)
         device = Section("radio%s" % radio, "wifi-device")
         wireless.add(device)
-        guest_iface = Section("guest_iface_%s" % radio, "wifi-iface")
-        wireless.add(guest_iface)
+        if info.app == "config":
+            guest_iface = Section("guest_iface_%s" % radio, "wifi-iface")
+            wireless.add(guest_iface)
 
         # we must toggle both wifi-ifaces and device
         wifi_enabled = radio_data('wifi_enabled')
         guest_enabled = radio_data("guest_enabled")
         iface.add(Option("disabled", not wifi_enabled))
         device.add(Option("disabled", not wifi_enabled))
-        guest_iface.add(Option("disabled", not wifi_enabled or not guest_enabled))
+
+        if info.app == "config":
+            guest_iface.add(Option("disabled", not wifi_enabled or not guest_enabled))
+
         if wifi_enabled:
             iface.add(Option("ssid", radio_data('ssid')))
             iface.add(Option("hidden", radio_data('ssid_hidden')))
@@ -317,20 +323,21 @@ class WifiHandler(BaseConfigHandler):
             device.add(Option("channel", channel))
 
             # setting guest wifi
-            if guest_enabled:
-                guest_iface.add(Option("device", "radio%s" % radio))
-                guest_iface.add(Option("mode", "ap"))
-                guest_iface.add(Option("ssid", radio_data('guest_ssid')))
-                guest_iface.add(Option("encryption", "psk2+tkip+aes"))
-                guest_iface.add(Option("key", radio_data('guest_key')))
-                guest_iface.add(Option("disabled", "0"))
-                guest_iface.add(Option("ifname", "guest_turris_%s" % radio))
-                guest_iface.add(Option("network", "guest_turris"))
-                guest_iface.add(Option("isolate", "1"))
-                return True
-            else:
-                # disable guest wifi
-                guest_iface.add(Option("disabled", "1"))
+            if info.app == "config":
+                if guest_enabled:
+                    guest_iface.add(Option("device", "radio%s" % radio))
+                    guest_iface.add(Option("mode", "ap"))
+                    guest_iface.add(Option("ssid", radio_data('guest_ssid')))
+                    guest_iface.add(Option("encryption", "psk2+tkip+aes"))
+                    guest_iface.add(Option("key", radio_data('guest_key')))
+                    guest_iface.add(Option("disabled", "0"))
+                    guest_iface.add(Option("ifname", "guest_turris_%s" % radio))
+                    guest_iface.add(Option("network", "guest_turris"))
+                    guest_iface.add(Option("isolate", "1"))
+                    return True
+                else:
+                    # disable guest wifi
+                    guest_iface.add(Option("disabled", "1"))
 
         return False
 
