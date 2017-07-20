@@ -57,7 +57,7 @@
     <h2>{{ trans("Device reboot") }}</h2>
     <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again after the reboot.") }}</p>
     <div>
-        <a href="{{ url("config_action", page_name="maintenance", action="reboot") }}" class="button">{{ trans("Reboot") }}</a>
+        <a href="{{ url("reboot") }}" class="button">{{ trans("Reboot") }}</a>
     </div>
 
     <script>
