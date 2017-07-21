@@ -222,7 +222,7 @@ Foris.updateForm = function (form) {
 Foris.callAjaxAction = function (wizardStep, action, timeout) {
   timeout = timeout || 0;
   return $.ajax({
-    url: Foris.scriptname + "/wizard/step/" + wizardStep + "/ajax",
+    url: Foris.scriptname + "/main/step/" + wizardStep + "/ajax",
     data: {action: action},
     timeout: timeout
   });

@@ -81,7 +81,7 @@ def prepare_wizard_app(args):
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
 
     # mount apps
-    app.mount("/wizard", init_app_wizard())
+    app.mount("/main", init_app_wizard())
 
     if args.debug:
         if args.noauth:
