@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from .routing import external_route
+
 
 def shorten_text(text, max_chars, etc="..."):
     """
@@ -22,3 +24,7 @@ def shorten_text(text, max_chars, etc="..."):
     if len(text) > max_chars:
         return text[:max_chars - len(etc)] + etc
     return text
+
+
+def external_url(path):
+    return external_route(path)
