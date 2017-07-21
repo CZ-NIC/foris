@@ -81,7 +81,7 @@ def prepare_config_app(args):
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
 
     # mount apps
-    app.mount("/config", init_app_config())
+    app.mount("/main", init_app_config())
 
     if args.debug:
         if args.noauth:
