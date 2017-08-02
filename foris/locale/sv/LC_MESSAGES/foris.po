@@ -8,85 +8,92 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-07 15:43+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2017-08-02 12:06+0000\n"
+"Last-Translator: Adam Chodorowski <adam@chodorowski.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris/sv/>"
+"\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.16-dev\n"
 
 msgid "This field is required."
-msgstr ""
+msgstr "Detta fält är obligatoriskt."
 
 msgid "Not a valid IPv4 address."
-msgstr ""
+msgstr "Inte en giltig IPv4 adress."
 
 msgid "Not a valid IPv4 netmask address."
-msgstr ""
+msgstr "Inte en giltig IPv4 nätmask."
 
 msgid "Not a valid IPv6 address."
-msgstr ""
+msgstr "Inte en giltig IPv6 adress."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr ""
+msgstr "Detta är inte en giltig IPv4 eller IPv6 adress."
 
 msgid "This is not an IPv6 address with prefix length."
-msgstr ""
+msgstr "Detta är inte en IPv6 adress med prefixlängd."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr ""
+msgstr "Detta är inte en IPv4 adress med prefixlängd."
 
 msgid "Is not a number."
-msgstr ""
+msgstr "Är inte ett tal."
 
 msgid "This is not valid time in HH:MM format."
-msgstr ""
+msgstr "Detta är inte en giltid tid i formatet HH:MM."
 
 msgid "MAC address is not valid."
-msgstr ""
+msgstr "MAC adressen är inte giltig."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
-msgstr ""
+msgstr "Inte i ett giltigt intervall %(low)s - %(high)s."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr ""
+msgstr "Längden måste vara från %(low)s till %(high)s tecken."
 
 msgid "Configuration was successfully saved."
-msgstr ""
+msgstr "Inställningarna har sparats."
 
 msgid "There were some errors in your input."
-msgstr ""
+msgstr "Det fanns några fel i din inmatning."
 
 msgid "Old password you entered was not valid."
-msgstr ""
+msgstr "Det gamla lösenordet du angav var inte giltigt."
 
 msgid "Password was successfully saved."
-msgstr ""
+msgstr "Lösenordet har sparats."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
+"WAN-porten har ingen länk, din internetanslutning kommer förmodligen inte "
+"att fungera."
 
 msgid "Maintenance"
-msgstr ""
+msgstr "Underhåll"
 
 msgid "Wrong HTTP method."
-msgstr ""
+msgstr "Fel HTTP-metod."
 
 msgid "Testing message was sent, please check your inbox."
-msgstr ""
+msgstr "Testmeddelande har skickats, vänligen kontrollera din inkorg."
 
 #, python-format
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 "<br>Error returned:<br><pre>%(error)s</pre>"
 msgstr ""
+"Misslyckades med att skicka testmeddelandet, din konfiguration är kanske "
+"felaktig.<br>Felmeddelande:<br><pre>%(error)s</pre>"
 
 msgid "Sending of the testing message failed because of an internal error."
 msgstr ""
+"Misslyckades med att skicka testmeddelandet på grund av ett internt fel."
 
 #, python-format
 msgid ""
@@ -95,50 +102,63 @@ msgid ""
 "%(new_url)s</a> in local network. Please wait a while until router "
 "automatically restarts."
 msgstr ""
+"Konfigurationen har återställts. Efter installation av uppdateringar och "
+"omstart kan du återvända till denna sida på <a href=\"%(new_url)s\""
+">%(new_url)s</a> på det lokala nätverket. Vänligen vänta medan routern "
+"automatiskt startar om."
 
 msgid ""
 "Configuration was successfully restored. Please wait a while for "
 "installation of updates and automatic restart of the device."
 msgstr ""
+"Konfigurationen har återställts. Vänligen vänta medan enheten installerar "
+"uppdateringar och startar om automatiskt."
 
 msgid "IP address of the router could not be determined from the backup."
-msgstr ""
+msgstr "Routerns IP-adress kunde inte fastställas från säkerhetskopian."
 
 msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
+"Konfigurationen kunde inte laddas, säkerhetskopian är förmodligen skadad."
 
 msgid "Invalid reguest arguments."
 msgstr ""
 
 msgid "Update was approved."
-msgstr ""
+msgstr "Uppdateringen godkändes."
 
 msgid "Failed to approve the update."
-msgstr ""
+msgstr "Misslyckades med att godkänna uppdateringen."
 
 msgid "Update was postponed."
-msgstr ""
+msgstr "Uppdateringen sköts upp."
 
 msgid "Failed to postpone the update."
-msgstr ""
+msgstr "Misslyckades med att skjuta upp uppdateringen."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
 "or removed shortly."
 msgstr ""
+"Konfigurationen har sparats. Valda paket kommer installeras eller tas bort "
+"inom kort."
 
 msgid "Data collection"
-msgstr ""
+msgstr "Datainsamling"
 
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
 msgstr ""
+"Ett fel inträffade vid kontroll av registreringen: "
+"<br><pre>%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
 "collection."
 msgstr ""
+"Registreringen för den angivna e-posten är giltig. Du kan nu aktivera "
+"datainsamlingen."
 
 #, python-format
 msgid ""
@@ -147,6 +167,10 @@ msgid ""
 "registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
 "email address."
 msgstr ""
+"Denna router är för närvarande registrerad på en annan e-postadress. "
+"Vänligen gå till <a href=\"%(url)s\">Turris hemsida</a> och använd "
+"registreringskoden <strong>%(reg_num)s</strong> för att registrera om "
+"routern på din e-postadress."
 
 #, python-format
 msgid ""
@@ -154,66 +178,69 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
+"Denna e-postadress är inte registrerad än. Vänligen gå till <a href=\"%(url)"
+"s\">Turris hemsida</a> och använd registreringskoden "
+"<strong>%(reg_num)s</strong> för att skapa ett nytt konto."
 
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 msgid "Online"
-msgstr ""
+msgstr "Uppkopplad"
 
 msgid "Offline"
-msgstr ""
+msgstr "Nedkopplad"
 
 msgid "Connecting"
-msgstr ""
+msgstr "Ansluter"
 
 msgid "Invalid authentication"
-msgstr ""
+msgstr "Ogiltig autentisering"
 
 msgid "Broken"
-msgstr ""
+msgstr "Bruten"
 
 msgid "Unknown status"
-msgstr ""
+msgstr "Okänd status"
 
 msgid "Home page"
-msgstr ""
+msgstr "Hemsida"
 
 msgid "Configuration could not be saved due to an internal error."
-msgstr ""
+msgstr "Konfigurationen kunde inte sparas på grund av ett internt fel."
 
 msgid "Enable data collection"
-msgstr ""
+msgstr "Aktivera datainsamling"
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr ""
+msgstr "Använd vidarebefodran"
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Inaktivera DNSSEC"
 
 msgid "Backup file"
-msgstr ""
+msgstr "Säkerhetskopia"
 
 msgid "Notifications"
-msgstr ""
+msgstr "Aviseringar"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Aviseringsinställningar"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Aktivera aviseringar"
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "SMTP-leverantör"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
-msgstr ""
+msgstr "Anpassad"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members of "
@@ -221,115 +248,127 @@ msgid ""
 "additional settings. If you want to set your own SMTP server, please select "
 "\"Custom\" and enter required settings."
 msgstr ""
+"Om du sätter SMTP-leverantör till \"Turris\" kommer servrar som "
+"tillhandahålls till medlemmar av Turris projektet att användas. Dessa "
+"servrar behöver inga ytterligare inställningar. Om du vill använda en egen "
+"SMTP server, välj \"Anpassad\" och mata in nödvändiga inställningar."
 
 msgid "Recipient's email"
-msgstr ""
+msgstr "Mottagarens e-postadress"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
-msgstr ""
+msgstr "Mottagarens e-postadress. Separera flera adresser med blanksteg."
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Avsändarens namn"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
 "before the \"at\" sign."
 msgstr ""
+"Avsändarens namn - kommer att användas som en del av avsändarens e-"
+"postadress innan snabel-a tecknet."
 
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and underscores."
 msgstr ""
+"Avsändarens namn kan endast innehålla bokstäver, siffror, punkter och "
+"understreck."
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Omstart krävs"
 
 msgid "Reboot or attention is required"
-msgstr ""
+msgstr "Omstart eller uppmärksamhet krävs"
 
 msgid "Reboot or attention is required or update was installed"
-msgstr ""
+msgstr "Omstart eller uppmärksamhet krävs eller en uppdatering har installerats"
 
 msgid "Importance"
-msgstr ""
+msgstr "Viktighet"
 
 msgid "Send news"
-msgstr ""
+msgstr "Skicka nyheter"
 
 msgid "Send emails about new features."
-msgstr ""
+msgstr "Skicka e-post om nya funktioner."
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "SMTP-inställningar"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Avsändarens adress (Från)"
 
 msgid "This is the address notifications are send from."
-msgstr ""
+msgstr "Detta är adressen aviseringar skickas från."
 
 msgid "Server address"
-msgstr ""
+msgstr "Serveradress"
 
 msgid "Server port"
-msgstr ""
+msgstr "Serverport"
 
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Säkerhet"
 
 msgid "Username"
-msgstr ""
+msgstr "Användarnamn"
 
 msgid "Password"
-msgstr ""
+msgstr "Lösenord"
 
 msgid "Automatic restarts after software update"
-msgstr ""
+msgstr "Automatiska omstarter efter programuppdatering"
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Fördröjning (dagar)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
 "the automatic restart itself."
 msgstr ""
+"Antal dagar som måste förflyta från motttangadet av omstartsbegäran till att "
+"den automatiska omstarten utförs."
 
 msgid "Reboot time"
-msgstr ""
+msgstr "Tidpunkt för omstart"
 
 msgid "Time of day of automatic reboot in HH:MM format."
-msgstr ""
+msgstr "Tid på dagen för automatisk omstart i formatet HH:MM."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
 "least 6 characters long."
 msgstr ""
+"Sätt ditt lösenord för detta administrationsgränssnitt. Lösenordet måste "
+"vara minst 6 tecken långt."
 
 msgid "Current password"
-msgstr ""
+msgstr "Nuvarande lösenord"
 
 msgid "New password"
-msgstr ""
+msgstr "Nytt lösenord"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Nytt lösenord (upprepa)"
 
 msgid "Password (repeat)"
-msgstr ""
+msgstr "Lösenord (upprepa)"
 
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "Lösenorden är inte lika."
 
 msgid "Use the same password for advanced configuration"
-msgstr ""
+msgstr "Använda samma lösenord för avancerad konfigurering"
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -338,29 +377,36 @@ msgid ""
 "will have the option to do so later. Until then, the root account will be "
 "blocked.)"
 msgstr ""
+"Samma lösenord kommer att användas för åtkomst till detta "
+"administrationsgränssnitt, för root-användaren i webbränssnittet LuCI och "
+"för SSH-inloggningar. Använd ett starkt lösenord! (Om du väljer att inte "
+"sätta lösenordet för avancerad konfigurering här kommer du ha möjlighet att "
+"göra det senare. Tills dess kommer root-kontot vara blockerat.)"
 
 msgid "Region settings"
-msgstr ""
+msgstr "Regioninställningar"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
 "is required to display the right time and for related functions."
 msgstr ""
+"Välj tidszonen routern används i. Rätt inställning krävs för att visa rätt "
+"tid och för relaterade funktioner."
 
 msgid "Continent or ocean"
-msgstr ""
+msgstr "Kontinent eller ocean"
 
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Tidszon"
 
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 msgid "Advanced administration"
-msgstr ""
+msgstr "Avancerad administration"
 
 #, python-format
 msgid ""
@@ -819,7 +865,7 @@ msgid "Test type"
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "IPv4 connectivity"
 msgstr ""
