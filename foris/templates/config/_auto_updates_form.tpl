@@ -18,9 +18,9 @@
   <h4>{{ trans("Update approvals") }}</h4>
   <div id="updater-approvals">
   %if DEVICE_CUSTOMIZATION == "turris":
-    <p>{{! trans("Update approvals can be handy in case you want to be sure that updates will not harm some of your very special configurations. You can postpone the questionable update temporarily and install them when you are prepared. It is not possible to deny the update forever, it will be proposed to you together with the next update again.") }}</p>
+    <p>{{! trans("Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can refuse the questionable update temporarily and install it when you are ready. It isn’t possible to decline the update forever and it will be offered to you again together with the next package installation.") }}</p>
   %else:
-    <p>{{! trans("Update approvals can be handy in case you want to be sure that updates will not harm some of your very special configurations. You can e.g. install updates when you are prepared for a possible <a href='https://www.turris.cz/doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to the previous snapshot</a> and postpone the questionable update temporarily. It is not possible to deny the update forever, it will be proposed to you together with the next update again." ) }}</p>
+    <p>{{! trans("Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can e.g. install updates when you're prepared for a possible rollback to a previous snapshot and deny the questionable update temporarily. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.") }}</p>
   %end
   %for field in form.sections[1].active_fields:
     <div>

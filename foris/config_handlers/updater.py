@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # Foris - web administration interface for OpenWrt based on NETCONF
 # Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
@@ -82,15 +84,15 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
         main_section.add_section(approval_section)
         approval_section.add_field(
             RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_NO, group="approval_status",
-            label=_("No approval needed"),
-            hint=_("Updates will be performed immediatelly without a user confirmation."),
+            label=_("Automatic installation"),
+            hint=_("Updates will be installed without user's intervention."),
             nuci_preproc=lambda e: approval_preproc_approve_status(e),
         ).requires("agreed", "1")
 
         approval_section.add_field(
             RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_TIMEOUT, group="approval_status",
-            label=_("Delayed approval"),
-            hint=_("Updates will be performed in a while without a user confirmation."),
+            label=_("Delayed updates"),
+            hint=_("Updates will be installed with an adjustable delay. You can also approve them manually."),
             nuci_preproc=lambda e: approval_preproc_approve_status(e),
         ).requires("agreed", "1")
         approval_section.add_field(
@@ -113,8 +115,8 @@ class UpdaterAutoUpdatesHandler(BaseConfigHandler):
 
         approval_section.add_field(
             RadioSingle, name=UpdaterAutoUpdatesHandler.APPROVAL_NEEDED, group="approval_status",
-            label=_("Approval needed"),
-            hint=_("User always needs to confirm the updates."),
+            label=_("Update approval needed"),
+            hint=_("You have to approve the updates, otherwise they won't be installed."),
             nuci_preproc=lambda e: approval_preproc_approve_status(e),
         ).requires("agreed", "1")
 

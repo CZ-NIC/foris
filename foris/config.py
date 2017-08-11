@@ -297,14 +297,23 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
             approval = current_approvals[0] if current_approvals else None
             if approval:
                 # convert time to some readable form
+                approval_time = int(approval["time"])
                 approval["time"] = time.strftime(
-                    "%Y-%m-%d %H:%M:%S", time.localtime(int(approval["time"])))
+                    "%Y-%m-%d %H:%M:%S", time.localtime(approval_time))
             kwargs['approval'] = approval
             # read approvals status
             show_approvals = auto_updates_handler.form.nuci_config.find_child(
                 'uci.updater.approvals.need'
             )
             kwargs['show_approvals'] = show_approvals.value == "1" if show_approvals else False
+            auto_grant_seconds = auto_updates_handler.form.nuci_config.find_child(
+                'uci.updater.approvals.auto_grant_seconds')
+            delayed_approvals = kwargs['show_approvals'] and auto_grant_seconds is not None
+            kwargs['delayed_approvals'] = delayed_approvals
+            kwargs['delayed_approval_time'] = time.strftime(
+                "%Y-%m-%d %H:%M:%S",
+                time.localtime(approval_time + int(auto_grant_seconds.value))
+            ) if auto_grant_seconds else None
 
         return super(UpdaterConfigPage, self).render(**kwargs)
 

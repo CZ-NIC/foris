@@ -1,3 +1,21 @@
+# coding=utf-8
+
+# Foris - web administration interface for OpenWrt based on NETCONF
+# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 from .base import BaseConfigHandler
 
 from foris import fapi
@@ -36,21 +54,19 @@ class DNSHandler(BaseConfigHandler):
         resolver = dns_form.nuci_config.find_child("uci.resolver.common.prefered_resolver")
         if resolver and resolver.value == "kresd":
             dns_main.add_field(
-                Checkbox, name="dhcp_from_dns", label=_("Enable DNS from DHCP"),
+                Checkbox, name="dhcp_from_dns", label=_("Enable DHCP clients in DNS"),
                 hint=_(
-                    "This will enable your DNS resolver to insert DHCP client names among "
-                    "the local DNS records."
+                    "This will enable your DNS resolver to place DHCP client's "
+                    "names among the local DNS records."
                 ),
                 nuci_path="uci.resolver.kresd.dynamic_domains",
                 nuci_preproc=lambda val: bool(int(val.value)), default=False,
             )
             dns_main.add_field(
-                Textbox, name="dhcp_dns_domain", label=_("DNS domain of DHCP"),
+                Textbox, name="dhcp_dns_domain", label=_("Domain of DHCP clients in DNS"),
                 hint=_(
-                    "This domain name will be used as a TLD (top level domain) of your "
-                    "DNS records obtained using DHCP. E.g. if you have a client called "
-                    "`android-1234` and domain set to `lan`, the client will be reachable "
-                    "under domain name `android-1234.lan`."
+                    "This domain will be used as TLD. E.g. The result for client \"android-123\" "
+                    "and domain \"lan\" will be \"android-123.lan\"."
                 ),
                 nuci_path="uci.dhcp.@dnsmasq[0].local",
                 nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan",

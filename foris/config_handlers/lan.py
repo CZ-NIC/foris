@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # Foris - web administration interface for OpenWrt based on NETCONF
 # Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
@@ -106,12 +108,12 @@ class LanHandler(BaseConfigHandler):
             ),
         ).requires("guest_network_enabled", True)
         guest_network_section.add_field(
-            Checkbox, name="guest_network_shapping", label=_("QoS"),
+            Checkbox, name="guest_network_shapping", label=_("Guest Lan QoS"),
             nuci_preproc=parse_uci_bool,
             nuci_path="uci.sqm.guest_limit_turris.enabled",
             hint=_(
-                "You can limit the speed of your guest network to make sure that you have "
-                "enough bandwidth for your regular network.",
+                "This option enables you to set a bandwidth limit for the guest network, "
+                "so that your main network doesn't get slowed-down by it."
             ),
         ).requires("guest_network_enabled", True)
         guest_network_section.add_field(
@@ -119,7 +121,7 @@ class LanHandler(BaseConfigHandler):
             name="guest_network_download", label=_("Download (kb/s)"),
             validators=[validators.PositiveInteger()],
             hint=_(
-                "Upload speed in guest network (in kilobits per second)."
+                "Download speed in guest network (in kilobits per second)."
             ),
             default=1024,
             nuci_path="uci.sqm.guest_limit_turris.upload",
@@ -129,7 +131,7 @@ class LanHandler(BaseConfigHandler):
             name="guest_network_upload", label=_("Upload (kb/s)"),
             validators=[validators.PositiveInteger()],
             hint=_(
-                "Download speed in guest network (in kilobits per second)."
+                "Upload speed in guest network (in kilobits per second)."
             ),
             default=1024,
             nuci_path="uci.sqm.guest_limit_turris.download",
