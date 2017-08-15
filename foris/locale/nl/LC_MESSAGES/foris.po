@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-07 15:43+0200\n"
+"POT-Creation-Date: 2017-08-15 12:57+0200\n"
 "PO-Revision-Date: 2017-06-30 19:42+0000\n"
 "Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
@@ -44,6 +44,10 @@ msgstr "Dit is geen getal."
 
 msgid "This is not valid time in HH:MM format."
 msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
+
+#, fuzzy
+msgid "This is not a valid domain name."
+msgstr "Ongeldig IPv6 netmask adres."
 
 msgid "MAC address is not valid."
 msgstr "Ongeldig MAC-adres."
@@ -139,8 +143,8 @@ msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
 "or removed shortly."
 msgstr ""
-"De instellingen zijn succesvol opgeslagen. De geselecteerde software zal "
-"z.s.m. geïnstalleerd of verwijderd worden."
+"De instellingen zijn succesvol opgeslagen. De geselecteerde software zal z.s."
+"m. geïnstalleerd of verwijderd worden."
 
 msgid "Data collection"
 msgstr "Verzameling van gegevens"
@@ -149,8 +153,8 @@ msgstr "Verzameling van gegevens"
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
 msgstr ""
-"Er is een fout opgetreden bij het controleren van de registratie: "
-"<br><pre>%(response)s</pre>"
+"Er is een fout opgetreden bij het controleren van de registratie: <br><pre>"
+"%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -167,9 +171,8 @@ msgid ""
 "email address."
 msgstr ""
 "Deze router is toegewezen aan een ander e-mailadres. Ga verder naar de <a "
-"href=\"%(url)s\">Turris website</a> en gebruik de registratiecode "
-"<strong>%(reg_num)s</strong> om de router opnieuw aan uw e-mailadres toe te "
-"wijzen."
+"href=\"%(url)s\">Turris website</a> en gebruik de registratiecode <strong>"
+"%(reg_num)s</strong> om de router opnieuw aan uw e-mailadres toe te wijzen."
 
 #, python-format
 msgid ""
@@ -177,9 +180,9 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
-"Dit e-mailadres is nog niet geregistreerd. Ga verder naar de <a href=\"%(url)"
-"s\">Turris website</a> en gebruik de registratiecode "
-"<strong>%(reg_num)s</strong> om een nieuw account te maken."
+"Dit e-mailadres is nog niet geregistreerd. Ga verder naar de <a href="
+"\"%(url)s\">Turris website</a> en gebruik de registratiecode <strong>"
+"%(reg_num)s</strong> om een nieuw account te maken."
 
 msgid "About"
 msgstr "Over ons"
@@ -208,9 +211,6 @@ msgstr "Startpagina"
 msgid "Configuration could not be saved due to an internal error."
 msgstr "De configuratie kon niet worden opgeslagen vanwege een interne fout."
 
-msgid "Enable data collection"
-msgstr "Het verzamelen van gegevens inschakelen"
-
 msgid "DNS"
 msgstr "DNS"
 
@@ -219,6 +219,25 @@ msgstr "Forwarding gebruiken"
 
 msgid "Disable DNSSEC"
 msgstr "DNSSEC uitschakelen"
+
+msgid "Enable DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the "
+"local DNS records."
+msgstr ""
+
+msgid "Domain of DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This domain will be used as TLD. E.g. The result for client \"android-123\" "
+"and domain \"lan\" will be \"android-123.lan\"."
+msgstr ""
+
+msgid "Enable data collection"
+msgstr "Het verzamelen van gegevens inschakelen"
 
 msgid "Backup file"
 msgstr "Back-upbestand"
@@ -536,8 +555,8 @@ msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
 "be13:37da::1/64"
 msgstr ""
-"IPv6-adres en prefix-lengte voor WAN-interface, bijv. "
-"2001:db8:be13:37da::1/64"
+"IPv6-adres en prefix-lengte voor WAN-interface, bijv. 2001:db8:"
+"be13:37da::1/64"
 
 msgid "IPv6 gateway"
 msgstr "IPv6-gateway"
@@ -622,23 +641,28 @@ msgstr "Automatische updates uitschakelen"
 msgid "Update approvals"
 msgstr "Goedkeuringen voor update"
 
-msgid "No approval needed"
+#, fuzzy
+msgid "Automatic installation"
+msgstr "Automatische updates"
+
+msgid "Updates will be installed without user's intervention."
+msgstr ""
+
+#, fuzzy
+msgid "Delayed updates"
+msgstr "Vertraging (dagen)"
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+
+#, fuzzy
+msgid "Update approval needed"
 msgstr "Geen goedkeuring nodig"
 
-msgid "Updates will be performed immediatelly without a user confirmation."
+msgid "You have to approve the updates, otherwise they won't be installed."
 msgstr ""
-
-msgid "Delayed approval"
-msgstr "Vertraagde goedkeuring"
-
-msgid "Updates will be performed in a while without a user confirmation."
-msgstr ""
-
-msgid "Approval needed"
-msgstr "Goedkeuring nodig"
-
-msgid "User always needs to confirm the updates."
-msgstr "De gebruiker moet altijd de updates bevestigen."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -710,6 +734,27 @@ msgid ""
 "You need to set the IP range for your guest network. It is necessary that "
 "the range is different than ranges on your other networks (LAN, WAN, VPN, "
 "etc.)."
+msgstr ""
+
+#, fuzzy
+msgid "Guest Lan QoS"
+msgstr "Gastnetwerk"
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, so "
+"that your main network doesn't get slowed-down by it."
+msgstr ""
+
+msgid "Download (kb/s)"
+msgstr ""
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "Upload (kb/s)"
+msgstr ""
+
+msgid "Upload speed in guest network (in kilobits per second)."
 msgstr ""
 
 msgid "Wi-Fi"
@@ -837,6 +882,38 @@ msgid "Notification"
 msgstr "Notificatie"
 
 msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can refuse the questionable update "
+"temporarily and install it when you are ready. It isn’t possible to decline "
+"the update forever and it will be offered to you again together with the "
+"next package installation."
+msgstr ""
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can e.g. install updates when you're "
+"prepared for a possible rollback to a previous snapshot and deny the "
+"questionable update temporarily. It isn't possible to decline the update "
+"forever and it will be offered to you again together with the next package "
+"installation."
+msgstr ""
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr ""
+
+msgid "Hint"
+msgstr "Hint"
+
+msgid "Save"
+msgstr "Opslaan"
+
+msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
 "of working alone or it can forward your DNS queries through your internet "
 "service provider's DNS resolver."
@@ -858,9 +935,6 @@ msgid ""
 "keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
 "as this is a serious flaw on their side."
 msgstr ""
-
-msgid "Save"
-msgstr "Opslaan"
 
 msgid "Connection test"
 msgstr "Verbindingstest"
@@ -986,36 +1060,6 @@ msgid "Get registration code"
 msgstr "Registratiecode ophalen"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-
-msgid ""
-"Update approvals can be handy in case you want to be sure that updates will "
-"not harm some of your very special configurations. You can postpone the "
-"questionable update temporarily and install them when you are prepared. It "
-"is not possible to deny the update forever, it will be proposed to you "
-"together with the next update again."
-msgstr ""
-
-msgid ""
-"Update approvals can be handy in case you want to be sure that updates will "
-"not harm some of your very special configurations. You can e.g. install "
-"updates when you are prepared for a possible <a href='https://www.turris.cz/"
-"doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to "
-"the previous snapshot</a> and postpone the questionable update temporarily. "
-"It is not possible to deny the update forever, it will be proposed to you "
-"together with the next update again."
-msgstr ""
-
-#, python-format
-msgid "after %(input)s hours"
-msgstr ""
-
-msgid "Hint"
-msgstr "Hint"
-
-msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
 "package lists."
 msgstr ""
@@ -1033,11 +1077,21 @@ msgstr "Installeren"
 msgid "Note that a reboot will be triggered after the update."
 msgstr ""
 
-msgid "Approve"
-msgstr "Goedkeuren"
+#, fuzzy
+msgid "Install now"
+msgstr "Installeren"
 
-msgid "Postpone"
-msgstr "Uitstellen"
+msgid "Deny"
+msgstr ""
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+
+#, python-format
+msgid ""
+"If you don't install the updates manually, they will be installed "
+"automatically after %(time)s."
+msgstr ""
 
 msgid "Package lists"
 msgstr "Pakketlijsten"
@@ -1272,6 +1326,9 @@ msgstr ""
 msgid ""
 "There are some unsaved changes in the notifications settings.\\nDo you want "
 "to discard them and test the notifications with the old settings?"
+msgstr ""
+
+msgid "Turris router administration interface"
 msgstr ""
 
 msgid "Next"
@@ -1546,9 +1603,6 @@ msgstr ""
 msgid "Go to LuCI"
 msgstr ""
 
-msgid "Turris router administration interface"
-msgstr ""
-
 msgid "Reboot now"
 msgstr ""
 
@@ -1570,6 +1624,21 @@ msgstr ""
 
 msgid "Automatic updates"
 msgstr "Automatische updates"
+
+#~ msgid "Delayed approval"
+#~ msgstr "Vertraagde goedkeuring"
+
+#~ msgid "Approval needed"
+#~ msgstr "Goedkeuring nodig"
+
+#~ msgid "User always needs to confirm the updates."
+#~ msgstr "De gebruiker moet altijd de updates bevestigen."
+
+#~ msgid "Approve"
+#~ msgstr "Goedkeuren"
+
+#~ msgid "Postpone"
+#~ msgstr "Uitstellen"
 
 #, fuzzy
 #~ msgid "Guest password"

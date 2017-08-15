@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-07 15:43+0200\n"
+"POT-Creation-Date: 2017-08-15 12:57+0200\n"
 "PO-Revision-Date: 2017-06-07 14:05+0000\n"
 "Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
@@ -58,6 +58,10 @@ msgstr "Není číslo."
 
 msgid "This is not valid time in HH:MM format."
 msgstr "Toto není platný čas ve formátu HH:MM."
+
+#, fuzzy
+msgid "This is not a valid domain name."
+msgstr "Toto není platná MAC adresa."
 
 msgid "MAC address is not valid."
 msgstr "Není platná MAC adresa."
@@ -220,9 +224,6 @@ msgstr "Hlavní stránka"
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavení se nepodařilo uložit kvůli vnitřní chybě."
 
-msgid "Enable data collection"
-msgstr "Povolit sběr dat"
-
 msgid "DNS"
 msgstr "DNS"
 
@@ -231,6 +232,25 @@ msgstr "Používat forwardování"
 
 msgid "Disable DNSSEC"
 msgstr "Vypnout DNSSEC"
+
+msgid "Enable DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the "
+"local DNS records."
+msgstr ""
+
+msgid "Domain of DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This domain will be used as TLD. E.g. The result for client \"android-123\" "
+"and domain \"lan\" will be \"android-123.lan\"."
+msgstr ""
+
+msgid "Enable data collection"
+msgstr "Povolit sběr dat"
 
 msgid "Backup file"
 msgstr "Soubor se zálohou"
@@ -656,23 +676,30 @@ msgstr "Vypnout automatické aktualizace"
 msgid "Update approvals"
 msgstr "Schvalování updatů"
 
-msgid "No approval needed"
-msgstr "Schválení není potřeba"
+#, fuzzy
+msgid "Automatic installation"
+msgstr "Zahájit instalaci"
 
-msgid "Updates will be performed immediatelly without a user confirmation."
-msgstr "Updaty se vykonají ihned bez potvrzení od uživatele."
-
-msgid "Delayed approval"
-msgstr "Odložené schválení"
-
-msgid "Updates will be performed in a while without a user confirmation."
+#, fuzzy
+msgid "Updates will be installed without user's intervention."
 msgstr "Updaty se vykonají za chvíli. Potvrzení od uživatele není potřeba."
 
-msgid "Approval needed"
-msgstr "Schválení je nutné"
+#, fuzzy
+msgid "Delayed updates"
+msgstr "Prodleva (dny)"
 
-msgid "User always needs to confirm the updates."
-msgstr "Uživatel musí vždy potvrdit updaty."
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+
+#, fuzzy
+msgid "Update approval needed"
+msgstr "Schválení není potřeba"
+
+#, fuzzy
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr "Během instalace nebyla povolena služba Updater."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -774,6 +801,27 @@ msgstr ""
 "Potřebujete nastavit rozsah IP adres pro Vaši síť pro hosty. Aby vše "
 "fungovalo, měl by být jiný, než rozsahy vašich dalších sítí (LAN, WAN, VPN, "
 "atd.)."
+
+#, fuzzy
+msgid "Guest Lan QoS"
+msgstr "Sít pro hosty"
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, so "
+"that your main network doesn't get slowed-down by it."
+msgstr ""
+
+msgid "Download (kb/s)"
+msgstr ""
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "Upload (kb/s)"
+msgstr ""
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr ""
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -919,6 +967,55 @@ msgid "Notification"
 msgstr "Upozornění"
 
 msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Aktuálně máte povolený sběr dat. Pokud chcete vypnout updater, zakažte "
+"nejprve sběr dat."
+
+#, fuzzy
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can refuse the questionable update "
+"temporarily and install it when you are ready. It isn’t possible to decline "
+"the update forever and it will be offered to you again together with the "
+"next package installation."
+msgstr ""
+"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
+"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
+"diskutabilní aktualizaci odložit a nainstalovat jej, až budete připraveni. "
+"Aktualizace není možné odmítnout napořád, odložená aktualizace Vám bude "
+"znovu nabídnuta společně s tou následující."
+
+#, fuzzy
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can e.g. install updates when you're "
+"prepared for a possible rollback to a previous snapshot and deny the "
+"questionable update temporarily. It isn't possible to decline the update "
+"forever and it will be offered to you again together with the next package "
+"installation."
+msgstr ""
+"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
+"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
+"například instalovat aktualizace, když jste připraveni na případný <a "
+"href='https://www.turris.cz/doc/cs/howto/"
+"omnia_factory_reset#navrat_na_predchozi_snapshot_operacniho_systemu'>návrat "
+"na předchozí snapshot</a> a diskutabilní update odložit. Aktualizace není "
+"možné odmítnout napořád, odložená aktualizace Vám bude znovu nabídnuta "
+"společně s tou následující."
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr "za %(input)s hodin"
+
+msgid "Hint"
+msgstr "Nápověda"
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
 "of working alone or it can forward your DNS queries through your internet "
 "service provider's DNS resolver."
@@ -955,9 +1052,6 @@ msgstr ""
 "doporučujeme, abyste <strong>ponechali DNSSEC validaci zapnutou</strong> a "
 "problém řešili se svým poskytovatelem připojení, protože se jedná o závažnou "
 "chybu na jeho straně."
-
-msgid "Save"
-msgstr "Uložit"
 
 msgid "Connection test"
 msgstr "Test připojení"
@@ -1108,50 +1202,6 @@ msgid "Get registration code"
 msgstr "Získat registrační kód"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Aktuálně máte povolený sběr dat. Pokud chcete vypnout updater, zakažte "
-"nejprve sběr dat."
-
-msgid ""
-"Update approvals can be handy in case you want to be sure that updates will "
-"not harm some of your very special configurations. You can postpone the "
-"questionable update temporarily and install them when you are prepared. It "
-"is not possible to deny the update forever, it will be proposed to you "
-"together with the next update again."
-msgstr ""
-"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
-"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
-"diskutabilní aktualizaci odložit a nainstalovat jej, až budete připraveni. "
-"Aktualizace není možné odmítnout napořád, odložená aktualizace Vám bude "
-"znovu nabídnuta společně s tou následující."
-
-msgid ""
-"Update approvals can be handy in case you want to be sure that updates will "
-"not harm some of your very special configurations. You can e.g. install "
-"updates when you are prepared for a possible <a href='https://www.turris.cz/"
-"doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>rollback to "
-"the previous snapshot</a> and postpone the questionable update temporarily. "
-"It is not possible to deny the update forever, it will be proposed to you "
-"together with the next update again."
-msgstr ""
-"Schvalování aktualizací se může hodit pokud se chcete ujistit, že "
-"aktualizace neporuší některé z Vašich velmi speciálních nastavení. Můžete "
-"například instalovat aktualizace, když jste připraveni na případný <a href='h"
-"ttps://www.turris.cz/doc/cs/howto/omnia_factory_reset#navrat_na_predchozi_sna"
-"pshot_operacniho_systemu'>návrat na předchozí snapshot</a> a diskutabilní "
-"update odložit. Aktualizace není možné odmítnout napořád, odložená "
-"aktualizace Vám bude znovu nabídnuta společně s tou následující."
-
-#, python-format
-msgid "after %(input)s hours"
-msgstr "za %(input)s hodin"
-
-msgid "Hint"
-msgstr "Nápověda"
-
-msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
 "package lists."
 msgstr ""
@@ -1171,11 +1221,21 @@ msgstr "Nainstaluj"
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Pozor! Po updatu bude následovat restart zařízení."
 
-msgid "Approve"
-msgstr "Schvaluji"
+#, fuzzy
+msgid "Install now"
+msgstr "Nainstaluj"
 
-msgid "Postpone"
-msgstr "Odlož"
+msgid "Deny"
+msgstr ""
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+
+#, python-format
+msgid ""
+"If you don't install the updates manually, they will be installed "
+"automatically after %(time)s."
+msgstr ""
 
 msgid "Package lists"
 msgstr "Seznamy balíčků"
@@ -1464,6 +1524,9 @@ msgid ""
 msgstr ""
 "V nastavení byly provedeny změny, které nebyly uloženy.\\nChcete změny "
 "zahodit a odeslat testovací zprávu s původním nastavením?"
+
+msgid "Turris router administration interface"
+msgstr "Administrační rozhraní routeru Turris"
 
 msgid "Next"
 msgstr "Další"
@@ -1814,9 +1877,6 @@ msgstr "Konfigurační rozhraní Foris"
 msgid "Go to LuCI"
 msgstr "Přejít na LuCI"
 
-msgid "Turris router administration interface"
-msgstr "Administrační rozhraní routeru Turris"
-
 msgid "Reboot now"
 msgstr "Restartovat nyní"
 
@@ -1839,3 +1899,21 @@ msgstr "Test připojení"
 
 msgid "Automatic updates"
 msgstr "Automatické aktualizace"
+
+#~ msgid "Updates will be performed immediatelly without a user confirmation."
+#~ msgstr "Updaty se vykonají ihned bez potvrzení od uživatele."
+
+#~ msgid "Delayed approval"
+#~ msgstr "Odložené schválení"
+
+#~ msgid "Approval needed"
+#~ msgstr "Schválení je nutné"
+
+#~ msgid "User always needs to confirm the updates."
+#~ msgstr "Uživatel musí vždy potvrdit updaty."
+
+#~ msgid "Approve"
+#~ msgstr "Schvaluji"
+
+#~ msgid "Postpone"
+#~ msgstr "Odlož"
