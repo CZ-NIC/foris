@@ -52,14 +52,14 @@ class DNSHandler(BaseConfigHandler):
             )
 
         resolver = dns_form.nuci_config.find_child("uci.resolver.common.prefered_resolver")
-        if resolver and resolver.value == "kresd":
+        if resolver and resolver.value in ["kresd", "unbound"]:
             dns_main.add_field(
                 Checkbox, name="dhcp_from_dns", label=_("Enable DHCP clients in DNS"),
                 hint=_(
                     "This will enable your DNS resolver to place DHCP client's "
                     "names among the local DNS records."
                 ),
-                nuci_path="uci.resolver.kresd.dynamic_domains",
+                nuci_path="uci.resolver.common.dynamic_domains",
                 nuci_preproc=lambda val: bool(int(val.value)), default=False,
             )
             dns_main.add_field(
@@ -86,8 +86,7 @@ class DNSHandler(BaseConfigHandler):
                 server.add(Option("ignore_root_key", data['ignore_root_key']))
 
             if 'dhcp_from_dns' in data:
-                kresd = resolver.add(Section("kresd", "resolver"))
-                kresd.add(Option("dynamic_domains", data['dhcp_from_dns']))
+                server.add(Option("dynamic_domains", data['dhcp_from_dns']))
 
             if 'dhcp_dns_domain' in data:
                 dhcp = uci.add(Config("dhcp"))
