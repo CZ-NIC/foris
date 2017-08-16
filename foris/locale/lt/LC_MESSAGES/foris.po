@@ -123,7 +123,7 @@ msgstr ""
 "Nepavyko įkelti konfigūracijos, tikriausiai sugadintas atsarginės kopijos "
 "failas."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Netinkami užklausos argumentai."
 
 msgid "Update was approved."

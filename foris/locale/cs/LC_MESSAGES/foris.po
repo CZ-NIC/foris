@@ -136,7 +136,7 @@ msgstr ""
 "Nastavení se nepodařilo obnovit, soubor se zálohou je pravděpodobně "
 "poškozený."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Špatné argumenty požadavku."
 
 msgid "Update was approved."

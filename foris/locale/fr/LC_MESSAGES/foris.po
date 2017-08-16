@@ -128,7 +128,7 @@ msgstr ""
 "La configuration n’a pas pu être chargée, le fichier de sauvegarde est "
 "probablement endommagé."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr ""
 
 msgid "Update was approved."

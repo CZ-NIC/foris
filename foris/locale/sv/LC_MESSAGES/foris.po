@@ -125,7 +125,7 @@ msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
 "Konfigurationen kunde inte laddas, säkerhetskopian är förmodligen skadad."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr ""
 
 msgid "Update was approved."

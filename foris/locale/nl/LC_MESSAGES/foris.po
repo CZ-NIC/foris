@@ -124,7 +124,7 @@ msgstr ""
 "Configuratie kon niet worden geladen, back-upbestand is waarschijnlijk "
 "beschadigd."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Ongeldige verzoekargumenten."
 
 msgid "Update was approved."

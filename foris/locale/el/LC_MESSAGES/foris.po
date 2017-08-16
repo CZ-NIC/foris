@@ -129,7 +129,7 @@ msgstr ""
 "πιθανόν να είναι κατεστραμμένο."
 
 #, fuzzy
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Μη έγκυρο αίτημα ορισμάτων."
 
 msgid "Update was approved."

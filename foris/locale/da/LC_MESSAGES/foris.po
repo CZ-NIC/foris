@@ -124,7 +124,7 @@ msgid "Configuration could not be loaded, backup file is probably corrupted."
 msgstr ""
 "Konfigurationen kunne ikke indlæses, backupfilen er formentlig fejlbehæftet."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Ugyldige argumenter i forespørgslen."
 
 msgid "Update was approved."
