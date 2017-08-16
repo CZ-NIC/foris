@@ -323,7 +323,7 @@ msgstr "Ustawienia SMTP"
 msgid "Sender address (From)"
 msgstr "Adres nadawcy (From)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "To jest adres z którego są wysyłane powiadomienia."
 
 msgid "Server address"

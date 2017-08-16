@@ -237,7 +237,7 @@ class NotificationsHandler(BaseConfigHandler):
         # SMTP settings (custom server)
         smtp = notifications_form.add_section(name="smtp", title=_("SMTP settings"))
         smtp.add_field(Email, name="from", label=_("Sender address (From)"),
-                       hint=_("This is the address notifications are send from."),
+                       hint=_("This is the address notifications are sent from."),
                        nuci_path="uci.user_notify.smtp.from",
                        required=True)\
             .requires("enable_smtp", True)\

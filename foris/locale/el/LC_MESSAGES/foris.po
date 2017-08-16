@@ -319,7 +319,7 @@ msgstr "Ρυθμίσεις SMTP"
 msgid "Sender address (From)"
 msgstr "Διεύθυνση αποστολέα (Από)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Αυτή είναι η διεύθυνση από την οποία αποστέλλονται οι ειδοποιήσεις."
 
 msgid "Server address"

@@ -318,7 +318,7 @@ msgstr "SMTP indstillinger"
 msgid "Sender address (From)"
 msgstr "Afsender adresse (From)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Dette er adressen som meddelelser sendes fra."
 
 msgid "Server address"

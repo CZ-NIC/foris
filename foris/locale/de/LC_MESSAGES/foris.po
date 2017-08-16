@@ -340,7 +340,7 @@ msgstr "SMTP-Einstellungen"
 msgid "Sender address (From)"
 msgstr "Absenderadresse (Von)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Von dieser Adresse aus werden die Benachrichtigungen abgesendet."
 
 msgid "Server address"

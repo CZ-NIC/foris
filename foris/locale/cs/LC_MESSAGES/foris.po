@@ -333,7 +333,7 @@ msgstr "Nastavení SMTP"
 msgid "Sender address (From)"
 msgstr "Adresa odesílatele"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Z této adresy budou zasílána upozornění."
 
 msgid "Server address"

@@ -332,7 +332,7 @@ msgstr "Nastavenie SMTP"
 msgid "Sender address (From)"
 msgstr "Adresa odosielateľa"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Z tejto adresy budú posielané upozornenia."
 
 msgid "Server address"
