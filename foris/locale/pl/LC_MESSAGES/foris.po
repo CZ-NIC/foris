@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-15 12:57+0200\n"
-"PO-Revision-Date: 2017-06-27 12:08+0000\n"
+"PO-Revision-Date: 2017-08-15 19:58+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
-">\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 msgid "This field is required."
 msgstr "To pole jest wymagane."
@@ -47,9 +47,8 @@ msgstr "Nie jest liczbą."
 msgid "This is not valid time in HH:MM format."
 msgstr "To nie jest poprawny czas w formacie HH:MM."
 
-#, fuzzy
 msgid "This is not a valid domain name."
-msgstr "To nie jest prawidłowy adres MAC."
+msgstr "To nie jest poprawna nazwa domeny."
 
 msgid "MAC address is not valid."
 msgstr "Adres MAC jest nieprawidłowy."
@@ -222,20 +221,23 @@ msgid "Disable DNSSEC"
 msgstr "Wyłącz DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr ""
+msgstr "Włącz nazwy klientów DHCP w DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
+"Umożliwi to umieszczanie nazw klientów DHCP wśród lokalnych rekordów DNS."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgstr "Domena klientów DHCP w systemie DNS"
 
 msgid ""
 "This domain will be used as TLD. E.g. The result for client \"android-123\" "
 "and domain \"lan\" will be \"android-123.lan\"."
 msgstr ""
+"Ta domena będzie używana jako TLD. Na przykład. Wynik dla klienta \"android-"
+"123\" i domeny \"lan\" będzie \"android-123.lan\"."
 
 msgid "Enable data collection"
 msgstr "Włącz akwizycję danych"
@@ -667,31 +669,29 @@ msgstr "Wyłącz automatyczne aktualizacje"
 msgid "Update approvals"
 msgstr "Zaktualizuj zgody"
 
-#, fuzzy
 msgid "Automatic installation"
-msgstr "Rozpocznij instalację"
+msgstr "Automatyczna instalacja"
 
-#, fuzzy
 msgid "Updates will be installed without user's intervention."
-msgstr ""
-"Aktualizacje będą wykonane za jakiś czas bez potwierdzenia przez użytkownika."
+msgstr "Aktualizacje będą wykonane bez potwierdzenia przez użytkownika."
 
-#, fuzzy
 msgid "Delayed updates"
-msgstr "Opóźnienie (dni)"
+msgstr "Opóźnione aktualizacje"
 
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
+"Aktualizacje zostaną zainstalowane z regulowanym opóźnieniem. Można również "
+"je zatwierdzić ręcznie."
 
-#, fuzzy
 msgid "Update approval needed"
-msgstr "Nie wymaga zgody"
+msgstr "Wymagana zgoda na aktualizację"
 
-#, fuzzy
 msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr "Zdecydowałeś się na wyłączenie usługi Updater podczas instalacji."
+msgstr ""
+"Musisz zatwierdzić aktualizacje, w przeciwnym razie nie zostaną "
+"zainstalowane."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -795,26 +795,27 @@ msgstr ""
 "uwagę, że zakres powinien być inny niż zakresy w innych sieciach (LAN, WAN, "
 "OpenVPN, etc)."
 
-#, fuzzy
 msgid "Guest Lan QoS"
-msgstr "Sieć gościnna"
+msgstr "Sieć gościnna - QoS"
 
 msgid ""
 "This option enables you to set a bandwidth limit for the guest network, so "
 "that your main network doesn't get slowed-down by it."
 msgstr ""
+"Ta opcja umożliwia ustawienie limitu pasma dla sieci gościnnej, dzięki czemu "
+"główna sieć nie zostanie spowolniona."
 
 msgid "Download (kb/s)"
-msgstr ""
+msgstr "Pobieranie (kb/s)"
 
 msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Szybkość pobierania w sieci gościnnej (w kilobitach na sekundę)."
 
 msgid "Upload (kb/s)"
-msgstr ""
+msgstr "Wysyłanie (kb/s)"
 
 msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Szybkość wysyłania w sieci gościnnej (w kilobitach na sekundę)."
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -967,7 +968,6 @@ msgstr ""
 "Akwizycja danych jest obecnie włączona. Nie można wyłączyć updatera bez "
 "wyłączania akwizycji danych."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
 "harm your specific configuration. You can refuse the questionable update "
@@ -976,12 +976,11 @@ msgid ""
 "next package installation."
 msgstr ""
 "Zatwierdzanie aktualizacji może być przydatne, jeśli chcesz mieć pewność, że "
-"aktualizacje nie uszkodzą niektórych Twoich konfiguracji. Możesz tymczasowo "
-"odłożyć wątpliwą aktualizację i zainstalować ją, gdy jesteś na to "
+"aktualizacje nie zaszkodzą Twojej konfiguracji. Możesz tymczasowo odłożyć "
+"problematyczną aktualizację i zainstalować ją, gdy jesteś do tego "
 "przygotowany. Nie można odłożyć aktualizacji na zawsze, zostanie ona "
-"zaproponowana wraz z następną aktualizacją."
+"zaproponowana wraz z następną instalacją pakietu."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
 "harm your specific configuration. You can e.g. install updates when you're "
@@ -991,13 +990,11 @@ msgid ""
 "installation."
 msgstr ""
 "Zatwierdzanie aktualizacji może być przydatne, jeśli chcesz mieć pewność, że "
-"aktualizacje nie uszkodzą niektórych Twoich konfiguracji. Możesz np. "
-"zainstalować aktualizacje, gdy jesteś przygotowany na możliwość <a "
-"href='https://www.turris.cz/doc/en/howto/"
-"omnia_factory_reset#rollback_to_latest_snapshot'>powrotu do poprzedniej "
-"migawki</a> i odłożenie wątpliwej aktualizacji tymczasowo. Nie można odłożyć "
+"aktualizacje nie uszkodzą Twojej konfiguracji. Możesz np. zainstalować "
+"aktualizacje, gdy jesteś przygotowany na możliwość powrotu do poprzedniej "
+"migawki i odłożenie wątpliwej aktualizacji tymczasowo. Nie można odłożyć "
 "aktualizacji na zawsze, zostanie ona zaproponowana wraz z następną "
-"aktualizacją."
+"instalacją pakietu."
 
 #, python-format
 msgid "after %(input)s hours"
@@ -1218,21 +1215,24 @@ msgstr "Zainstaluj"
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Należy pamiętać, że po aktualizacji nastąpi ponowne uruchomienie."
 
-#, fuzzy
 msgid "Install now"
-msgstr "Zainstaluj"
+msgstr "Zainstaluj teraz"
 
 msgid "Deny"
-msgstr ""
+msgstr "Odrzuć"
 
 msgid "No package will be installed unless you install the updates above."
 msgstr ""
+"Pakiet nie zostanie zainstalowany, chyba że zostaną zainstalowane powyższe "
+"aktualizacje."
 
 #, python-format
 msgid ""
 "If you don't install the updates manually, they will be installed "
 "automatically after %(time)s."
 msgstr ""
+"Jeśli instalacja aktualizacji nie zostanie przeprowadzona ręcznie, zostaną "
+"one automatycznie zainstalowane po %(time)s."
 
 msgid "Package lists"
 msgstr "Listy pakietów"
