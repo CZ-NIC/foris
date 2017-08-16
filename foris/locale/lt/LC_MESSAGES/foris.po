@@ -315,7 +315,7 @@ msgstr "SMTP nustatymai"
 msgid "Sender address (From)"
 msgstr "Siuntėjo adresas (From)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Pranešimai bus siunčiami iš šio adreso."
 
 msgid "Server address"

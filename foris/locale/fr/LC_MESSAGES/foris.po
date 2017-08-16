@@ -327,7 +327,7 @@ msgstr "Paramètres SMTP"
 msgid "Sender address (From)"
 msgstr "Adresse de l'expéditeur (De)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "C'est l'adresse de laquelle sont envoyées les notifications."
 
 msgid "Server address"

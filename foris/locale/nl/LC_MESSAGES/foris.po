@@ -321,7 +321,7 @@ msgstr "SMTP-instellingen"
 msgid "Sender address (From)"
 msgstr "Adres afzender (Van)"
 
-msgid "This is the address notifications are send from."
+msgid "This is the address notifications are sent from."
 msgstr "Notificaties worden vanaf dit adres verzonden."
 
 msgid "Server address"
