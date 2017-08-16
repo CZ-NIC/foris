@@ -259,7 +259,7 @@ class UpdaterConfigPage(ConfigPageMixin, UpdaterHandler):
 
         if not request.POST.get("call", None) or not request.POST.get("approval-id", None) or \
                 not request.POST["call"] in ["approve", "deny"]:
-            messages.error(_("Invalid reguest arguments."))
+            messages.error(_("Invalid request arguments."))
             bottle.redirect(reverse("config_page", page_name="updater"))
 
         if request.POST["call"] == "approve":

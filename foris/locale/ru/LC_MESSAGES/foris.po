@@ -126,7 +126,7 @@ msgstr ""
 "Конфигурация не может быть загружена, файл резервной копии, вероятно, "
 "поврежден."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Некорректные аргументы запроса."
 
 msgid "Update was approved."

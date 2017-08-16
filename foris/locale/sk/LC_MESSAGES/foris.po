@@ -139,7 +139,7 @@ msgstr ""
 "Nastavenie sa nepodarilo obnoviť, súbor so zálohou je pravdepodobne "
 "poškodený."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Neplatné argumenty požiadavky."
 
 msgid "Update was approved."

@@ -140,7 +140,7 @@ msgstr ""
 "Einstellungen konnten nicht geladen werden, die Sicherheitskopie ist "
 "wahrscheinlich beschädigt."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Ungültige Anfrage-Parameter."
 
 msgid "Update was approved."

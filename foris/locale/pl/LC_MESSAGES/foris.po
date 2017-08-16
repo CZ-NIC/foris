@@ -125,7 +125,7 @@ msgstr ""
 "Nie można załadować konfiguracji, plik kopii zapasowej jest prawdopodobnie "
 "uszkodzony."
 
-msgid "Invalid reguest arguments."
+msgid "Invalid request arguments."
 msgstr "Nieprawidłowe argumenty żądania."
 
 msgid "Update was approved."
