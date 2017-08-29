@@ -38,6 +38,12 @@ class ForisStateInfo(object):
         logger.debug("current app updated to '%s'" % app)
         self.app = app
 
+    def set_backend(self, backend, socket, backend_instance):
+        logger.debug("setting backend to '%s' (sock %s)." % (backend, socket))
+        self.backend = backend
+        self.backend_socket = socket
+        self.backend_instance = backend_instance
+
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))
 
