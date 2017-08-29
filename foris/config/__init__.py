@@ -25,7 +25,6 @@ import bottle
 
 from foris.common import require_contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
-from foris.nuci.notifications import make_notification_title
 from foris.caches import lazy_cache
 from foris.config_handlers import (
     backups, collect, dns, misc, notifications, wan, lan, updater, wifi
@@ -33,7 +32,7 @@ from foris.config_handlers import (
 from foris.nuci import client
 from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
-from foris.nuci.helpers import contract_valid, get_wizard_progress
+from foris.nuci.helpers import make_notification_title, contract_valid, get_wizard_progress
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages, is_safe_redirect
 from foris.middleware.bottle_csrf import CSRFPlugin

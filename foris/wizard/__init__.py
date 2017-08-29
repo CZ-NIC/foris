@@ -24,10 +24,10 @@ from foris.config_handlers import base, lan, misc, updater, wan, wifi
 from foris.nuci import client, filters
 from foris.nuci.configurator import add_config_update, commit
 from foris.nuci.helpers import (
-    contract_valid, mark_wizard_finished_session, allow_next_step_session, get_wizard_progress
+    contract_valid, mark_wizard_finished_session, allow_next_step_session, get_wizard_progress,
+    make_notification_title,
 )
 from foris.nuci.modules.uci_raw import build_option_uci_tree
-from foris.nuci.notifications import make_notification_title
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import (
     login_required, messages, WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS, is_safe_redirect
