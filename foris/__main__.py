@@ -4,6 +4,8 @@ import bottle
 from foris.config_app import prepare_config_app
 from foris.wizard_app import prepare_wizard_app
 
+from foris.state import info
+
 app_map = {
     "config": prepare_config_app,
     "wizard": prepare_wizard_app,
@@ -36,6 +38,13 @@ def get_arg_parser():
         "-a", "--app", choices=["config", "wizard"], default="config",
         help="sets which app should be started (wizard/config)",
     )
+    group.add_argument(
+        "-b", "--backend", choices=["ubus", "unix-socket"], default="ubus", help="backend type"
+    )
+    group.add_argument(
+        "--backend-socket", default="/var/run/ubus.sock", help="backend socket path"
+    )
+
     return parser
 
 
@@ -44,6 +53,15 @@ def main():
     args = parser.parse_args()
 
     main_app = app_map[args.app](args)
+
+    # set backend
+    if args.backend == "ubus":
+        from foris_client.buses.ubus import UbusSender
+        backend_instance = UbusSender(args.backend_socket)
+    elif args.backend == "unix-socket":
+        from foris.backend.buses.unix_socket import UnixSocketSender
+        backend_instance = UnixSocketSender(args.backend_socket)
+    info.set_backend(args.backend, args.backend_socket, backend_instance)
 
     if args.routes:
         # routes should be printed and we can safely exit
