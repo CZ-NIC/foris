@@ -18,7 +18,7 @@ import re
 
 from .base import BaseConfigHandler
 from foris import fapi, validators
-from foris.state import info
+from foris.state import current_state
 from foris.nuci import filters
 from foris.nuci.modules.uci_raw import Uci, Section, Config, Option, Value, List
 from foris.form import (
@@ -39,7 +39,7 @@ class WanHandler(BaseConfigHandler):
         self.hide_no_wan = kwargs.pop("hide_no_wan", False)
         super(WanHandler, self).__init__(*args, **kwargs)
         self.wan_ifname = "eth2"
-        if info.device_customization == "omnia":
+        if current_state.device_customization == "omnia":
             self.wan_ifname = "eth1"
 
     def get_form(self):

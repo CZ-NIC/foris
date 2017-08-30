@@ -23,7 +23,7 @@ from foris.nuci.modules.uci_raw import (
     Uci, Config, Section, Option, List, Value, parse_uci_bool, build_option_uci_tree,
 )
 from foris.utils.translators import gettext_dummy as gettext, _
-from foris.state import info
+from foris.state import current_state
 
 from .base import BaseConfigHandler, logger
 
@@ -196,7 +196,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
         )
 
         def form_cb(data):
-            result = client.get_registration_status(data.get("email"), info.language)
+            result = client.get_registration_status(data.get("email"), current_state.language)
             return "save_result", {
                 'success': result[0],
                 'response': result[1],

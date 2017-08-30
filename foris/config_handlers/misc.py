@@ -23,7 +23,7 @@ from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
 from foris.form import (
     Hidden, Password, Textbox, Dropdown, Checkbox,
 )
-from foris.state import info
+from foris.state import current_state
 from foris.utils import (
     tzinfo, localized_sorted
 )
@@ -120,7 +120,7 @@ class RegionHandler(BaseConfigHandler):
             )
         )
 
-        lang = info.language
+        lang = current_state.language
 
         def construct_args(items, translation_function=_, key_getter=lambda x: x):
             """

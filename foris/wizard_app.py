@@ -30,11 +30,11 @@ from foris.common import render_js_md5, init_common_app, init_default_app
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
 from foris.nuci import client
-from foris.nuci.helpers import contract_valid, read_uci_lang
+from foris.nuci.helpers import read_uci_lang
 from foris.langs import DEFAULT_LANGUAGE
 from foris.plugins import ForisPluginLoader
-from foris.state import info
-from foris.utils import messages
+from foris.state import current_state
+from foris.utils import messages, contract_valid
 from foris.utils.translators import translations
 from foris.utils.bottle_stuff import (
     prepare_template_defaults,
@@ -62,7 +62,7 @@ def prepare_wizard_app(args):
     """
 
     # set app
-    info.set_app("wizard")
+    current_state.set_app("wizard")
 
     # internationalization
     i18n_defaults(bottle.SimpleTemplate, bottle.request)

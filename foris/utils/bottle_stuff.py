@@ -21,7 +21,7 @@ import bottle
 from foris.caches import lazy_cache
 from foris.langs import iso2to3, translation_names
 from foris.middleware.bottle_csrf import get_csrf_token
-from foris.state import info
+from foris.state import current_state
 
 from .routing import reverse, static as static_path
 from .translators import translations, ugettext, ungettext
@@ -35,7 +35,7 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
     bottle.SimpleTemplate.defaults['ungettext'] = \
         lambda singular, plural, n: ungettext(singular, plural, n)
-    bottle.SimpleTemplate.defaults['foris_info'] = info
+    bottle.SimpleTemplate.defaults['foris_info'] = current_state
 
     # template defaults
     # this is not really straight-forward, check for user_authenticated() (with brackets) in template,

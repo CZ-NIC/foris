@@ -22,7 +22,7 @@ from foris.nuci import client
 from foris.nuci.filters import create_config_filter, wifi_filter
 from foris.nuci.preprocessors import guest_network_enabled, generate_network_preprocessor
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
-from foris.state import info
+from foris.state import current_state
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -71,7 +71,7 @@ class LanHandler(BaseConfigHandler):
                            nuci_path="uci.dhcp.lan.limit")\
             .requires("dhcp_enabled", True)
 
-        if info.app == "config":
+        if current_state.app == "config":
             guest_network_section = lan_form.add_section(
                 name="guest_network",
                 title=_("Guest network"),
@@ -156,7 +156,7 @@ class LanHandler(BaseConfigHandler):
             else:
                 dhcp.add(Option("ignore", "1"))
 
-            if info.app == "config":
+            if current_state.app == "config":
                 # qos data
                 qos = {'enabled': False}
                 if 'guest_network_shapping' in data and data['guest_network_shapping']:

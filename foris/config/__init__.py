@@ -32,12 +32,12 @@ from foris.config_handlers import (
 from foris.nuci import client
 from foris.nuci.client import filters
 from foris.nuci.exceptions import ConfigRestoreError
-from foris.nuci.helpers import make_notification_title, contract_valid, get_wizard_progress
+from foris.nuci.helpers import make_notification_title, get_wizard_progress
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
-from foris.utils import login_required, messages, is_safe_redirect
+from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
-from foris.state import info
+from foris.state import current_state
 
 
 logger = logging.getLogger(__name__)
@@ -439,20 +439,17 @@ class AboutConfigPage(ConfigPageMixin):
 
     @require_contract_valid(True)
     def _action_registration_code(self):
-        return client.get_registration()
+        data = current_state.backend_instance.send("about", "get_registration_number", {})
+        return data["registration_number"]
 
     def call_ajax_action(self, action):
         if action == "registration_code":
             regnum = self._action_registration_code()
-            if regnum:
-                data = regnum.value
-            else:
-                data = None
-            return dict(success=regnum is not None, data=data)
+            return dict(success=regnum is not False, data=regnum)
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
-        data = info.backend_instance.send("about", "get", {})
+        data = current_state.backend_instance.send("about", "get", {})
         data["firewall_status"]["seconds_ago"] = \
             int(time.time() - data["firewall_status"]["last_check"])
         data["firewall_status"]["datetime"] = \
