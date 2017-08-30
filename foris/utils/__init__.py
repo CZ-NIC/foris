@@ -21,11 +21,10 @@ import bottle
 from functools import wraps
 import logging
 
-from foris.state import info
-
 from .routing import reverse
 from . import messages
 from .translators import _
+from foris.state import current_state
 
 
 logger = logging.getLogger("foris.utils")
@@ -184,3 +183,24 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
         return map(safe_index, key(x))
 
     return sorted(iterable, cmp, key_fn, reverse)
+
+
+def contract_valid():
+    """Read whether the contract related with the current router is valid
+
+    :return: whether the contract is still valid
+    """
+    CONRACT_VALID = "valid"
+    CONRACT_UNKNOWN = "unknown"
+    if current_state.device_customization == "omnia":
+        return False
+
+    data = current_state.backend_instance.send("about", "get_contract_status", {})
+    if data["contract_status"] == CONRACT_VALID:
+        return True
+
+    if data["contract_status"] == CONRACT_UNKNOWN:
+        # Consider old contract valid for old turrises
+        return True
+
+    return False

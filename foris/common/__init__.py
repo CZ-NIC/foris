@@ -26,10 +26,10 @@ import time
 from functools import wraps
 
 from foris.nuci import client, filters
-from foris.nuci.helpers import write_uci_lang, contract_valid
+from foris.nuci.helpers import write_uci_lang
 from foris.caches import nuci_cache
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages, login_required
+    redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
@@ -39,6 +39,7 @@ from foris.utils.bottle_stuff import (
     clear_lazy_cache,
     disable_caching,
 )
+from foris.state import current_state
 
 
 logger = logging.getLogger("foris.common")
@@ -73,8 +74,7 @@ def login():
             bottle.redirect(next)
 
         # update contract status
-        client.update_contract_status()
-        nuci_cache.invalidate("foris.contract")
+        current_state.backend_instance.send("about", "update_contract_status", {})
 
     else:
         messages.error(_("The password you entered was not valid."))
@@ -198,6 +198,7 @@ def require_contract_valid(valid=True):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
+
             if not (contract_valid() == valid):
                 raise bottle.HTTPError(403, "Contract validity mismatched.")
             return func(*args, **kwargs)

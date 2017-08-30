@@ -4,7 +4,7 @@ import bottle
 from foris.config_app import prepare_config_app
 from foris.wizard_app import prepare_wizard_app
 
-from foris.state import info
+from foris.state import current_state
 
 app_map = {
     "config": prepare_config_app,
@@ -61,7 +61,7 @@ def main():
     elif args.backend == "unix-socket":
         from foris.backend.buses.unix_socket import UnixSocketSender
         backend_instance = UnixSocketSender(args.backend_socket)
-    info.set_backend(args.backend, args.backend_socket, backend_instance)
+    current_state.set_backend(args.backend, args.backend_socket, backend_instance)
 
     if args.routes:
         # routes should be printed and we can safely exit

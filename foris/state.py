@@ -23,7 +23,7 @@ from foris.langs import DEFAULT_LANGUAGE
 logger = logging.getLogger("foris.state")
 
 
-class ForisStateInfo(object):
+class ForisState(object):
     def __init__(self):
         self.device_customization = DEVICE_CUSTOMIZATION
         self.foris_version = version
@@ -48,4 +48,4 @@ class ForisStateInfo(object):
         return "%s (%s)" % (self.__class__, str(vars(self)))
 
 
-info = ForisStateInfo()
+current_state = ForisState()

@@ -19,7 +19,7 @@ from foris import validators
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool
-from foris.state import info
+from foris.state import current_state
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -191,7 +191,7 @@ class WifiHandler(BaseConfigHandler):
             hint=HINTS['password']
         ).requires(prefixed_name("wifi_enabled"), True)
 
-        if info.app == "config":
+        if current_state.app == "config":
             # Guest wi-fi part
             guest_section = wifi_main.add_section(
                 name=prefixed_name("set_guest_wifi"),
@@ -289,7 +289,7 @@ class WifiHandler(BaseConfigHandler):
         wireless.add(iface)
         device = Section("radio%s" % radio, "wifi-device")
         wireless.add(device)
-        if info.app == "config":
+        if current_state.app == "config":
             guest_iface = Section("guest_iface_%s" % radio, "wifi-iface")
             wireless.add(guest_iface)
 
@@ -299,7 +299,7 @@ class WifiHandler(BaseConfigHandler):
         iface.add(Option("disabled", not wifi_enabled))
         device.add(Option("disabled", not wifi_enabled))
 
-        if info.app == "config":
+        if current_state.app == "config":
             guest_iface.add(Option("disabled", not wifi_enabled or not guest_enabled))
 
         if wifi_enabled:
@@ -323,7 +323,7 @@ class WifiHandler(BaseConfigHandler):
             device.add(Option("channel", channel))
 
             # setting guest wifi
-            if info.app == "config":
+            if current_state.app == "config":
                 if guest_enabled:
                     guest_iface.add(Option("device", "radio%s" % radio))
                     guest_iface.add(Option("mode", "ap"))
