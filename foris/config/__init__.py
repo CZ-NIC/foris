@@ -37,6 +37,7 @@ from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages, is_safe_redirect
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
+from foris.state import info
 
 
 logger = logging.getLogger(__name__)
@@ -433,9 +434,6 @@ class AboutConfigPage(ConfigPageMixin):
     SENDING_STATUS_TRANSLATION = {
         'online': gettext("Online"),
         'offline': gettext("Offline"),
-        'connecting': gettext("Connecting"),
-        'bad-auth': gettext("Invalid authentication"),
-        'broken': gettext("Broken"),
         'unknown': gettext("Unknown status"),
     }
 
@@ -453,26 +451,26 @@ class AboutConfigPage(ConfigPageMixin):
             return dict(success=regnum is not None, data=data)
         raise ValueError("Unknown AJAX action.")
 
-    @staticmethod
-    def translate_sending_status(status):
-        verbose = _(AboutConfigPage.SENDING_STATUS_TRANSLATION.get(
-            status,
-            AboutConfigPage.SENDING_STATUS_TRANSLATION['unknown']
-        ))
-        if status not in AboutConfigPage.SENDING_STATUS_TRANSLATION:
-            verbose += " (%s)" % status
-        return verbose
-
     def render(self, **kwargs):
-        stats = client.get(filter=filters.stats).find_child("stats")
-        serial = client.get_serial()
+        data = info.backend_instance.send("about", "get", {})
+        data["firewall_status"]["seconds_ago"] = \
+            int(time.time() - data["firewall_status"]["last_check"])
+        data["firewall_status"]["datetime"] = \
+            datetime.fromtimestamp(data["firewall_status"]["last_check"])
+        data["firewall_status"]["state_trans"] = \
+            self.SENDING_STATUS_TRANSLATION[data["firewall_status"]["state"]]
+        data["ucollect_status"]["seconds_ago"] = \
+            int(time.time() - data["ucollect_status"]["last_check"])
+        data["ucollect_status"]["datetime"] = \
+            datetime.fromtimestamp(data["ucollect_status"]["last_check"])
+        data["ucollect_status"]["state_trans"] = \
+            self.SENDING_STATUS_TRANSLATION[data["ucollect_status"]["state"]]
+        # process dates etc
         if not contract_valid():
             foris_conf = client.get(filter=filters.create_config_filter("foris"))
             agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_collect")
             kwargs['agreed_collect'] = agreed_opt and bool(int(agreed_opt.value))
-        return self.default_template(stats=stats.data, serial=serial,
-                                     translate_sending_status=self.translate_sending_status,
-                                     **kwargs)
+        return self.default_template(data=data, **kwargs)
 
 
 class VirtualConfigPage(ConfigPageMixin):

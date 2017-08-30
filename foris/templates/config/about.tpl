@@ -22,39 +22,39 @@
         <tbody>
             <tr>
                 <th>{{ trans("Device") }}</th>
-                <td>{{ stats['model'] }} - {{ stats['board-name'] }}</td>
+                <td>{{ data['model'] }} - {{ data['board_name'] }}</td>
             </tr>
             <tr>
                 <th>{{ trans("Serial number") }}</th>
-                <td>{{ serial.decimal }}</td>
+                <td>{{ int(data['serial'], 16) }}</td>
             </tr>
             <tr>
                 <th>{{ trans("Turris OS version") }}</th>
-                <td>{{ stats['turris-os-version'] }}</td>
+                <td>{{ data['os_version'] }}</td>
             </tr>
             <tr>
                 <th>{{ trans("Kernel version") }}</th>
-                <td>{{ stats['kernel-version'] }}</td>
+                <td>{{ data['kernel'] }}</td>
             </tr>
           %if contract_valid() or agreed_collect:
             <tr>
                 <th>{{ trans("Sending of uCollect data") }}</th>
-                <td class="{{ "sending-ok" if stats['sending']['ucollect']['alive'] else "sending-fail" }}">
-                  {{ translate_sending_status(stats['sending']['ucollect']['status']) }}
-                  % if stats['sending']['ucollect'].get('age') is not None:
-                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=stats['sending']['ucollect']['last_update'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
-                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", stats['sending']['ucollect']['age']) % stats['sending']['ucollect']['age'] }}
+                <td class="{{ "sending-ok" if data['ucollect_status']['state'] == "online" else "sending-fail" }}">
+                  {{ data['ucollect_status']['state_trans'] }}
+                  % if data['ucollect_status']['state'] != "unknown":
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=data['ucollect_status']['datetime'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", data['ucollect_status']['seconds_ago']) % data['ucollect_status']['seconds_ago'] }}
                       </abbr>
                   % end
                 </td>
             </tr>
             <tr>
                 <th>{{ trans("Sending of firewall logs") }}</th>
-                <td class="{{ "sending-ok" if stats['sending']['firewall']['alive'] else "sending-fail" }}">
-                  {{ translate_sending_status(stats['sending']['firewall']['status']) }}
-                  % if stats['sending']['firewall'].get('age') is not None:
-                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=stats['sending']['firewall']['last_update'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
-                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", stats['sending']['firewall']['age']) % stats['sending']['firewall']['age'] }}
+                <td class="{{ "sending-ok" if data['firewall_status']['state'] == "online" else "sending-fail" }}">
+                  {{ data['firewall_status']['state_trans'] }}
+                  % if data['firewall_status']['state'] != "unknown":
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=data['firewall_status']['datetime'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                        {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", data['firewall_status']['seconds_ago']) % data['firewall_status']['seconds_ago'] }}
                       </abbr>
                   % end
                 </td>
