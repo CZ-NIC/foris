@@ -16,15 +16,14 @@
 
 from ncclient.operations import TimeoutExpiredError, RPCError
 
-from foris.caches import nuci_cache
-from foris.state import info
+from foris.state import current_state
 from foris.utils import WIZARD_NEXT_STEP_ALLOWED_KEY
 from foris.utils.translators import _
 
 from .client import get as nuci_get, edit_config as nuci_edit_config
 from .filters import foris_config
 from .modules.user_notify import Severity
-from .modules.uci_raw import parse_uci_bool, Uci, Config, Section, Option
+from .modules.uci_raw import Uci, Config, Section, Option
 
 
 def make_notification_title(notification):
@@ -49,24 +48,6 @@ def make_notification_title(notification):
     )
 
 
-def contract_valid():
-    """Read whether the contract related with the current router is valid from uci
-
-    :return: whether the contract is still valid
-    """
-    if info.device_customization == "omnia":
-        return False
-
-    data = nuci_cache.get("foris.contract", 60 * 60)  # once per hour should be enought
-    valid = data.find_child("foris.contract.valid")
-
-    if not valid:  # valid record
-        # valid record not found, assuming that the contract is still valid
-        return True
-
-    return parse_uci_bool(valid)
-
-
 def read_uci_lang(default):
     """Read interface language saved in Uci config foris.settings.lang.
 
@@ -78,7 +59,7 @@ def read_uci_lang(default):
     lang = lang.value if lang else default
 
     # Update info variable
-    info.update_lang(lang)
+    current_state.update_lang(lang)
 
     return lang
 
@@ -96,7 +77,7 @@ def write_uci_lang(lang):
     server = Section("settings", "config")
     foris.add(server)
     server.add(Option("lang", lang))
-    if info.app == "config":
+    if current_state.app == "config":
         # LuCI language (only in config app)
         luci = Config("luci")
         uci.add(luci)
@@ -107,7 +88,7 @@ def write_uci_lang(lang):
         nuci_edit_config(uci.get_xml())
 
         # Update info variable
-        info.update_lang(lang)
+        current_state.update_lang(lang)
 
         return True
     except (RPCError, TimeoutExpiredError):

@@ -20,9 +20,9 @@ from foris import fapi, validators
 from foris.caches import lazy_cache
 from foris.form import Checkbox, Radio, RadioSingle, Number
 from foris.nuci import client, filters
-from foris.nuci.helpers import contract_valid
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
+from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler, logger

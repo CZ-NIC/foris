@@ -20,7 +20,7 @@ import gettext
 import os
 
 from foris.langs import translations
-from foris.state import info
+from foris.state import current_state
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -32,8 +32,9 @@ translations = collections.OrderedDict(
     for e in translations
 )
 
-ugettext = lambda x: translations[info.language].ugettext(x)
-ungettext = lambda singular, plural, n: translations[info.language].ungettext(singular, plural, n)
+ugettext = lambda x: translations[current_state.language].ugettext(x)
+ungettext = lambda singular, plural, n: \
+    translations[current_state.language].ungettext(singular, plural, n)
 gettext_dummy = lambda x: x
 
 _ = ugettext
