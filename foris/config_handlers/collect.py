@@ -196,10 +196,27 @@ class RegistrationCheckHandler(BaseConfigHandler):
         )
 
         def form_cb(data):
-            result = client.get_registration_status(data.get("email"), current_state.language)
+            data = current_state.backend_instance.send(
+                "data_collect", "get_registered",
+                {"email": data.get("email"), "language": current_state.language}
+            )
+            error = None
+            registration_number = None
+            url = None
+            if data["status"] == "unknown":
+                error = _("Failed to query the server.")
+            elif data["status"] == "not_valid":
+                error = _("Failed to verify the router's registration.")
+            elif data["status"] in ["free", "foreign"]:
+                url = data["url"]
+                registration_number = data["registration_number"]
+
             return "save_result", {
-                'success': result[0],
-                'response': result[1],
+                'success': data["status"] not in ["unknown", "not_valid"],
+                'status': data["status"],
+                'error': error,
+                'url': url,
+                'registration_number': registration_number,
             }
 
         form.add_callback(form_cb)
