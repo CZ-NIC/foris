@@ -371,37 +371,36 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
             messages.warning(_("There were some errors in your input."))
             return self.render(registration_check_form=handler.form)
 
-        success = handler.form.callback_results['success']
-        response = handler.form.callback_results['response']
+        result = handler.form.callback_results
         kwargs = {}
-        if not success:
+        if not result["success"]:
             messages.error(_("An error ocurred when checking the registration: "
-                             "<br><pre>%(response)s</pre>" % dict(response=response)))
+                             "<br><pre>%(error)s</pre>" % dict(error=result["error"])))
             return self.render()
         else:
-            if response.status == "owned":
+            if result["status"] == "owned":
                 messages.success(_("Registration for the entered email is valid. "
                                    "Now you can enable the data collection."))
                 collection_toggle_handler = collect.CollectionToggleHandler(request.POST)
                 kwargs['collection_toggle_form'] = collection_toggle_handler.form
-            elif response.status == "foreign":
+            elif result["status"] == "foreign":
                 messages.warning(
                     _('This router is currently assigned to a different email address. Please '
                       'continue to the <a href="%(url)s">Turris website</a> and use the '
                       'registration code <strong>%(reg_num)s</strong> for a re-assignment to your '
                       'email address.')
-                    % dict(url=response.url, reg_num=response.reg_num))
+                    % dict(url=result["url"], reg_num=result["registration_number"]))
                 bottle.redirect(reverse("config_page", page_name="data-collection"))
-            elif response.status == "free":
+            elif result["status"] == "free":
                 messages.info(
                     _('This email address is not registered yet. Please continue to the '
                       '<a href="%(url)s">Turris website</a> and use the registration code '
                       '<strong>%(reg_num)s</strong> to create a new account.')
-                    % dict(url=response.url, reg_num=response.reg_num))
+                    % dict(url=result["url"], reg_num=result["registration_number"]))
                 bottle.redirect(reverse("config_page", page_name="data-collection"))
-        return self.render(status=response.status,
-                           registration_url=response.url,
-                           reg_num=response.reg_num, **kwargs)
+        return self.render(status=result["status"],
+                           registration_url=result["url"],
+                           reg_num=result["registration_number"], **kwargs)
 
     @require_contract_valid(False)
     def _action_toggle_collecting(self):
