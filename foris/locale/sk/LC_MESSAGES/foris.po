@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-16 08:43+0200\n"
-"PO-Revision-Date: 2017-08-23 12:07+0000\n"
-"Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
+"PO-Revision-Date: 2017-09-05 10:55+0000\n"
+"Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
 "\n"
 "Language: sk\n"
@@ -241,6 +241,8 @@ msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
+"Toto umožní Vášmu DNS resolveru vložiť mená DHCP klientov medzi lokálne DNS "
+"záznamy."
 
 msgid "Domain of DHCP clients in DNS"
 msgstr "Doména DHCP klientov v DNS"
@@ -249,6 +251,8 @@ msgid ""
 "This domain will be used as TLD. E.g. The result for client \"android-123\" "
 "and domain \"lan\" will be \"android-123.lan\"."
 msgstr ""
+"Táto doména bude použitá ako TLD. Napr. pre klienta \"android-123\" a doménu "
+"\"lan\" bude výsledok \"android-123.lan\"."
 
 msgid "Enable data collection"
 msgstr "Povoliť zber dát"
@@ -685,21 +689,20 @@ msgid "Updates will be installed without user's intervention."
 msgstr "Aktualizácie budú nainštalované bez zásahu používateľa."
 
 msgid "Delayed updates"
-msgstr ""
+msgstr "Aktualizácie s oneskorením"
 
-#, fuzzy
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
+"Aktualizácie sa nainštalujú s definovaným oneskorením. Môžete ich tiež "
+"schváliť ručne."
 
-#, fuzzy
 msgid "Update approval needed"
-msgstr ""
+msgstr "Aktualizácie je nutné schváliť"
 
-#, fuzzy
 msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr ""
+msgstr "Aktualizácie musíte schváliť, v opačnom prípade nebudú nainštalované."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -805,25 +808,26 @@ msgstr ""
 "atď.)."
 
 msgid "Guest Lan QoS"
-msgstr ""
+msgstr "Rýchlostný limit siete pre hostí"
 
-#, fuzzy
 msgid ""
 "This option enables you to set a bandwidth limit for the guest network, so "
 "that your main network doesn't get slowed-down by it."
 msgstr ""
+"Táto voľba zapne rýchlostný limit pre hosťovskú sieť, aby nespomaľovala Vašu "
+"hlavnú sieť."
 
 msgid "Download (kb/s)"
-msgstr ""
+msgstr "Preberanie (kb/s)"
 
 msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Rýchlosť preberania v sieti pre hostí (v kilobitoch za sekundu)."
 
 msgid "Upload (kb/s)"
-msgstr ""
+msgstr "Odovzdávanie (kb/s)"
 
 msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Rýchlosť odovzdávania v sieti pre hostí (v kilobitoch za sekundu)."
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -976,7 +980,6 @@ msgstr ""
 "Aktuálne máte povolený zber dát. Pokiaľ chcete Updater vypnúť, zakážte "
 "najskôr zber dát."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
 "harm your specific configuration. You can refuse the questionable update "
@@ -988,9 +991,8 @@ msgstr ""
 "aktualizácia neporuší niektoré z Vašich veľmi špeciálnych nastavení. "
 "Diskutabilnú aktualizáciu môžete odložiť a nainštalovať ju až keď budete "
 "pripravení. Aktualizácie nie je možné odmietať donekonečna. Odložená "
-"aktualizácia Vám bude opäť ponúknutá spoločne s tou nasledujúcou."
+"aktualizácia Vám bude opäť ponúknutá spoločne s budúcou inštaláciou balíčka."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
 "harm your specific configuration. You can e.g. install updates when you're "
@@ -1001,10 +1003,8 @@ msgid ""
 msgstr ""
 "Schvaľovanie aktualizácií sa môže hodiť, pokiaľ sa chcete uistiť, že "
 "aktualizácia neporuší niektoré z Vašich veľmi špeciálnych nastavení. Môžete "
-"napríklad inštalovať aktualizácie, pokiaľ ste pripravení na prípadný <a "
-"href='https://www.turris.cz/doc/cs/howto/"
-"omnia_factory_reset#navrat_na_predchozi_snapshot_operacniho_systemu'>návrat "
-"na predchádzajúci snapshot</a> a diskutabilnú aktualizáciu odložiť. "
+"napríklad inštalovať aktualizácie, pokiaľ ste pripravení na prípadný návrat "
+"na predchádzajúci snapshot a diskutabilnú aktualizáciu dočasne odmietnuť. "
 "Aktualizácie nie je možné odmietať donekonečna. Odložená aktualizácia Vám "
 "bude opäť ponúknutá spoločne s tou nasledujúcou."
 
@@ -1224,21 +1224,24 @@ msgstr "Nainštalovať"
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Pozor! Po aktualizácii bude nasledovať reštart zariadenia."
 
-#, fuzzy
 msgid "Install now"
-msgstr "Nainštalovať"
+msgstr "Inštalovať teraz"
 
 msgid "Deny"
-msgstr ""
+msgstr "Odmietnuť"
 
 msgid "No package will be installed unless you install the updates above."
 msgstr ""
+"Dokiaľ neschválite vyššie spomenuté aktualizácie, nenainštaluje sa žiadny "
+"balíček."
 
 #, python-format
 msgid ""
 "If you don't install the updates manually, they will be installed "
 "automatically after %(time)s."
 msgstr ""
+"Pokiaľ nenainštalujete aktualizácie ručne, nainštalujú sa po %(time)s "
+"automaticky."
 
 msgid "Package lists"
 msgstr "Zoznamy balíčkov"
