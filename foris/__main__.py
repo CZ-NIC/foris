@@ -54,13 +54,14 @@ def main():
 
     main_app = app_map[args.app](args)
 
+    DEFAULT_TIMEOUT = 30000  # in ms
     # set backend
     if args.backend == "ubus":
         from foris_client.buses.ubus import UbusSender
-        backend_instance = UbusSender(args.backend_socket)
+        backend_instance = UbusSender(args.backend_socket, default_timeout=DEFAULT_TIMEOUT)
     elif args.backend == "unix-socket":
         from foris.backend.buses.unix_socket import UnixSocketSender
-        backend_instance = UnixSocketSender(args.backend_socket)
+        backend_instance = UnixSocketSender(args.backend_socket, default_timeout=DEFAULT_TIMEOUT)
     current_state.set_backend(args.backend, args.backend_socket, backend_instance)
 
     if args.routes:
