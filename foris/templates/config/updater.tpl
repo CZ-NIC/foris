@@ -32,7 +32,7 @@
         {{ trans("The Updater is currently disabled. You must enable it first to manage package lists.") }}
       </div>
     %else:
-      %if approval and approval['status'] in ['asked', 'denied'] and defined('auto_updates_form') and show_approvals:
+      %if defined('approval') and approval and approval['status'] in ['asked', 'denied'] and defined('auto_updates_form') and show_approvals:
       <h4>{{ trans("Approve update from %(when)s") % dict(when=approval["time"]) }}</h4>
       <form id="updater-approve-form" method="post" action="{{ url("config_action", page_name="updater", action="process_approval") }}" novalidate>
           <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
