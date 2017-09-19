@@ -71,3 +71,10 @@ def static(name, *args):
     script_name = script_name.strip('/')
     script_name = "/%s" % script_name if script_name else ""
     return ("%s/static/%s" % (script_name, name)) % args
+
+
+def get_root():
+    root = bottle.request.script_name
+    root = root.strip('/')
+    root = "/%s" % root if root else ""
+    return root
