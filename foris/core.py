@@ -377,7 +377,11 @@ def make_notification_title(notification):
     }
 
     # minor abuse of gettext follows...
-    locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
+    try:
+        locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
+    except UnicodeEncodeError:
+        # Unicode characters in translated format -> fallback to %Y/%m/%d %H:%M:%S
+        locale_date = notification.created_at.strftime("%Y/%m/%d %H:%M:%S")
 
     return _("%(notification)s from %(created_at)s") % dict(
         notification=notification_titles.get(notification.severity.value, _("Notification")),
