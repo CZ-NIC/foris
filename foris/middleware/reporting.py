@@ -20,6 +20,8 @@ from traceback import format_exc
 
 from bottle import _e, tob, html_escape, static_file
 
+from foris.utils.routing import get_root
+
 
 ERROR_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -40,13 +42,13 @@ ERROR_TEMPLATE = """<!DOCTYPE html>
         <h1>An unexpected error has occurred</h1>
 
         <p>We are sorry, but your request raised an unexpected error. More information about this error may be found below.</p>
-        <p>If you are willing to help us with fixing of the problem, download the following <a href="/%(dump_file)s">error protocol</a> and send it to us with a short description of the steps that led to the error to our email address <a href="mailto:tech.support@turris.cz">tech.support@turris.cz</a> (the protocol contains only a copy of the following informations).</p>
+        <p>If you are willing to help us with fixing of the problem, download the following <a href="%(dump_file)s">error protocol</a> and send it to us with a short description of the steps that led to the error to our email address <a href="mailto:tech.support@turris.cz">tech.support@turris.cz</a> (the protocol contains only a copy of the following informations).</p>
         <hr>
 
         <h1>Při zpracování požadavku došlo k chybě</h1>
 
         <p>Omlouváme se, ale během zpracování Vašeho požadavku došlo k nečekané chybě. Detailní informace naleznete níže.</p>
-        <p>Pokud nám chcete pomoci s odstraněním chyby, stáhněte následující <a href="/%(dump_file)s">protokol o chybě</a> a zašlete nám jej s krátkým popisem okolností vzniku chyby na adresu <a href="mailto:tech.support@turris.cz">tech.support@turris.cz</a> (protokol obsahuje pouze kopii informací uvedených na této stránce).</p>
+        <p>Pokud nám chcete pomoci s odstraněním chyby, stáhněte následující <a href="%(dump_file)s">protokol o chybě</a> a zašlete nám jej s krátkým popisem okolností vzniku chyby na adresu <a href="mailto:tech.support@turris.cz">tech.support@turris.cz</a> (protokol obsahuje pouze kopii informací uvedených na této stránce).</p>
         <hr>
 
         <h2 class="error">%(error)s</h2>
@@ -93,7 +95,7 @@ class ReportingMiddleware(object):
             template_vars['environ'] = html_escape(pformat(environ))
             template_vars['error'] = html_escape(repr(_e()))
             template_vars['trace'] = html_escape(format_exc())
-            template_vars['dump_file'] = self.dump_file
+            template_vars['dump_file'] = "%s/%s" % (get_root(), self.dump_file)
             environ['wsgi.errors'].write(format_exc())
             headers = [('Content-Type', 'text/html; charset=UTF-8')]
             err = ERROR_TEMPLATE % template_vars
