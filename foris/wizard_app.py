@@ -30,12 +30,11 @@ from foris.common import render_js_md5, init_common_app, init_default_app
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
 from foris.nuci import client
-from foris.nuci.helpers import read_uci_lang
 from foris.langs import DEFAULT_LANGUAGE
 from foris.plugins import ForisPluginLoader
 from foris.state import current_state
 from foris.utils import messages, contract_valid
-from foris.utils.translators import translations
+from foris.utils.translators import translations, get_current_language
 from foris.utils.bottle_stuff import (
     prepare_template_defaults,
     route_list_cmdline,
@@ -115,7 +114,7 @@ def prepare_wizard_app(args):
         logger.debug("Routes:\n%s", "\n".join(routes))
 
     # read language saved in Uci
-    lang = read_uci_lang(DEFAULT_LANGUAGE)
+    lang = get_current_language()
     # i18n middleware
     if lang not in translations:
         lang = DEFAULT_LANGUAGE
