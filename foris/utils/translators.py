@@ -38,3 +38,31 @@ ungettext = lambda singular, plural, n: \
 gettext_dummy = lambda x: x
 
 _ = ugettext
+
+
+def get_current_language():
+    """Read interface language saved in Uci config foris.settings.lang.
+
+    :return: language code of interface language
+    """
+    lang = current_state.backend_instance.send("web", "get_language", {})["language"]
+
+    # Update info variable
+    current_state.update_lang(lang)
+
+    return lang
+
+
+def set_current_language(language):
+    """Save interface language to foris.settings.lang.
+
+    :param lang: language code to save
+    :return: True on success, False otherwise
+    """
+    if current_state.backend_instance.send(
+            "web", "set_language", {"language": language})["result"]:
+        # Update info variable
+        current_state.update_lang(language)
+        return True
+
+    return False

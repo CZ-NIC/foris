@@ -52,8 +52,6 @@ def main():
     parser = get_arg_parser()
     args = parser.parse_args()
 
-    main_app = app_map[args.app](args)
-
     DEFAULT_TIMEOUT = 30000  # in ms
     # set backend
     if args.backend == "ubus":
@@ -63,6 +61,8 @@ def main():
         from foris.backend.buses.unix_socket import UnixSocketSender
         backend_instance = UnixSocketSender(args.backend_socket, default_timeout=DEFAULT_TIMEOUT)
     current_state.set_backend(args.backend, args.backend_socket, backend_instance)
+
+    main_app = app_map[args.app](args)
 
     if args.routes:
         # routes should be printed and we can safely exit

@@ -52,53 +52,6 @@ def make_notification_title(notification):
     )
 
 
-def read_uci_lang(default):
-    """Read interface language saved in Uci config foris.settings.lang.
-
-    :param default: returned if no language is set in the config
-    :return: language code of interface language
-    """
-    data = nuci_get(filter=foris_config)
-    lang = data.find_child("uci.foris.settings.lang")
-    lang = lang.value if lang else default
-
-    # Update info variable
-    current_state.update_lang(lang)
-
-    return lang
-
-
-def write_uci_lang(lang):
-    """Save interface language to foris.settings.lang.
-
-    :param lang: language code to save
-    :return: True on success, False otherwise
-    """
-    uci = Uci()
-    # Foris language
-    foris = Config("foris")
-    uci.add(foris)
-    server = Section("settings", "config")
-    foris.add(server)
-    server.add(Option("lang", lang))
-    if current_state.app == "config":
-        # LuCI language (only in config app)
-        luci = Config("luci")
-        uci.add(luci)
-        main = Section("main", "core")
-        luci.add(main)
-        main.add(Option("lang", lang))
-    try:
-        nuci_edit_config(uci.get_xml())
-
-        # Update info variable
-        current_state.update_lang(lang)
-
-        return True
-    except (RPCError, TimeoutExpiredError):
-        return False
-
-
 def mark_wizard_finished_session(session):
     """Mark wizard as finished in session.
 

@@ -26,14 +26,12 @@ import time
 from functools import wraps
 
 from foris.nuci import client, filters
-from foris.nuci.helpers import write_uci_lang
-from foris.caches import nuci_cache
 from foris.utils import (
     redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
-from foris.utils.translators import _, translations
+from foris.utils.translators import _, translations, set_current_language
 from foris.utils.bottle_stuff import (
     clickjacking_protection,
     clear_lazy_cache,
@@ -154,7 +152,7 @@ def change_lang(lang):
     :raises: bottle.HTTPError if requested language is not installed
     """
     if lang in translations:
-        write_uci_lang(lang)
+        set_current_language(lang)
         backlink = bottle.request.GET.get('backlink')
         if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
             bottle.redirect(backlink)
