@@ -152,7 +152,8 @@ def change_lang(lang):
     :raises: bottle.HTTPError if requested language is not installed
     """
     if lang in translations:
-        set_current_language(lang)
+        if set_current_language(lang):
+            bottle.request.app.lang = lang
         backlink = bottle.request.GET.get('backlink')
         if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
             bottle.redirect(backlink)
