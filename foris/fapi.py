@@ -208,6 +208,8 @@ class ForisForm(ForisFormElement):
                 # update if result is not None
                 if preprocessed is not None:
                     self._nuci_data[field.name] = preprocessed
+            elif field.preproc:
+                self._request_data[field.name] = field.preproc(self._request_data[field.name])
 
     def add_section(self, *args, **kwargs):
         """
@@ -324,7 +326,8 @@ class Section(ForisFormElement):
 
 class Field(ForisFormElement):
     def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
-                 nuci_preproc=None, validators=None, hint="", multifield=False, **kwargs):
+                 nuci_preproc=None, preproc=None, validators=None, hint="", multifield=False,
+                 **kwargs):
         """
 
         :param main_form: parent form of this field
@@ -336,6 +339,8 @@ class Field(ForisFormElement):
         :param nuci_path: path in Nuci get response
         :param nuci_preproc: function to process raw YinElement instance, returns field value
         :type nuci_preproc: callable
+        :param preproc: function to preprocess the value
+        :type preproc: callable
         :param validators: validator or list of validators
         :type validators: validator or list
         :param hint: short descriptive text explaining the purpose of the field
@@ -348,6 +353,7 @@ class Field(ForisFormElement):
         self.name = name
         self.nuci_path = nuci_path
         self.nuci_preproc = nuci_preproc
+        self.preproc = preproc
         if validators and not isinstance(validators, list):
             validators = [validators]
         self.validators = validators or []

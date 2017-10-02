@@ -22,8 +22,7 @@ from foris import fapi
 from foris import validators
 
 from foris.form import Checkbox, Textbox
-from foris.nuci.filters import create_config_filter
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
+from foris.state import current_state
 from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -36,65 +35,53 @@ class DNSHandler(BaseConfigHandler):
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        dns_form = fapi.ForisForm("dns", self.data, filter=create_config_filter("resolver", "dhcp"))
+        data = current_state.backend_instance.send("dns", "get_settings", {})
+        data["dnssec_disabled"] = not data["dnssec_enabled"]
+        if self.data:
+            # Update from post
+            data.update(self.data)
+            data["dnssec_enabled"] = not self.data["dnssec_disabled"]
+
+        dns_form = fapi.ForisForm("dns", data)
         dns_main = dns_form.add_section(name="set_dns", title=_(self.userfriendly_title))
         dns_main.add_field(
-            Checkbox, name="forward_upstream", label=_("Use forwarding"),
-            nuci_path="uci.resolver.common.forward_upstream",
-            nuci_preproc=lambda val: bool(int(val.value)), default=True
+            Checkbox, name="forwarding_enabled", label=_("Use forwarding"),
+            preproc=lambda val: bool(int(val)),
         )
 
         if not contract_valid():
             dns_main.add_field(
-                Checkbox, name="ignore_root_key", label=_("Disable DNSSEC"),
-                nuci_path="uci.resolver.common.ignore_root_key",
-                nuci_preproc=lambda val: bool(int(val.value)), default=False,
+                Checkbox, name="dnssec_disabled", label=_("Disable DNSSEC"),
+                preproc=lambda val: bool(int(val)), default=False
             )
 
-        resolver = dns_form.nuci_config.find_child("uci.resolver.common.prefered_resolver")
-        if resolver and resolver.value in ["kresd", "unbound"]:
-            dns_main.add_field(
-                Checkbox, name="dhcp_from_dns", label=_("Enable DHCP clients in DNS"),
-                hint=_(
-                    "This will enable your DNS resolver to place DHCP client's "
-                    "names among the local DNS records."
-                ),
-                nuci_path="uci.resolver.common.dynamic_domains",
-                nuci_preproc=lambda val: bool(int(val.value)), default=False,
-            )
-            dns_main.add_field(
-                Textbox, name="dhcp_dns_domain", label=_("Domain of DHCP clients in DNS"),
-                hint=_(
-                    "This domain will be used as TLD. E.g. The result for client \"android-123\" "
-                    "and domain \"lan\" will be \"android-123.lan\"."
-                ),
-                nuci_path="uci.dhcp.@dnsmasq[0].local",
-                nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan",
-                validators=[validators.Domain()],
-            ).requires("dhcp_from_dns", True)
-
-        resolver = dns_form.nuci_config.find_child("uci.dhcp.@dnsmasq[0]")
+        dns_main.add_field(
+            Checkbox, name="dns_from_dhcp_enabled", label=_("Enable DHCP clients in DNS"),
+            hint=_(
+                "This will enable your DNS resolver to place DHCP client's "
+                "names among the local DNS records."
+            ),
+            preproc=lambda val: bool(int(val)), default=False,
+        )
+        dns_main.add_field(
+            Textbox, name="dns_from_dhcp_domain", label=_("Domain of DHCP clients in DNS"),
+            hint=_(
+                "This domain will be used as TLD. E.g. The result for client \"android-123\" "
+                "and domain \"lan\" will be \"android-123.lan\"."
+            ),
+            validators=[validators.Domain()],
+        ).requires("dns_from_dhcp_enabled", True)
 
         def dns_form_cb(data):
-            uci = Uci()
-            resolver = Config("resolver")
-            uci.add(resolver)
-            server = Section("common", "resolver")
-            resolver.add(server)
-            server.add(Option("forward_upstream", data['forward_upstream']))
-            if not contract_valid():
-                server.add(Option("ignore_root_key", data['ignore_root_key']))
-
-            if 'dhcp_from_dns' in data:
-                server.add(Option("dynamic_domains", data['dhcp_from_dns']))
-
-            if 'dhcp_dns_domain' in data:
-                dhcp = uci.add(Config("dhcp"))
-                dnsmasq_section = dns_form.nuci_config.find_child("uci.dhcp.@dnsmasq[0]")
-                dnsmasq = dhcp.add(Section(dnsmasq_section.name, "dnsmasq", anonymous=True))
-                dnsmasq.add(Option("local", "/%s/" % data["dhcp_dns_domain"].strip("/")))
-
-            return "edit_config", uci
+            msg = {
+                "dnssec_enabled": not data["dnssec_disabled"],
+                "forwarding_enabled": data["forwarding_enabled"],
+                "dns_from_dhcp_enabled": data["dns_from_dhcp_enabled"],
+            }
+            if "dns_from_dhcp_domain" in data:
+                msg["dns_from_dhcp_domain"] = data["dns_from_dhcp_domain"]
+            res = current_state.backend_instance.send("dns", "update_settings", msg)
+            return "save_result", res  # store {"result": ...} to be used later...
 
         dns_form.add_callback(dns_form_cb)
         return dns_form
