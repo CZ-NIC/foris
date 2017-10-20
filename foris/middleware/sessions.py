@@ -181,7 +181,7 @@ class SessionMiddleware(object):
         ]
         return filtered[0][len(name) + 1:] if filtered else None
 
-    def __init__(self, wrap_app, timeout, env_key="foris.session", ws_key="ubus.ws.session"):
+    def __init__(self, wrap_app, timeout, env_key="foris.session", ws_key="foris.ws.session"):
         self.timeout = timeout
         self.env_key = env_key
         self.ws_key = ws_key
