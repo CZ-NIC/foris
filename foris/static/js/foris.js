@@ -166,11 +166,11 @@ Foris.initWebsockets = function() {
   var port = window.location.protocol == "http:" ? "9080" : "9443";
   var url = protocol + "//" + window.location.hostname + ":" + port + "/";
 
-  // Connect to ubus-ws
+  // Connect to foris-ws
   ws = new WebSocket(url);
 
   ws.onopen = function () {
-    var output = JSON.stringify({"action": "register", "params": {"kinds": Object.keys(Foris.WS)}});
+    var output = JSON.stringify({"action": "subscribe", "params": Object.keys(Foris.WS)});
     ws.send(output);
     console.log("WS registering for: " + Object.keys(Foris.WS));
   };
