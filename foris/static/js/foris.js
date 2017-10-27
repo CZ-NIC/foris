@@ -178,10 +178,8 @@ Foris.initWebsockets = function() {
   ws.onmessage = function (e) {
     console.log("WS message received: " + e.data);
     var parsed = JSON.parse(e.data);
-    for (var key in parsed) {
-      if (Foris.WS.hasOwnProperty(key)) {
-        Foris.WS[key](parsed[key]);
-      }
+    if (Foris.WS.hasOwnProperty(parsed["module"])) {
+      Foris.WS[parsed["module"]](parsed);
     }
   };
 
