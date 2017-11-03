@@ -65,8 +65,8 @@ class DNSHandler(BaseConfigHandler):
             dns_main.add_field(
                 Textbox, name="dhcp_dns_domain", label=_("Domain of DHCP clients in DNS"),
                 hint=_(
-                    "This domain will be used as TLD. E.g. The result for client \"android-123\" "
-                    "and domain \"lan\" will be \"android-123.lan\"."
+                    "This domain will be used as prefix. E.g. The result for client \"android-123\" "
+                    "and domain \"my.lan\" will be \"android-123.my.lan\"."
                 ),
                 nuci_path="uci.dhcp.@dnsmasq[0].local",
                 nuci_preproc=lambda val: val.value.strip("/") if val else "lan", default="lan",

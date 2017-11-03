@@ -214,8 +214,8 @@ class Domain(Validator):
 
     def __init__(self):
         super(Domain, self).__init__(_("This is not a valid domain name."))
-        self.extra_data['parsley-validation-maxlength'] = '63'
-        self.reg_exp = re.compile(r"^(?![0-9]+$)(?!-)[a-zA-Z0-9-]{,63}(?<!-)$")
+        self.extra_data['parsley-validation-maxlength'] = '255'
+        self.reg_exp = re.compile(r"^([a-zA-Z0-9-]{1,63}\.?)*$")
 
     def valid(self, value):
         return bool(self.reg_exp.match(value or ""))
