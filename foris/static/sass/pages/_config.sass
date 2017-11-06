@@ -94,7 +94,7 @@
     th
       font-weight: bold
 
-  .test-success, .test-fail
+  .test-success, .test-fail, .test-loading
     font-weight: bold
     padding-left: 24px
 
@@ -108,6 +108,11 @@
     background: inline-image('../.inline-assets/icon-fail.png') no-repeat left 50%
     border-color: $error-color
     color: $error-color
+
+  .test-loading
+    background: inline-image('../.inline-assets/icon-refresh.png') no-repeat left 50%
+    border-color: $loading-color
+    color: $loading-color
 
 #connectivity-retest
   @extend .button

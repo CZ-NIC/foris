@@ -128,12 +128,11 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     template = "config/dns"
 
     def _action_check_connection(self):
-        return client.check_connection().check_results
+        return current_state.backend_instance.send("dns", "connection_test_trigger", {})
 
     def call_ajax_action(self, action):
         if action == "check-connection":
-            check_results = self._action_check_connection()
-            return dict(success=check_results is not None, check_results=check_results)
+            return self._action_check_connection()
         raise ValueError("Unknown AJAX action.")
 
 

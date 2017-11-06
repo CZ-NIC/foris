@@ -44,42 +44,63 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>{{ trans("IPv4 connectivity") }}</td><td class="result" data-result-type="IPv4-connectivity">???</td></tr>
-            <tr><td>{{ trans("IPv4 gateway connectivity") }}</td><td class="result" data-result-type="IPv4-gateway">???</td></tr>
-            <tr><td>{{ trans("IPv6 connectivity") }}</td><td class="result" data-result-type="IPv6-connectivity">???</td></tr>
-            <tr><td>{{ trans("IPv6 gateway connectivity") }}</td><td class="result" data-result-type="IPv6-gateway">???</td></tr>
-            <tr><td>{{ trans("DNS") }}</td><td class="result" data-result-type="DNS">???</td></tr>
-            <tr><td>{{ trans("DNSSEC") }}</td><td class="result" data-result-type="DNSSEC">???</td></tr>
+            <tr><td>{{ trans("IPv4 connectivity") }}</td><td class="result" data-result-type="ipv4-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv4 gateway connectivity") }}</td><td class="result" data-result-type="ipv4_gateway-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv6 connectivity") }}</td><td class="result" data-result-type="ipv6-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv6 gateway connectivity") }}</td><td class="result" data-result-type="ipv6_gateway-conn-test">???</td></tr>
+            <tr><td>{{ trans("DNS") }}</td><td class="result" data-result-type="dns-conn-test">???</td></tr>
+            <tr><td>{{ trans("DNSSEC") }}</td><td class="result" data-result-type="dnssec-conn-test">???</td></tr>
         </tbody>
     </table>
     <a href="#" id="test-connection" class="button">{{ trans("Test connection") }}</a>
 </div>
 <script>
+    Foris.watched_test = null;
+    var update_conn_test_field = function(key, result) {
+        var field = key + "-conn-test";
+        var resultBox = $("#test-results").find(".result[data-result-type=" + field + "]");
+        if (result) {
+            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").text(Foris.messages.ok);
+        } else {
+            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
+        }
+    }
+    Foris.WS["dns"] = function(msg) {
+        switch(msg["action"]) {
+            case "connection_test":
+                if (msg["data"]["test_id"] != Foris.watched_test) {
+                    break;
+                }
+                for (var key in msg["data"]["data"]) {
+                    update_conn_test_field(key, msg["data"]["data"][key]);
+                }
+                break;
+            case "connection_test_finished":
+                if (msg["data"]["test_id"] != Foris.watched_test) {
+                    break;
+                }
+                if (!msg["data"]["passed"]) {
+                    break;
+                }
+                for (var key in msg["data"]["data"]) {
+                    update_conn_test_field(key, msg["data"]["data"][key]);
+                }
+                Foris.watched_test = null;
+                $("#test-connection").show();
+                break;
+        }
+    }
     $(document).ready(function() {
         $("#test-connection").click(function(e) {
             $("#connection-test-fail").hide();
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            self.after('<img src="{{ static("img/icon-loading.gif") }}" id="connection-test-loader" alt="' + Foris.messages.loading + '">');
             $.get('{{ url("config_ajax", page_name="dns") }}', {action: "check-connection"})
                     .done(function(response) {
-                        if (response.success) {
-                            for (var key in response.check_results) {
-                              if (response.check_results.hasOwnProperty(key)) {
-                                var resultBox = $("#test-results").find(".result[data-result-type=" + key + "]");
-                                if (resultBox) {
-                                    if (response.check_results[key])
-                                        resultBox.removeClass("test-fail").addClass("test-success").text(Foris.messages.ok);
-                                    else
-                                        resultBox.removeClass("test-success").addClass("test-fail").text(Foris.messages.error);
-                                }
-                              }
-                            }
-                        }
-                        else {
-                          $("#connection-test-fail").show();
-                        }
+                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
+                        $("#test-connection").hide();
+                        Foris.watched_test = response["test_id"];
                     })
                     .fail(function(xhr) {
                         if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
@@ -89,7 +110,6 @@
                         $("#connection-test-fail").show();
                     })
                     .always(function() {
-                        $("#connection-test-loader").remove();
                         self.removeAttr("disabled");
                     });
         });
