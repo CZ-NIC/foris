@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-16 08:43+0200\n"
-"PO-Revision-Date: 2017-06-30 19:42+0000\n"
-"Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
+"PO-Revision-Date: 2017-09-22 08:04+0000\n"
+"Last-Translator: Remy van Velthuijsen <remy@remysplace.de>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 2.17-dev\n"
 
 msgid "This field is required."
 msgstr "Dit is een verplicht veld."
@@ -221,20 +221,24 @@ msgid "Disable DNSSEC"
 msgstr "DNSSEC uitschakelen"
 
 msgid "Enable DHCP clients in DNS"
-msgstr ""
+msgstr "DHCP client opnemen in DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
+"Door deze functie in te schakelen zal de DNS resolver de DHCP client namen "
+"opnamen in de lokale DNS records."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgstr "Domein van DHCP clients in DNS"
 
 msgid ""
 "This domain will be used as TLD. E.g. The result for client \"android-123\" "
 "and domain \"lan\" will be \"android-123.lan\"."
 msgstr ""
+"Dit domein wordt gebruikt als TLD. Bv. het resultaat voor client \"android-"
+"123\" en domein \"lan\" wordt \"android-123.lan\"."
 
 msgid "Enable data collection"
 msgstr "Het verzamelen van gegevens inschakelen"
@@ -488,6 +492,8 @@ msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
 "to server in addition to the IP address of the client."
 msgstr ""
+"Als deze optie in inschakelt zullen gebruikersnamen, wachtwoorden en IP-"
+"adressen verzameld worden en verzonden naar de server."
 
 msgid "WAN"
 msgstr "WAN"
@@ -619,6 +625,7 @@ msgid ""
 "Useful in cases, when a specific MAC address is required by your internet "
 "service provider."
 msgstr ""
+"Handig als uw internet service provider een specifiek MAC-adres vereist."
 
 msgid "MAC address"
 msgstr "MAC-adres"
@@ -647,6 +654,7 @@ msgstr "Automatische updates"
 
 msgid "Updates will be installed without user's intervention."
 msgstr ""
+"Updates zullen geïnstalleerd worden zonder tussenkomst van de gebruiker."
 
 #, fuzzy
 msgid "Delayed updates"
@@ -662,7 +670,7 @@ msgid "Update approval needed"
 msgstr "Geen goedkeuring nodig"
 
 msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr ""
+msgstr "Je moet de updates goedkeuren, anders worden deze niet geïnstalleerd."
 
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
@@ -709,9 +717,11 @@ msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
+"Schakel deze optie in om apparaten die verbonden zijn met deze router "
+"automatisch IP-adressen toe te kennen."
 
 msgid "DHCP start"
-msgstr ""
+msgstr "DHCP start"
 
 msgid "DHCP max leases"
 msgstr "DHCP max. aantal leases"
@@ -746,16 +756,16 @@ msgid ""
 msgstr ""
 
 msgid "Download (kb/s)"
-msgstr ""
+msgstr "Download (kbps)"
 
 msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Download snelheid in gast netwerk (in kilobits per seconde)."
 
 msgid "Upload (kb/s)"
-msgstr ""
+msgstr "Upload (kbps)"
 
 msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Upload snelheid in gast netwerk (in kilobits per seconde)."
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -770,7 +780,7 @@ msgstr ""
 
 #, python-format
 msgid "Enable Wi-Fi %s"
-msgstr ""
+msgstr "Activeer Wi-Fi %s"
 
 msgid "SSID"
 msgstr "SSID"
@@ -832,7 +842,7 @@ msgid "Set guest Wi-Fi here."
 msgstr ""
 
 msgid "Enable guest Wi-Fi"
-msgstr ""
+msgstr "Activeer gast Wi-Fi"
 
 #, python-format
 msgid ""
