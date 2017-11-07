@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-16 08:43+0200\n"
+"POT-Creation-Date: 2017-11-07 16:27+0100\n"
 "PO-Revision-Date: 2017-06-28 08:16+0000\n"
 "Last-Translator: Henrik Kramshoej <hlk@kramse.org>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/turris/foris/da/"
@@ -18,48 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.15-dev\n"
-
-msgid "This field is required."
-msgstr "Dette felt skal udfyldes."
-
-msgid "Not a valid IPv4 address."
-msgstr "Ikke en gyldig IPv4 adresse."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Ikke en gyldig IPv4 netmaske."
-
-msgid "Not a valid IPv6 address."
-msgstr "Ikke en gyldig IPv6 adresse."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Det er ikke en gyldig IPv4 eller IPv6 adresse."
-
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Det er ikke en IPv6 adresse med præfikslængde."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Det er ikke en IPv4 adresse med præfiks længde."
-
-msgid "Is not a number."
-msgstr "Er ikke et nummer."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Dette er ikke gyldigt timeformat i TT:MM."
-
-#, fuzzy
-msgid "This is not a valid domain name."
-msgstr "Dette er ikke en gyldig MAC-adresse."
-
-msgid "MAC address is not valid."
-msgstr "MAC adressen er ikke gyldig."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Ikke i et gyldigt interval %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Længden skal være mellem %(low)s og %(high)s tegn."
 
 msgid "Configuration was successfully saved."
 msgstr "Konfigurationen er blevet gemt."
@@ -149,9 +107,9 @@ msgstr ""
 msgid "Data collection"
 msgstr "Dataindsamling"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
 "Der opstod en fejl under check af registreringen: <br><pre>%(response)s</pre>"
 
@@ -193,15 +151,6 @@ msgstr "Online"
 msgid "Offline"
 msgstr "Offline"
 
-msgid "Connecting"
-msgstr "Forbinder"
-
-msgid "Invalid authentication"
-msgstr "Ugyldig autentikering"
-
-msgid "Broken"
-msgstr "Afbrudt"
-
 msgid "Unknown status"
 msgstr "Ukendt status"
 
@@ -210,6 +159,48 @@ msgstr "Startside"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Konfigurationen kunne ikke gemmes på grund af en intern fejl."
+
+msgid "This field is required."
+msgstr "Dette felt skal udfyldes."
+
+msgid "Not a valid IPv4 address."
+msgstr "Ikke en gyldig IPv4 adresse."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Ikke en gyldig IPv4 netmaske."
+
+msgid "Not a valid IPv6 address."
+msgstr "Ikke en gyldig IPv6 adresse."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Det er ikke en gyldig IPv4 eller IPv6 adresse."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Det er ikke en IPv6 adresse med præfikslængde."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Det er ikke en IPv4 adresse med præfiks længde."
+
+msgid "Is not a number."
+msgstr "Er ikke et nummer."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Dette er ikke gyldigt timeformat i TT:MM."
+
+#, fuzzy
+msgid "This is not a valid domain name."
+msgstr "Dette er ikke en gyldig MAC-adresse."
+
+msgid "MAC address is not valid."
+msgstr "MAC adressen er ikke gyldig."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Ikke i et gyldigt interval %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Længden skal være mellem %(low)s og %(high)s tegn."
 
 msgid "DNS"
 msgstr "DNS"
@@ -232,15 +223,9 @@ msgid "Domain of DHCP clients in DNS"
 msgstr ""
 
 msgid ""
-"This domain will be used as TLD. E.g. The result for client \"android-123\" "
-"and domain \"lan\" will be \"android-123.lan\"."
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-
-msgid "Enable data collection"
-msgstr "Aktivér dataindsamling"
-
-msgid "Backup file"
-msgstr "Sikkerhedskopier fil"
 
 msgid "Notifications"
 msgstr "Meddelelser"
@@ -318,7 +303,8 @@ msgstr "SMTP indstillinger"
 msgid "Sender address (From)"
 msgstr "Afsender adresse (From)"
 
-msgid "This is the address notifications are sent from."
+#, fuzzy
+msgid "This is the address notifications are send from."
 msgstr "Dette er adressen som meddelelser sendes fra."
 
 msgid "Server address"
@@ -363,6 +349,67 @@ msgstr "Tidspunkt for genstart"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Tid på dagen for automatisk genstart i TT:MM format."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulerede services"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"En af uCollects funktioner er at emulere nogle ofte misbrugte tjenester. "
+"Hvis denne funktion er aktiveret, vil uCollect lytte til indkommende "
+"forbindelsesforsøg til disse tjenester. Aktivering af de emulerede tjenester "
+"har ingen effekt hvis en anden tjeneste allerede lytter på standardporten "
+"(port numre er vist nedenfor)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternativ port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Indsamling af loginoplysninger"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Hvis denne er aktiveret, vil brugernavne og kodeord bliver indsamlet og "
+"sendt til serveren sammen med IP-adressen for klienten."
+
+msgid "Enable data collection"
+msgstr "Aktivér dataindsamling"
+
+msgid "Email"
+msgstr "Email"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Fejl under godkendelse af opdateringen."
+
+#, fuzzy
+msgid "Failed to verify the router's registration."
+msgstr "Ikke i stand til at kontrollere netværksforbindelsen."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -421,9 +468,6 @@ msgstr "Land"
 msgid "Timezone"
 msgstr "Tidszone"
 
-msgid "Email"
-msgstr "Email"
-
 msgid "Advanced administration"
 msgstr "Avanceret administration"
 
@@ -453,201 +497,8 @@ msgstr ""
 "tid for at kunne fungere korrekt. Venligst, synkroniser den med din "
 "computers tid, eller sæt den manuelt."
 
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Emulerede services"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"En af uCollects funktioner er at emulere nogle ofte misbrugte tjenester. "
-"Hvis denne funktion er aktiveret, vil uCollect lytte til indkommende "
-"forbindelsesforsøg til disse tjenester. Aktivering af de emulerede tjenester "
-"har ingen effekt hvis en anden tjeneste allerede lytter på standardporten "
-"(port numre er vist nedenfor)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - alternativ port (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Indsamling af loginoplysninger"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Hvis denne er aktiveret, vil brugernavne og kodeord bliver indsamlet og "
-"sendt til serveren sammen med IP-adressen for klienten."
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Her kan du angive dine WAN indstillinger. Ofte kan du lade denne være urørt "
-"undtagen hvis du har fået andre instruktioner fra din internetudbyder. Hvis "
-"der er et kabel eller DSL model der forbinder din router to netværket, er "
-"det typisk ikke nødvendigt at ændre denne indstlling."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatisk konfiguration)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statisk IP konfiguration (manuel indstilling)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (for DSL bridge, Turris Modem, etc.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatisk konfiguration)"
-
-msgid "Disable IPv6"
-msgstr "Deaktiver IPv6"
-
-msgid "IPv4 protocol"
-msgstr "IPv4 protokollen"
-
-msgid "IP address"
-msgstr "IP-adresse"
-
-msgid "Network mask"
-msgstr "Netværksmaske"
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "DNS server 1"
-msgstr "DNS server 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"DNS serveradressen er ikke krævet da den indbyggede DNS resolver kan fungere "
-"uden denne."
-
-msgid "DNS server 2"
-msgstr "DNS server 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP brugernavn"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP kodeord"
-
-msgid "IPv6 protocol"
-msgstr "IPv6 protokollen"
-
-msgid "IPv6 address"
-msgstr "IPv6-adresse"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"IPv6-adresse og præfiks længde for WAN interface, eks. 2001:db8:"
-"be13:37da::1/64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6 gateway"
-
-msgid "IPv6 prefix"
-msgstr "IPv6 præfiks"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Addresser for det lokale netværk, eks. 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Brug Turris Modem"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), et simpel ADSL/VDSL "
-"modem designet specielt til Turris router. Aktiver denne mulighed hvis du "
-"har Turris Modem forbundet til din router."
-
-msgid "xDSL VLAN number"
-msgstr "xDSL VLAN id"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"VLAN id for dine internetforbindelse. Din ISP har måske givet dig et sådant. "
-"Hvis du har VPI og VCI id istedet, så lad dette felt være tomt, en "
-"standardværdi vil blive brugt automatisk."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr "Både VPI og VCI skal være udfyldt, eller begge skal være tomme."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtual Path Identifier (VPI) er en parameter som du måske har modtaget fra "
-"din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du skal "
-"udfylde både VPI og VCI sammen."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtual Circuit Identifier (VCI) er en parameter som du måske har modtaget "
-"fra din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du "
-"skal udfylde både VPI og VCI sammen."
-
-msgid "Custom MAC address"
-msgstr "Selvvalgt MAC adresse"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Bruges i de tilfælde hvor en specifik MAC adresse kræves af din "
-"internetudbyder."
-
-msgid "MAC address"
-msgstr "MAC adresse"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Adskilles a kolon, eksempelvis 00:11:22:33:44:55"
+msgid "Backup file"
+msgstr "Sikkerhedskopier fil"
 
 msgid "Updater"
 msgstr "Opdateringsfunktion"
@@ -933,27 +784,167 @@ msgstr ""
 msgid "Wi-Fi settings"
 msgstr "Wi-Fi indstillinger"
 
-msgid "The password you entered was not valid."
-msgstr "Kodeordet du har indtastet er ikke gyldigt."
+msgid "WAN"
+msgstr "WAN"
 
-msgid "News"
-msgstr "Nyheder"
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Her kan du angive dine WAN indstillinger. Ofte kan du lade denne være urørt "
+"undtagen hvis du har fået andre instruktioner fra din internetudbyder. Hvis "
+"der er et kabel eller DSL model der forbinder din router to netværket, er "
+"det typisk ikke nødvendigt at ændre denne indstlling."
 
-msgid "Update"
-msgstr "Opdater"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatisk konfiguration)"
 
-msgid "Error"
-msgstr "Fejl"
+msgid "Static IP address (manual configuration)"
+msgstr "Statisk IP konfiguration (manuel indstilling)"
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Y/%m/%d %H:%M:%S"
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (for DSL bridge, Turris Modem, etc.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatisk konfiguration)"
+
+msgid "Disable IPv6"
+msgstr "Deaktiver IPv6"
+
+msgid "IPv4 protocol"
+msgstr "IPv4 protokollen"
+
+msgid "IP address"
+msgstr "IP-adresse"
+
+msgid "Network mask"
+msgstr "Netværksmaske"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "DNS server 1"
+msgstr "DNS server 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"DNS serveradressen er ikke krævet da den indbyggede DNS resolver kan fungere "
+"uden denne."
+
+msgid "DNS server 2"
+msgstr "DNS server 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP brugernavn"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP kodeord"
+
+msgid "IPv6 protocol"
+msgstr "IPv6 protokollen"
+
+msgid "IPv6 address"
+msgstr "IPv6-adresse"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"IPv6-adresse og præfiks længde for WAN interface, eks. 2001:db8:"
+"be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6 gateway"
+
+msgid "IPv6 prefix"
+msgstr "IPv6 præfiks"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Addresser for det lokale netværk, eks. 2001:db8:be13:37da::/64"
+
+msgid "Use Modem Turris"
+msgstr "Brug Turris Modem"
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), et simpel ADSL/VDSL "
+"modem designet specielt til Turris router. Aktiver denne mulighed hvis du "
+"har Turris Modem forbundet til din router."
+
+msgid "xDSL VLAN number"
+msgstr "xDSL VLAN id"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"VLAN id for dine internetforbindelse. Din ISP har måske givet dig et sådant. "
+"Hvis du har VPI og VCI id istedet, så lad dette felt være tomt, en "
+"standardværdi vil blive brugt automatisk."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr "Både VPI og VCI skal være udfyldt, eller begge skal være tomme."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Path Identifier (VPI) er en parameter som du måske har modtaget fra "
+"din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du skal "
+"udfylde både VPI og VCI sammen."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Circuit Identifier (VCI) er en parameter som du måske har modtaget "
+"fra din ISP. Hvis du har et VLAN id istedet, lad dette felt være tomt. Du "
+"skal udfylde både VPI og VCI sammen."
+
+msgid "Custom MAC address"
+msgstr "Selvvalgt MAC adresse"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Bruges i de tilfælde hvor en specifik MAC adresse kræves af din "
+"internetudbyder."
+
+msgid "MAC address"
+msgstr "MAC adresse"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Adskilles a kolon, eksempelvis 00:11:22:33:44:55"
 
 #, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s fra %(created_at)s"
+msgid "Configuration wizard - step %s"
+msgstr "Konfigurationsguiden trin %s"
 
-msgid "Notification"
-msgstr "Meddelelser"
+msgid "Connectivity test"
+msgstr "Forbindelsestest"
+
+msgid "Automatic updates"
+msgstr "Automatiske opdateringer"
+
+msgid "Installation finished"
+msgstr "Installation færdig"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1457,6 +1448,9 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+msgid "Error"
+msgstr "Fejl"
+
 msgid "Loading..."
 msgstr "Indlæser..."
 
@@ -1683,9 +1677,6 @@ msgstr ""
 msgid "Begin installation"
 msgstr "Start installation"
 
-msgid "Installation finished"
-msgstr "Installation færdig"
-
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr "Du har valgt at deaktivere opdateringsfunktionen under installationen."
@@ -1799,16 +1790,18 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "De vigtigste punkter fra licensaftalen:"
 
+#, fuzzy
 msgid ""
-"Automatic updates are offered to the Turris Omnia owners free of charge."
+"Automatic updates are offered to the Turris router owners free of charge."
 msgstr "Automatiske opdateringer tilbydes til Turris Omnia ejere gratis."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Opdateringer er udelukkende udarbejdet af CZ.NIC, z. s. p. o."
 
+#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
+"features of Turris router."
 msgstr ""
 "Aktivering af automatiske opdateringer er en forudsætning for yderligere "
 "sikkerhedsfunktioner for Turris Omnia."
@@ -1846,10 +1839,11 @@ msgstr ""
 "er ikke ansvarlig for eventuelle skader forårsaget af de automatiske "
 "opdateringer."
 
+#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Ved aktivering af de automatiske opdateringer, bekræfter du at du er ejeren "
 "af denne Turris Omnia router og du er enig med den fulde ordlyd af <a href="
@@ -1874,18 +1868,36 @@ msgid "Unable to retrieve notifications, please try refreshing the page."
 msgstr ""
 "Ude af stand til at hente meddelelser, prøv venligst at opdatere siden."
 
+msgid "News"
+msgstr "Nyheder"
+
+msgid "Update"
+msgstr "Opdater"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y/%m/%d %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s fra %(created_at)s"
+
+msgid "Notification"
+msgstr "Meddelelser"
+
 msgid "You have been logged out due to longer inactivity."
 msgstr "Du er blevet logget ud, på grund af længere inaktivitet."
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Konfigurationsguiden trin %s"
+msgid "The password you entered was not valid."
+msgstr "Kodeordet du har indtastet er ikke gyldigt."
 
-msgid "Connectivity test"
-msgstr "Forbindelsestest"
+#~ msgid "Connecting"
+#~ msgstr "Forbinder"
 
-msgid "Automatic updates"
-msgstr "Automatiske opdateringer"
+#~ msgid "Invalid authentication"
+#~ msgstr "Ugyldig autentikering"
+
+#~ msgid "Broken"
+#~ msgstr "Afbrudt"
 
 #~ msgid "Updates will be performed immediatelly without a user confirmation."
 #~ msgstr "Opdateringer vil blive udført straks uden brugerbekræftelse."

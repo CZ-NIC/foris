@@ -7,58 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-16 08:43+0200\n"
+"POT-Creation-Date: 2017-11-07 16:27+0100\n"
 "PO-Revision-Date: 2017-09-29 19:02+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
-"Language-Team: Hungarian "
-"<https://hosted.weblate.org/projects/turris/foris/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
+"hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.17-dev\n"
-
-msgid "This field is required."
-msgstr "Ez a mező kötelező."
-
-msgid "Not a valid IPv4 address."
-msgstr "Érvénytelen IPv4-cím."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Érvénytelen IPv4 hálózati maszkcím."
-
-msgid "Not a valid IPv6 address."
-msgstr "Érvénytelen IPv6-cím."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Érvénytelen IPv4- vagy IPv6-cím."
-
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Nem egy adott méretű előtaggal rendelkező IPv6-cím."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Nem egy adott méretű előtaggal rendelkező IPv4-cím."
-
-msgid "Is not a number."
-msgstr "Nem szám."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Nem szabályos ÓÓ:PP időformátum."
-
-msgid "This is not a valid domain name."
-msgstr "Nem érvényes tartománynév."
-
-msgid "MAC address is not valid."
-msgstr "Érvénytelen MAC-cím."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Érvénytelen tartomány %(low)s-%(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "A karakterhossznak a %(low)s-%(high)s tartományban kell lennie."
 
 msgid "Configuration was successfully saved."
 msgstr "Beállítás mentése sikerült."
@@ -105,8 +64,8 @@ msgid ""
 "automatically restarts."
 msgstr ""
 "Beállítás sikeresen visszaállítva. Frissítések telepítése és a router "
-"újraindítása után visszatérhet erre az oldalra: <a href=\"%(new_url)s\""
-">%(new_url)s</a>, a helyi hálózaton. Várjon egy ideig, amíg a router "
+"újraindítása után visszatérhet erre az oldalra: <a href=\"%(new_url)s\">"
+"%(new_url)s</a>, a helyi hálózaton. Várjon egy ideig, amíg a router "
 "automatikusan újraindul."
 
 msgid ""
@@ -149,10 +108,11 @@ msgstr ""
 msgid "Data collection"
 msgstr "Adatgyűjtés"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
-msgstr "Hiba történt a regisztráció ellenőrzésekor: <br><pre>%(response)s</pre>"
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
+msgstr ""
+"Hiba történt a regisztráció ellenőrzésekor: <br><pre>%(response)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -179,8 +139,8 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
-"Ezt az e-mail címet még nem regisztrálták. Kérjük,  menjen a <a href=\"%(url)"
-"s\">Turris honlapjára</a>, majd használja a regisztrációs kódot a "
+"Ezt az e-mail címet még nem regisztrálták. Kérjük,  menjen a <a href="
+"\"%(url)s\">Turris honlapjára</a>, majd használja a regisztrációs kódot a "
 "<strong>%(reg_num)s</strong>, hogy létrehozzon egy új fiókot."
 
 msgid "About"
@@ -192,15 +152,6 @@ msgstr "Online"
 msgid "Offline"
 msgstr "Offline"
 
-msgid "Connecting"
-msgstr "Csatlakozás"
-
-msgid "Invalid authentication"
-msgstr "Érvénytelen hitelesítés"
-
-msgid "Broken"
-msgstr "Törött"
-
 msgid "Unknown status"
 msgstr "Ismeretlen állapot"
 
@@ -209,6 +160,47 @@ msgstr "Kezdőlap"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Beállítás belső hiba miatt nem menthető."
+
+msgid "This field is required."
+msgstr "Ez a mező kötelező."
+
+msgid "Not a valid IPv4 address."
+msgstr "Érvénytelen IPv4-cím."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Érvénytelen IPv4 hálózati maszkcím."
+
+msgid "Not a valid IPv6 address."
+msgstr "Érvénytelen IPv6-cím."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Érvénytelen IPv4- vagy IPv6-cím."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Nem egy adott méretű előtaggal rendelkező IPv6-cím."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Nem egy adott méretű előtaggal rendelkező IPv4-cím."
+
+msgid "Is not a number."
+msgstr "Nem szám."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Nem szabályos ÓÓ:PP időformátum."
+
+msgid "This is not a valid domain name."
+msgstr "Nem érvényes tartománynév."
+
+msgid "MAC address is not valid."
+msgstr "Érvénytelen MAC-cím."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Érvénytelen tartomány %(low)s-%(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "A karakterhossznak a %(low)s-%(high)s tartományban kell lennie."
 
 msgid "DNS"
 msgstr "DNS"
@@ -232,19 +224,14 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "DHCP-ügyfelek tartományneve a DNS-ben"
 
+#, fuzzy
 msgid ""
-"This domain will be used as TLD. E.g. The result for client \"android-123\" "
-"and domain \"lan\" will be \"android-123.lan\"."
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Tartománynév mint TLD (legfelső szintű tartománynév)  lesz használva, pl. az "
-"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: \""
-"android-123.lan\"."
-
-msgid "Enable data collection"
-msgstr "Adatgyűjtés engedélyezése"
-
-msgid "Backup file"
-msgstr "Biztonsági mentés"
+"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: "
+"\"android-123.lan\"."
 
 msgid "Notifications"
 msgstr "Értesítések"
@@ -320,7 +307,8 @@ msgstr "SMTP-beállítások"
 msgid "Sender address (From)"
 msgstr "Feladó címe (-tól)"
 
-msgid "This is the address notifications are sent from."
+#, fuzzy
+msgid "This is the address notifications are send from."
 msgstr "Ez az a cím, ahonnan a rendszer értesítéseket küld."
 
 msgid "Server address"
@@ -365,6 +353,67 @@ msgstr "Újraindítás ideje"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Automatikus újraindulás ideje ÓÓ:PP formátumban."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulált szolgáltatások"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"A uCollect egyik jellemzője, hogy néhány gyakran támadott szolgáltatást "
+"emuláljon. Ha ez a funkció engedélyezve van, uCollect figyeli a bejövő "
+"kapcsolódási kísérleteket ezekhez a szolgáltatásokhoz. Az emulált "
+"szolgáltatások engedélyezésének nincs hatása, ha egy másik szolgáltatás már "
+"figyel az alapértelmezett portján (a port számok alább vannak felsorolva)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternatív port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Hitelesítési adatok begyűjtése"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Ha ez a beállítás engedélyezve van, a felhasználóneveket és jelszavakat "
+"gyűjtik és az ügyfél IP-címe mellett ezeket is a kiszolgálóhoz küldik."
+
+msgid "Enable data collection"
+msgstr "Adatgyűjtés engedélyezése"
+
+msgid "Email"
+msgstr "E-mail"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Frissítés jóváhagyása sikertelen."
+
+#, fuzzy
+msgid "Failed to verify the router's registration."
+msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -423,9 +472,6 @@ msgstr "Ország"
 msgid "Timezone"
 msgstr "Időzóna"
 
-msgid "Email"
-msgstr "E-mail"
-
 msgid "Advanced administration"
 msgstr "Haladó felügyelet"
 
@@ -455,201 +501,8 @@ msgstr ""
 "működéséhez. Az idő szinkronizálása számítógéppel is lehetséges, vagy "
 "manuálisan is beállítható."
 
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Emulált szolgáltatások"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"A uCollect egyik jellemzője, hogy néhány gyakran támadott szolgáltatást "
-"emuláljon. Ha ez a funkció engedélyezve van, uCollect figyeli a bejövő "
-"kapcsolódási kísérleteket ezekhez a szolgáltatásokhoz. Az emulált "
-"szolgáltatások engedélyezésének nincs hatása, ha egy másik szolgáltatás már "
-"figyel az alapértelmezett portján (a port számok alább vannak felsorolva)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - alternatív port (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Hitelesítési adatok begyűjtése"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Ha ez a beállítás engedélyezve van, a felhasználóneveket és jelszavakat "
-"gyűjtik és az ügyfél IP-címe mellett ezeket is a kiszolgálóhoz küldik."
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Itt adhatja meg a WAN port beállításait. Általában érintetlenül hagyhatja "
-"ezt a lehetőséget, hacsak az internet-szolgáltató nem utasít másra. Ha kábel-"
-" vagy DSL-modem csatlakoztatja routert a hálózathoz, általában akkor sem "
-"kell változtatni ezen a beállításon."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatikus beállítás)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statikus IP-cím (manuális beállítás)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (DSL hidakhoz, Turris Modemhez, stb.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatikus beállítás)"
-
-msgid "Disable IPv6"
-msgstr "IPv6 letiltása"
-
-msgid "IPv4 protocol"
-msgstr "IPv4 protokoll"
-
-msgid "IP address"
-msgstr "IP-cím"
-
-msgid "Network mask"
-msgstr "Hálózati maszk"
-
-msgid "Gateway"
-msgstr "Átjáró"
-
-msgid "DNS server 1"
-msgstr "DNS-kiszolgáló 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"A DNS-kiszolgáló címe nem szükséges, mivel a beépített DNS névfeloldó képes "
-"dolgozni anélkül."
-
-msgid "DNS server 2"
-msgstr "DNS-kiszolgáló 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP felhasználónév"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP jelszó"
-
-msgid "IPv6 protocol"
-msgstr "IPv6 protokoll"
-
-msgid "IPv6 address"
-msgstr "IPv6-cím"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"IPv6-cím és előtag méret a WAN-interfészhez, pl. 2001:db8:be13:37da::1 / 64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6-átjáró"
-
-msgid "IPv6 prefix"
-msgstr "IPv6-előtag"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Címtartomány a helyi hálózaton, például a 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Turris Modem használata"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Modem Turris (aka SMRT - Kis Turris Router Modem), egy egyszerű ADSL/VDSL "
-"modem kifejezetten a Turris útválasztóhoz. Engedélyezd ezt az opciót, ha a "
-"Modem Turris csatlakozik a routerhez."
-
-msgid "xDSL VLAN number"
-msgstr "xDSL VLAN száma"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"Az internet-kapcsolat VLAN száma. Lehet, hogy az Internetszolgáltató adott "
-"ilyen számot. Ha ehelyett VPI és a VCI száma van, ezt a mezőt hagyjuk "
-"üresen, egy alapértelmezett érték lesz automatikusan használva."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
-"Mindkettőt (VPI, VCI) ki kell tölteni, vagy mindkettőnek üresnek kell lennie."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuális útvonal-azonosító (VPI) olyan paraméter, amelyet az "
-"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
-"üresen ezt a mezőt. A VPI-t és VCI-t együtt, egyszerre kell kitölteni."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuális áramkör-azonosító (VCI) olyan paraméter, amely az "
-"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
-"üresen ezt a mezőt. A VPI-t és a VCI együtt, egyszerre kell kitölteni."
-
-msgid "Custom MAC address"
-msgstr "Egyedi MAC-cím"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Hasznos olyan esetekben, amikor egy adott MAC-címet vár el az internet-"
-"szolgáltató."
-
-msgid "MAC address"
-msgstr "MAC-cím"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Elválasztó egy kettőspont, például 00:11:22:33:44:55"
+msgid "Backup file"
+msgstr "Biztonsági mentés"
 
 msgid "Updater"
 msgstr "Frissítéskezelő"
@@ -731,8 +584,8 @@ msgstr ""
 "<strong>azonnal</strong> történik meg. Ajánlott az összes LAN kábel ki- és "
 "bedugása a módosítások elfogadása után, hogy a frissítést érvényre "
 "juttassuk. A következő oldal nem töltődik be, amíg nem kap egy új IP-t a "
-"DHCP-től (ha a DHCP engedélyezve van), és szükség lehet <strong>az "
-"oldalt</strong> frissíteni a böngészőjében."
+"DHCP-től (ha a DHCP engedélyezve van), és szükség lehet <strong>az oldalt</"
+"strong> frissíteni a böngészőjében."
 
 msgid "Router IP address"
 msgstr "Útválasztó IP-címe"
@@ -929,27 +782,167 @@ msgstr ""
 msgid "Wi-Fi settings"
 msgstr "Wi-Fi beállítások"
 
-msgid "The password you entered was not valid."
-msgstr "A megadott jelszó érvénytelen."
+msgid "WAN"
+msgstr "WAN"
 
-msgid "News"
-msgstr "Hírek"
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Itt adhatja meg a WAN port beállításait. Általában érintetlenül hagyhatja "
+"ezt a lehetőséget, hacsak az internet-szolgáltató nem utasít másra. Ha "
+"kábel- vagy DSL-modem csatlakoztatja routert a hálózathoz, általában akkor "
+"sem kell változtatni ezen a beállításon."
 
-msgid "Update"
-msgstr "Frissítés"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatikus beállítás)"
 
-msgid "Error"
-msgstr "Hiba"
+msgid "Static IP address (manual configuration)"
+msgstr "Statikus IP-cím (manuális beállítás)"
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Y/%m/%d %H:%M:%S"
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (DSL hidakhoz, Turris Modemhez, stb.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatikus beállítás)"
+
+msgid "Disable IPv6"
+msgstr "IPv6 letiltása"
+
+msgid "IPv4 protocol"
+msgstr "IPv4 protokoll"
+
+msgid "IP address"
+msgstr "IP-cím"
+
+msgid "Network mask"
+msgstr "Hálózati maszk"
+
+msgid "Gateway"
+msgstr "Átjáró"
+
+msgid "DNS server 1"
+msgstr "DNS-kiszolgáló 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"A DNS-kiszolgáló címe nem szükséges, mivel a beépített DNS névfeloldó képes "
+"dolgozni anélkül."
+
+msgid "DNS server 2"
+msgstr "DNS-kiszolgáló 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP felhasználónév"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP jelszó"
+
+msgid "IPv6 protocol"
+msgstr "IPv6 protokoll"
+
+msgid "IPv6 address"
+msgstr "IPv6-cím"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"IPv6-cím és előtag méret a WAN-interfészhez, pl. 2001:db8:be13:37da::1 / 64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6-átjáró"
+
+msgid "IPv6 prefix"
+msgstr "IPv6-előtag"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Címtartomány a helyi hálózaton, például a 2001:db8:be13:37da::/64"
+
+msgid "Use Modem Turris"
+msgstr "Turris Modem használata"
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+"Modem Turris (aka SMRT - Kis Turris Router Modem), egy egyszerű ADSL/VDSL "
+"modem kifejezetten a Turris útválasztóhoz. Engedélyezd ezt az opciót, ha a "
+"Modem Turris csatlakozik a routerhez."
+
+msgid "xDSL VLAN number"
+msgstr "xDSL VLAN száma"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"Az internet-kapcsolat VLAN száma. Lehet, hogy az Internetszolgáltató adott "
+"ilyen számot. Ha ehelyett VPI és a VCI száma van, ezt a mezőt hagyjuk "
+"üresen, egy alapértelmezett érték lesz automatikusan használva."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr ""
+"Mindkettőt (VPI, VCI) ki kell tölteni, vagy mindkettőnek üresnek kell lennie."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtuális útvonal-azonosító (VPI) olyan paraméter, amelyet az "
+"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
+"üresen ezt a mezőt. A VPI-t és VCI-t együtt, egyszerre kell kitölteni."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtuális áramkör-azonosító (VCI) olyan paraméter, amely az "
+"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
+"üresen ezt a mezőt. A VPI-t és a VCI együtt, egyszerre kell kitölteni."
+
+msgid "Custom MAC address"
+msgstr "Egyedi MAC-cím"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Hasznos olyan esetekben, amikor egy adott MAC-címet vár el az internet-"
+"szolgáltató."
+
+msgid "MAC address"
+msgstr "MAC-cím"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Elválasztó egy kettőspont, például 00:11:22:33:44:55"
 
 #, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s a %(created_at)s-tól"
+msgid "Configuration wizard - step %s"
+msgstr "Beállításvarázsló - Lépés %s"
 
-msgid "Notification"
-msgstr "Értesítés"
+msgid "Connectivity test"
+msgstr "Csatlakozás ellenőrzése"
+
+msgid "Automatic updates"
+msgstr "Automatikus frissítések"
+
+msgid "Installation finished"
+msgstr "Telepítés kész"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1166,8 +1159,8 @@ msgid ""
 msgstr ""
 "Ha még nem regisztrálta a készüléket, kattintson az alábbi gombra, hogy "
 "szerezzen egy regisztrációs kódot. Ezt a kódot kell benyújtani, a Turris "
-"oldalán lévő felhasználói profilban, amely itt elérhető: <a href=\"%(url)s\""
-">%(url)s</a>."
+"oldalán lévő felhasználói profilban, amely itt elérhető: <a href=\"%(url)s\">"
+"%(url)s</a>."
 
 msgid "Registration code"
 msgstr "Regisztrációs kód"
@@ -1452,6 +1445,9 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+msgid "Error"
+msgstr "Hiba"
+
 msgid "Loading..."
 msgstr "Betöltés..."
 
@@ -1481,9 +1477,7 @@ msgstr ""
 "ez teszi lehetővé, hogy a készélékéhez megkapja az összes javasolt "
 "frissítést. A útválasztó rendszeres frissítése az egyetlen módja annak, hogy "
 "ismert, az otthoni útválasztó eszközt célzó fenyegetések ellen védettek "
-"legyünk. \\n"
-"\\n"
-"Mégis szeretné folytatni és védelem nélkül maradni?"
+"legyünk. \\n\\nMégis szeretné folytatni és védelem nélkül maradni?"
 
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication against "
@@ -1496,23 +1490,20 @@ msgstr ""
 "infrastruktúra elleni támadások ellen. Erősen javasoljuk, hogy tartsa a "
 "DNSSEC érvényesítést bekapcsolva, hacsak nem olyan hálózathoz kell "
 "csatlakoztatni az eszközt,  ahol a DNSSEC nem működik megfelelően.\\n"
-"\\n"
-"Mégis szeretné folytatni és védelem nélkül maradni?"
+"\\nMégis szeretné folytatni és védelem nélkül maradni?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Biztosan újra szeretné indítani az útválasztót?"
 
 msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr ""
-"\\n"
-"(%UNREAD%) olvasatlan üzenet törlődik."
+msgstr "\\n(%UNREAD%) olvasatlan üzenet törlődik."
 
 msgid ""
 "There are some unsaved changes in the notifications settings.\\nDo you want "
 "to discard them and test the notifications with the old settings?"
 msgstr ""
-"Van néhány nem mentett változás az értesítések beállításai között.\\n"
-"Eldobjuk őket és az értesítéseket a régi beállításokkal teszteljük?"
+"Van néhány nem mentett változás az értesítések beállításai között."
+"\\nEldobjuk őket és az értesítéseket a régi beállításokkal teszteljük?"
 
 msgid "Turris router administration interface"
 msgstr "Turris útválasztó adminisztrációs felület"
@@ -1681,9 +1672,6 @@ msgstr ""
 msgid "Begin installation"
 msgstr "A telepítés megkezdése"
 
-msgid "Installation finished"
-msgstr "Telepítés kész"
-
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr ""
@@ -1709,8 +1697,8 @@ msgid ""
 "You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
 "configuration page."
 msgstr ""
-"A frissítéskezelőt bármikor engedélyezheti a <a href=\"%(url)s\""
-">Frissítéskezelő</a> beállítási oldalán."
+"A frissítéskezelőt bármikor engedélyezheti a <a href=\"%(url)s"
+"\">Frissítéskezelő</a> beállítási oldalán."
 
 msgid ""
 "With Turris Omnia you can join the research project called <a href=\"https://"
@@ -1783,10 +1771,10 @@ msgid ""
 "might weaken the security of your router and network in case flaws in the "
 "software are found."
 msgstr ""
-"<strong>Erősen ajánlott</strong>, hogy ez a funkció "
-"<strong>bekapcsolva</strong> legyen. Ha úgy dönt, hogy kikapcsolja, tudjon "
-"róla, hogy ez gyengítheti az útválasztó és  hálózat biztonságát szoftverhiba "
-"kiderülése esetén."
+"<strong>Erősen ajánlott</strong>, hogy ez a funkció <strong>bekapcsolva</"
+"strong> legyen. Ha úgy dönt, hogy kikapcsolja, tudjon róla, hogy ez "
+"gyengítheti az útválasztó és  hálózat biztonságát szoftverhiba kiderülése "
+"esetén."
 
 msgid ""
 "By turning the automatic updates on, you agree to this feature's license "
@@ -1794,22 +1782,24 @@ msgid ""
 "\">here</a>."
 msgstr ""
 "Az automatikus frissítést bekapcsolásával, Ön elfogadja a funkció "
-"licencszerződését. Bővebb információ <a href=\"#\" id=\"toggle-eula\"> "
-"itt</a>."
+"licencszerződését. Bővebb információ <a href=\"#\" id=\"toggle-eula\"> itt</"
+"a>."
 
 msgid "Most important points from the license agreement:"
 msgstr "A licencszerződés legfontosabb pontjai:"
 
+#, fuzzy
 msgid ""
-"Automatic updates are offered to the Turris Omnia owners free of charge."
+"Automatic updates are offered to the Turris router owners free of charge."
 msgstr "Az automatikus frissítés a Turris Omnia tulajdonosoknak ingyenes."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "A frissítéseket kizárólag a CZ.NIC, z. ok. p. o. készíti."
 
+#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
+"features of Turris router."
 msgstr ""
 "Az automatikus frissítések engedélyezése előfeltétele a Turris Omnia további "
 "biztonsági funkcióinak."
@@ -1846,15 +1836,15 @@ msgstr ""
 "CZ.NIC, z. ok. p. o. nem garantálja a szolgáltatás elérhetőségét, nem "
 "felelős semmilyen kárért, amelyet az automatikus frissítés okozhat."
 
+#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Az automatikus frissítések engedélyezésével megerősíti, hogy Ön a "
-"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\""
-"https://www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes "
-"szövegével."
+"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes szövegével."
 
 msgid "Log in"
 msgstr "Bejelentkezés"
@@ -1875,15 +1865,33 @@ msgid "Unable to retrieve notifications, please try refreshing the page."
 msgstr ""
 "Nem tudja letölteni értesítéseket, kérem, próbálja meg frissíteni az oldalt."
 
+msgid "News"
+msgstr "Hírek"
+
+msgid "Update"
+msgstr "Frissítés"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y/%m/%d %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s a %(created_at)s-tól"
+
+msgid "Notification"
+msgstr "Értesítés"
+
 msgid "You have been logged out due to longer inactivity."
 msgstr "Kijelentkezett hosszabb inaktivitás miatt."
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Beállításvarázsló - Lépés %s"
+msgid "The password you entered was not valid."
+msgstr "A megadott jelszó érvénytelen."
 
-msgid "Connectivity test"
-msgstr "Csatlakozás ellenőrzése"
+#~ msgid "Connecting"
+#~ msgstr "Csatlakozás"
 
-msgid "Automatic updates"
-msgstr "Automatikus frissítések"
+#~ msgid "Invalid authentication"
+#~ msgstr "Érvénytelen hitelesítés"
+
+#~ msgid "Broken"
+#~ msgstr "Törött"

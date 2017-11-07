@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-16 08:43+0200\n"
+"POT-Creation-Date: 2017-11-07 16:27+0100\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/turris/foris/el/>\n"
@@ -17,50 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.15-dev\n"
-
-msgid "This field is required."
-msgstr "Αυτό το πεδίο απαιτείται."
-
-msgid "Not a valid IPv4 address."
-msgstr "Μη έγκυρη διεύθυνση IPv4."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Μη έγκυρη μάσκα δικτύου IPv4."
-
-msgid "Not a valid IPv6 address."
-msgstr "Μη έγκυρη διεύθυνση IPv6."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 ή IPv6."
-
-#, fuzzy
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv6 με μήκος προθέματος."
-
-#, fuzzy
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 με μήκος προθέματος."
-
-msgid "Is not a number."
-msgstr "Δεν είναι αριθμός."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Δεν είναι έγκυρος χρόνος με μορφή ΗΗ:ΜΜ."
-
-#, fuzzy
-msgid "This is not a valid domain name."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 ή IPv6."
-
-msgid "MAC address is not valid."
-msgstr "Η διεύθυνση MAC δεν είναι έγκυρη."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Εκτός έγκυρου εύρους %(low)s-%(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Το μήκος πρέπει να είναι από %(low)s έως %(high)s χαρακτήρες."
 
 msgid "Configuration was successfully saved."
 msgstr "Η διαμόρφωση αποθηκεύτηκε με επιτυχία."
@@ -154,9 +110,9 @@ msgstr ""
 msgid "Data collection"
 msgstr "Συλλογή στοιχείων"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
 "Παρουσιάστηκε σφάλμα κατά τον έλεγχο της εγγραφής: <br><pre>%(response)s</"
 "pre>"
@@ -194,16 +150,6 @@ msgstr "Σε σύνδεση"
 msgid "Offline"
 msgstr "Εκτός σύνδεσης"
 
-msgid "Connecting"
-msgstr "Συνδέεται"
-
-msgid "Invalid authentication"
-msgstr "Μη έγκυρος έλεγχος ταυτότητας"
-
-#, fuzzy
-msgid "Broken"
-msgstr "Σπασμένος"
-
 msgid "Unknown status"
 msgstr "Άγνωστη κατάσταση"
 
@@ -212,6 +158,50 @@ msgstr "Αρχική σελίδα"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Η ρύθμιση δεν αποθηκεύτηκε λόγω εσωτερικού σφάλματος."
+
+msgid "This field is required."
+msgstr "Αυτό το πεδίο απαιτείται."
+
+msgid "Not a valid IPv4 address."
+msgstr "Μη έγκυρη διεύθυνση IPv4."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Μη έγκυρη μάσκα δικτύου IPv4."
+
+msgid "Not a valid IPv6 address."
+msgstr "Μη έγκυρη διεύθυνση IPv6."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 ή IPv6."
+
+#, fuzzy
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv6 με μήκος προθέματος."
+
+#, fuzzy
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 με μήκος προθέματος."
+
+msgid "Is not a number."
+msgstr "Δεν είναι αριθμός."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Δεν είναι έγκυρος χρόνος με μορφή ΗΗ:ΜΜ."
+
+#, fuzzy
+msgid "This is not a valid domain name."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 ή IPv6."
+
+msgid "MAC address is not valid."
+msgstr "Η διεύθυνση MAC δεν είναι έγκυρη."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Εκτός έγκυρου εύρους %(low)s-%(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Το μήκος πρέπει να είναι από %(low)s έως %(high)s χαρακτήρες."
 
 msgid "DNS"
 msgstr "DNS"
@@ -234,15 +224,9 @@ msgid "Domain of DHCP clients in DNS"
 msgstr ""
 
 msgid ""
-"This domain will be used as TLD. E.g. The result for client \"android-123\" "
-"and domain \"lan\" will be \"android-123.lan\"."
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-
-msgid "Enable data collection"
-msgstr "Ενεργοποίηση συλλογής δεδομένων"
-
-msgid "Backup file"
-msgstr "Εφεδρικό αρχείο"
 
 msgid "Notifications"
 msgstr "Ειδοποιήσεις"
@@ -319,7 +303,8 @@ msgstr "Ρυθμίσεις SMTP"
 msgid "Sender address (From)"
 msgstr "Διεύθυνση αποστολέα (Από)"
 
-msgid "This is the address notifications are sent from."
+#, fuzzy
+msgid "This is the address notifications are send from."
 msgstr "Αυτή είναι η διεύθυνση από την οποία αποστέλλονται οι ειδοποιήσεις."
 
 msgid "Server address"
@@ -365,6 +350,62 @@ msgstr "Χρόνος επανεκκίνησης"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Ώρα αυτόματης επανεκκίνησης σε μορφή HH: MM."
+
+msgid "uCollect"
+msgstr ""
+
+msgid "Emulated services"
+msgstr "Εξομοιούμενες υπηρεσίες"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - εναλλακτική θύρα (2323 / TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP διακομιστής διαμεσολάβησης (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP διακομιστής διαμεσολάβησης (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP διακομιστής διαμεσολάβησης (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Συλλογή διαπιστευτηρίων"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Εάν αυτή η επιλογή είναι ενεργοποιημένη, τα ονόματα και οι κωδικοί πρόσβασης "
+"συλλέγονται και αποστέλλονται στο διακομιστή επιπλέον της διεύθυνσης IP του "
+"πελάτη."
+
+msgid "Enable data collection"
+msgstr "Ενεργοποίηση συλλογής δεδομένων"
+
+msgid "Email"
+msgstr "Ηλεκτρονικό ταχυδρομείο"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Αποτυχία έγκρισης της ενημέρωσης."
+
+msgid "Failed to verify the router's registration."
+msgstr ""
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -417,9 +458,6 @@ msgstr "Χώρα"
 msgid "Timezone"
 msgstr "Ζώνη ώρας"
 
-msgid "Email"
-msgstr "Ηλεκτρονικό ταχυδρομείο"
-
 msgid "Advanced administration"
 msgstr "Προηγμένη διαχείριση"
 
@@ -441,183 +479,8 @@ msgid ""
 "set it manually."
 msgstr ""
 
-msgid "uCollect"
-msgstr ""
-
-msgid "Emulated services"
-msgstr "Εξομοιούμενες υπηρεσίες"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - εναλλακτική θύρα (2323 / TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP διακομιστής διαμεσολάβησης (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP διακομιστής διαμεσολάβησης (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP διακομιστής διαμεσολάβησης (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Συλλογή διαπιστευτηρίων"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Εάν αυτή η επιλογή είναι ενεργοποιημένη, τα ονόματα και οι κωδικοί πρόσβασης "
-"συλλέγονται και αποστέλλονται στο διακομιστή επιπλέον της διεύθυνσης IP του "
-"πελάτη."
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Εδώ καθορίζετε τις ρυθμίσεις της θύρας WAN. Συνήθως, μπορείτε να μην "
-"μεταβάλετε αυτές τις επιλογές ανέγγιχτες, εκτός εάν σας δοθούν διαφορετικές "
-"οδηγίες από τον πάροχο υπηρεσιών διαδικτύου. Επίσης, σε περίπτωση που "
-"υπάρχει καλωδιακό ή DSL μόντεμ που συνδέει το δρομολογητή σας με το δίκτυο, "
-"συνήθως δεν είναι απαραίτητο να αλλάξετε αυτή τη ρύθμιση."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (αυτόματη ρύθμιση)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Στατική διεύθυνση IP (χειροκίνητη ρύθμιση)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr ""
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (αυτόματη ρύθμιση)"
-
-msgid "Disable IPv6"
-msgstr "Απενεργοποίηση IPv6"
-
-msgid "IPv4 protocol"
-msgstr "Πρωτόκολλο IPv4"
-
-msgid "IP address"
-msgstr "Διεύθυνση IP"
-
-msgid "Network mask"
-msgstr "Μάσκα δικτύου"
-
-msgid "Gateway"
-msgstr "Πύλη"
-
-msgid "DNS server 1"
-msgstr "Διακομιστής DNS 1"
-
-#, fuzzy
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"Η διεύθυνση διακομιστή DNS δεν απαιτείται, καθώς ο ενσωματωμένος ανιχνευτής "
-"DNS μπορεί να λειτουργήσει χωρίς αυτό."
-
-msgid "DNS server 2"
-msgstr "Διακομιστής DNS 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP όνομα χρήστη"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP κωδικός πρόσβασης"
-
-msgid "IPv6 protocol"
-msgstr "Πρωτόκολλο IPv6"
-
-msgid "IPv6 address"
-msgstr "Διεύθυνση IPv6"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-
-msgid "IPv6 gateway"
-msgstr "Πύλη IPv6"
-
-msgid "IPv6 prefix"
-msgstr "Πρόθεμα IPv6"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
-
-msgid "Use Modem Turris"
-msgstr ""
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-
-msgid "xDSL VLAN number"
-msgstr "xDSL αριθμός VLAN"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-
-msgid "Custom MAC address"
-msgstr "Προσαρμοσμένη διεύθυνση MAC"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-
-msgid "MAC address"
-msgstr "Διεύθυνση MAC"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr ""
+msgid "Backup file"
+msgstr "Εφεδρικό αρχείο"
 
 #, fuzzy
 msgid "Updater"
@@ -865,27 +728,153 @@ msgstr ""
 msgid "Wi-Fi settings"
 msgstr "Ρυθμίσεις Wi-Fi"
 
-msgid "The password you entered was not valid."
-msgstr "Ο κωδικός πρόσβασης που πληκτρολογήσατε δεν είναι έγκυρος."
+msgid "WAN"
+msgstr "WAN"
 
-msgid "News"
-msgstr "Νέα"
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Εδώ καθορίζετε τις ρυθμίσεις της θύρας WAN. Συνήθως, μπορείτε να μην "
+"μεταβάλετε αυτές τις επιλογές ανέγγιχτες, εκτός εάν σας δοθούν διαφορετικές "
+"οδηγίες από τον πάροχο υπηρεσιών διαδικτύου. Επίσης, σε περίπτωση που "
+"υπάρχει καλωδιακό ή DSL μόντεμ που συνδέει το δρομολογητή σας με το δίκτυο, "
+"συνήθως δεν είναι απαραίτητο να αλλάξετε αυτή τη ρύθμιση."
 
-msgid "Update"
-msgstr "Ενημέρωση"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (αυτόματη ρύθμιση)"
 
-msgid "Error"
-msgstr "Σφάλμα"
+msgid "Static IP address (manual configuration)"
+msgstr "Στατική διεύθυνση IP (χειροκίνητη ρύθμιση)"
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Ε/%μ/%η %Η:%M:%Ε"
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr ""
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (αυτόματη ρύθμιση)"
+
+msgid "Disable IPv6"
+msgstr "Απενεργοποίηση IPv6"
+
+msgid "IPv4 protocol"
+msgstr "Πρωτόκολλο IPv4"
+
+msgid "IP address"
+msgstr "Διεύθυνση IP"
+
+msgid "Network mask"
+msgstr "Μάσκα δικτύου"
+
+msgid "Gateway"
+msgstr "Πύλη"
+
+msgid "DNS server 1"
+msgstr "Διακομιστής DNS 1"
+
+#, fuzzy
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"Η διεύθυνση διακομιστή DNS δεν απαιτείται, καθώς ο ενσωματωμένος ανιχνευτής "
+"DNS μπορεί να λειτουργήσει χωρίς αυτό."
+
+msgid "DNS server 2"
+msgstr "Διακομιστής DNS 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP όνομα χρήστη"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP κωδικός πρόσβασης"
+
+msgid "IPv6 protocol"
+msgstr "Πρωτόκολλο IPv6"
+
+msgid "IPv6 address"
+msgstr "Διεύθυνση IPv6"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+
+msgid "IPv6 gateway"
+msgstr "Πύλη IPv6"
+
+msgid "IPv6 prefix"
+msgstr "Πρόθεμα IPv6"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr ""
+
+msgid "Use Modem Turris"
+msgstr ""
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+
+msgid "xDSL VLAN number"
+msgstr "xDSL αριθμός VLAN"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr ""
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+
+msgid "Custom MAC address"
+msgstr "Προσαρμοσμένη διεύθυνση MAC"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+
+msgid "MAC address"
+msgstr "Διεύθυνση MAC"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr ""
 
 #, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s από %(created_at)s"
+msgid "Configuration wizard - step %s"
+msgstr ""
 
-msgid "Notification"
-msgstr "Ειδοποίηση"
+msgid "Connectivity test"
+msgstr ""
+
+msgid "Automatic updates"
+msgstr ""
+
+msgid "Installation finished"
+msgstr ""
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1294,6 +1283,9 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+msgid "Error"
+msgstr "Σφάλμα"
+
 msgid "Loading..."
 msgstr ""
 
@@ -1466,9 +1458,6 @@ msgstr ""
 msgid "Begin installation"
 msgstr ""
 
-msgid "Installation finished"
-msgstr ""
-
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr ""
@@ -1561,7 +1550,7 @@ msgid "Most important points from the license agreement:"
 msgstr ""
 
 msgid ""
-"Automatic updates are offered to the Turris Omnia owners free of charge."
+"Automatic updates are offered to the Turris router owners free of charge."
 msgstr ""
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
@@ -1569,7 +1558,7 @@ msgstr ""
 
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
+"features of Turris router."
 msgstr ""
 
 msgid ""
@@ -1596,8 +1585,8 @@ msgstr ""
 
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 
 msgid "Log in"
@@ -1618,18 +1607,37 @@ msgstr ""
 msgid "Unable to retrieve notifications, please try refreshing the page."
 msgstr ""
 
+msgid "News"
+msgstr "Νέα"
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Ε/%μ/%η %Η:%M:%Ε"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s από %(created_at)s"
+
+msgid "Notification"
+msgstr "Ειδοποίηση"
+
 msgid "You have been logged out due to longer inactivity."
 msgstr ""
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr ""
+msgid "The password you entered was not valid."
+msgstr "Ο κωδικός πρόσβασης που πληκτρολογήσατε δεν είναι έγκυρος."
 
-msgid "Connectivity test"
-msgstr ""
+#~ msgid "Connecting"
+#~ msgstr "Συνδέεται"
 
-msgid "Automatic updates"
-msgstr ""
+#~ msgid "Invalid authentication"
+#~ msgstr "Μη έγκυρος έλεγχος ταυτότητας"
+
+#, fuzzy
+#~ msgid "Broken"
+#~ msgstr "Σπασμένος"
 
 #~ msgid "Updates will be performed immediatelly without a user confirmation."
 #~ msgstr ""

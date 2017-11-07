@@ -20,58 +20,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-16 08:43+0200\n"
+"POT-Creation-Date: 2017-11-07 16:27+0100\n"
 "PO-Revision-Date: 2017-09-05 10:55+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
-"\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/"
+">\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 2.17-dev\n"
-
-msgid "This field is required."
-msgstr "Toto pole je povinné."
-
-msgid "Not a valid IPv4 address."
-msgstr "Neplatná IPv4 adresa."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Neplatná IPv4 sieťová maska."
-
-msgid "Not a valid IPv6 address."
-msgstr "Neplatná IPv6 adresa."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Toto nie je platná IPv4 alebo IPv6 adresa."
-
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Toto nie je IPv6 adresa s dĺžkou prefixu."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Toto nie je IPv4 adresa s dĺžkou prefixu."
-
-msgid "Is not a number."
-msgstr "Nie je číslo."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Toto nie je platný čas vo formáte HH:MM."
-
-msgid "This is not a valid domain name."
-msgstr "Toto nie je platné doménové meno."
-
-msgid "MAC address is not valid."
-msgstr "Nie je platná MAC adresa."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Musí byť z rozsahu %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Dĺžka musí byť od %(low)s do %(high)s znakov."
 
 msgid "Configuration was successfully saved."
 msgstr "Nastavenie bolo úspešne uložené."
@@ -163,9 +122,9 @@ msgstr ""
 msgid "Data collection"
 msgstr "Zber dát"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
 "Pri overovaní registrácie došlo k nasledujúcej chybe: <br><pre>%(response)s</"
 "pre>"
@@ -207,15 +166,6 @@ msgstr "Online"
 msgid "Offline"
 msgstr "Offline"
 
-msgid "Connecting"
-msgstr "Pripája sa"
-
-msgid "Invalid authentication"
-msgstr "Neplatná autentifikácia"
-
-msgid "Broken"
-msgstr "Nefunkčný"
-
 msgid "Unknown status"
 msgstr "Neznámy stav"
 
@@ -224,6 +174,47 @@ msgstr "Hlavná stránka"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
+
+msgid "This field is required."
+msgstr "Toto pole je povinné."
+
+msgid "Not a valid IPv4 address."
+msgstr "Neplatná IPv4 adresa."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Neplatná IPv4 sieťová maska."
+
+msgid "Not a valid IPv6 address."
+msgstr "Neplatná IPv6 adresa."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Toto nie je platná IPv4 alebo IPv6 adresa."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Toto nie je IPv6 adresa s dĺžkou prefixu."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Toto nie je IPv4 adresa s dĺžkou prefixu."
+
+msgid "Is not a number."
+msgstr "Nie je číslo."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Toto nie je platný čas vo formáte HH:MM."
+
+msgid "This is not a valid domain name."
+msgstr "Toto nie je platné doménové meno."
+
+msgid "MAC address is not valid."
+msgstr "Nie je platná MAC adresa."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Musí byť z rozsahu %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Dĺžka musí byť od %(low)s do %(high)s znakov."
 
 msgid "DNS"
 msgstr "DNS"
@@ -247,18 +238,13 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Doména DHCP klientov v DNS"
 
+#, fuzzy
 msgid ""
-"This domain will be used as TLD. E.g. The result for client \"android-123\" "
-"and domain \"lan\" will be \"android-123.lan\"."
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Táto doména bude použitá ako TLD. Napr. pre klienta \"android-123\" a doménu "
 "\"lan\" bude výsledok \"android-123.lan\"."
-
-msgid "Enable data collection"
-msgstr "Povoliť zber dát"
-
-msgid "Backup file"
-msgstr "Súbor so zálohou"
 
 msgid "Notifications"
 msgstr "Upozornenia"
@@ -335,7 +321,8 @@ msgstr "Nastavenie SMTP"
 msgid "Sender address (From)"
 msgstr "Adresa odosielateľa"
 
-msgid "This is the address notifications are sent from."
+#, fuzzy
+msgid "This is the address notifications are send from."
 msgstr "Z tejto adresy budú posielané upozornenia."
 
 msgid "Server address"
@@ -379,6 +366,67 @@ msgstr "Čas reštartu"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Denný čas automatického reštartu vo formáte HH:MM."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulované služby"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"Aplikácia uCollect umožňuje emulovať niektoré často zneužívané služby. "
+"Pokiaľ je táto funkcia zapnutá, uCollect zaznamenáva pokusy o prihlásenie do "
+"týchto služieb. Zapnutie emulácie služby nemá žiadny vplyv, pokiaľ už na jej "
+"porte počúva iná aplikácia (tieto porty sú pri jednotlivých službách "
+"uvedené)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternatívny port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Ukladať mená a heslá"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Pokiaľ je táto voľba povolená, budú sa okrem IP adries pripájajúcich sa "
+"klientov zaznamenávať aj zadané prihlasovacie mená a heslá."
+
+msgid "Enable data collection"
+msgstr "Povoliť zber dát"
+
+msgid "Email"
+msgstr "Email"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Nepodarilo sa schváliť aktualizáciu."
+
+#, fuzzy
+msgid "Failed to verify the router's registration."
+msgstr "Nepodarilo sa overiť stav pripojenia."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -436,9 +484,6 @@ msgstr "Krajina"
 msgid "Timezone"
 msgstr "Časová zóna"
 
-msgid "Email"
-msgstr "Email"
-
 msgid "Advanced administration"
 msgstr "Pokročilé nastavenie"
 
@@ -468,204 +513,8 @@ msgstr ""
 "počítačom pomocou nasledujúceho formulára. Správny čas sa vyžaduje pre "
 "fungovanie určitých služieb routera."
 
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Emulované služby"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"Aplikácia uCollect umožňuje emulovať niektoré často zneužívané služby. "
-"Pokiaľ je táto funkcia zapnutá, uCollect zaznamenáva pokusy o prihlásenie do "
-"týchto služieb. Zapnutie emulácie služby nemá žiadny vplyv, pokiaľ už na jej "
-"porte počúva iná aplikácia (tieto porty sú pri jednotlivých službách "
-"uvedené)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - alternatívny port (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Ukladať mená a heslá"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Pokiaľ je táto voľba povolená, budú sa okrem IP adries pripájajúcich sa "
-"klientov zaznamenávať aj zadané prihlasovacie mená a heslá."
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Na tejto stránke špecifikujete nastavenie pripojenia k vonkajšej sieti (WAN "
-"port). Zvyčajne nie je nutné nastavenie meniť, pokiaľ to nevyžaduje Váš "
-"poskytovateľ internetového pripojenia. Tiež v prípade, že pripojenie k "
-"internetu sprostredkuje káblový alebo DSL modem, nie je väčšinou nutné toto "
-"nastavenie meniť."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatická konfigurácia)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statická IP adresa (ručná konfigurácia)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (pre DSL bridge, modem Turris, atď.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatická konfigurácia)"
-
-msgid "Disable IPv6"
-msgstr "Nepoužívať IPv6"
-
-msgid "IPv4 protocol"
-msgstr "Protokol IPv4"
-
-msgid "IP address"
-msgstr "IP adresa"
-
-msgid "Network mask"
-msgstr "Maska podsiete"
-
-msgid "Gateway"
-msgstr "Brána"
-
-msgid "DNS server 1"
-msgstr "DNS server 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"Adresa DNS servera nie je potrebná - vstavaný DNS resolver dokáže pracovať "
-"bez nej."
-
-msgid "DNS server 2"
-msgstr "DNS server 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP meno"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP heslo"
-
-msgid "IPv6 protocol"
-msgstr "Protokol IPv6"
-
-msgid "IPv6 address"
-msgstr "IPv6 adresa"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"IPv6 adresa a dĺžka prefixu pre rozhranie WAN, napr. 2001:db8:be13:37da::1/64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6 predvolená brána"
-
-msgid "IPv6 prefix"
-msgstr "IPv6 prefix"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Adresný rozsah pre vnútornú sieť, napr. 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Používať modem Turris"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Modem Turris (tiež SMRT - Small Modem for Router Turris) je jednoduchý ADSL/"
-"VDSL modem navrhnutý špeciálne pre router Turris. Povoľte túto voľbu, pokiaľ "
-"máte k svojmu routeru tento modem pripojený."
-
-msgid "xDSL VLAN number"
-msgstr "Číslo xDSL VLAN"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"Číslo VLAN pre Vaše internetové pripojenie. Váš poskytovateľ Vám mohol dodať "
-"tento parameter. Pokiaľ ste namiesto toho získali parametre VPI a VCI, "
-"môžete toto pole nechať prázdne, na jeho miesto sa automaticky doplní "
-"predvolená hodnota."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr "Parametre VPI a VCI musia byť vyplnené obe alebo musia byť prázdne."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtual Path Identifier (VPI) je parameter pripojenia, ktorý ste mohli "
-"získať od Vášho poskytovateľa. Pokiaľ ste namiesto toho dostali číslo VLAN, "
-"nechajte toto pole prázdne. V opačnom prípade je nutné vyplniť parameter VPI "
-"spolu s parametrom VCI."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtual Circuit Identifier (VCI) je parameter pripojenia, ktorý ste mohli "
-"získať od Vášho poskytovateľa. Pokiaľ ste namiesto toho dostali číslo VLAN, "
-"nechajte toto pole prázdne. V opačnom prípade je nutné vyplniť parameter VCI "
-"spolu s parametrom VPI."
-
-msgid "Custom MAC address"
-msgstr "Vlastná MAC adresa"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Vhodné pre prípad, keď používateľ vyžaduje konkrétnu MAC adresu pripojeného "
-"zariadenia."
-
-msgid "MAC address"
-msgstr "MAC adresa"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Oddeľovačom je dvojbodka, napr. 00:11:22:33:44:55"
+msgid "Backup file"
+msgstr "Súbor so zálohou"
 
 msgid "Updater"
 msgstr "Updater"
@@ -951,27 +800,170 @@ msgstr ""
 msgid "Wi-Fi settings"
 msgstr "Nastavenie Wi-Fi"
 
-msgid "The password you entered was not valid."
-msgstr "Vami zadané heslo je neplatné."
+msgid "WAN"
+msgstr "WAN"
 
-msgid "News"
-msgstr "Novinky"
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Na tejto stránke špecifikujete nastavenie pripojenia k vonkajšej sieti (WAN "
+"port). Zvyčajne nie je nutné nastavenie meniť, pokiaľ to nevyžaduje Váš "
+"poskytovateľ internetového pripojenia. Tiež v prípade, že pripojenie k "
+"internetu sprostredkuje káblový alebo DSL modem, nie je väčšinou nutné toto "
+"nastavenie meniť."
 
-msgid "Update"
-msgstr "Aktualizácia"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatická konfigurácia)"
 
-msgid "Error"
-msgstr "Chyba"
+msgid "Static IP address (manual configuration)"
+msgstr "Statická IP adresa (ručná konfigurácia)"
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (pre DSL bridge, modem Turris, atď.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatická konfigurácia)"
+
+msgid "Disable IPv6"
+msgstr "Nepoužívať IPv6"
+
+msgid "IPv4 protocol"
+msgstr "Protokol IPv4"
+
+msgid "IP address"
+msgstr "IP adresa"
+
+msgid "Network mask"
+msgstr "Maska podsiete"
+
+msgid "Gateway"
+msgstr "Brána"
+
+msgid "DNS server 1"
+msgstr "DNS server 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"Adresa DNS servera nie je potrebná - vstavaný DNS resolver dokáže pracovať "
+"bez nej."
+
+msgid "DNS server 2"
+msgstr "DNS server 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP meno"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP heslo"
+
+msgid "IPv6 protocol"
+msgstr "Protokol IPv6"
+
+msgid "IPv6 address"
+msgstr "IPv6 adresa"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"IPv6 adresa a dĺžka prefixu pre rozhranie WAN, napr. 2001:db8:be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6 predvolená brána"
+
+msgid "IPv6 prefix"
+msgstr "IPv6 prefix"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Adresný rozsah pre vnútornú sieť, napr. 2001:db8:be13:37da::/64"
+
+msgid "Use Modem Turris"
+msgstr "Používať modem Turris"
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+"Modem Turris (tiež SMRT - Small Modem for Router Turris) je jednoduchý ADSL/"
+"VDSL modem navrhnutý špeciálne pre router Turris. Povoľte túto voľbu, pokiaľ "
+"máte k svojmu routeru tento modem pripojený."
+
+msgid "xDSL VLAN number"
+msgstr "Číslo xDSL VLAN"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"Číslo VLAN pre Vaše internetové pripojenie. Váš poskytovateľ Vám mohol dodať "
+"tento parameter. Pokiaľ ste namiesto toho získali parametre VPI a VCI, "
+"môžete toto pole nechať prázdne, na jeho miesto sa automaticky doplní "
+"predvolená hodnota."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr "Parametre VPI a VCI musia byť vyplnené obe alebo musia byť prázdne."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Path Identifier (VPI) je parameter pripojenia, ktorý ste mohli "
+"získať od Vášho poskytovateľa. Pokiaľ ste namiesto toho dostali číslo VLAN, "
+"nechajte toto pole prázdne. V opačnom prípade je nutné vyplniť parameter VPI "
+"spolu s parametrom VCI."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtual Circuit Identifier (VCI) je parameter pripojenia, ktorý ste mohli "
+"získať od Vášho poskytovateľa. Pokiaľ ste namiesto toho dostali číslo VLAN, "
+"nechajte toto pole prázdne. V opačnom prípade je nutné vyplniť parameter VCI "
+"spolu s parametrom VPI."
+
+msgid "Custom MAC address"
+msgstr "Vlastná MAC adresa"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Vhodné pre prípad, keď používateľ vyžaduje konkrétnu MAC adresu pripojeného "
+"zariadenia."
+
+msgid "MAC address"
+msgstr "MAC adresa"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Oddeľovačom je dvojbodka, napr. 00:11:22:33:44:55"
 
 #, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s z %(created_at)s"
+msgid "Configuration wizard - step %s"
+msgstr "Sprievodca nastavením - krok %s"
 
-msgid "Notification"
-msgstr "Upozornenie"
+msgid "Connectivity test"
+msgstr "Test pripojenia"
+
+msgid "Automatic updates"
+msgstr "Automatické aktualizácie"
+
+msgid "Installation finished"
+msgstr "Inštalácia dokončená"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1476,6 +1468,9 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+msgid "Error"
+msgstr "Chyba"
+
 msgid "Loading..."
 msgstr "Načítava sa..."
 
@@ -1701,9 +1696,6 @@ msgstr ""
 msgid "Begin installation"
 msgstr "Začať inštaláciu"
 
-msgid "Installation finished"
-msgstr "Inštalácia dokončená"
-
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr "Počas inštalácie nebola povolená služba Updater."
@@ -1818,8 +1810,9 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Niektoré dôležité body z licenčnej zmluvy:"
 
+#, fuzzy
 msgid ""
-"Automatic updates are offered to the Turris Omnia owners free of charge."
+"Automatic updates are offered to the Turris router owners free of charge."
 msgstr ""
 "Automatické aktualizácie sa poskytujú vlastníkom routera Turris Omnia "
 "zadarmo."
@@ -1827,9 +1820,10 @@ msgstr ""
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Aktualizácie pripravuje výlučne spoločnosť CZ.NIC, z. s. p. o."
 
+#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
+"features of Turris router."
 msgstr ""
 "Povolenie automatických aktualizácií je podmienkou pre zapnutie ďalších "
 "bezpečnostných funkcií routera Turris Omnia."
@@ -1868,10 +1862,11 @@ msgstr ""
 "CZ.NIC, z. s. p. o. negarantuje dostupnosť služby a nepreberá zodpovednosť "
 "za škody spôsobené aktualizáciami."
 
+#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Povolením inštalácie aktualizácií potvrdzujete, že ste vlastníkom tohto "
 "routera Turris Omnia a oboznámili ste sa s <a href=\"https://www.turris.cz/"
@@ -1897,18 +1892,36 @@ msgstr ""
 "Nepodarilo sa načítať upozornenia od routera. Skúste, prosím, stránku "
 "obnoviť."
 
+msgid "News"
+msgstr "Novinky"
+
+msgid "Update"
+msgstr "Aktualizácia"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s z %(created_at)s"
+
+msgid "Notification"
+msgstr "Upozornenie"
+
 msgid "You have been logged out due to longer inactivity."
 msgstr "Boli ste odhlásení z dôvodu dlhšej doby nečinnosti."
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Sprievodca nastavením - krok %s"
+msgid "The password you entered was not valid."
+msgstr "Vami zadané heslo je neplatné."
 
-msgid "Connectivity test"
-msgstr "Test pripojenia"
+#~ msgid "Connecting"
+#~ msgstr "Pripája sa"
 
-msgid "Automatic updates"
-msgstr "Automatické aktualizácie"
+#~ msgid "Invalid authentication"
+#~ msgstr "Neplatná autentifikácia"
+
+#~ msgid "Broken"
+#~ msgstr "Nefunkčný"
 
 #~ msgid "Updates will be performed immediatelly without a user confirmation."
 #~ msgstr "Aktualizácie sa vykonajú ihneď bez potvrdenia od používateľa."

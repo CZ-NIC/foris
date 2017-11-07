@@ -20,58 +20,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-16 08:43+0200\n"
+"POT-Creation-Date: 2017-11-07 16:27+0100\n"
 "PO-Revision-Date: 2017-09-15 19:47+0000\n"
 "Last-Translator: Jan Römer <roemerjan@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
-"\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
+">\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.17-dev\n"
-
-msgid "This field is required."
-msgstr "Dieses Feld ist erforderlich."
-
-msgid "Not a valid IPv4 address."
-msgstr "Keine gültige IPv4-Adresse."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Keine gültige IPv4-Netzmaske."
-
-msgid "Not a valid IPv6 address."
-msgstr "Keine gültige IPv6-Adresse."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Dies ist keine gültige IPv4- oder IPv6-Adresse."
-
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Dies ist keine IPv6-Adresse mit einer gültigen Präfixlänge."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Dies ist keine IPv4-Adresse mit einer gültigen Präfixlänge."
-
-msgid "Is not a number."
-msgstr "Dies ist keine Nummer."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
-
-msgid "This is not a valid domain name."
-msgstr "Dies ist kein gültiger Domainname."
-
-msgid "MAC address is not valid."
-msgstr "Die MAC-Adresse ist ungültig."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Nicht im Bereich %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Die Länge muss zwischen %(low)s bis %(high)s Zeichen liegen."
 
 msgid "Configuration was successfully saved."
 msgstr "Die Einstellungen wurden erfolgreich gespeichert."
@@ -164,9 +123,9 @@ msgstr ""
 msgid "Data collection"
 msgstr "Datenerfassung"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"An error ocurred when checking the registration: <br><pre>%(response)s</pre>"
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
 "Ein Fehler ist während der Kontrolle der Registrierung aufgetreten: <br><pre>"
 "%(response)s</pre>"
@@ -209,15 +168,6 @@ msgstr "Online"
 msgid "Offline"
 msgstr "Offline"
 
-msgid "Connecting"
-msgstr "Verbinden"
-
-msgid "Invalid authentication"
-msgstr "Ungültige Authentifizierung"
-
-msgid "Broken"
-msgstr "Defekt"
-
 msgid "Unknown status"
 msgstr "Unbekannter Status"
 
@@ -227,6 +177,47 @@ msgstr "Homepage"
 msgid "Configuration could not be saved due to an internal error."
 msgstr ""
 "Einstellungen konnten wegen eines internen Fehlers nicht gespeichert werden."
+
+msgid "This field is required."
+msgstr "Dieses Feld ist erforderlich."
+
+msgid "Not a valid IPv4 address."
+msgstr "Keine gültige IPv4-Adresse."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Keine gültige IPv4-Netzmaske."
+
+msgid "Not a valid IPv6 address."
+msgstr "Keine gültige IPv6-Adresse."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Dies ist keine gültige IPv4- oder IPv6-Adresse."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Dies ist keine IPv6-Adresse mit einer gültigen Präfixlänge."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Dies ist keine IPv4-Adresse mit einer gültigen Präfixlänge."
+
+msgid "Is not a number."
+msgstr "Dies ist keine Nummer."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
+
+msgid "This is not a valid domain name."
+msgstr "Dies ist kein gültiger Domainname."
+
+msgid "MAC address is not valid."
+msgstr "Die MAC-Adresse ist ungültig."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Nicht im Bereich %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Die Länge muss zwischen %(low)s bis %(high)s Zeichen liegen."
 
 msgid "DNS"
 msgstr "DNS"
@@ -249,15 +240,9 @@ msgid "Domain of DHCP clients in DNS"
 msgstr ""
 
 msgid ""
-"This domain will be used as TLD. E.g. The result for client \"android-123\" "
-"and domain \"lan\" will be \"android-123.lan\"."
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-
-msgid "Enable data collection"
-msgstr "Datenerfassung aktivieren"
-
-msgid "Backup file"
-msgstr "Datei der Sicherheitskopie"
 
 msgid "Notifications"
 msgstr "Benachrichtigungen"
@@ -339,7 +324,8 @@ msgstr "SMTP-Einstellungen"
 msgid "Sender address (From)"
 msgstr "Absenderadresse (Von)"
 
-msgid "This is the address notifications are sent from."
+#, fuzzy
+msgid "This is the address notifications are send from."
 msgstr "Von dieser Adresse aus werden die Benachrichtigungen abgesendet."
 
 msgid "Server address"
@@ -384,6 +370,69 @@ msgstr "Uhrzeit von Neustart"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Tageszeit von Neustart im Anzeigeformat HH:MM."
+
+msgid "uCollect"
+msgstr "uCollect"
+
+msgid "Emulated services"
+msgstr "Emulierte Dienste"
+
+msgid ""
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
+msgstr ""
+"Die uCollect-Applikation dient zur Emulation der am häufigsten missbrauchten "
+"Dienste. Wenn diese Funktion aktiviert ist, dann wird uCollect alle Versuche "
+"sich an diese Dienste anzuschließen abhören. Das Einschalten der Emulation "
+"hat keine Auswirkung, wenn bereits ein anderer Dienst die zugehörigen Porte "
+"benutzt. (Die Portnummern sind jeweils zu den zugehörigen Diensten "
+"aufgelistet)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - alternativer Port (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Benutzernamen und Kennwörter speichern"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Ist diese Option gewählt, dann werden neben den IP-Adressen der Clienten, "
+"die sich zu verbinden versuchen, auch die Benutzernamen und Kennwörter "
+"gespeichert."
+
+msgid "Enable data collection"
+msgstr "Datenerfassung aktivieren"
+
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Das Update wurde nicht genehmigt."
+
+#, fuzzy
+msgid "Failed to verify the router's registration."
+msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -443,9 +492,6 @@ msgstr "Land"
 msgid "Timezone"
 msgstr "Zeitzone"
 
-msgid "Email"
-msgstr "E-Mail-Adresse"
-
 msgid "Advanced administration"
 msgstr "Expertenkonfiguration"
 
@@ -476,210 +522,8 @@ msgstr ""
 "richtige Uhrzeit manuell ein. Für den Router ist es notwendig möglichst "
 "genaue Uhrzeit zu haben, damit alles einwandfrei funktioniert."
 
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Emulierte Dienste"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"Die uCollect-Applikation dient zur Emulation der am häufigsten missbrauchten "
-"Dienste. Wenn diese Funktion aktiviert ist, dann wird uCollect alle Versuche "
-"sich an diese Dienste anzuschließen abhören. Das Einschalten der Emulation "
-"hat keine Auswirkung, wenn bereits ein anderer Dienst die zugehörigen Porte "
-"benutzt. (Die Portnummern sind jeweils zu den zugehörigen Diensten "
-"aufgelistet)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - alternativer Port (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Benutzernamen und Kennwörter speichern"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Ist diese Option gewählt, dann werden neben den IP-Adressen der Clienten, "
-"die sich zu verbinden versuchen, auch die Benutzernamen und Kennwörter "
-"gespeichert."
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Hier können Sie die Einstellungen des WAN-Ports (Wide Area Network) ändern. "
-"In meisten Fällen ist es nicht notwendig, hier etwas zu ändern, es sei denn, "
-"Ihr Internetanbieter erfordert spezifische Einstellungen. Wenn Sie zum "
-"Internet mittels Kabelverbindung oder DSL-Modem verbunden sind, sind in der "
-"Regel keine Änderungen notwendig."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatische Konfiguration)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statische IP-Adresse (manuelle Konfiguration)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPoE (für DSL-Bridge, Turris-Modem, usw.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatische Konfiguration)"
-
-msgid "Disable IPv6"
-msgstr "IPv6 deaktivieren"
-
-msgid "IPv4 protocol"
-msgstr "IPv4-Protokoll"
-
-msgid "IP address"
-msgstr "IP-Adresse"
-
-msgid "Network mask"
-msgstr "Netzwerkmaske"
-
-msgid "Gateway"
-msgstr "Netzwerk-Gateway"
-
-msgid "DNS server 1"
-msgstr "DNS-Server 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"Die DNS-Serveradresse wird nicht benötigt, der eingebaute DNS Resolver ist "
-"fähig ohne diese Angaben zu arbeiten."
-
-msgid "DNS server 2"
-msgstr "DNS-Server 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP-Benutzername"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP-Kennwort"
-
-msgid "IPv6 protocol"
-msgstr "IPv6-Protokoll"
-
-msgid "IPv6 address"
-msgstr "IPv6-Adresse"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"Die IPv6-Adresse und die Präfixlänge der WAN-Schnittstelle, z. B. 2001:db8:"
-"be13:37da::1/64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6-Netzwerk-Gateway"
-
-msgid "IPv6 prefix"
-msgstr "IPv6-Präfix"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Adressenbereich des lokalen Netzwerks, z. B. 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Turris-Modem benutzen"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Turris-Modem (auch bekannt als SMRT - Small Modem for Router Turris) ist ein "
-"einfacher ADSL/VDSL-Modem, welches eigens für den Turris-Router konzipiert "
-"wurde. Wählen Sie diese Option, wenn Sie das Turris-Modem zum Router "
-"angeschlossen haben."
-
-msgid "xDSL VLAN number"
-msgstr "xDSL-VLAN-Nummer"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"VLAN-Nummer Ihrer Internetverbindung. Ihr Internetanbieter hat Ihnen "
-"vielleicht diese Nummer mitgeteilt. Falls Sie anstelle dieser Nummer die VPI "
-"und VCI Werte erhalten haben, können Sie dieses Feld leer lassen; die "
-"Standardeinstellung wird automatisch eingefügt."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
-"Die VPI- und VCI-Werte müssen entweder beide ausgefüllt sein, oder beide "
-"leer sein."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuelle Pfadkennung (Virtual Path Identifier) ist ein Wert den Sie "
-"vielleicht von Ihrem Internetanbieter erhalten haben. Wenn Sie aber "
-"stattdessen die VLAN-Nummer erhalten haben, dann lassen Sie dieses Feld "
-"leer. Es müsst beide Werte, VPI und VCI, ausfüllen werden."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuelle Kanalkennung (Virtual Circuit Identifier) ist ein Wert den Ihr "
-"vielleicht von Ihren Internetanbieter erhalten habt. Wenn Sie aber "
-"stattdessen die VLAN-Nummer erhielten, dann lassen Sie dieses Feld leer. Ihr "
-"müsst beide, VPI und VCI, Werte zusammen ausfüllen."
-
-msgid "Custom MAC address"
-msgstr "Benutzerdefinierte MAC-Adresse"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Dies ist nützlich, wenn der Internetanbieter eine spezifische MAC-Adresse "
-"erfordert."
-
-msgid "MAC address"
-msgstr "MAC-Adresse"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
+msgid "Backup file"
+msgstr "Datei der Sicherheitskopie"
 
 msgid "Updater"
 msgstr "Updater"
@@ -976,27 +820,174 @@ msgstr ""
 msgid "Wi-Fi settings"
 msgstr "WLAN Einstellungen"
 
-msgid "The password you entered was not valid."
-msgstr "Das eingegebene Kennwort ist ungültig."
+msgid "WAN"
+msgstr "WAN"
 
-msgid "News"
-msgstr "Neuigkeiten"
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Hier können Sie die Einstellungen des WAN-Ports (Wide Area Network) ändern. "
+"In meisten Fällen ist es nicht notwendig, hier etwas zu ändern, es sei denn, "
+"Ihr Internetanbieter erfordert spezifische Einstellungen. Wenn Sie zum "
+"Internet mittels Kabelverbindung oder DSL-Modem verbunden sind, sind in der "
+"Regel keine Änderungen notwendig."
 
-msgid "Update"
-msgstr "Aktualisierung"
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatische Konfiguration)"
 
-msgid "Error"
-msgstr "Fehler"
+msgid "Static IP address (manual configuration)"
+msgstr "Statische IP-Adresse (manuelle Konfiguration)"
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPoE (für DSL-Bridge, Turris-Modem, usw.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatische Konfiguration)"
+
+msgid "Disable IPv6"
+msgstr "IPv6 deaktivieren"
+
+msgid "IPv4 protocol"
+msgstr "IPv4-Protokoll"
+
+msgid "IP address"
+msgstr "IP-Adresse"
+
+msgid "Network mask"
+msgstr "Netzwerkmaske"
+
+msgid "Gateway"
+msgstr "Netzwerk-Gateway"
+
+msgid "DNS server 1"
+msgstr "DNS-Server 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"Die DNS-Serveradresse wird nicht benötigt, der eingebaute DNS Resolver ist "
+"fähig ohne diese Angaben zu arbeiten."
+
+msgid "DNS server 2"
+msgstr "DNS-Server 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP-Benutzername"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP-Kennwort"
+
+msgid "IPv6 protocol"
+msgstr "IPv6-Protokoll"
+
+msgid "IPv6 address"
+msgstr "IPv6-Adresse"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"Die IPv6-Adresse und die Präfixlänge der WAN-Schnittstelle, z. B. 2001:db8:"
+"be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6-Netzwerk-Gateway"
+
+msgid "IPv6 prefix"
+msgstr "IPv6-Präfix"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Adressenbereich des lokalen Netzwerks, z. B. 2001:db8:be13:37da::/64"
+
+msgid "Use Modem Turris"
+msgstr "Turris-Modem benutzen"
+
+msgid ""
+"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
+"modem designed specially for router Turris. Enable this option if you have "
+"Modem Turris connected to your router."
+msgstr ""
+"Turris-Modem (auch bekannt als SMRT - Small Modem for Router Turris) ist ein "
+"einfacher ADSL/VDSL-Modem, welches eigens für den Turris-Router konzipiert "
+"wurde. Wählen Sie diese Option, wenn Sie das Turris-Modem zum Router "
+"angeschlossen haben."
+
+msgid "xDSL VLAN number"
+msgstr "xDSL-VLAN-Nummer"
+
+msgid ""
+"VLAN number for your internet connection. Your ISP might have provided you "
+"this number. If you have VPI and VCI numbers instead, leave this field "
+"empty, a default value will be used automatically."
+msgstr ""
+"VLAN-Nummer Ihrer Internetverbindung. Ihr Internetanbieter hat Ihnen "
+"vielleicht diese Nummer mitgeteilt. Falls Sie anstelle dieser Nummer die VPI "
+"und VCI Werte erhalten haben, können Sie dieses Feld leer lassen; die "
+"Standardeinstellung wird automatisch eingefügt."
+
+msgid "Both VPI and VCI must be filled or both must be empty."
+msgstr ""
+"Die VPI- und VCI-Werte müssen entweder beide ausgefüllt sein, oder beide "
+"leer sein."
+
+msgid "VPI"
+msgstr "VPI"
+
+msgid ""
+"Virtual Path Identifier (VPI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtuelle Pfadkennung (Virtual Path Identifier) ist ein Wert den Sie "
+"vielleicht von Ihrem Internetanbieter erhalten haben. Wenn Sie aber "
+"stattdessen die VLAN-Nummer erhalten haben, dann lassen Sie dieses Feld "
+"leer. Es müsst beide Werte, VPI und VCI, ausfüllen werden."
+
+msgid "VCI"
+msgstr "VCI"
+
+msgid ""
+"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
+"from your ISP. If you have a VLAN number instead, leave this field empty. "
+"You need to fill in both VPI and VCI together."
+msgstr ""
+"Virtuelle Kanalkennung (Virtual Circuit Identifier) ist ein Wert den Ihr "
+"vielleicht von Ihren Internetanbieter erhalten habt. Wenn Sie aber "
+"stattdessen die VLAN-Nummer erhielten, dann lassen Sie dieses Feld leer. Ihr "
+"müsst beide, VPI und VCI, Werte zusammen ausfüllen."
+
+msgid "Custom MAC address"
+msgstr "Benutzerdefinierte MAC-Adresse"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Dies ist nützlich, wenn der Internetanbieter eine spezifische MAC-Adresse "
+"erfordert."
+
+msgid "MAC address"
+msgstr "MAC-Adresse"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
 
 #, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s von %(created_at)s"
+msgid "Configuration wizard - step %s"
+msgstr "Konfigurationsassistent - Schritt %s"
 
-msgid "Notification"
-msgstr "Benachrichtigung"
+msgid "Connectivity test"
+msgstr "Verbindungstest"
+
+msgid "Automatic updates"
+msgstr "Automatische Aktualisierungen"
+
+msgid "Installation finished"
+msgstr "Installation abgeschlossen"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1516,6 +1507,9 @@ msgstr ""
 msgid "OK"
 msgstr "OK"
 
+msgid "Error"
+msgstr "Fehler"
+
 msgid "Loading..."
 msgstr "Lädt..."
 
@@ -1748,9 +1742,6 @@ msgstr ""
 msgid "Begin installation"
 msgstr "Installation beginnen"
 
-msgid "Installation finished"
-msgstr "Installation abgeschlossen"
-
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr ""
@@ -1872,8 +1863,9 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Die wichtigsten Punkte der Lizenzvereinbarung:"
 
+#, fuzzy
 msgid ""
-"Automatic updates are offered to the Turris Omnia owners free of charge."
+"Automatic updates are offered to the Turris router owners free of charge."
 msgstr ""
 "Automatische Aktualisierungen werden für die Eigentümer des Turris-Omnia-"
 "Routers kostenlos angeboten."
@@ -1881,9 +1873,10 @@ msgstr ""
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Aktualisierungen werden exclusiv von CZ.NIC, z. s. p. o. vorbereitet."
 
+#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris Omnia."
+"features of Turris router."
 msgstr ""
 "Das Aktivieren der automatischen Aktualisierungen ist eine Voraussetzung für "
 "weitere Sicherheitsfunktionen des Turris-Omnia-Routers."
@@ -1924,10 +1917,11 @@ msgstr ""
 "dieses Dienstes und ist nicht Verantwortlich für etwaige Schäden, die durch "
 "die automatischen Aktualisierungen verursacht sein könnten."
 
+#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris Omnia router and you agree with the full text of the <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Mit der Aktivierung der automatischen Aktualisierungen bestätigen Sie, dass "
 "Sie der Eigentümer dieses Turris-Omnia-Routers sind und dass Sie der <a href="
@@ -1954,18 +1948,36 @@ msgstr ""
 "Benachrichtigungen konnten nicht abgerufen werden. Versuchen Sie bitte die "
 "Webseite neu zu laden."
 
+msgid "News"
+msgstr "Neuigkeiten"
+
+msgid "Update"
+msgstr "Aktualisierung"
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s von %(created_at)s"
+
+msgid "Notification"
+msgstr "Benachrichtigung"
+
 msgid "You have been logged out due to longer inactivity."
 msgstr "Sie wurden nach einer längeren Phase der Inaktivität abgemeldet."
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Konfigurationsassistent - Schritt %s"
+msgid "The password you entered was not valid."
+msgstr "Das eingegebene Kennwort ist ungültig."
 
-msgid "Connectivity test"
-msgstr "Verbindungstest"
+#~ msgid "Connecting"
+#~ msgstr "Verbinden"
 
-msgid "Automatic updates"
-msgstr "Automatische Aktualisierungen"
+#~ msgid "Invalid authentication"
+#~ msgstr "Ungültige Authentifizierung"
+
+#~ msgid "Broken"
+#~ msgstr "Defekt"
 
 #~ msgid "Updates will be performed immediatelly without a user confirmation."
 #~ msgstr "Die Updates werden sofort ohne User-Bestätigung verarbeitet."
