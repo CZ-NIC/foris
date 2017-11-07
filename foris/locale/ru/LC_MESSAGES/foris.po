@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-07 16:27+0100\n"
-"PO-Revision-Date: 2017-09-30 20:58+0000\n"
+"PO-Revision-Date: 2017-11-07 19:12+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
-">\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Конфигурация успешно сохранена."
@@ -109,10 +109,10 @@ msgstr ""
 msgid "Data collection"
 msgstr "Сбор данных"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr "Произошла ошибка при проверке регистрации: <br><pre>%(response)s</pre>"
+msgstr "Произошла ошибка при проверке регистрации: <br><pre>%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -224,13 +224,12 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Домен DHCP-клиентов в DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as prefix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Этот домен будет использоваться как домен верхнего уровня (TLD). Например, "
-"результатом для клиента «android-123» и домена «lan» будет «android-123.lan»."
+"Этот домен будет использоваться в качестве префикса. Например, результатом "
+"для клиента «android-123» и домена «my.lan» будет «android-123.my.lan»."
 
 msgid "Notifications"
 msgstr "Уведомления"
@@ -309,7 +308,6 @@ msgstr "Настройки SMTP"
 msgid "Sender address (From)"
 msgstr "Адрес отправителя (От)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
 msgstr "Адрес, с которого будут отправляться уведомления."
 
@@ -407,13 +405,11 @@ msgstr "Включить сбор данных"
 msgid "Email"
 msgstr "Электронная почта"
 
-#, fuzzy
 msgid "Failed to query the server."
-msgstr "Обновление не одобрено."
+msgstr "Ошибка запроса сервера."
 
-#, fuzzy
 msgid "Failed to verify the router's registration."
-msgstr "Не удалось проверить подключение к сети."
+msgstr "Не удалось проверить регистрацию маршрутизатора."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -1803,22 +1799,21 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Наиболее важные пункты лицензионного соглашения:"
 
-#, fuzzy
 msgid ""
 "Automatic updates are offered to the Turris router owners free of charge."
 msgstr ""
-"Автоматические обновления предлагаются владельцам Turris Omnia бесплатно."
+"Автоматические обновления предлагаются владельцам маршрутизатора Turris "
+"бесплатно."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Обновления подготовлены исключительно CZ.NIC, z. s. p. о."
 
-#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
 "features of Turris router."
 msgstr ""
 "Включение автоматических обновлений является необходимым предварительным "
-"условием для дополнительных функций безопасности Turris Omnia."
+"условием для дополнительных функций безопасности маршрутизатора Turris."
 
 msgid ""
 "Automatic updates take place at the time of their release, the time of "
@@ -1853,15 +1848,14 @@ msgstr ""
 "CZ.NIC, z. s. p. o. не гарантирует доступность этой услуги и не несет "
 "ответственности за любые убытки, вызванные автоматическими обновлениями."
 
-#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
 "this Turris router and you agree with the full text of the <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Включив автоматические обновления, вы подтверждаете, что являетесь "
-"владельцем этого маршрутизатора Turris Omnia, и соглашаетесь с полным "
-"текстом <a href=\"https://www.turris.cz/omnia-updater-eula\">лицензионного "
+"владельцем этого маршрутизатора Turris, и соглашаетесь с полным текстом <a "
+"href=\"https://www.turris.cz/omnia-updater-eula\">лицензионного "
 "соглашения</a>."
 
 msgid "Log in"
