@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-07 16:26+0100\n"
-"PO-Revision-Date: 2017-08-15 11:15+0000\n"
+"PO-Revision-Date: 2017-11-07 15:37+0000\n"
 "Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Nastavení bylo úspěšně uloženo."
@@ -120,12 +120,11 @@ msgstr ""
 msgid "Data collection"
 msgstr "Sběr dat"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
-"Při ověřování registrace došlo k následující chybě: <br><pre>%(response)s</"
-"pre>"
+"Při ověřování registrace došlo k následující chybě: <br><pre>%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -236,13 +235,12 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Doména DHCP klientů v DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as prefix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Tato doména bude použita jako TLD. Např. pro klienta \"android-123\" a "
-"doménu \"lan\" bude výsledek \"android-123.lan\"."
+"doménu \"my.lan\" bude výsledek \"android-123.my.lan\"."
 
 msgid "Notifications"
 msgstr "Upozornění"
@@ -319,7 +317,6 @@ msgstr "Nastavení SMTP"
 msgid "Sender address (From)"
 msgstr "Adresa odesílatele"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
 msgstr "Z této adresy budou zasílána upozornění."
 
@@ -417,13 +414,11 @@ msgstr "Povolit sběr dat"
 msgid "Email"
 msgstr "Email"
 
-#, fuzzy
 msgid "Failed to query the server."
-msgstr "Nepodařilo se schválit update."
+msgstr "Nepodařilo se položit dotaz serveru."
 
-#, fuzzy
 msgid "Failed to verify the router's registration."
-msgstr "Nepodařilo se ověřit stav připojení."
+msgstr "Nepodařilo se ověřit, jestli byl router registrován."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -1802,22 +1797,19 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Některé důležité body z licenčního ujednání:"
 
-#, fuzzy
 msgid ""
 "Automatic updates are offered to the Turris router owners free of charge."
-msgstr ""
-"Automatické aktualizace jsou nabízeny vlastníkům routeru Turris Omnia zdarma."
+msgstr "Automatické aktualizace jsou nabízeny vlastníkům routeru Turris zdarma."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Aktualizace jsou připravovány výhradně společností CZ.NIC, z. s. p. o."
 
-#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
 "features of Turris router."
 msgstr ""
 "Povolení automatických aktualizací je podmínkou pro zapnutí dalších "
-"bezpečnostních funkcí routeru Turris Omnia."
+"bezpečnostních funkcí routeru Turris."
 
 msgid ""
 "Automatic updates take place at the time of their release, the time of "
@@ -1853,15 +1845,14 @@ msgstr ""
 "CZ.NIC, z. s. p. o. negarantuje dostupnost služby a nepřebírá zodpovědnost "
 "za škody způsobené aktualizacemi."
 
-#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
 "this Turris router and you agree with the full text of the <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Povolením instalace aktualizací potvrzujete, že jste vlastníkem tohoto "
-"routeru Turris Omnia a seznámil(a) jste se s <a href=\"https://www.turris.cz/"
-"omnia-updater-eula\">kompletními podmínkami účasti</a> v tomto projektu."
+"routeru Turris a seznámil(a) jste se s <a href=\"https://www.turris.cz/omnia-"
+"updater-eula\">kompletními podmínkami účasti</a> v tomto projektu."
 
 msgid "Log in"
 msgstr "Přihlásit se"

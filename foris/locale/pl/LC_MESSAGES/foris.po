@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-07 16:27+0100\n"
-"PO-Revision-Date: 2017-09-27 19:47+0000\n"
+"PO-Revision-Date: 2017-11-09 08:48+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
-">\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Konfiguracja została pomyślnie zapisana."
@@ -33,8 +33,7 @@ msgid "Password was successfully saved."
 msgstr "Hasło zostało pomyślnie zapisane."
 
 msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"Port WAN nie ma łącza, połączenie internetowe prawdopodobnie nie zadziała."
+msgstr "Port WAN nie ma połączenia, internet prawdopodobnie nie będzie działać."
 
 msgid "Maintenance"
 msgstr "Konserwacja"
@@ -109,11 +108,10 @@ msgstr ""
 msgid "Data collection"
 msgstr "Akwizycja danych"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr ""
-"Podczas sprawdzania rejestracji wystąpił błąd: <br><pre>%(response)s</pre>"
+msgstr "Wystąpił błąd podczas sprawdzania rejestracji: <br><pre>%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -217,19 +215,17 @@ msgstr "Włącz nazwy klientów DHCP w DNS"
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
-msgstr ""
-"Umożliwia to umieszczanie nazw klientów DHCP wśród lokalnych rekordów DNS."
+msgstr "Umożliwia umieszczanie nazw klientów DHCP wśród lokalnych rekordów DNS."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr "Domena klientów DHCP w systemie DNS"
+msgstr "Domena dla klientów DHCP w systemie DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as prefix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Ta domena będzie używana jako TLD. Na przykład. Wynik dla klienta "
-"\"android-123\" i domeny \"lan\" będzie \"android-123.lan\"."
+"Ta domena będzie używana jako TLD. Na przykład. Wynik dla klienta \"android-"
+"123\" i domeny \"my.lan\" będzie \"android-123.my.lan\"."
 
 msgid "Notifications"
 msgstr "Powiadomienia"
@@ -291,7 +287,7 @@ msgstr "Wymagane jest ponowne uruchomienie lub zwrócenie uwagi"
 
 msgid "Reboot or attention is required or update was installed"
 msgstr ""
-"Wymagane jest ponowne uruchomienie lub zwrócenie uwagi lub kiedy została "
+"Wymagane jest ponowne uruchomienie lub zwrócenie uwagi lub została "
 "zainstalowana aktualizacja"
 
 msgid "Importance"
@@ -309,9 +305,8 @@ msgstr "Ustawienia SMTP"
 msgid "Sender address (From)"
 msgstr "Adres nadawcy (From)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
-msgstr "To jest adres z którego są wysyłane powiadomienia."
+msgstr "To jest adres z którego wysyłane są powiadomienia."
 
 msgid "Server address"
 msgstr "Adres serwera"
@@ -409,13 +404,11 @@ msgstr "Włącz akwizycję danych"
 msgid "Email"
 msgstr "E-mail"
 
-#, fuzzy
 msgid "Failed to query the server."
-msgstr "Nie można zatwierdzić aktualizacji."
+msgstr "Nie udało się wysłać zapytania do serwera."
 
-#, fuzzy
 msgid "Failed to verify the router's registration."
-msgstr "Nie można zweryfikować połączenia sieciowego."
+msgstr "Nie można zweryfikować danych rejestracji routera."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -1798,22 +1791,21 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Najważniejsze punkty wynikające z umowy licencyjnej:"
 
-#, fuzzy
 msgid ""
 "Automatic updates are offered to the Turris router owners free of charge."
 msgstr ""
-"Automatyczne aktualizacje są oferowane właścicielom Turris Omnia bezpłatnie."
+"Automatyczne aktualizacje są oferowane właścicielom routera Turris "
+"bezpłatnie."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Aktualizacje są przygotowywane wyłącznie przez CZ.NIC, z. s. p. o."
 
-#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
 "features of Turris router."
 msgstr ""
-"Włączenie automatycznych aktualizacji stanowi warunek wstępny dodatkowych "
-"zabezpieczeń Turris Omnia."
+"Włączenie automatycznych aktualizacji jest warunkiem wstępnym dla "
+"dodatkowych funkcji bezpieczeństwa routera Turris."
 
 msgid ""
 "Automatic updates take place at the time of their release, the time of "
@@ -1848,15 +1840,14 @@ msgstr ""
 "CZ.NIC, z. s. p. o. nie gwarantuje dostępności tej usługi i nie ponosi "
 "odpowiedzialności za żadne szkody spowodowane automatycznymi aktualizacjami."
 
-#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
 "this Turris router and you agree with the full text of the <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Po włączeniu automatycznych aktualizacji użytkownik potwierdza, że jest "
-"właścicielem tego routera Turris Omnia i zgadza się z pełnym tekstem <a href="
-"\"https://www.turris.cz/omnia-updater-eula\">umowy licencyjnej</a>."
+"właścicielem tego routera Turris i zgadza się z pełnym tekstem <a href=\""
+"https://www.turris.cz/omnia-updater-eula\">umowy licencyjnej</a>."
 
 msgid "Log in"
 msgstr "Logowanie"
