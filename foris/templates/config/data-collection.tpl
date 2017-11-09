@@ -19,7 +19,7 @@
 <div id="page-maintenance" class="config-page">
   %if foris_info.device_customization == "omnia":
     <p>
-      {{ trans("With the Turris Omnia router you can join Project Turris which is a non-profit research project founded by the CZ.NIC association, a .CZ domain registry. By joining the project, your router will act as a probe which analyzes traffic between your home network and the Internet and helps to identify malicious data flows. Once such a flow is detected your router notifies the Turris headquarters which can compare the flow with data from the rest of the probes and assign it a threat level. If the flow is identified as an attack Turris headquarters can prepare an update which is distributed to every Turris router and helps them to protect themselves against the attack.") }}
+      {{ trans("With the Turris router you can join Project Turris which is a non-profit research project founded by the CZ.NIC association, a .CZ domain registry. By joining the project, your router will act as a probe which analyzes traffic between your home network and the Internet and helps to identify malicious data flows. Once such a flow is detected your router notifies the Turris headquarters which can compare the flow with data from the rest of the probes and assign it a threat level. If the flow is identified as an attack Turris headquarters can prepare an update which is distributed to every Turris router and helps them to protect themselves against the attack.") }}
     </p>
   %end
   %if not contract_valid():

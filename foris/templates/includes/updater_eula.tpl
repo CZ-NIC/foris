@@ -1,5 +1,5 @@
 <p>
-  {{ trans("One of the most important features of router Turris Omnia are automatic system updates. Thanks to this function your router's software stays up to date and offers better protection against attacks from the Internet.") }}
+  {{ trans("One of the most important features of router Turris are automatic system updates. Thanks to this function your router's software stays up to date and offers better protection against attacks from the Internet.") }}
 </p>
 
 <p>{{! trans("It is <strong>highly recommended</strong> to have this feature <strong>turned on</strong>. If you decide to disable it, be warned that this might weaken the security of your router and network in case flaws in the software are found.") }}</p>
