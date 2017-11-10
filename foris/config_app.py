@@ -29,6 +29,7 @@ from foris.config import init_app as init_app_config, top_index
 from foris.common import render_js_md5, init_common_app, init_default_app
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
+from foris.middleware.language_switch import LanguageSwitchMiddleware
 from foris.nuci import client
 from foris.langs import DEFAULT_LANGUAGE
 from foris.plugins import ForisPluginLoader
@@ -127,6 +128,10 @@ def prepare_config_app(args):
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
+    # session handling
     app = SessionMiddleware(app, args.session_timeout)
+
+    # try to update language every time when a request arrives
+    app = LanguageSwitchMiddleware(app)
 
     return app
