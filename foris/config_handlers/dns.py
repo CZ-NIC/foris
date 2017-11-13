@@ -35,7 +35,7 @@ class DNSHandler(BaseConfigHandler):
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        data = current_state.backend_instance.send("dns", "get_settings", {})
+        data = current_state.backend.perform("dns", "get_settings", {})
         data["dnssec_disabled"] = not data["dnssec_enabled"]
         if self.data:
             # Update from post
@@ -80,7 +80,7 @@ class DNSHandler(BaseConfigHandler):
             }
             if "dns_from_dhcp_domain" in data:
                 msg["dns_from_dhcp_domain"] = data["dns_from_dhcp_domain"]
-            res = current_state.backend_instance.send("dns", "update_settings", msg)
+            res = current_state.backend.perform("dns", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...
 
         dns_form.add_callback(dns_form_cb)

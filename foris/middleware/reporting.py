@@ -14,6 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import json
+
 from fnmatch import fnmatch
 from pprint import pformat
 from traceback import format_exc
@@ -21,9 +23,10 @@ from traceback import format_exc
 from bottle import _e, tob, html_escape, static_file
 
 from foris.utils.routing import get_root
+from foris.backend import ExceptionInBackend
 
 
-ERROR_TEMPLATE = """<!DOCTYPE html>
+ERROR_TEMPLATE = u"""<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -52,6 +55,7 @@ ERROR_TEMPLATE = """<!DOCTYPE html>
         <hr>
 
         <h2 class="error">%(error)s</h2>
+        %(extra)s
         <h3>Stack trace</h3>
         <pre>%(trace)s</pre>
         <h3>Environment</h3>
@@ -86,27 +90,37 @@ class ReportingMiddleware(object):
     def __call__(self, environ, start_response):
         try:
             return self.app(environ, start_response)
-        except Exception:
+        except (Exception, ExceptionInBackend) as e:
             template_vars = {}
             if 'bottle.request.post' in environ:
                 environ['bottle.request.post'] = dict(
                     filter_sensitive_params(environ['bottle.request.post'],
                                             self.sensitive_params))
             template_vars['environ'] = html_escape(pformat(environ))
-            template_vars['error'] = html_escape(repr(_e()))
-            template_vars['trace'] = html_escape(format_exc())
+            # Handles backend exceptions in same manner as
+            if isinstance(e, ExceptionInBackend):
+                error = "Remote Exception: %s" % e.remote_description
+                extra = "<h3>Remote request</h3><pre>%s</pre>" % html_escape(json.dumps(e.query))
+                trace = e.remote_stacktrace
+            else:
+                error = repr(_e())
+                trace = format_exc()
+                extra = ""
+            template_vars['error'] = html_escape(error)
+            template_vars['trace'] = html_escape(trace)
+            template_vars['extra'] = extra
             template_vars['dump_file'] = "%s/%s" % (get_root(), self.dump_file)
             environ['wsgi.errors'].write(format_exc())
             headers = [('Content-Type', 'text/html; charset=UTF-8')]
             err = ERROR_TEMPLATE % template_vars
             start_response('500 INTERNAL SERVER ERROR', headers)
             with open("/tmp/%s" % self.dump_file, "w") as f:
-                f.write(err)
+                f.write(err.encode("UTF-8"))
             return [tob(err)]
 
     def install_dump_route(self, app):
         def foris_error():
-            return static_file(self.dump_file, "/tmp",
-                               mimetype="text/plain", download=True)
+            return static_file(
+                self.dump_file, "/tmp", mimetype="text/plain", download=True)
 
         app.route("/%s" % self.dump_file, callback=foris_error)

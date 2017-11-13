@@ -19,6 +19,7 @@ import logging
 from datetime import datetime
 
 from foris.ubus.sessions import UbusSession, SessionNotFound
+from foris.state import current_state
 
 logger = logging.getLogger("middleware.sessions")
 
@@ -211,6 +212,7 @@ class SessionMiddleware(object):
         environ["foris.session"] = session
         environ["foris.session.id"] = session.session_id
         environ["foris.session.data"] = session._session._data
+        environ["foris.backend"] = current_state.backend
 
         def session_start_response(status, headers, exc_info=None):
             response = start_response(status, headers, exc_info)

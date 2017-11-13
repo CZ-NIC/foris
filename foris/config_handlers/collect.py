@@ -196,7 +196,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
         )
 
         def form_cb(data):
-            data = current_state.backend_instance.send(
+            data = current_state.backend.perform(
                 "data_collect", "get_registered",
                 {"email": data.get("email"), "language": current_state.language}
             )

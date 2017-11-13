@@ -195,7 +195,7 @@ def contract_valid():
     if current_state.device_customization == "omnia":
         return False
 
-    data = current_state.backend_instance.send("about", "get_contract_status", {})
+    data = current_state.backend.perform("about", "get_contract_status", {})
     if data["contract_status"] == CONRACT_VALID:
         return True
 

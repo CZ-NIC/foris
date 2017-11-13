@@ -45,7 +45,7 @@ def get_current_language():
 
     :return: language code of interface language
     """
-    lang = current_state.backend_instance.send("web", "get_language", {})["language"]
+    lang = current_state.backend.perform("web", "get_language", {})["language"]
 
     # Update info variable
     current_state.update_lang(lang)
@@ -59,7 +59,7 @@ def set_current_language(language):
     :param lang: language code to save
     :return: True on success, False otherwise
     """
-    if current_state.backend_instance.send(
+    if current_state.backend.perform(
             "web", "set_language", {"language": language})["result"]:
         # Update info variable
         current_state.update_lang(language)

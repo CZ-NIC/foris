@@ -128,7 +128,7 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     template = "config/dns"
 
     def _action_check_connection(self):
-        return current_state.backend_instance.send("dns", "connection_test_trigger", {})
+        return current_state.backend.perform("dns", "connection_test_trigger", {})
 
     def call_ajax_action(self, action):
         if action == "check-connection":
@@ -437,7 +437,7 @@ class AboutConfigPage(ConfigPageMixin):
 
     @require_contract_valid(True)
     def _action_registration_code(self):
-        data = current_state.backend_instance.send("about", "get_registration_number", {})
+        data = current_state.backend.perform("about", "get_registration_number", {})
         return data["registration_number"]
 
     def call_ajax_action(self, action):
@@ -447,7 +447,7 @@ class AboutConfigPage(ConfigPageMixin):
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
-        data = current_state.backend_instance.send("about", "get", {})
+        data = current_state.backend.perform("about", "get", {})
         data["firewall_status"]["seconds_ago"] = \
             int(time.time() - data["firewall_status"]["last_check"])
         data["firewall_status"]["datetime"] = \

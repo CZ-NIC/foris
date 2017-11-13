@@ -72,7 +72,7 @@ def login():
             bottle.redirect(next)
 
         # update contract status
-        current_state.backend_instance.send("about", "update_contract_status", {})
+        current_state.backend.perform("about", "update_contract_status", {})
 
     else:
         messages.error(_("The password you entered was not valid."))
