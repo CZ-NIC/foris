@@ -103,17 +103,6 @@ def prepare_config_app(args):
     loader = ForisPluginLoader(app)
     loader.autoload_plugins()
 
-    # print routes to console and exit
-    if args.routes:
-        routes = route_list_cmdline(app)
-        print("\n".join(sorted(set(routes))))
-        return app
-
-    # print routes in debug mode
-    if args.debug:
-        routes = route_list_debug(app)
-        logger.debug("Routes:\n%s", "\n".join(routes))
-
     # read language saved in Uci
     lang = get_current_language()
     # i18n middleware
@@ -133,5 +122,16 @@ def prepare_config_app(args):
 
     # try to update language every time when a request arrives
     app = LanguageSwitchMiddleware(app)
+
+    # print routes to console and exit
+    if args.routes:
+        routes = route_list_cmdline(bottle.app())
+        print("\n".join(sorted(set(routes))))
+        return app
+
+    # print routes in debug mode
+    if args.debug:
+        routes = route_list_debug(bottle.app())
+        logger.debug("Routes:\n%s", "\n".join(routes))
 
     return app
