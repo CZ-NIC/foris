@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-09 11:37+0100\n"
+"POT-Creation-Date: 2017-11-21 14:47+0100\n"
 "PO-Revision-Date: 2017-03-30 14:07+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/"
@@ -1398,7 +1398,7 @@ msgstr ""
 
 msgid ""
 "By enabling of the Updater, you can also join our research project: <a href="
-"\"https://www.turris.cz/\">Project Turris</a>."
+"\"https://project.turris.cz/\">Project Turris</a>."
 msgstr ""
 
 #, python-format
@@ -1409,9 +1409,9 @@ msgstr ""
 
 msgid ""
 "With Turris router you can join the research project called <a href="
-"\"https://www.turris.cz/\">Project Turris</a>. Thanks to this project, your "
-"router can become a probe that analyzes the traffic between internet and the "
-"home network and identifies suspicious data flows."
+"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
+"your router can become a probe that analyzes the traffic between internet "
+"and the home network and identifies suspicious data flows."
 msgstr ""
 
 #, python-format

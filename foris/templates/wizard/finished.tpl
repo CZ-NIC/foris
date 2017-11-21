@@ -26,11 +26,11 @@
   <p>
     {{ trans("You have decided to disable the Updater service during the installation.") }}
     {{ trans("Without the Updater, installed software will not be kept up to date and you will also not be able to install Updater's package lists.") }}
-    {{! trans('By enabling of the Updater, you can also join our research project: <a href="https://www.turris.cz/">Project Turris</a>.') }}
+    {{! trans('By enabling of the Updater, you can also join our research project: <a href="https://project.turris.cz/">Project Turris</a>.') }}
   </p>
   <p>{{! trans('You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> configuration page.') % dict(url=helpers.external_url("config/main/updater/")) }}</p>
 %else:
-  <p>{{! trans('With Turris router you can join the research project called <a href="https://www.turris.cz/">Project Turris</a>. Thanks to this project, your router can become a probe that analyzes the traffic between internet and the home network and identifies suspicious data flows.') }}</p>
+  <p>{{! trans('With Turris router you can join the research project called <a href="https://project.turris.cz/">Project Turris</a>. Thanks to this project, your router can become a probe that analyzes the traffic between internet and the home network and identifies suspicious data flows.') }}</p>
   <p>{{! trans('You can enable these additional features by following the instructions on the <a href="%(url)s">Data collection</a> page.') % dict(url=helpers.external_url("config/main/data-collection/")) }}</p>
 %end
 
