@@ -17,6 +17,7 @@
 import logging
 
 logger = logging.getLogger("foris.backend")
+from foris_client.buses.base import ControllerError
 
 
 class ExceptionInBackend(Exception):
@@ -46,12 +47,15 @@ class Backend(object):
         return "%s('%s')" % (type(self._instance).__name__, self.path)
 
     def perform(self, module, action, data=None, raise_exception_on_failure=True):
-        response = self._instance.send(module, action, data or {})
-        if raise_exception_on_failure and 'errors' in response:
+        try:
+            response = self._instance.send(module, action, data or {})
+        except ControllerError as e:
             logger.error("Exception in backend occured.")
-            error = response['errors'][0]  # right now we are dealing only with the first error
-            raise ExceptionInBackend(
-                {"module": module, "action": action, "kind": "request", "data": data or {}},
-                error["stacktrace"], error["description"]
-            )
+            if raise_exception_on_failure:
+                error = e.errors[0]  # right now we are dealing only with the first error
+                raise ExceptionInBackend(
+                    {"module": module, "action": action, "kind": "request", "data": data or {}},
+                    error["stacktrace"], error["description"]
+                )
+
         return response
