@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import re
+
 from .routing import external_route
 
 
@@ -28,3 +30,7 @@ def shorten_text(text, max_chars, etc="..."):
 
 def external_url(path):
     return external_route(path)
+
+
+def remove_html_tags(text):
+    return re.sub(r'<[^>]*>', '', text)
