@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import bottle
 import collections
 import gettext
 import os
@@ -49,6 +50,9 @@ def get_current_language():
 
     # Update info variable
     current_state.update_lang(lang)
+
+    # update bottle app as well
+    bottle.app().lang = lang
 
     return lang
 

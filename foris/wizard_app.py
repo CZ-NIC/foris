@@ -21,25 +21,13 @@ import os
 
 # 3rd party
 import bottle
-from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 # local
 from foris.wizard import init_app as init_app_wizard, top_index
 
-from foris.common import render_js_md5, init_common_app, init_default_app
-from foris.middleware.sessions import SessionMiddleware
-from foris.middleware.reporting import ReportingMiddleware
-from foris.nuci import client
-from foris.langs import DEFAULT_LANGUAGE
-from foris.plugins import ForisPluginLoader
-from foris.state import current_state
-from foris.utils import messages, contract_valid
-from foris.utils.translators import translations, get_current_language
-from foris.utils.bottle_stuff import (
-    prepare_template_defaults,
-    route_list_cmdline,
-    route_list_debug,
-)
+from foris.common import render_js_md5
+from foris.common_app import prepare_common_app
+from foris.utils import contract_valid
 
 
 logger = logging.getLogger("foris.wizard")
@@ -59,74 +47,4 @@ def prepare_wizard_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
-
-    # set app
-    current_state.set_app("wizard")
-
-    # internationalization
-    i18n_defaults(bottle.SimpleTemplate, bottle.request)
-
-    # setup default template defaults
-    prepare_template_defaults()
-
-    # init messaging template
-    messages.set_template_defaults()
-
-    app = init_default_app(top_index, args.static)
-
-    # basic and bottle settings
-    template_dir = os.path.join(BASE_DIR, "templates")
-    bottle.TEMPLATE_PATH.append(template_dir)
-    logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
-
-    # mount apps
-    app.mount("/main", init_app_wizard())
-
-    if args.debug:
-        if args.noauth:
-            logger.warning("authentication disabled")
-            app.config["no_auth"] = True
-
-    # set custom app attributes for main app and all mounted apps
-    init_common_app(app, None)
-    for route in app.routes:
-        if route.config.get("mountpoint"):
-            mounted = route.config['mountpoint.target']
-            prefix = route.config['mountpoint.prefix']
-            init_common_app(mounted, prefix)
-
-    if args.nucipath:
-        client.StaticNetconfConnection.set_bin_path(args.nucipath)
-
-    # load Foris plugins before applying Bottle plugins to app
-    loader = ForisPluginLoader(app)
-    loader.autoload_plugins()
-
-    # print routes to console and exit
-    if args.routes:
-        routes = route_list_cmdline(app)
-        print("\n".join(sorted(set(routes))))
-        return app
-
-    # print routes in debug mode
-    if args.debug:
-        routes = route_list_debug(app)
-        logger.debug("Routes:\n%s", "\n".join(routes))
-
-    # read language saved in Uci
-    lang = get_current_language()
-    # i18n middleware
-    if lang not in translations:
-        lang = DEFAULT_LANGUAGE
-    app = I18NMiddleware(app, I18NPlugin(
-        domain="messages", lang_code=lang, default=DEFAULT_LANGUAGE,
-        locale_dir=os.path.join(BASE_DIR, "locale")
-    ))
-
-    # reporting middleware for all mounted apps
-    app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
-    app.install_dump_route(bottle.app())
-
-    app = SessionMiddleware(app, args.session_timeout)
-
-    return app
+    return prepare_common_app(args, "wizard", init_app_wizard, top_index, logger)
