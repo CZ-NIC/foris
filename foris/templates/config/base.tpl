@@ -32,6 +32,10 @@
     </div>
     <div id="content-wrap">
         <div id="content">
+          <div id="rebooting-notice">
+            <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Rebooting...") }}" title="{{ trans("Rebooting...") }}">
+            <span>{{ trans("Your router is being rebooted.") }}</span>
+          </div>
           <h1>{{ title }}</h1>
 %end
             {{! base }}

@@ -40,7 +40,6 @@ BASE_DIR = os.path.dirname(__file__)
 
 
 def prepare_common_app(args, app_name, init_function, top_index, logger):
-    print "AAAAAAA", args, app_name, init_function, top_index, logger
     """
     Prepare Foris application - i.e. apply CLI arguments, mount applications,
     install hooks and middleware etc...

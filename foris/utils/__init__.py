@@ -41,8 +41,18 @@ def is_user_authenticated():
 def redirect_unauthenticated(redirect_url=None):
     redirect_url = redirect_url or reverse("index")
     no_auth = bottle.default_app().config.get("no_auth", False)
-    if not no_auth and not is_user_authenticated():
+
+    def write_message():
         messages.info(_("You have been logged out due to longer inactivity."))
+
+    if not no_auth and not is_user_authenticated():
+
+        # test silent
+        silent = bottle.request.GET.get('silent', 'false') == "true"
+        silent = silent or bottle.request.POST.get('silent', 'false') == "true"
+        if not silent:
+            write_message()
+
         if bottle.request.is_xhr:
             # "raise" JSON response if requested by XHR
             res = bottle.response.copy(cls=bottle.HTTPResponse)
@@ -50,6 +60,7 @@ def redirect_unauthenticated(redirect_url=None):
             res.body = json.dumps(dict(success=False, loggedOut=True, loginUrl=redirect_url))
             res.status = 403
             raise res
+
         # "raise" standard bottle redirect
         login_url = "%s?next=%s" % (redirect_url, bottle.request.fullpath)
         bottle.redirect(login_url)

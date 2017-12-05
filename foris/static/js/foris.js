@@ -153,6 +153,9 @@ Foris.applySVGFallback = function() {
 
 
 Foris.WS = {
+  maintain: function(msg) {
+    Foris.handleReboot(msg.data.new_ips);
+  }
 };
 
 Foris.initWebsockets = function() {
@@ -551,13 +554,6 @@ Foris.initWiFiQR = function () {
 };
 
 Foris.initNotifications = function (csrf_token) {
-  $(".notification .reboot").on("click", function() {
-    var unread = $(".notification:visible").length - 1;
-    var extraMessage = "";
-    if (unread > 0)
-      extraMessage = Foris.messages.confirmRestartExtra.replace(/%UNREAD%/g, unread);
-    return confirm(Foris.messages.confirmRestart + extraMessage);
-  });
 
   $(".notification .dismiss").on("click", function(e) {
     e.preventDefault();
@@ -593,6 +589,87 @@ Foris.initNotificationTestAlert = function () {
       }
       return false;
     }
+  });
+};
+
+Foris.waitForReachable = function(urls, handler_function) {
+  // wait function generator
+  var genWaitForUrl = function(url) {
+    return function() {
+      var stored_handler = handler_function;
+      var upper_function = arguments.callee;
+      $.ajax({
+        url: url,
+        data: {silent: true},
+        crossDomain: true,
+        async: true,
+        success: function(data, text, jqXHR) {
+          if (!stored_handler(url, jqXHR)) {
+            setTimeout(upper_function, 5000);  // retry calling self later
+          }
+        },
+        error: function(jqXHR, text, error) {
+          if (!stored_handler(url, jqXHR)) {
+            setTimeout(upper_function, 5000);  // retry calling self later
+          }
+        },
+        timeout: 5000,
+      });
+    };
+  }
+
+  // start all functions
+  for (var i = 0; i < urls.length; i++) {
+    genWaitForUrl(urls[i])();
+  }
+};
+
+Foris.waitForUnreachable = function(url, callback) {
+  // wait till current address is available
+  var url = url;
+  var unreachableFunction = function() {
+    $.ajax({
+      url: url,
+      data: {silent: true},
+      async: true,
+      crossDomain: true,
+      success: function(data, text, jqXHR) {
+        setTimeout(unreachableFunction, 5000);
+      },
+      error: function(xhr, text, error) {
+        callback(xhr, text, error);
+      },
+      timeout: 5000,
+    });
+  };
+  unreachableFunction();
+};
+
+Foris.handleReboot = function(ips) {
+  $('#rebooting-notice').show("slow");
+
+  var urls = [window.location.href];
+  for (var i = 0; i < ips.length; i++) {
+    var port = window.location.port == "" ? "" : ":" + window.location.port;
+    urls.push(window.location.protocol + "//" + ips[i] + port + window.location.pathname);
+  }
+
+  var rebootDoneCallback = function(url, jqXHR) {
+    if (jqXHR.status == 0) {
+        return false;
+    }
+    if (jqXHR.status == 403) {
+        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
+            window.location = jqXHR.responseJSON.loginUrl;
+        }
+    }
+    window.location = url;
+    return true;
+  }
+
+  // start the machinery
+  Foris.waitForUnreachable(window.location.path, function (xhr, text, error) {
+    Foris.waitForReachable(urls, rebootDoneCallback);
   });
 };
 

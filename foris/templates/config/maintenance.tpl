@@ -57,10 +57,20 @@
     <h2>{{ trans("Device reboot") }}</h2>
     <p>{{ trans("If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again after the reboot.") }}</p>
     <div>
-        <a href="{{ url("reboot") }}" class="button">{{ trans("Reboot") }}</a>
+        <a href="{{ url("reboot") }}" id="reboot-router" class="button">{{ trans("Reboot") }}</a>
     </div>
 
     <script>
       Foris.initNotificationTestAlert();
+      $(document).ready(function() {
+        $("#reboot-router").click(function(e) {
+          var self = $(this);
+          e.preventDefault();
+            $.get('{{ url("reboot") }}')
+              .done(function(response, status, xhr) {
+                $("html, body").stop().animate({scrollTop:0}, 500, "swing");
+            });
+        });
+      });
     </script>
 </div>

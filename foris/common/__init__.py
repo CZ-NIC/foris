@@ -17,6 +17,7 @@
 
 import bottle
 import hashlib
+import json
 import logging
 import pbkdf2
 import os
@@ -207,8 +208,17 @@ def require_contract_valid(valid=True):
 
 @login_required
 def reboot():
-    client.reboot()
-    bottle.redirect(reverse("/"))
+    data = current_state.backend.perform("maintain", "reboot", {})
+
+    if bottle.request.is_xhr:
+        # return a list of ip addresses where to connect after reboot is performed
+        res = bottle.response.copy(cls=bottle.HTTPResponse)
+        res.content_type = 'application/json'
+        res.body = json.dumps(data)
+        res.status = 200
+        raise res
+    else:
+        bottle.redirect(reverse("/"))
 
 
 def init_default_app(index, include_static=False):

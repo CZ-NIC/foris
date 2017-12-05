@@ -27,3 +27,20 @@
         <strong>{{ trans("No new messages.") }}</strong>
     %end
 </div>
+<script>
+  $(document).ready(function() {
+    $(".notification .reboot").click(function(e) {
+      e.preventDefault();
+      var unread = $(".notification:visible").length - 1;
+      var extraMessage = "";
+      if (unread > 0)
+        extraMessage = Foris.messages.confirmRestartExtra.replace(/%UNREAD%/g, unread);
+      if (confirm(Foris.messages.confirmRestart + extraMessage)) {
+        $.get('{{ url("reboot") }}')
+          .done(function(response, status, xhr) {
+            $("html, body").stop().animate({scrollTop:0}, 500, "swing");
+          });
+      }
+    });
+  });
+</script>
