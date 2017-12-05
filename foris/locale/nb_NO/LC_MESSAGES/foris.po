@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2017-12-04 15:47+0000\n"
+"PO-Revision-Date: 2017-12-06 23:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
@@ -172,33 +172,33 @@ msgid "This is not an IPv4 address with prefix length."
 msgstr ""
 
 msgid "Is not a number."
-msgstr ""
+msgstr "Er ikke et tall."
 
 msgid "This is not valid time in HH:MM format."
-msgstr ""
+msgstr "Dette er ikke gyldig tid i HH:MM format."
 
 msgid "This is not a valid domain name."
-msgstr ""
+msgstr "Dette er ikke et gyldig domenenavn."
 
 msgid "MAC address is not valid."
-msgstr ""
+msgstr "MAC-adressen er ikke gyldig."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
-msgstr ""
+msgstr "Ikke i gyldig rekkevidde %(low)s - %(high)s."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr ""
+msgstr "Lengden må være fra %(low)s til %(high)s tegn."
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr ""
+msgstr "Bruk videresending"
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Skru av DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
 msgstr ""
@@ -217,22 +217,22 @@ msgid ""
 msgstr ""
 
 msgid "Notifications"
-msgstr ""
+msgstr "Merknader"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Merknadsinnstillinger"
 
 msgid "Enable notifications"
-msgstr ""
+msgstr "Skru på merknader"
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "SMTP-tilbyder"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
-msgstr ""
+msgstr "Egenvalgt"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members of "
@@ -240,81 +240,92 @@ msgid ""
 "additional settings. If you want to set your own SMTP server, please select "
 "\"Custom\" and enter required settings."
 msgstr ""
+"Hvis du setter SMTP-tilbyder til \"Turris\", vil tjenerne tilbudt til "
+"medlemmer av Turris-prosjektet bli brukt. Disse krever ingen ytterligere "
+"innstillinger. Hvis du ønsker å sette din egen SMTP-tjener, velg \""
+"egenvalgt\" og skriv inn påkrevde innstillinger."
 
+#, fuzzy
 msgid "Recipient's email"
-msgstr ""
+msgstr "Mottakerens e-postadresse"
 
+#, fuzzy
 msgid "Email address of recipient. Separate multiple addresses by spaces."
-msgstr ""
+msgstr "E-postadresse til mottaker. Kommainndel adresser."
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Avsendernavn"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address "
 "before the \"at\" sign."
 msgstr ""
+"Navnet på avsenderen - vil bli brukt som del av avsenderens e-postadresse "
+"før krøllalfa-tegnet."
 
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and underscores."
 msgstr ""
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Omstart kreves"
 
 msgid "Reboot or attention is required"
-msgstr ""
+msgstr "Omstart eller oppmerksomhet kreves"
 
+#, fuzzy
 msgid "Reboot or attention is required or update was installed"
 msgstr ""
+"Omstart eller oppmerksomhet kreves, eller så ble en oppgradering installert"
 
 msgid "Importance"
-msgstr ""
+msgstr "Viktighet"
 
 msgid "Send news"
-msgstr ""
+msgstr "Send nyheter"
 
 msgid "Send emails about new features."
-msgstr ""
+msgstr "Send e-poster om nye funksjoner."
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "SMTP-innstillinger"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Forsendelsesadresse (Fra)"
 
 msgid "This is the address notifications are send from."
-msgstr ""
+msgstr "Dette er e-postadressen merknader sendes fra."
 
 msgid "Server address"
-msgstr ""
+msgstr "Tjeneradresse"
 
 msgid "Server port"
-msgstr ""
+msgstr "Tjenerport"
 
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Sikkerhet"
 
 msgid "Username"
-msgstr ""
+msgstr "Brukernavn"
 
 msgid "Password"
-msgstr ""
+msgstr "Passord"
 
+#, fuzzy
 msgid "Automatic restarts after software update"
-msgstr ""
+msgstr "Automatiske omstarter etter programvareoppgradering"
 
 msgid "Delay (days)"
-msgstr ""
+msgstr "Forsinkelse (dager)"
 
 msgid ""
 "Number of days that must pass between receiving the request for restart and "
@@ -322,16 +333,16 @@ msgid ""
 msgstr ""
 
 msgid "Reboot time"
-msgstr ""
+msgstr "Omstartstid"
 
 msgid "Time of day of automatic reboot in HH:MM format."
-msgstr ""
+msgstr "Tid på dagen for automatisk omstart, i formatet HH:MM."
 
 msgid "uCollect"
 msgstr ""
 
 msgid "Emulated services"
-msgstr ""
+msgstr "Emulerte tjenester"
 
 msgid ""
 "One of uCollect's features is emulation of some commonly abused services. If "
@@ -342,13 +353,13 @@ msgid ""
 msgstr ""
 
 msgid "Telnet (23/TCP)"
-msgstr ""
+msgstr "Telnet (23/TCP)"
 
 msgid "Telnet - alternative port (2323/TCP)"
-msgstr ""
+msgstr "Telnet - alternativ port (2323/TCP)"
 
 msgid "HTTP (80/TCP)"
-msgstr ""
+msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
 msgstr ""
@@ -357,7 +368,7 @@ msgid "Polipo HTTP proxy (8123/TCP)"
 msgstr ""
 
 msgid "HTTP proxy (8080/TCP)"
-msgstr ""
+msgstr "HTTP-mellomtjener (8080/TCP)"
 
 msgid "Collect credentials"
 msgstr ""
@@ -385,22 +396,24 @@ msgid ""
 msgstr ""
 
 msgid "Current password"
-msgstr ""
+msgstr "Nåværende passord"
 
 msgid "New password"
-msgstr ""
+msgstr "Nytt passord"
 
 msgid "New password (repeat)"
-msgstr ""
+msgstr "Gjenta nytt passord"
 
 msgid "Password (repeat)"
-msgstr ""
+msgstr "Gjenta passord"
 
+#, fuzzy
 msgid "Passwords are not equal."
-msgstr ""
+msgstr "Passordene samsvarer ikke."
 
+#, fuzzy
 msgid "Use the same password for advanced configuration"
-msgstr ""
+msgstr "Bruk samme passord for avansert oppsett."
 
 msgid ""
 "Same password would be used for accessing this administration interface, for "
@@ -422,13 +435,13 @@ msgid "Continent or ocean"
 msgstr ""
 
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 msgid "Timezone"
-msgstr ""
+msgstr "Tidssone"
 
 msgid "Advanced administration"
-msgstr ""
+msgstr "Avansert administrasjon"
 
 #, python-format
 msgid ""
@@ -439,7 +452,7 @@ msgid ""
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Tid"
 
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
@@ -449,36 +462,39 @@ msgid ""
 msgstr ""
 
 msgid "Backup file"
-msgstr ""
+msgstr "Sikkerhetskopifil"
 
 msgid "Updater"
-msgstr ""
+msgstr "Oppdateringsfunksjon"
 
 msgid "I agree"
-msgstr ""
+msgstr "Jeg samtykker"
 
+#, fuzzy
 msgid "Use automatic updates (recommended)"
-msgstr ""
+msgstr "Oppgrader automatisk (anbefales)"
 
 msgid "Turn automatic updates off"
-msgstr ""
+msgstr "Skru automatiske oppgraderinger av"
 
 msgid "Update approvals"
-msgstr ""
+msgstr "Oppgraderingsgodkjennelser"
 
 msgid "Automatic installation"
-msgstr ""
+msgstr "Automatisk installasjon"
 
 msgid "Updates will be installed without user's intervention."
-msgstr ""
+msgstr "Oppgraderinger vil bli installert uten brukerinnvirkning."
 
 msgid "Delayed updates"
-msgstr ""
+msgstr "Forsinkede oppgraderinger"
 
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
+"Oppgraderinger vil bli installert med justerbart forsinkelse. Du kan også "
+"godkjenne dem manuelt."
 
 msgid "Update approval needed"
 msgstr ""
@@ -502,7 +518,7 @@ msgid ""
 msgstr ""
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -517,7 +533,7 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr ""
+msgstr "Ruterens IP-adresse"
 
 msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
@@ -525,7 +541,7 @@ msgid ""
 msgstr ""
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "Skru på DHCP"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
@@ -539,10 +555,10 @@ msgid "DHCP max leases"
 msgstr ""
 
 msgid "Guest network"
-msgstr ""
+msgstr "Gjestenettverk"
 
 msgid "Enable guest network"
-msgstr ""
+msgstr "Skru på gjenstenettverk"
 
 #, python-format
 msgid ""
@@ -558,6 +574,7 @@ msgid ""
 "etc.)."
 msgstr ""
 
+#, fuzzy
 msgid "Guest Lan QoS"
 msgstr ""
 
@@ -579,10 +596,10 @@ msgid "Upload speed in guest network (in kilobits per second)."
 msgstr ""
 
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 msgid "auto"
-msgstr ""
+msgstr "automatisk"
 
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
@@ -591,19 +608,19 @@ msgstr ""
 
 #, python-format
 msgid "Enable Wi-Fi %s"
-msgstr ""
+msgstr "Skru på Wi-Fi %s"
 
 msgid "SSID"
-msgstr ""
+msgstr "SSID"
 
 msgid "Hide SSID"
-msgstr ""
+msgstr "Skjul SSID"
 
 msgid "If set, network is not visible when scanning for available networks."
 msgstr ""
 
 msgid "Wi-Fi mode"
-msgstr ""
+msgstr "Wi-Fi -modul"
 
 msgid ""
 "The 2.4 GHz band is more widely supported by clients, but tends to have more "
@@ -613,7 +630,7 @@ msgid ""
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "Avskrudd"
 
 msgid "802.11n - 20 MHz wide channel"
 msgstr ""
@@ -665,10 +682,10 @@ msgid ""
 msgstr ""
 
 msgid "SSID for guests"
-msgstr ""
+msgstr "SSID for gjester"
 
 msgid "Password for guests"
-msgstr ""
+msgstr "Passord for gjester"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
@@ -678,10 +695,10 @@ msgid ""
 msgstr ""
 
 msgid "Wi-Fi settings"
-msgstr ""
+msgstr "Wi-Fi -innstillinger"
 
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 msgid ""
 "Here you specify your WAN port settings. Usually, you can leave this options "
@@ -691,10 +708,10 @@ msgid ""
 msgstr ""
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (automatisk oppsett)"
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Statisk IP-adresse (manuelt oppsett)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
 msgstr ""
@@ -703,22 +720,22 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr ""
 
 msgid "Disable IPv6"
-msgstr ""
+msgstr "Skru av IPv6"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "IPv4-protokoll"
 
 msgid "IP address"
-msgstr ""
+msgstr "IP-adresse"
 
 msgid "Network mask"
-msgstr ""
+msgstr "Nettverksmaske"
 
 msgid "Gateway"
 msgstr ""
 
 msgid "DNS server 1"
-msgstr ""
+msgstr "DNS-tjener 1"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -726,19 +743,19 @@ msgid ""
 msgstr ""
 
 msgid "DNS server 2"
-msgstr ""
+msgstr "DNS-tjener 2"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "PAP/CHAP -brukernavn"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "PAP/CHAP -passord"
 
 msgid "IPv6 protocol"
-msgstr ""
+msgstr "IPv6-protokoll"
 
 msgid "IPv6 address"
-msgstr ""
+msgstr "IPv6-adresse"
 
 msgid ""
 "IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
@@ -847,7 +864,7 @@ msgid "after %(input)s hours"
 msgstr ""
 
 msgid "Hint"
-msgstr ""
+msgstr "Hint"
 
 msgid "Save"
 msgstr ""
@@ -892,7 +909,7 @@ msgid "Test type"
 msgstr ""
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "IPv4 connectivity"
 msgstr ""
