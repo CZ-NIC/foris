@@ -221,6 +221,22 @@ def reboot():
         bottle.redirect(reverse("/"))
 
 
+def ping():
+    res = bottle.response.copy(cls=bottle.HTTPResponse)
+    res.content_type = 'application/json'
+
+    next = bottle.request.GET.get('next', None)
+    login_url = "%s://%s" % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
+    login_url = "%s%s?next=%s" % (login_url, reverse("login"), next) if next else \
+        "%s%s" % (login_url, reverse("login"))
+    res.body = json.dumps(dict(msg="pong", loginUrl=login_url))
+    res.status = 200
+    res.set_header('Access-Control-Allow-Origin', '*')
+    res.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+    res.set_header('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, X-Requested-With')
+    raise res
+
+
 def init_default_app(index, include_static=False):
     """
     Initialize top-level Foris app - register all routes etc.
@@ -240,6 +256,8 @@ def init_default_app(index, include_static=False):
     if include_static:
         app.route('/static/<filename:re:.*>', name="static", callback=static)
     app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
+    # route for testing whether the foris app is alive (used in js)
+    app.route("/ping", name="ping", method=("GET", "OPTIONS"), callback=ping)
     return app
 
 

@@ -592,17 +592,20 @@ Foris.initNotificationTestAlert = function () {
   });
 };
 
-Foris.waitForReachable = function(urls, handler_function) {
+Foris.waitForReachable = function(urls, data, handler_function) {
   // wait function generator
   var genWaitForUrl = function(url) {
+    var stored_data = data;
     return function() {
       var stored_handler = handler_function;
       var upper_function = arguments.callee;
       $.ajax({
         url: url,
-        data: {silent: true},
-        crossDomain: true,
+        type: "GET",
         async: true,
+        data: stored_data ? stored_data : {silent: true},
+        crossDomain: true,
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
         success: function(data, text, jqXHR) {
           if (!stored_handler(url, jqXHR)) {
             setTimeout(upper_function, 5000);  // retry calling self later
@@ -630,9 +633,11 @@ Foris.waitForUnreachable = function(url, callback) {
   var unreachableFunction = function() {
     $.ajax({
       url: url,
-      data: {silent: true},
+      type: "GET",
       async: true,
+      data: {silent: true},
       crossDomain: true,
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
       success: function(data, text, jqXHR) {
         setTimeout(unreachableFunction, 5000);
       },
@@ -643,34 +648,6 @@ Foris.waitForUnreachable = function(url, callback) {
     });
   };
   unreachableFunction();
-};
-
-Foris.handleReboot = function(ips) {
-  $('#rebooting-notice').show("slow");
-
-  var urls = [window.location.href];
-  for (var i = 0; i < ips.length; i++) {
-    var port = window.location.port == "" ? "" : ":" + window.location.port;
-    urls.push(window.location.protocol + "//" + ips[i] + port + window.location.pathname);
-  }
-
-  var rebootDoneCallback = function(url, jqXHR) {
-    if (jqXHR.status == 0) {
-        return false;
-    }
-    if (jqXHR.status == 403) {
-        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
-            window.location = jqXHR.responseJSON.loginUrl;
-        }
-    }
-    window.location = url;
-    return true;
-  }
-
-  // start the machinery
-  Foris.waitForUnreachable(window.location.path, function (xhr, text, error) {
-    Foris.waitForReachable(urls, rebootDoneCallback);
-  });
 };
 
 function extractPathName(src) {
