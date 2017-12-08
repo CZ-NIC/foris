@@ -21,16 +21,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2017-09-15 19:47+0000\n"
-"Last-Translator: Jan Römer <roemerjan@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
-">\n"
+"PO-Revision-Date: 2017-12-08 09:43+0000\n"
+"Last-Translator: Stefan Söchtig <kerberus@mailbox.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Die Einstellungen wurden erfolgreich gespeichert."
@@ -123,12 +123,12 @@ msgstr ""
 msgid "Data collection"
 msgstr "Datenerfassung"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
-"Ein Fehler ist während der Kontrolle der Registrierung aufgetreten: <br><pre>"
-"%(response)s</pre>"
+"Beim Überprüfen der Registrierung ist ein Fehler aufgetreten: "
+"<br><pre>%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -324,9 +324,8 @@ msgstr "SMTP-Einstellungen"
 msgid "Sender address (From)"
 msgstr "Absenderadresse (Von)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
-msgstr "Von dieser Adresse aus werden die Benachrichtigungen abgesendet."
+msgstr "Von dieser Adresse aus werden Benachrichtigungen versendet."
 
 msgid "Server address"
 msgstr "Serveradresse"
@@ -426,13 +425,11 @@ msgstr "Datenerfassung aktivieren"
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#, fuzzy
 msgid "Failed to query the server."
-msgstr "Das Update wurde nicht genehmigt."
+msgstr "Fehler beim Abfragen des Servers."
 
-#, fuzzy
 msgid "Failed to verify the router's registration."
-msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
+msgstr "Die Registrierung des Routers konnte nicht überprüft werden."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
