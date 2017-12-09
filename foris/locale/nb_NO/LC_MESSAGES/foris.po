@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2017-12-09 03:49+0000\n"
+"PO-Revision-Date: 2017-12-10 08:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
@@ -33,8 +33,11 @@ msgstr "Det gamle passordet du skrev inn er ikke gyldig."
 msgid "Password was successfully saved."
 msgstr "Passord lagret."
 
+#, fuzzy
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
+"WAN-porten har ingen lenke, internettilknytningen din vil formodentlig ikke "
+"virke."
 
 msgid "Maintenance"
 msgstr "Vedlikehold"
@@ -112,10 +115,13 @@ msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr "En feil inntraff under registreringssjekk: <br><pre>%(error)s</pre>"
 
+#, fuzzy
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
 "collection."
 msgstr ""
+"Registreringen for den angitte e-postadressen er ugyldig. Du kan nå aktivere "
+"datainnsamlingen."
 
 #, python-format
 msgid ""
@@ -201,15 +207,16 @@ msgid "Disable DNSSEC"
 msgstr "Skru av DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr ""
+msgstr "Skru på DHCP-klienter i DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
 
+#, fuzzy
 msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgstr "Domenet tilhørende DHCP-klienter i DNS"
 
 msgid ""
 "This domain will be used as prefix. E.g. The result for client "
@@ -362,16 +369,16 @@ msgid "HTTP (80/TCP)"
 msgstr "HTTP (80/TCP)"
 
 msgid "Squid HTTP proxy (3128/TCP)"
-msgstr ""
+msgstr "Squid HTTP-mellomtjener (3128/TCP)"
 
 msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr ""
+msgstr "Polipo HTTP-mellomtjener (8123/TCP)"
 
 msgid "HTTP proxy (8080/TCP)"
 msgstr "HTTP-mellomtjener (8080/TCP)"
 
 msgid "Collect credentials"
-msgstr ""
+msgstr "Samle inn innloggingsdetaljer"
 
 msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
@@ -379,10 +386,10 @@ msgid ""
 msgstr ""
 
 msgid "Enable data collection"
-msgstr ""
+msgstr "Skru på datainnsamling"
 
 msgid "Email"
-msgstr ""
+msgstr "E-postadresse"
 
 msgid "Failed to query the server."
 msgstr ""
@@ -432,7 +439,7 @@ msgid ""
 msgstr ""
 
 msgid "Continent or ocean"
-msgstr ""
+msgstr "Kontinent eller hav"
 
 msgid "Country"
 msgstr "Land"
