@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2017-09-29 19:02+0000\n"
+"PO-Revision-Date: 2017-12-08 20:15+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
-"hu/>\n"
+"Language-Team: Hungarian "
+"<https://hosted.weblate.org/projects/turris/foris/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 2.18-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Beállítás mentése sikerült."
@@ -108,11 +108,10 @@ msgstr ""
 msgid "Data collection"
 msgstr "Adatgyűjtés"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr ""
-"Hiba történt a regisztráció ellenőrzésekor: <br><pre>%(response)s</pre>"
+msgstr "Hiba történt a regisztráció ellenőrzésekor: <br><pre>%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -224,14 +223,13 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "DHCP-ügyfelek tartományneve a DNS-ben"
 
-#, fuzzy
 msgid ""
 "This domain will be used as prefix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Tartománynév mint TLD (legfelső szintű tartománynév)  lesz használva, pl. az "
-"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: "
-"\"android-123.lan\"."
+"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: \""
+"android-123.lan\"."
 
 msgid "Notifications"
 msgstr "Értesítések"
@@ -307,9 +305,8 @@ msgstr "SMTP-beállítások"
 msgid "Sender address (From)"
 msgstr "Feladó címe (-tól)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
-msgstr "Ez az a cím, ahonnan a rendszer értesítéseket küld."
+msgstr "Cím, ahonnan a rendszer értesítéseket küld."
 
 msgid "Server address"
 msgstr "Kiszolgáló címe"
@@ -407,13 +404,11 @@ msgstr "Adatgyűjtés engedélyezése"
 msgid "Email"
 msgstr "E-mail"
 
-#, fuzzy
 msgid "Failed to query the server."
-msgstr "Frissítés jóváhagyása sikertelen."
+msgstr "Kiszolgáló lekérdezése sikertelen."
 
-#, fuzzy
 msgid "Failed to verify the router's registration."
-msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
+msgstr "Nem lehet ellenőrizni az útválasztó regisztrálását."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -1074,7 +1069,6 @@ msgstr "Módosítások elvetése"
 msgid "Save changes"
 msgstr "Beállítások mentése"
 
-#, fuzzy
 msgid ""
 "With the Turris router you can join Project Turris which is a non-profit "
 "research project founded by the CZ.NIC association, a .CZ domain registry. "
@@ -1700,7 +1694,6 @@ msgstr ""
 "A frissítéskezelőt bármikor engedélyezheti a <a href=\"%(url)s"
 "\">Frissítéskezelő</a> beállítási oldalán."
 
-#, fuzzy
 msgid ""
 "With Turris router you can join the research project called <a href="
 "\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
@@ -1708,7 +1701,7 @@ msgid ""
 "and the home network and identifies suspicious data flows."
 msgstr ""
 "A Turris Omnia-val egy kutatási projekt csatlakozhat, az úgynevezett <a href="
-"\"https://project.turris.cz/\"> Projekt Turris</a>-hez. A projektnek "
+"\"https://project.turris.cz/\">Turris Projekt</a>-hez. A projektnek "
 "köszönhetően az útválasztó egy szondává válhat, amely elemzi az internet és "
 "az otthoni hálózat közötti forgalmat, és azonosítja a gyanús adatáramlást."
 
@@ -1756,7 +1749,6 @@ msgstr "Nyelv"
 msgid "foris version:"
 msgstr "Foris verzió:"
 
-#, fuzzy
 msgid ""
 "One of the most important features of router Turris are automatic system "
 "updates. Thanks to this function your router's software stays up to date and "
@@ -1790,7 +1782,6 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "A licencszerződés legfontosabb pontjai:"
 
-#, fuzzy
 msgid ""
 "Automatic updates are offered to the Turris router owners free of charge."
 msgstr "Az automatikus frissítés a Turris Omnia tulajdonosoknak ingyenes."
@@ -1798,7 +1789,6 @@ msgstr "Az automatikus frissítés a Turris Omnia tulajdonosoknak ingyenes."
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "A frissítéseket kizárólag a CZ.NIC, z. ok. p. o. készíti."
 
-#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
 "features of Turris router."
@@ -1838,15 +1828,15 @@ msgstr ""
 "CZ.NIC, z. ok. p. o. nem garantálja a szolgáltatás elérhetőségét, nem "
 "felelős semmilyen kárért, amelyet az automatikus frissítés okozhat."
 
-#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner of "
 "this Turris router and you agree with the full text of the <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
 "Az automatikus frissítések engedélyezésével megerősíti, hogy Ön a "
-"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\"https://"
-"www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes szövegével."
+"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\""
+"https://www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes "
+"szövegével."
 
 msgid "Log in"
 msgstr "Bejelentkezés"
