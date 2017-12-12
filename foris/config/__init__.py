@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from datetime import datetime
-import os
+import base64
 import logging
 import time
 from urlparse import urlunsplit
@@ -158,14 +158,15 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
     def _action_config_backup(self):
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        directory = "/tmp/foris_backups"
         filename = "turris-backup-%s.tar.bz2" % timestamp
-        # TODO: remove old backups, catch errors
-        if not os.path.isdir(directory):
-            os.mkdir(directory)
-        client.save_config_backup(os.path.join(directory, filename))
-        return bottle.static_file(filename, directory,
-                                  mimetype="application/x-bz2", download=True)
+        data = current_state.backend.perform("maintain", "generate_backup", {})
+        raw_data = base64.b64decode(data["backup"])
+
+        bottle.response.set_header("Content-Type", "application/x-bz2")
+        bottle.response.set_header("Content-Disposition", 'attachment; filename="%s"' % filename)
+        bottle.response.set_header("Content-Length", len(raw_data))
+
+        return raw_data
 
     def _action_save_notifications(self):
         if bottle.request.method != 'POST':

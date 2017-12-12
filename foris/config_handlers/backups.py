@@ -14,10 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import base64
 
 from foris import fapi
-from foris.nuci import client
 from foris.form import File
+from foris.state import current_state
 from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler
@@ -30,11 +31,15 @@ class MaintenanceHandler(BaseConfigHandler):
         maintenance_form = fapi.ForisForm("maintenance", self.data)
         maintenance_main = maintenance_form.add_section(
             name="restore_backup", title=_(self.userfriendly_title))
-        maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
+        maintenance_main.add_field(
+            File, name="backup_file", label=_("Backup file"), required=True)
 
         def maintenance_form_cb(data):
-            result = client.load_config_backup(data['backup_file'].file)
-            return "save_result", {'new_ip': result}
+            current_state.backend.perform(
+                "maintain", "restore_backup",
+                {"backup": base64.b64encode(data["backup_file"].file.read())}
+            )
+            return "none", None
 
         maintenance_form.add_callback(maintenance_form_cb)
         return maintenance_form
