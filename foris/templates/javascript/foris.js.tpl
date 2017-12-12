@@ -13,6 +13,7 @@ Foris.messages.unsavedNotificationsAlert = "{{ trans('There are some unsaved cha
 
 Foris.handleReboot = function(ips) {
   $('#rebooting-notice').show("slow");
+  $('#reboot-required-notice').hide("slow");
 
   var port = window.location.port == "" ? "" : ":" + window.location.port;
   var ping_path = "{{ url('ping') }}"

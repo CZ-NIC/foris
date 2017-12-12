@@ -213,26 +213,14 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         result = False
         try:
             result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
-            new_ip = self.form.callback_results.get('new_ip')
-            if new_ip:
-                # rebuild current URL with new IP
-                old_urlparts = bottle.request.urlparts
-                new_url = urlunsplit((old_urlparts.scheme, new_ip, old_urlparts.path, "", ""))
-                messages.success(_("Configuration was successfully restored. After installing "
-                                   "updates and rebooting you can return to this page at "
-                                   "<a href=\"%(new_url)s\">%(new_url)s</a> in local "
-                                   "network. Please wait a while until router automatically "
-                                   "restarts.") % dict(new_url=new_url))
-            elif result:
-                messages.success(_("Configuration was successfully restored. Please wait a while "
-                                   "for installation of updates and automatic restart of the "
-                                   "device."))
-                messages.warning(_("IP address of the router could not be determined from the backup."))
+            if result:
+                messages.success(_("Configuration was successfully restored. "
+                                   "Note that a reboot will be required to apply restored "
+                                   "configuration."))
             else:
                 messages.warning(_("There were some errors in your input."))
-        except ConfigRestoreError:
-            messages.error(_("Configuration could not be loaded, backup file is probably corrupted."))
-            logger.exception("Error when restoring backup.")
+        except:
+            pass  # TBD a proper error handling
         return result
 
 

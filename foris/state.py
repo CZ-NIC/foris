@@ -49,6 +49,7 @@ class ForisState(object):
         :type required: boolean
         """
         logger.debug("setting reboot_required=%s" % required)
+        self.reboot_required = required
 
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))

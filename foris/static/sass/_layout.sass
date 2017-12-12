@@ -118,3 +118,42 @@ body
     display: inline
     text-align: center
     vertical-align: middle
+
+#reboot-required-notice
+  +rounded-borders
+  padding: 1em 1em 1em 1em
+
+  background:
+    position: 0.8em 50%
+    repeat: no-repeat
+
+  color: white
+
+  display: none
+  margin-bottom: 1.0em
+  background-color: $message-color-error
+
+  img
+    width: 25px
+    height: 25px
+    display: inline
+    text-align: center
+    vertical-align: middle
+
+  .button
+    background-color: #fff
+    color: $message-color-error
+
+#reboot-required-button-container
+  display: inline-block
+  clear: both
+  vertical-align: middle
+  width: 100%
+
+  span
+    margin: 0.3em
+    float: left
+
+  .button
+    margin: 0.3em
+    float: right

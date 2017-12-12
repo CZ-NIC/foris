@@ -36,6 +36,16 @@
             <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Rebooting...") }}" title="{{ trans("Rebooting...") }}">
             <span>{{ trans("Your router is being rebooted.") }}</span>
           </div>
+    %if foris_info.reboot_required:
+          <div id="reboot-required-notice" style='display: block'>
+    %else:
+          <div id="reboot-required-notice" style='display: none'>
+    %end
+            <div id="reboot-required-button-container">
+              <span>{{ trans("Your router needs to be restarted in order to work properly.") }}</span>
+              <a href="{{ url("reboot")}}" class="button" id="reboot-required-button">{{ trans("Reboot now") }}</a>
+            </div>
+          </div>
           <h1>{{ title }}</h1>
 %end
             {{! base }}

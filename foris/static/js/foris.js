@@ -57,6 +57,7 @@ Foris.initialize = function () {
   Foris.initSmoothScrolling();
   Foris.applySVGFallback();
   Foris.initWebsockets();
+  Foris.initRebootRequired();
 };
 
 Foris.initParsley = function () {
@@ -648,6 +649,14 @@ Foris.waitForUnreachable = function(url, callback) {
     });
   };
   unreachableFunction();
+};
+
+Foris.initRebootRequired = function() {
+  $("#reboot-required-button").click(function(e) {
+    var self = $(this);
+    e.preventDefault();
+    $.get(self.attr("href"));
+  });
 };
 
 function extractPathName(src) {
