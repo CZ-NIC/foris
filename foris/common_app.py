@@ -23,7 +23,7 @@ from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
 from foris.common import init_common_app, init_default_app
 from foris.langs import DEFAULT_LANGUAGE
-from foris.middleware.language_switch import LanguageSwitchMiddleware
+from foris.middleware.backend_data import BackendData
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
 from foris.nuci import client
@@ -107,8 +107,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger):
     # session handling
     app = SessionMiddleware(app, args.session_timeout)
 
-    # try to update language every time when a request arrives
-    app = LanguageSwitchMiddleware(app)
+    # obtains required data from backend (this will happen everytime when a request arrives)
+    app = BackendData(app)
 
     # print routes to console and exit
     if args.routes:

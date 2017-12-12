@@ -29,6 +29,7 @@ class ForisState(object):
         self.foris_version = version
         self.language = DEFAULT_LANGUAGE
         self.app = None
+        self.reboot_required = False
 
     def update_lang(self, lang):
         logger.debug("current lang updated to '%s'" % lang)
@@ -41,6 +42,13 @@ class ForisState(object):
     def set_backend(self, backend):
         logger.debug("setting backend to '%s' (path %s)." % (backend.name, backend.path))
         self.backend = backend
+
+    def update_reboot_required(self, required):
+        """ Sets reboot required indicator
+        :param required: True if reboot is required False otherwise
+        :type required: boolean
+        """
+        logger.debug("setting reboot_required=%s" % required)
 
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))

@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import bottle
 import collections
 import gettext
 import os
@@ -39,22 +38,6 @@ ungettext = lambda singular, plural, n: \
 gettext_dummy = lambda x: x
 
 _ = ugettext
-
-
-def get_current_language():
-    """Read interface language saved in Uci config foris.settings.lang.
-
-    :return: language code of interface language
-    """
-    lang = current_state.backend.perform("web", "get_language", {})["language"]
-
-    # Update info variable
-    current_state.update_lang(lang)
-
-    # update bottle app as well
-    bottle.app().lang = lang
-
-    return lang
 
 
 def set_current_language(language):
