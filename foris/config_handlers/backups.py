@@ -35,11 +35,11 @@ class MaintenanceHandler(BaseConfigHandler):
             File, name="backup_file", label=_("Backup file"), required=True)
 
         def maintenance_form_cb(data):
-            current_state.backend.perform(
+            data = current_state.backend.perform(
                 "maintain", "restore_backup",
                 {"backup": base64.b64encode(data["backup_file"].file.read())}
             )
-            return "none", None
+            return "save_result", {'result': data["result"]}
 
         maintenance_form.add_callback(maintenance_form_cb)
         return maintenance_form

@@ -210,17 +210,14 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
                                                          **kwargs)
 
     def save(self, *args, **kwargs):
-        result = False
-        try:
-            result = super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
-            if result:
-                messages.success(_("Configuration was successfully restored. "
-                                   "Note that a reboot will be required to apply restored "
-                                   "configuration."))
-            else:
-                messages.warning(_("There were some errors in your input."))
-        except:
-            pass  # TBD a proper error handling
+        super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
+        result = self.form.callback_results.get('result')
+        if result:
+            messages.success(_("Configuration was successfully restored. "
+                               "Note that a reboot will be required to apply restored "
+                               "configuration."))
+        else:
+            messages.warning(_("Failed to restore the backup from the provided file."))
         return result
 
 
