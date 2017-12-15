@@ -37,7 +37,8 @@
       </label>
     %end
     %if field.hint:
-      <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ field.hint }}" alt="{{ trans("Hint") }}: {{ field.hint }}">
+      <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ helpers.remove_html_tags(field.hint) }}" alt="{{ trans("Hint") }}: {{ helpers.remove_html_tags(field.hint) }}">
+      <div class="hint-text" style="display: none">{{! field.hint }}</div>
     %end
     %if field.errors:
       <div class="server-validation-container">
