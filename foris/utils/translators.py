@@ -27,7 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # read locale directory
 locale_directory = os.path.join(BASE_DIR, "locale")
 
-translations = collections.OrderedDict(
+
+class _LangDict(collections.OrderedDict):
+    def __missing__(self, key):
+        # return english translation if missing key
+        return super(_LangDict, self).__getitem__("en")
+
+
+translations = _LangDict(
     (e, gettext.translation("messages", locale_directory, languages=[e], fallback=True))
     for e in translations
 )
