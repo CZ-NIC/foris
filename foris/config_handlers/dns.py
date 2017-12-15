@@ -40,7 +40,7 @@ class DNSHandler(BaseConfigHandler):
         if self.data:
             # Update from post
             data.update(self.data)
-            data["dnssec_enabled"] = not self.data["dnssec_disabled"]
+            data["dnssec_enabled"] = not self.data.get("dnssec_disabled", False)
 
         dns_form = fapi.ForisForm("dns", data)
         dns_main = dns_form.add_section(name="set_dns", title=_(self.userfriendly_title))
