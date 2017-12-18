@@ -28,7 +28,7 @@
 
 <h2>{{ trans("What next?") }}</h2>
 
-<p>{{! trans("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': url("config_index"), 'url2': url("config_page", page_name="system-password")} }}</p>
+<p>{{! trans("You can change any of the previously configured settings in the <a href=\"%(url)s\">standard configuration interface</a>. In case you are interested in more advanced options, you can use the LuCI interface which is available from the <a href=\"%(url2)s\">Advanced administration tab</a>.") % {'url': helpers.external_url("config/"), 'url2': helpers.external_url("config/main/system-password/")} }}</p>
 
 %if len(notifications):
     <h2>{{ trans("Important updates") }}</h2>
@@ -36,4 +36,4 @@
     %include("_notifications.tpl", notifications=notifications)
 %end
 
-<a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to configuration interface") }}</a>
+<a class="button-next" href="{{ helpers.external_url("config/") }}">{{ trans("Continue to the configuration interface") }}</a>

@@ -28,4 +28,4 @@
     %include("_notifications.tpl", notifications=notifications)
 %end
 
-<a class="button-next" href="{{ url("config_index") }}">{{ trans("Continue to configuration interface") }}</a>
+<a class="button-next" href="{{ helpers.external_url("config/") }}">{{ trans("Continue to the configuration interface") }}</a>
