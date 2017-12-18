@@ -1,16 +1,8 @@
 import argparse
 import bottle
 
-from foris.config_app import prepare_config_app
-from foris.wizard_app import prepare_wizard_app
-
 from foris.state import current_state
 from foris.backend import Backend
-
-app_map = {
-    "config": prepare_config_app,
-    "wizard": prepare_wizard_app,
-}
 
 
 def get_arg_parser():
@@ -56,7 +48,12 @@ def main():
     # set backend
     current_state.set_backend(Backend(args.backend, args.backend_socket))
 
-    main_app = app_map[args.app](args)
+    if args.app == "config":
+        from foris.config_app import prepare_config_app
+        main_app = prepare_config_app(args)
+    elif args.app == "wizard":
+        from foris.wizard_app import prepare_wizard_app
+        main_app = prepare_wizard_app(args)
 
     if args.routes:
         # routes should be printed and we can safely exit

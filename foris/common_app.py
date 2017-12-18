@@ -39,7 +39,7 @@ from foris.utils import messages
 BASE_DIR = os.path.dirname(__file__)
 
 
-def prepare_common_app(args, app_name, init_function, top_index, logger):
+def prepare_common_app(args, app_name, init_function, top_index, logger, load_plugins=True):
     """
     Prepare Foris application - i.e. apply CLI arguments, mount applications,
     install hooks and middleware etc...
@@ -90,9 +90,10 @@ def prepare_common_app(args, app_name, init_function, top_index, logger):
     if args.nucipath:
         client.StaticNetconfConnection.set_bin_path(args.nucipath)
 
-    # load Foris plugins before applying Bottle plugins to app
-    loader = ForisPluginLoader(app)
-    loader.autoload_plugins()
+    if load_plugins:
+        # load Foris plugins before applying Bottle plugins to app
+        loader = ForisPluginLoader(app)
+        loader.autoload_plugins()
 
     # i18n middleware
     app = I18NMiddleware(app, I18NPlugin(

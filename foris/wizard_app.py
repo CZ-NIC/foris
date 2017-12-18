@@ -47,4 +47,5 @@ def prepare_wizard_app(args):
     :param args: arguments received from ArgumentParser.parse_args().
     :return: bottle.app() for Foris
     """
-    return prepare_common_app(args, "wizard", init_app_wizard, top_index, logger)
+    return prepare_common_app(
+        args, "wizard", init_app_wizard, top_index, logger, load_plugins=False)
