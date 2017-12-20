@@ -19,16 +19,15 @@ import bottle
 import hashlib
 import json
 import logging
-import pbkdf2
 import os
 import re
 import time
 
 from functools import wraps
 
-from foris.nuci import client, filters
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid
+    redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid,
+    check_password
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
@@ -46,23 +45,11 @@ logger = logging.getLogger("foris.common")
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-def _check_password(password):
-    data = client.get(filter=filters.foris_config)
-    password_hash = data.find_child("uci.foris.auth.password")
-    if password_hash is None:
-        # consider unset password as successful auth
-        # maybe set some session variable in this case
-        return True
-    password_hash = password_hash.value
-    # crypt automatically extracts salt and iterations from formatted pw hash
-    return password_hash == pbkdf2.crypt(password, salt=password_hash)
-
-
 def login():
     session = bottle.request.environ["foris.session"]
 
     next = bottle.request.POST.get("next")
-    if _check_password(bottle.request.POST.get("password")):
+    if check_password(bottle.request.POST.get("password")):
         # re-generate session to prevent session fixation
         session.recreate()
         session["user_authenticated"] = True

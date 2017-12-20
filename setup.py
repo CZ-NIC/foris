@@ -47,7 +47,6 @@ setup(
         "bottle",
         "bottle_i18n",
         "ncclient",
-        "pbkdf2",
     ],
     provides=[
         "foris"

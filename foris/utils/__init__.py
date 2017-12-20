@@ -215,3 +215,14 @@ def contract_valid():
         return True
 
     return False
+
+
+def check_password(password):
+    res = current_state.backend.perform("password", "check", {"password": password})
+
+    # consider unset password as successful auth
+    # maybe set some session variable in this case
+    if res["status"] in ("unset", "good"):
+        return True
+
+    return False
