@@ -448,9 +448,8 @@ class AboutConfigPage(ConfigPageMixin):
             self.SENDING_STATUS_TRANSLATION[data["ucollect_status"]["state"]]
         # process dates etc
         if not contract_valid():
-            foris_conf = client.get(filter=filters.create_config_filter("foris"))
-            agreed_opt = foris_conf.find_child("uci.foris.eula.agreed_collect")
-            kwargs['agreed_collect'] = agreed_opt and bool(int(agreed_opt.value))
+            agreed = current_state.backend.perform("data_collect", "get", {})["agreed"]
+            kwargs['agreed_collect'] = agreed
         return self.default_template(data=data, **kwargs)
 
 
