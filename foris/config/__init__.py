@@ -278,9 +278,8 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             kwargs['auto_updates_form'] = auto_updates_handler.form
             kwargs['updater_disabled'] = \
                 not preproc_disabled_to_agreed(auto_updates_handler.form.nuci_config)
-            collecting_opt = auto_updates_handler.form.nuci_config.find_child(
-                'uci.foris.eula.agreed_collect')
-            kwargs['collecting_enabled'] = collecting_opt and bool(int(collecting_opt.value))
+            agreed = current_state.backend.perform("data_collect", "get", {})["agreed"]
+            kwargs['collecting_enabled'] = agreed
             current_approvals = [e for e in lazy_cache.nuci_updater.approval_list if e["current"]]
             approval = current_approvals[0] if current_approvals else None
 
@@ -329,18 +328,15 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
     def render(self, **kwargs):
         status = kwargs.pop("status", None)
         if not contract_valid():
-            uci_config = client.get(filter=filters.create_config_filter("foris", "updater"))
+            updater_data = current_state.backend.perform("updater", "get_settings", {})
+            kwargs['updater_disabled'] = not updater_data["enabled"]
 
-            disabled_opt = uci_config.find_child('uci.updater.override.disable')
-            updater_disabled = disabled_opt and bool(int(disabled_opt.value))
-            kwargs['updater_disabled'] = updater_disabled
-
-            if not updater_disabled:
-                agreed_opt = uci_config.find_child('uci.foris.eula.agreed_collect')
-                if agreed_opt and bool(int(agreed_opt.value)):
+            if updater_data["enabled"]:
+                collect_data = current_state.backend.perform("data_collect", "get", {})
+                if collect_data["agreed"]:
                     handler = collect.CollectionToggleHandler(request.POST)
                     kwargs['collection_toggle_form'] = handler.form
-                    kwargs['agreed'] = bool(int(agreed_opt.value))
+                    kwargs['agreed'] = collect_data["agreed"]
                 else:
                     handler = collect.RegistrationCheckHandler(request.POST)
                     kwargs['registration_check_form'] = handler.form

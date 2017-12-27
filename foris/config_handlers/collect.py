@@ -112,20 +112,27 @@ class CollectionToggleHandler(BaseConfigHandler):
     userfriendly_title = gettext("Data collection")
 
     def get_form(self):
-        form = fapi.ForisForm("enable_collection", self.data,
-                              filter=filters.create_config_filter("foris", "updater"))
+        data = current_state.backend.perform("data_collect", "get", {})
+        if self.data and "enable" in self.data:
+            data["enable"] = self.data["enable"]
+        else:
+            data["enable"] = data["agreed"]
+
+        form = fapi.ForisForm(
+            "enable_collection", data, filter=filters.create_config_filter("updater"))
 
         section = form.add_section(
             name="collection_toggle", title=_(self.userfriendly_title),
         )
-        section.add_field(Checkbox, name="enable", label=_("Enable data collection"),
-                          nuci_path="uci.foris.eula.agreed_collect",
-                          nuci_preproc=lambda val: bool(int(val.value)))
+        section.add_field(
+            Checkbox, name="enable", label=_("Enable data collection"),
+            preproc=lambda val: bool(int(val))
+        )
 
         def form_cb(data):
-            uci = build_option_uci_tree("foris.eula.agreed_collect", "config",
-                                        data.get("enable"))
-            return "edit_config", uci
+            data = current_state.backend.perform(
+                "data_collect", "set", {"agreed": data["enable"]})
+            return "save_result", data  # store {"result": ...} to be used later...
 
         def adjust_lists_cb(data):
             uci = Uci()
