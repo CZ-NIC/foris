@@ -20,7 +20,7 @@ from foris.form import Checkbox, MultiCheckbox
 from foris.form import Email
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import (
-    Uci, Config, Section, Option, List, Value, parse_uci_bool, build_option_uci_tree,
+    Uci, Config, Section, List, Value
 )
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.state import current_state
@@ -32,8 +32,22 @@ class UcollectHandler(BaseConfigHandler):
     userfriendly_title = gettext("uCollect")
 
     def get_form(self):
-        ucollect_form = fapi.ForisForm("ucollect", self.data,
-                                       filter=filters.create_config_filter("ucollect"))
+        data = current_state.backend.perform("data_collect", "get_honeypots", {})
+
+        # convert data from backend to form data
+        data["services"] = []
+        for minipot in data["minipots"]:
+            if data["minipots"][minipot]:
+                data["services"].append(minipot)
+        del data["minipots"]
+
+        if self.data:
+            # Update from post
+            data["log_credentials"] = self.data["log_credentials"]
+            # services is a multifield which has to be handled differently
+            data["services"] = [e for e in self.data.getall("services[]") if e]
+
+        ucollect_form = fapi.ForisForm("ucollect", data)
         fakes = ucollect_form.add_section(
             name="fakes",
             title=_("Emulated services"),
@@ -53,20 +67,12 @@ class UcollectHandler(BaseConfigHandler):
             ("8080tcp", _("HTTP proxy (8080/TCP)")),
         )
 
-        def get_enabled_services(disabled_list):
-            disabled_services = map(lambda value: value.content, disabled_list.children)
-            res = [x[0] for x in SERVICES_OPTIONS if x[0] not in disabled_services]
-            return res
-
         fakes.add_field(
             MultiCheckbox,
             name="services",
             label=_("Emulated services"),
             args=SERVICES_OPTIONS,
             multifield=True,
-            nuci_path="uci.ucollect.fakes.disable",
-            nuci_preproc=get_enabled_services,
-            default=[x[0] for x in SERVICES_OPTIONS]
         )
 
         fakes.add_field(
@@ -75,33 +81,15 @@ class UcollectHandler(BaseConfigHandler):
             label=_("Collect credentials"),
             hint=_("If this option is enabled, user names and passwords are collected "
                    "and sent to server in addition to the IP address of the client."),
-            nuci_path="uci.ucollect.fakes.log_credentials",
-            nuci_preproc=parse_uci_bool
         )
 
         def ucollect_form_cb(data):
-            uci = Uci()
-            ucollect = Config("ucollect")
-            uci.add(ucollect)
-
-            fakes = Section("fakes", "fakes")
-            ucollect.add(fakes)
-
-            disable = List("disable")
-
-            disabled_services = [x[0] for x in SERVICES_OPTIONS
-                                 if x[0] not in data['services']]
-            for i, service in enumerate(disabled_services):
-                disable.add(Value(i, service))
-
-            if len(disabled_services):
-                fakes.add_replace(disable)
-            else:
-                fakes.add_removal(disable)
-
-            fakes.add(Option("log_credentials", data['log_credentials']))
-
-            return "edit_config", uci
+            msg = {
+                "log_credentials": data["log_credentials"],
+                "minipots": {k: k in data["services"] for k in dict(SERVICES_OPTIONS)}
+            }
+            res = current_state.backend.perform("data_collect", "set_honeypots", msg)
+            return "save_result", res  # store {"result": ...} to be used later...
 
         ucollect_form.add_callback(ucollect_form_cb)
 
