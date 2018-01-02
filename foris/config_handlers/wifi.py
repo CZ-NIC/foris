@@ -305,7 +305,8 @@ class WifiHandler(BaseConfigHandler):
         if wifi_enabled:
             iface.add(Option("ssid", radio_data('ssid')))
             iface.add(Option("hidden", radio_data('ssid_hidden')))
-            iface.add(Option("encryption", "psk2+tkip+aes"))
+            iface.add(Option("encryption", "psk2+ccmp"))
+            iface.add(Option("wpa_group_rekey", "86400"))
             iface.add(Option("key", radio_data('key')))
             if radio_data('channel2g4'):
                 channel = radio_data('channel2g4')
@@ -328,7 +329,8 @@ class WifiHandler(BaseConfigHandler):
                     guest_iface.add(Option("device", "radio%s" % radio))
                     guest_iface.add(Option("mode", "ap"))
                     guest_iface.add(Option("ssid", radio_data('guest_ssid')))
-                    guest_iface.add(Option("encryption", "psk2+tkip+aes"))
+                    guest_iface.add(Option("encryption", "psk2+ccmp"))
+                    guest_iface.add(Option("wpa_group_rekey", "86400"))
                     guest_iface.add(Option("key", radio_data('guest_key')))
                     guest_iface.add(Option("disabled", "0"))
                     guest_iface.add(Option("ifname", "guest_turris_%s" % radio))
