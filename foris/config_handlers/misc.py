@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
+import base64
 
 from foris import fapi, validators
 from foris.nuci import client, filters
@@ -77,12 +78,14 @@ class PasswordHandler(BaseConfigHandler):
                 if not check_password(data['old_password']):
                     return "save_result", {'wrong_old_password': True}
 
+            encoded_password = base64.b64encode(data["password"])
+
             current_state.backend.perform(
-                "password", "set", {"password": data["password"], "type": "foris"})
+                "password", "set", {"password": encoded_password, "type": "foris"})
 
             if data['set_system_pw'] is True:
                 current_state.backend.perform(
-                    "password", "set", {"password": data["password"], "type": "system"})
+                    "password", "set", {"password": encoded_password, "type": "system"})
 
             return "none", None
 

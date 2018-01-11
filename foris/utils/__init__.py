@@ -14,6 +14,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import base64
 import json
 import urlparse
 
@@ -218,7 +220,8 @@ def contract_valid():
 
 
 def check_password(password):
-    res = current_state.backend.perform("password", "check", {"password": password})
+    res = current_state.backend.perform(
+        "password", "check", {"password": base64.b64encode(password)})
 
     # consider unset password as successful auth
     # maybe set some session variable in this case
