@@ -18,27 +18,36 @@
 
 from foris import fapi, validators
 from foris.form import Textbox, Checkbox, Number
-from foris.nuci import client
-from foris.nuci.filters import create_config_filter, wifi_filter
-from foris.nuci.preprocessors import guest_network_enabled, generate_network_preprocessor
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, List, Value, parse_uci_bool
 from foris.state import current_state
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
 
-from .base import (
-    prepare_guest_configs,
-    BaseConfigHandler, DEFAULT_GUEST_MASK, DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
-)
+from .base import BaseConfigHandler, DEFAULT_GUEST_MASK, DEFAULT_GUEST_IP
 
 
 class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
 
     def get_form(self):
-        lan_form = fapi.ForisForm(
-            "lan", self.data, filter=create_config_filter("dhcp", "network", "firewall", "sqm"))
+        data = current_state.backend.perform("lan", "get_settings", {})
+        data["lan_ipaddr"] = data["ip"]
+        data["lan_netmask"] = data["netmask"]
+        data["dhcp_enabled"] = data["dhcp"]["enabled"]
+        data["dhcp_min"] = data["dhcp"]["start"]
+        data["dhcp_max"] = data["dhcp"]["limit"]
+        data["guest_network_enabled"] = data["guest_network"]["enabled"]
+        data["guest_network_ipaddr"] = data["guest_network"]["ip"]
+        data["guest_network_netmask"] = data["guest_network"]["netmask"]
+        data["guest_network_qos_enabled"] = data["guest_network"]["qos"]["enabled"]
+        data["guest_network_qos_download"] = data["guest_network"]["qos"]["download"]
+        data["guest_network_qos_upload"] = data["guest_network"]["qos"]["upload"]
+
+        if self.data:
+            # Update from post
+            data.update(self.data)
+
+        lan_form = fapi.ForisForm("lan", data)
         lan_main = lan_form.add_section(
             name="set_lan",
             title=_(self.userfriendly_title),
@@ -54,22 +63,28 @@ class LanHandler(BaseConfigHandler):
                           "browser.")
         )
 
-        lan_main.add_field(Textbox, name="lan_ipaddr", label=_("Router IP address"),
-                           nuci_path="uci.network.lan.ipaddr",
-                           validators=validators.IPv4(),
-                           hint=_("Router's IP address in inner network. Also defines the range of "
-                                  "assigned IP addresses."))
-        lan_main.add_field(Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
-                           nuci_path="uci.dhcp.lan.ignore",
-                           nuci_preproc=lambda val: not bool(int(val.value)), default=True,
-                           hint=_("Enable this option to automatically assign IP addresses to "
-                                  "the devices connected to the router."))
-        lan_main.add_field(Textbox, name="dhcp_min", label=_("DHCP start"),
-                           nuci_path="uci.dhcp.lan.start")\
-            .requires("dhcp_enabled", True)
-        lan_main.add_field(Textbox, name="dhcp_max", label=_("DHCP max leases"),
-                           nuci_path="uci.dhcp.lan.limit")\
-            .requires("dhcp_enabled", True)
+        lan_main.add_field(
+            Textbox, name="lan_ipaddr", label=_("Router IP address"),
+            validators=validators.IPv4(),
+            hint=_("Router's IP address in the inner network.")
+        )
+        lan_main.add_field(
+            Textbox, name="lan_netmask", label=_("Network netmask"),
+            validators=validators.IPv4(),
+            hint=_("Network mask of the inner network.")
+        )
+        lan_main.add_field(
+            Checkbox, name="dhcp_enabled", label=_("Enable DHCP"),
+            preproc=lambda val: bool(int(val)), default=True,
+            hint=_("Enable this option to automatically assign IP addresses to "
+                   "the devices connected to the router.")
+        )
+        lan_main.add_field(
+            Textbox, name="dhcp_min", label=_("DHCP start"),
+        ).requires("dhcp_enabled", True)
+        lan_main.add_field(
+            Textbox, name="dhcp_max", label=_("DHCP max leases"),
+        ).requires("dhcp_enabled", True)
 
         if current_state.app == "config":
             guest_network_section = lan_form.add_section(
@@ -85,110 +100,72 @@ class LanHandler(BaseConfigHandler):
                     "to access the internet, but are not allowed to access other devices and "
                     "the configuration interface of the router."
                 ) % dict(url=reverse("config_page", page_name="wifi")),
-                nuci_preproc=guest_network_enabled,
             )
             guest_network_section.add_field(
-                Textbox, name="guest_network_subnet", label=_("Guest network"),
-                nuci_preproc=generate_network_preprocessor(
-                    "uci.network.guest_turris.ipaddr",
-                    "uci.network.guest_turris.netmask",
-                    DEFAULT_GUEST_NETWORK,
-                    DEFAULT_GUEST_MASK,
-                ),
-                validators=[validators.IPv4Prefix()],
+                Textbox, name="guest_network_ipaddr", label=_("Router IP in guest network"),
+                default=DEFAULT_GUEST_IP,
                 hint=_(
-                    "You need to set the IP range for your guest network. It is necessary that "
-                    "the range is different than ranges on your other networks (LAN, WAN, VPN, etc.)."
-                ),
+                    "Router's IP address in the guest network. It is necessary that "
+                    "the guest network IPs are different from other networks "
+                    "(LAN, WAN, VPN, etc.)."
+                )
             ).requires("guest_network_enabled", True)
             guest_network_section.add_field(
-                Checkbox, name="guest_network_shapping", label=_("Guest Lan QoS"),
-                nuci_preproc=parse_uci_bool,
-                nuci_path="uci.sqm.guest_limit_turris.enabled",
+                Textbox, name="guest_network_netmask", label=_("Guest network netmask"),
+                default=DEFAULT_GUEST_MASK,
+                hint=_("Network mask of the guest network.")
+            ).requires("guest_network_enabled", True)
+
+            guest_network_section.add_field(
+                Checkbox, name="guest_network_qos_enabled", label=_("Guest Lan QoS"),
                 hint=_(
                     "This option enables you to set a bandwidth limit for the guest network, "
                     "so that your main network doesn't get slowed-down by it."
                 ),
             ).requires("guest_network_enabled", True)
+
             guest_network_section.add_field(
                 Number,
-                name="guest_network_download", label=_("Download (kb/s)"),
+                name="guest_network_qos_download", label=_("Download (kb/s)"),
                 validators=[validators.PositiveInteger()],
                 hint=_(
                     "Download speed in guest network (in kilobits per second)."
                 ),
                 default=1024,
-                nuci_path="uci.sqm.guest_limit_turris.upload",
-            ).requires("guest_network_shapping", True)
+            ).requires("guest_network_qos_enabled", True)
             guest_network_section.add_field(
                 Number,
-                name="guest_network_upload", label=_("Upload (kb/s)"),
+                name="guest_network_qos_upload", label=_("Upload (kb/s)"),
                 validators=[validators.PositiveInteger()],
                 hint=_(
                     "Upload speed in guest network (in kilobits per second)."
                 ),
                 default=1024,
-                nuci_path="uci.sqm.guest_limit_turris.download",
-            ).requires("guest_network_shapping", True)
+            ).requires("guest_network_qos_enabled", True)
 
         def lan_form_cb(data):
-            uci = Uci()
-            config = Config("dhcp")
-            uci.add(config)
+            msg = {
+                "ip": data["lan_ipaddr"],
+                "netmask": data["lan_netmask"],
+                "dhcp": {"enabled": data["dhcp_enabled"]},
+                "guest_network": {"enabled": data["guest_network_enabled"]},
+            }
+            if data["dhcp_enabled"]:
+                msg["dhcp"]["start"] = int(data["dhcp_min"])
+                msg["dhcp"]["limit"] = int(data["dhcp_max"])
 
-            dhcp = Section("lan", "dhcp")
-            config.add(dhcp)
-            # FIXME: this would overwrite any unrelated DHCP options the user might have set.
-            # Maybe we should get the current values, scan them and remove selectively the ones
-            # with 6 in front of them? Or have some support for higher level of stuff in nuci.
-            options = List("dhcp_option")
-            options.add(Value(0, "6," + data['lan_ipaddr']))
-            dhcp.add_replace(options)
-            network = Config("network")
-            uci.add(network)
-            interface = Section("lan", "interface")
-            network.add(interface)
-            interface.add(Option("ipaddr", data['lan_ipaddr']))
-            if data['dhcp_enabled']:
-                dhcp.add(Option("ignore", "0"))
-                dhcp.add(Option("start", data['dhcp_min']))
-                dhcp.add(Option("limit", data['dhcp_max']))
-            else:
-                dhcp.add(Option("ignore", "1"))
+            if data["guest_network_enabled"]:
+                msg["guest_network"]["ip"] = data["guest_network_ipaddr"]
+                msg["guest_network"]["netmask"] = data["guest_network_netmask"]
+                msg["guest_network"]["qos"] = {"enabled": data["guest_network_qos_enabled"]}
+                if data["guest_network_qos_enabled"]:
+                    msg["guest_network"]["qos"]["download"] = int(
+                        data["guest_network_qos_download"])
+                    msg["guest_network"]["qos"]["upload"] = int(
+                        data["guest_network_qos_upload"])
 
-            if current_state.app == "config":
-                # qos data
-                qos = {'enabled': False}
-                if 'guest_network_shapping' in data and data['guest_network_shapping']:
-                    qos['enabled'] = True
-                    qos['download'] = data['guest_network_download']
-                    qos['upload'] = data['guest_network_upload']
-
-                # update guest network configs
-                guest_enabled = data.get("guest_network_enabled")
-                guest_network_subnet = data.get("guest_network_subnet")
-                if guest_network_subnet:
-                    network, prefix = data.get("guest_network_subnet").split("/")
-                else:
-                    network, prefix = DEFAULT_GUEST_NETWORK, DEFAULT_GUEST_PREFIX
-
-                # disable guest wifi when guest network is not enabled
-                data = client.get(filter=wifi_filter())
-                card_count = 0
-                while data.find_child("uci.wireless.@wifi-device[%d]" % card_count):
-                    card_count += 1
-                if not guest_enabled and card_count > 0:
-                    wireless = uci.add(Config("wireless"))
-                    for i in range(card_count):
-                        guest_iface = wireless.add(Section("guest_iface_%d" % i, "wifi-iface"))
-                        guest_iface.add(Option("disabled", "1"))
-
-                guest_interfaces = ["guest_turris_%d" % e for e in range(card_count)]
-
-                prepare_guest_configs(
-                    uci, guest_enabled, network, prefix, guest_interfaces, qos)
-
-            return "edit_config", uci
+            res = current_state.backend.perform("lan", "update_settings", msg)
+            return "save_result", res  # store {"result": ...} to be used later...
 
         lan_form.add_callback(lan_form_cb)
 

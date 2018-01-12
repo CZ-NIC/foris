@@ -24,6 +24,7 @@ from foris.nuci.modules.uci_raw import Config, Section, Option, List, Value
 logger = logging.getLogger(__name__)
 
 
+DEFAULT_GUEST_IP = "10.111.222.1"
 DEFAULT_GUEST_NETWORK = "10.111.222.0"
 DEFAULT_GUEST_MASK = "255.255.255.0"
 DEFAULT_GUEST_PREFIX = mask_to_prefix_4(DEFAULT_GUEST_MASK)
