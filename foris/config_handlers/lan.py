@@ -104,6 +104,7 @@ class LanHandler(BaseConfigHandler):
             guest_network_section.add_field(
                 Textbox, name="guest_network_ipaddr", label=_("Router IP in guest network"),
                 default=DEFAULT_GUEST_IP,
+                validators=validators.IPv4(),
                 hint=_(
                     "Router's IP address in the guest network. It is necessary that "
                     "the guest network IPs are different from other networks "
@@ -113,6 +114,7 @@ class LanHandler(BaseConfigHandler):
             guest_network_section.add_field(
                 Textbox, name="guest_network_netmask", label=_("Guest network netmask"),
                 default=DEFAULT_GUEST_MASK,
+                validators=validators.IPv4(),
                 hint=_("Network mask of the guest network.")
             ).requires("guest_network_enabled", True)
 

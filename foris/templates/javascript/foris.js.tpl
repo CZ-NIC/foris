@@ -11,32 +11,4 @@ Foris.messages.confirmRestart = "{{ trans('Are you sure you want to restart the 
 Foris.messages.confirmRestartExtra = "{{ trans('\\nRemaining unread messages (%UNREAD%) will be deleted.') }}";
 Foris.messages.unsavedNotificationsAlert = "{{ trans('There are some unsaved changes in the notifications settings.\\nDo you want to discard them and test the notifications with the old settings?') }}";
 
-Foris.handleReboot = function(ips) {
-  $('#rebooting-notice').show("slow");
-  $('#reboot-required-notice').hide("slow");
-
-  var port = window.location.port == "" ? "" : ":" + window.location.port;
-  var ping_path = "{{ url('ping') }}"
-  var urls = [window.location.protocol + "//" + window.location.hostname + port + ping_path];
-  for (var i = 0; i < ips.length; i++) {
-    urls.push(window.location.protocol + "//" + ips[i] + port + ping_path);
-  }
-
-  var rebootDoneCallback = function(url, jqXHR) {
-    if (jqXHR.status == 0) {
-        return false;
-    }
-    if (jqXHR.status == 200) {
-        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
-            window.location = jqXHR.responseJSON.loginUrl;
-        }
-    }
-    return false;
-  }
-
-  // start the machinery
-  Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
-    var pathname = window.location.pathname;
-    Foris.waitForReachable(urls, {next: pathname}, rebootDoneCallback);
-  });
-};
+Foris.pingPath = "{{ url('ping') }}";

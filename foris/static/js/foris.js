@@ -53,6 +53,7 @@ Foris.initialize = function () {
 
   Foris.initParsley();
   Foris.initLanChangeDetection();
+  Foris.initLanFormOverride();
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
   Foris.applySVGFallback();
@@ -96,6 +97,23 @@ Foris.initParsley = function () {
   });
 
 };
+
+Foris.initLanFormOverride = function () {
+  var lanForm = $("#form-lan-buttons").parents("form:first");
+  lanForm.submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: lanForm.attr("action"),
+      data: lanForm.serialize(),
+      success: function(data) {
+        // Nothing to be done here...
+      },
+      error: function(jqXHR, textStatu, errorThrown) {
+      }
+    });
+  });
+}
 
 Foris.initLanChangeDetection = function () {
   var lanIpChanged = false;
@@ -156,6 +174,9 @@ Foris.applySVGFallback = function() {
 Foris.WS = {
   maintain: function(msg) {
     Foris.handleReboot(msg.data.new_ips);
+  },
+  lan: function(msg) {
+    Foris.handleLanRestart(msg.data.ip);
   }
 };
 
@@ -595,7 +616,8 @@ Foris.initNotificationTestAlert = function () {
   });
 };
 
-Foris.waitForReachable = function(urls, data, handler_function) {
+Foris.waitForReachable = function(urls, data, handler_function, timeout) {
+  var timeout = timeout || 1000;
   // wait function generator
   var genWaitForUrl = function(url) {
     var stored_data = data;
@@ -611,15 +633,15 @@ Foris.waitForReachable = function(urls, data, handler_function) {
         headers: {'X-Requested-With': 'XMLHttpRequest'},
         success: function(data, text, jqXHR) {
           if (!stored_handler(url, jqXHR)) {
-            setTimeout(upper_function, 5000);  // retry calling self later
+            setTimeout(upper_function, timeout);  // retry calling self later
           }
         },
         error: function(jqXHR, text, error) {
           if (!stored_handler(url, jqXHR)) {
-            setTimeout(upper_function, 5000);  // retry calling self later
+            setTimeout(upper_function, timeout);  // retry calling self later
           }
         },
-        timeout: 5000,
+        timeout: timeout,
       });
     };
   }
@@ -630,7 +652,8 @@ Foris.waitForReachable = function(urls, data, handler_function) {
   }
 };
 
-Foris.waitForUnreachable = function(url, callback) {
+Foris.waitForUnreachable = function(url, callback, timeout) {
+  var timeout = timeout || 1000;
   // wait till current address is available
   var url = url;
   var unreachableFunction = function() {
@@ -642,12 +665,12 @@ Foris.waitForUnreachable = function(url, callback) {
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
       success: function(data, text, jqXHR) {
-        setTimeout(unreachableFunction, 5000);
+        setTimeout(unreachableFunction, timeout);
       },
       error: function(xhr, text, error) {
         callback(xhr, text, error);
       },
-      timeout: 5000,
+      timeout: timeout,
     });
   };
   unreachableFunction();
@@ -667,6 +690,75 @@ function extractPathName(src) {
 
   return a.pathname;
 }
+
+function extractHost(src) {
+  var a = document.createElement("a");
+  a.href = src;
+
+  return a.host;
+}
+
+Foris.handleReboot = function(ips) {
+  $('#rebooting-notice').show("slow");
+  $('#reboot-required-notice').hide("slow");
+
+  var port = window.location.port == "" ? "" : ":" + window.location.port;
+  var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
+  for (var i = 0; i < ips.length; i++) {
+    urls.push(window.location.protocol + "//" + ips[i] + port + Foris.pingPath);
+  }
+
+  var rebootDoneCallback = function(url, jqXHR) {
+    if (jqXHR.status == 0) {
+        return false;
+    }
+    if (jqXHR.status == 200) {
+        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
+            window.location = jqXHR.responseJSON.loginUrl;
+        }
+    }
+    return false;
+  }
+
+  // start the machinery
+  Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
+    var pathname = window.location.pathname;
+    Foris.waitForReachable(urls, {next: pathname}, rebootDoneCallback, 5000);
+  });
+};
+
+Foris.handleLanRestart = function(ip) {
+  $('#network-restart-notice').show("slow");
+
+  var port = window.location.port == "" ? "" : ":" + window.location.port;
+  var protocol = window.location.protocol;
+  var pathname = window.location.pathname;
+  var search = window.location.search;
+  var urls = [
+    window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath,
+    window.location.protocol + "//" + ip + port + Foris.pingPath
+  ];
+
+  var restartLanDoneCallback = function(url, jqXHR) {
+    if (jqXHR.status == 0) {
+        return false;
+    }
+    if (jqXHR.status == 200) {
+        //if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
+        //    window.location = protocol + "//" + extractHost(url) + pathname + search;
+        //}
+        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
+            window.location = jqXHR.responseJSON.loginUrl;
+        }
+    }
+  }
+
+  // start the machinery
+  Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
+    var pathname = window.location.pathname;
+    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback);
+  });
+};
 
 $(document).ready(function () {
   Foris.initialize();

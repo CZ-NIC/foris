@@ -26,7 +26,7 @@
         %for field in form.active_fields:
             %include("_field.tpl", field=field)
         %end
-        <div class="form-buttons">
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
             <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
             <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
         </div>

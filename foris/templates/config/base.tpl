@@ -32,7 +32,11 @@
     </div>
     <div id="content-wrap">
         <div id="content">
-          <div id="rebooting-notice">
+          <div id="network-restart-notice" class="main-warning-notice">
+            <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Network is restarting...") }}" title="{{ trans("Network is restarting...") }}">
+            <span>{{ trans("Your network is being restarted. Wait, please...") }}</span>
+          </div>
+          <div id="rebooting-notice" class="main-warning-notice">
             <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Rebooting...") }}" title="{{ trans("Rebooting...") }}">
             <span>{{ trans("Your router is being rebooted.") }}</span>
           </div>

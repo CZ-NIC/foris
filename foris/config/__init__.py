@@ -18,7 +18,6 @@ from datetime import datetime
 import base64
 import logging
 import time
-from urlparse import urlunsplit
 
 from bottle import Bottle, request, template
 import bottle
@@ -31,7 +30,6 @@ from foris.config_handlers import (
 )
 from foris.nuci import client
 from foris.nuci.client import filters
-from foris.nuci.exceptions import ConfigRestoreError
 from foris.nuci.helpers import make_notification_title, get_wizard_progress
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
@@ -536,7 +534,10 @@ def config_page_post(page_name):
     if request.is_xhr:
         if request.POST.pop("update", None):
             # if update was requested, just render the page - otherwise handle actions as usual
-            return config_page.render(is_xhr=True)
+            pass
+        else:
+            config_page.save()
+        return config_page.render(is_xhr=True)
     try:
         if config_page.save():
             bottle.redirect(request.fullpath)
