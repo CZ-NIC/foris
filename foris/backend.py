@@ -47,6 +47,13 @@ class Backend(object):
         return "%s('%s')" % (type(self._instance).__name__, self.path)
 
     def perform(self, module, action, data=None, raise_exception_on_failure=True):
+        """ Perform backend action
+
+        :returns: None on error, response data otherwise
+        :rtype: NoneType or dict
+        :raises ExceptionInBackend: When command failed and raise_exception_on_failure is True
+        """
+        response = None
         try:
             response = self._instance.send(module, action, data or {})
         except ControllerError as e:
