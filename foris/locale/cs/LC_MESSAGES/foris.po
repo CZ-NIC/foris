@@ -1863,6 +1863,21 @@ msgstr "Konfigurační rozhraní Foris"
 msgid "Go to LuCI"
 msgstr "Přejít na LuCI"
 
+msgid "Opened lock"
+msgstr "Otevřený zámek"
+
+msgid "Your connection is not encrypted"
+msgstr "Vaše připojení není šifrované"
+
+msgid "A secure connection is an important safety feature of the router and therefore the entire home network."
+msgstr "Zabezpečené připojení je důležitým prvkem bezpečnosti routeru a tedy i celé domácí sítě."
+
+msgid "https://doc.turris.cz/doc/en/howto/https"
+msgstr "https://doc.turris.cz/doc/cs/howto/https"
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr "Jak nastavím šifrované připojení a proč je to potřeba"
+
 msgid "Reboot now"
 msgstr "Restartovat nyní"
 

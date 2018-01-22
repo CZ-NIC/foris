@@ -46,4 +46,22 @@
     <a href="{{ luci_path }}">{{ trans("Go to LuCI") }}</a>
     %end
   </div>
+
+  %if request.urlparts.scheme == 'http':
+  <div id="flashes">
+      <input type="checkbox" hidden id="flash-1">
+      <label for="flash-1" class="flash warning">
+          <span>
+              <img src="{{ static("img/icon-opened-lock.png") }}" alt="{{ trans("Opened lock") }}" width="64" height="64">
+          </span>
+          <strong>{{ trans("Your connection is not encrypted") }}!</strong>
+          <br>
+          {{ trans("A secure connection is an important safety feature of the router and therefore the entire home network.") }}
+          <a href="{{ trans("https://doc.turris.cz/doc/en/howto/https") }}">{{ trans("How to set an encrypted connection and why is it important") }} &gt;</a>
+          <br>
+          <small>Turris Omnia</small>
+      </label>
+  </div>
+  %end
+
 </div>

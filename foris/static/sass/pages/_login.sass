@@ -60,3 +60,115 @@
       left: 0.3em
       top: 0.3em
       display: block
+
+# special for first version of https warning in foris web administration
+html
+  box-sizing: border-box
+
+*
+  box-sizing: inherit
+  &::before, &::after
+    box-sizing: inherit
+
+@-webkit-keyframes flashice
+  0%
+    opacity: 0
+    left: 900px
+
+  100%
+    opacity: 1
+    left: 0
+
+
+@-moz-keyframes flashice
+  0%
+    opacity: 0
+    left: 900px
+
+  100%
+    opacity: 1
+    left: 0
+
+
+@keyframes flashice
+  0%
+    opacity: 0
+    left: 900px
+
+  100%
+    opacity: 1
+    left: 0
+
+#flashes
+  font-size: 13px
+  background: none
+  padding: 0
+  position: fixed
+  right: 375px
+  bottom: 1%
+  width: 0
+  z-index: 9
+  color: #555
+  input
+    display: none
+    &:checked + label
+      display: block
+      left: 2000px
+      opacity: 0
+      cursor: default
+      transition-duration: 0.2s
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+  label
+    position: relative
+    line-height: 1.7
+    width: 360px
+    min-height: 80px
+    opacity: 1
+    left: 0
+    display: block
+    background-color: #fff
+    padding: 8px 4px 8px 84px
+    margin-bottom: 15px
+    cursor: pointer
+    text-align: left
+    -webkit-animation: flashice 1s ease
+    -moz-animation: flashice 1s ease
+    -o-animation: flashice 1s ease
+    animation: flashice 1s ease
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36)
+    &::after
+      content: '\2715'
+      display: block
+      position: absolute
+      top: 8px
+      right: 12px
+      width: 16px
+      height: 16px
+      font-weight: bold
+      font-size: 16px
+      line-height: 17px
+      padding-left: 1px
+    &:hover::after
+      background: #555
+      color: #fff
+      border-radius: 50%
+  span
+    display: block
+    margin: 0
+    float: left
+    margin-left: -80px
+    width: 80px
+    height: 80px
+    text-align: center
+  img
+    display: block
+    margin: auto
+  strong
+    display: inline-block
+    font-weight: normal
+    font-size: 14px
+    margin-bottom: 3px
+  small
+    display: block
+    margin-top: 4px
+    color: #aaa
