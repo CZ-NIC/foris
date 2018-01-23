@@ -43,7 +43,9 @@ class UcollectHandler(BaseConfigHandler):
 
         if self.data:
             # Update from post
-            data["log_credentials"] = self.data["log_credentials"]
+            if "log_credentials" in self.data:
+                data["log_credentials"] = self.data["log_credentials"]
+
             # services is a multifield which has to be handled differently
             data["services"] = [e for e in self.data.getall("services[]") if e]
 
