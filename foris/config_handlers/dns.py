@@ -74,7 +74,7 @@ class DNSHandler(BaseConfigHandler):
 
         def dns_form_cb(data):
             msg = {
-                "dnssec_enabled": not data["dnssec_disabled"],
+                "dnssec_enabled": not data.get("dnssec_disabled", False),
                 "forwarding_enabled": data["forwarding_enabled"],
                 "dns_from_dhcp_enabled": data["dns_from_dhcp_enabled"],
             }
