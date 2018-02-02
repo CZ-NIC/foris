@@ -8,1883 +8,1885 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2018-02-02 10:49+0000\n"
+"Last-Translator: Zoli <boritek@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris-"
+"tzinfo/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 msgid "Kinshasa"
-msgstr ""
+msgstr "Kinshasa"
 
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 msgid "Swaziland"
-msgstr ""
+msgstr "Szváziföld"
 
 msgid "Cameroon"
-msgstr ""
+msgstr "Kamerun"
 
 msgid "Aden"
-msgstr ""
+msgstr "Aden"
 
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Türkmenisztán"
 
 msgid "Azores"
-msgstr ""
+msgstr "Azori-szigetek"
 
 msgid "St. John’s"
-msgstr ""
+msgstr "St. John’s"
 
 msgid "Bougainville Island"
-msgstr ""
+msgstr "Bougainville"
 
 msgid "Casey"
-msgstr ""
+msgstr "Casey"
 
 msgid "Niamey"
-msgstr ""
+msgstr "Niamey"
 
 msgid "Skopje"
-msgstr ""
+msgstr "Szkopje"
 
 msgid "U.S. Outlying Islands"
-msgstr ""
+msgstr "Amerikai Egyesült Államok lakatlan külbirtokai"
 
 msgid "Dominica"
-msgstr ""
+msgstr "Dominika"
 
 msgid "Kigali"
-msgstr ""
+msgstr "Kigali"
 
 msgid "Yellowknife"
-msgstr ""
+msgstr "Yellowknife"
 
 msgid "St. Kitts & Nevis"
-msgstr ""
+msgstr "St. Kitts & Nevis"
 
 msgid "Bahia Banderas"
-msgstr ""
+msgstr "Bahia Banderas"
 
 msgid "Lubumbashi"
-msgstr ""
+msgstr "Lubumbashi"
 
 msgid "Accra"
-msgstr ""
+msgstr "Accra"
 
 msgid "Bamako"
-msgstr ""
+msgstr "Bamako"
 
 msgid "Jersey"
-msgstr ""
+msgstr "Jersey"
 
 msgid "Macau"
-msgstr ""
+msgstr "Makaó"
 
 msgid "Brisbane"
-msgstr ""
+msgstr "Brisbane"
 
 msgid "Edmonton"
-msgstr ""
+msgstr "Edmonton"
 
 msgid "Canary"
-msgstr ""
+msgstr "Kanári-szigetek"
 
 msgid "South Korea"
-msgstr ""
+msgstr "Dél-Korea"
 
 msgid "Ushuaia"
-msgstr ""
+msgstr "Ushuaia"
 
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tadzsikisztán"
 
 msgid "Vilnius"
-msgstr ""
+msgstr "Vilnius"
 
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolívia"
 
 msgid "Karachi"
-msgstr ""
+msgstr "Karacsi"
 
 msgid "Choibalsan"
-msgstr ""
+msgstr "Csoibalszán"
 
 msgid "Denver"
-msgstr ""
+msgstr "Denver"
 
 msgid "Slovakia"
-msgstr ""
+msgstr "Szlovákia"
 
 msgid "Ho Chi Minh City"
-msgstr ""
+msgstr "Ho Si Minh-város"
 
 msgid "Chisinau"
-msgstr ""
+msgstr "Kisinyov"
 
 msgid "Thimphu"
-msgstr ""
+msgstr "Timpu"
 
 msgid "Cordoba"
-msgstr ""
+msgstr "Córdoba"
 
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegró"
 
 msgid "Bratislava"
-msgstr ""
+msgstr "Pozsony"
 
 msgid "Wallis"
-msgstr ""
+msgstr "Wallis"
 
 msgid "Honolulu"
-msgstr ""
+msgstr "Honolulu"
 
 msgid "America"
-msgstr ""
+msgstr "Amerika"
 
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Kajmán-szigetek"
 
 msgid "Colombia"
-msgstr ""
+msgstr "Kolumbia"
 
 msgid "Libya"
-msgstr ""
+msgstr "Líbia"
 
 msgid "Porto Velho"
-msgstr ""
+msgstr "Porto Velho"
 
 msgid "Syowa"
-msgstr ""
+msgstr "Syowa"
 
 msgid "Finland"
-msgstr ""
+msgstr "Finnország"
 
 msgid "Central African Republic"
-msgstr ""
+msgstr "Közép-afrikai Köztársaság"
 
 msgid "Uzhhorod"
-msgstr ""
+msgstr "Ungvár"
 
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 msgid "Libreville"
-msgstr ""
+msgstr "Libreville"
 
 msgid "Merida"
-msgstr ""
+msgstr "Merida"
 
 msgid "United States"
-msgstr ""
+msgstr "Amerikai Egyesült Államok"
 
 msgid "Ashgabat"
-msgstr ""
+msgstr "Asgabat"
 
 msgid "Portugal"
-msgstr ""
+msgstr "Portugália"
 
 msgid "Zurich"
-msgstr ""
+msgstr "Zürich"
 
 msgid "Cyprus"
-msgstr ""
+msgstr "Ciprus"
 
 msgid "Caribbean Netherlands"
-msgstr ""
+msgstr "Karibi Hollandia"
 
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnám"
 
 msgid "Center, North Dakota"
-msgstr ""
+msgstr "Központ, Észak-Dakota"
 
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Brit Virgin-szigetek"
 
 msgid "Istanbul"
-msgstr ""
+msgstr "Isztambul"
 
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairn-szigetek"
 
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuvait"
 
 msgid "Cayenne"
-msgstr ""
+msgstr "Cayenne"
 
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 msgid "Dar es Salaam"
-msgstr ""
+msgstr "Dar es Salaam"
 
 msgid "Louisville"
-msgstr ""
+msgstr "Louisville"
 
 msgid "Manila"
-msgstr ""
+msgstr "Manila"
 
 msgid "Hovd"
-msgstr ""
+msgstr "Hovd"
 
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigéria"
 
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecuador"
 
 msgid "Europe"
-msgstr ""
+msgstr "Európa"
 
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Kókusz (Keeling)-szigetek"
 
 msgid "Indianapolis"
-msgstr ""
+msgstr "Indianapolis"
 
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 msgid "Pitcairn Islands"
-msgstr ""
+msgstr "Pitcairn-szigetek"
 
 msgid "Palestinian Territories"
-msgstr ""
+msgstr "Palesztin Területek"
 
 msgid "Hong Kong"
-msgstr ""
+msgstr "Hongkong"
 
 msgid "St. Kitts"
-msgstr ""
+msgstr "St. Kitts"
 
 msgid "Petersburg, Indiana"
-msgstr ""
+msgstr "Petersburg, Indiana"
 
 msgid "Denmark"
-msgstr ""
+msgstr "Dánia"
 
 msgid "Philippines"
-msgstr ""
+msgstr "Fülöp-szigetek"
 
 msgid "Romania"
-msgstr ""
+msgstr "Románia"
 
 msgid "Athens"
-msgstr ""
+msgstr "Athén"
 
 msgid "Morocco"
-msgstr ""
+msgstr "Marokkó"
 
 msgid "Atikokan"
-msgstr ""
+msgstr "Atikokan"
 
 msgid "Tell City, Indiana"
-msgstr ""
+msgstr "Tell City, Indiana"
 
 msgid "Oral"
-msgstr ""
+msgstr "Oral"
 
 msgid "Yerevan"
-msgstr ""
+msgstr "Jereván"
 
 msgid "Ittoqqortoormiit"
-msgstr ""
+msgstr "Ittoqqortoormiit"
 
 msgid "Port Moresby"
-msgstr ""
+msgstr "Port Moresby"
 
 msgid "Estonia"
-msgstr ""
+msgstr "Észtország"
 
 msgid "Faroe"
-msgstr ""
+msgstr "Feröer szigetek"
 
 msgid "Lebanon"
-msgstr ""
+msgstr "Libanon"
 
 msgid "Pacific"
-msgstr ""
+msgstr "Csendes-óceán"
 
 msgid "Hermosillo"
-msgstr ""
+msgstr "Hermosillo"
 
 msgid "Halifax"
-msgstr ""
+msgstr "Halifax"
 
 msgid "Troll"
-msgstr ""
+msgstr "Troll"
 
 msgid "Ust-Nera"
-msgstr ""
+msgstr "Ust-Nera"
 
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 msgid "Novokuznetsk"
-msgstr ""
+msgstr "Novokuznyeck"
 
 msgid "Nepal"
-msgstr ""
+msgstr "Nepál"
 
 msgid "Matamoros"
-msgstr ""
+msgstr "Matamoros"
 
 msgid "Havana"
-msgstr ""
+msgstr "Havanna"
 
 msgid "Suriname"
-msgstr ""
+msgstr "Suriname"
 
 msgid "Christmas"
-msgstr ""
+msgstr "Karácsony-sziget"
 
 msgid "Myanmar (Burma)"
-msgstr ""
+msgstr "Mianmar (Burma)"
 
 msgid "Phoenix"
-msgstr ""
+msgstr "Főnix szigetek"
 
 msgid "Zagreb"
-msgstr ""
+msgstr "Zágráb"
 
 msgid "Noronha"
-msgstr ""
+msgstr "Noronha"
 
 msgid "Luanda"
-msgstr ""
+msgstr "Luanda"
 
 msgid "Jordan"
-msgstr ""
+msgstr "Jordánia"
 
 msgid "Campo Grande"
-msgstr ""
+msgstr "Campo Grande"
 
 msgid "Fakaofo"
-msgstr ""
+msgstr "Fakaofo"
 
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 msgid "Kralendijk"
-msgstr ""
+msgstr "Kralendijk"
 
 msgid "Mahe"
-msgstr ""
+msgstr "Mahé"
 
 msgid "Managua"
-msgstr ""
+msgstr "Managua"
 
 msgid "Sarajevo"
-msgstr ""
+msgstr "Szarajevó"
 
 msgid "Magadan"
-msgstr ""
+msgstr "Magadan"
 
 msgid "Syria"
-msgstr ""
+msgstr "Szíria"
 
 msgid "Dili"
-msgstr ""
+msgstr "Dili"
 
 msgid "Belgrade"
-msgstr ""
+msgstr "Nándorfehérvár"
 
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Egyenlítői-Guinea"
 
 msgid "Serbia"
-msgstr ""
+msgstr "Szerbia"
 
 msgid "Santo Domingo"
-msgstr ""
+msgstr "Santo Domingo"
 
 msgid "Tortola"
-msgstr ""
+msgstr "Tortola"
 
 msgid "Christmas Island"
-msgstr ""
+msgstr "Karácsony-Sziget"
 
 msgid "Chicago"
-msgstr ""
+msgstr "Chicago"
 
 msgid "Tahiti"
-msgstr ""
+msgstr "Tahiti"
 
 msgid "Monterrey"
-msgstr ""
+msgstr "Monterrey"
 
 msgid "Regina"
-msgstr ""
+msgstr "Regina"
 
 msgid "Lord Howe"
-msgstr ""
+msgstr "Lord Howe"
 
 msgid "Monaco"
-msgstr ""
+msgstr "Monakó"
 
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahama-szigetek"
 
 msgid "Glace Bay"
-msgstr ""
+msgstr "Glace-Öböl"
 
 msgid "Perth"
-msgstr ""
+msgstr "Perth"
 
 msgid "Mawson"
-msgstr ""
+msgstr "Mawson"
 
 msgid "Srednekolymsk"
-msgstr ""
+msgstr "Srednekolymsk"
 
 msgid "Sao Paulo"
-msgstr ""
+msgstr "Sao Paulo"
 
 msgid "Hong Kong SAR China"
-msgstr ""
+msgstr "Hong Kong SAR-Kína"
 
 msgid "Simferopol"
-msgstr ""
+msgstr "Szimferopol"
 
 msgid "Ghana"
-msgstr ""
+msgstr "Ghána"
 
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Szaúd-Arábia"
 
 msgid "Bangui"
-msgstr ""
+msgstr "Bangui"
 
 msgid "Cape Verde"
-msgstr ""
+msgstr "Zöld-foki-szigetek"
 
 msgid "Malabo"
-msgstr ""
+msgstr "Malabo"
 
 msgid "Guatemala"
-msgstr ""
+msgstr "Guatemala"
 
 msgid "Kerguelen"
-msgstr ""
+msgstr "Kerguelen"
 
 msgid "Brussels"
-msgstr ""
+msgstr "Brüsszel"
 
 msgid "Rio Gallegos"
-msgstr ""
+msgstr "Rio Gallegos"
 
 msgid "Kamchatka"
-msgstr ""
+msgstr "Kamcsatka"
 
 msgid "Dubai"
-msgstr ""
+msgstr "Dubaj"
 
 msgid "Addis Ababa"
-msgstr ""
+msgstr "Addisz-Abeba"
 
 msgid "Norfolk"
-msgstr ""
+msgstr "Norfolk"
 
 msgid "Lome"
-msgstr ""
+msgstr "Lome"
 
 msgid "Trinidad & Tobago"
-msgstr ""
+msgstr "Trinidad és Tobago"
 
 msgid "Oman"
-msgstr ""
+msgstr "Omán"
 
 msgid "Côte d’Ivoire"
-msgstr ""
+msgstr "Elefántcsontpart"
 
 msgid "Phnom Penh"
-msgstr ""
+msgstr "Phnompen"
 
 msgid "Adak"
-msgstr ""
+msgstr "Adak"
 
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 msgid "Niue"
-msgstr ""
+msgstr "Niue-sziget"
 
 msgid "Vatican"
-msgstr ""
+msgstr "Vatikán"
 
 msgid "Mogadishu"
-msgstr ""
+msgstr "Mogadishu"
 
 msgid "Taipei"
-msgstr ""
+msgstr "Tajpej"
 
 msgid "Mazatlan"
-msgstr ""
+msgstr "Mazatlan"
 
 msgid "Greenland"
-msgstr ""
+msgstr "Grönland"
 
 msgid "Pontianak"
-msgstr ""
+msgstr "Pontianak"
 
 msgid "Cuiaba"
-msgstr ""
+msgstr "Cuiaba"
 
 msgid "Cairo"
-msgstr ""
+msgstr "Kairó"
 
 msgid "India"
-msgstr ""
+msgstr "India"
 
 msgid "Abidjan"
-msgstr ""
+msgstr "Abidjan"
 
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 msgid "Funafuti"
-msgstr ""
+msgstr "Funafuti"
 
 msgid "Indian"
-msgstr ""
+msgstr "Indiai"
 
 msgid "Stanley"
-msgstr ""
+msgstr "Stanley"
 
 msgid "Dhaka"
-msgstr ""
+msgstr "Dakka"
 
 msgid "Eucla"
-msgstr ""
+msgstr "Eucla"
 
 msgid "Harare"
-msgstr ""
+msgstr "Harare"
 
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Salamon-szigetek"
 
 msgid "Svalbard & Jan Mayen"
-msgstr ""
+msgstr "Svalbard és Jan Mayen-szigetek"
 
 msgid "Chuuk"
-msgstr ""
+msgstr "Truk-sziget"
 
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 msgid "Mbabane"
-msgstr ""
+msgstr "Mbabane"
 
 msgid "Tripoli"
-msgstr ""
+msgstr "Tripoli"
 
 msgid "Thunder Bay"
-msgstr ""
+msgstr "Thunder Bay"
 
 msgid "Damascus"
-msgstr ""
+msgstr "Damaszkusz"
 
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermuda"
 
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagaszkár"
 
 msgid "Bissau"
-msgstr ""
+msgstr "Bissau"
 
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 msgid "Stockholm"
-msgstr ""
+msgstr "Stockholm"
 
 msgid "Mexico"
-msgstr ""
+msgstr "Mexikó"
 
 msgid "El Aaiun"
-msgstr ""
+msgstr "El Aaiun"
 
 msgid "China"
-msgstr ""
+msgstr "Kína"
 
 msgid "Omsk"
-msgstr ""
+msgstr "Omszk"
 
 msgid "Anchorage"
-msgstr ""
+msgstr "Anchorage"
 
 msgid "Miquelon"
-msgstr ""
+msgstr "Miquelon"
 
 msgid "Chatham"
-msgstr ""
+msgstr "Chatham-szigetek"
 
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukrajna"
 
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga-szigetek (Barátság-szigetek)"
 
 msgid "Creston"
-msgstr ""
+msgstr "Creston"
 
 msgid "Western Sahara"
-msgstr ""
+msgstr "Nyugat-Szahara"
 
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonézia"
 
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauríciusz"
 
 msgid "Chagos"
-msgstr ""
+msgstr "Chagos-szigetek"
 
 msgid "Gambier"
-msgstr ""
+msgstr "Gambier-szigetek"
 
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 msgid "Urumqi"
-msgstr ""
+msgstr "Ürümcsi"
 
 msgid "Turks & Caicos Islands"
-msgstr ""
+msgstr "Turks- és Caicos-szigetek"
 
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgária"
 
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 msgid "French Southern Territories"
-msgstr ""
+msgstr "Francia Déli Területek"
 
 msgid "Chad"
-msgstr ""
+msgstr "Csád"
 
 msgid "South Africa"
-msgstr ""
+msgstr "Dél-Afrika"
 
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau-szigetek"
 
 msgid "Madrid"
-msgstr ""
+msgstr "Madrid"
 
 msgid "Metlakatla"
-msgstr ""
+msgstr "Metlakatla"
 
 msgid "Baku"
-msgstr ""
+msgstr "Baku"
 
 msgid "La Rioja"
-msgstr ""
+msgstr "La Rioja"
 
 msgid "South Georgia & South Sandwich Islands"
-msgstr ""
+msgstr "Déli-Georgia és Déli-Sandwich-szigetek"
 
 msgid "Senegal"
-msgstr ""
+msgstr "Szenegál"
 
 msgid "Latvia"
-msgstr ""
+msgstr "Lettország"
 
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 msgid "Hungary"
-msgstr ""
+msgstr "Magyarország"
 
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 msgid "Pangnirtung"
-msgstr ""
+msgstr "Pangnirtung"
 
 msgid "Adelaide"
-msgstr ""
+msgstr "Adelaida"
 
 msgid "Brazil"
-msgstr ""
+msgstr "Brazília"
 
 msgid "Mexico City"
-msgstr ""
+msgstr "Mexikóváros"
 
 msgid "Chihuahua"
-msgstr ""
+msgstr "Chihuahua"
 
 msgid "Mendoza"
-msgstr ""
+msgstr "Mendoza"
 
 msgid "Lindeman"
-msgstr ""
+msgstr "Lindeman"
 
 msgid "Asia"
-msgstr ""
+msgstr "Ázsia"
 
 msgid "Whitehorse"
-msgstr ""
+msgstr "Whitehorse"
 
 msgid "Brazzaville"
-msgstr ""
+msgstr "Brazzaville"
 
 msgid "Maseru"
-msgstr ""
+msgstr "Maseru"
 
 msgid "Swift Current"
-msgstr ""
+msgstr "Swift Current"
 
 msgid "Tongatapu"
-msgstr ""
+msgstr "Tongatapu"
 
 msgid "Algeria"
-msgstr ""
+msgstr "Algéria"
 
 msgid "Palmer"
-msgstr ""
+msgstr "Palmer"
 
 msgid "New Salem, North Dakota"
-msgstr ""
+msgstr "Új Salem, Észak-Dakota"
 
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Marshall-szigetek"
 
 msgid "Moncton"
-msgstr ""
+msgstr "Moncton"
 
 msgid "Belgium"
-msgstr ""
+msgstr "Belgium"
 
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 msgid "Iraq"
-msgstr ""
+msgstr "Irak"
 
 msgid "Kosrae"
-msgstr ""
+msgstr "Kosrae"
 
 msgid "Danmarkshavn"
-msgstr ""
+msgstr "Danmarkshavn"
 
 msgid "Liberia"
-msgstr ""
+msgstr "Libéria"
 
 msgid "Helsinki"
-msgstr ""
+msgstr "Helsinki"
 
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 msgid "Efate"
-msgstr ""
+msgstr "Efate"
 
 msgid "Makassar"
-msgstr ""
+msgstr "Makassar"
 
 msgid "Podgorica"
-msgstr ""
+msgstr "Podgorica"
 
 msgid "Albania"
-msgstr ""
+msgstr "Albánia"
 
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Bissau-Guinea"
 
 msgid "Congo - Brazzaville"
-msgstr ""
+msgstr "Kongó - Brazzaville"
 
 msgid "Nairobi"
-msgstr ""
+msgstr "Nairobi"
 
 msgid "Port-au-Prince"
-msgstr ""
+msgstr "Port-au-Prince"
 
 msgid "Isle of Man"
-msgstr ""
+msgstr "Man-sziget"
 
 msgid "North Korea"
-msgstr ""
+msgstr "Észak-Korea"
 
 msgid "Dumont d’Urville"
-msgstr ""
+msgstr "Dumont d'Urville"
 
 msgid "Djibouti"
-msgstr ""
+msgstr "Dzsibuti"
 
 msgid "New York"
-msgstr ""
+msgstr "New York"
 
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Kelet-Timor"
 
 msgid "South Georgia"
-msgstr ""
+msgstr "Dél-Georgia"
 
 msgid "Volgograd"
-msgstr ""
+msgstr "Volgográd"
 
 msgid "Ceuta"
-msgstr ""
+msgstr "Ceuta"
 
 msgid "Lima"
-msgstr ""
+msgstr "Lima"
 
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragua"
 
 msgid "Zaporozhye"
-msgstr ""
+msgstr "Zaporozsje"
 
 msgid "St. Vincent"
-msgstr ""
+msgstr "St. Vincent"
 
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 msgid "Winnipeg"
-msgstr ""
+msgstr "Winnipeg"
 
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 msgid "Réunion"
-msgstr ""
+msgstr "Réunion"
 
 msgid "Tashkent"
-msgstr ""
+msgstr "Taskent"
 
 msgid "Cayman"
-msgstr ""
+msgstr "Kajmán-szigetek"
 
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 msgid "Germany"
-msgstr ""
+msgstr "Németország"
 
 msgid "Guayaquil"
-msgstr ""
+msgstr "Guayaquil"
 
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazahsztán"
 
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kirgizisztán"
 
 msgid "Pago Pago"
-msgstr ""
+msgstr "Pago Pago"
 
 msgid "Thule"
-msgstr ""
+msgstr "Thule"
 
 msgid "Greece"
-msgstr ""
+msgstr "Görögország"
 
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 msgid "Cambridge Bay"
-msgstr ""
+msgstr "Cambridge Bay"
 
 msgid "Tbilisi"
-msgstr ""
+msgstr "Tbiliszi"
 
 msgid "Asunción"
-msgstr ""
+msgstr "Asunción"
 
 msgid "Mariehamn"
-msgstr ""
+msgstr "Mariehamn"
 
 msgid "Enderbury"
-msgstr ""
+msgstr "Enderbury"
 
 msgid "Honduras"
-msgstr ""
+msgstr "Honduras"
 
 msgid "Egypt"
-msgstr ""
+msgstr "Egyiptom"
 
 msgid "Prague"
-msgstr ""
+msgstr "Prága"
 
 msgid "Sofia"
-msgstr ""
+msgstr "Szófia"
 
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarktisz"
 
 msgid "Lisbon"
-msgstr ""
+msgstr "Lisszabon"
 
 msgid "Amsterdam"
-msgstr ""
+msgstr "Amszterdam"
 
 msgid "Copenhagen"
-msgstr ""
+msgstr "Koppenhága"
 
 msgid "Comoros"
-msgstr ""
+msgstr "Comore-szigetek"
 
 msgid "Kiev"
-msgstr ""
+msgstr "Kijev"
 
 msgid "Paris"
-msgstr ""
+msgstr "Párizs"
 
 msgid "Ethiopia"
-msgstr ""
+msgstr "Etiópia"
 
 msgid "Johannesburg"
-msgstr ""
+msgstr "Johannesburg"
 
 msgid "Grenada"
-msgstr ""
+msgstr "Grenada"
 
 msgid "Kuala Lumpur"
-msgstr ""
+msgstr "Kuala Lumpur"
 
 msgid "Tegucigalpa"
-msgstr ""
+msgstr "Tegucigalpa"
 
 msgid "Santiago"
-msgstr ""
+msgstr "Santiago"
 
 msgid "Longyearbyen"
-msgstr ""
+msgstr "Longyearbyen"
 
 msgid "Beulah, North Dakota"
-msgstr ""
+msgstr "Beulah, Észak-Dakota"
 
 msgid "Port of Spain"
-msgstr ""
+msgstr "Port of Spain"
 
 msgid "Qyzylorda"
-msgstr ""
+msgstr "Qyzylorda"
 
 msgid "St. Lucia"
-msgstr ""
+msgstr "St. Lucia"
 
 msgid "St. Thomas"
-msgstr ""
+msgstr "St. Thomas"
 
 msgid "Maldives"
-msgstr ""
+msgstr "Maldív-szigetek"
 
 msgid "Comoro"
-msgstr ""
+msgstr "Comoro"
 
 msgid "Tanzania"
-msgstr ""
+msgstr "Tanzánia"
 
 msgid "Dublin"
-msgstr ""
+msgstr "Dublin"
 
 msgid "Antananarivo"
-msgstr ""
+msgstr "Antananarivo"
 
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelle-szigetek"
 
 msgid "Nuuk"
-msgstr ""
+msgstr "Nuuk"
 
 msgid "Midway"
-msgstr ""
+msgstr "Midway"
 
 msgid "Bahia"
-msgstr ""
+msgstr "Bahia"
 
 msgid "Grand Turk"
-msgstr ""
+msgstr "Grand Turk"
 
 msgid "Croatia"
-msgstr ""
+msgstr "Horvátország"
 
 msgid "Rankin Inlet"
-msgstr ""
+msgstr "Rankin Inlet"
 
 msgid "Winamac, Indiana"
-msgstr ""
+msgstr "Winamac, Indiana"
 
 msgid "Marquesas"
-msgstr ""
+msgstr "Marquesas"
 
 msgid "Conakry"
-msgstr ""
+msgstr "Conakry"
 
 msgid "Paramaribo"
-msgstr ""
+msgstr "Paramaribo"
 
 msgid "San Juan"
-msgstr ""
+msgstr "San Juan"
 
 msgid "Afghanistan"
-msgstr ""
+msgstr "Afganisztán"
 
 msgid "Boise"
-msgstr ""
+msgstr "Boise"
 
 msgid "Caracas"
-msgstr ""
+msgstr "Caracas"
 
 msgid "Nome"
-msgstr ""
+msgstr "Nome"
 
 msgid "Salta"
-msgstr ""
+msgstr "Salta"
 
 msgid "Tirane"
-msgstr ""
+msgstr "Tirana"
 
 msgid "Ouagadougou"
-msgstr ""
+msgstr "Ouagadougou"
 
 msgid "France"
-msgstr ""
+msgstr "Franciaország"
 
 msgid "Sydney"
-msgstr ""
+msgstr "Sydney"
 
 msgid "Amman"
-msgstr ""
+msgstr "Ammán"
 
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 msgid "Ndjamena"
-msgstr ""
+msgstr "Ndjamena"
 
 msgid "Beirut"
-msgstr ""
+msgstr "Bejrút"
 
 msgid "Irkutsk"
-msgstr ""
+msgstr "Irkutszk"
 
 msgid "Broken Hill"
-msgstr ""
+msgstr "Broken Hill"
 
 msgid "Tarawa"
-msgstr ""
+msgstr "Tarawa"
 
 msgid "Berlin"
-msgstr ""
+msgstr "Berlin"
 
 msgid "Apia"
-msgstr ""
+msgstr "Apiaba"
 
 msgid "Los Angeles"
-msgstr ""
+msgstr "Los Angeles"
 
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Dominikai Köztársaság"
 
 msgid "St. Pierre & Miquelon"
-msgstr ""
+msgstr "St. Pierre & Miquelon"
 
 msgid "Inuvik"
-msgstr ""
+msgstr "Inuvik"
 
 msgid "Sakhalin"
-msgstr ""
+msgstr "Szahalin"
 
 msgid "Maceio"
-msgstr ""
+msgstr "Maceio"
 
 msgid "St. Helena"
-msgstr ""
+msgstr "Szent Ilona-sziget"
 
 msgid "Hobart"
-msgstr ""
+msgstr "Hobart"
 
 msgid "Belem"
-msgstr ""
+msgstr "Belem"
 
 msgid "Kathmandu"
-msgstr ""
+msgstr "Katmandu"
 
 msgid "Vevay, Indiana"
-msgstr ""
+msgstr "Vevay, Indiana"
 
 msgid "Resolute"
-msgstr ""
+msgstr "Resolute"
 
 msgid "Bujumbura"
-msgstr ""
+msgstr "Bujumbura"
 
 msgid "Malaysia"
-msgstr ""
+msgstr "Malajzia"
 
 msgid "Araguaina"
-msgstr ""
+msgstr "Araguaina"
 
 msgid "Monticello, Kentucky"
-msgstr ""
+msgstr "Monticello, Kentucky"
 
 msgid "Dawson"
-msgstr ""
+msgstr "Dawson"
 
 msgid "St. Barthélemy"
-msgstr ""
+msgstr "Szent Barthélemy"
 
 msgid "Aqtobe"
-msgstr ""
+msgstr "Aqtobe"
 
 msgid "Guinea"
-msgstr ""
+msgstr "Guinea"
 
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 msgid "Luxembourg"
-msgstr ""
+msgstr "Luxemburg"
 
 msgid "American Samoa"
-msgstr ""
+msgstr "Amerikai Szamoa"
 
 msgid "Andorra"
-msgstr ""
+msgstr "Andorra"
 
 msgid "Norway"
-msgstr ""
+msgstr "Norvégia"
 
 msgid "Gibraltar"
-msgstr ""
+msgstr "Gibraltár"
 
 msgid "Ireland"
-msgstr ""
+msgstr "Írország"
 
 msgid "Muscat"
-msgstr ""
+msgstr "Maszkat"
 
 msgid "Aqtau"
-msgstr ""
+msgstr "Aqtau"
 
 msgid "Slovenia"
-msgstr ""
+msgstr "Szlovénia"
 
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 msgid "Rainy River"
-msgstr ""
+msgstr "Esős Folyó"
 
 msgid "Manaus"
-msgstr ""
+msgstr "Manaus"
 
 msgid "Khartoum"
-msgstr ""
+msgstr "Kartúm"
 
 msgid "Thailand"
-msgstr ""
+msgstr "Thaiföld"
 
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 msgid "Toronto"
-msgstr ""
+msgstr "Toronto"
 
 msgid "Dushanbe"
-msgstr ""
+msgstr "Dushanbe"
 
 msgid "Georgia"
-msgstr ""
+msgstr "Grúzia"
 
 msgid "Blanc-Sablon"
-msgstr ""
+msgstr "Blanc-Sablon"
 
 msgid "Tokyo"
-msgstr ""
+msgstr "Tokió"
 
 msgid "Poland"
-msgstr ""
+msgstr "Lengyelország"
 
 msgid "Moldova"
-msgstr ""
+msgstr "Moldova"
 
 msgid "Malta"
-msgstr ""
+msgstr "Málta"
 
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 msgid "Chita"
-msgstr ""
+msgstr "Csita"
 
 msgid "Vostok"
-msgstr ""
+msgstr "Vosztok"
 
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Üzbegisztán"
 
 msgid "Spain"
-msgstr ""
+msgstr "Spanyolország"
 
 msgid "Asmara"
-msgstr ""
+msgstr "Aszmara"
 
 msgid "Taiwan"
-msgstr ""
+msgstr "Tajvan"
 
 msgid "Fiji"
-msgstr ""
+msgstr "Fidzsi-szigetek"
 
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 msgid "Qatar"
-msgstr ""
+msgstr "Katar"
 
 msgid "Italy"
-msgstr ""
+msgstr "Olaszország"
 
 msgid "Sudan"
-msgstr ""
+msgstr "Szudán"
 
 msgid "Santarem"
-msgstr ""
+msgstr "Santarem"
 
 msgid "Shanghai"
-msgstr ""
+msgstr "Shanghai"
 
 msgid "Galapagos"
-msgstr ""
+msgstr "Galápagos-szigetek"
 
 msgid "Vincennes, Indiana"
-msgstr ""
+msgstr "Vincennes, Indiana"
 
 msgid "Micronesia"
-msgstr ""
+msgstr "Mikronézia"
 
 msgid "Marengo, Indiana"
-msgstr ""
+msgstr "Marengo, Indiana"
 
 msgid "Kabul"
-msgstr ""
+msgstr "Kabul"
 
 msgid "Tallinn"
-msgstr ""
+msgstr "Tallinn"
 
 msgid "Ojinaga"
-msgstr ""
+msgstr "Ojinaga"
 
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 msgid "Montevideo"
-msgstr ""
+msgstr "Montevideo"
 
 msgid "Israel"
-msgstr ""
+msgstr "Izrael"
 
 msgid "Noumea"
-msgstr ""
+msgstr "Noumea"
 
 msgid "Buenos Aires"
-msgstr ""
+msgstr "Buenos Aires"
 
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Pápua Új-Guinea"
 
 msgid "Bangkok"
-msgstr ""
+msgstr "Bangkok"
 
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "Brit Indiai-Óceáni Terület"
 
 msgid "Martinique"
-msgstr ""
+msgstr "Martinique"
 
 msgid "Nassau"
-msgstr ""
+msgstr "Nassau"
 
 msgid "Macau SAR China"
-msgstr ""
+msgstr "Macau SAR-Kína"
 
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritánia"
 
 msgid "Budapest"
-msgstr ""
+msgstr "Budapest"
 
 msgid "Jakarta"
-msgstr ""
+msgstr "Jakarta"
 
 msgid "Turkey"
-msgstr ""
+msgstr "Törökország"
 
 msgid "Nipigon"
-msgstr ""
+msgstr "Nipigon"
 
 msgid "Gaborone"
-msgstr ""
+msgstr "Gaborone"
 
 msgid "Busingen"
-msgstr ""
+msgstr "Busingen"
 
 msgid "McMurdo"
-msgstr ""
+msgstr "McMurdo"
 
 msgid "Guadeloupe"
-msgstr ""
+msgstr "Guadeloupe"
 
 msgid "La Paz"
-msgstr ""
+msgstr "La Paz"
 
 msgid "Tijuana"
-msgstr ""
+msgstr "Tijuana"
 
 msgid "Jujuy"
-msgstr ""
+msgstr "Jujuy"
 
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Falkland-szigetek"
 
 msgid "Bogota"
-msgstr ""
+msgstr "Bogota"
 
 msgid "Jayapura"
-msgstr ""
+msgstr "Jayapura"
 
 msgid "United Kingdom"
-msgstr ""
+msgstr "Egyesült Királyság"
 
 msgid "Lagos"
-msgstr ""
+msgstr "Lagos"
 
 msgid "Colombo"
-msgstr ""
+msgstr "Colombo"
 
 msgid "Blantyre"
-msgstr ""
+msgstr "Blantyre"
 
 msgid "Iceland"
-msgstr ""
+msgstr "Izland"
 
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 msgid "Curaçao"
-msgstr ""
+msgstr "Curacao"
 
 msgid "Jerusalem"
-msgstr ""
+msgstr "Jeruzsálem"
 
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 msgid "Santa Isabel"
-msgstr ""
+msgstr "Santa Isabel"
 
 msgid "Oslo"
-msgstr ""
+msgstr "Oslo"
 
 msgid "Lithuania"
-msgstr ""
+msgstr "Litvánia"
 
 msgid "Cambodia"
-msgstr ""
+msgstr "Kambodzsa"
 
 msgid "Switzerland"
-msgstr ""
+msgstr "Svájc"
 
 msgid "Rothera"
-msgstr ""
+msgstr "Rothera"
 
 msgid "Fortaleza"
-msgstr ""
+msgstr "Fortaleza"
 
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 msgid "Argentina"
-msgstr ""
+msgstr "Argentína"
 
 msgid "Nicosia"
-msgstr ""
+msgstr "Nicosia"
 
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrein"
 
 msgid "Wallis & Futuna"
-msgstr ""
+msgstr "Wallis és Futuna"
 
 msgid "Fort Nelson"
-msgstr ""
+msgstr "Fort Nelson"
 
 msgid "U.S. Virgin Islands"
-msgstr ""
+msgstr "Amerikai Virgin-szigetek"
 
 msgid "Baghdad"
-msgstr ""
+msgstr "Bagdad"
 
 msgid "Kampala"
-msgstr ""
+msgstr "Kampala"
 
 msgid "Pakistan"
-msgstr ""
+msgstr "Pakisztán"
 
 msgid "Pohnpei"
-msgstr ""
+msgstr "Pohnpei"
 
 msgid "Juba"
-msgstr ""
+msgstr "Dzsuba"
 
 msgid "Yekaterinburg"
-msgstr ""
+msgstr "Jekatyerinburg"
 
 msgid "Dawson Creek"
-msgstr ""
+msgstr "Dawson Creek"
 
 msgid "Krasnoyarsk"
-msgstr ""
+msgstr "Krasznojarszk"
 
 msgid "French Guiana"
-msgstr ""
+msgstr "Francia Guyana"
 
 msgid "Antigua"
-msgstr ""
+msgstr "Antigua"
 
 msgid "New Zealand"
-msgstr ""
+msgstr "Új-Zéland"
 
 msgid "Yemen"
-msgstr ""
+msgstr "Jemen"
 
 msgid "Jamaica"
-msgstr ""
+msgstr "Jamaica"
 
 msgid "Ulaanbaatar"
-msgstr ""
+msgstr "Ulánbátor"
 
 msgid "Samoa"
-msgstr ""
+msgstr "Szamoa"
 
 msgid "Casablanca"
-msgstr ""
+msgstr "Casablanca"
 
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk-sziget"
 
 msgid "Guam"
-msgstr ""
+msgstr "Guam"
 
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbajdzsán"
 
 msgid "São Tomé & Príncipe"
-msgstr ""
+msgstr "São Tomé és Príncipe"
 
 msgid "London"
-msgstr ""
+msgstr "London"
 
 msgid "Windhoek"
-msgstr ""
+msgstr "Windhoek"
 
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Egyesült Arab Emírségek"
 
 msgid "Douala"
-msgstr ""
+msgstr "Douala"
 
 msgid "Rio Branco"
-msgstr ""
+msgstr "Rio Branco"
 
 msgid "Bangladesh"
-msgstr ""
+msgstr "Banglades"
 
 msgid "Auckland"
-msgstr ""
+msgstr "Auckland"
 
 msgid "Rome"
-msgstr ""
+msgstr "Róma"
 
 msgid "Samarkand"
-msgstr ""
+msgstr "Szamarkand"
 
 msgid "Rwanda"
-msgstr ""
+msgstr "Ruanda"
 
 msgid "Somalia"
-msgstr ""
+msgstr "Szomália"
 
 msgid "Laos"
-msgstr ""
+msgstr "Laosz"
 
 msgid "Dakar"
-msgstr ""
+msgstr "Dakar"
 
 msgid "Kuching"
-msgstr ""
+msgstr "Kuching"
 
 msgid "Eirunepe"
-msgstr ""
+msgstr "Eirunepe"
 
 msgid "Guadalcanal"
-msgstr ""
+msgstr "Guadalcanal"
 
 msgid "Vienna"
-msgstr ""
+msgstr "Bécs"
 
 msgid "Saipan"
-msgstr ""
+msgstr "Saipan-sziget"
 
 msgid "Goose Bay"
-msgstr ""
+msgstr "Goose Bay"
 
 msgid "Seoul"
-msgstr ""
+msgstr "Szöul"
 
 msgid "Singapore"
-msgstr ""
+msgstr "Szingapúr"
 
 msgid "Moscow"
-msgstr ""
+msgstr "Moszkva"
 
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 msgid "Wake"
-msgstr ""
+msgstr "Wake-sziget"
 
 msgid "Armenia"
-msgstr ""
+msgstr "Örményország"
 
 msgid "Easter Island"
-msgstr ""
+msgstr "Húsvét-szigetek"
 
 msgid "French Polynesia"
-msgstr ""
+msgstr "Francia Polinézia"
 
 msgid "Boa Vista"
-msgstr ""
+msgstr "Boa Vista"
 
 msgid "Knox, Indiana"
-msgstr ""
+msgstr "Knox, Indiana"
 
 msgid "Netherlands"
-msgstr ""
+msgstr "Hollandia"
 
 msgid "Majuro"
-msgstr ""
+msgstr "Majuro"
 
 msgid "Kiritimati"
-msgstr ""
+msgstr "Kiritimati"
 
 msgid "Freetown"
-msgstr ""
+msgstr "Freetown"
 
 msgid "Monrovia"
-msgstr ""
+msgstr "Monrovia"
 
 msgid "Sweden"
-msgstr ""
+msgstr "Svédország"
 
 msgid "Australia"
-msgstr ""
+msgstr "Ausztrália"
 
 msgid "St. Martin"
-msgstr ""
+msgstr "St. Martin"
 
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 msgid "Davis"
-msgstr ""
+msgstr "Davis"
 
 msgid "Vatican City"
-msgstr ""
+msgstr "Vatikán"
 
 msgid "Russia"
-msgstr ""
+msgstr "Oroszország"
 
 msgid "Khandyga"
-msgstr ""
+msgstr "Khandyga"
 
 msgid "Cocos"
-msgstr ""
+msgstr "Kókusz-szigetek"
 
 msgid "Antigua & Barbuda"
-msgstr ""
+msgstr "Antigua és Barbuda"
 
 msgid "Austria"
-msgstr ""
+msgstr "Ausztria"
 
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambik"
 
 msgid "Novosibirsk"
-msgstr ""
+msgstr "Novoszibirszk"
 
 msgid "Currie"
-msgstr ""
+msgstr "Currie"
 
 msgid "Japan"
-msgstr ""
+msgstr "Japán"
 
 msgid "Sint Maarten"
-msgstr ""
+msgstr "Sint Maarten"
 
 msgid "Arctic"
-msgstr ""
+msgstr "Északi-sark"
 
 msgid "Lusaka"
-msgstr ""
+msgstr "Lusaka"
 
 msgid "Kwajalein"
-msgstr ""
+msgstr "Kwajalein"
 
 msgid "Vientiane"
-msgstr ""
+msgstr "Vientián prefektúra"
 
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Feröer-szigetek"
 
 msgid "Sitka"
-msgstr ""
+msgstr "Sitka"
 
 msgid "Vladivostok"
-msgstr ""
+msgstr "Vlagyivosztok"
 
 msgid "Ljubljana"
-msgstr ""
+msgstr "Ljubljana"
 
 msgid "Almaty"
-msgstr ""
+msgstr "Almati"
 
 msgid "Czech Republic"
-msgstr ""
+msgstr "Csehország"
 
 msgid "Brunei"
-msgstr ""
+msgstr "Brunei"
 
 msgid "Belarus"
-msgstr ""
+msgstr "Fehéroroszország"
 
 msgid "Cancun"
-msgstr ""
+msgstr "Cancun"
 
 msgid "Congo - Kinshasa"
-msgstr ""
+msgstr "Kongó - Kinshasa"
 
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 msgid "Rarotonga"
-msgstr ""
+msgstr "Rarotonga"
 
 msgid "Bishkek"
-msgstr ""
+msgstr "Biskek"
 
 msgid "Rangoon"
-msgstr ""
+msgstr "Rangun"
 
 msgid "Anadyr"
-msgstr ""
+msgstr "Anadir"
 
 msgid "Yakutsk"
-msgstr ""
+msgstr "Jakutszk"
 
 msgid "Detroit"
-msgstr ""
+msgstr "Detroit"
 
 msgid "Tunis"
-msgstr ""
+msgstr "Tunisz"
 
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongólia"
 
 msgid "Namibia"
-msgstr ""
+msgstr "Namíbia"
 
 msgid "Johnston"
-msgstr ""
+msgstr "Johnston"
 
 msgid "Macquarie Island"
-msgstr ""
+msgstr "Macquarie-sziget"
 
 msgid "Åland Islands"
-msgstr ""
+msgstr "Åland-szigetek"
 
 msgid "Bucharest"
-msgstr ""
+msgstr "Bukarest"
 
 msgid "Reykjavik"
-msgstr ""
+msgstr "Reykjavik"
 
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 msgid "Catamarca"
-msgstr ""
+msgstr "Catamarca"
 
 msgid "Africa"
-msgstr ""
+msgstr "Afrika"
 
 msgid "Hebron"
-msgstr ""
+msgstr "Hebron"
 
 msgid "Burundi"
-msgstr ""
+msgstr "Burundi"
 
 msgid "Kaliningrad"
-msgstr ""
+msgstr "Kalinyingrád"
 
 msgid "Bhutan"
-msgstr ""
+msgstr "Bhután"
 
 msgid "Riga"
-msgstr ""
+msgstr "Riga"
 
 msgid "Algiers"
-msgstr ""
+msgstr "Algír"
 
 msgid "Maputo"
-msgstr ""
+msgstr "Maputo"
 
 msgid "Kolkata"
-msgstr ""
+msgstr "Kalkutta"
 
 msgid "Bosnia & Herzegovina"
-msgstr ""
+msgstr "Bosznia-Hercegovina"
 
 msgid "San Luis"
-msgstr ""
+msgstr "San Luis"
 
 msgid "Vancouver"
-msgstr ""
+msgstr "Vancouver"
 
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Északi-Mariana-szigetek"
 
 msgid "Gaza"
-msgstr ""
+msgstr "Gáza"
 
 msgid "Darwin"
-msgstr ""
+msgstr "Darwin"
 
 msgid "Marigot"
-msgstr ""
+msgstr "Marigot"
 
 msgid "Lower Prince’s Quarter"
-msgstr ""
+msgstr "Alsó Herceg Negyed"
 
 msgid "Yakutat"
-msgstr ""
+msgstr "Yakutat"
 
 msgid "St. Vincent & Grenadines"
-msgstr ""
+msgstr "St. Vincent és Grenadine-szigetek"
 
 msgid "Atlantic"
-msgstr ""
+msgstr "Atlanti-óceán"
 
 msgid "Cook Islands"
-msgstr ""
+msgstr "Cook-szigetek"
 
 msgid "Madeira"
-msgstr ""
+msgstr "Madeira"
 
 msgid "Tucuman"
-msgstr ""
+msgstr "Tukuman"
 
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 msgid "Vaduz"
-msgstr ""
+msgstr "Vaduz"
 
 msgid "New Caledonia"
-msgstr ""
+msgstr "Új-Kaledónia"
 
 msgid "Macedonia"
-msgstr ""
+msgstr "Macedónia"
 
 msgid "Porto-Novo"
-msgstr ""
+msgstr "Porto-Novo"
 
 msgid "Melbourne"
-msgstr ""
+msgstr "Melbourne"
 
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Srí Lanka"
 
 msgid "Minsk"
-msgstr ""
+msgstr "Minszk"
 
 msgid "South Sudan"
-msgstr ""
+msgstr "Dél-Szudán"
 
 msgid "Recife"
-msgstr ""
+msgstr "Recife"
 
 msgid "Menominee"
-msgstr ""
+msgstr "Menominee"
 
 msgid "Iqaluit"
-msgstr ""
+msgstr "Iqaluit"
 
 msgid "Banjul"
-msgstr ""
+msgstr "Banjul"
 
 msgid "Riyadh"
-msgstr ""
+msgstr "Rijád"
 
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunézia"
 
 msgid "Cuba"
-msgstr ""
+msgstr "Kuba"
 
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Burkina Faso"
 
 msgid "São Tomé"
-msgstr ""
+msgstr "São Tomé"
 
 msgid "Samara"
-msgstr ""
+msgstr "Szamara"
 
 msgid "Nouakchott"
-msgstr ""
+msgstr "Nouakchott"
 
 msgid "Pyongyang"
-msgstr ""
+msgstr "Phenjan"
 
 msgid "Juneau"
-msgstr ""
+msgstr "Juneau"
 
 msgid "Warsaw"
-msgstr ""
+msgstr "Varsó"
