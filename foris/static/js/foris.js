@@ -214,6 +214,13 @@ Foris.initWebsockets = function() {
 
 };
 
+Foris.afterAjaxUpdateFunctions = [];
+Foris.afterAjaxUpdate = function(response, status, xhr) {
+  for (var i=0; i < Foris.afterAjaxUpdateFunctions.length; i++) {
+    Foris.afterAjaxUpdateFunctions[i](response, status, xhr);
+  }
+}
+
 Foris.updateForm = function (form) {
   var serialized = form.serializeArray();
   serialized.push({name: 'update', value: '1'});
@@ -233,6 +240,7 @@ Foris.updateForm = function (form) {
 
     $(this).children(':first').unwrap();
     Foris.initParsley();
+    Foris.afterAjaxUpdate();
     $(document).trigger('formupdate', [form]);
   });
   form.find("input, select, button").attr("disabled", "disabled");

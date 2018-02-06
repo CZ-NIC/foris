@@ -14,8 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import bottle
 import base64
+import bottle
 
 from foris import fapi, validators
 from foris.nuci import client, filters
@@ -94,6 +94,7 @@ class PasswordHandler(BaseConfigHandler):
         return pw_form
 
 
+# TODO depracated will should be removed when we get rid of wizard
 class RegionHandler(BaseConfigHandler):
     """
     Setting of the region information - currently only of the timezone.
@@ -220,6 +221,7 @@ class SystemPasswordHandler(BaseConfigHandler):
         return system_pw_form
 
 
+# TODO depracated will should be removed when we get rid of wizard
 class TimeHandler(BaseConfigHandler):
     userfriendly_title = gettext("Time")
 
@@ -246,3 +248,137 @@ class TimeHandler(BaseConfigHandler):
         return time_form
 
 
+class UnifiedTimeHandler(BaseConfigHandler):
+    """
+    Setting of the region information and time
+    """
+    userfriendly_title = gettext("Region and time")
+
+    def get_form(self):
+        data = current_state.backend.perform("time", "get_settings")
+        data["zonename"] = "%s/%s" % (data["region"], data["city"])
+        data["how_to_set_time"] = data["time_settings"]["how_to_set_time"]
+        data["time"] = data["time_settings"]["time"]
+
+        if self.data:
+            # update from post
+            data.update(self.data)
+
+            if bottle.request.is_xhr:
+                # xhr won't update the settings, so use current time to update it
+                data["time"] = data["time_settings"]["time"]
+
+        region_and_time_form = fapi.ForisForm("region_and_time", data)
+
+        # section just for common description
+        main_section = region_and_time_form.add_section(
+            name="region_and_time",  title=_(self.userfriendly_title),
+            description=_(
+                "TBD time settings and why it is important."
+            )
+        )
+        # region section
+        region_section = main_section.add_section(
+            name="timezone", title=_("Region settings"),
+            description=_(
+                "Please select the timezone the router is being operated in. "
+                "Correct setting is required to display the right time and for related functions."
+            )
+        )
+
+        lang = current_state.language
+
+        def construct_args(items, translation_function=_, key_getter=lambda x: x):
+            """
+            Helper function that builds args for country/timezone dropdowns.
+            If there's only one item, dropdown should contain only that item.
+            Otherwise the list of items should be prepended by an empty value.
+
+            :param items: list of filtered TZ data
+            :param translation_function: function that returns displayed choice from TZ data
+            :param key_getter:
+            :return: list of args
+            """
+            args = localized_sorted(((key_getter(x), translation_function(x)) for x in items),
+                                    lang=lang, key=lambda x: x[1])
+            if len(args) > 1:
+                return [(None, "-" * 16)] + args
+            return args
+
+        regions = localized_sorted(
+            ((x, _(x)) for x in tzinfo.regions), lang=lang, key=lambda x: x[1]
+        )
+        region_section.add_field(
+            Dropdown, name="region", label=_("Continent or ocean"), required=True, args=regions
+        )
+
+        # Get region and offer available countries
+        region = region_and_time_form.current_data.get('region')
+        countries = construct_args(
+            tzinfo.countries_in_region(region), lambda x: _(tzinfo.countries[x]))
+        region_section.add_field(
+            Dropdown, name="country", label=_("Country"), required=True,
+            default=tzinfo.get_country_for_tz(data["zonename"]), args=countries,
+        ).requires("region")
+
+        # Get country and offer available timezones
+        country = region_and_time_form.current_data.get("country", countries[0][0])
+
+        # It's possible that data contain country from the previous request,
+        # in that case fall back to the first item in list of available countries
+        if country not in (x[0] for x in countries):
+            country = countries[0][0]
+        timezones = construct_args(
+            tzinfo.timezones_in_region_and_country(region, country),
+            translation_function=lambda x: _(x[2]),
+            key_getter=lambda x: x[0]
+        )
+
+        # Offer timezones - but only if a country is selected and is not None (ensured by the
+        # requires() method)
+        region_section.add_field(
+            Dropdown, name="zonename", label=_("Timezone"), required=True,
+            default=data["zonename"],
+            args=timezones
+        ).requires("country", lambda x: country and x is not None)
+
+        # time section
+        time_section = main_section.add_section(
+            name="time", title=_("Time settings"),
+            description=_(
+                "Time should be up to date otherise DNS and other services might not work properly."
+            )
+        )
+        time_section.add_field(
+            Dropdown, name="how_to_set_time", label=_("How to set time"),
+            description=_("Choose method to store current time into the router."),
+            default="ntp",
+            args=(
+                ("ntp", _("via ntp")),
+                ("manual", _("manually")),
+            )
+        )
+        time_section.add_field(
+            Textbox, name="time",
+            label=_("Time")
+        ).requires("how_to_set_time", "manual")
+
+        def region_form_cb(data):
+            region, city = data["zonename"].split("/")
+            msg = {
+                "city": city,
+                "region": region,
+                "timezone": tzinfo.get_zoneinfo_for_tz(data["zonename"]),
+                "time_settings": {
+                    "how_to_set_time": data["how_to_set_time"],
+                }
+            }
+
+            if data["how_to_set_time"] == "manual":
+                msg["time_settings"]["time"] = data["time"]
+
+            res = current_state.backend.perform("time", "update_settings", msg)
+            return "save_result", res  # store {"result": ...} to be used later...
+
+        region_and_time_form.add_callback(region_form_cb)
+        return region_and_time_form

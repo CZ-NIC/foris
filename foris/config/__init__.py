@@ -120,8 +120,20 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
         return super(WanConfigPage, self).render(**kwargs)
 
 
-class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
+class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
+    """ Timezone / Time configuration """
     menu_order = 13
+
+    template = "config/time"
+
+    def call_ajax_action(self, action):
+        if action == "ntpdate-trigger":
+            return current_state.backend.perform("time", "ntpdate_trigger", {})
+        raise ValueError("Unknown AJAX action.")
+
+
+class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
+    menu_order = 14
 
     template = "config/dns"
 
@@ -135,21 +147,21 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
 
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
-    menu_order = 14
+    menu_order = 15
 
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
-    menu_order = 15
+    menu_order = 16
 
     template = "config/wifi"
 
 
 class SystemPasswordConfigPage(ConfigPageMixin, misc.SystemPasswordHandler):
-    menu_order = 16
+    menu_order = 17
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
-    menu_order = 17
+    menu_order = 18
 
     template = "config/maintenance"
     userfriendly_title = gettext("Maintenance")
@@ -220,7 +232,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
-    menu_order = 18
+    menu_order = 19
 
     template = "config/updater"
 
@@ -318,7 +330,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
 
 class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
-    menu_order = 19
+    menu_order = 20
 
     template = "config/data-collection"
     userfriendly_title = gettext("Data collection")
@@ -465,6 +477,7 @@ config_page_map = ConfigPageMapItems((
     ('', VirtualConfigPage(gettext("Home page"), 10)),
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
+    ('time', TimeConfigPage),
     ('dns', DNSConfigPage),
     ('lan', LanConfigPage),
     ('wifi', WifiConfigPage),
