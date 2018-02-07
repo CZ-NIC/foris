@@ -24,6 +24,7 @@ from .client import get as nuci_get, edit_config as nuci_edit_config
 from .filters import foris_config
 from .modules.user_notify import Severity
 from .modules.uci_raw import Uci, Config, Section, Option
+from ..utils.template_helpers import translate_datetime
 
 
 def make_notification_title(notification):
@@ -40,11 +41,7 @@ def make_notification_title(notification):
     }
 
     # minor abuse of gettext follows...
-    try:
-        locale_date = notification.created_at.strftime(_("%Y/%m/%d %H:%M:%S"))
-    except UnicodeEncodeError:
-        # Unicode characters in translated format -> fallback to %Y/%m/%d %H:%M:%S
-        locale_date = notification.created_at.strftime("%Y/%m/%d %H:%M:%S")
+    locale_date = translate_datetime(notification.created_at)
 
     return _("%(notification)s from %(created_at)s") % dict(
         notification=notification_titles.get(notification.severity.value, _("Notification")),

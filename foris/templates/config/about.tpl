@@ -42,7 +42,7 @@
                 <td class="{{ "sending-ok" if data['ucollect_status']['state'] == "online" else "sending-fail" }}">
                   {{ data['ucollect_status']['state_trans'] }}
                   % if data['ucollect_status']['state'] != "unknown":
-                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=data['ucollect_status']['datetime'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=helpers.translate_datetime(data['ucollect_status']['datetime'])) }}">
                         {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", data['ucollect_status']['seconds_ago']) % data['ucollect_status']['seconds_ago'] }}
                       </abbr>
                   % end
@@ -53,7 +53,7 @@
                 <td class="{{ "sending-ok" if data['firewall_status']['state'] == "online" else "sending-fail" }}">
                   {{ data['firewall_status']['state_trans'] }}
                   % if data['firewall_status']['state'] != "unknown":
-                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=data['firewall_status']['datetime'].strftime(trans("%Y/%m/%d %H:%M:%S"))) }}">
+                      <abbr title="{{! trans("Time of last update: %(datetime)s") % dict(datetime=helpers.translate_datetime(data['firewall_status']['datetime'])) }}">
                         {{ ungettext("(status updated %d second ago)", "(status updated %d seconds ago)", data['firewall_status']['seconds_ago']) % data['firewall_status']['seconds_ago'] }}
                       </abbr>
                   % end
