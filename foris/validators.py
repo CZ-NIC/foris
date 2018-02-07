@@ -18,6 +18,7 @@ import copy
 import logging
 import re
 import socket
+from datetime import datetime
 
 from foris.utils.translators import _
 import form
@@ -202,6 +203,20 @@ class Time(RegExp):
         super(Time, self).__init__(_("This is not valid time in HH:MM format."), pattern)
         self.js_validator = ("pattern", pattern)
         self.extra_data['parsley-error-message'] = self.msg
+
+
+class Datetime(Validator):
+    js_validator = ("extratype", "datetime")
+
+    def __init__(self):
+        super(Datetime, self).__init__(_("This is not a valid time (YYYY-MM-DD HH:MM:SS)."))
+
+    def valid(self, value):
+        try:
+            datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+            return True
+        except ValueError:
+            return False
 
 
 class Domain(Validator):

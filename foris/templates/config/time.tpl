@@ -65,7 +65,13 @@
 </div>
 <script>
     Foris.update_time = function(new_time) {
-        $("#field-time").val(new_time);
+        var year = new_time.getFullYear();
+        var month = String(new_time.getMonth() + 1).padStart(2, "0");
+        var day = String(new_time.getDate()).padStart(2, "0");
+        var hour = String(new_time.getHours()).padStart(2, "0");
+        var minute = String(new_time.getMinutes()).padStart(2, "0");
+        var second = String(new_time.getSeconds()).padStart(2, "0");
+        $("#field-time").val(year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second);
     };
     Foris.display_ntpdate_error = function(show) {
         if (show) {
@@ -104,8 +110,7 @@
         });
         $("#get-browser-time").click(function(e) {
             e.preventDefault();
-            var isoTime = new Date().toISOString();
-            Foris.update_time(isoTime.substring(0, isoTime.length - 1));  // remove Z from the end
+            Foris.update_time(new Date());
         });
     };
 
@@ -127,7 +132,7 @@
                 if (!msg.data.result) {
                     Foris.display_ntpdate_error(true);
                 } else {
-                    Foris.update_time(msg.data.time);
+                    Foris.update_time(new Date(msg.data.time));
                 }
                 Foris.watched_ntpdate = null;
                 $("#ntp-loading").hide();

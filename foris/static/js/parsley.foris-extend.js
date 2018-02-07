@@ -80,6 +80,8 @@ window.ParsleyValidator
           case 'domain':
             regExp = /^([a-zA-Z0-9-]{1,63}\.?)*$/g;
             break;
+          case 'datetime':
+            return Date.parse(val) ? true : false;
           default:
               console.dir(window.ParsleyValidator.validators.type(type));
             return window.ParsleyValidator.validators.type(type);

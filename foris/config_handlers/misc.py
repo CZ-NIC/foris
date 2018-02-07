@@ -17,6 +17,8 @@
 import base64
 import bottle
 
+from datetime import datetime
+
 from foris import fapi, validators
 from foris.nuci import client, filters
 from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
@@ -258,8 +260,10 @@ class UnifiedTimeHandler(BaseConfigHandler):
         data = current_state.backend.perform("time", "get_settings")
         data["zonename"] = "%s/%s" % (data["region"], data["city"])
         data["how_to_set_time"] = data["time_settings"]["how_to_set_time"]
-        data["time"] = data["time_settings"]["time"]
-        data["ntp_time"] = data["time_settings"]["time"]
+        formatted_date = datetime.strptime(
+            data["time_settings"]["time"], "%Y-%m-%dT%H:%M:%S.%f").strftime("%Y-%m-%d %H:%M:%S")
+        data["time"] = formatted_date
+        data["ntp_time"] = formatted_date
 
         if self.data:
             # update from post
@@ -267,7 +271,8 @@ class UnifiedTimeHandler(BaseConfigHandler):
 
             if bottle.request.is_xhr:
                 # xhr won't update the settings, so use current time to update it
-                data["time"] = data["time_settings"]["time"]
+                data["time"] = formatted_date
+                data["ntp_time"] = formatted_date
 
         region_and_time_form = fapi.ForisForm("region_and_time", data)
 
@@ -275,7 +280,9 @@ class UnifiedTimeHandler(BaseConfigHandler):
         main_section = region_and_time_form.add_section(
             name="region_and_time",  title=_(self.userfriendly_title),
             description=_(
-                "TBD time settings and why it is important."
+                "It is important that your router has the current time properly set. "
+                "If our router had an older time set some expired SSL certificates "
+                "might have seemed like valid."
             )
         )
         # region section
@@ -347,7 +354,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
         time_section = main_section.add_section(
             name="time", title=_("Time settings"),
             description=_(
-                "Time should be up to date otherise DNS and other services might not work properly."
+                "Time should be up-to-date otherise DNS and other services might not work properly."
             )
         )
         time_section.add_field(
@@ -361,11 +368,13 @@ class UnifiedTimeHandler(BaseConfigHandler):
         )
         time_section.add_field(
             Textbox, name="time",
-            label=_("Time")
+            validators=validators.Datetime(),
+            label=_("Time"),
+            hint=_("Time in YYYY-MM-DD HH:MM:SS format."),
         ).requires("how_to_set_time", "manual")
         time_section.add_field(
             Textbox, name="ntp_time",
-            label=_("Time")
+            label=_("Time"),
         ).requires("how_to_set_time", "ntp")
 
         def region_form_cb(data):
@@ -380,7 +389,8 @@ class UnifiedTimeHandler(BaseConfigHandler):
             }
 
             if data["how_to_set_time"] == "manual":
-                msg["time_settings"]["time"] = data["time"]
+                msg["time_settings"]["time"] = datetime.strptime(
+                    data["time"], "%Y-%m-%d %H:%M:%S").replace(microsecond=1).isoformat()
 
             res = current_state.backend.perform("time", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...

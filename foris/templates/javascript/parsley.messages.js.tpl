@@ -34,7 +34,8 @@ window.ParsleyConfig.i18n.{{ lang() }} = $.extend(window.ParsleyConfig.i18n.{{ l
     anyip:        '{{ trans("This is not a valid IPv4 or IPv6 address.") }}',
     ipv6prefix:   '{{ trans("This is not a valid IPv6 prefix.") }}',
     macaddress:   '{{ trans("This is not a valid MAC address.") }}',
-    domain:       '{{ trans("This is not a valid domain name.") }}'
+    domain:       '{{ trans("This is not a valid domain name.") }}',
+    datetime:     '{{ trans("This is not a valid time (YYYY-MM-DD HH:MM:SS).") }}'
   }
 });
 
