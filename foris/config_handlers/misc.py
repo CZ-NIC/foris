@@ -259,6 +259,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
         data["zonename"] = "%s/%s" % (data["region"], data["city"])
         data["how_to_set_time"] = data["time_settings"]["how_to_set_time"]
         data["time"] = data["time_settings"]["time"]
+        data["ntp_time"] = data["time_settings"]["time"]
 
         if self.data:
             # update from post
@@ -362,6 +363,10 @@ class UnifiedTimeHandler(BaseConfigHandler):
             Textbox, name="time",
             label=_("Time")
         ).requires("how_to_set_time", "manual")
+        time_section.add_field(
+            Textbox, name="ntp_time",
+            label=_("Time")
+        ).requires("how_to_set_time", "ntp")
 
         def region_form_cb(data):
             region, city = data["zonename"].split("/")

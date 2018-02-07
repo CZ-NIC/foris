@@ -31,14 +31,29 @@
         <h3>{{ form.sections[0].sections[1].title}}</h3>
         <p class="config-description">{{ form.sections[0].sections[1].description }}</p>
         <div class="message error" id="ntp-error" >{{ trans("Failed to query ntp servers.") }}</div>
-        %for field in form.sections[0].sections[1].active_fields:
-            %include("_field.tpl", field=field)
-        %end
+        %include("_field.tpl", field=form.sections[0].sections[1].active_fields[0])
+        %setdefault('time_field', form.sections[0].sections[1].active_fields[1])
         %if form.sections[0].sections[1].active_fields[0].field.get_value() == "ntp":
           <div class="row">
-            <label for="field-time"><a href="#" class="button" id="start-ntpdate-button">{{ trans("Update time") }}</a></label>
-            <input id="field-time" name="time" class="grayed" value="{{ form._request_data["time"] }}" disabled="1"></input>
+            <label for="field-time"><a href="#" class="button label-button" id="start-ntpdate-button">{{ trans("Update time") }}</a></label>
+            <input id="field-time" name="time" class="grayed" value="{{ time_field.field.get_value() }}" disabled="1"></input>
             <img src="{{ static("img/icon-loading.gif") }}" class="field-loading" id="ntp-loading">
+          </div>
+        %else:
+          <div class="row">
+            <label for="field-time"><a href="#" class="button label-button" id="get-browser-time">{{ trans("Update time") }}</a></label>
+            {{! time_field.render() }}
+            %if time_field.hint:
+               <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ helpers.remove_html_tags(time_field.hint) }}" alt="{{ trans("Hint") }}: {{ helpers.remove_html_tags(time_field.hint) }}">
+               <div class="hint-text" style="display: none">{{! time_field.hint }}</div>
+            %end
+            %if time_field.errors:
+              <div class="server-validation-container">
+                <ul>
+                  <li>{{ time_field.errors }}</li>
+                </ul>
+              </div>
+            %end
           </div>
         %end
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
@@ -87,7 +102,13 @@
                         self.removeAttr("disabled");
                     });
         });
-    }
+        $("#get-browser-time").click(function(e) {
+            e.preventDefault();
+            var isoTime = new Date().toISOString();
+            Foris.update_time(isoTime.substring(0, isoTime.length - 1));  // remove Z from the end
+        });
+    };
+
     Foris.afterAjaxUpdateFunctions.push(function(response, status, xhr) {
         Foris.ntp_override();
     });
