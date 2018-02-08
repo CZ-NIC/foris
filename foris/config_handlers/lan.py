@@ -70,7 +70,7 @@ class LanHandler(BaseConfigHandler):
         )
         lan_main.add_field(
             Textbox, name="lan_netmask", label=_("Network netmask"),
-            validators=validators.IPv4(),
+            validators=validators.IPv4Netmask(),
             hint=_("Network mask of the inner network.")
         )
         lan_main.add_field(
@@ -114,7 +114,7 @@ class LanHandler(BaseConfigHandler):
             guest_network_section.add_field(
                 Textbox, name="guest_network_netmask", label=_("Guest network netmask"),
                 default=DEFAULT_GUEST_MASK,
-                validators=validators.IPv4(),
+                validators=validators.IPv4Netmask(),
                 hint=_("Network mask of the guest network.")
             ).requires("guest_network_enabled", True)
 
