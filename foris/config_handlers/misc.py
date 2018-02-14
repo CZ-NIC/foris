@@ -215,8 +215,9 @@ class SystemPasswordHandler(BaseConfigHandler):
                                                                _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
+            encoded_password = base64.b64encode(data["password"])
             current_state.backend.perform(
-                "password", "set", {"password": data["password"], "type": "system"})
+                "password", "set", {"password": encoded_password, "type": "system"})
             return "none", None
 
         system_pw_form.add_callback(system_pw_form_cb)
