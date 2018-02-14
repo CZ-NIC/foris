@@ -65,7 +65,7 @@
             resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
         }
     }
-    Foris.WS["dns"] = function(msg) {
+    Foris.WS["wan"] = function(msg) {
         switch(msg["action"]) {
             case "connection_test":
                 if (msg["data"]["test_id"] != Foris.watched_test) {

@@ -138,7 +138,7 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     template = "config/dns"
 
     def _action_check_connection(self):
-        return current_state.backend.perform("dns", "connection_test_trigger", {})
+        return current_state.backend.perform("wan", "connection_test_trigger", {})
 
     def call_ajax_action(self, action):
         if action == "check-connection":
