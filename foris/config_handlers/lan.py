@@ -146,17 +146,18 @@ class LanHandler(BaseConfigHandler):
             ).requires("guest_network_qos_enabled", True)
 
         def lan_form_cb(data):
+            guest_network_enabled = data.get("guest_network_enabled", False)
             msg = {
                 "ip": data["lan_ipaddr"],
                 "netmask": data["lan_netmask"],
                 "dhcp": {"enabled": data["dhcp_enabled"]},
-                "guest_network": {"enabled": data["guest_network_enabled"]},
+                "guest_network": {"enabled": guest_network_enabled},
             }
             if data["dhcp_enabled"]:
                 msg["dhcp"]["start"] = int(data["dhcp_min"])
                 msg["dhcp"]["limit"] = int(data["dhcp_max"])
 
-            if data["guest_network_enabled"]:
+            if guest_network_enabled:
                 msg["guest_network"]["ip"] = data["guest_network_ipaddr"]
                 msg["guest_network"]["netmask"] = data["guest_network_netmask"]
                 msg["guest_network"]["qos"] = {"enabled": data["guest_network_qos_enabled"]}
