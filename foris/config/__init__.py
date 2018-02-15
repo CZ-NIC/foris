@@ -112,12 +112,23 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     menu_order = 12
 
+    template = "config/wan"
+
     def render(self, **kwargs):
         stats = client.get(filter=filters.stats).find_child("stats")
         wan_if = stats.data['interfaces'].get(self.wan_ifname)
         if not (wan_if and wan_if.get('is_up')):
             messages.warning(_("WAN port has no link, your internet connection probably won't work."))
         return super(WanConfigPage, self).render(**kwargs)
+
+    def _action_check_connection(self):
+        return current_state.backend.perform(
+            "wan", "connection_test_trigger", {"test_kinds": ["ipv4", "ipv6"]})
+
+    def call_ajax_action(self, action):
+        if action == "check-connection":
+            return self._action_check_connection()
+        raise ValueError("Unknown AJAX action.")
 
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
@@ -138,7 +149,8 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     template = "config/dns"
 
     def _action_check_connection(self):
-        return current_state.backend.perform("wan", "connection_test_trigger", {})
+        return current_state.backend.perform(
+            "wan", "connection_test_trigger", {"test_kinds": ["dns"]})
 
     def call_ajax_action(self, action):
         if action == "check-connection":

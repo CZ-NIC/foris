@@ -1,5 +1,5 @@
 %# Foris - web administration interface for OpenWrt based on NETCONF
-%# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+%# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 %#
 %# This program is free software: you can redistribute it and/or modify
 %# it under the terms of the GNU General Public License as published by
@@ -16,23 +16,24 @@
 %#
 %rebase("config/base.tpl", **locals())
 
-<div id="page-dns" class="config-page">
-     %include("_messages.tpl")
-    <p>{{ trans("Router Turris uses its own DNS resolver with DNSSEC support. It is capable of working alone or it can forward your DNS queries through your internet service provider's DNS resolver.") }}</p>
-    <p>{{ trans("The following setting determines the behavior of the DNS resolver. It is usually better to use the ISP's resolver in networks where it works properly. In case this does not work for some reason, it is necessary to use direct resolving without forwarding.") }}</p>
-    %if not contract_valid():
-      <p>{{! trans("In rare cases ISP's have improperly configured network which interferes with DNSSEC validation. If you experience problems with DNS, you can <strong>temporarily</strong> disable DNSSEC validation to determine the source of the problem. However, keep in mind that without DNSSEC validation, you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend keeping DNSSEC turned on</strong> and resolving the situation with your ISP as this is a serious flaw on their side.") }}</p>
-    %end
-    <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+%if not defined('is_xhr'):
+<div id="page-wan" class="config-page">
+%end
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <p class="config-description">{{! description }}</p>
+        %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
             %include("_field.tpl", field=field)
         %end
-        <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+            <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+        </div>
     </form>
-
+%if not defined('is_xhr'):
     <h2>{{ trans("Connection test") }}</h2>
-    <p>{{! trans("Here you can test your internet connection. This test is also useful when you need to check that your DNS resolving works as expected. Remember to click on the <strong>Save</strong> button if you changed your forwarder setting.") }}</p>
+    <p>{{! trans("Here you can test you connection settings. Remember to click on the <strong>Save</strong> button before running the test. Note that sometimes it takes a while before the connection is fully initialized. So it might be useful to wait for a while before running this test.") }}</p>
     <div class="message error" id="connection-test-fail">
       {{ trans("Unable to verify network connection.") }}
     </div>
@@ -44,12 +45,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>{{ trans("DNS") }}</td><td class="result" data-result-type="dns-conn-test">???</td></tr>
-            <tr><td>{{ trans("DNSSEC") }}</td><td class="result" data-result-type="dnssec-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv4 connectivity") }}</td><td class="result" data-result-type="ipv4-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv4 gateway connectivity") }}</td><td class="result" data-result-type="ipv4_gateway-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv6 connectivity") }}</td><td class="result" data-result-type="ipv6-conn-test">???</td></tr>
+            <tr><td>{{ trans("IPv6 gateway connectivity") }}</td><td class="result" data-result-type="ipv6_gateway-conn-test">???</td></tr>
         </tbody>
     </table>
     <a href="#" id="test-connection" class="button">{{ trans("Test connection") }}</a>
 </div>
+%end
 <script>
     Foris.watched_test = null;
     var update_conn_test_field = function(key, result) {
@@ -92,7 +96,7 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            $.get('{{ url("config_ajax", page_name="dns") }}', {action: "check-connection"})
+            $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection"})
                     .done(function(response) {
                         $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
                         $("#test-connection").hide();
