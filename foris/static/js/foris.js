@@ -590,9 +590,10 @@ Foris.initNotifications = function (csrf_token) {
   $(".notification .dismiss").on("click", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
-    $.post(Foris.scriptname + "/main/notifications/dismiss",
+    $.post(Foris.scriptname + "/main/notifications/ajax",
         {
-          message_ids: [id],
+          action: "dismiss-notifications",
+          notification_ids: [id],
           csrf_token: csrf_token
         },
         function(data) {

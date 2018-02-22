@@ -91,6 +91,40 @@ class ConfigPageMixin(object):
         return result
 
 
+class NotificationsConfigPage(ConfigPageMixin):
+    menu_order = 10
+
+    template = "config/notifications"
+    userfriendly_title = gettext("Notifications")
+
+    def render(self, **kwargs):
+        notifications = current_state.backend.perform(
+            "router_notifications", "list", {"lang": current_state.language}
+        )["notifications"]
+
+        # show only non displayed notifications
+        kwargs["notifications"] = [e for e in notifications if not e["displayed"]]
+
+        return super(NotificationsConfigPage, self).render(**kwargs)
+
+    def _action_dismiss_notifications(self):
+        notification_ids = request.POST.getall("notification_ids[]")
+        response = current_state.backend.perform(
+            "router_notifications", "mark_as_displayed", {"ids": notification_ids})
+        return response["result"], notification_ids
+
+    def call_ajax_action(self, action):
+        if action == "dismiss-notifications":
+            bottle.response.set_header("Content-Type", "application/json")
+            res = self._action_dismiss_notifications()
+            if res[0]:
+                return {"success": True, "displayedIDs": res[1]}
+            else:
+                return {"success": False}
+
+        raise ValueError("Unknown AJAX action.")
+
+
 class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     menu_order = 11
 
@@ -487,7 +521,7 @@ class ConfigPageMapItems(dict):
 # names of handlers used in their URL
 # use dash-separated names, underscores in URL are ugly
 config_page_map = ConfigPageMapItems((
-    ('', VirtualConfigPage(gettext("Home page"), 10)),
+    ('notifications', NotificationsConfigPage),
     ('password', PasswordConfigPage),
     ('wan', WanConfigPage),
     ('time', TimeConfigPage),
@@ -528,20 +562,7 @@ def get_config_page(page_name):
 
 @login_required
 def index():
-    notifications = client.get_messages()
-    return template("config/index", title=_("Home page"),
-                    make_notification_title=make_notification_title,
-                    active_config_page_key='',
-                    notifications=notifications.new)
-
-
-@login_required
-def dismiss_notifications():
-    message_ids = request.POST.getall("message_ids[]")
-    result = client.dismiss_notifications(message_ids)
-    if result:
-        return {'success': True, 'displayedIDs': message_ids}
-    return {'success': False}
+    bottle.redirect(reverse("config_page", page_name="notifications"))
 
 
 @login_required
@@ -634,8 +655,6 @@ def init_app():
     app = Bottle()
     app.install(CSRFPlugin())
     app.route("/", name="config_index", callback=index)
-    app.route("/notifications/dismiss", method="POST",
-              callback=dismiss_notifications)
     app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"),
               callback=config_ajax)
     app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST",

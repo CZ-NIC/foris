@@ -16,6 +16,9 @@
 
 import re
 
+from bottle import html_escape
+from datetime import datetime
+
 from .routing import external_route
 from foris.utils.translators import _
 
@@ -58,3 +61,30 @@ def translate_datetime(datetime_instance, default="%Y/%m/%d %H:%M:%S"):
     except UnicodeEncodeError:
         # Unicode characters in translated format -> fallback to default
         return datetime_instance.strftime(default)
+
+
+def make_notification_title(notification):
+    """
+    Helper function for creating of human-readable notification title.
+
+    :param notification: notification to create title for
+    :return: translated string with notification title
+    """
+    notification_titles = {
+        "news": _("News"),
+        "update": _("Update"),
+        "error": _("Error"),
+    }
+
+    # minor abuse of gettext follows...
+    locale_date = translate_datetime(
+        datetime.strptime(notification["created_at"], "%Y-%m-%dT%H:%M:%S"))
+
+    return _("%(notification)s from %(created_at)s") % dict(
+        notification=notification_titles.get(notification["severity"], _("Notification")),
+        created_at=locale_date
+    )
+
+
+def transform_notification_message(msg):
+    return html_escape(msg).replace("\n", "<br />")

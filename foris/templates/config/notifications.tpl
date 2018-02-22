@@ -1,5 +1,5 @@
 %# Foris - web administration interface for OpenWrt based on NETCONF
-%# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+%# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 %#
 %# This program is free software: you can redistribute it and/or modify
 %# it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 <div id="page-index" class="config-page">
     <p class="config-description">
-    {{ trans("Welcome to the Turris administration site. Please, choose a config section you wish to change from the menu.") }}
+    {{ trans("Following notifications occured and haven't been dismissed since last reboot.") }}
     </p>
 
     %if len(notifications):
