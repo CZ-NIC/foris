@@ -240,16 +240,21 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
-        result, error_message = client.test_notifications()
-        if result:
+        data = current_state.backend.perform(
+            "router_notifications", "create",
+            {
+                "msg": "_(This is a testing notification. Please ignore me.)",
+                "severity": "news",
+                "immediate": True,
+            }
+        )
+
+        if data["result"]:
             messages.success(_("Testing message was sent, please check your inbox."))
         else:
-            if error_message:
-                messages.error(_("Sending of the testing message failed, your configuration is possibly "
-                                 "wrong.<br>Error returned:<br><pre>%(error)s</pre>")
-                               % dict(error=error_message))
-            else:
-                messages.error(_("Sending of the testing message failed because of an internal error."))
+            messages.error(_(
+                "Sending of the testing message failed, your configuration is possibly wrong."
+            ))
         bottle.redirect(reverse("config_page", page_name="maintenance"))
 
     def call_action(self, action):
