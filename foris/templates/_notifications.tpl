@@ -14,6 +14,7 @@
 %# You should have received a copy of the GNU General Public License
 %# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %#
+<div id="notifications-list">
 %for notification in notifications:
     <div class="notification {{ notification["severity"] }}" id="notification_{{ notification["id"]  }}">
       <h2>{{! helpers.make_notification_title(notification) }}</h2>
@@ -27,6 +28,10 @@
       %end
     </div>
 %end
+</div>
+<div class="row" style="{{ "" if [e for e in notifications if not e["severity"] == "restart"] else "display: none" }}">
+    <button type="submit" class="button" id="dismiss-all-notifications">{{ trans("Dismiss All") }}</button>
+</div>
 <script>
     Foris.initNotifications("{{ get_csrf_token() }}");
 </script>

@@ -16,7 +16,7 @@
 %#
 %rebase("config/base.tpl", **locals())
 
-<div id="page-index" class="config-page">
+<div id="page-notifications" class="config-page">
     <p class="config-description">
     {{ trans("Following notifications occured and haven't been dismissed since last reboot.") }}
     </p>

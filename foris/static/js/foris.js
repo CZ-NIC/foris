@@ -605,6 +605,35 @@ Foris.initNotifications = function (csrf_token) {
         }
     );
   });
+  $("#dismiss-all-notifications").on("click", function(e) {
+    e.preventDefault();
+    var ids = [];
+    var keep = false;
+    $(".notification .dismiss").each(function(idx) {
+      if ($(this).parent().find(".dismiss").length == 0) {
+        keep = true;
+      } else {
+        ids.push($(this).data("id"));
+      }
+    });
+    if (!keep) {
+        $(this).hide();
+    };
+    $.post(Foris.scriptname + "/main/notifications/ajax",
+        {
+          action: "dismiss-notifications",
+          notification_ids: ids,
+          csrf_token: csrf_token
+        },
+        function(data) {
+          if (data.success) {
+            for (var i=0; i < data.displayedIDs.length; i++) {
+              $("#notification_" + data.displayedIDs[i]).fadeOut(800);
+            }
+          }
+        }
+    );
+  });
 };
 
 Foris.initNotificationTestAlert = function () {
