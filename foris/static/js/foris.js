@@ -177,6 +177,11 @@ Foris.WS = {
   },
   lan: function(msg) {
     Foris.handleLanRestart(msg.data.ip);
+  },
+  router_notifications: function(msg) {
+    if (msg.action == "create" || msg.action == "mark_as_displayed") {
+        Foris.handleNotificationsCountUpdate(msg.data.new_count);
+    }
   }
 };
 
@@ -796,6 +801,34 @@ Foris.handleLanRestart = function(ip) {
     var pathname = window.location.pathname;
     Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback);
   });
+};
+
+Foris.handleNotificationsCountUpdate = function(new_count) {
+  var old_count = parseInt($("#notifications_menu_tag").text());
+  $("#notifications_menu_tag").text(new_count);
+  if (new_count > 0) {
+    if (old_count > 0) {
+      // blink
+      $("#notifications_menu_tag").animate({opacity:0.05}, 200, "linear", function() {
+        $(this).animate({opacity:1}, 200);
+      });
+    } else {
+      // show
+      $("#notifications_menu_tag").css('opacity', '0');
+      $("#notifications_menu_tag").show();
+      $("#notifications_menu_tag").animate({opacity:1}, 200);
+    }
+  } else {
+    if (old_count > 0) {
+      // hide
+      $("#notifications_menu_tag").animate({opacity:0},200,"linear",function(){
+        $(this).hide();
+        $(this).css('opacity', '1');
+      });
+    } else {
+      // already hidden do nothing
+    }
+  }
 };
 
 $(document).ready(function () {

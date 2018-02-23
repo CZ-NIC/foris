@@ -21,11 +21,7 @@
     {{ trans("Following notifications occured and haven't been dismissed since last reboot.") }}
     </p>
 
-    %if len(notifications):
-        %include("_notifications.tpl", notifications=notifications)
-    %else:
-        <strong>{{ trans("No new messages.") }}</strong>
-    %end
+    %include("_notifications.tpl", notifications=notifications)
 </div>
 <script>
   $(document).ready(function() {
@@ -43,4 +39,21 @@
       }
     });
   });
+  // redefine
+  Foris.WS["router_notifications"] = function(msg) {
+    if (msg.action == "create" || msg.action == "mark_as_displayed") {
+      // Update nav
+      Foris.handleNotificationsCountUpdate(msg.data.new_count);
+      // Reload notifications via ajax
+      $.get('{{ url("config_ajax", page_name="notifications") }}', {action: "list"})
+        .done(function(response) {
+          $("#notifications-content").replaceWith(response);  // replace it
+          Foris.initNotifications("{{ get_csrf_token() }}");
+        })
+        .fail(function(xhr) {
+          location.reload();
+        });
+    }
+  }
+  Foris.initNotifications("{{ get_csrf_token() }}");
 </script>

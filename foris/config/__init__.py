@@ -90,6 +90,14 @@ class ConfigPageMixin(object):
             messages.warning(_("There were some errors in your input."))
         return result
 
+    @staticmethod
+    def menu_tag():
+        return {
+            "show": False,
+            "hint": "",
+            "text": "",
+        }
+
 
 class NotificationsConfigPage(ConfigPageMixin):
     menu_order = 10
@@ -122,7 +130,24 @@ class NotificationsConfigPage(ConfigPageMixin):
             else:
                 return {"success": False}
 
+        elif action == "list":
+            notifications = current_state.backend.perform(
+                "router_notifications", "list", {"lang": current_state.language}
+            )["notifications"]
+            return template(
+                "_notifications.tpl",
+                notifications=[e for e in notifications if not e["displayed"]]
+            )
+
         raise ValueError("Unknown AJAX action.")
+
+    @staticmethod
+    def menu_tag():
+        return {
+            "show": True if current_state.notification_count else False,
+            "hint": _("Number of notifications"),
+            "text": "%d" % current_state.notification_count,
+        }
 
 
 class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
@@ -519,7 +544,7 @@ class VirtualConfigPage(ConfigPageMixin):
 
 class ConfigPageMapItems(dict):
     def menu_list(self):
-        res = [(slug, page) for slug, page in self.items()]
+        res = [(slug, page, page.menu_tag()) for slug, page in self.items()]
         return sorted(res, key=lambda e: (e[1].menu_order, e[0]))
 
 

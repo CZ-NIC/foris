@@ -53,4 +53,7 @@ class BackendData(object):
         # update reboot required
         current_state.update_reboot_required(data["reboot_required"])
 
+        # update notification count
+        current_state.update_notification_count(data["notification_count"])
+
         return self.app(environ, start_response)

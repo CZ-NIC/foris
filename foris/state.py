@@ -51,6 +51,15 @@ class ForisState(object):
         logger.debug("setting reboot_required=%s" % required)
         self.reboot_required = required
 
+    def update_notification_count(self, new_count):
+        """ Updates notificaton count
+
+        :param new_count: new notificaton count
+        :type new_count: int
+        """
+        logger.debug("setting notification_count=%d" % new_count)
+        self.notification_count = new_count
+
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))
 
