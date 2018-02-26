@@ -15,8 +15,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-import random
 import string
+
+from random import SystemRandom
+random = SystemRandom()
 
 
 def get_csrf_token():
