@@ -159,6 +159,11 @@ class UpdaterHandler(BaseConfigHandler):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
         lazy_cache.nuci_updater = lambda: client.get(filter=filters.updater).find_child("updater")
 
+        if not contract_valid():
+            self.agreed_collect = current_state.backend.perform("data_collect", "get", {})["agreed"]
+        else:
+            self.agreed_collect = True
+
     def get_form(self):
         pkg_list = lazy_cache.nuci_updater.pkg_list
 
@@ -200,17 +205,12 @@ class UpdaterHandler(BaseConfigHandler):
                 return list_name in enabled_names
             return preproc
 
-        if not contract_valid():
-            agreed_collect = current_state.backend.perform("data_collect", "get", {})["agreed"]
-        else:
-            agreed_collect = True
-
         for pkg_list_item in pkg_list:
             if not contract_valid():
                 if pkg_list_item.name == "i_agree_datacollect":
                     # This has special meaning - it's affected by foris.eula.agreed_collect
                     continue
-                elif pkg_list_item.name.startswith("i_agree_") and not agreed_collect:
+                elif pkg_list_item.name.startswith("i_agree_") and not self.agreed_collect:
                     # Data collection is not enabled - do not show items prefixed i_agree_
                     continue
             package_lists_main.add_field(
@@ -260,7 +260,7 @@ class UpdaterHandler(BaseConfigHandler):
                 new_package_list.add(Value(i, k[8:]))
                 i += 1
             # If user agreed with data collection, add i_agree_datacollect list
-            if agreed_collect:
+            if self.agreed_collect:
                 new_package_list.add(Value(i, "i_agree_datacollect"))
                 i += 1
             if i == 0:

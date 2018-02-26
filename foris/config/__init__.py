@@ -365,8 +365,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             kwargs['auto_updates_form'] = auto_updates_handler.form
             kwargs['updater_disabled'] = \
                 not preproc_disabled_to_agreed(auto_updates_handler.form.nuci_config)
-            agreed = current_state.backend.perform("data_collect", "get", {})["agreed"]
-            kwargs['collecting_enabled'] = agreed
+            kwargs['collecting_enabled'] = self.agreed_collect
             current_approvals = [e for e in lazy_cache.nuci_updater.approval_list if e["current"]]
             approval = current_approvals[0] if current_approvals else None
 
