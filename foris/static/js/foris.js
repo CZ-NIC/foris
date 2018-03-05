@@ -173,7 +173,14 @@ Foris.applySVGFallback = function() {
 
 Foris.WS = {
   maintain: function(msg) {
-    Foris.handleReboot(msg.data.new_ips);
+    switch (msg.action) {
+        case "reboot":
+            Foris.handleReboot(msg.data.new_ips);
+            break;
+        case "reboot_required":
+            $('#reboot-required-notice').show("slow");
+            break;;
+    }
   },
   lan: function(msg) {
     Foris.handleLanRestart(msg.data.ip);
@@ -609,6 +616,11 @@ Foris.initNotifications = function (csrf_token) {
           }
         }
     );
+  });
+  $(".notification.restart a").on("click", function(e) {
+    e.preventDefault();
+    var url = $(".notification.restart a").attr("href");
+    $.get(url, {}, function(data){});
   });
   $("#dismiss-all-notifications").on("click", function(e) {
     e.preventDefault();
