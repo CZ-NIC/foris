@@ -150,22 +150,53 @@
     #approval-timeout-line
       margin-left: 2em
 
-#updater-approve-form
+#updater-toggle
+  margin-bottom: 1em
+  label
+    display: block
+    margin-left: 3em
 
-  #updater-approve-changes
-    overflow: hidden
+  .radio-inputs
+    width: 100%
+
+#updater-approvals
+  margin-bottom: 0.5em
+
+  p
+    margin-bottom: 0.5em
+
+  label
+    display: inline-block
+    margin-left: 3em
+
+  input[name="approval_timeout"]
+    width: 5em
+
+  #approval-timeout-line
+    margin-left: 2em
+
+
+#updater-approve-changes
+  overflow: hidden
+  margin-bottom: .5em
+  border: 1px solid #999
+  padding: 1em
+
+  li
+    +respond-to('not-mobile', $no-query: true)
+      float: left
+      display: inline
+      width: 50%
+
+#updater-reboot-text
+  margin-bottom: .5em
+
+#current-approval
+  .button-row
     margin-bottom: .5em
-    border: 1px solid #999
-    padding: 1em
-
-    li
-      +respond-to('not-mobile', $no-query: true)
-        float: left
-        display: inline
-        width: 50%
-
-  #updater-reboot-text
-    margin-bottom: .5em
+    button
+      height: 2em
+      line-height: 2em
 
 #updater-disabled-warning
   margin-top: .5em

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 # Foris - web administration interface for OpenWrt based on NETCONF
 # Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
@@ -17,7 +19,7 @@
 import re
 
 from bottle import html_escape
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .routing import external_route
 from foris.utils.translators import _
@@ -88,3 +90,26 @@ def make_notification_title(notification):
 
 def transform_notification_message(msg):
     return html_escape(msg).replace("\n", "<br />")
+
+
+def prepare_approval_item_message(approval_item, show_operation=True):
+    if approval_item["op"] == "install":
+        return ((_("Install") + " ") if show_operation else "") + u"%s (∅ -> %s)" % (
+            approval_item["name"], approval_item["new_ver"]
+        )
+    elif approval_item["op"] == "remove":
+        return ((_("Uninstall") + " ") if show_operation else "") + u"%s (%s -> ∅)" % (
+            approval_item["name"], approval_item["cur_ver"]
+        )
+    elif approval_item["op"] == "upgrade":
+        return ((_("Upgrade") + " ") if show_operation else "") + "%s (%s -> %s)" % (
+            approval_item["name"], approval_item["cur_ver"], approval_item["new_ver"]
+        )
+    elif approval_item["op"] == "downgrade":
+        return ((_("Downgrade") + " ") if show_operation else "") + "%s (%s -> %s)" % (
+            approval_item["name"], approval_item["cur_ver"], approval_item["new_ver"]
+        )
+
+
+def increase_time(orig_time, days=0, hours=0, minutes=0, seconds=0):
+    return orig_time + timedelta(days, hours, minutes, seconds)

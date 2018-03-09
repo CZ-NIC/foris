@@ -30,7 +30,7 @@ from foris.config_handlers import (
 )
 from foris.nuci import client
 from foris.nuci.client import filters
-from foris.nuci.helpers import make_notification_title, get_wizard_progress
+from foris.nuci.helpers import get_wizard_progress
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -313,90 +313,63 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
     template = "config/updater"
 
-    @require_contract_valid(False)
-    def _action_toggle_updater(self):
+    def _action_resolve_approval(self):
         if bottle.request.method != 'POST':
-            messages.error(_("Wrong HTTP method."))
-            bottle.redirect(reverse("config_page", page_name="updater"))
-        handler = updater.UpdaterAutoUpdatesHandler(request.POST)
-        if handler.save():
-            messages.success(_("Configuration was successfully saved."))
-            bottle.redirect(reverse("config_page", page_name="updater"))
-        messages.warning(_("There were some errors in your input."))
-        return super(UpdaterConfigPage, self).render(notifications_form=handler.form)
+            raise bottle.HTTPError(405, "Method not allowed.")
+        try:
+            approval_id = bottle.request.POST.get("approval_id")
+        except KeyError:
+            raise bottle.HTTPError(400, "approval is missing.")
 
-    def _action_process_approval(self):
-        if bottle.request.method != 'POST':
-            messages.error(_("Wrong HTTP method."))
-            bottle.redirect(reverse("config_page", page_name="updater"))
+        try:
+            solution = bottle.request.POST.get("solution").strip()
+        except KeyError:
+            raise bottle.HTTPError(400, "solution is missing.")
 
-        if not request.POST.get("call", None) or not request.POST.get("approval-id", None) or \
-                not request.POST["call"] in ["approve", "deny"]:
-            messages.error(_("Invalid request arguments."))
-            bottle.redirect(reverse("config_page", page_name="updater"))
+        if solution not in ("grant", "deny"):
+            raise bottle.HTTPError(400, "wrong solution value (expected 'grant' or 'deny').")
 
-        if request.POST["call"] == "approve":
-            if client.approve_approval(request.POST["approval-id"]):
-                messages.success(_("Update was approved."))
-                client.check_updates()
-            else:
-                messages.error(_("Failed to approve the update."))
-        elif request.POST["call"] == "deny":
-            if client.deny_approval(request.POST["approval-id"]):
-                messages.success(_("Update was postponed."))
-                client.check_updates()
-            else:
-                messages.error(_("Failed to postpone the update."))
+        bottle.response.set_header("Content-Type", "application/json")
+        return current_state.backend.perform(
+            "updater", "resolve_approval", {"hash": approval_id, "solution": solution})
 
-        bottle.redirect(reverse("config_page", page_name="updater"))
-
-    def call_action(self, action):
-        if action == "toggle_updater":
-            return self._action_toggle_updater()
-        if action == "process_approval":
-            return self._action_process_approval()
+    def call_ajax_action(self, action):
+        if action == "resolve_approval":
+            return self._action_resolve_approval()
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
-        lazy_cache.nuci_updater = lambda: client.get(
-            filter=filters.updater).find_child("updater")
-        if not contract_valid():
-            auto_updates_handler = updater.UpdaterAutoUpdatesHandler(self.data)
-            kwargs['auto_updates_form'] = auto_updates_handler.form
-            kwargs['updater_disabled'] = \
-                not preproc_disabled_to_agreed(auto_updates_handler.form.nuci_config)
-            kwargs['collecting_enabled'] = self.agreed_collect
-            current_approvals = [e for e in lazy_cache.nuci_updater.approval_list if e["current"]]
-            approval = current_approvals[0] if current_approvals else None
-
-            approval_time = None
-            if approval:
-                # convert time to some readable form
-                approval_time = int(approval["time"])
-                approval["time"] = time.strftime(
-                    "%Y-%m-%d %H:%M:%S", time.localtime(approval_time))
-
-            kwargs['approval'] = approval
-            # read approvals status
-            show_approvals = auto_updates_handler.form.nuci_config.find_child(
-                'uci.updater.approvals.need'
-            )
-            kwargs['show_approvals'] = show_approvals.value == "1" if show_approvals else False
-            auto_grant_seconds = auto_updates_handler.form.nuci_config.find_child(
-                'uci.updater.approvals.auto_grant_seconds')
-            delayed_approvals = kwargs['show_approvals'] and auto_grant_seconds is not None
-            kwargs['delayed_approvals'] = delayed_approvals
-
-            if approval_time:
-                kwargs['delayed_approval_time'] = time.strftime(
-                    "%Y-%m-%d %H:%M:%S",
-                    time.localtime(approval_time + int(auto_grant_seconds.value))
-                ) if auto_grant_seconds else None
+        kwargs['contract_valid'] = self.contract_valid
+        kwargs['branch'] = self.branch
+        kwargs['is_updater_enabled'] = lambda: self.updater_enabled
+        kwargs['agreed_collect'] = self.agreed_collect
+        kwargs['current_approval'] = self.current_approval
+        kwargs['get_approval_setting_status'] = lambda: self.approval_setting_status
+        kwargs['get_approval_setting_delay'] = lambda: self.approval_setting_delay
+        if kwargs['current_approval']['present']:
+            kwargs['current_approval']['time'] = datetime.strptime(
+                kwargs['current_approval']['time'], "%Y-%m-%dT%H:%M:%S")
 
         return super(UpdaterConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):
         result = super(UpdaterConfigPage, self).save(no_messages=True, *args, **kwargs)
+
+        target = self.form.callback_results.get("target", None)
+        if target in ["deny", "grant"]:
+            result = self.form.callback_results["result"]
+            if result:
+                if target == "grant":
+                    messages.success(_("Update was approved."))
+                elif target == "deny":
+                    messages.success(_("Update was postponed."))
+            else:
+                if target == "grant":
+                    messages.error(_("Failed to approve the update."))
+                elif target == "deny":
+                    messages.error(_("Failed to postpone the update."))
+            return result
+
         if result:
             messages.success(_("Configuration was successfully saved. Selected "
                                "packages should be installed or removed shortly."))
@@ -414,7 +387,8 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
     def render(self, **kwargs):
         status = kwargs.pop("status", None)
         if not contract_valid():
-            updater_data = current_state.backend.perform("updater", "get_settings", {})
+            updater_data = current_state.backend.perform(
+                "updater", "get_settings", {"lang": current_state.language})
             kwargs['updater_disabled'] = not updater_data["enabled"]
 
             if updater_data["enabled"]:
