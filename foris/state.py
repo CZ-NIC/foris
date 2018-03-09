@@ -63,5 +63,13 @@ class ForisState(object):
     def repr(self):
         return "%s (%s)" % (self.__class__, str(vars(self)))
 
+    def set_updater_is_running(self, running):
+        """ Sets whenter updater is running
+        :param running: True if updater is running False otherwise
+        :type required: boolean
+        """
+        logger.debug("setting updater_is_running=%s" % running)
+        self.updater_is_running = running
+
 
 current_state = ForisState()

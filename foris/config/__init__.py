@@ -1,5 +1,7 @@
-# Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# coding=utf-8
+
+# Foris
+# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -376,6 +378,14 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
         else:
             messages.warning(_("There were some errors in your input."))
         return result
+
+    @staticmethod
+    def menu_tag():
+        return {
+            "show": current_state.updater_is_running,
+            "hint": _("Updater is running"),
+            "text": u"↺",
+        }
 
 
 class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):

@@ -189,6 +189,11 @@ Foris.WS = {
     if (msg.action == "create" || msg.action == "mark_as_displayed") {
         Foris.handleNotificationsCountUpdate(msg.data.new_count);
     }
+  },
+  updater: function(msg) {
+    if (msg.action == "run") {
+        Foris.handleUpdaterRun(msg.data.status != "exit" && msg.data.status != "failed");
+    }
   }
 };
 
@@ -841,6 +846,23 @@ Foris.handleNotificationsCountUpdate = function(new_count) {
       // already hidden do nothing
     }
   }
+};
+
+Foris.handleUpdaterRun = function(running) {
+    if (running) {
+      if (!$("#updater_menu_tag").is(":visible")) {
+        $("#updater_menu_tag").css('opacity', '0');
+        $("#updater_menu_tag").show();
+        $("#updater_menu_tag").animate({opacity:1}, 200);
+      }
+    } else {
+      if ($("#updater_menu_tag").is(":visible")) {
+        $("#updater_menu_tag").animate({opacity:0},200,"linear",function(){
+          $(this).hide();
+          $(this).css('opacity', '1');
+        });
+      }
+    }
 };
 
 $(document).ready(function () {

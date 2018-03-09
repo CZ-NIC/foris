@@ -56,4 +56,7 @@ class BackendData(object):
         # update notification count
         current_state.update_notification_count(data["notification_count"])
 
+        # update updater running indicator
+        current_state.set_updater_is_running(data["updater_running"])
+
         return self.app(environ, start_response)
