@@ -24,6 +24,7 @@ from bottle import _e, tob, html_escape, static_file
 
 from foris.utils.routing import get_root
 from foris.backend import ExceptionInBackend
+from foris.state import current_state
 
 
 ERROR_TEMPLATE = u"""<!DOCTYPE html>
@@ -96,6 +97,11 @@ class ReportingMiddleware(object):
                 environ['bottle.request.post'] = dict(
                     filter_sensitive_params(environ['bottle.request.post'],
                                             self.sensitive_params))
+            # update environ
+            environ["foris.version"] = current_state.foris_version
+            environ["foris.language"] = current_state.language
+            environ["foris.backend"] = current_state.backend
+
             template_vars['environ'] = html_escape(pformat(environ))
             # Handles backend exceptions in same manner as
             if isinstance(e, ExceptionInBackend):
