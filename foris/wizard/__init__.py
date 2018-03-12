@@ -29,6 +29,7 @@ from foris.nuci.helpers import (
 )
 from foris.nuci.modules.uci_raw import build_option_uci_tree
 from foris.nuci.preprocessors import preproc_disabled_to_agreed
+from foris.state import current_state
 from foris.utils import (
     login_required, messages, WIZARD_NEXT_STEP_ALLOWED_KEY, NUM_WIZARD_STEPS, is_safe_redirect,
     contract_valid
@@ -163,10 +164,10 @@ class WizardStep2(WizardStepMixin, wan.WanHandler):
         super(WizardStep2, self).__init__(hide_no_wan=True, *args, **kwargs)
 
     def render(self, **kwargs):
-        stats = client.get(filter=filters.stats).find_child("stats")
-        wan_if = stats.data['interfaces'].get(self.wan_ifname)
-        if not (wan_if and wan_if.get('is_up')):
-            messages.warning(_("WAN port has no link, your internet connection probably won't work."))
+        data = current_state.backend.perform("wan", "get_wan_status")
+        if not data["up"]:
+            messages.warning(
+                _("WAN port has no link, your internet connection probably won't work."))
         return super(WizardStep2, self).render(**kwargs)
 
 
