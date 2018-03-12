@@ -45,10 +45,7 @@ logger = logging.getLogger("foris.common")
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-def login():
-    session = bottle.request.environ["foris.session"]
-
-    next = bottle.request.POST.get("next")
+def login(next, session):
     if check_password(bottle.request.POST.get("password")):
         # re-generate session to prevent session fixation
         session.recreate()
@@ -56,20 +53,14 @@ def login():
 
         update_csrf_token(save_session=False)
         session.save()
-        if next and is_safe_redirect(next, bottle.request.get_header('host')):
-            bottle.redirect(next)
 
         # update contract status
         current_state.backend.perform("about", "update_contract_status", {})
 
-    else:
-        messages.error(_("The password you entered was not valid."))
-
-    if next:
-        redirect = "/?next=%s" % next
-        if is_safe_redirect(redirect, bottle.request.get_header('host')):
-            bottle.redirect(redirect)
-    bottle.redirect(reverse("index"))
+        if next and is_safe_redirect(next, bottle.request.get_header('host')):
+            bottle.redirect(next)
+        else:
+            bottle.redirect(reverse("index"))
 
 
 def logout():
@@ -236,8 +227,8 @@ def init_default_app(index, include_static=False):
     app = bottle.app()
     app.install(CSRFPlugin())
     app.route("/", name="index", callback=index)
+    app.route("/", method="POST", name="login", callback=index)
     app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
-    app.route("/", method="POST", name="login", callback=login)
     app.route("/logout", name="logout", callback=logout)
     app.route("/reboot", name="reboot", callback=reboot)
     if include_static:

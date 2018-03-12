@@ -35,7 +35,7 @@
     %if user_authenticated():
         <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
     %else:
-        <form action="{{ request.fullpath }}" method="POST">
+        <form action="{{ request.fullpath }}{{ '?next=%s' % next if next else '' }}" method="POST">
             <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %if request.GET.get("next"):
             <input type="hidden" name="next" value="{{ request.GET['next'] }}">

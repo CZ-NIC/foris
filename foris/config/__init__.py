@@ -19,10 +19,10 @@ import base64
 import logging
 import time
 
-from bottle import Bottle, request, template
+from bottle import Bottle, request, template, response
 import bottle
 
-from foris.common import require_contract_valid
+from foris.common import require_contract_valid, login
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.caches import lazy_cache
 from foris.config_handlers import (
@@ -708,17 +708,28 @@ def login_redirect():
 @bottle.view("index")
 def top_index():
     session = bottle.request.environ['foris.session']
-    allowed_step_max, wizard_finished = get_wizard_progress(session)
+    if bottle.request.method == 'POST':
+        next = bottle.request.POST.get("next", None)
+        login(next, session)
+        # if login passes it will redirect to a proper page
+        # otherwise it contains next parameter
+        messages.error(_("The password you entered was not valid."))
+        response.status = 403
+    else:
+        next = bottle.request.GET.get("next", None)
+        allowed_step_max, wizard_finished = get_wizard_progress(session)
 
-    if allowed_step_max == 1:
-        if session.is_anonymous:
-            session.recreate()
-        session["user_authenticated"] = True
-        session.save()
+        if allowed_step_max == 1:
+            if session.is_anonymous:
+                session.recreate()
+            session["user_authenticated"] = True
+            session.save()
 
-    if session.get("user_authenticated"):
-        login_redirect()
+        if session.get("user_authenticated"):
+            login_redirect()
 
     return dict(
         luci_path="//%(host)s/%(path)s"
-        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'})
+        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'},
+        next=next
+    )

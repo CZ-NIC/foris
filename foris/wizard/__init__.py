@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from bottle import Bottle, template, request
+from bottle import Bottle, template, request, response
 import bottle
 from ncclient.operations import RPCError, TimeoutExpiredError
 
 import logging
-from foris.common import require_contract_valid
+from foris.common import require_contract_valid, login
 from foris.config_handlers import base, lan, misc, updater, wan, wifi
 from foris.nuci import client, filters
 from foris.nuci.configurator import add_config_update, commit
@@ -539,19 +539,28 @@ def login_redirect(step_num, wizard_finished=False):
 @bottle.view("index")
 def top_index():
     session = bottle.request.environ['foris.session']
-    allowed_step_max, wizard_finished = get_wizard_progress(session)
-
-    if allowed_step_max == 1:
-        if session.is_anonymous:
-            session.recreate()
-        session["user_authenticated"] = True
+    if bottle.request.method == 'POST':
+        next = bottle.request.POST.get("next", None)
+        login(next, session)
+        # if login passes it will redirect to a proper page
+        # otherwise it contains next parameter
+        messages.error(_("The password you entered was not valid."))
+        response.status = 403
     else:
-        session[WIZARD_NEXT_STEP_ALLOWED_KEY] = str(allowed_step_max)
-        session["wizard_finished"] = wizard_finished
-        allowed_step_max = int(allowed_step_max)
+        next = bottle.request.GET.get("next", None)
+        allowed_step_max, wizard_finished = get_wizard_progress(session)
 
-    session.save()
-    if session.get("user_authenticated"):
-        login_redirect(allowed_step_max, wizard_finished)
+        if allowed_step_max == 1:
+            if session.is_anonymous:
+                session.recreate()
+            session["user_authenticated"] = True
+        else:
+            session[WIZARD_NEXT_STEP_ALLOWED_KEY] = str(allowed_step_max)
+            session["wizard_finished"] = wizard_finished
+            allowed_step_max = int(allowed_step_max)
 
-    return {}
+        session.save()
+        if session.get("user_authenticated"):
+            login_redirect(allowed_step_max, wizard_finished)
+
+    return {"next": next}
