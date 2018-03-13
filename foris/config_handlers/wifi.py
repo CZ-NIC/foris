@@ -18,7 +18,7 @@ from foris import fapi
 from foris import validators
 from foris.form import Checkbox, Dropdown, Hidden, Password, Radio, Textbox, HorizontalLine
 from foris.nuci import client, filters, preprocessors
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool
+from foris.nuci.modules.uci_raw import Uci, Config, Section, Option, parse_uci_bool, Value, List
 from foris.state import current_state
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -404,10 +404,21 @@ class WifiHandler(BaseConfigHandler):
             elif guest_wifi_enabled:
                 # try to update guest interfaces if the differs
                 stored = current_data.find_child("uci.network.guest_turris.ifname")
-                if not stored or set(stored.value.split(" ")) != set(guest_interfaces):
+                if stored:
+                    try:
+                        # ifname is option
+                        stored_list = {stored.value}
+                    except AttributeError:
+                        # ifname is list
+                        stored_list = {e.content for e in stored.children}
+
+                if not stored or stored_list != set(guest_interfaces):
                     network_conf = uci.add(Config("network"))
                     interface_section = network_conf.add(Section("guest_turris", "interface"))
-                    interface_section.add(Option("ifname", " ".join(guest_interfaces)))
+                    interface_list = List("ifname")
+                    for i in range(len(guest_interfaces)):
+                        interface_list.add(Value(i, guest_interfaces[i]))
+                    interface_section.add_replace(interface_list)
 
             return "edit_config", uci
 
