@@ -94,20 +94,20 @@ def transform_notification_message(msg):
 
 def prepare_approval_item_message(approval_item, show_operation=True):
     if approval_item["op"] == "install":
-        return ((_("Install") + " ") if show_operation else "") + u"%s (∅ -> %s)" % (
+        return ((_("Install") + " ") if show_operation else "") + u"%s (%s)" % (
             approval_item["name"], approval_item["new_ver"]
         )
     elif approval_item["op"] == "remove":
-        return ((_("Uninstall") + " ") if show_operation else "") + u"%s (%s -> ∅)" % (
-            approval_item["name"], approval_item["cur_ver"]
+        return ((_("Uninstall") + " ") if show_operation else "") + u"%s" % (
+            approval_item["name"],
         )
     elif approval_item["op"] == "upgrade":
-        return ((_("Upgrade") + " ") if show_operation else "") + "%s (%s -> %s)" % (
-            approval_item["name"], approval_item["cur_ver"], approval_item["new_ver"]
+        return ((_("Upgrade") + " ") if show_operation else "") + "%s (%s)" % (
+            approval_item["name"], approval_item["new_ver"]
         )
     elif approval_item["op"] == "downgrade":
-        return ((_("Downgrade") + " ") if show_operation else "") + "%s (%s -> %s)" % (
-            approval_item["name"], approval_item["cur_ver"], approval_item["new_ver"]
+        return ((_("Downgrade") + " ") if show_operation else "") + "%s (%s)" % (
+            approval_item["name"], approval_item["new_ver"]
         )
 
 
