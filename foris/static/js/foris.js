@@ -258,6 +258,7 @@ Foris.updateForm = function (form) {
     $(this).children(':first').unwrap();
     Foris.initParsley();
     Foris.afterAjaxUpdate();
+    Foris.initClicksQR();
     $(document).trigger('formupdate', [form]);
   });
   form.find("input, select, button").attr("disabled", "disabled");
@@ -507,13 +508,17 @@ Foris.checkLowerAsciiString = function (string) {
   return true;
 };
 
-Foris.updateWiFiQR = function (radio, ssid, password, hidden) {
-  var codeElement = $("#wifi-qr-" + radio);
+Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
+  var codeElement = $((guest ? "#wifi-qr-guest-":"#wifi-qr-") + radio);
   codeElement.empty();
 
-  if (!$("#field-" + radio + "-device_enabled_1").prop("checked"))
-    return;
-
+  if (guest) {
+    if (!$("#field-" + radio + "-guest_enabled_1").prop("checked"))
+      return;
+  } else {
+    if (!$("#field-" + radio + "-device_enabled_1").prop("checked"))
+      return;
+  }
 
   var showQRError = function (message) {
     codeElement.append("<div class=\"qr-error\">" + message + "</div>");
@@ -539,11 +544,27 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden) {
   });
 };
 
+Foris.initClicksQR = function () {
+  $(".wifi-qr img").on("click", function(e) {
+    e.preventDefault();
+    $(this).parent().find(".wifi-qr-box").toggle("normal");
+    $(this).toggle("normal");
+  });
+  $(".wifi-qr-box").on("click", function(e) {
+    e.preventDefault();
+    $(this).parent().find("img").toggle("normal");
+    $(this).toggle("normal");
+  });
+}
+
 Foris.initWiFiQR = function () {
   // NOTE: make sure that jquery.qrcode is loaded on the page that's using
   // this method. Alternatively, it could be loaded using $.getScript() here.
 
   // determine present radios from wifi-enable checkboxes
+
+  Foris.initClicksQR();
+
   var radios = [];
   $("input[id$='-device_enabled_1']").each(function (i, el) {
     radios.push(el.getAttribute('id').replace(/field-(radio\d+)-.*/, '$1'));
@@ -552,26 +573,20 @@ Foris.initWiFiQR = function () {
   var doRender = function (radio) {
     doRender.debounceTimeout = null;
 
-    // create QR code for the radio and align its top with SSID input
-    if (!document.getElementById('wifi-qr-' + radio)) {
-      $('#wifi-qr').append('<div id="wifi-qr-' + radio + '" />');
-    }
-
-    var ssidInputPosition = $("input[id$='field-" + radio + "-ssid']").position();
-
-    if (!ssidInputPosition)
-      return;
-
-    $('#wifi-qr-' + radio)
-        .css('position', 'absolute')
-        .css('right', 0)
-        .css('top', ssidInputPosition.top);
-
     Foris.updateWiFiQR(
         radio,
         $('#field-' + radio + '-ssid').val(),
         $('#field-' + radio + '-password').val(),
-        $('#field-' + radio + '-ssid_hidden_1').prop('checked'));
+        $('#field-' + radio + '-ssid_hidden_1').prop('checked'),
+        false
+    );
+    Foris.updateWiFiQR(
+        radio,
+        $('#field-' + radio + '-guest_ssid').val(),
+        $('#field-' + radio + '-guest_password').val(),
+        false,
+        true
+    );
   };
 
   for (var i=0; i < radios.length; i++) {
@@ -582,6 +597,8 @@ Foris.initWiFiQR = function () {
     $(document).on('change keyup paste',
         '#field-' + radio + '-ssid, ' +
         '#field-' + radio + '-password, ' +
+        '#field-' + radio + '-guest_ssid, ' +
+        '#field-' + radio + '-guest_password, ' +
         '#field-' + radio + '-ssid_hidden_1',
         (function (r) {
           return function () {

@@ -27,8 +27,6 @@
         %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %include("config/_wifi_form.tpl", form=form)
-        <div id="wifi-qr">
-        </div>
         <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
         <script>
             $(document).ready(function() {

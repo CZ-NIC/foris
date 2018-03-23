@@ -108,13 +108,7 @@ input[type="file"]
 
 #wifi-qr
   text-align: center
-  display: none  // it doesn't make much sense to show the code on mobile
-
-  +respond-to('not-mobile', $no-query: true)
-    display: block
-    position: absolute
-    top: 0
-    right: 0
+  display: block
 
   .qr-error
     color: $error-color
@@ -123,6 +117,15 @@ input[type="file"]
     width: 200px
     position: relative
     padding: 0 1em 1em 0
+
+.wifi-qr
+
+  img
+    display: block
+    width: 30px
+    height: 30px
+  .wifi-qr-box
+    display: none
 
 .form-note
   width: 100%
