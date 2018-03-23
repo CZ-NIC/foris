@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2017-12-10 08:48+0000\n"
+"PO-Revision-Date: 2018-01-24 12:22+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål "
 "<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.19-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Oppsettet ble lagret."
@@ -130,6 +130,9 @@ msgid ""
 "registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
 "email address."
 msgstr ""
+"Denne ruteren er foreløpig registrert på en annen e-postadresse. Fortsett "
+"til <a href=\"%(url)s\">Turris-nettsiden</a> og bruk registreringskoden "
+"<strong>%(reg_num)s</strong> for å tilknytte den til din e-postadresse."
 
 #, python-format
 msgid ""
@@ -137,6 +140,9 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
+"Denne e-postadressen er ikke registrert enda. Fortsett til <a href=\"%(url)"
+"s\">Turris-nettsiden</a> og bruk registreringskoden "
+"<strong>%(reg_num)s</strong> for å opprette en ny konto."
 
 msgid "About"
 msgstr "Om"
@@ -172,10 +178,10 @@ msgid "This is not a valid IPv4 or IPv6 address."
 msgstr "Dette er ikke en gyldig IPv4- eller IPv6-adresse."
 
 msgid "This is not an IPv6 address with prefix length."
-msgstr ""
+msgstr "Dette er ikke en IPv6-adresse med prefikslengde."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr ""
+msgstr "Dette er ikke en IPv4-adresse med prefikslengde."
 
 msgid "Is not a number."
 msgstr "Er ikke et tall."
@@ -213,6 +219,8 @@ msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
+"Dette medføre at DNS-fortolkeren plasserer DHCP-klienters navn i de lokale "
+"DNS-oppføringene."
 
 #, fuzzy
 msgid "Domain of DHCP clients in DNS"
@@ -222,6 +230,8 @@ msgid ""
 "This domain will be used as prefix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
+"Domenet vil bli brukt som prefiks. F.eks. vil resultatet av klienten \""
+"android-123\" og domenet \"mitt.lan\" være \"android-123.mitt.lan\"."
 
 msgid "Notifications"
 msgstr "Merknader"
@@ -273,6 +283,8 @@ msgstr ""
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and underscores."
 msgstr ""
+"Avsenderens navn kan kun inneholde alfanumeriske tegn, dotter og "
+"understreker."
 
 msgid "Reboot is required"
 msgstr "Omstart kreves"
@@ -338,6 +350,8 @@ msgid ""
 "Number of days that must pass between receiving the request for restart and "
 "the automatic restart itself."
 msgstr ""
+"Antall dager som må gå mellom mottak av forespørselen og selve den "
+"automatiske omstarten."
 
 msgid "Reboot time"
 msgstr "Omstartstid"
@@ -346,7 +360,7 @@ msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Tid på dagen for automatisk omstart, i formatet HH:MM."
 
 msgid "uCollect"
-msgstr ""
+msgstr "uCollect"
 
 msgid "Emulated services"
 msgstr "Emulerte tjenester"
@@ -392,10 +406,10 @@ msgid "Email"
 msgstr "E-postadresse"
 
 msgid "Failed to query the server."
-msgstr ""
+msgstr "Klarte ikke å sende spørring til tjeneren."
 
 msgid "Failed to verify the router's registration."
-msgstr ""
+msgstr "Klarte ikke å bekrefte ruterens registrering."
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -431,12 +445,14 @@ msgid ""
 msgstr ""
 
 msgid "Region settings"
-msgstr ""
+msgstr "Regionsinnstillinger"
 
 msgid ""
 "Please select the timezone the router is being operated in. Correct setting "
 "is required to display the right time and for related functions."
 msgstr ""
+"Velg tidssonen ruteren befinner seg i. Korrekt innstilling kreves for å vise "
+"rett tid og for relaterte funksjoner."
 
 msgid "Continent or ocean"
 msgstr "Kontinent eller hav"
@@ -523,6 +539,8 @@ msgid ""
 "If you want to use other language than English you can select it from the "
 "following list:"
 msgstr ""
+"Hvis du ønsker å bytte til et annet språk enn Engelsk, kan du velge det i "
+"følgende liste:"
 
 msgid "LAN"
 msgstr "LAN"
@@ -559,7 +577,7 @@ msgid "DHCP start"
 msgstr ""
 
 msgid "DHCP max leases"
-msgstr ""
+msgstr "Maks. antall DHCP-tildelinger"
 
 msgid "Guest network"
 msgstr "Gjestenettverk"
@@ -665,19 +683,19 @@ msgid ""
 msgstr ""
 
 msgid "Network channel"
-msgstr ""
+msgstr "Nettverkskanal"
 
 msgid "Network password"
-msgstr ""
+msgstr "Nettverkspassord"
 
 msgid "Guest Wi-Fi"
-msgstr ""
+msgstr "Gjeste-Wi-Fi"
 
 msgid "Set guest Wi-Fi here."
-msgstr ""
+msgstr "Sett gjeste-Wi-Fi her."
 
 msgid "Enable guest Wi-Fi"
-msgstr ""
+msgstr "Skru på gjeste Wi-Fi"
 
 #, python-format
 msgid ""
@@ -721,10 +739,10 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statisk IP-adresse (manuelt oppsett)"
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr ""
+msgstr "PPPoE (for DSL-broer, Turris-modem, osv.)"
 
 msgid "DHCPv6 (automatic configuration)"
-msgstr ""
+msgstr "DHCPv6 (automatisk oppsett)"
 
 msgid "Disable IPv6"
 msgstr "Skru av IPv6"
@@ -779,7 +797,7 @@ msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr ""
 
 msgid "Use Modem Turris"
-msgstr ""
+msgstr "Bruk Turris-modem"
 
 msgid ""
 "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
@@ -818,7 +836,7 @@ msgid ""
 msgstr ""
 
 msgid "Custom MAC address"
-msgstr ""
+msgstr "Egendefinert MAC-adresse"
 
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet "
@@ -826,23 +844,23 @@ msgid ""
 msgstr ""
 
 msgid "MAC address"
-msgstr ""
+msgstr "MAC-adresse"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr ""
+msgstr "Koloninndelt, for eksempel 00:11:22:33:44:55"
 
 #, python-format
 msgid "Configuration wizard - step %s"
-msgstr ""
+msgstr "Oppsettsveiviser - steg %s"
 
 msgid "Connectivity test"
-msgstr ""
+msgstr "Tilkoblingstest"
 
 msgid "Automatic updates"
 msgstr ""
 
 msgid "Installation finished"
-msgstr ""
+msgstr "Installasjon fullført"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -874,7 +892,7 @@ msgid "Hint"
 msgstr "Hint"
 
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
@@ -900,7 +918,7 @@ msgid ""
 msgstr ""
 
 msgid "Connection test"
-msgstr ""
+msgstr "Tilkoblingstest"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when "
@@ -913,19 +931,19 @@ msgid "Unable to verify network connection."
 msgstr ""
 
 msgid "Test type"
-msgstr ""
+msgstr "Testtype"
 
 msgid "Status"
 msgstr "Status"
 
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "IPv4-forbindelse"
 
 msgid "IPv4 gateway connectivity"
 msgstr ""
 
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "IPv6-forbindelse"
 
 msgid "IPv6 gateway connectivity"
 msgstr ""
@@ -934,13 +952,13 @@ msgid "DNSSEC"
 msgstr ""
 
 msgid "Test connection"
-msgstr ""
+msgstr "Test forbindelsen"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "Forkast endringer"
 
 msgid "Save changes"
-msgstr ""
+msgstr "Lagre endringer"
 
 msgid ""
 "With the Turris router you can join Project Turris which is a non-profit "
@@ -966,22 +984,22 @@ msgid ""
 msgstr ""
 
 msgid "Validate email"
-msgstr ""
+msgstr "Bekreft e-post"
 
 msgid "Device"
-msgstr ""
+msgstr "Enhet"
 
 msgid "Serial number"
-msgstr ""
+msgstr "Serienummer"
 
 msgid "Turris OS version"
-msgstr ""
+msgstr "Turris OS-versjon"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Kjerneversjon"
 
 msgid "Sending of uCollect data"
-msgstr ""
+msgstr "Forsendelse av uCollect-data"
 
 #, python-format
 msgid "Time of last update: %(datetime)s"
@@ -997,10 +1015,10 @@ msgid "Sending of firewall logs"
 msgstr ""
 
 msgid "Refresh"
-msgstr ""
+msgstr "Gjenoppfrisk"
 
 msgid "Device registration"
-msgstr ""
+msgstr "Enhetsregistrering"
 
 #, python-format
 msgid ""
@@ -1010,7 +1028,7 @@ msgid ""
 msgstr ""
 
 msgid "Registration code"
-msgstr ""
+msgstr "Registreringskode"
 
 msgid ""
 "Unfortunately, it wasn't possible to generate the registration code. This "
@@ -1019,7 +1037,7 @@ msgid ""
 msgstr ""
 
 msgid "Get registration code"
-msgstr ""
+msgstr "Hent registreringskode"
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
@@ -1031,19 +1049,19 @@ msgid "Approve update from %(when)s"
 msgstr ""
 
 msgid "Uninstall"
-msgstr ""
+msgstr "Avinstaller"
 
 msgid "Install"
-msgstr ""
+msgstr "Installer"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr ""
 
 msgid "Install now"
-msgstr ""
+msgstr "Installer nå"
 
 msgid "Deny"
-msgstr ""
+msgstr "Nekt"
 
 msgid "No package will be installed unless you install the updates above."
 msgstr ""
@@ -1055,7 +1073,7 @@ msgid ""
 msgstr ""
 
 msgid "Package lists"
-msgstr ""
+msgstr "Pakkelister"
 
 msgid ""
 "List of available software was not downloaded from the server yet. Please "
@@ -1075,7 +1093,7 @@ msgid ""
 msgstr ""
 
 msgid "No new messages."
-msgstr ""
+msgstr "Ingen nye meldinger."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr ""
@@ -1101,7 +1119,7 @@ msgid ""
 msgstr ""
 
 msgid "Send testing message"
-msgstr ""
+msgstr "Send testmelding"
 
 msgid "Configuration backup"
 msgstr ""
@@ -1126,10 +1144,10 @@ msgid ""
 msgstr ""
 
 msgid "Restore from backup"
-msgstr ""
+msgstr "Gjenopprett fra sikkerhetskopi"
 
 msgid "Device reboot"
-msgstr ""
+msgstr "Omstart av enheten"
 
 msgid ""
 "If you need to reboot the device, click on the following button. The reboot "
@@ -1138,16 +1156,16 @@ msgid ""
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "Omstart"
 
 msgid "Foris - administration interface of router Turris"
 msgstr ""
 
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 msgid "Log out"
-msgstr ""
+msgstr "Logg ut"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1155,13 +1173,14 @@ msgid ""
 msgstr ""
 
 msgid "This value seems to be invalid."
-msgstr ""
+msgstr "Denne verdien ser ut til å være ugyldig."
 
+#, fuzzy
 msgid "This value should be a valid email."
-msgstr ""
+msgstr "Denne verdien må være en gyldig e-postadresse."
 
 msgid "This value should be a valid url."
-msgstr ""
+msgstr "Denne verdien må være en gyldig nettadresse."
 
 msgid "This value should be a valid number."
 msgstr ""
@@ -1179,7 +1198,7 @@ msgid "This value should not be blank."
 msgstr ""
 
 msgid "This value is required."
-msgstr ""
+msgstr "Påkrevd verdi."
 
 #, python-format
 msgid "This value should be greater than or equal to %s."
@@ -1247,10 +1266,10 @@ msgid ""
 msgstr ""
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
 msgid "Loading..."
 msgstr "Laster…"
@@ -1282,10 +1301,12 @@ msgid ""
 msgstr ""
 
 msgid "Are you sure you want to restart the router?"
-msgstr ""
+msgstr "Er du sikker på at du vil starte ruteren på nytt?"
 
 msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
 msgstr ""
+"\\n"
+"Gjenstående uleste meldinger (%UNREAD%) vil bli slettet."
 
 msgid ""
 "There are some unsaved changes in the notifications settings.\\nDo you want "
@@ -1293,10 +1314,10 @@ msgid ""
 msgstr ""
 
 msgid "Turris router administration interface"
-msgstr ""
+msgstr "Turris ruteradministrasjonsgrensesnitt"
 
 msgid "Next"
-msgstr ""
+msgstr "Neste"
 
 #, python-format
 msgid ""
@@ -1311,7 +1332,7 @@ msgid ""
 msgstr ""
 
 msgid "What next?"
-msgstr ""
+msgstr "Neste skritt?"
 
 #, python-format
 msgid ""
@@ -1340,7 +1361,7 @@ msgid "One moment, please..."
 msgstr ""
 
 msgid "Done"
-msgstr ""
+msgstr "Ferdig"
 
 msgid "Internet connectivity test passed without error."
 msgstr ""
@@ -1357,7 +1378,7 @@ msgid ""
 msgstr ""
 
 msgid "Try again"
-msgstr ""
+msgstr "Prøv igjen"
 
 msgid ""
 "In some cases, such as on a slower DSL connection or when DHCP is used, this "
@@ -1367,10 +1388,10 @@ msgid ""
 msgstr ""
 
 msgid "Adjust WAN settings"
-msgstr ""
+msgstr "Juster WAN-innstillinger"
 
 msgid "Registration failure"
-msgstr ""
+msgstr "Mislykket registrering"
 
 msgid ""
 "Installing additional updates. Router will be restarted several times to "
@@ -1397,16 +1418,16 @@ msgid "Updater has returned the following error:"
 msgstr ""
 
 msgid "Device has been restarted."
-msgstr ""
+msgstr "Enheten har blitt startet på nytt."
 
 msgid "Please log in again to continue."
-msgstr ""
+msgstr "Logg inn igjen for å fortsette."
 
 msgid "Proceed to login"
-msgstr ""
+msgstr "Fortsett til innlogging"
 
 msgid "Welcome to configuration of router Turris"
-msgstr ""
+msgstr "Velkommen til oppsett av Turris-ruteren"
 
 msgid ""
 "Before you start to use the router for the first time, it is necessary to "
@@ -1422,7 +1443,7 @@ msgid ""
 msgstr ""
 
 msgid "Begin installation"
-msgstr ""
+msgstr "Start installasjon"
 
 msgid ""
 "You have decided to disable the Updater service during the installation."
@@ -1470,7 +1491,7 @@ msgid "Synchronization successful."
 msgstr ""
 
 msgid "Time settings"
-msgstr ""
+msgstr "Tidsinnstillinger"
 
 msgid "Synchronizing router time with an internet time server."
 msgstr ""
@@ -1482,16 +1503,16 @@ msgid "Project:Turris"
 msgstr ""
 
 msgid "Skip wizard"
-msgstr ""
+msgstr "Hopp over veiviser"
 
 msgid "Step"
-msgstr ""
+msgstr "Skritt"
 
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 msgid "foris version:"
-msgstr ""
+msgstr "Foris-versjon"
 
 msgid ""
 "One of the most important features of router Turris are automatic system "
@@ -1556,25 +1577,25 @@ msgid ""
 msgstr ""
 
 msgid "Log in"
-msgstr ""
+msgstr "Logg inn"
 
 msgid "Foris Configuration Interface"
-msgstr ""
+msgstr "Foris oppsettsgrensesnitt"
 
 msgid "Go to LuCI"
-msgstr ""
+msgstr "Gå til LuCI"
 
 msgid "Reboot now"
-msgstr ""
+msgstr "Omstart nå"
 
 msgid "Dismiss"
-msgstr ""
+msgstr "Avvis"
 
 msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr ""
+msgstr "Klarer ikke å motta merknader, prøv å gjenoppfriske siden."
 
 msgid "News"
-msgstr ""
+msgstr "Nyheter"
 
 msgid "Update"
 msgstr ""
@@ -1584,13 +1605,13 @@ msgstr ""
 
 #, python-format
 msgid "%(notification)s from %(created_at)s"
-msgstr ""
+msgstr "%(notification)s fra %(created_at)s"
 
 msgid "Notification"
-msgstr ""
+msgstr "Merknad"
 
 msgid "You have been logged out due to longer inactivity."
-msgstr ""
+msgstr "Du har blitt utlogget som følge av inaktivitet."
 
 msgid "The password you entered was not valid."
-msgstr ""
+msgstr "Passordet du skrev inn er ikke gyldig."
