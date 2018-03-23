@@ -20,11 +20,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-21 14:47+0100\n"
+"POT-Creation-Date: 2018-03-23 22:48+0100\n"
 "PO-Revision-Date: 2017-12-11 10:57+0000\n"
 "Last-Translator: Stefan Söchtig <kerberus@mailbox.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
-"\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
+">\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,22 +32,88 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18-dev\n"
 
-msgid "Configuration was successfully saved."
-msgstr "Die Einstellungen wurden erfolgreich gespeichert."
+msgid "News"
+msgstr "Neuigkeiten"
+
+msgid "Update"
+msgstr "Aktualisierung"
+
+msgid "Error"
+msgstr "Fehler"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s von %(created_at)s"
+
+msgid "Notification"
+msgstr "Benachrichtigung"
+
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr ""
+"Benachrichtigungen konnten nicht abgerufen werden. Versuchen Sie bitte die "
+"Webseite neu zu laden."
+
+msgid "You have been logged out due to longer inactivity."
+msgstr "Sie wurden nach einer längeren Phase der Inaktivität abgemeldet."
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+
+msgid "Install"
+msgstr "Installieren"
+
+msgid "Uninstall"
+msgstr "Deinstallieren"
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Downgrade"
+msgstr ""
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Konfigurationsassistent - Schritt %s"
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"Es ist kein Kabel am WAN-Port angeschlossen. Ihre Internetverbindung wird "
+"wahrscheinlich nicht funktionieren."
+
+msgid "Connectivity test"
+msgstr "Verbindungstest"
+
+msgid "Automatic updates"
+msgstr "Automatische Aktualisierungen"
+
+msgid "Installation finished"
+msgstr "Installation abgeschlossen"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr ""
+"Einstellungen konnten wegen eines internen Fehlers nicht gespeichert werden."
 
 msgid "There were some errors in your input."
 msgstr "Einige von Ihren Eingaben sind ungültig."
+
+msgid "The password you entered was not valid."
+msgstr "Das eingegebene Kennwort ist ungültig."
+
+msgid "Configuration was successfully saved."
+msgstr "Die Einstellungen wurden erfolgreich gespeichert."
+
+msgid "Notifications"
+msgstr "Benachrichtigungen"
+
+#, fuzzy
+msgid "Number of notifications"
+msgstr "Benachrichtigungen einschalten"
 
 msgid "Old password you entered was not valid."
 msgstr "Das eingegebene alte Kennwort ist ungültig."
 
 msgid "Password was successfully saved."
 msgstr "Das Kennwort wurde erfolgreich gespeichert."
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"Es ist kein Kabel am WAN-Port angeschlossen. Ihre Internetverbindung wird "
-"wahrscheinlich nicht funktionieren."
 
 msgid "Maintenance"
 msgstr "Instandhaltung"
@@ -59,56 +125,32 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Testnachricht wurde abgesendet, überprüfen Sie bitte Ihren Posteingang."
 
-#, python-format
+#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
-"<br>Error returned:<br><pre>%(error)s</pre>"
 msgstr ""
 "Das Absenden der Testnachricht scheiterte. Die Einstellungen sind "
 "wahrscheinlich falsch.<br>Erhaltener Fehler:<br><pre>%(error)s</pre>"
 
-msgid "Sending of the testing message failed because of an internal error."
-msgstr ""
-"Das Absenden der Testnachricht scheiterte wegen eines internen Fehlers."
-
-#, python-format
+#, fuzzy
 msgid ""
-"Configuration was successfully restored. After installing updates and "
-"rebooting you can return to this page at <a href=\"%(new_url)s\">"
-"%(new_url)s</a> in local network. Please wait a while until router "
-"automatically restarts."
-msgstr ""
-"Die Einstellungen wurden erfolgreich wiederhergestellt. Nach der "
-"Installation der Aktualisierungen und einem Neustart wird der Router vom "
-"lokalen Netzwerk aus an der Webseite <a href=\"%(new_url)s\">%(new_url)s</a> "
-"zu erreichen sein. Warten Sie bitte bis der Router automatisch neu startet."
-
-msgid ""
-"Configuration was successfully restored. Please wait a while for "
-"installation of updates and automatic restart of the device."
+"Configuration was successfully restored. Note that a reboot will be required "
+"to apply restored configuration."
 msgstr ""
 "Die Einstellungen wurden erfolgreich wiederhergestellt. Warten Sie bitte bis "
 "die Aktualisierungen installiert sind und der Router sich neu startete."
 
-msgid "IP address of the router could not be determined from the backup."
-msgstr "Die IP-Adresse konnte nicht aus der Sicherheitskopie ermittelt werden."
-
-msgid "Configuration could not be loaded, backup file is probably corrupted."
+msgid "Failed to restore the backup from the provided file."
 msgstr ""
-"Einstellungen konnten nicht geladen werden, die Sicherheitskopie ist "
-"wahrscheinlich beschädigt."
-
-msgid "Invalid request arguments."
-msgstr "Ungültige Anfrage-Parameter."
 
 msgid "Update was approved."
 msgstr "Das Update wurde bestätigt."
 
-msgid "Failed to approve the update."
-msgstr "Fehler beim genehmigen vom Update."
-
 msgid "Update was postponed."
 msgstr "Die Installation des Updates wurde verschoben."
+
+msgid "Failed to approve the update."
+msgstr "Fehler beim genehmigen vom Update."
 
 msgid "Failed to postpone the update."
 msgstr "Das Update konnte nicht verschoben werden."
@@ -120,6 +162,9 @@ msgstr ""
 "Die Einstellungen wurden erfolgreich gespeichert. Die ausgewählten "
 "Softwarepakete sollten in Kürze installiert oder entfernt werden."
 
+msgid "Updater is running"
+msgstr ""
+
 msgid "Data collection"
 msgstr "Datenerfassung"
 
@@ -127,8 +172,8 @@ msgstr "Datenerfassung"
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
 msgstr ""
-"Beim Überprüfen der Registrierung ist ein Fehler aufgetreten: "
-"<br><pre>%(error)s</pre>"
+"Beim Überprüfen der Registrierung ist ein Fehler aufgetreten: <br><pre>"
+"%(error)s</pre>"
 
 msgid ""
 "Registration for the entered email is valid. Now you can enable the data "
@@ -171,13 +216,6 @@ msgstr "Offline"
 msgid "Unknown status"
 msgstr "Unbekannter Status"
 
-msgid "Home page"
-msgstr "Homepage"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr ""
-"Einstellungen konnten wegen eines internen Fehlers nicht gespeichert werden."
-
 msgid "This field is required."
 msgstr "Dieses Feld ist erforderlich."
 
@@ -205,6 +243,10 @@ msgstr "Dies ist keine Nummer."
 msgid "This is not valid time in HH:MM format."
 msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
 
+#, fuzzy
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
+
 msgid "This is not a valid domain name."
 msgstr "Dies ist kein gültiger Domainname."
 
@@ -219,8 +261,1225 @@ msgstr "Nicht im Bereich %(low)s - %(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Die Länge muss zwischen %(low)s bis %(high)s Zeichen liegen."
 
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+"Sie können alle der vorherigen eingegebenen Auswahlmöglichkeiten in der <a "
+"href=\"%(url)s\">Standardkonfigurationsoberfläche</a> ändern. Wenn Sie in "
+"fortgeschrittene Möglichkeiten der Konfiguration interessiert sind, dann "
+"benutzen Sie die LuCI-Webschnittstelle, welche von der <a href=\"%(url2)s"
+"\">Expertenkonfiguration</a> aus erreichbar ist."
+
+msgid "What next?"
+msgstr "Wie geht es weiter?"
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr ""
+"Sie haben sich entschlossen, den Updater-Dienst während des "
+"Installationsvorgangs zu deaktivieren."
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+"Ohne den Updater-Dienst wird die installierte Software nicht aktualisiert. "
+"Darüber hinaus wird es auch nicht möglich sein Software aus der Liste im "
+"Updater-Abschnitt zu installieren."
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://project.turris.cz/\">Project Turris</a>."
+msgstr ""
+"Wenn Sie den Updater aktivieren, können Sie auch unserem Forschungsprojekt "
+"beitreten: <a href=\"https://project.turris.cz/\">Turris-Projekt</a>."
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+"Sie können Updater jederzeit auf der <a href=\"%(url)s\">Updater</a> "
+"Konfigurationsseite aktivieren."
+
+msgid ""
+"With Turris router you can join the research project called <a href="
+"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
+"your router can become a probe that analyzes the traffic between internet "
+"and the home network and identifies suspicious data flows."
+msgstr ""
+"Mit dem Turris-Router können Sie sich an unserem Forschungsprojekt <a href="
+"\"https://project.turris.cz/\">Turris-Projekt</a> beteiligen. In diesem "
+"Projekt wird Ihr Router zu einem Scanner, welche die Daten zwischen Ihrem "
+"Heimnetzwerk und dem Internet analysiert und so schädliche Daten "
+"identifiziert."
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+"Folgen Sie den Anweisungen auf der <a href=\"%(url)s\">Datenerfassung</a>-"
+"Webseite, um die Zusatzfunktionen zu aktivieren."
+
+msgid "Important updates"
+msgstr "Wichtige Aktualisierungen"
+
+msgid ""
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
+msgstr ""
+"Wichtige Aktualisierungen, die einen Neustart erfordern, wurden installiert. "
+"Einige Dienste können außer Funktion bleiben, bis das Gerät neu gestartet "
+"wird. Für weitere Einzelheiten siehe unten."
+
+msgid "Continue to the configuration interface"
+msgstr "Zur Konfigurationsschnittstelle gehen"
+
+msgid "Loading..."
+msgstr "Lädt..."
+
+msgid "Checking internet connectivity."
+msgstr "Ihre Internetverbindung wird überprüft."
+
+msgid "One moment, please..."
+msgstr "Einen Augenblick bitte..."
+
+msgid "Done"
+msgstr "Fertig"
+
+msgid "Internet connectivity test passed without error."
+msgstr "Der Test der Internetverbindung wurde ohne Fehler abgeschlossen."
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+"Ihre Internetverbindung funktioniert, aber die DNS-Namensauflösung hat "
+"Probleme. Der Problem wird wahrscheinlich durch Ihren Internetanbieter "
+"verursacht. Die Ursache dafür kann aber auch eine falsche Uhrzeit in Ihrem "
+"Router sein; In diesem Fall können Sie im folgenden Schritt die Zeit manuell "
+"einstellen."
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+"Es sieht so aus, dass Sie keine Internetverbindung haben. Vielleicht sind "
+"Ihre WAN-Netzwerkeinstellungen nicht richtig."
+
+msgid "Try again"
+msgstr "Nochmal versuchen"
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+"In einigen Fällen wird dieser Fehler durch eine langsame DSL-Verbindung oder "
+"durch die Verwendung von DHCP verursacht, die dazu führen, dass das Netzwerk "
+"zu langsam reagiert. Wenn Sie denken, dass das hier der Fall ist, könnt Ihr "
+"die Netzwerkverbindung mittels der oberen Schaltfläche erneut ausprobieren. "
+"Sie können auch zur vorherigen Webseite zurückgehen und die WAN-"
+"Netzwerkeinstellungen ändern."
+
+msgid "Adjust WAN settings"
+msgstr "WAN-Netzwerkeinstellungen ändern"
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Willkommen an der Konfigurationsoberfläche des Turris-Routers"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Bevor Sie den Router das erste Mal benutzen, ist es notwendig, ihn zu "
+"konfigurieren. Der nachfolgende einfache Assistent wird Ihnen durch den "
+"Konfigurationsprozess helfen und im Anschluss ist der Router betriebsbereit."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Wenn Sie eine frühere Sicherheitskopie der Konfiguration wiederherstellen "
+"wollen, oder wenn Sie aus irgendeinem anderen Grund den Assistenten "
+"überspringen wollen, dann beenden Sie ihn, nach dem Sie das Kennwort im "
+"ersten Schritt eingegeben haben."
+
+msgid "Begin installation"
+msgstr "Installationsanfang"
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "In Ihrem Router wurden keine WLAN-Karten erkannt."
+
+msgid "Registration failure"
+msgstr "Registrationsfehler"
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+"Leider war es nicht möglich den Registrierungscode zu generieren. In meisten "
+"Fällen passiert das, wenn keine Internetverbindung vorhanden ist. Versuchen "
+"Sie bitte den Code später erneut zu generieren. Falls das Problem weiterhin "
+"besteht, kontaktieren Sie bitte die technische Unterstützung."
+
+msgid "Project:Turris"
+msgstr "Projekt:Turris"
+
+msgid "Skip wizard"
+msgstr "Assistenten überspringen"
+
+msgid "Step"
+msgstr "Schritt"
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+"Weitere Aktualisierungen werden installiert. Der Router wird mehrere Male "
+"neu gestartet, bis der Prozess zu Ende ist."
+
+msgid "Do not unplug the device during update!"
+msgstr ""
+"Bitte schalten Sie das Gerät während des Updateprozesses nicht aus und "
+"trennen Sie auch nicht die Stromversorgung!"
+
+msgid "Check of available updates in progress."
+msgstr "Verfügbarkeit der Aktualisierungen wird überprüft."
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr ""
+"Die Firmware-Aktualisierung war erfolgreich, Sie können mit dem nächsten "
+"Schritt fortfahren."
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Die Firmware-Aktualisierung scheiterte wegen eines Verbindungsproblems oder "
+"eines Installationsfehlers."
+
+msgid "Updater has returned the following error:"
+msgstr "Updater hat diese Fehlermeldung zurückgegeben:"
+
+msgid "Device has been restarted."
+msgstr "Das Gerät wurde neu gestartet."
+
+msgid "Please log in again to continue."
+msgstr "Melden Sie sich erneut an um fortzufahren."
+
+msgid "Proceed to login"
+msgstr "Weiter zum Login"
+
+msgid "Synchronize with your computer clock"
+msgstr "Mit der Uhrzeit Ihres Computers synchronisieren"
+
+msgid "Set time manually"
+msgstr "Uhrzeit manuell einstellen"
+
+msgid "Synchronization successful."
+msgstr "Synchronisation erfolgreich durchgeführt."
+
+msgid "Time settings"
+msgstr "Uhrzeiteinstellungen"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Die Uhrzeit wird mit einem Zeitserver synchronisiert."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr ""
+"Die Uhrzeit wurde erfolgreich synchronisiert, Sie können jetzt zum nächsten "
+"Schritt übergehen."
+
+msgid "Device registration"
+msgstr "Registrierung des Gerätes"
+
+#, python-format
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Das Gerät wurde erfolgreich eingerichtet. Der letzte Schritt, der benötigt "
+"wird, ist die Registration des Gerätes mittels Ihres Benutzerprofils auf der "
+"Turris-Webseite <a href=\"%(url)s\">%(url)s</a>."
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+"<strong>Warnung:</strong> Die Gültigkeitsdauer des Codes ist begrenzt. Im "
+"Falle, dass der Code nicht akzeptiert wird, aktualisieren Sie diese "
+"Webseite, um einen neuen Code zu bekommen."
+
+msgid "Reboot now"
+msgstr "System jetzt neu starten"
+
+msgid "Dismiss"
+msgstr "Verwerfen"
+
+#, fuzzy
+msgid "Dismiss All"
+msgstr "Verwerfen"
+
+msgid "No new messages."
+msgstr "Keine neuen Nachrichten."
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Datenerfassung ist zurzeit aktiviert. Sie können nicht den Updater "
+"deaktivieren, ohne dass zuerst die Datenerfassung deaktiviert wird."
+
+msgid "Update approvals"
+msgstr "Update Bestätigungen"
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can refuse the questionable update "
+"temporarily and install it when you are ready. It isn't possible to decline "
+"the update forever and it will be offered to you again together with the "
+"next package installation."
+msgstr ""
+"Updategenehmigungen können nützlich sein, wenn Sie sicher gehen wollen, dass "
+"die Updates Ihrer eigenen Konfiguration nicht schaden. Sie können das "
+"fragwürdige Update vorübergehend verschieben und es erst installieren, wenn "
+"Sie dazu bereit sind. Es nicht möglich, das Update dauerhaft abzulehnen, es "
+"wird zusammen mit dem nächsten Update wieder vorgeschlagen werden."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can e.g. install updates when you're "
+"prepared for a possible rollback to a previous snapshot and deny the "
+"questionable update temporarily. It isn't possible to decline the update "
+"forever and it will be offered to you again together with the next package "
+"installation."
+msgstr ""
+"Updategenehmigungen können nützlich sein, wenn Sie sicher sein wollen, dass "
+"Updates nicht Ihrer eigenen Konfiguration Schaden zufügen sollen. Sie können "
+"z. B. Updates installieren, wenn Sie auf ein mögliches <a href='https://www."
+"turris.cz/doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'> "
+"Rollback zum vorherigen Snapshot</a> vorbereitet sind und die fragwürdigen "
+"Updates vorübergehend verschieben. Es nicht möglich, das Update für "
+"dauerhaft abzulehnen, es wird zusammen mit dem nächsten Update wieder "
+"vorgeschlagen werden."
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr "nach %(input)s Stunden"
+
+msgid "Hint"
+msgstr "Hilfe"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Notifications and automatic restarts"
+msgstr "Benachrichtigungen und automatische Neustarts"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these "
+"emails. Alternatively, if you choose to use a custom server, you must enter "
+"some additional settings. These settings are the same as you enter in your "
+"email client and you can get them from the provider of your email inbox. In "
+"that case, because of security reasons, it is recommended to create a "
+"dedicated account for your router."
+msgstr ""
+"Der Router kann eingestellt werden, um Ihnen Nachrichten über bestimmte "
+"Ereignisse zu senden; zum Beispiel, dass ein Neustart erforderlich ist, dass "
+"kein Speicherplatz mehr vorhanden ist, oder dass eine "
+"Anwendungsaktualisierung installiert wurde. Sie können die Turris-Server für "
+"das Absenden dieser Nachrichten verwenden; Alternativ können Sie auch eigene "
+"SMTP-Server dafür benutzen, wofür aber weitere Einstellungen benötigt "
+"werden. Es sind meistens die selben Einstellungen, welche Sie schon in Ihrem "
+"E-Mail-Client verwenden. Diese können Sie von Ihrem E-Mail-Serviceprovider "
+"erhalten. In diesem Fall raten wir Ihnen, aus Sicherheitsgründen ein neues "
+"Benutzerkonto für den Router einzurichten."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"Falls ein Neustart benötigt wird, können Sie die genaue Uhrzeit des "
+"Neustarts bestimmen. Wenn Sie die Benachrichtigung per E-Mail über "
+"Ereignisse aktiviert haben, könnt Sie auch die Zeitspanne zwischen der "
+"Benachrichtigung und dem Neustart bestimmen."
+
+msgid "Send testing message"
+msgstr "Testnachricht absenden"
+
+msgid "Configuration backup"
+msgstr "Sicherheitskopie der Systemkonfiguration"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface "
+"and for the advanced configuration are not included in the backup."
+msgstr ""
+"Hier können Sie eine Sicherheitskopie der aktuellen Systemkonfiguration "
+"herunterladen. Die Sicherheitskopie besteht aus einer unverschlüsselten "
+"Archivdatei (.tar.bz2). Die Datei enthält Einstellungen, die durch diese "
+"Schnittstelle, und die meisten Einstellungen, die durch die LuCI-"
+"Webschnittstelle eingestellt wurden. Das Kennwort für diese Oberfläche und "
+"das Kennwort für die Expertenkonfiguration werden nicht in der "
+"Sicherheitskopie gespeichert."
+
+msgid "Download configuration backup"
+msgstr "Sicherheitskopie der Systemkonfiguration herunterladen"
+
+msgid "Configuration restore"
+msgstr "Wiederherstellung der Systemkonfiguration"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+"Laden Sie im folgenden Webformular die Sicherheitskopie hoch, um die "
+"Systemkonfiguration wiederherzustellen. Beachten Sie bitte, dass sich die IP-"
+"Adresse des Gerätes zwischendurch ändern kann, was dazu führen kann, dass "
+"diese Oberfläche nicht mehr erreichbar ist."
+
+msgid "Restore from backup"
+msgstr "Systemkonfiguration aus Sicherheitskopie wiederherstellen"
+
+msgid "Device reboot"
+msgstr "Neustart des Gerätes"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"after the reboot."
+msgstr ""
+"Betätigen Sie die folgende Schaltfläche, wenn Sie das Gerät neu starten "
+"wollen. Der Prozess des Neustarts dauert ungefähr 30 Sekunden, danach müssen "
+"Sie sich erneut anmelden."
+
+msgid "Reboot"
+msgstr "Systemneustart"
+
+msgid "Discard changes"
+msgstr "Änderungen verwerfen"
+
+msgid "Save changes"
+msgstr "Änderung speichern"
+
+msgid "Connection test"
+msgstr "Verbindung prüfen"
+
+msgid ""
+"Here you can test you connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes it "
+"takes a while before the connection is fully initialized. So it might be "
+"useful to wait for a while before running this test."
+msgstr ""
+
+msgid "Unable to verify network connection."
+msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
+
+msgid "Test type"
+msgstr "Art des Tests"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "IPv4 connectivity"
+msgstr "IPv4-Konnektivität"
+
+msgid "IPv4 gateway connectivity"
+msgstr "IPv4-Konnektivität zum Gateway"
+
+msgid "IPv6 connectivity"
+msgstr "IPv6-Konnektivität"
+
+msgid "IPv6 gateway connectivity"
+msgstr "IPv6-Konnektivität zum Gateway"
+
+msgid "Test connection"
+msgstr "Verbindung prüfen"
+
+msgid ""
+"With the Turris router you can join Project Turris which is a non-profit "
+"research project founded by the CZ.NIC association, a .CZ domain registry. "
+"By joining the project, your router will act as a probe which analyzes "
+"traffic between your home network and the Internet and helps to identify "
+"malicious data flows. Once such a flow is detected your router notifies the "
+"Turris headquarters which can compare the flow with data from the rest of "
+"the probes and assign it a threat level. If the flow is identified as an "
+"attack Turris headquarters can prepare an update which is distributed to "
+"every Turris router and helps them to protect themselves against the attack."
+msgstr ""
+"Sie können sich mit dem Turris-Omnia-Router am Turris-Projekt beteiligen. "
+"Das Turris-Projekt ist ein nicht gewinnorientiertes, gemeinnütziges "
+"Forschungsprojekt, gegründet von der Organisation CZ.NIC, welche die .CZ "
+"Domäne verwaltet. Falls Sie dem Projekt beitreten, wird sich Ihr Router wie "
+"ein Scanner verhalten, welcher den Datenfluss zwischen ihrem Heimnetzwerk "
+"und dem Internet analysiert, um schädliche Daten zu finden. Wenn solche "
+"Daten gefunden werden, dann wird die Turris-Zentrale benachrichtigt, um die "
+"verdächtigen Daten mit Referenzdaten anderer Router abzugleichen. Wenn die "
+"Daten als eine schädlich identifiziert werden, kann die Turris-Zentrale "
+"Aktualisierungen ausarbeiten, welche dann in alle Turris-Geräte hochgeladen "
+"werden, um sie zu schützen."
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr ""
+"Updater-Dienst ist zurzeit deaktiviert. Schalten Sie ihn ein, um die "
+"Datenerfassung aktivieren zu können."
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+"Wenn Sie dem Turris-Projekt beitreten wollen, dann müssen Sie sich zuerst im "
+"Turris-Portal registrieren. Geben Sie ihre E-Mail-Adresse, welche Sie zur "
+"Registration benutzen wollen oder welche Sie schon bereits zu diesem Zweck "
+"benutzt haben, ein:"
+
+msgid "Validate email"
+msgstr "E-Mail-Adresse validieren"
+
+msgid "Device"
+msgstr "Gerät"
+
+msgid "Serial number"
+msgstr "Seriennummer"
+
+msgid "Turris OS version"
+msgstr "Turris OS Version"
+
+msgid "Kernel version"
+msgstr "Kernelversion"
+
+msgid "Sending of uCollect data"
+msgstr "uCollect-Datenübermittlung"
+
+#, python-format
+msgid "Time of last update: %(datetime)s"
+msgstr "Zeitpunkt der letzten Aktualisierung: %(datetime)s"
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] "(Status vor %d Sekunde aktualisiert)"
+msgstr[1] "(Status vor %d Sekunden aktualisiert)"
+
+msgid "Sending of firewall logs"
+msgstr "Übermittlung der Firewall-Protokolle"
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+#, python-format
+msgid ""
+"If you have not registered your device yet, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Falls Sie Ihr Gerät im Turris-System noch nicht registriert haben, klicken "
+"Sie auf die folgende Schaltfläche, um den Registrierungscode zu erhalten. "
+"Tragen Sie den Code im Benutzerprofil im Turris-System auf der Adresse <a "
+"href=\"%(url)s\">%(url)s</a> ein."
+
+msgid "Registration code"
+msgstr "Registrierungscode"
+
+msgid "Get registration code"
+msgstr "Registrierungscode erhalten"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - Administrationsschnittstelle des Turris-Routers"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Network is restarting..."
+msgstr ""
+
+msgid "Your network is being restarted. Wait, please..."
+msgstr ""
+
+#, fuzzy
+msgid "Rebooting..."
+msgstr "Systemneustart"
+
+msgid "Your router is being rebooted."
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr ""
+
+msgid "Log out"
+msgstr "Abmelden"
+
+msgid ""
+"Following notifications occured and haven't been dismissed since last reboot."
+msgstr ""
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr "Update vom %(when)s  genehmigen"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr "Beachten Sie, dass ein Neustart nach dem Update ausgelöst wird."
+
+msgid "Install now"
+msgstr "Jetzt Installieren"
+
+msgid "Deny"
+msgstr "Verweigern"
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+"Kein weiteres Paket wird installiert, bis die Updates oben installiert "
+"wurden."
+
+#, python-format
+msgid ""
+"If you don't install the updates manually, they will be installed "
+"automatically after %(time)s."
+msgstr ""
+"Die Updates werden automatisch nach %(time)s installiert, wenn Sie sie nicht "
+"manuell installieren."
+
+msgid "Package lists"
+msgstr "Liste der Softwarepakete"
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
+msgstr ""
+"Der Turris-Router benutzt einen eigenen DNS Resolver, der DNSSSEC "
+"unterstützt. Der Resolver kann entweder vollkommen selbstständig arbeiten, "
+"oder er kann auch die DNS Resolver Ihres Internetanbieters, über welche dann "
+"der DNS-Verkehr weitergeleitet wird, benutzen."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"Die folgenden Einstellungen bestimmen das Verhalten des DNS Resolvers. "
+"Normalerweise ist es besser, die Resolver Ihres ISPs zu benutzen ist in "
+"Netzwerken, in denen dieses funktioniert, besser. Wenn dieses aber nicht "
+"funktioniert, ist es notwendig, direktes Auflösen ohne Weiterleitung zu "
+"verwenden."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+"In seltenen Fällen kann es vorkommen, das Ihr Internetanbieter eine "
+"fehlerhafte Netzwerkkonfiguration aufweist, welche dann zu Störungen in der "
+"DNSSEC-Validierung führen können. Falls Sie Probleme mit dem DNS-System "
+"haben, können Sie <strong>vorübergehend</strong> die DNSSEC-Validierung "
+"deaktivieren, um die Problemursache zu finden. Beachten Sie aber, dass Sie "
+"ohne aktivierte DNSSEC-Validierung durch DNS-Spoofing-Angriffe gefährdet "
+"sind! Daher empfehlen wir, dass Sie die <strong>DNSSEC-Validierung "
+"aktiviert</strong> lassen und dass Sie den Fehler mit Ihrem Internetanbieter "
+"beheben, weil dies einen ernsten Mangel Ihres Internetanbieters darstellt."
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Hier können Sie Ihre Internetverbindung prüfen. Der Test ist nützlich, wenn "
+"Sie die korrekte Funktion des DNS Resolvers überprüfen wollen. Vergessen Sie "
+"nicht die <strong>Speichern</strong> Schaltfläche zu betätigen, wenn Sie die "
+"Einstellungen geändert haben."
+
 msgid "DNS"
 msgstr "DNS"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+#, fuzzy
+msgid "Failed to query ntp servers."
+msgstr "Fehler beim Abfragen des Servers."
+
+#, fuzzy
+msgid "Update time"
+msgstr "Aktualisierung"
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+"Wenn Sie diese Karte für 2,4 GHz Bänder verwenden möchten, ist eine "
+"Korrektur der mit Diplexern verbundenen Kabel erforderlich! "
+"Werkseinstellung: Kabel von großer Karte an 5GHz Diplexer-Teil "
+"angeschlossen, Kabel von kleiner Karte an 2,4 GHz Diplexer-Teil "
+"angeschlossen."
+
+msgid "QR code"
+msgstr ""
+
+msgid "Password"
+msgstr "Kennwort"
+
+msgid "Log in"
+msgstr "Anmelden"
+
+msgid "Foris Configuration Interface"
+msgstr "Foris-Konfigurationsoberfläche"
+
+msgid "Go to LuCI"
+msgstr "Zu LuCI gehen"
+
+msgid "Opened lock"
+msgstr ""
+
+msgid "Your connection is not encrypted"
+msgstr ""
+
+msgid ""
+"A secure connection is an important safety feature of the router and "
+"therefore the entire home network."
+msgstr ""
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr ""
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Für die korrekte Funktion dieser Seite ist Javascript erforderlich. "
+"Aktivieren Sie es bitte und laden Sie die Seite neu."
+
+msgid "foris version:"
+msgstr "Foris Version:"
+
+msgid ""
+"One of the most important features of router Turris are automatic system "
+"updates. Thanks to this function your router's software stays up to date and "
+"offers better protection against attacks from the Internet."
+msgstr ""
+"Eine der wichtigsten Eigenschaften des Turris-Routers sind die automatischen "
+"Systemaktualisierungen. Dank dieser Funktion wird Ihr Router stets aktuell "
+"gehalten und wird auch somit besser gegen Angriffe aus dem Internet "
+"geschützt."
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that this "
+"might weaken the security of your router and network in case flaws in the "
+"software are found."
+msgstr ""
+"Es ist <strong>dringend empfohlen</strong> diese Funktion "
+"<strong>eingeschaltet</strong> ist. Es mag aber Gründe geben, sich anders zu "
+"entscheiden. Seien Sie aber gewarnt, dass dies die Sicherheit Ihres Routers "
+"und Netzwerks schwächen kann, falls Sicherheitslücken in der Software "
+"gefunden werden."
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
+"\">here</a>."
+msgstr ""
+"Mit der Aktivierung der automatischen Aktualisierungen stimmen Sie der "
+"Lizenzvereinbarung dieser Funktion zu. Mehrere Informationen sind <a href=\"#"
+"\" id=\"toggle-eula\">hier</a> erhältlich."
+
+msgid "Most important points from the license agreement:"
+msgstr "Die wichtigsten Punkte der Lizenzvereinbarung:"
+
+msgid ""
+"Automatic updates are offered to the Turris router owners free of charge."
+msgstr "Automatische Aktualisierungen für den Turris-Routers sind kostenlos."
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr "Aktualisierungen werden exclusiv von CZ.NIC, z. s. p. o. vorbereitet."
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional security "
+"features of Turris router."
+msgstr ""
+"Die Aktivierung der automatischen Aktualisierungen ist eine Voraussetzung "
+"für weitere Sicherheitsfunktionen des Turris-Routers."
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+"Automatische Aktualisierungen werden unmittelbar nach der Bereitstellung "
+"installiert, der Zeitpunkt der Installation kann nicht durch den Benutzer "
+"beeinflusst werden."
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by you."
+msgstr ""
+"Das Einschalten der automatischen Aktualisierungen kann zu erhöhter "
+"Datenübertragung von und in das Internet führen. Eventuelle verbundene "
+"Mehrkosten sind von Ihnen zu tragen."
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the "
+"Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+"Automatische Aktualisierungen können Sie nicht gegen alle aus dem Internet "
+"stammenden Angriffe schützen. Vergessen Sie bitte nicht Ihre Rechner und "
+"andere Geräte durch eine Antivirensoftware oder andere Sicherheitsmaßnahmen "
+"zu schützen. Erklären Sie Ihrer Familie, wie man sich im Internet sicher "
+"verhält."
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
+"is not responsible for any damages caused by the automatic updates."
+msgstr ""
+"Die Gesellschaft CZ.NIC, z. s. p. o. garantiert nicht die Verfügbarkeit "
+"dieses Dienstes und ist nicht Verantwortlich für etwaige Schäden, die durch "
+"die automatischen Aktualisierungen verursacht sein könnten."
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner of "
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+"Mit der Aktivierung der automatischen Aktualisierungen bestätigen Sie, dass "
+"Sie der Eigentümer dieses Turris-Routers sind und dass Sie der gesamten <a "
+"href=\"https://www.turris.cz/omnia-updater-eula\">Lizenzvereinbarung</a> "
+"zustimmen."
+
+msgid "This value seems to be invalid."
+msgstr "Die Eingabe scheint nicht korrekt zu sein."
+
+msgid "This value should be a valid email."
+msgstr "Die Eingabe muss eine gültige E-Mail-Adresse sein."
+
+msgid "This value should be a valid url."
+msgstr "Die Eingabe muss eine gültige URL sein."
+
+msgid "This value should be a valid number."
+msgstr "Die Eingabe muss eine Zahl sein."
+
+msgid "This value should be a valid integer."
+msgstr "Die Eingabe muss eine ganze Zahl sein."
+
+msgid "This value should be digits."
+msgstr "Die Eingabe darf nur Ziffern enthalten."
+
+msgid "This value should be alphanumeric."
+msgstr "Die Eingabe muss alphanumerisch sein."
+
+msgid "This value should not be blank."
+msgstr "Die Eingabe darf nicht leer sein."
+
+msgid "This value is required."
+msgstr "Dies ist ein Pflichtfeld."
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr "Die Eingabe muss größer oder gleich %s sein."
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr "Die Eingabe muss kleiner oder gleich %s sein."
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr "Die Eingabe muss zwischen %s und %s liegen."
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr ""
+"Die Eingabe ist zu kurz. Es müssen mindestens %s Zeichen eingegeben werden."
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr ""
+"Die Eingabe ist zu lang. Es dürfen höchstens %s Zeichen eingegeben werden."
+
+#, python-format
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr "Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein."
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr "Wählen Sie mindestens %s Angaben aus."
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr "Wählen Sie maximal %s Angaben aus."
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr "Wählen Sie zwischen %s und %s Angaben."
+
+msgid "This value should be the same."
+msgstr "Dieses Feld muss dem anderen entsprechen."
+
+msgid "This is not a valid IPv4 address."
+msgstr "Dies ist keine gültige IPv4-Adresse."
+
+msgid "This is not a valid IPv4 netmask."
+msgstr "Dies ist keine gültige IPv4-Netzmaske."
+
+msgid "This is not a valid IPv4 prefix."
+msgstr "Dies ist keine IPv4-Adresse mit einer Präfixlänge."
+
+msgid "This is not a valid IPv6 prefix."
+msgstr "Dies ist keine gültige IPv6-Adresse."
+
+msgid "This is not a valid MAC address."
+msgstr "Dies ist keine gültige MAC-Adresse."
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Ihr Passwort enthält nicht standardisierte Zeichen. Diese sind zulässig, "
+"können aber auf einigen Geräten zu Problemen führen."
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Ihre SSID beinhaltet nicht standardisierte Zeichen. Diese sind zulässig, "
+"können aber auf einigen Geräten zu Problemen führen."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+"Verbindungstest fehlgeschlagen, Test wird mit deaktivierter Weiterleitung "
+"erneut durchgeführt."
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
+msgstr ""
+"Die IP Adresse Ihres Routers wurde geändert. Dieser sollte nun unter "
+"%NEW_IP_LINK% zu erreichen sein. Siehe den Kommentar oben für mehr "
+"Informationen zur Änderung der IP Adresse."
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
+msgstr ""
+"Sie haben sich entschieden keine Sicherheitsaktualisierungen zu erhalten. "
+"Wir empfehlen Ihnen dringend automatische Sicherheitsaktualisierungen "
+"einzuschalten um alle empfohlenen Updates zu erhalten. Nur regelmäßige "
+"Aktualisierungen können einen ausreichenden Schutz gegen eventuelle "
+"Sicherheitslücken gewährleisten.\\n\\nWollen Sie dennoch, ohne Schutz, "
+"fortfahren?"
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
+msgstr ""
+"DNSSEC ist eine Sicherheitstechnologie, die die DNS-Kommunikation vor "
+"Angriffen auf die DNS-Infrastruktur schützt. Wir empfehlen dringend, die "
+"DNSSEC-Validierung freizugeben, es sei denn, Sie wissen, dass Sie Ihr Gerät "
+"im Netzwerk verbinden, wo DNSSEC defekt ist. \\n\\nWollen Sie trotzdem "
+"fortfahren und ungeschützt bleiben?"
+
+msgid "Are you sure you want to restart the router?"
+msgstr "Wollen Sie den Router wirklich neu starten?"
+
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr "\\n(%UNREAD%) Verbleibende ungelesene Nachrichten werden gelöscht."
+
+msgid ""
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
+msgstr ""
+"Einige Ändeungen wurden noch nicht gespeichert.\\nWollen Sie diese verwerfen "
+"und mit den alten Benachrichtigungseinstellungen fortfahren?"
+
+msgid "Turris router administration interface"
+msgstr "Konfigurationsoberfläche des Turris-Routers"
+
+msgid "Language"
+msgstr "Sprache"
+
+msgid "Wi-Fi"
+msgstr "WLAN"
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+"Das Kennwort (WPA2 pre-shared key) wird beim Verbinden mit dem WLAN "
+"verlangt, es muss mindestens 8 Zeichen lang sein."
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr "Aktiviere WLAN %s"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "SSID verstecken"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+"Falls aktiviert, wird das Netzwerk nicht in der Liste der verfügbaren "
+"drahtlosen Netzwerke angezeigt."
+
+msgid "Wi-Fi mode"
+msgstr "WLAN-Betriebsmodus"
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have more "
+"interference. The 5 GHz band is a newer standard and may not be supported by "
+"all your devices. It usually has less interference, but the signal does not "
+"carry so well indoors."
+msgstr ""
+"Das 2,4 GHz Frequenzband ist unter den Clientgeräten besser unterstützt, es "
+"ist aber mehr durch Interferenzen belastet. Das 5 GHz Frequenzband ist ein "
+"neuerer Standard, welche aber eventuell nicht von allen Ihren Geräten "
+"unterstützt wird. Gewöhnlich ist dieses Frequenzband weniger gestört, es "
+"breitet sich aber in Gebäuden schlechter aus."
+
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz breiter Kanal"
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz breiter Kanal"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz breiter Kanal"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz breiter Kanal"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz breiter Kanal"
+
+msgid "802.11n/ac mode"
+msgstr "802.11n/ac-Modus"
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
+"channels can yield higher throughput but can cause more interference in the "
+"network. If you don't know what to choose, use the default option with 20 "
+"MHz wide channel."
+msgstr ""
+"Diese Option ändert den 802.11n/ac-Betriebsmodus. Im 802.11n-Modus mit 40 "
+"MHz Kanalbreite können Sie einen größeren Datendurchsatz erreichen, es kann "
+"aber dabei zu größeren Kommunikationsstörungen kommen. Im Zweifelsfall ist "
+"20 MHz die zuverlässigere Wahl."
+
+msgid "auto"
+msgstr "automatisch"
+
+msgid "Network channel"
+msgstr "Netzwerkkanal"
+
+msgid "Network password"
+msgstr "Netzwerk-Kennwort"
+
+msgid "Guest Wi-Fi"
+msgstr "Gast-WLAN"
+
+msgid "Set guest Wi-Fi here."
+msgstr "Gast-WLAN hier einrichten."
+
+msgid "Enable guest Wi-Fi"
+msgstr "Gast-WLAN aktivieren"
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
+"LAN tab</a>. "
+msgstr ""
+"Aktiviert WLAN für Gäste, das vom LAN getrennt ist. Die mit diesem Netzwerk "
+"verbundenen Geräte dürfen auf das Internet zugreifen, aber sind nicht "
+"berechtigt, auf andere Geräte und die Konfigurationsoberfläche des Routers "
+"zuzugreifen. Das Gast-Netzwerk-Parameter können in <a href='%(url)s'> der "
+"Registerkarte \"LAN\"</a> gesetzt werden. "
+
+msgid "SSID for guests"
+msgstr "SSID für Gäste"
+
+msgid "Password for guests"
+msgstr "Passwort für Gäste"
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann aktivieren "
+"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und ein "
+"dazugehöriges Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte "
+"mittels des angezeigten QR-Codes einfach konfigurieren."
+
+msgid "Wi-Fi settings"
+msgstr "WLAN Einstellungen"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+"Dieser Abschnitt umfasst Einstellungen für das lokale Netzwerk (LAN). Die "
+"vorgegebene Standardeinstellungen sind für die meisten Netzwerke geeignet. "
+"<br><strong>Anmerkung:</strong> Wenn Sie die IP-Adresse des Routers ändern, "
+"dann müssen alle Computer im LAN eine <strong>neue IP-Adresse</strong> "
+"erhalten, was aber <strong>nicht sofort</strong> passiert. Es ist ratsam, "
+"nach dem Sie die aktuelle Änderungen bestätigt haben, alle Kabel in den LAN-"
+"Anschlüssen zu entfernen und dann neu anzuschließen, um die neuen "
+"Einstellungen in Kraft treten zu lassen. Die nachfolgende Webseite wird so "
+"lange nicht geladen, bis Ihr Computer eine neue IP-Adresse mittels DHCP "
+"(falls es aktiviert ist) erhalten hat. Es mag notwendig sein, im Web-Browser "
+"die <strong>Webseite neu zu laden</strong>."
+
+msgid "Router IP address"
+msgstr "IP-Adresse des Routers"
+
+msgid "Router's IP address in the inner network."
+msgstr ""
+
+#, fuzzy
+msgid "Network netmask"
+msgstr "Netzwerkmaske"
+
+msgid "Network mask of the inner network."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr "DHCP aktivieren"
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+"Wählen Sie diese Möglichkeit, damit der Router den lokal angeschlossenen "
+"Geräten automatisch IP-Adressen zuweisen kann."
+
+msgid "DHCP start"
+msgstr "Anfang des DHCP-IP-Addressbereiches"
+
+msgid "DHCP max leases"
+msgstr "Anzahl der zugewiesenen IP-Adressen"
+
+msgid "Guest network"
+msgstr "Gastnetzwerk"
+
+msgid "Enable guest network"
+msgstr "Gastnetzwerk aktivieren"
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN network. Devices connected to this network "
+"are allowed to access the internet, but are not allowed to access other "
+"devices and the configuration interface of the router."
+msgstr ""
+"Das Gastnetzwerk wird für <a href='%(url)s'>Gast-W-LAN</a>genutzt. Es ist "
+"von Ihrem normalen LAN getrennt. Mit diesem Netzwerk verbundene Geräte haben "
+"die Erlaubnis auf das Internet zuzugreifen, aber haben keinen Zugriff auf "
+"andere Geräte und die Konfigurationsoberfläche des Routers."
+
+#, fuzzy
+msgid "Router IP in guest network"
+msgstr "Gastnetzwerk aktivieren"
+
+#, fuzzy
+msgid ""
+"Router's IP address in the guest network. It is necessary that the guest "
+"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
+msgstr ""
+"Sie müssen den IP-Bereich für Ihr Gast-Netzwerk setzen. Es ist notwendig, "
+"dass der Bereich anders ist als Bereiche in Ihren anderen Netzwerken (LAN, "
+"WAN, VPN, etc.)."
+
+#, fuzzy
+msgid "Guest network netmask"
+msgstr "Gastnetzwerk"
+
+msgid "Network mask of the guest network."
+msgstr ""
+
+msgid "Guest Lan QoS"
+msgstr "Gastnetzwerk QoS"
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, so "
+"that your main network doesn't get slowed-down by it."
+msgstr ""
+"Diese Option erlaubt es, die Bandbreite des Gastnetzwerkes zu limitieren. So "
+"verlangsamt es nicht Ihr Heimnetzwerk."
+
+msgid "Download (kb/s)"
+msgstr "Download (kb/s)"
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr "Downloadgeschwindigkeit im Gastnetzwerk (kbit/s)."
+
+msgid "Upload (kb/s)"
+msgstr "Upload (kb/s)"
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr "Uploadgeschwindigkeit im Gastnetzwerk (kbit/s)."
 
 msgid "Use forwarding"
 msgstr "Weiterleitung benutzen"
@@ -246,8 +1505,182 @@ msgstr ""
 "Diese Domäne wird als Präfix genutzt. Z. B. wäre das Ergebnis für das Gerät "
 "\"android-123\" und der Domäne \"my.lan\" dann \"android-123.my.lan\"."
 
-msgid "Notifications"
-msgstr "Benachrichtigungen"
+msgid "WAN"
+msgstr "WAN"
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Hier können Sie die Einstellungen des WAN-Ports (Wide Area Network) ändern. "
+"In meisten Fällen ist es nicht notwendig, hier etwas zu ändern, es sei denn, "
+"Ihr Internetanbieter erfordert spezifische Einstellungen. Wenn Sie zum "
+"Internet mittels Kabelverbindung oder DSL-Modem verbunden sind, sind in der "
+"Regel keine Änderungen notwendig."
+
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatische Konfiguration)"
+
+msgid "Static IP address (manual configuration)"
+msgstr "Statische IP-Adresse (manuelle Konfiguration)"
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPoE (für DSL-Bridge, Turris-Modem, usw.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatische Konfiguration)"
+
+msgid "Disable IPv6"
+msgstr "IPv6 deaktivieren"
+
+msgid "IPv4 protocol"
+msgstr "IPv4-Protokoll"
+
+msgid "IP address"
+msgstr "IP-Adresse"
+
+msgid "Network mask"
+msgstr "Netzwerkmaske"
+
+msgid "Gateway"
+msgstr "Netzwerk-Gateway"
+
+#, fuzzy
+msgid "DHCP Client ID"
+msgstr "DHCP auf DNS-Geräten aktivieren"
+
+msgid "Client identifier which will be provided to DHCP server."
+msgstr ""
+
+#, fuzzy
+msgid "DNS server 1 (IPv4)"
+msgstr "DNS-Server 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"Die DNS-Serveradresse wird nicht benötigt, der eingebaute DNS Resolver ist "
+"fähig ohne diese Angaben zu arbeiten."
+
+#, fuzzy
+msgid "DNS server 2 (IPv4)"
+msgstr "DNS-Server 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP-Benutzername"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP-Kennwort"
+
+msgid "IPv6 protocol"
+msgstr "IPv6-Protokoll"
+
+msgid "IPv6 address"
+msgstr "IPv6-Adresse"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"Die IPv6-Adresse und die Präfixlänge der WAN-Schnittstelle, z. B. 2001:db8:"
+"be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6-Netzwerk-Gateway"
+
+msgid "IPv6 prefix"
+msgstr "IPv6-Präfix"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Adressenbereich des lokalen Netzwerks, z. B. 2001:db8:be13:37da::/64"
+
+#, fuzzy
+msgid "DNS server 1 (IPv6)"
+msgstr "DNS-Server 1"
+
+#, fuzzy
+msgid "DNS server 2 (IPv6)"
+msgstr "DNS-Server 2"
+
+msgid "Custom MAC address"
+msgstr "Benutzerdefinierte MAC-Adresse"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Dies ist nützlich, wenn der Internetanbieter eine spezifische MAC-Adresse "
+"erfordert."
+
+msgid "MAC address"
+msgstr "MAC-Adresse"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
+
+msgid "Updater"
+msgstr "Updater"
+
+msgid "I agree"
+msgstr "Ich bin einverstanden"
+
+msgid "Use automatic updates (recommended)"
+msgstr "Automatische Aktualisierungen benutzen (empfohlen)"
+
+msgid "Turn automatic updates off"
+msgstr "Automatische Aktualisierungen deaktivieren"
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+"Updater ist ein Dienst des TurrisOS-Betriebssystems, welcher alle im Router "
+"installierte Software aktuell hält. Außer der gewöhnlichen Softwarepakete, "
+"welche Teil des Betriebssystems sind, können Sie weitere Programmpakete "
+"auswählen, welche auf dem Router installiert werden sollen. Benutzen Sie die "
+"folgende Liste, um die gewünschte Pakete auszuwählen. Beachten Sie aber "
+"bitte, dass nur die Pakete, welche Bestandteil des TurrisOS sind, oder die "
+"mittels dieser Liste installiert wurden, automatisch aktualisiert werden "
+"können. Andere Software, die Sie manuell, oder mittels \"opkg\", installiert "
+"haben, wird nicht von Updater verwaltet."
+
+msgid "Automatic installation"
+msgstr "Automatische Installation"
+
+msgid "Updates will be installed without user's intervention."
+msgstr "Updates werden ohne Bestätigung des Users ausgeführt."
+
+msgid "Delayed updates"
+msgstr "Verzögerte Updates"
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+"Updates werden mit einer einstellbaren Verzögerung installiert. Sie können "
+"auch manuell genehmigt werden."
+
+msgid "Update approval needed"
+msgstr "Updatebestätigung erforderlich"
+
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr ""
+"Sie müssen die Updates genehmigen, andernfalls werden sie nicht installiert."
+
+msgid ""
+"If you want to use other language than English you can select it from the "
+"following list:"
+msgstr ""
+"Wenn Sie eine andere Sprache als Englisch verwenden möchten, können Sie sie "
+"aus der folgenden Liste auswählen:"
 
 msgid "Notifications settings"
 msgstr "Benachrichtigungseinstellungen"
@@ -350,9 +1783,6 @@ msgstr "Datensicherheit"
 msgid "Username"
 msgstr "Benutzername"
 
-msgid "Password"
-msgstr "Kennwort"
-
 msgid "Automatic restarts after software update"
 msgstr "Automatische Neustarts nach Software-Update"
 
@@ -371,6 +1801,9 @@ msgstr "Uhrzeit von Neustart"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Tageszeit von Neustart im Anzeigeformat HH:MM."
+
+msgid "Backup file"
+msgstr "Datei der Sicherheitskopie"
 
 msgid "uCollect"
 msgstr "uCollect"
@@ -521,1442 +1954,157 @@ msgstr ""
 "richtige Uhrzeit manuell ein. Für den Router ist es notwendig möglichst "
 "genaue Uhrzeit zu haben, damit alles einwandfrei funktioniert."
 
-msgid "Backup file"
-msgstr "Datei der Sicherheitskopie"
+#, fuzzy
+msgid "Region and time"
+msgstr "Uhrzeit von Neustart"
 
-msgid "Updater"
-msgstr "Updater"
-
-msgid "I agree"
-msgstr "Ich bin einverstanden"
-
-msgid "Use automatic updates (recommended)"
-msgstr "Automatische Aktualisierungen benutzen (empfohlen)"
-
-msgid "Turn automatic updates off"
-msgstr "Automatische Aktualisierungen deaktivieren"
-
-msgid "Update approvals"
-msgstr "Update Bestätigungen"
-
-msgid "Automatic installation"
-msgstr "Automatische Installation"
-
-msgid "Updates will be installed without user's intervention."
-msgstr "Updates werden ohne Bestätigung des Users ausgeführt."
-
-msgid "Delayed updates"
-msgstr "Verzögerte Updates"
-
-msgid ""
-"Updates will be installed with an adjustable delay. You can also approve "
-"them manually."
-msgstr ""
-"Updates werden mit einer einstellbaren Verzögerung installiert. Sie können "
-"auch manuell genehmigt werden."
-
-msgid "Update approval needed"
-msgstr "Updatebestätigung erforderlich"
-
-msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr ""
-"Sie müssen die Updates genehmigen, andernfalls werden sie nicht installiert."
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-"Updater ist ein Dienst des TurrisOS-Betriebssystems, welcher alle im Router "
-"installierte Software aktuell hält. Außer der gewöhnlichen Softwarepakete, "
-"welche Teil des Betriebssystems sind, können Sie weitere Programmpakete "
-"auswählen, welche auf dem Router installiert werden sollen. Benutzen Sie die "
-"folgende Liste, um die gewünschte Pakete auszuwählen. Beachten Sie aber "
-"bitte, dass nur die Pakete, welche Bestandteil des TurrisOS sind, oder die "
-"mittels dieser Liste installiert wurden, automatisch aktualisiert werden "
-"können. Andere Software, die Sie manuell, oder mittels \"opkg\", installiert "
-"haben, wird nicht von Updater verwaltet."
-
-msgid ""
-"If you want to use other language than English you can select it from the "
-"following list:"
-msgstr ""
-"Wenn Sie eine andere Sprache als Englisch verwenden möchten, können Sie sie "
-"aus der folgenden Liste auswählen:"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-"Dieser Abschnitt umfasst Einstellungen für das lokale Netzwerk (LAN). Die "
-"vorgegebene Standardeinstellungen sind für die meisten Netzwerke geeignet. "
-"<br><strong>Anmerkung:</strong> Wenn Sie die IP-Adresse des Routers ändern, "
-"dann müssen alle Computer im LAN eine <strong>neue IP-Adresse</strong> "
-"erhalten, was aber <strong>nicht sofort</strong> passiert. Es ist ratsam, "
-"nach dem Sie die aktuelle Änderungen bestätigt haben, alle Kabel in den LAN-"
-"Anschlüssen zu entfernen und dann neu anzuschließen, um die neuen "
-"Einstellungen in Kraft treten zu lassen. Die nachfolgende Webseite wird so "
-"lange nicht geladen, bis Ihr Computer eine neue IP-Adresse mittels DHCP "
-"(falls es aktiviert ist) erhalten hat. Es mag notwendig sein, im Web-Browser "
-"die <strong>Webseite neu zu laden</strong>."
-
-msgid "Router IP address"
-msgstr "IP-Adresse des Routers"
-
-msgid ""
-"Router's IP address in inner network. Also defines the range of assigned IP "
-"addresses."
-msgstr ""
-"IP-Adresse des Routers im lokalen Netzwerk. Diese Adresse bestimmt auch den "
-"IP-Adressbereich, welcher vom DHCP-Server zugewiesen wird."
-
-msgid "Enable DHCP"
-msgstr "DHCP aktivieren"
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-"Wählen Sie diese Möglichkeit, damit der Router den lokal angeschlossenen "
-"Geräten automatisch IP-Adressen zuweisen kann."
-
-msgid "DHCP start"
-msgstr "Anfang des DHCP-IP-Addressbereiches"
-
-msgid "DHCP max leases"
-msgstr "Anzahl der zugewiesenen IP-Adressen"
-
-msgid "Guest network"
-msgstr "Gastnetzwerk"
-
-msgid "Enable guest network"
-msgstr "Gastnetzwerk aktivieren"
-
-#, python-format
-msgid ""
-"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
-"separated  from your ordinary LAN network. Devices connected to this network "
-"are allowed to access the internet, but are not allowed to access other "
-"devices and the configuration interface of the router."
-msgstr ""
-"Das Gastnetzwerk wird für <a href='%(url)s'>Gast-W-LAN</a>genutzt. Es ist "
-"von Ihrem normalen LAN getrennt. Mit diesem Netzwerk verbundene Geräte haben "
-"die Erlaubnis auf das Internet zuzugreifen, aber haben keinen Zugriff auf "
-"andere Geräte und die Konfigurationsoberfläche des Routers."
-
-msgid ""
-"You need to set the IP range for your guest network. It is necessary that "
-"the range is different than ranges on your other networks (LAN, WAN, VPN, "
-"etc.)."
-msgstr ""
-"Sie müssen den IP-Bereich für Ihr Gast-Netzwerk setzen. Es ist notwendig, "
-"dass der Bereich anders ist als Bereiche in Ihren anderen Netzwerken (LAN, "
-"WAN, VPN, etc.)."
-
-msgid "Guest Lan QoS"
-msgstr "Gastnetzwerk QoS"
-
-msgid ""
-"This option enables you to set a bandwidth limit for the guest network, so "
-"that your main network doesn't get slowed-down by it."
-msgstr ""
-"Diese Option erlaubt es, die Bandbreite des Gastnetzwerkes zu limitieren. So "
-"verlangsamt es nicht Ihr Heimnetzwerk."
-
-msgid "Download (kb/s)"
-msgstr "Download (kb/s)"
-
-msgid "Download speed in guest network (in kilobits per second)."
-msgstr "Downloadgeschwindigkeit im Gastnetzwerk (kbit/s)."
-
-msgid "Upload (kb/s)"
-msgstr "Upload (kb/s)"
-
-msgid "Upload speed in guest network (in kilobits per second)."
-msgstr "Uploadgeschwindigkeit im Gastnetzwerk (kbit/s)."
-
-msgid "Wi-Fi"
-msgstr "WLAN"
-
-msgid "auto"
-msgstr "automatisch"
-
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
-msgstr ""
-"Das Kennwort (WPA2 pre-shared key) wird beim Verbinden mit dem WLAN "
-"verlangt, es muss mindestens 8 Zeichen lang sein."
-
-#, python-format
-msgid "Enable Wi-Fi %s"
-msgstr "Aktiviere WLAN %s"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "SSID verstecken"
-
-msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-"Falls aktiviert, wird das Netzwerk nicht in der Liste der verfügbaren "
-"drahtlosen Netzwerke angezeigt."
-
-msgid "Wi-Fi mode"
-msgstr "WLAN-Betriebsmodus"
-
-msgid ""
-"The 2.4 GHz band is more widely supported by clients, but tends to have more "
-"interference. The 5 GHz band is a newer standard and may not be supported by "
-"all your devices. It usually has less interference, but the signal does not "
-"carry so well indoors."
-msgstr ""
-"Das 2,4 GHz Frequenzband ist unter den Clientgeräten besser unterstützt, es "
-"ist aber mehr durch Interferenzen belastet. Das 5 GHz Frequenzband ist ein "
-"neuerer Standard, welche aber eventuell nicht von allen Ihren Geräten "
-"unterstützt wird. Gewöhnlich ist dieses Frequenzband weniger gestört, es "
-"breitet sich aber in Gebäuden schlechter aus."
-
-msgid "Disabled"
-msgstr "Deaktiviert"
-
-msgid "802.11n - 20 MHz wide channel"
-msgstr "802.11n - 20 MHz breiter Kanal"
-
-msgid "802.11n - 40 MHz wide channel"
-msgstr "802.11n - 40 MHz breiter Kanal"
-
-msgid "802.11ac - 20 MHz wide channel"
-msgstr "802.11ac - 20 MHz breiter Kanal"
-
-msgid "802.11ac - 40 MHz wide channel"
-msgstr "802.11ac - 40 MHz breiter Kanal"
-
-msgid "802.11ac - 80 MHz wide channel"
-msgstr "802.11ac - 80 MHz breiter Kanal"
-
-msgid "802.11n/ac mode"
-msgstr "802.11n/ac-Modus"
-
-msgid ""
-"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
-"channels can yield higher throughput but can cause more interference in the "
-"network. If you don't know what to choose, use the default option with 20 "
-"MHz wide channel."
-msgstr ""
-"Diese Option ändert den 802.11n/ac-Betriebsmodus. Im 802.11n-Modus mit 40 "
-"MHz Kanalbreite können Sie einen größeren Datendurchsatz erreichen, es kann "
-"aber dabei zu größeren Kommunikationsstörungen kommen. Im Zweifelsfall ist "
-"20 MHz die zuverlässigere Wahl."
-
-msgid "Network channel"
-msgstr "Netzwerkkanal"
-
-msgid "Network password"
-msgstr "Netzwerk-Kennwort"
-
-msgid "Guest Wi-Fi"
-msgstr "Gast-WLAN"
-
-msgid "Set guest Wi-Fi here."
-msgstr "Gast-WLAN hier einrichten."
-
-msgid "Enable guest Wi-Fi"
-msgstr "Gast-WLAN aktivieren"
-
-#, python-format
-msgid ""
-"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-"connected to this network are allowed to access the internet, but aren't "
-"allowed to access other devices and the configuration interface of the "
-"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-"LAN tab</a>. "
-msgstr ""
-"Aktiviert WLAN für Gäste, das vom LAN getrennt ist. Die mit diesem Netzwerk "
-"verbundenen Geräte dürfen auf das Internet zugreifen, aber sind nicht "
-"berechtigt, auf andere Geräte und die Konfigurationsoberfläche des Routers "
-"zuzugreifen. Das Gast-Netzwerk-Parameter können in <a href='%(url)s'> der "
-"Registerkarte \"LAN\"</a> gesetzt werden. "
-
-msgid "SSID for guests"
-msgstr "SSID für Gäste"
-
-msgid "Password for guests"
-msgstr "Passwort für Gäste"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available next to the form."
-msgstr ""
-"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann aktivieren "
-"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und ein "
-"dazugehöriges Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte "
-"mittels des angezeigten QR-Codes einfach konfigurieren."
-
-msgid "Wi-Fi settings"
-msgstr "WLAN Einstellungen"
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Hier können Sie die Einstellungen des WAN-Ports (Wide Area Network) ändern. "
-"In meisten Fällen ist es nicht notwendig, hier etwas zu ändern, es sei denn, "
-"Ihr Internetanbieter erfordert spezifische Einstellungen. Wenn Sie zum "
-"Internet mittels Kabelverbindung oder DSL-Modem verbunden sind, sind in der "
-"Regel keine Änderungen notwendig."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatische Konfiguration)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statische IP-Adresse (manuelle Konfiguration)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPoE (für DSL-Bridge, Turris-Modem, usw.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatische Konfiguration)"
-
-msgid "Disable IPv6"
-msgstr "IPv6 deaktivieren"
-
-msgid "IPv4 protocol"
-msgstr "IPv4-Protokoll"
-
-msgid "IP address"
-msgstr "IP-Adresse"
-
-msgid "Network mask"
-msgstr "Netzwerkmaske"
-
-msgid "Gateway"
-msgstr "Netzwerk-Gateway"
-
-msgid "DNS server 1"
-msgstr "DNS-Server 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"Die DNS-Serveradresse wird nicht benötigt, der eingebaute DNS Resolver ist "
-"fähig ohne diese Angaben zu arbeiten."
-
-msgid "DNS server 2"
-msgstr "DNS-Server 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP-Benutzername"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP-Kennwort"
-
-msgid "IPv6 protocol"
-msgstr "IPv6-Protokoll"
-
-msgid "IPv6 address"
-msgstr "IPv6-Adresse"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"Die IPv6-Adresse und die Präfixlänge der WAN-Schnittstelle, z. B. 2001:db8:"
-"be13:37da::1/64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6-Netzwerk-Gateway"
-
-msgid "IPv6 prefix"
-msgstr "IPv6-Präfix"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Adressenbereich des lokalen Netzwerks, z. B. 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Turris-Modem benutzen"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Turris-Modem (auch bekannt als SMRT - Small Modem for Router Turris) ist ein "
-"einfacher ADSL/VDSL-Modem, welches eigens für den Turris-Router konzipiert "
-"wurde. Wählen Sie diese Option, wenn Sie das Turris-Modem zum Router "
-"angeschlossen haben."
-
-msgid "xDSL VLAN number"
-msgstr "xDSL-VLAN-Nummer"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"VLAN-Nummer Ihrer Internetverbindung. Ihr Internetanbieter hat Ihnen "
-"vielleicht diese Nummer mitgeteilt. Falls Sie anstelle dieser Nummer die VPI "
-"und VCI Werte erhalten haben, können Sie dieses Feld leer lassen; die "
-"Standardeinstellung wird automatisch eingefügt."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
-"Die VPI- und VCI-Werte müssen entweder beide ausgefüllt sein, oder beide "
-"leer sein."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuelle Pfadkennung (Virtual Path Identifier) ist ein Wert den Sie "
-"vielleicht von Ihrem Internetanbieter erhalten haben. Wenn Sie aber "
-"stattdessen die VLAN-Nummer erhalten haben, dann lassen Sie dieses Feld "
-"leer. Es müsst beide Werte, VPI und VCI, ausfüllen werden."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuelle Kanalkennung (Virtual Circuit Identifier) ist ein Wert den Ihr "
-"vielleicht von Ihren Internetanbieter erhalten habt. Wenn Sie aber "
-"stattdessen die VLAN-Nummer erhielten, dann lassen Sie dieses Feld leer. Ihr "
-"müsst beide, VPI und VCI, Werte zusammen ausfüllen."
-
-msgid "Custom MAC address"
-msgstr "Benutzerdefinierte MAC-Adresse"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Dies ist nützlich, wenn der Internetanbieter eine spezifische MAC-Adresse "
-"erfordert."
-
-msgid "MAC address"
-msgstr "MAC-Adresse"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Trennzeichen ist der Doppelpunkt, z. B. 00:11:22:33:44:55"
-
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Konfigurationsassistent - Schritt %s"
-
-msgid "Connectivity test"
-msgstr "Verbindungstest"
-
-msgid "Automatic updates"
-msgstr "Automatische Aktualisierungen"
-
-msgid "Installation finished"
-msgstr "Installation abgeschlossen"
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Datenerfassung ist zurzeit aktiviert. Sie können nicht den Updater "
-"deaktivieren, ohne dass zuerst die Datenerfassung deaktiviert wird."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can refuse the questionable update "
-"temporarily and install it when you are ready. It isn't possible to decline "
-"the update forever and it will be offered to you again together with the "
-"next package installation."
-msgstr ""
-"Updategenehmigungen können nützlich sein, wenn Sie sicher gehen wollen, dass "
-"die Updates Ihrer eigenen Konfiguration nicht schaden. Sie können das "
-"fragwürdige Update vorübergehend verschieben und es erst installieren, wenn "
-"Sie dazu bereit sind. Es nicht möglich, das Update dauerhaft abzulehnen, es "
-"wird zusammen mit dem nächsten Update wieder vorgeschlagen werden."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can e.g. install updates when you're "
-"prepared for a possible rollback to a previous snapshot and deny the "
-"questionable update temporarily. It isn't possible to decline the update "
-"forever and it will be offered to you again together with the next package "
-"installation."
-msgstr ""
-"Updategenehmigungen können nützlich sein, wenn Sie sicher sein wollen, dass "
-"Updates nicht Ihrer eigenen Konfiguration Schaden zufügen sollen. Sie können "
-"z. B. Updates installieren, wenn Sie auf ein mögliches <a href='https://www.t"
-"urris.cz/doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'> "
-"Rollback zum vorherigen Snapshot</a> vorbereitet sind und die fragwürdigen "
-"Updates vorübergehend verschieben. Es nicht möglich, das Update für "
-"dauerhaft abzulehnen, es wird zusammen mit dem nächsten Update wieder "
-"vorgeschlagen werden."
-
-#, python-format
-msgid "after %(input)s hours"
-msgstr "nach %(input)s Stunden"
-
-msgid "Hint"
-msgstr "Hilfe"
-
-msgid "Save"
-msgstr "Speichern"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
-msgstr ""
-"Der Turris-Router benutzt einen eigenen DNS Resolver, der DNSSSEC "
-"unterstützt. Der Resolver kann entweder vollkommen selbstständig arbeiten, "
-"oder er kann auch die DNS Resolver Ihres Internetanbieters, über welche dann "
-"der DNS-Verkehr weitergeleitet wird, benutzen."
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"Die folgenden Einstellungen bestimmen das Verhalten des DNS Resolvers. "
-"Normalerweise ist es besser, die Resolver Ihres ISPs zu benutzen ist in "
-"Netzwerken, in denen dieses funktioniert, besser. Wenn dieses aber nicht "
-"funktioniert, ist es notwendig, direktes Auflösen ohne Weiterleitung zu "
-"verwenden."
-
-msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
-msgstr ""
-"In seltenen Fällen kann es vorkommen, das Ihr Internetanbieter eine "
-"fehlerhafte Netzwerkkonfiguration aufweist, welche dann zu Störungen in der "
-"DNSSEC-Validierung führen können. Falls Sie Probleme mit dem DNS-System "
-"haben, können Sie <strong>vorübergehend</strong> die DNSSEC-Validierung "
-"deaktivieren, um die Problemursache zu finden. Beachten Sie aber, dass Sie "
-"ohne aktivierte DNSSEC-Validierung durch DNS-Spoofing-Angriffe gefährdet "
-"sind! Daher empfehlen wir, dass Sie die <strong>DNSSEC-Validierung "
-"aktiviert</strong> lassen und dass Sie den Fehler mit Ihrem Internetanbieter "
-"beheben, weil dies einen ernsten Mangel Ihres Internetanbieters darstellt."
-
-msgid "Connection test"
-msgstr "Verbindung prüfen"
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-"Hier können Sie Ihre Internetverbindung prüfen. Der Test ist nützlich, wenn "
-"Sie die korrekte Funktion des DNS Resolvers überprüfen wollen. Vergessen Sie "
-"nicht die <strong>Speichern</strong> Schaltfläche zu betätigen, wenn Sie die "
-"Einstellungen geändert haben."
-
-msgid "Unable to verify network connection."
-msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
-
-msgid "Test type"
-msgstr "Art des Tests"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "IPv4 connectivity"
-msgstr "IPv4-Konnektivität"
-
-msgid "IPv4 gateway connectivity"
-msgstr "IPv4-Konnektivität zum Gateway"
-
-msgid "IPv6 connectivity"
-msgstr "IPv6-Konnektivität"
-
-msgid "IPv6 gateway connectivity"
-msgstr "IPv6-Konnektivität zum Gateway"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Verbindung prüfen"
-
-msgid "Discard changes"
-msgstr "Änderungen verwerfen"
-
-msgid "Save changes"
-msgstr "Änderung speichern"
-
-msgid ""
-"With the Turris router you can join Project Turris which is a non-profit "
-"research project founded by the CZ.NIC association, a .CZ domain registry. "
-"By joining the project, your router will act as a probe which analyzes "
-"traffic between your home network and the Internet and helps to identify "
-"malicious data flows. Once such a flow is detected your router notifies the "
-"Turris headquarters which can compare the flow with data from the rest of "
-"the probes and assign it a threat level. If the flow is identified as an "
-"attack Turris headquarters can prepare an update which is distributed to "
-"every Turris router and helps them to protect themselves against the attack."
-msgstr ""
-"Sie können sich mit dem Turris-Omnia-Router am Turris-Projekt beteiligen. "
-"Das Turris-Projekt ist ein nicht gewinnorientiertes, gemeinnütziges "
-"Forschungsprojekt, gegründet von der Organisation CZ.NIC, welche die .CZ "
-"Domäne verwaltet. Falls Sie dem Projekt beitreten, wird sich Ihr Router wie "
-"ein Scanner verhalten, welcher den Datenfluss zwischen ihrem Heimnetzwerk "
-"und dem Internet analysiert, um schädliche Daten zu finden. Wenn solche "
-"Daten gefunden werden, dann wird die Turris-Zentrale benachrichtigt, um die "
-"verdächtigen Daten mit Referenzdaten anderer Router abzugleichen. Wenn die "
-"Daten als eine schädlich identifiziert werden, kann die Turris-Zentrale "
-"Aktualisierungen ausarbeiten, welche dann in alle Turris-Geräte hochgeladen "
-"werden, um sie zu schützen."
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr ""
-"Updater-Dienst ist zurzeit deaktiviert. Schalten Sie ihn ein, um die "
-"Datenerfassung aktivieren zu können."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Wenn Sie dem Turris-Projekt beitreten wollen, dann müssen Sie sich zuerst im "
-"Turris-Portal registrieren. Geben Sie ihre E-Mail-Adresse, welche Sie zur "
-"Registration benutzen wollen oder welche Sie schon bereits zu diesem Zweck "
-"benutzt haben, ein:"
-
-msgid "Validate email"
-msgstr "E-Mail-Adresse validieren"
-
-msgid "Device"
-msgstr "Gerät"
-
-msgid "Serial number"
-msgstr "Seriennummer"
-
-msgid "Turris OS version"
-msgstr "Turris OS Version"
-
-msgid "Kernel version"
-msgstr "Kernelversion"
-
-msgid "Sending of uCollect data"
-msgstr "uCollect-Datenübermittlung"
-
-#, python-format
-msgid "Time of last update: %(datetime)s"
-msgstr "Zeitpunkt der letzten Aktualisierung: %(datetime)s"
-
-#, python-format
-msgid "(status updated %d second ago)"
-msgid_plural "(status updated %d seconds ago)"
-msgstr[0] "(Status vor %d Sekunde aktualisiert)"
-msgstr[1] "(Status vor %d Sekunden aktualisiert)"
-
-msgid "Sending of firewall logs"
-msgstr "Übermittlung der Firewall-Protokolle"
-
-msgid "Refresh"
-msgstr "Aktualisieren"
-
-msgid "Device registration"
-msgstr "Registrierung des Gerätes"
-
-#, python-format
-msgid ""
-"If you have not registered your device yet, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Falls Sie Ihr Gerät im Turris-System noch nicht registriert haben, klicken "
-"Sie auf die folgende Schaltfläche, um den Registrierungscode zu erhalten. "
-"Tragen Sie den Code im Benutzerprofil im Turris-System auf der Adresse <a "
-"href=\"%(url)s\">%(url)s</a> ein."
-
-msgid "Registration code"
-msgstr "Registrierungscode"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"Leider war es nicht möglich den Registrierungscode zu generieren. In meisten "
-"Fällen passiert das, wenn keine Internetverbindung vorhanden ist. Versuchen "
-"Sie bitte den Code später erneut zu generieren. Falls das Problem weiterhin "
-"besteht, kontaktieren Sie bitte die technische Unterstützung."
-
-msgid "Get registration code"
-msgstr "Registrierungscode erhalten"
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to manage "
-"package lists."
-msgstr ""
-"Updater ist zurzeit deaktiviert. Aktivieren Sie ihn, damit Sie die Liste der "
-"Softwarepakete verwalten können."
-
-#, python-format
-msgid "Approve update from %(when)s"
-msgstr "Update vom %(when)s  genehmigen"
-
-msgid "Uninstall"
-msgstr "Deinstallieren"
-
-msgid "Install"
-msgstr "Installieren"
-
-msgid "Note that a reboot will be triggered after the update."
-msgstr "Beachten Sie, dass ein Neustart nach dem Update ausgelöst wird."
-
-msgid "Install now"
-msgstr "Jetzt Installieren"
-
-msgid "Deny"
-msgstr "Verweigern"
-
-msgid "No package will be installed unless you install the updates above."
-msgstr ""
-"Kein weiteres Paket wird installiert, bis die Updates oben installiert "
-"wurden."
-
-#, python-format
-msgid ""
-"If you don't install the updates manually, they will be installed "
-"automatically after %(time)s."
-msgstr ""
-"Die Updates werden automatisch nach %(time)s installiert, wenn Sie sie nicht "
-"manuell installieren."
-
-msgid "Package lists"
-msgstr "Liste der Softwarepakete"
-
-msgid ""
-"List of available software was not downloaded from the server yet. Please "
-"come back later."
-msgstr ""
-"Die Liste der Softwarepakete konnte nicht vom Server heruntergeladen werden, "
-"bitte versuchen Sie es zu einem späteren Zeitpunkt erneut."
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
-msgstr ""
-"Wenn Sie diese Karte für 2,4 GHz Bänder verwenden möchten, ist eine "
-"Korrektur der mit Diplexern verbundenen Kabel erforderlich! "
-"Werkseinstellung: Kabel von großer Karte an 5GHz Diplexer-Teil "
-"angeschlossen, Kabel von kleiner Karte an 2,4 GHz Diplexer-Teil "
-"angeschlossen."
-
-msgid ""
-"Welcome to the Turris administration site. Please, choose a config section "
-"you wish to change from the menu."
-msgstr ""
-"Willkommen auf der Turris-Konfigurationsoberfläche. Wählen Sie bitte den "
-"Konfigurationsabschnitt, welchen Sie ändern wollen."
-
-msgid "No new messages."
-msgstr "Keine neuen Nachrichten."
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "In Ihrem Router wurden keine WLAN-Karten erkannt."
-
-msgid "Notifications and automatic restarts"
-msgstr "Benachrichtigungen und automatische Neustarts"
-
-msgid ""
-"You can set the router to notify you when a specific event occurs, for "
-"example when a reboot is required, no space is left on device or an "
-"application update is installed. You can use Turris servers to send these "
-"emails. Alternatively, if you choose to use a custom server, you must enter "
-"some additional settings. These settings are the same as you enter in your "
-"email client and you can get them from the provider of your email inbox. In "
-"that case, because of security reasons, it is recommended to create a "
-"dedicated account for your router."
-msgstr ""
-"Der Router kann eingestellt werden, um Ihnen Nachrichten über bestimmte "
-"Ereignisse zu senden; zum Beispiel, dass ein Neustart erforderlich ist, dass "
-"kein Speicherplatz mehr vorhanden ist, oder dass eine "
-"Anwendungsaktualisierung installiert wurde. Sie können die Turris-Server für "
-"das Absenden dieser Nachrichten verwenden; Alternativ können Sie auch eigene "
-"SMTP-Server dafür benutzen, wofür aber weitere Einstellungen benötigt "
-"werden. Es sind meistens die selben Einstellungen, welche Sie schon in Ihrem "
-"E-Mail-Client verwenden. Diese können Sie von Ihrem E-Mail-Serviceprovider "
-"erhalten. In diesem Fall raten wir Ihnen, aus Sicherheitsgründen ein neues "
-"Benutzerkonto für den Router einzurichten."
-
-msgid ""
-"Also, when an automatic restart is required, you can specify the time you "
-"want it to occur. If you have email notifications enabled, you can also "
-"specify the interval between notification and automatic restart."
-msgstr ""
-"Falls ein Neustart benötigt wird, können Sie die genaue Uhrzeit des "
-"Neustarts bestimmen. Wenn Sie die Benachrichtigung per E-Mail über "
-"Ereignisse aktiviert haben, könnt Sie auch die Zeitspanne zwischen der "
-"Benachrichtigung und dem Neustart bestimmen."
-
-msgid "Send testing message"
-msgstr "Testnachricht absenden"
-
-msgid "Configuration backup"
-msgstr "Sicherheitskopie der Systemkonfiguration"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. The configuration is saved as an unencrypted "
-"compressed archive (.tar.bz2). Passwords for this configuration interface "
-"and for the advanced configuration are not included in the backup."
-msgstr ""
-"Hier können Sie eine Sicherheitskopie der aktuellen Systemkonfiguration "
-"herunterladen. Die Sicherheitskopie besteht aus einer unverschlüsselten "
-"Archivdatei (.tar.bz2). Die Datei enthält Einstellungen, die durch diese "
-"Schnittstelle, und die meisten Einstellungen, die durch die LuCI-"
-"Webschnittstelle eingestellt wurden. Das Kennwort für diese Oberfläche und "
-"das Kennwort für die Expertenkonfiguration werden nicht in der "
-"Sicherheitskopie gespeichert."
-
-msgid "Download configuration backup"
-msgstr "Sicherheitskopie der Systemkonfiguration herunterladen"
-
-msgid "Configuration restore"
-msgstr "Wiederherstellung der Systemkonfiguration"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"Laden Sie im folgenden Webformular die Sicherheitskopie hoch, um die "
-"Systemkonfiguration wiederherzustellen. Beachten Sie bitte, dass sich die IP-"
-"Adresse des Gerätes zwischendurch ändern kann, was dazu führen kann, dass "
-"diese Oberfläche nicht mehr erreichbar ist."
-
-msgid "Restore from backup"
-msgstr "Systemkonfiguration aus Sicherheitskopie wiederherstellen"
-
-msgid "Device reboot"
-msgstr "Neustart des Gerätes"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"after the reboot."
-msgstr ""
-"Betätigen Sie die folgende Schaltfläche, wenn Sie das Gerät neu starten "
-"wollen. Der Prozess des Neustarts dauert ungefähr 30 Sekunden, danach müssen "
-"Sie sich erneut anmelden."
-
-msgid "Reboot"
-msgstr "Systemneustart"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - Administrationsschnittstelle des Turris-Routers"
-
-msgid "Menu"
-msgstr "Menü"
-
-msgid "Log out"
-msgstr "Abmelden"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Für die korrekte Funktion dieser Seite ist Javascript erforderlich. "
-"Aktivieren Sie es bitte und laden Sie die Seite neu."
-
-msgid "This value seems to be invalid."
-msgstr "Die Eingabe scheint nicht korrekt zu sein."
-
-msgid "This value should be a valid email."
-msgstr "Die Eingabe muss eine gültige E-Mail-Adresse sein."
-
-msgid "This value should be a valid url."
-msgstr "Die Eingabe muss eine gültige URL sein."
-
-msgid "This value should be a valid number."
-msgstr "Die Eingabe muss eine Zahl sein."
-
-msgid "This value should be a valid integer."
-msgstr "Die Eingabe muss eine ganze Zahl sein."
-
-msgid "This value should be digits."
-msgstr "Die Eingabe darf nur Ziffern enthalten."
-
-msgid "This value should be alphanumeric."
-msgstr "Die Eingabe muss alphanumerisch sein."
-
-msgid "This value should not be blank."
-msgstr "Die Eingabe darf nicht leer sein."
-
-msgid "This value is required."
-msgstr "Dies ist ein Pflichtfeld."
-
-#, python-format
-msgid "This value should be greater than or equal to %s."
-msgstr "Die Eingabe muss größer oder gleich %s sein."
-
-#, python-format
-msgid "This value should be lower than or equal to %s."
-msgstr "Die Eingabe muss kleiner oder gleich %s sein."
-
-#, python-format
-msgid "This value should be between %s and %s."
-msgstr "Die Eingabe muss zwischen %s und %s liegen."
-
-#, python-format
-msgid "This value is too short. It should have %s characters or more."
-msgstr ""
-"Die Eingabe ist zu kurz. Es müssen mindestens %s Zeichen eingegeben werden."
-
-#, python-format
-msgid "This value is too long. It should have %s characters or fewer."
-msgstr ""
-"Die Eingabe ist zu lang. Es dürfen höchstens %s Zeichen eingegeben werden."
-
-#, python-format
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long."
-msgstr "Die Länge des Eingabewerts muss zwischen %s bis %s Zeichen sein."
-
-#, python-format
-msgid "You must select at least %s choices."
-msgstr "Wählen Sie mindestens %s Angaben aus."
-
-#, python-format
-msgid "You must select %s choices or fewer."
-msgstr "Wählen Sie maximal %s Angaben aus."
-
-#, python-format
-msgid "You must select between %s and %s choices."
-msgstr "Wählen Sie zwischen %s und %s Angaben."
-
-msgid "This value should be the same."
-msgstr "Dieses Feld muss dem anderen entsprechen."
-
-msgid "This is not a valid IPv4 address."
-msgstr "Dies ist keine gültige IPv4-Adresse."
-
-msgid "This is not a valid IPv4 netmask."
-msgstr "Dies ist keine gültige IPv4-Netzmaske."
-
-msgid "This is not a valid IPv4 prefix."
-msgstr "Dies ist keine IPv4-Adresse mit einer Präfixlänge."
-
-msgid "This is not a valid IPv6 prefix."
-msgstr "Dies ist keine gültige IPv6-Adresse."
-
-msgid "This is not a valid MAC address."
-msgstr "Dies ist keine gültige MAC-Adresse."
-
-msgid ""
-"Your password contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"Ihr Passwort enthält nicht standardisierte Zeichen. Diese sind zulässig, "
-"können aber auf einigen Geräten zu Problemen führen."
-
-msgid ""
-"Your SSID contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"Ihre SSID beinhaltet nicht standardisierte Zeichen. Diese sind zulässig, "
-"können aber auf einigen Geräten zu Problemen führen."
-
-msgid "OK"
-msgstr "OK"
-
-msgid "Error"
-msgstr "Fehler"
-
-msgid "Loading..."
-msgstr "Lädt..."
-
-msgid "Connectivity test failed, testing connection with disabled forwarding."
-msgstr ""
-"Verbindungstest fehlgeschlagen, Test wird mit deaktivierter Weiterleitung "
-"erneut durchgeführt."
-
-msgid ""
-"The IP address of your router has been changed. It should be accessible from "
-"%NEW_IP_LINK%. See the note above for more information about IP address "
-"change."
-msgstr ""
-"Die IP Adresse Ihres Routers wurde geändert. Dieser sollte nun unter "
-"%NEW_IP_LINK% zu erreichen sein. Siehe den Kommentar oben für mehr "
-"Informationen zur Änderung der IP Adresse."
-
-msgid ""
-"You have chosen to not receive security updates. We strongly advice you to "
-"keep the automatic security updates enabled to receive all recommended "
-"updates for your device. Updating your router on regular basis is the only "
-"way how to ensure you will be protected against known threats that might "
-"target your home router device.\\n\\nDo you still want to continue and stay "
-"unprotected?"
-msgstr ""
-"Sie haben sich entschieden keine Sicherheitsaktualisierungen zu erhalten. "
-"Wir empfehlen Ihnen dringend automatische Sicherheitsaktualisierungen "
-"einzuschalten um alle empfohlenen Updates zu erhalten. Nur regelmäßige "
-"Aktualisierungen können einen ausreichenden Schutz gegen eventuelle "
-"Sicherheitslücken gewährleisten.\\n\\nWollen Sie dennoch, ohne Schutz, "
-"fortfahren?"
-
-msgid ""
-"DNSSEC is a security technology that protects the DNS communication against "
-"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
-"validation enabled unless you know that you will be connecting your device "
-"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
-"and stay unprotected?"
-msgstr ""
-"DNSSEC ist eine Sicherheitstechnologie, die die DNS-Kommunikation vor "
-"Angriffen auf die DNS-Infrastruktur schützt. Wir empfehlen dringend, die "
-"DNSSEC-Validierung freizugeben, es sei denn, Sie wissen, dass Sie Ihr Gerät "
-"im Netzwerk verbinden, wo DNSSEC defekt ist. \\n\\nWollen Sie trotzdem "
-"fortfahren und ungeschützt bleiben?"
-
-msgid "Are you sure you want to restart the router?"
-msgstr "Wollen Sie den Router wirklich neu starten?"
-
-msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr "\\n(%UNREAD%) Verbleibende ungelesene Nachrichten werden gelöscht."
-
-msgid ""
-"There are some unsaved changes in the notifications settings.\\nDo you want "
-"to discard them and test the notifications with the old settings?"
-msgstr ""
-"Einige Ändeungen wurden noch nicht gespeichert.\\nWollen Sie diese verwerfen "
-"und mit den alten Benachrichtigungseinstellungen fortfahren?"
-
-msgid "Turris router administration interface"
-msgstr "Konfigurationsoberfläche des Turris-Routers"
-
-msgid "Next"
-msgstr "Weiter"
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Das Gerät wurde erfolgreich eingerichtet. Der letzte Schritt, der benötigt "
-"wird, ist die Registration des Gerätes mittels Ihres Benutzerprofils auf der "
-"Turris-Webseite <a href=\"%(url)s\">%(url)s</a>."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Warnung:</strong> Die Gültigkeitsdauer des Codes ist begrenzt. Im "
-"Falle, dass der Code nicht akzeptiert wird, aktualisieren Sie diese "
-"Webseite, um einen neuen Code zu bekommen."
-
-msgid "What next?"
-msgstr "Wie geht es weiter?"
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"Sie können alle der vorherigen eingegebenen Auswahlmöglichkeiten in der <a "
-"href=\"%(url)s\">Standardkonfigurationsoberfläche</a> ändern. Wenn Sie in "
-"fortgeschrittene Möglichkeiten der Konfiguration interessiert sind, dann "
-"benutzen Sie die LuCI-Webschnittstelle, welche von der <a href=\"%(url2)s"
-"\">Expertenkonfiguration</a> aus erreichbar ist."
-
-msgid "Important updates"
-msgstr "Wichtige Aktualisierungen"
-
-msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
-msgstr ""
-"Wichtige Aktualisierungen, die einen Neustart erfordern, wurden installiert. "
-"Einige Dienste können außer Funktion bleiben, bis das Gerät neu gestartet "
-"wird. Für weitere Einzelheiten siehe unten."
-
-msgid "Continue to configuration interface"
-msgstr "Zur Konfigurationsschnittstelle gehen"
-
-msgid "Checking internet connectivity."
-msgstr "Ihre Internetverbindung wird überprüft."
-
-msgid "One moment, please..."
-msgstr "Einen Augenblick bitte..."
-
-msgid "Done"
-msgstr "Fertig"
-
-msgid "Internet connectivity test passed without error."
-msgstr "Der Test der Internetverbindung wurde ohne Fehler abgeschlossen."
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
-msgstr ""
-"Ihre Internetverbindung funktioniert, aber die DNS-Namensauflösung hat "
-"Probleme. Der Problem wird wahrscheinlich durch Ihren Internetanbieter "
-"verursacht. Die Ursache dafür kann aber auch eine falsche Uhrzeit in Ihrem "
-"Router sein; In diesem Fall können Sie im folgenden Schritt die Zeit manuell "
-"einstellen."
-
-msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
-msgstr ""
-"Es sieht so aus, dass Sie keine Internetverbindung haben. Vielleicht sind "
-"Ihre WAN-Netzwerkeinstellungen nicht richtig."
-
-msgid "Try again"
-msgstr "Nochmal versuchen"
-
-msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
-msgstr ""
-"In einigen Fällen wird dieser Fehler durch eine langsame DSL-Verbindung oder "
-"durch die Verwendung von DHCP verursacht, die dazu führen, dass das Netzwerk "
-"zu langsam reagiert. Wenn Sie denken, dass das hier der Fall ist, könnt Ihr "
-"die Netzwerkverbindung mittels der oberen Schaltfläche erneut ausprobieren. "
-"Sie können auch zur vorherigen Webseite zurückgehen und die WAN-"
-"Netzwerkeinstellungen ändern."
-
-msgid "Adjust WAN settings"
-msgstr "WAN-Netzwerkeinstellungen ändern"
-
-msgid "Registration failure"
-msgstr "Registrationsfehler"
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"Weitere Aktualisierungen werden installiert. Der Router wird mehrere Male "
-"neu gestartet, bis der Prozess zu Ende ist."
-
-msgid "Do not unplug the device during update!"
-msgstr ""
-"Bitte schalten Sie das Gerät während des Updateprozesses nicht aus und "
-"trennen Sie auch nicht die Stromversorgung!"
-
-msgid "Check of available updates in progress."
-msgstr "Verfügbarkeit der Aktualisierungen wird überprüft."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr ""
-"Die Firmware-Aktualisierung war erfolgreich, Sie können mit dem nächsten "
-"Schritt fortfahren."
-
 msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
+"It is important that your router has the current time properly set. If our "
+"router had an older time set some expired SSL certificates might have seemed "
+"like valid."
 msgstr ""
-"Die Firmware-Aktualisierung scheiterte wegen eines Verbindungsproblems oder "
-"eines Installationsfehlers."
 
-msgid "Updater has returned the following error:"
-msgstr "Updater hat diese Fehlermeldung zurückgegeben:"
-
-msgid "Device has been restarted."
-msgstr "Das Gerät wurde neu gestartet."
-
-msgid "Please log in again to continue."
-msgstr "Melden Sie sich erneut an um fortzufahren."
-
-msgid "Proceed to login"
-msgstr "Weiter zum Login"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Willkommen an der Konfigurationsoberfläche des Turris-Routers"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"Bevor Sie den Router das erste Mal benutzen, ist es notwendig, ihn zu "
-"konfigurieren. Der nachfolgende einfache Assistent wird Ihnen durch den "
-"Konfigurationsprozess helfen und im Anschluss ist der Router betriebsbereit."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Wenn Sie eine frühere Sicherheitskopie der Konfiguration wiederherstellen "
-"wollen, oder wenn Sie aus irgendeinem anderen Grund den Assistenten "
-"überspringen wollen, dann beenden Sie ihn, nach dem Sie das Kennwort im "
-"ersten Schritt eingegeben haben."
-
-msgid "Begin installation"
-msgstr "Installationsanfang"
-
 msgid ""
-"You have decided to disable the Updater service during the installation."
+"Time should be up-to-date otherise DNS and other services might not work "
+"properly."
 msgstr ""
-"Sie haben sich entschlossen, den Updater-Dienst während des "
-"Installationsvorgangs zu deaktivieren."
 
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"Ohne den Updater-Dienst wird die installierte Software nicht aktualisiert. "
-"Darüber hinaus wird es auch nicht möglich sein Software aus der Liste im "
-"Updater-Abschnitt zu installieren."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-msgstr ""
-"Wenn Sie den Updater aktivieren, können Sie auch unserem Forschungsprojekt "
-"beitreten: <a href=\"https://project.turris.cz/\">Turris-Projekt</a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"Sie können Updater jederzeit auf der <a href=\"%(url)s\">Updater</a> "
-"Konfigurationsseite aktivieren."
+#, fuzzy
+msgid "How to set time"
+msgstr "Uhrzeit von Neustart"
 
-msgid ""
-"With Turris router you can join the research project called <a href="
-"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
-"your router can become a probe that analyzes the traffic between internet "
-"and the home network and identifies suspicious data flows."
+msgid "Choose method to store current time into the router."
 msgstr ""
-"Mit dem Turris-Router können Sie sich an unserem Forschungsprojekt <a href=\""
-"https://project.turris.cz/\">Turris-Projekt</a> beteiligen. In diesem "
-"Projekt wird Ihr Router zu einem Scanner, welche die Daten zwischen Ihrem "
-"Heimnetzwerk und dem Internet analysiert und so schädliche Daten "
-"identifiziert."
 
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
+msgid "via ntp"
 msgstr ""
-"Folgen Sie den Anweisungen auf der <a href=\"%(url)s\">Datenerfassung</a>-"
-"Webseite, um die Zusatzfunktionen zu aktivieren."
-
-msgid "Continue to the configuration interface"
-msgstr "Zur Konfigurationsschnittstelle gehen"
-
-msgid "Synchronize with your computer clock"
-msgstr "Mit der Uhrzeit Ihres Computers synchronisieren"
 
-msgid "Set time manually"
+#, fuzzy
+msgid "manually"
 msgstr "Uhrzeit manuell einstellen"
 
-msgid "Synchronization successful."
-msgstr "Synchronisation erfolgreich durchgeführt."
-
-msgid "Time settings"
-msgstr "Uhrzeiteinstellungen"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "Die Uhrzeit wird mit einem Zeitserver synchronisiert."
-
-msgid "Time was successfully synchronized, you can move to the next step."
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr ""
-"Die Uhrzeit wurde erfolgreich synchronisiert, Sie können jetzt zum nächsten "
-"Schritt übergehen."
 
-msgid "Project:Turris"
-msgstr "Projekt:Turris"
+#~ msgid "Sending of the testing message failed because of an internal error."
+#~ msgstr ""
+#~ "Das Absenden der Testnachricht scheiterte wegen eines internen Fehlers."
 
-msgid "Skip wizard"
-msgstr "Assistenten überspringen"
+#~ msgid ""
+#~ "Configuration was successfully restored. After installing updates and "
+#~ "rebooting you can return to this page at <a href=\"%(new_url)s\">"
+#~ "%(new_url)s</a> in local network. Please wait a while until router "
+#~ "automatically restarts."
+#~ msgstr ""
+#~ "Die Einstellungen wurden erfolgreich wiederhergestellt. Nach der "
+#~ "Installation der Aktualisierungen und einem Neustart wird der Router vom "
+#~ "lokalen Netzwerk aus an der Webseite <a href=\"%(new_url)s\">%(new_url)s</"
+#~ "a> zu erreichen sein. Warten Sie bitte bis der Router automatisch neu "
+#~ "startet."
 
-msgid "Step"
-msgstr "Schritt"
+#~ msgid "IP address of the router could not be determined from the backup."
+#~ msgstr ""
+#~ "Die IP-Adresse konnte nicht aus der Sicherheitskopie ermittelt werden."
 
-msgid "Language"
-msgstr "Sprache"
+#~ msgid ""
+#~ "Configuration could not be loaded, backup file is probably corrupted."
+#~ msgstr ""
+#~ "Einstellungen konnten nicht geladen werden, die Sicherheitskopie ist "
+#~ "wahrscheinlich beschädigt."
 
-msgid "foris version:"
-msgstr "Foris Version:"
+#~ msgid "Invalid request arguments."
+#~ msgstr "Ungültige Anfrage-Parameter."
 
-msgid ""
-"One of the most important features of router Turris are automatic system "
-"updates. Thanks to this function your router's software stays up to date and "
-"offers better protection against attacks from the Internet."
-msgstr ""
-"Eine der wichtigsten Eigenschaften des Turris-Routers sind die automatischen "
-"Systemaktualisierungen. Dank dieser Funktion wird Ihr Router stets aktuell "
-"gehalten und wird auch somit besser gegen Angriffe aus dem Internet "
-"geschützt."
+#~ msgid "Home page"
+#~ msgstr "Homepage"
 
-msgid ""
-"It is <strong>highly recommended</strong> to have this feature "
-"<strong>turned on</strong>. If you decide to disable it, be warned that this "
-"might weaken the security of your router and network in case flaws in the "
-"software are found."
-msgstr ""
-"Es ist <strong>dringend empfohlen</strong> diese Funktion "
-"<strong>eingeschaltet</strong> ist. Es mag aber Gründe geben, sich anders zu "
-"entscheiden. Seien Sie aber gewarnt, dass dies die Sicherheit Ihres Routers "
-"und Netzwerks schwächen kann, falls Sicherheitslücken in der Software "
-"gefunden werden."
+#~ msgid ""
+#~ "Router's IP address in inner network. Also defines the range of assigned "
+#~ "IP addresses."
+#~ msgstr ""
+#~ "IP-Adresse des Routers im lokalen Netzwerk. Diese Adresse bestimmt auch "
+#~ "den IP-Adressbereich, welcher vom DHCP-Server zugewiesen wird."
 
-msgid ""
-"By turning the automatic updates on, you agree to this feature's license "
-"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
-"\">here</a>."
-msgstr ""
-"Mit der Aktivierung der automatischen Aktualisierungen stimmen Sie der "
-"Lizenzvereinbarung dieser Funktion zu. Mehrere Informationen sind <a href=\"#"
-"\" id=\"toggle-eula\">hier</a> erhältlich."
+#~ msgid "Use Modem Turris"
+#~ msgstr "Turris-Modem benutzen"
 
-msgid "Most important points from the license agreement:"
-msgstr "Die wichtigsten Punkte der Lizenzvereinbarung:"
+#~ msgid ""
+#~ "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/"
+#~ "VDSL modem designed specially for router Turris. Enable this option if "
+#~ "you have Modem Turris connected to your router."
+#~ msgstr ""
+#~ "Turris-Modem (auch bekannt als SMRT - Small Modem for Router Turris) ist "
+#~ "ein einfacher ADSL/VDSL-Modem, welches eigens für den Turris-Router "
+#~ "konzipiert wurde. Wählen Sie diese Option, wenn Sie das Turris-Modem zum "
+#~ "Router angeschlossen haben."
 
-msgid ""
-"Automatic updates are offered to the Turris router owners free of charge."
-msgstr "Automatische Aktualisierungen für den Turris-Routers sind kostenlos."
+#~ msgid "xDSL VLAN number"
+#~ msgstr "xDSL-VLAN-Nummer"
 
-msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr "Aktualisierungen werden exclusiv von CZ.NIC, z. s. p. o. vorbereitet."
+#~ msgid ""
+#~ "VLAN number for your internet connection. Your ISP might have provided "
+#~ "you this number. If you have VPI and VCI numbers instead, leave this "
+#~ "field empty, a default value will be used automatically."
+#~ msgstr ""
+#~ "VLAN-Nummer Ihrer Internetverbindung. Ihr Internetanbieter hat Ihnen "
+#~ "vielleicht diese Nummer mitgeteilt. Falls Sie anstelle dieser Nummer die "
+#~ "VPI und VCI Werte erhalten haben, können Sie dieses Feld leer lassen; die "
+#~ "Standardeinstellung wird automatisch eingefügt."
 
-msgid ""
-"Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris router."
-msgstr ""
-"Die Aktivierung der automatischen Aktualisierungen ist eine Voraussetzung "
-"für weitere Sicherheitsfunktionen des Turris-Routers."
+#~ msgid "Both VPI and VCI must be filled or both must be empty."
+#~ msgstr ""
+#~ "Die VPI- und VCI-Werte müssen entweder beide ausgefüllt sein, oder beide "
+#~ "leer sein."
 
-msgid ""
-"Automatic updates take place at the time of their release, the time of "
-"installation cannot be influenced by the user."
-msgstr ""
-"Automatische Aktualisierungen werden unmittelbar nach der Bereitstellung "
-"installiert, der Zeitpunkt der Installation kann nicht durch den Benutzer "
-"beeinflusst werden."
+#~ msgid "VPI"
+#~ msgstr "VPI"
 
-msgid ""
-"Having the automatic updates turned on can result in increased Internet "
-"traffic on your router. Expenses related to this increase are covered by you."
-msgstr ""
-"Das Einschalten der automatischen Aktualisierungen kann zu erhöhter "
-"Datenübertragung von und in das Internet führen. Eventuelle verbundene "
-"Mehrkosten sind von Ihnen zu tragen."
+#~ msgid ""
+#~ "Virtual Path Identifier (VPI) is a parameter that you might have received "
+#~ "from your ISP. If you have a VLAN number instead, leave this field empty. "
+#~ "You need to fill in both VPI and VCI together."
+#~ msgstr ""
+#~ "Virtuelle Pfadkennung (Virtual Path Identifier) ist ein Wert den Sie "
+#~ "vielleicht von Ihrem Internetanbieter erhalten haben. Wenn Sie aber "
+#~ "stattdessen die VLAN-Nummer erhalten haben, dann lassen Sie dieses Feld "
+#~ "leer. Es müsst beide Werte, VPI und VCI, ausfüllen werden."
 
-msgid ""
-"Automatic updates cannot protect you against every attack coming from the "
-"Internet. Please do not forget to protect your workstations and other "
-"devices by installing antivirus software and explaining to your family "
-"members how to stay safe on the Internet."
-msgstr ""
-"Automatische Aktualisierungen können Sie nicht gegen alle aus dem Internet "
-"stammenden Angriffe schützen. Vergessen Sie bitte nicht Ihre Rechner und "
-"andere Geräte durch eine Antivirensoftware oder andere Sicherheitsmaßnahmen "
-"zu schützen. Erklären Sie Ihrer Familie, wie man sich im Internet sicher "
-"verhält."
+#~ msgid "VCI"
+#~ msgstr "VCI"
 
-msgid ""
-"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
-"is not responsible for any damages caused by the automatic updates."
-msgstr ""
-"Die Gesellschaft CZ.NIC, z. s. p. o. garantiert nicht die Verfügbarkeit "
-"dieses Dienstes und ist nicht Verantwortlich für etwaige Schäden, die durch "
-"die automatischen Aktualisierungen verursacht sein könnten."
+#~ msgid ""
+#~ "Virtual Circuit Identifier (VCI) is a parameter that you might have "
+#~ "received from your ISP. If you have a VLAN number instead, leave this "
+#~ "field empty. You need to fill in both VPI and VCI together."
+#~ msgstr ""
+#~ "Virtuelle Kanalkennung (Virtual Circuit Identifier) ist ein Wert den Ihr "
+#~ "vielleicht von Ihren Internetanbieter erhalten habt. Wenn Sie aber "
+#~ "stattdessen die VLAN-Nummer erhielten, dann lassen Sie dieses Feld leer. "
+#~ "Ihr müsst beide, VPI und VCI, Werte zusammen ausfüllen."
 
-msgid ""
-"By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris router and you agree with the full text of the <a href=\"https://"
-"www.turris.cz/omnia-updater-eula\">license agreement</a>."
-msgstr ""
-"Mit der Aktivierung der automatischen Aktualisierungen bestätigen Sie, dass "
-"Sie der Eigentümer dieses Turris-Routers sind und dass Sie der gesamten <a "
-"href=\"https://www.turris.cz/omnia-updater-eula\">Lizenzvereinbarung</a> "
-"zustimmen."
+#~ msgid ""
+#~ "The Updater is currently disabled. You must enable it first to manage "
+#~ "package lists."
+#~ msgstr ""
+#~ "Updater ist zurzeit deaktiviert. Aktivieren Sie ihn, damit Sie die Liste "
+#~ "der Softwarepakete verwalten können."
 
-msgid "Log in"
-msgstr "Anmelden"
+#~ msgid ""
+#~ "List of available software was not downloaded from the server yet. Please "
+#~ "come back later."
+#~ msgstr ""
+#~ "Die Liste der Softwarepakete konnte nicht vom Server heruntergeladen "
+#~ "werden, bitte versuchen Sie es zu einem späteren Zeitpunkt erneut."
 
-msgid "Foris Configuration Interface"
-msgstr "Foris-Konfigurationsoberfläche"
+#~ msgid ""
+#~ "Welcome to the Turris administration site. Please, choose a config "
+#~ "section you wish to change from the menu."
+#~ msgstr ""
+#~ "Willkommen auf der Turris-Konfigurationsoberfläche. Wählen Sie bitte den "
+#~ "Konfigurationsabschnitt, welchen Sie ändern wollen."
 
-msgid "Go to LuCI"
-msgstr "Zu LuCI gehen"
-
-msgid "Reboot now"
-msgstr "System jetzt neu starten"
-
-msgid "Dismiss"
-msgstr "Verwerfen"
-
-msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr ""
-"Benachrichtigungen konnten nicht abgerufen werden. Versuchen Sie bitte die "
-"Webseite neu zu laden."
-
-msgid "News"
-msgstr "Neuigkeiten"
-
-msgid "Update"
-msgstr "Aktualisierung"
-
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
-
-#, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s von %(created_at)s"
-
-msgid "Notification"
-msgstr "Benachrichtigung"
-
-msgid "You have been logged out due to longer inactivity."
-msgstr "Sie wurden nach einer längeren Phase der Inaktivität abgemeldet."
-
-msgid "The password you entered was not valid."
-msgstr "Das eingegebene Kennwort ist ungültig."
+#~ msgid "Continue to configuration interface"
+#~ msgstr "Zur Konfigurationsschnittstelle gehen"
 
 #~ msgid "Connecting"
 #~ msgstr "Verbinden"

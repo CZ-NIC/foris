@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-21 14:47+0100\n"
+"POT-Creation-Date: 2018-03-23 22:48+0100\n"
 "PO-Revision-Date: 2017-12-08 20:15+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
-"Language-Team: Hungarian "
-"<https://hosted.weblate.org/projects/turris/foris/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
+"hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,22 +19,86 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18-dev\n"
 
-msgid "Configuration was successfully saved."
-msgstr "Beállítás mentése sikerült."
+msgid "News"
+msgstr "Hírek"
+
+msgid "Update"
+msgstr "Frissítés"
+
+msgid "Error"
+msgstr "Hiba"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s a %(created_at)s-tól"
+
+msgid "Notification"
+msgstr "Értesítés"
+
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr ""
+"Nem tudja letölteni értesítéseket, kérem, próbálja meg frissíteni az oldalt."
+
+msgid "You have been logged out due to longer inactivity."
+msgstr "Kijelentkezett hosszabb inaktivitás miatt."
+
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y/%m/%d %H:%M:%S"
+
+msgid "Install"
+msgstr "Telepítés"
+
+msgid "Uninstall"
+msgstr "Eltávolítás"
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Downgrade"
+msgstr ""
+
+#, python-format
+msgid "Configuration wizard - step %s"
+msgstr "Beállításvarázsló - Lépés %s"
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"WAN port kapcsolattal nem rendelkezik, az internet-kapcsolat valószínűleg "
+"nem fog működni."
+
+msgid "Connectivity test"
+msgstr "Csatlakozás ellenőrzése"
+
+msgid "Automatic updates"
+msgstr "Automatikus frissítések"
+
+msgid "Installation finished"
+msgstr "Telepítés kész"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Beállítás belső hiba miatt nem menthető."
 
 msgid "There were some errors in your input."
 msgstr "Adatbevitelében néhány hiba található."
+
+msgid "The password you entered was not valid."
+msgstr "A megadott jelszó érvénytelen."
+
+msgid "Configuration was successfully saved."
+msgstr "Beállítás mentése sikerült."
+
+msgid "Notifications"
+msgstr "Értesítések"
+
+#, fuzzy
+msgid "Number of notifications"
+msgstr "Értesítések engedélyezése"
 
 msgid "Old password you entered was not valid."
 msgstr "A régi jelszó érvénytelen."
 
 msgid "Password was successfully saved."
 msgstr "Jelszó sikeresen elmentve."
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"WAN port kapcsolattal nem rendelkezik, az internet-kapcsolat valószínűleg "
-"nem fog működni."
 
 msgid "Maintenance"
 msgstr "Karbantartás"
@@ -45,55 +109,32 @@ msgstr "Hibás HTTP-metódus."
 msgid "Testing message was sent, please check your inbox."
 msgstr "Tesztüzenet elküldve, ellenőrizze a postaládáját."
 
-#, python-format
+#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
-"<br>Error returned:<br><pre>%(error)s</pre>"
 msgstr ""
 "Tesztüzenet elküldése nem sikerült, a beállítás valószínűleg nem megfelelő. "
 "<br>Hibaüzenet: <br><pre>%(error)s</pre>"
 
-msgid "Sending of the testing message failed because of an internal error."
-msgstr "Tesztüzenet elküldése belső hiba miatt meghiúsult."
-
-#, python-format
+#, fuzzy
 msgid ""
-"Configuration was successfully restored. After installing updates and "
-"rebooting you can return to this page at <a href=\"%(new_url)s\">"
-"%(new_url)s</a> in local network. Please wait a while until router "
-"automatically restarts."
-msgstr ""
-"Beállítás sikeresen visszaállítva. Frissítések telepítése és a router "
-"újraindítása után visszatérhet erre az oldalra: <a href=\"%(new_url)s\">"
-"%(new_url)s</a>, a helyi hálózaton. Várjon egy ideig, amíg a router "
-"automatikusan újraindul."
-
-msgid ""
-"Configuration was successfully restored. Please wait a while for "
-"installation of updates and automatic restart of the device."
+"Configuration was successfully restored. Note that a reboot will be required "
+"to apply restored configuration."
 msgstr ""
 "Beállítás sikeresen visszaállítva. Kérem, várja meg a frissítések "
 "telepítését és a készülék automatikus újraindulását."
 
-msgid "IP address of the router could not be determined from the backup."
+msgid "Failed to restore the backup from the provided file."
 msgstr ""
-"Az útválasztó IP-címét nem lehetett megállapítani a biztonsági másolatból."
-
-msgid "Configuration could not be loaded, backup file is probably corrupted."
-msgstr ""
-"Nem tölthető be a beállítás, a biztonságimásolat-fájl valószínűleg sérült."
-
-msgid "Invalid request arguments."
-msgstr "Érvénytelen lekérdezési paraméterek."
 
 msgid "Update was approved."
 msgstr "Frissítés jóváhagyva."
 
-msgid "Failed to approve the update."
-msgstr "Frissítés jóváhagyása sikertelen."
-
 msgid "Update was postponed."
 msgstr "Frissítés elhalasztva."
+
+msgid "Failed to approve the update."
+msgstr "Frissítés jóváhagyása sikertelen."
 
 msgid "Failed to postpone the update."
 msgstr "Frissítés elhalasztása nem sikerült."
@@ -104,6 +145,9 @@ msgid ""
 msgstr ""
 "Beállítás mentése sikerült. Kiválasztott csomagok rövidesen települnek vagy "
 "eltávolításra kerülnek."
+
+msgid "Updater is running"
+msgstr ""
 
 msgid "Data collection"
 msgstr "Adatgyűjtés"
@@ -154,12 +198,6 @@ msgstr "Offline"
 msgid "Unknown status"
 msgstr "Ismeretlen állapot"
 
-msgid "Home page"
-msgstr "Kezdőlap"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Beállítás belső hiba miatt nem menthető."
-
 msgid "This field is required."
 msgstr "Ez a mező kötelező."
 
@@ -187,6 +225,10 @@ msgstr "Nem szám."
 msgid "This is not valid time in HH:MM format."
 msgstr "Nem szabályos ÓÓ:PP időformátum."
 
+#, fuzzy
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr "Nem szabályos ÓÓ:PP időformátum."
+
 msgid "This is not a valid domain name."
 msgstr "Nem érvényes tartománynév."
 
@@ -201,8 +243,1184 @@ msgstr "Érvénytelen tartomány %(low)s-%(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "A karakterhossznak a %(low)s-%(high)s tartományban kell lennie."
 
+#, python-format
+msgid ""
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
+msgstr ""
+"Módosíthatja a korábbi beállításainak bármelyikét a <a href=\"%(url)s\"> "
+"szabványos beállítási felületen</a>. Amennyiben érdeklik a haladó "
+"beállítások, használhatja a LuCI felületet, amely a <a href=\"%(url2)s\"> "
+"Haladó beállítások fülön</a> elérhető."
+
+msgid "What next?"
+msgstr "Hogyan tovább?"
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr ""
+"Úgy döntött, hogy tiltsa le a Frissítéskezelő szolgáltatást a telepítés "
+"során."
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+"Amíg a frissítéskezelő által telepített szoftverek nem naprakészek, addig a "
+"frissítéskezelő csomaglistáit sem tudja telepíteni."
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://project.turris.cz/\">Project Turris</a>."
+msgstr ""
+"A frissítéskezelő bekapcsolásával ön is csatlakozhat a kutatási "
+"projektünkhöz: <a href=\"https://project.turris.cz/\">Projekt Turris</a>."
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+"A frissítéskezelőt bármikor engedélyezheti a <a href=\"%(url)s"
+"\">Frissítéskezelő</a> beállítási oldalán."
+
+msgid ""
+"With Turris router you can join the research project called <a href="
+"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
+"your router can become a probe that analyzes the traffic between internet "
+"and the home network and identifies suspicious data flows."
+msgstr ""
+"A Turris Omnia-val egy kutatási projekt csatlakozhat, az úgynevezett <a href="
+"\"https://project.turris.cz/\">Turris Projekt</a>-hez. A projektnek "
+"köszönhetően az útválasztó egy szondává válhat, amely elemzi az internet és "
+"az otthoni hálózat közötti forgalmat, és azonosítja a gyanús adatáramlást."
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+"Ezeket a kiegészítő funkciókat az alábbi utasításokat követve engedélyezheti "
+"az <a href=\"%(url)s\">Adatgyűjtés</a> oldalon."
+
+msgid "Important updates"
+msgstr "Fontos frissítések"
+
+msgid ""
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
+msgstr ""
+"Telepítésre kerültek olyan fontos frissítések, amelyek újraindítást "
+"igényelnek. Egyes készülékek esetleg nem működnek, ha nem indítja újra azt. "
+"Részleteket lásd alább."
+
+msgid "Continue to the configuration interface"
+msgstr "Tovább a beállítási felületre"
+
+msgid "Loading..."
+msgstr "Betöltés..."
+
+msgid "Checking internet connectivity."
+msgstr "Internetkapcsolat ellenőrzése."
+
+msgid "One moment, please..."
+msgstr "Egy pillanat..."
+
+msgid "Done"
+msgstr "Kész"
+
+msgid "Internet connectivity test passed without error."
+msgstr "Internetkapcsolat ellenőrzése hiba nélkül megtörtént."
+
+msgid "Next"
+msgstr "Következő"
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+"Az internetkapcsolat ugyan rendelkezik hálózati kapcsolattal, de a DNS "
+"névfeloldás nem működik. Ez valószínűleg az internet-szolgáltató oldalán "
+"lévő probléma. De az is lehet, hiogy rossz az idő a routeren - ez "
+"beállítható a következő lépésben."
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+"Úgy tűnik, hogy nincs internetkapcsolat, lehet, hogy a WAN-beállítás nem "
+"megfelelő."
+
+msgid "Try again"
+msgstr "Újra"
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+"Bizonyos esetekben például lassabb DSL-kapcsolat, vagy a DHCP használatakor "
+"a hiba oka valószínűleg a lassan induló hálózat. Ha ez a helyzet, újra "
+"ellenőrizheti a kapcsolatát, a fenti gomb segítségével. Az előző oldalra "
+"visszatérve a problémát a WAN-beállítások módosításával is meg lehet "
+"próbálni."
+
+msgid "Adjust WAN settings"
+msgstr "WAN beállítása"
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Üdvözöljük a Turris útválasztó beállításában"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Mielőtt első alkalommal elkezdené használni az útválasztót, azt be kell "
+"állítani. A következő egyszerű varázsló végigvezeti a beállítási folyamaton. "
+"Miután befejeződött, az útválasztó üzemkész állapotban lesz."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Ha szeretné visszaállítani a korábban elmentett beállításokat, vagy más "
+"okból, de kihagyja ezt a varázslót, akkor ezt első lépésként megteheti a "
+"jelszó kiválasztása után."
+
+msgid "Begin installation"
+msgstr "A telepítés megkezdése"
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "Nem sikerült felismerni a routerben semmilyen vezeték-nélküli kártyát."
+
+msgid "Registration failure"
+msgstr "Regisztrációs hiba"
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+"Sajnos, nem sikerült a regisztrációs kódot létrehozni. Ez általában azt "
+"jelenti, hogy az útválasztó nem csatlakozik az internethez. Kérjük, próbálja "
+"meg a regisztrációt később. Ha a probléma továbbra is fennáll, lépjen "
+"kapcsolatba az ügyfélszolgálattal."
+
+msgid "Project:Turris"
+msgstr "Projekt:Turris"
+
+msgid "Skip wizard"
+msgstr "Varázsló kihagyása"
+
+msgid "Step"
+msgstr "Lépés"
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+"További frissítések települnek. Az útválasztó többször is újraindul mire a "
+"folyamat befejeződik."
+
+msgid "Do not unplug the device during update!"
+msgstr "Ne húzzon ki kábelt a készülékből a frissítés során!"
+
+msgid "Check of available updates in progress."
+msgstr "Rendelkezésre álló frissítések ellenőrzése folyamatban."
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr "Firmware frissítés sikeres volt, jöhet a következő lépés."
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"A firmware frissítés nem sikerült kapcsolati vagy telepítési hiba miatt. "
+"Ellenőrizni a kábel csatlakozást, a következő lépés előtt. De nem kell túl "
+"sokat aggódni a frissítés miatt, mivel az útválasztó rendszeresen futtatni "
+"fogja a frissítéskezelőt."
+
+msgid "Updater has returned the following error:"
+msgstr "Frissítéskezelő a következő hibával tért vissza:"
+
+msgid "Device has been restarted."
+msgstr "A készülék újraindult."
+
+msgid "Please log in again to continue."
+msgstr "Újra be kell jelentkezni a folytatáshoz."
+
+msgid "Proceed to login"
+msgstr "Tovább a bejelentkezéshez"
+
+msgid "Synchronize with your computer clock"
+msgstr "Szinkronizálás a számítógépe órájával"
+
+msgid "Set time manually"
+msgstr "Idő beállítása kézzel"
+
+msgid "Synchronization successful."
+msgstr "A szinkronizálás sikeres."
+
+msgid "Time settings"
+msgstr "Idő beállítások"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr "Útválasztó idő szinkronizálása egy internetes időkiszolgálóval."
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Idő sikeresen szinkronizálva, jöhet a következő lépés."
+
+msgid "Device registration"
+msgstr "Készülék-regisztráció"
+
+#, python-format
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Eszköz telepítése sikeres volt. Utolsó lépésként a készülék regisztrációja "
+"szükséges,  a Turris weboldalán <a href=\"%(url)s\">%(url)s</a> lévő "
+"felhasználói profilban."
+
+msgid ""
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
+msgstr ""
+"<strong>Figyelmeztetés:</strong> ez a kód csak korlátozott ideig érvényes. "
+"Abban az esetben ha elutasítják ezt a kódot, frissítse az oldalt egy újért."
+
+msgid "Reboot now"
+msgstr "Újraindítás most"
+
+msgid "Dismiss"
+msgstr "Elvetés"
+
+#, fuzzy
+msgid "Dismiss All"
+msgstr "Elvetés"
+
+msgid "No new messages."
+msgstr "Nincs új üzenet."
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Az adatgyűjtés jelenleg engedélyezett. Nem lehet letiltani a "
+"frissítéskezelőt úgy, hogy először az adatgyűjtés ne legyen letiltva."
+
+msgid "Update approvals"
+msgstr "Frissítések jóváhagyása"
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can refuse the questionable update "
+"temporarily and install it when you are ready. It isn't possible to decline "
+"the update forever and it will be offered to you again together with the "
+"next package installation."
+msgstr ""
+"Jóváhagyás akkor lehet hasznos, ha szeretne megbizonyosodni arról, hogy a "
+"frissítések nem fognak ártani a konkrét beállításainak. A kérdéses frissítés "
+"ideiglenesen megtagadható, és ha készen áll, telepíthető. Nem lehet örökre "
+"visszautasítani a frissítést, és a következő csomag telepítésénél újra fel "
+"fogja ajánlani."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can e.g. install updates when you're "
+"prepared for a possible rollback to a previous snapshot and deny the "
+"questionable update temporarily. It isn't possible to decline the update "
+"forever and it will be offered to you again together with the next package "
+"installation."
+msgstr ""
+"Jóváhagyás akkor lehet hasznos, ha szeretne megbizonyosodni arról, hogy a "
+"frissítések nem fognak ártani a konkrét beállításainak. Például akkor "
+"telepíthet frissítést, amikor készen áll esetlegen egy előző pillanatkép "
+"visszaállítására és megtagadja a kérdéses frissítést. Nem lehet örökre "
+"visszautasítani a frissítést, és a következő csomag telepítésénél újra fel "
+"fogja ajánlani."
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr "%(input)s óra után"
+
+msgid "Hint"
+msgstr "Tipp"
+
+msgid "Save"
+msgstr "Mentés"
+
+msgid "Notifications and automatic restarts"
+msgstr "Értesítések és automatikus újraindítások"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these "
+"emails. Alternatively, if you choose to use a custom server, you must enter "
+"some additional settings. These settings are the same as you enter in your "
+"email client and you can get them from the provider of your email inbox. In "
+"that case, because of security reasons, it is recommended to create a "
+"dedicated account for your router."
+msgstr ""
+"Beállíthatja, hogy a router, hogy értesítse Önt, amikor egy adott esemény "
+"bekövetkezik, például amikor egy újraindítás szükséges, nincs hely a "
+"készüléken, vagy egy alkalmazás frissítése került telepítésre. Turris "
+"szerver segítségével e-maileket küldhet. Azt is megteheti, hogy egyéni "
+"szervert használ, ekkor meg kell adnia néhány további beállítást. Ezek a "
+"beállítások ugyanazok, mint amit az email kliensben is használatos,  ekkor "
+"az e-mail postafiókja szolgáltatójától lehet kapni őket . Ebben az esetben "
+"biztonsági okokból ajánlott létrehozni egy külön fiókot az útválasztóhoz."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"Ha automatikus újraindítás szükséges, megadható az idő, hogy az mikor "
+"történjen. Ha az e-mail értesítés engedélyezve van, akkor megadhatja az "
+"intervallumot az értesítési és automatikus újraindítás között."
+
+msgid "Send testing message"
+msgstr "Tesztüzenet küldése"
+
+msgid "Configuration backup"
+msgstr "Beállítások biztonsági mentése"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface "
+"and for the advanced configuration are not included in the backup."
+msgstr ""
+"Ha a készülék jelenlegi beállításának mentésére van szükség, letöltheti a "
+"biztonsági másolatot. A beállítás egy titkosítatlan, tömörített archív file "
+"(.tar.bz2). A beállítási felület és a haladó beállítások jelszava nem  kerül "
+"a mentésbe."
+
+msgid "Download configuration backup"
+msgstr "Beállítások mentésének  letöltése"
+
+msgid "Configuration restore"
+msgstr "Beállítások visszaállítása"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+"Beállítások mentett fájlból való visszaállításához töltse az fel az alábbiak "
+"segítségével. Ne feledjük, hogy ennek az eszköznek az IP-címe megváltozhat a "
+"folyamat közben, elérhetetlenné téve ezt a felületet."
+
+msgid "Restore from backup"
+msgstr "Visszaállítás mentésből"
+
+msgid "Device reboot"
+msgstr "Készülék újraindítása"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"after the reboot."
+msgstr ""
+"Kattintson a következő gombra a készülék újraindításához. Az újraindítás "
+"folyamat körülbelül 30 másodperc, szükség, amely után újra be kell "
+"jelentkeznie."
+
+msgid "Reboot"
+msgstr "Újraindítás"
+
+msgid "Discard changes"
+msgstr "Módosítások elvetése"
+
+msgid "Save changes"
+msgstr "Beállítások mentése"
+
+msgid "Connection test"
+msgstr "Kapcsolat ellenőrzése"
+
+msgid ""
+"Here you can test you connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes it "
+"takes a while before the connection is fully initialized. So it might be "
+"useful to wait for a while before running this test."
+msgstr ""
+
+msgid "Unable to verify network connection."
+msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
+
+msgid "Test type"
+msgstr "Vizsgálat típusa"
+
+msgid "Status"
+msgstr "Állapot"
+
+msgid "IPv4 connectivity"
+msgstr "IPv4-kapcsolat"
+
+msgid "IPv4 gateway connectivity"
+msgstr "IPv4-átjáró kapcsolat"
+
+msgid "IPv6 connectivity"
+msgstr "IPv6-kapcsolat"
+
+msgid "IPv6 gateway connectivity"
+msgstr "IPv6-átjáró kapcsolat"
+
+msgid "Test connection"
+msgstr "Kapcsolat ellenőrzése"
+
+msgid ""
+"With the Turris router you can join Project Turris which is a non-profit "
+"research project founded by the CZ.NIC association, a .CZ domain registry. "
+"By joining the project, your router will act as a probe which analyzes "
+"traffic between your home network and the Internet and helps to identify "
+"malicious data flows. Once such a flow is detected your router notifies the "
+"Turris headquarters which can compare the flow with data from the rest of "
+"the probes and assign it a threat level. If the flow is identified as an "
+"attack Turris headquarters can prepare an update which is distributed to "
+"every Turris router and helps them to protect themselves against the attack."
+msgstr ""
+"A Turris Omnia routerrel csatlakozni  lehet a Projekt Turrishoz, amely egy "
+"non-profit kutatási projekt, melyet a CZ.NIC egyesület, a .CZ tartománynév "
+"nyilvántartója alapított. Azzal, hogy csatlakozott a projekthez, a router "
+"egy szondaként fog működni, amely elemzi az otthoni hálózat, az Internet "
+"közötti forgalmat illetve segít a rosszindulatú adatáramlás azonosításában. "
+"Mihelyst egy ilyen folyamatot észlelt, az útválasztó értesíti a Turris "
+"központját, amely össze tudja hasonlítani az adatfolyamot a többi szondák "
+"adataival és hozzárendel egy fenyegetettségi szintet. Ha az adatáramlást "
+"támadásként azonosították, a Turris központja készíthet egy frissítést, "
+"amelyet terítenek minden Turris útválasztóhoz, illetve segíti őket abban, "
+"hogy megvédjék magukat a támadással szemben."
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr ""
+"A Frissítéskezelő jelenleg le van tiltva. Ezt engedélyeznie kell először, "
+"hogy elérhető legyen az adatgyűjtés."
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+"Ha szeretne csatlakozzni a Turris projekthez, először regisztrálnia kell a "
+"Turris honlapján. Adja meg az e-mail címet, amit használni szeretne a "
+"regisztráláshoz, vagy amit már erre célra használt azelőtt:"
+
+msgid "Validate email"
+msgstr "E-mail ellenőrzése"
+
+msgid "Device"
+msgstr "Készülék"
+
+msgid "Serial number"
+msgstr "Sorozatszám"
+
+msgid "Turris OS version"
+msgstr "Turris OS verzió"
+
+msgid "Kernel version"
+msgstr "Kernel verzió"
+
+msgid "Sending of uCollect data"
+msgstr "A uCollect adatok küldése"
+
+#, python-format
+msgid "Time of last update: %(datetime)s"
+msgstr "Utolsó frissítés időpontja: %(datetime)s"
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] "(állapot frissítve %d másodperccel ezelőtt)"
+msgstr[1] "(állapot frissítve %d másodperccel ezelőtt)"
+
+msgid "Sending of firewall logs"
+msgstr "Tűzfal naplók küldése"
+
+msgid "Refresh"
+msgstr "Frissítés"
+
+#, python-format
+msgid ""
+"If you have not registered your device yet, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Ha még nem regisztrálta a készüléket, kattintson az alábbi gombra, hogy "
+"szerezzen egy regisztrációs kódot. Ezt a kódot kell benyújtani, a Turris "
+"oldalán lévő felhasználói profilban, amely itt elérhető: <a href=\"%(url)s\">"
+"%(url)s</a>."
+
+msgid "Registration code"
+msgstr "Regisztrációs kód"
+
+msgid "Get registration code"
+msgstr "Regisztrációs kód beszerzése"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - a Turris router adminisztrációs felülete"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Network is restarting..."
+msgstr ""
+
+msgid "Your network is being restarted. Wait, please..."
+msgstr ""
+
+#, fuzzy
+msgid "Rebooting..."
+msgstr "Újraindítás"
+
+msgid "Your router is being rebooted."
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr ""
+
+msgid "Log out"
+msgstr "Kijelentkezés"
+
+msgid ""
+"Following notifications occured and haven't been dismissed since last reboot."
+msgstr ""
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr "Frissítés jóváhagyása %(when)s-tól"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr "Figyelem, frissítés után újraindul."
+
+msgid "Install now"
+msgstr "Telepítés most"
+
+msgid "Deny"
+msgstr "Megtagad"
+
+msgid "No package will be installed unless you install the updates above."
+msgstr "Nem lesz csomag telepítve van, amíg fenti frissítések hiányoznak."
+
+#, python-format
+msgid ""
+"If you don't install the updates manually, they will be installed "
+"automatically after %(time)s."
+msgstr ""
+"Ha manuálisan nem telepíti a frissítéseket, azok automatikusan települnek "
+"%(time)s után."
+
+msgid "Package lists"
+msgstr "Csomaglisták"
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
+msgstr ""
+"A Turris útválasztó saját DNS-feloldót használ DNSSEC támogatással.  Képes "
+"egyedül is dolgozni, vagy a DNS-lekérdezéseket továbbítani az internet-"
+"szolgáltató DNS-névfeloldóján keresztül."
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
+msgstr ""
+"A következő beállítás határozza meg a a DNS-névfeloldás viselkedését. "
+"Általában jobb az internet.szolgáltató névfeloldását használni olyan "
+"hálózatokban, ahol az megfelelően működik. Ha ez nem működik valamiért, "
+"akkor a továbbítás nélküli közvetlen névfeloldás szükséges."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
+msgstr ""
+"Ritka esetekben az internet-szolgáltatónak helytelenül konfigurált hálózata "
+"lehet, amely zavarja a DNSSEC-érvényesítést. Ha problémája van a DNS-sel, "
+"<strong>ideiglenesen</strong> tiltsa le a DNSSEC-érvényesítést, hogy meg "
+"tudja határozni a probléma forrását. Azonban ne feledjük, hogy DNSSEC-"
+"érvényesítés nélkül, DNS-hamisító támadásoknak vagyunk kitéve! Ezért mi "
+"<strong>javasoljuk, hogy a DNSSEC legyen bekapcsolva</strong> és a helyzet "
+"megoldását az internet-szolgáltatóval mivel ez egy komoly hibája az ő "
+"oldalukon."
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Itt tesztelhető az internetkapcsolat. Ez a teszt akkor is hasznos, ha "
+"ellenőriznie kell, hogy a DNS  névfeloldás a várt módon működik. Ne feledje, "
+"hogy kattintson a <strong>Mentés</strong> gombra, ha megváltozott a "
+"továbbítás beállítása."
+
 msgid "DNS"
 msgstr "DNS"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+#, fuzzy
+msgid "Failed to query ntp servers."
+msgstr "Kiszolgáló lekérdezése sikertelen."
+
+#, fuzzy
+msgid "Update time"
+msgstr "Frissítés"
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+"Ha ezt a kártyát a 2,4 GHz-es sávban szeretné használni, a diplexerre "
+"csatlakoztatott kábelek korrekciójára van szükség! A gyári alapértelmezett "
+"beállítás: a nagy kártya kábelei az 5 GHz-es,  a  kis kártya kábelei a 2,4 "
+"GHz-es diplexer részre csatlakoznak."
+
+msgid "QR code"
+msgstr ""
+
+msgid "Password"
+msgstr "Jelszó"
+
+msgid "Log in"
+msgstr "Bejelentkezés"
+
+msgid "Foris Configuration Interface"
+msgstr "Foris beállítási felület"
+
+msgid "Go to LuCI"
+msgstr "Ugrás a LuCI-ra"
+
+msgid "Opened lock"
+msgstr ""
+
+msgid "Your connection is not encrypted"
+msgstr ""
+
+msgid ""
+"A secure connection is an important safety feature of the router and "
+"therefore the entire home network."
+msgstr ""
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr ""
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Ez az oldal JavaScriptet igényel a megfelelő működéshez. Kérjük, "
+"engedélyezze azt, és frissítse a lapot."
+
+msgid "foris version:"
+msgstr "Foris verzió:"
+
+msgid ""
+"One of the most important features of router Turris are automatic system "
+"updates. Thanks to this function your router's software stays up to date and "
+"offers better protection against attacks from the Internet."
+msgstr ""
+"Az egyik legfontosabb jellemzője a Turris Omnia útválasztónak az automatikus "
+"rendszer frissítés. Ennek a funkciónak köszönhetően az útválasztó szoftvere "
+"naprakész marad és nagyobb védelmet kínál az interneten érkező támadásokkal "
+"szemben."
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that this "
+"might weaken the security of your router and network in case flaws in the "
+"software are found."
+msgstr ""
+"<strong>Erősen ajánlott</strong>, hogy ez a funkció <strong>bekapcsolva</"
+"strong> legyen. Ha úgy dönt, hogy kikapcsolja, tudjon róla, hogy ez "
+"gyengítheti az útválasztó és  hálózat biztonságát szoftverhiba kiderülése "
+"esetén."
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
+"\">here</a>."
+msgstr ""
+"Az automatikus frissítést bekapcsolásával, Ön elfogadja a funkció "
+"licencszerződését. Bővebb információ <a href=\"#\" id=\"toggle-eula\"> itt</"
+"a>."
+
+msgid "Most important points from the license agreement:"
+msgstr "A licencszerződés legfontosabb pontjai:"
+
+msgid ""
+"Automatic updates are offered to the Turris router owners free of charge."
+msgstr "Az automatikus frissítés a Turris Omnia tulajdonosoknak ingyenes."
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr "A frissítéseket kizárólag a CZ.NIC, z. ok. p. o. készíti."
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional security "
+"features of Turris router."
+msgstr ""
+"Az automatikus frissítések engedélyezése előfeltétele a Turris Omnia további "
+"biztonsági funkcióinak."
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+"Automatikus frissítések a kiadás időpontjában zajlanak, a telepítés ideje  a "
+"felhasználó által nem befolyásolható."
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by you."
+msgstr ""
+"Az automatikus frissítés bekapcsolása következtében megnövekedhet az "
+"útválasztó internetes adatforgalma. A költségeket Ön állja."
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the "
+"Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+"Automatikus frissítések nem védenek minden az internet felől érkező támadás "
+"ellen. Ne felejtse el védeni a munkaállomásokat és más eszközöket "
+"víruskereső szoftver telepítésével, és magyarázza el családtagjainak, hogyan "
+"maradhat biztonságban az interneten."
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
+"is not responsible for any damages caused by the automatic updates."
+msgstr ""
+"CZ.NIC, z. ok. p. o. nem garantálja a szolgáltatás elérhetőségét, nem "
+"felelős semmilyen kárért, amelyet az automatikus frissítés okozhat."
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner of "
+"this Turris router and you agree with the full text of the <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+"Az automatikus frissítések engedélyezésével megerősíti, hogy Ön a "
+"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\"https://"
+"www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes szövegével."
+
+msgid "This value seems to be invalid."
+msgstr "Ez az érték érvénytelennek tűnik."
+
+msgid "This value should be a valid email."
+msgstr "Értéke egy érvényes e-mail cím legyen."
+
+msgid "This value should be a valid url."
+msgstr "Értéke érvényes URL legyen."
+
+msgid "This value should be a valid number."
+msgstr "Értéke egy érvényes szám legyen."
+
+msgid "This value should be a valid integer."
+msgstr "Értéke egy érvényes egész szám legyen."
+
+msgid "This value should be digits."
+msgstr "Értéke számjegy legyen."
+
+msgid "This value should be alphanumeric."
+msgstr "Alfanumerikus érték legyen."
+
+msgid "This value should not be blank."
+msgstr "Értéke nem lehet üres."
+
+msgid "This value is required."
+msgstr "Kötelező érték."
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr "Értéke legyen nagyobb vagy egyenlő, mint %s."
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr "Értéke legyen alacsonyabb vagy egyenlő, mint %s."
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr "Értéke %s és %s között legyen."
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr "Értéke túl rövid. Legalább %s karakter legyen."
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr "Értéke túl hosszú. Maximum %s karakter legyen."
+
+#, python-format
+msgid ""
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr "Érvénytelen értékhossz. A karakter legyen %s és %s közötti hosszúságú."
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr "Legalább %s lehetőséget meg kell jelölni."
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr "Legfeljebb %s lehetőséget kell megjelölni."
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr "%s és %s közötti választási lehetőséget kell megjelölni."
+
+msgid "This value should be the same."
+msgstr "Értékének egyezni kell."
+
+msgid "This is not a valid IPv4 address."
+msgstr "Nem érvényes IPv4-cím."
+
+msgid "This is not a valid IPv4 netmask."
+msgstr "Érvénytelen IPv4 hálózati maszkcím."
+
+msgid "This is not a valid IPv4 prefix."
+msgstr "Érvénytelen IPv4-előtag."
+
+msgid "This is not a valid IPv6 prefix."
+msgstr "Érvénytelen IPv6-előtag."
+
+msgid "This is not a valid MAC address."
+msgstr "Érvénytelen MAC-cím."
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"A jelszó nem szabványos karaktereket tartalmaz. Ez nem tilos, de problémákat "
+"okozhat egyes készülékeknél."
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Az SSID nem szabványos karaktereket tartalmaz. Ezek nem tilos, de "
+"problémákat okozhat egyes készülékeknél."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+"Kapcsolat ellenőrzése sikertelen, kapcsolat ellenőrzése letiltott "
+"továbbítással."
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
+msgstr ""
+"Az útválasztó IP-címe megváltozott. Elérhető innen: % NEW_IP_LINK %. Az IP-"
+"cím változásáról további információkhoz lásd a fenti megjegyzést."
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
+msgstr ""
+"Úgy döntött, hogy nem kap biztonsági frissítéseket. Nyomatékosan azt "
+"tanácsoljuk, hogy az automatikus biztonsági frissítés be legyen kapcsolva,  "
+"ez teszi lehetővé, hogy a készélékéhez megkapja az összes javasolt "
+"frissítést. A útválasztó rendszeres frissítése az egyetlen módja annak, hogy "
+"ismert, az otthoni útválasztó eszközt célzó fenyegetések ellen védettek "
+"legyünk. \\n\\nMégis szeretné folytatni és védelem nélkül maradni?"
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
+msgstr ""
+"A DNSSEC egy biztonsági technológia, mely védi a DNS-kommunikációt a DNS-"
+"infrastruktúra elleni támadások ellen. Erősen javasoljuk, hogy tartsa a "
+"DNSSEC érvényesítést bekapcsolva, hacsak nem olyan hálózathoz kell "
+"csatlakoztatni az eszközt,  ahol a DNSSEC nem működik megfelelően.\\n"
+"\\nMégis szeretné folytatni és védelem nélkül maradni?"
+
+msgid "Are you sure you want to restart the router?"
+msgstr "Biztosan újra szeretné indítani az útválasztót?"
+
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr "\\n(%UNREAD%) olvasatlan üzenet törlődik."
+
+msgid ""
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
+msgstr ""
+"Van néhány nem mentett változás az értesítések beállításai között."
+"\\nEldobjuk őket és az értesítéseket a régi beállításokkal teszteljük?"
+
+msgid "Turris router administration interface"
+msgstr "Turris útválasztó adminisztrációs felület"
+
+msgid "Language"
+msgstr "Nyelv"
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+"WPA2 pre-shared key, ami ahhoz szükséges, hogy csatlakozni lehessen a "
+"hálózathoz. Minimális hossza 8 karakter."
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr "Wi-Fi %s engedélyezése"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "SSID elrejtése"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+"Ha be van állítva, a hálózat nem lesz látható az elérhető hálózatok "
+"keresésekor."
+
+msgid "Wi-Fi mode"
+msgstr "Wi-Fi mód"
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have more "
+"interference. The 5 GHz band is a newer standard and may not be supported by "
+"all your devices. It usually has less interference, but the signal does not "
+"carry so well indoors."
+msgstr ""
+"A 2,4 GHz-es sáv  az ügyfelek szélesebb körében támogatott, de általában "
+"tübb a zavaró hatás. Az 5 GHz-es sáv egy újabb szabvány, és lehet, hogy nem "
+"minden készülék támogatja. Itt általában kevesebb a zavaró hatás, de a jel "
+"nem terjed annyira jól házon belül."
+
+msgid "Disabled"
+msgstr "Letiltva"
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz széles csatorna"
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz széles csatorna"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz széles csatorna"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz széles csatorna"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz széles csatorna"
+
+msgid "802.11n/ac mode"
+msgstr "802.11 n/ac mód"
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
+"channels can yield higher throughput but can cause more interference in the "
+"network. If you don't know what to choose, use the default option with 20 "
+"MHz wide channel."
+msgstr ""
+"A 802.11 n/ac üzemmód beállítása. 802.11n 40 MHz széles csatornán nagyobb "
+"teljesítményre képes, de több zavart okozhat a hálózaton. Bizonytalanság "
+"esetén használjuk az alapértelmezett beállítást 20 MHz széles csatornával."
+
+msgid "auto"
+msgstr "automatikus"
+
+msgid "Network channel"
+msgstr "Hálózati csatorna"
+
+msgid "Network password"
+msgstr "Hálózati jelszó"
+
+msgid "Guest Wi-Fi"
+msgstr "Vendég Wi-Fi"
+
+msgid "Set guest Wi-Fi here."
+msgstr "Vendég Wi-Fi beállítása itt."
+
+msgid "Enable guest Wi-Fi"
+msgstr "Vendég Wi-Fi engedélyezése"
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
+"LAN tab</a>. "
+msgstr ""
+"Bekapcsolja a vendég Wi-Fi-t, amely elkülönül a LAN hálózattól. Ehhez a "
+"hálózathoz csatlakoztatott eszközök elérik az internetet, de más eszközöknek "
+"és az útvonalválasztó beállítási felületének elérése nem engedélyezett. A "
+"vendég hálózati paraméterek beállíthatók <a href='%(url)s'> a LAN</a> fülön. "
+
+msgid "SSID for guests"
+msgstr "SSID vendégek számára"
+
+msgid "Password for guests"
+msgstr "Jelszó vendégek számára"
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available next to the form."
+msgstr ""
+"Ha a router, mint Wi-Fi hozzáférési pont szeretné használni, a Wi-Fi-t itt "
+"kell bekapcsolni és az SSID-jét (a hozzáférési pont nevét), illetve "
+"megfelelő jelszót kitölteni. Ezután mobil eszközei is beállíthatók a mezők "
+"melletti QR kód segítségével."
+
+msgid "Wi-Fi settings"
+msgstr "Wi-Fi beállítások"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
+"change the router IP address, all computers in LAN, probably including the "
+"one you are using now, will need to obtain a <strong>new IP address</strong> "
+"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
+"recommended to disconnect and reconnect all LAN cables after submitting your "
+"changes to force the update. The next page will not load until you obtain a "
+"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
+"page</strong> in your browser."
+msgstr ""
+"Ez a rész tartalmazza a helyi hálózat (LAN) beállításait. A felkínált "
+"alapértelmezések alkalmasak a legtöbb hálózat esetében. "
+"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó IP-címét, "
+"minden számítógépnek a LAN-on, talán köztük annak is amelyiket most használ, "
+"szüksége lesz egy <strong>új IP-címre</strong>, amely <strong>nem</strong> "
+"<strong>azonnal</strong> történik meg. Ajánlott az összes LAN kábel ki- és "
+"bedugása a módosítások elfogadása után, hogy a frissítést érvényre "
+"juttassuk. A következő oldal nem töltődik be, amíg nem kap egy új IP-t a "
+"DHCP-től (ha a DHCP engedélyezve van), és szükség lehet <strong>az oldalt</"
+"strong> frissíteni a böngészőjében."
+
+msgid "Router IP address"
+msgstr "Útválasztó IP-címe"
+
+msgid "Router's IP address in the inner network."
+msgstr ""
+
+#, fuzzy
+msgid "Network netmask"
+msgstr "Hálózati maszk"
+
+msgid "Network mask of the inner network."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr "DHCP engedélyezése"
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+"Engedélyezze ezt a beállítást, hogy az útválasztó a csatlakoztatott "
+"eszközökhöz automatikusan rendeljen hozzá IP-címet."
+
+msgid "DHCP start"
+msgstr "DHCP címtartomány eleje"
+
+msgid "DHCP max leases"
+msgstr "DHCP kiosztás maximális száma"
+
+msgid "Guest network"
+msgstr "Vendég hálózat"
+
+msgid "Enable guest network"
+msgstr "Vendég hálózat engedélyezése"
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN network. Devices connected to this network "
+"are allowed to access the internet, but are not allowed to access other "
+"devices and the configuration interface of the router."
+msgstr ""
+"A Vendég hálózat a <a href='%(url)s'>vendég Wi-Fi</a>-hez használható. Ez el "
+"van választva a hagyományos LAN-hálózattól. Az ide csatlakoztatott "
+"készülékek elérik az internetet, de nem engedélyezett a hozzáférés más "
+"eszközökhöz és a router beállítási felületéhez."
+
+#, fuzzy
+msgid "Router IP in guest network"
+msgstr "Vendég hálózat engedélyezése"
+
+#, fuzzy
+msgid ""
+"Router's IP address in the guest network. It is necessary that the guest "
+"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
+msgstr ""
+"A vendég hálózat IP tartományát be kell állítani. A tartománynak különböznie "
+"kell a többi hálózat (LAN, WAN, VPN, stb.) tartományától."
+
+#, fuzzy
+msgid "Guest network netmask"
+msgstr "Vendég hálózat"
+
+msgid "Network mask of the guest network."
+msgstr ""
+
+msgid "Guest Lan QoS"
+msgstr "Vendég hálózat QoS"
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, so "
+"that your main network doesn't get slowed-down by it."
+msgstr ""
+"Ez az opció lehetővé teszi, hogy a vendég hálózat sávszélessége korlátozva "
+"legyen, így a fő hálózatot nem tudja lassítani."
+
+msgid "Download (kb/s)"
+msgstr "Letöltés (kb/s)"
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr "Letöltési sebesség a vendég hálózaton (kilobit per másodperc)."
+
+msgid "Upload (kb/s)"
+msgstr "Feltöltés (kb/s)"
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr "Feltöltési sebesség a vendég hálózaton (kilobit per másodperc)."
 
 msgid "Use forwarding"
 msgstr "Továbbítás használata"
@@ -228,11 +1446,177 @@ msgid ""
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Tartománynév mint TLD (legfelső szintű tartománynév)  lesz használva, pl. az "
-"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: \""
-"android-123.lan\"."
+"\"android-123\" ügyfélnél és a \"lan\" tartománynévnél az eredménye: "
+"\"android-123.lan\"."
 
-msgid "Notifications"
-msgstr "Értesítések"
+msgid "WAN"
+msgstr "WAN"
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this options "
+"untouched unless instructed otherwise by your internet service provider. "
+"Also, in case there is a cable or DSL modem connecting your router to the "
+"network, it is usually not necessary to change this setting."
+msgstr ""
+"Itt adhatja meg a WAN port beállításait. Általában érintetlenül hagyhatja "
+"ezt a lehetőséget, hacsak az internet-szolgáltató nem utasít másra. Ha "
+"kábel- vagy DSL-modem csatlakoztatja routert a hálózathoz, általában akkor "
+"sem kell változtatni ezen a beállításon."
+
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (automatikus beállítás)"
+
+msgid "Static IP address (manual configuration)"
+msgstr "Statikus IP-cím (manuális beállítás)"
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (DSL hidakhoz, Turris Modemhez, stb.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (automatikus beállítás)"
+
+msgid "Disable IPv6"
+msgstr "IPv6 letiltása"
+
+msgid "IPv4 protocol"
+msgstr "IPv4 protokoll"
+
+msgid "IP address"
+msgstr "IP-cím"
+
+msgid "Network mask"
+msgstr "Hálózati maszk"
+
+msgid "Gateway"
+msgstr "Átjáró"
+
+#, fuzzy
+msgid "DHCP Client ID"
+msgstr "DHCP ügyfelek engedélyezése a DNS-ben"
+
+msgid "Client identifier which will be provided to DHCP server."
+msgstr ""
+
+#, fuzzy
+msgid "DNS server 1 (IPv4)"
+msgstr "DNS-kiszolgáló 1"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is capable "
+"of working without it."
+msgstr ""
+"A DNS-kiszolgáló címe nem szükséges, mivel a beépített DNS névfeloldó képes "
+"dolgozni anélkül."
+
+#, fuzzy
+msgid "DNS server 2 (IPv4)"
+msgstr "DNS-kiszolgáló 2"
+
+msgid "PAP/CHAP username"
+msgstr "PAP/CHAP felhasználónév"
+
+msgid "PAP/CHAP password"
+msgstr "PAP/CHAP jelszó"
+
+msgid "IPv6 protocol"
+msgstr "IPv6 protokoll"
+
+msgid "IPv6 address"
+msgstr "IPv6-cím"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
+"be13:37da::1/64"
+msgstr ""
+"IPv6-cím és előtag méret a WAN-interfészhez, pl. 2001:db8:be13:37da::1 / 64"
+
+msgid "IPv6 gateway"
+msgstr "IPv6-átjáró"
+
+msgid "IPv6 prefix"
+msgstr "IPv6-előtag"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Címtartomány a helyi hálózaton, például a 2001:db8:be13:37da::/64"
+
+#, fuzzy
+msgid "DNS server 1 (IPv6)"
+msgstr "DNS-kiszolgáló 1"
+
+#, fuzzy
+msgid "DNS server 2 (IPv6)"
+msgstr "DNS-kiszolgáló 2"
+
+msgid "Custom MAC address"
+msgstr "Egyedi MAC-cím"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet "
+"service provider."
+msgstr ""
+"Hasznos olyan esetekben, amikor egy adott MAC-címet vár el az internet-"
+"szolgáltató."
+
+msgid "MAC address"
+msgstr "MAC-cím"
+
+msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgstr "Elválasztó egy kettőspont, például 00:11:22:33:44:55"
+
+msgid "Updater"
+msgstr "Frissítéskezelő"
+
+msgid "I agree"
+msgstr "Elfogadom"
+
+msgid "Use automatic updates (recommended)"
+msgstr "Automatikus frissítések (ajánlott)"
+
+msgid "Turn automatic updates off"
+msgstr "Automatikus frissítések kikapcsolása"
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart from "
+"the standard installation, you can optionally select lists of additional "
+"software that'd be installed on the router. This software can be selected "
+"from the following list. Please note that only software that is part of "
+"TurrisOS or that has been installed from a package list is maintained by "
+"Updater. Software that has been installed manually or using opkg is not "
+"affected."
+msgstr ""
+"A Frissítéskezelő egy szolgáltatás, ami a TurrisOS szoftvert naprakészen "
+"tartja. Eltekintve a kezdeti telepítéstől, további tetszés szerinti "
+"szoftverlisták választhatók az útválasztóra történő telepítéshez. Ez a "
+"szoftver választható ki az alábbi listából. Kérjük, vegye figyelembe, hogy a "
+"frissítéskezelő csak olyan szoftvert kezel, amely része TurrisOS-nek vagy "
+"egy csomag listából lett telepítve. Olyan szoftverre nincs hatással amely "
+"manuálisan vagy opkg használatával lett telepítve."
+
+msgid "Automatic installation"
+msgstr "Automatikus telepítés"
+
+msgid "Updates will be installed without user's intervention."
+msgstr "Frissítések telepítése felhasználói beavatkozás nélkül."
+
+msgid "Delayed updates"
+msgstr "Késleltetett frissítések"
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+"Frissítések telepítése állítható késleltetéssel. Manuálisan is jóváhagyhatók."
+
+msgid "Update approval needed"
+msgstr "Frissítés jóváhagyása szükséges"
+
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr "Jóvá kell hagyni a frissítéseket, különben nem fognak települni."
+
+msgid ""
+"If you want to use other language than English you can select it from the "
+"following list:"
+msgstr "Angol helyett más nyelv is választható az alábbi listából:"
 
 msgid "Notifications settings"
 msgstr "Értesítések beállításai"
@@ -329,9 +1713,6 @@ msgstr "Biztonság"
 msgid "Username"
 msgstr "Felhasználónév"
 
-msgid "Password"
-msgstr "Jelszó"
-
 msgid "Automatic restarts after software update"
 msgstr "Automatikus újraindítás szoftver frissítés után"
 
@@ -350,6 +1731,9 @@ msgstr "Újraindítás ideje"
 
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Automatikus újraindulás ideje ÓÓ:PP formátumban."
+
+msgid "Backup file"
+msgstr "Biztonsági mentés"
 
 msgid "uCollect"
 msgstr "uCollect"
@@ -496,1388 +1880,150 @@ msgstr ""
 "működéséhez. Az idő szinkronizálása számítógéppel is lehetséges, vagy "
 "manuálisan is beállítható."
 
-msgid "Backup file"
-msgstr "Biztonsági mentés"
+#, fuzzy
+msgid "Region and time"
+msgstr "Újraindítás ideje"
 
-msgid "Updater"
-msgstr "Frissítéskezelő"
-
-msgid "I agree"
-msgstr "Elfogadom"
-
-msgid "Use automatic updates (recommended)"
-msgstr "Automatikus frissítések (ajánlott)"
-
-msgid "Turn automatic updates off"
-msgstr "Automatikus frissítések kikapcsolása"
-
-msgid "Update approvals"
-msgstr "Frissítések jóváhagyása"
-
-msgid "Automatic installation"
-msgstr "Automatikus telepítés"
-
-msgid "Updates will be installed without user's intervention."
-msgstr "Frissítések telepítése felhasználói beavatkozás nélkül."
-
-msgid "Delayed updates"
-msgstr "Késleltetett frissítések"
-
-msgid ""
-"Updates will be installed with an adjustable delay. You can also approve "
-"them manually."
-msgstr ""
-"Frissítések telepítése állítható késleltetéssel. Manuálisan is jóváhagyhatók."
-
-msgid "Update approval needed"
-msgstr "Frissítés jóváhagyása szükséges"
-
-msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr "Jóvá kell hagyni a frissítéseket, különben nem fognak települni."
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-"A Frissítéskezelő egy szolgáltatás, ami a TurrisOS szoftvert naprakészen "
-"tartja. Eltekintve a kezdeti telepítéstől, további tetszés szerinti "
-"szoftverlisták választhatók az útválasztóra történő telepítéshez. Ez a "
-"szoftver választható ki az alábbi listából. Kérjük, vegye figyelembe, hogy a "
-"frissítéskezelő csak olyan szoftvert kezel, amely része TurrisOS-nek vagy "
-"egy csomag listából lett telepítve. Olyan szoftverre nincs hatással amely "
-"manuálisan vagy opkg használatával lett telepítve."
-
-msgid ""
-"If you want to use other language than English you can select it from the "
-"following list:"
-msgstr "Angol helyett más nyelv is választható az alábbi listából:"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-"Ez a rész tartalmazza a helyi hálózat (LAN) beállításait. A felkínált "
-"alapértelmezések alkalmasak a legtöbb hálózat esetében. "
-"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó IP-címét, "
-"minden számítógépnek a LAN-on, talán köztük annak is amelyiket most használ, "
-"szüksége lesz egy <strong>új IP-címre</strong>, amely <strong>nem</strong> "
-"<strong>azonnal</strong> történik meg. Ajánlott az összes LAN kábel ki- és "
-"bedugása a módosítások elfogadása után, hogy a frissítést érvényre "
-"juttassuk. A következő oldal nem töltődik be, amíg nem kap egy új IP-t a "
-"DHCP-től (ha a DHCP engedélyezve van), és szükség lehet <strong>az oldalt</"
-"strong> frissíteni a böngészőjében."
-
-msgid "Router IP address"
-msgstr "Útválasztó IP-címe"
-
-msgid ""
-"Router's IP address in inner network. Also defines the range of assigned IP "
-"addresses."
-msgstr ""
-"Útválasztó IP-címe a belső hálózaton. Meghatározza a kiosztott IP-"
-"címtartományt is."
-
-msgid "Enable DHCP"
-msgstr "DHCP engedélyezése"
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-"Engedélyezze ezt a beállítást, hogy az útválasztó a csatlakoztatott "
-"eszközökhöz automatikusan rendeljen hozzá IP-címet."
-
-msgid "DHCP start"
-msgstr "DHCP címtartomány eleje"
-
-msgid "DHCP max leases"
-msgstr "DHCP kiosztás maximális száma"
-
-msgid "Guest network"
-msgstr "Vendég hálózat"
-
-msgid "Enable guest network"
-msgstr "Vendég hálózat engedélyezése"
-
-#, python-format
-msgid ""
-"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
-"separated  from your ordinary LAN network. Devices connected to this network "
-"are allowed to access the internet, but are not allowed to access other "
-"devices and the configuration interface of the router."
-msgstr ""
-"A Vendég hálózat a <a href='%(url)s'>vendég Wi-Fi</a>-hez használható. Ez el "
-"van választva a hagyományos LAN-hálózattól. Az ide csatlakoztatott "
-"készülékek elérik az internetet, de nem engedélyezett a hozzáférés más "
-"eszközökhöz és a router beállítási felületéhez."
-
-msgid ""
-"You need to set the IP range for your guest network. It is necessary that "
-"the range is different than ranges on your other networks (LAN, WAN, VPN, "
-"etc.)."
-msgstr ""
-"A vendég hálózat IP tartományát be kell állítani. A tartománynak különböznie "
-"kell a többi hálózat (LAN, WAN, VPN, stb.) tartományától."
-
-msgid "Guest Lan QoS"
-msgstr "Vendég hálózat QoS"
-
-msgid ""
-"This option enables you to set a bandwidth limit for the guest network, so "
-"that your main network doesn't get slowed-down by it."
-msgstr ""
-"Ez az opció lehetővé teszi, hogy a vendég hálózat sávszélessége korlátozva "
-"legyen, így a fő hálózatot nem tudja lassítani."
-
-msgid "Download (kb/s)"
-msgstr "Letöltés (kb/s)"
-
-msgid "Download speed in guest network (in kilobits per second)."
-msgstr "Letöltési sebesség a vendég hálózaton (kilobit per másodperc)."
-
-msgid "Upload (kb/s)"
-msgstr "Feltöltés (kb/s)"
-
-msgid "Upload speed in guest network (in kilobits per second)."
-msgstr "Feltöltési sebesség a vendég hálózaton (kilobit per másodperc)."
-
-msgid "Wi-Fi"
-msgstr "Wi-Fi"
-
-msgid "auto"
-msgstr "automatikus"
-
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
-msgstr ""
-"WPA2 pre-shared key, ami ahhoz szükséges, hogy csatlakozni lehessen a "
-"hálózathoz. Minimális hossza 8 karakter."
-
-#, python-format
-msgid "Enable Wi-Fi %s"
-msgstr "Wi-Fi %s engedélyezése"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "SSID elrejtése"
-
-msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-"Ha be van állítva, a hálózat nem lesz látható az elérhető hálózatok "
-"keresésekor."
-
-msgid "Wi-Fi mode"
-msgstr "Wi-Fi mód"
-
-msgid ""
-"The 2.4 GHz band is more widely supported by clients, but tends to have more "
-"interference. The 5 GHz band is a newer standard and may not be supported by "
-"all your devices. It usually has less interference, but the signal does not "
-"carry so well indoors."
-msgstr ""
-"A 2,4 GHz-es sáv  az ügyfelek szélesebb körében támogatott, de általában "
-"tübb a zavaró hatás. Az 5 GHz-es sáv egy újabb szabvány, és lehet, hogy nem "
-"minden készülék támogatja. Itt általában kevesebb a zavaró hatás, de a jel "
-"nem terjed annyira jól házon belül."
-
-msgid "Disabled"
-msgstr "Letiltva"
-
-msgid "802.11n - 20 MHz wide channel"
-msgstr "802.11n - 20 MHz széles csatorna"
-
-msgid "802.11n - 40 MHz wide channel"
-msgstr "802.11n - 40 MHz széles csatorna"
-
-msgid "802.11ac - 20 MHz wide channel"
-msgstr "802.11ac - 20 MHz széles csatorna"
-
-msgid "802.11ac - 40 MHz wide channel"
-msgstr "802.11ac - 40 MHz széles csatorna"
-
-msgid "802.11ac - 80 MHz wide channel"
-msgstr "802.11ac - 80 MHz széles csatorna"
-
-msgid "802.11n/ac mode"
-msgstr "802.11 n/ac mód"
-
-msgid ""
-"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
-"channels can yield higher throughput but can cause more interference in the "
-"network. If you don't know what to choose, use the default option with 20 "
-"MHz wide channel."
-msgstr ""
-"A 802.11 n/ac üzemmód beállítása. 802.11n 40 MHz széles csatornán nagyobb "
-"teljesítményre képes, de több zavart okozhat a hálózaton. Bizonytalanság "
-"esetén használjuk az alapértelmezett beállítást 20 MHz széles csatornával."
-
-msgid "Network channel"
-msgstr "Hálózati csatorna"
-
-msgid "Network password"
-msgstr "Hálózati jelszó"
-
-msgid "Guest Wi-Fi"
-msgstr "Vendég Wi-Fi"
-
-msgid "Set guest Wi-Fi here."
-msgstr "Vendég Wi-Fi beállítása itt."
-
-msgid "Enable guest Wi-Fi"
-msgstr "Vendég Wi-Fi engedélyezése"
-
-#, python-format
-msgid ""
-"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-"connected to this network are allowed to access the internet, but aren't "
-"allowed to access other devices and the configuration interface of the "
-"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-"LAN tab</a>. "
-msgstr ""
-"Bekapcsolja a vendég Wi-Fi-t, amely elkülönül a LAN hálózattól. Ehhez a "
-"hálózathoz csatlakoztatott eszközök elérik az internetet, de más eszközöknek "
-"és az útvonalválasztó beállítási felületének elérése nem engedélyezett. A "
-"vendég hálózati paraméterek beállíthatók <a href='%(url)s'> a LAN</a> fülön. "
-
-msgid "SSID for guests"
-msgstr "SSID vendégek számára"
-
-msgid "Password for guests"
-msgstr "Jelszó vendégek számára"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available next to the form."
-msgstr ""
-"Ha a router, mint Wi-Fi hozzáférési pont szeretné használni, a Wi-Fi-t itt "
-"kell bekapcsolni és az SSID-jét (a hozzáférési pont nevét), illetve "
-"megfelelő jelszót kitölteni. Ezután mobil eszközei is beállíthatók a mezők "
-"melletti QR kód segítségével."
-
-msgid "Wi-Fi settings"
-msgstr "Wi-Fi beállítások"
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Itt adhatja meg a WAN port beállításait. Általában érintetlenül hagyhatja "
-"ezt a lehetőséget, hacsak az internet-szolgáltató nem utasít másra. Ha "
-"kábel- vagy DSL-modem csatlakoztatja routert a hálózathoz, általában akkor "
-"sem kell változtatni ezen a beállításon."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (automatikus beállítás)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Statikus IP-cím (manuális beállítás)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (DSL hidakhoz, Turris Modemhez, stb.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (automatikus beállítás)"
-
-msgid "Disable IPv6"
-msgstr "IPv6 letiltása"
-
-msgid "IPv4 protocol"
-msgstr "IPv4 protokoll"
-
-msgid "IP address"
-msgstr "IP-cím"
-
-msgid "Network mask"
-msgstr "Hálózati maszk"
-
-msgid "Gateway"
-msgstr "Átjáró"
-
-msgid "DNS server 1"
-msgstr "DNS-kiszolgáló 1"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"A DNS-kiszolgáló címe nem szükséges, mivel a beépített DNS névfeloldó képes "
-"dolgozni anélkül."
-
-msgid "DNS server 2"
-msgstr "DNS-kiszolgáló 2"
-
-msgid "PAP/CHAP username"
-msgstr "PAP/CHAP felhasználónév"
-
-msgid "PAP/CHAP password"
-msgstr "PAP/CHAP jelszó"
-
-msgid "IPv6 protocol"
-msgstr "IPv6 protokoll"
-
-msgid "IPv6 address"
-msgstr "IPv6-cím"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"IPv6-cím és előtag méret a WAN-interfészhez, pl. 2001:db8:be13:37da::1 / 64"
-
-msgid "IPv6 gateway"
-msgstr "IPv6-átjáró"
-
-msgid "IPv6 prefix"
-msgstr "IPv6-előtag"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Címtartomány a helyi hálózaton, például a 2001:db8:be13:37da::/64"
-
-msgid "Use Modem Turris"
-msgstr "Turris Modem használata"
-
-msgid ""
-"Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/VDSL "
-"modem designed specially for router Turris. Enable this option if you have "
-"Modem Turris connected to your router."
-msgstr ""
-"Modem Turris (aka SMRT - Kis Turris Router Modem), egy egyszerű ADSL/VDSL "
-"modem kifejezetten a Turris útválasztóhoz. Engedélyezd ezt az opciót, ha a "
-"Modem Turris csatlakozik a routerhez."
-
-msgid "xDSL VLAN number"
-msgstr "xDSL VLAN száma"
-
-msgid ""
-"VLAN number for your internet connection. Your ISP might have provided you "
-"this number. If you have VPI and VCI numbers instead, leave this field "
-"empty, a default value will be used automatically."
-msgstr ""
-"Az internet-kapcsolat VLAN száma. Lehet, hogy az Internetszolgáltató adott "
-"ilyen számot. Ha ehelyett VPI és a VCI száma van, ezt a mezőt hagyjuk "
-"üresen, egy alapértelmezett érték lesz automatikusan használva."
-
-msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
-"Mindkettőt (VPI, VCI) ki kell tölteni, vagy mindkettőnek üresnek kell lennie."
-
-msgid "VPI"
-msgstr "VPI"
-
-msgid ""
-"Virtual Path Identifier (VPI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuális útvonal-azonosító (VPI) olyan paraméter, amelyet az "
-"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
-"üresen ezt a mezőt. A VPI-t és VCI-t együtt, egyszerre kell kitölteni."
-
-msgid "VCI"
-msgstr "VCI"
-
-msgid ""
-"Virtual Circuit Identifier (VCI) is a parameter that you might have received "
-"from your ISP. If you have a VLAN number instead, leave this field empty. "
-"You need to fill in both VPI and VCI together."
-msgstr ""
-"Virtuális áramkör-azonosító (VCI) olyan paraméter, amely az "
-"internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
-"üresen ezt a mezőt. A VPI-t és a VCI együtt, egyszerre kell kitölteni."
-
-msgid "Custom MAC address"
-msgstr "Egyedi MAC-cím"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Hasznos olyan esetekben, amikor egy adott MAC-címet vár el az internet-"
-"szolgáltató."
-
-msgid "MAC address"
-msgstr "MAC-cím"
-
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
-msgstr "Elválasztó egy kettőspont, például 00:11:22:33:44:55"
-
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Beállításvarázsló - Lépés %s"
-
-msgid "Connectivity test"
-msgstr "Csatlakozás ellenőrzése"
-
-msgid "Automatic updates"
-msgstr "Automatikus frissítések"
-
-msgid "Installation finished"
-msgstr "Telepítés kész"
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Az adatgyűjtés jelenleg engedélyezett. Nem lehet letiltani a "
-"frissítéskezelőt úgy, hogy először az adatgyűjtés ne legyen letiltva."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can refuse the questionable update "
-"temporarily and install it when you are ready. It isn't possible to decline "
-"the update forever and it will be offered to you again together with the "
-"next package installation."
-msgstr ""
-"Jóváhagyás akkor lehet hasznos, ha szeretne megbizonyosodni arról, hogy a "
-"frissítések nem fognak ártani a konkrét beállításainak. A kérdéses frissítés "
-"ideiglenesen megtagadható, és ha készen áll, telepíthető. Nem lehet örökre "
-"visszautasítani a frissítést, és a következő csomag telepítésénél újra fel "
-"fogja ajánlani."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can e.g. install updates when you're "
-"prepared for a possible rollback to a previous snapshot and deny the "
-"questionable update temporarily. It isn't possible to decline the update "
-"forever and it will be offered to you again together with the next package "
-"installation."
-msgstr ""
-"Jóváhagyás akkor lehet hasznos, ha szeretne megbizonyosodni arról, hogy a "
-"frissítések nem fognak ártani a konkrét beállításainak. Például akkor "
-"telepíthet frissítést, amikor készen áll esetlegen egy előző pillanatkép "
-"visszaállítására és megtagadja a kérdéses frissítést. Nem lehet örökre "
-"visszautasítani a frissítést, és a következő csomag telepítésénél újra fel "
-"fogja ajánlani."
-
-#, python-format
-msgid "after %(input)s hours"
-msgstr "%(input)s óra után"
-
-msgid "Hint"
-msgstr "Tipp"
-
-msgid "Save"
-msgstr "Mentés"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
-msgstr ""
-"A Turris útválasztó saját DNS-feloldót használ DNSSEC támogatással.  Képes "
-"egyedül is dolgozni, vagy a DNS-lekérdezéseket továbbítani az internet-"
-"szolgáltató DNS-névfeloldóján keresztül."
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"A következő beállítás határozza meg a a DNS-névfeloldás viselkedését. "
-"Általában jobb az internet.szolgáltató névfeloldását használni olyan "
-"hálózatokban, ahol az megfelelően működik. Ha ez nem működik valamiért, "
-"akkor a továbbítás nélküli közvetlen névfeloldás szükséges."
-
-msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
-msgstr ""
-"Ritka esetekben az internet-szolgáltatónak helytelenül konfigurált hálózata "
-"lehet, amely zavarja a DNSSEC-érvényesítést. Ha problémája van a DNS-sel, "
-"<strong>ideiglenesen</strong> tiltsa le a DNSSEC-érvényesítést, hogy meg "
-"tudja határozni a probléma forrását. Azonban ne feledjük, hogy DNSSEC-"
-"érvényesítés nélkül, DNS-hamisító támadásoknak vagyunk kitéve! Ezért mi "
-"<strong>javasoljuk, hogy a DNSSEC legyen bekapcsolva</strong> és a helyzet "
-"megoldását az internet-szolgáltatóval mivel ez egy komoly hibája az ő "
-"oldalukon."
-
-msgid "Connection test"
-msgstr "Kapcsolat ellenőrzése"
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-"Itt tesztelhető az internetkapcsolat. Ez a teszt akkor is hasznos, ha "
-"ellenőriznie kell, hogy a DNS  névfeloldás a várt módon működik. Ne feledje, "
-"hogy kattintson a <strong>Mentés</strong> gombra, ha megváltozott a "
-"továbbítás beállítása."
-
-msgid "Unable to verify network connection."
-msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
-
-msgid "Test type"
-msgstr "Vizsgálat típusa"
-
-msgid "Status"
-msgstr "Állapot"
-
-msgid "IPv4 connectivity"
-msgstr "IPv4-kapcsolat"
-
-msgid "IPv4 gateway connectivity"
-msgstr "IPv4-átjáró kapcsolat"
-
-msgid "IPv6 connectivity"
-msgstr "IPv6-kapcsolat"
-
-msgid "IPv6 gateway connectivity"
-msgstr "IPv6-átjáró kapcsolat"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Kapcsolat ellenőrzése"
-
-msgid "Discard changes"
-msgstr "Módosítások elvetése"
-
-msgid "Save changes"
-msgstr "Beállítások mentése"
-
-msgid ""
-"With the Turris router you can join Project Turris which is a non-profit "
-"research project founded by the CZ.NIC association, a .CZ domain registry. "
-"By joining the project, your router will act as a probe which analyzes "
-"traffic between your home network and the Internet and helps to identify "
-"malicious data flows. Once such a flow is detected your router notifies the "
-"Turris headquarters which can compare the flow with data from the rest of "
-"the probes and assign it a threat level. If the flow is identified as an "
-"attack Turris headquarters can prepare an update which is distributed to "
-"every Turris router and helps them to protect themselves against the attack."
-msgstr ""
-"A Turris Omnia routerrel csatlakozni  lehet a Projekt Turrishoz, amely egy "
-"non-profit kutatási projekt, melyet a CZ.NIC egyesület, a .CZ tartománynév "
-"nyilvántartója alapított. Azzal, hogy csatlakozott a projekthez, a router "
-"egy szondaként fog működni, amely elemzi az otthoni hálózat, az Internet "
-"közötti forgalmat illetve segít a rosszindulatú adatáramlás azonosításában. "
-"Mihelyst egy ilyen folyamatot észlelt, az útválasztó értesíti a Turris "
-"központját, amely össze tudja hasonlítani az adatfolyamot a többi szondák "
-"adataival és hozzárendel egy fenyegetettségi szintet. Ha az adatáramlást "
-"támadásként azonosították, a Turris központja készíthet egy frissítést, "
-"amelyet terítenek minden Turris útválasztóhoz, illetve segíti őket abban, "
-"hogy megvédjék magukat a támadással szemben."
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr ""
-"A Frissítéskezelő jelenleg le van tiltva. Ezt engedélyeznie kell először, "
-"hogy elérhető legyen az adatgyűjtés."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Ha szeretne csatlakozzni a Turris projekthez, először regisztrálnia kell a "
-"Turris honlapján. Adja meg az e-mail címet, amit használni szeretne a "
-"regisztráláshoz, vagy amit már erre célra használt azelőtt:"
-
-msgid "Validate email"
-msgstr "E-mail ellenőrzése"
-
-msgid "Device"
-msgstr "Készülék"
-
-msgid "Serial number"
-msgstr "Sorozatszám"
-
-msgid "Turris OS version"
-msgstr "Turris OS verzió"
-
-msgid "Kernel version"
-msgstr "Kernel verzió"
-
-msgid "Sending of uCollect data"
-msgstr "A uCollect adatok küldése"
-
-#, python-format
-msgid "Time of last update: %(datetime)s"
-msgstr "Utolsó frissítés időpontja: %(datetime)s"
-
-#, python-format
-msgid "(status updated %d second ago)"
-msgid_plural "(status updated %d seconds ago)"
-msgstr[0] "(állapot frissítve %d másodperccel ezelőtt)"
-msgstr[1] "(állapot frissítve %d másodperccel ezelőtt)"
-
-msgid "Sending of firewall logs"
-msgstr "Tűzfal naplók küldése"
-
-msgid "Refresh"
-msgstr "Frissítés"
-
-msgid "Device registration"
-msgstr "Készülék-regisztráció"
-
-#, python-format
-msgid ""
-"If you have not registered your device yet, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Ha még nem regisztrálta a készüléket, kattintson az alábbi gombra, hogy "
-"szerezzen egy regisztrációs kódot. Ezt a kódot kell benyújtani, a Turris "
-"oldalán lévő felhasználói profilban, amely itt elérhető: <a href=\"%(url)s\">"
-"%(url)s</a>."
-
-msgid "Registration code"
-msgstr "Regisztrációs kód"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"Sajnos, nem sikerült a regisztrációs kódot létrehozni. Ez általában azt "
-"jelenti, hogy az útválasztó nem csatlakozik az internethez. Kérjük, próbálja "
-"meg a regisztrációt később. Ha a probléma továbbra is fennáll, lépjen "
-"kapcsolatba az ügyfélszolgálattal."
-
-msgid "Get registration code"
-msgstr "Regisztrációs kód beszerzése"
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to manage "
-"package lists."
-msgstr ""
-"Az Frissítéskezelő jelenleg le van tiltva. Először engedélyeznie kell, hogy "
-"a csomaglistákat kezelhesse."
-
-#, python-format
-msgid "Approve update from %(when)s"
-msgstr "Frissítés jóváhagyása %(when)s-tól"
-
-msgid "Uninstall"
-msgstr "Eltávolítás"
-
-msgid "Install"
-msgstr "Telepítés"
-
-msgid "Note that a reboot will be triggered after the update."
-msgstr "Figyelem, frissítés után újraindul."
-
-msgid "Install now"
-msgstr "Telepítés most"
-
-msgid "Deny"
-msgstr "Megtagad"
-
-msgid "No package will be installed unless you install the updates above."
-msgstr "Nem lesz csomag telepítve van, amíg fenti frissítések hiányoznak."
-
-#, python-format
-msgid ""
-"If you don't install the updates manually, they will be installed "
-"automatically after %(time)s."
-msgstr ""
-"Ha manuálisan nem telepíti a frissítéseket, azok automatikusan települnek "
-"%(time)s után."
-
-msgid "Package lists"
-msgstr "Csomaglisták"
-
-msgid ""
-"List of available software was not downloaded from the server yet. Please "
-"come back later."
-msgstr ""
-"A rendelkezésre álló szoftverlista még nem került letöltésre a "
-"kiszolgálóról. Próbálkozzon később."
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
-msgstr ""
-"Ha ezt a kártyát a 2,4 GHz-es sávban szeretné használni, a diplexerre "
-"csatlakoztatott kábelek korrekciójára van szükség! A gyári alapértelmezett "
-"beállítás: a nagy kártya kábelei az 5 GHz-es,  a  kis kártya kábelei a 2,4 "
-"GHz-es diplexer részre csatlakoznak."
-
-msgid ""
-"Welcome to the Turris administration site. Please, choose a config section "
-"you wish to change from the menu."
-msgstr ""
-"Üdvözöljük a Turris felügyeleti oldalán. Válasszon egy beállítási területet "
-"menüből, ahol megszeretne változtatni valamit."
-
-msgid "No new messages."
-msgstr "Nincs új üzenet."
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "Nem sikerült felismerni a routerben semmilyen vezeték-nélküli kártyát."
-
-msgid "Notifications and automatic restarts"
-msgstr "Értesítések és automatikus újraindítások"
-
-msgid ""
-"You can set the router to notify you when a specific event occurs, for "
-"example when a reboot is required, no space is left on device or an "
-"application update is installed. You can use Turris servers to send these "
-"emails. Alternatively, if you choose to use a custom server, you must enter "
-"some additional settings. These settings are the same as you enter in your "
-"email client and you can get them from the provider of your email inbox. In "
-"that case, because of security reasons, it is recommended to create a "
-"dedicated account for your router."
-msgstr ""
-"Beállíthatja, hogy a router, hogy értesítse Önt, amikor egy adott esemény "
-"bekövetkezik, például amikor egy újraindítás szükséges, nincs hely a "
-"készüléken, vagy egy alkalmazás frissítése került telepítésre. Turris "
-"szerver segítségével e-maileket küldhet. Azt is megteheti, hogy egyéni "
-"szervert használ, ekkor meg kell adnia néhány további beállítást. Ezek a "
-"beállítások ugyanazok, mint amit az email kliensben is használatos,  ekkor "
-"az e-mail postafiókja szolgáltatójától lehet kapni őket . Ebben az esetben "
-"biztonsági okokból ajánlott létrehozni egy külön fiókot az útválasztóhoz."
-
-msgid ""
-"Also, when an automatic restart is required, you can specify the time you "
-"want it to occur. If you have email notifications enabled, you can also "
-"specify the interval between notification and automatic restart."
-msgstr ""
-"Ha automatikus újraindítás szükséges, megadható az idő, hogy az mikor "
-"történjen. Ha az e-mail értesítés engedélyezve van, akkor megadhatja az "
-"intervallumot az értesítési és automatikus újraindítás között."
-
-msgid "Send testing message"
-msgstr "Tesztüzenet küldése"
-
-msgid "Configuration backup"
-msgstr "Beállítások biztonsági mentése"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. The configuration is saved as an unencrypted "
-"compressed archive (.tar.bz2). Passwords for this configuration interface "
-"and for the advanced configuration are not included in the backup."
-msgstr ""
-"Ha a készülék jelenlegi beállításának mentésére van szükség, letöltheti a "
-"biztonsági másolatot. A beállítás egy titkosítatlan, tömörített archív file "
-"(.tar.bz2). A beállítási felület és a haladó beállítások jelszava nem  kerül "
-"a mentésbe."
-
-msgid "Download configuration backup"
-msgstr "Beállítások mentésének  letöltése"
-
-msgid "Configuration restore"
-msgstr "Beállítások visszaállítása"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"Beállítások mentett fájlból való visszaállításához töltse az fel az alábbiak "
-"segítségével. Ne feledjük, hogy ennek az eszköznek az IP-címe megváltozhat a "
-"folyamat közben, elérhetetlenné téve ezt a felületet."
-
-msgid "Restore from backup"
-msgstr "Visszaállítás mentésből"
-
-msgid "Device reboot"
-msgstr "Készülék újraindítása"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"after the reboot."
-msgstr ""
-"Kattintson a következő gombra a készülék újraindításához. Az újraindítás "
-"folyamat körülbelül 30 másodperc, szükség, amely után újra be kell "
-"jelentkeznie."
-
-msgid "Reboot"
-msgstr "Újraindítás"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - a Turris router adminisztrációs felülete"
-
-msgid "Menu"
-msgstr "Menü"
-
-msgid "Log out"
-msgstr "Kijelentkezés"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Ez az oldal JavaScriptet igényel a megfelelő működéshez. Kérjük, "
-"engedélyezze azt, és frissítse a lapot."
-
-msgid "This value seems to be invalid."
-msgstr "Ez az érték érvénytelennek tűnik."
-
-msgid "This value should be a valid email."
-msgstr "Értéke egy érvényes e-mail cím legyen."
-
-msgid "This value should be a valid url."
-msgstr "Értéke érvényes URL legyen."
-
-msgid "This value should be a valid number."
-msgstr "Értéke egy érvényes szám legyen."
-
-msgid "This value should be a valid integer."
-msgstr "Értéke egy érvényes egész szám legyen."
-
-msgid "This value should be digits."
-msgstr "Értéke számjegy legyen."
-
-msgid "This value should be alphanumeric."
-msgstr "Alfanumerikus érték legyen."
-
-msgid "This value should not be blank."
-msgstr "Értéke nem lehet üres."
-
-msgid "This value is required."
-msgstr "Kötelező érték."
-
-#, python-format
-msgid "This value should be greater than or equal to %s."
-msgstr "Értéke legyen nagyobb vagy egyenlő, mint %s."
-
-#, python-format
-msgid "This value should be lower than or equal to %s."
-msgstr "Értéke legyen alacsonyabb vagy egyenlő, mint %s."
-
-#, python-format
-msgid "This value should be between %s and %s."
-msgstr "Értéke %s és %s között legyen."
-
-#, python-format
-msgid "This value is too short. It should have %s characters or more."
-msgstr "Értéke túl rövid. Legalább %s karakter legyen."
-
-#, python-format
-msgid "This value is too long. It should have %s characters or fewer."
-msgstr "Értéke túl hosszú. Maximum %s karakter legyen."
-
-#, python-format
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long."
-msgstr "Érvénytelen értékhossz. A karakter legyen %s és %s közötti hosszúságú."
-
-#, python-format
-msgid "You must select at least %s choices."
-msgstr "Legalább %s lehetőséget meg kell jelölni."
-
-#, python-format
-msgid "You must select %s choices or fewer."
-msgstr "Legfeljebb %s lehetőséget kell megjelölni."
-
-#, python-format
-msgid "You must select between %s and %s choices."
-msgstr "%s és %s közötti választási lehetőséget kell megjelölni."
-
-msgid "This value should be the same."
-msgstr "Értékének egyezni kell."
-
-msgid "This is not a valid IPv4 address."
-msgstr "Nem érvényes IPv4-cím."
-
-msgid "This is not a valid IPv4 netmask."
-msgstr "Érvénytelen IPv4 hálózati maszkcím."
-
-msgid "This is not a valid IPv4 prefix."
-msgstr "Érvénytelen IPv4-előtag."
-
-msgid "This is not a valid IPv6 prefix."
-msgstr "Érvénytelen IPv6-előtag."
-
-msgid "This is not a valid MAC address."
-msgstr "Érvénytelen MAC-cím."
-
-msgid ""
-"Your password contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"A jelszó nem szabványos karaktereket tartalmaz. Ez nem tilos, de problémákat "
-"okozhat egyes készülékeknél."
-
-msgid ""
-"Your SSID contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"Az SSID nem szabványos karaktereket tartalmaz. Ezek nem tilos, de "
-"problémákat okozhat egyes készülékeknél."
-
-msgid "OK"
-msgstr "OK"
-
-msgid "Error"
-msgstr "Hiba"
-
-msgid "Loading..."
-msgstr "Betöltés..."
-
-msgid "Connectivity test failed, testing connection with disabled forwarding."
-msgstr ""
-"Kapcsolat ellenőrzése sikertelen, kapcsolat ellenőrzése letiltott "
-"továbbítással."
-
-msgid ""
-"The IP address of your router has been changed. It should be accessible from "
-"%NEW_IP_LINK%. See the note above for more information about IP address "
-"change."
-msgstr ""
-"Az útválasztó IP-címe megváltozott. Elérhető innen: % NEW_IP_LINK %. Az IP-"
-"cím változásáról további információkhoz lásd a fenti megjegyzést."
-
-msgid ""
-"You have chosen to not receive security updates. We strongly advice you to "
-"keep the automatic security updates enabled to receive all recommended "
-"updates for your device. Updating your router on regular basis is the only "
-"way how to ensure you will be protected against known threats that might "
-"target your home router device.\\n\\nDo you still want to continue and stay "
-"unprotected?"
-msgstr ""
-"Úgy döntött, hogy nem kap biztonsági frissítéseket. Nyomatékosan azt "
-"tanácsoljuk, hogy az automatikus biztonsági frissítés be legyen kapcsolva,  "
-"ez teszi lehetővé, hogy a készélékéhez megkapja az összes javasolt "
-"frissítést. A útválasztó rendszeres frissítése az egyetlen módja annak, hogy "
-"ismert, az otthoni útválasztó eszközt célzó fenyegetések ellen védettek "
-"legyünk. \\n\\nMégis szeretné folytatni és védelem nélkül maradni?"
-
-msgid ""
-"DNSSEC is a security technology that protects the DNS communication against "
-"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
-"validation enabled unless you know that you will be connecting your device "
-"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
-"and stay unprotected?"
-msgstr ""
-"A DNSSEC egy biztonsági technológia, mely védi a DNS-kommunikációt a DNS-"
-"infrastruktúra elleni támadások ellen. Erősen javasoljuk, hogy tartsa a "
-"DNSSEC érvényesítést bekapcsolva, hacsak nem olyan hálózathoz kell "
-"csatlakoztatni az eszközt,  ahol a DNSSEC nem működik megfelelően.\\n"
-"\\nMégis szeretné folytatni és védelem nélkül maradni?"
-
-msgid "Are you sure you want to restart the router?"
-msgstr "Biztosan újra szeretné indítani az útválasztót?"
-
-msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr "\\n(%UNREAD%) olvasatlan üzenet törlődik."
-
-msgid ""
-"There are some unsaved changes in the notifications settings.\\nDo you want "
-"to discard them and test the notifications with the old settings?"
-msgstr ""
-"Van néhány nem mentett változás az értesítések beállításai között."
-"\\nEldobjuk őket és az értesítéseket a régi beállításokkal teszteljük?"
-
-msgid "Turris router administration interface"
-msgstr "Turris útválasztó adminisztrációs felület"
-
-msgid "Next"
-msgstr "Következő"
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Eszköz telepítése sikeres volt. Utolsó lépésként a készülék regisztrációja "
-"szükséges,  a Turris weboldalán <a href=\"%(url)s\">%(url)s</a> lévő "
-"felhasználói profilban."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Figyelmeztetés:</strong> ez a kód csak korlátozott ideig érvényes. "
-"Abban az esetben ha elutasítják ezt a kódot, frissítse az oldalt egy újért."
-
-msgid "What next?"
-msgstr "Hogyan tovább?"
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"Módosíthatja a korábbi beállításainak bármelyikét a <a href=\"%(url)s\"> "
-"szabványos beállítási felületen</a>. Amennyiben érdeklik a haladó "
-"beállítások, használhatja a LuCI felületet, amely a <a href=\"%(url2)s\"> "
-"Haladó beállítások fülön</a> elérhető."
-
-msgid "Important updates"
-msgstr "Fontos frissítések"
-
-msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
-msgstr ""
-"Telepítésre kerültek olyan fontos frissítések, amelyek újraindítást "
-"igényelnek. Egyes készülékek esetleg nem működnek, ha nem indítja újra azt. "
-"Részleteket lásd alább."
-
-msgid "Continue to configuration interface"
-msgstr "Tovább a beállítási felületre"
-
-msgid "Checking internet connectivity."
-msgstr "Internetkapcsolat ellenőrzése."
-
-msgid "One moment, please..."
-msgstr "Egy pillanat..."
-
-msgid "Done"
-msgstr "Kész"
-
-msgid "Internet connectivity test passed without error."
-msgstr "Internetkapcsolat ellenőrzése hiba nélkül megtörtént."
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
-msgstr ""
-"Az internetkapcsolat ugyan rendelkezik hálózati kapcsolattal, de a DNS "
-"névfeloldás nem működik. Ez valószínűleg az internet-szolgáltató oldalán "
-"lévő probléma. De az is lehet, hiogy rossz az idő a routeren - ez "
-"beállítható a következő lépésben."
-
-msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
-msgstr ""
-"Úgy tűnik, hogy nincs internetkapcsolat, lehet, hogy a WAN-beállítás nem "
-"megfelelő."
-
-msgid "Try again"
-msgstr "Újra"
-
-msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
-msgstr ""
-"Bizonyos esetekben például lassabb DSL-kapcsolat, vagy a DHCP használatakor "
-"a hiba oka valószínűleg a lassan induló hálózat. Ha ez a helyzet, újra "
-"ellenőrizheti a kapcsolatát, a fenti gomb segítségével. Az előző oldalra "
-"visszatérve a problémát a WAN-beállítások módosításával is meg lehet "
-"próbálni."
-
-msgid "Adjust WAN settings"
-msgstr "WAN beállítása"
-
-msgid "Registration failure"
-msgstr "Regisztrációs hiba"
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"További frissítések települnek. Az útválasztó többször is újraindul mire a "
-"folyamat befejeződik."
-
-msgid "Do not unplug the device during update!"
-msgstr "Ne húzzon ki kábelt a készülékből a frissítés során!"
-
-msgid "Check of available updates in progress."
-msgstr "Rendelkezésre álló frissítések ellenőrzése folyamatban."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr "Firmware frissítés sikeres volt, jöhet a következő lépés."
-
 msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
+"It is important that your router has the current time properly set. If our "
+"router had an older time set some expired SSL certificates might have seemed "
+"like valid."
 msgstr ""
-"A firmware frissítés nem sikerült kapcsolati vagy telepítési hiba miatt. "
-"Ellenőrizni a kábel csatlakozást, a következő lépés előtt. De nem kell túl "
-"sokat aggódni a frissítés miatt, mivel az útválasztó rendszeresen futtatni "
-"fogja a frissítéskezelőt."
 
-msgid "Updater has returned the following error:"
-msgstr "Frissítéskezelő a következő hibával tért vissza:"
-
-msgid "Device has been restarted."
-msgstr "A készülék újraindult."
-
-msgid "Please log in again to continue."
-msgstr "Újra be kell jelentkezni a folytatáshoz."
-
-msgid "Proceed to login"
-msgstr "Tovább a bejelentkezéshez"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Üdvözöljük a Turris útválasztó beállításában"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"Mielőtt első alkalommal elkezdené használni az útválasztót, azt be kell "
-"állítani. A következő egyszerű varázsló végigvezeti a beállítási folyamaton. "
-"Miután befejeződött, az útválasztó üzemkész állapotban lesz."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Ha szeretné visszaállítani a korábban elmentett beállításokat, vagy más "
-"okból, de kihagyja ezt a varázslót, akkor ezt első lépésként megteheti a "
-"jelszó kiválasztása után."
-
-msgid "Begin installation"
-msgstr "A telepítés megkezdése"
-
 msgid ""
-"You have decided to disable the Updater service during the installation."
+"Time should be up-to-date otherise DNS and other services might not work "
+"properly."
 msgstr ""
-"Úgy döntött, hogy tiltsa le a Frissítéskezelő szolgáltatást a telepítés "
-"során."
 
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"Amíg a frissítéskezelő által telepített szoftverek nem naprakészek, addig a "
-"frissítéskezelő csomaglistáit sem tudja telepíteni."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-msgstr ""
-"A frissítéskezelő bekapcsolásával ön is csatlakozhat a kutatási "
-"projektünkhöz: <a href=\"https://project.turris.cz/\">Projekt Turris</a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"A frissítéskezelőt bármikor engedélyezheti a <a href=\"%(url)s"
-"\">Frissítéskezelő</a> beállítási oldalán."
+#, fuzzy
+msgid "How to set time"
+msgstr "Újraindítás ideje"
 
-msgid ""
-"With Turris router you can join the research project called <a href="
-"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
-"your router can become a probe that analyzes the traffic between internet "
-"and the home network and identifies suspicious data flows."
+msgid "Choose method to store current time into the router."
 msgstr ""
-"A Turris Omnia-val egy kutatási projekt csatlakozhat, az úgynevezett <a href="
-"\"https://project.turris.cz/\">Turris Projekt</a>-hez. A projektnek "
-"köszönhetően az útválasztó egy szondává válhat, amely elemzi az internet és "
-"az otthoni hálózat közötti forgalmat, és azonosítja a gyanús adatáramlást."
 
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
+msgid "via ntp"
 msgstr ""
-"Ezeket a kiegészítő funkciókat az alábbi utasításokat követve engedélyezheti "
-"az <a href=\"%(url)s\">Adatgyűjtés</a> oldalon."
-
-msgid "Continue to the configuration interface"
-msgstr "Tovább a beállítási felületre"
-
-msgid "Synchronize with your computer clock"
-msgstr "Szinkronizálás a számítógépe órájával"
 
-msgid "Set time manually"
+#, fuzzy
+msgid "manually"
 msgstr "Idő beállítása kézzel"
 
-msgid "Synchronization successful."
-msgstr "A szinkronizálás sikeres."
-
-msgid "Time settings"
-msgstr "Idő beállítások"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "Útválasztó idő szinkronizálása egy internetes időkiszolgálóval."
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Idő sikeresen szinkronizálva, jöhet a következő lépés."
-
-msgid "Project:Turris"
-msgstr "Projekt:Turris"
-
-msgid "Skip wizard"
-msgstr "Varázsló kihagyása"
-
-msgid "Step"
-msgstr "Lépés"
-
-msgid "Language"
-msgstr "Nyelv"
-
-msgid "foris version:"
-msgstr "Foris verzió:"
-
-msgid ""
-"One of the most important features of router Turris are automatic system "
-"updates. Thanks to this function your router's software stays up to date and "
-"offers better protection against attacks from the Internet."
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr ""
-"Az egyik legfontosabb jellemzője a Turris Omnia útválasztónak az automatikus "
-"rendszer frissítés. Ennek a funkciónak köszönhetően az útválasztó szoftvere "
-"naprakész marad és nagyobb védelmet kínál az interneten érkező támadásokkal "
-"szemben."
 
-msgid ""
-"It is <strong>highly recommended</strong> to have this feature "
-"<strong>turned on</strong>. If you decide to disable it, be warned that this "
-"might weaken the security of your router and network in case flaws in the "
-"software are found."
-msgstr ""
-"<strong>Erősen ajánlott</strong>, hogy ez a funkció <strong>bekapcsolva</"
-"strong> legyen. Ha úgy dönt, hogy kikapcsolja, tudjon róla, hogy ez "
-"gyengítheti az útválasztó és  hálózat biztonságát szoftverhiba kiderülése "
-"esetén."
+#~ msgid "Sending of the testing message failed because of an internal error."
+#~ msgstr "Tesztüzenet elküldése belső hiba miatt meghiúsult."
 
-msgid ""
-"By turning the automatic updates on, you agree to this feature's license "
-"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
-"\">here</a>."
-msgstr ""
-"Az automatikus frissítést bekapcsolásával, Ön elfogadja a funkció "
-"licencszerződését. Bővebb információ <a href=\"#\" id=\"toggle-eula\"> itt</"
-"a>."
+#~ msgid ""
+#~ "Configuration was successfully restored. After installing updates and "
+#~ "rebooting you can return to this page at <a href=\"%(new_url)s\">"
+#~ "%(new_url)s</a> in local network. Please wait a while until router "
+#~ "automatically restarts."
+#~ msgstr ""
+#~ "Beállítás sikeresen visszaállítva. Frissítések telepítése és a router "
+#~ "újraindítása után visszatérhet erre az oldalra: <a href=\"%(new_url)s\">"
+#~ "%(new_url)s</a>, a helyi hálózaton. Várjon egy ideig, amíg a router "
+#~ "automatikusan újraindul."
 
-msgid "Most important points from the license agreement:"
-msgstr "A licencszerződés legfontosabb pontjai:"
+#~ msgid "IP address of the router could not be determined from the backup."
+#~ msgstr ""
+#~ "Az útválasztó IP-címét nem lehetett megállapítani a biztonsági másolatból."
 
-msgid ""
-"Automatic updates are offered to the Turris router owners free of charge."
-msgstr "Az automatikus frissítés a Turris Omnia tulajdonosoknak ingyenes."
+#~ msgid ""
+#~ "Configuration could not be loaded, backup file is probably corrupted."
+#~ msgstr ""
+#~ "Nem tölthető be a beállítás, a biztonságimásolat-fájl valószínűleg sérült."
 
-msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr "A frissítéseket kizárólag a CZ.NIC, z. ok. p. o. készíti."
+#~ msgid "Invalid request arguments."
+#~ msgstr "Érvénytelen lekérdezési paraméterek."
 
-msgid ""
-"Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris router."
-msgstr ""
-"Az automatikus frissítések engedélyezése előfeltétele a Turris Omnia további "
-"biztonsági funkcióinak."
+#~ msgid "Home page"
+#~ msgstr "Kezdőlap"
 
-msgid ""
-"Automatic updates take place at the time of their release, the time of "
-"installation cannot be influenced by the user."
-msgstr ""
-"Automatikus frissítések a kiadás időpontjában zajlanak, a telepítés ideje  a "
-"felhasználó által nem befolyásolható."
+#~ msgid ""
+#~ "Router's IP address in inner network. Also defines the range of assigned "
+#~ "IP addresses."
+#~ msgstr ""
+#~ "Útválasztó IP-címe a belső hálózaton. Meghatározza a kiosztott IP-"
+#~ "címtartományt is."
 
-msgid ""
-"Having the automatic updates turned on can result in increased Internet "
-"traffic on your router. Expenses related to this increase are covered by you."
-msgstr ""
-"Az automatikus frissítés bekapcsolása következtében megnövekedhet az "
-"útválasztó internetes adatforgalma. A költségeket Ön állja."
+#~ msgid "Use Modem Turris"
+#~ msgstr "Turris Modem használata"
 
-msgid ""
-"Automatic updates cannot protect you against every attack coming from the "
-"Internet. Please do not forget to protect your workstations and other "
-"devices by installing antivirus software and explaining to your family "
-"members how to stay safe on the Internet."
-msgstr ""
-"Automatikus frissítések nem védenek minden az internet felől érkező támadás "
-"ellen. Ne felejtse el védeni a munkaállomásokat és más eszközöket "
-"víruskereső szoftver telepítésével, és magyarázza el családtagjainak, hogyan "
-"maradhat biztonságban az interneten."
+#~ msgid ""
+#~ "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/"
+#~ "VDSL modem designed specially for router Turris. Enable this option if "
+#~ "you have Modem Turris connected to your router."
+#~ msgstr ""
+#~ "Modem Turris (aka SMRT - Kis Turris Router Modem), egy egyszerű ADSL/VDSL "
+#~ "modem kifejezetten a Turris útválasztóhoz. Engedélyezd ezt az opciót, ha "
+#~ "a Modem Turris csatlakozik a routerhez."
 
-msgid ""
-"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
-"is not responsible for any damages caused by the automatic updates."
-msgstr ""
-"CZ.NIC, z. ok. p. o. nem garantálja a szolgáltatás elérhetőségét, nem "
-"felelős semmilyen kárért, amelyet az automatikus frissítés okozhat."
+#~ msgid "xDSL VLAN number"
+#~ msgstr "xDSL VLAN száma"
 
-msgid ""
-"By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris router and you agree with the full text of the <a href=\"https://"
-"www.turris.cz/omnia-updater-eula\">license agreement</a>."
-msgstr ""
-"Az automatikus frissítések engedélyezésével megerősíti, hogy Ön a "
-"tulajdonosa a Turris Omnia útválasztónak, és egyetért a <a href=\""
-"https://www.turris.cz/omnia-updater-eula\"> licencszerződés</a> teljes "
-"szövegével."
+#~ msgid ""
+#~ "VLAN number for your internet connection. Your ISP might have provided "
+#~ "you this number. If you have VPI and VCI numbers instead, leave this "
+#~ "field empty, a default value will be used automatically."
+#~ msgstr ""
+#~ "Az internet-kapcsolat VLAN száma. Lehet, hogy az Internetszolgáltató "
+#~ "adott ilyen számot. Ha ehelyett VPI és a VCI száma van, ezt a mezőt "
+#~ "hagyjuk üresen, egy alapértelmezett érték lesz automatikusan használva."
 
-msgid "Log in"
-msgstr "Bejelentkezés"
+#~ msgid "Both VPI and VCI must be filled or both must be empty."
+#~ msgstr ""
+#~ "Mindkettőt (VPI, VCI) ki kell tölteni, vagy mindkettőnek üresnek kell "
+#~ "lennie."
 
-msgid "Foris Configuration Interface"
-msgstr "Foris beállítási felület"
+#~ msgid "VPI"
+#~ msgstr "VPI"
 
-msgid "Go to LuCI"
-msgstr "Ugrás a LuCI-ra"
+#~ msgid ""
+#~ "Virtual Path Identifier (VPI) is a parameter that you might have received "
+#~ "from your ISP. If you have a VLAN number instead, leave this field empty. "
+#~ "You need to fill in both VPI and VCI together."
+#~ msgstr ""
+#~ "Virtuális útvonal-azonosító (VPI) olyan paraméter, amelyet az "
+#~ "internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
+#~ "üresen ezt a mezőt. A VPI-t és VCI-t együtt, egyszerre kell kitölteni."
 
-msgid "Reboot now"
-msgstr "Újraindítás most"
+#~ msgid "VCI"
+#~ msgstr "VCI"
 
-msgid "Dismiss"
-msgstr "Elvetés"
+#~ msgid ""
+#~ "Virtual Circuit Identifier (VCI) is a parameter that you might have "
+#~ "received from your ISP. If you have a VLAN number instead, leave this "
+#~ "field empty. You need to fill in both VPI and VCI together."
+#~ msgstr ""
+#~ "Virtuális áramkör-azonosító (VCI) olyan paraméter, amely az "
+#~ "internetszolgáltatótól kaphatott. Ha VLAN szám van ehelyett, akkor hagyja "
+#~ "üresen ezt a mezőt. A VPI-t és a VCI együtt, egyszerre kell kitölteni."
 
-msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr ""
-"Nem tudja letölteni értesítéseket, kérem, próbálja meg frissíteni az oldalt."
+#~ msgid ""
+#~ "The Updater is currently disabled. You must enable it first to manage "
+#~ "package lists."
+#~ msgstr ""
+#~ "Az Frissítéskezelő jelenleg le van tiltva. Először engedélyeznie kell, "
+#~ "hogy a csomaglistákat kezelhesse."
 
-msgid "News"
-msgstr "Hírek"
+#~ msgid ""
+#~ "List of available software was not downloaded from the server yet. Please "
+#~ "come back later."
+#~ msgstr ""
+#~ "A rendelkezésre álló szoftverlista még nem került letöltésre a "
+#~ "kiszolgálóról. Próbálkozzon később."
 
-msgid "Update"
-msgstr "Frissítés"
+#~ msgid ""
+#~ "Welcome to the Turris administration site. Please, choose a config "
+#~ "section you wish to change from the menu."
+#~ msgstr ""
+#~ "Üdvözöljük a Turris felügyeleti oldalán. Válasszon egy beállítási "
+#~ "területet menüből, ahol megszeretne változtatni valamit."
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Y/%m/%d %H:%M:%S"
-
-#, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s a %(created_at)s-tól"
-
-msgid "Notification"
-msgstr "Értesítés"
-
-msgid "You have been logged out due to longer inactivity."
-msgstr "Kijelentkezett hosszabb inaktivitás miatt."
-
-msgid "The password you entered was not valid."
-msgstr "A megadott jelszó érvénytelen."
+#~ msgid "Continue to configuration interface"
+#~ msgstr "Tovább a beállítási felületre"
 
 #~ msgid "Connecting"
 #~ msgstr "Csatlakozás"
