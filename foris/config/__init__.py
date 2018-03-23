@@ -229,6 +229,10 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
     template = "config/wifi"
 
+    def save(self, *args, **kwargs):
+        super(WifiConfigPage, self).save(no_messages=True, *args, **kwargs)
+        return self.form.callback_results.get("result", None)
+
 
 class SystemPasswordConfigPage(ConfigPageMixin, misc.SystemPasswordHandler):
     menu_order = 17

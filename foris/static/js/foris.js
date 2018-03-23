@@ -511,7 +511,7 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden) {
   var codeElement = $("#wifi-qr-" + radio);
   codeElement.empty();
 
-  if (!$("#field-" + radio + "-wifi_enabled_1").prop("checked"))
+  if (!$("#field-" + radio + "-device_enabled_1").prop("checked"))
     return;
 
 
@@ -545,7 +545,7 @@ Foris.initWiFiQR = function () {
 
   // determine present radios from wifi-enable checkboxes
   var radios = [];
-  $("input[id$='-wifi_enabled_1']").each(function (i, el) {
+  $("input[id$='-device_enabled_1']").each(function (i, el) {
     radios.push(el.getAttribute('id').replace(/field-(radio\d+)-.*/, '$1'));
   });
 
@@ -570,7 +570,7 @@ Foris.initWiFiQR = function () {
     Foris.updateWiFiQR(
         radio,
         $('#field-' + radio + '-ssid').val(),
-        $('#field-' + radio + '-key').val(),
+        $('#field-' + radio + '-password').val(),
         $('#field-' + radio + '-ssid_hidden_1').prop('checked'));
   };
 
@@ -581,7 +581,7 @@ Foris.initWiFiQR = function () {
 
     $(document).on('change keyup paste',
         '#field-' + radio + '-ssid, ' +
-        '#field-' + radio + '-key, ' +
+        '#field-' + radio + '-password, ' +
         '#field-' + radio + '-ssid_hidden_1',
         (function (r) {
           return function () {
