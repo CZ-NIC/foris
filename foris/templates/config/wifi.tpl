@@ -19,7 +19,7 @@
 %if not defined('is_xhr'):
 <div id="page-wifi" class="config-page">
 %end
-    %if not form:
+    %if not form or not len(form.active_fields):
     <div class="message warning">{{ trans("We were unable to detect any wireless cards in your router.") }}</div>
     %else:
     <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
