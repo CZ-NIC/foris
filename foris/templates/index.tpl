@@ -64,7 +64,7 @@
           {{ trans("A secure connection is an important safety feature of the router and therefore the entire home network.") }}
           <a href="{{ doc_url }}">{{ trans("How to set an encrypted connection and why is it important") }} &gt;</a>
           <br>
-          <small>Turris Omnia</small>
+          <small>Turris OS</small>
       </label>
   </div>
   %end
