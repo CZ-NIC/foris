@@ -41,7 +41,7 @@ class WifiHandler(BaseConfigHandler):
             form_data[prefixed("ssid_hidden")] = device["hidden"]
             form_data[prefixed("hwmode")] = device["hwmode"]
             form_data[prefixed("htmode")] = device["htmode"]
-            form_data[prefixed("channel")] = device["channel"]
+            form_data[prefixed("channel")] = str(device["channel"])
             form_data[prefixed("password")] = device["password"]
             form_data[prefixed("guest_enabled")] = device["guest_wifi"]["enabled"]
             form_data[prefixed("guest_ssid")] = device["guest_wifi"]["SSID"]
