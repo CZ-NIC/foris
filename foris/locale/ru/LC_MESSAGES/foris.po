@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-03-28 18:49+0000\n"
+"PO-Revision-Date: 2018-03-28 18:57+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
@@ -1354,10 +1354,10 @@ msgid "Router's IP address in the inner network."
 msgstr "IP-адрес маршрутизатора во внутренней сети."
 
 msgid "Network netmask"
-msgstr "Маска подсети"
+msgstr "Маска сети"
 
 msgid "Network mask of the inner network."
-msgstr "Маска подсети внутренней сети."
+msgstr "Маска внутренней сети."
 
 msgid "Enable DHCP"
 msgstr "Включить DHCP"
@@ -1407,7 +1407,7 @@ msgid "Guest network netmask"
 msgstr "Маска гостевой сети"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Маска гостевой сети."
 
 msgid "Guest Lan QoS"
 msgstr "QoS гостевой сети"
@@ -1498,16 +1498,14 @@ msgstr "Маска подсети"
 msgid "Gateway"
 msgstr "Шлюз"
 
-#, fuzzy
 msgid "DHCP Client ID"
-msgstr "Включение DHCP-клиентов в DNS"
+msgstr "Идентификатор клиента DHCP"
 
 msgid "Client identifier which will be provided to DHCP server."
-msgstr ""
+msgstr "Идентификатор клиента, который будет предоставлен DHCP-серверу."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS-сервер 1"
+msgstr "DNS-сервер 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1516,9 +1514,8 @@ msgstr ""
 "Адрес DNS-сервера не требуется, так как встроенная система разрешения "
 "доменных имён может работать без него."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS-сервер 2"
+msgstr "DNS-сервер 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "Имя пользователя PAP/CHAP"
@@ -1548,13 +1545,11 @@ msgstr "Префикс IPv6"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Диапазон адресов для локальной сети, например, 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS-сервер 1"
+msgstr "DNS-сервер 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS-сервер 2"
+msgstr "DNS-сервер 2 (IPv6)"
 
 msgid "Custom MAC address"
 msgstr "Пользовательский MAC-адрес"
@@ -1893,37 +1888,39 @@ msgstr ""
 "выставить правильное время. Синхронизируйте его со временем вашего "
 "компьютера или установите вручную."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Время перезагрузки"
+msgstr "Регион и время"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Важно, чтобы маршрутизатор правильно установил текущее время. Если у "
+"маршрутизатора выставлено старое время, некоторые истекшие сертификаты SSL "
+"могли показаться действительными."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Время должно быть актуальным, иначе DNS и другие службы могут работать "
+"некорректно."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Время перезагрузки"
+msgstr "Как установить время"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Способ установки текущего времени в маршрутизаторе."
 
 msgid "via ntp"
-msgstr ""
+msgstr "Через NTP"
 
-#, fuzzy
 msgid "manually"
-msgstr "Установить время вручную"
+msgstr "Вручную"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС"
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "Тестовое сообщение не отправилось из-за внутренней ошибки."
