@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-03-20 19:40+0000\n"
+"PO-Revision-Date: 2018-03-28 18:37+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
-">\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.20-dev\n"
 
 msgid "News"
@@ -52,10 +52,10 @@ msgid "Uninstall"
 msgstr "Удалить"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Обновить"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Откатить"
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -90,9 +90,8 @@ msgstr "Конфигурация успешно сохранена."
 msgid "Notifications"
 msgstr "Уведомления"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Включить уведомления"
+msgstr "Количество уведомлений"
 
 msgid "Old password you entered was not valid."
 msgstr "Старый пароль неверен."
@@ -109,23 +108,20 @@ msgstr "Неверный метод HTTP."
 msgid "Testing message was sent, please check your inbox."
 msgstr "Тестовое сообщение отправлено, проверьте вашу почту."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
 "Не удалось отправить тестовое сообщение, возможно, ошибка в конфигурации."
-"<br>Ошибка:<br><pre>%(error)s</pre>"
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Конфигурация успешно восстановлена. Подождите некоторое время для установки "
-"обновления и автоматической перезагрузки устройства."
+"Конфигурация успешно восстановлена. Обратите внимание, что для "
+"восстановленния конфигурации потребуется перезагрузка."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Не удалось восстановить резервную копию из указанного файла."
 
 msgid "Update was approved."
 msgstr "Обновление было одобрено."
@@ -147,7 +143,7 @@ msgstr ""
 "удалены."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Сервис обновления запущен"
 
 msgid "Data collection"
 msgstr "Сбор данных"
@@ -225,9 +221,8 @@ msgstr "Это не число."
 msgid "This is not valid time in HH:MM format."
 msgstr "Некорректный формат времени ЧЧ:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Некорректный формат времени ЧЧ:MM."
+msgstr "Некорректный формат времени (ГГГГ-ММ-ДД ЧЧ:MM:СС)."
 
 msgid "This is not a valid domain name."
 msgstr "Некорректное доменное имя."
@@ -509,9 +504,8 @@ msgstr "Перезагрузить сейчас"
 msgid "Dismiss"
 msgstr "Отклонить"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Отклонить"
+msgstr "Отклонить все"
 
 msgid "No new messages."
 msgstr "Нет новых сообщений."
@@ -662,6 +656,11 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Здесь можно проверить настройки подключения. Не забудьте нажать кнопку "
+"<strong>Сохранить</strong> перед запуском теста. Обратите внимание: иногда "
+"требуется некоторое время, прежде чем соединение будет полностью "
+"установлено. Поэтому может быть полезно подождать некоторое время, прежде "
+"чем запускать этот тест."
 
 msgid "Unable to verify network connection."
 msgstr "Не удалось проверить подключение к сети."
@@ -783,20 +782,19 @@ msgid "Menu"
 msgstr "Меню"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Перезапуск сети..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Ваша сеть перезапускается. Пожалуйста, подождите..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Перезагрузить"
+msgstr "Перезагрузка..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Ваш маршрутизатор перезагружается."
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
+msgstr "Для правильной работы, необходимо перезапустить маршрутизатор."
 
 msgid "Log out"
 msgstr "Выйти"
