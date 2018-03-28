@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-03-28 18:37+0000\n"
+"PO-Revision-Date: 2018-03-28 18:49+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
@@ -794,14 +794,14 @@ msgid "Your router is being rebooted."
 msgstr "Ваш маршрутизатор перезагружается."
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr "Для правильной работы, необходимо перезапустить маршрутизатор."
+msgstr "Для правильной работы необходимо перезапустить маршрутизатор."
 
 msgid "Log out"
 msgstr "Выйти"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
-msgstr ""
+msgstr "Полученные уведомления не были отклонены после последней перезагрузки."
 
 #, python-format
 msgid "Approve update from %(when)s"
@@ -886,13 +886,11 @@ msgstr "DNS"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Ошибка запроса сервера."
+msgstr "Ошибка запроса NTP сервера."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Обновления"
+msgstr "Время обновления"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -906,7 +904,7 @@ msgstr ""
 "карты подключены к 2,4-гигагерцевой части диплексера."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR код"
 
 msgid "Password"
 msgstr "Пароль"
@@ -921,18 +919,20 @@ msgid "Go to LuCI"
 msgstr "Перейти к LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Открытая блокировка"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Ваше соединение не зашифровано"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Безопасное соединение является важной функцией безопасности маршрутизатора "
+"и, следовательно, всей домашней сети."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Как установить зашифрованное соединение и почему это важно"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1351,14 +1351,13 @@ msgid "Router IP address"
 msgstr "IP-адрес маршрутизатора"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "IP-адрес маршрутизатора во внутренней сети."
 
-#, fuzzy
 msgid "Network netmask"
 msgstr "Маска подсети"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Маска подсети внутренней сети."
 
 msgid "Enable DHCP"
 msgstr "Включить DHCP"
@@ -1394,21 +1393,18 @@ msgstr ""
 "к этой сети, разрешен доступ в Интернет, но не разрешен доступ к другим "
 "устройствам сети и интерфейсу конфигурации маршрутизатора."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Включить гостевую сеть"
+msgstr "IP-адрес маршрутизатора в гостевой сети"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Вам нужно установить диапазон IP для вашей гостевой сети. Необходимо, чтобы "
-"диапазон отличался от диапазонов в других сетях (LAN, WAN, VPN и т.д.)."
+"IP-адрес маршрутизатора для гостевой сети. Необходимо, чтобы IP-адреса "
+"гостевой сети отличались от других сетей (LAN, WAN, VPN и т.д.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Гостевая сеть"
+msgstr "Маска гостевой сети"
 
 msgid "Network mask of the guest network."
 msgstr ""
