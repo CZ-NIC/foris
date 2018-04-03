@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-04-03 10:13+0000\n"
+"PO-Revision-Date: 2018-04-03 13:14+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/>"
 "\n"
@@ -490,7 +490,7 @@ msgid ""
 "next package installation."
 msgstr ""
 "업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경우에 유용할 수 있습니다. 의심가는 업데이트는 일시적으로 "
-"거절하고, 준비가 됐을 때 설치할 수 있습니다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 설치 때 다시 제안받게 됩니다."
+"거절하고, 준비가 됐을 때 설치할 수 있습니다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 설치 때 같이 제안받게 됩니다."
 
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
@@ -506,16 +506,16 @@ msgstr ""
 
 #, python-format
 msgid "after %(input)s hours"
-msgstr ""
+msgstr "%(input)s 시간 후"
 
 msgid "Hint"
-msgstr ""
+msgstr "힌트"
 
 msgid "Save"
-msgstr ""
+msgstr "저장"
 
 msgid "Notifications and automatic restarts"
-msgstr ""
+msgstr "알림 및 자동 재시작"
 
 msgid ""
 "You can set the router to notify you when a specific event occurs, for "
@@ -527,18 +527,24 @@ msgid ""
 "that case, because of security reasons, it is recommended to create a "
 "dedicated account for your router."
 msgstr ""
+"재시작이 필요하거나, 공간이 부족하거나 업데이트가 설치된 경우 등 특정 이벤트 발생 시 라우터가 이를 알리도록 설정할 수 있습니다. "
+"Turris 서버를 통해 이메일을 발송할 수 있습니다. 그 대신 다른 서버를 이용하고자 하는 경우 해당 설정을 입력해야 합니다. 이 "
+"설정은 여러분이 이메일 클라이언트에 입력하는 것과 동일하며, 설정은 서비스 제공자로부터 받을 수 있습니다. 이 경우, 보안상 별도의 "
+"계정을 만드는 것을 권장합니다."
 
 msgid ""
 "Also, when an automatic restart is required, you can specify the time you "
 "want it to occur. If you have email notifications enabled, you can also "
 "specify the interval between notification and automatic restart."
 msgstr ""
+"또한, 자동 재시작이 필요한 경우 언제 실행할 지 정할 수 있습니다. 이메일 알림을 활성화한 경우, 알림과 자동 재시작 사이의 간격도 "
+"설정할 수 있습니다."
 
 msgid "Send testing message"
-msgstr ""
+msgstr "테스트 메시지 보내기"
 
 msgid "Configuration backup"
-msgstr ""
+msgstr "환경설정 백업"
 
 msgid ""
 "If you need to save the current configuration of this device, you can "
@@ -546,42 +552,47 @@ msgid ""
 "compressed archive (.tar.bz2). Passwords for this configuration interface "
 "and for the advanced configuration are not included in the backup."
 msgstr ""
+"기기의 환경설정을 저장하고자 하는 경우, 백업 파일을 다운로드 받을 수 있습니다. 환경설정은 암호화 되지 않은 압축 파일(.tar.bz2)"
+"로 저장됩니다. 본 환경설정 인터페이스의 암호와 고급 설정은 백업에 포함되지 않습니다."
 
 msgid "Download configuration backup"
-msgstr ""
+msgstr "환경설정 백업 다운로드"
 
 msgid "Configuration restore"
-msgstr ""
+msgstr "환경설정 복원"
 
 msgid ""
 "To restore the configuration from a backup file, upload it using following "
 "form. Keep in mind that IP address of this device might change during the "
 "process, causing unavailability of this interface."
 msgstr ""
+"백업 파일에서 환경설정을 복원하려면, 아래 양식을 통해 업로드하세요. 복원 도중 IP 주소가 변경되어 본 인터페이스에 접속이 안될 수 "
+"있습니다."
 
 msgid "Restore from backup"
-msgstr ""
+msgstr "백업에서 복원"
 
 msgid "Device reboot"
-msgstr ""
+msgstr "기기 재시작"
 
 msgid ""
 "If you need to reboot the device, click on the following button. The reboot "
 "process takes approximately 30 seconds, you will be required to log in again "
 "after the reboot."
 msgstr ""
+"기기를 재시작해야 하는 경우, 아래 버튼을 클릭하세요. 재시작 프로세스는 30초 정도 소요되며, 재시작 이후에 다시 로그인해야 합니다."
 
 msgid "Reboot"
-msgstr ""
+msgstr "재시작"
 
 msgid "Discard changes"
-msgstr ""
+msgstr "변경사항 버리기"
 
 msgid "Save changes"
-msgstr ""
+msgstr "변경사항 저장"
 
 msgid "Connection test"
-msgstr ""
+msgstr "연결 테스트"
 
 msgid ""
 "Here you can test you connection settings. Remember to click on the "
@@ -589,30 +600,33 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"여기서 연결 설정을 테스트할 수 있습니다. 테스트하기 전에 <strong>저장</strong> 버튼을 눌러야 함을 기억하세요. 경우에 "
+"따라 연결이 완전히 준비될 때까지 시간이 걸릴 수 있습니다. 그래서 테스트를 시작하기 전에 어느 정도 기다렸다가 시작하는 게 좋을 수 "
+"있습니다."
 
 msgid "Unable to verify network connection."
-msgstr ""
+msgstr "네트워크 연결을 확인할 수 없습니다."
 
 msgid "Test type"
-msgstr ""
+msgstr "테스트 유형"
 
 msgid "Status"
-msgstr ""
+msgstr "상태"
 
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "IPv4 연결"
 
 msgid "IPv4 gateway connectivity"
-msgstr ""
+msgstr "IPv4 게이트웨이 연결"
 
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "IPv6 연결"
 
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "IPv6 게이트웨이 연결"
 
 msgid "Test connection"
-msgstr ""
+msgstr "연결 테스트"
 
 msgid ""
 "With the Turris router you can join Project Turris which is a non-profit "
@@ -629,46 +643,48 @@ msgstr ""
 msgid ""
 "The Updater is currently disabled. You must enable it first to enable data "
 "collection."
-msgstr ""
+msgstr "업데이트가 비활성화되어 있습니다. 데이터 수집을 켜려면 활성화해야 합니다."
 
 msgid ""
 "If you want to join the Turris project you need to register on the Turris "
 "portal first. Enter the email address you want to register with or which you "
 "have used for this purpose before:"
 msgstr ""
+"Turris 프로젝트에 참여하려면 먼저 Turris 포털에 등록해야 합니다. 새로 등록하거나 이전에 참여하기 위해 사용했던 이메일 주소를 "
+"입력하세요:"
 
 msgid "Validate email"
-msgstr ""
+msgstr "이메일 확인"
 
 msgid "Device"
-msgstr ""
+msgstr "기기"
 
 msgid "Serial number"
-msgstr ""
+msgstr "일련번호"
 
 msgid "Turris OS version"
-msgstr ""
+msgstr "Turris OS 버전"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "커널 버전"
 
 msgid "Sending of uCollect data"
-msgstr ""
+msgstr "uCollect 데이터 전송"
 
 #, python-format
 msgid "Time of last update: %(datetime)s"
-msgstr ""
+msgstr "마지막 갱신 시각: %(datetime)s"
 
 #, python-format
 msgid "(status updated %d second ago)"
 msgid_plural "(status updated %d seconds ago)"
-msgstr[0] ""
+msgstr[0] "(%d초 전 상태 업데이트됨)"
 
 msgid "Sending of firewall logs"
-msgstr ""
+msgstr "방화벽 로그 전송"
 
 msgid "Refresh"
-msgstr ""
+msgstr "새로고침"
 
 #, python-format
 msgid ""
@@ -676,18 +692,20 @@ msgid ""
 "obtain a registration code. This code must be submitted on the Turris site "
 "in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"만약 아직 기기를 등록하지 않았다면, 아래 버튼을 클릭해 등록 코드를 받으세요. 등록 코드는 Turris 사이트 내 귀하의 사용자 "
+"프로파일에서 입력되어야 합니다: <a href=\"%(url)s\">%(url)s</a>."
 
 msgid "Registration code"
-msgstr ""
+msgstr "등록 코드"
 
 msgid "Get registration code"
-msgstr ""
+msgstr "등록 코드 받기"
 
 msgid "Foris - administration interface of router Turris"
-msgstr ""
+msgstr "Foris - Turris 라우터 관리 인터페이스"
 
 msgid "Menu"
-msgstr ""
+msgstr "메뉴"
 
 msgid "Network is restarting..."
 msgstr ""
