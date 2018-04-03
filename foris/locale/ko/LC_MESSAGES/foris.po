@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-04-03 13:14+0000\n"
+"PO-Revision-Date: 2018-04-04 09:21+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/>"
 "\n"
@@ -708,26 +708,26 @@ msgid "Menu"
 msgstr "메뉴"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "네트워크를 재시작 하는 중..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "네트워크가 재시작되었습니다. 잠시만 기다려주세요..."
 
 msgid "Rebooting..."
-msgstr ""
+msgstr "재시작 중..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "라우터를 재시작했습니다."
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
+msgstr "라우터가 제대로 동작하기 위해서 재시작해야 합니다."
 
 msgid "Log out"
-msgstr ""
+msgstr "로그아웃"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
-msgstr ""
+msgstr "이전 재부팅 이후로 다음 알림 사항이 남아있습니다."
 
 #, python-format
 msgid "Approve update from %(when)s"
