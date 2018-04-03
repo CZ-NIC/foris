@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-04-03 09:23+0000\n"
+"PO-Revision-Date: 2018-04-03 09:25+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/>"
 "\n"
@@ -73,22 +73,22 @@ msgid "Installation finished"
 msgstr "설치 완료"
 
 msgid "Configuration could not be saved due to an internal error."
-msgstr "내부 오류가 발생해 환경설정이 저장되지 않았습니다."
+msgstr "내부 오류가 발생해 환경설정을 저장하지 못했습니다."
 
 msgid "There were some errors in your input."
 msgstr "입력한 내용 중에 오류가 있습니다."
 
 msgid "The password you entered was not valid."
-msgstr ""
+msgstr "입력한 암호가 올바르지 않습니다."
 
 msgid "Configuration was successfully saved."
 msgstr "환경설정을 성공적으로 저장했습니다."
 
 msgid "Notifications"
-msgstr ""
+msgstr "알림"
 
 msgid "Number of notifications"
-msgstr ""
+msgstr "알림 갯수"
 
 msgid "Old password you entered was not valid."
 msgstr "입력한 이전 암호가 올바르지 않습니다."
@@ -100,7 +100,7 @@ msgid "Maintenance"
 msgstr "유지보수"
 
 msgid "Wrong HTTP method."
-msgstr "HTTP 사용법이 잘못됐습니다."
+msgstr "잘못된 HTTP 메소드 입니다."
 
 msgid "Testing message was sent, please check your inbox."
 msgstr "테스트 메시지를 보냈으니, 메일함을 확인해주세요."
@@ -112,13 +112,10 @@ msgstr ""
 "환경 설정에 문제가 있어 메시지 발송에 실패했습니다.<br>오류 메시지:<br><pre>"
 "%(error)s</pre>"
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
-msgstr ""
-"환경설정을 성공적으로 복원했습니다. 기기가 업데이트를 설치하고 자동으로 재시"
-"작할 때 까지 기다려 주세요."
+msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원하려면 재시작해야 합니다."
 
 msgid "Failed to restore the backup from the provided file."
 msgstr ""
