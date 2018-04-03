@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-04-03 09:25+0000\n"
+"PO-Revision-Date: 2018-04-03 10:13+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/>"
 "\n"
@@ -115,10 +115,10 @@ msgstr ""
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
-msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원하려면 재시작해야 합니다."
+msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원을 완료하려면 재시작해야 합니다."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "파일로부터 백업 복원에 실패했습니다."
 
 msgid "Update was approved."
 msgstr "업데이트가 승인되었습니다."
@@ -140,7 +140,7 @@ msgstr ""
 "다."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "업데이트 진행중"
 
 msgid "Data collection"
 msgstr "데이터 수집"
@@ -174,18 +174,20 @@ msgid ""
 "\"%(url)s\">Turris website</a> and use the registration code <strong>"
 "%(reg_num)s</strong> to create a new account."
 msgstr ""
+"이메일 주소가 아직 등록되지 않았습니다. <a href=\"%(url)s\">Turris 웹사이트</a>에 접속해 등록코드 "
+"<strong>%(reg_num)s</strong>를 사용해 새 계정을 만드세요."
 
 msgid "About"
-msgstr ""
+msgstr "정보"
 
 msgid "Online"
-msgstr ""
+msgstr "온라인"
 
 msgid "Offline"
-msgstr ""
+msgstr "오프라인"
 
 msgid "Unknown status"
-msgstr ""
+msgstr "상태를 알 수 없음"
 
 msgid "This field is required."
 msgstr "필수 항목입니다."
@@ -214,16 +216,14 @@ msgstr "숫자가 아닙니다."
 msgid "This is not valid time in HH:MM format."
 msgstr "올바른 HH:MM 시간 형식이 아닙니다."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "올바른 HH:MM 시간 형식이 아닙니다."
+msgstr "올바른 시간 형식(YYYY-MM-DD HH:MM:SS)이 아닙니다."
 
-#, fuzzy
 msgid "This is not a valid domain name."
-msgstr "올바르지 않은 IPv4 혹은 IPv6 주소입니다."
+msgstr "올바르지 않은 도메인 이름입니다."
 
 msgid "MAC address is not valid."
-msgstr "MAC 주소가 올바르지 않습니다."
+msgstr "올바르지 않은 MAC 주소입니다."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -240,29 +240,34 @@ msgid ""
 "in more advanced options, you can use the LuCI interface which is available "
 "from the <a href=\"%(url2)s\">Advanced administration tab</a>."
 msgstr ""
+"<a href=\"%(url)s\">표준 환경설정 인터페이스</a>에서 이전에 정한 설정을 변경할 수 있습니다. 보다 세부적인 설정을 "
+"변경하고 싶다면, <a href=\"%(url2)s\">고급 환경설정 탭</a>에 있는 LuCI 인터페이스를 사용할 수 있습니다."
 
 msgid "What next?"
 msgstr ""
 
 msgid ""
 "You have decided to disable the Updater service during the installation."
-msgstr ""
+msgstr "설치 도중에 업데이트 서비스를 비활성화하셨습니다."
 
 msgid ""
 "Without the Updater, installed software will not be kept up to date and you "
 "will also not be able to install Updater's package lists."
 msgstr ""
+"업데이트 서비스가 없으면, 설치된 소프트웨어를 최신으로 유지할 수 없으며 업데이트 서비스에서 제공하는 패키지 목록도 설치할 수 없습니다."
 
 msgid ""
 "By enabling of the Updater, you can also join our research project: <a href="
 "\"https://project.turris.cz/\">Project Turris</a>."
 msgstr ""
+"업데이트 서비스를 활성화하면, 연구 프로젝트에 참여 가능합니다: <a href=\"https://project.turris.cz/\">"
+"Project Turris</a>."
 
 #, python-format
 msgid ""
 "You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
 "configuration page."
-msgstr ""
+msgstr "<a href=\"%(url)s\">업데이트</a> 설정 페이지에서 업데이트 서비스를 활성화할 수 있습니다."
 
 msgid ""
 "With Turris router you can join the research project called <a href="
@@ -270,56 +275,63 @@ msgid ""
 "your router can become a probe that analyzes the traffic between internet "
 "and the home network and identifies suspicious data flows."
 msgstr ""
+"Turris 라우터와 함께 <a href=\"https://project.turris.cz/\">Project Turris</a>라 "
+"불리는 연구 프로젝트에 참여할 수 있습니다. 본 프로젝트 덕분에, 귀하의 라우터는 여러분의 홈 네트워크와 인터넷 사이의 트래픽을 분석하고 "
+"의심스러운 데이터 흐름을 확인하는 역할을 수행할 수 있습니다."
 
 #, python-format
 msgid ""
 "You can enable these additional features by following the instructions on "
 "the <a href=\"%(url)s\">Data collection</a> page."
-msgstr ""
+msgstr "<a href=\"%(url)s\">데이터 수집</a> 페이지에 있는 방법을 따름으로서 이 추가 기능을 활성화할 수 있습니다."
 
 msgid "Important updates"
-msgstr ""
+msgstr "중요 업데이트"
 
 msgid ""
 "Important updates that require a device restart have been installed. Some "
 "services might not work if you don't restart the device. For details see "
 "below."
 msgstr ""
+"디바이스 재시작이 필요한 중요 업데이트가 설치되었습니다. 일부 서비스는 재시작하기 전까지 작동하지 않을 수 있습니다. 자세한 내용은 "
+"아래에 있습니다."
 
 msgid "Continue to the configuration interface"
-msgstr ""
+msgstr "환경설정 인터페이스로 계속 이동"
 
 msgid "Loading..."
-msgstr ""
+msgstr "불러오는 중..."
 
 msgid "Checking internet connectivity."
-msgstr ""
+msgstr "인터넷 연결 상태를 확인 중입니다."
 
 msgid "One moment, please..."
-msgstr ""
+msgstr "잠시만 기다려 주세요..."
 
 msgid "Done"
-msgstr ""
+msgstr "완료"
 
 msgid "Internet connectivity test passed without error."
-msgstr ""
+msgstr "인터넷 연결 테스트가 오류 없이 통과했습니다."
 
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 msgid ""
 "Your internet connection has network connectivity but DNS resolving does not "
 "work. This is probably a problem with your ISP. This might also be an issue "
 "with wrong time on your router - you can adjust it in the following step."
 msgstr ""
+"인터넷 연결 중 DNS 해석이 작동하지 않고 있습니다. 서비스 제공자 측의 문제일 수 있습니다. 귀하의 라우터의 시간 설정이 올바르지 "
+"않아서 생긴 문제일 수도 있습니다 - 다음 순서에 따라 시간을 조정할 수 있습니다."
 
 msgid ""
 "It seems that you have no internet connection, maybe your WAN settings are "
 "not right."
-msgstr ""
+msgstr "WAN 설정이 올바르지 않아 인터넷 연결이 안되고 있습니다."
 
 msgid "Try again"
-msgstr ""
+msgstr "다시 시도"
 
 msgid ""
 "In some cases, such as on a slower DSL connection or when DHCP is used, this "
@@ -327,12 +339,14 @@ msgid ""
 "using the above button if you think this might be the case. You can also "
 "return to previous page to fix the problem by modifying WAN settings."
 msgstr ""
+"일부 느린 DSL 연결이나 DHCP를 사용 중일 때, 네트워크 연결 속도가 느려 이 오류가 발생할 수 있습니다. 이에 해당하는 경우 위 "
+"버튼을 눌러 다시 연결 테스트를 할 수 있습니다. 또한 이전 페이지로 돌아가 WAN 설정을 수정해 문제를 해결할 수 있습니다."
 
 msgid "Adjust WAN settings"
-msgstr ""
+msgstr "WAN 설정 수정"
 
 msgid "Welcome to configuration of router Turris"
-msgstr ""
+msgstr "Turris 라우터 환경설정에 오신 것을 환영합니다"
 
 msgid ""
 "Before you start to use the router for the first time, it is necessary to "
@@ -340,50 +354,55 @@ msgid ""
 "configuration procedure. After it is finished, your router will be ready for "
 "operation."
 msgstr ""
+"라우터를 처음 사용하기 전에 설정이 필요합니다. 간단 마법사가 환경설정 절차를 안내할 것입니다. 완료되면 라우터가 작동할 준비를 마치게 "
+"됩니다."
 
 msgid ""
 "If you want to restore a previously saved configuration or for some other "
 "reason skip this wizard, you can do so after choosing a password in its "
 "first step."
-msgstr ""
+msgstr "이전 환경설정을 복원하려 하는 등의 이유로 이 마법사를 건너뛰어야 하는 경우, 암호를 설정한 다음에 건너뛸 수 있습니다."
 
 msgid "Begin installation"
-msgstr ""
+msgstr "설치 시작"
 
 msgid "We were unable to detect any wireless cards in your router."
-msgstr ""
+msgstr "라우터에서 무선랜 카드를 감지하지 못했습니다."
 
 msgid "Registration failure"
-msgstr ""
+msgstr "등록 실패"
 
 msgid ""
 "Unfortunately, it wasn't possible to generate the registration code. This "
 "usually means the router is not connected to the internet. Please, try "
 "registering later. If the problem persists, contact the support."
 msgstr ""
+"등록 코드를 생성할 수 없습니다. 이는 보통 라우터가 인터넷에 연결되지 않았다는 의미입니다. 나중에 다시 시도해주세요. 만약 문제가 "
+"계속되는 경우 지원을 요청하세요."
 
+#, fuzzy
 msgid "Project:Turris"
-msgstr ""
+msgstr "Project:Turris"
 
 msgid "Skip wizard"
-msgstr ""
+msgstr "마법사 건너뛰기"
 
 msgid "Step"
-msgstr ""
+msgstr "단계"
 
 msgid ""
 "Installing additional updates. Router will be restarted several times to "
 "finish the process."
-msgstr ""
+msgstr "추가 업데이트를 설치하고 있습니다. 설치를 완료하기 위해 라우터가 여러 번 재시작될 수 있습니다."
 
 msgid "Do not unplug the device during update!"
-msgstr ""
+msgstr "업데이트하는 동안 전원을 종료하지 마세요!"
 
 msgid "Check of available updates in progress."
-msgstr ""
+msgstr "업데이트 확인 중입니다."
 
 msgid "Firmware update was successful, you can proceed to the next step."
-msgstr ""
+msgstr "펌웨어 업데이트가 완료되어, 다음 단계를 진행할 수 있습니다."
 
 msgid ""
 "Firmware update has failed due to a connection or installation error. You "
@@ -391,39 +410,41 @@ msgid ""
 "do not worry much about the update as the router will run the updater "
 "regularly."
 msgstr ""
+"연결 혹은 설치 오류가 발생해 펌웨어 업데이트가 실패했습니다. 다음 단계를 진행하기 전에 케이블 연결 상태를 확인해주세요. 업데이트는 "
+"주기적으로 실행되니 너무 걱정하지 않으셔도 됩니다."
 
 msgid "Updater has returned the following error:"
-msgstr ""
+msgstr "업데이트 도중 다음과 같은 오류가 발생했습니다:"
 
 msgid "Device has been restarted."
-msgstr ""
+msgstr "기기가 재시작되었습니다."
 
 msgid "Please log in again to continue."
-msgstr ""
+msgstr "계속하려면 로그인하세요."
 
 msgid "Proceed to login"
-msgstr ""
+msgstr "로그인하기"
 
 msgid "Synchronize with your computer clock"
-msgstr ""
+msgstr "내 컴퓨터와 시간 동기화"
 
 msgid "Set time manually"
-msgstr ""
+msgstr "수동으로 시간 설정"
 
 msgid "Synchronization successful."
-msgstr ""
+msgstr "동기화가 완료됐습니다."
 
 msgid "Time settings"
-msgstr ""
+msgstr "시간 설정"
 
 msgid "Synchronizing router time with an internet time server."
-msgstr ""
+msgstr "인터넷 시간 서버를 통해 시간을 동기화하고 있습니다."
 
 msgid "Time was successfully synchronized, you can move to the next step."
-msgstr ""
+msgstr "시간 동기화가 완료되어 다음 단계로 진행할 수 있습니다."
 
 msgid "Device registration"
-msgstr ""
+msgstr "기기 등록"
 
 #, python-format
 msgid ""
@@ -431,31 +452,35 @@ msgid ""
 "registration of your device in your user profile on the Turris website <a "
 "href=\"%(url)s\">%(url)s</a>."
 msgstr ""
+"기기가 성공적으로 설치되었습니다. 마지막 단계는 기기를 Turris 웹사이트 <a href=\"%(url)s\">%(url)s</a>에 "
+"있는 귀하의 사용자 프로파일에 등록하는 것입니다."
 
 msgid ""
 "<strong>Warning:</strong> this code is valid only for limited time. In case "
 "this code is refused, refresh this page to get a new one."
 msgstr ""
+"<strong>주의:</strong> 본 코드는 제한된 시간 동안에만 유효합니다. 코드가 유효하지 않은 경우, 본 페이지를 새로고침하여 "
+"새 코드를 받으세요."
 
 msgid "Reboot now"
-msgstr ""
+msgstr "지금 재시작"
 
 msgid "Dismiss"
-msgstr ""
+msgstr "닫기"
 
 msgid "Dismiss All"
-msgstr ""
+msgstr "모두 닫기"
 
 msgid "No new messages."
-msgstr ""
+msgstr "새 메시지가 없습니다."
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
 "disabling the data collection first."
-msgstr ""
+msgstr "데이터 수집이 활성화되어 있습니다. 데이터 수집을 끄지 않으면 업데이트를 비활성화할 수 없습니다."
 
 msgid "Update approvals"
-msgstr ""
+msgstr "업데이트 승인"
 
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
@@ -464,6 +489,8 @@ msgid ""
 "the update forever and it will be offered to you again together with the "
 "next package installation."
 msgstr ""
+"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경우에 유용할 수 있습니다. 의심가는 업데이트는 일시적으로 "
+"거절하고, 준비가 됐을 때 설치할 수 있습니다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 설치 때 다시 제안받게 됩니다."
 
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
@@ -473,6 +500,9 @@ msgid ""
 "forever and it will be offered to you again together with the next package "
 "installation."
 msgstr ""
+"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경우에 유용할 수 있습니다. 예를 들어 이전 스냅샷으로 "
+"돌아갈 수 있도록 준비하고 나서 업데이트를 설치하거나 의심가는 업데이트는 일시적으로 거절할 수 있습니다. 업데이트를 영원히 거부할 수는 "
+"없으며, 다음 패키지 설치 때 같이 제안받게 됩니다."
 
 #, python-format
 msgid "after %(input)s hours"
