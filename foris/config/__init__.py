@@ -229,6 +229,25 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
     template = "config/wifi"
 
+    def _action_reset(self):
+
+        if bottle.request.method != 'POST':
+            messages.error(_("Wrong HTTP method."))
+            bottle.redirect(reverse("config_page", page_name="wifi"))
+
+        data = current_state.backend.perform("wifi", "reset", {})
+        if "result" in data and data["result"] is True:
+            messages.success(_("Wi-Fi reset was successful."))
+        else:
+            messages.error(_("Failed to perform Wi-Fi reset."))
+
+        bottle.redirect(reverse("config_page", page_name="wifi"))
+
+    def call_action(self, action):
+        if action == "reset":
+            self._action_reset()
+        raise ValueError("Unknown action.")
+
     def save(self, *args, **kwargs):
         super(WifiConfigPage, self).save(no_messages=True, *args, **kwargs)
         return self.form.callback_results.get("result", None)

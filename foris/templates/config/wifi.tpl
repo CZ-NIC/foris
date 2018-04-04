@@ -22,8 +22,8 @@
     %if not form or not len(form.active_fields):
     <div class="message warning">{{ trans("We were unable to detect any wireless cards in your router.") }}</div>
     %else:
+    <p>{{! description }}</p>
     <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-        <p class="config-description">{{! description }}</p>
         %include("_messages.tpl")
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %include("config/_wifi_form.tpl", form=form)
@@ -39,6 +39,16 @@
         </div>
     </form>
     %end
+    <br />
+    <div id="wifi-reset" class="config-description">
+      <form id="wifi-reset-form" class="maintenance-form" method="post" action="{{ url("config_action", page_name="wifi", action="reset") }}">
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        <div class="row">
+          <p>{{ trans("If a number of wireless cards doesn't match, you may try to reset the Wi-Fi settings. Note that this will remove the current Wi-Fi configuration and restore the default values.") }}</p>
+          <button type="submit" name="send" class="button">{{ trans("Reset Wi-Fi settings") }}</button>
+        </div>
+      </form>
+    </div>
 %if not defined('is_xhr'):
 </div>
 %end
