@@ -178,9 +178,15 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     def render(self, **kwargs):
         data = current_state.backend.perform("wan", "get_wan_status")
         if not data["up"]:
-            messages.warning(
-                _("WAN port has no link, your internet connection probably won't work.")
-            )
+            if data["proto"] == "pppoe":
+                messages.warning(_(
+                    "You WAN configuration is probably not correct "
+                    "or your WAN interface hasn't been properly initialized yet."
+                ))
+            else:
+                messages.warning(
+                    _("WAN port has no link, your internet connection probably won't work.")
+                )
         return super(WanConfigPage, self).render(**kwargs)
 
     def _action_check_connection(self):
