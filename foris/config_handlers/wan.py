@@ -40,7 +40,7 @@ class WanHandler(BaseConfigHandler):
         # WAN
         res["proto"] = data["wan_settings"]["wan_type"]
         if res["proto"] == "dhcp":
-            res["clientid"] = data["wan_settings"]["wan_dhcp"].get("client_id", "")
+            res["hostname"] = data["wan_settings"]["wan_dhcp"].get("hostname", "")
         elif res["proto"] == "static":
             res["ipaddr"] = data["wan_settings"]["wan_static"]["ip"]
             res["netmask"] = data["wan_settings"]["wan_static"]["netmask"]
@@ -72,8 +72,8 @@ class WanHandler(BaseConfigHandler):
         # WAN
         res["wan_settings"]["wan_type"] = data["proto"]
         if data["proto"] == "dhcp":
-            client_id = data.get("clientid", False)
-            res["wan_settings"]["wan_dhcp"] = {"client_id": client_id} if client_id else {}
+            hostname = data.get("hostname", False)
+            res["wan_settings"]["wan_dhcp"] = {"hostname": hostname} if hostname else {}
         elif data["proto"] == "static":
             res["wan_settings"]["wan_static"] = {}
             res["wan_settings"]["wan_static"]["ip"] = data["ipaddr"]
@@ -167,10 +167,10 @@ class WanHandler(BaseConfigHandler):
         ).requires("proto", WAN_STATIC)
 
         wan_main.add_field(
-            Textbox, name="clientid", label=_("DHCP Client ID"),
+            Textbox, name="hostname", label=_("DHCP hostname"),
             validators=validators.Domain(),
             hint=_(
-                "Client identifier which will be provided to DHCP server."
+                "Hostname which will be provided to DHCP server."
             )
         ).requires("proto", WAN_DHCP)
 
