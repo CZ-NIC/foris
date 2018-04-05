@@ -20,6 +20,7 @@ from datetime import datetime
 import base64
 import logging
 import time
+import urllib
 
 from bottle import Bottle, request, template, response
 import bottle
@@ -436,7 +437,8 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
                     kwargs['collection_toggle_form'] = handler.form
                     kwargs['agreed'] = collect_data["agreed"]
                 else:
-                    handler = collect.RegistrationCheckHandler(request.POST)
+                    email = request.POST.get("email", request.GET.get("email", ""))
+                    handler = collect.RegistrationCheckHandler({"email": email})
                     kwargs['registration_check_form'] = handler.form
 
         return self.default_template(form=self.form, title=self.userfriendly_title,
@@ -449,6 +451,8 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
         if not handler.save():
             messages.warning(_("There were some errors in your input."))
             return self.render(registration_check_form=handler.form)
+
+        email = handler.data["email"]
 
         result = handler.form.callback_results
         kwargs = {}
@@ -469,14 +473,27 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
                       'registration code <strong>%(reg_num)s</strong> for a re-assignment to your '
                       'email address.')
                     % dict(url=result["url"], reg_num=result["registration_number"]))
-                bottle.redirect(reverse("config_page", page_name="data-collection"))
+                bottle.redirect(
+                    reverse("config_page", page_name="data-collection") + "?" +
+                    urllib.urlencode({"email": email})
+                )
             elif result["status"] == "free":
                 messages.info(
                     _('This email address is not registered yet. Please continue to the '
                       '<a href="%(url)s">Turris website</a> and use the registration code '
                       '<strong>%(reg_num)s</strong> to create a new account.')
                     % dict(url=result["url"], reg_num=result["registration_number"]))
-                bottle.redirect(reverse("config_page", page_name="data-collection"))
+                bottle.redirect(
+                    reverse("config_page", page_name="data-collection") + "?" +
+                    urllib.urlencode({"email": email})
+                )
+            elif result["status"] == "not_found":
+                messages.error(
+                    _('Router failed to authorize. Please try to validate our email later.'))
+                bottle.redirect(
+                    reverse("config_page", page_name="data-collection") + "?" +
+                    urllib.urlencode({"email": email})
+                )
         return self.render(status=result["status"],
                            registration_url=result["url"],
                            reg_num=result["registration_number"], **kwargs)
