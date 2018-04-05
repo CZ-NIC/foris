@@ -243,6 +243,19 @@ class MacAddress(Validator):
         return bool(self.reg_exp.match(value or ""))
 
 
+class Duid(Validator):
+    js_validator = ("extratype", "duid")
+
+    def __init__(self):
+        super(Duid, self).__init__(_("Duid is not valid."))
+        self.reg_exp = re.compile(r"^([0-9a-fA-F][0-9a-fA-F]){4}([0-9a-fA-F][0-9a-fA-F])*$")
+
+    def valid(self, value):
+        if not value:  # empty values -> unset duid
+            return True
+        return bool(self.reg_exp.match(value))
+
+
 class InRange(Validator):
     js_validator = "range"
 

@@ -80,6 +80,9 @@ window.ParsleyValidator
           case 'domain':
             regExp = /^([a-zA-Z0-9-]{1,63}\.?)*$/g;
             break;
+          case 'duid':
+            regExp = /^([a-z0-9][a-z0-9]){4}([a-z0-9][a-z0-9])*$/i;
+            break;
           case 'datetime':
             return Date.parse(val) ? true : false;
           default:

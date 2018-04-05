@@ -59,6 +59,8 @@ class WanHandler(BaseConfigHandler):
             res["ip6gw"] = data["wan6_settings"]["wan6_static"]["gateway"]
             res["ipv6_dns1"] = data["wan6_settings"]["wan6_static"].get("dns1", "")
             res["ipv6_dns2"] = data["wan6_settings"]["wan6_static"].get("dns2", "")
+        elif res["wan6_proto"] == "dhcpv6":
+            res["ip6duid"] = data["wan6_settings"]["wan6_dhcpv6"]["duid"]
 
         # MAC
         res["custom_mac"] = data["mac_settings"]["custom_mac_enabled"]
@@ -99,6 +101,8 @@ class WanHandler(BaseConfigHandler):
             dns2 = data.get("ipv6_dns2", None)
             res["wan6_settings"]["wan6_static"].update(
                 {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v})
+        if data["wan6_proto"] == "dhcpv6":
+            res["wan6_settings"]["wan6_dhcpv6"] = {"duid": data.get("ip6duid", "")}
 
         # MAC
         res["mac_settings"] = {"custom_mac_enabled": True, "custom_mac": data["macaddr"]} \
@@ -242,6 +246,13 @@ class WanHandler(BaseConfigHandler):
                 "DNS resolver is capable of working without it."
             )
         ).requires("wan6_proto", WAN6_STATIC)
+        wan_main.add_field(
+            Textbox, name="ip6duid", label=_("Custom DUID"),
+            validators=validators.Duid(),
+            hint=_(
+                "DUID which will be provided to the dhcpv6 server."
+            )
+        ).requires("wan6_proto", WAN6_DHCP)
 
         # custom MAC
         wan_main.add_field(
