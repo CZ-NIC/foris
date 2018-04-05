@@ -426,8 +426,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
     def render(self, **kwargs):
         status = kwargs.pop("status", None)
         if not contract_valid():
-            updater_data = current_state.backend.perform(
-                "updater", "get_settings", {"lang": current_state.language})
+            updater_data = current_state.backend.perform("updater", "get_enabled")
             kwargs['updater_disabled'] = not updater_data["enabled"]
 
             if updater_data["enabled"]:
