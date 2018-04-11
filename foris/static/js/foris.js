@@ -198,11 +198,13 @@ Foris.WS = {
 };
 
 Foris.initWebsockets = function() {
-  // Right now url is hardcoded to ws(s)://<this_domain>[:<this_port>]/foris-ws
-  // It might be to set this url as cmdline argument in the future
-  var port = window.location.port == "" ? "" : ":" + window.location.port;
-  var protocol = window.location.protocol == "http:" ? "ws:" : "wss:";
-  var url = protocol + "//" + window.location.hostname + port + "/foris-ws";
+
+  var protocol = window.location.protocol == "http:" ? "ws" : "wss";
+  var path = $('meta[name=foris-' + protocol + '-path]').attr("content");
+  var port = $('meta[name=foris-' + protocol + '-port]').attr("content");
+  path = path ? path : "/foris-ws";
+  port = port ? ":" + port : (window.location.port == "" ? "" : ":" + window.location.port);
+  var url = protocol + "://" + window.location.hostname + port + path;
 
   // Connect to foris-ws
   ws = new WebSocket(url);

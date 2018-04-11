@@ -43,6 +43,11 @@ class ForisState(object):
         logger.debug("setting backend to '%s' (path %s)." % (backend.name, backend.path))
         self.backend = backend
 
+    def set_websocket(self, ws_port, ws_path, wss_port, wss_path):
+        self.websockets = {
+            "ws_port": ws_port, "ws_path": ws_path, "wss_port": wss_port, "wss_path": wss_path
+        }
+
     def update_reboot_required(self, required):
         """ Sets reboot required indicator
         :param required: True if reboot is required False otherwise

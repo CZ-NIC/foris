@@ -31,6 +31,18 @@
       %end
     %end
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    % if foris_info.websockets["ws_port"]:
+    <meta name="foris-ws-port" content="{{ str(foris_info.websockets["ws_port"]) }}">
+    % end
+    % if foris_info.websockets["ws_path"]:
+    <meta name="foris-ws-path" content="{{ foris_info.websockets["ws_path"] }}">
+    % end
+    % if foris_info.websockets["wss_port"]:
+    <meta name="foris-wss-port" content="{{ str(foris_info.websockets["wss_port"]) }}">
+    % end
+    % if foris_info.websockets["wss_path"]:
+    <meta name="foris-wss-path" content="{{ foris_info.websockets["wss_path"] }}">
+    % end
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
     <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>

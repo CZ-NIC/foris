@@ -37,6 +37,18 @@ def get_arg_parser():
     group.add_argument(
         "--backend-socket", default="/var/run/ubus.sock", help="backend socket path"
     )
+    group.add_argument(
+        "--ws-port", default=0, help="websocket server port - insecure (0=autodetect)", type=int
+    )
+    group.add_argument(
+        "--wss-port", default=0, help="websocket server port - secure (0=autodetect)", type=int
+    )
+    group.add_argument(
+        "--ws-path", default="/foris-ws", help="websocket server url path - insecure", type=str,
+    )
+    group.add_argument(
+        "--wss-path", default="/foris-ws", help="websocket server url path - secure", type=str,
+    )
 
     return parser
 
@@ -47,6 +59,8 @@ def main():
 
     # set backend
     current_state.set_backend(Backend(args.backend, args.backend_socket))
+    # update websocket
+    current_state.set_websocket(args.ws_port, args.ws_path, args.wss_port, args.wss_path)
 
     if args.app == "config":
         from foris.config_app import prepare_config_app

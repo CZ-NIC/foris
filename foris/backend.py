@@ -16,8 +16,9 @@
 
 import logging
 
-logger = logging.getLogger("foris.backend")
 from foris_client.buses.base import ControllerError
+
+logger = logging.getLogger("foris.backend")
 
 
 class ExceptionInBackend(Exception):
