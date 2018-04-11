@@ -23,7 +23,7 @@
     </p>
   %end
   %if not contract_valid():
-    %if updater_disabled:
+    %if defined("updater_disabled") and updater_disabled:
       <div class="message warning">
         {{ trans("The Updater is currently disabled. You must enable it first to enable data collection.") }}
       </div>
