@@ -376,7 +376,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
         kwargs['get_approval_setting_delay'] = lambda: self.approval_setting_delay
         if kwargs['current_approval']['present']:
             kwargs['current_approval']['time'] = datetime.strptime(
-                kwargs['current_approval']['time'], "%Y-%m-%dT%H:%M:%S")
+                kwargs['current_approval']['time'].split(".", 1)[0], "%Y-%m-%dT%H:%M:%S")
 
         return super(UpdaterConfigPage, self).render(**kwargs)
 
