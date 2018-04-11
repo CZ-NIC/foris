@@ -36,7 +36,7 @@
                 <th>{{ trans("Kernel version") }}</th>
                 <td>{{ data['kernel'] }}</td>
             </tr>
-          %if contract_valid() or agreed_collect:
+          %if contract_valid() or (defined("agreed_collect") and agreed_collect):
             <tr>
                 <th>{{ trans("Sending of uCollect data") }}</th>
                 <td class="{{ "sending-ok" if data['ucollect_status']['state'] == "online" else "sending-fail" }}">
