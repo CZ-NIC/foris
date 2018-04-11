@@ -27,14 +27,9 @@ import bottle
 
 from foris.common import require_contract_valid, login
 from foris.utils.translators import gettext_dummy as gettext, _
-from foris.caches import lazy_cache
 from foris.config_handlers import (
     backups, collect, dns, misc, notifications, wan, lan, updater, wifi
 )
-from foris.nuci import client
-from foris.nuci.client import filters
-from foris.nuci.helpers import get_wizard_progress
-from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
@@ -759,9 +754,7 @@ def top_index():
         response.status = 403
     else:
         next = bottle.request.GET.get("next", None)
-        allowed_step_max, wizard_finished = get_wizard_progress(session)
-
-        if allowed_step_max == 1:
+        if not current_state.password_set:  # auto login if no password is set
             if session.is_anonymous:
                 session.recreate()
             session["user_authenticated"] = True

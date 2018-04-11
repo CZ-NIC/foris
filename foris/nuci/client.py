@@ -156,7 +156,8 @@ class StaticNetconfConnection(object):
 
 
 # open persistent connection to Nuci
-netconf = StaticNetconfConnection()
+#netconf = StaticNetconfConnection()
+netconf = None  # disable to connect
 
 
 def get(filter=None):

@@ -18,7 +18,6 @@
 
 import bottle
 
-from foris.caches import lazy_cache
 from foris.langs import iso2to3, translation_names
 from foris.middleware.bottle_csrf import get_csrf_token
 from foris.state import current_state
@@ -67,6 +66,7 @@ def clickjacking_protection():
 
 
 def clear_lazy_cache():
+    from foris.caches import lazy_cache
     lazy_cache.clear()
 
 

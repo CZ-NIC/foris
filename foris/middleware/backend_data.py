@@ -65,4 +65,7 @@ class BackendData(object):
         # update updater running indicator
         current_state.set_updater_is_running(data["updater_running"])
 
+        # update whether password is set
+        current_state.update_password_set(data["password_ready"])
+
         return self.app(environ, start_response)

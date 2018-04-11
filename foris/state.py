@@ -76,5 +76,9 @@ class ForisState(object):
         logger.debug("setting updater_is_running=%s" % running)
         self.updater_is_running = running
 
+    def update_password_set(self, password_set):
+        logger.debug("setting password_set=%s" % password_set)
+        self.password_set = password_set
+
 
 current_state = ForisState()
