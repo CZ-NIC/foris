@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-01-30 08:37+0000\n"
-"Last-Translator: Fabian Rodriguez <fabian@fabianrodriguez.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/"
-">\n"
+"PO-Revision-Date: 2018-04-15 08:36+0000\n"
+"Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "News"
 msgstr "Nouvelles"
@@ -53,7 +53,7 @@ msgid "Uninstall"
 msgstr "Désinstaller"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Mettre à jour"
 
 msgid "Downgrade"
 msgstr ""
@@ -92,9 +92,8 @@ msgstr "Configuration sauvegardée avec succès."
 msgid "Notifications"
 msgstr "Notifications"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Activer les notifications"
+msgstr "Nombre de notifications"
 
 msgid "Old password you entered was not valid."
 msgstr "L'ancien mot de passe n'est pas valable."
@@ -112,12 +111,11 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Le message de test a été envoyé, veuillez vérifier votre boîte de réception."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
 "L'envoi du message de test a échoué, votre configuration est peut-être "
-"incorrecte. <br> Erreur retournée: <br><pre>%(error)s</pre>"
+"incorrecte."
 
 #, fuzzy
 msgid ""
@@ -129,7 +127,7 @@ msgstr ""
 "l'équipement."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Échec de la restauration de la sauvegarde à partir du fichier founit."
 
 msgid "Update was approved."
 msgstr "La mise à jour a été approuvée."
@@ -231,9 +229,8 @@ msgstr "Ce n'est pas un nombre."
 msgid "This is not valid time in HH:MM format."
 msgstr "Ce n'est pas une heure valide au format HH:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Ce n'est pas une heure valide au format HH:MM."
+msgstr "Ce n'est pas une heure valide (YYYY-MM-DD HH:MM:SS)."
 
 msgid "This is not a valid domain name."
 msgstr "Ceci n'est pas un nom de domaine valide."
@@ -804,12 +801,11 @@ msgstr ""
 msgid "Your network is being restarted. Wait, please..."
 msgstr ""
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Redémarrer"
+msgstr "Redémarrage en cours …"
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Votre routeur est en cours de redémarrage."
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
@@ -906,9 +902,8 @@ msgstr "DNS"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Échec lors de l'interrogation du serveur."
+msgstr "Échec lors de l'interrogation des serveurs de temps NTP."
 
 #, fuzzy
 msgid "Update time"
@@ -926,7 +921,7 @@ msgstr ""
 "petite carte connectés à la partie 2,4 GHz du diplexeur."
 
 msgid "QR code"
-msgstr ""
+msgstr "Code QR"
 
 msgid "Password"
 msgstr "Mot de passe"
@@ -944,7 +939,7 @@ msgid "Opened lock"
 msgstr ""
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Votre connexion n'est pas chiffrée"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
@@ -1379,9 +1374,8 @@ msgstr "Adresse IP du routeur"
 msgid "Router's IP address in the inner network."
 msgstr ""
 
-#, fuzzy
 msgid "Network netmask"
-msgstr "Masque réseau"
+msgstr "Masque sous-réseau"
 
 msgid "Network mask of the inner network."
 msgstr ""
@@ -1433,9 +1427,8 @@ msgstr ""
 "la plage doit être différente des plages de vos autres réseaux (LAN, WAN, "
 "VPN, etc.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Réseau invité"
+msgstr "Masque sous-réseau du réseau invité"
 
 msgid "Network mask of the guest network."
 msgstr ""
@@ -1531,16 +1524,14 @@ msgstr "Masque réseau"
 msgid "Gateway"
 msgstr "Passerelle"
 
-#, fuzzy
 msgid "DHCP Client ID"
-msgstr "Activation des clients DHCP dans le DNS"
+msgstr "ID du client DHCP"
 
 msgid "Client identifier which will be provided to DHCP server."
 msgstr ""
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "Serveur DNS 1"
+msgstr "Serveur DNS 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1549,9 +1540,8 @@ msgstr ""
 "L'adresse du serveur DNS n’est pas nécessaire car le résolveur DNS intégré "
 "est capable de travailler sans elle."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "Serveur DNS 2"
+msgstr "Serveur DNS 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "Nom d’utilisateur PAP/CHAP"
@@ -1582,13 +1572,11 @@ msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr ""
 "Plage d'adresses pour le réseau local, par exemple 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "Serveur DNS 1"
+msgstr "Serveur DNS 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "Serveur DNS 2"
+msgstr "Serveur DNS 2 (IPv6)"
 
 msgid "Custom MAC address"
 msgstr "Personnaliser l'adresse MAC"
@@ -1935,9 +1923,8 @@ msgstr ""
 "routeur d’avoir la bonne heure afin de fonctionner correctement. Veuillez le "
 "synchroniser avec l'heure de votre ordinateur, ou le régler manuellement."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Temps de redémarrage"
+msgstr "Temps et région"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
@@ -1950,19 +1937,17 @@ msgid ""
 "properly."
 msgstr ""
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Temps de redémarrage"
+msgstr "Comment configurer le temps"
 
 msgid "Choose method to store current time into the router."
 msgstr ""
 
 msgid "via ntp"
-msgstr ""
+msgstr "via NTP"
 
-#, fuzzy
 msgid "manually"
-msgstr "Régler l’heure manuellement"
+msgstr "manuellement"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr ""
