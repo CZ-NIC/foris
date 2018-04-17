@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-23 22:48+0100\n"
+"POT-Creation-Date: 2018-04-17 16:59+0200\n"
 "PO-Revision-Date: 2017-06-30 22:33+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/turris/foris/"
@@ -20,932 +20,179 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 2.16-dev\n"
 
-msgid "News"
-msgstr "Naujienos"
+msgid "This value seems to be invalid."
+msgstr "Reikšmė atrodo netinkama."
 
-msgid "Update"
-msgstr "Atnaujinimas"
+msgid "This value should be a valid email."
+msgstr "Reikšmė turi būti geras el. pašto adresas."
 
-msgid "Error"
-msgstr "Klaida"
+msgid "This value should be a valid url."
+msgstr "Reikšmė turi būti tinkamas URL."
 
-#, python-format
-msgid "%(notification)s from %(created_at)s"
-msgstr "%(notification)s nuo %(created_at)s"
+msgid "This value should be a valid number."
+msgstr "Reikšmė turi būti skaičius."
 
-msgid "Notification"
-msgstr "Pranešimas"
+msgid "This value should be a valid integer."
+msgstr "Reikšmė turi būti sveikas skaičius."
 
-msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr "Nepavyko užkrauti pranešimų, pamėginkite perkrauti puslapį."
+msgid "This value should be digits."
+msgstr "Reikšmė turi būti skaitmenys."
 
-msgid "You have been logged out due to longer inactivity."
-msgstr "Jūs buvote atjungti dėl neaktyvumo."
+msgid "This value should be alphanumeric."
+msgstr "Reikšmė turi būti sudaryta iš raidžių ir skaičių."
 
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Y-%m-%d %H:%M:%S"
+msgid "This value should not be blank."
+msgstr "Reikšmė negali būti tuščia."
 
-msgid "Install"
-msgstr "Įdiegti"
-
-msgid "Uninstall"
-msgstr "Pašalinti"
-
-msgid "Upgrade"
-msgstr ""
-
-msgid "Downgrade"
-msgstr ""
+msgid "This value is required."
+msgstr "Reikšmė privaloma."
 
 #, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Pradinio konfigūravimo programa - etapas %s"
+msgid "This value should be greater than or equal to %s."
+msgstr "Reikšmė turi būti didesnė arba lygi %s."
 
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr "WAN lizde nėra signalo, interneto ryšys tikriausiai neveiks."
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr "Reikšmė turi būti mažesnė arba lygi %s."
 
-msgid "Connectivity test"
-msgstr "Ryšio testas"
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr "Reikšmė turi būti tarp %s ir %s."
 
-msgid "Automatic updates"
-msgstr "Automatiniai atnaujinimai"
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr "Reikšmė per trumpa. Turėtų būti mažiausiai %s simbolių ilgio."
 
-msgid "Installation finished"
-msgstr "Diegimas baigtas"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nepavyko išsaugoti konfigūracijos dėl vidinės sistemos klaidos."
-
-msgid "There were some errors in your input."
-msgstr "Įvestuose duomenyse yra klaidų."
-
-msgid "The password you entered was not valid."
-msgstr "Slaptažodis kurį įvedėte yra neteisingas."
-
-msgid "Configuration was successfully saved."
-msgstr "Konfigūracija sėkmingai išsaugota."
-
-msgid "Notifications"
-msgstr "Pranešimai"
-
-#, fuzzy
-msgid "Number of notifications"
-msgstr "Įjungti pranešimus"
-
-msgid "Old password you entered was not valid."
-msgstr "Netinkamas senas slaptažodis."
-
-msgid "Password was successfully saved."
-msgstr "Slaptažodis sėkmingai išsaugotas."
-
-msgid "Maintenance"
-msgstr "Priežiūra"
-
-msgid "Wrong HTTP method."
-msgstr "Klaidingas HTTP metodas."
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
-
-#, fuzzy
-msgid ""
-"Sending of the testing message failed, your configuration is possibly wrong."
-msgstr ""
-"Testinio pranešimo siuntimas nepavyko, tikriausiai netinkama konfigūracija."
-"<br>Gauta klaida:<br><pre>%(error)s</pre>"
-
-#, fuzzy
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be required "
-"to apply restored configuration."
-msgstr ""
-"Konfigūracija sėkmingai atkurta. Palaukite kol bus įdiegti atnaujinimai ir "
-"atliktas automatinis įrenginio perkrovimas."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr ""
-
-msgid "Update was approved."
-msgstr "Atnaujinimas patvirtintas."
-
-msgid "Update was postponed."
-msgstr "Atnaujinimas buvo atidėtas."
-
-msgid "Failed to approve the update."
-msgstr "Nepavyko patvirtinti atnaujinimo."
-
-msgid "Failed to postpone the update."
-msgstr "Nepavyko atidėti atnaujinimo."
-
-msgid ""
-"Configuration was successfully saved. Selected packages should be installed "
-"or removed shortly."
-msgstr ""
-"Konfigūracija išsaugota sėkmingai. Pasirinkti paketai greitu metu bus "
-"įdiegti arba pašalinti."
-
-msgid "Updater is running"
-msgstr ""
-
-msgid "Data collection"
-msgstr "Duomenų rinkimas"
-
-#, fuzzy, python-format
-msgid ""
-"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr "Tikrinant registraciją Įvyko klaida: <br><pre>%(response)s</pre>"
-
-msgid ""
-"Registration for the entered email is valid. Now you can enable the data "
-"collection."
-msgstr ""
-"Registracija įvestam el. pašto adresui patikrinta. Dabar galite įjungti "
-"duomenų rinkimą."
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr "Reikšmė per ilga. Turėtų būti ne daugiau nei %s simbolių ilgio."
 
 #, python-format
 msgid ""
-"This router is currently assigned to a different email address. Please "
-"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
-"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
-"email address."
-msgstr ""
-"Šis maršutizatorius šiuo metu priskirtas kitam el. pašto adresui. "
-"Priskyrimui prie jūsų el. pašto adreso eikite į <a href=\"%(url)s\">Turris "
-"svetainę</a> ir panaudokite <strong>%(reg_num)s</strong> registracijos kodą."
+"This value length is invalid. It should be between %s and %s characters long."
+msgstr "Netinkamas reikšmės ilgis. Ilgis turėtų būti tarp %s ir %s simbolių."
 
 #, python-format
-msgid ""
-"This email address is not registered yet. Please continue to the <a href="
-"\"%(url)s\">Turris website</a> and use the registration code <strong>"
-"%(reg_num)s</strong> to create a new account."
-msgstr ""
-"Šis el. pašto adresas dar nėra registruotas. Naujos paskyros sukūrimui "
-"eikite į <a href=\"%(url)s\">Turris svetainę</a> ir panaudokite <strong>"
-"%(reg_num)s</strong> registracijos kodą."
+msgid "You must select at least %s choices."
+msgstr "Reikia parinkti mažiausiai %s reikšmes."
 
-msgid "About"
-msgstr "Apie"
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr "Reikia parinkti ne daugiau nei %s reikšmes."
 
-msgid "Online"
-msgstr "Ryšys yra"
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr "Reikia parinkti nuo %s iki %s reikšmių."
 
-msgid "Offline"
-msgstr "Ryšio nėra"
+msgid "This value should be the same."
+msgstr "Reikšmė turėtų būti tokia pati."
 
-msgid "Unknown status"
-msgstr "Nežinoma būklė"
-
-msgid "This field is required."
-msgstr "Privalomas užpildyti laukas."
-
-msgid "Not a valid IPv4 address."
+msgid "This is not a valid IPv4 address."
 msgstr "Netinkamas IPv4 adresas."
 
-msgid "Not a valid IPv4 netmask address."
-msgstr "Netinkama IPv4 adreso tinklo kaukė (netmask)."
+msgid "This is not a valid IPv4 netmask."
+msgstr "Netinkama IPv4 tinklo kaukė (netmask)."
 
-msgid "Not a valid IPv6 address."
-msgstr "Netinkamas IPv6 adresas."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Tai nėra nei tinkamas IPv4, nei IPv6 adresas."
+msgid "This is not a valid IPv4 prefix."
+msgstr "Netinkamas IPv4 prefiksas."
 
 msgid "This is not an IPv6 address with prefix length."
 msgstr "Tai nėra IPv6 adresas su tinklo prefiksu."
 
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Tai nėra IPv4 adresas su tinklo prefiksu."
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Tai nėra nei tinkamas IPv4, nei IPv6 adresas."
 
-msgid "Is not a number."
-msgstr "Nėra skaičius."
+msgid "This is not a valid IPv6 prefix."
+msgstr "Netinkamas IPv6 prefiksas."
 
-msgid "This is not valid time in HH:MM format."
-msgstr "Laikas neatitinka HH:MM šablono."
-
-#, fuzzy
-msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Laikas neatitinka HH:MM šablono."
+msgid "This is not a valid MAC address."
+msgstr "Netinkamas MAC adresas."
 
 #, fuzzy
 msgid "This is not a valid domain name."
 msgstr "Netinkamas MAC adresas."
 
-msgid "MAC address is not valid."
-msgstr "Netinkamas MAC adresas."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Nėra iš leidžiamo intervalo %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Ilgis turi būti nuo %(low)s iki %(high)s simbolių."
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"Galite pakeisti visus ankščiau suvestus nustatymus <a href=\"%(url)s"
-"\">pagrindiniame konfigūravimo interfeise</a>. Jei norėtumėte keisti "
-"gilesnius nustatymus galite naudoti LuCI interfeisą, kuris pasiekamas iš <a "
-"href=\"%(url2)s\">Platesnio valdymo skilties</a>."
-
-msgid "What next?"
-msgstr "Kas toliau?"
-
-msgid ""
-"You have decided to disable the Updater service during the installation."
-msgstr "Pasirinkote išjungti automatinius atnaujinimus diegimo metu."
-
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"Be automatinių atnaujinimų įdiegta programinė įranga nebus laiku atnaujinama "
-"ir taip pat negalėsite įrašyti automatinių atnaujinimų paketų sąrašų."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-msgstr ""
-"Jei įjungiate automatinius atnaujinimus galite prisijungti prie mūsų "
-"mokslinio projekto: <a href=\"https://project.turris.cz/\">Project Turris</"
-"a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"Galite bet kada įjungti automatinius atnaujinimus <a href=\"%(url)s"
-"\">Automatinių atnaujinimų</a> konfigūracijos puslapyje."
-
 #, fuzzy
-msgid ""
-"With Turris router you can join the research project called <a href="
-"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
-"your router can become a probe that analyzes the traffic between internet "
-"and the home network and identifies suspicious data flows."
-msgstr ""
-"Turėdami Turris Omnia galite prisijungti prie mokslinio projekto pavadinimu "
-"<a href=\"https://project.turris.cz/\">Project Turris</a>. Dėka šio "
-"projekto, jūsų maršrutizatorius gali tapti stebėjimo mazgu kuris analizuoja "
-"duomenis, siunčiamus tarp jūsų namų tinklo ir interneto, ir aptinka "
-"įtartinus duomenų srautus."
-
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
-msgstr ""
-"Šias papildomas funkcijas galima įjungti sekant instrukcijas <a href="
-"\"%(url)s\">Duomenų rinkimo</a> puslapyje."
-
-msgid "Important updates"
-msgstr "Svarbūs atnaujinimai"
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr "Laikas neatitinka HH:MM šablono."
 
 msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
+"Your password contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
 msgstr ""
-"Svarbūs atnaujinimai, kuriems reikia įrenginio perkrovimo, buvo įdiegti. "
-"Dalis servisų gali neveikti jeigu neperkrausite įrenginio. Daugiau "
-"informacijos rasite žemiau."
+"Slaptažodyje yra nestandartinių simbolių. Juos naudoti galima, tačiau jie "
+"gali sukelti problemų kai kuriems įrenginiams."
 
-msgid "Continue to the configuration interface"
-msgstr "Eiti į konfigūravimo interfeisą"
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"SSID yra nestandartinių simbolių. Juos naudoti galima, tačiau tai gali "
+"sukelti problemų kai kuriems įrenginiams."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Error"
+msgstr "Klaida"
 
 msgid "Loading..."
 msgstr "Kraunasi..."
 
-msgid "Checking internet connectivity."
-msgstr "Tikrinamas interneto ryšys."
-
-msgid "One moment, please..."
-msgstr "Luktelėkite..."
-
-msgid "Done"
-msgstr "Baigta"
-
-msgid "Internet connectivity test passed without error."
-msgstr "Interneto ryšio testas pabaigtas be problemų."
-
-msgid "Next"
-msgstr "Toliau"
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr "Ryšio testas nesėkmingas, tikrinamas ryšys išjungus persiuntimą."
 
 msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
+"The IP address of your router has been changed. It should be accessible from "
+"%NEW_IP_LINK%. See the note above for more information about IP address "
+"change."
 msgstr ""
-"Jūsų ryšys su internetu veikia, tačiau DNS paslauga neveikia. Taip "
-"tikriausiai yra dėl problemų su jūsų interneto paslaugų tiekėju. Tai taip "
-"pat gali sukelti jei jūsų maršrutizatoriuje nustatymas neteisingas laikas - "
-"jį galėsite patikslinti tolimesniame etape."
+"Pakeistas maršrutizatoriaus IP adresas. Maršrutizatorius turėtų būti "
+"pasiekiamas adresu %NEW_IP_LINK%. Atkreipkite dėmesį į pastabą viršuje apie "
+"IP adreso keitimą."
 
 msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
+"You have chosen to not receive security updates. We strongly advice you to "
+"keep the automatic security updates enabled to receive all recommended "
+"updates for your device. Updating your router on regular basis is the only "
+"way how to ensure you will be protected against known threats that might "
+"target your home router device.\\n\\nDo you still want to continue and stay "
+"unprotected?"
 msgstr ""
-"Atrodo, kad neveikia ryšys su interneto, gal neteisingai suvesti WAN "
-"nustatymai."
-
-msgid "Try again"
-msgstr "Bandyti dar kartą"
+"Pasirinkote išjungti saugumo atnaujinimus. Mes griežtai patariame "
+"automatinius saugumo atnaujinimus palikti įjungtus, kad jūsų įrenginys gautu "
+"visus atnaujinimus. Reguliarus maršrutizatoriaus atnaujinimas yra "
+"vienintelis būdas užtikrinti apsaugą nuo žinomų grėsmių, kurios gali būti "
+"panaudotos prieš jūsų namų maršrutizatorių.\\n\\nAr tikrai norite atsisakyti "
+"apsaugos?"
 
 msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
+"DNSSEC is a security technology that protects the DNS communication against "
+"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
+"validation enabled unless you know that you will be connecting your device "
+"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
+"and stay unprotected?"
 msgstr ""
-"Kartais, naudojant lėtesnę DSL liniją arba naudojant DHCP, problema gali "
-"būti dėl lėto tinklo paleidimo. Jei manote, kad būtent tai ir nutiko galite "
-"pakartotinai patikrinti ryšį su mygtuku viršuje. Taip pat galite spręsti "
-"problemą keičiant WAN nustatymus grįžus puslapį atgal."
+"DNSSEC yra saugumą didinanti technologija kuri apsaugo DNS užklausas nuo "
+"atakų nukreiptų prieš DNS infrastruktūrą. Mes griežtai patariame palikti "
+"DNSSEC tikrinimą įjungta, nebent žinote, kad jungsite savo įrenginį į tinklą "
+"kuriame DNSSEC neveikia.\\n\\nAr tikrai norite atsisakyti apsaugos?"
 
-msgid "Adjust WAN settings"
-msgstr "Keisti WAN nustatymus"
+msgid "Are you sure you want to restart the router?"
+msgstr "Ar tikrai norite perkrauti maršrutizatorių?"
 
-msgid "Welcome to configuration of router Turris"
-msgstr "Sveiki pradėję Turris maršrutizatoriaus konfigūravimą"
+msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+msgstr "\\nLikurios (%UNREAD%) neskaitytos žinutės bus ištrintos."
 
 msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
+"There are some unsaved changes in the notifications settings.\\nDo you want "
+"to discard them and test the notifications with the old settings?"
 msgstr ""
-"Prieš pradedant naudoti maršrutizatorių reikia jį tinkamai sukonfigūruoti. "
-"Pradinio konfigūravimo programa padės jums tai atlikti. Kai pradinis "
-"konfigūravimas bus baigtas maršrutizatorius bus paruoštas darbui."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Jei norite atstatyti ankščiau išsaugotą konfigūraciją arba šiaip praleisti "
-"pradinio konfigūravimo programą, tai galite padaryti iškarto po pirmo "
-"žingsnio kuriame nustatomas prisijungimo slaptažodis."
-
-msgid "Begin installation"
-msgstr "Pradėti diegimą"
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr ""
-"Nepavyko aptikti nei vienos belaidžio tinklo plokštės šiame "
-"maršrutizatoriuje."
-
-msgid "Registration failure"
-msgstr "Nepavyko registracija"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"Deja nepavyko sugeneruoti registracijos kodo. Tai dažniausiai nutinka jei "
-"maršrutizatorius neturi ryšio su internetu. Pamėginkite pakartoti "
-"registraciją vėliau. Jei problema vis tiek liks, kreipkitės į tech. "
-"palaikymo komandą."
-
-msgid "Project:Turris"
-msgstr "Projektas:Turris"
-
-msgid "Skip wizard"
-msgstr "Praleisti pradinį konfigūravimą"
-
-msgid "Step"
-msgstr "Žingsnis"
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"Diegiami papildomi atnaujinimai. Kol bus baigta maršrutizatorius keletą "
-"kartų persikraus."
-
-msgid "Do not unplug the device during update!"
-msgstr "Neatjunkite įrenginio kol vyksta atnaujinimas!"
-
-msgid "Check of available updates in progress."
-msgstr "Tikrinama ar yra atnaujinimų."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr "Programinės įrangos atnaujinimas pavyko, galite pereiti į kitą etapą."
-
-msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"Programinės įrangos atnaujinimas nepavyko dėl ryšio arba diegimo problemų. "
-"Reikėtų patikrinti laidinį ryšį prieš tęsiant. Dėl šios problemos nereikėtų "
-"ypatingai rūpintis, nes maršrutizatoriaus atnaujinimai bus reguliariai "
-"diegiami automatiškai."
-
-msgid "Updater has returned the following error:"
-msgstr "Klaida iš automatinių atnaujinimų serviso:"
-
-msgid "Device has been restarted."
-msgstr "Įrenginys perkrautas."
-
-msgid "Please log in again to continue."
-msgstr "Prisijunkite, kad galėtumėte tęsti."
-
-msgid "Proceed to login"
-msgstr "Eiti toliau, prisijungimas"
-
-msgid "Synchronize with your computer clock"
-msgstr "Sinchronizuoti su jūsų kompiuterio laikrodžiu"
-
-msgid "Set time manually"
-msgstr "Nustatyti laiką rankiniu būdu"
-
-msgid "Synchronization successful."
-msgstr "Sinchronizacija pavyko."
-
-msgid "Time settings"
-msgstr "Laiko nustatymai"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr ""
-"Maršrutizatoriaus laikas sinchronizuojamas su laiko serveriais internete."
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Laikas sėkmingai sinchronizuotas, galite tęsti."
-
-msgid "Device registration"
-msgstr "Įrenginio registracija"
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Įrenginys sėkmingai įdiegtas. Paskutinis žingsnis, kurį reikia atlikti, yra "
-"jūsų įrenginio registravimas jūsų Turris svetainės paskyroje <a href="
-"\"%(url)s\">%(url)s</a>."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Įspėjimas:</strong> šis kodas galioja ribotą laiką. Jei kodas "
-"netinka, perkraukite šį puslapį ir gausite naują kodą."
-
-msgid "Reboot now"
-msgstr "Perkrauti dabar"
-
-msgid "Dismiss"
-msgstr "Atmesti"
-
-#, fuzzy
-msgid "Dismiss All"
-msgstr "Atmesti"
-
-msgid "No new messages."
-msgstr "Nėra naujų žinučių."
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Šiuo metu įjungtas duomenų rinkimas. Negalite išjungti automatinių "
-"atnaujinimų, kol nebus išjungtas duomenų rinkimas."
-
-msgid "Update approvals"
-msgstr "Atnaujinimo patvirtinimai"
-
-#, fuzzy
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can refuse the questionable update "
-"temporarily and install it when you are ready. It isn't possible to decline "
-"the update forever and it will be offered to you again together with the "
-"next package installation."
-msgstr ""
-"Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
-"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite laikinai "
-"atidėti įtartinus atnaujinimus ir įdiegti juos tik tuomet kai būsite tam "
-"pasirengę. Negalima atnaujinimų atidėti visam laikui, jie bus vėl siūlomi "
-"įdiegti kartu su kitais atnaujinimais."
-
-#, fuzzy
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can e.g. install updates when you're "
-"prepared for a possible rollback to a previous snapshot and deny the "
-"questionable update temporarily. It isn't possible to decline the update "
-"forever and it will be offered to you again together with the next package "
-"installation."
-msgstr ""
-"Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
-"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite įdiegti "
-"atnaujinimus tuomet tuomet kai būsite pasiruošę galimam <a href='https://www."
-"turris.cz/doc/en/howto/"
-"omnia_factory_reset#rollback_to_latest_snapshot'>sistemos atstatymui</a> ir "
-"laikinai atidėti įtartinus atnaujinimus. Negalima atnaujinimų atidėti visam "
-"laikui, jie bus vėl siūlomi įdiegti kartu su kitais atnaujinimais."
-
-#, python-format
-msgid "after %(input)s hours"
-msgstr "po %(input)s valandų"
-
-msgid "Hint"
-msgstr "Užuomina"
-
-msgid "Save"
-msgstr "Išsaugoti"
-
-msgid "Notifications and automatic restarts"
-msgstr "Pranešimai ir automatiniai perkrovimai"
-
-msgid ""
-"You can set the router to notify you when a specific event occurs, for "
-"example when a reboot is required, no space is left on device or an "
-"application update is installed. You can use Turris servers to send these "
-"emails. Alternatively, if you choose to use a custom server, you must enter "
-"some additional settings. These settings are the same as you enter in your "
-"email client and you can get them from the provider of your email inbox. In "
-"that case, because of security reasons, it is recommended to create a "
-"dedicated account for your router."
-msgstr ""
-"Galite sukonfigūruoti maršrutizatorių, kad įvykus tam tikriems įvykiams "
-"gautumėte pranešimą, pavyzdžiui kai reikalingas perkrovimas, nebeliko "
-"laisvos vietos ar atnaujinta programinė įranga. El. pašto pranešimams galite "
-"naudoti Turris serverius. Jei naudojate kitus serverius, reikės įvesti "
-"papildomų nustatymų. Šie nustatymai yra tokie patys kokius naudotumėte "
-"konfigūruojant pašto programą, juos galite gauti iš savo el. pašto paslaugų "
-"tiekėjo. Jei naudosite kitus pašto serverius, saugumo sumetimais, "
-"rekomenduojame turėti atskirą, specialiai maršrutizatoriui skirtą el. pašto "
-"paskyrą."
-
-msgid ""
-"Also, when an automatic restart is required, you can specify the time you "
-"want it to occur. If you have email notifications enabled, you can also "
-"specify the interval between notification and automatic restart."
-msgstr ""
-"Taip pat galite nurodyti laiką, kada atlikti automatinius perkrovimus, kai "
-"jų reikia. Jeigu pranešimai el. paštu yra įjungti, taip pat galite nurodyti "
-"laiko tarpą tarp pranešimo išsiuntimo ir automatinio perkrovimo."
-
-msgid "Send testing message"
-msgstr "Išsiųsti testinę žinutę"
-
-msgid "Configuration backup"
-msgstr "Konfigūracijos atsarginė kopija"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. The configuration is saved as an unencrypted "
-"compressed archive (.tar.bz2). Passwords for this configuration interface "
-"and for the advanced configuration are not included in the backup."
-msgstr ""
-"Galite išsaugoti dabartinę šio įrenginio konfigūraciją atsisiųsdami "
-"atsarginės kopijos failą. Konfigūracija išsaugoma kaip nešifruotas "
-"suspaustas (.tar.bz2) failas. Slaptažodžiai priėjimui prie šio ir platesnio "
-"valdymo interfeiso nėra išsaugojami atsarginėje kopijoje."
-
-msgid "Download configuration backup"
-msgstr "Atsisiųsti konfigūracijos atsarginę kopiją"
-
-msgid "Configuration restore"
-msgstr "Konfigūracijos atstatymas"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"Įkelkite atsarginės kopijos failą naudodami žemiau esančią formą, jei norite "
-"atstatyti įrenginio konfigūraciją iš atsarginės kopijos failo. Atkreipkite "
-"dėmesį, kad atstačius konfigūraciją įrenginio IP adresas gali pasikeisti ir "
-"šis valdymo interfeisas tapti nebepasiekiamas senuoju adresu."
-
-msgid "Restore from backup"
-msgstr "Atstatyti iš atsarginės kopijos"
-
-msgid "Device reboot"
-msgstr "Įrenginio perkrovimas"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"after the reboot."
-msgstr ""
-"Jei norite perkrauti įrenginį, spauskite žemiau esantį mygtuką. Perkrovimas "
-"užtrunka apie 30 sekundžių, taip pat po perkrovimo reikės per naują "
-"prisijungti prie įrenginio valdymo."
-
-msgid "Reboot"
-msgstr "Perkrauti"
-
-msgid "Discard changes"
-msgstr "Atmesti pakeitimus"
-
-msgid "Save changes"
-msgstr "Išsaugoti pakeitimus"
-
-msgid "Connection test"
-msgstr "Ryšio patikrinimas"
-
-msgid ""
-"Here you can test you connection settings. Remember to click on the "
-"<strong>Save</strong> button before running the test. Note that sometimes it "
-"takes a while before the connection is fully initialized. So it might be "
-"useful to wait for a while before running this test."
-msgstr ""
-
-msgid "Unable to verify network connection."
-msgstr "Nepavyko patikrinti tinko ryšio."
-
-msgid "Test type"
-msgstr "Testas"
-
-msgid "Status"
-msgstr "Būsena"
-
-msgid "IPv4 connectivity"
-msgstr "IPv4 ryšys"
-
-msgid "IPv4 gateway connectivity"
-msgstr "IPv4 ryšys su gateway"
-
-msgid "IPv6 connectivity"
-msgstr "IPv6 ryšys"
-
-msgid "IPv6 gateway connectivity"
-msgstr "IPv6 ryšys su gateway"
-
-msgid "Test connection"
-msgstr "Tikrinti ryšį"
-
-#, fuzzy
-msgid ""
-"With the Turris router you can join Project Turris which is a non-profit "
-"research project founded by the CZ.NIC association, a .CZ domain registry. "
-"By joining the project, your router will act as a probe which analyzes "
-"traffic between your home network and the Internet and helps to identify "
-"malicious data flows. Once such a flow is detected your router notifies the "
-"Turris headquarters which can compare the flow with data from the rest of "
-"the probes and assign it a threat level. If the flow is identified as an "
-"attack Turris headquarters can prepare an update which is distributed to "
-"every Turris router and helps them to protect themselves against the attack."
-msgstr ""
-"Naudodami Turris Omnia maršrutizatorių galite prisijungti prie Turris "
-"Projekto. Tai yra mokslinis, pelno nesiekiantis projektas, įkurtas CZ.NIC "
-"asociacijos, kuri yra .CZ domeno administratoriaus. Prisijungus prie "
-"projekto jūsų maršrutizatorius pradės veikti kaip stebėjimo įrenginys, "
-"analizuojantis duomenų srautą tarp jūsų namų tinklo ir interneto, bei "
-"ieškantis kenkėjiškų duomenų srautų. Maršrutizatorius aptikęs kenkėjišką "
-"duomenų srautą perduoda informaciją į Turris būstine, kur gauti duomenys yra "
-"lyginami su duomenimis gautais iš kitų stebėjimo mazgų bei nustatymas "
-"grėsmės lygis. Jei duomenų srautas atpažįstamas kaip ataka Turris būstinėje "
-"gali būti paruoštas atnaujinimas, padėsiantis apsiginti nuo šios atakos, "
-"kuris išsiunčiamas visiems Turris maršrutizatoriams."
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr ""
-"Automatiniai atnaujinimai šiuo metu išjungti. Prieš įjungiant duomenų "
-"rinkimą įjunkite automatinius atnaujinimus."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Jei norite prisijungti prie Turris projekto, pirmiausia turite "
-"užsiregistruoti Turris svetainėje. Įveskite el. pašto adresą su kuriuo "
-"norėtumėte registruotis arba kurį jau naudojote registracijoje:"
-
-msgid "Validate email"
-msgstr "Tikrinti el. pašto adresą"
-
-msgid "Device"
-msgstr "Įrenginys"
-
-msgid "Serial number"
-msgstr "Serijinis numeris"
-
-msgid "Turris OS version"
-msgstr "Turris OS versija"
-
-msgid "Kernel version"
-msgstr "Branduolio versija"
-
-msgid "Sending of uCollect data"
-msgstr "Duomenų siuntimas iš uCollect"
-
-#, python-format
-msgid "Time of last update: %(datetime)s"
-msgstr "Paskutinį kartą atnaujinta: %(datetime)s"
-
-#, python-format
-msgid "(status updated %d second ago)"
-msgid_plural "(status updated %d seconds ago)"
-msgstr[0] "(būsena atnaujinta prieš %d sekundę)"
-msgstr[1] "(būsena atnaujinta prieš %d sekundes)"
-msgstr[2] "(būsena atnaujinta prieš %d sekundžių)"
-msgstr[3] "(būsena atnaujinta prieš %d sekundę)"
-
-msgid "Sending of firewall logs"
-msgstr "Ugniasienės logų siuntimas"
-
-msgid "Refresh"
-msgstr "Atnaujinti"
-
-#, python-format
-msgid ""
-"If you have not registered your device yet, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Jūs dar neregistravote šio įrenginio, paspauskite ant šio mygtuko ir gausite "
-"registracijos kodą. Šį kodą reikia suvesti Turris svetainėje prie jūsų "
-"profilio informacijos: <a href=\"%(url)s\">%(url)s</a>."
-
-msgid "Registration code"
-msgstr "Registracijos kodas"
-
-msgid "Get registration code"
-msgstr "Gauti registracijos kodą"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - Turris maršrutizatoriaus valdymo interfeisas"
-
-msgid "Menu"
-msgstr "Meniu"
-
-msgid "Network is restarting..."
-msgstr ""
-
-msgid "Your network is being restarted. Wait, please..."
-msgstr ""
-
-#, fuzzy
-msgid "Rebooting..."
-msgstr "Perkrauti"
-
-msgid "Your router is being rebooted."
-msgstr ""
-
-msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
-
-msgid "Log out"
-msgstr "Atsijungti"
-
-msgid ""
-"Following notifications occured and haven't been dismissed since last reboot."
-msgstr ""
-
-#, python-format
-msgid "Approve update from %(when)s"
-msgstr "Patvirtinti %(when)s atnaujinimą"
-
-msgid "Note that a reboot will be triggered after the update."
-msgstr "Atkreipkite dėmesį, kad po atnaujinimų bus vykdomas perkrovimas."
-
-#, fuzzy
-msgid "Install now"
-msgstr "Įdiegti"
-
-msgid "Deny"
-msgstr ""
-
-msgid "No package will be installed unless you install the updates above."
-msgstr ""
-
-#, python-format
-msgid ""
-"If you don't install the updates manually, they will be installed "
-"automatically after %(time)s."
-msgstr ""
-
-msgid "Package lists"
-msgstr "Paketų sąrašai"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
-msgstr ""
-"Turris maršrutizatorius turi vidinį DNS serverį su DNSSEC funkcija. Jis gali "
-"veikti be papildomos konfigūracijos arba gali persiųsti jūsų DNS užklausas į "
-"jūsų interneto paslaugų tiekėjo DNS serverius."
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"Šie nustatymai valdo vidinį DNS serverį. Tinkluose, kuriuose gerai veikia "
-"interneto paslaugų tiekėjo DNS serveriai, dažniausiai geriau naudoti juos. "
-"Jei dėl kokių nors priežasčių tai neveikia, tuomet reikia išjungti užklausų "
-"persiuntimą."
-
-msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
-msgstr ""
-"Retai, tačiau pasitaiko, kad interneto paslaugų tiekėjo neteisingai "
-"sukonfigūruoti DNS serveriai trukdo DNSSEC validavimui. Jei susiduriate su "
-"DNS problemomis galite <strong>laikinai</strong> išjungti DNSSEC validavimą "
-"kad rastumėte problemos priežastį. Tačiau nepamirškite, kad be DNSSEC "
-"validavimo prieš jus gali būti sėkmingai panaudotos DNS atsakymų klastojimo "
-"atakos! Todėl <strong>rekomenduojame palikti DNSSEC įjungtą</strong> ir "
-"spręsti problemas kartu su interneto paslaugų tiekėju nes tai grubi problema "
-"jų pusėje."
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-"Čia galite patikrinti interneto ryšį. Šis testas taip pat naudingas kai "
-"norite pasitikrinti ar DNS paslauga veikia tinkamai. Nepamirškite paspausti "
-"<strong>Išsaugoti</strong> mygtuką jei keitėte DNS nustatymus."
-
-msgid "DNS"
-msgstr "DNS"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-#, fuzzy
-msgid "Failed to query ntp servers."
-msgstr "Nepavyko patvirtinti atnaujinimo."
-
-#, fuzzy
-msgid "Update time"
-msgstr "Atnaujinimas"
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
-msgstr ""
-"Jei šią plokštę norite naudoti 2.4GHz dažnių juostoje, reikia atlikti laidų "
-"prijungtų prie diplekserio perjungimą! Gamykliniai nustatymai: Laidai iš "
-"didesnės plokštės prijungti į 5GHz, o laidai iš mažesnės plokštės prie "
-"2.4GHz diplekserio jungčių."
-
-msgid "QR code"
-msgstr ""
-
-msgid "Password"
-msgstr "Slaptažodis"
-
-msgid "Log in"
-msgstr "Prisijungti"
-
-msgid "Foris Configuration Interface"
-msgstr "Foris Konfigūravimo Interfeisas"
-
-msgid "Go to LuCI"
-msgstr "Eiti į LuCI"
-
-msgid "Opened lock"
-msgstr ""
-
-msgid "Your connection is not encrypted"
-msgstr ""
-
-msgid ""
-"A secure connection is an important safety feature of the router and "
-"therefore the entire home network."
-msgstr ""
-
-msgid "How to set an encrypted connection and why is it important"
-msgstr ""
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Puslapio veikimui reikia JavaScript palaikymo. Įjunkite jį, ir perkraukite "
-"puslapį."
-
-msgid "foris version:"
-msgstr "foris versija:"
+"Pranešimų nustatymai pakeisti ir neišsaugoti.\\nAr norite juos atmesti ir "
+"tikrinti pranešimų siuntimą su senais nustatymais?"
+
+msgid "Turris router administration interface"
+msgstr "Turris maršrutizatoriaus valdymo interfeisas"
 
 #, fuzzy
 msgid ""
@@ -1040,281 +287,938 @@ msgstr ""
 "Omnia maršrutizatoriaus savininkai ir sutinkate su visu <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">licencijos sutarties</a> tekstu."
 
-msgid "This value seems to be invalid."
-msgstr "Reikšmė atrodo netinkama."
+msgid "Project:Turris"
+msgstr "Projektas:Turris"
 
-msgid "This value should be a valid email."
-msgstr "Reikšmė turi būti geras el. pašto adresas."
+msgid "Log out"
+msgstr "Atsijungti"
 
-msgid "This value should be a valid url."
-msgstr "Reikšmė turi būti tinkamas URL."
+msgid "Password"
+msgstr "Slaptažodis"
 
-msgid "This value should be a valid number."
-msgstr "Reikšmė turi būti skaičius."
+msgid "Log in"
+msgstr "Prisijungti"
 
-msgid "This value should be a valid integer."
-msgstr "Reikšmė turi būti sveikas skaičius."
+msgid "Foris Configuration Interface"
+msgstr "Foris Konfigūravimo Interfeisas"
 
-msgid "This value should be digits."
-msgstr "Reikšmė turi būti skaitmenys."
+msgid "Go to LuCI"
+msgstr "Eiti į LuCI"
 
-msgid "This value should be alphanumeric."
-msgstr "Reikšmė turi būti sudaryta iš raidžių ir skaičių."
-
-msgid "This value should not be blank."
-msgstr "Reikšmė negali būti tuščia."
-
-msgid "This value is required."
-msgstr "Reikšmė privaloma."
-
-#, python-format
-msgid "This value should be greater than or equal to %s."
-msgstr "Reikšmė turi būti didesnė arba lygi %s."
-
-#, python-format
-msgid "This value should be lower than or equal to %s."
-msgstr "Reikšmė turi būti mažesnė arba lygi %s."
-
-#, python-format
-msgid "This value should be between %s and %s."
-msgstr "Reikšmė turi būti tarp %s ir %s."
-
-#, python-format
-msgid "This value is too short. It should have %s characters or more."
-msgstr "Reikšmė per trumpa. Turėtų būti mažiausiai %s simbolių ilgio."
-
-#, python-format
-msgid "This value is too long. It should have %s characters or fewer."
-msgstr "Reikšmė per ilga. Turėtų būti ne daugiau nei %s simbolių ilgio."
-
-#, python-format
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long."
-msgstr "Netinkamas reikšmės ilgis. Ilgis turėtų būti tarp %s ir %s simbolių."
-
-#, python-format
-msgid "You must select at least %s choices."
-msgstr "Reikia parinkti mažiausiai %s reikšmes."
-
-#, python-format
-msgid "You must select %s choices or fewer."
-msgstr "Reikia parinkti ne daugiau nei %s reikšmes."
-
-#, python-format
-msgid "You must select between %s and %s choices."
-msgstr "Reikia parinkti nuo %s iki %s reikšmių."
-
-msgid "This value should be the same."
-msgstr "Reikšmė turėtų būti tokia pati."
-
-msgid "This is not a valid IPv4 address."
-msgstr "Netinkamas IPv4 adresas."
-
-msgid "This is not a valid IPv4 netmask."
-msgstr "Netinkama IPv4 tinklo kaukė (netmask)."
-
-msgid "This is not a valid IPv4 prefix."
-msgstr "Netinkamas IPv4 prefiksas."
-
-msgid "This is not a valid IPv6 prefix."
-msgstr "Netinkamas IPv6 prefiksas."
-
-msgid "This is not a valid MAC address."
-msgstr "Netinkamas MAC adresas."
-
-msgid ""
-"Your password contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
+msgid "Opened lock"
 msgstr ""
-"Slaptažodyje yra nestandartinių simbolių. Juos naudoti galima, tačiau jie "
-"gali sukelti problemų kai kuriems įrenginiams."
+
+msgid "Your connection is not encrypted"
+msgstr ""
 
 msgid ""
-"Your SSID contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
+"A secure connection is an important safety feature of the router and "
+"therefore the entire home network."
 msgstr ""
-"SSID yra nestandartinių simbolių. Juos naudoti galima, tačiau tai gali "
-"sukelti problemų kai kuriems įrenginiams."
 
-msgid "OK"
-msgstr "OK"
-
-msgid "Connectivity test failed, testing connection with disabled forwarding."
-msgstr "Ryšio testas nesėkmingas, tikrinamas ryšys išjungus persiuntimą."
+msgid "How to set an encrypted connection and why is it important"
+msgstr ""
 
 msgid ""
-"The IP address of your router has been changed. It should be accessible from "
-"%NEW_IP_LINK%. See the note above for more information about IP address "
-"change."
+"Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
-"Pakeistas maršrutizatoriaus IP adresas. Maršrutizatorius turėtų būti "
-"pasiekiamas adresu %NEW_IP_LINK%. Atkreipkite dėmesį į pastabą viršuje apie "
-"IP adreso keitimą."
+
+#, fuzzy
+msgid "Failed to query ntp servers."
+msgstr "Nepavyko patvirtinti atnaujinimo."
+
+#, fuzzy
+msgid "Update time"
+msgstr "Atnaujinimas"
+
+msgid "Hint"
+msgstr "Užuomina"
+
+msgid "Discard changes"
+msgstr "Atmesti pakeitimus"
+
+msgid "Save changes"
+msgstr "Išsaugoti pakeitimus"
 
 msgid ""
-"You have chosen to not receive security updates. We strongly advice you to "
-"keep the automatic security updates enabled to receive all recommended "
-"updates for your device. Updating your router on regular basis is the only "
-"way how to ensure you will be protected against known threats that might "
-"target your home router device.\\n\\nDo you still want to continue and stay "
-"unprotected?"
+"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
+"of working alone or it can forward your DNS queries through your internet "
+"service provider's DNS resolver."
 msgstr ""
-"Pasirinkote išjungti saugumo atnaujinimus. Mes griežtai patariame "
-"automatinius saugumo atnaujinimus palikti įjungtus, kad jūsų įrenginys gautu "
-"visus atnaujinimus. Reguliarus maršrutizatoriaus atnaujinimas yra "
-"vienintelis būdas užtikrinti apsaugą nuo žinomų grėsmių, kurios gali būti "
-"panaudotos prieš jūsų namų maršrutizatorių.\\n\\nAr tikrai norite atsisakyti "
-"apsaugos?"
+"Turris maršrutizatorius turi vidinį DNS serverį su DNSSEC funkcija. Jis gali "
+"veikti be papildomos konfigūracijos arba gali persiųsti jūsų DNS užklausas į "
+"jūsų interneto paslaugų tiekėjo DNS serverius."
 
 msgid ""
-"DNSSEC is a security technology that protects the DNS communication against "
-"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
-"validation enabled unless you know that you will be connecting your device "
-"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
-"and stay unprotected?"
+"The following setting determines the behavior of the DNS resolver. It is "
+"usually better to use the ISP's resolver in networks where it works "
+"properly. In case this does not work for some reason, it is necessary to use "
+"direct resolving without forwarding."
 msgstr ""
-"DNSSEC yra saugumą didinanti technologija kuri apsaugo DNS užklausas nuo "
-"atakų nukreiptų prieš DNS infrastruktūrą. Mes griežtai patariame palikti "
-"DNSSEC tikrinimą įjungta, nebent žinote, kad jungsite savo įrenginį į tinklą "
-"kuriame DNSSEC neveikia.\\n\\nAr tikrai norite atsisakyti apsaugos?"
-
-msgid "Are you sure you want to restart the router?"
-msgstr "Ar tikrai norite perkrauti maršrutizatorių?"
-
-msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr "\\nLikurios (%UNREAD%) neskaitytos žinutės bus ištrintos."
+"Šie nustatymai valdo vidinį DNS serverį. Tinkluose, kuriuose gerai veikia "
+"interneto paslaugų tiekėjo DNS serveriai, dažniausiai geriau naudoti juos. "
+"Jei dėl kokių nors priežasčių tai neveikia, tuomet reikia išjungti užklausų "
+"persiuntimą."
 
 msgid ""
-"There are some unsaved changes in the notifications settings.\\nDo you want "
-"to discard them and test the notifications with the old settings?"
+"In rare cases ISP's have improperly configured network which interferes with "
+"DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC validation, "
+"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
+"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
+"as this is a serious flaw on their side."
 msgstr ""
-"Pranešimų nustatymai pakeisti ir neišsaugoti.\\nAr norite juos atmesti ir "
-"tikrinti pranešimų siuntimą su senais nustatymais?"
+"Retai, tačiau pasitaiko, kad interneto paslaugų tiekėjo neteisingai "
+"sukonfigūruoti DNS serveriai trukdo DNSSEC validavimui. Jei susiduriate su "
+"DNS problemomis galite <strong>laikinai</strong> išjungti DNSSEC validavimą "
+"kad rastumėte problemos priežastį. Tačiau nepamirškite, kad be DNSSEC "
+"validavimo prieš jus gali būti sėkmingai panaudotos DNS atsakymų klastojimo "
+"atakos! Todėl <strong>rekomenduojame palikti DNSSEC įjungtą</strong> ir "
+"spręsti problemas kartu su interneto paslaugų tiekėju nes tai grubi problema "
+"jų pusėje."
 
-msgid "Turris router administration interface"
-msgstr "Turris maršrutizatoriaus valdymo interfeisas"
+msgid "Save"
+msgstr "Išsaugoti"
+
+msgid "Connection test"
+msgstr "Ryšio patikrinimas"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when "
+"you need to check that your DNS resolving works as expected. Remember to "
+"click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Čia galite patikrinti interneto ryšį. Šis testas taip pat naudingas kai "
+"norite pasitikrinti ar DNS paslauga veikia tinkamai. Nepamirškite paspausti "
+"<strong>Išsaugoti</strong> mygtuką jei keitėte DNS nustatymus."
+
+msgid "Unable to verify network connection."
+msgstr "Nepavyko patikrinti tinko ryšio."
+
+msgid "Test type"
+msgstr "Testas"
+
+msgid "Status"
+msgstr "Būsena"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Test connection"
+msgstr "Tikrinti ryšį"
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from big "
+"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
+"part."
+msgstr ""
+"Jei šią plokštę norite naudoti 2.4GHz dažnių juostoje, reikia atlikti laidų "
+"prijungtų prie diplekserio perjungimą! Gamykliniai nustatymai: Laidai iš "
+"didesnės plokštės prijungti į 5GHz, o laidai iš mažesnės plokštės prie "
+"2.4GHz diplekserio jungčių."
+
+msgid "QR code"
+msgstr ""
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr ""
+"Nepavyko aptikti nei vienos belaidžio tinklo plokštės šiame "
+"maršrutizatoriuje."
+
+msgid ""
+"If a number of wireless cards doesn't match, you may try to reset the Wi-Fi "
+"settings. Note that this will remove the current Wi-Fi configuration and "
+"restore the default values."
+msgstr ""
+
+#, fuzzy
+msgid "Reset Wi-Fi settings"
+msgstr "Wi-Fi nustatymai"
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without "
+"disabling the data collection first."
+msgstr ""
+"Šiuo metu įjungtas duomenų rinkimas. Negalite išjungti automatinių "
+"atnaujinimų, kol nebus išjungtas duomenų rinkimas."
+
+msgid "Update approvals"
+msgstr "Atnaujinimo patvirtinimai"
+
+#, fuzzy
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can refuse the questionable update "
+"temporarily and install it when you are ready. It isn't possible to decline "
+"the update forever and it will be offered to you again together with the "
+"next package installation."
+msgstr ""
+"Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
+"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite laikinai "
+"atidėti įtartinus atnaujinimus ir įdiegti juos tik tuomet kai būsite tam "
+"pasirengę. Negalima atnaujinimų atidėti visam laikui, jie bus vėl siūlomi "
+"įdiegti kartu su kitais atnaujinimais."
+
+#, fuzzy
+msgid ""
+"Update approvals can be useful when you want to make sure that updates won't "
+"harm your specific configuration. You can e.g. install updates when you're "
+"prepared for a possible rollback to a previous snapshot and deny the "
+"questionable update temporarily. It isn't possible to decline the update "
+"forever and it will be offered to you again together with the next package "
+"installation."
+msgstr ""
+"Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
+"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite įdiegti "
+"atnaujinimus tuomet tuomet kai būsite pasiruošę galimam <a href='https://www."
+"turris.cz/doc/en/howto/"
+"omnia_factory_reset#rollback_to_latest_snapshot'>sistemos atstatymui</a> ir "
+"laikinai atidėti įtartinus atnaujinimus. Negalima atnaujinimų atidėti visam "
+"laikui, jie bus vėl siūlomi įdiegti kartu su kitais atnaujinimais."
+
+#, python-format
+msgid "after %(input)s hours"
+msgstr "po %(input)s valandų"
+
+#, python-format
+msgid "Approve update from %(when)s"
+msgstr "Patvirtinti %(when)s atnaujinimą"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr "Atkreipkite dėmesį, kad po atnaujinimų bus vykdomas perkrovimas."
+
+#, fuzzy
+msgid "Install now"
+msgstr "Įdiegti"
+
+msgid "Deny"
+msgstr ""
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+
+#, python-format
+msgid ""
+"If you don't install the updates manually, they will be installed "
+"automatically after %(time)s."
+msgstr ""
+
+msgid "Package lists"
+msgstr "Paketų sąrašai"
+
+#, fuzzy
+msgid ""
+"With the Turris router you can join Project Turris which is a non-profit "
+"research project founded by the CZ.NIC association, a .CZ domain registry. "
+"By joining the project, your router will act as a probe which analyzes "
+"traffic between your home network and the Internet and helps to identify "
+"malicious data flows. Once such a flow is detected your router notifies the "
+"Turris headquarters which can compare the flow with data from the rest of "
+"the probes and assign it a threat level. If the flow is identified as an "
+"attack Turris headquarters can prepare an update which is distributed to "
+"every Turris router and helps them to protect themselves against the attack."
+msgstr ""
+"Naudodami Turris Omnia maršrutizatorių galite prisijungti prie Turris "
+"Projekto. Tai yra mokslinis, pelno nesiekiantis projektas, įkurtas CZ.NIC "
+"asociacijos, kuri yra .CZ domeno administratoriaus. Prisijungus prie "
+"projekto jūsų maršrutizatorius pradės veikti kaip stebėjimo įrenginys, "
+"analizuojantis duomenų srautą tarp jūsų namų tinklo ir interneto, bei "
+"ieškantis kenkėjiškų duomenų srautų. Maršrutizatorius aptikęs kenkėjišką "
+"duomenų srautą perduoda informaciją į Turris būstine, kur gauti duomenys yra "
+"lyginami su duomenimis gautais iš kitų stebėjimo mazgų bei nustatymas "
+"grėsmės lygis. Jei duomenų srautas atpažįstamas kaip ataka Turris būstinėje "
+"gali būti paruoštas atnaujinimas, padėsiantis apsiginti nuo šios atakos, "
+"kuris išsiunčiamas visiems Turris maršrutizatoriams."
+
+msgid ""
+"The Updater is currently disabled. You must enable it first to enable data "
+"collection."
+msgstr ""
+"Automatiniai atnaujinimai šiuo metu išjungti. Prieš įjungiant duomenų "
+"rinkimą įjunkite automatinius atnaujinimus."
+
+msgid ""
+"If you want to join the Turris project you need to register on the Turris "
+"portal first. Enter the email address you want to register with or which you "
+"have used for this purpose before:"
+msgstr ""
+"Jei norite prisijungti prie Turris projekto, pirmiausia turite "
+"užsiregistruoti Turris svetainėje. Įveskite el. pašto adresą su kuriuo "
+"norėtumėte registruotis arba kurį jau naudojote registracijoje:"
+
+msgid "Validate email"
+msgstr "Tikrinti el. pašto adresą"
+
+msgid "Device"
+msgstr "Įrenginys"
+
+msgid "Serial number"
+msgstr "Serijinis numeris"
+
+msgid "Turris OS version"
+msgstr "Turris OS versija"
+
+msgid "Kernel version"
+msgstr "Branduolio versija"
+
+msgid "Sending of uCollect data"
+msgstr "Duomenų siuntimas iš uCollect"
+
+#, python-format
+msgid "Time of last update: %(datetime)s"
+msgstr "Paskutinį kartą atnaujinta: %(datetime)s"
+
+#, python-format
+msgid "(status updated %d second ago)"
+msgid_plural "(status updated %d seconds ago)"
+msgstr[0] "(būsena atnaujinta prieš %d sekundę)"
+msgstr[1] "(būsena atnaujinta prieš %d sekundes)"
+msgstr[2] "(būsena atnaujinta prieš %d sekundžių)"
+msgstr[3] "(būsena atnaujinta prieš %d sekundę)"
+
+msgid "Sending of firewall logs"
+msgstr "Ugniasienės logų siuntimas"
+
+msgid "Refresh"
+msgstr "Atnaujinti"
+
+msgid "Device registration"
+msgstr "Įrenginio registracija"
+
+#, python-format
+msgid ""
+"If you have not registered your device yet, click on the following button to "
+"obtain a registration code. This code must be submitted on the Turris site "
+"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Jūs dar neregistravote šio įrenginio, paspauskite ant šio mygtuko ir gausite "
+"registracijos kodą. Šį kodą reikia suvesti Turris svetainėje prie jūsų "
+"profilio informacijos: <a href=\"%(url)s\">%(url)s</a>."
+
+msgid "Registration code"
+msgstr "Registracijos kodas"
+
+msgid ""
+"Unfortunately, it wasn't possible to generate the registration code. This "
+"usually means the router is not connected to the internet. Please, try "
+"registering later. If the problem persists, contact the support."
+msgstr ""
+"Deja nepavyko sugeneruoti registracijos kodo. Tai dažniausiai nutinka jei "
+"maršrutizatorius neturi ryšio su internetu. Pamėginkite pakartoti "
+"registraciją vėliau. Jei problema vis tiek liks, kreipkitės į tech. "
+"palaikymo komandą."
+
+msgid "Get registration code"
+msgstr "Gauti registracijos kodą"
+
+msgid ""
+"Here you can test you connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes it "
+"takes a while before the connection is fully initialized. So it might be "
+"useful to wait for a while before running this test."
+msgstr ""
+
+msgid "IPv4 connectivity"
+msgstr "IPv4 ryšys"
+
+msgid "IPv4 gateway connectivity"
+msgstr "IPv4 ryšys su gateway"
+
+msgid "IPv6 connectivity"
+msgstr "IPv6 ryšys"
+
+msgid "IPv6 gateway connectivity"
+msgstr "IPv6 ryšys su gateway"
+
+msgid "Notifications and automatic restarts"
+msgstr "Pranešimai ir automatiniai perkrovimai"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these "
+"emails. Alternatively, if you choose to use a custom server, you must enter "
+"some additional settings. These settings are the same as you enter in your "
+"email client and you can get them from the provider of your email inbox. In "
+"that case, because of security reasons, it is recommended to create a "
+"dedicated account for your router."
+msgstr ""
+"Galite sukonfigūruoti maršrutizatorių, kad įvykus tam tikriems įvykiams "
+"gautumėte pranešimą, pavyzdžiui kai reikalingas perkrovimas, nebeliko "
+"laisvos vietos ar atnaujinta programinė įranga. El. pašto pranešimams galite "
+"naudoti Turris serverius. Jei naudojate kitus serverius, reikės įvesti "
+"papildomų nustatymų. Šie nustatymai yra tokie patys kokius naudotumėte "
+"konfigūruojant pašto programą, juos galite gauti iš savo el. pašto paslaugų "
+"tiekėjo. Jei naudosite kitus pašto serverius, saugumo sumetimais, "
+"rekomenduojame turėti atskirą, specialiai maršrutizatoriui skirtą el. pašto "
+"paskyrą."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you "
+"want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"Taip pat galite nurodyti laiką, kada atlikti automatinius perkrovimus, kai "
+"jų reikia. Jeigu pranešimai el. paštu yra įjungti, taip pat galite nurodyti "
+"laiko tarpą tarp pranešimo išsiuntimo ir automatinio perkrovimo."
+
+msgid "Send testing message"
+msgstr "Išsiųsti testinę žinutę"
+
+msgid "Configuration backup"
+msgstr "Konfigūracijos atsarginė kopija"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface "
+"and for the advanced configuration are not included in the backup."
+msgstr ""
+"Galite išsaugoti dabartinę šio įrenginio konfigūraciją atsisiųsdami "
+"atsarginės kopijos failą. Konfigūracija išsaugoma kaip nešifruotas "
+"suspaustas (.tar.bz2) failas. Slaptažodžiai priėjimui prie šio ir platesnio "
+"valdymo interfeiso nėra išsaugojami atsarginėje kopijoje."
+
+msgid "Download configuration backup"
+msgstr "Atsisiųsti konfigūracijos atsarginę kopiją"
+
+msgid "Configuration restore"
+msgstr "Konfigūracijos atstatymas"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using following "
+"form. Keep in mind that IP address of this device might change during the "
+"process, causing unavailability of this interface."
+msgstr ""
+"Įkelkite atsarginės kopijos failą naudodami žemiau esančią formą, jei norite "
+"atstatyti įrenginio konfigūraciją iš atsarginės kopijos failo. Atkreipkite "
+"dėmesį, kad atstačius konfigūraciją įrenginio IP adresas gali pasikeisti ir "
+"šis valdymo interfeisas tapti nebepasiekiamas senuoju adresu."
+
+msgid "Restore from backup"
+msgstr "Atstatyti iš atsarginės kopijos"
+
+msgid "Device reboot"
+msgstr "Įrenginio perkrovimas"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The reboot "
+"process takes approximately 30 seconds, you will be required to log in again "
+"after the reboot."
+msgstr ""
+"Jei norite perkrauti įrenginį, spauskite žemiau esantį mygtuką. Perkrovimas "
+"užtrunka apie 30 sekundžių, taip pat po perkrovimo reikės per naują "
+"prisijungti prie įrenginio valdymo."
+
+msgid "Reboot"
+msgstr "Perkrauti"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - Turris maršrutizatoriaus valdymo interfeisas"
+
+msgid "Menu"
+msgstr "Meniu"
+
+msgid "Network is restarting..."
+msgstr ""
+
+msgid "Your network is being restarted. Wait, please..."
+msgstr ""
+
+#, fuzzy
+msgid "Rebooting..."
+msgstr "Perkrauti"
+
+msgid "Your router is being rebooted."
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr ""
+
+msgid "Reboot now"
+msgstr "Perkrauti dabar"
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Puslapio veikimui reikia JavaScript palaikymo. Įjunkite jį, ir perkraukite "
+"puslapį."
 
 msgid "Language"
 msgstr "Kalba"
 
-msgid "Wi-Fi"
-msgstr "Wi-Fi"
-
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
-msgstr ""
-"WPA2 bendras raktas, jo reikia jungiantis prie tinklo. Minimalus leidžiamas "
-"ilgis yra 8 simboliai."
-
 #, python-format
-msgid "Enable Wi-Fi %s"
-msgstr "Įjungti Wi-Fi %s"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Slėpti SSID"
-
-msgid "If set, network is not visible when scanning for available networks."
-msgstr "Jei įjungta, šis tinklas nebus matomas skenuojant Wi-Fi tinklus."
-
-msgid "Wi-Fi mode"
-msgstr "Wi-Fi režimas"
+msgid ""
+"Device was successfully installed. Last step that is required is a "
+"registration of your device in your user profile on the Turris website <a "
+"href=\"%(url)s\">%(url)s</a>."
+msgstr ""
+"Įrenginys sėkmingai įdiegtas. Paskutinis žingsnis, kurį reikia atlikti, yra "
+"jūsų įrenginio registravimas jūsų Turris svetainės paskyroje <a href="
+"\"%(url)s\">%(url)s</a>."
 
 msgid ""
-"The 2.4 GHz band is more widely supported by clients, but tends to have more "
-"interference. The 5 GHz band is a newer standard and may not be supported by "
-"all your devices. It usually has less interference, but the signal does not "
-"carry so well indoors."
+"<strong>Warning:</strong> this code is valid only for limited time. In case "
+"this code is refused, refresh this page to get a new one."
 msgstr ""
-"2.4 GHz dažnių juosta yra palaikoma didesnės dalies klientų, tačiau dažniau "
-"turi daugiau trukdžių. 5 GHz dažnių juosta naujesnė ir ne visi įrenginiai "
-"gali turėti galimybę ją naudoti. Ji dažniausiai turi mažiau trukdžių, bet "
-"signalas ne taip gerai perduodamas patalpų viduje."
+"<strong>Įspėjimas:</strong> šis kodas galioja ribotą laiką. Jei kodas "
+"netinka, perkraukite šį puslapį ir gausite naują kodą."
 
-msgid "Disabled"
-msgstr "Išjungta"
-
-msgid "802.11n - 20 MHz wide channel"
-msgstr "802.11n - 20 MHz pločio kanalas"
-
-msgid "802.11n - 40 MHz wide channel"
-msgstr "802.11n - 40 MHz pločio kanalas"
-
-msgid "802.11ac - 20 MHz wide channel"
-msgstr "802.11ac - 20 MHz pločio kanalas"
-
-msgid "802.11ac - 40 MHz wide channel"
-msgstr "802.11ac - 40 MHz pločio kanalas"
-
-msgid "802.11ac - 80 MHz wide channel"
-msgstr "802.11ac - 80 MHz pločio kanalas"
-
-msgid "802.11n/ac mode"
-msgstr "802.11n/ac rėžimas"
-
-msgid ""
-"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
-"channels can yield higher throughput but can cause more interference in the "
-"network. If you don't know what to choose, use the default option with 20 "
-"MHz wide channel."
-msgstr ""
-"Čia galite 802.11n/ac darbo rėžimą. 802.11n su 40 MHz pločio kanalu gali "
-"turėti didesnė pralaidumą tačiau sukelti daugiau trukdžių tinkle. Jei "
-"nežinote ką pasirinkti, naudokite standartinį 20 MHz pločio kanalą."
-
-msgid "auto"
-msgstr "automatinis"
-
-msgid "Network channel"
-msgstr "Tinklo kanalas"
-
-msgid "Network password"
-msgstr "Tinklo slaptažodis"
-
-msgid "Guest Wi-Fi"
-msgstr "Svečių Wi-Fi"
-
-msgid "Set guest Wi-Fi here."
-msgstr "Čia galite keisti svečių Wi-Fi."
-
-msgid "Enable guest Wi-Fi"
-msgstr "Įjungti svečių Wi-Fi"
+msgid "What next?"
+msgstr "Kas toliau?"
 
 #, python-format
 msgid ""
-"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-"connected to this network are allowed to access the internet, but aren't "
-"allowed to access other devices and the configuration interface of the "
-"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-"LAN tab</a>. "
+"You can change any of the previously configured settings in the <a href="
+"\"%(url)s\">standard configuration interface</a>. In case you are interested "
+"in more advanced options, you can use the LuCI interface which is available "
+"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
 msgstr ""
-"Įjungia Wi-Fi svečiams, atskirame tinkle. Įrenginiai prisijungę prie šio "
-"tinklo gali naudotis internetu, tačiau negali pasiekti kitų įrenginių tinkle "
-"ir maršrutizatoriaus konfigūravimo interfeiso. Svečių tinklo nustatymai gali "
-"būti keičiami <a href='%(url)s'>vietinio tinklo skiltyje</a>. "
+"Galite pakeisti visus ankščiau suvestus nustatymus <a href=\"%(url)s"
+"\">pagrindiniame konfigūravimo interfeise</a>. Jei norėtumėte keisti "
+"gilesnius nustatymus galite naudoti LuCI interfeisą, kuris pasiekamas iš <a "
+"href=\"%(url2)s\">Platesnio valdymo skilties</a>."
 
-msgid "SSID for guests"
-msgstr "SSID svečiams"
-
-msgid "Password for guests"
-msgstr "Slaptažodis svečiams"
+msgid "Important updates"
+msgstr "Svarbūs atnaujinimai"
 
 msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available next to the form."
+"Important updates that require a device restart have been installed. Some "
+"services might not work if you don't restart the device. For details see "
+"below."
 msgstr ""
-"Jei norite šį maršrutizatorių naudoti kaip belaidžio tinklo prieigos tašką, "
-"įjunkite Wi-Fi čia ir nustatykite SSID (belaidžio tinklo vardą) bei "
-"slaptažodį. Mobilius įrenginius galite sukonfigūruoti nuskenavę QR kodą "
-"esantį šalia nustatymų."
+"Svarbūs atnaujinimai, kuriems reikia įrenginio perkrovimo, buvo įdiegti. "
+"Dalis servisų gali neveikti jeigu neperkrausite įrenginio. Daugiau "
+"informacijos rasite žemiau."
 
-msgid "Wi-Fi settings"
-msgstr "Wi-Fi nustatymai"
+msgid "Continue to the configuration interface"
+msgstr "Eiti į konfigūravimo interfeisą"
+
+msgid "Installation finished"
+msgstr "Diegimas baigtas"
+
+msgid ""
+"You have decided to disable the Updater service during the installation."
+msgstr "Pasirinkote išjungti automatinius atnaujinimus diegimo metu."
+
+msgid ""
+"Without the Updater, installed software will not be kept up to date and you "
+"will also not be able to install Updater's package lists."
+msgstr ""
+"Be automatinių atnaujinimų įdiegta programinė įranga nebus laiku atnaujinama "
+"ir taip pat negalėsite įrašyti automatinių atnaujinimų paketų sąrašų."
+
+msgid ""
+"By enabling of the Updater, you can also join our research project: <a href="
+"\"https://project.turris.cz/\">Project Turris</a>."
+msgstr ""
+"Jei įjungiate automatinius atnaujinimus galite prisijungti prie mūsų "
+"mokslinio projekto: <a href=\"https://project.turris.cz/\">Project Turris</"
+"a>."
+
+#, python-format
+msgid ""
+"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
+"configuration page."
+msgstr ""
+"Galite bet kada įjungti automatinius atnaujinimus <a href=\"%(url)s"
+"\">Automatinių atnaujinimų</a> konfigūracijos puslapyje."
+
+#, fuzzy
+msgid ""
+"With Turris router you can join the research project called <a href="
+"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
+"your router can become a probe that analyzes the traffic between internet "
+"and the home network and identifies suspicious data flows."
+msgstr ""
+"Turėdami Turris Omnia galite prisijungti prie mokslinio projekto pavadinimu "
+"<a href=\"https://project.turris.cz/\">Project Turris</a>. Dėka šio "
+"projekto, jūsų maršrutizatorius gali tapti stebėjimo mazgu kuris analizuoja "
+"duomenis, siunčiamus tarp jūsų namų tinklo ir interneto, ir aptinka "
+"įtartinus duomenų srautus."
+
+#, python-format
+msgid ""
+"You can enable these additional features by following the instructions on "
+"the <a href=\"%(url)s\">Data collection</a> page."
+msgstr ""
+"Šias papildomas funkcijas galima įjungti sekant instrukcijas <a href="
+"\"%(url)s\">Duomenų rinkimo</a> puslapyje."
+
+msgid "Synchronize with your computer clock"
+msgstr "Sinchronizuoti su jūsų kompiuterio laikrodžiu"
+
+msgid "Set time manually"
+msgstr "Nustatyti laiką rankiniu būdu"
+
+msgid "Synchronization successful."
+msgstr "Sinchronizacija pavyko."
+
+msgid "Next"
+msgstr "Toliau"
+
+msgid "Time settings"
+msgstr "Laiko nustatymai"
+
+msgid "Synchronizing router time with an internet time server."
+msgstr ""
+"Maršrutizatoriaus laikas sinchronizuojamas su laiko serveriais internete."
+
+msgid "One moment, please..."
+msgstr "Luktelėkite..."
+
+msgid "Done"
+msgstr "Baigta"
+
+msgid "Time was successfully synchronized, you can move to the next step."
+msgstr "Laikas sėkmingai sinchronizuotas, galite tęsti."
+
+msgid "Registration failure"
+msgstr "Nepavyko registracija"
+
+msgid "Welcome to configuration of router Turris"
+msgstr "Sveiki pradėję Turris maršrutizatoriaus konfigūravimą"
+
+msgid ""
+"Before you start to use the router for the first time, it is necessary to "
+"set it up. The following simple wizard will take you through the "
+"configuration procedure. After it is finished, your router will be ready for "
+"operation."
+msgstr ""
+"Prieš pradedant naudoti maršrutizatorių reikia jį tinkamai sukonfigūruoti. "
+"Pradinio konfigūravimo programa padės jums tai atlikti. Kai pradinis "
+"konfigūravimas bus baigtas maršrutizatorius bus paruoštas darbui."
+
+msgid ""
+"If you want to restore a previously saved configuration or for some other "
+"reason skip this wizard, you can do so after choosing a password in its "
+"first step."
+msgstr ""
+"Jei norite atstatyti ankščiau išsaugotą konfigūraciją arba šiaip praleisti "
+"pradinio konfigūravimo programą, tai galite padaryti iškarto po pirmo "
+"žingsnio kuriame nustatomas prisijungimo slaptažodis."
+
+msgid "Begin installation"
+msgstr "Pradėti diegimą"
+
+msgid "Checking internet connectivity."
+msgstr "Tikrinamas interneto ryšys."
+
+msgid "Internet connectivity test passed without error."
+msgstr "Interneto ryšio testas pabaigtas be problemų."
+
+msgid ""
+"Your internet connection has network connectivity but DNS resolving does not "
+"work. This is probably a problem with your ISP. This might also be an issue "
+"with wrong time on your router - you can adjust it in the following step."
+msgstr ""
+"Jūsų ryšys su internetu veikia, tačiau DNS paslauga neveikia. Taip "
+"tikriausiai yra dėl problemų su jūsų interneto paslaugų tiekėju. Tai taip "
+"pat gali sukelti jei jūsų maršrutizatoriuje nustatymas neteisingas laikas - "
+"jį galėsite patikslinti tolimesniame etape."
+
+msgid ""
+"It seems that you have no internet connection, maybe your WAN settings are "
+"not right."
+msgstr ""
+"Atrodo, kad neveikia ryšys su interneto, gal neteisingai suvesti WAN "
+"nustatymai."
+
+msgid "Try again"
+msgstr "Bandyti dar kartą"
+
+msgid ""
+"In some cases, such as on a slower DSL connection or when DHCP is used, this "
+"error might be due to slow network start-up. You can retest your connection "
+"using the above button if you think this might be the case. You can also "
+"return to previous page to fix the problem by modifying WAN settings."
+msgstr ""
+"Kartais, naudojant lėtesnę DSL liniją arba naudojant DHCP, problema gali "
+"būti dėl lėto tinklo paleidimo. Jei manote, kad būtent tai ir nutiko galite "
+"pakartotinai patikrinti ryšį su mygtuku viršuje. Taip pat galite spręsti "
+"problemą keičiant WAN nustatymus grįžus puslapį atgal."
+
+msgid "Adjust WAN settings"
+msgstr "Keisti WAN nustatymus"
+
+msgid ""
+"Installing additional updates. Router will be restarted several times to "
+"finish the process."
+msgstr ""
+"Diegiami papildomi atnaujinimai. Kol bus baigta maršrutizatorius keletą "
+"kartų persikraus."
+
+msgid "Do not unplug the device during update!"
+msgstr "Neatjunkite įrenginio kol vyksta atnaujinimas!"
+
+msgid "Check of available updates in progress."
+msgstr "Tikrinama ar yra atnaujinimų."
+
+msgid "Firmware update was successful, you can proceed to the next step."
+msgstr "Programinės įrangos atnaujinimas pavyko, galite pereiti į kitą etapą."
+
+msgid ""
+"Firmware update has failed due to a connection or installation error. You "
+"should check your cable connection before proceeding to the next step. But "
+"do not worry much about the update as the router will run the updater "
+"regularly."
+msgstr ""
+"Programinės įrangos atnaujinimas nepavyko dėl ryšio arba diegimo problemų. "
+"Reikėtų patikrinti laidinį ryšį prieš tęsiant. Dėl šios problemos nereikėtų "
+"ypatingai rūpintis, nes maršrutizatoriaus atnaujinimai bus reguliariai "
+"diegiami automatiškai."
+
+msgid "Updater has returned the following error:"
+msgstr "Klaida iš automatinių atnaujinimų serviso:"
+
+msgid "Device has been restarted."
+msgstr "Įrenginys perkrautas."
+
+msgid "Please log in again to continue."
+msgstr "Prisijunkite, kad galėtumėte tęsti."
+
+msgid "Proceed to login"
+msgstr "Eiti toliau, prisijungimas"
+
+msgid "Skip wizard"
+msgstr "Praleisti pradinį konfigūravimą"
+
+msgid "Step"
+msgstr "Žingsnis"
+
+msgid "foris version:"
+msgstr "foris versija:"
+
+msgid "Dismiss"
+msgstr "Atmesti"
+
+#, fuzzy
+msgid "Dismiss All"
+msgstr "Atmesti"
+
+msgid "No new messages."
+msgstr "Nėra naujų žinučių."
+
+msgid "Unable to retrieve notifications, please try refreshing the page."
+msgstr "Nepavyko užkrauti pranešimų, pamėginkite perkrauti puslapį."
+
+msgid "News"
+msgstr "Naujienos"
+
+msgid "Update"
+msgstr "Atnaujinimas"
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr "%(notification)s nuo %(created_at)s"
+
+msgid "Notification"
+msgstr "Pranešimas"
+
+msgid "This field is required."
+msgstr "Privalomas užpildyti laukas."
+
+msgid "Not a valid IPv4 address."
+msgstr "Netinkamas IPv4 adresas."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Netinkama IPv4 adreso tinklo kaukė (netmask)."
+
+msgid "Not a valid IPv6 address."
+msgstr "Netinkamas IPv6 adresas."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Tai nėra IPv4 adresas su tinklo prefiksu."
+
+msgid "Is not a number."
+msgstr "Nėra skaičius."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Laikas neatitinka HH:MM šablono."
+
+msgid "MAC address is not valid."
+msgstr "Netinkamas MAC adresas."
+
+#, fuzzy
+msgid "Duid is not valid."
+msgstr "Netinkamas MAC adresas."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Nėra iš leidžiamo intervalo %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Ilgis turi būti nuo %(low)s iki %(high)s simbolių."
+
+msgid "Configuration was successfully saved."
+msgstr "Konfigūracija sėkmingai išsaugota."
+
+msgid "There were some errors in your input."
+msgstr "Įvestuose duomenyse yra klaidų."
+
+msgid "Notifications"
+msgstr "Pranešimai"
+
+#, fuzzy
+msgid "Number of notifications"
+msgstr "Įjungti pranešimus"
+
+msgid "Old password you entered was not valid."
+msgstr "Netinkamas senas slaptažodis."
+
+msgid "Password was successfully saved."
+msgstr "Slaptažodis sėkmingai išsaugotas."
+
+msgid ""
+"You WAN configuration is probably not correct or your WAN interface hasn't "
+"been properly initialized yet."
+msgstr ""
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr "WAN lizde nėra signalo, interneto ryšys tikriausiai neveiks."
+
+msgid "Wrong HTTP method."
+msgstr "Klaidingas HTTP metodas."
+
+msgid "Wi-Fi reset was successful."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to perform Wi-Fi reset."
+msgstr "Nepavyko patvirtinti atnaujinimo."
+
+msgid "Maintenance"
+msgstr "Priežiūra"
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
+
+#, fuzzy
+msgid ""
+"Sending of the testing message failed, your configuration is possibly wrong."
+msgstr ""
+"Testinio pranešimo siuntimas nepavyko, tikriausiai netinkama konfigūracija."
+"<br>Gauta klaida:<br><pre>%(error)s</pre>"
+
+#, fuzzy
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be required "
+"to apply restored configuration."
+msgstr ""
+"Konfigūracija sėkmingai atkurta. Palaukite kol bus įdiegti atnaujinimai ir "
+"atliktas automatinis įrenginio perkrovimas."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr ""
+
+msgid "Update was approved."
+msgstr "Atnaujinimas patvirtintas."
+
+msgid "Update was postponed."
+msgstr "Atnaujinimas buvo atidėtas."
+
+msgid "Failed to approve the update."
+msgstr "Nepavyko patvirtinti atnaujinimo."
+
+msgid "Failed to postpone the update."
+msgstr "Nepavyko atidėti atnaujinimo."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be installed "
+"or removed shortly."
+msgstr ""
+"Konfigūracija išsaugota sėkmingai. Pasirinkti paketai greitu metu bus "
+"įdiegti arba pašalinti."
+
+msgid "Updater is running"
+msgstr ""
+
+msgid "Data collection"
+msgstr "Duomenų rinkimas"
+
+#, fuzzy, python-format
+msgid ""
+"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
+msgstr "Tikrinant registraciją Įvyko klaida: <br><pre>%(response)s</pre>"
+
+msgid ""
+"Registration for the entered email is valid. Now you can enable the data "
+"collection."
+msgstr ""
+"Registracija įvestam el. pašto adresui patikrinta. Dabar galite įjungti "
+"duomenų rinkimą."
+
+#, python-format
+msgid ""
+"This router is currently assigned to a different email address. Please "
+"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
+"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
+"email address."
+msgstr ""
+"Šis maršutizatorius šiuo metu priskirtas kitam el. pašto adresui. "
+"Priskyrimui prie jūsų el. pašto adreso eikite į <a href=\"%(url)s\">Turris "
+"svetainę</a> ir panaudokite <strong>%(reg_num)s</strong> registracijos kodą."
+
+#, python-format
+msgid ""
+"This email address is not registered yet. Please continue to the <a href="
+"\"%(url)s\">Turris website</a> and use the registration code <strong>"
+"%(reg_num)s</strong> to create a new account."
+msgstr ""
+"Šis el. pašto adresas dar nėra registruotas. Naujos paskyros sukūrimui "
+"eikite į <a href=\"%(url)s\">Turris svetainę</a> ir panaudokite <strong>"
+"%(reg_num)s</strong> registracijos kodą."
+
+msgid "Router failed to authorize. Please try to validate our email later."
+msgstr ""
+
+msgid "About"
+msgstr "Apie"
+
+msgid "Online"
+msgstr "Ryšys yra"
+
+msgid "Offline"
+msgstr "Ryšio nėra"
+
+msgid "Unknown status"
+msgstr "Nežinoma būklė"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nepavyko išsaugoti konfigūracijos dėl vidinės sistemos klaidos."
+
+msgid "The password you entered was not valid."
+msgstr "Slaptažodis kurį įvedėte yra neteisingas."
+
+msgid "Use forwarding"
+msgstr "Naudoti persiuntimą"
+
+msgid "Disable DNSSEC"
+msgstr "Išjungti DNSSEC"
+
+msgid "Enable DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the "
+"local DNS records."
+msgstr ""
+
+msgid "Domain of DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
+msgstr ""
 
 msgid "LAN"
 msgstr "LAN"
@@ -1427,27 +1331,188 @@ msgstr ""
 msgid "Upload speed in guest network (in kilobits per second)."
 msgstr ""
 
-msgid "Use forwarding"
-msgstr "Naudoti persiuntimą"
+msgid "Backup file"
+msgstr "Atsarginės kopijos failas"
 
-msgid "Disable DNSSEC"
-msgstr "Išjungti DNSSEC"
+msgid "uCollect"
+msgstr "uCollect"
 
-msgid "Enable DHCP clients in DNS"
-msgstr ""
-
-msgid ""
-"This will enable your DNS resolver to place DHCP client's names among the "
-"local DNS records."
-msgstr ""
-
-msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgid "Emulated services"
+msgstr "Emuliuojami servisai"
 
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
-"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
+"One of uCollect's features is emulation of some commonly abused services. If "
+"this function is enabled, uCollect is listening for incoming connection "
+"attempts to these services. Enabling of the emulated services has no effect "
+"if another service is already listening on its default port (port numbers "
+"are listed below)."
 msgstr ""
+"Viena iš uCollect funkcijų yra dažnai išnaudojamų servisų emuliavimas. Jei "
+"ši funkcija įjungta, uCollect priims bandymus prisijungti prie šių servisų. "
+"Emuliuojamų servisų įjungimas netrukdys jau esamiems servisams kurie naudoja "
+"tuos pačius portus (portų sąrašas pateiktas žemiau)."
+
+msgid "Telnet (23/TCP)"
+msgstr "Telnet (23/TCP)"
+
+msgid "Telnet - alternative port (2323/TCP)"
+msgstr "Telnet - kitas portas (2323/TCP)"
+
+msgid "HTTP (80/TCP)"
+msgstr "HTTP (80/TCP)"
+
+msgid "Squid HTTP proxy (3128/TCP)"
+msgstr "Squid HTTP proxy (3128/TCP)"
+
+msgid "Polipo HTTP proxy (8123/TCP)"
+msgstr "Polipo HTTP proxy (8123/TCP)"
+
+msgid "HTTP proxy (8080/TCP)"
+msgstr "HTTP proxy (8080/TCP)"
+
+msgid "Collect credentials"
+msgstr "Rinkti prisijungimo duomenis"
+
+msgid ""
+"If this option is enabled, user names and passwords are collected and sent "
+"to server in addition to the IP address of the client."
+msgstr ""
+"Jei ši funkcija įjungta, siunčiami ne tik klientų IP adresai bet ir surinkti "
+"prisijungimo vardai bei slaptažodžiai."
+
+msgid "Enable data collection"
+msgstr "Įjungti duomenų rinkimą"
+
+msgid "Email"
+msgstr "El. paštas"
+
+#, fuzzy
+msgid "Failed to query the server."
+msgstr "Nepavyko patvirtinti atnaujinimo."
+
+#, fuzzy
+msgid "Failed to verify the router's registration."
+msgstr "Nepavyko patikrinti tinko ryšio."
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+"WPA2 bendras raktas, jo reikia jungiantis prie tinklo. Minimalus leidžiamas "
+"ilgis yra 8 simboliai."
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr "Įjungti Wi-Fi %s"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Slėpti SSID"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr "Jei įjungta, šis tinklas nebus matomas skenuojant Wi-Fi tinklus."
+
+msgid "Wi-Fi mode"
+msgstr "Wi-Fi režimas"
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have more "
+"interference. The 5 GHz band is a newer standard and may not be supported by "
+"all your devices. It usually has less interference, but the signal does not "
+"carry so well indoors."
+msgstr ""
+"2.4 GHz dažnių juosta yra palaikoma didesnės dalies klientų, tačiau dažniau "
+"turi daugiau trukdžių. 5 GHz dažnių juosta naujesnė ir ne visi įrenginiai "
+"gali turėti galimybę ją naudoti. Ji dažniausiai turi mažiau trukdžių, bet "
+"signalas ne taip gerai perduodamas patalpų viduje."
+
+msgid "Disabled"
+msgstr "Išjungta"
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - 20 MHz pločio kanalas"
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - 40 MHz pločio kanalas"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - 20 MHz pločio kanalas"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - 40 MHz pločio kanalas"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - 80 MHz pločio kanalas"
+
+msgid "802.11n/ac mode"
+msgstr "802.11n/ac rėžimas"
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
+"channels can yield higher throughput but can cause more interference in the "
+"network. If you don't know what to choose, use the default option with 20 "
+"MHz wide channel."
+msgstr ""
+"Čia galite 802.11n/ac darbo rėžimą. 802.11n su 40 MHz pločio kanalu gali "
+"turėti didesnė pralaidumą tačiau sukelti daugiau trukdžių tinkle. Jei "
+"nežinote ką pasirinkti, naudokite standartinį 20 MHz pločio kanalą."
+
+msgid "auto"
+msgstr "automatinis"
+
+msgid "Network channel"
+msgstr "Tinklo kanalas"
+
+msgid "Network password"
+msgstr "Tinklo slaptažodis"
+
+msgid "Guest Wi-Fi"
+msgstr "Svečių Wi-Fi"
+
+msgid "Set guest Wi-Fi here."
+msgstr "Čia galite keisti svečių Wi-Fi."
+
+msgid "Enable guest Wi-Fi"
+msgstr "Įjungti svečių Wi-Fi"
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
+"LAN tab</a>. "
+msgstr ""
+"Įjungia Wi-Fi svečiams, atskirame tinkle. Įrenginiai prisijungę prie šio "
+"tinklo gali naudotis internetu, tačiau negali pasiekti kitų įrenginių tinkle "
+"ir maršrutizatoriaus konfigūravimo interfeiso. Svečių tinklo nustatymai gali "
+"būti keičiami <a href='%(url)s'>vietinio tinklo skiltyje</a>. "
+
+msgid "SSID for guests"
+msgstr "SSID svečiams"
+
+msgid "Password for guests"
+msgstr "Slaptažodis svečiams"
+
+#, fuzzy
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
+"and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Jei norite šį maršrutizatorių naudoti kaip belaidžio tinklo prieigos tašką, "
+"įjunkite Wi-Fi čia ir nustatykite SSID (belaidžio tinklo vardą) bei "
+"slaptažodį. Mobilius įrenginius galite sukonfigūruoti nuskenavę QR kodą "
+"esantį šalia nustatymų."
+
+msgid "Wi-Fi settings"
+msgstr "Wi-Fi nustatymai"
 
 msgid "WAN"
 msgstr "WAN"
@@ -1490,10 +1555,11 @@ msgstr "Tinklo adreso kaukė"
 msgid "Gateway"
 msgstr "Gateway adresas"
 
-msgid "DHCP Client ID"
-msgstr ""
+#, fuzzy
+msgid "DHCP hostname"
+msgstr "DHCP pradžia"
 
-msgid "Client identifier which will be provided to DHCP server."
+msgid "Hostname which will be provided to DHCP server."
 msgstr ""
 
 #, fuzzy
@@ -1546,6 +1612,13 @@ msgstr "DNS serveris 1"
 msgid "DNS server 2 (IPv6)"
 msgstr "DNS serveris 2"
 
+#, fuzzy
+msgid "Custom DUID"
+msgstr "Konfigūruojamas"
+
+msgid "DUID which will be provided to the dhcpv6 server."
+msgstr ""
+
 msgid "Custom MAC address"
 msgstr "Kitoks MAC adresas"
 
@@ -1561,6 +1634,125 @@ msgstr "MAC adresas"
 
 msgid "Separator is a colon, for example 00:11:22:33:44:55"
 msgstr "Reikšmės atskiriamos dvitaškiu, pavyzdžiui 00:11:22:33:44:55"
+
+msgid ""
+"Set your password for this administration interface. The password must be at "
+"least 6 characters long."
+msgstr ""
+"Nustatykite slaptažodį priėjimui prie šio valdymo interfeiso. Slaptažodis "
+"turi būti mažiausiai 6 simbolių ilgio."
+
+msgid "Current password"
+msgstr "Dabartinis slaptažodis"
+
+msgid "New password"
+msgstr "Naujas slaptažodis"
+
+msgid "New password (repeat)"
+msgstr "Naujas slaptažodis (pakartokite)"
+
+msgid "Password (repeat)"
+msgstr "Slaptažodis (pakartokite)"
+
+msgid "Passwords are not equal."
+msgstr "Slaptažodžiai nesutampa."
+
+msgid "Use the same password for advanced configuration"
+msgstr "Platesniame valdymo interfeise naudoti tą patį slaptažodį"
+
+msgid ""
+"Same password would be used for accessing this administration interface, for "
+"root user in LuCI web interface and for SSH login. Use a strong password! "
+"(If you choose not to set the password for advanced configuration here, you "
+"will have the option to do so later. Until then, the root account will be "
+"blocked.)"
+msgstr ""
+"Toks pat slaptažodis būtų naudojamas priėjimui prie šio valdymo interfeiso, "
+"root prisijungimui per LuCI web interfeisą ir SSH. Naudokite stiprų "
+"slaptažodį! (Nepasirinkus nenustatyti slaptažodžio platesniam konfigūravimui "
+"dabar, galėsite tai padaryti vėliau. Iki tol prisijungimas prie root "
+"paskyros bus blokuojamas.)"
+
+msgid "Region settings"
+msgstr "Regiono nustatymai"
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct setting "
+"is required to display the right time and for related functions."
+msgstr ""
+"Pasirinkite laiko zoną, kuri naudojama valdant maršrutizatorių. Teisingam "
+"laiko išvedimui ir su tuo susijusioms funkcijom reikia, kad būtų parinkta "
+"teisinga laiko zona."
+
+msgid "Continent or ocean"
+msgstr "Žemynas arba vandenynas"
+
+msgid "Country"
+msgstr "Šalis"
+
+msgid "Timezone"
+msgstr "Laiko zona"
+
+msgid "Advanced administration"
+msgstr "Platesnis valdymas"
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration possibilities which are not "
+"present here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a href=\"//%(host)s/"
+"%(path)s\">LuCI web interface</a> or over SSH."
+msgstr ""
+"Jei norite valdyti daugiau konfigūracijos parametrų ar funkcijų kurių nėra "
+"šiame valdymo interfeise, reikia nustatyti root paskyros slaptažodį. "
+"Platesnis įrenginio valdymas pasiekiamas per <a href=\"//%(host)s/%(path)s"
+"\">LuCI web interfeisą</a> arba per SSH."
+
+msgid "Time"
+msgstr "Laikas"
+
+msgid ""
+"We could not synchronize the time with a timeserver, probably due to a loss "
+"of connection. It is necessary for the router to have correct time in order "
+"to function properly. Please, synchronize it with your computer's time, or "
+"set it manually."
+msgstr ""
+"Nepavyko sinchronizuoti laiko su laiko serveriu, tikriausiai dėl ryšio "
+"problemų. Tikslus laikas yra būtinas teisingam maršrutizatoriaus veikimui. "
+"Reikia, kad laiką sinchronizuotumėte su laiku jūsų kompiuteryje, arba "
+"nustatytumėte rankiniu būdu."
+
+#, fuzzy
+msgid "Region and time"
+msgstr "Perkrovimo laikas"
+
+msgid ""
+"It is important that your router has the current time properly set. If our "
+"router had an older time set some expired SSL certificates might have seemed "
+"like valid."
+msgstr ""
+
+msgid ""
+"Time should be up-to-date otherise DNS and other services might not work "
+"properly."
+msgstr ""
+
+#, fuzzy
+msgid "How to set time"
+msgstr "Perkrovimo laikas"
+
+msgid "Choose method to store current time into the router."
+msgstr ""
+
+msgid "via ntp"
+msgstr ""
+
+#, fuzzy
+msgid "manually"
+msgstr "Nustatyti laiką rankiniu būdu"
+
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
+msgstr ""
 
 msgid "Updater"
 msgstr "Atnaujinimai"
@@ -1740,187 +1932,33 @@ msgid "Time of day of automatic reboot in HH:MM format."
 msgstr ""
 "Paros laikas HH:MM formatu, kada bus atliekamas automatinis perkrovimas."
 
-msgid "Backup file"
-msgstr "Atsarginės kopijos failas"
+msgid "You have been logged out due to longer inactivity."
+msgstr "Jūs buvote atjungti dėl neaktyvumo."
 
-msgid "uCollect"
-msgstr "uCollect"
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y-%m-%d %H:%M:%S"
 
-msgid "Emulated services"
-msgstr "Emuliuojami servisai"
+msgid "Install"
+msgstr "Įdiegti"
 
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
+msgid "Uninstall"
+msgstr "Pašalinti"
+
+msgid "Upgrade"
 msgstr ""
-"Viena iš uCollect funkcijų yra dažnai išnaudojamų servisų emuliavimas. Jei "
-"ši funkcija įjungta, uCollect priims bandymus prisijungti prie šių servisų. "
-"Emuliuojamų servisų įjungimas netrukdys jau esamiems servisams kurie naudoja "
-"tuos pačius portus (portų sąrašas pateiktas žemiau)."
 
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - kitas portas (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "Squid HTTP proxy (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "Polipo HTTP proxy (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP proxy (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Rinkti prisijungimo duomenis"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
+msgid "Downgrade"
 msgstr ""
-"Jei ši funkcija įjungta, siunčiami ne tik klientų IP adresai bet ir surinkti "
-"prisijungimo vardai bei slaptažodžiai."
-
-msgid "Enable data collection"
-msgstr "Įjungti duomenų rinkimą"
-
-msgid "Email"
-msgstr "El. paštas"
-
-#, fuzzy
-msgid "Failed to query the server."
-msgstr "Nepavyko patvirtinti atnaujinimo."
-
-#, fuzzy
-msgid "Failed to verify the router's registration."
-msgstr "Nepavyko patikrinti tinko ryšio."
-
-msgid ""
-"Set your password for this administration interface. The password must be at "
-"least 6 characters long."
-msgstr ""
-"Nustatykite slaptažodį priėjimui prie šio valdymo interfeiso. Slaptažodis "
-"turi būti mažiausiai 6 simbolių ilgio."
-
-msgid "Current password"
-msgstr "Dabartinis slaptažodis"
-
-msgid "New password"
-msgstr "Naujas slaptažodis"
-
-msgid "New password (repeat)"
-msgstr "Naujas slaptažodis (pakartokite)"
-
-msgid "Password (repeat)"
-msgstr "Slaptažodis (pakartokite)"
-
-msgid "Passwords are not equal."
-msgstr "Slaptažodžiai nesutampa."
-
-msgid "Use the same password for advanced configuration"
-msgstr "Platesniame valdymo interfeise naudoti tą patį slaptažodį"
-
-msgid ""
-"Same password would be used for accessing this administration interface, for "
-"root user in LuCI web interface and for SSH login. Use a strong password! "
-"(If you choose not to set the password for advanced configuration here, you "
-"will have the option to do so later. Until then, the root account will be "
-"blocked.)"
-msgstr ""
-"Toks pat slaptažodis būtų naudojamas priėjimui prie šio valdymo interfeiso, "
-"root prisijungimui per LuCI web interfeisą ir SSH. Naudokite stiprų "
-"slaptažodį! (Nepasirinkus nenustatyti slaptažodžio platesniam konfigūravimui "
-"dabar, galėsite tai padaryti vėliau. Iki tol prisijungimas prie root "
-"paskyros bus blokuojamas.)"
-
-msgid "Region settings"
-msgstr "Regiono nustatymai"
-
-msgid ""
-"Please select the timezone the router is being operated in. Correct setting "
-"is required to display the right time and for related functions."
-msgstr ""
-"Pasirinkite laiko zoną, kuri naudojama valdant maršrutizatorių. Teisingam "
-"laiko išvedimui ir su tuo susijusioms funkcijom reikia, kad būtų parinkta "
-"teisinga laiko zona."
-
-msgid "Continent or ocean"
-msgstr "Žemynas arba vandenynas"
-
-msgid "Country"
-msgstr "Šalis"
-
-msgid "Timezone"
-msgstr "Laiko zona"
-
-msgid "Advanced administration"
-msgstr "Platesnis valdymas"
 
 #, python-format
-msgid ""
-"In order to access the advanced configuration possibilities which are not "
-"present here, you must set the root user's password. The advanced "
-"configuration options can be managed either through the <a href=\"//%(host)s/"
-"%(path)s\">LuCI web interface</a> or over SSH."
-msgstr ""
-"Jei norite valdyti daugiau konfigūracijos parametrų ar funkcijų kurių nėra "
-"šiame valdymo interfeise, reikia nustatyti root paskyros slaptažodį. "
-"Platesnis įrenginio valdymas pasiekiamas per <a href=\"//%(host)s/%(path)s"
-"\">LuCI web interfeisą</a> arba per SSH."
+msgid "Configuration wizard - step %s"
+msgstr "Pradinio konfigūravimo programa - etapas %s"
 
-msgid "Time"
-msgstr "Laikas"
+msgid "Connectivity test"
+msgstr "Ryšio testas"
 
-msgid ""
-"We could not synchronize the time with a timeserver, probably due to a loss "
-"of connection. It is necessary for the router to have correct time in order "
-"to function properly. Please, synchronize it with your computer's time, or "
-"set it manually."
-msgstr ""
-"Nepavyko sinchronizuoti laiko su laiko serveriu, tikriausiai dėl ryšio "
-"problemų. Tikslus laikas yra būtinas teisingam maršrutizatoriaus veikimui. "
-"Reikia, kad laiką sinchronizuotumėte su laiku jūsų kompiuteryje, arba "
-"nustatytumėte rankiniu būdu."
-
-#, fuzzy
-msgid "Region and time"
-msgstr "Perkrovimo laikas"
-
-msgid ""
-"It is important that your router has the current time properly set. If our "
-"router had an older time set some expired SSL certificates might have seemed "
-"like valid."
-msgstr ""
-
-msgid ""
-"Time should be up-to-date otherise DNS and other services might not work "
-"properly."
-msgstr ""
-
-#, fuzzy
-msgid "How to set time"
-msgstr "Perkrovimo laikas"
-
-msgid "Choose method to store current time into the router."
-msgstr ""
-
-msgid "via ntp"
-msgstr ""
-
-#, fuzzy
-msgid "manually"
-msgstr "Nustatyti laiką rankiniu būdu"
-
-msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgid "Automatic updates"
+msgstr "Automatiniai atnaujinimai"
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "Testinio pranešimo siuntimas nepavyko dėl vidinės klaidos."
