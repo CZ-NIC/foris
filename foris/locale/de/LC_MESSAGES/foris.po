@@ -21,16 +21,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2017-12-11 10:57+0000\n"
-"Last-Translator: Stefan Söchtig <kerberus@mailbox.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
-">\n"
+"PO-Revision-Date: 2018-03-27 09:37+0000\n"
+"Last-Translator: NoR nIc <nora.cznic@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 msgid "News"
 msgstr "Neuigkeiten"
@@ -66,10 +66,10 @@ msgid "Uninstall"
 msgstr "Deinstallieren"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Upgared"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Downgrade"
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -105,9 +105,8 @@ msgstr "Die Einstellungen wurden erfolgreich gespeichert."
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Benachrichtigungen einschalten"
+msgstr "Anzahl der Benachrichtigungen"
 
 msgid "Old password you entered was not valid."
 msgstr "Das eingegebene alte Kennwort ist ungültig."
@@ -125,12 +124,11 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Testnachricht wurde abgesendet, überprüfen Sie bitte Ihren Posteingang."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
 "Das Absenden der Testnachricht scheiterte. Die Einstellungen sind "
-"wahrscheinlich falsch.<br>Erhaltener Fehler:<br><pre>%(error)s</pre>"
+"wahrscheinlich falsch."
 
 #, fuzzy
 msgid ""
@@ -142,6 +140,8 @@ msgstr ""
 
 msgid "Failed to restore the backup from the provided file."
 msgstr ""
+"Die Wiederherstellung des Backups aus der bereitgestellten Datei ist "
+"fehlgeschlagen."
 
 msgid "Update was approved."
 msgstr "Das Update wurde bestätigt."
@@ -163,7 +163,7 @@ msgstr ""
 "Softwarepakete sollten in Kürze installiert oder entfernt werden."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Updater läuft"
 
 msgid "Data collection"
 msgstr "Datenerfassung"
@@ -243,9 +243,8 @@ msgstr "Dies ist keine Nummer."
 msgid "This is not valid time in HH:MM format."
 msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
+msgstr "Dies ist keine Uhrzeit im Anzeigeformat (YYYY-MM-DD HH:MM:SS)."
 
 msgid "This is not a valid domain name."
 msgstr "Dies ist kein gültiger Domainname."
@@ -695,6 +694,11 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Hier können Sie Ihre Verbindungseinstellungen prüfen. Vergessen Sie nicht "
+"die <strong> 1Speichern</strong> 2 Tasten zu drücken bevor Sie den Test "
+"laufen lassen. Bemerken Sie, dass es manchmal eine Weile dauert bevor die "
+"Verbindung initialisiert ist.  Deswegen ist es sinnvoll eine Weile zu warten "
+"bevor Sie den Test laufen lassen."
 
 msgid "Unable to verify network connection."
 msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
@@ -818,20 +822,20 @@ msgid "Menu"
 msgstr "Menü"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Neustart des Netzwerks..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Ihr Netzwerk wird neustartet. Bitte warten Sie..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Systemneustart"
+msgstr "Systemneustart..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Ihr Router wird neu gestartet."
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
+"Ihr Router muss neu gestartet werden,  damit er ordnungsgemäß funktioniert."
 
 msgid "Log out"
 msgstr "Abmelden"
@@ -839,6 +843,8 @@ msgstr "Abmelden"
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
+"Die folgenden Benachrichtigungen sind aufgetreten und wurden seit dem "
+"letzten Neustart nicht gelöscht."
 
 #, python-format
 msgid "Approve update from %(when)s"
@@ -931,9 +937,8 @@ msgstr "DNSSEC"
 msgid "Failed to query ntp servers."
 msgstr "Fehler beim Abfragen des Servers."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Aktualisierung"
+msgstr "Uhrzeit aktualisieren"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -948,7 +953,7 @@ msgstr ""
 "angeschlossen."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR-Code"
 
 msgid "Password"
 msgstr "Kennwort"
@@ -963,18 +968,21 @@ msgid "Go to LuCI"
 msgstr "Zu LuCI gehen"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Schloss geöffnet"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Ihre Verbindung ist nicht verschlüsselt"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Eine sichere Verbindung ist ein wichtiges Sicherheitsmerkmal des Routers und "
+"damit des gesamten Heimnetzwerks."
 
 msgid "How to set an encrypted connection and why is it important"
 msgstr ""
+"Wie man eine verschlüsselte Verbindung einstellt und warum es wichtig ist"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1396,14 +1404,14 @@ msgid "Router IP address"
 msgstr "IP-Adresse des Routers"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "IP-Adresse des Routers im inneren Netzwerk."
 
 #, fuzzy
 msgid "Network netmask"
 msgstr "Netzwerkmaske"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Netzwerkmaske des inneren Netzwerks."
 
 msgid "Enable DHCP"
 msgstr "DHCP aktivieren"
@@ -1439,9 +1447,8 @@ msgstr ""
 "die Erlaubnis auf das Internet zuzugreifen, aber haben keinen Zugriff auf "
 "andere Geräte und die Konfigurationsoberfläche des Routers."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Gastnetzwerk aktivieren"
+msgstr "Router IP im Gastnetzwerk"
 
 #, fuzzy
 msgid ""
@@ -1457,7 +1464,7 @@ msgid "Guest network netmask"
 msgstr "Gastnetzwerk"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Netzwerkmaske des Gast-Netzwerks."
 
 msgid "Guest Lan QoS"
 msgstr "Gastnetzwerk QoS"
@@ -1494,6 +1501,8 @@ msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
+"Dies ermöglicht Ihren DNS-Resolver die Namen der DHCP-Clients in den lokalen "
+"DNS-Einträge aufzunehmen."
 
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domäne der DHCP-Geräte im DNS"
@@ -1552,7 +1561,7 @@ msgid "DHCP Client ID"
 msgstr "DHCP auf DNS-Geräten aktivieren"
 
 msgid "Client identifier which will be provided to DHCP server."
-msgstr ""
+msgstr "Client-ID, die dem DHCP-Server zur Verfügung gestellt wird."
 
 #, fuzzy
 msgid "DNS server 1 (IPv4)"
@@ -1963,28 +1972,33 @@ msgid ""
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Es ist wichtig, dass der Router die aktuelle Uhrzeit richtig eingestellt "
+"hat. Wenn unser Router eine ältere Zeit eingestellt hat, könnten einige "
+"abgelaufene SSL-Zertifikate als gültig erscheinen."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Die Zeit sollte auf dem neuesten Stand sein. DNS und andere Dienste "
+"funktionieren möglicherweise nicht richtig."
 
 #, fuzzy
 msgid "How to set time"
 msgstr "Uhrzeit von Neustart"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Wählen Sie eine Methode für die Speicherung der aktuellen Uhrzeit."
 
 msgid "via ntp"
-msgstr ""
+msgstr "via ntp"
 
 #, fuzzy
 msgid "manually"
 msgstr "Uhrzeit manuell einstellen"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Uhrzeit im YYYY-MM-DD HH:MM:SS format."
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr ""

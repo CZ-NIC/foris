@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-02-21 19:35+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"PO-Revision-Date: 2018-03-28 09:09+0000\n"
+"Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -64,10 +64,10 @@ msgid "Uninstall"
 msgstr "Odinstalovat"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Přechod na novější verzi"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Návrat ke starší verzi"
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -102,9 +102,8 @@ msgstr "Nastavení bylo úspěšně uloženo."
 msgid "Notifications"
 msgstr "Upozornění"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Zasílat upozornění"
+msgstr "Počet upozornění"
 
 msgid "Old password you entered was not valid."
 msgstr "Zadali jste neplatné původní heslo."
@@ -122,23 +121,21 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Testovací zpráva byla odeslána, podívejte se do své e-mailové schránky."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
-"Odeslání testovací zprávy se nezdařilo. Nezdar byl pravděpodobně způsobený "
-"chybným nastavením.<br>Navrácená chyba:<br><pre>%(error)s</pre>"
+"Odeslání testovací zprávy se nezdařilo – je možné, že vaše nastavení nejsou "
+"správná."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Nastavení bylo úspěšně obnoveno. Vyčkejte na dokončení instalace aktualizaci "
-"a následný automatický restart zařízení."
+"Nastavení bylo úspěšně obnoveno. Mějte na paměti, že aby se obnovená "
+"nastavení uplatnila, bude třeba provést restart."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Z poskytnutého souboru se nepodařilo obnovit zálohu."
 
 msgid "Update was approved."
 msgstr "Aktualizace byla schválena."
@@ -160,7 +157,7 @@ msgstr ""
 "nainstalovány nebo odstraněny."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Aktualizace jsou spuštěné"
 
 msgid "Data collection"
 msgstr "Sběr dat"
@@ -238,9 +235,8 @@ msgstr "Není číslo."
 msgid "This is not valid time in HH:MM format."
 msgstr "Toto není platný čas ve formátu HH:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Toto není platný čas ve formátu HH:MM."
+msgstr "Toto není platný čas ve formátu  (YYYY-MM-DD HH:MM:SS)."
 
 msgid "This is not a valid domain name."
 msgstr "Toto není platný doménový název."
@@ -518,9 +514,8 @@ msgstr "Restartovat nyní"
 msgid "Dismiss"
 msgstr "Zahodit"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Zahodit"
+msgstr "Pominout vše"
 
 msgid "No new messages."
 msgstr "Žádné nové zprávy."
@@ -671,6 +666,10 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Zde si můžete vyzkoušet své nastavení připojení. Než test spustíte, "
+"nezapomeňte kliknout na tlačítko <strong>Uložit</strong>. Někdy může trvat "
+"delší dobu, než je připojení kompletně zinicializováno, proto nemusí být na "
+"škodu před testem připojení chvilku počkat."
 
 msgid "Unable to verify network connection."
 msgstr "Nepodařilo se ověřit stav připojení."
@@ -708,14 +707,14 @@ msgid ""
 "every Turris router and helps them to protect themselves against the attack."
 msgstr ""
 "Se směrovačem Turris je možné zapojit se do projektu Turris, což je "
-"neziskový výzkumný projekt sdružení CZ.NIC, z. s. p. o., správce české "
-"národní domény .CZ. Tím se váš směrovač současně stane sondou, která "
-"analyzuje provoz mezi Internetem a domácí sítí a pomáhá identifikovat "
-"podezřelé datové toky zvenčí. Při jejich zjištění pak upozorní centrálu "
-"Turris na možný útok. Ta porovná data z ostatních připojených směrovačů "
-"Turris a vyhodnotit nebezpečnost zjištěného provozu. V případě, že je útok "
-"odhalen, jsou vytvořeny aktualizace, které jsou distribuovány na všechny "
-"směrovače Turris a ty jsou tak chráněny."
+"neziskový výzkumný projekt sdružení CZ.NIC, z.s.p.o., správce české národní "
+"domény .CZ. Tím se váš směrovač současně stane sondou, která analyzuje "
+"provoz mezi Internetem a domácí sítí a pomáhá identifikovat podezřelé datové "
+"toky zvenčí. Při jejich zjištění pak upozorní centrálu Turris na možný útok. "
+"Ta porovná data z ostatních připojených směrovačů Turris a vyhodnotit "
+"nebezpečnost zjištěného provozu. V případě, že je útok odhalen, jsou "
+"vytvořeny aktualizace, které jsou distribuovány na všechny směrovače Turris "
+"a ty jsou tak chráněny."
 
 msgid ""
 "The Updater is currently disabled. You must enable it first to enable data "
@@ -791,20 +790,20 @@ msgid "Menu"
 msgstr "Nabídka"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Síť se restartuje…"
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Vaše síť se restartuje. Mějte prosím chvíli strpení…"
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Restartovat"
+msgstr "Restartování…"
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Váš směrovač se právě restartuje."
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
+"Aby mohl váš směrovač správně fungovat, tak je potřeba provést jeho restart."
 
 msgid "Log out"
 msgstr "Odhlásit se"
@@ -812,6 +811,7 @@ msgstr "Odhlásit se"
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
+"Od minulého restartu se objevila a nebyla pominuta následující upozornění."
 
 #, python-format
 msgid "Approve update from %(when)s"
@@ -897,13 +897,11 @@ msgstr "DNS"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Nepodařilo se položit dotaz serveru."
+msgstr "Nepodařilo kontaktovat ntp servery."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Aktualizace"
+msgstr "Aktualizovat čas"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -917,7 +915,7 @@ msgstr ""
 "pro 2,4GHz frekvence."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR kód"
 
 msgid "Password"
 msgstr "Heslo"
@@ -932,18 +930,20 @@ msgid "Go to LuCI"
 msgstr "Přejít do rozhraní LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Otevřený zámek"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Vaše spojení se směrovačem není šifrované"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Šifrované spojení je důležitou bezpečnostní vlastností směrovače a tím i "
+"celé domácí sítě."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Jak nastavit šifrované spojení a proč je to důležité"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1350,14 +1350,13 @@ msgid "Router IP address"
 msgstr "IP adresa směrovače"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "IP adresa směrovače v rámci vnitřní sítě."
 
-#, fuzzy
 msgid "Network netmask"
 msgstr "Maska sítě"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Maska vnitřní sítě."
 
 msgid "Enable DHCP"
 msgstr "Zapnout DHCP"
@@ -1392,24 +1391,22 @@ msgstr ""
 "oddělená od vnitřní sítě. Zařízení v této síti mohou na Internet, ale nemají "
 "přístup k ostatním zařízením ani k nastavení směrovače."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Zapnout sít pro hosty"
+msgstr "IP adresa směrovače v rámci sítě pro hosty"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Potřebujete nastavit rozsah IP adres pro síť pro hosty. Aby vše fungovalo, "
-"měl by být jiný, než rozsahy vašich ostatních sítí (LAN, WAN, VPN, atd.)."
+"IP adresa směrovače v rámci sítě pro hosty. Aby vše fungovalo, je nutné, aby "
+"se jednalo o jinou podsíť, než jsou podsítě ostatních síťových segmentů ("
+"LAN, WAN, VPN, atd.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Sít pro hosty"
+msgstr "Maska sítě pro hosty"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Maska sítě pro hosty."
 
 msgid "Guest Lan QoS"
 msgstr "Rychlostní limit sítě pro hosty"
@@ -1500,16 +1497,14 @@ msgstr "Maska sítě"
 msgid "Gateway"
 msgstr "Brána"
 
-#, fuzzy
 msgid "DHCP Client ID"
-msgstr "Registrovat DHCP klienty v DNS"
+msgstr "Identifikátor klienta DHCP"
 
 msgid "Client identifier which will be provided to DHCP server."
-msgstr ""
+msgstr "Identifikátor klienta, kterým se hlásit DHCP serveru."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS server 1"
+msgstr "DNS server 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1518,9 +1513,8 @@ msgstr ""
 "Adresa DNS serveru není vyžadována – vestavěný DNS resolver je schopen "
 "pracovat bez ní."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS server 2"
+msgstr "DNS server 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "PAP/CHAP jméno"
@@ -1549,13 +1543,11 @@ msgstr "IPv6 prefix"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresní rozsah pro vnitřní síť, např. 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS server 1"
+msgstr "DNS server 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS server 2"
+msgstr "DNS server 2 (IPv6)"
 
 msgid "Custom MAC address"
 msgstr "Uživatelem určená MAC adresa"
@@ -1893,37 +1885,38 @@ msgstr ""
 "pomocí následujícího formuláře. Správný čas je vyžadován pro funkci určitých "
 "služeb směrovače."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Čas restartu"
+msgstr "Region a čas"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Je důležité, aby směrovač měl správně nastavený čas. Pokud by byl čas "
+"zpožděný, některé SSL certifikáty, kterým skončila platnost, by se tím mohly "
+"jevit jako platné."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Čas by měl být aktuální, jinak nemusí správně fungovat DNS a další služby."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Čas restartu"
+msgstr "Jak nastavit čas"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Zvolte metodu pro udržování času na směrovači aktuálního."
 
 msgid "via ntp"
-msgstr ""
+msgstr "přes ntp protokol"
 
-#, fuzzy
 msgid "manually"
-msgstr "Nastavit čas ručně"
+msgstr "ručně"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Čas ve formátu YYYY-MM-DD HH:MM:SS."
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "Testovací zprávu se nepodařilo odeslat kvůli vnitřní chybě."

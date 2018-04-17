@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2018-03-20 19:40+0000\n"
+"PO-Revision-Date: 2018-04-10 10:40+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
-">\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.20\n"
 
 msgid "News"
 msgstr "Новости"
@@ -52,10 +52,10 @@ msgid "Uninstall"
 msgstr "Удалить"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Улучшить"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Откатить"
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -90,9 +90,8 @@ msgstr "Конфигурация успешно сохранена."
 msgid "Notifications"
 msgstr "Уведомления"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Включить уведомления"
+msgstr "Количество уведомлений"
 
 msgid "Old password you entered was not valid."
 msgstr "Старый пароль неверен."
@@ -109,23 +108,20 @@ msgstr "Неверный метод HTTP."
 msgid "Testing message was sent, please check your inbox."
 msgstr "Тестовое сообщение отправлено, проверьте вашу почту."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
 "Не удалось отправить тестовое сообщение, возможно, ошибка в конфигурации."
-"<br>Ошибка:<br><pre>%(error)s</pre>"
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Конфигурация успешно восстановлена. Подождите некоторое время для установки "
-"обновления и автоматической перезагрузки устройства."
+"Конфигурация успешно восстановлена. Обратите внимание, что для "
+"восстановленния конфигурации потребуется перезагрузка."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Не удалось восстановить резервную копию из указанного файла."
 
 msgid "Update was approved."
 msgstr "Обновление было одобрено."
@@ -147,7 +143,7 @@ msgstr ""
 "удалены."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Сервис обновления запущен"
 
 msgid "Data collection"
 msgstr "Сбор данных"
@@ -225,9 +221,8 @@ msgstr "Это не число."
 msgid "This is not valid time in HH:MM format."
 msgstr "Некорректный формат времени ЧЧ:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Некорректный формат времени ЧЧ:MM."
+msgstr "Некорректный формат времени (ГГГГ-ММ-ДД ЧЧ:MM:СС)."
 
 msgid "This is not a valid domain name."
 msgstr "Некорректное доменное имя."
@@ -509,9 +504,8 @@ msgstr "Перезагрузить сейчас"
 msgid "Dismiss"
 msgstr "Отклонить"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Отклонить"
+msgstr "Отклонить все"
 
 msgid "No new messages."
 msgstr "Нет новых сообщений."
@@ -662,6 +656,11 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Здесь можно проверить настройки подключения. Не забудьте нажать кнопку "
+"<strong>Сохранить</strong> перед запуском теста. Обратите внимание: иногда "
+"требуется некоторое время, прежде чем соединение будет полностью "
+"установлено. Поэтому может быть полезно подождать некоторое время, прежде "
+"чем запускать этот тест."
 
 msgid "Unable to verify network connection."
 msgstr "Не удалось проверить подключение к сети."
@@ -783,27 +782,26 @@ msgid "Menu"
 msgstr "Меню"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Перезапуск сети..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Ваша сеть перезапускается. Пожалуйста, подождите..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Перезагрузить"
+msgstr "Перезагрузка..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Ваш маршрутизатор перезагружается."
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
+msgstr "Для правильной работы необходимо перезапустить маршрутизатор."
 
 msgid "Log out"
 msgstr "Выйти"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
-msgstr ""
+msgstr "Полученные уведомления не были отклонены после последней перезагрузки."
 
 #, python-format
 msgid "Approve update from %(when)s"
@@ -888,13 +886,11 @@ msgstr "DNS"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Ошибка запроса сервера."
+msgstr "Ошибка запроса NTP сервера."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Обновления"
+msgstr "Время обновления"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -908,7 +904,7 @@ msgstr ""
 "карты подключены к 2,4-гигагерцевой части диплексера."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR код"
 
 msgid "Password"
 msgstr "Пароль"
@@ -923,18 +919,20 @@ msgid "Go to LuCI"
 msgstr "Перейти к LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Открытая блокировка"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Ваше соединение не зашифровано"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Безопасное соединение является важной функцией безопасности маршрутизатора "
+"и, следовательно, всей домашней сети."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Как установить зашифрованное соединение и почему это важно"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1353,14 +1351,13 @@ msgid "Router IP address"
 msgstr "IP-адрес маршрутизатора"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "IP-адрес маршрутизатора во внутренней сети."
 
-#, fuzzy
 msgid "Network netmask"
-msgstr "Маска подсети"
+msgstr "Маска сети"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Маска внутренней сети."
 
 msgid "Enable DHCP"
 msgstr "Включить DHCP"
@@ -1396,24 +1393,21 @@ msgstr ""
 "к этой сети, разрешен доступ в Интернет, но не разрешен доступ к другим "
 "устройствам сети и интерфейсу конфигурации маршрутизатора."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Включить гостевую сеть"
+msgstr "IP-адрес маршрутизатора в гостевой сети"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Вам нужно установить диапазон IP для вашей гостевой сети. Необходимо, чтобы "
-"диапазон отличался от диапазонов в других сетях (LAN, WAN, VPN и т.д.)."
+"IP-адрес маршрутизатора для гостевой сети. Необходимо, чтобы IP-адреса "
+"гостевой сети отличались от других сетей (LAN, WAN, VPN и т.д.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Гостевая сеть"
+msgstr "Маска гостевой сети"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Маска гостевой сети."
 
 msgid "Guest Lan QoS"
 msgstr "QoS гостевой сети"
@@ -1504,16 +1498,14 @@ msgstr "Маска подсети"
 msgid "Gateway"
 msgstr "Шлюз"
 
-#, fuzzy
 msgid "DHCP Client ID"
-msgstr "Включение DHCP-клиентов в DNS"
+msgstr "Идентификатор клиента DHCP"
 
 msgid "Client identifier which will be provided to DHCP server."
-msgstr ""
+msgstr "Идентификатор клиента, который будет предоставлен DHCP-серверу."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS-сервер 1"
+msgstr "DNS-сервер 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1522,9 +1514,8 @@ msgstr ""
 "Адрес DNS-сервера не требуется, так как встроенная система разрешения "
 "доменных имён может работать без него."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS-сервер 2"
+msgstr "DNS-сервер 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "Имя пользователя PAP/CHAP"
@@ -1554,13 +1545,11 @@ msgstr "Префикс IPv6"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Диапазон адресов для локальной сети, например, 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS-сервер 1"
+msgstr "DNS-сервер 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS-сервер 2"
+msgstr "DNS-сервер 2 (IPv6)"
 
 msgid "Custom MAC address"
 msgstr "Пользовательский MAC-адрес"
@@ -1899,37 +1888,39 @@ msgstr ""
 "выставить правильное время. Синхронизируйте его со временем вашего "
 "компьютера или установите вручную."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Время перезагрузки"
+msgstr "Регион и время"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Важно, чтобы маршрутизатор правильно установил текущее время. Если у "
+"маршрутизатора выставлено старое время, некоторые истекшие сертификаты SSL "
+"могли показаться действительными."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Время должно быть актуальным, иначе DNS и другие службы могут работать "
+"некорректно."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Время перезагрузки"
+msgstr "Как установить время"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Способ установки текущего времени в маршрутизаторе."
 
 msgid "via ntp"
-msgstr ""
+msgstr "Через NTP"
 
-#, fuzzy
 msgid "manually"
-msgstr "Установить время вручную"
+msgstr "Вручную"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС."
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "Тестовое сообщение не отправилось из-за внутренней ошибки."

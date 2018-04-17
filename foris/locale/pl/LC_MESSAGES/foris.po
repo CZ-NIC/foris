@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-23 22:48+0100\n"
-"PO-Revision-Date: 2017-11-09 10:45+0000\n"
+"PO-Revision-Date: 2018-03-26 06:24+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
-">\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 msgid "News"
 msgstr "Aktualności"
@@ -52,10 +52,10 @@ msgid "Uninstall"
 msgstr "Odinstaluj"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Uaktualnij"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Cofnij aktualizację"
 
 #, python-format
 msgid "Configuration wizard - step %s"
@@ -63,7 +63,8 @@ msgstr "Kreator konfiguracji - krok %s"
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
-"Port WAN nie ma połączenia, internet prawdopodobnie nie będzie działać."
+"Port WAN nie ma połączenia, Twoje połączenie internetowe prawdopodobnie nie "
+"będzie działać."
 
 msgid "Connectivity test"
 msgstr "Test łączności"
@@ -89,12 +90,11 @@ msgstr "Konfiguracja została pomyślnie zapisana."
 msgid "Notifications"
 msgstr "Powiadomienia"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Włącz powiadomienia"
+msgstr "Liczba powiadomień"
 
 msgid "Old password you entered was not valid."
-msgstr "Wprowadzone hasło było nieprawidłowe."
+msgstr "Stare hasło, które wpisałeś, było nieprawidłowe."
 
 msgid "Password was successfully saved."
 msgstr "Hasło zostało pomyślnie zapisane."
@@ -108,23 +108,21 @@ msgstr "Niewłaściwa metoda HTTP."
 msgid "Testing message was sent, please check your inbox."
 msgstr "Wysłano wiadomość testową, sprawdź swoją skrzynkę odbiorczą."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
 "Wysyłanie wiadomości testowej nie powiodło się, Twoja konfiguracja jest "
-"prawdopodobnie nieprawidłowa.<br>Zwrócony błąd:<br><pre>%(error)s</pre>"
+"prawdopodobnie nieprawidłowa."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Konfiguracja została pomyślnie przywrócona. Poczekaj chwilę na instalację "
-"aktualizacji i automatyczne ponowne uruchomienie urządzenia."
+"Konfiguracja została pomyślnie przywrócona. Zwróć uwagę, że ponowne "
+"uruchomienie będzie wymagane, aby zastosować przywróconą konfigurację."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Nie można przywrócić kopii zapasowej z podanego pliku."
 
 msgid "Update was approved."
 msgstr "Aktualizacja została zatwierdzona."
@@ -146,7 +144,7 @@ msgstr ""
 "zainstalowane lub usunięte."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Updater jest uruchomiony"
 
 msgid "Data collection"
 msgstr "Akwizycja danych"
@@ -224,9 +222,8 @@ msgstr "Nie jest liczbą."
 msgid "This is not valid time in HH:MM format."
 msgstr "To nie jest poprawny czas w formacie HH:MM."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "To nie jest poprawny czas w formacie HH:MM."
+msgstr "To nie jest prawidłowy czas (YYYY-MM-DD HH:MM:SS)."
 
 msgid "This is not a valid domain name."
 msgstr "To nie jest poprawna nazwa domeny."
@@ -504,9 +501,8 @@ msgstr "Zrestartuj teraz"
 msgid "Dismiss"
 msgstr "Odrzuć"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Odrzuć"
+msgstr "Odrzuć wszystko"
 
 msgid "No new messages."
 msgstr "Brak nowych wiadomości."
@@ -655,6 +651,10 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Tutaj możesz sprawdzić ustawienia połączenia. Pamiętaj, aby kliknąć przycisk "
+"<strong>Zapisz</strong> przed uruchomieniem testu. Zauważ, że czasami upływa "
+"trochę czasu, zanim połączenie zostanie w pełni zainicjalizowane. Przed "
+"rozpoczęciem tego testu warto chwilę poczekać."
 
 msgid "Unable to verify network connection."
 msgstr "Nie można zweryfikować połączenia sieciowego."
@@ -777,20 +777,19 @@ msgid "Menu"
 msgstr "Menu"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Sieć jest restartowana..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Twoja sieć jest restartowana. Proszę poczekać..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Restart"
+msgstr "Ponowne uruchamianie..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Twój router jest restartowany."
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
+msgstr "Aby router działał poprawnie, musi zostać zrestartowany."
 
 msgid "Log out"
 msgstr "Wyloguj"
@@ -798,6 +797,8 @@ msgstr "Wyloguj"
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
+"Pojawiły się następujące powiadomienia i nie zostały odrzucone od ostatniego "
+"restartu."
 
 #, python-format
 msgid "Approve update from %(when)s"
@@ -884,13 +885,11 @@ msgstr "DNS"
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Nie udało się wysłać zapytania do serwera."
+msgstr "Nie można wysłać zapytania do serwerów ntp."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Aktualizacja"
+msgstr "Czas aktualizacji"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -903,7 +902,7 @@ msgstr ""
 "podłączone do 5GHz, a kable z małej karty podłączone do 2.4GHz."
 
 msgid "QR code"
-msgstr ""
+msgstr "Kod QR"
 
 msgid "Password"
 msgstr "Hasło"
@@ -918,18 +917,20 @@ msgid "Go to LuCI"
 msgstr "Przejdź do LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Otwarta kłódka"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Twoje połączenie nie jest szyfrowane"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Bezpieczne połączenie jest ważną funkcją bezpieczeństwa routera, a tym samym "
+"całej sieci domowej."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Jak ustawić szyfrowane połączenie i dlaczego jest to takie ważne"
 
 msgid ""
 "This page requires JavaScript for proper function. Please enable it and "
@@ -1342,14 +1343,13 @@ msgid "Router IP address"
 msgstr "Adres IP routera"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Adres IP routera w wewnętrznej sieci."
 
-#, fuzzy
 msgid "Network netmask"
-msgstr "Maska podsieci"
+msgstr "Maska sieci"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Maska podsieci dla sieci wewnętrznej."
 
 msgid "Enable DHCP"
 msgstr "Włącz DHCP"
@@ -1385,25 +1385,21 @@ msgstr ""
 "mają dostęp do Internetu, ale nie mają dostępu do innych urządzeń i "
 "interfejsu konfiguracji routera."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Włącz sieć gościnną"
+msgstr "Adres IP routera dla sieci gościnnej"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Musisz ustawić zakres adresów IP swojej sieci gościnnej. Należy zwrócić "
-"uwagę, że zakres powinien być inny niż zakresy w innych sieciach (LAN, WAN, "
-"OpenVPN, etc)."
+"Adres IP routera dla sieci gościnnej. Konieczne jest, aby adresy IP sieci "
+"gościnnej różniły się od innych sieci (LAN, WAN, VPN itp.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Sieć gościnna"
+msgstr "Maska podsieci sieci gościnnej"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Maska podsieci dla sieci gościnnej."
 
 msgid "Guest Lan QoS"
 msgstr "Sieć gościnna - QoS"
@@ -1493,16 +1489,14 @@ msgstr "Maska podsieci"
 msgid "Gateway"
 msgstr "Brama"
 
-#, fuzzy
 msgid "DHCP Client ID"
-msgstr "Włącz nazwy klientów DHCP w DNS"
+msgstr "Identyfikator klienta DHCP"
 
 msgid "Client identifier which will be provided to DHCP server."
-msgstr ""
+msgstr "Identyfikator klienta, który zostanie wysłany do serwera DHCP."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "Serwer DNS 1"
+msgstr "Serwer DNS 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1511,9 +1505,8 @@ msgstr ""
 "Adres serwera DNS nie jest wymagany, ponieważ wbudowany resolver DNS może "
 "pracować bez niego."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "Serwer DNS 2"
+msgstr "Serwer DNS 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "Nazwa użytkownika PAP/CHAP"
@@ -1542,13 +1535,11 @@ msgstr "Prefiks IPv6"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Zakres adresów sieci lokalnej, np. 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "Serwer DNS 1"
+msgstr "Serwer DNS 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "Serwer DNS 2"
+msgstr "Serwer DNS 2 (IPv6)"
 
 msgid "Custom MAC address"
 msgstr "Własny adres MAC"
@@ -1892,37 +1883,39 @@ msgstr ""
 "prawidłowo funkcjonować. Zsynchronizuj go z czasem komputera lub ustaw go "
 "ręcznie."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Godzina ponownego uruchomienia"
+msgstr "Region i czas"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Ważne jest, aby router prawidłowo ustawił aktualny czas. Jeśli nasz router "
+"miał ustawiony starszy czas, niektóre wygasłe certyfikaty SSL mogły wydawać "
+"się poprawne."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Czas powinien być aktualny, w innym wypadku DNS i inne usługi mogą nie "
+"działać poprawnie."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Godzina ponownego uruchomienia"
+msgstr "Jak ustawić czas"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Wybierz metodę, aby ustawić aktualny czas w routerze."
 
 msgid "via ntp"
-msgstr ""
+msgstr "poprzez ntp"
 
-#, fuzzy
 msgid "manually"
-msgstr "Ustaw czas ręcznie"
+msgstr "ręcznie"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Czas w formacie YYYY-MM-DD HH:MM:SS."
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr ""
