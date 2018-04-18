@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:59+0200\n"
-"PO-Revision-Date: 2018-04-10 10:40+0000\n"
+"PO-Revision-Date: 2018-04-18 11:19+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
-">\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.20\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Это значение кажется некорректным."
@@ -438,10 +438,12 @@ msgid ""
 "settings. Note that this will remove the current Wi-Fi configuration and "
 "restore the default values."
 msgstr ""
+"Если количество беспроводных карт не совпадает, вы можете попытаться "
+"сбросить настройки Wi-Fi. Обратите внимание, что это приведет к удалению "
+"текущей конфигурации Wi-Fi и восстановлению значений по умолчанию."
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Настройки Wi-Fi"
+msgstr "Сбросить настройки Wi-Fi"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1049,9 +1051,8 @@ msgstr "Некорректный формат времени ЧЧ:MM."
 msgid "MAC address is not valid."
 msgstr "Некорректный MAC-адрес."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Некорректный MAC-адрес."
+msgstr "Некорректный уникальный идентификатор DHCPv6 (DUID)."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -1083,6 +1084,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"Возможно, конфигурация WAN неверна, или ваш интерфейс WAN еще не был "
+"правильно инициализирован."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1093,11 +1096,10 @@ msgid "Wrong HTTP method."
 msgstr "Неверный метод HTTP."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "Успешный сброс Wi-Fi."
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Ошибка запроса NTP сервера."
+msgstr "Не удалось выполнить сброс Wi-Fi."
 
 msgid "Maintenance"
 msgstr "Обслуживание"
@@ -1181,6 +1183,8 @@ msgstr ""
 
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Ошибка авторизации маршрутизатора. Попробуйте подтвердить электронную почту "
+"позже."
 
 msgid "About"
 msgstr "Сведения"
@@ -1506,7 +1510,6 @@ msgstr "SSID гостевого Wi-Fi"
 msgid "Password for guests"
 msgstr "Пароль гостевого Wi-Fi"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
@@ -1562,13 +1565,11 @@ msgstr "Маска подсети"
 msgid "Gateway"
 msgstr "Шлюз"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "Начальный адрес пула DHCP"
+msgstr "Имя сервера DHCP"
 
-#, fuzzy
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Идентификатор клиента, который будет предоставлен DHCP-серверу."
+msgstr "Имя сервера, которое будет предоставлено серверу DHCP."
 
 msgid "DNS server 1 (IPv4)"
 msgstr "DNS-сервер 1 (IPv4)"
@@ -1617,13 +1618,11 @@ msgstr "DNS-сервер 1 (IPv6)"
 msgid "DNS server 2 (IPv6)"
 msgstr "DNS-сервер 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Ручная настройка"
+msgstr "Ручная настройка уникального идентификатора DHCP (DUID)"
 
-#, fuzzy
 msgid "DUID which will be provided to the dhcpv6 server."
-msgstr "Идентификатор клиента, который будет предоставлен DHCP-серверу."
+msgstr "DUID, который будет предоставлен серверу DHCPv6."
 
 msgid "Custom MAC address"
 msgstr "Пользовательский MAC-адрес"
