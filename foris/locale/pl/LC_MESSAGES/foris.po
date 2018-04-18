@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:59+0200\n"
-"PO-Revision-Date: 2018-03-26 06:24+0000\n"
+"PO-Revision-Date: 2018-04-18 10:46+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
-">\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Ta wartość wydaje się być nieprawidłowa."
@@ -435,10 +435,12 @@ msgid ""
 "settings. Note that this will remove the current Wi-Fi configuration and "
 "restore the default values."
 msgstr ""
+"Jeśli ilość kart bezprzewodowych nie pasuje, możesz spróbować zresetować "
+"ustawienia Wi-Fi. Zwróć uwagę, że spowoduje to usunięcie bieżącej "
+"konfiguracji Wi-Fi i przywrócenie wartości domyślnych."
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Ustawienia sieci Wi-Fi"
+msgstr "Zresetuj ustawienia Wi-Fi"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1041,9 +1043,8 @@ msgstr "To nie jest poprawny czas w formacie HH:MM."
 msgid "MAC address is not valid."
 msgstr "Adres MAC jest nieprawidłowy."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Adres MAC jest nieprawidłowy."
+msgstr "Duid jest nieprawidłowy."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -1075,6 +1076,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"Prawdopodobnie konfiguracja WAN nie jest poprawna lub twój interfejs WAN nie "
+"został jeszcze poprawnie zainicjowany."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1085,11 +1088,10 @@ msgid "Wrong HTTP method."
 msgstr "Niewłaściwa metoda HTTP."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "Resetowanie Wi-Fi powiodło się."
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Nie można wysłać zapytania do serwerów ntp."
+msgstr "Nie udało się zresetować Wi-Fi."
 
 msgid "Maintenance"
 msgstr "Konserwacja"
@@ -1174,6 +1176,8 @@ msgstr ""
 
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Router nie został poprawnie autoryzowany. Spróbuj zweryfikować e-mail "
+"później."
 
 msgid "About"
 msgstr "O systemie"
@@ -1497,7 +1501,6 @@ msgstr "SSID sieci gościnnej"
 msgid "Password for guests"
 msgstr "Hasło sieci gościnnej"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
@@ -1505,9 +1508,9 @@ msgid ""
 "available within the form."
 msgstr ""
 "Jeśli chcesz używać routera jako punktu dostępu Wi-Fi, włącz Wi-Fi tutaj i "
-"wprowadź SSID (nazwę punktu dostępu) i odpowiednie hasło. Następnie możesz "
-"skonfigurować urządzenia przenośne za pomocą kodu QR dostępnego obok "
-"formularza."
+"wprowadź identyfikator SSID (nazwę punktu dostępu) i odpowiednie hasło. "
+"Następnie możesz skonfigurować urządzenia mobilne, korzystając z kodu QR "
+"dostępnego w formularzu."
 
 msgid "Wi-Fi settings"
 msgstr "Ustawienia sieci Wi-Fi"
@@ -1553,13 +1556,11 @@ msgstr "Maska podsieci"
 msgid "Gateway"
 msgstr "Brama"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "Początek zakresu DHCP"
+msgstr "Nazwa hosta DHCP"
 
-#, fuzzy
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Identyfikator klienta, który zostanie wysłany do serwera DHCP."
+msgstr "Nazwa hosta, która zostanie przekazana do serwera DHCP."
 
 msgid "DNS server 1 (IPv4)"
 msgstr "Serwer DNS 1 (IPv4)"
@@ -1607,13 +1608,11 @@ msgstr "Serwer DNS 1 (IPv6)"
 msgid "DNS server 2 (IPv6)"
 msgstr "Serwer DNS 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Własny"
+msgstr "Niestandardowy DUID"
 
-#, fuzzy
 msgid "DUID which will be provided to the dhcpv6 server."
-msgstr "Identyfikator klienta, który zostanie wysłany do serwera DHCP."
+msgstr "DUID, który zostanie wysłany do serwera dhcpv6."
 
 msgid "Custom MAC address"
 msgstr "Własny adres MAC"
