@@ -90,7 +90,8 @@ class UcollectHandler(BaseConfigHandler):
                 "log_credentials": data["log_credentials"],
                 "minipots": {k: k in data["services"] for k in dict(SERVICES_OPTIONS)}
             }
-            res = current_state.backend.perform("data_collect", "set_honeypots", msg)
+            res = current_state.backend.perform("data_collect", "set_honeypots", msg, False)
+            res = res if res else {"result": False}  # Set result false when an exception is raised
             return "save_result", res  # store {"result": ...} to be used later...
 
         ucollect_form.add_callback(ucollect_form_cb)

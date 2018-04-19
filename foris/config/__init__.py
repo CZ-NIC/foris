@@ -445,6 +445,18 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
                                      description=None, status=status,
                                      **kwargs)
 
+    def save(self, *args, **kwargs):
+        super(DataCollectionConfigPage, self).save(no_messages=True, *args, **kwargs)
+        result = self.form.callback_results.get('result', False)
+        if result:
+            messages.success(_("Configuration was successfully saved."))
+        else:
+            messages.error(_(
+                "Failed to update emulated services. Note that you might need to wait till "
+                "ucollect is properly installed."
+            ))
+        return result
+
     @require_contract_valid(False)
     def _action_check_registration(self):
         handler = collect.RegistrationCheckHandler(request.POST)
