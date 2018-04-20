@@ -45,7 +45,13 @@ class BackendData(object):
         self.app = app
 
     def __call__(self, environ, start_response):
-        data = current_state.backend.perform("web", "get_data", {})
+        try:
+            data = current_state.backend.perform("web", "get_data", {})
+        except Exception:
+            # Exceptions raised here are not correctly processed in flup
+            # so we don't propagate the excetion (it will fail later)
+            use best effort here and if e.g. backend is not running it will fail later
+            return self.app(environ, start_response)
 
         # update language
         self.set_language(data["language"])
