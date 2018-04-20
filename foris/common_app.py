@@ -101,15 +101,15 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
         locale_dir=os.path.join(BASE_DIR, "locale")
     ))
 
+    # obtains required data from backend (this will happen everytime when a request arrives)
+    app = BackendData(app)
+
     # reporting middleware for all mounted apps
     app = ReportingMiddleware(app, sensitive_params=("key", "pass", "*password*"))
     app.install_dump_route(bottle.app())
 
     # session handling
     app = SessionMiddleware(app, args.session_timeout)
-
-    # obtains required data from backend (this will happen everytime when a request arrives)
-    app = BackendData(app)
 
     # print routes to console and exit
     if args.routes:
