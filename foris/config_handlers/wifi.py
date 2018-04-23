@@ -90,7 +90,7 @@ class WifiHandler(BaseConfigHandler):
             Radio, name=prefixed("hwmode"), label=_("Wi-Fi mode"),
             args=[
                 e for e in (("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)"))
-                if e[0] in [band["hwmode"] for band in device["available_bands"]]
+                if e[0] in [b["hwmode"] for b in device["available_bands"]]
             ],
             hint=_(
                 "The 2.4 GHz band is more widely supported by clients, but "
@@ -118,7 +118,11 @@ class WifiHandler(BaseConfigHandler):
                 "network. If you don't know what to choose, use the default option with 20 MHz "
                 "wide channel."
             )
-        ).requires(prefixed("device_enabled"), True)
+        ).requires(
+            prefixed("device_enabled"), True
+        ).requires(
+            prefixed("hwmode"), lambda val:  val in ("11g", "11a")
+        )  # this req is added to rerender htmodes when hwmode changes
 
         channels = [("0", _("auto"))] + [
             (str(e["number"]), (
@@ -129,7 +133,11 @@ class WifiHandler(BaseConfigHandler):
         wifi_main.add_field(
             Dropdown, name=prefixed("channel"), label=_("Network channel"),
             default="0", args=channels,
-        ).requires(prefixed("device_enabled"), True)
+        ).requires(
+            prefixed("device_enabled"), True
+        ).requires(
+            prefixed("hwmode"), lambda val:  val in ("11g", "11a")
+        )  # this req is added to rerender channel list when hwmode changes
 
         wifi_main.add_field(
             Password, name=prefixed("password"), label=_("Network password"),
