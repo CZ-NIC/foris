@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2018-04-23 16:13+0000\n"
+"PO-Revision-Date: 2018-04-24 12:33+0000\n"
 "Last-Translator: Roberto Zilli <zetaerre@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/turris/"
 "foris-tzinfo/it/>\n"
@@ -29,7 +29,7 @@ msgid "Swaziland"
 msgstr "Swaziland"
 
 msgid "Cameroon"
-msgstr "Cameroon"
+msgstr "Camerun"
 
 msgid "Aden"
 msgstr "Aden"
@@ -38,13 +38,13 @@ msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
 msgid "Azores"
-msgstr "Azores"
+msgstr "Azzorre"
 
 msgid "St. John’s"
-msgstr "St. John’s"
+msgstr "Isola di St. John"
 
 msgid "Bougainville Island"
-msgstr "Bougainville Island"
+msgstr "Bougainville (Isola)"
 
 msgid "Casey"
 msgstr "Casey"
@@ -95,10 +95,10 @@ msgid "Edmonton"
 msgstr "Edmonton"
 
 msgid "Canary"
-msgstr "Canary"
+msgstr "Canarie"
 
 msgid "South Korea"
-msgstr "South Korea"
+msgstr "Corea del Sud"
 
 msgid "Ushuaia"
 msgstr "Ushuaia"
@@ -122,10 +122,10 @@ msgid "Denver"
 msgstr "Denver"
 
 msgid "Slovakia"
-msgstr "Slovakia"
+msgstr "Slovacchia"
 
 msgid "Ho Chi Minh City"
-msgstr "Ho Chi Minh City"
+msgstr "Ho Chi Minh"
 
 msgid "Chisinau"
 msgstr "Chisinau"
@@ -152,13 +152,13 @@ msgid "America"
 msgstr "America"
 
 msgid "Cayman Islands"
-msgstr "Cayman Islands"
+msgstr "Isole Cayman"
 
 msgid "Colombia"
 msgstr "Colombia"
 
 msgid "Libya"
-msgstr "Libya"
+msgstr "Libia"
 
 msgid "Porto Velho"
 msgstr "Porto Velho"
@@ -167,10 +167,10 @@ msgid "Syowa"
 msgstr "Syowa"
 
 msgid "Finland"
-msgstr "Finland"
+msgstr "Finlandia"
 
 msgid "Central African Republic"
-msgstr "Central African Republic"
+msgstr "Repubblica Centrale Africana"
 
 msgid "Uzhhorod"
 msgstr "Uzhhorod"
@@ -191,13 +191,13 @@ msgid "Ashgabat"
 msgstr "Ashgabat"
 
 msgid "Portugal"
-msgstr "Portugal"
+msgstr "Portogallo"
 
 msgid "Zurich"
 msgstr "Zurigo"
 
 msgid "Cyprus"
-msgstr "Cyprus"
+msgstr "Cipro"
 
 msgid "Caribbean Netherlands"
 msgstr "Caribbean Netherlands"
@@ -206,7 +206,7 @@ msgid "Vietnam"
 msgstr "Vietnam"
 
 msgid "Center, North Dakota"
-msgstr "Center, North Dakota"
+msgstr "Centro, Nord Dakota"
 
 msgid "British Virgin Islands"
 msgstr "British Virgin Islands"
@@ -245,7 +245,7 @@ msgid "Ecuador"
 msgstr "Ecuador"
 
 msgid "Europe"
-msgstr "Europe"
+msgstr "Europa"
 
 msgid "Cocos (Keeling) Islands"
 msgstr "Cocos (Keeling) Islands"
@@ -260,7 +260,7 @@ msgid "Pitcairn Islands"
 msgstr "Pitcairn Islands"
 
 msgid "Palestinian Territories"
-msgstr "Palestinian Territories"
+msgstr "Territori Palestinesi"
 
 msgid "Hong Kong"
 msgstr "Hong Kong"
@@ -272,19 +272,19 @@ msgid "Petersburg, Indiana"
 msgstr "Petersburg, Indiana"
 
 msgid "Denmark"
-msgstr "Denmark"
+msgstr "Danimarca"
 
 msgid "Philippines"
-msgstr "Philippines"
+msgstr "Filippine"
 
 msgid "Romania"
 msgstr "Romania"
 
 msgid "Athens"
-msgstr "Athens"
+msgstr "Atene"
 
 msgid "Morocco"
-msgstr "Morocco"
+msgstr "Marocco"
 
 msgid "Atikokan"
 msgstr "Atikokan"
@@ -311,10 +311,10 @@ msgid "Faroe"
 msgstr "Faroe"
 
 msgid "Lebanon"
-msgstr "Lebanon"
+msgstr "Libano"
 
 msgid "Pacific"
-msgstr "Pacific"
+msgstr "Pacifico"
 
 msgid "Hermosillo"
 msgstr "Hermosillo"
@@ -341,7 +341,7 @@ msgid "Matamoros"
 msgstr "Matamoros"
 
 msgid "Havana"
-msgstr "Havana"
+msgstr "Avana"
 
 msgid "Suriname"
 msgstr "Suriname"
@@ -398,10 +398,10 @@ msgid "Dili"
 msgstr "Dili"
 
 msgid "Belgrade"
-msgstr "Belgrade"
+msgstr "Belgrado"
 
 msgid "Equatorial Guinea"
-msgstr "Equatorial Guinea"
+msgstr "Guinea Equatoriale"
 
 msgid "Serbia"
 msgstr "Serbia"
@@ -419,7 +419,7 @@ msgid "Chicago"
 msgstr "Chicago"
 
 msgid "Tahiti"
-msgstr "Tahiti"
+msgstr "Taiti"
 
 msgid "Monterrey"
 msgstr "Monterrey"
