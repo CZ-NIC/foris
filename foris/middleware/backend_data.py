@@ -50,7 +50,7 @@ class BackendData(object):
         except Exception:
             # Exceptions raised here are not correctly processed in flup
             # so we don't propagate the excetion (it will fail later)
-            use best effort here and if e.g. backend is not running it will fail later
+            # use best effort here and if e.g. backend is not running it will fail later
             return self.app(environ, start_response)
 
         # update language
