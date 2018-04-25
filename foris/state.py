@@ -80,5 +80,10 @@ class ForisState(object):
         logger.debug("setting password_set=%s" % password_set)
         self.password_set = password_set
 
+    def update_guide(self, guide_data):
+        from foris.guide import Guide
+        logger.debug("setting guide_data (%s)" % guide_data)
+        self.guide = Guide(guide_data)
+
 
 current_state = ForisState()

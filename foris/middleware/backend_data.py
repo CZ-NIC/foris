@@ -68,4 +68,7 @@ class BackendData(object):
         # update whether password is set
         current_state.update_password_set(data["password_ready"])
 
+        # initialize guide
+        current_state.update_guide(data["guide"])
+
         return self.app(environ, start_response)

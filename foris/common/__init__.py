@@ -199,6 +199,15 @@ def reboot():
         bottle.redirect(reverse("/"))
 
 
+@login_required
+def leave_guide():
+    current_state.backend.perform("web", "update_guide", {
+        "enabled": False,
+        "workflow": current_state.guide.workflow,
+    })
+    bottle.redirect(reverse("/"))
+
+
 def ping():
     res = bottle.response.copy(cls=bottle.HTTPResponse)
     res.content_type = 'application/json'
@@ -231,6 +240,7 @@ def init_default_app(index, include_static=False):
     app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
     app.route("/logout", name="logout", callback=logout)
     app.route("/reboot", name="reboot", callback=reboot)
+    app.route("/leave_guide", method="POST", name="leave_guide", callback=leave_guide)
     if include_static:
         app.route('/static/<filename:re:.*>', name="static", callback=static)
     app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)

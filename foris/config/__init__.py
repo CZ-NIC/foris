@@ -633,6 +633,10 @@ def index():
 
 @login_required
 def config_page_get(page_name):
+    # redirect in case that guide is not passed
+    if current_state.guide.enabled and page_name not in current_state.guide.available_tabs:
+        bottle.redirect(reverse("config_page", page_name=current_state.guide.current))
+
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()

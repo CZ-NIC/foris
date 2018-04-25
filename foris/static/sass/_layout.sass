@@ -119,6 +119,29 @@ body
     text-align: center
     vertical-align: middle
 
+#guide-box
+  +rounded-borders
+  padding: 1em 1em 1em 1em
+  display: block
+  background-color: $message-color-info
+  color: white
+
+  .guide-title
+    font-weight: bold
+    text-transform: uppercase
+
+  .guide-buttons
+    text-align: right
+
+    .button
+      background-color: #fff
+      color: $message-color-info
+      font-weight: bold
+      font-family: $base-font
+
+    form
+      display: inline
+
 #reboot-required-notice
   +rounded-borders
   padding: 1em 1em 1em 1em

@@ -32,6 +32,23 @@
     </div>
     <div id="content-wrap">
         <div id="content">
+          %if foris_info.guide.enabled:
+          <div id="guide-box">
+            <p class="guide-title">{{ trans("foris guide") }}</p>
+            %for msg in foris_info.guide.message(active_config_page_key):
+            <p>{{ msg }}</p>
+            %end
+            <div class="guide-buttons">
+              <form method="post" action="{{ url("leave_guide") }}">
+                <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+                <button type="submit" name="target" class="button" value="save">{{ trans("Leave Guided Mode") }}</button>
+              </form>
+              %if foris_info.guide.current != active_config_page_key:
+              <a class="button" href="{{ url("config_page", page_name=foris_info.guide.current) }}">{{ trans("Next step") }} ➡</a>
+              %end
+            </div>
+          </div>
+          %end
           <div id="network-restart-notice" class="main-warning-notice">
             <img src="{{ static("img/loader.gif") }}" alt="{{ trans("Network is restarting...") }}" title="{{ trans("Network is restarting...") }}">
             <span>{{ trans("Your network is being restarted. Wait, please...") }}</span>
@@ -61,11 +78,16 @@
             <nav>
                 <ul>
                 %for slug, config_page, menu_tag in config_pages.menu_list():
+                    %if foris_info.guide.is_available(slug):
                     <li{{! ' class="active"' if defined("active_config_page_key") and slug == active_config_page_key else "" }}>
                       <a href="{{ url("config_page", page_name=slug) }}">{{ trans(config_page.userfriendly_title) }}
-                      <span title="{{ menu_tag["hint"]}}" style="{{"" if menu_tag["show"] else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">{{! menu_tag["text"] }}</span>
+                      % show = menu_tag["show"] or foris_info.guide.enabled and slug == foris_info.guide.current
+                      <span title="{{ menu_tag["hint"]}}" style="{{"" if show else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">
+                        {{ "⬅" if foris_info.guide.enabled and slug == foris_info.guide.current else menu_tag["text"] }}
+                      </span>
                       </a>
                     </li>
+                    %end
                 %end
                 </ul>
             </nav>

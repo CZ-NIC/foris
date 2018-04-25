@@ -23,12 +23,15 @@
     %if not contract_valid():
       <p>{{! trans("In rare cases ISP's have improperly configured network which interferes with DNSSEC validation. If you experience problems with DNS, you can <strong>temporarily</strong> disable DNSSEC validation to determine the source of the problem. However, keep in mind that without DNSSEC validation, you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend keeping DNSSEC turned on</strong> and resolving the situation with your ISP as this is a serious flaw on their side.") }}</p>
     %end
-    <form id="main-form" class="dns-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         %for field in form.active_fields:
             %include("_field.tpl", field=field)
         %end
-        <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
+        <div class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{{ trans("Discard changes") }}</a>
+            <button type="submit" name="send" class="button">{{ trans("Save changes") }}</button>
+        </div>
     </form>
 
     <h2>{{ trans("Connection test") }}</h2>
