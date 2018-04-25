@@ -152,7 +152,7 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     menu_order = 11
 
     def __init__(self, *args, **kwargs):
-        super(PasswordConfigPage, self).__init__(change=True, *args, **kwargs)
+        super(PasswordConfigPage, self).__init__(change=current_state.password_set, *args, **kwargs)
 
     def save(self, *args, **kwargs):
         result = super(PasswordConfigPage, self).save(no_messages=True, *args, **kwargs)
