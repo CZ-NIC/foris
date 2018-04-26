@@ -21,16 +21,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:58+0200\n"
-"PO-Revision-Date: 2018-03-27 09:37+0000\n"
-"Last-Translator: NoR nIc <nora.cznic@gmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
-">\n"
+"PO-Revision-Date: 2018-04-23 00:38+0000\n"
+"Last-Translator: FabulousGee <fgiewald@yahoo.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Die Eingabe scheint nicht korrekt zu sein."
@@ -344,9 +344,8 @@ msgstr ""
 "Die folgenden Benachrichtigungen sind aufgetreten und wurden seit dem "
 "letzten Neustart nicht gelöscht."
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Fehler beim Abfragen des Servers."
+msgstr "Fehler beim Abfragen des Network Time Protocol (NTP) Servers."
 
 msgid "Update time"
 msgstr "Uhrzeit aktualisieren"
@@ -459,10 +458,12 @@ msgid ""
 "settings. Note that this will remove the current Wi-Fi configuration and "
 "restore the default values."
 msgstr ""
+"Wenn die Anzahl der WLAN Karten nicht übereinstimmt, könnte ein Reset der "
+"Einstellungen helfen. Beachte: das entfernt die aktuellen Einstellungen und "
+"stellt die Standardwerte wieder her."
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "WLAN Einstellungen"
+msgstr "WLAN Einstellungen zurücksetzen"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -816,11 +817,11 @@ msgid ""
 "in more advanced options, you can use the LuCI interface which is available "
 "from the <a href=\"%(url2)s\">Advanced administration tab</a>."
 msgstr ""
-"Sie können alle der vorherigen eingegebenen Auswahlmöglichkeiten in der <a "
-"href=\"%(url)s\">Standardkonfigurationsoberfläche</a> ändern. Wenn Sie in "
-"fortgeschrittene Möglichkeiten der Konfiguration interessiert sind, dann "
-"benutzen Sie die LuCI-Webschnittstelle, welche von der <a href=\"%(url2)s"
-"\">Expertenkonfiguration</a> aus erreichbar ist."
+"Sie können alle vorher gewählten Einstellungen in der <a href=\"%(url)s\""
+">Standardkonfigurationsoberfläche</a> ändern. Wenn Sie an erweiterten "
+"Einstellungen interessiert sind, dann benutzen Sie die LuCI-"
+"Webschnittstelle, welche von der <a href=\"%(url2)s\""
+">Expertenkonfiguration</a> aus erreichbar ist."
 
 msgid "Important updates"
 msgstr "Wichtige Aktualisierungen"
@@ -843,8 +844,8 @@ msgstr "Installation abgeschlossen"
 msgid ""
 "You have decided to disable the Updater service during the installation."
 msgstr ""
-"Sie haben sich entschlossen, den Updater-Dienst während des "
-"Installationsvorgangs zu deaktivieren."
+"Sie haben entschieden, den Updater-Dienst während des Installationsvorgangs "
+"zu deaktivieren."
 
 msgid ""
 "Without the Updater, installed software will not be kept up to date and you "
@@ -1043,9 +1044,8 @@ msgstr "Foris Version:"
 msgid "Dismiss"
 msgstr "Verwerfen"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Verwerfen"
+msgstr "Alle verwerfen"
 
 msgid "No new messages."
 msgstr "Keine neuen Nachrichten."
@@ -1090,7 +1090,7 @@ msgid "This is not valid time in HH:MM format."
 msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
 
 msgid "MAC address is not valid."
-msgstr "Die MAC-Adresse ist ungültig."
+msgstr "Ungültige MAC-Adresse."
 
 #, fuzzy
 msgid "Duid is not valid."
@@ -1102,7 +1102,7 @@ msgstr "Nicht im Bereich %(low)s - %(high)s."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Die Länge muss zwischen %(low)s bis %(high)s Zeichen liegen."
+msgstr "Die Länge muss zwischen %(low)s und %(high)s Zeichen liegen."
 
 msgid "Configuration was successfully saved."
 msgstr "Die Einstellungen wurden erfolgreich gespeichert."
@@ -1126,6 +1126,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"Ihre WAN Konfiguration ist wahrscheinlich inkorrekt oder Ihre WAN-"
+"Schnittstelle ist noch nicht ordnungsgemäß initialisiert."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1136,32 +1138,29 @@ msgid "Wrong HTTP method."
 msgstr "Inkorrekte HTTP-Methode."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "WLAN Reset war erfolgreich"
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Fehler beim Abfragen des Servers."
+msgstr "WLAN Reset fehlgeschlagen"
 
 msgid "Maintenance"
 msgstr "Instandhaltung"
 
 msgid "Testing message was sent, please check your inbox."
-msgstr ""
-"Testnachricht wurde abgesendet, überprüfen Sie bitte Ihren Posteingang."
+msgstr "Testnachricht wurde gesendet, überprüfen Sie bitte Ihren Posteingang."
 
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
-"Das Absenden der Testnachricht scheiterte. Die Einstellungen sind "
-"wahrscheinlich falsch."
+"Das Senden der Testnachricht ist fehlgeschlagen. Die Einstellungen sind "
+"möglicherweise falsch."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Die Einstellungen wurden erfolgreich wiederhergestellt. Warten Sie bitte bis "
-"die Aktualisierungen installiert sind und der Router sich neu startete."
+"Einstellungen erfolgreich wiederhergestellt. Ein Neustart muss erfolgen um "
+"die neuen Einstellungen zu übernehmen."
 
 msgid "Failed to restore the backup from the provided file."
 msgstr ""
@@ -1217,7 +1216,7 @@ msgstr ""
 "Der Router ist zurzeit zu einer anderen E-Mail-Adresse zugeordnet. Gehen Sie "
 "bitte auf die <a href=\"%(url)s\">Turris-Webseite</a> und benutzen Sie den "
 "Registrierungscode <strong>%(reg_num)s</strong>, um eine andere E-Mail-"
-"Adresse zuordnen zu können."
+"Adresse zuzuordnen."
 
 #, python-format
 msgid ""
@@ -1229,8 +1228,11 @@ msgstr ""
 "href=\"%(url)s\">Turris-Webseite</a> und benutzen Sie den Registrierungscode "
 "<strong>%(reg_num)s</strong>, um ein neues Benutzerkonto zu erstellen."
 
+#, fuzzy
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Router konnte nicht autorisiert werden. Bitte versuchen Sie später unsere "
+"Email zu validieren(?)"
 
 msgid "About"
 msgstr "Über"
@@ -1264,8 +1266,8 @@ msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the "
 "local DNS records."
 msgstr ""
-"Dies ermöglicht Ihren DNS-Resolver die Namen der DHCP-Clients in den lokalen "
-"DNS-Einträge aufzunehmen."
+"Dies ermöglicht der DNS-Namensauflösung den lokalen DNS-Einträgen "
+"ausgelesene DHCP-Client-Namen hinzuzufügen."
 
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domäne der DHCP-Geräte im DNS"
@@ -1353,14 +1355,13 @@ msgstr ""
 msgid "Router IP in guest network"
 msgstr "Router IP im Gastnetzwerk"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Sie müssen den IP-Bereich für Ihr Gast-Netzwerk setzen. Es ist notwendig, "
-"dass der Bereich anders ist als Bereiche in Ihren anderen Netzwerken (LAN, "
-"WAN, VPN, etc.)."
+"IP-Adresse des Routers im Gast-Netzwerk. Es ist notwendig, dass der IP-"
+"Adressbereich sich von den restlichen Netzwerken unterscheidet (LAN, WAN, "
+"VPN, etc.)."
 
 #, fuzzy
 msgid "Guest network netmask"
@@ -1565,7 +1566,6 @@ msgstr "SSID für Gäste"
 msgid "Password for guests"
 msgstr "Passwort für Gäste"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
@@ -1573,9 +1573,9 @@ msgid ""
 "available within the form."
 msgstr ""
 "Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann aktivieren "
-"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und ein "
-"dazugehöriges Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte "
-"mittels des angezeigten QR-Codes einfach konfigurieren."
+"Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) und das "
+"zugehörige Kennwort ein.<br><br>Danach können Sie Ihre Mobilgeräte mittels "
+"des angezeigten QR-Codes einfach konfigurieren."
 
 msgid "Wi-Fi settings"
 msgstr "WLAN Einstellungen"
@@ -1622,17 +1622,14 @@ msgstr "Netzwerkmaske"
 msgid "Gateway"
 msgstr "Netzwerk-Gateway"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "Anfang des DHCP-IP-Addressbereiches"
+msgstr "DHCP Hostname"
 
-#, fuzzy
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Client-ID, die dem DHCP-Server zur Verfügung gestellt wird."
+msgstr "Hostname, der dem DHCP-Server zur Verfügung gestellt wird."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS-Server 1"
+msgstr "DNS-Server 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1641,9 +1638,8 @@ msgstr ""
 "Die DNS-Serveradresse wird nicht benötigt, der eingebaute DNS Resolver ist "
 "fähig ohne diese Angaben zu arbeiten."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS-Server 2"
+msgstr "DNS-Server 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "PAP/CHAP-Benutzername"
@@ -1673,13 +1669,11 @@ msgstr "IPv6-Präfix"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adressenbereich des lokalen Netzwerks, z. B. 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS-Server 1"
+msgstr "DNS-Server 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS-Server 2"
+msgstr "DNS-Server 2 (IPv6)"
 
 #, fuzzy
 msgid "Custom DUID"
@@ -1793,9 +1787,8 @@ msgstr ""
 "richtige Uhrzeit manuell ein. Für den Router ist es notwendig möglichst "
 "genaue Uhrzeit zu haben, damit alles einwandfrei funktioniert."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Uhrzeit von Neustart"
+msgstr "Region und Zeit"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
@@ -1813,19 +1806,17 @@ msgstr ""
 "Die Zeit sollte auf dem neuesten Stand sein. DNS und andere Dienste "
 "funktionieren möglicherweise nicht richtig."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Uhrzeit von Neustart"
+msgstr "Art der Zeitaktualisierung"
 
 msgid "Choose method to store current time into the router."
 msgstr "Wählen Sie eine Methode für die Speicherung der aktuellen Uhrzeit."
 
 msgid "via ntp"
-msgstr "via ntp"
+msgstr "via NTP"
 
-#, fuzzy
 msgid "manually"
-msgstr "Uhrzeit manuell einstellen"
+msgstr "Manuell"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Uhrzeit im YYYY-MM-DD HH:MM:SS format."
@@ -2024,7 +2015,7 @@ msgid "Uninstall"
 msgstr "Deinstallieren"
 
 msgid "Upgrade"
-msgstr "Upgared"
+msgstr "Aktualisierung"
 
 msgid "Downgrade"
 msgstr "Downgrade"
