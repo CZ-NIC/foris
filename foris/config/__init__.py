@@ -414,7 +414,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
         return {
             "show": current_state.updater_is_running,
             "hint": _("Updater is running"),
-            "text": u"↺",
+            "text": u"<i class='fas fa-sync'></i>",
         }
 
 

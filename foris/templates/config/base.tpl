@@ -63,7 +63,7 @@
                 %for slug, config_page, menu_tag in config_pages.menu_list():
                     <li{{! ' class="active"' if defined("active_config_page_key") and slug == active_config_page_key else "" }}>
                       <a href="{{ url("config_page", page_name=slug) }}">{{ trans(config_page.userfriendly_title) }}
-                      <span title="{{ menu_tag["hint"]}}" style="{{"" if menu_tag["show"] else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">{{ menu_tag["text"] }}</span>
+                      <span title="{{ menu_tag["hint"]}}" style="{{"" if menu_tag["show"] else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">{{! menu_tag["text"] }}</span>
                       </a>
                     </li>
                 %end
