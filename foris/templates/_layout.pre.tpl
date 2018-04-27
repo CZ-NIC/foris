@@ -30,6 +30,9 @@
         <link href="{{ static("plugins/%s/%s" % (PLUGIN_NAME, static_filename)) }}" rel="stylesheet" media="screen">
       %end
     %end
+    <link href="{{ static("css/fa-regular.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{ static("css/fa-solid.min.css") }}" rel="stylesheet" media="screen">
+    <link href="{{ static("css/fontawesome.min.css") }}" rel="stylesheet" media="screen">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     % if foris_info.websockets["ws_port"]:
     <meta name="foris-ws-port" content="{{ str(foris_info.websockets["ws_port"]) }}">
