@@ -41,10 +41,10 @@
             <div class="guide-buttons">
               <form method="post" action="{{ url("leave_guide") }}">
                 <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-                <button type="submit" name="target" class="button" value="save">{{ trans("Leave Guided Mode") }}</button>
+                <button type="submit" name="target" class="button" value="save"><i class='fas fa-times'></i> {{ trans("Leave Guided Mode") }}</button>
               </form>
               %if foris_info.guide.current != active_config_page_key:
-              <a class="button" href="{{ url("config_page", page_name=foris_info.guide.current) }}">{{ trans("Next step") }} ➡</a>
+              <a class="button" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {{ trans("Next step") }}</a>
               %end
             </div>
           </div>
@@ -83,7 +83,7 @@
                       <a href="{{ url("config_page", page_name=slug) }}">{{ trans(config_page.userfriendly_title) }}
                       % show = menu_tag["show"] or foris_info.guide.enabled and slug == foris_info.guide.current
                       <span title="{{ menu_tag["hint"]}}" style="{{"" if show else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">
-                        {{ "⬅" if foris_info.guide.enabled and slug == foris_info.guide.current else menu_tag["text"] }}
+                        {{! "<i class='fas fa-reply'></i>" if foris_info.guide.enabled and slug == foris_info.guide.current else menu_tag["text"] }}
                       </span>
                       </a>
                     </li>
