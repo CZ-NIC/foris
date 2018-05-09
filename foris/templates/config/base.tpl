@@ -87,6 +87,8 @@
                       </span>
                       </a>
                     </li>
+                    %elif foris_info.guide.is_guide_step(slug):
+                    <li><span class="link-disabled">{{ trans(config_page.userfriendly_title) }}</span></li>
                     %end
                 %end
                 </ul>

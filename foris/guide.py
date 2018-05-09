@@ -123,6 +123,9 @@ class Guide(object):
             return True
         return step in self.available_tabs
 
+    def is_guide_step(self, step):
+        return step in Guide.STANDARD_STEPS
+
     def message(self, step=None):
         if not self.enabled:
             return None
