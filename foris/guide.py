@@ -23,50 +23,62 @@ class StandardMessages(object):
     MESSAGES_CURRENT_MAP = {
         "password": [
             _(
-                "Welcome to Foris configuration. Bla bla bla"
+                "Welcome to Foris web interface. This guide will help you to setup your router. "
+                "Firstly it is required to set your password. Note the security of our home "
+                "network is in your hands, so try not to use weak passwords."
             ),
         ],
         "wan": [
             _(
-                "In order to access the internet you need to configure your WAN device. Bla bla bla"
+                "In order to access the internet you need to configure your WAN interface."
             ),
         ],
         "time": [
-            _("In order to verify TLS certificates validity your time has to be properly set. ..."),
+            _(
+                "Now you need to set the time and timezone of your device."
+            ),
         ],
         "dns": [
-            _("To resolve ip addresses to hostnames ..."),
+            _(
+                "A proper dns resolving is one of the key security features of your router. "
+                "Let's configure it now."
+            ),
         ],
     }
 
     MESSAGES_MAP = {
         "password": [
             MESSAGES_CURRENT_MAP["password"][0],
-            _("Your password seems to be set. You may proceed to the next step"),
+            _("Your password seems to be set. You may proceed to the next step."),
         ],
         "wan": [
             MESSAGES_CURRENT_MAP["wan"][0],
             _(
                 "You've configured your wan interface. "
-                "Try to run connection test to see whether it is working properly"
+                "Try to run connection test to see whether it is working properly and "
+                "if so you can safely proceed to the next step."
             ),
         ],
         "time": [
             MESSAGES_CURRENT_MAP["time"][0],
             _(
-                "Your timezone seems to be set. Please make sure that the time is correct "
-                " because bla bla bla"
+                "Your time and timezone seem to be set. Please make sure that the time matches "
+                "the time on your computer if not try to update it via ntp or manually."
             )
         ],
         "dns": [
             MESSAGES_CURRENT_MAP["dns"][0],
             _(
                 "You've updated your dns configuration. "
-                "Try to run connection test to see whether your dns is properly set."
+                "Try to run connection test to see whether your dns resolver is properly set."
             ),
         ],
         "updater": [
-            _("To keep your software up-to-date you need to configure updater first."),
+            _("Finally you need to set your automatic updates configuration."),
+            _(
+                "Note that after you update the settings, you'll exit the guide mode and "
+                "new items will appear in the menu."
+            ),
         ],
     }
 
