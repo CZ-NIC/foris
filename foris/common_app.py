@@ -26,7 +26,6 @@ from foris.langs import DEFAULT_LANGUAGE
 from foris.middleware.backend_data import BackendData
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
-from foris.nuci import client
 from foris.plugins import ForisPluginLoader
 from foris.state import current_state
 from foris.utils.bottle_stuff import (
@@ -86,9 +85,6 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
             mounted = route.config['mountpoint.target']
             prefix = route.config['mountpoint.prefix']
             init_common_app(mounted, prefix)
-
-    if args.nucipath:
-        client.StaticNetconfConnection.set_bin_path(args.nucipath)
 
     if load_plugins:
         # load Foris plugins before applying Bottle plugins to app

@@ -16,10 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from foris.nuci import cache
 from foris.utils import LazyCache
 
 
 # init caches
-nuci_cache = cache.NuciCache()
 lazy_cache = LazyCache()

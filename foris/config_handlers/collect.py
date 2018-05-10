@@ -18,10 +18,6 @@ from foris import fapi
 from foris.form import Checkbox, MultiCheckbox
 
 from foris.form import Email
-from foris.nuci import client, filters
-from foris.nuci.modules.uci_raw import (
-    Uci, Config, Section, List, Value
-)
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.state import current_state
 
@@ -109,8 +105,7 @@ class CollectionToggleHandler(BaseConfigHandler):
         else:
             data["enable"] = data["agreed"]
 
-        form = fapi.ForisForm(
-            "enable_collection", data, filter=filters.create_config_filter("updater"))
+        form = fapi.ForisForm("enable_collection", data)
 
         section = form.add_section(
             name="collection_toggle", title=_(self.userfriendly_title),
@@ -125,54 +120,7 @@ class CollectionToggleHandler(BaseConfigHandler):
                 "data_collect", "set", {"agreed": data["enable"]})
             return "save_result", data  # store {"result": ...} to be used later...
 
-        def adjust_lists_cb(data):
-            uci = Uci()
-            # All enabled lists
-            enabled_lists = map(lambda x: x.content,
-                                form.nuci_config.find_child("uci.updater.pkglists.lists").children)
-            # Lists that do not need agreement
-            enabled_no_agree = filter(lambda x: not x.startswith("i_agree_"), enabled_lists)
-            # Lists that need agreement
-            enabled_i_agree = filter(lambda x: x.startswith("i_agree_"), enabled_lists)
-
-            # Always install lists that do not need agreement - create a copy of the list
-            installed_lists = enabled_no_agree[:]
-            logger.warning("no agree: %s", enabled_no_agree)
-            logger.warning("installed: %s", installed_lists)
-            if data.get("enable", False):
-                # Include i_agree lists if user agreed with EULA
-                installed_lists.extend(enabled_i_agree)
-                # Add main data collection list if it's not present
-                logger.warning(installed_lists)
-                logger.warning("i_agree_datacollect" not in installed_lists)
-                logger.warning("i_agree_datacollect" in installed_lists)
-                if "i_agree_datacollect" not in installed_lists:
-                    logger.warning("appending")
-                    installed_lists.append("i_agree_datacollect")
-            logger.warning("saving %s", installed_lists)
-            # Reconstruct list of package lists
-            updater = uci.add(Config("updater"))
-            pkglists = updater.add(Section("pkglists", "pkglists"))
-            lists = List("lists")
-            for i, name in enumerate(installed_lists):
-                lists.add(Value(i, name))
-
-            # If there's anything to add, replace the list, otherwise remove it completely
-            if len(installed_lists) > 0:
-                pkglists.add_replace(lists)
-            else:
-                pkglists.add_removal(lists)
-
-            return "edit_config", uci
-
-        def run_updater_cb(data):
-            logger.info("Checking for updates.")
-            client.check_updates()
-            return "none", None
-
         form.add_callback(form_cb)
-        form.add_callback(adjust_lists_cb)
-        form.add_callback(run_updater_cb)
 
         return form
 
@@ -185,9 +133,7 @@ class RegistrationCheckHandler(BaseConfigHandler):
     userfriendly_title = gettext("Data collection")
 
     def get_form(self):
-        form = fapi.ForisForm(
-            "registration_check", self.data, filter=filters.create_config_filter("foris")
-        )
+        form = fapi.ForisForm("registration_check", self.data)
         main_section = form.add_section(name="check_email", title=_(self.userfriendly_title))
         main_section.add_field(
             Email, name="email", label=_("Email")

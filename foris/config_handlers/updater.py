@@ -20,53 +20,11 @@ import copy
 
 from foris import fapi, validators
 from foris.form import Checkbox, Radio, RadioSingle, Number, Hidden
-from foris.nuci import filters
-from foris.nuci.modules.uci_raw import Uci, Config, Section, Option
-from foris.nuci.preprocessors import preproc_disabled_to_agreed
 from foris.state import current_state
 from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler
-
-
-class UpdaterAutoUpdatesHandler(BaseConfigHandler):
-    """
-    Ask whether user agrees with the updater EULA and toggle updater status
-    according to that.
-    """
-
-    userfriendly_title = gettext("Updater")
-
-    def get_form(self):
-
-        form = fapi.ForisForm("updater_eula", self.data,
-                              filter=filters.create_config_filter("updater", "foris"))
-        main_section = form.add_section(name="agree_eula",
-                                        title=_(self.userfriendly_title))
-        main_section.add_field(
-            Radio, name="agreed", label=_("I agree"), default="1",
-            args=(("1", _("Use automatic updates (recommended)")),
-                  ("0", _("Turn automatic updates off"))),
-            nuci_preproc=lambda x: "1" if preproc_disabled_to_agreed(x) else "0"
-        )
-
-        def form_cb(data):
-            agreed = bool(int(data.get("agreed", "0")))
-
-            uci = Uci()
-            updater = uci.add(Config("updater"))
-            override = updater.add(Section("override", "override"))
-            override.add(Option("disable", not agreed))
-
-            return "edit_config", uci
-
-        def save_result_cb(data):
-            return "save_result", {'agreed': bool(int(data.get("agreed", "0")))}
-
-        form.add_callback(form_cb)
-        form.add_callback(save_result_cb)
-        return form
 
 
 class UpdaterHandler(BaseConfigHandler):

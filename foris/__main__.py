@@ -21,7 +21,6 @@ def get_arg_parser():
     group.add_argument("-d", "--debug", action="store_true")
     group.add_argument("--noauth", action="store_true",
                        help="disable authentication (available only in debug mode)")
-    group.add_argument("--nucipath", help="path to Nuci binary")
     parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
     group.add_argument(
         "-S", "--static", action="store_true",

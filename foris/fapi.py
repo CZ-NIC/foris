@@ -21,9 +21,6 @@ import logging
 from bottle import MultiDict
 
 from form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
-from nuci import client
-from nuci.configurator import add_config_update, commit
-from nuci.utils import LocalizableTextValue
 from utils import Lazy
 import validators as validators_module
 
@@ -57,12 +54,11 @@ class ForisFormElement(object):
 
 
 class ForisForm(ForisFormElement):
-    def __init__(self, name, data=None, filter=None):
+    def __init__(self, name, data=None):
         """
 
         :param name:
         :param data: data from request
-        :param filter: subtree filter for nuci config
         :type filter: Element
         :return:
         """
@@ -88,25 +84,18 @@ class ForisForm(ForisFormElement):
                     self._request_data[key] = value
         else:
             self._request_data = data or {}
-        self._nuci_data = {}  # values fetched from nuci
         self.defaults = {}  # default values from field definitions
         self.__data_cache = None  # cached data
         self.__form_cache = None
         self.validated = False
-        # _nuci_config is not required every time, lazy-evaluate it
-        self._nuci_config = Lazy(lambda: client.get(filter))
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
         self.callbacks = []
         self.callback_results = {}  # name -> result
 
     @property
-    def nuci_config(self):
-        return self._nuci_config
-
-    @property
     def data(self):
         """
-        Current data, from defaults, nuci values and request data.
+        Current data, from defaults and request data.
         Caches the result on the first call.
 
         :return: dictionary with the Form's data
@@ -118,17 +107,14 @@ class ForisForm(ForisFormElement):
     @property
     def current_data(self):
         """
-        Current data, from defaults, nuci values and request data.
+        Current data, from defaults and request data.
         Does not use caching.
 
         :return: dictionary with the Form's data
         """
-        self._update_nuci_data()
         data = {}
         logger.debug("Updating with defaults: %s", self.defaults)
         data.update(self.defaults)
-        logger.debug("Updating with Nuci data: %s", self._nuci_data)
-        data.update(self._nuci_data)
         logger.debug("Updating with data: %s", dict(self._request_data))
         data.update(self._request_data)
         if data:
@@ -190,27 +176,6 @@ class ForisForm(ForisFormElement):
             data = data or self.data
         return filter(lambda f: f.has_requirements(data), fields)
 
-    def _update_nuci_data(self):
-        for field in self._get_all_fields():
-            if field.nuci_path:
-                value = self._nuci_config.find_child(field.nuci_path)
-                if value:
-                    if not field.nuci_preproc:
-                        preprocessed = value.value
-                    else:
-                        preprocessed = field.nuci_preproc(value)
-                    # update if result is not None
-                    if preprocessed is not None:
-                        self._nuci_data[field.name] = preprocessed
-            elif field.nuci_preproc:
-                # we have preproc method, but no path - just pass all the data to preproc function
-                preprocessed = field.nuci_preproc(self._nuci_config)
-                # update if result is not None
-                if preprocessed is not None:
-                    self._nuci_data[field.name] = preprocessed
-            elif field.preproc:
-                self._request_data[field.name] = field.preproc(self._request_data[field.name])
-
     def add_section(self, *args, **kwargs):
         """
 
@@ -238,7 +203,6 @@ class ForisForm(ForisFormElement):
 
     def save(self):
         self.process_callbacks(self.data)
-        commit()
 
     def validate(self):
         self.validated = True
@@ -250,7 +214,6 @@ class ForisForm(ForisFormElement):
         Callback is a function taking argument `data` (contains form data) and returning
         a tuple `(action, *args)`.
         Action can be one of following:
-            - edit_config: args is Uci instance - send command for modifying Uci structure
             - save_result: arg[0] is dict of result_name->result - results are saved to
                            dictionary callback_results (instance attribute)
                            ValueError is raised when two callbacks use same result_name
@@ -274,9 +237,6 @@ class ForisForm(ForisFormElement):
                     if k in self.callback_results:
                         raise ValueError("save_result callback returned result with duplicate name: '%s'" % k)
                     self.callback_results[k] = v
-            elif operation == "edit_config":
-                data = cb_result[1:] if len(cb_result) > 1 else ()
-                add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
 
@@ -325,9 +285,10 @@ class Section(ForisFormElement):
 
 
 class Field(ForisFormElement):
-    def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
-                 nuci_preproc=None, preproc=None, validators=None, hint="", multifield=False,
-                 **kwargs):
+    def __init__(
+        self, main_form, type, name, label=None, required=False, preproc=None, validators=None,
+        hint="", multifield=False, **kwargs
+    ):
         """
 
         :param main_form: parent form of this field
@@ -336,9 +297,6 @@ class Field(ForisFormElement):
         :param name: field name (rendered also as HTML name attribute)
         :param label: display name of field
         :param required: True if field is mandatory
-        :param nuci_path: path in Nuci get response
-        :param nuci_preproc: function to process raw YinElement instance, returns field value
-        :type nuci_preproc: callable
         :param preproc: function to preprocess the value
         :type preproc: callable
         :param validators: validator or list of validators
@@ -351,8 +309,6 @@ class Field(ForisFormElement):
         #
         self.type = type
         self.name = name
-        self.nuci_path = nuci_path
-        self.nuci_preproc = nuci_preproc
         self.preproc = preproc
         if validators and not isinstance(validators, list):
             validators = [validators]
@@ -450,13 +406,7 @@ class Field(ForisFormElement):
             return label
 
         description = self.field.description
-        # LocalizableTextValue needs must stay localizable
-        if isinstance(description, LocalizableTextValue):
-            description = self.field.description
-            for k, v in description.iteritems():
-                description[k] = create_label(v)
-            return description
-        # otherwise return normal label
+
         return create_label(description)
 
     @property

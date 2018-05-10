@@ -40,7 +40,7 @@ setup(
     version=get_version(),
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
-    author_email="jan.cermak@nic.cz",
+    author_email="stepan.henek@nic.cz",
     url="https://gitlab.labs.nic.cz/turris/foris/",
     license="GPL-3.0",
     requires=[
@@ -57,8 +57,6 @@ setup(
         "foris.config",
         "foris.common",
         "foris.langs",
-        "foris.nuci",
-        "foris.nuci.modules",
         "foris.plugins",
         "foris.utils",
         "foris.ubus",
