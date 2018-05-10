@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:58+0200\n"
-"PO-Revision-Date: 2018-05-09 13:37+0000\n"
+"PO-Revision-Date: 2018-05-11 15:37+0000\n"
 "Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
@@ -312,7 +312,7 @@ msgid "Go to LuCI"
 msgstr "Aller sur LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Verrou ouvert"
 
 msgid "Your connection is not encrypted"
 msgstr "Votre connexion n'est pas chiffrée"
@@ -321,6 +321,8 @@ msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Une connexion sécurisée est une caractéristique de sécurité importante du "
+"routeur et donc de l'ensemble du réseau domestique."
 
 msgid "How to set an encrypted connection and why is it important"
 msgstr "Comment établir une connexion chiffrée et pourquoi est-ce important"
@@ -445,7 +447,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Paramètres Wi-Fi"
+msgstr "Réinitialiser les paramètres Wi-Fi"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -1016,7 +1018,7 @@ msgstr "Ignorer"
 
 #, fuzzy
 msgid "Dismiss All"
-msgstr "Ignorer"
+msgstr "Tout ignorer"
 
 msgid "No new messages."
 msgstr "Pas de nouveaux messages."
@@ -1109,9 +1111,8 @@ msgstr "Méthode HTTP incorrecte."
 msgid "Wi-Fi reset was successful."
 msgstr ""
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Échec lors de l'interrogation des serveurs de temps NTP."
+msgstr "Échec de la réinitialisation du Wi-Fi."
 
 msgid "Maintenance"
 msgstr "Maintenance"
@@ -1131,9 +1132,8 @@ msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"La configuration a été récupérée avec succès. Veuillez attendre un peu "
-"l'installation des mises à jour et le redémarrage automatique de "
-"l'équipement."
+"La configuration a été restaurée avec succès. Notez qu'un redémarrage sera "
+"nécessaire pour appliquer la configuration restaurée."
 
 msgid "Failed to restore the backup from the provided file."
 msgstr "Échec de la restauration de la sauvegarde à partir du fichier founit."
@@ -1319,17 +1319,15 @@ msgstr ""
 "ce réseau peuvent accéder l'internet, mais ne peuvent pas accéder à d'autres "
 "appareils ni à l'interface de configuration du routeur."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Activer le réseau invité"
+msgstr "IP du routeur dans le mode réseau invité"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Vous devez définir la plage d’adresses IP de votre réseau invité. Notez que "
-"la plage doit être différente des plages de vos autres réseaux (LAN, WAN, "
+"Adresse IP du routeur dans le réseau invité. Il est nécessaire que les IP "
+"des réseaux invités soient différentes des autres réseaux (LAN, WAN, VPN, "
 "VPN, etc.)."
 
 msgid "Guest network netmask"
@@ -1533,17 +1531,16 @@ msgstr "SSID pour les invités"
 msgid "Password for guests"
 msgstr "Mot de passe pour les invités"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
 "password. You can then set up your mobile devices, using the QR code "
 "available within the form."
 msgstr ""
-"Si vous souhaitez utiliser votre routeur comme point d’accès Wi-Fi, activez "
-"le Wi-Fi ici et définissez un SSID (le nom du point d’accès) et un mot de "
-"passe correspondant. Vous pouvez ensuite configurer vos périphériques "
-"mobiles, en utilisant le QR code disponible à côté du formulaire."
+"Si vous voulez utiliser votre routeur comme point d'accès Wi-Fi, activez le "
+"Wi-Fi ici et saisissez un SSID (le nom du point d'accès) et un mot de passe "
+"correspondant. Vous pouvez ensuite configurer vos appareils mobiles en "
+"utilisant le code QR disponible dans le formulaire."
 
 msgid "Wi-Fi settings"
 msgstr "Paramètres Wi-Fi"
@@ -1592,7 +1589,7 @@ msgstr "Passerelle"
 
 #, fuzzy
 msgid "DHCP hostname"
-msgstr "Démarrage DHCP"
+msgstr "Nom d'hôte DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
 msgstr ""
@@ -1645,9 +1642,8 @@ msgstr "Serveur DNS 1 (IPv6)"
 msgid "DNS server 2 (IPv6)"
 msgstr "Serveur DNS 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Personnalisé"
+msgstr "DUID personnalisé"
 
 msgid "DUID which will be provided to the dhcpv6 server."
 msgstr ""
