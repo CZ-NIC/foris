@@ -21,16 +21,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:59+0200\n"
-"PO-Revision-Date: 2017-12-03 11:29+0000\n"
+"PO-Revision-Date: 2018-05-17 11:21+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/"
-">\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
+"\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Táto položka je neplatná."
@@ -123,9 +123,8 @@ msgstr "Toto nie je platná MAC adresa."
 msgid "This is not a valid domain name."
 msgstr "Toto nie je platné doménové meno."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Toto nie je platný čas vo formáte HH:MM."
+msgstr "Toto nie je platný čas (vo formáte YYYY-MM-DD HH:MM:SS)."
 
 msgid ""
 "Your password contains non-standard characters. These are not forbidden, but "
@@ -316,30 +315,31 @@ msgid "Go to LuCI"
 msgstr "Prejsť na LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Otvorený zámok"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Vaše spojenie s routrom nie je šifrované"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"Šifrované spojenie je dôležitou bezpečnostnou vlastnosťou routra a tým aj "
+"celej vnútornej siete za ním."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Ako nastaviť šifrované spojenie a prečo je to dôležité"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
+"Od minulého reštartu sa objavili a neboli vymazané nasledujúce upozornenia."
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Nepodarilo sa položiť serveru dopyt."
+msgstr "Nepodarilo sa kontaktovať ntp servery."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Aktualizácia"
+msgstr "Aktualizovať čas"
 
 msgid "Hint"
 msgstr "Pomocník"
@@ -435,7 +435,7 @@ msgstr ""
 "frekvencie."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR kód"
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Vo Vašom zariadení sa nenašli žiadne Wi-Fi karty."
@@ -445,10 +445,12 @@ msgid ""
 "settings. Note that this will remove the current Wi-Fi configuration and "
 "restore the default values."
 msgstr ""
+"Pokiaľ počet Wi-Fi kariet nezodpovedá vášmu usporiadaniu, môžete skúsiť "
+"resetovať nastavenia Wi-Fi. Vezmite však na vedomie, že súčasné nastavenia "
+"Wi-Fi budú odstránené a nahradené predvolenými hodnotami."
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Nastavenie Wi-Fi"
+msgstr "Resetovať nastavenia Wi-Fi"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -627,6 +629,10 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Tu si môžete vyskúšať svoje nastavenia pripojenia. Než test spustíte, "
+"nezabudnite kliknúť na tlačidlo <strong>Uložiť</strong>. Občas môže trvať "
+"dlhšiu dobu, než sa pripojenie kompletne zinicializuje, preto nemusí byť na "
+"škodu pred testom pripojenia chvíľu počkať."
 
 msgid "IPv4 connectivity"
 msgstr "Konektivita IPv4"
@@ -731,20 +737,20 @@ msgid "Menu"
 msgstr "Menu"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Sieť sa reštartuje..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "Vaša sieť sa reštartuje. Čakajte, prosím..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Reštartovať"
+msgstr "Reštartuje sa..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Váš router sa práve reštartuje."
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
+"Aby mohol váš router správne fungovať, tak je potrebné spraviť jeho reštart."
 
 msgid "Reboot now"
 msgstr "Reštartovať teraz"
@@ -1003,9 +1009,8 @@ msgstr "verzia forisu:"
 msgid "Dismiss"
 msgstr "Zahodiť"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Zahodiť"
+msgstr "Všetko vymazať"
 
 msgid "No new messages."
 msgstr "Žiadne nové správy."
@@ -1052,9 +1057,8 @@ msgstr "Toto nie je platný čas vo formáte HH:MM."
 msgid "MAC address is not valid."
 msgstr "Nie je platná MAC adresa."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Nie je platná MAC adresa."
+msgstr "Duid nie je platné."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -1073,9 +1077,8 @@ msgstr "Niektoré z vami zadaných údajov nie sú platné."
 msgid "Notifications"
 msgstr "Upozornenia"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Zasielať upozornenia"
+msgstr "Počet upozornení"
 
 msgid "Old password you entered was not valid."
 msgstr "Vami zadané pôvodné heslo je neplatné."
@@ -1087,6 +1090,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"Vaše nastavenie WAN pravdepodobne nie je správne alebo WAN rozhranie ešte "
+"nebolo správne zinicializované."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1097,11 +1102,10 @@ msgid "Wrong HTTP method."
 msgstr "Neplatná HTTP metóda."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "Zresetovanie nastavenia Wi-Fi prebehlo úspešne."
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Nepodarilo sa položiť serveru dopyt."
+msgstr "Nepodarilo sa zresetovať nastavenie Wi-Fi."
 
 msgid "Maintenance"
 msgstr "Údržba"
@@ -1110,23 +1114,21 @@ msgid "Testing message was sent, please check your inbox."
 msgstr ""
 "Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju schránku."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
-"Posielanie testovacej správy zlyhalo. Zlyhanie bolo pravdepodobne spôsobené "
-"nesprávnym nastavením.<br>Vrátená chyba:<br><pre>%(error)s</pre>"
+"Odoslanie testovacej správy sa nepodarilo – je možné, že vaše nastavenia nie "
+"sú správne."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Nastavenie bolo úspešne obnovené. Počkajte, prosím, na aktualizáciu "
-"zariadenia a automatické reštartovanie routera."
+"Nastavenie bolo úspešne obnovené. Pamätajte však, že aby sa obnovené "
+"nastavenie uplatnilo, bude potrebné spraviť reštart."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Z poskytnutého súboru sa nepodarilo obnoviť zálohu."
 
 msgid "Update was approved."
 msgstr "Aktualizácia bola schválená."
@@ -1148,7 +1150,7 @@ msgstr ""
 "nainštalovať alebo odstrániť."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Aktualizácie sú spustené"
 
 msgid "Data collection"
 msgstr "Zber dát"
@@ -1190,6 +1192,8 @@ msgstr ""
 
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Routru sa nepodarilo overiť voči serveru. Skúste, prosím, svoj e-mail overiť "
+"neskôr."
 
 msgid "About"
 msgstr "O routeri"
@@ -1264,14 +1268,13 @@ msgid "Router IP address"
 msgstr "IP adresa routera"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "IP adresa routra v rámci vnútornej siete."
 
-#, fuzzy
 msgid "Network netmask"
-msgstr "Maska podsiete"
+msgstr "Maska siete"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Maska vnútornej siete."
 
 msgid "Enable DHCP"
 msgstr "Zapnúť DHCP"
@@ -1307,25 +1310,22 @@ msgstr ""
 "internetu, ale nemajú prístup k ostatným zariadeniam, ani k nastaveniu "
 "routera."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Povoliť sieť pre hostí"
+msgstr "IP adresa routra v rámci siete pre hostí"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Potrebujete nastaviť rozsah IP adries pre vašu sieť pre hostí. Aby všetko "
-"fungovalo, mal by byť iný než rozsahy vašich ďalších sietí (LAN, WAN, VPN, "
-"atď.)."
+"IP adresa routra v rámci siete pre hostí. Aby všetko fungovalo, je nutné, "
+"aby šlo o inú podsieť, než sú podsiete ostatných sieťových segmentov (LAN, "
+"WAN, VPN, atď.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Sieť pre hostí"
+msgstr "Maska siete pre hostí"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Maska siete pre hostí."
 
 msgid "Guest Lan QoS"
 msgstr "Rýchlostný limit siete pre hostí"
@@ -1519,7 +1519,6 @@ msgstr "Názov siete pre hostí"
 msgid "Password for guests"
 msgstr "Heslo k sieti pre hostí"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
@@ -1527,9 +1526,9 @@ msgid ""
 "available within the form."
 msgstr ""
 "Pokiaľ chcete používať tento router na pripájanie ďalších zariadení k "
-"internetu pomocou Wi-Fi, povoľte v nasledujúcom formulári Wi-Fi a vyberte si "
+"internetu pomocou Wi-Fi, zapnite ju v nasledujúcom formulári a vyberte si "
 "SSID (názov prístupového bodu) a príslušné heslo.<br><br>Mobilné zariadenia "
-"môžete jednoducho nastaviť načítaním QR kódu zobrazeného vedľa formulára."
+"môžete jednoducho nastaviť načítaním QR kódu zobrazeného vnútri formulára."
 
 msgid "Wi-Fi settings"
 msgstr "Nastavenie Wi-Fi"
@@ -1576,16 +1575,14 @@ msgstr "Maska podsiete"
 msgid "Gateway"
 msgstr "Brána"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "Začiatok DHCP rozsahu"
+msgstr "DHCP názov stroja"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Identifikátor klienta, ktorý bude poslaný DHCP serveru."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS server 1"
+msgstr "DNS server 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1594,9 +1591,8 @@ msgstr ""
 "Adresa DNS servera nie je potrebná - vstavaný DNS resolver dokáže pracovať "
 "bez nej."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS server 2"
+msgstr "DNS server 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "PAP/CHAP meno"
@@ -1625,20 +1621,17 @@ msgstr "IPv6 prefix"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresný rozsah pre vnútornú sieť, napr. 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS server 1"
+msgstr "DNS server 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS server 2"
+msgstr "DNS server 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Vlastný"
+msgstr "Vlastné DUID"
 
 msgid "DUID which will be provided to the dhcpv6 server."
-msgstr ""
+msgstr "DUID, ktoré bude poslané dhcpv6 serveru."
 
 msgid "Custom MAC address"
 msgstr "Vlastná MAC adresa"
@@ -1676,7 +1669,7 @@ msgid "Password (repeat)"
 msgstr "Heslo (pre kontrolu)"
 
 msgid "Passwords are not equal."
-msgstr "Hesla sa nezhodujú."
+msgstr "Zadané heslá sa nezhodujú."
 
 msgid "Use the same password for advanced configuration"
 msgstr "Používať rovnaké heslo pre pokročilé nastavenie"
@@ -1741,37 +1734,38 @@ msgstr ""
 "počítačom pomocou nasledujúceho formulára. Správny čas sa vyžaduje pre "
 "fungovanie určitých služieb routera."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Čas reštartu"
+msgstr "Oblasť a čas"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Je dôležité, aby mal router správne nastavený čas. Pokiaľ by bol čas "
+"oneskorený, niektoré SSL certifikáty, ktorým skončila platnosť, by sa tým "
+"mohli javiť ako platné."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Čas by mal byť aktuálny, inak nemusia správne fungovať DNS a ďalšie služby."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Čas reštartu"
+msgstr "Ako nastaviť čas"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Zvoľte metódu pre udržiavanie aktuálneho času na routri."
 
 msgid "via ntp"
-msgstr ""
+msgstr "cez ntp protokol"
 
-#, fuzzy
 msgid "manually"
-msgstr "Nastaviť čas ručne"
+msgstr "ručne"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Čas vo formáte YYYY-MM-DD HH:MM:SS."
 
 msgid "Updater"
 msgstr "Updater"
@@ -1959,10 +1953,10 @@ msgid "Uninstall"
 msgstr "Odinštalovať"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Prechod na novšiu verziu"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Návrat k staršej verzii"
 
 #, python-format
 msgid "Configuration wizard - step %s"

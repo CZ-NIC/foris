@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2018-01-24 12:22+0000\n"
+"PO-Revision-Date: 2018-05-17 11:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål "
-"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
+"foris/nb/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "Configuration was successfully saved."
 msgstr "Oppsettet ble lagret."
@@ -102,10 +102,13 @@ msgstr "Oppgraderingen ble utsatt."
 msgid "Failed to postpone the update."
 msgstr "Klarte ikke å utsette oppgraderingen."
 
+#, fuzzy
 msgid ""
 "Configuration was successfully saved. Selected packages should be installed "
 "or removed shortly."
-msgstr "Oppsett lagret. Valgte pakker vil bli installert eller fjernet sn"
+msgstr ""
+"Oppsett lagret. Valgte pakker vil bli installert eller fjernet i løpet av "
+"kort tid."
 
 msgid "Data collection"
 msgstr "Datainnsamling"
@@ -365,6 +368,7 @@ msgstr "uCollect"
 msgid "Emulated services"
 msgstr "Emulerte tjenester"
 
+#, fuzzy
 msgid ""
 "One of uCollect's features is emulation of some commonly abused services. If "
 "this function is enabled, uCollect is listening for incoming connection "
@@ -372,6 +376,11 @@ msgid ""
 "if another service is already listening on its default port (port numbers "
 "are listed below)."
 msgstr ""
+"En av uCollects funksjoner er emulering av noen tjenester som ofte "
+"misbrukes. Hvis denne funksjonen er påslått, vil uCollect lytte etter "
+"innkommende forsøk for de tjenestene. Å skru på emulerte tjenester har ingen "
+"effekt hvis en annen tjeneste allerede lytter på sin forvalgte port ("
+"portnummer er opplistet nedenfor)."
 
 msgid "Telnet (23/TCP)"
 msgstr "Telnet (23/TCP)"
@@ -394,10 +403,13 @@ msgstr "HTTP-mellomtjener (8080/TCP)"
 msgid "Collect credentials"
 msgstr "Samle inn innloggingsdetaljer"
 
+#, fuzzy
 msgid ""
 "If this option is enabled, user names and passwords are collected and sent "
 "to server in addition to the IP address of the client."
 msgstr ""
+"Hvis dette valget er påskrudd, vil brukernavn og passord bli sendt til "
+"tjenesten, i tillegg til IP-adressen til klienten."
 
 msgid "Enable data collection"
 msgstr "Skru på datainnsamling"
@@ -415,6 +427,8 @@ msgid ""
 "Set your password for this administration interface. The password must be at "
 "least 6 characters long."
 msgstr ""
+"Sett passordet ditt for dette administrasjonsgrensesnittet. Passordet må "
+"være minst 6 tegn langt."
 
 msgid "Current password"
 msgstr "Nåværende passord"
@@ -436,6 +450,7 @@ msgstr "Passordene samsvarer ikke."
 msgid "Use the same password for advanced configuration"
 msgstr "Bruk samme passord for avansert oppsett."
 
+#, fuzzy
 msgid ""
 "Same password would be used for accessing this administration interface, for "
 "root user in LuCI web interface and for SSH login. Use a strong password! "
@@ -443,6 +458,11 @@ msgid ""
 "will have the option to do so later. Until then, the root account will be "
 "blocked.)"
 msgstr ""
+"Samme passord vil bli brukt for tilgang til dette "
+"administrasjonsgrensesnittet, for root-brukeren i LuCI-nettgrensesnittet og "
+"SSH-innlogging. Bruk et sterkt passord! (Hvis du velger å ikke sette "
+"passordet for avansert oppsett her, vil du kunne gjøre det senere. Inntil "
+"da, vil root-kontoen forbli blokkert.)"
 
 msgid "Region settings"
 msgstr "Regionsinnstillinger"
@@ -473,16 +493,24 @@ msgid ""
 "configuration options can be managed either through the <a href=\"//%(host)s/"
 "%(path)s\">LuCI web interface</a> or over SSH."
 msgstr ""
+"For å kunne få tilgang til avanserte oppsettsmuligheter som ikke finnes her, "
+"må du ha root-brukerens passord. Avanserte oppsettsvalg kan endres enten "
+"gjennom <a href=\"//%(host)s/%(path)s\">LuCI-nettgrensesnittet</a> eller "
+"over SSH."
 
 msgid "Time"
 msgstr "Tid"
 
+#, fuzzy
 msgid ""
 "We could not synchronize the time with a timeserver, probably due to a loss "
 "of connection. It is necessary for the router to have correct time in order "
 "to function properly. Please, synchronize it with your computer's time, or "
 "set it manually."
 msgstr ""
+"Kunne ikke synkronisere tid med tidstjener, antagelig som følge av "
+"tilkoblingsavbrudd. Det er nødvendig for ruteren å ha rett tid for å fungere "
+"rett. Synkroniser med datamaskinens tid, eller sett den manuelt."
 
 msgid "Backup file"
 msgstr "Sikkerhetskopifil"
@@ -520,11 +548,12 @@ msgstr ""
 "godkjenne dem manuelt."
 
 msgid "Update approval needed"
-msgstr ""
+msgstr "Oppdateringsgodkjennelse trengs"
 
 msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr ""
+msgstr "Du må godkjenne oppdateringene, ellers vil de ikke bli installert."
 
+#, fuzzy
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart from "
 "the standard installation, you can optionally select lists of additional "
@@ -534,6 +563,13 @@ msgid ""
 "Updater. Software that has been installed manually or using opkg is not "
 "affected."
 msgstr ""
+"Oppdateringsfunksjonen er en tjeneste som holder all TurrisOS-programvare "
+"oppdatert. Annet enn den forvalgte installasjonen, kan du valgfritt velge "
+"lister over tilleggsprogramvare som kan installeres på ruteren. Denne "
+"programvaren kan velges fra følgende liste. Merk at kun programvare som er "
+"del av TurrisOS, eller som har blitt installert fra en pakkeliste som "
+"vedlikeholdes av oppdateringsfunksjonen. Den har ikke innvirkning på "
+"programvare som har blitt installert manuelt eller ved bruk av OPKG."
 
 msgid ""
 "If you want to use other language than English you can select it from the "
@@ -556,6 +592,16 @@ msgid ""
 "new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
 "page</strong> in your browser."
 msgstr ""
+"Denne delen inneholder innstillinger for lokalnettverket (LAN). Medfølgende "
+"forvalgte innstillinger fungerer på de fleste nettverk. "
+"<br><strong>Merk:</strong>Hvis du endrer ruterens IP-adresse, vil alle "
+"datamaskiner i LAN-et, antageligvis også den du bruker nå, måtte innhente en "
+"<strong>ny IP-adresse</strong> som <strong>ikke</strong> skjer "
+"<strong>umiddelbart</strong>. Det anbefales å koble fra og koble til alle "
+"LAN-kabler etter å ha sendt inn endringer for å framtvinge oppdateringen. "
+"Neste side vil ikke innlastes med til du skaffer en ny IP fra DHCP (hvis det "
+"er påskrudd) og du trenger å <strong>gjenoppfriske siden</strong> i din "
+"nettleser."
 
 msgid "Router IP address"
 msgstr "Ruterens IP-adresse"
@@ -564,17 +610,23 @@ msgid ""
 "Router's IP address in inner network. Also defines the range of assigned IP "
 "addresses."
 msgstr ""
+"Ruterens IP-adresse fra et internt nettvker. Definerer også et spenn "
+"tildelte IP-adresser."
 
 msgid "Enable DHCP"
 msgstr "Skru på DHCP"
 
+#, fuzzy
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
+"Skru på dette for å automatisk tildele IP-adresser til enhetene tilkoblet "
+"ruteren."
 
+#, fuzzy
 msgid "DHCP start"
-msgstr ""
+msgstr "DHCP-startadresse"
 
 msgid "DHCP max leases"
 msgstr "Maks. antall DHCP-tildelinger"
@@ -788,13 +840,13 @@ msgid ""
 msgstr ""
 
 msgid "IPv6 gateway"
-msgstr ""
+msgstr "IPv6-portner"
 
 msgid "IPv6 prefix"
-msgstr ""
+msgstr "IPv6-prefiks"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
+msgstr "Adresseområde for lokalnettverk, f.eks. 2001:db8:be13:37da::/64"
 
 msgid "Use Modem Turris"
 msgstr "Bruk Turris-modem"
@@ -806,7 +858,7 @@ msgid ""
 msgstr ""
 
 msgid "xDSL VLAN number"
-msgstr ""
+msgstr "xDSL VLAN-nummer"
 
 msgid ""
 "VLAN number for your internet connection. Your ISP might have provided you "
@@ -814,11 +866,12 @@ msgid ""
 "empty, a default value will be used automatically."
 msgstr ""
 
+#, fuzzy
 msgid "Both VPI and VCI must be filled or both must be empty."
-msgstr ""
+msgstr "Både VPI og VCI må fylles ut og ingen av dem kan være tomme."
 
 msgid "VPI"
-msgstr ""
+msgstr "VPI"
 
 msgid ""
 "Virtual Path Identifier (VPI) is a parameter that you might have received "
@@ -827,7 +880,7 @@ msgid ""
 msgstr ""
 
 msgid "VCI"
-msgstr ""
+msgstr "VCI"
 
 msgid ""
 "Virtual Circuit Identifier (VCI) is a parameter that you might have received "
@@ -857,7 +910,7 @@ msgid "Connectivity test"
 msgstr "Tilkoblingstest"
 
 msgid "Automatic updates"
-msgstr ""
+msgstr "Automatiske oppdateringer"
 
 msgid "Installation finished"
 msgstr "Installasjon fullført"
@@ -866,6 +919,8 @@ msgid ""
 "Data collection is currently enabled. You can not disable updater without "
 "disabling the data collection first."
 msgstr ""
+"Datainnsamling er påslått. Du kan ikke skru av oppdateringsfunksjonen uten å "
+"skru av datainnsamling først."
 
 msgid ""
 "Update approvals can be useful when you want to make sure that updates won't "
@@ -886,7 +941,7 @@ msgstr ""
 
 #, python-format
 msgid "after %(input)s hours"
-msgstr ""
+msgstr "etter %(input)s timer"
 
 msgid "Hint"
 msgstr "Hint"
@@ -949,7 +1004,7 @@ msgid "IPv6 gateway connectivity"
 msgstr ""
 
 msgid "DNSSEC"
-msgstr ""
+msgstr "DNSSEC"
 
 msgid "Test connection"
 msgstr "Test forbindelsen"
@@ -1003,16 +1058,17 @@ msgstr "Forsendelse av uCollect-data"
 
 #, python-format
 msgid "Time of last update: %(datetime)s"
-msgstr ""
+msgstr "Tidspunkt for siste oppdatering: %(datetime)s"
 
 #, python-format
 msgid "(status updated %d second ago)"
 msgid_plural "(status updated %d seconds ago)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(status oppdatert for %d sekund siden)"
+msgstr[1] "(status oppdatert for %d sekunder siden)"
 
+#, fuzzy
 msgid "Sending of firewall logs"
-msgstr ""
+msgstr "Innsending av brannmurslogger"
 
 msgid "Refresh"
 msgstr "Gjenoppfrisk"
@@ -1043,10 +1099,12 @@ msgid ""
 "The Updater is currently disabled. You must enable it first to manage "
 "package lists."
 msgstr ""
+"Oppdateringsfunksjonen er avskrudd. Du må skru den på først for å behandle "
+"pakkelister."
 
 #, python-format
 msgid "Approve update from %(when)s"
-msgstr ""
+msgstr "Godkjenn oppdatering fra %(when)s"
 
 msgid "Uninstall"
 msgstr "Avinstaller"
@@ -1055,7 +1113,7 @@ msgid "Install"
 msgstr "Installer"
 
 msgid "Note that a reboot will be triggered after the update."
-msgstr ""
+msgstr "Merk at en omstart vil utløses etter oppdateringen."
 
 msgid "Install now"
 msgstr "Installer nå"
@@ -1065,12 +1123,16 @@ msgstr "Nekt"
 
 msgid "No package will be installed unless you install the updates above."
 msgstr ""
+"Ingen pakke vil bli installert med mindre du installerer oppdateringene "
+"ovenfor."
 
 #, python-format
 msgid ""
 "If you don't install the updates manually, they will be installed "
 "automatically after %(time)s."
 msgstr ""
+"Hvis du ikke installerer oppdateringene manuelt, vil de installeres "
+"automatisk etter %(time)s."
 
 msgid "Package lists"
 msgstr "Pakkelister"
@@ -1079,6 +1141,8 @@ msgid ""
 "List of available software was not downloaded from the server yet. Please "
 "come back later."
 msgstr ""
+"Liste over tilgjengelig programvare ble ikke lastet ned fra tjeneren enda. "
+"Kom tilbake senere."
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1095,11 +1159,12 @@ msgstr ""
 msgid "No new messages."
 msgstr "Ingen nye meldinger."
 
+#, fuzzy
 msgid "We were unable to detect any wireless cards in your router."
-msgstr ""
+msgstr "Fant ingen trådløskort i ruteren din."
 
 msgid "Notifications and automatic restarts"
-msgstr ""
+msgstr "Merknader og automatiske omstarter"
 
 msgid ""
 "You can set the router to notify you when a specific event occurs, for "
@@ -1122,7 +1187,7 @@ msgid "Send testing message"
 msgstr "Send testmelding"
 
 msgid "Configuration backup"
-msgstr ""
+msgstr "Sikkerhetskopi av oppsett"
 
 msgid ""
 "If you need to save the current configuration of this device, you can "
@@ -1132,10 +1197,10 @@ msgid ""
 msgstr ""
 
 msgid "Download configuration backup"
-msgstr ""
+msgstr "Last ned sikkerhetskopi av oppsett"
 
 msgid "Configuration restore"
-msgstr ""
+msgstr "Gjenopprettelse av oppsett"
 
 msgid ""
 "To restore the configuration from a backup file, upload it using following "
@@ -1194,15 +1259,16 @@ msgstr ""
 msgid "This value should be alphanumeric."
 msgstr ""
 
+#, fuzzy
 msgid "This value should not be blank."
-msgstr ""
+msgstr "Verdien kan ikke stå tom."
 
 msgid "This value is required."
 msgstr "Påkrevd verdi."
 
-#, python-format
+#, fuzzy, python-format
 msgid "This value should be greater than or equal to %s."
-msgstr ""
+msgstr "Verdien må vøre større eller lik %s."
 
 #, python-format
 msgid "This value should be lower than or equal to %s."
@@ -1210,60 +1276,64 @@ msgstr ""
 
 #, python-format
 msgid "This value should be between %s and %s."
-msgstr ""
+msgstr "Verdien må være mellom %s og %s."
 
 #, python-format
 msgid "This value is too short. It should have %s characters or more."
-msgstr ""
+msgstr "Denne verdien er for kort. Den bør har %s tegn eller mer."
 
 #, python-format
 msgid "This value is too long. It should have %s characters or fewer."
-msgstr ""
+msgstr "Denne verdien er for lang. Den bør ha %s tegn eller mindre."
 
 #, python-format
 msgid ""
 "This value length is invalid. It should be between %s and %s characters long."
-msgstr ""
+msgstr "Denne verdilengden er ugyldig. Den bør være mellom %s og %s tegn lang."
 
 #, python-format
 msgid "You must select at least %s choices."
-msgstr ""
+msgstr "Du må velge ut minst %s valg."
 
 #, python-format
 msgid "You must select %s choices or fewer."
-msgstr ""
+msgstr "Du må velge ut minst %s tegn eller færre."
 
 #, python-format
 msgid "You must select between %s and %s choices."
-msgstr ""
+msgstr "Du må velge ut mellom %s og %s valg."
 
 msgid "This value should be the same."
-msgstr ""
+msgstr "Denne verdien skal være den samme."
 
 msgid "This is not a valid IPv4 address."
-msgstr ""
+msgstr "Dette er ikke en gyldig IPv4-adresse."
 
 msgid "This is not a valid IPv4 netmask."
-msgstr ""
+msgstr "Dette er ikke en gyldig IPv4-nettmaske."
 
 msgid "This is not a valid IPv4 prefix."
-msgstr ""
+msgstr "Dette er ikke et gyldig IPv4-prefiks."
 
 msgid "This is not a valid IPv6 prefix."
-msgstr ""
+msgstr "Dette er ikke et gyldig IPv6-prefiks."
 
 msgid "This is not a valid MAC address."
-msgstr ""
+msgstr "Dette er ikke en gyldig MAC-adresse."
 
 msgid ""
 "Your password contains non-standard characters. These are not forbidden, but "
 "could cause problems on some devices."
 msgstr ""
+"Passordet inneholder tegn utenom standardsettet. Disse er ikke forbudt, men "
+"kan forårsake problemer på noen enheter."
 
 msgid ""
 "Your SSID contains non-standard characters. These are not forbidden, but "
 "could cause problems on some devices."
 msgstr ""
+"Din SSID inneholder tegn utenom standardsettet. Disse er ikke forbudt, men "
+"kan forårsake problemer på noen enheter."
 
 msgid "OK"
 msgstr "OK"
@@ -1276,6 +1346,7 @@ msgstr "Laster…"
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
+"Tilkoblingstest mislyktes, tester tilkobling med avskrudd videresending."
 
 msgid ""
 "The IP address of your router has been changed. It should be accessible from "
@@ -1343,7 +1414,7 @@ msgid ""
 msgstr ""
 
 msgid "Important updates"
-msgstr ""
+msgstr "Viktige oppdateringer"
 
 msgid ""
 "Important updates that require a device restart have been installed. Some "
@@ -1352,13 +1423,13 @@ msgid ""
 msgstr ""
 
 msgid "Continue to configuration interface"
-msgstr ""
+msgstr "Fortsett til oppsettsgrensesnittet"
 
 msgid "Checking internet connectivity."
-msgstr ""
+msgstr "Sjekk internettforbindelse."
 
 msgid "One moment, please..."
-msgstr ""
+msgstr "Et øyeblikk…"
 
 msgid "Done"
 msgstr "Ferdig"
@@ -1399,13 +1470,13 @@ msgid ""
 msgstr ""
 
 msgid "Do not unplug the device during update!"
-msgstr ""
+msgstr "Ikke skru av enheten under oppdatering!"
 
 msgid "Check of available updates in progress."
-msgstr ""
+msgstr "Ser etter tilgjengelige oppdateringer."
 
 msgid "Firmware update was successful, you can proceed to the next step."
-msgstr ""
+msgstr "Fastvare oppdatert, du kan fortsette til neste steg."
 
 msgid ""
 "Firmware update has failed due to a connection or installation error. You "
@@ -1413,9 +1484,12 @@ msgid ""
 "do not worry much about the update as the router will run the updater "
 "regularly."
 msgstr ""
+"Fastvareoppdatering mislyktes på grunn av en installasjonsfeil. Du burde "
+"sjekke din kabeltilkobling for du fortsetter til neste steg. Ikke bekymre "
+"deg om oppdateringen, ruteren kjører oppdateringsfunksjonen jevnlig."
 
 msgid "Updater has returned the following error:"
-msgstr ""
+msgstr "Oppdateringen returnerte følgende feil:"
 
 msgid "Device has been restarted."
 msgstr "Enheten har blitt startet på nytt."
@@ -1482,13 +1556,14 @@ msgid "Continue to the configuration interface"
 msgstr ""
 
 msgid "Synchronize with your computer clock"
-msgstr ""
+msgstr "Synkroniser med datamaskinens tid"
 
 msgid "Set time manually"
-msgstr ""
+msgstr "Sett tiden manuelt"
 
+#, fuzzy
 msgid "Synchronization successful."
-msgstr ""
+msgstr "Synkronisert."
 
 msgid "Time settings"
 msgstr "Tidsinnstillinger"
@@ -1500,7 +1575,7 @@ msgid "Time was successfully synchronized, you can move to the next step."
 msgstr ""
 
 msgid "Project:Turris"
-msgstr ""
+msgstr "Prosjekt:Turris"
 
 msgid "Skip wizard"
 msgstr "Hopp over veiviser"
@@ -1538,20 +1613,24 @@ msgstr ""
 
 msgid ""
 "Automatic updates are offered to the Turris router owners free of charge."
-msgstr ""
+msgstr "Automatiske oppdateringer tilbys Turris-rutereiere gratis."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr ""
+msgstr "Oppdateringer forberedes eksklusivt av CZ.NIC, z. s. p. o."
 
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional security "
 "features of Turris router."
 msgstr ""
+"Aktivering av automatiske oppdateringer er en forutsetning for ytterligere "
+"sikkerhetsfunksjoner for Turris-ruteren."
 
 msgid ""
 "Automatic updates take place at the time of their release, the time of "
 "installation cannot be influenced by the user."
 msgstr ""
+"Automatiske oppdateringer finner sted når de blir sluppet, "
+"installasjonstidspunktet kan ikke påvirkes av brukeren."
 
 msgid ""
 "Having the automatic updates turned on can result in increased Internet "
@@ -1575,6 +1654,9 @@ msgid ""
 "this Turris router and you agree with the full text of the <a href=\"https://"
 "www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
+"Ved å skru på automatiske oppdateringer, bekrefter du at du eier denne "
+"Turris-ruteren og du samtykker til hele teksten som utgjør <a href=\""
+"https://www.turris.cz/omnia-updater-eula\">lisensvilkårene</a>."
 
 msgid "Log in"
 msgstr "Logg inn"
@@ -1598,7 +1680,7 @@ msgid "News"
 msgstr "Nyheter"
 
 msgid "Update"
-msgstr ""
+msgstr "Oppdater"
 
 msgid "%Y/%m/%d %H:%M:%S"
 msgstr ""

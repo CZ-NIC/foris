@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-17 16:58+0200\n"
-"PO-Revision-Date: 2017-12-08 20:15+0000\n"
+"PO-Revision-Date: 2018-04-29 07:23+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
 "hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 3.0-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Ez az érték érvénytelennek tűnik."
@@ -110,9 +110,8 @@ msgstr "Érvénytelen MAC-cím."
 msgid "This is not a valid domain name."
 msgstr "Nem érvényes tartománynév."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Nem szabályos ÓÓ:PP időformátum."
+msgstr "Nem szabályos (ÉÉÉÉ-HH-NN ÓÓ:PP:MM) időformátum."
 
 msgid ""
 "Your password contains non-standard characters. These are not forbidden, but "
@@ -301,30 +300,32 @@ msgid "Go to LuCI"
 msgstr "Ugrás a LuCI-ra"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Nyitott zár"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "A kapcsolat nem titkosított"
 
 msgid ""
 "A secure connection is an important safety feature of the router and "
 "therefore the entire home network."
 msgstr ""
+"A biztonságos kapcsolat az útvonalválasztónak és így az teljes otthoni "
+"hálózatnak egy fontos biztonsági funkciója."
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Hogyan kell beállítani a titkosított kapcsolatot, és ez miért fontos"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last reboot."
 msgstr ""
+"Az alábbi értesítések érkeztek és  az utolsó újraindítás óta még nem lettek "
+"tudomásul véve."
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Kiszolgáló lekérdezése sikertelen."
+msgstr "NTP-kiszolgáló lekérdezése sikertelen."
 
-#, fuzzy
 msgid "Update time"
-msgstr "Frissítés"
+msgstr "Frissítés ideje"
 
 msgid "Hint"
 msgstr "Tipp"
@@ -420,7 +421,7 @@ msgstr ""
 "GHz-es diplexer részre csatlakoznak."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR-kód"
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Nem sikerült felismerni a routerben semmilyen vezeték-nélküli kártyát."
@@ -430,10 +431,12 @@ msgid ""
 "settings. Note that this will remove the current Wi-Fi configuration and "
 "restore the default values."
 msgstr ""
+"Ha a vezeték nélküli kártyák száma nem egyezik, megpróbálhatja a Wi-Fi "
+"beállításokat visszaállítani. Vegye figyelembe, hogy ez el fogja távolítani "
+"a meglévő Wi-Fi beállításokat és visszaállítja az alapértelmezett értékeket."
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Wi-Fi beállítások"
+msgstr "Wi-Fi beállítások visszaállítása"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without "
@@ -613,6 +616,10 @@ msgid ""
 "takes a while before the connection is fully initialized. So it might be "
 "useful to wait for a while before running this test."
 msgstr ""
+"Itt lehet tesztelni a kapcsolat beállításait. Ne feledje, hogy kattintson a "
+"<strong>Mentés</strong> gombra a teszt futtatása előtt. Vegye figyelembe, "
+"hogy néha eltart egy darabig, mielőtt a kapcsolat teljesen létrejön. Így "
+"érdemes lehet a teszt futtatása előtt kicsit várni."
 
 msgid "IPv4 connectivity"
 msgstr "IPv4-kapcsolat"
@@ -714,20 +721,20 @@ msgid "Menu"
 msgstr "Menü"
 
 msgid "Network is restarting..."
-msgstr ""
+msgstr "Hálózat újraindítása..."
 
 msgid "Your network is being restarted. Wait, please..."
-msgstr ""
+msgstr "A hálózat újraindul. Kérem várjon..."
 
-#, fuzzy
 msgid "Rebooting..."
-msgstr "Újraindítás"
+msgstr "Újraindítás..."
 
 msgid "Your router is being rebooted."
-msgstr ""
+msgstr "Az útválasztó újraindul."
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
+"Az útválasztót újra kell indítani annak érdekében, hogy megfelelően működjön."
 
 msgid "Reboot now"
 msgstr "Újraindítás most"
@@ -986,9 +993,8 @@ msgstr "Foris verzió:"
 msgid "Dismiss"
 msgstr "Elvetés"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Elvetés"
+msgstr "Minden elvetése"
 
 msgid "No new messages."
 msgstr "Nincs új üzenet."
@@ -1034,9 +1040,8 @@ msgstr "Nem szabályos ÓÓ:PP időformátum."
 msgid "MAC address is not valid."
 msgstr "Érvénytelen MAC-cím."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Érvénytelen MAC-cím."
+msgstr "Érvénytelen DUID-cím."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -1055,9 +1060,8 @@ msgstr "Adatbevitelében néhány hiba található."
 msgid "Notifications"
 msgstr "Értesítések"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Értesítések engedélyezése"
+msgstr "Értesítések száma"
 
 msgid "Old password you entered was not valid."
 msgstr "A régi jelszó érvénytelen."
@@ -1069,6 +1073,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"A WAN konfiguráció valószínűleg nem megfelelő, vagy a WAN interfész még nem "
+"lett megfelelően inicializálva."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1079,11 +1085,10 @@ msgid "Wrong HTTP method."
 msgstr "Hibás HTTP-metódus."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "A Wi-Fi visszaállítása sikerült."
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Kiszolgáló lekérdezése sikertelen."
+msgstr "A Wi-Fi visszaállítása sikertelen."
 
 msgid "Maintenance"
 msgstr "Karbantartás"
@@ -1091,23 +1096,20 @@ msgstr "Karbantartás"
 msgid "Testing message was sent, please check your inbox."
 msgstr "Tesztüzenet elküldve, ellenőrizze a postaládáját."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly wrong."
 msgstr ""
-"Tesztüzenet elküldése nem sikerült, a beállítás valószínűleg nem megfelelő. "
-"<br>Hibaüzenet: <br><pre>%(error)s</pre>"
+"Tesztüzenet elküldése nem sikerült, a beállítás valószínűleg nem megfelelő."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be required "
 "to apply restored configuration."
 msgstr ""
-"Beállítás sikeresen visszaállítva. Kérem, várja meg a frissítések "
-"telepítését és a készülék automatikus újraindulását."
+"Beállítás sikeresen visszaállítva. Újraindítás is szükséges a beállítások "
+"alkalmazásához."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Nem sikerült visszaállítani a biztonsági mentést a megadott fájlból."
 
 msgid "Update was approved."
 msgstr "Frissítés jóváhagyva."
@@ -1129,7 +1131,7 @@ msgstr ""
 "eltávolításra kerülnek."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "A Frissítéskekzelő fut"
 
 msgid "Data collection"
 msgstr "Adatgyűjtés"
@@ -1170,6 +1172,8 @@ msgstr ""
 
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Az útválasztó felhatalmazása nem sikerült. Kérem, próbálja meg e-mail "
+"címünket érvényesíteni később."
 
 msgid "About"
 msgstr "Névjegy"
@@ -1245,14 +1249,13 @@ msgid "Router IP address"
 msgstr "Útválasztó IP-címe"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "A belső hálózati útválasztó IP-címe."
 
-#, fuzzy
 msgid "Network netmask"
 msgstr "Hálózati maszk"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "A belső hálózat hálózati maszkja."
 
 msgid "Enable DHCP"
 msgstr "DHCP engedélyezése"
@@ -1288,24 +1291,21 @@ msgstr ""
 "készülékek elérik az internetet, de nem engedélyezett a hozzáférés más "
 "eszközökhöz és a router beállítási felületéhez."
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Vendég hálózat engedélyezése"
+msgstr "A vendég hálózati útválasztó IP-címe"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"A vendég hálózat IP tartományát be kell állítani. A tartománynak különböznie "
-"kell a többi hálózat (LAN, WAN, VPN, stb.) tartományától."
+"A vendég hálózati útválasztó IP-címe. Elengedhetetlen, hogy a vendég "
+"hálózati IP-k különbözzenek más hálózatokétól (LAN, WAN, VPN, stb.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Vendég hálózat"
+msgstr "Vendég hálózat hálózati maszkja"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Vendég hálózat hálózati maszkja."
 
 msgid "Guest Lan QoS"
 msgstr "Vendég hálózat QoS"
@@ -1498,17 +1498,16 @@ msgstr "SSID vendégek számára"
 msgid "Password for guests"
 msgstr "Jelszó vendégek számára"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
 "and fill in an SSID (the name of the access point) and a corresponding "
 "password. You can then set up your mobile devices, using the QR code "
 "available within the form."
 msgstr ""
-"Ha a router, mint Wi-Fi hozzáférési pont szeretné használni, a Wi-Fi-t itt "
-"kell bekapcsolni és az SSID-jét (a hozzáférési pont nevét), illetve "
-"megfelelő jelszót kitölteni. Ezután mobil eszközei is beállíthatók a mezők "
-"melletti QR kód segítségével."
+"Ha az útválasztót Wi-Fi hozzáférési pontkénr szeretné használni, akkor itt "
+"kell a Wi-Fi-t bekapcsolni és az SSID-jét (a hozzáférési pont nevét), "
+"illetve megfelelő jelszót kitölteni. Ezután mobil eszközei is beállíthatók a "
+"mezők melletti QR-kód segítségével."
 
 msgid "Wi-Fi settings"
 msgstr "Wi-Fi beállítások"
@@ -1554,16 +1553,14 @@ msgstr "Hálózati maszk"
 msgid "Gateway"
 msgstr "Átjáró"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "DHCP címtartomány eleje"
+msgstr "DHCP-gépnév"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Gépnév, amelyet a DHCP-kiszolgálónak biztosítunk."
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS-kiszolgáló 1"
+msgstr "DNS-kiszolgáló 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is capable "
@@ -1572,9 +1569,8 @@ msgstr ""
 "A DNS-kiszolgáló címe nem szükséges, mivel a beépített DNS névfeloldó képes "
 "dolgozni anélkül."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS-kiszolgáló 2"
+msgstr "DNS-kiszolgáló 2 (IPv4)"
 
 msgid "PAP/CHAP username"
 msgstr "PAP/CHAP felhasználónév"
@@ -1603,20 +1599,17 @@ msgstr "IPv6-előtag"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Címtartomány a helyi hálózaton, például a 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS-kiszolgáló 1"
+msgstr "DNS-kiszolgáló 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS-kiszolgáló 2"
+msgstr "DNS-kiszolgáló 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Egyéni"
+msgstr "Egyéni DUID"
 
 msgid "DUID which will be provided to the dhcpv6 server."
-msgstr ""
+msgstr "DUID, amelyet a DHCPv6-kiszolgálónak biztosítunk."
 
 msgid "Custom MAC address"
 msgstr "Egyedi MAC-cím"
@@ -1720,37 +1713,38 @@ msgstr ""
 "működéséhez. Az idő szinkronizálása számítógéppel is lehetséges, vagy "
 "manuálisan is beállítható."
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Újraindítás ideje"
+msgstr "Régió és idő"
 
 msgid ""
 "It is important that your router has the current time properly set. If our "
 "router had an older time set some expired SSL certificates might have seemed "
 "like valid."
 msgstr ""
+"Fontos, hogy az útválasztója helyes időt mutasson. Ha útválasztónk korábbi "
+"időt mutat, akkor bizonyos lejárt SSL tanúsítványok is érvényesnek tűnhetnek."
 
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Az idő legyen naprakész, máskülönben a  DNS és egyéb szolgáltatások nem "
+"működnek megfelelően."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Újraindítás ideje"
+msgstr "Hogyan állítsuk be a pontos időt"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Válassza ki a módszert az útválasztó pontos idejének megadására."
 
 msgid "via ntp"
-msgstr ""
+msgstr "NTP-vel"
 
-#, fuzzy
 msgid "manually"
 msgstr "Idő beállítása kézzel"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Az idő ÉÉÉÉ-HH-NN ÓÓ:PP:MM formátumban."
 
 msgid "Updater"
 msgstr "Frissítéskezelő"
@@ -1934,10 +1928,10 @@ msgid "Uninstall"
 msgstr "Eltávolítás"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Frissítés"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Visszalépés"
 
 #, python-format
 msgid "Configuration wizard - step %s"
