@@ -61,6 +61,8 @@ class WanHandler(BaseConfigHandler):
             res["ipv6_dns2"] = data["wan6_settings"]["wan6_static"].get("dns2", "")
         elif res["wan6_proto"] == "dhcpv6":
             res["ip6duid"] = data["wan6_settings"]["wan6_dhcpv6"]["duid"]
+        elif res["wan6_proto"] == "6to4":
+            res["6to4_ipaddr"] = data["wan6_settings"]["wan6_6to4"]["ipv4_address"]
 
         # MAC
         res["custom_mac"] = data["mac_settings"]["custom_mac_enabled"]
@@ -103,6 +105,8 @@ class WanHandler(BaseConfigHandler):
                 {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v})
         if data["wan6_proto"] == "dhcpv6":
             res["wan6_settings"]["wan6_dhcpv6"] = {"duid": data.get("ip6duid", "")}
+        if data["wan6_proto"] == "6to4":
+            res["wan6_settings"]["wan6_6to4"] = {"ipv4_address": data.get("6to4_ipaddr", "")}
 
         # MAC
         res["mac_settings"] = {"custom_mac_enabled": True, "custom_mac": data["macaddr"]} \
@@ -143,10 +147,12 @@ class WanHandler(BaseConfigHandler):
         WAN6_NONE = "none"
         WAN6_DHCP = "dhcpv6"
         WAN6_STATIC = "static"
+        WAN6_6TO4 = "6to4"
 
         WAN6_OPTIONS = (
             (WAN6_DHCP, _("DHCPv6 (automatic configuration)")),
             (WAN6_STATIC, _("Static IP address (manual configuration)")),
+            (WAN6_6TO4, _("6to4 (public IPv4 address required)")),
         )
 
         if not self.hide_no_wan:
@@ -253,6 +259,17 @@ class WanHandler(BaseConfigHandler):
                 "DUID which will be provided to the dhcpv6 server."
             )
         ).requires("wan6_proto", WAN6_DHCP)
+        wan_main.add_field(
+            Textbox, name="6to4_ipaddr", label=_("Public IPv4"),
+            validators=validators.IPv4(),
+            hint=_(
+                "In order to use 6to4 protocol, you might need to specify your public IPv4 "
+                "address manually (e.g. when your wan interface has a private address which "
+                "is mapped to public IP)."
+            ),
+            placeholder=_("use autodetection"),
+            required=False,
+        ).requires("wan6_proto", WAN6_6TO4)
 
         # custom MAC
         wan_main.add_field(
