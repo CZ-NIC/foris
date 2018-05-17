@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 16:59+0200\n"
+"POT-Creation-Date: 2018-05-17 13:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -932,6 +932,11 @@ msgstr ""
 msgid "Data collection"
 msgstr ""
 
+msgid ""
+"Failed to update emulated services. Note that you might need to wait till "
+"ucollect is properly installed."
+msgstr ""
+
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
@@ -1268,6 +1273,9 @@ msgstr ""
 msgid "DHCPv6 (automatic configuration)"
 msgstr ""
 
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr ""
 
@@ -1336,6 +1344,18 @@ msgid "Custom DUID"
 msgstr ""
 
 msgid "DUID which will be provided to the dhcpv6 server."
+msgstr ""
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4 "
+"address manually (e.g. when your wan interface has a private address which "
+"is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
 msgstr ""
 
 msgid "Custom MAC address"

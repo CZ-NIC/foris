@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 16:58+0200\n"
+"POT-Creation-Date: 2018-05-17 13:33+0200\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/turris/foris/el/>\n"
@@ -954,6 +954,11 @@ msgstr ""
 msgid "Data collection"
 msgstr "Συλλογή στοιχείων"
 
+msgid ""
+"Failed to update emulated services. Note that you might need to wait till "
+"ucollect is properly installed."
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
@@ -1319,6 +1324,9 @@ msgstr ""
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (αυτόματη ρύθμιση)"
 
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "Απενεργοποίηση IPv6"
 
@@ -1396,6 +1404,18 @@ msgid "Custom DUID"
 msgstr "Προσαρμοσμένες"
 
 msgid "DUID which will be provided to the dhcpv6 server."
+msgstr ""
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4 "
+"address manually (e.g. when your wan interface has a private address which "
+"is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
 msgstr ""
 
 msgid "Custom MAC address"

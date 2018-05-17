@@ -20,11 +20,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 16:59+0200\n"
+"POT-Creation-Date: 2018-05-17 13:33+0200\n"
 "PO-Revision-Date: 2018-05-17 11:21+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
-"\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/"
+">\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1155,6 +1155,11 @@ msgstr "Aktualizácie sú spustené"
 msgid "Data collection"
 msgstr "Zber dát"
 
+msgid ""
+"Failed to update emulated services. Note that you might need to wait till "
+"ucollect is properly installed."
+msgstr ""
+
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
@@ -1560,6 +1565,9 @@ msgstr "PPPoE (pre DSL bridge, modem Turris, atď.)"
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatická konfigurácia)"
 
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "Nepoužívať IPv6"
 
@@ -1632,6 +1640,18 @@ msgstr "Vlastné DUID"
 
 msgid "DUID which will be provided to the dhcpv6 server."
 msgstr "DUID, ktoré bude poslané dhcpv6 serveru."
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4 "
+"address manually (e.g. when your wan interface has a private address which "
+"is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
 
 msgid "Custom MAC address"
 msgstr "Vlastná MAC adresa"

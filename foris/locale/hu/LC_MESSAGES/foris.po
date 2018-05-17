@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 16:58+0200\n"
+"POT-Creation-Date: 2018-05-17 13:33+0200\n"
 "PO-Revision-Date: 2018-04-29 07:23+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
@@ -1136,6 +1136,11 @@ msgstr "A Frissítéskekzelő fut"
 msgid "Data collection"
 msgstr "Adatgyűjtés"
 
+msgid ""
+"Failed to update emulated services. Note that you might need to wait till "
+"ucollect is properly installed."
+msgstr ""
+
 #, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
@@ -1538,6 +1543,9 @@ msgstr "PPPoE (DSL hidakhoz, Turris Modemhez, stb.)"
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatikus beállítás)"
 
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "IPv6 letiltása"
 
@@ -1610,6 +1618,18 @@ msgstr "Egyéni DUID"
 
 msgid "DUID which will be provided to the dhcpv6 server."
 msgstr "DUID, amelyet a DHCPv6-kiszolgálónak biztosítunk."
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4 "
+"address manually (e.g. when your wan interface has a private address which "
+"is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
 
 msgid "Custom MAC address"
 msgstr "Egyedi MAC-cím"

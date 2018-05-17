@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 16:59+0200\n"
+"POT-Creation-Date: 2018-05-17 13:33+0200\n"
 "PO-Revision-Date: 2017-09-22 08:04+0000\n"
 "Last-Translator: Remy van Velthuijsen <remy@remysplace.de>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
@@ -952,6 +952,11 @@ msgstr ""
 msgid "Data collection"
 msgstr "Verzameling van gegevens"
 
+msgid ""
+"Failed to update emulated services. Note that you might need to wait till "
+"ucollect is properly installed."
+msgstr ""
+
 #, fuzzy, python-format
 msgid ""
 "An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
@@ -1313,6 +1318,9 @@ msgstr "PPPoE (voor DSL-bridges, modem Turris, etc.)"
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatisch configuratie)"
 
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "IPv6 uitschakelen"
 
@@ -1391,6 +1399,18 @@ msgid "Custom DUID"
 msgstr "Aangepast"
 
 msgid "DUID which will be provided to the dhcpv6 server."
+msgstr ""
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4 "
+"address manually (e.g. when your wan interface has a private address which "
+"is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
 msgstr ""
 
 msgid "Custom MAC address"
