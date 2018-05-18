@@ -75,7 +75,11 @@
                 <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
               </div>
               <div id="language-switch">
+                %if translations == ["en"] and lang() == "en":
+                <a href="{{ url("config_page", page_name="updater") }}#language-install">{{ translation_names.get("en") }}</a>
+                %else:
                 <span>{{ translation_names.get(lang(), lang()) }}</span>
+                %end
                 <ul>
                   %for code in translations:
                     %if code != lang():
