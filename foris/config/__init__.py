@@ -190,13 +190,15 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
                 )
         return super(WanConfigPage, self).render(**kwargs)
 
-    def _action_check_connection(self):
+    def _action_check_connection(self, ipv6=True):
         return current_state.backend.perform(
-            "wan", "connection_test_trigger", {"test_kinds": ["ipv4", "ipv6"]})
+            "wan", "connection_test_trigger", {"test_kinds": ["ipv4", "ipv6"] if ipv6 else ["ipv4"]}
+        )
 
     def call_ajax_action(self, action):
         if action == "check-connection":
-            return self._action_check_connection()
+            ipv6_type = bottle.request.GET.get("ipv6_type")
+            return self._action_check_connection(ipv6_type != "none")
         raise ValueError("Unknown AJAX action.")
 
 

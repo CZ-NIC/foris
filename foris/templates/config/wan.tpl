@@ -47,8 +47,10 @@
         <tbody>
             <tr><td>{{ trans("IPv4 connectivity") }}</td><td class="result" data-result-type="ipv4-conn-test">???</td></tr>
             <tr><td>{{ trans("IPv4 gateway connectivity") }}</td><td class="result" data-result-type="ipv4_gateway-conn-test">???</td></tr>
+            %if form.current_data["wan6_proto"] != "none":
             <tr><td>{{ trans("IPv6 connectivity") }}</td><td class="result" data-result-type="ipv6-conn-test">???</td></tr>
             <tr><td>{{ trans("IPv6 gateway connectivity") }}</td><td class="result" data-result-type="ipv6_gateway-conn-test">???</td></tr>
+            %end
         </tbody>
     </table>
     <a href="#" id="test-connection" class="button">{{ trans("Test connection") }}</a>
@@ -96,7 +98,8 @@
             var self = $(this);
             e.preventDefault();
             self.attr("disabled", "disabled");
-            $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection"})
+            var ipv6_type = $("select[name='wan6_proto']").val();
+            $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection", ipv6_type: ipv6_type})
                     .done(function(response) {
                         $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
                         $("#test-connection").hide();
