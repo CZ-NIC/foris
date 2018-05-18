@@ -540,9 +540,9 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
       return;
   }
 
-  $(".qr-error").remove();
+  $(".qr-error-" + radio + "-" + (guest ? "guest-": "")).remove();
   var showQRError = function (message, id) {
-    $(`#${id}`).parent().append("<div class=\"message warning row qr-error\">" + message + "</div>");
+    $(`#${id}`).parent().append("<div class=\"message warning row qr-error-" + radio + "-" + (guest ? "guest-": "") + "\">" + message + "</div>");
   };
 
   var passed = true;
