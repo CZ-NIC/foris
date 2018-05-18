@@ -1,4 +1,4 @@
-Foris.messages.rErrorPassword = "{{ trans('Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.') }}";
+Foris.messages.qrErrorPassword = "{{ trans('Your password contains non-standard characters. These are not forbidden, but could cause problems on some devices.') }}";
 Foris.messages.qrErrorSSID = "{{ trans('Your SSID contains non-standard characters. These are not forbidden, but could cause problems on some devices.') }}";
 Foris.messages.ok = "{{ trans('OK') }}";
 Foris.messages.error = "{{ trans('Error') }}";

@@ -540,18 +540,23 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
       return;
   }
 
-  var showQRError = function (message) {
-    codeElement.append("<div class=\"qr-error\">" + message + "</div>");
+  $(".qr-error").remove();
+  var showQRError = function (message, id) {
+    $(`#${id}`).parent().append("<div class=\"message warning row qr-error\">" + message + "</div>");
   };
 
+  var passed = true;
   if (!Foris.checkLowerAsciiString(ssid)) {
-    showQRError(Foris.messages.qrErrorSSID);
-    return;
+    showQRError(Foris.messages.qrErrorSSID, `field-${radio}-` + (guest ? "guest_" : "") + "ssid");
+    passed = false;
   }
   if (!Foris.checkLowerAsciiString(password)) {
-    showQRError(Foris.messages.qrErrorPassword);
-    return;
+    showQRError(Foris.messages.qrErrorPassword, `field-${radio}-` + (guest ? "guest_" : "") + "password");
+    passed = false;
   }
+
+  if (!passed)
+    return;
 
   if (hidden)
     hidden = 'H:true';
