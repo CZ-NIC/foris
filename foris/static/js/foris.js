@@ -511,6 +511,24 @@ Foris.checkLowerAsciiString = function (string) {
 };
 
 Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
+  var escape = function(field) {
+    // content of the field should be properly escaped see
+    // https://github.com/zxing/zxing/wiki/Barcode-Contents#wifi-network-config-android
+
+    // add quotes if it can be interpreted as hex
+    if (/^[0-9a-fA-F]+$/.test(field)) {
+        return '"' + field + '"';
+    }
+
+    // escape characters " ; , : \
+    field = field.replace(/\\/, '\\\\');
+    field = field.replace(/"/, '\\"');
+    field = field.replace(/;/, '\\;');
+    field = field.replace(/,/, '\\,');
+    field = field.replace(/:/, '\\:');
+
+    return field;
+  }
   var codeElement = $((guest ? "#wifi-qr-guest-":"#wifi-qr-") + radio);
   codeElement.empty();
 
@@ -542,7 +560,7 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
 
   codeElement.empty().qrcode({
     size: 200,
-    text: 'WIFI:T:WPA;S:"' + ssid + '";P:"' + password + '";' + hidden + ';'
+    text: 'WIFI:T:WPA;S:' + escape(ssid) + ';P:' + escape(password) + ';' + hidden + ';'
   });
 };
 
