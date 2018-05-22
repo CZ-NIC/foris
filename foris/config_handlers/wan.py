@@ -284,7 +284,7 @@ class WanHandler(BaseConfigHandler):
             Textbox, name="ip6duid", label=_("Custom DUID"),
             validators=validators.Duid(),
             hint=_(
-                "DUID which will be provided to the dhcpv6 server."
+                "DUID which will be provided to the DHCPv6 server."
             )
         ).requires("wan6_proto", WAN6_DHCP)
         wan_main.add_field(
@@ -292,7 +292,7 @@ class WanHandler(BaseConfigHandler):
             validators=validators.IPv4(),
             hint=_(
                 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
-                "address manually (e.g. when your wan interface has a private address which "
+                "address manually (e.g. when your WAN interface has a private address which "
                 "is mapped to public IP)."
             ),
             placeholder=_("use autodetection"),
@@ -302,7 +302,7 @@ class WanHandler(BaseConfigHandler):
             Textbox, name="6in4_server_ipv4", label=_("Provider IPv4"),
             validators=validators.IPv4(),
             hint=_(
-                "This address will be used as a endpoint of the tunnel on privider's side."
+                "This address will be used as a endpoint of the tunnel on the provider's side."
             ),
             required=True,
         ).requires("wan6_proto", WAN6_6IN4)
@@ -335,7 +335,7 @@ class WanHandler(BaseConfigHandler):
             Textbox, name="6in4_tunnel_id", label=_("Tunnel ID"),
             validators=validators.NotEmpty(),
             hint=_(
-                "Id of your tunnel which was assigned to you by the provider."
+                "ID of your tunnel which was assigned to you by the provider."
             ),
             required=True,
         ).requires("6in4_dynamic_enabled", True)
@@ -368,7 +368,7 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(
             Textbox, name="macaddr", label=_("MAC address"),
             validators=validators.MacAddress(), required=True,
-            hint=_("Separator is a colon, for example 00:11:22:33:44:55"),
+            hint=_("Colon is used as a separator, for example 00:11:22:33:44:55"),
         ).requires("custom_mac", True)
 
         def wan_form_cb(data):
