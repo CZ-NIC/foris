@@ -33,6 +33,7 @@ class WanHandler(BaseConfigHandler):
     def __init__(self, *args, **kwargs):
         # Do not display "none" options for WAN protocol if hide_no_wan is True
         self.hide_no_wan = kwargs.pop("hide_no_wan", False)
+        self.status_data = current_state.backend.perform("wan", "get_wan_status")
         super(WanHandler, self).__init__(*args, **kwargs)
 
     def _convert_backend_data_to_form_data(self, data):
@@ -283,6 +284,7 @@ class WanHandler(BaseConfigHandler):
         wan_main.add_field(
             Textbox, name="ip6duid", label=_("Custom DUID"),
             validators=validators.Duid(),
+            placeholder=self.status_data["last_seen_duid"],
             hint=_(
                 "DUID which will be provided to the dhcpv6 server."
             )

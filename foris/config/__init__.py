@@ -177,9 +177,8 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     template = "config/wan"
 
     def render(self, **kwargs):
-        data = current_state.backend.perform("wan", "get_wan_status")
-        if not data["up"]:
-            if data["proto"] == "pppoe":
+        if not self.status_data["up"]:
+            if self.status_data["proto"] == "pppoe":
                 messages.warning(_(
                     "You WAN configuration is probably not correct "
                     "or your WAN interface hasn't been properly initialized yet."
