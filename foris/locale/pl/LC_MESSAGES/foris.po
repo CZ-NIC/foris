@@ -1655,7 +1655,6 @@ msgstr "Routowany prefiks IPv6"
 msgid "IPv6 addresses which will be routed to your network."
 msgstr "Adresy IPv6, które będą kierowane do Twojej sieci."
 
-#, fuzzy
 msgid "MTU"
 msgstr "MTU"
 
