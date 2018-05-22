@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-17 13:33+0200\n"
-"PO-Revision-Date: 2018-05-18 07:56+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"PO-Revision-Date: 2018-05-22 09:36+0000\n"
+"Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -1559,7 +1559,7 @@ msgid "6to4 (public IPv4 address required)"
 msgstr "6to4 (nutné mít veřejnou IPv4 adresu)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6in4 (nutné mít veřejnou IPv4 adresu)"
 
 msgid "Disable IPv6"
 msgstr "Nepoužívat IPv6"
@@ -1650,55 +1650,58 @@ msgstr ""
 msgid "use autodetection"
 msgstr "zjistit automaticky"
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "Poskytovatel SMTP"
+msgstr "Poskytovatelova IPv4"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on privider's side."
 msgstr ""
+"Tato adresa bude použita jako koncový bod tunelu na straně poskytovatele."
 
-#, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "IPv6 prefix"
+msgstr "Směrovaný IPv6 prefix"
 
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "IPv6 adresy, které budou použivé ve vaší síti."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Maximální přenosová jednotka v tunelu (v bytech)."
 
 msgid "Dynamic IPv4 handling"
-msgstr ""
+msgstr "Dynamická IPv4"
 
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that you "
 "need to fill in some extra fields to make it work."
 msgstr ""
+"Někteří poskytovatelé dovolují použití dynamické IPv4. Pro správnou "
+"funkcionalitu je potom nezbytné vyplnit několik políček navíc."
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "Identifikátor tunelu"
 
 msgid "Id of your tunnel which was assigned to you by the provider."
-msgstr ""
+msgstr "Id vašeho tunelu, které Vám bylo přiděleno poskytovatelem."
 
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#, fuzzy
 msgid ""
 "Username which will be used to provide credentials to your tunnel provider."
-msgstr "Identifikátor klienta, který bude poslán DHCP serveru."
+msgstr ""
+"Uživatelské jméno, které bude použito při ověření přihlašovacích údaju u "
+"poskytovatele tunelu."
 
 msgid "Key"
-msgstr ""
+msgstr "Klíč"
 
-#, fuzzy
 msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr "DUID, které bude posláno dhcpv6 serveru."
+msgstr ""
+"Klíč, který bude použit při ověření přihlašovacích údaju u poskytovatele "
+"tunelu."
 
 msgid "Custom MAC address"
 msgstr "Uživatelem určená MAC adresa"
