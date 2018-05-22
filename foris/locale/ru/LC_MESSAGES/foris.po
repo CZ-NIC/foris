@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-22 11:21+0200\n"
 "PO-Revision-Date: 2018-05-04 12:40+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
@@ -1558,6 +1558,9 @@ msgstr "DHCPv6 (автоматическая настройка)"
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "Отключить IPv6"
 
@@ -1643,6 +1646,56 @@ msgstr ""
 
 msgid "use autodetection"
 msgstr ""
+
+#, fuzzy
+msgid "Provider IPv4"
+msgstr "Провайдер SMTP"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on privider's side."
+msgstr ""
+
+#, fuzzy
+msgid "Routed IPv6 prefix"
+msgstr "Префикс IPv6"
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "Id of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+#, fuzzy
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr "Имя сервера, которое будет предоставлено серверу DHCP."
+
+msgid "Key"
+msgstr ""
+
+#, fuzzy
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr "DUID, который будет предоставлен серверу DHCPv6."
 
 msgid "Custom MAC address"
 msgstr "Пользовательский MAC-адрес"
@@ -1932,9 +1985,6 @@ msgstr "STARTTLS"
 
 msgid "Security"
 msgstr "Безопасность"
-
-msgid "Username"
-msgstr "Имя пользователя"
 
 msgid "Automatic restarts after software update"
 msgstr "Автоматическая перезагрузка после установки обновлений"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-22 11:21+0200\n"
 "PO-Revision-Date: 2018-04-29 07:23+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/turris/foris/"
@@ -1546,6 +1546,9 @@ msgstr "DHCPv6 (automatikus beállítás)"
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "IPv6 letiltása"
 
@@ -1630,6 +1633,56 @@ msgstr ""
 
 msgid "use autodetection"
 msgstr ""
+
+#, fuzzy
+msgid "Provider IPv4"
+msgstr "SMTP szolgáltató"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on privider's side."
+msgstr ""
+
+#, fuzzy
+msgid "Routed IPv6 prefix"
+msgstr "IPv6-előtag"
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "Id of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr "Felhasználónév"
+
+#, fuzzy
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr "Gépnév, amelyet a DHCP-kiszolgálónak biztosítunk."
+
+msgid "Key"
+msgstr ""
+
+#, fuzzy
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr "DUID, amelyet a DHCPv6-kiszolgálónak biztosítunk."
 
 msgid "Custom MAC address"
 msgstr "Egyedi MAC-cím"
@@ -1912,9 +1965,6 @@ msgstr "STARTTLS"
 
 msgid "Security"
 msgstr "Biztonság"
-
-msgid "Username"
-msgstr "Felhasználónév"
 
 msgid "Automatic restarts after software update"
 msgstr "Automatikus újraindítás szoftver frissítés után"

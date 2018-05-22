@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-22 11:21+0200\n"
 "PO-Revision-Date: 2018-05-08 05:35+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
@@ -1556,6 +1556,9 @@ msgstr "DHCPv6 (automatické nastavení)"
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "Nepoužívat IPv6"
 
@@ -1640,6 +1643,56 @@ msgstr ""
 
 msgid "use autodetection"
 msgstr ""
+
+#, fuzzy
+msgid "Provider IPv4"
+msgstr "Poskytovatel SMTP"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on privider's side."
+msgstr ""
+
+#, fuzzy
+msgid "Routed IPv6 prefix"
+msgstr "IPv6 prefix"
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "Id of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#, fuzzy
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr "Identifikátor klienta, který bude poslán DHCP serveru."
+
+msgid "Key"
+msgstr ""
+
+#, fuzzy
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr "DUID, které bude posláno dhcpv6 serveru."
 
 msgid "Custom MAC address"
 msgstr "Uživatelem určená MAC adresa"
@@ -1926,9 +1979,6 @@ msgstr "STARTTLS"
 
 msgid "Security"
 msgstr "Zabezpečení"
-
-msgid "Username"
-msgstr "Uživatelské jméno"
 
 msgid "Automatic restarts after software update"
 msgstr "Automatické restarty po aktualizaci software"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-22 11:21+0200\n"
 "PO-Revision-Date: 2018-05-12 09:37+0000\n"
 "Last-Translator: Nora Kořánová <nora.koranova@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/"
@@ -1615,6 +1615,9 @@ msgstr "DHCPv6 (automatische Konfiguration)"
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr "IPv6 deaktivieren"
 
@@ -1702,6 +1705,56 @@ msgstr ""
 
 msgid "use autodetection"
 msgstr ""
+
+#, fuzzy
+msgid "Provider IPv4"
+msgstr "SMTP-Provider"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on privider's side."
+msgstr ""
+
+#, fuzzy
+msgid "Routed IPv6 prefix"
+msgstr "IPv6-Präfix"
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "Id of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr "Benutzername"
+
+#, fuzzy
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr "Hostname, der dem DHCP-Server zur Verfügung gestellt wird."
+
+msgid "Key"
+msgstr ""
+
+#, fuzzy
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr "Client-ID, die dem DHCP-Server zur Verfügung gestellt wird."
 
 msgid "Custom MAC address"
 msgstr "Benutzerdefinierte MAC-Adresse"
@@ -1999,9 +2052,6 @@ msgstr "STARTTLS"
 
 msgid "Security"
 msgstr "Datensicherheit"
-
-msgid "Username"
-msgstr "Benutzername"
 
 msgid "Automatic restarts after software update"
 msgstr "Automatische Neustarts nach Software-Update"

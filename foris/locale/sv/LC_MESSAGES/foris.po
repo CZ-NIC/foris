@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-22 11:21+0200\n"
 "PO-Revision-Date: 2018-01-06 16:08+0000\n"
 "Last-Translator: Mathias Tillman <master.homer@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris/sv/"
@@ -1305,6 +1305,9 @@ msgstr ""
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr ""
 
@@ -1386,6 +1389,53 @@ msgid ""
 msgstr ""
 
 msgid "use autodetection"
+msgstr ""
+
+#, fuzzy
+msgid "Provider IPv4"
+msgstr "SMTP-leverantör"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on privider's side."
+msgstr ""
+
+msgid "Routed IPv6 prefix"
+msgstr ""
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "Id of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr "Användarnamn"
+
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Key which will be used to provide credentials to your tunnel provider."
 msgstr ""
 
 msgid "Custom MAC address"
@@ -1654,9 +1704,6 @@ msgstr "STARTTLS"
 
 msgid "Security"
 msgstr "Säkerhet"
-
-msgid "Username"
-msgstr "Användarnamn"
 
 msgid "Automatic restarts after software update"
 msgstr "Automatiska omstarter efter programuppdatering"
