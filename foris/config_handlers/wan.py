@@ -21,6 +21,7 @@ from foris.form import (
     Checkbox,
     Dropdown,
     Textbox,
+    Number,
 )
 
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -63,6 +64,19 @@ class WanHandler(BaseConfigHandler):
             res["ip6duid"] = data["wan6_settings"]["wan6_dhcpv6"]["duid"]
         elif res["wan6_proto"] == "6to4":
             res["6to4_ipaddr"] = data["wan6_settings"]["wan6_6to4"]["ipv4_address"]
+        elif res["wan6_proto"] == "6in4":
+            res["6in4_mtu"] = data["wan6_settings"]["wan6_6in4"]["mtu"]
+            res["6in4_server_ipv4"] = data["wan6_settings"]["wan6_6in4"]["server_ipv4"]
+            res["6in4_ipv6_prefix"] = data["wan6_settings"]["wan6_6in4"]["ipv6_prefix"]
+            res["6in4_dynamic_enabled"] = \
+                data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["enabled"]
+            if res["6in4_dynamic_enabled"]:
+                res["6in4_tunnel_id"] = \
+                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["tunnel_id"]
+                res["6in4_username"] = \
+                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["username"]
+                res["6in4_key"] = \
+                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["password_or_key"]
 
         # MAC
         res["custom_mac"] = data["mac_settings"]["custom_mac_enabled"]
@@ -107,6 +121,18 @@ class WanHandler(BaseConfigHandler):
             res["wan6_settings"]["wan6_dhcpv6"] = {"duid": data.get("ip6duid", "")}
         if data["wan6_proto"] == "6to4":
             res["wan6_settings"]["wan6_6to4"] = {"ipv4_address": data.get("6to4_ipaddr", "")}
+        if data["wan6_proto"] == "6in4":
+            dynamic = {"enabled": data.get("6in4_dynamic_enabled", False)}
+            if dynamic["enabled"]:
+                dynamic["tunnel_id"] = data.get("6in4_tunnel_id")
+                dynamic["username"] = data.get("6in4_username")
+                dynamic["password_or_key"] = data.get("6in4_key")
+            res["wan6_settings"]["wan6_6in4"] = {
+                "mtu": int(data.get("6in4_mtu")),
+                "ipv6_prefix": data.get("6in4_ipv6_prefix"),
+                "server_ipv4": data.get("6in4_server_ipv4"),
+                "dynamic_ipv4": dynamic,
+            }
 
         # MAC
         res["mac_settings"] = {"custom_mac_enabled": True, "custom_mac": data["macaddr"]} \
@@ -148,11 +174,13 @@ class WanHandler(BaseConfigHandler):
         WAN6_DHCP = "dhcpv6"
         WAN6_STATIC = "static"
         WAN6_6TO4 = "6to4"
+        WAN6_6IN4 = "6in4"
 
         WAN6_OPTIONS = (
             (WAN6_DHCP, _("DHCPv6 (automatic configuration)")),
             (WAN6_STATIC, _("Static IP address (manual configuration)")),
             (WAN6_6TO4, _("6to4 (public IPv4 address required)")),
+            (WAN6_6IN4, _("6in4 (public IPv4 address required)")),
         )
 
         if not self.hide_no_wan:
@@ -270,6 +298,63 @@ class WanHandler(BaseConfigHandler):
             placeholder=_("use autodetection"),
             required=False,
         ).requires("wan6_proto", WAN6_6TO4)
+        wan_main.add_field(
+            Textbox, name="6in4_server_ipv4", label=_("Provider IPv4"),
+            validators=validators.IPv4(),
+            hint=_(
+                "This address will be used as a endpoint of the tunnel on privider's side."
+            ),
+            required=True,
+        ).requires("wan6_proto", WAN6_6IN4)
+        wan_main.add_field(
+            Textbox, name="6in4_ipv6_prefix", label=_("Routed IPv6 prefix"),
+            validators=validators.IPv6Prefix(),
+            hint=_(
+                "IPv6 addresses which will be routed to your network."
+            ),
+            required=True,
+        ).requires("wan6_proto", WAN6_6IN4)
+        wan_main.add_field(
+            Number, name="6in4_mtu", label=_("MTU"),
+            validators=validators.InRange(1280, 1500),
+            hint=_(
+                "Maximum Transmission Unit in the tunnel (in bytes)."
+            ),
+            required=True,
+            default="1480",
+        ).requires("wan6_proto", WAN6_6IN4)
+        wan_main.add_field(
+            Checkbox, name="6in4_dynamic_enabled", label=_("Dynamic IPv4 handling"),
+            hint=_(
+                "Some tunnel providers allow you to have public dynamic IPv4. "
+                "Note that you need to fill in some extra fields to make it work."
+            ),
+            default=False,
+        ).requires("wan6_proto", WAN6_6IN4)
+        wan_main.add_field(
+            Textbox, name="6in4_tunnel_id", label=_("Tunnel ID"),
+            validators=validators.NotEmpty(),
+            hint=_(
+                "Id of your tunnel which was assigned to you by the provider."
+            ),
+            required=True,
+        ).requires("6in4_dynamic_enabled", True)
+        wan_main.add_field(
+            Textbox, name="6in4_username", label=_("Username"),
+            validators=validators.NotEmpty(),
+            hint=_(
+                "Username which will be used to provide credentials to your tunnel provider."
+            ),
+            required=True,
+        ).requires("6in4_dynamic_enabled", True)
+        wan_main.add_field(
+            Textbox, name="6in4_key", label=_("Key"),
+            validators=validators.NotEmpty(),
+            hint=_(
+                "Key which will be used to provide credentials to your tunnel provider."
+            ),
+            required=True,
+        ).requires("6in4_dynamic_enabled", True)
 
         # custom MAC
         wan_main.add_field(
