@@ -61,7 +61,6 @@ setup(
         "foris.utils",
         "foris.ubus",
         "foris.middleware",
-        "foris.wizard",
     ],
     package_data={
         '': [
@@ -72,7 +71,6 @@ setup(
             "static/css/*.css",
             "static/fonts/*",
             "static/img/*",
-            "static/img/wizard/*",
             "static/js/*.min.js",
             "static/js/contrib/*",
             "utils/*.pickle2",
