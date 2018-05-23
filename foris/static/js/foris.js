@@ -542,16 +542,16 @@ Foris.updateWiFiQR = function (radio, ssid, password, hidden, guest) {
 
   $(".qr-error-" + radio + "-" + (guest ? "guest-": "")).remove();
   var showQRError = function (message, id) {
-    $(`#${id}`).parent().append("<div class=\"message warning row qr-error-" + radio + "-" + (guest ? "guest-": "") + "\">" + message + "</div>");
+    $("#" + id).parent().append("<div class=\"message warning row qr-error-" + radio + "-" + (guest ? "guest-": "") + "\">" + message + "</div>");
   };
 
   var passed = true;
   if (!Foris.checkLowerAsciiString(ssid)) {
-    showQRError(Foris.messages.qrErrorSSID, `field-${radio}-` + (guest ? "guest_" : "") + "ssid");
+    showQRError(Foris.messages.qrErrorSSID, "field-" + radio + (guest ? "-guest_" : "-") + "ssid");
     passed = false;
   }
   if (!Foris.checkLowerAsciiString(password)) {
-    showQRError(Foris.messages.qrErrorPassword, `field-${radio}-` + (guest ? "guest_" : "") + "password");
+    showQRError(Foris.messages.qrErrorPassword, "field-" + radio + (guest ? "-guest_" : "-") + "password");
     passed = false;
   }
 
