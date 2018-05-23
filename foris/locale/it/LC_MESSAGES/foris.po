@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-22 11:21+0200\n"
+"POT-Creation-Date: 2018-05-23 09:42+0200\n"
 "PO-Revision-Date: 2018-04-23 10:06+0000\n"
 "Last-Translator: Roberto Zilli <zetaerre@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/turris/foris/it/"
@@ -1649,7 +1649,8 @@ msgstr "Server DNS secondario (IPv6)"
 msgid "Custom DUID"
 msgstr "DUID personalizzato"
 
-msgid "DUID which will be provided to the dhcpv6 server."
+#, fuzzy
+msgid "DUID which will be provided to the DHCPv6 server."
 msgstr "DUID che verrà fornito al server dhcpv6."
 
 msgid "Public IPv4"
@@ -1657,7 +1658,7 @@ msgstr ""
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
-"address manually (e.g. when your wan interface has a private address which "
+"address manually (e.g. when your WAN interface has a private address which "
 "is mapped to public IP)."
 msgstr ""
 
@@ -1669,7 +1670,7 @@ msgid "Provider IPv4"
 msgstr "Fornitore SMTP"
 
 msgid ""
-"This address will be used as a endpoint of the tunnel on privider's side."
+"This address will be used as a endpoint of the tunnel on the provider's side."
 msgstr ""
 
 #, fuzzy
@@ -1696,7 +1697,7 @@ msgstr ""
 msgid "Tunnel ID"
 msgstr ""
 
-msgid "Id of your tunnel which was assigned to you by the provider."
+msgid "ID of your tunnel which was assigned to you by the provider."
 msgstr ""
 
 msgid "Username"
@@ -1727,7 +1728,8 @@ msgstr ""
 msgid "MAC address"
 msgstr "indirizzo MAC"
 
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
+#, fuzzy
+msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
 msgstr "I due punti sono usati come separatore, per esempio 00:11:22:33:44:55"
 
 msgid ""

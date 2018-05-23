@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-17 13:33+0200\n"
+"POT-Creation-Date: 2018-05-23 09:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1275,6 +1275,9 @@ msgstr ""
 msgid "6to4 (public IPv4 address required)"
 msgstr ""
 
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
 msgid "Disable IPv6"
 msgstr ""
 
@@ -1342,7 +1345,7 @@ msgstr ""
 msgid "Custom DUID"
 msgstr ""
 
-msgid "DUID which will be provided to the dhcpv6 server."
+msgid "DUID which will be provided to the DHCPv6 server."
 msgstr ""
 
 msgid "Public IPv4"
@@ -1350,11 +1353,57 @@ msgstr ""
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
-"address manually (e.g. when your wan interface has a private address which "
+"address manually (e.g. when your WAN interface has a private address which "
 "is mapped to public IP)."
 msgstr ""
 
 msgid "use autodetection"
+msgstr ""
+
+msgid "Provider IPv4"
+msgstr ""
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on the provider's side."
+msgstr ""
+
+msgid "Routed IPv6 prefix"
+msgstr ""
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
+"need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "ID of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid ""
+"Username which will be used to provide credentials to your tunnel provider."
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Key which will be used to provide credentials to your tunnel provider."
 msgstr ""
 
 msgid "Custom MAC address"
@@ -1368,7 +1417,7 @@ msgstr ""
 msgid "MAC address"
 msgstr ""
 
-msgid "Separator is a colon, for example 00:11:22:33:44:55"
+msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
 msgstr ""
 
 msgid ""
@@ -1599,9 +1648,6 @@ msgid "STARTTLS"
 msgstr ""
 
 msgid "Security"
-msgstr ""
-
-msgid "Username"
 msgstr ""
 
 msgid "Automatic restarts after software update"
