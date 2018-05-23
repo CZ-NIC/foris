@@ -16,7 +16,7 @@
 
 from foris import fapi
 from foris import validators
-from foris.form import Checkbox, Dropdown, Password, Radio, Textbox, HorizontalLine
+from foris.form import Checkbox, Dropdown, PasswordWithHide, Radio, Textbox, HorizontalLine
 from foris.state import current_state
 from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -140,7 +140,7 @@ class WifiHandler(BaseConfigHandler):
         )  # this req is added to rerender channel list when hwmode changes
 
         wifi_main.add_field(
-            Password, name=prefixed("password"), label=_("Network password"),
+            PasswordWithHide, name=prefixed("password"), label=_("Network password"),
             required=True,
             validators=validators.ByteLenRange(8, 63),
             hint=HINTS['password']
@@ -169,7 +169,7 @@ class WifiHandler(BaseConfigHandler):
                 required=True, validators=validators.ByteLenRange(1, 32),
             ).requires(prefixed("guest_enabled"), True)
             guest_section.add_field(
-                Password, name=prefixed("guest_password"), label=_("Password for guests"),
+                PasswordWithHide, name=prefixed("guest_password"), label=_("Password for guests"),
                 required=True, default="", validators=validators.ByteLenRange(8, 63),
                 hint=HINTS['password'],
             ).requires(prefixed("guest_enabled"), True)
