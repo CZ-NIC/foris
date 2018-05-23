@@ -338,7 +338,11 @@ class Input(object):
             attrs['value'] = self.value
         attrs['name'] = self.name
 
-        return '<input %s/>' % attrs
+        return ('<input %s></input>' % (attrs)) + self.render_extra_after
+
+    @property
+    def render_extra_after(self):
+        return ""
 
     def rendernote(self, note):
         if note:
@@ -394,6 +398,12 @@ class Password(Input):
 
     def get_type(self):
         return 'password'
+
+
+class PasswordWithHide(Password):
+    @property
+    def render_extra_after(self):
+        return "<span class='password-toggle'><i class='fas fa-eye'></i></span>"
 
 
 class Number(Input):

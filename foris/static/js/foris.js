@@ -54,6 +54,7 @@ Foris.initialize = function () {
   Foris.initParsley();
   Foris.initLanChangeDetection();
   Foris.initLanFormOverride();
+  Foris.initPasswordHiding();
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
   Foris.applySVGFallback();
@@ -233,6 +234,19 @@ Foris.initWebsockets = function() {
 
 };
 
+Foris.initPasswordHiding = function() {
+    $(".password-toggle").click(function () {
+        var input= $(this).prev();
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+            $(this).find("i").attr("class", "fas fa-eye-slash");
+        } else {
+            input.attr("type", "password");
+            $(this).find("i").attr("class", "fas fa-eye");
+        }
+    })
+}
+
 Foris.afterAjaxUpdateFunctions = [];
 Foris.afterAjaxUpdate = function(response, status, xhr) {
   for (var i=0; i < Foris.afterAjaxUpdateFunctions.length; i++) {
@@ -259,6 +273,7 @@ Foris.updateForm = function (form) {
 
     $(this).children(':first').unwrap();
     Foris.initParsley();
+    Foris.initPasswordHiding();
     Foris.afterAjaxUpdate();
     Foris.initClicksQR();
     $(document).trigger('formupdate', [form]);
