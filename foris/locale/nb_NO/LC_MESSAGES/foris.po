@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-21 14:47+0100\n"
-"PO-Revision-Date: 2018-05-17 11:21+0000\n"
+"PO-Revision-Date: 2018-05-24 10:46+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb/>\n"
@@ -440,9 +440,8 @@ msgid "New password (repeat)"
 msgstr "Gjenta nytt passord"
 
 msgid "Password (repeat)"
-msgstr "Gjenta passord"
+msgstr "Passord (gjenta)"
 
-#, fuzzy
 msgid "Passwords are not equal."
 msgstr "Passordene samsvarer ikke."
 
