@@ -36,7 +36,7 @@ def _normalize_path_end(path):
 
 
 def external_route(path):
-    """ return external to another foris application (wizard/config) """
+    """ return external to another foris application (config/...) """
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip("/")
     path = path.lstrip("/")

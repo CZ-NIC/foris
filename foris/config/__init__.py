@@ -64,7 +64,6 @@ class ConfigPageMixin(object):
             self.template, title=_(kwargs.pop('title', self.userfriendly_title)), **kwargs)
 
     def render(self, **kwargs):
-        # same premise as in wizard form - we are handling single-section ForisForm
         try:
             form = getattr(self, "form")
             first_section = form.sections[0]

@@ -27,8 +27,8 @@ def get_arg_parser():
         help="serve static files directly through foris app (should be used for debug only)"
     )
     group.add_argument(
-        "-a", "--app", choices=["config", "wizard"], default="config",
-        help="sets which app should be started (wizard/config)",
+        "-a", "--app", choices=["config"], default="config",
+        help="sets which app should be started (config/...)",
     )
     group.add_argument(
         "-b", "--backend", choices=["ubus", "unix-socket"], default="ubus", help="backend type"
@@ -64,9 +64,6 @@ def main():
     if args.app == "config":
         from foris.config_app import prepare_config_app
         main_app = prepare_config_app(args)
-    elif args.app == "wizard":
-        from foris.wizard_app import prepare_wizard_app
-        main_app = prepare_wizard_app(args)
 
     if args.routes:
         # routes should be printed and we can safely exit

@@ -102,8 +102,6 @@ class SessionWsProxy(SessionProxy):
 class SessionForisProxy(SessionProxy):
     DONT_STORE_IN_ANONYMOUS = [
         "user_authenticated",
-        "allowed_step_max",
-        "wizard_finished",
     ]
 
     def __init__(self, env_key, timeout, session_id):

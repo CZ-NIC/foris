@@ -23,7 +23,7 @@ class BackendData(object):
     """ Reads data from the backend and stores it properly.
         This is performed everytime when a request arrives.
 
-        There can be a few running instances of foris apps (e.g wizard config).
+        There can be a few running instances of foris apps (e.g config, ...).
         When one changes the other should reflect the change immediatelly.
         Therefor it is necessary to update it so frequent.
     """

@@ -39,7 +39,7 @@ class BaseConfigHandler(object):
         return self.__form_cache
 
     def get_form(self):
-        """Get form for this wizard. MUST be a single-section form.
+        """Get form. MUST be a single-section form.
 
         :return:
         :rtype: fapi.ForisForm
