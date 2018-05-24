@@ -71,7 +71,7 @@ setup(
             "static/css/*.css",
             "static/fonts/*",
             "static/img/*",
-            "static/js/*.min.js",
+            "static/js/*.js",
             "static/js/contrib/*",
             "utils/*.pickle2",
         ]

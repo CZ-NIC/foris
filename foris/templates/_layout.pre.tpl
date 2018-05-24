@@ -48,8 +48,8 @@
     % end
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
-    <script src="{{ static("js/parsley.foris-extend.min.js") }}?md5=MD5SUM"></script>
-    <script src="{{ static("js/foris.min.js") }}?md5=MD5SUM"></script>
+    <script src="{{ static("js/parsley.foris-extend.js") }}?md5=MD5SUM"></script>
+    <script src="{{ static("js/foris.js") }}?md5=MD5SUM"></script>
     <script src="{{ url("render_js", filename="foris.js") }}?md5={{ js_md5('foris.js') }}"></script>
     <script src="{{ url("render_js", filename="parsley.messages.js") }}?md5={{ js_md5('parsley.messages.js') }}"></script>
     %if defined('PLUGIN_STATIC_SCRIPTS') and PLUGIN_STATIC_SCRIPTS:
