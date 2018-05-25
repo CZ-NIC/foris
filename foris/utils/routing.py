@@ -15,10 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-import re
+import hashlib
 import logging
+import os
+import re
 
+from foris import BASE_DIR
 logger = logging.getLogger("utils.routing")
+
+static_md5_map = {
+}
 
 
 def _get_prefix_and_script_name():
@@ -70,7 +76,47 @@ def static(name, *args):
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip('/')
     script_name = "/%s" % script_name if script_name else ""
-    return ("%s/static/%s" % (script_name, name)) % args
+    filename = ("%s/static/%s" % (script_name, name)) % args
+    md5 = static_md5("static/" + name)
+    return "%s?md5=%s" % (filename, md5) if md5 else filename
+
+
+def static_md5(filename):
+    """ return static file
+    :param filename: url path
+    :type filename: str
+    :return: md5 of the file or none if the file is not found
+    """
+    filename = filename.lstrip("/")
+    if filename in static_md5_map:
+        return static_md5_map[filename]
+
+    match = re.match(r'(?:static)?/*plugins/+(\w+)/+(.+)', filename)
+    os_path = None
+    if match:
+        plugin_name, plugin_file = match.groups()
+        # find correspoding plugin
+        for plugin in bottle.app().foris_plugin_loader.plugins:
+            if plugin.PLUGIN_NAME == plugin_name:
+                os_path = os.path.join(plugin.DIRNAME, "static", plugin_file)
+    else:
+        os_path = os.path.join(BASE_DIR, filename)
+
+    if not os_path:
+        return None
+
+    if not os.path.exists(os_path):
+        raise Exception(os_path)
+        return None
+
+    md5 = hashlib.md5()
+    with open(os_path) as f:
+        content = f.read()
+        md5.update(content)
+
+    digest = md5.hexdigest()
+    static_md5_map[filename] = digest
+    return digest
 
 
 def get_root():

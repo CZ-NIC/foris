@@ -25,6 +25,7 @@ import time
 
 from functools import wraps
 
+from foris import BASE_DIR
 from foris.utils import (
     redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid,
     check_password
@@ -41,8 +42,6 @@ from foris.state import current_state
 
 
 logger = logging.getLogger("foris.common")
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 def login(next, session):
@@ -161,7 +160,9 @@ def static(filename):
                 return bottle.static_file(
                     plugin_file, root=os.path.join(plugin.DIRNAME, "static"))
 
-    return bottle.static_file(filename, root=os.path.join(BASE_DIR, "static"))
+    response = bottle.static_file(filename, root=os.path.join(BASE_DIR, "static"))
+    response.add_header("Cache-Control", "public, max-age=31536000")
+    return response
 
 
 def require_contract_valid(valid=True):

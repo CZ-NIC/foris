@@ -21,6 +21,7 @@ import logging
 
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
+from foris import BASE_DIR
 from foris.common import init_common_app, init_default_app
 from foris.langs import DEFAULT_LANGUAGE
 from foris.middleware.backend_data import BackendData
@@ -34,8 +35,6 @@ from foris.utils.bottle_stuff import (
     route_list_debug,
 )
 from foris.utils import messages
-
-BASE_DIR = os.path.dirname(__file__)
 
 
 def prepare_common_app(args, app_name, init_function, top_index, logger, load_plugins=True):

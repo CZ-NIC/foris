@@ -17,22 +17,18 @@
 
 # builtins
 import logging
-import os
 
 # 3rd party
 import bottle
 
 # local
 from foris.config import init_app as init_app_config, top_index
-
 from foris.common import render_js_md5
 from foris.common_app import prepare_common_app
 from foris.utils import contract_valid
 
 
 logger = logging.getLogger("foris.config")
-
-BASE_DIR = os.path.dirname(__file__)
 
 
 bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid

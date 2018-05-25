@@ -19,10 +19,10 @@
 <head>
     <meta charset="utf-8">
     <title>{{ title + " | " if defined('title') else "" }}{{ trans("Turris router administration interface") }}</title>
-    <!--[if gt IE 8]><!--><link href="{{ static("css/screen.css") }}?md5=MD5SUM" rel="stylesheet" media="screen"><!--<![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{ static("css/screen.css") }}" rel="stylesheet" media="screen"><!--<![endif]-->
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>
-        <link href="{{ static("css/ie8.css") }}?md5=MD5SUM" rel="stylesheet" media="screen">
+        <link href="{{ static("css/ie8.css") }}" rel="stylesheet" media="screen">
     <![endif]-->
     <link rel="shortcut icon" href="{{ static("img/favicon.ico") }}">
     %if defined('PLUGIN_STYLES') and PLUGIN_STYLES:
@@ -48,8 +48,8 @@
     % end
     <script src="{{ static("js/contrib/jquery.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
-    <script src="{{ static("js/parsley.foris-extend.js") }}?md5=MD5SUM"></script>
-    <script src="{{ static("js/foris.js") }}?md5=MD5SUM"></script>
+    <script src="{{ static("js/parsley.foris-extend.js") }}"></script>
+    <script src="{{ static("js/foris.js") }}"></script>
     <script src="{{ url("render_js", filename="foris.js") }}?md5={{ js_md5('foris.js') }}"></script>
     <script src="{{ url("render_js", filename="parsley.messages.js") }}?md5={{ js_md5('parsley.messages.js') }}"></script>
     %if defined('PLUGIN_STATIC_SCRIPTS') and PLUGIN_STATIC_SCRIPTS:

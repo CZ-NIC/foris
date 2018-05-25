@@ -20,20 +20,10 @@ COMPILED_CSS = $(wildcard foris/static/css/*)
 
 COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
 
-PRE_TPL_FILES = $(wildcard \
-	foris/templates/*.pre.tpl \
-	foris/templates/**/*.pre.tpl \
-)
-
-TPL_FILES = $(PRE_TPL_FILES:.pre.tpl=.tpl)
-
 SASS_COMPILER = compass compile -s compressed -e production
 
 
-all: branding sass localization tpl
-
-# target: tpl - Do preprocessing of .pre.tpl files.
-tpl: $(PRE_TPL_FILES) $(TPL_FILES)
+all: branding sass localization
 
 # target: branding - Copy assets for a specified device to its location.
 branding:
@@ -56,11 +46,6 @@ localization:
 	@echo "Done."
 	@echo
 
-%.tpl: %.pre.tpl
-	@echo '-- Preprocessing template $<'
-	tools/preprocess_template.sh $< > $@
-	@echo
-
 # target: clean - Remove all compiled CSS and localization files.
 clean:
 	rm -rf $(COMPILED_CSS) $(COMPILED_L10N) $(TPL_FILES)
@@ -69,4 +54,4 @@ clean:
 help:
 	@egrep "^# target:" Makefile
 
-.PHONY: all branding sass localization tpl
+.PHONY: all branding sass localization

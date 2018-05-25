@@ -19,10 +19,9 @@ import collections
 import gettext
 import os
 
+from foris import BASE_DIR
 from foris.langs import translations
 from foris.state import current_state
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # read locale directory
 locale_directory = os.path.join(BASE_DIR, "locale")
