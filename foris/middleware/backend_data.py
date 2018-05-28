@@ -17,6 +17,7 @@
 import bottle
 
 from foris.state import current_state
+from foris.utils.caches import per_request
 
 
 class BackendData(object):
@@ -45,8 +46,13 @@ class BackendData(object):
         self.app = app
 
     def __call__(self, environ, start_response):
+
+        # clear per request data cache
+        per_request.backend_data.clear()
+
         try:
             data = current_state.backend.perform("web", "get_data", {})
+            per_request.backend_data["web", "get_data", str({})] = data
         except Exception:
             # Exceptions raised here are not correctly processed in flup
             # so we don't propagate the excetion (it will fail later)

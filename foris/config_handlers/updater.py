@@ -38,8 +38,7 @@ class UpdaterHandler(BaseConfigHandler):
 
     def __init__(self, *args, **kwargs):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
-        self.contract_valid = contract_valid()
-        if not self.contract_valid:
+        if not contract_valid():
             self.agreed_collect = current_state.backend.perform("data_collect", "get", {})["agreed"]
         else:
             self.agreed_collect = True
@@ -172,7 +171,7 @@ class UpdaterHandler(BaseConfigHandler):
                 elif data[self.APPROVAL_NO] == self.APPROVAL_NO:
                     data["approval_settings"] = {"status": self.APPROVAL_NO}
 
-                if self.contract_valid:
+                if contract_valid():
                     data["enabled"] = True
                     data["approval_settings"]["status"] = self.APPROVAL_NO
                     data["approval_settings"].pop("delay", None)

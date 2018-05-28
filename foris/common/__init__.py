@@ -16,23 +16,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-import hashlib
 import json
 import logging
 import os
 import re
-import time
 
 from functools import wraps
 
 from foris import BASE_DIR
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid,
+    redirect_unauthenticated, is_safe_redirect, login_required, contract_valid,
     check_password
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
-from foris.utils.translators import _, translations, set_current_language
+from foris.utils.translators import translations, set_current_language
 from foris.utils.bottle_stuff import (
     clickjacking_protection,
     clear_lazy_cache,

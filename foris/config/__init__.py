@@ -366,7 +366,6 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
-        kwargs['contract_valid'] = self.contract_valid
         kwargs['branch'] = self.branch
         kwargs['is_updater_enabled'] = lambda: self.updater_enabled
         kwargs['agreed_collect'] = self.agreed_collect

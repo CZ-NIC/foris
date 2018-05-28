@@ -26,6 +26,7 @@ import logging
 from .routing import reverse
 from . import messages
 from .translators import _
+from .caches import per_request
 from foris.state import current_state
 
 
@@ -202,10 +203,18 @@ def contract_valid():
     """
     CONRACT_VALID = "valid"
     CONRACT_UNKNOWN = "unknown"
-    if current_state.device_customization == "omnia":
+    if current_state.device_customization != "turris":
         return False
 
-    data = current_state.backend.perform("about", "get_contract_status", {})
+    # perform backend query or obtain from cache
+    args = ("about", "get_contract_status", {})
+    hashable_args = ("about", "get_contract_status", str({}))
+    data = per_request.backend_data[hashable_args] if hashable_args in per_request.backend_data \
+        else current_state.backend.perform(*args)
+
+    # store into cache
+    per_request.backend_data[hashable_args] = data
+
     if data["contract_status"] == CONRACT_VALID:
         return True
 

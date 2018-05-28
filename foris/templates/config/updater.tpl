@@ -22,9 +22,9 @@
   %include("_messages.tpl")
 
   <p>{{! form.sections[0].description }}</p>
-%if agreed_collect and not contract_valid:
+%if agreed_collect and not contract_valid():
     <div class="message info">{{ trans("Data collection is currently enabled. You can not disable updater without disabling the data collection first.") }}</div>
-%elif not contract_valid:
+%elif not contract_valid():
     %include("includes/updater_eula.tpl")
 %end
 
@@ -32,14 +32,14 @@
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
 
 %# main updater switch
-%if not agreed_collect and not contract_valid:
+%if not agreed_collect and not contract_valid():
     <div class="row" id="updater-toggle">
       {{! form.sections[0].active_fields[0].render() }}
     </div>
 %end
 
 %# approval settings
-%if is_updater_enabled() and not contract_valid:
+%if is_updater_enabled() and not contract_valid():
   <h4>{{ trans("Update approvals") }}</h4>
   <div id="updater-approvals">
   %if foris_info.device_customization == "turris":
@@ -110,7 +110,7 @@
   %end
 %end
 
-%if is_updater_enabled() or contract_valid:
+%if is_updater_enabled() or contract_valid():
   <h2>{{ trans("Package lists") }}</h2>
   %for field in form.sections[0].sections[1].active_fields:
   <div class="row">
