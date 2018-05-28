@@ -35,6 +35,7 @@ from foris.utils.bottle_stuff import (
     route_list_debug,
 )
 from foris.utils import messages
+from foris.utils import dynamic_assets
 
 
 def prepare_common_app(args, app_name, init_function, top_index, logger, load_plugins=True):
@@ -116,5 +117,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     if args.debug:
         routes = route_list_debug(bottle.app())
         logger.debug("Routes:\n%s", "\n".join(routes))
+
+    # Make dynamic assets cleanup
+    dynamic_assets.reset(app_name, args.assets)
 
     return app

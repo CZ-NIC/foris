@@ -48,6 +48,10 @@ def get_arg_parser():
     group.add_argument(
         "--wss-path", default="/foris-ws", help="websocket server url path - secure", type=str,
     )
+    group.add_argument(
+        "-A", "--assets", default="/tmp/.foris_workdir/dynamic_assets",
+        help="Path where dynamic foris assets will be generated."
+    )
 
     return parser
 
@@ -60,6 +64,8 @@ def main():
     current_state.set_backend(Backend(args.backend, args.backend_socket))
     # update websocket
     current_state.set_websocket(args.ws_port, args.ws_path, args.wss_port, args.wss_path)
+    # set assets path
+    current_state.set_assets_path(args.assets)
 
     if args.app == "config":
         from foris.config_app import prepare_config_app

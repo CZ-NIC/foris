@@ -30,6 +30,7 @@ class ForisState(object):
         self.language = DEFAULT_LANGUAGE
         self.app = None
         self.reboot_required = False
+        self.assets_path = None
 
     def update_lang(self, lang):
         logger.debug("current lang updated to '%s'" % lang)
@@ -84,6 +85,10 @@ class ForisState(object):
         from foris.guide import Guide
         logger.debug("setting guide_data (%s)" % guide_data)
         self.guide = Guide(guide_data)
+
+    def set_assets_path(self, assets_path):
+        logger.debug("setting assets_path to '%s'" % assets_path)
+        self.assets_path = assets_path
 
 
 current_state = ForisState()

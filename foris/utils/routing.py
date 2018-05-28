@@ -21,6 +21,8 @@ import os
 import re
 
 from foris import BASE_DIR
+from foris.state import current_state
+from foris.utils.dynamic_assets import store_template
 logger = logging.getLogger("utils.routing")
 
 static_md5_map = {
@@ -72,6 +74,13 @@ def reverse(name, **kargs):
     raise bottle.RouteBuildError("No route with name '%s' in main app or mounted apps." % name)
 
 
+def generated_static(name, *args):
+    lang = bottle.request.app.lang
+    store_template(name, lang)
+    name = "generated/%s/%s" % (lang, name.lstrip("/"))
+    return static(name, *args)
+
+
 def static(name, *args):
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip('/')
@@ -100,13 +109,19 @@ def static_md5(filename):
             if plugin.PLUGIN_NAME == plugin_name:
                 os_path = os.path.join(plugin.DIRNAME, "static", plugin_file)
     else:
-        os_path = os.path.join(BASE_DIR, filename)
+        match = re.match(r'(?:static)?/*generated/+([a-z]{2})/+(.+)', filename)
+        if match:
+            language, template = match.groups()
+            os_path = os.path.join(current_state.assets_path, current_state.app, language, template)
+        else:
+            os_path = os.path.join(BASE_DIR, filename)
 
     if not os_path:
+        logger.warning("Unable to find file for static url '%s'" % filename)
         return None
 
     if not os.path.exists(os_path):
-        raise Exception(os_path)
+        logger.warning("Static file '%s' related to url '%s' does not exist" % (os_path, filename))
         return None
 
     md5 = hashlib.md5()

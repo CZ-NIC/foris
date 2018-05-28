@@ -22,7 +22,7 @@ from foris.langs import iso2to3, translation_names
 from foris.middleware.bottle_csrf import get_csrf_token
 from foris.state import current_state
 
-from .routing import reverse, static as static_path
+from .routing import reverse, static as static_path, generated_static
 from .translators import translations, ugettext, ungettext
 from . import is_user_authenticated, template_helpers
 
@@ -44,6 +44,7 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults["request"] = bottle.request
     bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
     bottle.SimpleTemplate.defaults["static"] = static_path
+    bottle.SimpleTemplate.defaults["generated_static"] = generated_static
     bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
     bottle.SimpleTemplate.defaults["helpers"] = template_helpers
 
