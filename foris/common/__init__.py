@@ -52,7 +52,7 @@ def login(next, session):
         session.save()
 
         # update contract status
-        current_state.backend.perform("about", "update_contract_status", {})
+        current_state.backend.perform("about", "update_contract_status")
 
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
@@ -157,7 +157,7 @@ def require_contract_valid(valid=True):
 
 @login_required
 def reboot():
-    data = current_state.backend.perform("maintain", "reboot", {})
+    data = current_state.backend.perform("maintain", "reboot")
 
     if bottle.request.is_xhr:
         # return a list of ip addresses where to connect after reboot is performed

@@ -41,7 +41,7 @@ class Backend(object):
             self._instance = UbusSender(path, default_timeout=self.DEFAULT_TIMEOUT)
 
         elif name == "unix-socket":
-            from foris.backend.buses.unix_socket import UnixSocketSender
+            from foris_client.buses.unix_socket import UnixSocketSender
             self._instance = UnixSocketSender(
                 path, default_timeout=self.DEFAULT_TIMEOUT)
 
@@ -58,19 +58,19 @@ class Backend(object):
         response = None
         start_time = time.time()
         try:
-            response = self._instance.send(module, action, data or {})
+            response = self._instance.send(module, action, data)
         except ControllerError as e:
             logger.error("Exception in backend occured.")
             if raise_exception_on_failure:
                 error = e.errors[0]  # right now we are dealing only with the first error
                 raise ExceptionInBackend(
-                    {"module": module, "action": action, "kind": "request", "data": data or {}},
+                    {"module": module, "action": action, "kind": "request", "data": data},
                     error["stacktrace"], error["description"]
                 )
         finally:
             logger.debug(
                 "Query took %f: %s.%s - %s",
-                time.time() - start_time, module, action, data or {}
+                time.time() - start_time, module, action, data
             )
 
         return response

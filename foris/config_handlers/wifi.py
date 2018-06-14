@@ -208,7 +208,7 @@ class WifiHandler(BaseConfigHandler):
         return {"devices": res}
 
     def get_form(self):
-        backend_data = current_state.backend.perform("wifi", "get_settings", {})
+        backend_data = current_state.backend.perform("wifi", "get_settings")
         form_data = self._backend_data_to_form_data(backend_data)
         if self.data:
             form_data.update(self.data)

@@ -30,7 +30,7 @@ class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
 
     def get_form(self):
-        data = current_state.backend.perform("lan", "get_settings", {})
+        data = current_state.backend.perform("lan", "get_settings")
         data["lan_ipaddr"] = data["ip"]
         data["lan_netmask"] = data["netmask"]
         data["dhcp_enabled"] = data["dhcp"]["enabled"]

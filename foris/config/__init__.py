@@ -203,7 +203,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
     def call_ajax_action(self, action):
         if action == "ntpdate-trigger":
-            return current_state.backend.perform("time", "ntpdate_trigger", {})
+            return current_state.backend.perform("time", "ntpdate_trigger")
         raise ValueError("Unknown AJAX action.")
 
 
@@ -237,7 +237,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="wifi"))
 
-        data = current_state.backend.perform("wifi", "reset", {})
+        data = current_state.backend.perform("wifi", "reset")
         if "result" in data and data["result"] is True:
             messages.success(_("Wi-Fi reset was successful."))
         else:
@@ -268,7 +268,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
     def _action_config_backup(self):
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         filename = "turris-backup-%s.tar.bz2" % timestamp
-        data = current_state.backend.perform("maintain", "generate_backup", {})
+        data = current_state.backend.perform("maintain", "generate_backup")
         raw_data = base64.b64decode(data["backup"])
 
         bottle.response.set_header("Content-Type", "application/x-bz2")
@@ -425,7 +425,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
             kwargs['updater_disabled'] = not updater_data["enabled"]
 
             if updater_data["enabled"]:
-                collect_data = current_state.backend.perform("data_collect", "get", {})
+                collect_data = current_state.backend.perform("data_collect", "get")
                 if collect_data["agreed"]:
                     handler = collect.CollectionToggleHandler(request.POST)
                     kwargs['collection_toggle_form'] = handler.form
@@ -540,7 +540,7 @@ class AboutConfigPage(ConfigPageMixin):
 
     @require_contract_valid(True)
     def _action_registration_code(self):
-        data = current_state.backend.perform("about", "get_registration_number", {})
+        data = current_state.backend.perform("about", "get_registration_number")
         return data["registration_number"]
 
     def call_ajax_action(self, action):
@@ -550,7 +550,7 @@ class AboutConfigPage(ConfigPageMixin):
         raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
-        data = current_state.backend.perform("about", "get", {})
+        data = current_state.backend.perform("about", "get")
         data["firewall_status"]["seconds_ago"] = \
             int(time.time() - data["firewall_status"]["last_check"])
         data["firewall_status"]["datetime"] = \
@@ -565,7 +565,7 @@ class AboutConfigPage(ConfigPageMixin):
             self.SENDING_STATUS_TRANSLATION[data["ucollect_status"]["state"]]
         # process dates etc
         if not contract_valid():
-            agreed = current_state.backend.perform("data_collect", "get", {})["agreed"]
+            agreed = current_state.backend.perform("data_collect", "get")["agreed"]
             kwargs['agreed_collect'] = agreed
         return self.default_template(data=data, **kwargs)
 

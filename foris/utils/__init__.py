@@ -207,8 +207,8 @@ def contract_valid():
         return False
 
     # perform backend query or obtain from cache
-    args = ("about", "get_contract_status", {})
-    hashable_args = ("about", "get_contract_status", str({}))
+    args = ("about", "get_contract_status", None)
+    hashable_args = ("about", "get_contract_status", None)
     data = per_request.backend_data[hashable_args] if hashable_args in per_request.backend_data \
         else current_state.backend.perform(*args)
 

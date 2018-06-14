@@ -51,8 +51,8 @@ class BackendData(object):
         per_request.backend_data.clear()
 
         try:
-            data = current_state.backend.perform("web", "get_data", {})
-            per_request.backend_data["web", "get_data", str({})] = data
+            data = current_state.backend.perform("web", "get_data")
+            per_request.backend_data["web", "get_data", None] = data
         except Exception:
             # Exceptions raised here are not correctly processed in flup
             # so we don't propagate the excetion (it will fail later)

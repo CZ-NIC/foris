@@ -35,7 +35,7 @@ class DNSHandler(BaseConfigHandler):
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        data = current_state.backend.perform("dns", "get_settings", {})
+        data = current_state.backend.perform("dns", "get_settings")
         data["dnssec_disabled"] = not data["dnssec_enabled"]
         if self.data:
             # Update from post

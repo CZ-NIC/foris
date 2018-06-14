@@ -28,7 +28,7 @@ class UcollectHandler(BaseConfigHandler):
     userfriendly_title = gettext("uCollect")
 
     def get_form(self):
-        data = current_state.backend.perform("data_collect", "get_honeypots", {})
+        data = current_state.backend.perform("data_collect", "get_honeypots")
 
         # convert data from backend to form data
         data["services"] = []
@@ -99,7 +99,7 @@ class CollectionToggleHandler(BaseConfigHandler):
     userfriendly_title = gettext("Data collection")
 
     def get_form(self):
-        data = current_state.backend.perform("data_collect", "get", {})
+        data = current_state.backend.perform("data_collect", "get")
         if self.data and "enable" in self.data:
             data["enable"] = self.data["enable"]
         else:

@@ -39,7 +39,7 @@ class UpdaterHandler(BaseConfigHandler):
     def __init__(self, *args, **kwargs):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
         if not contract_valid():
-            self.agreed_collect = current_state.backend.perform("data_collect", "get", {})["agreed"]
+            self.agreed_collect = current_state.backend.perform("data_collect", "get")["agreed"]
         else:
             self.agreed_collect = True
 
