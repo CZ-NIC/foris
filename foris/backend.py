@@ -67,6 +67,9 @@ class Backend(object):
                     {"module": module, "action": action, "kind": "request", "data": data},
                     error["stacktrace"], error["description"]
                 )
+        except Exception as e:
+            logger.error("Exception occured during the communication with backend. (%s)", e)
+            raise e
         finally:
             logger.debug(
                 "Query took %f: %s.%s - %s",
