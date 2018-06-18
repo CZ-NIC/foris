@@ -109,7 +109,7 @@ def require_customization(required_customization=None):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if info.device_customization != required_customization:
+            if current_state.device_customization != required_customization:
                 raise bottle.HTTPError(
                     403, "Requested method is not available in this Foris build.")
             return func(*args, **kwargs)
