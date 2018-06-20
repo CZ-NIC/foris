@@ -63,10 +63,10 @@ class Backend(object):
             logger.error("Exception in backend occured.")
             if raise_exception_on_failure:
                 error = e.errors[0]  # right now we are dealing only with the first error
-                raise ExceptionInBackend(
-                    {"module": module, "action": action, "kind": "request", "data": data},
-                    error["stacktrace"], error["description"]
-                )
+                msg = {"module": module, "action": action, "kind": "request"}
+                if data is not None:
+                    msg["data"] = data
+                raise ExceptionInBackend(msg, error["stacktrace"], error["description"])
         except Exception as e:
             logger.error("Exception occured during the communication with backend. (%s)", e)
             raise e
