@@ -11,27 +11,27 @@
       {% include '_lang_flat.html.j2' %}
     </div>
 
-    <h1><img src="{{ static("img/logo-turris.svg") }}" alt="{{ trans("Project:Turris") }}" width="295"></h1>
+    <h1><img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Project:Turris{% endtrans %}" width="295"></h1>
 
     {% include '_messages.html.j2' %}
 
     {% if user_authenticated() %}
-        <a href="{{ url("logout") }}">{{ trans("Log out") }}</a>
+        <a href="{{ url("logout") }}">{% trans %}Log out{% endtrans %}</a>
     {% else %}
         <form action="{{ request.fullpath }}{{ '?next=%s' % next if next else '' }}" method="POST">
             <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         {% if request.GET.get("next") %}
             <input type="hidden" name="next" value="{{ request.GET['next'] }}">
         {% endif %}
-            <label for="field-password">{{ trans("Password") }}</label>
-            <input id="field-password" type="password" name="password" placeholder="{{ trans("Password") }}" autofocus>
-            <button class="button" type="submit">{{ trans("Log in") }}</button>
+            <label for="field-password">{% trans %}Password{% endtrans %}</label>
+            <input id="field-password" type="password" name="password" placeholder="{% trans %}Password{% endtrans %}" autofocus>
+            <button class="button" type="submit">{% trans %}Log in{% endtrans %}</button>
         </form>
     {% endif %}
   <div class="footer">
-    {{ trans("Foris Configuration Interface") }}<br>
+    {% trans %}Foris Configuration Interface{% endtrans %}<br>
     {% if luci_path is defined %}
-    <a href="{{ luci_path }}">{{ trans("Go to LuCI") }}</a>
+    <a href="{{ luci_path }}">{% trans %}Go to LuCI{% endtrans %}</a>
     {% endif %}
   </div>
 
@@ -40,12 +40,12 @@
       <input type="checkbox" hidden id="flash-1">
       <label for="flash-1" class="flash warning">
           <span>
-              <img src="{{ static("img/icon-opened-lock.png") }}" alt="{{ trans("Opened lock") }}" width="64" height="64">
+              <img src="{{ static("img/icon-opened-lock.png") }}" alt="{% trans %}Opened lock{% endtrans %}" width="64" height="64">
           </span>
-          <strong>{{ trans("Your connection is not encrypted") }}!</strong>
+          <strong>{% trans %}Your connection is not encrypted{% endtrans %}</strong>
           <br>
           {{ trans("A secure connection is an important safety feature of the router and therefore the entire home network.") }}
-          <a href="{{ doc_url }}">{{ trans("How to set an encrypted connection and why is it important") }} &gt;</a>
+          <a href="{{ doc_url }}">{% trans %}How to set an encrypted connection and why is it important{% endtrans %} &gt;</a>
           <br>
           <small>Turris OS</small>
       </label>

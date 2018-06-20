@@ -2,7 +2,7 @@
 <html lang="{{ lang() }}">
 <head>
     <meta charset="utf-8">
-    <title>{{ title + " | " if title|default(False) else "" }}{{ trans("Turris router administration interface") }}</title>
+    <title>{{ title + " | " if title|default(False) else "" }}{% trans %}Turris router administration interface{% endtrans %}</title>
     <!--[if gt IE 8]><!--><link href="{{ static("css/screen.css") }}" rel="stylesheet" media="screen"><!--<![endif]-->
     <!--[if lt IE 9]>
         <script src="{{ static("js/contrib/html5.js") }}"></script>

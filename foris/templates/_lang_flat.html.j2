@@ -1,4 +1,4 @@
-{{ trans("Language") }}:
+{% trans %}Language{% endtrans %}:
 <span>{{ iso2to3.get(lang(), lang()) }}</span>
 {% for code in translations %}
   {% if code != lang() %}

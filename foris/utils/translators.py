@@ -19,6 +19,8 @@ import collections
 import gettext
 import os
 
+from jinja2.ext import InternationalizationExtension
+
 from foris import BASE_DIR
 from foris.langs import translations
 from foris.state import current_state
@@ -59,3 +61,13 @@ def set_current_language(language):
         return True
 
     return False
+
+
+# for jinja template
+class ForisInternationalizationExtension(InternationalizationExtension):
+    def __init__(self, environment):
+        super(ForisInternationalizationExtension, self).__init__(environment)
+        self._install_callables(ugettext, ungettext)
+
+
+i18n = ForisInternationalizationExtension
