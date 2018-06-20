@@ -56,6 +56,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
 
     # internationalization
     i18n_defaults(bottle.SimpleTemplate, bottle.request)
+    i18n_defaults(bottle.Jinja2Template, bottle.request)
+    bottle.Jinja2Template.settings["extensions"] = ['jinja2.ext.i18n']
 
     # setup default template defaults
     prepare_template_defaults()

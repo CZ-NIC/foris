@@ -134,8 +134,11 @@ def set_template_defaults():
     Add template functions as template defaults to supplied Bottle template
     adapter.
 
-    :param template: Bottle template adapter - class inheriting from BaseTemplate
     """
     bottle.SimpleTemplate.defaults['get_messages'] = get_messages
     bottle.SimpleTemplate.defaults['get_alert_messages'] = \
+        functools.partial(get_messages, min_level=WARNING)
+
+    bottle.Jinja2Template.defaults['get_messages'] = get_messages
+    bottle.Jinja2Template.defaults['get_alert_messages'] = \
         functools.partial(get_messages, min_level=WARNING)

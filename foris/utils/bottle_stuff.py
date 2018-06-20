@@ -48,6 +48,26 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
     bottle.SimpleTemplate.defaults["helpers"] = template_helpers
 
+    bottle.Jinja2Template.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
+    bottle.Jinja2Template.defaults['translation_names'] = translation_names
+    bottle.Jinja2Template.defaults['translations'] = [e for e in translations]
+    bottle.Jinja2Template.defaults['iso2to3'] = iso2to3
+    bottle.Jinja2Template.defaults['ungettext'] = \
+        lambda singular, plural, n: ungettext(singular, plural, n)
+    bottle.Jinja2Template.defaults['foris_info'] = current_state
+
+    # template defaults
+    # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
+    # because bool(user_authenticated) is always True - it means bool(<function ...>)
+    bottle.Jinja2Template.defaults["user_authenticated"] =\
+        lambda: bottle.request.environ["foris.session"].get("user_authenticated")
+    bottle.Jinja2Template.defaults["request"] = bottle.request
+    bottle.Jinja2Template.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
+    bottle.Jinja2Template.defaults["static"] = static_path
+    bottle.Jinja2Template.defaults["generated_static"] = generated_static
+    bottle.Jinja2Template.defaults["get_csrf_token"] = get_csrf_token
+    bottle.Jinja2Template.defaults["helpers"] = template_helpers
+
 
 def disable_caching(authenticated_only=True):
     """

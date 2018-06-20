@@ -31,6 +31,7 @@ logger = logging.getLogger("foris.config")
 
 
 bottle.SimpleTemplate.defaults['contract_valid'] = contract_valid
+bottle.Jinja2Template.defaults['contract_valid'] = contract_valid
 
 
 def prepare_config_app(args):

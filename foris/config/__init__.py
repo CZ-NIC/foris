@@ -22,7 +22,7 @@ import logging
 import time
 import urllib
 
-from bottle import Bottle, request, template, response
+from bottle import Bottle, request, template, response, jinja2_template
 import bottle
 
 from foris.common import require_contract_valid, login
@@ -636,6 +636,7 @@ def config_page_get(page_name):
         bottle.redirect(reverse("config_page", page_name=current_state.guide.current))
 
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     return config_page.render(active_config_page_key=page_name)
@@ -644,6 +645,7 @@ def config_page_get(page_name):
 @login_required
 def config_page_post(page_name):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
@@ -667,6 +669,7 @@ def config_page_post(page_name):
 @login_required
 def config_action(page_name, action):
     bottle.SimpleTemplate.defaults['active_config_page'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     try:
@@ -679,6 +682,7 @@ def config_action(page_name, action):
 @login_required
 def config_action_post(page_name, action):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST)
     if request.is_xhr:
@@ -707,6 +711,7 @@ def config_action_post(page_name, action):
 @login_required
 def config_ajax(page_name):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     action = request.params.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
@@ -734,6 +739,7 @@ def init_app():
     app.route("/<page_name:re:.+>/", name="config_page",
               callback=config_page_get)
     bottle.SimpleTemplate.defaults['config_pages'] = config_page_map
+    bottle.Jinja2Template.defaults['config_pages'] = config_page_map
     return app
 
 
@@ -744,7 +750,7 @@ def login_redirect():
     bottle.redirect(reverse("config_index"))
 
 
-@bottle.view("index")
+@bottle.jinja2_view("index.html.j2")
 def top_index():
     session = bottle.request.environ['foris.session']
     if bottle.request.method == 'POST':

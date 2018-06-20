@@ -63,6 +63,7 @@ class CSRFPlugin(object):
 
     def setup(self, app):
         bottle.SimpleTemplate.defaults['get_csrf_token'] = get_csrf_token
+        bottle.Jinja2Template.defaults['get_csrf_token'] = get_csrf_token
 
     def apply(self, callback, route):
         # make CSRF protection implicitly enabled (since it's more fool-proof)
