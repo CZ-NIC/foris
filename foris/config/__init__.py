@@ -178,6 +178,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     menu_order = 12
 
     template = "config/wan"
+    template_type = "jinja2"
 
     def render(self, **kwargs):
         if not self.status_data["up"]:
