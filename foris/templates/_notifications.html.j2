@@ -1,0 +1,27 @@
+<div id="notifications-content">
+{% if notifications|length > 0 %}
+  <div id="notifications-list">
+  {% set ns = namespace(show_dismiss_all=false) %}
+  {% for notification in notifications %}
+    <div class="notification {{ notification["severity"] }}" id="notification_{{ notification["id"] }}">
+      <h2>{{ helpers.make_notification_title(notification)|safe }}</h2>
+      {{ helpers.transform_notification_message(notification["msg"])|safe }}
+      {% if notification["severity"] == "restart" %}
+        <div class="buttons">
+            <a href="{{ url("reboot") }}" class="button reboot">{% trans %}Reboot now{% endtrans %}</a>
+        </div>
+      {% else %}
+      {% set ns.show_dismiss_all = True %}
+        <a href="#" class="dismiss" title="{% trans %}Dismiss{% endtrans %}" data-id="{{ notification["id"] }}">&times;</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+
+  <div class="row" style="{{ "" if ns.show_dismiss_all else "display: none" }}">
+    <button type="submit" class="button" id="dismiss-all-notifications">{% trans %}Dismiss All{% endtrans %}</button>
+  </div>
+{% else %}
+    <strong>{% trans %}No new messages.{% endtrans %}</strong>
+{% endif %}
+</div>

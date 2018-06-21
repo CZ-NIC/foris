@@ -107,6 +107,7 @@ class NotificationsConfigPage(ConfigPageMixin):
 
     template = "config/notifications"
     userfriendly_title = gettext("Notifications")
+    template_type = "jinja2"
 
     def render(self, **kwargs):
         notifications = current_state.backend.perform(
@@ -138,8 +139,9 @@ class NotificationsConfigPage(ConfigPageMixin):
                 "router_notifications", "list", {"lang": current_state.language}
             )["notifications"]
             return template(
-                "_notifications.tpl",
-                notifications=[e for e in notifications if not e["displayed"]]
+                "_notifications.html.j2",
+                notifications=[e for e in notifications if not e["displayed"]],
+                template_adapter=bottle.Jinja2Template,
             )
 
         raise ValueError("Unknown AJAX action.")
