@@ -42,6 +42,7 @@ logger = logging.getLogger(__name__)
 class ConfigPageMixin(object):
     menu_order = 50
     template = "config/main"
+    template_type = "simple"
 
     def call_action(self, action):
         """Call config page action.
@@ -60,8 +61,13 @@ class ConfigPageMixin(object):
         raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
     def default_template(self, **kwargs):
+        if self.template_type == "jinja2":
+            page_template = "%s.html.j2" % self.template
+            kwargs['template_adapter'] = bottle.Jinja2Template
+        else:
+            page_template = self.template
         return template(
-            self.template, title=_(kwargs.pop('title', self.userfriendly_title)), **kwargs)
+            page_template, title=_(kwargs.pop('title', self.userfriendly_title)), **kwargs)
 
     def render(self, **kwargs):
         try:
@@ -200,6 +206,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     menu_order = 13
 
     template = "config/time"
+    template_type = "jinja2"
 
     def call_ajax_action(self, action):
         if action == "ntpdate-trigger":

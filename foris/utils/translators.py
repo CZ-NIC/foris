@@ -40,10 +40,23 @@ translations = _LangDict(
     for e in translations
 )
 
+
+class SimpleDelayedTranslator(object):
+
+    def __init__(self, text):
+        self.text = text
+
+    def __str__(self):
+        return ugettext(self.text)
+
+    def __unicode__(self):
+        return ugettext(self.text)
+
+
 ugettext = lambda x: translations[current_state.language].ugettext(x)
 ungettext = lambda singular, plural, n: \
     translations[current_state.language].ungettext(singular, plural, n)
-gettext_dummy = lambda x: x
+gettext_dummy = lambda x: SimpleDelayedTranslator(x)
 
 _ = ugettext
 
