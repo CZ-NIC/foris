@@ -18,6 +18,7 @@
 import os
 import bottle
 import logging
+import jinja2
 
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
@@ -58,6 +59,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     i18n_defaults(bottle.SimpleTemplate, bottle.request)
     i18n_defaults(bottle.Jinja2Template, bottle.request)
     bottle.Jinja2Template.settings["extensions"] = ['foris.utils.translators.i18n']
+    bottle.Jinja2Template.settings["bytecode_cache"] = jinja2.FileSystemBytecodeCache(
+        directory=current_state.assets_path)
 
     # setup default template defaults
     prepare_template_defaults()
