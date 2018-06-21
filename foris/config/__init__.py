@@ -222,6 +222,7 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     menu_order = 14
 
     template = "config/dns"
+    template_type = "jinja2"
 
     def _action_check_connection(self):
         return current_state.backend.perform(
