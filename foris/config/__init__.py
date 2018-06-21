@@ -157,6 +157,7 @@ class NotificationsConfigPage(ConfigPageMixin):
 
 class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     menu_order = 11
+    template_type = "jinja2"
 
     def __init__(self, *args, **kwargs):
         super(PasswordConfigPage, self).__init__(change=current_state.password_set, *args, **kwargs)
@@ -234,6 +235,8 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     menu_order = 15
 
+    template_type = "jinja2"
+
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
     menu_order = 16
@@ -266,6 +269,8 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
 class SystemPasswordConfigPage(ConfigPageMixin, misc.SystemPasswordHandler):
     menu_order = 17
+
+    template_type = "jinja2"
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
@@ -577,12 +582,6 @@ class AboutConfigPage(ConfigPageMixin):
             agreed = current_state.backend.perform("data_collect", "get")["agreed"]
             kwargs['agreed_collect'] = agreed
         return self.default_template(data=data, **kwargs)
-
-
-class VirtualConfigPage(ConfigPageMixin):
-    def __init__(self, title, menu_order):
-        self.userfriendly_title = title
-        self.menu_order = menu_order
 
 
 class ConfigPageMapItems(dict):
