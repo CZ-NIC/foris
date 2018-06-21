@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-23 09:42+0200\n"
-"PO-Revision-Date: 2018-05-22 11:28+0000\n"
+"PO-Revision-Date: 2018-06-13 17:37+0000\n"
 "Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/"
-">\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0-dev\n"
+"X-Generator: Weblate 3.0.1\n"
 
 msgid "This value seems to be invalid."
 msgstr "Cette valeur semble être invalide."
@@ -336,7 +336,7 @@ msgstr "Échec lors de l'interrogation des serveurs de temps NTP."
 
 #, fuzzy
 msgid "Update time"
-msgstr "Mise à jour"
+msgstr "Heure de mise à jour"
 
 msgid "Hint"
 msgstr "Astuce"
@@ -1096,6 +1096,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface hasn't "
 "been properly initialized yet."
 msgstr ""
+"Votre configuration WAN n'est probablement pas correcte ou votre interface "
+"WAN n'a pas encore été correctement initialisée."
 
 msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
@@ -1106,7 +1108,7 @@ msgid "Wrong HTTP method."
 msgstr "Méthode HTTP incorrecte."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "La réinitialisation Wi-Fi a réussi."
 
 msgid "Failed to perform Wi-Fi reset."
 msgstr "Échec de la réinitialisation du Wi-Fi."
@@ -1202,6 +1204,8 @@ msgstr ""
 
 msgid "Router failed to authorize. Please try to validate our email later."
 msgstr ""
+"Échec d'autorisation sur le routeur. Veuillez essayer de valider notre "
+"courriel plus tard."
 
 msgid "About"
 msgstr "À propos"
@@ -1594,7 +1598,6 @@ msgstr "Masque réseau"
 msgid "Gateway"
 msgstr "Passerelle"
 
-#, fuzzy
 msgid "DHCP hostname"
 msgstr "Nom d'hôte DHCP"
 
@@ -1687,7 +1690,7 @@ msgid "MTU"
 msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Unité de Transmission Maximale (MTU) dans le tunnel (en octets)."
 
 msgid "Dynamic IPv4 handling"
 msgstr "Gestion dynamique de l'IPv4"
@@ -1700,9 +1703,8 @@ msgstr ""
 msgid "Tunnel ID"
 msgstr "ID du tunnel"
 
-#, fuzzy
 msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr "Id de votre tunnel qui vous a été attribué par le fournisseur."
+msgstr "ID de votre tunnel qui vous a été attribué par le fournisseur."
 
 msgid "Username"
 msgstr "Nom d'utilisateur"
@@ -1734,9 +1736,10 @@ msgstr ""
 msgid "MAC address"
 msgstr "Adresse MAC"
 
-#, fuzzy
 msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr "Le séparateur est un signe deux-points, par exemple 00:11:22:33:44:55"
+msgstr ""
+"Les Deux-points sont utilisés en tant que signe de séparation, par exemple "
+"00:11:22:33:44:55"
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
@@ -1838,6 +1841,8 @@ msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Le temps devrait être à jour sinon le DNS et d'autres services pourraient ne "
+"pas fonctionner correctement."
 
 msgid "How to set time"
 msgstr "Comment configurer le temps"
