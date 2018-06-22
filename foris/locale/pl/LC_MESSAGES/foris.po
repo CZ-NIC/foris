@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-23 09:42+0200\n"
-"PO-Revision-Date: 2018-05-22 10:20+0000\n"
+"PO-Revision-Date: 2018-05-23 07:53+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/"
 ">\n"
@@ -1624,21 +1624,19 @@ msgstr "Serwer DNS 2 (IPv6)"
 msgid "Custom DUID"
 msgstr "Niestandardowy DUID"
 
-#, fuzzy
 msgid "DUID which will be provided to the DHCPv6 server."
-msgstr "DUID, który zostanie wysłany do serwera dhcpv6."
+msgstr "DUID, który zostanie wysłany do serwera DHCPv6."
 
 msgid "Public IPv4"
 msgstr "Publiczny adres IPv4"
 
-#, fuzzy
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
 "address manually (e.g. when your WAN interface has a private address which "
 "is mapped to public IP)."
 msgstr ""
 "Aby korzystać z protokołu 6to4, konieczne może być ręczne określenie "
-"publicznego adresu IPv4 (np.gdy twój interfejs WAN ma adres prywatny, który "
+"publicznego adresu IPv4 (np. gdy twój interfejs WAN ma adres prywatny, który "
 "jest mapowany na publiczny adres IP)."
 
 msgid "use autodetection"
@@ -1647,11 +1645,9 @@ msgstr "użyj autodetekcji"
 msgid "Provider IPv4"
 msgstr "Dostawca IPv4"
 
-#, fuzzy
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's side."
-msgstr ""
-"Ten adres będzie używany jako punkt końcowy tunelu po stronie dostawcy."
+msgstr "Ten adres będzie używany jako punkt końcowy tunelu po stronie dostawcy."
 
 msgid "Routed IPv6 prefix"
 msgstr "Routowany prefiks IPv6"
@@ -1678,7 +1674,6 @@ msgstr ""
 msgid "Tunnel ID"
 msgstr "ID tunelu"
 
-#, fuzzy
 msgid "ID of your tunnel which was assigned to you by the provider."
 msgstr "Identyfikator tunelu, który został ci przydzielony przez dostawcę."
 
@@ -1709,9 +1704,8 @@ msgstr ""
 msgid "MAC address"
 msgstr "Adres MAC"
 
-#, fuzzy
 msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr "Separator jest dwukropkiem, np. 00:11:22:33:44:55"
+msgstr "Dwukropek jest używany jako separator, np. 00:11:22:33:44:55"
 
 msgid ""
 "Set your password for this administration interface. The password must be at "
