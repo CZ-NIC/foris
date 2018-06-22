@@ -19,7 +19,6 @@
 import logging
 import shutil
 import os
-import hashlib
 import bottle
 
 
@@ -59,7 +58,7 @@ def store_template(template_name, lang):
         return
 
     # store file
-    rendered = bottle.template(template_name + ".tpl")
+    rendered = bottle.template(template_name + ".j2", template_adapter=bottle.Jinja2Template)
     target_path = os.path.join(current_assets_path, lang, template_name)
     try:
         os.makedirs(os.path.dirname(target_path))
