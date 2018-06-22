@@ -244,6 +244,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
     menu_order = 16
 
     template = "config/wifi"
+    template_type = "jinja2"
 
     def _action_reset(self):
 

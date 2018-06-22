@@ -1,0 +1,32 @@
+{% for section in form.sections %}
+    {% if section.active_fields %}
+        <br />
+        <h4>{{ section.title }}</h4>
+        {% if section.description %}
+            <p class="config-section-description">{{ section.description }}</p>
+        {% endif %}
+        {% for field in section.active_fields %}
+            {% set radio_number = field.name.strip("abcdefghijklmnopqrstuvwxyz-_") %}
+            {% include '_field.html.j2' %}
+            {% if field.name == "radio0-hwmode" and foris_info.device_customization == "omnia" and field.field.value == "11g" %}
+        <div class="row">
+            <p class="form-note">
+            {% trans %}If you want to use this card for 2.4GHz bands, correction of cables connected to diplexers is needed! Factory default setting: Cables from big card connected to 5GHz, cables from small card connected to 2.4GHz diplexer part.{% endtrans %}
+            <p>
+        </div>
+            {% endif %}
+            {% if field.name.endswith("-password") %}
+        <div class="wifi-qr row" id="wifi-qr-{{ radio_number }}">
+            <img src="{{ static("img/QR_icon.svg") }}" alt="{% trans %}QR code{% endtrans %}" title="{% trans %}Show QR code{% endtrans %}">
+            <div id="wifi-qr-radio{{ radio_number }}" class="wifi-qr-box"></div>
+        </div>
+            {% endif %}
+            {% if field.name.endswith("guest_password") %}
+        <div class="wifi-qr row" id="wifi-qr-guest-{{ radio_number }}">
+            <img src="{{ static("img/QR_icon.svg") }}" alt="{% trans %}QR code{% endtrans %}" title="{% trans %}Show QR code{% endtrans %}">
+            <div id="wifi-qr-guest-radio{{ radio_number }}" class="wifi-qr-box"></div>
+        </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
