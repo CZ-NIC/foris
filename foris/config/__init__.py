@@ -360,6 +360,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
     menu_order = 19
 
     template = "config/updater"
+    template_type = "jinja2"
 
     def _action_resolve_approval(self):
         if bottle.request.method != 'POST':
