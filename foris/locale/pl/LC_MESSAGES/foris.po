@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-17 13:33+0200\n"
-"PO-Revision-Date: 2018-05-17 12:33+0000\n"
+"PO-Revision-Date: 2018-05-22 10:20+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
 "\n"
@@ -1552,7 +1552,7 @@ msgid "6to4 (public IPv4 address required)"
 msgstr "6to4 (wymagany publiczny adres IPv4)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6in4 (wymagany publiczny adres IPv4)"
 
 msgid "Disable IPv6"
 msgstr "Wyłącz protokół IPv6"
@@ -1642,55 +1642,54 @@ msgstr ""
 msgid "use autodetection"
 msgstr "użyj autodetekcji"
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "Dostawca usług SMTP"
+msgstr "Dostawca IPv4"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on privider's side."
-msgstr ""
+msgstr "Ten adres będzie używany jako punkt końcowy tunelu po stronie dostawcy."
 
-#, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "Prefiks IPv6"
+msgstr "Routowany prefiks IPv6"
 
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "Adresy IPv6, które będą kierowane do Twojej sieci."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Maksymalna jednostka transmisji (MTU) w tunelu (w bajtach)."
 
 msgid "Dynamic IPv4 handling"
-msgstr ""
+msgstr "Dynamiczne zarządzanie IPv4"
 
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that you "
 "need to fill in some extra fields to make it work."
 msgstr ""
+"Niektórzy dostawcy tuneli umożliwiają posiadanie publicznego dynamicznego "
+"IPv4. Pamiętaj, że aby to działało, musisz wypełnić dodatkowe pola."
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "ID tunelu"
 
 msgid "Id of your tunnel which was assigned to you by the provider."
-msgstr ""
+msgstr "Identyfikator tunelu, który został ci przydzielony przez dostawcę."
 
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#, fuzzy
 msgid ""
 "Username which will be used to provide credentials to your tunnel provider."
-msgstr "Nazwa hosta, która zostanie przekazana do serwera DHCP."
+msgstr ""
+"Nazwa użytkownika, która będzie używana do poświadczenia dla dostawcy tunelu."
 
 msgid "Key"
-msgstr ""
+msgstr "Klucz"
 
-#, fuzzy
 msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr "DUID, który zostanie wysłany do serwera dhcpv6."
+msgstr "Klucz, który zostanie użyty do poświadczenia dla dostawcy tunelu."
 
 msgid "Custom MAC address"
 msgstr "Własny adres MAC"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-17 13:33+0200\n"
-"PO-Revision-Date: 2018-05-17 11:50+0000\n"
+"PO-Revision-Date: 2018-05-22 11:28+0000\n"
 "Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
@@ -1154,7 +1154,7 @@ msgstr ""
 "devraient être installés ou supprimés sous peu."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Programme de mise à jour est en cours d'exécution"
 
 msgid "Data collection"
 msgstr "Collecte de données"
@@ -1278,13 +1278,13 @@ msgid "Router IP address"
 msgstr "Adresse IP du routeur"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Adresse IP du routeur dans le réseau interne."
 
 msgid "Network netmask"
 msgstr "Masque sous-réseau"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Masque de sous-réseau du réseau interne."
 
 msgid "Enable DHCP"
 msgstr "Activer DHCP"
@@ -1335,7 +1335,7 @@ msgid "Guest network netmask"
 msgstr "Masque sous-réseau du réseau invité"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Masque de sous-réseau du réseau invité."
 
 msgid "Guest Lan QoS"
 msgstr "QoS du Réseau Lan invité"
@@ -1574,10 +1574,10 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (configuration automatique)"
 
 msgid "6to4 (public IPv4 address required)"
-msgstr ""
+msgstr "6to4 (adresse IPv4 publique requise)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6to4 (adresse IPv4 publique requise)"
 
 msgid "Disable IPv6"
 msgstr "Désactiver IPv6"
@@ -1599,7 +1599,7 @@ msgid "DHCP hostname"
 msgstr "Nom d'hôte DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Nom d'hôte qui sera assigné au serveur DHCP."
 
 msgid "DNS server 1 (IPv4)"
 msgstr "Serveur DNS 1 (IPv4)"
@@ -1656,7 +1656,7 @@ msgid "DUID which will be provided to the dhcpv6 server."
 msgstr ""
 
 msgid "Public IPv4"
-msgstr ""
+msgstr "IPv4 Publique"
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
@@ -1665,31 +1665,30 @@ msgid ""
 msgstr ""
 
 msgid "use autodetection"
-msgstr ""
+msgstr "utiliser la détection automatique"
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "Fournisseur SMTP"
+msgstr "Fournisseur IPv4"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on privider's side."
 msgstr ""
+"Cette adresse sera utilisée comme point final du tunnel côté fournisseur."
 
-#, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "Préfixe IPv6"
+msgstr "Préfixe IPv6 routé"
 
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "Les adresses IPv6 qui seront routées vers votre réseau."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
 msgstr ""
 
 msgid "Dynamic IPv4 handling"
-msgstr ""
+msgstr "Gestion dynamique de l'IPv4"
 
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that you "
@@ -1697,10 +1696,10 @@ msgid ""
 msgstr ""
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "ID du tunnel"
 
 msgid "Id of your tunnel which was assigned to you by the provider."
-msgstr ""
+msgstr "Id de votre tunnel qui vous a été attribué par le fournisseur."
 
 msgid "Username"
 msgstr "Nom d'utilisateur"
@@ -1708,12 +1707,16 @@ msgstr "Nom d'utilisateur"
 msgid ""
 "Username which will be used to provide credentials to your tunnel provider."
 msgstr ""
+"Nom d’utilisateur qui sera utilisé pour fournir des informations d’"
+"identification à votre fournisseur de tunnel."
 
 msgid "Key"
-msgstr ""
+msgstr "Clé"
 
 msgid "Key which will be used to provide credentials to your tunnel provider."
 msgstr ""
+"Clé qui sera utilisée pour fournir des informations d'identification à votre "
+"fournisseur de tunnel."
 
 msgid "Custom MAC address"
 msgstr "Personnaliser l'adresse MAC"
@@ -1836,7 +1839,7 @@ msgid "How to set time"
 msgstr "Comment configurer le temps"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Choisissez la méthode de stockage de l'heure actuelle dans le routeur."
 
 msgid "via ntp"
 msgstr "via NTP"
@@ -1845,7 +1848,7 @@ msgid "manually"
 msgstr "manuellement"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Heure en format AAAA-MM-JJ HH:MM:SS."
 
 msgid "Updater"
 msgstr "Updater"
@@ -2040,7 +2043,7 @@ msgid "Upgrade"
 msgstr "Mettre à jour"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Rétrograder"
 
 #, python-format
 msgid "Configuration wizard - step %s"
