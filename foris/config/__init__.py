@@ -438,6 +438,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
     menu_order = 20
 
     template = "config/data-collection"
+    template_type = "jinja2"
     userfriendly_title = gettext("Data collection")
 
     def render(self, **kwargs):
