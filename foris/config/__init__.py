@@ -280,6 +280,8 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
     menu_order = 18
 
     template = "config/maintenance"
+    template_type = "jinja2"
+
     userfriendly_title = gettext("Maintenance")
 
     def _action_config_backup(self):
@@ -337,8 +339,10 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
     def render(self, **kwargs):
         notifications_handler = notifications.NotificationsHandler(self.data)
-        return super(MaintenanceConfigPage, self).render(notifications_form=notifications_handler.form,
-                                                         **kwargs)
+        return super(MaintenanceConfigPage, self).render(
+            notifications_form=notifications_handler.form,
+            **kwargs
+        )
 
     def save(self, *args, **kwargs):
         super(MaintenanceConfigPage, self).save(no_messages=True, *args, **kwargs)
