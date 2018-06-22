@@ -553,6 +553,7 @@ class AboutConfigPage(ConfigPageMixin):
     menu_order = 99
 
     template = "config/about"
+    template_type = "jinja2"
     userfriendly_title = gettext("About")
 
     SENDING_STATUS_TRANSLATION = {
