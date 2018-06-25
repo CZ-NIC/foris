@@ -18,7 +18,7 @@
     </form>
 {% if is_xhr is not defined %}
     <h2>{% trans %}Connection test{% endtrans %}</h2>
-    <p>{{ _("Here you can test you connection settings. Remember to click on the <strong>Save</strong> button before running the test. Note that sometimes it takes a while before the connection is fully initialized. So it might be useful to wait for a while before running this test.")|safe }}</p>
+    <p>{% trans %}Here you can test you connection settings. Remember to click on the <strong>Save</strong> button before running the test. Note that sometimes it takes a while before the connection is fully initialized. So it might be useful to wait for a while before running this test.{% endtrans %}</p>
     <div class="message error" id="connection-test-fail">
       {% trans %}"Unable to verify network connection.{% endtrans %}
     </div>
