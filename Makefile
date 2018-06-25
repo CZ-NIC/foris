@@ -47,4 +47,8 @@ clean:
 help:
 	@egrep "^# target:" Makefile
 
-.PHONY: all branding sass localization
+messages:
+	./setup.py extract_messages --no-location -o foris/locale/foris.pot -F babel.cfg
+	./setup.py update_catalog -D foris -i foris/locale/foris.pot -d foris/locale/
+
+.PHONY: all branding sass messages
