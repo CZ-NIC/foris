@@ -23,7 +23,7 @@ COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
 SASS_COMPILER = compass compile -s compressed -e production
 
 
-all: branding sass localization
+all: branding sass
 
 # target: branding - Copy assets for a specified device to its location.
 branding:
@@ -37,13 +37,6 @@ sass:
 	@cd foris/static/; \
 	echo '-- Running compass $<';\
 	$(SASS_COMPILER)
-	@echo
-
-# target: localization - Create .mo files from .po fiels in locale directory
-localization:
-	@echo "-- Compiling localization files"
-	@tools/compilemessages.sh foris
-	@echo "Done."
 	@echo
 
 # target: clean - Remove all compiled CSS and localization files.

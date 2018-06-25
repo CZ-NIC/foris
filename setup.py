@@ -1,43 +1,30 @@
-from distutils.core import setup
+#!/usr/bin/env python
+
 import os
-import re
-import subprocess
 
-import foris
+from setuptools import setup
+from setuptools.command.build_py import build_py
 
-
-def update_version_file(version_file_path, version_number):
-    """Read file containing version variable and update it to version_number."""
-    with open(version_file_path, "r") as f:
-        content = f.readlines()
-    with open(version_file_path, "w") as f:
-        version_re = re.compile(r'^__version__ = "[^"]*"')
-        for line in content:
-            f.write(version_re.sub('__version__ = "%s"' % version_number, line))
+from foris import __version__
 
 
-def get_version(update_file=True):
-    """Get version from Git tags, optionally save it to foris module."""
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    if not os.path.isdir(os.path.join(base_dir, ".git")):
-        if foris.__version__ != "unknown":
-            # fallback to stored version (e.g. when making package)
-            return foris.__version__
-        return "unknown"
-    p = subprocess.Popen(["git", "describe", "--tags", "--dirty"], stdout=subprocess.PIPE)
-    stdout = p.communicate()[0].strip()
-    # correct tags with version must start with "package-v"
-    assert stdout.startswith("package-v")
-    version_number = stdout[len("package-v"):]
-    if update_file:
-        init_file = os.path.join(base_dir, "foris", "__init__.py")
-        update_version_file(init_file, version_number)
-    return version_number
+class BuildCmd(build_py):
+    def run(self):
+        # compile translation
+        from babel.messages import frontend as babel
+        cmd = babel.compile_catalog()
+        cmd.initialize_options()
+        cmd.directory = os.path.join(os.path.dirname(__file__), "foris", "locale")
+        cmd.finalize_options()
+        cmd.run()
+
+        # run original build cmd
+        build_py.run(self)
 
 
 setup(
     name="Foris",
-    version=get_version(),
+    version=__version__,
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
     author_email="stepan.henek@nic.cz",
@@ -46,7 +33,9 @@ setup(
     requires=[
         "bottle",
         "bottle_i18n",
-        "ncclient",
+    ],
+    setup_requires=[
+        'babel',
     ],
     provides=[
         "foris"
@@ -76,4 +65,7 @@ setup(
             "utils/*.pickle2",
         ]
     },
+    cmdclass={
+        "build_py": BuildCmd,
+    }
 )
