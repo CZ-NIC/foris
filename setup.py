@@ -92,6 +92,7 @@ setup(
         "foris.utils",
         "foris.ubus",
         "foris.middleware",
+        "foris_plugins",
     ],
     package_data={
         '': [
