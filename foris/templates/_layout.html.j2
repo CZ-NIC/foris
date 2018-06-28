@@ -43,8 +43,8 @@
       {% endfor %}
     {% endif %}
     {% if PLUGIN_DYNAMIC_SCRIPTS is defined and PLUGIN_DYNAMIC_SCRIPTS %}
-      {% for static_filename in PLUGIN_DYNAMIC_SCRIPTS %}
-    <script src="{{ generated_static("javascript/" + PLUGIN_NAME + "/" + filename) }}"></script>
+      {% for dynamic_filename in PLUGIN_DYNAMIC_SCRIPTS %}
+    <script src="{{ generated_static("javascript/" + PLUGIN_NAME + "/" + dynamic_filename) }}"></script>
       {% endfor %}
     {% endif %}
 </head>
