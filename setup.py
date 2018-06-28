@@ -3,6 +3,7 @@
 import os
 import glob
 import re
+import copy
 
 from setuptools import setup
 from setuptools.command.build_py import build_py
@@ -52,11 +53,11 @@ class BuildCmd(build_py):
 
         # compile translation
         from babel.messages import frontend as babel
-        cmd = babel.compile_catalog()
-        cmd.initialize_options()
+        distribution = copy.copy(self.distribution)
+        cmd = babel.compile_catalog(distribution)
         cmd.directory = os.path.join(os.path.dirname(__file__), "foris", "locale")
         cmd.domain = "messages"
-        cmd.finalize_options()
+        cmd.ensure_finalized()
         cmd.run()
 
         # run original build cmd
