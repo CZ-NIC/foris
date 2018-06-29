@@ -1,0 +1,26 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+<div id="page-sample-plugin" class="config-page">
+    {% for _ in range(20) %}
+    <img src="{{ static('plugins/sample/img/logo-dark.svg') }}"/>
+    {% endfor %}
+    {% include '_messages.html.j2' %}
+    <p>{% trans %}Some generic description what this plugin does.{% endtrans %}</p>
+
+    <form action="{{ request.fullpath }}" method="post" class="config-form">
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      {% for field in form.active_fields %}
+        {% include '_field.html.j2' %}
+      {% endfor %}
+      <button type="submit" name="send">{% trans %}Update configuration{% endtrans %}</button>
+    </form>
+    <h3>{% trans %}Records{% endtrans %}</h3>
+    <div id="records">
+    {% include 'sample/_records.html.j2' %}
+    </div>
+    <h3>{% trans %}Chart{% endtrans %}</h3>
+    <div id="canvas-container"><canvas id="canvas"></canvas></div>
+
+</div>
+{% endblock %}

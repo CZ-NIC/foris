@@ -1,0 +1,8 @@
+<table id="records-table">
+    <thead><th>#</th><th>{% trans %}Value{% endtrans %}</th></thead>
+    <tbody>
+{% for idx, value in records %}
+        <tr><td class="table-index">{{ idx }}</td><td class="table-value">{{ value }}</td></tr>
+{% endfor %}
+    </tbody>
+</table>

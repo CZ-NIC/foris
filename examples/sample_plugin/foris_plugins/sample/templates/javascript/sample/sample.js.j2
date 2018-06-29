@@ -1,0 +1,21 @@
+Foris.sampleMessages = {
+    chartLabel: "{% trans %}Chart Data{% endtrans %}",
+    chartTitle: "{% trans %}Example chart{% endtrans %}",
+    chartTimeAxis: "{% trans %}Time axis{% endtrans %}",
+    chartValueAxis: "{% trans %}Value axis{% endtrans %}"
+}
+
+// Register on websockets events
+// now after you insert `foris-notify-wrapper -n -m sample -a reload_chart '{}'` to 
+// routers console your chart will be reloaded
+Foris.WS["sample"] = function(msg) {
+    switch(msg.action) {
+        case "reload_chart":
+            $.get('{{ url("config_ajax", page_name="sample") }}', {action: "get_records"})
+                .done((response) => {
+                    $("#records-table").replaceWith(response);
+                    Foris.update_sample_chart();
+                })
+            break;
+    }
+}
