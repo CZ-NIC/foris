@@ -1,15 +1,23 @@
 {% extends 'config/base.html.j2' %}
 
+{# this block will be inserted into the main layout #}
 {% block config_base %}
+
+{# The the main form can be rendered using ajax. And it might be necessary to skip some parts for that #}
+{% if is_xhr is not defined %}
 <div id="page-sample-plugin" class="config-page">
+{% endif %}
+    {# Just for fun render some images #}
     {% for _ in range(20) %}
     <img src="{{ static('plugins/sample/img/logo-dark.svg') }}"/>
     {% endfor %}
+    {# Render messages that config store operation passed/failed  #}
     {% include '_messages.html.j2' %}
     <p>{% trans %}Some generic description what this plugin does.{% endtrans %}</p>
 
     <form action="{{ request.fullpath }}" method="post" class="config-form">
       <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      {# For the most cases this is how the forms are rendered  #}
       {% for field in form.active_fields %}
         {% include '_field.html.j2' %}
       {% endfor %}
@@ -17,10 +25,17 @@
     </form>
     <h3>{% trans %}Records{% endtrans %}</h3>
     <div id="records">
+    {# Example to render some data #}
     {% include 'sample/_records.html.j2' %}
     </div>
     <h3>{% trans %}Chart{% endtrans %}</h3>
+    <p>{% trans %}To redraw the chart using websockets just run the following command:{% endtrans %}</p>
+    <pre>foris-notify-wrapper -n -m sample -a reload_chart '{}'</pre>
+    <br />
+    {# Example chart in Chart.js #}
     <div id="canvas-container"><canvas id="canvas"></canvas></div>
 
+{% if is_xhr is not defined %}
 </div>
+{% endif %}
 {% endblock %}

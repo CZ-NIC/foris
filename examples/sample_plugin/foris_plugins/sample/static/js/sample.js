@@ -1,10 +1,11 @@
+// Render a chart based on table data
 var make_chart = function() {
   var graph_config = {
     data: {
       datasets: [
         {
           lineTension: 0,
-          label: Foris.sampleMessages.chartLabel,
+          label: Foris.sampleMessages.chartLabel,  // transaltions are defined within dynamic js
           data: graph_data,
         },
       ],
@@ -14,7 +15,7 @@ var make_chart = function() {
       responsive: true,
       title: {
         display: true,
-        text: Foris.sampleMessages.chartTitle
+        text: Foris.sampleMessages.chartTitle  // transaltions are defined within dynamic js
       },
       tooltips: {
         mode: 'index',
@@ -29,7 +30,7 @@ var make_chart = function() {
           display: false,
           scaleLabel: {
             display: true,
-            labelString: Foris.sampleMessages.chartTimeAxis
+            labelString: Foris.sampleMessages.chartTimeAxis  // transaltions are defined within dynamic js
           }
         }],
         yAxes: [{
@@ -40,7 +41,7 @@ var make_chart = function() {
           },
           scaleLabel: {
             display: true,
-            labelString: Foris.sampleMessages.chartValueAxis
+            labelString: Foris.sampleMessages.chartValueAxis  // transaltions are defined within dynamic js
           }
         }],
       },
@@ -56,7 +57,10 @@ var make_chart = function() {
   Foris.lineChartOptions = graph_config.options;
 }
 
+// Global chart data
 var graph_data;
+
+// Functions which updates the chart
 Foris.update_sample_chart = function() {
     // Clear current chart
     $("#canvas-container").empty();
@@ -79,6 +83,7 @@ Foris.update_sample_chart = function() {
     make_chart();
 }
 
+// Update chart after page is rendred
 $(document).ready(function() {
   Foris.update_sample_chart();
 });

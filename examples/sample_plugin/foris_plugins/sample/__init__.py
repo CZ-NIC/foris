@@ -11,7 +11,11 @@ from foris.plugins import ForisPlugin
 from foris.utils.translators import gettext_dummy as gettext, ugettext as _
 
 
+# This represents a main form handler
 class SamplePluginConfigHandler(BaseConfigHandler):
+    # gettext() triggers lazy_translated text
+    # it is also used for detecting translations during foris_make_messages cmd
+
     userfriendly_title = gettext("Sample")
     ###
     slices = 10
@@ -24,7 +28,7 @@ class SamplePluginConfigHandler(BaseConfigHandler):
         ###
 
         if self.data:
-            # Update from post
+            # Update from post (used when the form is updated via ajax)
             data.update(self.data)
 
         form = fapi.ForisForm("sample", data)
@@ -32,6 +36,8 @@ class SamplePluginConfigHandler(BaseConfigHandler):
             name="main_section",
             title=self.userfriendly_title,
         )
+        # _() translates the string immediatelly
+        # it is also used for detecting translations during foris_make_messages cmd
         section.add_field(
             Number, name="slices", label=_("Number of slices"), required=True,
             validators=validators.InRange(2, 15)
@@ -53,9 +59,10 @@ class SamplePluginConfigHandler(BaseConfigHandler):
         return form
 
 
+# This represents a plugin page
 class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
-    menu_order = 90  # Where it should be placed in the main menu
-    template = "sample/sample"
+    menu_order = 90  # Where it should be placed in the main menu (higher the number the lower)
+    template = "sample/sample"  # template which will be used (.html.js will be auto added)
     template_type = "jinja2"
 
     def get_backend_data(self):
@@ -70,6 +77,7 @@ class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
         return res["records"]
 
     def save(self, *args, **kwargs):
+        # Handle form result here
         return super(SamplePluginPage, self).save(*args, **kwargs)
 
     def _prepare_render_args(self, args):
@@ -84,6 +92,7 @@ class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
         return super(SamplePluginPage, self).render(**kwargs)
 
     def _action_get_records(self):
+        # obtain and render the data and render a partial template (for ajax)
         records = self.get_backend_data()
 
         return bottle.template(
@@ -99,19 +108,20 @@ class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
         raise ValueError("Unknown AJAX action.")
 
 
+# plugin definition
 class SamplePlugin(ForisPlugin):
-    PLUGIN_NAME = "sample"
+    PLUGIN_NAME = "sample"  # also shown in the url
     DIRNAME = os.path.dirname(os.path.abspath(__file__))
 
     PLUGIN_STYLES = [
-        "css/sample.css",
+        "css/sample.css",  # path to css script generated using sass/sample.sass
     ]
     PLUGIN_STATIC_SCRIPTS = [
-        "js/contrib/Chart.bundle.min.js",
-        "js/sample.js",
+        "js/contrib/Chart.bundle.min.js",  # 3rd party static js
+        "js/sample.js",  # static js file
     ]
     PLUGIN_DYNAMIC_SCRIPTS = [
-        "sample.js",
+        "sample.js",  # dynamic js file (a template which will be rendered to javascript)
     ]
 
     def __init__(self, app):

@@ -1,3 +1,4 @@
+// Translation has to be handeled dynamically in jinja2 template here
 Foris.sampleMessages = {
     chartLabel: "{% trans %}Chart Data{% endtrans %}",
     chartTitle: "{% trans %}Example chart{% endtrans %}",
@@ -5,9 +6,7 @@ Foris.sampleMessages = {
     chartValueAxis: "{% trans %}Value axis{% endtrans %}"
 }
 
-// Register on websockets events
-// now after you insert `foris-notify-wrapper -n -m sample -a reload_chart '{}'` to 
-// routers console your chart will be reloaded
+// Register on websockets events (just reload chart is used
 Foris.WS["sample"] = function(msg) {
     switch(msg.action) {
         case "reload_chart":
