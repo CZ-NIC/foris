@@ -7,7 +7,7 @@ from foris.config import ConfigPageMixin, add_config_page
 from foris.config_handlers import BaseConfigHandler
 from foris.form import Number
 from foris.plugins import ForisPlugin
-#from foris.state import current_state
+from foris.state import current_state
 from foris.utils.translators import gettext_dummy as gettext, ugettext as _
 
 
@@ -17,15 +17,9 @@ class SamplePluginConfigHandler(BaseConfigHandler):
     # it is also used for detecting translations during foris_make_messages cmd
 
     userfriendly_title = gettext("Sample")
-    ###
-    slices = 10
-    ###
 
     def get_form(self):
-        #data= current_state.backend.perform("sample", "get_slices")
-        ###
-        data = {"slices": SamplePluginConfigHandler.slices}
-        ###
+        data = current_state.backend.perform("sample", "get_slices")
 
         if self.data:
             # Update from post (used when the form is updated via ajax)
@@ -44,14 +38,8 @@ class SamplePluginConfigHandler(BaseConfigHandler):
         )
 
         def form_cb(data):
-            #res = current_state.backend.perform(
-            #    "sample", "set_slices", {"slices": int(data["slices"])})
-
-            ###
-            SamplePluginConfigHandler.slices = int(data["slices"])
-
-            res = {"result": True}
-            ###
+            res = current_state.backend.perform(
+                "sample", "set_slices", {"slices": int(data["slices"])})
 
             return "save_result", res  # store {"result": ...} to be used in SamplePluginPage save() method
 
@@ -66,14 +54,7 @@ class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
     template_type = "jinja2"
 
     def get_backend_data(self):
-        #data = current_state.backend.perform("sample", "list")
-        ###
-        import random
-        res = {
-            "records":
-            enumerate([random.randint(0, 100) for _ in range(SamplePluginConfigHandler.slices)])
-        }
-        ###
+        res = current_state.backend.perform("sample", "list")
         return res["records"]
 
     def save(self, *args, **kwargs):
