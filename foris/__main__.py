@@ -1,6 +1,7 @@
 import argparse
 import bottle
 
+from foris import __version__
 from foris.state import current_state
 from foris.backend import Backend
 
@@ -12,6 +13,7 @@ def get_arg_parser():
     :return: instance of ArgumentParser
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument('--version', action='version', version=__version__)
     group = parser.add_argument_group("run server")
     group.add_argument("-H", "--host", default="0.0.0.0")
     group.add_argument("-p", "--port", type=int, default=8080)
