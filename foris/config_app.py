@@ -22,6 +22,7 @@ import logging
 import bottle
 
 # local
+from foris import __version__
 from foris.config import init_app as init_app_config, top_index
 from foris.common_app import prepare_common_app
 from foris.utils import contract_valid

@@ -1,5 +1,6 @@
 import argparse
 import bottle
+import logging
 
 from foris import __version__
 from foris.state import current_state
@@ -61,6 +62,11 @@ def get_arg_parser():
 def main():
     parser = get_arg_parser()
     args = parser.parse_args()
+
+    # setup logging
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
+    logger = logging.getLogger("foris")
+    logger.debug("Version %s" % __version__)
 
     # set backend
     current_state.set_backend(Backend(args.backend, args.backend_socket))
