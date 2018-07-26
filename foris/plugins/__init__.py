@@ -11,6 +11,7 @@ import importlib
 import logging
 import os
 import pkgutil
+import pkg_resources
 
 import bottle
 
@@ -68,7 +69,12 @@ class ForisPluginLoader(object):
         modules = importlib.import_module("foris_plugins")
         for _, mod_name, _ in pkgutil.iter_modules(modules.__path__):
             plugin_module_name = "foris_plugins.%s" % mod_name
-            logger.debug("Found foris plugin '%s'.", mod_name)
+            # try to determine version
+            try:
+                version = pkg_resources.get_distribution("foris_%s_plugin" % mod_name).version
+            except pkg_resources.DistributionNotFound:
+                version = "?"
+            logger.debug("Found foris plugin '%s (%s)'.", mod_name, version)
             plugin_classes += self._get_plugin_classes(plugin_module_name)
 
         # sort plugin classes
