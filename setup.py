@@ -111,5 +111,10 @@ setup(
     },
     cmdclass={
         "build_py": BuildCmd,
-    }
+    },
+    entry_points={
+        "console_scripts": [
+            "foris = foris.__main__:main",
+        ]
+    },
 )
