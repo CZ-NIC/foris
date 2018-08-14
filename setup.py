@@ -26,7 +26,7 @@ def merge_po_files():
             continue
 
         # read foris translations
-        with open(foris_path) as f:
+        with open(foris_path, "rb") as f:
             foris_catalog = read_po(f, locale=locale, domain="messages")
 
         # read tzinfo translations
@@ -42,7 +42,7 @@ def merge_po_files():
 
         # write merged catalogs
         target_path = os.path.join(trans_dir, "messages.po")
-        with open(target_path, "w") as f:
+        with open(target_path, "wb") as f:
             write_po(f, foris_catalog, no_location=True)
 
 
