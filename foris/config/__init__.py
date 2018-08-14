@@ -20,9 +20,9 @@ from datetime import datetime
 import base64
 import logging
 import time
-import urllib
 
 from bottle import Bottle, request, template, response, jinja2_template
+from urllib.parse import urlencode
 import bottle
 
 from foris.common import require_contract_valid, login
@@ -504,7 +504,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
                     % dict(url=result["url"], reg_num=result["registration_number"]))
                 bottle.redirect(
                     reverse("config_page", page_name="data-collection") + "?" +
-                    urllib.urlencode({"email": email})
+                    urlencode({"email": email})
                 )
             elif result["status"] == "free":
                 messages.info(
@@ -514,14 +514,14 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
                     % dict(url=result["url"], reg_num=result["registration_number"]))
                 bottle.redirect(
                     reverse("config_page", page_name="data-collection") + "?" +
-                    urllib.urlencode({"email": email})
+                    urlencode({"email": email})
                 )
             elif result["status"] == "not_found":
                 messages.error(
                     _('Router failed to authorize. Please try to validate our email later.'))
                 bottle.redirect(
                     reverse("config_page", page_name="data-collection") + "?" +
-                    urllib.urlencode({"email": email})
+                    urlencode({"email": email})
                 )
         return self.render(status=result["status"],
                            registration_url=result["url"],
