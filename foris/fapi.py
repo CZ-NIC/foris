@@ -20,9 +20,8 @@ import logging
 
 from bottle import MultiDict
 
-from form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
-from utils import Lazy
-import validators as validators_module
+from foris.form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
+from foris import validators as validators_module
 
 
 logger = logging.getLogger(__name__)

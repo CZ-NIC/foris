@@ -21,7 +21,7 @@ import socket
 from datetime import datetime
 
 from foris.utils.translators import _
-import form
+from foris import form
 
 logger = logging.getLogger(__name__)
 
