@@ -75,6 +75,9 @@ setup(
     requires=[
         "bottle",
         "bottle_i18n",
+        'pbkdf2',
+        'flup',
+        'ubus',
     ],
     setup_requires=[
         'babel',
