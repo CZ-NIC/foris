@@ -300,7 +300,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
         if bottle.request.method != 'POST':
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
-        handler = notifications.NotificationsHandler(request.POST)
+        handler = notifications.NotificationsHandler(request.POST.decode())
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="maintenance"))
@@ -450,11 +450,12 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
             if updater_data["enabled"]:
                 collect_data = current_state.backend.perform("data_collect", "get")
                 if collect_data["agreed"]:
-                    handler = collect.CollectionToggleHandler(request.POST)
+                    handler = collect.CollectionToggleHandler(request.POST.decode())
                     kwargs['collection_toggle_form'] = handler.form
                     kwargs['agreed'] = collect_data["agreed"]
                 else:
-                    email = request.POST.get("email", request.GET.get("email", ""))
+                    email = request.POST.decode().get(
+                        "email", request.GET.decode().get("email", ""))
                     handler = collect.RegistrationCheckHandler({"email": email})
                     kwargs['registration_check_form'] = handler.form
 
@@ -476,7 +477,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
 
     @require_contract_valid(False)
     def _action_check_registration(self):
-        handler = collect.RegistrationCheckHandler(request.POST)
+        handler = collect.RegistrationCheckHandler(request.POST.decode())
         if not handler.save():
             messages.warning(_("There were some errors in your input."))
             return self.render(registration_check_form=handler.form)
@@ -493,7 +494,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
             if result["status"] == "owned":
                 messages.success(_("Registration for the entered email is valid. "
                                    "Now you can enable the data collection."))
-                collection_toggle_handler = collect.CollectionToggleHandler(request.POST)
+                collection_toggle_handler = collect.CollectionToggleHandler(request.POST.decode())
                 kwargs['collection_toggle_form'] = collection_toggle_handler.form
             elif result["status"] == "foreign":
                 messages.warning(
@@ -533,7 +534,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="data-collection"))
 
-        handler = collect.CollectionToggleHandler(request.POST)
+        handler = collect.CollectionToggleHandler(request.POST.decode())
         if handler.save():
             messages.success(_("Configuration was successfully saved."))
             bottle.redirect(reverse("config_page", page_name="data-collection"))
@@ -665,7 +666,7 @@ def config_page_post(page_name):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
-    config_page = ConfigPage(request.POST)
+    config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
         if request.POST.pop("update", None):
             # if update was requested, just render the page - otherwise handle actions as usual
@@ -702,7 +703,7 @@ def config_action_post(page_name, action):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
-    config_page = ConfigPage(request.POST)
+    config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
         if request.POST.pop("update", None):
             # if update was requested, just render the page - otherwise handle actions as usual
