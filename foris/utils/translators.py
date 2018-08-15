@@ -49,8 +49,8 @@ class SimpleDelayedTranslator(object):
     def __str__(self):
         return gettext(self.text)
 
-    def __unicode__(self):
-        return gettext(self.text)
+    def __add__(self, other):
+        return str(self) + other
 
 
 gettext = lambda x: translations[current_state.language].gettext(x)
