@@ -120,7 +120,7 @@ class ReportingMiddleware(object):
             headers = [('Content-Type', 'text/html; charset=UTF-8')]
             err = ERROR_TEMPLATE % template_vars
             start_response('500 INTERNAL SERVER ERROR', headers)
-            with open("/tmp/%s" % self.dump_file, "w") as f:
+            with open("/tmp/%s" % self.dump_file, "wb") as f:
                 f.write(err.encode("UTF-8"))
             return [tob(err)]
 
