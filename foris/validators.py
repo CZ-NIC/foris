@@ -104,7 +104,7 @@ class IPv4Netmask(Validator):
         was_zero = False
         for byte in addr:
             for i in range(8):
-                if not (ord(byte) & 1 << (7-i)):
+                if not (byte & 1 << (7-i)):
                     was_zero = True
                 elif was_zero:  # 1 and we have seen zero already
                     return False
