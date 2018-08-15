@@ -302,7 +302,7 @@ class ByteLenRange(Validator):
         self.js_validator_params = "[%s,%s]" % (low, high)
 
     def valid(self, value):
-        return self._low <= len(value.decode("utf8")) <= self._high
+        return self._low <= len(value.encode("utf8")) <= self._high
 
 
 class EqualTo(Validator):
