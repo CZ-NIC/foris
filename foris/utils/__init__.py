@@ -191,7 +191,7 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
 
     def key_fn(x):
         """Key function for sorting using a custom alphabet."""
-        return map(safe_index, key(x))
+        return [safe_index(e) for e in key(x)]
 
     return sorted(iterable, cmp, key_fn, reverse)
 

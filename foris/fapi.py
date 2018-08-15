@@ -129,7 +129,7 @@ class ForisForm(ForisFormElement):
                     # coerce checkbox values to boolean
                     new_data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
         # get names of active fields according to new_data
-        active_field_names = map(lambda x: x.name, self.get_active_fields(data=new_data))
+        active_field_names = [x.name for x in self.get_active_fields(data=new_data)]
         # get new dict of data of active fields
         return {k: v for k, v in new_data.items() if k in active_field_names}
 
@@ -140,7 +140,7 @@ class ForisForm(ForisFormElement):
     def _form(self):
         if self.__form_cache is not None:
             return self.__form_cache
-        inputs = map(lambda x: x.field, self.get_active_fields())
+        inputs = [x.field for x in self.get_active_fields()]
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
         form = Form(*inputs)
@@ -311,7 +311,7 @@ class Field(ForisFormElement):
         if validators and not isinstance(validators, list):
             validators = [validators]
         self.validators = validators or []
-        if not all(map(lambda x: isinstance(x, validators_module.Validator), self.validators)):
+        if not all([isinstance(x, validators_module.Validator) for x in self.validators]):
             raise TypeError("Argument 'validators' must be Validator instance or list of them.")
         self._kwargs = kwargs
         self.required = required

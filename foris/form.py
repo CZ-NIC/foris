@@ -120,7 +120,7 @@ def safestr(obj, encoding='utf-8'):
     if isinstance(obj, bytes):
         return obj.decode(encoding)
     elif hasattr(obj, 'next'):  # iterator
-        return itertools.imap(safestr, obj)
+        return itertools.map(safestr, obj)
     else:
         return str(obj)
 
