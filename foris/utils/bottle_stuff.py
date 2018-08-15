@@ -23,17 +23,17 @@ from foris.middleware.bottle_csrf import get_csrf_token
 from foris.state import current_state
 
 from .routing import reverse, static as static_path, generated_static
-from .translators import translations, ugettext, ungettext
+from .translators import translations, gettext, ngettext
 from . import is_user_authenticated, template_helpers
 
 
 def prepare_template_defaults():
-    bottle.SimpleTemplate.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
+    bottle.SimpleTemplate.defaults['trans'] = lambda msgid: gettext(msgid)  # workaround
     bottle.SimpleTemplate.defaults['translation_names'] = translation_names
     bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
     bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
-    bottle.SimpleTemplate.defaults['ungettext'] = \
-        lambda singular, plural, n: ungettext(singular, plural, n)
+    bottle.SimpleTemplate.defaults['ngettext'] = \
+        lambda singular, plural, n: ngettext(singular, plural, n)
     bottle.SimpleTemplate.defaults['foris_info'] = current_state
 
     # template defaults
@@ -48,12 +48,12 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
     bottle.SimpleTemplate.defaults["helpers"] = template_helpers
 
-    bottle.Jinja2Template.defaults['trans'] = lambda msgid: ugettext(msgid)  # workaround
+    bottle.Jinja2Template.defaults['trans'] = lambda msgid: gettext(msgid)  # workaround
     bottle.Jinja2Template.defaults['translation_names'] = translation_names
     bottle.Jinja2Template.defaults['translations'] = [e for e in translations]
     bottle.Jinja2Template.defaults['iso2to3'] = iso2to3
-    bottle.Jinja2Template.defaults['ungettext'] = \
-        lambda singular, plural, n: ungettext(singular, plural, n)
+    bottle.Jinja2Template.defaults['ngettext'] = \
+        lambda singular, plural, n: ngettext(singular, plural, n)
     bottle.Jinja2Template.defaults['foris_info'] = current_state
 
     # template defaults

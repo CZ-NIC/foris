@@ -47,18 +47,18 @@ class SimpleDelayedTranslator(object):
         self.text = text
 
     def __str__(self):
-        return ugettext(self.text)
+        return gettext(self.text)
 
     def __unicode__(self):
-        return ugettext(self.text)
+        return gettext(self.text)
 
 
-ugettext = lambda x: translations[current_state.language].ugettext(x)
-ungettext = lambda singular, plural, n: \
-    translations[current_state.language].ungettext(singular, plural, n)
+gettext = lambda x: translations[current_state.language].gettext(x)
+ngettext = lambda singular, plural, n: \
+    translations[current_state.language].ngettext(singular, plural, n)
 gettext_dummy = lambda x: SimpleDelayedTranslator(x)
 
-_ = ugettext
+_ = gettext
 
 
 def set_current_language(language):
@@ -80,7 +80,7 @@ def set_current_language(language):
 class ForisInternationalizationExtension(InternationalizationExtension):
     def __init__(self, environment):
         super(ForisInternationalizationExtension, self).__init__(environment)
-        self._install_callables(ugettext, ungettext)
+        self._install_callables(gettext, ngettext)
 
 
 i18n = ForisInternationalizationExtension

@@ -8,7 +8,7 @@ from foris.config_handlers import BaseConfigHandler
 from foris.form import Number
 from foris.plugins import ForisPlugin
 from foris.state import current_state
-from foris.utils.translators import gettext_dummy as gettext, ugettext as _
+from foris.utils.translators import gettext_dummy as gettext, gettext as _
 
 
 # This represents a main form handler
