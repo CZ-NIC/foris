@@ -78,7 +78,7 @@ class PasswordHandler(BaseConfigHandler):
                 if not check_password(data['old_password']):
                     return "save_result", {'wrong_old_password': True}
 
-            encoded_password = base64.b64encode(data["password"])
+            encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
 
             current_state.backend.perform(
                 "password", "set", {"password": encoded_password, "type": "foris"})
@@ -121,7 +121,7 @@ class SystemPasswordHandler(BaseConfigHandler):
                                                                _("Passwords are not equal.")))
 
         def system_pw_form_cb(data):
-            encoded_password = base64.b64encode(data["password"])
+            encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
             current_state.backend.perform(
                 "password", "set", {"password": encoded_password, "type": "system"})
             return "none", None
