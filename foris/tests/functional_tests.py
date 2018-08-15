@@ -234,7 +234,7 @@ class TestConfig(ForisTest):
         assert_equal(len(data['check_results']), 6)  # we have 6 checks
 
         # tests need working connection with IPv4 & IPv6 connectivity
-        for check, result in data['check_results'].iteritems():
+        for check, result in data['check_results'].items():
             assert_true(result, "'%s' check result is not True" % check)
 
     def test_tab_lan(self):

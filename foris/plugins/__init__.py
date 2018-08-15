@@ -45,7 +45,7 @@ class ForisPlugin(object):
         the whole app. This is not an issue now, but it should be examined
         later and replaced by a better solution.
         """
-        for lang, default_translation in translations.iteritems():
+        for lang, default_translation in translations.items():
             local_translation = gettext.translation(
                 "messages", os.path.join(self.DIRNAME, "locale"),
                 languages=[lang], fallback=True

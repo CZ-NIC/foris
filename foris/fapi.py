@@ -48,8 +48,7 @@ class ForisFormElement(object):
 
     @property
     def sections(self):
-        filtered = filter(lambda x: isinstance(x, Section), self.children.itervalues())
-        return filtered
+        return [e for e in self.children.values() if isinstance(e, Section)]
 
 
 class ForisForm(ForisFormElement):
@@ -66,7 +65,7 @@ class ForisForm(ForisFormElement):
             self._request_data = {}  # values from request
             # convert MultiDict to normal dict with multiple values in lists
             # if value is suffixed with '[]' (i.e. it is multifield)
-            for key, value in data.iteritems():
+            for key, value in data.items():
                 if key.endswith("[]"):
                     # we don't want to alter lists in MultiDict instance
                     values = copy.deepcopy(data.getall(key))
@@ -132,7 +131,7 @@ class ForisForm(ForisFormElement):
         # get names of active fields according to new_data
         active_field_names = map(lambda x: x.name, self.get_active_fields(data=new_data))
         # get new dict of data of active fields
-        return {k: v for k, v in new_data.iteritems() if k in active_field_names}
+        return {k: v for k, v in new_data.items() if k in active_field_names}
 
     def invalidate_data(self):
         self.__data_cache = None
@@ -156,7 +155,7 @@ class ForisForm(ForisFormElement):
     def _get_all_fields(self, element=None, fields=None):
         element = element or self
         fields = fields or []
-        for c in element.children.itervalues():
+        for c in element.children.values():
             if c.children:
                 fields = self._get_all_fields(c, fields)
             if isinstance(c, Field):
@@ -173,7 +172,7 @@ class ForisForm(ForisFormElement):
         fields = self._get_all_fields(element)
         if fields:
             data = data or self.data
-        return filter(lambda f: f.has_requirements(data), fields)
+        return [field for field in fields if field.has_requirements(data)]
 
     def add_section(self, *args, **kwargs):
         """
@@ -197,7 +196,7 @@ class ForisForm(ForisFormElement):
 
     def render(self):
         result = "<div class=\"errors\">%s</div>" % self.errors
-        result += "\n".join(c.render() for c in self.children.itervalues())
+        result += "\n".join(c.render() for c in self.children.values())
         return result
 
     def save(self):
@@ -232,7 +231,7 @@ class ForisForm(ForisFormElement):
             if operation == "none":
                 pass
             elif operation == "save_result":
-                for k, v in cb_result[1].iteritems():
+                for k, v in cb_result[1].items():
                     if k in self.callback_results:
                         raise ValueError("save_result callback returned result with duplicate name: '%s'" % k)
                     self.callback_results[k] = v
@@ -277,7 +276,7 @@ class Section(ForisFormElement):
         return self._add(Section(self._main_form, *args, **kwargs))
 
     def render(self):
-        content = "\n".join(c.render() for c in self.children.itervalues()
+        content = "\n".join(c.render() for c in self.children.values()
                             if c.has_requirements(self._main_form.data))
         return "<section>\n<h2>%(title)s</h2>\n<p>%(description)s</p>\n%(content)s\n</section>" \
                % dict(title=self.title, description=self.description, content=content)
@@ -360,7 +359,7 @@ class Field(ForisFormElement):
             attrs['class'] = " ".join(classes)
         # append HTML data
         html_data = self._generate_html_data()
-        for key, value in html_data.iteritems():
+        for key, value in html_data.items():
             attrs['data-%s' % key] = value
         # multifield magic
         rendered_name = self.name
@@ -440,7 +439,7 @@ class Field(ForisFormElement):
         :param data:
         :return: False if requirements are not met, True otherwise
         """
-        for req_name, req_value in self.requirements.iteritems():
+        for req_name, req_value in self.requirements.items():
             # requirement exists
             result = req_name in data
             # if the required value is a callable, pass the value as the first argument

@@ -68,7 +68,7 @@ ERROR_TEMPLATE = u"""<!DOCTYPE html>
 
 
 def filter_sensitive_params(params_dict, sensitive_params):
-    for k, v in params_dict.iteritems():
+    for k, v in params_dict.items():
         for pattern in sensitive_params:
             if fnmatch(k, pattern):
                 params_dict[k] = "**********"

@@ -464,7 +464,7 @@ def makelocale(lang, plural_forms=None):
         for x in part:
             translations[x] = unicode(l18n.translation.L18NLazyString(x))
 
-    for msgid, msgstr in translations.iteritems():
+    for msgid, msgstr in translations.items():
         po.append(polib.POEntry(msgid=msgid, msgstr=msgstr))
 
     po.save("foris/locale/%s/LC_MESSAGES/tzinfo.po" % lang)

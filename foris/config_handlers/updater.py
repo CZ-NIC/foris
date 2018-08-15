@@ -179,8 +179,8 @@ class UpdaterHandler(BaseConfigHandler):
                 if self.agreed_collect:
                     data["enabled"] = True
 
-                languages = [k[9:] for k, v in data.iteritems() if v and k.startswith("language_")]
-                user_lists = [k[8:] for k, v in data.iteritems() if v and k.startswith("install_")]
+                languages = [k[9:] for k, v in data.items() if v and k.startswith("language_")]
+                user_lists = [k[8:] for k, v in data.items() if v and k.startswith("install_")]
                 # merge with enabled hidden user lists
                 user_lists += [
                     e["name"] for e in self.backend_data["user_lists"]
