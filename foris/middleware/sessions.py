@@ -49,7 +49,7 @@ class SessionProxy(object):
             "%s=%s" % (self.env_key, self.session_id),
             "httponly",
             "Path=/",
-        ]).encode("ascii")
+        ])
 
     def unset_cookie(self):
         self.cookie_unset_needed = True
@@ -58,7 +58,7 @@ class SessionProxy(object):
             "expires=%s" % datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %T %zGMT"),
             "httponly",
             "Path=/",
-        ]).encode("ascii")
+        ])
 
     @property
     def set_cookie_text(self):

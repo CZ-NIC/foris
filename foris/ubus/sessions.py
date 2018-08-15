@@ -124,7 +124,7 @@ class UbusSession(object):
         if not isinstance(key, str):
             raise TypeError("key is not a string")
         # test whether the key is ascii (exception will be raised otherwise)
-        key.decode("ascii")
+        key.encode("ascii")
         # test whenter the value is json-serializable (exception otherwise)
         JSONEncoder().encode(value)
         self._data[key] = value
