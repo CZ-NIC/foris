@@ -37,7 +37,7 @@ class MaintenanceHandler(BaseConfigHandler):
         def maintenance_form_cb(data):
             data = current_state.backend.perform(
                 "maintain", "restore_backup",
-                {"backup": base64.b64encode(data["backup_file"].file.read())}
+                {"backup": base64.b64encode(data["backup_file"].file.read()).decode("utf-8")}
             )
             return "save_result", {'result': data["result"]}
 

@@ -159,7 +159,7 @@ class LazyCache(object):
         super(LazyCache, self).__setattr__('_attr_dict', {})
 
 
-def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
+def localized_sorted(iterable, lang, key=None, reverse=False):
     """
     Sorted method that can sort according to a language-specific alphabet.
 
@@ -178,7 +178,7 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
 
     alphabet = alphabet.get(lang)
     if not alphabet:
-        return sorted(iterable, cmp, key, reverse)
+        return sorted(iterable, key=key, reverse=reverse)
 
     key = key or (lambda x: x)
 
@@ -227,7 +227,9 @@ def contract_valid():
 
 def check_password(password):
     res = current_state.backend.perform(
-        "password", "check", {"password": base64.b64encode(password)})
+        "password", "check",
+        {"password": base64.b64encode(password.encode("utf-8")).decode("utf-8")}
+    )
 
     # consider unset password as successful auth
     # maybe set some session variable in this case
