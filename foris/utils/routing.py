@@ -125,7 +125,7 @@ def static_md5(filename):
         return None
 
     md5 = hashlib.md5()
-    with open(os_path) as f:
+    with open(os_path, "rb") as f:
         content = f.read()
         md5.update(content)
 

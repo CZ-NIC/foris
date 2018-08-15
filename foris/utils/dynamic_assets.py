@@ -65,7 +65,7 @@ def store_template(template_name, lang):
     except os.error:
         # already exists
         pass
-    with open(target_path, "w") as f:
+    with open(target_path, "wb") as f:
         f.write(bytearray(rendered, "utf8"))
         f.flush()
 

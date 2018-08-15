@@ -32,7 +32,7 @@ def merge_po_files():
         # read tzinfo translations
         tzinfo_path = os.path.join(trans_dir, "tzinfo.po")
         if os.path.exists(tzinfo_path):
-            with open(tzinfo_path) as f:
+            with open(tzinfo_path, "rb") as f:
                 tzinfo_catalog = read_po(f, locale=locale, domain="messages")
             for msg in tzinfo_catalog:
                 # foris messages will be preffered
