@@ -211,7 +211,6 @@ class SessionMiddleware(object):
         environ["foris.session.data"] = session._session._data
 
         def session_start_response(status, headers, exc_info=None):
-            response = start_response(status, headers, exc_info)
             # update ws session cookies
             if ws_session and ws_session.cookie_set_needed:
                 headers.append(('Set-cookie', ws_session.set_cookie_text))
@@ -228,6 +227,6 @@ class SessionMiddleware(object):
             if session.tainted:
                 session.save()
 
-            return response
+            return start_response(status, headers, exc_info)
 
         return self.wrap_app(environ, session_start_response)
