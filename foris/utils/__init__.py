@@ -193,7 +193,7 @@ def localized_sorted(iterable, lang, key=None, reverse=False):
         """Key function for sorting using a custom alphabet."""
         return [safe_index(e) for e in key(x)]
 
-    return sorted(iterable, cmp, key_fn, reverse)
+    return sorted(iterable, key=key_fn, reverse=reverse)
 
 
 def contract_valid():
