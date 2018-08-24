@@ -4,13 +4,13 @@
 
 {% if is_xhr is not defined %}
 <div id="page-wifi" class="config-page">
+{% include '_messages.html.j2' %}
 {% endif %}
 {% if not form or form.active_fields|length == 0 %}
     <div class="message warning">{% trans %}We were unable to detect any wireless cards in your router.{% endtrans %}</div>
 {% else %}
     <p>{{ description|safe }}</p>
     <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-        {% include '_messages.html.j2' %}
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         {% include 'config/_wifi_form.html.j2' %}
         <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
