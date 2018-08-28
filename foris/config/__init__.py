@@ -157,6 +157,7 @@ class NotificationsConfigPage(ConfigPageMixin):
 
 class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     menu_order = 11
+    template = "config/password"
     template_type = "jinja2"
 
     def __init__(self, *args, **kwargs):
@@ -165,12 +166,23 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
     def save(self, *args, **kwargs):
         result = super(PasswordConfigPage, self).save(no_messages=True, *args, **kwargs)
         wrong_old_password = self.form.callback_results.get('wrong_old_password', False)
+        system_password_no_error = self.form.callback_results.get('system_password_no_error', None)
+        foris_password_no_error = self.form.callback_results.get('foris_password_no_error', None)
         if wrong_old_password:
-            messages.warning(_("Old password you entered was not valid."))
-        elif result:
-            messages.success(_("Password was successfully saved."))
-        else:
-            messages.warning(_("There were some errors in your input."))
+            messages.error(_("Old password you entered was not valid."))
+            return result
+
+        if system_password_no_error is not None:
+            if system_password_no_error:
+                messages.success(_("System password was successfully saved."))
+            else:
+                messages.error(_("Failed to save system password"))
+        if foris_password_no_error is not None:
+            if foris_password_no_error:
+                messages.success(_("Foris password was successfully saved."))
+            else:
+                messages.error(_("Failed to save Foris password"))
+
         return result
 
 
@@ -268,12 +280,6 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
     def save(self, *args, **kwargs):
         super(WifiConfigPage, self).save(no_messages=True, *args, **kwargs)
         return self.form.callback_results.get("result", None)
-
-
-class SystemPasswordConfigPage(ConfigPageMixin, misc.SystemPasswordHandler):
-    menu_order = 17
-
-    template_type = "jinja2"
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
@@ -611,7 +617,6 @@ config_page_map = ConfigPageMapItems((
     ('dns', DNSConfigPage),
     ('lan', LanConfigPage),
     ('wifi', WifiConfigPage),
-    ('system-password', SystemPasswordConfigPage),
     ('maintenance', MaintenanceConfigPage),
     ('updater', UpdaterConfigPage),
     ('data-collection', DataCollectionConfigPage),

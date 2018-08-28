@@ -21,7 +21,7 @@ from .base import (
 from .backups import MaintenanceHandler
 from .dns import DNSHandler
 from .lan import LanHandler
-from .misc import PasswordHandler, SystemPasswordHandler
+from .misc import PasswordHandler
 from .notifications import NotificationsHandler
 from .collect import CollectionToggleHandler, UcollectHandler, RegistrationCheckHandler
 from .updater import UpdaterHandler
@@ -37,7 +37,6 @@ __all__ = [
     'NotificationsHandler',
     'PasswordHandler',
     'RegistrationCheckHandler',
-    'SystemPasswordHandler',
     'UcollectHandler',
     'UpdaterHandler',
     'WanHandler',

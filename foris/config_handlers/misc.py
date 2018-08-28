@@ -21,7 +21,7 @@ from datetime import datetime
 
 from foris import fapi, validators
 from foris.form import (
-    Password, Textbox, Dropdown, Checkbox,
+    Password, Textbox, Dropdown
 )
 from foris.state import current_state
 from foris.utils import (
@@ -46,32 +46,79 @@ class PasswordHandler(BaseConfigHandler):
     def get_form(self):
         # form definitions
         pw_form = fapi.ForisForm("password", self.data)
-        pw_main = pw_form.add_section(name="set_password", title=_(self.userfriendly_title),
-                                      description=_("Set your password for this administration "
-                                                    "interface. The password must be at least 6 "
-                                                    "characters long."))
+        pw_main = pw_form.add_section(name="passwords", title=_(self.userfriendly_title))
         if self.change:
-            pw_main.add_field(Password, name="old_password", label=_("Current password"))
+            pw_main.add_field(Password, name="old_password", label=_("Current Foris password"))
             label_pass1 = _("New password")
             label_pass2 = _("New password (repeat)")
         else:
             label_pass1 = _("Password")
             label_pass2 = _("Password (repeat)")
 
-        pw_main.add_field(Password, name="password", label=label_pass1, required=True,
-                          validators=validators.LenRange(6, 128))
-        pw_main.add_field(Password, name="password_validation", label=label_pass2,
-                          required=True,
-                          validators=validators.EqualTo("password", "password_validation",
-                                                        _("Passwords are not equal.")))
-        pw_main.add_field(Checkbox, name="set_system_pw",
-                          label=_("Use the same password for advanced configuration"),
-                          hint=_("Same password would be used for accessing this administration "
-                                 "interface, for root user in LuCI web interface and for SSH "
-                                 "login. Use a strong password! (If you choose not to set the "
-                                 "password for advanced configuration here, you will have the "
-                                 "option to do so later. Until then, the root account will be "
-                                 "blocked.)"))
+        pw_foris = pw_form.add_section(
+            name="foris_pw", title=_("for Foris web interface"),
+            description=_(
+                "Set your password for this administration "
+                "interface. The password must be at least 6 "
+                "characters long."
+            )
+        )
+        pw_foris.add_field(
+            Password, name="password", label=label_pass1, required=True,
+            validators=validators.LenRange(6, 128)
+        )
+        pw_foris.add_field(
+            Password, name="password_validation",
+            label=label_pass2,
+            required=True,
+            validators=validators.EqualTo(
+                "password", "password_validation",
+                _("Passwords are not equal.")
+            )
+        )
+        system_pw = pw_form.add_section(
+            name="system_pw", title=_("for Advanced administration"),
+            description=_(
+                "In order to access the advanced configuration possibilities which are "
+                "not present here, you must set the root user's password. The advanced "
+                "configuration options can be managed either through the "
+                "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+                "or over SSH."
+            ) % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'}
+        )
+        SYSTEM_PW_SKIP = 'skip'
+        SYSTEM_PW_SAME = 'same'
+        SYSTEM_PW_CUSTOM = 'custom'
+        SYSTEM_PW_OPTIONS = (
+            (SYSTEM_PW_SKIP, _("Don't change password")),
+            (SYSTEM_PW_SAME, _("Use Foris password")),
+            (SYSTEM_PW_CUSTOM, _("Use other password")),
+        )
+        system_pw.add_field(
+            Dropdown, name="set_system_pw",
+            label=_("Advanced administration"),
+            hint=_(
+                "Same password would be used for accessing this administration "
+                "interface, for root user in LuCI web interface and for SSH "
+                "login. Use a strong password! (If you choose not to set the "
+                "password for advanced configuration here, you will have the "
+                "option to do so later. Until then, the root account will be "
+                "blocked.)"
+            ),
+            args=SYSTEM_PW_OPTIONS,
+            default=SYSTEM_PW_SKIP,
+            )
+        system_pw.add_field(
+            Password, name="system_password", label=_("Password"), required=True,
+            validators=validators.LenRange(6, 128)
+        ).requires("set_system_pw", SYSTEM_PW_CUSTOM)
+        system_pw.add_field(
+            Password, name="system_password_validation", label=_("New password (repeat)"),
+            required=True,
+            validators=validators.EqualTo(
+                "system_password", "system_password_validation", _("Passwords are not equal.")
+            )
+        ).requires("set_system_pw", SYSTEM_PW_CUSTOM)
 
         def pw_form_cb(data):
             if self.change:
@@ -80,54 +127,26 @@ class PasswordHandler(BaseConfigHandler):
 
             encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
 
-            current_state.backend.perform(
-                "password", "set", {"password": encoded_password, "type": "foris"})
+            result = current_state.backend.perform(
+                "password", "set", {"password": encoded_password, "type": "foris"})["result"]
+            res = {"foris_password_no_error": result}
 
-            if data['set_system_pw'] is True:
-                current_state.backend.perform(
-                    "password", "set", {"password": encoded_password, "type": "system"})
+            if data['set_system_pw'] == SYSTEM_PW_SAME:
+                result = current_state.backend.perform(
+                    "password", "set", {"password": encoded_password, "type": "system"})["result"]
+                res["system_password_no_error"] = result
+            elif data['set_system_pw'] == SYSTEM_PW_CUSTOM:
+                encoded_pw = base64.b64encode(
+                    data["system_password"].encode("utf-8")).decode("utf-8")
+                result = current_state.backend.perform(
+                    "password", "set", {"password": encoded_pw, "type": "system"})["result"]
+                res["system_password_no_error"] = result
 
-            return "none", None
+            return "save_result", res
 
         pw_form.add_callback(pw_form_cb)
 
         return pw_form
-
-
-class SystemPasswordHandler(BaseConfigHandler):
-    """
-    Setting the password of a system user (currently only root's pw).
-    """
-
-    userfriendly_title = gettext("Advanced administration")
-
-    def get_form(self):
-        system_pw_form = fapi.ForisForm("system_password", self.data)
-        system_pw_main = system_pw_form.add_section(
-            name="set_password",
-            title=_(self.userfriendly_title),
-            description=_("In order to access the advanced configuration possibilities which are "
-                          "not present here, you must set the root user's password. The advanced "
-                          "configuration options can be managed either through the "
-                          "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
-                          "or over SSH.") % {'host': bottle.request.get_header('host'),
-                                             'path': 'cgi-bin/luci'}
-        )
-        system_pw_main.add_field(Password, name="password", label=_("Password"), required=True,
-                                 validators=validators.LenRange(6, 128))
-        system_pw_main.add_field(Password, name="password_validation", label=_("Password (repeat)"),
-                                 required=True,
-                                 validators=validators.EqualTo("password", "password_validation",
-                                                               _("Passwords are not equal.")))
-
-        def system_pw_form_cb(data):
-            encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
-            current_state.backend.perform(
-                "password", "set", {"password": encoded_password, "type": "system"})
-            return "none", None
-
-        system_pw_form.add_callback(system_pw_form_cb)
-        return system_pw_form
 
 
 class UnifiedTimeHandler(BaseConfigHandler):
