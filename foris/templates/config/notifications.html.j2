@@ -9,8 +9,8 @@
     {% include '_notifications.html.j2' %}
 </div>
 <script>
-  $(document).ready(function() {
-    $(".notification .reboot").click(function(e) {
+  Foris.initNotificationReboot = function() {
+    $(".notification .reboot").off("click").on("click", function(e) {
       e.preventDefault();
       var unread = $(".notification:visible").length - 1;
       var extraMessage = "";
@@ -23,6 +23,9 @@
           });
       }
     });
+  };
+  $(document).ready(function() {
+    Foris.initNotificationReboot();
   });
   // redefine
   Foris.WS["router_notifications"] = function(msg) {
@@ -34,6 +37,7 @@
         .done(function(response) {
           $("#notifications-content").replaceWith(response);  // replace it
           Foris.initNotifications("{{ get_csrf_token() }}");
+          Foris.initNotificationReboot()
         })
         .fail(function(xhr) {
           location.reload();
