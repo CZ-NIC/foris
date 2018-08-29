@@ -1,3 +1,9 @@
+98.8 (2018-08-29)
+-----------------
+
+* password and administration tab merged
+* wifi tab show message fix
+
 98.7 (2018-08-16)
 -----------------
 
