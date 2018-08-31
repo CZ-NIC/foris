@@ -1,0 +1,177 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+{% if is_xhr is not defined %}
+<div id="page-config" class="config-page">
+    {% include '_messages.html.j2' %}
+{% endif %}
+    <p>{% trans %}Here you can configure the ports of your device. TODO what are the ports, basic config. If you are unsure what to set here use the current setup.{% endtrans %}</p>
+    <p>{% trans %}<strong>WAN network</strong> represents a connection to external network. Firewall rules should be applied. It can contain only a signle port.{% endtrans %}</p>
+    <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface.{% endtrans %}</p>
+    <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. . The devices can see each other? and can only access WAN. They can't access any configuration iterface of your router as well as any device from your local network.{% endtrans %}</p>
+    <h5>{% trans %}WAN network{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-wan" data-group="wan">
+    {% for port in backend_data.ports.wan %}
+    <button class="button ports-button ports-wan" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.name }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}LAN network{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-lan" data-group="lan">
+    {% for port in backend_data.ports.lan %}
+    <button class="button ports-button ports-lan" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.name }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}Guest Network{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-guest" data-group="guest">
+    {% for port in backend_data.ports.guest %}
+    <button class="button ports-button ports-quest" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.name }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}Unassigned{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-unassigned" data-group="unassigned">
+    {% for port in backend_data.ports.unassigned %}
+    <button class="button ports-button ports-unassigned" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.name }}
+    </button>
+    {% endfor %}
+    </div>
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% for port in backend_data.ports.wan %}
+        <input type="hidden" name="wan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.ports.lan %}
+        <input type="hidden" name="lan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.ports.guest %}
+        <input type="hidden" name="guest[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.ports.unassigned %}
+        <input type="hidden" name="unassigned[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        <br>
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{% trans %}Discard changes{% endtrans %}</a>
+            <button type="submit" name="send" class="button">{% trans %}Save changes{% endtrans %}</button>
+        </div>
+    </form>
+{% if is_xhr is not defined %}
+</div>
+<style>
+.ports-list {
+    min-height: 4em;
+    white-space:nowrap;
+}
+.ports-list i {
+    font-size: 1.5em;
+}
+.ports-list .button {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.ports-list .ports-button {
+    height: 4em;
+    line-height: 1.5em;
+}
+.ports-list .ports-control-button {
+    height: 4em;
+    line-height: 1.5em;
+}
+</style>
+<script>
+    'use strict';
+    Foris.movePortToGroup = (e) => {
+        let button = $(e.target);
+        let group = button.parent();
+        let target_group = `ports-list-${button.attr('data-target')}`;
+        let port_id = button.attr('data-port');
+
+        // update form input
+        $(`#input_${port_id}`).attr("name", `ports[${button.attr('data-target')}][]`);
+
+        $(`#${port_id}`).removeClass("ports-button-clicked");
+        $(`#${port_id}`).detach().appendTo(`#${target_group}`);
+        group.find(".ports-button").show("slide");
+        $(".ports-control-button").hide("slide", () => $(".ports-control-button").remove());
+    };
+    Foris.initPorts = () => {
+        $(".ports-button").on("click", (e) => {
+            e.preventDefault();
+            let button = $(e.target);
+            let group = button.parent();
+
+            // close other opened lists
+            $(".ports-list").not(group).find(".ports-button").show("slide").removeClass("ports-button-clicked");
+            $(".ports-list").find(".ports-control-button").hide("slide", () => {
+                $(".ports-list").not(group).find(".ports-control-button").remove()
+            });
+
+            if (button.hasClass("ports-button-clicked")) {
+                // close control buttons
+                group.find(".ports-button").not(button).show("slide");
+                group.find(".ports-control-button").hide("slide", () => group.find(".ports-control-button").remove());
+                button.removeClass("ports-button-clicked");
+            } else {
+                // open control buttons
+                group.find(".ports-button").not(button).hide("slide");
+                button.addClass("ports-button-clicked");
+                let targets = [
+                    ['wan', "{% trans %}WAN network{% endtrans %}"],
+                    ['lan', "{% trans %}LAN network{% endtrans %}"],
+                    ['guest', "{% trans %}Guest network{% endtrans %}"],
+                    ['unassigned', "{% trans %}Unassign{% endtrans %}"],
+                ];
+                for (let target of targets) {
+                    let group_name = target[0], group_repr = target[1];
+                    // no need to include the current group
+                    if (group.attr("data-group") == group_name) {
+                        continue;
+                    }
+                    // WAN can contain only one port
+                    if (group_name == "wan" && $("#ports-list-wan").find(".ports-button").length > 0) {
+                        continue;
+                    }
+                    group.append(`<button class="button ports-control-button grayed" data-port="${button.attr('id')}" data-target="${group_name}" style="display: none;"><i class="fas fa-sign-out-alt"></i> ${group_repr}</button>`);
+                }
+                group.find(".ports-control-button").show("slide");
+                group.find(".ports-control-button").on("click", Foris.movePortToGroup);
+            }
+        });
+    };
+    $(document).ready(function() {
+        Foris.initPorts();
+    });
+</script>
+{% endif %}
+
+{% endblock %}

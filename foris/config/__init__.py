@@ -28,7 +28,7 @@ import bottle
 from foris.common import require_contract_valid, login
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
-    backups, collect, dns, misc, notifications, wan, lan, updater, wifi
+    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, ports
 )
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -186,8 +186,18 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
         return result
 
 
-class WanConfigPage(ConfigPageMixin, wan.WanHandler):
+class PortsConfigPage(ConfigPageMixin, ports.PortsHandler):
     menu_order = 12
+    template = "config/ports"
+    template_type = "jinja2"
+
+    def render(self, **kwargs):
+        kwargs['backend_data'] = self.backend_data
+        return super(PortsConfigPage, self).render(**kwargs)
+
+
+class WanConfigPage(ConfigPageMixin, wan.WanHandler):
+    menu_order = 13
 
     template = "config/wan"
     template_type = "jinja2"
@@ -219,7 +229,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
-    menu_order = 13
+    menu_order = 14
 
     template = "config/time"
     template_type = "jinja2"
@@ -231,7 +241,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
 
 class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
-    menu_order = 14
+    menu_order = 15
 
     template = "config/dns"
     template_type = "jinja2"
@@ -247,13 +257,13 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
 
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
-    menu_order = 15
+    menu_order = 16
 
     template_type = "jinja2"
 
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
-    menu_order = 16
+    menu_order = 17
 
     template = "config/wifi"
     template_type = "jinja2"
@@ -612,6 +622,7 @@ class ConfigPageMapItems(dict):
 config_page_map = ConfigPageMapItems((
     ('notifications', NotificationsConfigPage),
     ('password', PasswordConfigPage),
+    ('ports', PortsConfigPage),
     ('wan', WanConfigPage),
     ('time', TimeConfigPage),
     ('dns', DNSConfigPage),

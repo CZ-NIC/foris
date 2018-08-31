@@ -29,7 +29,7 @@ from foris.utils.translators import gettext_dummy as gettext, _
 
 class DNSHandler(BaseConfigHandler):
     """
-    DNS-related settings, currently for enabling/disabling upstream forwarding
+    DNS-related settings
     """
 
     userfriendly_title = gettext("DNS")
