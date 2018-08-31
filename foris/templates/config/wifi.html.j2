@@ -13,7 +13,7 @@
     <form id="main-form" class="config-form config-form-wifi" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         {% include 'config/_wifi_form.html.j2' %}
-        <script src="{{ static("js/contrib/jquery.qrcode-0.7.0.min.js") }}"></script>
+        <script src="{{ static("js/contrib/jquery-qrcode-0.14.0.min.js") }}"></script>
         <script>
             $(document).ready(function() {
                 Foris.initWiFiQR();
