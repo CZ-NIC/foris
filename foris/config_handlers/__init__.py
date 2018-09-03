@@ -19,11 +19,12 @@ from .base import (
 )
 
 from .backups import MaintenanceHandler
+from .collect import CollectionToggleHandler, UcollectHandler, RegistrationCheckHandler
 from .dns import DNSHandler
 from .lan import LanHandler
 from .misc import PasswordHandler
+from .networks import NetworksHandler
 from .notifications import NotificationsHandler
-from .collect import CollectionToggleHandler, UcollectHandler, RegistrationCheckHandler
 from .updater import UpdaterHandler
 from .wan import WanHandler
 from .wifi import WifiHandler
@@ -41,4 +42,5 @@ __all__ = [
     'UpdaterHandler',
     'WanHandler',
     'WifiHandler',
+    'NetworksHandler',
 ]

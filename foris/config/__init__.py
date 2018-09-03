@@ -28,7 +28,7 @@ import bottle
 from foris.common import require_contract_valid, login
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
-    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, ports
+    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, networks
 )
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -186,14 +186,14 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
         return result
 
 
-class PortsConfigPage(ConfigPageMixin, ports.PortsHandler):
+class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
     menu_order = 12
-    template = "config/ports"
+    template = "config/networks"
     template_type = "jinja2"
 
     def render(self, **kwargs):
         kwargs['backend_data'] = self.backend_data
-        return super(PortsConfigPage, self).render(**kwargs)
+        return super(NetworksConfigPage, self).render(**kwargs)
 
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
@@ -622,7 +622,7 @@ class ConfigPageMapItems(dict):
 config_page_map = ConfigPageMapItems((
     ('notifications', NotificationsConfigPage),
     ('password', PasswordConfigPage),
-    ('ports', PortsConfigPage),
+    ('networks', NetworksConfigPage),
     ('wan', WanConfigPage),
     ('time', TimeConfigPage),
     ('dns', DNSConfigPage),

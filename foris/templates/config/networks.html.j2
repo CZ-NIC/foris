@@ -5,13 +5,14 @@
 <div id="page-config" class="config-page">
     {% include '_messages.html.j2' %}
 {% endif %}
-    <p>{% trans %}Here you can configure the ports of your device. TODO what are the ports, basic config. If you are unsure what to set here use the current setup.{% endtrans %}</p>
+    <p>{% trans %}Here you can configure the basic settings of networks on your device. You can change the assignment of your physical network interface to corresponding networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
     <p>{% trans %}<strong>WAN network</strong> represents a connection to external network. Firewall rules should be applied. It can contain only a signle port.{% endtrans %}</p>
     <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface.{% endtrans %}</p>
     <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. . The devices can see each other? and can only access WAN. They can't access any configuration iterface of your router as well as any device from your local network.{% endtrans %}</p>
+    <p>{% trans %}Note that each of these networks has its own separeted config page. TODO or write a link once the wizard is passed...{% endtrans %}</p>
     <h5>{% trans %}WAN network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
-    {% for port in backend_data.ports.wan %}
+    {% for port in backend_data.networks.wan %}
     <button class="button ports-button ports-wan" id="{{port.id}}">
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
@@ -25,7 +26,7 @@
     </div>
     <h5>{% trans %}LAN network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-lan" data-group="lan">
-    {% for port in backend_data.ports.lan %}
+    {% for port in backend_data.networks.lan %}
     <button class="button ports-button ports-lan" id="{{port.id}}">
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
@@ -39,7 +40,7 @@
     </div>
     <h5>{% trans %}Guest Network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-guest" data-group="guest">
-    {% for port in backend_data.ports.guest %}
+    {% for port in backend_data.networks.guest %}
     <button class="button ports-button ports-quest" id="{{port.id}}">
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
@@ -52,9 +53,9 @@
     {% endfor %}
     </div>
     <h5>{% trans %}Unassigned{% endtrans %}</h5>
-    <div class="ports-list" id="ports-list-unassigned" data-group="unassigned">
-    {% for port in backend_data.ports.unassigned %}
-    <button class="button ports-button ports-unassigned" id="{{port.id}}">
+    <div class="ports-list" id="ports-list-none" data-group="none">
+    {% for port in backend_data.networks.none %}
+    <button class="button ports-button ports-none" id="{{port.id}}">
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
         {% elif port.kind == "eth" %}
@@ -67,17 +68,17 @@
     </div>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        {% for port in backend_data.ports.wan %}
+        {% for port in backend_data.networks.wan %}
         <input type="hidden" name="wan[]" value="{{ port.id }}" id="input_{{ port.id }}">
         {% endfor %}
-        {% for port in backend_data.ports.lan %}
+        {% for port in backend_data.networks.lan %}
         <input type="hidden" name="lan[]" value="{{ port.id }}" id="input_{{ port.id }}">
         {% endfor %}
-        {% for port in backend_data.ports.guest %}
+        {% for port in backend_data.networks.guest %}
         <input type="hidden" name="guest[]" value="{{ port.id }}" id="input_{{ port.id }}">
         {% endfor %}
-        {% for port in backend_data.ports.unassigned %}
-        <input type="hidden" name="unassigned[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% for port in backend_data.networks.none %}
+        <input type="hidden" name="none[]" value="{{ port.id }}" id="input_{{ port.id }}">
         {% endfor %}
         <br>
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
@@ -149,7 +150,7 @@
                     ['wan', "{% trans %}WAN network{% endtrans %}"],
                     ['lan', "{% trans %}LAN network{% endtrans %}"],
                     ['guest', "{% trans %}Guest network{% endtrans %}"],
-                    ['unassigned', "{% trans %}Unassign{% endtrans %}"],
+                    ['none', "{% trans %}Unassign{% endtrans %}"],
                 ];
                 for (let target of targets) {
                     let group_name = target[0], group_repr = target[1];

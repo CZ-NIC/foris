@@ -24,10 +24,10 @@ from foris.utils.translators import gettext_dummy as gettext, _
 from foris.form import MultiCheckbox
 
 
-class PortsHandler(BaseConfigHandler):
-    """ Ports settings handler
+class NetworksHandler(BaseConfigHandler):
+    """ Networks settings handler
     """
-    userfriendly_title = gettext("Ports")
+    userfriendly_title = gettext("Networks")
 
     def load_backend_data(self):
         # data = current_state.backend.perform("dns", "get_settings")
@@ -40,8 +40,8 @@ class PortsHandler(BaseConfigHandler):
                 "type": "omnia",
                 "revision": "0",
             },
-            "ports": {
-                "unassigned": [
+            "networks": {
+                "none": [
                     {"kind": "usb", "module_index": 0, "index": 0, "pos": "back", "name": "USB 0"},
                 ],
                 "wan": [
@@ -58,7 +58,7 @@ class PortsHandler(BaseConfigHandler):
                 ],
             }
         }
-        for group in data["ports"].values():
+        for group in data["networks"].values():
             for port in group:
                 port["id"] = "%s-%d-%d" % (port["kind"], port["module_index"], port["index"])
 
@@ -66,33 +66,34 @@ class PortsHandler(BaseConfigHandler):
 
     def __init__(self, *args, **kwargs):
         self.load_backend_data()
-        super(PortsHandler, self).__init__(*args, **kwargs)
+        super(NetworksHandler, self).__init__(*args, **kwargs)
 
     def get_form(self):
-        ports_form = fapi.ForisForm("ports", self.data)
-        ports_section = ports_form.add_section(name="set_ports", title=_(self.userfriendly_title))
+        networks_form = fapi.ForisForm("networks", self.data)
+        ports_section = networks_form.add_section(
+            name="set_ports", title=_(self.userfriendly_title))
         checkboxes = []
-        for kind in ["wan", "lan", "guest", "unassigned"]:
-            checkboxes += [(e["id"], e["id"]) for e in self.backend_data["ports"][kind]]
+        for kind in ["wan", "lan", "guest", "none"]:
+            checkboxes += [(e["id"], e["id"]) for e in self.backend_data["networks"][kind]]
         ports_section.add_field(MultiCheckbox, name="wan", args=checkboxes, multifield=True)
         ports_section.add_field(MultiCheckbox, name="lan", args=checkboxes, multifield=True)
         ports_section.add_field(MultiCheckbox, name="guest", args=checkboxes, multifield=True)
-        ports_section.add_field(MultiCheckbox, name="unassigned", args=checkboxes, multifield=True)
+        ports_section.add_field(MultiCheckbox, name="none", args=checkboxes, multifield=True)
 
-        def ports_form_cb(data):
+        def networks_form_cb(data):
             wan = data.get("wan", [])
             lan = data.get("lan", [])
             guest = data.get("guest", [])
-            unassigned = data.get("unassigned", [])
+            none = data.get("none", [])
 
             # TODO convert ids
             # result = current_state.backend.perform(
             #    "ports", "update_settings", {
-            #        "lan": lan, "wan": wan, "guest": guest, "unassigned": unassigned
+            #        "lan": lan, "wan": wan, "guest": guest, "none": none 
             #    }
             # )
             return "save_result", {"result": True}
 
-        ports_form.add_callback(ports_form_cb)
+        networks_form.add_callback(networks_form_cb)
 
-        return ports_form
+        return networks_form
