@@ -16,12 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import copy
+
 from .base import BaseConfigHandler
 
 from foris import fapi
 
-from foris.utils.translators import gettext_dummy as gettext, _
 from foris.form import MultiCheckbox
+from foris.state import current_state
+from foris.utils.translators import gettext_dummy as gettext, _
 
 
 class NetworksHandler(BaseConfigHandler):
@@ -30,37 +33,7 @@ class NetworksHandler(BaseConfigHandler):
     userfriendly_title = gettext("Networks")
 
     def load_backend_data(self):
-        # data = current_state.backend.perform("dns", "get_settings")
-        # if self.data:
-            # Update from post
-        #    data.update(self.data)
-        #    data["dnssec_enabled"] = not self.data.get("dnssec_disabled", False)
-        data = {
-            "device": {
-                "type": "omnia",
-                "revision": "0",
-            },
-            "networks": {
-                "none": [
-                    {"kind": "usb", "module_index": 0, "index": 0, "pos": "back", "name": "USB 0"},
-                ],
-                "wan": [
-                    {"kind": "eth", "module_index": 0, "index": 0, "pos": "back", "name": "ETH 0"},
-                ],
-                "lan": [
-                    {"kind": "eth", "module_index": 0, "index": 2, "pos": "back", "name": "ETH 2"},
-                    {"kind": "eth", "module_index": 0, "index": 3, "pos": "back", "name": "ETH 3"},
-                    {"kind": "eth", "module_index": 0, "index": 4, "pos": "back", "name": "ETH 4"},
-                    {"kind": "eth", "module_index": 0, "index": 5, "pos": "back", "name": "ETH 5"},
-                ],
-                "guest": [
-                    {"kind": "eth", "module_index": 0, "index": 1, "pos": "back", "name": "ETH 1"},
-                ],
-            }
-        }
-        for group in data["networks"].values():
-            for port in group:
-                port["id"] = "%s-%d-%d" % (port["kind"], port["module_index"], port["index"])
+        data = current_state.backend.perform("networks", "get_settings")
 
         self.backend_data = data
 
@@ -69,6 +42,12 @@ class NetworksHandler(BaseConfigHandler):
         super(NetworksHandler, self).__init__(*args, **kwargs)
 
     def get_form(self):
+        data = copy.deepcopy(self.backend_data)
+
+        if self.data:
+            # Update from post
+            data.update(self.data)
+
         networks_form = fapi.ForisForm("networks", self.data)
         ports_section = networks_form.add_section(
             name="set_ports", title=_(self.userfriendly_title))
@@ -86,13 +65,12 @@ class NetworksHandler(BaseConfigHandler):
             guest = data.get("guest", [])
             none = data.get("none", [])
 
-            # TODO convert ids
-            # result = current_state.backend.perform(
-            #    "ports", "update_settings", {
-            #        "lan": lan, "wan": wan, "guest": guest, "none": none 
-            #    }
-            # )
-            return "save_result", {"result": True}
+            result = current_state.backend.perform(
+                "networks", "update_settings", {
+                    "networks": {"lan": lan, "wan": wan, "guest": guest, "none": none}
+                }
+            )
+            return "save_result", result
 
         networks_form.add_callback(networks_form_cb)
 

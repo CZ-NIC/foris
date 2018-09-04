@@ -20,7 +20,7 @@
         <i class="far fa-calendar"></i>
         {% endif %}
         <br/>
-        {{ port.name }}
+        {{ port.title }}
     </button>
     {% endfor %}
     </div>
@@ -34,7 +34,7 @@
         <i class="far fa-calendar"></i>
         {% endif %}
         <br/>
-        {{ port.name }}
+        {{ port.title }}
     </button>
     {% endfor %}
     </div>
@@ -48,7 +48,7 @@
         <i class="far fa-calendar"></i>
         {% endif %}
         <br/>
-        {{ port.name }}
+        {{ port.title }}
     </button>
     {% endfor %}
     </div>
@@ -62,7 +62,7 @@
         <i class="far fa-calendar"></i>
         {% endif %}
         <br/>
-        {{ port.name }}
+        {{ port.title }}
     </button>
     {% endfor %}
     </div>
@@ -118,7 +118,7 @@
         let port_id = button.attr('data-port');
 
         // update form input
-        $(`#input_${port_id}`).attr("name", `ports[${button.attr('data-target')}][]`);
+        $(`#input_${port_id}`).attr("name", `${button.attr('data-target')}[]`);
 
         $(`#${port_id}`).removeClass("ports-button-clicked");
         $(`#${port_id}`).detach().appendTo(`#${target_group}`);

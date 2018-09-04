@@ -195,6 +195,14 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
         kwargs['backend_data'] = self.backend_data
         return super(NetworksConfigPage, self).render(**kwargs)
 
+    def save(self, *args, **kwargs):
+        result = super(NetworksConfigPage, self).save(no_messages=True, *args, **kwargs)
+        if self.form.callback_results["result"]:
+            messages.success(_("Network configuration was sucessfully updated."))
+        else:
+            messages.error(_("Unable to update your network configuration."))
+        return result
+
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     menu_order = 13
