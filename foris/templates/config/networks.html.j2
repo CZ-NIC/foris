@@ -5,7 +5,7 @@
 <div id="page-config" class="config-page">
     {% include '_messages.html.j2' %}
 {% endif %}
-    <p>{% trans %}Here you can configure the basic settings of networks on your device. You can change the assignment of your physical network interface to corresponding networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
+    <p>{% trans %}Here you can configure the settings of network interfaces on your device. You can change the assignment of your physical network interface to corresponding networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
     <p>{% trans %}<strong>WAN network</strong> represents a connection to external network. Firewall rules should be applied. It can contain only a signle port.{% endtrans %}</p>
     <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface.{% endtrans %}</p>
     <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. . The devices can see each other? and can only access WAN. They can't access any configuration iterface of your router as well as any device from your local network.{% endtrans %}</p>

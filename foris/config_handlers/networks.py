@@ -30,7 +30,7 @@ from foris.utils.translators import gettext_dummy as gettext, _
 class NetworksHandler(BaseConfigHandler):
     """ Networks settings handler
     """
-    userfriendly_title = gettext("Networks")
+    userfriendly_title = gettext("Network interfaces")
 
     def load_backend_data(self):
         data = current_state.backend.perform("networks", "get_settings")
