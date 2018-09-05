@@ -161,8 +161,8 @@ class WifiHandler(BaseConfigHandler):
                     "connected to this network are allowed to access the internet, but aren't "
                     "allowed to access other devices and the configuration interface of the "
                     "router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-                    "LAN tab</a>. "
-                ) % dict(url=reverse("config_page", page_name="lan"))
+                    "Guest network tab</a>. "
+                ) % dict(url=reverse("config_page", page_name="guest"))
             ).requires(prefixed("device_enabled"), True)
             guest_section.add_field(
                 Textbox, name=prefixed("guest_ssid"), label=_("SSID for guests"),

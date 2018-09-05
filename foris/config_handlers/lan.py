@@ -36,12 +36,6 @@ class LanHandler(BaseConfigHandler):
         data["dhcp_enabled"] = data["dhcp"]["enabled"]
         data["dhcp_min"] = data["dhcp"]["start"]
         data["dhcp_max"] = data["dhcp"]["limit"]
-        data["guest_network_enabled"] = data["guest_network"]["enabled"]
-        data["guest_network_ipaddr"] = data["guest_network"]["ip"]
-        data["guest_network_netmask"] = data["guest_network"]["netmask"]
-        data["guest_network_qos_enabled"] = data["guest_network"]["qos"]["enabled"]
-        data["guest_network_qos_download"] = data["guest_network"]["qos"]["download"]
-        data["guest_network_qos_upload"] = data["guest_network"]["qos"]["upload"]
 
         if self.data:
             # Update from post
@@ -86,86 +80,15 @@ class LanHandler(BaseConfigHandler):
             Textbox, name="dhcp_max", label=_("DHCP max leases"),
         ).requires("dhcp_enabled", True)
 
-        if current_state.app == "config":
-            guest_network_section = lan_form.add_section(
-                name="guest_network",
-                title=_("Guest network"),
-            )
-            guest_network_section.add_field(
-                Checkbox, name="guest_network_enabled",
-                label=_("Enable guest network"), default=False,
-                hint=_(
-                    "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is separated  "
-                    "from your ordinary LAN network. Devices connected to this network are allowed "
-                    "to access the internet, but are not allowed to access other devices and "
-                    "the configuration interface of the router."
-                ) % dict(url=reverse("config_page", page_name="wifi")),
-            )
-            guest_network_section.add_field(
-                Textbox, name="guest_network_ipaddr", label=_("Router IP in guest network"),
-                default=DEFAULT_GUEST_IP,
-                validators=validators.IPv4(),
-                hint=_(
-                    "Router's IP address in the guest network. It is necessary that "
-                    "the guest network IPs are different from other networks "
-                    "(LAN, WAN, VPN, etc.)."
-                )
-            ).requires("guest_network_enabled", True)
-            guest_network_section.add_field(
-                Textbox, name="guest_network_netmask", label=_("Guest network netmask"),
-                default=DEFAULT_GUEST_MASK,
-                validators=validators.IPv4Netmask(),
-                hint=_("Network mask of the guest network.")
-            ).requires("guest_network_enabled", True)
-
-            guest_network_section.add_field(
-                Checkbox, name="guest_network_qos_enabled", label=_("Guest Lan QoS"),
-                hint=_(
-                    "This option enables you to set a bandwidth limit for the guest network, "
-                    "so that your main network doesn't get slowed-down by it."
-                ),
-            ).requires("guest_network_enabled", True)
-
-            guest_network_section.add_field(
-                Number,
-                name="guest_network_qos_download", label=_("Download (kb/s)"),
-                validators=[validators.PositiveInteger()],
-                hint=_(
-                    "Download speed in guest network (in kilobits per second)."
-                ),
-                default=1024,
-            ).requires("guest_network_qos_enabled", True)
-            guest_network_section.add_field(
-                Number,
-                name="guest_network_qos_upload", label=_("Upload (kb/s)"),
-                validators=[validators.PositiveInteger()],
-                hint=_(
-                    "Upload speed in guest network (in kilobits per second)."
-                ),
-                default=1024,
-            ).requires("guest_network_qos_enabled", True)
-
         def lan_form_cb(data):
-            guest_network_enabled = data.get("guest_network_enabled", False)
             msg = {
                 "ip": data["lan_ipaddr"],
                 "netmask": data["lan_netmask"],
                 "dhcp": {"enabled": data["dhcp_enabled"]},
-                "guest_network": {"enabled": guest_network_enabled},
             }
             if data["dhcp_enabled"]:
                 msg["dhcp"]["start"] = int(data["dhcp_min"])
                 msg["dhcp"]["limit"] = int(data["dhcp_max"])
-
-            if guest_network_enabled:
-                msg["guest_network"]["ip"] = data["guest_network_ipaddr"]
-                msg["guest_network"]["netmask"] = data["guest_network_netmask"]
-                msg["guest_network"]["qos"] = {"enabled": data["guest_network_qos_enabled"]}
-                if data["guest_network_qos_enabled"]:
-                    msg["guest_network"]["qos"]["download"] = int(
-                        data["guest_network_qos_download"])
-                    msg["guest_network"]["qos"]["upload"] = int(
-                        data["guest_network_qos_upload"])
 
             res = current_state.backend.perform("lan", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...

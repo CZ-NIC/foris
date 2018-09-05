@@ -28,7 +28,8 @@ import bottle
 from foris.common import require_contract_valid, login
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
-    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, networks
+    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, networks,
+    guest
 )
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -270,8 +271,14 @@ class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     template_type = "jinja2"
 
 
-class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
+class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     menu_order = 17
+
+    template_type = "jinja2"
+
+
+class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
+    menu_order = 18
 
     template = "config/wifi"
     template_type = "jinja2"
@@ -301,7 +308,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
-    menu_order = 18
+    menu_order = 19
 
     template = "config/maintenance"
     template_type = "jinja2"
@@ -381,7 +388,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
-    menu_order = 19
+    menu_order = 20
 
     template = "config/updater"
     template_type = "jinja2"
@@ -459,7 +466,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
 
 class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
-    menu_order = 20
+    menu_order = 21
 
     template = "config/data-collection"
     template_type = "jinja2"
@@ -635,6 +642,7 @@ config_page_map = ConfigPageMapItems((
     ('time', TimeConfigPage),
     ('dns', DNSConfigPage),
     ('lan', LanConfigPage),
+    ('guest', GuestConfigPage),
     ('wifi', WifiConfigPage),
     ('maintenance', MaintenanceConfigPage),
     ('updater', UpdaterConfigPage),
