@@ -36,14 +36,6 @@
             </div>
           </div>
           {% endif %}
-          <div id="network-restart-notice" class="main-warning-notice">
-            <img src="{{ static("img/loader.gif") }}" alt="{% trans %}Network is restarting...{% endtrans %}" title="{% trans %}Network is restarting...{% endtrans %}">
-            <span>{% trans %}Your network is being restarted. Wait, please...{% endtrans %}</span>
-          </div>
-          <div id="rebooting-notice" class="main-warning-notice">
-            <img src="{{ static("img/loader.gif") }}" alt="{% trans %}Rebooting...{% endtrans %}" title="{% trans %}Rebooting...{% endtrans %}">
-            <span>{% trans %}Your router is being rebooted.{% endtrans %}</span>
-          </div>
           <div id="reboot-required-notice" style='display: {{ "block" if foris_info.reboot_required else "none" }}'>
             <div id="reboot-required-button-container">
               <span>{% trans %}Your router needs to be restarted in order to work properly.{% endtrans %}</span>

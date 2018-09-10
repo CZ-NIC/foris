@@ -10,5 +10,14 @@ Foris.messages.confirmDisabledDNSSEC = "{% trans %}DNSSEC is a security technolo
 Foris.messages.confirmRestart = "{% trans %}Are you sure you want to restart the router?{% endtrans %}";
 Foris.messages.confirmRestartExtra = "{% trans %}\\nRemaining unread messages (%UNREAD%) will be deleted.{% endtrans %}";
 Foris.messages.unsavedNotificationsAlert = "{% trans %}There are some unsaved changes in the notifications settings.\\nDo you want to discard them and test the notifications with the old settings?{% endtrans %}";
+Foris.messages.rebootIn = (left) => {
+  return `{% trans time_left="${left.toFixed(1)}" %}Your device will be rebooted in {{ time_left }} seconds.{% endtrans %}`;
+};
+Foris.messages.networkRestartIn = (left) => {
+  return `{% trans time_left="${left.toFixed(1)}" %}Your network will be restarted in {{ time_left }} seconds.{% endtrans %}`;
+};
+Foris.messages.rebootTriggered = "{% trans %}A reboot of your device was triggered.{% endtrans %}";
+Foris.messages.networkRestartTriggered = "{% trans %}A network restart was triggered.{% endtrans %}";
+Foris.messages.tryingToReconnect = "{% trans %}Trying to reconnect to your device.{% endtrans %}";
 
 Foris.pingPath = "{{ url('ping') }}";

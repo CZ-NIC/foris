@@ -176,15 +176,15 @@ Foris.WS = {
   maintain: function(msg) {
     switch (msg.action) {
         case "reboot":
-            Foris.handleReboot(msg.data.new_ips);
+            Foris.handleReboot(msg.data.ips, msg.data.remains);
             break;
         case "reboot_required":
             $('#reboot-required-notice').show("slow");
             break;;
+        case "network-restart":
+            Foris.handleNetworkRestart(msg.data.ips, msg.data.remains);
+            break;
     }
-  },
-  lan: function(msg) {
-    Foris.handleLanRestart(msg.data.ip);
   },
   router_notifications: function(msg) {
     if (msg.action == "create" || msg.action == "mark_as_displayed") {
@@ -565,10 +565,11 @@ Foris.waitForReachable = function(urls, data, handler_function, timeout) {
   }
 };
 
-Foris.waitForUnreachable = function(url, callback, timeout) {
+Foris.waitForUnreachable = function(url, callback, timeout, retries=-1) {
   var timeout = timeout || 1000;
   // wait till current address is available
   var url = url;
+  let local_retries = retries;
   var unreachableFunction = function() {
     $.ajax({
       url: url,
@@ -578,7 +579,10 @@ Foris.waitForUnreachable = function(url, callback, timeout) {
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
       success: function(data, text, jqXHR) {
-        setTimeout(unreachableFunction, timeout);
+        if (Math.round(local_retries) != 0) {
+          setTimeout(unreachableFunction, timeout);
+        }
+        local_retries -= 1;
       },
       error: function(xhr, text, error) {
         callback(xhr, text, error);
@@ -611,9 +615,14 @@ function extractHost(src) {
   return a.host;
 }
 
-Foris.handleReboot = function(ips) {
-  $('#rebooting-notice').show("slow");
-  $('#reboot-required-notice').hide("slow");
+Foris.handleReboot = async function(ips, time, step=0.1) {
+  if (Foris.SpinnerIsShown()) {
+    return; // already running
+  }
+  for (i = time / 1000; i >= 0; i = Math.round((i - step) * 100) / 100) {
+    await Foris.TimeoutPromiss((left) => Foris.SpinnerDisplay(Foris.messages.rebootIn(left)), step, i);
+  }
+  await Foris.TimeoutPromiss(() => Foris.SpinnerDisplay(Foris.messages.rebootTriggered), 1);
 
   var port = window.location.port == "" ? "" : ":" + window.location.port;
   var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
@@ -636,30 +645,34 @@ Foris.handleReboot = function(ips) {
   // start the machinery
   Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
     var pathname = window.location.pathname;
+    Foris.SpinnerDisplay(Foris.messages.tryingToReconnect);
     Foris.waitForReachable(urls, {next: pathname}, rebootDoneCallback, 5000);
   });
 };
 
-Foris.handleLanRestart = function(ip) {
-  $('#network-restart-notice').show("slow");
+Foris.handleNetworkRestart = async function(ips, time, step=0.1) {
+  if (Foris.SpinnerIsShown()) {
+    return; // already running
+  }
+  for (i = time / 1000; i >= 0; i = Math.round((i - step) * 100) / 100) {
+    await Foris.TimeoutPromiss((left) => Foris.SpinnerDisplay(Foris.messages.networkRestartIn(left)), step, i);
+  }
+  await Foris.TimeoutPromiss(() => Foris.SpinnerDisplay(Foris.messages.networkRestartTriggered), 1);
 
   var port = window.location.port == "" ? "" : ":" + window.location.port;
   var protocol = window.location.protocol;
   var pathname = window.location.pathname;
   var search = window.location.search;
-  var urls = [
-    window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath,
-    window.location.protocol + "//" + ip + port + Foris.pingPath
-  ];
+  var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
+  for (var i = 0; i < ips.length; i++) {
+    urls.push(window.location.protocol + "//" + ips[i] + port + Foris.pingPath);
+  }
 
   var restartLanDoneCallback = function(url, jqXHR) {
     if (jqXHR.status == 0) {
         return false;
     }
     if (jqXHR.status == 200) {
-        //if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
-        //    window.location = protocol + "//" + extractHost(url) + pathname + search;
-        //}
         if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
             window.location = jqXHR.responseJSON.loginUrl;
         }
@@ -669,8 +682,9 @@ Foris.handleLanRestart = function(ip) {
   // start the machinery
   Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
     var pathname = window.location.pathname;
-    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback);
-  });
+    Foris.SpinnerDisplay(Foris.messages.tryingToReconnect);
+    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback, 2000);
+  }, 5);
 };
 
 Foris.handleNotificationsCountUpdate = function(new_count) {
@@ -718,6 +732,31 @@ Foris.handleUpdaterRun = function(running) {
     }
 };
 
+Foris.SpinnerIsShown = function() {
+    return $("#foris-spinner-frame").length > 0
+};
+
+Foris.SpinnerDisplay = function(text) {
+    if (Foris.SpinnerIsShown()) {
+        $("#foris-spinner-text").html(text);
+    } else {
+        $("body").append(`<div id="foris-spinner-frame"><div id="foris-spinner"></div><div id="foris-spinner-text">${text}</div></div>`);
+    }
+};
+
+Foris.SpinnerRemove = function() {
+    $("#foris-spinner-frame").remove();
+};
+
+Foris.TimeoutPromiss = function(handler, timeout, data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            handler(data);
+            resolve();
+        }, timeout * 1000);
+    });
+};
+
 $(document).ready(function () {
   Foris.initialize();
 
@@ -732,3 +771,4 @@ $(document).ready(function () {
       langSwitch.className = 'active';
   });
 });
+
