@@ -22,7 +22,7 @@ from .base import BaseConfigHandler
 
 from foris import fapi
 
-from foris.form import MultiCheckbox
+from foris.form import MultiCheckbox, Checkbox
 from foris.state import current_state
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -59,14 +59,26 @@ class NetworksHandler(BaseConfigHandler):
         ports_section.add_field(MultiCheckbox, name="guest", args=checkboxes, multifield=True)
         ports_section.add_field(MultiCheckbox, name="none", args=checkboxes, multifield=True)
 
+        ports_section.add_field(Checkbox, name="ssh_on_wan", default=False, required=False)
+        ports_section.add_field(Checkbox, name="http_on_wan", default=False, required=False)
+        ports_section.add_field(Checkbox, name="https_on_wan", default=False, required=False)
+
         def networks_form_cb(data):
             wan = data.get("wan", [])
             lan = data.get("lan", [])
             guest = data.get("guest", [])
             none = data.get("none", [])
 
+            ssh_on_wan = bool(data.get("ssh_on_wan", "0"))
+            http_on_wan = bool(data.get("http_on_wan", "0"))
+            https_on_wan = bool(data.get("https_on_wan", "0"))
+
             result = current_state.backend.perform(
                 "networks", "update_settings", {
+                    "firewall": {
+                        "ssh_on_wan": ssh_on_wan, "http_on_wan": http_on_wan,
+                        "https_on_wan": https_on_wan
+                    },
                     "networks": {"lan": lan, "wan": wan, "guest": guest, "none": none}
                 }
             )

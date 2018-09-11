@@ -7,8 +7,8 @@
 {% endif %}
     <p>{% trans %}Here you can configure the settings of network interfaces on your device. You can change the assignment of your physical network interface to corresponding networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
     <p>{% trans %}<strong>WAN network</strong> represents a connection to external network. Firewall rules should be applied. It can contain only a signle port.{% endtrans %}</p>
-    <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface.{% endtrans %}</p>
-    <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. . The devices can see each other? and can only access WAN. They can't access any configuration iterface of your router as well as any device from your local network.{% endtrans %}</p>
+    <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface. It is adviced that LAN network should contain at least one interface.{% endtrans %}</p>
+    <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. The devices connected to the guest network can only access WAN. They can't access any configuration iterface of your router nor devices from your LAN network.{% endtrans %}</p>
     <p>{% trans %}Note that each of these networks has its own separeted config page. TODO or write a link once the wizard is passed...{% endtrans %}</p>
     <h5>{% trans %}WAN network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
@@ -83,7 +83,7 @@
         <br>
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
             <a href="{{ request.fullpath }}" class="button grayed">{% trans %}Discard changes{% endtrans %}</a>
-            <button type="submit" name="send" class="button">{% trans %}Save changes{% endtrans %}</button>
+            <button type="submit" name="send" class="button" id="ports-submit">{% trans %}Save changes{% endtrans %}</button>
         </div>
     </form>
 {% if is_xhr is not defined %}
@@ -169,8 +169,41 @@
             }
         });
     };
+    Foris.portsMissingWan = () => {
+        return $("#ports-list-wan .ports-button").length == 0;
+    };
+    Foris.portsMissingLan = () => {
+        return $("#ports-list-lan .ports-button").length == 0;
+    };
+    Foris.overridePortsSubmit = () => {
+        $("#ports-submit").on('click', (e) => {
+            e.preventDefault();
+            let brick_msg = "{% trans %}In the setup you provided it is not possible to access the administration interface of your device. This means that the only way to configure your device will be via serial cabel or you need to a perform factory reset. Is this really what you want?{% endtrans %}";
+            let wan_ports_msg = "{% trans %}You don't have any interface assigned to the LAN network. But you have an interface assigned to your WAN network. Do you want do open standard configuration ports (22, 80, 443) on your WAN network in order to be able to access the configuration interface of our device?{% endtrans %}";
+            if (Foris.portsMissingLan()) {
+                if (Foris.portsMissingWan()) {
+                    if (!confirm(brick_msg)) {
+                        return;
+                    }
+                } else {
+                    if (confirm(wan_ports_msg)) {
+                        // Update form
+                        $("#main-form").append('<input type="hidden" name="ssh_on_wan" value="1">');
+                        $("#main-form").append('<input type="hidden" name="http_on_wan" value="1">');
+                        $("#main-form").append('<input type="hidden" name="https_on_wan" value="1">');
+                    } else {
+                        if (!confirm(brick_msg)) {
+                            return;
+                        }
+                    }
+                }
+            };
+            $("#main-form").submit()
+        });
+    }
     $(document).ready(function() {
         Foris.initPorts();
+        Foris.overridePortsSubmit();
     });
 </script>
 {% endif %}
