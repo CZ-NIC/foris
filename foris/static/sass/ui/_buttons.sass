@@ -9,6 +9,11 @@ button
   width: auto
 
 .button, button
+  font:
+    size: 90%
+    weight: bold
+
+.button
   +box-sizing('border-box')
   +rounded-borders
   background-color: $button-color
@@ -17,9 +22,6 @@ button
   display: block
   width: 100%
   text-align: center
-  font:
-    size: 90%
-    weight: bold
   height: $button-height * $button-height-touch-multiplier
   line-height: $button-height * $button-height-touch-multiplier
   margin: 0 0.2em 0.5em 0

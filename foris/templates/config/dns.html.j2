@@ -98,11 +98,24 @@
                         self.removeAttr("disabled");
                     });
         });
-        $('#field-ignore_root_key_1').click(function () {
-          if (this.checked)
-            return confirm(Foris.messages.confirmDisabledDNSSEC);
-          return true;
-        });
+        function initDisableDNSSEC() {
+            let element = $('#field-dnssec_disabled_1');
+            element.change(function () {
+              if ($(this).is(':checked')) {
+                vex.dialog.confirm(
+                    {
+                        unsafeMessage: Foris.messages.confirmDisabledDNSSEC,
+                        callback: (value) => element.prop("checked", value)
+                    }
+                );
+              } else {
+                  element.prop("checked", false);
+                  return false;
+              }
+            });
+        }
+        initDisableDNSSEC();
+        Foris.afterAjaxUpdateFunctions.push(initDisableDNSSEC);
     });
 </script>
 {% endblock %}

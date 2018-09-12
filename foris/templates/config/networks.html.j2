@@ -178,27 +178,46 @@
     Foris.overridePortsSubmit = () => {
         $("#ports-submit").on('click', (e) => {
             e.preventDefault();
-            let brick_msg = "{% trans %}In the setup you provided it is not possible to access the administration interface of your device. This means that the only way to configure your device will be via serial cabel or you need to a perform factory reset. Is this really what you want?{% endtrans %}";
-            let wan_ports_msg = "{% trans %}You don't have any interface assigned to the LAN network. But you have an interface assigned to your WAN network. Do you want do open standard configuration ports (22, 80, 443) on your WAN network in order to be able to access the configuration interface of our device?{% endtrans %}";
+            let brick_msg = "{% trans %}In the setup you provided it is <strong>not possible to access the administration interface</strong> of your device. This means that the only way to configure your device will be via serial cabel or you need to a perform factory reset. <br/><br/> <p><strong>Is this really what you want?</strong></p>{% endtrans %}";
+            let wan_ports_msg = "{% trans %}You don't have any interface assigned to the LAN network.<br/> Do you want to <strong>open ports 22, 80 and 443 on WAN network</strong> in order to be able to access the configuration interface of our device?{% endtrans %}";
+
+            function finalConfirm() {
+                vex.dialog.confirm(
+                    {
+                        unsafeMessage: brick_msg,
+                        buttons: [
+                            {type: "submit", className: "vex-dialog-button-primary", text: "Reconsider", click: () => {}},
+                            {type: "submit", className: "vex-dialog-button-secondary", text: "I'm an expert", click: () => $("#main-form").submit()},
+                        ],
+                        callback: () => {}
+                    }
+                );
+            }
             if (Foris.portsMissingLan()) {
                 if (Foris.portsMissingWan()) {
-                    if (!confirm(brick_msg)) {
-                        return;
-                    }
+                    finalConfirm();
                 } else {
-                    if (confirm(wan_ports_msg)) {
-                        // Update form
-                        $("#main-form").append('<input type="hidden" name="ssh_on_wan" value="1">');
-                        $("#main-form").append('<input type="hidden" name="http_on_wan" value="1">');
-                        $("#main-form").append('<input type="hidden" name="https_on_wan" value="1">');
-                    } else {
-                        if (!confirm(brick_msg)) {
-                            return;
+                    vex.dialog.confirm(
+                        {
+                            unsafeMessage: wan_ports_msg,
+                            buttons: [
+                                {
+                                    type: "submit", className: "vex-dialog-button-primary", text: "Open ports", click: () => {
+                                        $("#main-form").append('<input type="hidden" name="ssh_on_wan" value="1">');
+                                        $("#main-form").append('<input type="hidden" name="http_on_wan" value="1">');
+                                        $("#main-form").append('<input type="hidden" name="https_on_wan" value="1">');
+                                        $("#main-form").submit();
+                                    }
+                                },
+                                {type: "submit", className: "vex-dialog-button-secondary", text: "Keep closed", click: () => finalConfirm()},
+                            ],
+                            callback: () => {}
                         }
-                    }
+                    );
                 }
-            };
-            $("#main-form").submit()
+            } else {
+                $("#main-form").submit();
+            }
         });
     }
     $(document).ready(function() {

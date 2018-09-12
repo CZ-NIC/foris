@@ -5,11 +5,13 @@ Foris.messages.error = "{% trans %}Error{% endtrans %}";
 Foris.messages.loading = "{% trans %}Loading...{% endtrans %}";
 Foris.messages.checkNoForward = "{% trans %}Connectivity test failed, testing connection with disabled forwarding.{% endtrans %}";
 Foris.messages.lanIpChanged = "{% trans %}The IP address of your router has been changed. It should be accessible from %NEW_IP_LINK%. See the note above for more information about IP address change.{% endtrans %}";
-Foris.messages.confirmDisabledUpdates = "{% trans %}You have chosen to not receive security updates. We strongly advice you to keep the automatic security updates enabled to receive all recommended updates for your device. Updating your router on regular basis is the only way how to ensure you will be protected against known threats that might target your home router device.\\n\\nDo you still want to continue and stay unprotected?{% endtrans %}";
-Foris.messages.confirmDisabledDNSSEC = "{% trans %}DNSSEC is a security technology that protects the DNS communication against attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC validation enabled unless you know that you will be connecting your device in the network where DNSSEC is broken.\\n\\nDo you still want to continue and stay unprotected?{% endtrans %}";
+Foris.messages.confirmDisabledUpdates = "{% trans %}You have chosen to not receive security updates. We strongly advice you to keep the automatic security updates enabled to receive all recommended updates for your device. Updating your router on regular basis is the only way how to ensure you will be protected against known threats that might target your home router device.<br/><br/>Do you still want to continue and stay unprotected?{% endtrans %}";
+Foris.messages.confirmDisabledDNSSEC = "{% trans %}DNSSEC is a security technology that protects the DNS communication against attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC validation enabled unless you know that you will be connecting your device in the network where DNSSEC is broken. <br/><br/>Do you still want to continue and stay unprotected?{% endtrans %}";
 Foris.messages.confirmRestart = "{% trans %}Are you sure you want to restart the router?{% endtrans %}";
-Foris.messages.confirmRestartExtra = "{% trans %}\\nRemaining unread messages (%UNREAD%) will be deleted.{% endtrans %}";
-Foris.messages.unsavedNotificationsAlert = "{% trans %}There are some unsaved changes in the notifications settings.\\nDo you want to discard them and test the notifications with the old settings?{% endtrans %}";
+Foris.messages.confirmRestartExtra = (unread) => {
+  return `{% trans unread_left="${Math.round(unread)}"%}Remaining notifications ({{ unread_left }}) will be discarded.{% endtrans %}`;
+};
+Foris.messages.unsavedNotificationsAlert = "{% trans %}There are some unsaved changes in the notifications settings.<br/>Do you want to discard them and test the notifications with the old settings?{% endtrans %}";
 Foris.messages.rebootIn = (left) => {
   return `{% trans time_left="${left.toFixed(1)}" %}Your device will be rebooted in {{ time_left }} seconds.{% endtrans %}`;
 };

@@ -132,8 +132,25 @@
 {% if is_xhr is not defined %}
 </div>
 <script>
-  $('#field-enabled_0').click(function () {
-    return confirm(Foris.messages.confirmDisabledUpdates);
+  $('#field-enabled_0').click(function (e) {
+    e.preventDefault();
+    vex.dialog.confirm(
+        {
+            unsafeMessage: Foris.messages.confirmDisabledUpdates,
+            callback: (value) => {
+                if (value) {
+                    let disable = $('#field-enabled_0');
+                    $('#field-enabled_1').prop("checked", false);
+                    disable.prop("checked", true);
+                    disable.parent().append('<img src="' + Foris.scriptname + '/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+                    Foris.updateForm(disable.closest("form"));
+                } else {
+                    $('#field-enabled_0').prop("checked", false);
+                    $('#field-enabled_1').prop("checked", true);
+                }
+            }
+        }
+    );
   });
 </script>
 {% endif %}

@@ -15,13 +15,20 @@
       var unread = $(".notification:visible").length - 1;
       var extraMessage = "";
       if (unread > 0)
-        extraMessage = Foris.messages.confirmRestartExtra.replace(/%UNREAD%/g, unread);
-      if (confirm(Foris.messages.confirmRestart + extraMessage)) {
-        $.get('{{ url("reboot") }}')
-          .done(function(response, status, xhr) {
-            $("html, body").stop().animate({scrollTop:0}, 500, "swing");
-          });
-      }
+        extraMessage = Foris.messages.confirmRestartExtra(unread);
+      vex.dialog.confirm(
+        {
+            unsafeMessage: `<p><strong>${Foris.messages.confirmRestart}</p></strong>` + extraMessage,
+            callback: (value) => {
+                if (value) {
+                    $.get('{{ url("reboot") }}')
+                      .done(function(response, status, xhr) {
+                        $("html, body").stop().animate({scrollTop:0}, 500, "swing");
+                      });
+                }
+            }
+        }
+      )
     });
   };
   $(document).ready(function() {

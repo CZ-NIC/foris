@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 var Foris = {
   messages: {
     qrErrorPassword: "",
@@ -285,30 +286,38 @@ Foris.initEulaForm = function () {
   $("#updater-eula").show();
 
   $('#field-agreed_0').click(function () {
-    return confirm(Foris.messages.confirmDisabledUpdates);
+    vex.dialog.confirm(
+        {
+            unsafeMessage: Foris.messages.confirmDisabledUpdates,
+            callback: (value) => {
+                if (value) {
+                    var eulaForm = $('#updater-eula-form');
+                    eulaForm.submit(function (e) {
+                      e.preventDefault();
+                      eulaForm.find("button").attr('disabled', 'disabled');
+                      $.ajax({
+                        url: eulaForm.attr('action'),
+                        method: 'post',
+                        data: eulaForm.serialize()
+                      })
+                          .done(function (data) {
+                            if (data.success) {
+                              if (data.redirect) {
+                                document.location.href  = data.redirect;
+                                return;
+                              }
+                              $('#updater-eula').hide();
+                              $("#updater-progress").show();
+                              Foris.checkUpdaterStatus();
+                            }
+                          });
+                    });
+                }
+            }
+        }
+    );
   });
 
-  var eulaForm = $('#updater-eula-form');
-  eulaForm.submit(function (e) {
-    e.preventDefault();
-    eulaForm.find("button").attr('disabled', 'disabled');
-    $.ajax({
-      url: eulaForm.attr('action'),
-      method: 'post',
-      data: eulaForm.serialize()
-    })
-        .done(function (data) {
-          if (data.success) {
-            if (data.redirect) {
-              document.location.href  = data.redirect;
-              return;
-            }
-            $('#updater-eula').hide();
-            $("#updater-progress").show();
-            Foris.checkUpdaterStatus();
-          }
-        });
-  });
 };
 
 Foris.checkLowerAsciiString = function (string) {
@@ -518,13 +527,13 @@ Foris.initNotificationTestAlert = function () {
     showNotificationTestAlert = true;
   });
 
-  $(document).on("click", "#notifications-test", function () {
+  $(document).on("click", "#notifications-test", function (e) {
     if (showNotificationTestAlert) {
-      if (confirm(Foris.messages.unsavedNotificationsAlert)) {
-        $("#notifications-form")[0].reset();
-        return true;
-      }
-      return false;
+      e.preventDefault();
+      vex.dialog.confirm({
+          unsafeMessage: Foris.messages.unsavedNotificationsAlert,
+          callback: (value) => value && $("#notifications-form")[0].reset()
+      });
     }
   });
 };
@@ -770,5 +779,8 @@ $(document).ready(function () {
     else
       langSwitch.className = 'active';
   });
-});
 
+  // init modal dialogs
+  vex.defaultOptions.className = 'vex-theme-top';
+  vex.defaultOptions.overlayClosesOnClick = false;
+});
