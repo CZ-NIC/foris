@@ -28,6 +28,12 @@ class StandardMessages(object):
                 "network is in your hands, so try not to use weak passwords."
             ),
         ],
+        "networks": [
+            _(
+                "Here you need to decide which interfaces belongs to which network. "
+                "If you are in doubt use the current settings."
+            ),
+        ],
         "wan": [
             _(
                 "In order to access the internet you need to configure your WAN interface."
@@ -50,6 +56,14 @@ class StandardMessages(object):
         "password": [
             MESSAGES_CURRENT_MAP["password"][0],
             _("Your password seems to be set. You may proceed to the next step."),
+        ],
+        "networks": [
+            MESSAGES_CURRENT_MAP["networks"][0],
+            _(
+                "You've configured your network interfaces. "
+                "It seems that you didn't break any crucial network settings so you can safely "
+                "proceed to the next step."
+            ),
         ],
         "wan": [
             MESSAGES_CURRENT_MAP["wan"][0],
@@ -93,6 +107,7 @@ class Guide(object):
     WORKFLOW_STANDARD = "standard"
 
     STEP_PASSWORD = "password"
+    STEP_NETWORKS = "networks"
     STEP_WAN = "wan"
     STEP_TIME = "time"
     STEP_DNS = "dns"
@@ -100,6 +115,7 @@ class Guide(object):
 
     STANDARD_STEPS = (
         STEP_PASSWORD,
+        STEP_NETWORKS,
         STEP_WAN,
         STEP_TIME,
         STEP_DNS,
