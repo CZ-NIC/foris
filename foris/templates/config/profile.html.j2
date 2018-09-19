@@ -27,6 +27,11 @@
 .workflow-img {
     min-height: 250px;
     min-width: 250px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: gray;
+    border-width: 2px;
+    margin-bottom: 1em;
 }
 .workflow-buttons {
     width: 100%;
@@ -35,16 +40,12 @@
 .workflow-box {
     text-align: center;
     padding: 0.5em;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: gray;
-    border-width: 2px;
     margin-bottom: 1em;
 }
-.workflow-box:hover {
+.workflow-box:hover .workflow-img {
     border-color: red;
 }
-.current-workflow {
+.current-workflow  .workflow-img {
     border-color: red;
     border-style: solid;
     border-width: 3px;

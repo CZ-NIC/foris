@@ -228,4 +228,4 @@ class Workflow(object):
 
     @property
     def img(self):
-        return "workflow-%s.png" % self.name
+        return "img/workflow-%s.svg" % self.name
