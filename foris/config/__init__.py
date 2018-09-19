@@ -26,10 +26,11 @@ from urllib.parse import urlencode
 import bottle
 
 from foris.common import require_contract_valid, login
+from foris.guide import Workflow
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
     backups, collect, dns, misc, notifications, wan, lan, updater, wifi, networks,
-    guest
+    guest, profile
 )
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -187,8 +188,31 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
         return result
 
 
-class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
+class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
     menu_order = 12
+    template = "config/profile"
+    template_type = "jinja2"
+
+    def render(self, **kwargs):
+        kwargs['workflows'] = [
+            Workflow(
+                e, self.backend_data["current_workflow"] == e,
+                self.backend_data["recommended_workflow"] == e
+            ) for e in self.backend_data["available_workflows"]
+        ]
+        return super(ProfileConfigPage, self).render(**kwargs)
+
+    def save(self, *args, **kwargs):
+        result = super(ProfileConfigPage, self).save(no_messages=True, *args, **kwargs)
+        if self.form.callback_results["result"]:
+            messages.success(_("Guide workflow was sucessfully set."))
+        else:
+            messages.error(_("Failed to set guide workflow."))
+        return result
+
+
+class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
+    menu_order = 13
     template = "config/networks"
     template_type = "jinja2"
 
@@ -206,7 +230,7 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
 
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
-    menu_order = 13
+    menu_order = 14
 
     template = "config/wan"
     template_type = "jinja2"
@@ -238,7 +262,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
-    menu_order = 14
+    menu_order = 15
 
     template = "config/time"
     template_type = "jinja2"
@@ -250,7 +274,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
 
 class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
-    menu_order = 15
+    menu_order = 16
 
     template = "config/dns"
     template_type = "jinja2"
@@ -266,19 +290,19 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
 
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
-    menu_order = 16
-
-    template_type = "jinja2"
-
-
-class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     menu_order = 17
 
     template_type = "jinja2"
 
 
-class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
+class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     menu_order = 18
+
+    template_type = "jinja2"
+
+
+class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
+    menu_order = 19
 
     template = "config/wifi"
     template_type = "jinja2"
@@ -308,7 +332,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
-    menu_order = 19
+    menu_order = 20
 
     template = "config/maintenance"
     template_type = "jinja2"
@@ -388,7 +412,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
-    menu_order = 20
+    menu_order = 21
 
     template = "config/updater"
     template_type = "jinja2"
@@ -466,7 +490,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
 
 class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
-    menu_order = 21
+    menu_order = 22
 
     template = "config/data-collection"
     template_type = "jinja2"
@@ -637,6 +661,7 @@ class ConfigPageMapItems(dict):
 config_page_map = ConfigPageMapItems((
     ('notifications', NotificationsConfigPage),
     ('password', PasswordConfigPage),
+    ('profile', ProfileConfigPage),
     ('networks', NetworksConfigPage),
     ('wan', WanConfigPage),
     ('time', TimeConfigPage),

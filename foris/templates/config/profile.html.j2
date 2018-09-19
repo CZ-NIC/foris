@@ -1,0 +1,60 @@
+{% extends 'config/base.html.j2' %} 
+
+{% block config_base %}
+{% if is_xhr is not defined %}
+<div id="page-config" class="config-page">
+    {% include '_messages.html.j2' %}
+{% endif %}
+{% if is_xhr is not defined %}
+    <p>{% trans %}Here you can set the guide walkthrough which will guide you through a basic configuration of your device.{% endtrans %}</p>
+<form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+{% for workflow in workflows %}
+<div id="workflow-{{ workflow.name }}" class="workflow-box{% if workflow.current %} current-workflow{% endif %}">
+<h3>{{ workflow.title }}</h3>
+<img src="{{ static(workflow.img) }}" class="workflow-img">
+{% if workflow.recommended %}
+<p class="badge">recommended</p>
+{% endif %}
+
+<p>{{ workflow.description }}</p>
+<div class="workflow-buttons"><button class="button" id="workflow-{{ workflow.name }}-button" type="submit" name="workflow" value="{{ workflow.name }}">{% trans %}Use this workflow{% endtrans %}</button></div>
+</div>
+{% endfor %}
+</form>
+</div>
+<style>
+.workflow-img {
+    min-height: 250px;
+    min-width: 250px;
+}
+.workflow-buttons {
+    width: 100%;
+    text-align: right;
+}
+.workflow-box {
+    text-align: center;
+    padding: 0.5em;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: gray;
+    border-width: 2px;
+    margin-bottom: 1em;
+}
+.workflow-box:hover {
+    border-color: red;
+}
+.current-workflow {
+    border-color: red;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.workflow-box p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+</style>
+{% endif %}
+
+{% endblock %}
