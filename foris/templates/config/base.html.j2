@@ -26,6 +26,10 @@
             <p>{{ msg|safe }}</p>
             {% endfor %}
             <div class="guide-buttons">
+              <form method="post" action="{{ url("reset_guide") }}">
+                <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+                <button type="submit" name="target" class="button" value="save"><i class='fas fa-undo'></i> {% trans %}Reset Guided Mode{% endtrans %}</button>
+              </form>
               <form method="post" action="{{ url("leave_guide") }}">
                 <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
                 <button type="submit" name="target" class="button" value="save"><i class='fas fa-times'></i> {% trans %}Leave Guided Mode{% endtrans %}</button>

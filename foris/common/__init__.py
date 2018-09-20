@@ -179,6 +179,12 @@ def leave_guide():
     bottle.redirect(reverse("/"))
 
 
+@login_required
+def reset_guide():
+    current_state.backend.perform("web", "reset_guide")
+    bottle.redirect(reverse("/"))
+
+
 def ping():
     res = bottle.response.copy(cls=bottle.HTTPResponse)
     res.content_type = 'application/json'
@@ -212,6 +218,7 @@ def init_default_app(index, include_static=False):
     app.route("/logout", name="logout", callback=logout)
     app.route("/reboot", name="reboot", callback=reboot)
     app.route("/leave_guide", method="POST", name="leave_guide", callback=leave_guide)
+    app.route("/reset_guide", method="POST", name="reset_guide", callback=reset_guide)
     if include_static:
         app.route('/static/<filename:re:.*>', name="static", callback=static)
     # route for testing whether the foris app is alive (used in js)
