@@ -1,3 +1,15 @@
+98.10 (2018-09-20)
+------------------
+
+* config menu refactoring
+* added reset guide button to guide
+* profile tab added (only for turris-os-version >= 4.0 and mox/omnia only)
+* new modal dialogs using js library vex
+* new spinner for restarts and reboots
+* lan tab splitted to lan and guest tabs
+* networks tab added (only for turris-os-version >= 4.0 and mox/omnia only)
+* fixing reboot confirms
+
 98.9 (2018-08-29)
 -----------------
 
