@@ -42,6 +42,8 @@ logger = logging.getLogger(__name__)
 
 
 class ConfigPageMixin(object):
+    # page url part /config/<slug>
+    slug = None
     menu_order = 50
     template = "config/main"
     template_type = "simple"
@@ -96,15 +98,50 @@ class ConfigPageMixin(object):
         return result
 
     @staticmethod
-    def menu_tag():
-        return {
-            "show": False,
-            "hint": "",
-            "text": "",
-        }
+    def get_menu_tag_static(cls):
+        if current_state.guide.enabled and current_state.guide.current == cls.slug:
+            return {
+                "show": True,
+                "hint": "",
+                "text": "<i class='fas fa-reply'></i>",
+            }
+        else:
+            return {
+                "show": False,
+                "hint": "",
+                "text": "",
+            }
+
+    @classmethod
+    def get_menu_tag(cls):
+        return ConfigPageMixin.get_menu_tag_static(cls)
+
+    @staticmethod
+    def is_visible_static(cls):
+        if current_state.guide.enabled:
+            return cls.slug in current_state.guide.steps
+
+        return True
+
+    @classmethod
+    def is_visible(cls):
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @staticmethod
+    def is_enabled_static(cls):
+        if current_state.guide.enabled:
+            return cls.slug in current_state.guide.available_tabs
+
+        return True
+
+    @classmethod
+    def is_enabled(cls):
+        return ConfigPageMixin.is_enabled_static(cls)
 
 
 class NotificationsConfigPage(ConfigPageMixin):
+    slug = "notifications"
+
     menu_order = 10
 
     template = "config/notifications"
@@ -148,8 +185,8 @@ class NotificationsConfigPage(ConfigPageMixin):
 
         raise ValueError("Unknown AJAX action.")
 
-    @staticmethod
-    def menu_tag():
+    @classmethod
+    def get_menu_tag(cls):
         return {
             "show": True if current_state.notification_count else False,
             "hint": _("Number of notifications"),
@@ -158,6 +195,7 @@ class NotificationsConfigPage(ConfigPageMixin):
 
 
 class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
+    slug = "password"
     menu_order = 11
     template = "config/password"
     template_type = "jinja2"
@@ -189,6 +227,7 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
 
 
 class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
+    slug = "profile"
     menu_order = 12
     template = "config/profile"
     template_type = "jinja2"
@@ -210,8 +249,21 @@ class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
             messages.error(_("Failed to set guide workflow."))
         return result
 
+    @classmethod
+    def is_visible(cls):
+        if not current_state.guide.enabled:
+            return False
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @classmethod
+    def is_enabled(cls):
+        if not current_state.guide.enabled:
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
+
 
 class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
+    slug = "networks"
     menu_order = 13
     template = "config/networks"
     template_type = "jinja2"
@@ -230,6 +282,7 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
 
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
+    slug = "wan"
     menu_order = 14
 
     template = "config/wan"
@@ -262,6 +315,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
+    slug = "time"
     menu_order = 15
 
     template = "config/time"
@@ -274,6 +328,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
 
 class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
+    slug = "dns"
     menu_order = 16
 
     template = "config/dns"
@@ -290,18 +345,21 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
 
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
+    slug = "lan"
     menu_order = 17
 
     template_type = "jinja2"
 
 
 class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
+    slug = "guest"
     menu_order = 18
 
     template_type = "jinja2"
 
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
+    slug = "wifi"
     menu_order = 19
 
     template = "config/wifi"
@@ -332,6 +390,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
+    slug = "maintenance"
     menu_order = 20
 
     template = "config/maintenance"
@@ -412,6 +471,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
 
 class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
+    slug = "updater"
     menu_order = 21
 
     template = "config/updater"
@@ -480,16 +540,20 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             messages.warning(_("There were some errors in your input."))
         return result
 
-    @staticmethod
-    def menu_tag():
-        return {
-            "show": current_state.updater_is_running,
-            "hint": _("Updater is running"),
-            "text": u"<i class='fas fa-sync'></i>",
-        }
+    @classmethod
+    def get_menu_tag(cls):
+        if current_state.updater_is_running:
+            return {
+                "show": current_state.updater_is_running,
+                "hint": _("Updater is running"),
+                "text": u"<i class='fas fa-sync'></i>",
+            }
+        else:
+            return ConfigPageMixin.get_menu_tag_static(cls)
 
 
 class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
+    slug = "data-collection"
     menu_order = 22
 
     template = "config/data-collection"
@@ -606,6 +670,7 @@ class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
 
 
 class AboutConfigPage(ConfigPageMixin):
+    slug = "about"
     menu_order = 99
 
     template = "config/about"
@@ -650,59 +715,67 @@ class AboutConfigPage(ConfigPageMixin):
         return self.default_template(data=data, **kwargs)
 
 
-class ConfigPageMapItems(dict):
-    def menu_list(self):
-        res = [(slug, page, page.menu_tag()) for slug, page in self.items()]
-        return sorted(res, key=lambda e: (e[1].menu_order, e[0]))
+config_pages = {
+    e.slug: e for e in [
+        NotificationsConfigPage,
+        PasswordConfigPage,
+        ProfileConfigPage,
+        NetworksConfigPage,
+        WanConfigPage,
+        TimeConfigPage,
+        DNSConfigPage,
+        LanConfigPage,
+        GuestConfigPage,
+        WifiConfigPage,
+        MaintenanceConfigPage,
+        UpdaterConfigPage,
+        DataCollectionConfigPage,
+        AboutConfigPage,
+    ]
+}
 
 
-# names of handlers used in their URL
-# use dash-separated names, underscores in URL are ugly
-config_page_map = ConfigPageMapItems((
-    ('notifications', NotificationsConfigPage),
-    ('password', PasswordConfigPage),
-    ('profile', ProfileConfigPage),
-    ('networks', NetworksConfigPage),
-    ('wan', WanConfigPage),
-    ('time', TimeConfigPage),
-    ('dns', DNSConfigPage),
-    ('lan', LanConfigPage),
-    ('guest', GuestConfigPage),
-    ('wifi', WifiConfigPage),
-    ('maintenance', MaintenanceConfigPage),
-    ('updater', UpdaterConfigPage),
-    ('data-collection', DataCollectionConfigPage),
-    ('about', AboutConfigPage),
-))
-
-# config pages that are not shown in the menu
-extra_config_pages = ConfigPageMapItems()
+def get_config_pages():
+    """ Returns sorted config pages
+    """
+    res = sorted(config_pages.values(), key=lambda e: (e.menu_order, e.slug))
+    return res
 
 
-def add_config_page(page_name, page_class, top_level=False):
+def add_config_page(page_class):
     """Register config page in /config/ URL namespace.
 
-    :param page_name: config page name (shown in url)
     :param page_class: handler class
-    :param top_level: add to top-level navigation
     """
-    if top_level:
-        config_page_map[page_name] = page_class
-    else:
-        extra_config_pages[page_name] = page_class
+    if page_class.slug is None:
+        raise Exception("Page %s doesn't define a propper slug" % page_class)
+    if page_class.slug in config_pages:
+        raise Exception("Error when adding page %s slug '%s' is already used in %s" % (
+            page_class, page_class.slug, config_pages[page_class.slug]
+        ))
+    config_pages[page_class.slug] = page_class
 
 
 def get_config_page(page_name):
-    ConfigPage = config_page_map.get(page_name,
-                                     extra_config_pages.get(page_name))
+    ConfigPage = config_pages.get(page_name, None)
     if ConfigPage is None:
         raise bottle.HTTPError(404, "Unknown configuration page.")
     return ConfigPage
 
 
+def _redirect_to_default_location():
+
+    next_page = "notifications"
+    # by default redirect to current guide step
+    if current_state.guide.enabled:
+        next_page = current_state.guide.current if current_state.guide.current else next_page
+
+    bottle.redirect(reverse("config_page", page_name=next_page))
+
+
 @login_required
 def index():
-    bottle.redirect(reverse("config_page", page_name="notifications"))
+    _redirect_to_default_location()
 
 
 @login_required
@@ -714,6 +787,11 @@ def config_page_get(page_name):
     bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
     bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
     ConfigPage = get_config_page(page_name)
+
+    # test if page is enabled otherwise redirect to default
+    if not ConfigPage.is_enabled() or not ConfigPage.is_visible():
+        _redirect_to_default_location()
+
     config_page = ConfigPage()
     return config_page.render(active_config_page_key=page_name)
 
@@ -814,8 +892,8 @@ def init_app():
               callback=config_page_post)
     app.route("/<page_name:re:.+>/", name="config_page",
               callback=config_page_get)
-    bottle.SimpleTemplate.defaults['config_pages'] = config_page_map
-    bottle.Jinja2Template.defaults['config_pages'] = config_page_map
+    bottle.SimpleTemplate.defaults['get_config_pages'] = get_config_pages
+    bottle.Jinja2Template.defaults['get_config_pages'] = get_config_pages
     return app
 
 

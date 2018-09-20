@@ -56,21 +56,18 @@
         <div class="sidebar-content">
             <nav>
                 <ul>
-                {% for slug, config_page, menu_tag in config_pages.menu_list() %}
-                    {% if foris_info.guide.is_available(slug) %}
-                    <li{{ ' class="active"' if active_config_page_key is defined and slug == active_config_page_key else "" }}>
-                      <a href="{{ url("config_page", page_name=slug) }}">{{ config_page.userfriendly_title }}
-                    {% set show = menu_tag["show"] or foris_info.guide.enabled and slug == foris_info.guide.current %}
-                      <span title="{{ menu_tag["hint"]}}" style="{{"" if show else "display: none" }}" id="{{ slug }}_menu_tag" class="menu-tag">
-                      {% if foris_info.guide.enabled and slug == foris_info.guide.current %}
-                      <i class='fas fa-reply'></i>
-                      {% else %}
-                      {{ menu_tag["text"]|safe }}
+                {% for config_page in get_config_pages() %}
+                    {% if config_page.is_visible() and config_page.is_enabled() %}
+                    <li{{ ' class="active"' if active_config_page_key is defined and config_page.slug == active_config_page_key else "" }}>
+                      <a href="{{ url("config_page", page_name=config_page.slug) }}">{{ config_page.userfriendly_title }}
+                        {% if config_page.get_menu_tag()["show"] %}
+                      <span title="{{ config_page.get_menu_tag()["hint"]}}" style="{{"" if config_page.get_menu_tag()["show"] else "display: none" }}" id="{{ config_page.slug }}_menu_tag" class="menu-tag">
+                      {{ config_page.get_menu_tag()["text"]|safe }}
                       {% endif %}
                       </span>
                       </a>
                     </li>
-                    {% elif foris_info.guide.is_guide_step(slug) %}
+                    {% elif config_page.is_visible() %}
                     <li><span class="link-disabled">{{ config_page.userfriendly_title }}</span></li>
                     {% endif %}
                 {% endfor %}

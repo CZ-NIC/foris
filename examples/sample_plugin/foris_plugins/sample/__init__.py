@@ -49,6 +49,7 @@ class SamplePluginConfigHandler(BaseConfigHandler):
 
 # This represents a plugin page
 class SamplePluginPage(ConfigPageMixin, SamplePluginConfigHandler):
+    slug = "sample"  # part of the url of the plugin (.../config/<slug>)
     menu_order = 90  # Where it should be placed in the main menu (higher the number the lower)
     template = "sample/sample"  # template which will be used (.html.js will be auto added)
     template_type = "jinja2"
@@ -107,4 +108,4 @@ class SamplePlugin(ForisPlugin):
 
     def __init__(self, app):
         super(SamplePlugin, self).__init__(app)
-        add_config_page("sample", SamplePluginPage, top_level=True)
+        add_config_page(SamplePluginPage)

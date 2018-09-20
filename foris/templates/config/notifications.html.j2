@@ -2,6 +2,7 @@
 
 {% block config_base %}
 <div id="page-notifications" class="config-page">
+    {% include '_messages.html.j2' %}
     <p class="config-description">
     {% trans %}Following notifications occured and haven't been dismissed since last reboot.{% endtrans %}
     </p>
