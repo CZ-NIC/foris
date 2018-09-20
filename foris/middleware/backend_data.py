@@ -74,6 +74,12 @@ class BackendData(object):
         # update whether password is set
         current_state.update_password_set(data["password_ready"])
 
+        # update turris_os_version
+        current_state.set_turris_os_version(data["turris_os_version"])
+
+        # update device
+        current_state.set_device(data["device"])
+
         # initialize guide
         current_state.update_guide(data["guide"])
 

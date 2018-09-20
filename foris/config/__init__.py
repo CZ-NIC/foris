@@ -280,6 +280,19 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
             messages.error(_("Unable to update your network configuration."))
         return result
 
+    @classmethod
+    def is_enabled(cls):
+        if current_state.device in ["turris"]:
+            return False
+        # Don't show in turrisOS version < "4.0"
+        if int(current_state.turris_os_version.split(".", 1)[0]) < 4:
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
+
+    @classmethod
+    def is_visible(cls):
+        return cls.is_enabled()
+
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     slug = "wan"
