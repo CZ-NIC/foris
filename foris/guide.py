@@ -192,9 +192,9 @@ class Guide(object):
 
 class Workflow(object):
     TITLES = {
-        WORKFLOW_OLD: "Workflow for older routers",
-        WORKFLOW_MIN: "Minimal workflow",
-        WORKFLOW_ROUTER: "Router workflow",
+        WORKFLOW_OLD: _("Old"),
+        WORKFLOW_MIN: _("Minimal"),
+        WORKFLOW_ROUTER: _("Router"),
     }
     DESCRIPTIONS = {
         WORKFLOW_OLD: _("Workflow for older routers and older turris OS versions (before 4.0)."),
