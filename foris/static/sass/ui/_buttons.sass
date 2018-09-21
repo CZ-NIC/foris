@@ -9,17 +9,15 @@ button
   width: auto
 
 .button, button
-  font:
-    size: 90%
-    weight: bold
-
-.button
   +box-sizing('border-box')
   +rounded-borders
   background-color: $button-color
   color: #fff
   cursor: default
   display: block
+  font:
+    size: 90%
+    weight: bold
   width: 100%
   text-align: center
   height: $button-height * $button-height-touch-multiplier
@@ -94,3 +92,13 @@ button
   @extend .button-arrow-left
   float: left
   margin-top: 1em
+
+// For vex dialogs button formatting
+.vex .vex-content .vex-dialog-form .vex-dialog-buttons button
+  @extend .button
+
+.vex .vex-content .vex-dialog-form .vex-dialog-buttons button.vex-dialog-button-secondary
+  background-color: $button-color-grayed
+
+  &:hover, &:hover:before
+    background-color: lighten(desaturate($button-color-grayed, 20), 15)
