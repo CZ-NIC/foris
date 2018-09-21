@@ -1,3 +1,8 @@
+98.11 (2018-09-21)
+------------------
+
+* dhcp lease time option added to LAN and guest tabs
+
 98.10 (2018-09-20)
 ------------------
 
