@@ -36,6 +36,7 @@ class LanHandler(BaseConfigHandler):
         data["dhcp_enabled"] = data["dhcp"]["enabled"]
         data["dhcp_min"] = data["dhcp"]["start"]
         data["dhcp_max"] = data["dhcp"]["limit"]
+        data["dhcp_leasetime"] = data["dhcp"]["lease_time"] // 60 // 60
 
         if self.data:
             # Update from post
@@ -79,6 +80,10 @@ class LanHandler(BaseConfigHandler):
         lan_main.add_field(
             Textbox, name="dhcp_max", label=_("DHCP max leases"),
         ).requires("dhcp_enabled", True)
+        lan_main.add_field(
+            Textbox, name="dhcp_leasetime", label=_("Lease time (hours)"),
+            validators=[validators.InRange(1, 7 * 24)]
+        ).requires("dhcp_enabled", True)
 
         def lan_form_cb(data):
             msg = {
@@ -89,6 +94,7 @@ class LanHandler(BaseConfigHandler):
             if data["dhcp_enabled"]:
                 msg["dhcp"]["start"] = int(data["dhcp_min"])
                 msg["dhcp"]["limit"] = int(data["dhcp_max"])
+                msg["dhcp"]["lease_time"] = int(data["dhcp_leasetime"]) * 60 * 60
 
             res = current_state.backend.perform("lan", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...

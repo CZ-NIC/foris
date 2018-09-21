@@ -37,6 +37,7 @@ class GuestHandler(BaseConfigHandler):
         data["guest_dhcp_enabled"] = data["dhcp"]["enabled"]
         data["guest_dhcp_min"] = data["dhcp"]["start"]
         data["guest_dhcp_max"] = data["dhcp"]["limit"]
+        data["guest_dhcp_leasetime"] = data["dhcp"]["lease_time"] // 60 // 60
         data["guest_qos_enabled"] = data["qos"]["enabled"]
         data["guest_qos_download"] = data["qos"]["download"]
         data["guest_qos_upload"] = data["qos"]["upload"]
@@ -89,6 +90,10 @@ class GuestHandler(BaseConfigHandler):
         guest_network_section.add_field(
             Textbox, name="guest_dhcp_max", label=_("DHCP max leases"),
         ).requires("guest_dhcp_enabled", True)
+        guest_network_section.add_field(
+            Textbox, name="guest_dhcp_leasetime", label=_("Lease time (hours)"),
+            validators=[validators.InRange(1, 7 * 24)]
+        ).requires("guest_dhcp_enabled", True)
 
         guest_network_section.add_field(
             Checkbox, name="guest_qos_enabled", label=_("Guest Lan QoS"),
@@ -129,6 +134,7 @@ class GuestHandler(BaseConfigHandler):
                 if data["guest_dhcp_enabled"]:
                     msg["dhcp"]["start"] = int(data["guest_dhcp_min"])
                     msg["dhcp"]["limit"] = int(data["guest_dhcp_max"])
+                    msg["dhcp"]["lease_time"] = int(data["guest_dhcp_leasetime"]) * 60 * 60
 
                 if data["guest_qos_enabled"]:
                     msg["qos"]["download"] = int(data["guest_qos_download"])
