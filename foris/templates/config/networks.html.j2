@@ -5,12 +5,11 @@
 <div id="page-config" class="config-page">
     {% include '_messages.html.j2' %}
 {% endif %}
-    <p>{% trans %}Here you can configure the settings of network interfaces on your device. You can change the assignment of your physical network interface to corresponding networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
-    <p>{% trans %}<strong>WAN network</strong> represents a connection to external network. Firewall rules should be applied. It can contain only a signle port.{% endtrans %}</p>
-    <p>{% trans %}<strong>LAN network represents</strong> a connection to local network. All devices under your control. The devices can see each other and can access this web interface. It is adviced that LAN network should contain at least one interface.{% endtrans %}</p>
-    <p>{% trans %}<strong>Guest network</strong> represents a connection to a guest network. The devices connected to the guest network can only access WAN. They can't access any configuration iterface of your router nor devices from your LAN network.{% endtrans %}</p>
-    <p>{% trans %}Note that each of these networks has its own separeted config page. TODO or write a link once the wizard is passed...{% endtrans %}</p>
-    <h5>{% trans %}WAN network{% endtrans %}</h5>
+    <p>{% trans %}Here you can configure the settings of the network interfaces on your device. You can switch your physical network interface among networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
+    <p>{% trans %}<strong>WAN</strong> represents a connection to an external network. Firewall rules should be applied here. It can only contain a signle interface.{% endtrans %}</p>
+    <p>{% trans %}<strong>LAN</strong> represents a connection to a local network. It should contain devices which you control and you somehow trust them. The devices can see each other and can access this web interface. It is adviced that the LAN network should contain at least one interface otherwise you might not be able to configure this device in an easy way.{% endtrans %}</p>
+    <p>{% trans %}<strong>Guest network</strong> represents a connection to a local network. Unlike LAN the devices in the guest network can't access the configuration interface of this device and are only able to access WAN (internet). This network should be used for devices which you don't fully trust. Note that you can also limit download/upload speed of the devices connected to the guest network.{% endtrans %}</p>
+    <h5>{% trans %}WAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
     {% for port in backend_data.networks.wan %}
     <button class="button ports-button ports-wan" id="{{port.id}}">
@@ -24,7 +23,7 @@
     </button>
     {% endfor %}
     </div>
-    <h5>{% trans %}LAN network{% endtrans %}</h5>
+    <h5>{% trans %}LAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-lan" data-group="lan">
     {% for port in backend_data.networks.lan %}
     <button class="button ports-button ports-lan" id="{{port.id}}">

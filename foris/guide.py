@@ -49,7 +49,7 @@ class StandardMessages(object):
             "Choose one of the possible setup workflows."
         ),
         _(
-            "Your profile was set. You may proceed to other step."
+            "The workflow was set. You may proceed to next step."
         )
     ]
     PROFILE_CURRENT_DEFAULT = [
@@ -201,7 +201,7 @@ class Workflow(object):
         WORKFLOW_MIN: _(
             "Just set your password and you are ready to go. "
             "This workflow is aimed to more advanced users who intend not to use the web gui. "
-            "It acturally exits the guide after you choose this workflow."
+            "It actually exits the guide after you choose this workflow."
         ),
         WORKFLOW_ROUTER: _(
             "After you finish this workflow your device will be able to act as a fully "
