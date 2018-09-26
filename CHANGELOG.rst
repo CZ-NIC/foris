@@ -1,3 +1,9 @@
+98.12 (2018-09-26)
+------------------
+
+* text updates
+* merged translations from weblate
+
 98.11 (2018-09-21)
 ------------------
 
