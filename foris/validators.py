@@ -21,7 +21,7 @@ import socket
 from datetime import datetime
 
 from foris.utils.translators import _
-import form
+from foris import form
 
 logger = logging.getLogger(__name__)
 
@@ -104,7 +104,7 @@ class IPv4Netmask(Validator):
         was_zero = False
         for byte in addr:
             for i in range(8):
-                if not (ord(byte) & 1 << (7-i)):
+                if not (byte & 1 << (7-i)):
                     was_zero = True
                 elif was_zero:  # 1 and we have seen zero already
                     return False
@@ -285,7 +285,7 @@ class LenRange(Validator):
         self.js_validator_params = "[%s,%s]" % (low, high)
 
     def valid(self, value):
-        return self._low <= len(unicode(value.decode("utf8"))) <= self._high
+        return self._low <= len(value) <= self._high
 
 
 class ByteLenRange(Validator):
@@ -302,7 +302,7 @@ class ByteLenRange(Validator):
         self.js_validator_params = "[%s,%s]" % (low, high)
 
     def valid(self, value):
-        return self._low <= len(value.decode("utf8")) <= self._high
+        return self._low <= len(value.encode("utf8")) <= self._high
 
 
 class EqualTo(Validator):

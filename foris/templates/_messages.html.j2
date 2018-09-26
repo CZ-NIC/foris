@@ -1,0 +1,11 @@
+{% for message in get_messages() %}
+  <div class="message {{ message.classes }}">
+    {{ message.text|safe }}
+  </div>
+{% endfor %}
+
+<noscript>
+  <div class="message info">
+    {% trans %}This page requires JavaScript for proper function. Please enable it and refresh the page.{% endtrans %}
+  </div>
+</noscript>

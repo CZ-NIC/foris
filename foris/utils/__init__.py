@@ -17,22 +17,20 @@
 
 import base64
 import json
-import urlparse
 
 import bottle
-from functools import wraps
 import logging
+from functools import wraps
+from urllib.parse import urlparse
 
 from .routing import reverse
 from . import messages
 from .translators import _
+from .caches import per_request
 from foris.state import current_state
 
 
 logger = logging.getLogger("foris.utils")
-
-WIZARD_NEXT_STEP_ALLOWED_KEY = "allowed_step_max"
-NUM_WIZARD_STEPS = 10
 
 
 def is_user_authenticated():
@@ -95,7 +93,7 @@ def is_safe_redirect(url, host=None):
     if "\r" in url or "\n" in url:
         logger.warning("Possible CRLF injection attempt: \n%s", bottle.request.environ)
         return False
-    url_components = urlparse.urlparse(url)
+    url_components = urlparse(url)
     return ((not url_components.scheme or url_components.scheme in ['http', 'https'])
             and (not url_components.netloc or url_components.netloc == host))
 
@@ -111,7 +109,7 @@ def require_customization(required_customization=None):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if info.device_customization != required_customization:
+            if current_state.device_customization != required_customization:
                 raise bottle.HTTPError(
                     403, "Requested method is not available in this Foris build.")
             return func(*args, **kwargs)
@@ -161,7 +159,7 @@ class LazyCache(object):
         super(LazyCache, self).__setattr__('_attr_dict', {})
 
 
-def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
+def localized_sorted(iterable, lang, key=None, reverse=False):
     """
     Sorted method that can sort according to a language-specific alphabet.
 
@@ -180,7 +178,7 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
 
     alphabet = alphabet.get(lang)
     if not alphabet:
-        return sorted(iterable, cmp, key, reverse)
+        return sorted(iterable, key=key, reverse=reverse)
 
     key = key or (lambda x: x)
 
@@ -193,9 +191,9 @@ def localized_sorted(iterable, lang, cmp=None, key=None, reverse=False):
 
     def key_fn(x):
         """Key function for sorting using a custom alphabet."""
-        return map(safe_index, key(x))
+        return [safe_index(e) for e in key(x)]
 
-    return sorted(iterable, cmp, key_fn, reverse)
+    return sorted(iterable, key=key_fn, reverse=reverse)
 
 
 def contract_valid():
@@ -205,10 +203,18 @@ def contract_valid():
     """
     CONRACT_VALID = "valid"
     CONRACT_UNKNOWN = "unknown"
-    if current_state.device_customization == "omnia":
+    if current_state.device_customization != "turris":
         return False
 
-    data = current_state.backend.perform("about", "get_contract_status", {})
+    # perform backend query or obtain from cache
+    args = ("about", "get_contract_status", None)
+    hashable_args = ("about", "get_contract_status", None)
+    data = per_request.backend_data[hashable_args] if hashable_args in per_request.backend_data \
+        else current_state.backend.perform(*args)
+
+    # store into cache
+    per_request.backend_data[hashable_args] = data
+
     if data["contract_status"] == CONRACT_VALID:
         return True
 
@@ -221,7 +227,9 @@ def contract_valid():
 
 def check_password(password):
     res = current_state.backend.perform(
-        "password", "check", {"password": base64.b64encode(password)})
+        "password", "check",
+        {"password": base64.b64encode(password.encode("utf-8")).decode("utf-8")}
+    )
 
     # consider unset password as successful auth
     # maybe set some session variable in this case

@@ -1,0 +1,229 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+{% if is_xhr is not defined %}
+<div id="page-config" class="config-page">
+    {% include '_messages.html.j2' %}
+{% endif %}
+    <p>{% trans %}Here you can configure the settings of the network interfaces on your device. You can switch your physical network interface among networks. If you are unsure what to set here use the default setup.{% endtrans %}</p>
+    <p>{% trans %}<strong>WAN</strong> represents a connection to an external network. Firewall rules should be applied here. It can only contain a signle interface.{% endtrans %}</p>
+    <p>{% trans %}<strong>LAN</strong> represents a connection to a local network. It should contain devices which you control and you somehow trust them. The devices can see each other and can access this web interface. It is adviced that the LAN network should contain at least one interface otherwise you might not be able to configure this device in an easy way.{% endtrans %}</p>
+    <p>{% trans %}<strong>Guest network</strong> represents a connection to a local network. Unlike LAN the devices in the guest network can't access the configuration interface of this device and are only able to access WAN (internet). This network should be used for devices which you don't fully trust. Note that you can also limit download/upload speed of the devices connected to the guest network.{% endtrans %}</p>
+    <h5>{% trans %}WAN{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-wan" data-group="wan">
+    {% for port in backend_data.networks.wan %}
+    <button class="button ports-button ports-wan" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.title }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}LAN{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-lan" data-group="lan">
+    {% for port in backend_data.networks.lan %}
+    <button class="button ports-button ports-lan" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.title }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}Guest Network{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-guest" data-group="guest">
+    {% for port in backend_data.networks.guest %}
+    <button class="button ports-button ports-quest" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.title }}
+    </button>
+    {% endfor %}
+    </div>
+    <h5>{% trans %}Unassigned{% endtrans %}</h5>
+    <div class="ports-list" id="ports-list-none" data-group="none">
+    {% for port in backend_data.networks.none %}
+    <button class="button ports-button ports-none" id="{{port.id}}">
+        {% if port.kind == "usb" %}
+        <i class="fab fa-usb"></i>
+        {% elif port.kind == "eth" %}
+        <i class="far fa-calendar"></i>
+        {% endif %}
+        <br/>
+        {{ port.title }}
+    </button>
+    {% endfor %}
+    </div>
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% for port in backend_data.networks.wan %}
+        <input type="hidden" name="wan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.networks.lan %}
+        <input type="hidden" name="lan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.networks.guest %}
+        <input type="hidden" name="guest[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        {% for port in backend_data.networks.none %}
+        <input type="hidden" name="none[]" value="{{ port.id }}" id="input_{{ port.id }}">
+        {% endfor %}
+        <br>
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
+            <a href="{{ request.fullpath }}" class="button grayed">{% trans %}Discard changes{% endtrans %}</a>
+            <button type="submit" name="send" class="button" id="ports-submit">{% trans %}Save changes{% endtrans %}</button>
+        </div>
+    </form>
+{% if is_xhr is not defined %}
+</div>
+<style>
+.ports-list {
+    min-height: 4em;
+    white-space:nowrap;
+}
+.ports-list i {
+    font-size: 1.5em;
+}
+.ports-list .button {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.ports-list .ports-button {
+    height: 4em;
+    line-height: 1.5em;
+}
+.ports-list .ports-control-button {
+    height: 4em;
+    line-height: 1.5em;
+}
+</style>
+<script>
+    'use strict';
+    Foris.movePortToGroup = (e) => {
+        let button = $(e.target);
+        let group = button.parent();
+        let target_group = `ports-list-${button.attr('data-target')}`;
+        let port_id = button.attr('data-port');
+
+        // update form input
+        $(`#input_${port_id}`).attr("name", `${button.attr('data-target')}[]`);
+
+        $(`#${port_id}`).removeClass("ports-button-clicked");
+        $(`#${port_id}`).detach().appendTo(`#${target_group}`);
+        group.find(".ports-button").show("slide");
+        $(".ports-control-button").hide("slide", () => $(".ports-control-button").remove());
+    };
+    Foris.initPorts = () => {
+        $(".ports-button").on("click", (e) => {
+            e.preventDefault();
+            let button = $(e.target);
+            let group = button.parent();
+
+            // close other opened lists
+            $(".ports-list").not(group).find(".ports-button").show("slide").removeClass("ports-button-clicked");
+            $(".ports-list").find(".ports-control-button").hide("slide", () => {
+                $(".ports-list").not(group).find(".ports-control-button").remove()
+            });
+
+            if (button.hasClass("ports-button-clicked")) {
+                // close control buttons
+                group.find(".ports-button").not(button).show("slide");
+                group.find(".ports-control-button").hide("slide", () => group.find(".ports-control-button").remove());
+                button.removeClass("ports-button-clicked");
+            } else {
+                // open control buttons
+                group.find(".ports-button").not(button).hide("slide");
+                button.addClass("ports-button-clicked");
+                let targets = [
+                    ['wan', "{% trans %}WAN network{% endtrans %}"],
+                    ['lan', "{% trans %}LAN network{% endtrans %}"],
+                    ['guest', "{% trans %}Guest network{% endtrans %}"],
+                    ['none', "{% trans %}Unassign{% endtrans %}"],
+                ];
+                for (let target of targets) {
+                    let group_name = target[0], group_repr = target[1];
+                    // no need to include the current group
+                    if (group.attr("data-group") == group_name) {
+                        continue;
+                    }
+                    // WAN can contain only one port
+                    if (group_name == "wan" && $("#ports-list-wan").find(".ports-button").length > 0) {
+                        continue;
+                    }
+                    group.append(`<button class="button ports-control-button grayed" data-port="${button.attr('id')}" data-target="${group_name}" style="display: none;"><i class="fas fa-sign-out-alt"></i> ${group_repr}</button>`);
+                }
+                group.find(".ports-control-button").show("slide");
+                group.find(".ports-control-button").on("click", Foris.movePortToGroup);
+            }
+        });
+    };
+    Foris.portsMissingWan = () => {
+        return $("#ports-list-wan .ports-button").length == 0;
+    };
+    Foris.portsMissingLan = () => {
+        return $("#ports-list-lan .ports-button").length == 0;
+    };
+    Foris.overridePortsSubmit = () => {
+        $("#ports-submit").on('click', (e) => {
+            e.preventDefault();
+            let brick_msg = "{% trans %}In the setup you provided it is <strong>not possible to access the administration interface</strong> of your device. This means that the only way to configure your device will be via serial cabel or you need to a perform factory reset. <br/><br/> <p><strong>Is this really what you want?</strong></p>{% endtrans %}";
+            let wan_ports_msg = "{% trans %}You don't have any interface assigned to the LAN network.<br/> Do you want to <strong>open ports 22, 80 and 443 on WAN network</strong> in order to be able to access the configuration interface of our device?{% endtrans %}";
+
+            function finalConfirm() {
+                vex.dialog.confirm(
+                    {
+                        unsafeMessage: brick_msg,
+                        buttons: [
+                            {type: "submit", className: "vex-dialog-button-primary", text: "Reconsider", click: () => {}},
+                            {type: "submit", className: "vex-dialog-button-secondary", text: "I'm an expert", click: () => $("#main-form").submit()},
+                        ],
+                        callback: () => {}
+                    }
+                );
+            }
+            if (Foris.portsMissingLan()) {
+                if (Foris.portsMissingWan()) {
+                    finalConfirm();
+                } else {
+                    vex.dialog.confirm(
+                        {
+                            unsafeMessage: wan_ports_msg,
+                            buttons: [
+                                {
+                                    type: "submit", className: "vex-dialog-button-primary", text: "Open ports", click: () => {
+                                        $("#main-form").append('<input type="hidden" name="ssh_on_wan" value="1">');
+                                        $("#main-form").append('<input type="hidden" name="http_on_wan" value="1">');
+                                        $("#main-form").append('<input type="hidden" name="https_on_wan" value="1">');
+                                        $("#main-form").submit();
+                                    }
+                                },
+                                {type: "submit", className: "vex-dialog-button-secondary", text: "Keep closed", click: () => finalConfirm()},
+                            ],
+                            callback: () => {}
+                        }
+                    );
+                }
+            } else {
+                $("#main-form").submit();
+            }
+        });
+    }
+    $(document).ready(function() {
+        Foris.initPorts();
+        Foris.overridePortsSubmit();
+    });
+</script>
+{% endif %}
+
+{% endblock %}

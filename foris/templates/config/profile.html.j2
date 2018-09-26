@@ -1,0 +1,91 @@
+{% extends 'config/base.html.j2' %} 
+
+{% block config_base %}
+{% if is_xhr is not defined %}
+<div id="page-config" class="config-page">
+    {% include '_messages.html.j2' %}
+{% endif %}
+{% if is_xhr is not defined %}
+    <p>{% trans %}Here you can set the guide walkthrough which will guide you through a basic configuration of your device.{% endtrans %}</p>
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+{% for workflow in workflows %}
+        <div id="workflow-{{ workflow.name }}" class="workflow-box{% if workflow.current %} current-workflow{% endif %}{% if workflow.recommended %} recommended-workflow{% endif %}">
+            <h3>{{ workflow.title }}
+    {% if workflow.recommended %}
+            <span class="badge">{%trans %}recommended{% endtrans %}</span>
+    {% endif %}
+            </h3>
+            <img src="{{ static(workflow.img) }}" class="workflow-img">
+
+            <p>{{ workflow.description }}</p>
+            <div class="workflow-buttons"><button class="button" id="workflow-{{ workflow.name }}-button" type="submit" name="workflow" value="{{ workflow.name }}">{% trans %}Use this workflow{% endtrans %}</button></div>
+        </div>
+{% endfor %}
+    </form>
+</div>
+<style>
+h3 span.badge {
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 0.5px 5px 0.5px 5px;
+    background-color: #00a2e2;
+    color: white;
+    position: relative;
+    top: -0.25em;
+}
+.workflow-box p.recommended {
+    margin: 0px;
+}
+.workflow-img {
+    min-height: 250px;
+    min-width: 250px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: gray;
+    border-width: 2px;
+    margin-bottom: 1em;
+}
+.workflow-buttons {
+    width: 100%;
+    text-align: right;
+}
+.workflow-box {
+    text-align: center;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+.workflow-box .workflow-img:hover {
+    border-color: #ce1126;
+    cursor: pointer;
+}
+.current-workflow  img.workflow-img {
+    border-color: darkred;
+    border-style: solid;
+    border-width: 3px;
+}
+.recommended-workflow .workflow-img {
+    border-color: #00a2e2;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.workflow-box p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+</style>
+<script>
+    'use strict';
+    $(document).ready(function() {
+        $(".workflow-buttons").hide()
+        $(".workflow-img").on("click", (e) => {
+            e.preventDefault();
+            let box = $(e.target).parent();
+            box.find(".workflow-buttons button").click();
+        });
+    });
+</script>
+{% endif %}
+
+{% endblock %}

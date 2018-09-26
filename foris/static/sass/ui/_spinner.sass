@@ -1,0 +1,37 @@
+@keyframes foris-spinner
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
+
+#foris-spinner-frame
+  position: fixed
+  top: 0
+  left: 0
+  display: flex
+  background-color: rgba(0, 0, 0, 0.5)
+  height: 100vh
+  width: 100vw
+  justify-content: center
+  align-items: center
+  z-index: 9990
+
+#foris-spinner
+  box-sizing: border-box
+  position: fixed
+  display: flex
+  width: 250px
+  height: 250px
+  border-radius: 50%
+  border: 5px solid #fff
+  border-top-color: #00a2e2
+  background-color: rgba(0, 0, 0, 0.5)
+  animation: foris-spinner .6s linear infinite
+
+#foris-spinner-text
+  display: flex
+  justify-content: center
+  text-align: center
+  color: white
+  z-index: 9999
+  width: 175px

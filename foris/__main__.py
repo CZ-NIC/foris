@@ -1,6 +1,8 @@
 import argparse
 import bottle
+import logging
 
+from foris import __version__
 from foris.state import current_state
 from foris.backend import Backend
 
@@ -12,6 +14,7 @@ def get_arg_parser():
     :return: instance of ArgumentParser
     """
     parser = argparse.ArgumentParser()
+    parser.add_argument('--version', action='version', version=__version__)
     group = parser.add_argument_group("run server")
     group.add_argument("-H", "--host", default="0.0.0.0")
     group.add_argument("-p", "--port", type=int, default=8080)
@@ -21,15 +24,14 @@ def get_arg_parser():
     group.add_argument("-d", "--debug", action="store_true")
     group.add_argument("--noauth", action="store_true",
                        help="disable authentication (available only in debug mode)")
-    group.add_argument("--nucipath", help="path to Nuci binary")
     parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
     group.add_argument(
         "-S", "--static", action="store_true",
         help="serve static files directly through foris app (should be used for debug only)"
     )
     group.add_argument(
-        "-a", "--app", choices=["config", "wizard"], default="config",
-        help="sets which app should be started (wizard/config)",
+        "-a", "--app", choices=["config"], default="config",
+        help="sets which app should be started (config/...)",
     )
     group.add_argument(
         "-b", "--backend", choices=["ubus", "unix-socket"], default="ubus", help="backend type"
@@ -49,6 +51,10 @@ def get_arg_parser():
     group.add_argument(
         "--wss-path", default="/foris-ws", help="websocket server url path - secure", type=str,
     )
+    group.add_argument(
+        "-A", "--assets", default="/tmp/.foris_workdir/dynamic_assets",
+        help="Path where dynamic foris assets will be generated."
+    )
 
     return parser
 
@@ -57,17 +63,21 @@ def main():
     parser = get_arg_parser()
     args = parser.parse_args()
 
+    # setup logging
+    logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
+    logger = logging.getLogger("foris")
+    logger.debug("Version %s" % __version__)
+
     # set backend
     current_state.set_backend(Backend(args.backend, args.backend_socket))
     # update websocket
     current_state.set_websocket(args.ws_port, args.ws_path, args.wss_port, args.wss_path)
+    # set assets path
+    current_state.set_assets_path(args.assets)
 
     if args.app == "config":
         from foris.config_app import prepare_config_app
         main_app = prepare_config_app(args)
-    elif args.app == "wizard":
-        from foris.wizard_app import prepare_wizard_app
-        main_app = prepare_wizard_app(args)
 
     if args.routes:
         # routes should be printed and we can safely exit

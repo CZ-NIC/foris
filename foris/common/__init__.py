@@ -16,22 +16,21 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-import hashlib
 import json
 import logging
 import os
 import re
-import time
 
 from functools import wraps
 
+from foris import BASE_DIR
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, messages, login_required, contract_valid,
+    redirect_unauthenticated, is_safe_redirect, login_required, contract_valid,
     check_password
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
-from foris.utils.translators import _, translations, set_current_language
+from foris.utils.translators import translations, set_current_language
 from foris.utils.bottle_stuff import (
     clickjacking_protection,
     clear_lazy_cache,
@@ -41,8 +40,6 @@ from foris.state import current_state
 
 
 logger = logging.getLogger("foris.common")
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 def login(next, session):
@@ -55,7 +52,7 @@ def login(next, session):
         session.save()
 
         # update contract status
-        current_state.backend.perform("about", "update_contract_status", {})
+        current_state.backend.perform("about", "update_contract_status")
 
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
@@ -86,44 +83,6 @@ def foris_403_handler(error):
     bottle.app().default_error_handler(error)
 
 
-def render_js(filename):
-    """ Render javascript template to insert a translation
-        :param filename: name of the file to be translated
-    """
-
-    headers = {}
-
-    # check the template file
-    path = bottle.SimpleTemplate.search("javascript/%s" % filename, bottle.TEMPLATE_PATH)
-    if not path:
-        return bottle.HTTPError(404, "File does not exist.")
-
-    # test last modification date (mostly copied from bottle.py)
-    stats = os.stat(path)
-    lm = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime(stats.st_mtime))
-    headers['Last-Modified'] = lm
-
-    ims = bottle.request.environ.get('HTTP_IF_MODIFIED_SINCE')
-    if ims:
-        ims = bottle.parse_date(ims.split(";")[0].strip())
-    if ims is not None and ims >= int(stats.st_mtime):
-        headers['Date'] = time.strftime("%a, %d %b %Y %H:%M:%S GMT", time.gmtime())
-        return bottle.HTTPResponse(status=304, **bottle.response.headers)
-
-    # set the content type to javascript
-    headers['Content-Type'] = "application/javascript; charset=UTF-8"
-
-    body = bottle.template("javascript/%s" % filename)
-    # TODO if you are sadistic enough you can try to minify the content
-
-    return bottle.HTTPResponse(body, **headers)
-
-
-def render_js_md5(filename):
-    # calculate the hash of the rendered template
-    return hashlib.md5(bottle.template("javascript/%s" % filename).encode('utf-8')).hexdigest()
-
-
 def change_lang(lang):
     """Change language of the interface.
 
@@ -147,6 +106,10 @@ def static(filename):
     :type filename: str
     :return: http response
     """
+    def prepare_response(filename, fs_root):
+        response = bottle.static_file(filename, root=fs_root)
+        response.add_header("Cache-Control", "public, max-age=31536000")
+        return response
 
     if not bottle.DEBUG:
         logger.warning("Static files should be handled externally in production mode.")
@@ -158,10 +121,18 @@ def static(filename):
         # find correspoding plugin
         for plugin in bottle.app().foris_plugin_loader.plugins:
             if plugin.PLUGIN_NAME == plugin_name:
-                return bottle.static_file(
-                    plugin_file, root=os.path.join(plugin.DIRNAME, "static"))
+                return prepare_response(plugin_file, os.path.join(plugin.DIRNAME, "static"))
 
-    return bottle.static_file(filename, root=os.path.join(BASE_DIR, "static"))
+        return bottle.HTTPError(404, "File does not exist.")
+
+    match = re.match(r'/*generated/+([a-z]{2})/+(.+)', filename)
+    if match:
+        filename = "/".join(match.groups())
+        return prepare_response(
+            filename, os.path.join(current_state.assets_path, current_state.app)
+        )
+
+    return prepare_response(filename, os.path.join(BASE_DIR, "static"))
 
 
 def require_contract_valid(valid=True):
@@ -186,7 +157,7 @@ def require_contract_valid(valid=True):
 
 @login_required
 def reboot():
-    data = current_state.backend.perform("maintain", "reboot", {})
+    data = current_state.backend.perform("maintain", "reboot")
 
     if bottle.request.is_xhr:
         # return a list of ip addresses where to connect after reboot is performed
@@ -197,6 +168,21 @@ def reboot():
         raise res
     else:
         bottle.redirect(reverse("/"))
+
+
+@login_required
+def leave_guide():
+    current_state.backend.perform("web", "update_guide", {
+        "enabled": False,
+        "workflow": current_state.guide.workflow,
+    })
+    bottle.redirect(reverse("/"))
+
+
+@login_required
+def reset_guide():
+    current_state.backend.perform("web", "reset_guide")
+    bottle.redirect(reverse("/"))
 
 
 def ping():
@@ -231,9 +217,10 @@ def init_default_app(index, include_static=False):
     app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
     app.route("/logout", name="logout", callback=logout)
     app.route("/reboot", name="reboot", callback=reboot)
+    app.route("/leave_guide", method="POST", name="leave_guide", callback=leave_guide)
+    app.route("/reset_guide", method="POST", name="reset_guide", callback=reset_guide)
     if include_static:
         app.route('/static/<filename:re:.*>', name="static", callback=static)
-    app.route("/js/<filename:re:.*>", name="render_js", callback=render_js)
     # route for testing whether the foris app is alive (used in js)
     app.route("/ping", name="ping", method=("GET", "OPTIONS"), callback=ping)
     return app

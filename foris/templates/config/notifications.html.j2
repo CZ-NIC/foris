@@ -1,0 +1,58 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+<div id="page-notifications" class="config-page">
+    {% include '_messages.html.j2' %}
+    <p class="config-description">
+    {% trans %}Following notifications occured and haven't been dismissed since last reboot.{% endtrans %}
+    </p>
+
+    {% include '_notifications.html.j2' %}
+</div>
+<script>
+  Foris.initNotificationReboot = function() {
+    $(".notification .reboot").off("click").on("click", function(e) {
+      e.preventDefault();
+      var unread = $(".notification:visible").length - 1;
+      var extraMessage = "";
+      if (unread > 0)
+        extraMessage = Foris.messages.confirmRestartExtra(unread);
+      vex.dialog.confirm(
+        {
+            unsafeMessage: `<p><strong>${Foris.messages.confirmRestart}</p></strong>` + extraMessage,
+            callback: (value) => {
+                if (value) {
+                    $.get('{{ url("reboot") }}')
+                      .done(function(response, status, xhr) {
+                        $("html, body").stop().animate({scrollTop:0}, 500, "swing");
+                      });
+                }
+            }
+        }
+      )
+    });
+  };
+  $(document).ready(function() {
+    Foris.initNotificationReboot();
+  });
+  // redefine
+  Foris.WS["router_notifications"] = function(msg) {
+    if (msg.action == "create" || msg.action == "mark_as_displayed") {
+      // Update nav
+      Foris.handleNotificationsCountUpdate(msg.data.new_count);
+      // Reload notifications via ajax
+      $.get('{{ url("config_ajax", page_name="notifications") }}', {action: "list"})
+        .done(function(response) {
+          $("#notifications-content").replaceWith(response);  // replace it
+          Foris.initNotifications("{{ get_csrf_token() }}");
+          Foris.initNotificationReboot()
+        })
+        .fail(function(xhr) {
+          location.reload();
+        });
+    }
+  }
+  Foris.initNotifications("{{ get_csrf_token() }}");
+</script>
+
+{% endblock %}

@@ -29,13 +29,13 @@ from foris.utils.translators import gettext_dummy as gettext, _
 
 class DNSHandler(BaseConfigHandler):
     """
-    DNS-related settings, currently for enabling/disabling upstream forwarding
+    DNS-related settings
     """
 
     userfriendly_title = gettext("DNS")
 
     def get_form(self):
-        data = current_state.backend.perform("dns", "get_settings", {})
+        data = current_state.backend.perform("dns", "get_settings")
         data["dnssec_disabled"] = not data["dnssec_enabled"]
         if self.data:
             # Update from post

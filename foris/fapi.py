@@ -20,12 +20,8 @@ import logging
 
 from bottle import MultiDict
 
-from form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
-from nuci import client
-from nuci.configurator import add_config_update, commit
-from nuci.utils import LocalizableTextValue
-from utils import Lazy
-import validators as validators_module
+from foris.form import Input, InputWithArgs, Dropdown, Form, Checkbox, websafe, Hidden, Radio
+from foris import validators as validators_module
 
 
 logger = logging.getLogger(__name__)
@@ -52,17 +48,15 @@ class ForisFormElement(object):
 
     @property
     def sections(self):
-        filtered = filter(lambda x: isinstance(x, Section), self.children.itervalues())
-        return filtered
+        return [e for e in self.children.values() if isinstance(e, Section)]
 
 
 class ForisForm(ForisFormElement):
-    def __init__(self, name, data=None, filter=None):
+    def __init__(self, name, data=None):
         """
 
         :param name:
         :param data: data from request
-        :param filter: subtree filter for nuci config
         :type filter: Element
         :return:
         """
@@ -71,7 +65,7 @@ class ForisForm(ForisFormElement):
             self._request_data = {}  # values from request
             # convert MultiDict to normal dict with multiple values in lists
             # if value is suffixed with '[]' (i.e. it is multifield)
-            for key, value in data.iteritems():
+            for key, value in data.items():
                 if key.endswith("[]"):
                     # we don't want to alter lists in MultiDict instance
                     values = copy.deepcopy(data.getall(key))
@@ -88,25 +82,18 @@ class ForisForm(ForisFormElement):
                     self._request_data[key] = value
         else:
             self._request_data = data or {}
-        self._nuci_data = {}  # values fetched from nuci
         self.defaults = {}  # default values from field definitions
         self.__data_cache = None  # cached data
         self.__form_cache = None
         self.validated = False
-        # _nuci_config is not required every time, lazy-evaluate it
-        self._nuci_config = Lazy(lambda: client.get(filter))
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
         self.callbacks = []
         self.callback_results = {}  # name -> result
 
     @property
-    def nuci_config(self):
-        return self._nuci_config
-
-    @property
     def data(self):
         """
-        Current data, from defaults, nuci values and request data.
+        Current data, from defaults and request data.
         Caches the result on the first call.
 
         :return: dictionary with the Form's data
@@ -118,17 +105,14 @@ class ForisForm(ForisFormElement):
     @property
     def current_data(self):
         """
-        Current data, from defaults, nuci values and request data.
+        Current data, from defaults and request data.
         Does not use caching.
 
         :return: dictionary with the Form's data
         """
-        self._update_nuci_data()
         data = {}
         logger.debug("Updating with defaults: %s", self.defaults)
         data.update(self.defaults)
-        logger.debug("Updating with Nuci data: %s", self._nuci_data)
-        data.update(self._nuci_data)
         logger.debug("Updating with data: %s", dict(self._request_data))
         data.update(self._request_data)
         if data:
@@ -145,9 +129,9 @@ class ForisForm(ForisFormElement):
                     # coerce checkbox values to boolean
                     new_data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
         # get names of active fields according to new_data
-        active_field_names = map(lambda x: x.name, self.get_active_fields(data=new_data))
+        active_field_names = [x.name for x in self.get_active_fields(data=new_data)]
         # get new dict of data of active fields
-        return {k: v for k, v in new_data.iteritems() if k in active_field_names}
+        return {k: v for k, v in new_data.items() if k in active_field_names}
 
     def invalidate_data(self):
         self.__data_cache = None
@@ -156,7 +140,7 @@ class ForisForm(ForisFormElement):
     def _form(self):
         if self.__form_cache is not None:
             return self.__form_cache
-        inputs = map(lambda x: x.field, self.get_active_fields())
+        inputs = [x.field for x in self.get_active_fields()]
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
         form = Form(*inputs)
@@ -171,7 +155,7 @@ class ForisForm(ForisFormElement):
     def _get_all_fields(self, element=None, fields=None):
         element = element or self
         fields = fields or []
-        for c in element.children.itervalues():
+        for c in element.children.values():
             if c.children:
                 fields = self._get_all_fields(c, fields)
             if isinstance(c, Field):
@@ -188,28 +172,7 @@ class ForisForm(ForisFormElement):
         fields = self._get_all_fields(element)
         if fields:
             data = data or self.data
-        return filter(lambda f: f.has_requirements(data), fields)
-
-    def _update_nuci_data(self):
-        for field in self._get_all_fields():
-            if field.nuci_path:
-                value = self._nuci_config.find_child(field.nuci_path)
-                if value:
-                    if not field.nuci_preproc:
-                        preprocessed = value.value
-                    else:
-                        preprocessed = field.nuci_preproc(value)
-                    # update if result is not None
-                    if preprocessed is not None:
-                        self._nuci_data[field.name] = preprocessed
-            elif field.nuci_preproc:
-                # we have preproc method, but no path - just pass all the data to preproc function
-                preprocessed = field.nuci_preproc(self._nuci_config)
-                # update if result is not None
-                if preprocessed is not None:
-                    self._nuci_data[field.name] = preprocessed
-            elif field.preproc:
-                self._request_data[field.name] = field.preproc(self._request_data[field.name])
+        return [field for field in fields if field.has_requirements(data)]
 
     def add_section(self, *args, **kwargs):
         """
@@ -233,12 +196,11 @@ class ForisForm(ForisFormElement):
 
     def render(self):
         result = "<div class=\"errors\">%s</div>" % self.errors
-        result += "\n".join(c.render() for c in self.children.itervalues())
+        result += "\n".join(c.render() for c in self.children.values())
         return result
 
     def save(self):
         self.process_callbacks(self.data)
-        commit()
 
     def validate(self):
         self.validated = True
@@ -250,7 +212,6 @@ class ForisForm(ForisFormElement):
         Callback is a function taking argument `data` (contains form data) and returning
         a tuple `(action, *args)`.
         Action can be one of following:
-            - edit_config: args is Uci instance - send command for modifying Uci structure
             - save_result: arg[0] is dict of result_name->result - results are saved to
                            dictionary callback_results (instance attribute)
                            ValueError is raised when two callbacks use same result_name
@@ -270,13 +231,10 @@ class ForisForm(ForisFormElement):
             if operation == "none":
                 pass
             elif operation == "save_result":
-                for k, v in cb_result[1].iteritems():
+                for k, v in cb_result[1].items():
                     if k in self.callback_results:
                         raise ValueError("save_result callback returned result with duplicate name: '%s'" % k)
                     self.callback_results[k] = v
-            elif operation == "edit_config":
-                data = cb_result[1:] if len(cb_result) > 1 else ()
-                add_config_update(*data)
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
 
@@ -318,16 +276,17 @@ class Section(ForisFormElement):
         return self._add(Section(self._main_form, *args, **kwargs))
 
     def render(self):
-        content = "\n".join(c.render() for c in self.children.itervalues()
+        content = "\n".join(c.render() for c in self.children.values()
                             if c.has_requirements(self._main_form.data))
         return "<section>\n<h2>%(title)s</h2>\n<p>%(description)s</p>\n%(content)s\n</section>" \
                % dict(title=self.title, description=self.description, content=content)
 
 
 class Field(ForisFormElement):
-    def __init__(self, main_form, type, name, label=None, required=False, nuci_path=None,
-                 nuci_preproc=None, preproc=None, validators=None, hint="", multifield=False,
-                 **kwargs):
+    def __init__(
+        self, main_form, type, name, label=None, required=False, preproc=None, validators=None,
+        hint="", multifield=False, **kwargs
+    ):
         """
 
         :param main_form: parent form of this field
@@ -336,9 +295,6 @@ class Field(ForisFormElement):
         :param name: field name (rendered also as HTML name attribute)
         :param label: display name of field
         :param required: True if field is mandatory
-        :param nuci_path: path in Nuci get response
-        :param nuci_preproc: function to process raw YinElement instance, returns field value
-        :type nuci_preproc: callable
         :param preproc: function to preprocess the value
         :type preproc: callable
         :param validators: validator or list of validators
@@ -351,13 +307,11 @@ class Field(ForisFormElement):
         #
         self.type = type
         self.name = name
-        self.nuci_path = nuci_path
-        self.nuci_preproc = nuci_preproc
         self.preproc = preproc
         if validators and not isinstance(validators, list):
             validators = [validators]
         self.validators = validators or []
-        if not all(map(lambda x: isinstance(x, validators_module.Validator), self.validators)):
+        if not all([isinstance(x, validators_module.Validator) for x in self.validators]):
             raise TypeError("Argument 'validators' must be Validator instance or list of them.")
         self._kwargs = kwargs
         self.required = required
@@ -405,7 +359,7 @@ class Field(ForisFormElement):
             attrs['class'] = " ".join(classes)
         # append HTML data
         html_data = self._generate_html_data()
-        for key, value in html_data.iteritems():
+        for key, value in html_data.items():
             attrs['data-%s' % key] = value
         # multifield magic
         rendered_name = self.name
@@ -450,13 +404,7 @@ class Field(ForisFormElement):
             return label
 
         description = self.field.description
-        # LocalizableTextValue needs must stay localizable
-        if isinstance(description, LocalizableTextValue):
-            description = self.field.description
-            for k, v in description.iteritems():
-                description[k] = create_label(v)
-            return description
-        # otherwise return normal label
+
         return create_label(description)
 
     @property
@@ -491,7 +439,7 @@ class Field(ForisFormElement):
         :param data:
         :return: False if requirements are not met, True otherwise
         """
-        for req_name, req_value in self.requirements.iteritems():
+        for req_name, req_value in self.requirements.items():
             # requirement exists
             result = req_name in data
             # if the required value is a callable, pass the value as the first argument

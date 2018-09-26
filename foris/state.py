@@ -30,6 +30,7 @@ class ForisState(object):
         self.language = DEFAULT_LANGUAGE
         self.app = None
         self.reboot_required = False
+        self.assets_path = None
 
     def update_lang(self, lang):
         logger.debug("current lang updated to '%s'" % lang)
@@ -69,12 +70,39 @@ class ForisState(object):
         return "%s (%s)" % (self.__class__, str(vars(self)))
 
     def set_updater_is_running(self, running):
-        """ Sets whenter updater is running
+        """ Sets whether updater is running
         :param running: True if updater is running False otherwise
-        :type required: boolean
+        :type running: boolean
         """
         logger.debug("setting updater_is_running=%s" % running)
         self.updater_is_running = running
+
+    def set_turris_os_version(self, version):
+        """ Sets turris_os_version
+        :param version: turrisOS version
+        :type version: str
+        """
+        self.turris_os_version = version
+
+    def set_device(self, device):
+        """ Sets device
+        :param device: device where this web gui is running (omnia/mox/...)
+        :type device: str
+        """
+        self.device = device
+
+    def update_password_set(self, password_set):
+        logger.debug("setting password_set=%s" % password_set)
+        self.password_set = password_set
+
+    def update_guide(self, guide_data):
+        from foris.guide import Guide
+        logger.debug("setting guide_data (%s)" % guide_data)
+        self.guide = Guide(guide_data)
+
+    def set_assets_path(self, assets_path):
+        logger.debug("setting assets_path to '%s'" % assets_path)
+        self.assets_path = assets_path
 
 
 current_state = ForisState()

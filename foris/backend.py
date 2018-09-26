@@ -15,6 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
+import time
 
 from foris_client.buses.base import ControllerError
 
@@ -40,7 +41,7 @@ class Backend(object):
             self._instance = UbusSender(path, default_timeout=self.DEFAULT_TIMEOUT)
 
         elif name == "unix-socket":
-            from foris.backend.buses.unix_socket import UnixSocketSender
+            from foris_client.buses.unix_socket import UnixSocketSender
             self._instance = UnixSocketSender(
                 path, default_timeout=self.DEFAULT_TIMEOUT)
 
@@ -55,15 +56,24 @@ class Backend(object):
         :raises ExceptionInBackend: When command failed and raise_exception_on_failure is True
         """
         response = None
+        start_time = time.time()
         try:
-            response = self._instance.send(module, action, data or {})
+            response = self._instance.send(module, action, data)
         except ControllerError as e:
             logger.error("Exception in backend occured.")
             if raise_exception_on_failure:
                 error = e.errors[0]  # right now we are dealing only with the first error
-                raise ExceptionInBackend(
-                    {"module": module, "action": action, "kind": "request", "data": data or {}},
-                    error["stacktrace"], error["description"]
-                )
+                msg = {"module": module, "action": action, "kind": "request"}
+                if data is not None:
+                    msg["data"] = data
+                raise ExceptionInBackend(msg, error["stacktrace"], error["description"])
+        except Exception as e:
+            logger.error("Exception occured during the communication with backend. (%s)", e)
+            raise e
+        finally:
+            logger.debug(
+                "Query took %f: %s.%s - %s",
+                time.time() - start_time, module, action, data
+            )
 
         return response

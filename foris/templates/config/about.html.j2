@@ -1,0 +1,116 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+<div id="page-about" class="config-page">
+    {% include '_messages.html.j2' %}
+    <table>
+        <tbody>
+            <tr>
+                <th>{% trans %}Device{% endtrans %}</th>
+                <td>{{ data['model'] }} - {{ data['board_name'] }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Serial number{% endtrans %}</th>
+                <td>{{ data['serial']|int(base=16) }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Turris OS version{% endtrans %}</th>
+                <td>{{ data['os_version'] }}</td>
+            </tr>
+            <tr>
+                <th>{% trans %}Kernel version{% endtrans %}</th>
+                <td>{{ data['kernel'] }}</td>
+            </tr>
+          {% if contract_valid() or (agreed_collect is defined and agreed_collect) %}
+            <tr>
+                <th>{% trans %}Sending of uCollect data{% endtrans %}</th>
+                <td class="{{ "sending-ok" if data['ucollect_status']['state'] == "online" else "sending-fail" }}">
+                  {{ data['ucollect_status']['state_trans'] }}
+                  {% if data['ucollect_status']['state'] != "unknown" %}
+                  <abbr title="{% trans datetime=helpers.translate_datetime(data['ucollect_status']['datetime']) %}Time of last update: {{ datetime }}{% endtrans %}">
+                        {% trans seconds=data['ucollect_status']['seconds_ago'] %}
+                        status updated {{ seconds }} second ago
+                        {% pluralize %}
+                        status updated {{ seconds }} seconds ago
+                        {% endtrans %}
+                      </abbr>
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>{% trans %}Sending of firewall logs{% endtrans %}</th>
+                <td class="{{ "sending-ok" if data['firewall_status']['state'] == "online" else "sending-fail" }}">
+                  {{ data['firewall_status']['state_trans'] }}
+                  {% if data['firewall_status']['state'] != "unknown" %}
+                      <abbr title="{% trans datetime=helpers.translate_datetime(data['ucollect_status']['datetime']) %}Time of last update: {{ datetime }}{% endtrans %}">
+                        {% trans seconds=data['firewall_status']['seconds_ago'] %}
+                        status updated {{ seconds }} second ago
+                        {% pluralize %}
+                        status updated {{ seconds }} seconds ago
+                        {% endtrans %}
+                      </abbr>
+                  {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <a href="{{ url("config_page", page_name="about") }}" class="reload">{% trans %}Refresh{% endtrans %}</a>
+                </td>
+            </tr>
+          {% endif %}
+        </tbody>
+    </table>
+
+{% if not contract_valid() %}
+</div>
+{% else %}
+    <h2>{% trans %}Device registration{% endtrans %}</h2>
+    <div class="about-description">
+        <p>
+        {% trans url="https://project.turris.cz/user/register-router" %}If you have not registered your device yet, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
+        </p>
+        <p>
+            {% trans %}Registration code{% endtrans %}: <span id="registration-code">????????</span>
+        </p>
+        <div id="registration-code-fail">
+            {% trans %}Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.{% endtrans %}
+        </div>
+        <button id="registration-code-update" class="button">{% trans %}Get registration code{% endtrans %}</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $("#registration-code-update").click(function(e) {
+            var self = $(this);
+            e.preventDefault();
+            self.attr("disabled", "disabled");
+            self.after('<img src="{{ static("img/icon-loading.gif") }}" id="registration-code-loader" alt="' + Foris.messages.loading +'">');
+            $.get('{{ url("config_ajax", page_name="about") }}', {action: "registration_code"})
+                    .done(function(response, status, xhr) {
+                        if (response.success) {
+                            $("#registration-code").text(response.data).show();
+                            $("#registration-code-fail").hide();
+                        }
+                        else {
+                            $("#registration-code").text("????????");
+                            $("#registration-code-fail").show();
+                        }
+                    })
+                    .fail(function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                            window.location.replace(xhr.responseJSON.loginUrl);
+                            return;
+                        }
+                        $("#registration-code").text("????????");
+                        $("#registration-code-fail").show();
+                    })
+                    .always(function() {
+                        $("#registration-code-loader").remove();
+                        self.removeAttr("disabled");
+                    });
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}

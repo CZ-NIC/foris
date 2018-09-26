@@ -15,11 +15,11 @@ button
   color: #fff
   cursor: default
   display: block
-  width: 100%
-  text-align: center
   font:
     size: 90%
     weight: bold
+  width: 100%
+  text-align: center
   height: $button-height * $button-height-touch-multiplier
   line-height: $button-height * $button-height-touch-multiplier
   margin: 0 0.2em 0.5em 0
@@ -92,3 +92,13 @@ button
   @extend .button-arrow-left
   float: left
   margin-top: 1em
+
+// For vex dialogs button formatting
+.vex .vex-content .vex-dialog-form .vex-dialog-buttons button
+  @extend .button
+
+.vex .vex-content .vex-dialog-form .vex-dialog-buttons button.vex-dialog-button-secondary
+  background-color: $button-color-grayed
+
+  &:hover, &:hover:before
+    background-color: lighten(desaturate($button-color-grayed, 20), 15)

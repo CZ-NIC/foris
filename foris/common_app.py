@@ -17,16 +17,16 @@
 
 import os
 import bottle
-import logging
+import jinja2
 
 from bottle_i18n import I18NMiddleware, I18NPlugin, i18n_defaults
 
+from foris import BASE_DIR
 from foris.common import init_common_app, init_default_app
 from foris.langs import DEFAULT_LANGUAGE
 from foris.middleware.backend_data import BackendData
 from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
-from foris.nuci import client
 from foris.plugins import ForisPluginLoader
 from foris.state import current_state
 from foris.utils.bottle_stuff import (
@@ -35,8 +35,7 @@ from foris.utils.bottle_stuff import (
     route_list_debug,
 )
 from foris.utils import messages
-
-BASE_DIR = os.path.dirname(__file__)
+from foris.utils import dynamic_assets
 
 
 def prepare_common_app(args, app_name, init_function, top_index, logger, load_plugins=True):
@@ -57,6 +56,10 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
 
     # internationalization
     i18n_defaults(bottle.SimpleTemplate, bottle.request)
+    i18n_defaults(bottle.Jinja2Template, bottle.request)
+    bottle.Jinja2Template.settings["extensions"] = ['foris.utils.translators.i18n']
+    bottle.Jinja2Template.settings["bytecode_cache"] = jinja2.FileSystemBytecodeCache(
+        directory=current_state.assets_path)
 
     # setup default template defaults
     prepare_template_defaults()
@@ -69,7 +72,6 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     # basic and bottle settings
     template_dir = os.path.join(BASE_DIR, "templates")
     bottle.TEMPLATE_PATH.append(template_dir)
-    logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
 
     # mount apps
     app.mount("/main", init_function())
@@ -86,9 +88,6 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
             mounted = route.config['mountpoint.target']
             prefix = route.config['mountpoint.prefix']
             init_common_app(mounted, prefix)
-
-    if args.nucipath:
-        client.StaticNetconfConnection.set_bin_path(args.nucipath)
 
     if load_plugins:
         # load Foris plugins before applying Bottle plugins to app
@@ -121,5 +120,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     if args.debug:
         routes = route_list_debug(bottle.app())
         logger.debug("Routes:\n%s", "\n".join(routes))
+
+    # Make dynamic assets cleanup
+    dynamic_assets.reset(app_name, args.assets)
 
     return app

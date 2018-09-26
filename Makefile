@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2013 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,33 +20,10 @@ COMPILED_CSS = $(wildcard foris/static/css/*)
 
 COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
 
-JS_FILES = $(filter-out %.min.js $(wildcard foris/static/js/contrib/*),$(wildcard \
-	foris/static/js/*.js \
-	foris/static/js/**/*.js \
-))
-
-JS_MINIFIED = $(JS_FILES:.js=.min.js)
-
-
-PRE_TPL_FILES = $(wildcard \
-	foris/templates/*.pre.tpl \
-	foris/templates/**/*.pre.tpl \
-)
-
-TPL_FILES = $(PRE_TPL_FILES:.pre.tpl=.tpl)
-
-JS_MINIFIER = slimit -m
-
 SASS_COMPILER = compass compile -s compressed -e production
 
 
-all: branding sass js localization tpl
-
-# target: js - Create minified JS files using slimit JS compressor.
-js: $(JS_FILES) $(JS_MINIFIED)
-
-# target: tpl - Do preprocessing of .pre.tpl files.
-tpl: $(PRE_TPL_FILES) $(TPL_FILES)
+all: branding sass
 
 # target: branding - Copy assets for a specified device to its location.
 branding:
@@ -62,29 +39,17 @@ sass:
 	$(SASS_COMPILER)
 	@echo
 
-# target: localization - Create .mo files from .po fiels in locale directory
-localization:
-	@echo "-- Compiling localization files"
-	@tools/compilemessages.sh foris
-	@echo "Done."
-	@echo
-
-%.tpl: %.pre.tpl
-	@echo '-- Preprocessing template $<'
-	tools/preprocess_template.sh $< > $@
-	@echo
-
-%.min.js: %.js
-	@echo '-- Minifying $<'
-	$(JS_MINIFIER) $< > $@
-	@echo
-
-# target: clean - Remove all compiled CSS, JS and localization files.
+# target: clean - Remove all compiled CSS and localization files.
 clean:
-	rm -rf $(COMPILED_CSS) $(COMPILED_L10N) $(JS_MINIFIED) $(TPL_FILES)
+	rm -rf $(COMPILED_CSS) $(COMPILED_L10N) $(TPL_FILES)
 
 # target: help - Show this help.
 help:
 	@egrep "^# target:" Makefile
 
-.PHONY: all branding sass js localization tpl
+# target: messages - extract translations from sources
+messages:
+	./setup.py extract_messages --no-location -o foris/locale/foris.pot -F babel.cfg
+	./setup.py update_catalog -D foris -i foris/locale/foris.pot -d foris/locale/
+
+.PHONY: all branding sass messages

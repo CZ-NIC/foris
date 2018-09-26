@@ -67,8 +67,8 @@ class Storage(dict):
     def __getattr__(self, key):
         try:
             return self[key]
-        except KeyError, k:
-            raise AttributeError, k
+        except KeyError as k:
+            raise AttributeError(k)
 
     def __setattr__(self, key, value):
         self[key] = value
@@ -76,8 +76,8 @@ class Storage(dict):
     def __delattr__(self, key):
         try:
             del self[key]
-        except KeyError, k:
-            raise AttributeError, k
+        except KeyError as k:
+            raise AttributeError(k)
 
     def __repr__(self):
         return '<Storage ' + dict.__repr__(self) + '>'
@@ -98,16 +98,12 @@ def safeunicode(obj, encoding='utf-8'):
         u'\u1234'
     """
     t = type(obj)
-    if t is unicode:
+    if isinstance(t, str):
         return obj
-    elif t is str:
+    if isinstance(t, bytes):
         return obj.decode(encoding)
     elif t in [int, float, bool]:
-        return unicode(obj)
-    elif hasattr(obj, '__unicode__') or isinstance(obj, unicode):
-        return unicode(obj)
-    else:
-        return str(obj).decode(encoding)
+        return str(obj)
 
 
 def safestr(obj, encoding='utf-8'):
@@ -121,12 +117,10 @@ def safestr(obj, encoding='utf-8'):
         >>> safestr(2)
         '2'
     """
-    if isinstance(obj, unicode):
-        return obj.encode(encoding)
-    elif isinstance(obj, str):
-        return obj
-    elif hasattr(obj, 'next'): # iterator
-        return itertools.imap(safestr, obj)
+    if isinstance(obj, bytes):
+        return obj.decode(encoding)
+    elif hasattr(obj, 'next'):  # iterator
+        return itertools.map(safestr, obj)
     else:
         return str(obj)
 
@@ -158,11 +152,11 @@ u'\u203d'
 u'\u203d'
 """
     if val is None:
-        return u''
-    elif isinstance(val, str):
+        return ''
+    elif isinstance(val, bytes):
         val = val.decode('utf-8')
-    elif not isinstance(val, unicode):
-        val = unicode(val)
+    elif not isinstance(val, str):
+        val = str(val)
 
     return htmlquote(val)
 
@@ -170,7 +164,7 @@ u'\u203d'
 
 def attrget(obj, attr, value=None):
     try:
-        if hasattr(obj, 'has_key') and obj.has_key(attr):
+        if isinstance(obj, dict) and attr in obj:
             return obj[attr]
     except TypeError:
         # Handle the case where has_key takes different number of arguments.
@@ -263,14 +257,14 @@ class Form(object):
     def __getitem__(self, i):
         for x in self.inputs:
             if x.name == i: return x
-        raise KeyError, i
+        raise KeyError(i)
 
     def __getattr__(self, name):
         # don't interfere with deepcopy
         inputs = self.__dict__.get('inputs') or []
         for x in inputs:
             if x.name == name: return x
-        raise AttributeError, name
+        raise AttributeError(name)
 
     def get(self, i, default=None):
         try:

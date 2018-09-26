@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 var Foris = {
   messages: {
     qrErrorPassword: "",
@@ -126,7 +127,7 @@ Foris.initLanChangeDetection = function () {
         // if the value really changed from the default
         if (lanField.defaultValue != lanField.value) {
           var newLocation = document.location.protocol + "//" + lanField.value + Foris.scriptname + "/?next=" + document.location.pathname;
-          $(".config-description, .wizard-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%NEW_IP_LINK%/g, '<a href="' + newLocation + '">' + lanField.value + '</a>') + '</div>');
+          $(".config-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%NEW_IP_LINK%/g, '<a href="' + newLocation + '">' + lanField.value + '</a>') + '</div>');
           // if the page was accessed from the old IP address, wait 10 seconds and do a redirect
           window.setTimeout(function () {
             if (lanField.defaultValue == document.location.hostname) {
@@ -176,15 +177,15 @@ Foris.WS = {
   maintain: function(msg) {
     switch (msg.action) {
         case "reboot":
-            Foris.handleReboot(msg.data.new_ips);
+            Foris.handleReboot(msg.data.ips, msg.data.remains);
             break;
         case "reboot_required":
             $('#reboot-required-notice').show("slow");
             break;;
+        case "network-restart":
+            Foris.handleNetworkRestart(msg.data.ips, msg.data.remains);
+            break;
     }
-  },
-  lan: function(msg) {
-    Foris.handleLanRestart(msg.data.ip);
   },
   router_notifications: function(msg) {
     if (msg.action == "create" || msg.action == "mark_as_displayed") {
@@ -281,238 +282,42 @@ Foris.updateForm = function (form) {
   form.find("input, select, button").attr("disabled", "disabled");
 };
 
-Foris.callAjaxAction = function (wizardStep, action, timeout) {
-  timeout = timeout || 0;
-  return $.ajax({
-    url: Foris.scriptname + "/main/step/" + wizardStep + "/ajax",
-    data: {action: action},
-    timeout: timeout
-  });
-};
-
-Foris.connectivityCheck = function (retries) {
-  var maxRetries = 1;
-  if (retries == null)
-    retries = 0;
-
-  Foris.callAjaxAction("3", "check_connection")
-      .done(function (data) {
-        if (data.result == "ok") {
-          $("#connectivity-progress").hide();
-          $("#connectivity-success").show();
-        }
-        else if (!retries || retries < maxRetries) {
-          // Because the restart of the networking in the previous step takes
-          // a while, it can take about ~10 seconds for the network to come up.
-          // If the test fails, wait a few seconds and retry the test, so we
-          // don't bother the user by forcing her to do a manual retry.
-          window.setTimeout(function() { Foris.connectivityCheck(retries + 1) }, 6000);
-        }
-        else if (data.result == "no_dns") {
-          Foris.connectivityCheckNoForward();
-        }
-        else {
-          // no_connection or error
-          $("#connectivity-progress").hide();
-          $("#connectivity-fail").show();
-        }
-      });
-};
-
-Foris.connectivityCheckNoForward = function () {
-  $("#wizard-connectivity-status").html("<p>" + Foris.messages.checkNoForward + "</p>");
-  Foris.callAjaxAction("3", "check_connection_noforward")
-      .done(function (data) {
-        if (data.result == "ok") {
-          $("#connectivity-progress").hide();
-          $("#connectivity-success").show();
-        }
-        else if (data.result == "no_dns") {
-          $("#connectivity-progress").hide();
-          $("#connectivity-nodns").show();
-        }
-        else {
-          // no_connection or error
-          $("#connectivity-progress").hide();
-          $("#connectivity-fail").show();
-        }
-      });
-};
-
-Foris.ntpUpdate = function () {
-  Foris.callAjaxAction("5", "ntp_update")
-      .done(function (data) {
-        if (data.success) {
-          $("#time-progress").hide();
-          $("#time-success").show();
-        }
-        else {
-          Foris.showTimeForm();
-        }
-      });
-};
-
-Foris.runUpdater = function () {
-  $("#updater-progress").show();
-  Foris.callAjaxAction("6", "run_updater")
-      .done(function (data) {
-        if (data.success)
-          Foris.checkUpdaterStatus();
-        else {
-          $("#updater-progress").hide();
-        }
-      });
-};
-
-Foris.showUpdaterFail = function (data) {
-  $("#updater-fail").show();
-  if (data && data.message) {
-    var messageEl = $('#updater-fail-message');
-    messageEl.find('pre').text(data.message);
-    messageEl.show();
-  }
-};
-
 Foris.initEulaForm = function () {
   $("#updater-eula").show();
 
   $('#field-agreed_0').click(function () {
-    return confirm(Foris.messages.confirmDisabledUpdates);
+    vex.dialog.confirm(
+        {
+            unsafeMessage: Foris.messages.confirmDisabledUpdates,
+            callback: (value) => {
+                if (value) {
+                    var eulaForm = $('#updater-eula-form');
+                    eulaForm.submit(function (e) {
+                      e.preventDefault();
+                      eulaForm.find("button").attr('disabled', 'disabled');
+                      $.ajax({
+                        url: eulaForm.attr('action'),
+                        method: 'post',
+                        data: eulaForm.serialize()
+                      })
+                          .done(function (data) {
+                            if (data.success) {
+                              if (data.redirect) {
+                                document.location.href  = data.redirect;
+                                return;
+                              }
+                              $('#updater-eula').hide();
+                              $("#updater-progress").show();
+                              Foris.checkUpdaterStatus();
+                            }
+                          });
+                    });
+                }
+            }
+        }
+    );
   });
 
-  var eulaForm = $('#updater-eula-form');
-  eulaForm.submit(function (e) {
-    e.preventDefault();
-    eulaForm.find("button").attr('disabled', 'disabled');
-    $.ajax({
-      url: eulaForm.attr('action'),
-      method: 'post',
-      data: eulaForm.serialize()
-    })
-        .done(function (data) {
-          if (data.success) {
-            if (data.redirect) {
-              document.location.href  = data.redirect;
-              return;
-            }
-            $('#updater-eula').hide();
-            $("#updater-progress").show();
-            Foris.checkUpdaterStatus();
-          }
-        });
-  });
-};
-
-
-Foris.checkUpdaterStatus = function (retries, pageNumber) {
-  if (retries == null)
-    retries = 0;
-
-  if (pageNumber == null)
-    pageNumber = 6;
-
-  // we need longer retry time for second update page - router is restarted there
-  var maxRetries = pageNumber == 7 ? 45 : 10;
-
-  Foris.callAjaxAction(pageNumber, "updater_status", 3000)
-      .done(function (data) {
-        var progressContainer = $("#updater-progress");
-        progressContainer.show();
-        retries = 0;  // reset retries in case of success
-        if (data.success === false) {
-          return;
-        }
-        if (data.status == "failed") {
-          progressContainer.hide();
-          Foris.showUpdaterFail(data);
-        }
-        else if (data.status == "running") {
-          // timeout is better, because we won't get multiple requests stuck processing
-          // real delay between status updates is then delay + request_processing_time
-          window.setTimeout(function() {
-            Foris.checkUpdaterStatus(retries, pageNumber)
-          }, 1000);
-          // Show what has been installed already
-          var log = data.last_activity;
-          var div = $("#wizard-updater-status");
-          div.empty();
-          var ul = $("<ul>");
-          div.append(ul);
-          for (var i = log.length - 1; i >= 0; i--) {
-            var item = log[i];
-            var li = $("<li>");
-            var mode;
-            if (item[0] == 'remove') {
-              mode = '-';
-            } else if (item[0] == 'download') {
-              mode = '↓';
-            }
-            else {
-              mode = '+';
-            }
-            li.html(mode + item[1]);
-            ul.append(li);
-          }
-          div.show();
-        }
-        else if (data.status == "offline_pending") {
-          window.setTimeout(function() {
-            Foris.checkUpdaterStatus(retries, pageNumber)
-          }, 1000);
-        }
-        else if (data.status == "done") {
-          progressContainer.hide();
-          $("#updater-success").show();
-        }
-      })
-      .fail(function (xhr) {
-        // try multiple times (in one-second retries) in case the server is restarting
-        if (retries < maxRetries) {
-          retries += 1;
-          window.setTimeout(function () {
-            Foris.checkUpdaterStatus(retries, pageNumber)
-          }, 1000);
-        }
-        else {
-          $("#updater-progress").hide();
-          if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
-            $("#updater-login").show();
-          } else {
-            Foris.showUpdaterFail();
-          }
-        }
-      })
-};
-
-Foris.showTimeForm = function () {
-  Foris.callAjaxAction("5", "time_form")
-      .done(function (data) {
-        var timeField = $("#wizard-time").empty().append(data.form)
-            .find("input[name=\"time\"]");
-        $(".form-fields").hide();
-        $("#wizard-time-sync-auto").click(function (e) {
-          e.preventDefault();
-          timeField.val(new Date().toISOString());
-          $("#wizard-time-sync-success").show();
-        });
-        $("#wizard-time-sync-manual").click(function (e) {
-          e.preventDefault();
-          $(".form-fields").show();
-          $(this).hide();
-        });
-        Foris.timeField = timeField;
-        // there's a slight time drift, but it's not an issue here...
-        window.setTimeout(Foris.timeUpdateCallback, 1000);
-      });
-};
-
-Foris.timeUpdateCallback = function () {
-  if (Foris.timeField.is(":focus"))
-    return;
-  var newTime = new Date(Foris.timeField.val());
-  newTime.setMilliseconds(newTime.getMilliseconds() + 1000);
-  Foris.timeField.val(newTime.toISOString());
-  window.setTimeout(Foris.timeUpdateCallback, 1000);
 };
 
 Foris.checkLowerAsciiString = function (string) {
@@ -722,13 +527,13 @@ Foris.initNotificationTestAlert = function () {
     showNotificationTestAlert = true;
   });
 
-  $(document).on("click", "#notifications-test", function () {
+  $(document).on("click", "#notifications-test", function (e) {
     if (showNotificationTestAlert) {
-      if (confirm(Foris.messages.unsavedNotificationsAlert)) {
-        $("#notifications-form")[0].reset();
-        return true;
-      }
-      return false;
+      e.preventDefault();
+      vex.dialog.confirm({
+          unsafeMessage: Foris.messages.unsavedNotificationsAlert,
+          callback: (value) => value && $("#notifications-form")[0].reset()
+      });
     }
   });
 };
@@ -769,10 +574,11 @@ Foris.waitForReachable = function(urls, data, handler_function, timeout) {
   }
 };
 
-Foris.waitForUnreachable = function(url, callback, timeout) {
+Foris.waitForUnreachable = function(url, callback, timeout, retries=-1) {
   var timeout = timeout || 1000;
   // wait till current address is available
   var url = url;
+  let local_retries = retries;
   var unreachableFunction = function() {
     $.ajax({
       url: url,
@@ -782,7 +588,10 @@ Foris.waitForUnreachable = function(url, callback, timeout) {
       crossDomain: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
       success: function(data, text, jqXHR) {
-        setTimeout(unreachableFunction, timeout);
+        if (Math.round(local_retries) != 0) {
+          setTimeout(unreachableFunction, timeout);
+        }
+        local_retries -= 1;
       },
       error: function(xhr, text, error) {
         callback(xhr, text, error);
@@ -815,9 +624,14 @@ function extractHost(src) {
   return a.host;
 }
 
-Foris.handleReboot = function(ips) {
-  $('#rebooting-notice').show("slow");
-  $('#reboot-required-notice').hide("slow");
+Foris.handleReboot = async function(ips, time, step=0.1) {
+  if (Foris.SpinnerIsShown()) {
+    return; // already running
+  }
+  for (i = time / 1000; i >= 0; i = Math.round((i - step) * 100) / 100) {
+    await Foris.TimeoutPromiss((left) => Foris.SpinnerDisplay(Foris.messages.rebootIn(left)), step, i);
+  }
+  await Foris.TimeoutPromiss(() => Foris.SpinnerDisplay(Foris.messages.rebootTriggered), 1);
 
   var port = window.location.port == "" ? "" : ":" + window.location.port;
   var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
@@ -840,30 +654,34 @@ Foris.handleReboot = function(ips) {
   // start the machinery
   Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
     var pathname = window.location.pathname;
+    Foris.SpinnerDisplay(Foris.messages.tryingToReconnect);
     Foris.waitForReachable(urls, {next: pathname}, rebootDoneCallback, 5000);
   });
 };
 
-Foris.handleLanRestart = function(ip) {
-  $('#network-restart-notice').show("slow");
+Foris.handleNetworkRestart = async function(ips, time, step=0.1) {
+  if (Foris.SpinnerIsShown()) {
+    return; // already running
+  }
+  for (i = time / 1000; i >= 0; i = Math.round((i - step) * 100) / 100) {
+    await Foris.TimeoutPromiss((left) => Foris.SpinnerDisplay(Foris.messages.networkRestartIn(left)), step, i);
+  }
+  await Foris.TimeoutPromiss(() => Foris.SpinnerDisplay(Foris.messages.networkRestartTriggered), 1);
 
   var port = window.location.port == "" ? "" : ":" + window.location.port;
   var protocol = window.location.protocol;
   var pathname = window.location.pathname;
   var search = window.location.search;
-  var urls = [
-    window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath,
-    window.location.protocol + "//" + ip + port + Foris.pingPath
-  ];
+  var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
+  for (var i = 0; i < ips.length; i++) {
+    urls.push(window.location.protocol + "//" + ips[i] + port + Foris.pingPath);
+  }
 
   var restartLanDoneCallback = function(url, jqXHR) {
     if (jqXHR.status == 0) {
         return false;
     }
     if (jqXHR.status == 200) {
-        //if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
-        //    window.location = protocol + "//" + extractHost(url) + pathname + search;
-        //}
         if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
             window.location = jqXHR.responseJSON.loginUrl;
         }
@@ -873,8 +691,9 @@ Foris.handleLanRestart = function(ip) {
   // start the machinery
   Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
     var pathname = window.location.pathname;
-    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback);
-  });
+    Foris.SpinnerDisplay(Foris.messages.tryingToReconnect);
+    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback, 2000);
+  }, 5);
 };
 
 Foris.handleNotificationsCountUpdate = function(new_count) {
@@ -922,6 +741,31 @@ Foris.handleUpdaterRun = function(running) {
     }
 };
 
+Foris.SpinnerIsShown = function() {
+    return $("#foris-spinner-frame").length > 0
+};
+
+Foris.SpinnerDisplay = function(text) {
+    if (Foris.SpinnerIsShown()) {
+        $("#foris-spinner-text").html(text);
+    } else {
+        $("body").append(`<div id="foris-spinner-frame"><div id="foris-spinner"></div><div id="foris-spinner-text">${text}</div></div>`);
+    }
+};
+
+Foris.SpinnerRemove = function() {
+    $("#foris-spinner-frame").remove();
+};
+
+Foris.TimeoutPromiss = function(handler, timeout, data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            handler(data);
+            resolve();
+        }, timeout * 1000);
+    });
+};
+
 $(document).ready(function () {
   Foris.initialize();
 
@@ -935,4 +779,8 @@ $(document).ready(function () {
     else
       langSwitch.className = 'active';
   });
+
+  // init modal dialogs
+  vex.defaultOptions.className = 'vex-theme-top';
+  vex.defaultOptions.overlayClosesOnClick = false;
 });

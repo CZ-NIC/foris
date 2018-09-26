@@ -1,0 +1,62 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+<div id="page-maintenance" class="config-page">
+    {% include '_messages.html.j2' %}
+
+    <h2>{% trans %}Notifications and automatic restarts{% endtrans %}</h2>
+    <p>{% trans %}You can set the router to notify you when a specific event occurs, for example when a reboot is required, no space is left on device or an application update is installed. You can use Turris servers to send these emails. Alternatively, if you choose to use a custom server, you must enter some additional settings. These settings are the same as you enter in your email client and you can get them from the provider of your email inbox. In that case, because of security reasons, it is recommended to create a dedicated account for your router.{% endtrans %}</p>
+    <p>{% trans %}Also, when an automatic restart is required, you can specify the time you want it to occur. If you have email notifications enabled, you can also specify the interval between notification and automatic restart.{% endtrans %}</p>
+    <form id="notifications-form" class="maintenance-form" action="{{ url("config_action", page_name="maintenance", action="save_notifications") }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% for section in notifications_form.sections %}
+            {% if section.active_fields %}
+                <h4>{{ section.title }}</h4>
+                {% for field in section.active_fields %}
+                    {% include '_field.html.j2' %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <button type="submit" name="send" class="button">{{ trans("Save") }}</button>
+        {% if notifications_form.data['enable_smtp'] %}
+        <button id="notifications-test" type="submit" name="action" value="test_notifications" class="button">{% trans %}Send testing message{% endtrans %}</button>
+        {% endif %}
+    </form>
+
+    <h2>{% trans %}Configuration backup{% endtrans %}</h2>
+    <p>{% trans %}If you need to save the current configuration of this device, you can download a backup file. The configuration is saved as an unencrypted compressed archive (.tar.bz2). Passwords for this configuration interface and for the advanced configuration are not included in the backup.{% endtrans %}</p>
+    <div class="maintenance-description">
+        <a href="{{ url("config_action", page_name="maintenance", action="config-backup") }}" class="button">{% trans %}Download configuration backup{% endtrans %}</a>
+    </div>
+
+    <h2>{% trans %}Configuration restore{% endtrans %}</h2>
+    <p>{% trans %}To restore the configuration from a backup file, upload it using following form. Keep in mind that IP address of this device might change during the process, causing unavailability of this interface.{% endtrans %}</p>
+    <form id="restore-form" class="maintenance-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% for field in form.active_fields %}
+            {% include '_field.html.j2' %}
+        {% endfor %}
+        <button type="submit" name="send" class="button">{% trans %}Restore from backup{% endtrans %}</button>
+    </form>
+
+    <h2>{% trans %}Device reboot{% endtrans %}</h2>
+    <p>{% trans %}If you need to reboot the device, click on the following button. The reboot process takes approximately 30 seconds, you will be required to log in again after the reboot.{% endtrans %}</p>
+    <div>
+        <a href="{{ url("reboot") }}" id="reboot-router" class="button">{% trans %}Reboot{% endtrans %}</a>
+    </div>
+
+    <script>
+      Foris.initNotificationTestAlert();
+      $(document).ready(function() {
+        $("#reboot-router").click(function(e) {
+          var self = $(this);
+          e.preventDefault();
+            $.get('{{ url("reboot") }}')
+              .done(function(response, status, xhr) {
+                $("html, body").stop().animate({scrollTop:0}, 500, "swing");
+            });
+        });
+      });
+    </script>
+</div>
+{% endblock %}

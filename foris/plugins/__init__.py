@@ -6,11 +6,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import gettext
-from importlib import import_module
 import inspect
+import importlib
 import logging
 import os
-import sys
+import pkgutil
+import pkg_resources
 
 import bottle
 
@@ -44,7 +45,7 @@ class ForisPlugin(object):
         the whole app. This is not an issue now, but it should be examined
         later and replaced by a better solution.
         """
-        for lang, default_translation in translations.iteritems():
+        for lang, default_translation in translations.items():
             local_translation = gettext.translation(
                 "messages", os.path.join(self.DIRNAME, "locale"),
                 languages=[lang], fallback=True
@@ -54,26 +55,27 @@ class ForisPlugin(object):
 
 class ForisPluginLoader(object):
     """Class for loading plugins and holding references to them in runtime."""
-    PLUGIN_DIRECTORY = os.path.join(os.sep, "usr", "share", "foris", "plugins")
 
     def __init__(self, app):
         self.app = app
         self.app.foris_plugin_loader = self
         self.plugins = []
-        sys.path.append(self.PLUGIN_DIRECTORY)
 
     def autoload_plugins(self):
-        """Find and load plugins in ${PLUGIN_DIRECTORY}/plugin_name/*.py"""
-        if not os.path.isdir(self.PLUGIN_DIRECTORY):
-            return
+        """Find and load plugins in foris_plugins.*"""
 
         plugin_classes = []
-        for subdir_name in os.listdir(self.PLUGIN_DIRECTORY):
-            subdir_path = os.path.join(self.PLUGIN_DIRECTORY, subdir_name)
-            if os.path.isdir(subdir_path):
-                if "__init__.py" in os.listdir(subdir_path):
-                    logger.debug("Found Python package in '%s'.", subdir_path)
-                    plugin_classes += self._get_plugin_classes(subdir_name)
+
+        modules = importlib.import_module("foris_plugins")
+        for _, mod_name, _ in pkgutil.iter_modules(modules.__path__):
+            plugin_module_name = "foris_plugins.%s" % mod_name
+            # try to determine version
+            try:
+                version = pkg_resources.get_distribution("foris_%s_plugin" % mod_name).version
+            except pkg_resources.DistributionNotFound:
+                version = "?"
+            logger.debug("Found foris plugin '%s (%s)'.", mod_name, version)
+            plugin_classes += self._get_plugin_classes(plugin_module_name)
 
         # sort plugin classes
         plugin_classes.sort(key=lambda x: (x.LOAD_ORDER, x.PLUGIN_NAME))
@@ -96,10 +98,10 @@ class ForisPluginLoader(object):
         return ForisPlugin.__name__ in mro_names
 
     def _get_plugin_classes(self, package_name):
-        """Reads all plugin classes in package (in its __init__.py)"""
+        """Reads all plugin classes in package """
         try:
             logger.info("Looking for plugins in package '%s'", package_name)
-            package = import_module("%s" % package_name)
+            package = importlib.import_module(package_name)
             classes = inspect.getmembers(package, self.is_foris_plugin)
             classes = [klass for _, klass in classes]
             for klass in classes:
@@ -107,7 +109,7 @@ class ForisPluginLoader(object):
             return classes
         except ImportError:
             logger.exception("Unable to import package '%s'.", package_name)
-        except:
+        except Exception:
             # catching all errors - plugins should not kill Foris
             logger.exception("Error when loading plugin '%s': " % package_name)
 

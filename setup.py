@@ -1,52 +1,87 @@
-from distutils.core import setup
+#!/usr/bin/env python
+
 import os
+import glob
 import re
-import subprocess
+import copy
 
-import foris
+from setuptools import setup
+from setuptools.command.build_py import build_py
 
-
-def update_version_file(version_file_path, version_number):
-    """Read file containing version variable and update it to version_number."""
-    with open(version_file_path, "r") as f:
-        content = f.readlines()
-    with open(version_file_path, "w") as f:
-        version_re = re.compile(r'^__version__ = "[^"]*"')
-        for line in content:
-            f.write(version_re.sub('__version__ = "%s"' % version_number, line))
+from foris import __version__
 
 
-def get_version(update_file=True):
-    """Get version from Git tags, optionally save it to foris module."""
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    if not os.path.isdir(os.path.join(base_dir, ".git")):
-        if foris.__version__ != "unknown":
-            # fallback to stored version (e.g. when making package)
-            return foris.__version__
-        return "unknown"
-    p = subprocess.Popen(["git", "describe", "--tags", "--dirty"], stdout=subprocess.PIPE)
-    stdout = p.communicate()[0].strip()
-    # correct tags with version must start with "package-v"
-    assert stdout.startswith("package-v")
-    version_number = stdout[len("package-v"):]
-    if update_file:
-        init_file = os.path.join(base_dir, "foris", "__init__.py")
-        update_version_file(init_file, version_number)
-    return version_number
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def merge_po_files():
+    from babel.messages.pofile import read_po, write_po
+    trans_dirs = glob.glob(os.path.join(BASE_DIR, "foris/locale/*/LC_MESSAGES/"))
+
+    # iterate through translations
+    for trans_dir in trans_dirs:
+        locale = re.match(r".*\/([a-zA-Z_]+)\/LC_MESSAGES/", trans_dir).group(1)
+        foris_path = os.path.join(trans_dir, "foris.po")
+        if not os.path.exists(foris_path):
+            continue
+
+        # read foris translations
+        with open(foris_path, "rb") as f:
+            foris_catalog = read_po(f, locale=locale, domain="messages")
+
+        # read tzinfo translations
+        tzinfo_path = os.path.join(trans_dir, "tzinfo.po")
+        if os.path.exists(tzinfo_path):
+            with open(tzinfo_path, "rb") as f:
+                tzinfo_catalog = read_po(f, locale=locale, domain="messages")
+            for msg in tzinfo_catalog:
+                # foris messages will be preffered
+                if msg.id not in foris_catalog:
+                    # append to foris messages
+                    foris_catalog[msg.id] = msg
+
+        # write merged catalogs
+        target_path = os.path.join(trans_dir, "messages.po")
+        with open(target_path, "wb") as f:
+            write_po(f, foris_catalog, no_location=True)
+
+
+class BuildCmd(build_py):
+    def run(self):
+        # prepare messages.po
+        merge_po_files()
+
+        # compile translation
+        from babel.messages import frontend as babel
+        distribution = copy.copy(self.distribution)
+        cmd = babel.compile_catalog(distribution)
+        cmd.directory = os.path.join(os.path.dirname(__file__), "foris", "locale")
+        cmd.domain = "messages"
+        cmd.ensure_finalized()
+        cmd.run()
+
+        # run original build cmd
+        build_py.run(self)
 
 
 setup(
     name="Foris",
-    version=get_version(),
+    version=__version__,
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
-    author_email="jan.cermak@nic.cz",
+    author_email="stepan.henek@nic.cz",
     url="https://gitlab.labs.nic.cz/turris/foris/",
     license="GPL-3.0",
     requires=[
         "bottle",
         "bottle_i18n",
-        "ncclient",
+        'pbkdf2',
+        'flup',
+        'ubus',
+    ],
+    setup_requires=[
+        'babel',
+        'jinja2',
     ],
     provides=[
         "foris"
@@ -57,13 +92,11 @@ setup(
         "foris.config",
         "foris.common",
         "foris.langs",
-        "foris.nuci",
-        "foris.nuci.modules",
         "foris.plugins",
         "foris.utils",
         "foris.ubus",
         "foris.middleware",
-        "foris.wizard",
+        "foris_plugins",
     ],
     package_data={
         '': [
@@ -74,10 +107,17 @@ setup(
             "static/css/*.css",
             "static/fonts/*",
             "static/img/*",
-            "static/img/wizard/*",
-            "static/js/*.min.js",
+            "static/js/*.js",
             "static/js/contrib/*",
             "utils/*.pickle2",
+        ]
+    },
+    cmdclass={
+        "build_py": BuildCmd,
+    },
+    entry_points={
+        "console_scripts": [
+            "foris = foris.__main__:main",
         ]
     },
 )

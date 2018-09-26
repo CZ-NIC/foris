@@ -1637,6 +1637,7 @@ msgstr "DUID, které bude posláno DHCPv6 serveru."
 msgid "Public IPv4"
 msgstr "Veřejná IPv4"
 
+#, fuzzy
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
 "address manually (e.g. when your WAN interface has a private address which "
@@ -1653,6 +1654,7 @@ msgstr "zjistit automaticky"
 msgid "Provider IPv4"
 msgstr "IPv4 adresa poskytovatele"
 
+#, fuzzy
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's side."
 msgstr ""

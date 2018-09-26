@@ -13,14 +13,16 @@ $nav-item-border: 2px solid #ddd
     border-bottom: $nav-item-border
     margin: 0 10px
 
+%nav-menu-link
+  font-size: 80%
+  font-weight: bold
+  text-decoration: none
 
 #menu
   text-transform: uppercase
 
   a
-    font-size: 80%
-    font-weight: bold
-    text-decoration: none
+    @extend %nav-menu-link
 
     &:hover
       text-decoration: underline
@@ -38,6 +40,12 @@ $nav-item-border: 2px solid #ddd
 
         a
           @extend %nav-item-link
+
+        span.link-disabled
+          @extend %nav-item-link
+          @extend %nav-menu-link
+          color: $sidebar-foreground-disabled-color
+
 
         &:last-child
           @extend %bottom-nav-border

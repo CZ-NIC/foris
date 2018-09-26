@@ -17,13 +17,14 @@
 import bottle
 
 from foris.state import current_state
+from foris.utils.caches import per_request
 
 
 class BackendData(object):
     """ Reads data from the backend and stores it properly.
         This is performed everytime when a request arrives.
 
-        There can be a few running instances of foris apps (e.g wizard config).
+        There can be a few running instances of foris apps (e.g config, ...).
         When one changes the other should reflect the change immediatelly.
         Therefor it is necessary to update it so frequent.
     """
@@ -45,8 +46,13 @@ class BackendData(object):
         self.app = app
 
     def __call__(self, environ, start_response):
+
+        # clear per request data cache
+        per_request.backend_data.clear()
+
         try:
-            data = current_state.backend.perform("web", "get_data", {})
+            data = current_state.backend.perform("web", "get_data")
+            per_request.backend_data["web", "get_data", None] = data
         except Exception:
             # Exceptions raised here are not correctly processed in flup
             # so we don't propagate the excetion (it will fail later)
@@ -64,5 +70,17 @@ class BackendData(object):
 
         # update updater running indicator
         current_state.set_updater_is_running(data["updater_running"])
+
+        # update whether password is set
+        current_state.update_password_set(data["password_ready"])
+
+        # update turris_os_version
+        current_state.set_turris_os_version(data["turris_os_version"])
+
+        # update device
+        current_state.set_device(data["device"])
+
+        # initialize guide
+        current_state.update_guide(data["guide"])
 
         return self.app(environ, start_response)

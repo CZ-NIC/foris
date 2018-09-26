@@ -19,10 +19,11 @@ import collections
 import gettext
 import os
 
+from jinja2.ext import InternationalizationExtension
+
+from foris import BASE_DIR
 from foris.langs import translations
 from foris.state import current_state
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # read locale directory
 locale_directory = os.path.join(BASE_DIR, "locale")
@@ -39,12 +40,25 @@ translations = _LangDict(
     for e in translations
 )
 
-ugettext = lambda x: translations[current_state.language].ugettext(x)
-ungettext = lambda singular, plural, n: \
-    translations[current_state.language].ungettext(singular, plural, n)
-gettext_dummy = lambda x: x
 
-_ = ugettext
+class SimpleDelayedTranslator(object):
+
+    def __init__(self, text):
+        self.text = text
+
+    def __str__(self):
+        return gettext(self.text)
+
+    def __add__(self, other):
+        return str(self) + other
+
+
+gettext = lambda x: translations[current_state.language].gettext(x)
+ngettext = lambda singular, plural, n: \
+    translations[current_state.language].ngettext(singular, plural, n)
+gettext_dummy = lambda x: SimpleDelayedTranslator(x)
+
+_ = gettext
 
 
 def set_current_language(language):
@@ -60,3 +74,13 @@ def set_current_language(language):
         return True
 
     return False
+
+
+# for jinja template
+class ForisInternationalizationExtension(InternationalizationExtension):
+    def __init__(self, environment):
+        super(ForisInternationalizationExtension, self).__init__(environment)
+        self._install_callables(gettext, ngettext)
+
+
+i18n = ForisInternationalizationExtension

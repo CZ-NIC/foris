@@ -442,7 +442,7 @@ def makelocale(lang, plural_forms=None):
     l18n.set_language("en")
     for luci_tz, country, city, zoneinfo in tzdata:
         regions.add(luci_tz.split("/")[0])
-        countries.add(unicode(l18n.territories[country]))
+        countries.add(l18n.territories[country])
         cities.add(city)
 
     po.metadata = {
@@ -462,9 +462,9 @@ def makelocale(lang, plural_forms=None):
     translations = {}
     for part in (regions, cities, countries):
         for x in part:
-            translations[x] = unicode(l18n.translation.L18NLazyString(x))
+            translations[x] = l18n.translation.L18NLazyString(x)
 
-    for msgid, msgstr in translations.iteritems():
+    for msgid, msgstr in translations.items():
         po.append(polib.POEntry(msgid=msgid, msgstr=msgstr))
 
     po.save("foris/locale/%s/LC_MESSAGES/tzinfo.po" % lang)
@@ -477,7 +477,7 @@ def maketzdata():
 
     for luci_tz, zoneinfo in luci_TZ:
         country = l18n.utils.get_country_code_from_tz(luci_tz.replace(" ", "_"))
-        city = unicode(l18n.tz_cities[luci_tz.replace(" ", "_")])
+        city = l18n.tz_cities[luci_tz.replace(" ", "_")]
         tzdata.append((luci_tz, country, city, zoneinfo))
     return tzdata
 
@@ -493,7 +493,7 @@ def gencountries():
     countries = {}
     l18n.set_language("en")
     for luci_tz, country, city, zoneinfo in tzdata:
-        countries[country] = unicode(l18n.territories[country])
+        countries[country] = l18n.territories[country]
     pickle.dump(countries, file("foris/utils/countries.pickle2", "wb"), protocol=2)
 
 

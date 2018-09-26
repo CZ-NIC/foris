@@ -15,10 +15,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import bottle
-import re
+import hashlib
 import logging
+import os
+import re
 
+from foris import BASE_DIR
+from foris.state import current_state
+from foris.utils.dynamic_assets import store_template
 logger = logging.getLogger("utils.routing")
+
+static_md5_map = {
+}
 
 
 def _get_prefix_and_script_name():
@@ -36,7 +44,7 @@ def _normalize_path_end(path):
 
 
 def external_route(path):
-    """ return external to another foris application (wizard/config) """
+    """ return external to another foris application (config/...) """
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip("/")
     path = path.lstrip("/")
@@ -66,11 +74,64 @@ def reverse(name, **kargs):
     raise bottle.RouteBuildError("No route with name '%s' in main app or mounted apps." % name)
 
 
+def generated_static(name, *args):
+    lang = bottle.request.app.lang
+    store_template(name, lang)
+    name = "generated/%s/%s" % (lang, name.lstrip("/"))
+    return static(name, *args)
+
+
 def static(name, *args):
     script_name, _ = _get_prefix_and_script_name()
     script_name = script_name.strip('/')
     script_name = "/%s" % script_name if script_name else ""
-    return ("%s/static/%s" % (script_name, name)) % args
+    filename = ("%s/static/%s" % (script_name, name)) % args
+    md5 = static_md5("static/" + name)
+    return "%s?md5=%s" % (filename, md5) if md5 else filename
+
+
+def static_md5(filename):
+    """ return static file
+    :param filename: url path
+    :type filename: str
+    :return: md5 of the file or none if the file is not found
+    """
+    filename = filename.lstrip("/")
+    if filename in static_md5_map:
+        return static_md5_map[filename]
+
+    match = re.match(r'(?:static)?/*plugins/+(\w+)/+(.+)', filename)
+    os_path = None
+    if match:
+        plugin_name, plugin_file = match.groups()
+        # find correspoding plugin
+        for plugin in bottle.app().foris_plugin_loader.plugins:
+            if plugin.PLUGIN_NAME == plugin_name:
+                os_path = os.path.join(plugin.DIRNAME, "static", plugin_file)
+    else:
+        match = re.match(r'(?:static)?/*generated/+([a-z]{2})/+(.+)', filename)
+        if match:
+            language, template = match.groups()
+            os_path = os.path.join(current_state.assets_path, current_state.app, language, template)
+        else:
+            os_path = os.path.join(BASE_DIR, filename)
+
+    if not os_path:
+        logger.warning("Unable to find file for static url '%s'" % filename)
+        return None
+
+    if not os.path.exists(os_path):
+        logger.warning("Static file '%s' related to url '%s' does not exist" % (os_path, filename))
+        return None
+
+    md5 = hashlib.md5()
+    with open(os_path, "rb") as f:
+        content = f.read()
+        md5.update(content)
+
+    digest = md5.hexdigest()
+    static_md5_map[filename] = digest
+    return digest
 
 
 def get_root():

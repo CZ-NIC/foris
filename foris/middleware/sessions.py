@@ -49,7 +49,7 @@ class SessionProxy(object):
             "%s=%s" % (self.env_key, self.session_id),
             "httponly",
             "Path=/",
-        ]).encode("ascii")
+        ])
 
     def unset_cookie(self):
         self.cookie_unset_needed = True
@@ -58,7 +58,7 @@ class SessionProxy(object):
             "expires=%s" % datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %T %zGMT"),
             "httponly",
             "Path=/",
-        ]).encode("ascii")
+        ])
 
     @property
     def set_cookie_text(self):
@@ -102,8 +102,6 @@ class SessionWsProxy(SessionProxy):
 class SessionForisProxy(SessionProxy):
     DONT_STORE_IN_ANONYMOUS = [
         "user_authenticated",
-        "allowed_step_max",
-        "wizard_finished",
     ]
 
     def __init__(self, env_key, timeout, session_id):
@@ -213,7 +211,6 @@ class SessionMiddleware(object):
         environ["foris.session.data"] = session._session._data
 
         def session_start_response(status, headers, exc_info=None):
-            response = start_response(status, headers, exc_info)
             # update ws session cookies
             if ws_session and ws_session.cookie_set_needed:
                 headers.append(('Set-cookie', ws_session.set_cookie_text))
@@ -230,6 +227,6 @@ class SessionMiddleware(object):
             if session.tainted:
                 session.save()
 
-            return response
+            return start_response(status, headers, exc_info)
 
         return self.wrap_app(environ, session_start_response)

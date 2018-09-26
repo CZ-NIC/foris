@@ -1,0 +1,101 @@
+{% extends '_layout.html.j2' %}
+
+{% block base %}
+
+{% if is_xhr is not defined %}
+    <div id="header">
+        <div class="sidebar-content">
+            <a href="{{ url("config_index") }}">
+                <img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}" class="header-side" height="65">
+            </a>
+            <div class="config-foris-version">
+                {% include '_foris_version.html.j2' %}
+            </div>
+            <div class="header-top">
+              <a href="#menu" class="menu-link"><img src="{{ static("img/icon-menu.png") }}" alt="{% trans %}Menu{% endtrans %}" title="{% trans %}Menu{% endtrans %}"></a>
+              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}" height="50"></a>
+            </div>
+        </div>
+    </div>
+    <div id="content-wrap">
+        <div id="content">
+          {% if foris_info.guide.enabled %}
+          <div id="guide-box">
+            <p class="guide-title">{% trans %}foris guide{% endtrans %}</p>
+            {% for msg in foris_info.guide.message(active_config_page_key) %}
+            <p>{{ msg|safe }}</p>
+            {% endfor %}
+            <div class="guide-buttons">
+              <form method="post" action="{{ url("reset_guide") }}">
+                <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+                <button type="submit" name="target" class="button" value="save"><i class='fas fa-undo'></i> {% trans %}Reset Guided Mode{% endtrans %}</button>
+              </form>
+              <form method="post" action="{{ url("leave_guide") }}">
+                <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+                <button type="submit" name="target" class="button" value="save"><i class='fas fa-times'></i> {% trans %}Leave Guided Mode{% endtrans %}</button>
+              </form>
+              {% if foris_info.guide.current != active_config_page_key %}
+              <a class="button" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {% trans %}Next step{% endtrans %}</a>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+          <div id="reboot-required-notice" style='display: {{ "block" if foris_info.reboot_required else "none" }}'>
+            <div id="reboot-required-button-container">
+              <span>{% trans %}Your router needs to be restarted in order to work properly.{% endtrans %}</span>
+              <a href="{{ url("reboot")}}" class="button" id="reboot-required-button">{% trans %}Reboot now{% endtrans %}</a>
+            </div>
+          </div>
+          <h1>{{ title }}</h1>
+{% endif %}
+{% block config_base %}{% endblock %}
+{% if is_xhr is not defined %}
+        </div>
+    </div>
+    <div id="menu">
+        <div class="sidebar-content">
+            <nav>
+                <ul>
+                {% for config_page in get_config_pages() %}
+                    {% if config_page.is_visible() and config_page.is_enabled() %}
+                    <li{{ ' class="active"' if active_config_page_key is defined and config_page.slug == active_config_page_key else "" }}>
+                      <a href="{{ url("config_page", page_name=config_page.slug) }}">{{ config_page.userfriendly_title }}
+                        {% if config_page.get_menu_tag()["show"] %}
+                      <span title="{{ config_page.get_menu_tag()["hint"]}}" style="{{"" if config_page.get_menu_tag()["show"] else "display: none" }}" id="{{ config_page.slug }}_menu_tag" class="menu-tag">
+                      {{ config_page.get_menu_tag()["text"]|safe }}
+                      {% endif %}
+                      </span>
+                      </a>
+                    </li>
+                    {% elif config_page.is_visible() %}
+                    <li><span class="link-disabled">{{ config_page.userfriendly_title }}</span></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </nav>
+
+            <div id="subnav">
+              <div id="logout">
+                <a href="{{ url("logout") }}">{% trans %}Log out{% endtrans %}</a>
+              </div>
+              <div id="language-switch">
+                {% if translations == ["en"] and lang() == "en" %}
+                <a href="{{ url("config_page", page_name="updater") }}#language-install">{{ translation_names.get("en") }}</a>
+                {% else %}
+                <span>{{ translation_names.get(lang(), lang()) }}</span>
+                {% endif %}
+                <ul>
+                  {% for code in translations %}
+                    {% if code != lang() %}
+                      <li><a href="{{ url("change_lang", lang=code, backlink=request.fullpath) }}">{{ translation_names.get(code, code) }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-cleaner"></div>
+{% endif %}
+
+{% endblock %}

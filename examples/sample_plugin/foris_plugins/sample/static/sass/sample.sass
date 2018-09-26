@@ -1,0 +1,19 @@
+/* a simple sass example */
+#records
+  td, th
+    padding: 0.3em 0.8em
+    border-bottom: 1px solid #fff
+  tr:first-child td
+    padding-top: 0.5em
+  tbody tr
+    &:nth-child(2n) td
+      background: #f2f2f2
+    &:hover td
+      border-bottom: 1px solid #00a2e2
+  th
+    font-weight: bold
+    border-bottom: 1px solid #ddd
+    margin-bottom: 2px
+  tbody td
+    &:nth-child(2), &:nth-child(3), &:nth-child(4)
+      text-align: right
