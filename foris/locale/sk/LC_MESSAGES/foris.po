@@ -21,16 +21,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-23 09:42+0200\n"
-"PO-Revision-Date: 2018-05-17 11:21+0000\n"
+"PO-Revision-Date: 2018-07-19 03:34+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/"
-">\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
+"\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.0-dev\n"
+"X-Generator: Weblate 3.1-dev\n"
 
 msgid "This value seems to be invalid."
 msgstr "Táto položka je neplatná."
@@ -1159,6 +1159,8 @@ msgid ""
 "Failed to update emulated services. Note that you might need to wait till "
 "ucollect is properly installed."
 msgstr ""
+"Nepodarilo sa nastaviť emulované služby. Pozn.: Pred nastavovaním "
+"emulovaných služieb je nutné mať nainštalovaný ucollect."
 
 #, python-format
 msgid ""
@@ -1566,10 +1568,10 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatická konfigurácia)"
 
 msgid "6to4 (public IPv4 address required)"
-msgstr ""
+msgstr "6to4 (je nutné mať verejnú IPv4 adresu)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6in4 (je nutné mať verejnú IPv4 adresu)"
 
 msgid "Disable IPv6"
 msgstr "Nepoužívať IPv6"
@@ -1641,71 +1643,76 @@ msgstr "DNS server 2 (IPv6)"
 msgid "Custom DUID"
 msgstr "Vlastné DUID"
 
-#, fuzzy
 msgid "DUID which will be provided to the DHCPv6 server."
-msgstr "DUID, ktoré bude poslané dhcpv6 serveru."
+msgstr "DUID, ktoré bude poslané DHCPv6 serveru."
 
 msgid "Public IPv4"
-msgstr ""
+msgstr "Verejná IPv4"
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
 "address manually (e.g. when your WAN interface has a private address which "
 "is mapped to public IP)."
 msgstr ""
+"Keď použijete 6to4 protokol, môže byť potrebné uviesť vašu verejnú IPv4 "
+"adresu (napr. za situácie, keď máte na rozhraní WAN adresu z neverejného "
+"rozsahu, ktorá je u poskytovateľa pripojenia k internetu mapovaná na "
+"verejnú)."
 
 msgid "use autodetection"
-msgstr ""
+msgstr "zistiť automaticky"
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "Poskytovateľ SMTP"
+msgstr "IPv4 adresa poskytovateľa"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's side."
-msgstr ""
+msgstr "Táto adresa sa použije ako koncový bod tunela na strane poskytovateľa."
 
-#, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "IPv6 prefix"
+msgstr "Smerovaný IPv6 prefix"
 
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "IPv6 adresy, ktoré budú používané vo vašej sieti."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Maximálna prenosová jednotka v tuneli (v bajtoch)."
 
 msgid "Dynamic IPv4 handling"
-msgstr ""
+msgstr "Zachádzanie s dynamickou IPv4"
 
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that you "
 "need to fill in some extra fields to make it work."
 msgstr ""
+"Niektorí poskytovatelia umožňujú použitie dynamickej IPv4. Pre správne "
+"fungovanie je potom nutné vyplniť zopár ďalších políčok."
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "Identifikátor tunela"
 
 msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr ""
+msgstr "Identifikátor vášho tunela, pridelený poskytovateľom."
 
 msgid "Username"
 msgstr "Meno"
 
-#, fuzzy
 msgid ""
 "Username which will be used to provide credentials to your tunnel provider."
-msgstr "Identifikátor klienta, ktorý bude poslaný DHCP serveru."
+msgstr ""
+"Meno používateľa, ktoré sa použije pri overení prihlasovacích údajov u "
+"poskytovateľa tunela."
 
 msgid "Key"
-msgstr ""
+msgstr "Kľúč"
 
-#, fuzzy
 msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr "DUID, ktoré bude poslané dhcpv6 serveru."
+msgstr ""
+"Kľúč, ktorý sa použije pri overení prihlasovacích údajov u poskytovateľa "
+"tunela."
 
 msgid "Custom MAC address"
 msgstr "Vlastná MAC adresa"
@@ -1720,7 +1727,6 @@ msgstr ""
 msgid "MAC address"
 msgstr "MAC adresa"
 
-#, fuzzy
 msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
 msgstr "Oddeľovačom je dvojbodka, napr. 00:11:22:33:44:55"
 
