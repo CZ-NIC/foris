@@ -12,56 +12,72 @@
     <h5>{% trans %}WAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
     {% for port in backend_data.networks.wan %}
-    <button class="button ports-button ports-wan" id="{{port.id}}">
+    <button class="button ports-button ports-wan" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
         {% elif port.kind == "eth" %}
+            {% if port.state == "up" %}
+        <i class="far fa-calendar-check"></i>
+            {% else %}
         <i class="far fa-calendar"></i>
+            {% endif %}
         {% endif %}
         <br/>
-        {{ port.title }}
+        {{ port.description }}
     </button>
     {% endfor %}
     </div>
     <h5>{% trans %}LAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-lan" data-group="lan">
     {% for port in backend_data.networks.lan %}
-    <button class="button ports-button ports-lan" id="{{port.id}}">
+    <button class="button ports-button ports-lan" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
         {% elif port.kind == "eth" %}
+            {% if port.state == "up" %}
+        <i class="far fa-calendar-check"></i>
+            {% else %}
         <i class="far fa-calendar"></i>
+            {% endif %}
         {% endif %}
         <br/>
-        {{ port.title }}
+        {{ port.description }}
     </button>
     {% endfor %}
     </div>
     <h5>{% trans %}Guest Network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-guest" data-group="guest">
     {% for port in backend_data.networks.guest %}
-    <button class="button ports-button ports-quest" id="{{port.id}}">
+    <button class="button ports-button ports-quest" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
         {% elif port.kind == "eth" %}
+            {% if port.state == "up" %}
+        <i class="far fa-calendar-check"></i>
+            {% else %}
         <i class="far fa-calendar"></i>
+            {% endif %}
         {% endif %}
         <br/>
-        {{ port.title }}
+        {{ port.description }}
     </button>
     {% endfor %}
     </div>
     <h5>{% trans %}Unassigned{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-none" data-group="none">
     {% for port in backend_data.networks.none %}
-    <button class="button ports-button ports-none" id="{{port.id}}">
+    <button class="button ports-button ports-none" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
         {% if port.kind == "usb" %}
         <i class="fab fa-usb"></i>
         {% elif port.kind == "eth" %}
+            {% if port.state == "up" %}
+        <i class="far fa-calendar-check"></i>
+            {% else %}
         <i class="far fa-calendar"></i>
+            {% endif %}
         {% endif %}
         <br/>
-        {{ port.title }}
+        {{ port.description }}
     </button>
     {% endfor %}
     </div>
