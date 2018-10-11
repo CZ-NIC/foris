@@ -6,7 +6,7 @@
     {% include '_messages.html.j2' %}
 {% endif %}
 {% if is_xhr is not defined %}
-    <p>{% trans %}Here you can set the guide walkthrough which will guide you through a basic configuration of your device.{% endtrans %}</p>
+    <p>{% trans %}Here you can set the guide walkthrough which will guide you through the basic configuration of your device.{% endtrans %}</p>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
 {% for workflow in workflows %}

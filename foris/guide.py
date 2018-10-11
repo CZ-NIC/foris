@@ -22,10 +22,12 @@ from foris.utils.translators import _
 WORKFLOW_OLD = "old"
 WORKFLOW_MIN = "min"
 WORKFLOW_ROUTER = "router"
+WORKFLOW_BRIDGE = "bridge"
 WORKFLOWS = [
     WORKFLOW_OLD,
     WORKFLOW_MIN,
-    WORKFLOW_ROUTER
+    WORKFLOW_ROUTER,
+    WORKFLOW_BRIDGE,
 ]
 
 
@@ -58,7 +60,9 @@ class StandardMessages(object):
 
     NETWORKS_PASSED_DEFAULT = [
         _(
-            "Here you need to decide which interfaces belongs to which network. "
+            "Here you need to decide which interfaces belongs to which network."
+        ),
+        _(
             "If you are in doubt use the current settings."
         ),
         _(
@@ -76,13 +80,29 @@ class StandardMessages(object):
             "In order to access the internet you need to configure your WAN interface."
         ),
         _(
-            "You've configured your wan interface. "
+            "You've configured your WAN interface. "
             "Try to run connection test to see whether it is working properly and "
             "if so you can safely proceed to the next step."
         ),
     ]
     WAN_CURRENT_DEFAULT = [
         WAN_PASSED_DEFAULT[0],
+    ]
+
+    LAN_PASSED_DEFAULT = [
+        _(
+            "Now you should configure your LAN interface. Note that when you change your network "
+            "settings you probably won't be able to connect to the configuration interface "
+            "unless you restart the network on your current device."
+        ),
+        _(
+            "You've configured your LAN interface. "
+            "Try to test whether settings work properly and if so "
+            "you can safely proceed to the next step."
+        ),
+    ]
+    LAN_CURRENT_DEFAULT = [
+        LAN_PASSED_DEFAULT[0],
     ]
 
     TIME_PASSED_DEFAULT = [
@@ -131,6 +151,7 @@ class StandardMessages(object):
             "password": PASSWORD_PASSED_DEFAULT,
             "profile": PROFILE_PASSED_DEFAULT,
             "networks": NETWORKS_PASSED_DEFAULT,
+            "lan": LAN_PASSED_DEFAULT,
             "wan": WAN_PASSED_DEFAULT,
             "time": TIME_PASSED_DEFAULT,
             "dns": DNS_PASSED_DEFAULT,
@@ -140,6 +161,7 @@ class StandardMessages(object):
             "password": PASSWORD_CURRENT_DEFAULT,
             "profile": PROFILE_CURRENT_DEFAULT,
             "networks": NETWORKS_CURRENT_DEFAULT,
+            "lan": LAN_CURRENT_DEFAULT,
             "wan": WAN_CURRENT_DEFAULT,
             "time": TIME_CURRENT_DEFAULT,
             "dns": DNS_CURRENT_DEFAULT,
@@ -147,9 +169,71 @@ class StandardMessages(object):
         }
     }
 
+    NETWORKS_PASSED_BRIDGE = [
+        NETWORKS_PASSED_DEFAULT[0],
+        _(
+            "You chose to act as local server this means the it doesn't make sense to put "
+            "any interfaces to your WAN and Guest Network. So it is a good idea to assign all "
+            "iterfaces to LAN."
+
+        ),
+        NETWORKS_PASSED_DEFAULT[2],
+    ]
+    NETWORKS_CURRENT_BRIDGE = [
+        NETWORKS_PASSED_BRIDGE[0],
+        NETWORKS_PASSED_BRIDGE[1],
+    ]
+
+    LAN_PASSED_BRIDGE = [
+        _(
+            "To act as a local server, there's no need to manage LAN "
+            "(if you still want to manage it reset the guide and choose the Router workflow). "
+            "You probably want to act as a client here thus select "
+            "<strong>Unmanaged</strong> mode here. Then you can choose how your device "
+            "will be configured."
+        ),
+        _(
+            "If you select the <strong>static</strong> configuration be sure that the ip "
+            "addresses are entered correctly otherwise you won't be able to access this "
+            "configuration iterface when the new settings are applied."
+        ),
+        _(
+            "If you select the <strong>DHCP</strong> you probably you need to obtain "
+            "a new IP of this device somehow. This means that you should obtain it from "
+            "the DHCP server which is managing your LAN. Then you need to connect to the new IP "
+            "address to proceed the guide."
+        ),
+        _(
+            "Note that either way you might need to re-plug your ethernet cabels after you update "
+            "your settings here."
+        ),
+        _(
+            "Please test whether the settings you provided are correctly working. "
+            "This means that you can access the configuration interface of your device "
+            "and you device is able to access the internet (you can use the connection test below)."
+        )
+    ]
+    LAN_CURRENT_BRIDGE = [
+        LAN_PASSED_BRIDGE[0],
+        LAN_PASSED_BRIDGE[1],
+        LAN_PASSED_BRIDGE[2],
+        LAN_PASSED_BRIDGE[3],
+    ]
+    MSG_BRIDGE_MAP = {
+        "passed": {
+            "networks": NETWORKS_PASSED_BRIDGE,
+            "lan": LAN_PASSED_BRIDGE,
+        },
+        "current": {
+            "networks": NETWORKS_CURRENT_BRIDGE,
+            "lan": LAN_CURRENT_BRIDGE,
+        }
+    }
+
     # to customize texts per workflow (e.g. instructions to replug cable)
     MSG_MAP_WORKFLOWS = {
         "old": MSG_MAP_DEFAULT,
+        "bridge": MSG_BRIDGE_MAP,
     }
 
     @staticmethod
@@ -195,6 +279,7 @@ class Workflow(object):
         WORKFLOW_OLD: _("Old"),
         WORKFLOW_MIN: _("Minimal"),
         WORKFLOW_ROUTER: _("Router"),
+        WORKFLOW_BRIDGE: _("Local Server"),
     }
     DESCRIPTIONS = {
         WORKFLOW_OLD: _("Workflow for older routers and older turris OS versions (before 4.0)."),
@@ -207,6 +292,11 @@ class Workflow(object):
             "After you finish this workflow your device will be able to act as a fully "
             "functional router. It assumes that you want to have more or less standard "
             "network setup."
+        ),
+        WORKFLOW_BRIDGE: _(
+            "This workflow will help you to setup your device to act as a local server. "
+            "It means that the device will provide some kind of service to other devices "
+            "within your local network (e.g. it could act as a network attached storage)."
         ),
     }
 

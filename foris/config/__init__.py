@@ -239,6 +239,13 @@ class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
                 self.backend_data["recommended_workflow"] == e
             ) for e in self.backend_data["available_workflows"]
         ]
+
+        # perform some workflow sorting
+        SCORE = {
+            "router": 1,  # router first
+            "bridge": 2,
+        }
+        kwargs['workflows'].sort(key=lambda e: (SCORE.get(e.name, 99), e.name))
         return super(ProfileConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):
@@ -326,10 +333,24 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
         raise ValueError("Unknown AJAX action.")
 
 
+class LanConfigPage(ConfigPageMixin, lan.LanHandler):
+    slug = "lan"
+    menu_order = 15
+
+    template_type = "jinja2"
+
+
+class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
+    slug = "guest"
+    menu_order = 16
+
+    template_type = "jinja2"
+
+
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
     slug = "time"
-    menu_order = 15
+    menu_order = 17
 
     template = "config/time"
     template_type = "jinja2"
@@ -342,7 +363,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
 class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     slug = "dns"
-    menu_order = 16
+    menu_order = 18
 
     template = "config/dns"
     template_type = "jinja2"
@@ -355,20 +376,6 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
         if action == "check-connection":
             return self._action_check_connection()
         raise ValueError("Unknown AJAX action.")
-
-
-class LanConfigPage(ConfigPageMixin, lan.LanHandler):
-    slug = "lan"
-    menu_order = 17
-
-    template_type = "jinja2"
-
-
-class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
-    slug = "guest"
-    menu_order = 18
-
-    template_type = "jinja2"
 
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
