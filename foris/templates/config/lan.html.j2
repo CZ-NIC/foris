@@ -2,7 +2,7 @@
 
 {% block config_base %}
 {% if is_xhr is not defined %}
-<div id="page-wan" class="config-page">
+<div id="page-config" class="config-page">
 {% endif %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ description|safe }}</p>
@@ -17,8 +17,10 @@
         </div>
     </form>
 {% if is_xhr is not defined %}
-    {% set ipv6_test = form.current_data["wan6_proto"] != "none" %}
-    {% include "config/_connection_test.html.j2" %}
+    {% if form.current_data["mode"] == "unmanaged" and form.current_data["client_proto_4"] != "none" %}
+        {% set ipv6_test = False %}
+        {% include "config/_connection_test.html.j2" %}
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}

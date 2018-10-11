@@ -1,0 +1,83 @@
+<h2>{% trans %}Connection test{% endtrans %}</h2>
+<p>{% trans %}Here you can test you connection settings. Remember to click on the <strong>Save</strong> button before running the test. Note that sometimes it takes a while before the connection is fully initialized. So it might be useful to wait for a while before running this test.{% endtrans %}</p>
+<div class="message error" id="connection-test-fail">
+  {% trans %}"Unable to verify network connection.{% endtrans %}
+</div>
+<table id="test-results">
+    <thead>
+        <tr>
+          <th>{% trans %}Test type{% endtrans %}</th>
+          <th>{% trans %}Status{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>{% trans %}IPv4 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4-conn-test">???</td></tr>
+        <tr><td>{% trans %}IPv4 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4_gateway-conn-test">???</td></tr>
+        {% if ipv6_test %}
+        <tr><td>{% trans %}IPv6 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6-conn-test">???</td></tr>
+        <tr><td>{% trans %}IPv6 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6_gateway-conn-test">???</td></tr>
+        {% endif %}
+    </tbody>
+</table>
+<a href="#" id="test-connection" class="button">{% trans %}Test connection{% endtrans %}</a>
+<script>
+    Foris.watched_test = null;
+    var update_conn_test_field = function(key, result) {
+        var field = key + "-conn-test";
+        var resultBox = $("#test-results").find(".result[data-result-type=" + field + "]");
+        if (result) {
+            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").text(Foris.messages.ok);
+        } else {
+            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
+        }
+    }
+    Foris.WS["wan"] = function(msg) {
+        switch(msg["action"]) {
+            case "connection_test":
+                if (msg["data"]["test_id"] != Foris.watched_test) {
+                    break;
+                }
+                for (var key in msg["data"]["data"]) {
+                    update_conn_test_field(key, msg["data"]["data"][key]);
+                }
+                break;
+            case "connection_test_finished":
+                if (msg["data"]["test_id"] != Foris.watched_test) {
+                    break;
+                }
+                if (!msg["data"]["passed"]) {
+                    break;
+                }
+                for (var key in msg["data"]["data"]) {
+                    update_conn_test_field(key, msg["data"]["data"][key]);
+                }
+                Foris.watched_test = null;
+                $("#test-connection").show();
+                break;
+        }
+    }
+    $(document).ready(function() {
+        $("#test-connection").click(function(e) {
+            $("#connection-test-fail").hide();
+            var self = $(this);
+            e.preventDefault();
+            self.attr("disabled", "disabled");
+            $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection", ipv6_type: {% if ipv6_test %}true{% else %}false{% endif %}})
+                    .done(function(response) {
+                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
+                        $("#test-connection").hide();
+                        Foris.watched_test = response["test_id"];
+                    })
+                    .fail(function(xhr) {
+                        if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                            window.location.replace(xhr.responseJSON.loginUrl);
+                            return;
+                        }
+                        $("#connection-test-fail").show();
+                    })
+                    .always(function() {
+                        self.removeAttr("disabled");
+                    });
+        });
+    });
+</script>

@@ -337,6 +337,7 @@ class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     slug = "lan"
     menu_order = 15
 
+    template = "config/lan"
     template_type = "jinja2"
 
 
