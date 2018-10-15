@@ -17,13 +17,9 @@
         </div>
     </form>
 {% if is_xhr is not defined %}
-    {% if form.current_data["mode"] == "unmanaged" and form.current_data["client_proto_4"] != "none" %}
-        {% set ipv6_test = False %}
-        {% include "config/_connection_test.html.j2" %}
-    {% endif %}
-    {% if form.current_data["mode"] == "managed"  and form.current_data["router_dhcp_enabled"] %}
+</div>
+    {% if form.current_data["guest_dhcp_enabled"] %}
         {% include "config/_dhcp_clients_table.html.j2" %}
     {% endif %}
-</div>
 {% endif %}
 {% endblock %}

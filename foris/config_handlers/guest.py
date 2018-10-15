@@ -29,18 +29,22 @@ from .base import BaseConfigHandler, DEFAULT_GUEST_MASK, DEFAULT_GUEST_IP
 class GuestHandler(BaseConfigHandler):
     userfriendly_title = gettext("Guest network")
 
+    def __init__(self, *args, **kwargs):
+        super(GuestHandler, self).__init__(*args, **kwargs)
+        self.backend_data = current_state.backend.perform("guest", "get_settings")
+
     def get_form(self):
-        data = current_state.backend.perform("guest", "get_settings")
-        data["guest_enabled"] = data["enabled"]
-        data["guest_ipaddr"] = data["ip"]
-        data["guest_netmask"] = data["netmask"]
-        data["guest_dhcp_enabled"] = data["dhcp"]["enabled"]
-        data["guest_dhcp_min"] = data["dhcp"]["start"]
-        data["guest_dhcp_max"] = data["dhcp"]["limit"]
-        data["guest_dhcp_leasetime"] = data["dhcp"]["lease_time"] // 60 // 60
-        data["guest_qos_enabled"] = data["qos"]["enabled"]
-        data["guest_qos_download"] = data["qos"]["download"]
-        data["guest_qos_upload"] = data["qos"]["upload"]
+        data = {}
+        data["guest_enabled"] = self.backend_data["enabled"]
+        data["guest_ipaddr"] = self.backend_data["ip"]
+        data["guest_netmask"] = self.backend_data["netmask"]
+        data["guest_dhcp_enabled"] = self.backend_data["dhcp"]["enabled"]
+        data["guest_dhcp_min"] = self.backend_data["dhcp"]["start"]
+        data["guest_dhcp_max"] = self.backend_data["dhcp"]["limit"]
+        data["guest_dhcp_leasetime"] = self.backend_data["dhcp"]["lease_time"] // 60 // 60
+        data["guest_qos_enabled"] = self.backend_data["qos"]["enabled"]
+        data["guest_qos_download"] = self.backend_data["qos"]["download"]
+        data["guest_qos_upload"] = self.backend_data["qos"]["upload"]
 
         if self.data:
             # Update from post

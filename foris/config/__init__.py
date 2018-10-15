@@ -341,7 +341,6 @@ class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
-        # show only non displayed notifications
         kwargs["dhcp_clients"] = self.backend_data["mode_managed"]["dhcp"]["clients"]
         kwargs["interface_count"] = self.backend_data["interface_count"]
         for client in kwargs["dhcp_clients"]:
@@ -356,7 +355,18 @@ class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     slug = "guest"
     menu_order = 16
 
+    template = "config/guest"
     template_type = "jinja2"
+
+    def render(self, **kwargs):
+        kwargs["dhcp_clients"] = self.backend_data["dhcp"]["clients"]
+        kwargs["interface_count"] = self.backend_data["interface_count"]
+        for client in kwargs["dhcp_clients"]:
+            client["expires"] = datetime.utcfromtimestamp(client["expires"]).strftime(
+                "%Y-%m-%d %H:%M"
+            )
+
+        return super(GuestConfigPage, self).render(**kwargs)
 
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):

@@ -1,0 +1,27 @@
+<h3>{% trans %}DHCP clients{% endtrans %}</h3>
+{% if dhcp_clients %}
+<table>
+  <thead>
+    <tr>
+      <th>{% trans %}Expires{% endtrans %}</th>
+      <th>{% trans %}IP Address{% endtrans %}</th>
+      <th>{% trans %}MAC Address{% endtrans %}</th>
+      <th>{% trans %}Hostname{% endtrans %}</th>
+      <th>{% trans %}Active{% endtrans %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for dhcp_client in dhcp_clients %}
+    <tr>
+        <td>{{ dhcp_client.expires }}</td>
+        <td>{{ dhcp_client.ip }}</td>
+        <td>{{ dhcp_client.mac }}</td>
+        <td>{{ dhcp_client.hostname }}</td>
+        <td><i class="fas {%if dhcp_client.active %}fa-check{% else %}fa-times{% endif %}"></span></td>
+    </tr>
+    {% endfor %}
+ </tbody>
+</table>
+{% else %}
+{% trans %}No DHCP clients found.{% endtrans %}
+{% endif %}
