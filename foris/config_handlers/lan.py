@@ -17,40 +17,43 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import fapi, validators
-from foris.form import Textbox, Checkbox, Number, Dropdown
+from foris.form import Textbox, Checkbox, Dropdown, Number
 from foris.state import current_state
-from foris.utils.routing import reverse
 from foris.utils.translators import gettext_dummy as gettext, _
 
 
-from .base import BaseConfigHandler, DEFAULT_GUEST_MASK, DEFAULT_GUEST_IP
+from .base import BaseConfigHandler
 
 
 class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
 
+    def __init__(self, *args, **kwargs):
+        super(LanHandler, self).__init__(*args, **kwargs)
+        self.backend_data = current_state.backend.perform("lan", "get_settings")
+
     def get_form(self):
-        backend_data = current_state.backend.perform("lan", "get_settings")
         data = {}
-        data["mode"] = backend_data["mode"]
-        data["router_ip"] = backend_data["mode_managed"]["router_ip"]
-        data["router_netmask"] = backend_data["mode_managed"]["netmask"]
-        data["router_dhcp_enabled"] = backend_data["mode_managed"]["dhcp"]["enabled"]
-        data["router_dhcp_start"] = backend_data["mode_managed"]["dhcp"]["start"]
-        data["router_dhcp_limit"] = backend_data["mode_managed"]["dhcp"]["limit"]
-        data["router_dhcp_leasetime"] = backend_data["mode_managed"]["dhcp"]["lease_time"] \
+        data["mode"] = self.backend_data["mode"]
+        data["router_ip"] = self.backend_data["mode_managed"]["router_ip"]
+        data["router_netmask"] = self.backend_data["mode_managed"]["netmask"]
+        data["router_dhcp_enabled"] = self.backend_data["mode_managed"]["dhcp"]["enabled"]
+        data["router_dhcp_start"] = self.backend_data["mode_managed"]["dhcp"]["start"]
+        data["router_dhcp_limit"] = self.backend_data["mode_managed"]["dhcp"]["limit"]
+        data["router_dhcp_leasetime"] = self.backend_data["mode_managed"]["dhcp"]["lease_time"] \
             // (60 * 60)
-        data["client_proto_4"] = backend_data["mode_unmanaged"]["lan_type"]
-        data["client_ip_4"] = backend_data["mode_unmanaged"]["lan_static"]["ip"]
-        data["client_netmask_4"] = backend_data["mode_unmanaged"]["lan_static"]["netmask"]
-        data["client_gateway_4"] = backend_data["mode_unmanaged"]["lan_static"]["gateway"]
-        dns1 = backend_data["mode_unmanaged"]["lan_static"].get("dns1")
+        data["client_proto_4"] = self.backend_data["mode_unmanaged"]["lan_type"]
+        data["client_ip_4"] = self.backend_data["mode_unmanaged"]["lan_static"]["ip"]
+        data["client_netmask_4"] = self.backend_data["mode_unmanaged"]["lan_static"]["netmask"]
+        data["client_gateway_4"] = self.backend_data["mode_unmanaged"]["lan_static"]["gateway"]
+        dns1 = self.backend_data["mode_unmanaged"]["lan_static"].get("dns1")
         if dns1:
             data["client_dns1_4"] = dns1
-        dns2 = backend_data["mode_unmanaged"]["lan_static"].get("dns2")
+        dns2 = self.backend_data["mode_unmanaged"]["lan_static"].get("dns2")
         if dns2:
             data["client_dns2_4"] = dns2
-        data["client_hostname_4"] = backend_data["mode_unmanaged"]["lan_dhcp"].get("hostname", "")
+        data["client_hostname_4"] = self.backend_data["mode_unmanaged"]["lan_dhcp"].get(
+            "hostname", "")
 
         if self.data:
             # Update from post
@@ -105,13 +108,13 @@ class LanHandler(BaseConfigHandler):
                    "the devices connected to the router.")
         ).requires("mode", "managed")
         lan_main.add_field(
-            Textbox, name="router_dhcp_start", label=_("DHCP start"),
+            Number, name="router_dhcp_start", label=_("DHCP start"),
         ).requires("router_dhcp_enabled", True)
         lan_main.add_field(
-            Textbox, name="router_dhcp_limit", label=_("DHCP max leases"),
+            Number, name="router_dhcp_limit", label=_("DHCP max leases"),
         ).requires("router_dhcp_enabled", True)
         lan_main.add_field(
-            Textbox, name="router_dhcp_leasetime", label=_("Lease time (hours)"),
+            Number, name="router_dhcp_leasetime", label=_("Lease time (hours)"),
             validators=[validators.InRange(1, 7 * 24)]
         ).requires("router_dhcp_enabled", True)
 
@@ -173,8 +176,8 @@ class LanHandler(BaseConfigHandler):
                     "enabled": data["router_dhcp_enabled"],
                 }
                 if dhcp["enabled"]:
-                    dhcp["start"] = data["router_dhcp_start"]
-                    dhcp["limit"] = data["router_dhcp_limit"]
+                    dhcp["start"] = int(data["router_dhcp_start"])
+                    dhcp["limit"] = int(data["router_dhcp_limit"])
                     dhcp["lease_time"] = int(data.get("router_dhcp_leasetime", 12)) * 60 * 60
                 msg["mode_managed"] = {
                     "router_ip": data["router_ip"],
