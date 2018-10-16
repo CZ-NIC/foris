@@ -1,3 +1,12 @@
+98.13 (2018-10-16)
+------------------
+
+* lan+wan+guest tab will display a warning when it doens't have any interface assigned
+* lan+guest tab show a list of dhcp clients
+* web tab contains a new 'Local Server' workflow
+* LAN can be set to unmanaged mode
+* networks tab will display more detail of network interfaces
+
 98.12 (2018-09-26)
 ------------------
 
