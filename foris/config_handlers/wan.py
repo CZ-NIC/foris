@@ -34,9 +34,11 @@ class WanHandler(BaseConfigHandler):
         # Do not display "none" options for WAN protocol if hide_no_wan is True
         self.hide_no_wan = kwargs.pop("hide_no_wan", False)
         self.status_data = current_state.backend.perform("wan", "get_wan_status")
+        self.backend_data = current_state.backend.perform("wan", "get_settings")
         super(WanHandler, self).__init__(*args, **kwargs)
 
-    def _convert_backend_data_to_form_data(self, data):
+    @staticmethod
+    def _convert_backend_data_to_form_data(data):
         res = {}
 
         # WAN
@@ -85,7 +87,8 @@ class WanHandler(BaseConfigHandler):
 
         return res
 
-    def _convert_form_data_to_backend_data(self, data):
+    @staticmethod
+    def _convert_form_data_to_backend_data(data):
         res = {"wan_settings": {}, "wan6_settings": {}, "mac_settings": {}}
 
         # WAN
@@ -142,8 +145,7 @@ class WanHandler(BaseConfigHandler):
         return res
 
     def get_form(self):
-        data = current_state.backend.perform("wan", "get_settings")
-        data = self._convert_backend_data_to_form_data(data)
+        data = WanHandler._convert_backend_data_to_form_data(self.backend_data)
 
         if self.data:
             # Update from post
@@ -374,7 +376,7 @@ class WanHandler(BaseConfigHandler):
         ).requires("custom_mac", True)
 
         def wan_form_cb(data):
-            backend_data = self._convert_form_data_to_backend_data(data)
+            backend_data = WanHandler._convert_form_data_to_backend_data(data)
             res = current_state.backend.perform("wan", "update_settings", backend_data)
 
             return "save_result", res  # store {"result": ...} to be used later...

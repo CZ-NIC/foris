@@ -3,6 +3,9 @@
 {% block config_base %}
 {% if is_xhr is not defined %}
 <div id="page-wan" class="config-page">
+	{% if interface_count < 1 %}
+		{% include "config/_no_interface_warning.html.j2" %}
+	{% endif %}
 {% endif %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ description|safe }}</p>

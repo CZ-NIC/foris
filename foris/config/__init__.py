@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import typing
+
 from datetime import datetime
 import base64
 import logging
@@ -43,6 +45,7 @@ logger = logging.getLogger(__name__)
 
 class ConfigPageMixin(object):
     # page url part /config/<slug>
+    typing.Optional[str]
     slug = None
     menu_order = 50
     template = "config/main"
@@ -309,6 +312,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
+        kwargs['interface_count'] = self.backend_data["interface_count"]
         if not self.status_data["up"]:
             if self.status_data["proto"] == "pppoe":
                 messages.warning(_(
