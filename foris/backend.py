@@ -67,6 +67,11 @@ class Backend(object):
                 if data is not None:
                     msg["data"] = data
                 raise ExceptionInBackend(msg, error["stacktrace"], error["description"])
+        except RuntimeError as e:
+            # This may occure when e.g. calling function is not present in backend
+            logger.error("RuntimeError occured during the communication with backend.")
+            if raise_exception_on_failure:
+                raise e
         except Exception as e:
             logger.error("Exception occured during the communication with backend. (%s)", e)
             raise e

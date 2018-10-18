@@ -31,7 +31,7 @@ from foris.common import require_contract_valid, login
 from foris.guide import Workflow
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
-    backups, collect, dns, misc, notifications, wan, lan, updater, wifi, networks,
+    backups, dns, misc, notifications, wan, lan, updater, wifi, networks,
     guest, profile
 )
 from foris.utils import login_required, messages, is_safe_redirect, contract_valid
@@ -598,123 +598,6 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             return ConfigPageMixin.get_menu_tag_static(cls)
 
 
-class DataCollectionConfigPage(ConfigPageMixin, collect.UcollectHandler):
-    slug = "data-collection"
-    menu_order = 22
-
-    template = "config/data-collection"
-    template_type = "jinja2"
-    userfriendly_title = gettext("Data collection")
-
-    def render(self, **kwargs):
-        status = kwargs.pop("status", None)
-        if not contract_valid():
-            updater_data = current_state.backend.perform("updater", "get_enabled")
-            kwargs['updater_disabled'] = not updater_data["enabled"]
-
-            if updater_data["enabled"]:
-                collect_data = current_state.backend.perform("data_collect", "get")
-                if collect_data["agreed"]:
-                    handler = collect.CollectionToggleHandler(request.POST.decode())
-                    kwargs['collection_toggle_form'] = handler.form
-                    kwargs['agreed'] = collect_data["agreed"]
-                else:
-                    email = request.POST.decode().get(
-                        "email", request.GET.decode().get("email", ""))
-                    handler = collect.RegistrationCheckHandler({"email": email})
-                    kwargs['registration_check_form'] = handler.form
-
-        return self.default_template(form=self.form, title=self.userfriendly_title,
-                                     description=None, status=status,
-                                     **kwargs)
-
-    def save(self, *args, **kwargs):
-        super(DataCollectionConfigPage, self).save(no_messages=True, *args, **kwargs)
-        result = self.form.callback_results.get('result', False)
-        if result:
-            messages.success(_("Configuration was successfully saved."))
-        else:
-            messages.error(_(
-                "Failed to update emulated services. Note that you might need to wait till "
-                "ucollect is properly installed."
-            ))
-        return result
-
-    @require_contract_valid(False)
-    def _action_check_registration(self):
-        handler = collect.RegistrationCheckHandler(request.POST.decode())
-        if not handler.save():
-            messages.warning(_("There were some errors in your input."))
-            return self.render(registration_check_form=handler.form)
-
-        email = handler.data["email"]
-
-        result = handler.form.callback_results
-        kwargs = {}
-        if not result["success"]:
-            messages.error(_("An error ocurred when checking the registration: "
-                             "<br><pre>%(error)s</pre>" % dict(error=result["error"])))
-            return self.render()
-        else:
-            if result["status"] == "owned":
-                messages.success(_("Registration for the entered email is valid. "
-                                   "Now you can enable the data collection."))
-                collection_toggle_handler = collect.CollectionToggleHandler(request.POST.decode())
-                kwargs['collection_toggle_form'] = collection_toggle_handler.form
-            elif result["status"] == "foreign":
-                messages.warning(
-                    _('This router is currently assigned to a different email address. Please '
-                      'continue to the <a href="%(url)s">Turris website</a> and use the '
-                      'registration code <strong>%(reg_num)s</strong> for a re-assignment to your '
-                      'email address.')
-                    % dict(url=result["url"], reg_num=result["registration_number"]))
-                bottle.redirect(
-                    reverse("config_page", page_name="data-collection") + "?" +
-                    urlencode({"email": email})
-                )
-            elif result["status"] == "free":
-                messages.info(
-                    _('This email address is not registered yet. Please continue to the '
-                      '<a href="%(url)s">Turris website</a> and use the registration code '
-                      '<strong>%(reg_num)s</strong> to create a new account.')
-                    % dict(url=result["url"], reg_num=result["registration_number"]))
-                bottle.redirect(
-                    reverse("config_page", page_name="data-collection") + "?" +
-                    urlencode({"email": email})
-                )
-            elif result["status"] == "not_found":
-                messages.error(
-                    _('Router failed to authorize. Please try to validate our email later.'))
-                bottle.redirect(
-                    reverse("config_page", page_name="data-collection") + "?" +
-                    urlencode({"email": email})
-                )
-        return self.render(status=result["status"],
-                           registration_url=result["url"],
-                           reg_num=result["registration_number"], **kwargs)
-
-    @require_contract_valid(False)
-    def _action_toggle_collecting(self):
-        if bottle.request.method != 'POST':
-            messages.error(_("Wrong HTTP method."))
-            bottle.redirect(reverse("config_page", page_name="data-collection"))
-
-        handler = collect.CollectionToggleHandler(request.POST.decode())
-        if handler.save():
-            messages.success(_("Configuration was successfully saved."))
-            bottle.redirect(reverse("config_page", page_name="data-collection"))
-
-        messages.warning(_("There were some errors in your input."))
-        return super(DataCollectionConfigPage, self).render(collection_toggle_form=handler.form)
-
-    def call_action(self, action):
-        if action == "check_registration":
-            return self._action_check_registration()
-        elif action == "toggle_collecting":
-            return self._action_toggle_collecting()
-        raise ValueError("Unknown action.")
-
-
 class AboutConfigPage(ConfigPageMixin):
     slug = "about"
     menu_order = 99
@@ -756,8 +639,9 @@ class AboutConfigPage(ConfigPageMixin):
             self.SENDING_STATUS_TRANSLATION[data["ucollect_status"]["state"]]
         # process dates etc
         if not contract_valid():
-            agreed = current_state.backend.perform("data_collect", "get")["agreed"]
-            kwargs['agreed_collect'] = agreed
+            agreed = current_state.backend.perform(
+                "data_collect", "get", raise_exception_on_failure=False)
+            kwargs['agreed_collect'] = False if agreed is None else agreed["agreed"]
         return self.default_template(data=data, **kwargs)
 
 
@@ -775,7 +659,6 @@ config_pages = {
         WifiConfigPage,
         MaintenanceConfigPage,
         UpdaterConfigPage,
-        DataCollectionConfigPage,
         AboutConfigPage,
     ]
 }
