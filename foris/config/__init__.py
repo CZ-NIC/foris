@@ -606,12 +606,6 @@ class AboutConfigPage(ConfigPageMixin):
     template_type = "jinja2"
     userfriendly_title = gettext("About")
 
-    SENDING_STATUS_TRANSLATION = {
-        'online': gettext("Online"),
-        'offline': gettext("Offline"),
-        'unknown': gettext("Unknown status"),
-    }
-
     @require_contract_valid(True)
     def _action_registration_code(self):
         data = current_state.backend.perform("about", "get_registration_number")
@@ -625,23 +619,7 @@ class AboutConfigPage(ConfigPageMixin):
 
     def render(self, **kwargs):
         data = current_state.backend.perform("about", "get")
-        data["firewall_status"]["seconds_ago"] = \
-            int(time.time() - data["firewall_status"]["last_check"])
-        data["firewall_status"]["datetime"] = \
-            datetime.fromtimestamp(data["firewall_status"]["last_check"])
-        data["firewall_status"]["state_trans"] = \
-            self.SENDING_STATUS_TRANSLATION[data["firewall_status"]["state"]]
-        data["ucollect_status"]["seconds_ago"] = \
-            int(time.time() - data["ucollect_status"]["last_check"])
-        data["ucollect_status"]["datetime"] = \
-            datetime.fromtimestamp(data["ucollect_status"]["last_check"])
-        data["ucollect_status"]["state_trans"] = \
-            self.SENDING_STATUS_TRANSLATION[data["ucollect_status"]["state"]]
         # process dates etc
-        if not contract_valid():
-            agreed = current_state.backend.perform(
-                "data_collect", "get", raise_exception_on_failure=False)
-            kwargs['agreed_collect'] = False if agreed is None else agreed["agreed"]
         return self.default_template(data=data, **kwargs)
 
 

@@ -21,44 +21,6 @@
                 <th>{% trans %}Kernel version{% endtrans %}</th>
                 <td>{{ data['kernel'] }}</td>
             </tr>
-          {% if contract_valid() or (agreed_collect is defined and agreed_collect) %}
-            <tr>
-                <th>{% trans %}Sending of uCollect data{% endtrans %}</th>
-                <td class="{{ "sending-ok" if data['ucollect_status']['state'] == "online" else "sending-fail" }}">
-                  {{ data['ucollect_status']['state_trans'] }}
-                  {% if data['ucollect_status']['state'] != "unknown" %}
-                  <abbr title="{% trans datetime=helpers.translate_datetime(data['ucollect_status']['datetime']) %}Time of last update: {{ datetime }}{% endtrans %}">
-                        {% trans seconds=data['ucollect_status']['seconds_ago'] %}
-                        status updated {{ seconds }} second ago
-                        {% pluralize %}
-                        status updated {{ seconds }} seconds ago
-                        {% endtrans %}
-                      </abbr>
-                  {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>{% trans %}Sending of firewall logs{% endtrans %}</th>
-                <td class="{{ "sending-ok" if data['firewall_status']['state'] == "online" else "sending-fail" }}">
-                  {{ data['firewall_status']['state_trans'] }}
-                  {% if data['firewall_status']['state'] != "unknown" %}
-                      <abbr title="{% trans datetime=helpers.translate_datetime(data['ucollect_status']['datetime']) %}Time of last update: {{ datetime }}{% endtrans %}">
-                        {% trans seconds=data['firewall_status']['seconds_ago'] %}
-                        status updated {{ seconds }} second ago
-                        {% pluralize %}
-                        status updated {{ seconds }} seconds ago
-                        {% endtrans %}
-                      </abbr>
-                  {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>
-                    <a href="{{ url("config_page", page_name="about") }}" class="reload">{% trans %}Refresh{% endtrans %}</a>
-                </td>
-            </tr>
-          {% endif %}
         </tbody>
     </table>
 
