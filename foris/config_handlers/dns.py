@@ -21,7 +21,7 @@ from .base import BaseConfigHandler
 from foris import fapi
 from foris import validators
 
-from foris.form import Checkbox, Textbox
+from foris.form import Checkbox, Textbox, Dropdown
 from foris.state import current_state
 from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
@@ -36,6 +36,7 @@ class DNSHandler(BaseConfigHandler):
 
     def get_form(self):
         data = current_state.backend.perform("dns", "get_settings")
+        available_forwarders = [[e["name"], e["description"]] for e in data["available_forwarders"]]
         data["dnssec_disabled"] = not data["dnssec_enabled"]
         if self.data:
             # Update from post
@@ -48,6 +49,13 @@ class DNSHandler(BaseConfigHandler):
             Checkbox, name="forwarding_enabled", label=_("Use forwarding"),
             preproc=lambda val: bool(int(val)),
         )
+        available_forwarders = sorted(available_forwarders, key=lambda x: x[0])
+        # fill in text for forwarder (first with "" name)
+        available_forwarders[0][1] = _("Use provider's DNS resolver")
+        dns_main.add_field(
+            Dropdown, name="forwarder", label=_("DNS Forwarder"),
+            args=available_forwarders,
+        ).requires("forwarding_enabled", True)
 
         if not contract_valid():
             dns_main.add_field(
@@ -80,6 +88,8 @@ class DNSHandler(BaseConfigHandler):
             }
             if "dns_from_dhcp_domain" in data:
                 msg["dns_from_dhcp_domain"] = data["dns_from_dhcp_domain"]
+            if data["forwarding_enabled"]:
+                msg["forwarder"] = data.get("forwarder", "")
             res = current_state.backend.perform("dns", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...
 
