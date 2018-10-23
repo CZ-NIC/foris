@@ -1,3 +1,8 @@
+98.14 (2018-10-23)
+------------------
+* dns: ability to set custom forwarders added
+* removing data_collect (will be a part of a separete plugin)
+
 98.13 (2018-10-16)
 ------------------
 
