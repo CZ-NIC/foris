@@ -35,7 +35,7 @@ class StandardMessages(object):
     PASSWORD_PASSED_DEFAULT = [
         _(
             "Welcome to Foris web interface. This guide will help you to setup your router. "
-            "Firstly it is required to set your password. Note the security of our home "
+            "Firstly it is required to set your password. Note the security of your home "
             "network is in your hands, so try not to use weak passwords."
         ),
         _(

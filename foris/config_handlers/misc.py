@@ -79,18 +79,18 @@ class PasswordHandler(BaseConfigHandler):
         system_pw = pw_form.add_section(
             name="system_pw", title=_("for Advanced administration"),
             description=_(
-                "In order to access the advanced configuration possibilities which are "
-                "not present here, you must set the root user's password. The advanced "
+                "In order to access the advanced configuration options which are "
+                "not available here, you must set the root user's password. The advanced "
                 "configuration options can be managed either through the "
                 "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
-                "or over SSH."
+                "or via SSH."
             ) % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'}
         )
         SYSTEM_PW_SKIP = 'skip'
         SYSTEM_PW_SAME = 'same'
         SYSTEM_PW_CUSTOM = 'custom'
         SYSTEM_PW_OPTIONS = (
-            (SYSTEM_PW_SKIP, _("Don't change password")),
+            (SYSTEM_PW_SKIP, _("Don't set this password")),
             (SYSTEM_PW_SAME, _("Use Foris password")),
             (SYSTEM_PW_CUSTOM, _("Use other password")),
         )
@@ -179,9 +179,9 @@ class UnifiedTimeHandler(BaseConfigHandler):
         main_section = region_and_time_form.add_section(
             name="region_and_time",  title=_(self.userfriendly_title),
             description=_(
-                "It is important that your router has the current time properly set. "
-                "If our router had an older time set some expired SSL certificates "
-                "might have seemed like valid."
+                "It is important for your device to have the correct time set. "
+                "If your device's time is delayed, the procedure of SSL certificate verification "
+                "might not work correctly."
             )
         )
         # region section
