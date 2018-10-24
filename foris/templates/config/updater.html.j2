@@ -7,9 +7,9 @@
 {% include '_messages.html.j2' %}
 
   <p>{{ form.sections[0].description|safe }}</p>
-{% if agreed_collect and not contract_valid() %}
+{% if agreed_collect %}
   <div class="message info">{% trans %}Data collection is currently enabled. You can not disable updater without disabling the data collection first.{% endtrans %}</div>
-{% elif not contract_valid() %}
+{% else %}
     {% include 'includes/updater_eula.html.j2' %}
 {% endif %}
 
@@ -17,14 +17,14 @@
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
 
 {# main updater switch #}
-{% if not agreed_collect and not contract_valid() %}
+{% if not agreed_collect %}
     <div class="row" id="updater-toggle">
       {{ form.sections[0].active_fields[0].render()|safe }}
 </div>
 {% endif %}
 
 {# approval settings #}
-{% if is_updater_enabled() and not contract_valid() %}
+{% if is_updater_enabled() %}
   <h4>{% trans %}Update approvals{% endtrans %}</h4>
   <div id="updater-approvals">
   {% if foris_info.device_customization == "turris" %}
@@ -105,7 +105,7 @@
   {% endif %}
 {% endif %}
 
-{% if is_updater_enabled() or contract_valid() %}
+{% if is_updater_enabled() %}
   <h2>{% trans %}Package lists{% endtrans %}</h2>
   {% for field in form.sections[0].sections[1].active_fields %}
   <div class="row">

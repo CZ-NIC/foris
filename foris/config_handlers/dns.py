@@ -23,7 +23,6 @@ from foris import validators
 
 from foris.form import Checkbox, Textbox, Dropdown
 from foris.state import current_state
-from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 
 
@@ -57,11 +56,10 @@ class DNSHandler(BaseConfigHandler):
             args=available_forwarders,
         ).requires("forwarding_enabled", True)
 
-        if not contract_valid():
-            dns_main.add_field(
-                Checkbox, name="dnssec_disabled", label=_("Disable DNSSEC"),
-                preproc=lambda val: bool(int(val)), default=False
-            )
+        dns_main.add_field(
+            Checkbox, name="dnssec_disabled", label=_("Disable DNSSEC"),
+            preproc=lambda val: bool(int(val)), default=False
+        )
 
         dns_main.add_field(
             Checkbox, name="dns_from_dhcp_enabled", label=_("Enable DHCP clients in DNS"),

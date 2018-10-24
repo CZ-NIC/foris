@@ -27,14 +27,14 @@ from bottle import Bottle, request, template, response, jinja2_template
 from urllib.parse import urlencode
 import bottle
 
-from foris.common import require_contract_valid, login
+from foris.common import login
 from foris.guide import Workflow
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
     backups, dns, misc, notifications, wan, lan, updater, wifi, networks,
     guest, profile
 )
-from foris.utils import login_required, messages, is_safe_redirect, contract_valid
+from foris.utils import login_required, messages, is_safe_redirect
 from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 from foris.state import current_state
@@ -605,17 +605,6 @@ class AboutConfigPage(ConfigPageMixin):
     template = "config/about"
     template_type = "jinja2"
     userfriendly_title = gettext("About")
-
-    @require_contract_valid(True)
-    def _action_registration_code(self):
-        data = current_state.backend.perform("about", "get_registration_number")
-        return data["registration_number"]
-
-    def call_ajax_action(self, action):
-        if action == "registration_code":
-            regnum = self._action_registration_code()
-            return dict(success=regnum is not False, data=regnum)
-        raise ValueError("Unknown AJAX action.")
 
     def render(self, **kwargs):
         data = current_state.backend.perform("about", "get")

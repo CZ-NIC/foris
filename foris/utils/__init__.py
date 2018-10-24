@@ -196,35 +196,6 @@ def localized_sorted(iterable, lang, key=None, reverse=False):
     return sorted(iterable, key=key_fn, reverse=reverse)
 
 
-def contract_valid():
-    """Read whether the contract related with the current router is valid
-
-    :return: whether the contract is still valid
-    """
-    CONRACT_VALID = "valid"
-    CONRACT_UNKNOWN = "unknown"
-    if current_state.device_customization != "turris":
-        return False
-
-    # perform backend query or obtain from cache
-    args = ("about", "get_contract_status", None)
-    hashable_args = ("about", "get_contract_status", None)
-    data = per_request.backend_data[hashable_args] if hashable_args in per_request.backend_data \
-        else current_state.backend.perform(*args)
-
-    # store into cache
-    per_request.backend_data[hashable_args] = data
-
-    if data["contract_status"] == CONRACT_VALID:
-        return True
-
-    if data["contract_status"] == CONRACT_UNKNOWN:
-        # Consider old contract valid for old turrises
-        return True
-
-    return False
-
-
 def check_password(password):
     res = current_state.backend.perform(
         "password", "check",

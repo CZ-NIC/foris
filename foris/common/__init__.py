@@ -25,8 +25,7 @@ from functools import wraps
 
 from foris import BASE_DIR
 from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, login_required, contract_valid,
-    check_password
+    redirect_unauthenticated, is_safe_redirect, login_required, check_password,
 )
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
@@ -133,26 +132,6 @@ def static(filename):
         )
 
     return prepare_response(filename, os.path.join(BASE_DIR, "static"))
-
-
-def require_contract_valid(valid=True):
-    """
-    Decorator for methods that require valid contract.
-    Raises bottle HTTPError if validity differs.
-
-    :param valid: should be contrat valid
-    :type valid: bool
-    :return: decorated function
-    """
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-
-            if not (contract_valid() == valid):
-                raise bottle.HTTPError(403, "Contract validity mismatched.")
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
 
 
 @login_required

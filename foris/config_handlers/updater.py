@@ -21,7 +21,6 @@ import copy
 from foris import fapi, validators
 from foris.form import Checkbox, Radio, RadioSingle, Number, Hidden
 from foris.state import current_state
-from foris.utils import contract_valid
 from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler
@@ -38,13 +37,10 @@ class UpdaterHandler(BaseConfigHandler):
 
     def __init__(self, *args, **kwargs):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
-        if not contract_valid():
-            agreed = current_state.backend.perform(
-                "data_collect", "get", raise_exception_on_failure=False
-            )
-            self.agreed_collect = False if agreed is None else agreed["agreed"]
-        else:
-            self.agreed_collect = True
+        agreed = current_state.backend.perform(
+            "data_collect", "get", raise_exception_on_failure=False
+        )
+        self.agreed_collect = False if agreed is None else agreed["agreed"]
 
         self.backend_data = current_state.backend.perform(
             "updater", "get_settings", {"lang": current_state.language})
@@ -173,11 +169,6 @@ class UpdaterHandler(BaseConfigHandler):
                     data["approval_settings"]["delay"] = int(data["approval_delay"])
                 elif data[self.APPROVAL_NO] == self.APPROVAL_NO:
                     data["approval_settings"] = {"status": self.APPROVAL_NO}
-
-                if contract_valid():
-                    data["enabled"] = True
-                    data["approval_settings"]["status"] = self.APPROVAL_NO
-                    data["approval_settings"].pop("delay", None)
 
                 if self.agreed_collect:
                     data["enabled"] = True

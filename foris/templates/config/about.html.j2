@@ -24,55 +24,5 @@
         </tbody>
     </table>
 
-{% if not contract_valid() %}
 </div>
-{% else %}
-    <h2>{% trans %}Device registration{% endtrans %}</h2>
-    <div class="about-description">
-        <p>
-        {% trans url="https://project.turris.cz/user/register-router" %}If you have not registered your device yet, click on the following button to obtain a registration code. This code must be submitted on the Turris site in your user profile available at: <a href="{{ url }}">{{ url }}</a>.{% endtrans %}
-        </p>
-        <p>
-            {% trans %}Registration code{% endtrans %}: <span id="registration-code">????????</span>
-        </p>
-        <div id="registration-code-fail">
-            {% trans %}Unfortunately, it wasn't possible to generate the registration code. This usually means the router is not connected to the internet. Please, try registering later. If the problem persists, contact the support.{% endtrans %}
-        </div>
-        <button id="registration-code-update" class="button">{% trans %}Get registration code{% endtrans %}</button>
-    </div>
-</div>
-<script>
-    $(document).ready(function() {
-        $("#registration-code-update").click(function(e) {
-            var self = $(this);
-            e.preventDefault();
-            self.attr("disabled", "disabled");
-            self.after('<img src="{{ static("img/icon-loading.gif") }}" id="registration-code-loader" alt="' + Foris.messages.loading +'">');
-            $.get('{{ url("config_ajax", page_name="about") }}', {action: "registration_code"})
-                    .done(function(response, status, xhr) {
-                        if (response.success) {
-                            $("#registration-code").text(response.data).show();
-                            $("#registration-code-fail").hide();
-                        }
-                        else {
-                            $("#registration-code").text("????????");
-                            $("#registration-code-fail").show();
-                        }
-                    })
-                    .fail(function(xhr) {
-                        if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
-                            window.location.replace(xhr.responseJSON.loginUrl);
-                            return;
-                        }
-                        $("#registration-code").text("????????");
-                        $("#registration-code-fail").show();
-                    })
-                    .always(function() {
-                        $("#registration-code-loader").remove();
-                        self.removeAttr("disabled");
-                    });
-        });
-    });
-</script>
-{% endif %}
 {% endblock %}
