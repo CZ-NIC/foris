@@ -14,33 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .base import (
-    BaseConfigHandler,
-)
+from .base import BaseConfigHandler
 
-from .backups import MaintenanceHandler
-from .collect import CollectionToggleHandler, UcollectHandler, RegistrationCheckHandler
-from .dns import DNSHandler
-from .lan import LanHandler
-from .misc import PasswordHandler
-from .networks import NetworksHandler
-from .notifications import NotificationsHandler
-from .updater import UpdaterHandler
-from .wan import WanHandler
-from .wifi import WifiHandler
 
 __all__ = [
     'BaseConfigHandler',
-    'CollectionToggleHandler',
-    'DNSHandler',
-    'LanHandler',
-    'MaintenanceHandler',
-    'NotificationsHandler',
-    'PasswordHandler',
-    'RegistrationCheckHandler',
-    'UcollectHandler',
-    'UpdaterHandler',
-    'WanHandler',
-    'WifiHandler',
-    'NetworksHandler',
 ]
