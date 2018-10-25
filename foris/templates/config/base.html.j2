@@ -21,7 +21,7 @@
         <div id="content">
           {% if foris_info.guide.enabled %}
           <div id="guide-box">
-            <p class="guide-title">{% trans %}foris guide{% endtrans %}</p>
+              <p class="guide-title">{% trans %}foris guide{% endtrans %}{% if foris_info.guide.workflow_title %} - {{ foris_info.guide.workflow_title }}{% endif %}</p>
             {% for msg in foris_info.guide.message(active_config_page_key) %}
             <p>{{ msg|safe }}</p>
             {% endfor %}

@@ -279,6 +279,13 @@ class Guide(object):
         else:
             return True
 
+    @property
+    def workflow_title(self):
+        if self.workflow in [WORKFLOW_UNSET, WORKFLOW_OLD]:
+            return ""
+        else:
+            return Workflow.TITLES[self.workflow]
+
 
 class Workflow(object):
     TITLES = {
