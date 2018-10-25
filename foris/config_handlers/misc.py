@@ -296,3 +296,27 @@ class UnifiedTimeHandler(BaseConfigHandler):
 
         region_and_time_form.add_callback(region_form_cb)
         return region_and_time_form
+
+
+class GuideFinishedHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Guide Finished")
+
+    def get_form(self):
+        finished_form = fapi.ForisForm("guide_finished", {})
+        finished_form.add_section(
+            name="guide_finished",  title=_(self.userfriendly_title),
+            description=_(
+                "Congratulations you've successfully reached the end of this guide. "
+                "Once you leave this guide you'll be granted access to the "
+                "full configuration interface of this device."
+            )
+        )
+
+        def guide_finished_cb(data):
+            res = current_state.backend.perform("web", "update_guide", {
+                "enabled": False,
+            })
+            return "save_result", res  # store {"result": ...} to be used later...
+
+        finished_form.add_callback(guide_finished_cb)
+        return finished_form

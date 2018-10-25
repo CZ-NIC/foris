@@ -598,6 +598,32 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             return ConfigPageMixin.get_menu_tag_static(cls)
 
 
+class GuideFinishedPage(ConfigPageMixin, misc.GuideFinishedHandler):
+    slug = "finished"
+    menu_order = 90
+
+    template_type = "jinja2"
+    template = "config/finished"
+
+    def save(self, *args, **kwargs):
+        result = super().save(no_messages=True, *args, **kwargs)
+        if not self.form.callback_results["result"]:
+            messages.error(_("Failed to finish the guide."))
+        return result
+
+    @classmethod
+    def is_visible(cls):
+        if not current_state.guide.enabled:
+            return False
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @classmethod
+    def is_enabled(cls):
+        if not current_state.guide.enabled:
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
+
+
 class AboutConfigPage(ConfigPageMixin):
     slug = "about"
     menu_order = 99
@@ -626,6 +652,7 @@ config_pages = {
         WifiConfigPage,
         MaintenanceConfigPage,
         UpdaterConfigPage,
+        GuideFinishedPage,
         AboutConfigPage,
     ]
 }

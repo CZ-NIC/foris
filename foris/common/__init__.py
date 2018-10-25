@@ -150,7 +150,6 @@ def reboot():
 def leave_guide():
     current_state.backend.perform("web", "update_guide", {
         "enabled": False,
-        "workflow": current_state.guide.workflow,
     })
     bottle.redirect(reverse("/"))
 

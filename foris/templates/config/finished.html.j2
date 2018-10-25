@@ -1,0 +1,18 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+{% if is_xhr is not defined %}
+<div id="page-config" class="config-page">
+{% endif %}
+    <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
+        <p class="config-description">{{ description|safe }}</p>
+        {% include '_messages.html.j2' %}
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
+            <button type="submit" name="send" class="button">{% trans %}Continue{% endtrans %}</button>
+        </div>
+    </form>
+{% if is_xhr is not defined %}
+</div>
+{% endif %}
+{% endblock %}
