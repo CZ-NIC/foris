@@ -1,23 +1,1639 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Foris package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 09:42+0200\n"
+"POT-Creation-Date: 2018-10-25 16:25+0200\n"
 "PO-Revision-Date: 2018-04-04 09:21+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/turris/foris/ko/"
-">\n"
 "Language: ko\n"
+"Language-Team: Korean "
+"<https://hosted.weblate.org/projects/turris/foris/ko/>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"Generated-By: Babel 2.6.0\n"
+
+msgid ""
+"Welcome to Foris web interface. This guide will help you to setup your "
+"router. Firstly it is required to set your password. Note the security of"
+" your home network is in your hands, so try not to use weak passwords."
+msgstr ""
+
+msgid "Your password seems to be set. You may proceed to the next step."
+msgstr ""
+
+msgid "Choose one of the possible setup workflows."
+msgstr ""
+
+#, fuzzy
+msgid "The workflow was set. You may proceed to next step."
+msgstr "펌웨어 업데이트가 완료되어, 다음 단계를 진행할 수 있습니다."
+
+msgid "Here you need to decide which interfaces belongs to which network."
+msgstr ""
+
+msgid "If you are in doubt use the current settings."
+msgstr ""
+
+msgid ""
+"You've configured your network interfaces. It seems that you didn't break"
+" any crucial network settings so you can safely proceed to the next step."
+msgstr ""
+
+msgid "In order to access the internet you need to configure your WAN interface."
+msgstr ""
+
+msgid ""
+"You've configured your WAN interface. Try to run connection test to see "
+"whether it is working properly and if so you can safely proceed to the "
+"next step."
+msgstr ""
+
+msgid ""
+"Now you should configure your LAN interface. Note that when you change "
+"your network settings you probably won't be able to connect to the "
+"configuration interface unless you restart the network on your current "
+"device."
+msgstr ""
+
+msgid ""
+"You've configured your LAN interface. Try to test whether settings work "
+"properly and if so you can safely proceed to the next step."
+msgstr ""
+
+msgid "Now you need to set the time and timezone of your device."
+msgstr ""
+
+msgid ""
+"Your time and timezone seem to be set. Please make sure that the time "
+"matches the time on your computer if not try to update it via ntp or "
+"manually."
+msgstr ""
+
+msgid ""
+"A proper DNS resolving is one of the key security features of your "
+"router. Let's configure it now."
+msgstr ""
+
+msgid ""
+"You've updated your DNS configuration. Try to run connection test to see "
+"whether your DNS resolver is properly set."
+msgstr ""
+
+msgid "Now you need to configure automatic updates ouf your device."
+msgstr ""
+
+msgid "Please wait till the updater finishes its run."
+msgstr ""
+
+msgid "You have sucessfully configured your device."
+msgstr ""
+
+msgid ""
+"You chose to act as local server this means that it doesn't make sense to"
+" put any interfaces to your WAN and Guest Network. So it is a good idea "
+"to assign all iterfaces to LAN."
+msgstr ""
+
+msgid ""
+"To act as a local server, there's no need to manage LAN (if you still "
+"want to manage it reset the guide and choose the Router workflow). You "
+"probably want to act as a client here thus select "
+"<strong>Unmanaged</strong> mode here. "
+msgstr ""
+
+msgid ""
+"If you select the <strong>static</strong> configuration be sure that the "
+"IP addresses are entered correctly otherwise you won't be able to access "
+"this configuration iterface when the new settings are applied."
+msgstr ""
+
+msgid ""
+"If you select the <strong>DHCP</strong> method you probably you need to "
+"obtain a new IP address of this device. You can obtain it from the DHCP "
+"server which is managing your LAN. Then you need to connect to the new IP"
+" address to proceed the guide."
+msgstr ""
+
+msgid ""
+"Note that either way you might need to re-plug your ethernet cabels after"
+" you update the settings here."
+msgstr ""
+
+msgid ""
+"Please test whether the settings you provided are correctly working. This"
+" means that you can access the configuration interface of your device and"
+" your device is able to access the internet (you can use the connection "
+"test below)."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device should be able to act as a "
+"server on your local network."
+msgstr ""
+
+msgid ""
+"Minimal device setup is finished. Note that you probably need to perform "
+"some further configuration updates to fit the device to your needs."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device is able to act as a router "
+"and route network traffic among LAN, WAN and guest network."
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "Minimal"
+msgstr ""
+
+msgid "Router"
+msgstr ""
+
+msgid "Local Server"
+msgstr ""
+
+msgid "Unset"
+msgstr ""
+
+msgid "The workflow wasn't set yet."
+msgstr ""
+
+msgid "Workflow for older routers and older turris OS versions (before 4.0)."
+msgstr ""
+
+msgid ""
+"Just set your password and you are ready to go. This workflow is aimed to"
+" more advanced users who intend not to use the web gui. "
+msgstr ""
+
+msgid ""
+"After you finish this workflow your device will be able to act as a fully"
+" functional router. It assumes that you want to have more or less "
+"standard network setup."
+msgstr ""
+
+msgid ""
+"This workflow will help you to setup your device to act as a local "
+"server. It means that the device will provide some kind of service to "
+"other devices within your local network (e.g. act as a network attached "
+"storage)."
+msgstr ""
+
+msgid "This field is required."
+msgstr "필수 항목입니다."
+
+msgid "Not a valid IPv4 address."
+msgstr "올바르지 않은 IPv4 주소입니다."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "올바르지 않은 IPv4 넷마스크 주소입니다."
+
+msgid "Not a valid IPv6 address."
+msgstr "올바르지 않은 IPv6 주소입니다."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "올바르지 않은 IPv4 혹은 IPv6 주소입니다."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "접두사 길이가 붙은 IPv6 주소가 아닙니다."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "접두사 길이가 붙은 IPv4 주소가 아닙니다."
+
+msgid "Is not a number."
+msgstr "숫자가 아닙니다."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "올바른 HH:MM 시간 형식이 아닙니다."
+
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr "올바른 시간 형식(YYYY-MM-DD HH:MM:SS)이 아닙니다."
+
+msgid "This is not a valid domain name."
+msgstr "올바르지 않은 도메인 이름입니다."
+
+msgid "MAC address is not valid."
+msgstr "올바르지 않은 MAC 주소입니다."
+
+#, fuzzy
+msgid "Duid is not valid."
+msgstr "올바르지 않은 MAC 주소입니다."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "%(low)s - %(high)s 사이에 있지 않습니다."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "길이는 %(low)s ~ %(high)s자 이내여야 합니다."
+
+msgid "Configuration was successfully saved."
+msgstr "환경설정을 성공적으로 저장했습니다."
+
+msgid "There were some errors in your input."
+msgstr "입력한 내용 중에 오류가 있습니다."
+
+msgid "Notifications"
+msgstr "알림"
+
+msgid "Number of notifications"
+msgstr "알림 갯수"
+
+msgid "Old password you entered was not valid."
+msgstr "입력한 이전 암호가 올바르지 않습니다."
+
+#, fuzzy
+msgid "System password was successfully saved."
+msgstr "암호가 성공적으로 저장되었습니다."
+
+msgid "Failed to save system password"
+msgstr ""
+
+#, fuzzy
+msgid "Foris password was successfully saved."
+msgstr "암호가 성공적으로 저장되었습니다."
+
+msgid "Failed to save Foris password"
+msgstr ""
+
+#, fuzzy
+msgid "Guide workflow was sucessfully set."
+msgstr "암호가 성공적으로 저장되었습니다."
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+#, fuzzy
+msgid "Network configuration was sucessfully updated."
+msgstr "환경설정을 성공적으로 저장했습니다."
+
+#, fuzzy
+msgid "Unable to update your network configuration."
+msgstr "네트워크 연결을 확인할 수 없습니다."
+
+msgid ""
+"You WAN configuration is probably not correct or your WAN interface "
+"hasn't been properly initialized yet."
+msgstr ""
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr "WAN 포트가 연결되지 않아, 인터넷 연결이 동작하지 않을 수 있습니다."
+
+msgid "Wrong HTTP method."
+msgstr "잘못된 HTTP 메소드 입니다."
+
+msgid "Wi-Fi reset was successful."
+msgstr ""
+
+msgid "Failed to perform Wi-Fi reset."
+msgstr ""
+
+msgid "Maintenance"
+msgstr "유지보수"
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "테스트 메시지를 보냈으니, 메일함을 확인해주세요."
+
+#, fuzzy
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr "환경 설정에 문제가 있어 메시지 발송에 실패했습니다.<br>오류 메시지:<br><pre>%(error)s</pre>"
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원을 완료하려면 재시작해야 합니다."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "파일로부터 백업 복원에 실패했습니다."
+
+msgid "Update was approved."
+msgstr "업데이트가 승인되었습니다."
+
+msgid "Update was postponed."
+msgstr "업데이트가 연기되었습니다."
+
+msgid "Failed to approve the update."
+msgstr "업데이트 승인에 실패했습니다."
+
+msgid "Failed to postpone the update."
+msgstr "업데이트 연기에 실패했습니다."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be "
+"installed or removed shortly."
+msgstr "환경설정이 성공적으로 저장되었습니다. 선택된 패키지가 곧 설치 혹은 제거됩니다."
+
+msgid "Updater is running"
+msgstr "업데이트 진행중"
+
+#, fuzzy
+msgid "Failed to finish the guide."
+msgstr "업데이트 연기에 실패했습니다."
+
+msgid "About"
+msgstr "정보"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "내부 오류가 발생해 환경설정을 저장하지 못했습니다."
+
+msgid "The password you entered was not valid."
+msgstr "입력한 암호가 올바르지 않습니다."
+
+msgid "Backup file"
+msgstr ""
+
+msgid "DNS"
+msgstr ""
+
+msgid "Use forwarding"
+msgstr ""
+
+msgid "Use provider's DNS resolver"
+msgstr ""
+
+msgid "DNS Forwarder"
+msgstr ""
+
+msgid "Disable DNSSEC"
+msgstr ""
+
+msgid "Enable DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the"
+" local DNS records."
+msgstr ""
+
+msgid "Domain of DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
+msgstr ""
+
+msgid "Guest network"
+msgstr ""
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN. Devices connected to this network are "
+"allowed to access the internet, but are not allowed to access the "
+"configuration interface of the this device nor the devices in LAN."
+msgstr ""
+
+msgid "Enable guest network"
+msgstr ""
+
+msgid "Router IP in guest network"
+msgstr ""
+
+msgid ""
+"Router's IP address in the guest network. It is necessary that the guest "
+"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
+msgstr ""
+
+msgid "Guest network netmask"
+msgstr ""
+
+msgid "Network mask of the guest network."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr ""
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+
+msgid "DHCP start"
+msgstr ""
+
+msgid "DHCP max leases"
+msgstr ""
+
+msgid "Lease time (hours)"
+msgstr ""
+
+msgid "Guest Lan QoS"
+msgstr ""
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, "
+"so that your main network doesn't get slowed-down by it."
+msgstr ""
+
+msgid "Download (kb/s)"
+msgstr ""
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "Upload (kb/s)"
+msgstr ""
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "LAN"
+msgstr ""
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If "
+"you change the router IP address, all computers in LAN, probably "
+"including the one you are using now, will need to obtain a <strong>new IP"
+" address</strong> which does <strong>not</strong> happen "
+"<strong>immediately</strong>. It is recommended to disconnect and "
+"reconnect all LAN cables after submitting your changes to force the "
+"update. The next page will not load until you obtain a new IP from DHCP "
+"(if DHCP enabled) and you might need to <strong>refresh the page</strong>"
+" in your browser."
+msgstr ""
+
+msgid "LAN mode"
+msgstr ""
+
+msgid "Managed"
+msgstr ""
+
+msgid "Unmanaged"
+msgstr ""
+
+msgid ""
+"Manage mode means that this devices manages the LAN (acts as a router, "
+"can assing IP addresses, ...). Unmanaged mode means that this device acts"
+" as a client in this network. It acts in a similar way as WAN, but it has"
+" opened ports for configuration interface and other services. "
+msgstr ""
+
+msgid "Router IP address"
+msgstr ""
+
+msgid "Router's IP address in the inner network."
+msgstr ""
+
+msgid "Network netmask"
+msgstr ""
+
+msgid "Network mask of the inner network."
+msgstr ""
+
+msgid "DHCP (automatic configuration)"
+msgstr ""
+
+msgid "Static IP address (manual configuration)"
+msgstr ""
+
+msgid "Don't connect this device to LAN"
+msgstr ""
+
+msgid "IPv4 protocol"
+msgstr ""
+
+msgid "IPv4 address"
+msgstr ""
+
+msgid "Network mask"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "DNS server 1 (IPv4)"
+msgstr ""
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is "
+"capable of working without it."
+msgstr ""
+
+msgid "DNS server 2 (IPv4)"
+msgstr ""
+
+msgid "DHCP hostname"
+msgstr ""
+
+msgid "Hostname which will be provided to DHCP server."
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Current Foris password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "New password (repeat)"
+msgstr ""
+
+msgid "Password (repeat)"
+msgstr ""
+
+msgid "for Foris web interface"
+msgstr ""
+
+msgid ""
+"Set your password for this administration interface. The password must be"
+" at least 6 characters long."
+msgstr ""
+
+msgid "Passwords are not equal."
+msgstr ""
+
+msgid "for Advanced administration"
+msgstr ""
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration options which are not "
+"available here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a "
+"href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
+msgstr ""
+
+msgid "Don't set this password"
+msgstr ""
+
+msgid "Use Foris password"
+msgstr ""
+
+msgid "Use other password"
+msgstr ""
+
+msgid "Advanced administration"
+msgstr ""
+
+msgid ""
+"Same password would be used for accessing this administration interface, "
+"for root user in LuCI web interface and for SSH login. Use a strong "
+"password! (If you choose not to set the password for advanced "
+"configuration here, you will have the option to do so later. Until then, "
+"the root account will be blocked.)"
+msgstr ""
+
+msgid "Region and time"
+msgstr ""
+
+msgid ""
+"It is important for your device to have the correct time set. If your "
+"device's time is delayed, the procedure of SSL certificate verification "
+"might not work correctly."
+msgstr ""
+
+msgid "Region settings"
+msgstr ""
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct "
+"setting is required to display the right time and for related functions."
+msgstr ""
+
+msgid "Continent or ocean"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Timezone"
+msgstr ""
+
+msgid "Time settings"
+msgstr "시간 설정"
+
+msgid ""
+"Time should be up-to-date otherise DNS and other services might not work "
+"properly."
+msgstr ""
+
+msgid "How to set time"
+msgstr ""
+
+msgid "Choose method to store current time into the router."
+msgstr ""
+
+msgid "via ntp"
+msgstr ""
+
+msgid "manually"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
+msgstr ""
+
+msgid "Guide Finished"
+msgstr ""
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide. Once "
+"you leave this guide you'll be granted access to the full configuration "
+"interface of this device."
+msgstr ""
+
+msgid "Network interfaces"
+msgstr ""
+
+msgid "Notifications settings"
+msgstr ""
+
+msgid "Enable notifications"
+msgstr ""
+
+msgid "SMTP provider"
+msgstr ""
+
+msgid "Turris"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members "
+"of the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please "
+"select \"Custom\" and enter required settings."
+msgstr ""
+
+msgid "Recipient's email"
+msgstr ""
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr ""
+
+msgid "Sender's name"
+msgstr ""
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address"
+" before the \"at\" sign."
+msgstr ""
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and "
+"underscores."
+msgstr ""
+
+msgid "Reboot is required"
+msgstr ""
+
+msgid "Reboot or attention is required"
+msgstr ""
+
+msgid "Reboot or attention is required or update was installed"
+msgstr ""
+
+msgid "Importance"
+msgstr ""
+
+msgid "Send news"
+msgstr ""
+
+msgid "Send emails about new features."
+msgstr ""
+
+msgid "SMTP settings"
+msgstr ""
+
+msgid "Sender address (From)"
+msgstr ""
+
+msgid "This is the address notifications are send from."
+msgstr ""
+
+msgid "Server address"
+msgstr ""
+
+msgid "Server port"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "SSL/TLS"
+msgstr ""
+
+msgid "STARTTLS"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Automatic restarts after software update"
+msgstr ""
+
+msgid "Delay (days)"
+msgstr ""
+
+msgid ""
+"Number of days that must pass between receiving the request for restart "
+"and the automatic restart itself."
+msgstr ""
+
+msgid "Reboot time"
+msgstr ""
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr ""
+
+msgid "Guide workflow"
+msgstr ""
+
+msgid "Updater"
+msgstr ""
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart "
+"from the standard installation, you can optionally select bundles of "
+"additional software that'd be installed on the router. This software can "
+"be selected from the following list. Please note that only software that "
+"is part of TurrisOS or that has been installed from a package list is "
+"maintained by Updater. Software that has been installed manually or using"
+" opkg is not affected."
+msgstr ""
+
+msgid "I agree"
+msgstr ""
+
+msgid "Use automatic updates (recommended)"
+msgstr ""
+
+msgid "Turn automatic updates off"
+msgstr ""
+
+msgid "Update approvals"
+msgstr "업데이트 승인"
+
+msgid "Automatic installation"
+msgstr ""
+
+msgid "Updates will be installed without user's intervention."
+msgstr ""
+
+msgid "Delayed updates"
+msgstr ""
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+
+msgid "Update approval needed"
+msgstr ""
+
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr ""
+
+msgid ""
+"If you want to use other language than English you can select it from the"
+" following list:"
+msgstr ""
+
+msgid "WAN"
+msgstr ""
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this "
+"options untouched unless instructed otherwise by your internet service "
+"provider. Also, in case there is a cable or DSL modem connecting your "
+"router to the network, it is usually not necessary to change this "
+"setting."
+msgstr ""
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr ""
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr ""
+
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
+msgid "Disable IPv6"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "PAP/CHAP username"
+msgstr ""
+
+msgid "PAP/CHAP password"
+msgstr ""
+
+msgid "IPv6 protocol"
+msgstr ""
+
+msgid "IPv6 address"
+msgstr ""
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. "
+"2001:db8:be13:37da::1/64"
+msgstr ""
+
+msgid "IPv6 gateway"
+msgstr ""
+
+msgid "IPv6 prefix"
+msgstr ""
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr ""
+
+msgid "DNS server 1 (IPv6)"
+msgstr ""
+
+msgid "DNS server 2 (IPv6)"
+msgstr ""
+
+msgid "Custom DUID"
+msgstr ""
+
+msgid "DUID which will be provided to the DHCPv6 server."
+msgstr ""
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4"
+" address manually (e.g. when your WAN interface has a private address "
+"which is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
+
+msgid "Provider IPv4"
+msgstr ""
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on the provider's "
+"side."
+msgstr ""
+
+msgid "Routed IPv6 prefix"
+msgstr ""
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that "
+"you need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "ID of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid ""
+"Username which will be used to provide credentials to your tunnel "
+"provider."
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr ""
+
+msgid "Custom MAC address"
+msgstr ""
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet"
+" service provider."
+msgstr ""
+
+msgid "MAC address"
+msgstr ""
+
+msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
+msgstr ""
+
+msgid "Wi-Fi"
+msgstr ""
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+msgid "Hide SSID"
+msgstr ""
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+
+msgid "Wi-Fi mode"
+msgstr ""
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have "
+"more interference. The 5 GHz band is a newer standard and may not be "
+"supported by all your devices. It usually has less interference, but the "
+"signal does not carry so well indoors."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr ""
+
+msgid "802.11n/ac mode"
+msgstr ""
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz "
+"wide channels can yield higher throughput but can cause more interference"
+" in the network. If you don't know what to choose, use the default option"
+" with 20 MHz wide channel."
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "Network channel"
+msgstr ""
+
+msgid "Network password"
+msgstr ""
+
+msgid "Guest Wi-Fi"
+msgstr ""
+
+msgid "Set guest Wi-Fi here."
+msgstr ""
+
+msgid "Enable guest Wi-Fi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a "
+"href='%(url)s'>the Guest network tab</a>. "
+msgstr ""
+
+msgid "SSID for guests"
+msgstr ""
+
+msgid "Password for guests"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+
+msgid "Wi-Fi settings"
+msgstr ""
+
+msgid "Hint"
+msgstr "힌트"
+
+msgid "foris version:"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Turris router administration interface"
+msgstr ""
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+
+msgid "Reboot now"
+msgstr "지금 재시작"
+
+msgid "Dismiss"
+msgstr "닫기"
+
+msgid "Dismiss All"
+msgstr "모두 닫기"
+
+msgid "No new messages."
+msgstr "새 메시지가 없습니다."
+
+#, fuzzy
+msgid "Project:Turris"
+msgstr "Project:Turris"
+
+msgid "Log out"
+msgstr "로그아웃"
+
+msgid "Log in"
+msgstr ""
+
+msgid "Foris Configuration Interface"
+msgstr ""
+
+msgid "Go to LuCI"
+msgstr ""
+
+msgid "Opened lock"
+msgstr ""
+
+msgid "Your connection is not encrypted"
+msgstr ""
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr ""
+
+msgid "Connection test"
+msgstr "연결 테스트"
+
+msgid ""
+"Here you can test you connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes"
+" it takes a while before the connection is fully initialized. So it might"
+" be useful to wait for a while before running this test."
+msgstr ""
+"여기서 연결 설정을 테스트할 수 있습니다. 테스트하기 전에 <strong>저장</strong> 버튼을 눌러야 함을 기억하세요. "
+"경우에 따라 연결이 완전히 준비될 때까지 시간이 걸릴 수 있습니다. 그래서 테스트를 시작하기 전에 어느 정도 기다렸다가 시작하는 게"
+" 좋을 수 있습니다."
+
+#, fuzzy
+msgid "\"Unable to verify network connection."
+msgstr "네트워크 연결을 확인할 수 없습니다."
+
+msgid "Test type"
+msgstr "테스트 유형"
+
+msgid "Status"
+msgstr "상태"
+
+msgid "IPv4 connectivity"
+msgstr "IPv4 연결"
+
+msgid "IPv4 gateway connectivity"
+msgstr "IPv4 게이트웨이 연결"
+
+msgid "IPv6 connectivity"
+msgstr "IPv6 연결"
+
+msgid "IPv6 gateway connectivity"
+msgstr "IPv6 게이트웨이 연결"
+
+msgid "Test connection"
+msgstr "연결 테스트"
+
+msgid "DHCP clients"
+msgstr ""
+
+msgid "Expires"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "MAC Address"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+#, fuzzy
+msgid "Active"
+msgstr "저장"
+
+msgid "No DHCP clients found."
+msgstr ""
+
+msgid ""
+"This network currently doesn't contain any devices. The changes you make "
+"here will become fully functional after you assign a network interface to"
+" this network."
+msgstr ""
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from "
+"big card connected to 5GHz, cables from small card connected to 2.4GHz "
+"diplexer part."
+msgstr ""
+
+msgid "QR code"
+msgstr ""
+
+msgid "Show QR code"
+msgstr ""
+
+msgid "Device"
+msgstr "기기"
+
+msgid "Serial number"
+msgstr "일련번호"
+
+msgid "Turris OS version"
+msgstr "Turris OS 버전"
+
+msgid "Kernel version"
+msgstr "커널 버전"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris - Turris 라우터 관리 인터페이스"
+
+msgid "Menu"
+msgstr "메뉴"
+
+msgid "foris guide"
+msgstr ""
+
+msgid "Reset Guided Mode"
+msgstr ""
+
+msgid "Leave Guided Mode"
+msgstr ""
+
+msgid "Next step"
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr "라우터가 제대로 동작하기 위해서 재시작해야 합니다."
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is "
+"capable of working independently or it can forward your DNS queries your "
+"internet service provider's DNS resolver."
+msgstr ""
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. "
+"Usually, it is better to use the ISP's resolver in networks where it "
+"works properly. If it does not work for some reason, it is necessary to "
+"use direct resolving without forwarding."
+msgstr ""
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes "
+"with DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC "
+"validation, you are vulnerable to DNS spoofing attacks! Therefore we "
+"<strong>recommend keeping DNSSEC turned on</strong> and resolving the "
+"situation with your ISP as this is a serious flaw on their side."
+msgstr ""
+
+msgid "Discard changes"
+msgstr "변경사항 버리기"
+
+msgid "Save changes"
+msgstr "변경사항 저장"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when"
+" you need to check that your DNS resolving works as expected. Remember to"
+" click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+
+msgid "Unable to verify network connection."
+msgstr "네트워크 연결을 확인할 수 없습니다."
+
+msgid "DNSSEC"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Notifications and automatic restarts"
+msgstr "알림 및 자동 재시작"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these"
+" emails. Alternatively, if you choose to use a custom server, you must "
+"enter some additional settings. These settings are the same as you enter "
+"in your email client and you can get them from the provider of your email"
+" inbox. In that case, because of security reasons, it is recommended to "
+"create a dedicated account for your router."
+msgstr ""
+"재시작이 필요하거나, 공간이 부족하거나 업데이트가 설치된 경우 등 특정 이벤트 발생 시 라우터가 이를 알리도록 설정할 수 있습니다."
+" Turris 서버를 통해 이메일을 발송할 수 있습니다. 그 대신 다른 서버를 이용하고자 하는 경우 해당 설정을 입력해야 합니다. "
+"이 설정은 여러분이 이메일 클라이언트에 입력하는 것과 동일하며, 설정은 서비스 제공자로부터 받을 수 있습니다. 이 경우, 보안상 "
+"별도의 계정을 만드는 것을 권장합니다."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you"
+" want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"또한, 자동 재시작이 필요한 경우 언제 실행할 지 정할 수 있습니다. 이메일 알림을 활성화한 경우, 알림과 자동 재시작 사이의 "
+"간격도 설정할 수 있습니다."
+
+msgid "Send testing message"
+msgstr "테스트 메시지 보내기"
+
+msgid "Configuration backup"
+msgstr "환경설정 백업"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface"
+" and for the advanced configuration are not included in the backup."
+msgstr ""
+"기기의 환경설정을 저장하고자 하는 경우, 백업 파일을 다운로드 받을 수 있습니다. 환경설정은 암호화 되지 않은 압축 "
+"파일(.tar.bz2)로 저장됩니다. 본 환경설정 인터페이스의 암호와 고급 설정은 백업에 포함되지 않습니다."
+
+msgid "Download configuration backup"
+msgstr "환경설정 백업 다운로드"
+
+msgid "Configuration restore"
+msgstr "환경설정 복원"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using "
+"following form. Keep in mind that IP address of this device might change "
+"during the process, causing unavailability of this interface."
+msgstr ""
+"백업 파일에서 환경설정을 복원하려면, 아래 양식을 통해 업로드하세요. 복원 도중 IP 주소가 변경되어 본 인터페이스에 접속이 안될 "
+"수 있습니다."
+
+msgid "Restore from backup"
+msgstr "백업에서 복원"
+
+msgid "Device reboot"
+msgstr "기기 재시작"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The "
+"reboot process takes approximately 30 seconds, you will be required to "
+"log in again after the reboot."
+msgstr ""
+"기기를 재시작해야 하는 경우, 아래 버튼을 클릭하세요. 재시작 프로세스는 30초 정도 소요되며, 재시작 이후에 다시 로그인해야 "
+"합니다."
+
+msgid "Reboot"
+msgstr "재시작"
+
+msgid ""
+"Here you can configure the settings of the network interfaces on your "
+"device. You can switch the physical network interfaces among networks. If"
+" you are unsure what to set here use the default settings."
+msgstr ""
+
+msgid ""
+"<strong>WAN</strong> acts as an external network connection. Firewall "
+"rules should be applied here. It can only contain a single interface."
+msgstr ""
+
+msgid ""
+"<strong>LAN</strong> acts as a local network connection. LAN should "
+"contain devices which are under your control and you trust them. These "
+"devices can see each other and can access this web interface. It is "
+"recommended that the LAN should contain at least one interface otherwise "
+"you might not be able to configure this device in an easy way."
+msgstr ""
+
+msgid ""
+"<strong>Guest network</strong> acts as a local network connection. Unlike"
+" LAN the devices in the guest network can't access the configuration "
+"interface of this device and are only able to access WAN (internet). This"
+" network should be used for devices which you don't fully trust. Note "
+"that you can also limit download/upload speed of the devices connected to"
+" the guest network."
+msgstr ""
+
+#, python-format
+msgid "Current link speed: %(speed)s Mbit"
+msgstr ""
+
+msgid "Guest Network"
+msgstr ""
+
+msgid "Unassigned"
+msgstr ""
+
+msgid "WAN network"
+msgstr ""
+
+msgid "LAN network"
+msgstr ""
+
+msgid "Unassign"
+msgstr ""
+
+msgid ""
+"In the setup you provided it is <strong>not possible to access the "
+"administration interface</strong> of your device. This means that the "
+"only way to configure your device will be via serial cabel or you need to"
+" a perform factory reset. <br/><br/> <p><strong>Is this really what you "
+"want?</strong></p>"
+msgstr ""
+
+msgid ""
+"You don't have any interface assigned to the LAN network.<br/> Do you "
+"want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
+"order to be able to access the configuration interface of our device?"
+msgstr ""
+
+msgid ""
+"Following notifications occured and haven't been dismissed since last "
+"reboot."
+msgstr "이전 재부팅 이후로 다음 알림 사항이 남아있습니다."
+
+msgid ""
+"Here you can set the guide walkthrough which will guide you through the "
+"basic configuration of your device."
+msgstr ""
+
+msgid "recommended"
+msgstr ""
+
+msgid "Use this workflow"
+msgstr ""
+
+msgid "Failed to query ntp servers."
+msgstr ""
+
+msgid "Update time"
+msgstr ""
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without"
+" disabling the data collection first."
+msgstr "데이터 수집이 활성화되어 있습니다. 데이터 수집을 끄지 않으면 업데이트를 비활성화할 수 없습니다."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can refuse the questionable "
+"update temporarily and install it when you are ready. It isn't possible "
+"to decline the update forever and it will be offered to you again "
+"together with the next package installation."
+msgstr ""
+"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경우에 유용할 수 있습니다. 의심가는 업데이트는 "
+"일시적으로 거절하고, 준비가 됐을 때 설치할 수 있습니다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 설치 때 같이 "
+"제안받게 됩니다."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can e.g. install updates when"
+" you're prepared for a possible rollback to a previous snapshot and deny "
+"the questionable update temporarily. It isn't possible to decline the "
+"update forever and it will be offered to you again together with the next"
+" package installation."
+msgstr ""
+"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경우에 유용할 수 있습니다. 예를 들어 이전 스냅샷으로"
+" 돌아갈 수 있도록 준비하고 나서 업데이트를 설치하거나 의심가는 업데이트는 일시적으로 거절할 수 있습니다. 업데이트를 영원히 거부할"
+" 수는 없으며, 다음 패키지 설치 때 같이 제안받게 됩니다."
+
+#, fuzzy, python-format
+msgid ""
+"\n"
+"          after %(input)s hours\n"
+"          "
+msgstr "%(input)s 시간 후"
+
+#, python-format
+msgid ""
+"\n"
+"    Approve update from %(when)s\n"
+"    "
+msgstr ""
+
+#, fuzzy
+msgid "List of changes"
+msgstr "변경사항 버리기"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr ""
+
+msgid "Install now"
+msgstr ""
+
+msgid "Deny"
+msgstr ""
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"    If you don't install the updates manually, they will be installed "
+"automatically after %(time)s.\n"
+"    "
+msgstr ""
+
+msgid "Package lists"
+msgstr ""
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr "라우터에서 무선랜 카드를 감지하지 못했습니다."
+
+msgid ""
+"If a number of wireless cards doesn't match, you may try to reset the Wi-"
+"Fi settings. Note that this will remove the current Wi-Fi configuration "
+"and restore the default values."
+msgstr ""
+
+#, fuzzy
+msgid "Reset Wi-Fi settings"
+msgstr "WAN 설정 수정"
+
+msgid ""
+"One of the most important features of router Turris are automatic system "
+"updates. Thanks to this function your router's software stays up to date "
+"and offers better protection against attacks from the Internet."
+msgstr ""
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that "
+"this might weaken the security of your router and network in case flaws "
+"in the software are found."
+msgstr ""
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-"
+"eula\">here</a>."
+msgstr ""
+
+msgid "Most important points from the license agreement:"
+msgstr ""
+
+msgid "Automatic updates are offered to the Turris router owners free of charge."
+msgstr ""
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr ""
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional "
+"security features of Turris router."
+msgstr ""
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by "
+"you."
+msgstr ""
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the"
+" Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service "
+"and is not responsible for any damages caused by the automatic updates."
+msgstr ""
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner "
+"of this Turris router and you agree with the full text of the <a "
+"href=\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, "
+"but could cause problems on some devices."
+msgstr ""
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Error"
+msgstr "오류"
+
+msgid "Loading..."
+msgstr "불러오는 중..."
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible "
+"from %NEW_IP_LINK%. See the note above for more information about IP "
+"address change."
+msgstr ""
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you "
+"to keep the automatic security updates enabled to receive all recommended"
+" updates for your device. Updating your router on regular basis is the "
+"only way how to ensure you will be protected against known threats that "
+"might target your home router device.<br/><br/>Do you still want to "
+"continue and stay unprotected?"
+msgstr ""
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication "
+"against attacks on the DNS infrastructure. We strongly recommend keeping "
+"DNSSEC validation enabled unless you know that you will be connecting "
+"your device in the network where DNSSEC is broken. <br/><br/>Do you still"
+" want to continue and stay unprotected?"
+msgstr ""
+
+msgid "Are you sure you want to restart the router?"
+msgstr ""
+
+#, python-format
+msgid "Remaining notifications (%(unread_left)s) will be discarded."
+msgstr ""
+
+msgid ""
+"There are some unsaved changes in the notifications settings.<br/>Do you "
+"want to discard them and test the notifications with the old settings?"
+msgstr ""
+
+#, python-format
+msgid "Your device will be rebooted in %(time_left)s seconds."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Your network will be restarted in %(time_left)s seconds."
+msgstr "네트워크가 재시작되었습니다. 잠시만 기다려주세요..."
+
+msgid "A reboot of your device was triggered."
+msgstr ""
+
+#, fuzzy
+msgid "A network restart was triggered."
+msgstr "네트워크를 재시작 하는 중..."
+
+msgid "Trying to reconnect to your device."
+msgstr ""
 
 msgid "This value seems to be invalid."
 msgstr ""
@@ -67,8 +1683,7 @@ msgid "This value is too long. It should have %s characters or fewer."
 msgstr ""
 
 #, python-format
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long."
+msgid "This field should have between %s and %s characters."
 msgstr ""
 
 #, python-format
@@ -95,797 +1710,18 @@ msgstr ""
 msgid "This is not a valid IPv4 prefix."
 msgstr ""
 
-msgid "This is not an IPv6 address with prefix length."
-msgstr "접두사 길이가 붙은 IPv6 주소가 아닙니다."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "올바르지 않은 IPv4 혹은 IPv6 주소입니다."
-
 msgid "This is not a valid IPv6 prefix."
 msgstr ""
 
 msgid "This is not a valid MAC address."
 msgstr ""
 
-msgid "This is not a valid domain name."
-msgstr "올바르지 않은 도메인 이름입니다."
-
-msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "올바른 시간 형식(YYYY-MM-DD HH:MM:SS)이 아닙니다."
-
-msgid ""
-"Your password contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-
-msgid ""
-"Your SSID contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-
-msgid "OK"
-msgstr ""
-
-msgid "Error"
-msgstr "오류"
-
-msgid "Loading..."
-msgstr "불러오는 중..."
-
-msgid "Connectivity test failed, testing connection with disabled forwarding."
-msgstr ""
-
-msgid ""
-"The IP address of your router has been changed. It should be accessible from "
-"%NEW_IP_LINK%. See the note above for more information about IP address "
-"change."
-msgstr ""
-
-msgid ""
-"You have chosen to not receive security updates. We strongly advice you to "
-"keep the automatic security updates enabled to receive all recommended "
-"updates for your device. Updating your router on regular basis is the only "
-"way how to ensure you will be protected against known threats that might "
-"target your home router device.\\n\\nDo you still want to continue and stay "
-"unprotected?"
-msgstr ""
-
-msgid ""
-"DNSSEC is a security technology that protects the DNS communication against "
-"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
-"validation enabled unless you know that you will be connecting your device "
-"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
-"and stay unprotected?"
-msgstr ""
-
-msgid "Are you sure you want to restart the router?"
-msgstr ""
-
-msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr ""
-
-msgid ""
-"There are some unsaved changes in the notifications settings.\\nDo you want "
-"to discard them and test the notifications with the old settings?"
-msgstr ""
-
-msgid "Turris router administration interface"
-msgstr ""
-
-msgid ""
-"One of the most important features of router Turris are automatic system "
-"updates. Thanks to this function your router's software stays up to date and "
-"offers better protection against attacks from the Internet."
-msgstr ""
-
-msgid ""
-"It is <strong>highly recommended</strong> to have this feature "
-"<strong>turned on</strong>. If you decide to disable it, be warned that this "
-"might weaken the security of your router and network in case flaws in the "
-"software are found."
-msgstr ""
-
-msgid ""
-"By turning the automatic updates on, you agree to this feature's license "
-"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
-"\">here</a>."
-msgstr ""
-
-msgid "Most important points from the license agreement:"
-msgstr ""
-
-msgid ""
-"Automatic updates are offered to the Turris router owners free of charge."
-msgstr ""
-
-msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr ""
-
-msgid ""
-"Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris router."
-msgstr ""
-
-msgid ""
-"Automatic updates take place at the time of their release, the time of "
-"installation cannot be influenced by the user."
-msgstr ""
-
-msgid ""
-"Having the automatic updates turned on can result in increased Internet "
-"traffic on your router. Expenses related to this increase are covered by you."
-msgstr ""
-
-msgid ""
-"Automatic updates cannot protect you against every attack coming from the "
-"Internet. Please do not forget to protect your workstations and other "
-"devices by installing antivirus software and explaining to your family "
-"members how to stay safe on the Internet."
-msgstr ""
-
-msgid ""
-"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
-"is not responsible for any damages caused by the automatic updates."
-msgstr ""
-
-msgid ""
-"By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris router and you agree with the full text of the <a href=\"https://"
-"www.turris.cz/omnia-updater-eula\">license agreement</a>."
-msgstr ""
-
-#, fuzzy
-msgid "Project:Turris"
-msgstr "Project:Turris"
-
-msgid "Log out"
-msgstr "로그아웃"
-
-msgid "Password"
-msgstr ""
-
-msgid "Log in"
-msgstr ""
-
-msgid "Foris Configuration Interface"
-msgstr ""
-
-msgid "Go to LuCI"
-msgstr ""
-
-msgid "Opened lock"
-msgstr ""
-
-msgid "Your connection is not encrypted"
-msgstr ""
-
-msgid ""
-"A secure connection is an important safety feature of the router and "
-"therefore the entire home network."
-msgstr ""
-
-msgid "How to set an encrypted connection and why is it important"
-msgstr ""
-
-msgid ""
-"Following notifications occured and haven't been dismissed since last reboot."
-msgstr "이전 재부팅 이후로 다음 알림 사항이 남아있습니다."
-
-msgid "Failed to query ntp servers."
-msgstr ""
-
-msgid "Update time"
-msgstr ""
-
-msgid "Hint"
-msgstr "힌트"
-
-msgid "Discard changes"
-msgstr "변경사항 버리기"
-
-msgid "Save changes"
-msgstr "변경사항 저장"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
-msgstr ""
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-
-msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
-msgstr ""
-
-msgid "Save"
-msgstr "저장"
-
-msgid "Connection test"
-msgstr "연결 테스트"
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-
-msgid "Unable to verify network connection."
-msgstr "네트워크 연결을 확인할 수 없습니다."
-
-msgid "Test type"
-msgstr "테스트 유형"
-
-msgid "Status"
-msgstr "상태"
-
-msgid "DNS"
-msgstr ""
-
-msgid "DNSSEC"
-msgstr ""
-
-msgid "Test connection"
-msgstr "연결 테스트"
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
-msgstr ""
-
-msgid "QR code"
-msgstr ""
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr "라우터에서 무선랜 카드를 감지하지 못했습니다."
-
-msgid ""
-"If a number of wireless cards doesn't match, you may try to reset the Wi-Fi "
-"settings. Note that this will remove the current Wi-Fi configuration and "
-"restore the default values."
-msgstr ""
-
-#, fuzzy
-msgid "Reset Wi-Fi settings"
-msgstr "WAN 설정 수정"
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"데이터 수집이 활성화되어 있습니다. 데이터 수집을 끄지 않으면 업데이트를 비활"
-"성화할 수 없습니다."
-
-msgid "Update approvals"
-msgstr "업데이트 승인"
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can refuse the questionable update "
-"temporarily and install it when you are ready. It isn't possible to decline "
-"the update forever and it will be offered to you again together with the "
-"next package installation."
-msgstr ""
-"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경"
-"우에 유용할 수 있습니다. 의심가는 업데이트는 일시적으로 거절하고, 준비가 됐"
-"을 때 설치할 수 있습니다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 "
-"설치 때 같이 제안받게 됩니다."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can e.g. install updates when you're "
-"prepared for a possible rollback to a previous snapshot and deny the "
-"questionable update temporarily. It isn't possible to decline the update "
-"forever and it will be offered to you again together with the next package "
-"installation."
-msgstr ""
-"업데이트 승인은 업데이트가 특정 설정에 문제가 생기지 않는 걸 확인하고 싶을 경"
-"우에 유용할 수 있습니다. 예를 들어 이전 스냅샷으로 돌아갈 수 있도록 준비하고 "
-"나서 업데이트를 설치하거나 의심가는 업데이트는 일시적으로 거절할 수 있습니"
-"다. 업데이트를 영원히 거부할 수는 없으며, 다음 패키지 설치 때 같이 제안받게 "
-"됩니다."
+msgid "You have been logged out due to longer inactivity."
+msgstr "오랫동안 사용하지 않아 로그아웃되었습니다."
 
 #, python-format
-msgid "after %(input)s hours"
-msgstr "%(input)s 시간 후"
-
-#, python-format
-msgid "Approve update from %(when)s"
-msgstr ""
-
-msgid "Note that a reboot will be triggered after the update."
-msgstr ""
-
-msgid "Install now"
-msgstr ""
-
-msgid "Deny"
-msgstr ""
-
-msgid "No package will be installed unless you install the updates above."
-msgstr ""
-
-#, python-format
-msgid ""
-"If you don't install the updates manually, they will be installed "
-"automatically after %(time)s."
-msgstr ""
-
-msgid "Package lists"
-msgstr ""
-
-msgid ""
-"With the Turris router you can join Project Turris which is a non-profit "
-"research project founded by the CZ.NIC association, a .CZ domain registry. "
-"By joining the project, your router will act as a probe which analyzes "
-"traffic between your home network and the Internet and helps to identify "
-"malicious data flows. Once such a flow is detected your router notifies the "
-"Turris headquarters which can compare the flow with data from the rest of "
-"the probes and assign it a threat level. If the flow is identified as an "
-"attack Turris headquarters can prepare an update which is distributed to "
-"every Turris router and helps them to protect themselves against the attack."
-msgstr ""
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr ""
-"업데이트가 비활성화되어 있습니다. 데이터 수집을 켜려면 활성화해야 합니다."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Turris 프로젝트에 참여하려면 먼저 Turris 포털에 등록해야 합니다. 새로 등록하"
-"거나 이전에 참여하기 위해 사용했던 이메일 주소를 입력하세요:"
-
-msgid "Validate email"
-msgstr "이메일 확인"
-
-msgid "Device"
-msgstr "기기"
-
-msgid "Serial number"
-msgstr "일련번호"
-
-msgid "Turris OS version"
-msgstr "Turris OS 버전"
-
-msgid "Kernel version"
-msgstr "커널 버전"
-
-msgid "Sending of uCollect data"
-msgstr "uCollect 데이터 전송"
-
-#, python-format
-msgid "Time of last update: %(datetime)s"
-msgstr "마지막 갱신 시각: %(datetime)s"
-
-#, python-format
-msgid "(status updated %d second ago)"
-msgid_plural "(status updated %d seconds ago)"
-msgstr[0] "(%d초 전 상태 업데이트됨)"
-
-msgid "Sending of firewall logs"
-msgstr "방화벽 로그 전송"
-
-msgid "Refresh"
-msgstr "새로고침"
-
-msgid "Device registration"
-msgstr "기기 등록"
-
-#, python-format
-msgid ""
-"If you have not registered your device yet, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"만약 아직 기기를 등록하지 않았다면, 아래 버튼을 클릭해 등록 코드를 받으세요. "
-"등록 코드는 Turris 사이트 내 귀하의 사용자 프로파일에서 입력되어야 합니다: "
-"<a href=\"%(url)s\">%(url)s</a>."
-
-msgid "Registration code"
-msgstr "등록 코드"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"등록 코드를 생성할 수 없습니다. 이는 보통 라우터가 인터넷에 연결되지 않았다"
-"는 의미입니다. 나중에 다시 시도해주세요. 만약 문제가 계속되는 경우 지원을 요"
-"청하세요."
-
-msgid "Get registration code"
-msgstr "등록 코드 받기"
-
-msgid ""
-"Here you can test you connection settings. Remember to click on the "
-"<strong>Save</strong> button before running the test. Note that sometimes it "
-"takes a while before the connection is fully initialized. So it might be "
-"useful to wait for a while before running this test."
-msgstr ""
-"여기서 연결 설정을 테스트할 수 있습니다. 테스트하기 전에 <strong>저장</"
-"strong> 버튼을 눌러야 함을 기억하세요. 경우에 따라 연결이 완전히 준비될 때까"
-"지 시간이 걸릴 수 있습니다. 그래서 테스트를 시작하기 전에 어느 정도 기다렸다"
-"가 시작하는 게 좋을 수 있습니다."
-
-msgid "IPv4 connectivity"
-msgstr "IPv4 연결"
-
-msgid "IPv4 gateway connectivity"
-msgstr "IPv4 게이트웨이 연결"
-
-msgid "IPv6 connectivity"
-msgstr "IPv6 연결"
-
-msgid "IPv6 gateway connectivity"
-msgstr "IPv6 게이트웨이 연결"
-
-msgid "Notifications and automatic restarts"
-msgstr "알림 및 자동 재시작"
-
-msgid ""
-"You can set the router to notify you when a specific event occurs, for "
-"example when a reboot is required, no space is left on device or an "
-"application update is installed. You can use Turris servers to send these "
-"emails. Alternatively, if you choose to use a custom server, you must enter "
-"some additional settings. These settings are the same as you enter in your "
-"email client and you can get them from the provider of your email inbox. In "
-"that case, because of security reasons, it is recommended to create a "
-"dedicated account for your router."
-msgstr ""
-"재시작이 필요하거나, 공간이 부족하거나 업데이트가 설치된 경우 등 특정 이벤트 "
-"발생 시 라우터가 이를 알리도록 설정할 수 있습니다. Turris 서버를 통해 이메일"
-"을 발송할 수 있습니다. 그 대신 다른 서버를 이용하고자 하는 경우 해당 설정을 "
-"입력해야 합니다. 이 설정은 여러분이 이메일 클라이언트에 입력하는 것과 동일하"
-"며, 설정은 서비스 제공자로부터 받을 수 있습니다. 이 경우, 보안상 별도의 계정"
-"을 만드는 것을 권장합니다."
-
-msgid ""
-"Also, when an automatic restart is required, you can specify the time you "
-"want it to occur. If you have email notifications enabled, you can also "
-"specify the interval between notification and automatic restart."
-msgstr ""
-"또한, 자동 재시작이 필요한 경우 언제 실행할 지 정할 수 있습니다. 이메일 알림"
-"을 활성화한 경우, 알림과 자동 재시작 사이의 간격도 설정할 수 있습니다."
-
-msgid "Send testing message"
-msgstr "테스트 메시지 보내기"
-
-msgid "Configuration backup"
-msgstr "환경설정 백업"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. The configuration is saved as an unencrypted "
-"compressed archive (.tar.bz2). Passwords for this configuration interface "
-"and for the advanced configuration are not included in the backup."
-msgstr ""
-"기기의 환경설정을 저장하고자 하는 경우, 백업 파일을 다운로드 받을 수 있습니"
-"다. 환경설정은 암호화 되지 않은 압축 파일(.tar.bz2)로 저장됩니다. 본 환경설"
-"정 인터페이스의 암호와 고급 설정은 백업에 포함되지 않습니다."
-
-msgid "Download configuration backup"
-msgstr "환경설정 백업 다운로드"
-
-msgid "Configuration restore"
-msgstr "환경설정 복원"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"백업 파일에서 환경설정을 복원하려면, 아래 양식을 통해 업로드하세요. 복원 도"
-"중 IP 주소가 변경되어 본 인터페이스에 접속이 안될 수 있습니다."
-
-msgid "Restore from backup"
-msgstr "백업에서 복원"
-
-msgid "Device reboot"
-msgstr "기기 재시작"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"after the reboot."
-msgstr ""
-"기기를 재시작해야 하는 경우, 아래 버튼을 클릭하세요. 재시작 프로세스는 30초 "
-"정도 소요되며, 재시작 이후에 다시 로그인해야 합니다."
-
-msgid "Reboot"
-msgstr "재시작"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris - Turris 라우터 관리 인터페이스"
-
-msgid "Menu"
-msgstr "메뉴"
-
-msgid "Network is restarting..."
-msgstr "네트워크를 재시작 하는 중..."
-
-msgid "Your network is being restarted. Wait, please..."
-msgstr "네트워크가 재시작되었습니다. 잠시만 기다려주세요..."
-
-msgid "Rebooting..."
-msgstr "재시작 중..."
-
-msgid "Your router is being rebooted."
-msgstr "라우터를 재시작했습니다."
-
-msgid "Your router needs to be restarted in order to work properly."
-msgstr "라우터가 제대로 동작하기 위해서 재시작해야 합니다."
-
-msgid "Reboot now"
-msgstr "지금 재시작"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-
-msgid "Language"
-msgstr ""
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"기기가 성공적으로 설치되었습니다. 마지막 단계는 기기를 Turris 웹사이트 <a "
-"href=\"%(url)s\">%(url)s</a>에 있는 귀하의 사용자 프로파일에 등록하는 것입니"
-"다."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>주의:</strong> 본 코드는 제한된 시간 동안에만 유효합니다. 코드가 유효"
-"하지 않은 경우, 본 페이지를 새로고침하여 새 코드를 받으세요."
-
-msgid "What next?"
-msgstr ""
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"<a href=\"%(url)s\">표준 환경설정 인터페이스</a>에서 이전에 정한 설정을 변경"
-"할 수 있습니다. 보다 세부적인 설정을 변경하고 싶다면, <a href=\"%(url2)s\">고"
-"급 환경설정 탭</a>에 있는 LuCI 인터페이스를 사용할 수 있습니다."
-
-msgid "Important updates"
-msgstr "중요 업데이트"
-
-msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
-msgstr ""
-"디바이스 재시작이 필요한 중요 업데이트가 설치되었습니다. 일부 서비스는 재시작"
-"하기 전까지 작동하지 않을 수 있습니다. 자세한 내용은 아래에 있습니다."
-
-msgid "Continue to the configuration interface"
-msgstr "환경설정 인터페이스로 계속 이동"
-
-msgid "Installation finished"
-msgstr "설치 완료"
-
-msgid ""
-"You have decided to disable the Updater service during the installation."
-msgstr "설치 도중에 업데이트 서비스를 비활성화하셨습니다."
-
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"업데이트 서비스가 없으면, 설치된 소프트웨어를 최신으로 유지할 수 없으며 업데"
-"이트 서비스에서 제공하는 패키지 목록도 설치할 수 없습니다."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-msgstr ""
-"업데이트 서비스를 활성화하면, 연구 프로젝트에 참여 가능합니다: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"<a href=\"%(url)s\">업데이트</a> 설정 페이지에서 업데이트 서비스를 활성화할 "
-"수 있습니다."
-
-msgid ""
-"With Turris router you can join the research project called <a href="
-"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
-"your router can become a probe that analyzes the traffic between internet "
-"and the home network and identifies suspicious data flows."
-msgstr ""
-"Turris 라우터와 함께 <a href=\"https://project.turris.cz/\">Project Turris</"
-"a>라 불리는 연구 프로젝트에 참여할 수 있습니다. 본 프로젝트 덕분에, 귀하의 라"
-"우터는 여러분의 홈 네트워크와 인터넷 사이의 트래픽을 분석하고 의심스러운 데이"
-"터 흐름을 확인하는 역할을 수행할 수 있습니다."
-
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
-msgstr ""
-"<a href=\"%(url)s\">데이터 수집</a> 페이지에 있는 방법을 따름으로서 이 추가 "
-"기능을 활성화할 수 있습니다."
-
-msgid "Synchronize with your computer clock"
-msgstr "내 컴퓨터와 시간 동기화"
-
-msgid "Set time manually"
-msgstr "수동으로 시간 설정"
-
-msgid "Synchronization successful."
-msgstr "동기화가 완료됐습니다."
-
-msgid "Next"
-msgstr "다음"
-
-msgid "Time settings"
-msgstr "시간 설정"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "인터넷 시간 서버를 통해 시간을 동기화하고 있습니다."
-
-msgid "One moment, please..."
-msgstr "잠시만 기다려 주세요..."
-
-msgid "Done"
-msgstr "완료"
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "시간 동기화가 완료되어 다음 단계로 진행할 수 있습니다."
-
-msgid "Registration failure"
-msgstr "등록 실패"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Turris 라우터 환경설정에 오신 것을 환영합니다"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"라우터를 처음 사용하기 전에 설정이 필요합니다. 간단 마법사가 환경설정 절차를 "
-"안내할 것입니다. 완료되면 라우터가 작동할 준비를 마치게 됩니다."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"이전 환경설정을 복원하려 하는 등의 이유로 이 마법사를 건너뛰어야 하는 경우, "
-"암호를 설정한 다음에 건너뛸 수 있습니다."
-
-msgid "Begin installation"
-msgstr "설치 시작"
-
-msgid "Checking internet connectivity."
-msgstr "인터넷 연결 상태를 확인 중입니다."
-
-msgid "Internet connectivity test passed without error."
-msgstr "인터넷 연결 테스트가 오류 없이 통과했습니다."
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
-msgstr ""
-"인터넷 연결 중 DNS 해석이 작동하지 않고 있습니다. 서비스 제공자 측의 문제일 "
-"수 있습니다. 귀하의 라우터의 시간 설정이 올바르지 않아서 생긴 문제일 수도 있"
-"습니다 - 다음 순서에 따라 시간을 조정할 수 있습니다."
-
-msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
-msgstr "WAN 설정이 올바르지 않아 인터넷 연결이 안되고 있습니다."
-
-msgid "Try again"
-msgstr "다시 시도"
-
-msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
-msgstr ""
-"일부 느린 DSL 연결이나 DHCP를 사용 중일 때, 네트워크 연결 속도가 느려 이 오류"
-"가 발생할 수 있습니다. 이에 해당하는 경우 위 버튼을 눌러 다시 연결 테스트를 "
-"할 수 있습니다. 또한 이전 페이지로 돌아가 WAN 설정을 수정해 문제를 해결할 수 "
-"있습니다."
-
-msgid "Adjust WAN settings"
-msgstr "WAN 설정 수정"
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"추가 업데이트를 설치하고 있습니다. 설치를 완료하기 위해 라우터가 여러 번 재시"
-"작될 수 있습니다."
-
-msgid "Do not unplug the device during update!"
-msgstr "업데이트하는 동안 전원을 종료하지 마세요!"
-
-msgid "Check of available updates in progress."
-msgstr "업데이트 확인 중입니다."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr "펌웨어 업데이트가 완료되어, 다음 단계를 진행할 수 있습니다."
-
-msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"연결 혹은 설치 오류가 발생해 펌웨어 업데이트가 실패했습니다. 다음 단계를 진행"
-"하기 전에 케이블 연결 상태를 확인해주세요. 업데이트는 주기적으로 실행되니 너"
-"무 걱정하지 않으셔도 됩니다."
-
-msgid "Updater has returned the following error:"
-msgstr "업데이트 도중 다음과 같은 오류가 발생했습니다:"
-
-msgid "Device has been restarted."
-msgstr "기기가 재시작되었습니다."
-
-msgid "Please log in again to continue."
-msgstr "계속하려면 로그인하세요."
-
-msgid "Proceed to login"
-msgstr "로그인하기"
-
-msgid "Skip wizard"
-msgstr "마법사 건너뛰기"
-
-msgid "Step"
-msgstr "단계"
-
-msgid "foris version:"
-msgstr ""
-
-msgid "Dismiss"
-msgstr "닫기"
-
-msgid "Dismiss All"
-msgstr "모두 닫기"
-
-msgid "No new messages."
-msgstr "새 메시지가 없습니다."
-
-msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr "알림을 가져올 수 없습니다. 페이지를 새로고침 하세요."
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Y-%m-%d %H:%M:%S"
 
 msgid "News"
 msgstr "뉴스"
@@ -900,875 +1736,6 @@ msgstr ""
 msgid "Notification"
 msgstr "알림"
 
-msgid "This field is required."
-msgstr "필수 항목입니다."
-
-msgid "Not a valid IPv4 address."
-msgstr "올바르지 않은 IPv4 주소입니다."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "올바르지 않은 IPv4 넷마스크 주소입니다."
-
-msgid "Not a valid IPv6 address."
-msgstr "올바르지 않은 IPv6 주소입니다."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "접두사 길이가 붙은 IPv4 주소가 아닙니다."
-
-msgid "Is not a number."
-msgstr "숫자가 아닙니다."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "올바른 HH:MM 시간 형식이 아닙니다."
-
-msgid "MAC address is not valid."
-msgstr "올바르지 않은 MAC 주소입니다."
-
-#, fuzzy
-msgid "Duid is not valid."
-msgstr "올바르지 않은 MAC 주소입니다."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "%(low)s - %(high)s 사이에 있지 않습니다."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "길이는 %(low)s ~ %(high)s자 이내여야 합니다."
-
-msgid "Configuration was successfully saved."
-msgstr "환경설정을 성공적으로 저장했습니다."
-
-msgid "There were some errors in your input."
-msgstr "입력한 내용 중에 오류가 있습니다."
-
-msgid "Notifications"
-msgstr "알림"
-
-msgid "Number of notifications"
-msgstr "알림 갯수"
-
-msgid "Old password you entered was not valid."
-msgstr "입력한 이전 암호가 올바르지 않습니다."
-
-msgid "Password was successfully saved."
-msgstr "암호가 성공적으로 저장되었습니다."
-
-msgid ""
-"You WAN configuration is probably not correct or your WAN interface hasn't "
-"been properly initialized yet."
-msgstr ""
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr "WAN 포트가 연결되지 않아, 인터넷 연결이 동작하지 않을 수 있습니다."
-
-msgid "Wrong HTTP method."
-msgstr "잘못된 HTTP 메소드 입니다."
-
-msgid "Wi-Fi reset was successful."
-msgstr ""
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr ""
-
-msgid "Maintenance"
-msgstr "유지보수"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "테스트 메시지를 보냈으니, 메일함을 확인해주세요."
-
-#, fuzzy
-msgid ""
-"Sending of the testing message failed, your configuration is possibly wrong."
-msgstr ""
-"환경 설정에 문제가 있어 메시지 발송에 실패했습니다.<br>오류 메시지:<br><pre>"
-"%(error)s</pre>"
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be required "
-"to apply restored configuration."
-msgstr ""
-"환경설정을 성공적으로 복원했습니다. 환경설정을 복원을 완료하려면 재시작해야 "
-"합니다."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "파일로부터 백업 복원에 실패했습니다."
-
-msgid "Update was approved."
-msgstr "업데이트가 승인되었습니다."
-
-msgid "Update was postponed."
-msgstr "업데이트가 연기되었습니다."
-
-msgid "Failed to approve the update."
-msgstr "업데이트 승인에 실패했습니다."
-
-msgid "Failed to postpone the update."
-msgstr "업데이트 연기에 실패했습니다."
-
-msgid ""
-"Configuration was successfully saved. Selected packages should be installed "
-"or removed shortly."
-msgstr ""
-"환경설정이 성공적으로 저장되었습니다. 선택된 패키지가 곧 설치 혹은 제거됩니"
-"다."
-
-msgid "Updater is running"
-msgstr "업데이트 진행중"
-
-msgid "Data collection"
-msgstr "데이터 수집"
-
-msgid ""
-"Failed to update emulated services. Note that you might need to wait till "
-"ucollect is properly installed."
-msgstr ""
-
-#, python-format
-msgid ""
-"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr "등록 확인 중에 오류가 발생했습니다: <br><pre>%(error)s</pre>"
-
-msgid ""
-"Registration for the entered email is valid. Now you can enable the data "
-"collection."
-msgstr ""
-"등록을 위해 입력한 이메일이 올바릅니다. 이제 데이터 수집을 활성화할 수 있습니"
-"다."
-
-#, python-format
-msgid ""
-"This router is currently assigned to a different email address. Please "
-"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
-"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
-"email address."
-msgstr ""
-"이 라우터는 다른 이메일 주소로 등록되어 있습니다. <a href=\"%(url)s\">Turris "
-"웹사이트</a>에 접속해 등록 코드 <strong>%(reg_num)s</strong>를 사용해 귀하의 "
-"이메일 주소에 재할당하세요."
-
-#, python-format
-msgid ""
-"This email address is not registered yet. Please continue to the <a href="
-"\"%(url)s\">Turris website</a> and use the registration code <strong>"
-"%(reg_num)s</strong> to create a new account."
-msgstr ""
-"이메일 주소가 아직 등록되지 않았습니다. <a href=\"%(url)s\">Turris 웹사이트</"
-"a>에 접속해 등록코드 <strong>%(reg_num)s</strong>를 사용해 새 계정을 만드세"
-"요."
-
-msgid "Router failed to authorize. Please try to validate our email later."
-msgstr ""
-
-msgid "About"
-msgstr "정보"
-
-msgid "Online"
-msgstr "온라인"
-
-msgid "Offline"
-msgstr "오프라인"
-
-msgid "Unknown status"
-msgstr "상태를 알 수 없음"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "내부 오류가 발생해 환경설정을 저장하지 못했습니다."
-
-msgid "The password you entered was not valid."
-msgstr "입력한 암호가 올바르지 않습니다."
-
-msgid "Use forwarding"
-msgstr ""
-
-msgid "Disable DNSSEC"
-msgstr ""
-
-msgid "Enable DHCP clients in DNS"
-msgstr ""
-
-msgid ""
-"This will enable your DNS resolver to place DHCP client's names among the "
-"local DNS records."
-msgstr ""
-
-msgid "Domain of DHCP clients in DNS"
-msgstr ""
-
-msgid ""
-"This domain will be used as prefix. E.g. The result for client "
-"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
-msgstr ""
-
-msgid "LAN"
-msgstr ""
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-
-msgid "Router IP address"
-msgstr ""
-
-msgid "Router's IP address in the inner network."
-msgstr ""
-
-msgid "Network netmask"
-msgstr ""
-
-msgid "Network mask of the inner network."
-msgstr ""
-
-msgid "Enable DHCP"
-msgstr ""
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-
-msgid "DHCP start"
-msgstr ""
-
-msgid "DHCP max leases"
-msgstr ""
-
-msgid "Guest network"
-msgstr ""
-
-msgid "Enable guest network"
-msgstr ""
-
-#, python-format
-msgid ""
-"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
-"separated  from your ordinary LAN network. Devices connected to this network "
-"are allowed to access the internet, but are not allowed to access other "
-"devices and the configuration interface of the router."
-msgstr ""
-
-msgid "Router IP in guest network"
-msgstr ""
-
-msgid ""
-"Router's IP address in the guest network. It is necessary that the guest "
-"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
-msgstr ""
-
-msgid "Guest network netmask"
-msgstr ""
-
-msgid "Network mask of the guest network."
-msgstr ""
-
-msgid "Guest Lan QoS"
-msgstr ""
-
-msgid ""
-"This option enables you to set a bandwidth limit for the guest network, so "
-"that your main network doesn't get slowed-down by it."
-msgstr ""
-
-msgid "Download (kb/s)"
-msgstr ""
-
-msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
-
-msgid "Upload (kb/s)"
-msgstr ""
-
-msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
-
-msgid "Backup file"
-msgstr ""
-
-msgid "uCollect"
-msgstr ""
-
-msgid "Emulated services"
-msgstr ""
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-
-msgid "Telnet (23/TCP)"
-msgstr ""
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr ""
-
-msgid "HTTP (80/TCP)"
-msgstr ""
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr ""
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr ""
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr ""
-
-msgid "Collect credentials"
-msgstr ""
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-
-msgid "Enable data collection"
-msgstr ""
-
-msgid "Email"
-msgstr ""
-
-msgid "Failed to query the server."
-msgstr ""
-
-msgid "Failed to verify the router's registration."
-msgstr ""
-
-msgid "Wi-Fi"
-msgstr ""
-
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
-msgstr ""
-
-#, python-format
-msgid "Enable Wi-Fi %s"
-msgstr ""
-
-msgid "SSID"
-msgstr ""
-
-msgid "Hide SSID"
-msgstr ""
-
-msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-
-msgid "Wi-Fi mode"
-msgstr ""
-
-msgid ""
-"The 2.4 GHz band is more widely supported by clients, but tends to have more "
-"interference. The 5 GHz band is a newer standard and may not be supported by "
-"all your devices. It usually has less interference, but the signal does not "
-"carry so well indoors."
-msgstr ""
-
-msgid "Disabled"
-msgstr ""
-
-msgid "802.11n - 20 MHz wide channel"
-msgstr ""
-
-msgid "802.11n - 40 MHz wide channel"
-msgstr ""
-
-msgid "802.11ac - 20 MHz wide channel"
-msgstr ""
-
-msgid "802.11ac - 40 MHz wide channel"
-msgstr ""
-
-msgid "802.11ac - 80 MHz wide channel"
-msgstr ""
-
-msgid "802.11n/ac mode"
-msgstr ""
-
-msgid ""
-"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
-"channels can yield higher throughput but can cause more interference in the "
-"network. If you don't know what to choose, use the default option with 20 "
-"MHz wide channel."
-msgstr ""
-
-msgid "auto"
-msgstr ""
-
-msgid "Network channel"
-msgstr ""
-
-msgid "Network password"
-msgstr ""
-
-msgid "Guest Wi-Fi"
-msgstr ""
-
-msgid "Set guest Wi-Fi here."
-msgstr ""
-
-msgid "Enable guest Wi-Fi"
-msgstr ""
-
-#, python-format
-msgid ""
-"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-"connected to this network are allowed to access the internet, but aren't "
-"allowed to access other devices and the configuration interface of the "
-"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-"LAN tab</a>. "
-msgstr ""
-
-msgid "SSID for guests"
-msgstr ""
-
-msgid "Password for guests"
-msgstr ""
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-
-msgid "Wi-Fi settings"
-msgstr ""
-
-msgid "WAN"
-msgstr ""
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-
-msgid "DHCP (automatic configuration)"
-msgstr ""
-
-msgid "Static IP address (manual configuration)"
-msgstr ""
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr ""
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr ""
-
-msgid "6to4 (public IPv4 address required)"
-msgstr ""
-
-msgid "6in4 (public IPv4 address required)"
-msgstr ""
-
-msgid "Disable IPv6"
-msgstr ""
-
-msgid "IPv4 protocol"
-msgstr ""
-
-msgid "IP address"
-msgstr ""
-
-msgid "Network mask"
-msgstr ""
-
-msgid "Gateway"
-msgstr ""
-
-msgid "DHCP hostname"
-msgstr ""
-
-msgid "Hostname which will be provided to DHCP server."
-msgstr ""
-
-msgid "DNS server 1 (IPv4)"
-msgstr ""
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-
-msgid "DNS server 2 (IPv4)"
-msgstr ""
-
-msgid "PAP/CHAP username"
-msgstr ""
-
-msgid "PAP/CHAP password"
-msgstr ""
-
-msgid "IPv6 protocol"
-msgstr ""
-
-msgid "IPv6 address"
-msgstr ""
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-
-msgid "IPv6 gateway"
-msgstr ""
-
-msgid "IPv6 prefix"
-msgstr ""
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr ""
-
-msgid "DNS server 1 (IPv6)"
-msgstr ""
-
-msgid "DNS server 2 (IPv6)"
-msgstr ""
-
-msgid "Custom DUID"
-msgstr ""
-
-msgid "DUID which will be provided to the DHCPv6 server."
-msgstr ""
-
-msgid "Public IPv4"
-msgstr ""
-
-msgid ""
-"In order to use 6to4 protocol, you might need to specify your public IPv4 "
-"address manually (e.g. when your WAN interface has a private address which "
-"is mapped to public IP)."
-msgstr ""
-
-msgid "use autodetection"
-msgstr ""
-
-msgid "Provider IPv4"
-msgstr ""
-
-msgid ""
-"This address will be used as a endpoint of the tunnel on the provider's side."
-msgstr ""
-
-msgid "Routed IPv6 prefix"
-msgstr ""
-
-msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
-
-msgid "MTU"
-msgstr ""
-
-msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
-
-msgid "Dynamic IPv4 handling"
-msgstr ""
-
-msgid ""
-"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
-"need to fill in some extra fields to make it work."
-msgstr ""
-
-msgid "Tunnel ID"
-msgstr ""
-
-msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr ""
-
-msgid "Username"
-msgstr ""
-
-msgid ""
-"Username which will be used to provide credentials to your tunnel provider."
-msgstr ""
-
-msgid "Key"
-msgstr ""
-
-msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr ""
-
-msgid "Custom MAC address"
-msgstr ""
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-
-msgid "MAC address"
-msgstr ""
-
-msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr ""
-
-msgid ""
-"Set your password for this administration interface. The password must be at "
-"least 6 characters long."
-msgstr ""
-
-msgid "Current password"
-msgstr ""
-
-msgid "New password"
-msgstr ""
-
-msgid "New password (repeat)"
-msgstr ""
-
-msgid "Password (repeat)"
-msgstr ""
-
-msgid "Passwords are not equal."
-msgstr ""
-
-msgid "Use the same password for advanced configuration"
-msgstr ""
-
-msgid ""
-"Same password would be used for accessing this administration interface, for "
-"root user in LuCI web interface and for SSH login. Use a strong password! "
-"(If you choose not to set the password for advanced configuration here, you "
-"will have the option to do so later. Until then, the root account will be "
-"blocked.)"
-msgstr ""
-
-msgid "Region settings"
-msgstr ""
-
-msgid ""
-"Please select the timezone the router is being operated in. Correct setting "
-"is required to display the right time and for related functions."
-msgstr ""
-
-msgid "Continent or ocean"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "Timezone"
-msgstr ""
-
-msgid "Advanced administration"
-msgstr ""
-
-#, python-format
-msgid ""
-"In order to access the advanced configuration possibilities which are not "
-"present here, you must set the root user's password. The advanced "
-"configuration options can be managed either through the <a href=\"//%(host)s/"
-"%(path)s\">LuCI web interface</a> or over SSH."
-msgstr ""
-
-msgid "Time"
-msgstr ""
-
-msgid ""
-"We could not synchronize the time with a timeserver, probably due to a loss "
-"of connection. It is necessary for the router to have correct time in order "
-"to function properly. Please, synchronize it with your computer's time, or "
-"set it manually."
-msgstr ""
-
-msgid "Region and time"
-msgstr ""
-
-msgid ""
-"It is important that your router has the current time properly set. If our "
-"router had an older time set some expired SSL certificates might have seemed "
-"like valid."
-msgstr ""
-
-msgid ""
-"Time should be up-to-date otherise DNS and other services might not work "
-"properly."
-msgstr ""
-
-msgid "How to set time"
-msgstr ""
-
-msgid "Choose method to store current time into the router."
-msgstr ""
-
-msgid "via ntp"
-msgstr ""
-
-msgid "manually"
-msgstr ""
-
-msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
-
-msgid "Updater"
-msgstr ""
-
-msgid "I agree"
-msgstr ""
-
-msgid "Use automatic updates (recommended)"
-msgstr ""
-
-msgid "Turn automatic updates off"
-msgstr ""
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-
-msgid "Automatic installation"
-msgstr ""
-
-msgid "Updates will be installed without user's intervention."
-msgstr ""
-
-msgid "Delayed updates"
-msgstr ""
-
-msgid ""
-"Updates will be installed with an adjustable delay. You can also approve "
-"them manually."
-msgstr ""
-
-msgid "Update approval needed"
-msgstr ""
-
-msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr ""
-
-msgid ""
-"If you want to use other language than English you can select it from the "
-"following list:"
-msgstr ""
-
-msgid "Notifications settings"
-msgstr ""
-
-msgid "Enable notifications"
-msgstr ""
-
-msgid "SMTP provider"
-msgstr ""
-
-msgid "Turris"
-msgstr ""
-
-msgid "Custom"
-msgstr ""
-
-msgid ""
-"If you set SMTP provider to \"Turris\", the servers provided to members of "
-"the Turris project would be used. These servers do not require any "
-"additional settings. If you want to set your own SMTP server, please select "
-"\"Custom\" and enter required settings."
-msgstr ""
-
-msgid "Recipient's email"
-msgstr ""
-
-msgid "Email address of recipient. Separate multiple addresses by spaces."
-msgstr ""
-
-msgid "Sender's name"
-msgstr ""
-
-msgid ""
-"Name of the sender - will be used as a part of the sender's email address "
-"before the \"at\" sign."
-msgstr ""
-
-msgid ""
-"Sender's name can contain only alphanumeric characters, dots and underscores."
-msgstr ""
-
-msgid "Reboot is required"
-msgstr ""
-
-msgid "Reboot or attention is required"
-msgstr ""
-
-msgid "Reboot or attention is required or update was installed"
-msgstr ""
-
-msgid "Importance"
-msgstr ""
-
-msgid "Send news"
-msgstr ""
-
-msgid "Send emails about new features."
-msgstr ""
-
-msgid "SMTP settings"
-msgstr ""
-
-msgid "Sender address (From)"
-msgstr ""
-
-msgid "This is the address notifications are send from."
-msgstr ""
-
-msgid "Server address"
-msgstr ""
-
-msgid "Server port"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "SSL/TLS"
-msgstr ""
-
-msgid "STARTTLS"
-msgstr ""
-
-msgid "Security"
-msgstr ""
-
-msgid "Automatic restarts after software update"
-msgstr ""
-
-msgid "Delay (days)"
-msgstr ""
-
-msgid ""
-"Number of days that must pass between receiving the request for restart and "
-"the automatic restart itself."
-msgstr ""
-
-msgid "Reboot time"
-msgstr ""
-
-msgid "Time of day of automatic reboot in HH:MM format."
-msgstr ""
-
-msgid "You have been logged out due to longer inactivity."
-msgstr "오랫동안 사용하지 않아 로그아웃되었습니다."
-
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Y-%m-%d %H:%M:%S"
-
 msgid "Install"
 msgstr "설치"
 
@@ -1781,35 +1748,670 @@ msgstr "업그레이드"
 msgid "Downgrade"
 msgstr "다운그레이드"
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "환경설정 마법사 - %s단계"
-
-msgid "Connectivity test"
-msgstr "연결 테스트"
-
-msgid "Automatic updates"
-msgstr "자동 업데이트"
-
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "내부 오류로 인해 테스트 메시지 발송에 실패했습니다."
 
 #~ msgid ""
-#~ "Configuration was successfully restored. After installing updates and "
-#~ "rebooting you can return to this page at <a href=\"%(new_url)s\">"
-#~ "%(new_url)s</a> in local network. Please wait a while until router "
-#~ "automatically restarts."
+#~ "Configuration was successfully restored. After"
+#~ " installing updates and rebooting you "
+#~ "can return to this page at <a "
+#~ "href=\"%(new_url)s\">%(new_url)s</a> in local "
+#~ "network. Please wait a while until "
+#~ "router automatically restarts."
 #~ msgstr ""
-#~ "환경설정을 성공적으로 복원했습니다. 업데이트를 설치하고 재부팅하면 로컬 네"
-#~ "트워크의 <a href=\"%(new_url)s\">%(new_url)s</a>로 접속해 이 페이지로 돌아"
-#~ "올 수 있습니다. 라우터가 자동으로 재시작할 때 까지 기다려 주세요."
+#~ "환경설정을 성공적으로 복원했습니다. 업데이트를 설치하고 재부팅하면 "
+#~ "로컬 네트워크의 <a href=\"%(new_url)s\">%(new_url)s</a>로"
+#~ " 접속해 이 페이지로 돌아올 수 있습니다. 라우터가"
+#~ " 자동으로 재시작할 때 까지 기다려 주세요."
 
 #~ msgid "IP address of the router could not be determined from the backup."
 #~ msgstr "백업으로부터 라우터 IP 주소를 확인하지 못했습니다."
 
-#~ msgid ""
-#~ "Configuration could not be loaded, backup file is probably corrupted."
+#~ msgid "Configuration could not be loaded, backup file is probably corrupted."
 #~ msgstr "백업 파일이 손상되어 환경설정을 불러올 수 없습니다."
 
 #~ msgid "Invalid request arguments."
 #~ msgstr "잘못된 요청 매개변수입니다."
+
+#~ msgid ""
+#~ "This value length is invalid. It "
+#~ "should be between %s and %s "
+#~ "characters long."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You have chosen to not receive "
+#~ "security updates. We strongly advice you"
+#~ " to keep the automatic security "
+#~ "updates enabled to receive all "
+#~ "recommended updates for your device. "
+#~ "Updating your router on regular basis"
+#~ " is the only way how to ensure"
+#~ " you will be protected against known"
+#~ " threats that might target your home"
+#~ " router device.\\n\\nDo you still want "
+#~ "to continue and stay unprotected?"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "DNSSEC is a security technology that "
+#~ "protects the DNS communication against "
+#~ "attacks on the DNS infrastructure. We"
+#~ " strongly recommend keeping DNSSEC "
+#~ "validation enabled unless you know that"
+#~ " you will be connecting your device"
+#~ " in the network where DNSSEC is "
+#~ "broken.\\n\\nDo you still want to "
+#~ "continue and stay unprotected?"
+#~ msgstr ""
+
+#~ msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There are some unsaved changes in "
+#~ "the notifications settings.\\nDo you want "
+#~ "to discard them and test the "
+#~ "notifications with the old settings?"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A secure connection is an important "
+#~ "safety feature of the router and "
+#~ "therefore the entire home network."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Router Turris uses its own DNS "
+#~ "resolver with DNSSEC support. It is "
+#~ "capable of working alone or it can"
+#~ " forward your DNS queries through "
+#~ "your internet service provider's DNS "
+#~ "resolver."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The following setting determines the "
+#~ "behavior of the DNS resolver. It "
+#~ "is usually better to use the ISP's"
+#~ " resolver in networks where it works"
+#~ " properly. In case this does not "
+#~ "work for some reason, it is "
+#~ "necessary to use direct resolving "
+#~ "without forwarding."
+#~ msgstr ""
+
+#~ msgid "Approve update from %(when)s"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you don't install the updates "
+#~ "manually, they will be installed "
+#~ "automatically after %(time)s."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "With the Turris router you can "
+#~ "join Project Turris which is a "
+#~ "non-profit research project founded by "
+#~ "the CZ.NIC association, a .CZ domain "
+#~ "registry. By joining the project, your"
+#~ " router will act as a probe "
+#~ "which analyzes traffic between your home"
+#~ " network and the Internet and helps"
+#~ " to identify malicious data flows. "
+#~ "Once such a flow is detected your"
+#~ " router notifies the Turris headquarters"
+#~ " which can compare the flow with "
+#~ "data from the rest of the probes"
+#~ " and assign it a threat level. "
+#~ "If the flow is identified as an"
+#~ " attack Turris headquarters can prepare "
+#~ "an update which is distributed to "
+#~ "every Turris router and helps them "
+#~ "to protect themselves against the "
+#~ "attack."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The Updater is currently disabled. You"
+#~ " must enable it first to enable "
+#~ "data collection."
+#~ msgstr "업데이트가 비활성화되어 있습니다. 데이터 수집을 켜려면 활성화해야 합니다."
+
+#~ msgid ""
+#~ "If you want to join the Turris "
+#~ "project you need to register on "
+#~ "the Turris portal first. Enter the "
+#~ "email address you want to register "
+#~ "with or which you have used for"
+#~ " this purpose before:"
+#~ msgstr ""
+#~ "Turris 프로젝트에 참여하려면 먼저 Turris 포털에 "
+#~ "등록해야 합니다. 새로 등록하거나 이전에 참여하기 위해 "
+#~ "사용했던 이메일 주소를 입력하세요:"
+
+#~ msgid "Validate email"
+#~ msgstr "이메일 확인"
+
+#~ msgid "Sending of uCollect data"
+#~ msgstr "uCollect 데이터 전송"
+
+#~ msgid "Time of last update: %(datetime)s"
+#~ msgstr "마지막 갱신 시각: %(datetime)s"
+
+#~ msgid "(status updated %d second ago)"
+#~ msgid_plural "(status updated %d seconds ago)"
+#~ msgstr[0] "(%d초 전 상태 업데이트됨)"
+
+#~ msgid "Sending of firewall logs"
+#~ msgstr "방화벽 로그 전송"
+
+#~ msgid "Refresh"
+#~ msgstr "새로고침"
+
+#~ msgid "Device registration"
+#~ msgstr "기기 등록"
+
+#~ msgid ""
+#~ "If you have not registered your "
+#~ "device yet, click on the following "
+#~ "button to obtain a registration code."
+#~ " This code must be submitted on "
+#~ "the Turris site in your user "
+#~ "profile available at: <a "
+#~ "href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "만약 아직 기기를 등록하지 않았다면, 아래 버튼을 "
+#~ "클릭해 등록 코드를 받으세요. 등록 코드는 Turris "
+#~ "사이트 내 귀하의 사용자 프로파일에서 입력되어야 합니다:"
+#~ " <a href=\"%(url)s\">%(url)s</a>."
+
+#~ msgid "Registration code"
+#~ msgstr "등록 코드"
+
+#~ msgid ""
+#~ "Unfortunately, it wasn't possible to "
+#~ "generate the registration code. This "
+#~ "usually means the router is not "
+#~ "connected to the internet. Please, try"
+#~ " registering later. If the problem "
+#~ "persists, contact the support."
+#~ msgstr ""
+#~ "등록 코드를 생성할 수 없습니다. 이는 보통 "
+#~ "라우터가 인터넷에 연결되지 않았다는 의미입니다. 나중에 다시"
+#~ " 시도해주세요. 만약 문제가 계속되는 경우 지원을 "
+#~ "요청하세요."
+
+#~ msgid "Get registration code"
+#~ msgstr "등록 코드 받기"
+
+#~ msgid "Rebooting..."
+#~ msgstr "재시작 중..."
+
+#~ msgid "Your router is being rebooted."
+#~ msgstr "라우터를 재시작했습니다."
+
+#~ msgid ""
+#~ "Device was successfully installed. Last "
+#~ "step that is required is a "
+#~ "registration of your device in your "
+#~ "user profile on the Turris website "
+#~ "<a href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "기기가 성공적으로 설치되었습니다. 마지막 단계는 기기를 "
+#~ "Turris 웹사이트 <a href=\"%(url)s\">%(url)s</a>에 "
+#~ "있는 귀하의 사용자 프로파일에 등록하는 것입니다."
+
+#~ msgid ""
+#~ "<strong>Warning:</strong> this code is valid"
+#~ " only for limited time. In case "
+#~ "this code is refused, refresh this "
+#~ "page to get a new one."
+#~ msgstr ""
+#~ "<strong>주의:</strong> 본 코드는 제한된 시간 동안에만"
+#~ " 유효합니다. 코드가 유효하지 않은 경우, 본 페이지를"
+#~ " 새로고침하여 새 코드를 받으세요."
+
+#~ msgid "What next?"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can change any of the "
+#~ "previously configured settings in the <a"
+#~ " href=\"%(url)s\">standard configuration interface</a>."
+#~ " In case you are interested in "
+#~ "more advanced options, you can use "
+#~ "the LuCI interface which is available"
+#~ " from the <a href=\"%(url2)s\">Advanced "
+#~ "administration tab</a>."
+#~ msgstr ""
+#~ "<a href=\"%(url)s\">표준 환경설정 인터페이스</a>에서 이전에"
+#~ " 정한 설정을 변경할 수 있습니다. 보다 세부적인 "
+#~ "설정을 변경하고 싶다면, <a href=\"%(url2)s\">고급 "
+#~ "환경설정 탭</a>에 있는 LuCI 인터페이스를 사용할 수"
+#~ " 있습니다."
+
+#~ msgid "Important updates"
+#~ msgstr "중요 업데이트"
+
+#~ msgid ""
+#~ "Important updates that require a device"
+#~ " restart have been installed. Some "
+#~ "services might not work if you "
+#~ "don't restart the device. For details"
+#~ " see below."
+#~ msgstr ""
+#~ "디바이스 재시작이 필요한 중요 업데이트가 설치되었습니다. 일부"
+#~ " 서비스는 재시작하기 전까지 작동하지 않을 수 있습니다."
+#~ " 자세한 내용은 아래에 있습니다."
+
+#~ msgid "Continue to the configuration interface"
+#~ msgstr "환경설정 인터페이스로 계속 이동"
+
+#~ msgid "Installation finished"
+#~ msgstr "설치 완료"
+
+#~ msgid ""
+#~ "You have decided to disable the "
+#~ "Updater service during the installation."
+#~ msgstr "설치 도중에 업데이트 서비스를 비활성화하셨습니다."
+
+#~ msgid ""
+#~ "Without the Updater, installed software "
+#~ "will not be kept up to date "
+#~ "and you will also not be able "
+#~ "to install Updater's package lists."
+#~ msgstr ""
+#~ "업데이트 서비스가 없으면, 설치된 소프트웨어를 최신으로 유지할"
+#~ " 수 없으며 업데이트 서비스에서 제공하는 패키지 목록도"
+#~ " 설치할 수 없습니다."
+
+#~ msgid ""
+#~ "By enabling of the Updater, you "
+#~ "can also join our research project: "
+#~ "<a href=\"https://project.turris.cz/\">Project Turris</a>."
+#~ msgstr ""
+#~ "업데이트 서비스를 활성화하면, 연구 프로젝트에 참여 "
+#~ "가능합니다: <a href=\"https://project.turris.cz/\">Project "
+#~ "Turris</a>."
+
+#~ msgid ""
+#~ "You can enable the Updater any "
+#~ "time on the <a href=\"%(url)s\">Updater</a>"
+#~ " configuration page."
+#~ msgstr "<a href=\"%(url)s\">업데이트</a> 설정 페이지에서 업데이트 서비스를 활성화할 수 있습니다."
+
+#~ msgid ""
+#~ "With Turris router you can join "
+#~ "the research project called <a "
+#~ "href=\"https://project.turris.cz/\">Project Turris</a>. "
+#~ "Thanks to this project, your router "
+#~ "can become a probe that analyzes "
+#~ "the traffic between internet and the "
+#~ "home network and identifies suspicious "
+#~ "data flows."
+#~ msgstr ""
+#~ "Turris 라우터와 함께 <a "
+#~ "href=\"https://project.turris.cz/\">Project Turris</a>라 "
+#~ "불리는 연구 프로젝트에 참여할 수 있습니다. 본 "
+#~ "프로젝트 덕분에, 귀하의 라우터는 여러분의 홈 네트워크와"
+#~ " 인터넷 사이의 트래픽을 분석하고 의심스러운 데이터 "
+#~ "흐름을 확인하는 역할을 수행할 수 있습니다."
+
+#~ msgid ""
+#~ "You can enable these additional features"
+#~ " by following the instructions on the"
+#~ " <a href=\"%(url)s\">Data collection</a> page."
+#~ msgstr "<a href=\"%(url)s\">데이터 수집</a> 페이지에 있는 방법을 따름으로서 이 추가 기능을 활성화할 수 있습니다."
+
+#~ msgid "Synchronize with your computer clock"
+#~ msgstr "내 컴퓨터와 시간 동기화"
+
+#~ msgid "Set time manually"
+#~ msgstr "수동으로 시간 설정"
+
+#~ msgid "Synchronization successful."
+#~ msgstr "동기화가 완료됐습니다."
+
+#~ msgid "Next"
+#~ msgstr "다음"
+
+#~ msgid "Synchronizing router time with an internet time server."
+#~ msgstr "인터넷 시간 서버를 통해 시간을 동기화하고 있습니다."
+
+#~ msgid "One moment, please..."
+#~ msgstr "잠시만 기다려 주세요..."
+
+#~ msgid "Done"
+#~ msgstr "완료"
+
+#~ msgid "Time was successfully synchronized, you can move to the next step."
+#~ msgstr "시간 동기화가 완료되어 다음 단계로 진행할 수 있습니다."
+
+#~ msgid "Registration failure"
+#~ msgstr "등록 실패"
+
+#~ msgid "Welcome to configuration of router Turris"
+#~ msgstr "Turris 라우터 환경설정에 오신 것을 환영합니다"
+
+#~ msgid ""
+#~ "Before you start to use the router"
+#~ " for the first time, it is "
+#~ "necessary to set it up. The "
+#~ "following simple wizard will take you"
+#~ " through the configuration procedure. After"
+#~ " it is finished, your router will "
+#~ "be ready for operation."
+#~ msgstr ""
+#~ "라우터를 처음 사용하기 전에 설정이 필요합니다. 간단 "
+#~ "마법사가 환경설정 절차를 안내할 것입니다. 완료되면 라우터가"
+#~ " 작동할 준비를 마치게 됩니다."
+
+#~ msgid ""
+#~ "If you want to restore a "
+#~ "previously saved configuration or for "
+#~ "some other reason skip this wizard, "
+#~ "you can do so after choosing a "
+#~ "password in its first step."
+#~ msgstr "이전 환경설정을 복원하려 하는 등의 이유로 이 마법사를 건너뛰어야 하는 경우, 암호를 설정한 다음에 건너뛸 수 있습니다."
+
+#~ msgid "Begin installation"
+#~ msgstr "설치 시작"
+
+#~ msgid "Checking internet connectivity."
+#~ msgstr "인터넷 연결 상태를 확인 중입니다."
+
+#~ msgid "Internet connectivity test passed without error."
+#~ msgstr "인터넷 연결 테스트가 오류 없이 통과했습니다."
+
+#~ msgid ""
+#~ "Your internet connection has network "
+#~ "connectivity but DNS resolving does not"
+#~ " work. This is probably a problem "
+#~ "with your ISP. This might also be"
+#~ " an issue with wrong time on "
+#~ "your router - you can adjust it"
+#~ " in the following step."
+#~ msgstr ""
+#~ "인터넷 연결 중 DNS 해석이 작동하지 않고 "
+#~ "있습니다. 서비스 제공자 측의 문제일 수 있습니다. "
+#~ "귀하의 라우터의 시간 설정이 올바르지 않아서 생긴 "
+#~ "문제일 수도 있습니다 - 다음 순서에 따라 시간을"
+#~ " 조정할 수 있습니다."
+
+#~ msgid ""
+#~ "It seems that you have no internet"
+#~ " connection, maybe your WAN settings "
+#~ "are not right."
+#~ msgstr "WAN 설정이 올바르지 않아 인터넷 연결이 안되고 있습니다."
+
+#~ msgid "Try again"
+#~ msgstr "다시 시도"
+
+#~ msgid ""
+#~ "In some cases, such as on a "
+#~ "slower DSL connection or when DHCP "
+#~ "is used, this error might be due"
+#~ " to slow network start-up. You "
+#~ "can retest your connection using the "
+#~ "above button if you think this "
+#~ "might be the case. You can also"
+#~ " return to previous page to fix "
+#~ "the problem by modifying WAN settings."
+#~ msgstr ""
+#~ "일부 느린 DSL 연결이나 DHCP를 사용 중일 "
+#~ "때, 네트워크 연결 속도가 느려 이 오류가 발생할"
+#~ " 수 있습니다. 이에 해당하는 경우 위 버튼을 "
+#~ "눌러 다시 연결 테스트를 할 수 있습니다. 또한"
+#~ " 이전 페이지로 돌아가 WAN 설정을 수정해 문제를"
+#~ " 해결할 수 있습니다."
+
+#~ msgid "Adjust WAN settings"
+#~ msgstr "WAN 설정 수정"
+
+#~ msgid ""
+#~ "Installing additional updates. Router will "
+#~ "be restarted several times to finish "
+#~ "the process."
+#~ msgstr "추가 업데이트를 설치하고 있습니다. 설치를 완료하기 위해 라우터가 여러 번 재시작될 수 있습니다."
+
+#~ msgid "Do not unplug the device during update!"
+#~ msgstr "업데이트하는 동안 전원을 종료하지 마세요!"
+
+#~ msgid "Check of available updates in progress."
+#~ msgstr "업데이트 확인 중입니다."
+
+#~ msgid ""
+#~ "Firmware update has failed due to "
+#~ "a connection or installation error. You"
+#~ " should check your cable connection "
+#~ "before proceeding to the next step. "
+#~ "But do not worry much about the"
+#~ " update as the router will run "
+#~ "the updater regularly."
+#~ msgstr ""
+#~ "연결 혹은 설치 오류가 발생해 펌웨어 업데이트가 "
+#~ "실패했습니다. 다음 단계를 진행하기 전에 케이블 연결 "
+#~ "상태를 확인해주세요. 업데이트는 주기적으로 실행되니 너무 "
+#~ "걱정하지 않으셔도 됩니다."
+
+#~ msgid "Updater has returned the following error:"
+#~ msgstr "업데이트 도중 다음과 같은 오류가 발생했습니다:"
+
+#~ msgid "Device has been restarted."
+#~ msgstr "기기가 재시작되었습니다."
+
+#~ msgid "Please log in again to continue."
+#~ msgstr "계속하려면 로그인하세요."
+
+#~ msgid "Proceed to login"
+#~ msgstr "로그인하기"
+
+#~ msgid "Skip wizard"
+#~ msgstr "마법사 건너뛰기"
+
+#~ msgid "Step"
+#~ msgstr "단계"
+
+#~ msgid "Unable to retrieve notifications, please try refreshing the page."
+#~ msgstr "알림을 가져올 수 없습니다. 페이지를 새로고침 하세요."
+
+#~ msgid "Data collection"
+#~ msgstr "데이터 수집"
+
+#~ msgid ""
+#~ "Failed to update emulated services. Note"
+#~ " that you might need to wait "
+#~ "till ucollect is properly installed."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "An error ocurred when checking the "
+#~ "registration: <br><pre>%(error)s</pre>"
+#~ msgstr "등록 확인 중에 오류가 발생했습니다: <br><pre>%(error)s</pre>"
+
+#~ msgid ""
+#~ "Registration for the entered email is"
+#~ " valid. Now you can enable the "
+#~ "data collection."
+#~ msgstr "등록을 위해 입력한 이메일이 올바릅니다. 이제 데이터 수집을 활성화할 수 있습니다."
+
+#~ msgid ""
+#~ "This router is currently assigned to "
+#~ "a different email address. Please "
+#~ "continue to the <a href=\"%(url)s\">Turris "
+#~ "website</a> and use the registration "
+#~ "code <strong>%(reg_num)s</strong> for a re-"
+#~ "assignment to your email address."
+#~ msgstr ""
+#~ "이 라우터는 다른 이메일 주소로 등록되어 있습니다. "
+#~ "<a href=\"%(url)s\">Turris 웹사이트</a>에 접속해 등록"
+#~ " 코드 <strong>%(reg_num)s</strong>를 사용해 귀하의 "
+#~ "이메일 주소에 재할당하세요."
+
+#~ msgid ""
+#~ "This email address is not registered "
+#~ "yet. Please continue to the <a "
+#~ "href=\"%(url)s\">Turris website</a> and use "
+#~ "the registration code <strong>%(reg_num)s</strong>"
+#~ " to create a new account."
+#~ msgstr ""
+#~ "이메일 주소가 아직 등록되지 않았습니다. <a "
+#~ "href=\"%(url)s\">Turris 웹사이트</a>에 접속해 등록코드 "
+#~ "<strong>%(reg_num)s</strong>를 사용해 새 계정을 만드세요."
+
+#~ msgid "Router failed to authorize. Please try to validate our email later."
+#~ msgstr ""
+
+#~ msgid "Online"
+#~ msgstr "온라인"
+
+#~ msgid "Offline"
+#~ msgstr "오프라인"
+
+#~ msgid "Unknown status"
+#~ msgstr "상태를 알 수 없음"
+
+#~ msgid ""
+#~ "Guest network is used for <a "
+#~ "href='%(url)s'>guest Wi-Fi</a>. It is "
+#~ "separated  from your ordinary LAN "
+#~ "network. Devices connected to this "
+#~ "network are allowed to access the "
+#~ "internet, but are not allowed to "
+#~ "access other devices and the "
+#~ "configuration interface of the router."
+#~ msgstr ""
+
+#~ msgid "uCollect"
+#~ msgstr ""
+
+#~ msgid "Emulated services"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "One of uCollect's features is emulation"
+#~ " of some commonly abused services. If"
+#~ " this function is enabled, uCollect "
+#~ "is listening for incoming connection "
+#~ "attempts to these services. Enabling of"
+#~ " the emulated services has no effect"
+#~ " if another service is already "
+#~ "listening on its default port (port "
+#~ "numbers are listed below)."
+#~ msgstr ""
+
+#~ msgid "Telnet (23/TCP)"
+#~ msgstr ""
+
+#~ msgid "Telnet - alternative port (2323/TCP)"
+#~ msgstr ""
+
+#~ msgid "HTTP (80/TCP)"
+#~ msgstr ""
+
+#~ msgid "Squid HTTP proxy (3128/TCP)"
+#~ msgstr ""
+
+#~ msgid "Polipo HTTP proxy (8123/TCP)"
+#~ msgstr ""
+
+#~ msgid "HTTP proxy (8080/TCP)"
+#~ msgstr ""
+
+#~ msgid "Collect credentials"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If this option is enabled, user "
+#~ "names and passwords are collected and"
+#~ " sent to server in addition to "
+#~ "the IP address of the client."
+#~ msgstr ""
+
+#~ msgid "Enable data collection"
+#~ msgstr ""
+
+#~ msgid "Email"
+#~ msgstr ""
+
+#~ msgid "Failed to query the server."
+#~ msgstr ""
+
+#~ msgid "Failed to verify the router's registration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Enables Wi-Fi for guests, which is"
+#~ " separated from LAN network. Devices "
+#~ "connected to this network are allowed"
+#~ " to access the internet, but aren't"
+#~ " allowed to access other devices and"
+#~ " the configuration interface of the "
+#~ "router. Parameters of the guest network"
+#~ " can be set in <a href='%(url)s'>the"
+#~ " LAN tab</a>. "
+#~ msgstr ""
+
+#~ msgid "Current password"
+#~ msgstr ""
+
+#~ msgid "Use the same password for advanced configuration"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In order to access the advanced "
+#~ "configuration possibilities which are not "
+#~ "present here, you must set the "
+#~ "root user's password. The advanced "
+#~ "configuration options can be managed "
+#~ "either through the <a "
+#~ "href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+#~ "or over SSH."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "We could not synchronize the time "
+#~ "with a timeserver, probably due to "
+#~ "a loss of connection. It is "
+#~ "necessary for the router to have "
+#~ "correct time in order to function "
+#~ "properly. Please, synchronize it with "
+#~ "your computer's time, or set it "
+#~ "manually."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is important that your router "
+#~ "has the current time properly set. "
+#~ "If our router had an older time"
+#~ " set some expired SSL certificates "
+#~ "might have seemed like valid."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Updater is a service that keeps "
+#~ "all TurrisOS software up to date. "
+#~ "Apart from the standard installation, "
+#~ "you can optionally select lists of "
+#~ "additional software that'd be installed "
+#~ "on the router. This software can "
+#~ "be selected from the following list. "
+#~ "Please note that only software that "
+#~ "is part of TurrisOS or that has"
+#~ " been installed from a package list"
+#~ " is maintained by Updater. Software "
+#~ "that has been installed manually or "
+#~ "using opkg is not affected."
+#~ msgstr ""
+
+#~ msgid "Configuration wizard - step %s"
+#~ msgstr "환경설정 마법사 - %s단계"
+
+#~ msgid "Connectivity test"
+#~ msgstr "연결 테스트"
+
+#~ msgid "Automatic updates"
+#~ msgstr "자동 업데이트"
+

@@ -1,24 +1,1864 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Foris package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 09:42+0200\n"
+"POT-Creation-Date: 2018-10-25 16:25+0200\n"
 "PO-Revision-Date: 2018-07-04 21:41+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/"
-">\n"
 "Language: ru\n"
+"Language-Team: Russian "
+"<https://hosted.weblate.org/projects/turris/foris/ru/>\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.1-dev\n"
+"Generated-By: Babel 2.6.0\n"
+
+msgid ""
+"Welcome to Foris web interface. This guide will help you to setup your "
+"router. Firstly it is required to set your password. Note the security of"
+" your home network is in your hands, so try not to use weak passwords."
+msgstr ""
+
+msgid "Your password seems to be set. You may proceed to the next step."
+msgstr ""
+
+msgid "Choose one of the possible setup workflows."
+msgstr ""
+
+#, fuzzy
+msgid "The workflow was set. You may proceed to next step."
+msgstr "Обновление прошивки прошло успешно, можно перейти к следующему шагу."
+
+msgid "Here you need to decide which interfaces belongs to which network."
+msgstr ""
+
+msgid "If you are in doubt use the current settings."
+msgstr ""
+
+msgid ""
+"You've configured your network interfaces. It seems that you didn't break"
+" any crucial network settings so you can safely proceed to the next step."
+msgstr ""
+
+msgid "In order to access the internet you need to configure your WAN interface."
+msgstr ""
+
+msgid ""
+"You've configured your WAN interface. Try to run connection test to see "
+"whether it is working properly and if so you can safely proceed to the "
+"next step."
+msgstr ""
+
+msgid ""
+"Now you should configure your LAN interface. Note that when you change "
+"your network settings you probably won't be able to connect to the "
+"configuration interface unless you restart the network on your current "
+"device."
+msgstr ""
+
+msgid ""
+"You've configured your LAN interface. Try to test whether settings work "
+"properly and if so you can safely proceed to the next step."
+msgstr ""
+
+msgid "Now you need to set the time and timezone of your device."
+msgstr ""
+
+msgid ""
+"Your time and timezone seem to be set. Please make sure that the time "
+"matches the time on your computer if not try to update it via ntp or "
+"manually."
+msgstr ""
+
+msgid ""
+"A proper DNS resolving is one of the key security features of your "
+"router. Let's configure it now."
+msgstr ""
+
+msgid ""
+"You've updated your DNS configuration. Try to run connection test to see "
+"whether your DNS resolver is properly set."
+msgstr ""
+
+msgid "Now you need to configure automatic updates ouf your device."
+msgstr ""
+
+msgid "Please wait till the updater finishes its run."
+msgstr ""
+
+msgid "You have sucessfully configured your device."
+msgstr ""
+
+msgid ""
+"You chose to act as local server this means that it doesn't make sense to"
+" put any interfaces to your WAN and Guest Network. So it is a good idea "
+"to assign all iterfaces to LAN."
+msgstr ""
+
+msgid ""
+"To act as a local server, there's no need to manage LAN (if you still "
+"want to manage it reset the guide and choose the Router workflow). You "
+"probably want to act as a client here thus select "
+"<strong>Unmanaged</strong> mode here. "
+msgstr ""
+
+msgid ""
+"If you select the <strong>static</strong> configuration be sure that the "
+"IP addresses are entered correctly otherwise you won't be able to access "
+"this configuration iterface when the new settings are applied."
+msgstr ""
+
+msgid ""
+"If you select the <strong>DHCP</strong> method you probably you need to "
+"obtain a new IP address of this device. You can obtain it from the DHCP "
+"server which is managing your LAN. Then you need to connect to the new IP"
+" address to proceed the guide."
+msgstr ""
+
+msgid ""
+"Note that either way you might need to re-plug your ethernet cabels after"
+" you update the settings here."
+msgstr ""
+
+msgid ""
+"Please test whether the settings you provided are correctly working. This"
+" means that you can access the configuration interface of your device and"
+" your device is able to access the internet (you can use the connection "
+"test below)."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device should be able to act as a "
+"server on your local network."
+msgstr ""
+
+msgid ""
+"Minimal device setup is finished. Note that you probably need to perform "
+"some further configuration updates to fit the device to your needs."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device is able to act as a router "
+"and route network traffic among LAN, WAN and guest network."
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "Minimal"
+msgstr ""
+
+#, fuzzy
+msgid "Router"
+msgstr "Страна"
+
+msgid "Local Server"
+msgstr ""
+
+msgid "Unset"
+msgstr ""
+
+msgid "The workflow wasn't set yet."
+msgstr ""
+
+msgid "Workflow for older routers and older turris OS versions (before 4.0)."
+msgstr ""
+
+msgid ""
+"Just set your password and you are ready to go. This workflow is aimed to"
+" more advanced users who intend not to use the web gui. "
+msgstr ""
+
+msgid ""
+"After you finish this workflow your device will be able to act as a fully"
+" functional router. It assumes that you want to have more or less "
+"standard network setup."
+msgstr ""
+
+msgid ""
+"This workflow will help you to setup your device to act as a local "
+"server. It means that the device will provide some kind of service to "
+"other devices within your local network (e.g. act as a network attached "
+"storage)."
+msgstr ""
+
+msgid "This field is required."
+msgstr "Обязательное поле."
+
+msgid "Not a valid IPv4 address."
+msgstr "Некорректный адрес IPv4."
+
+msgid "Not a valid IPv4 netmask address."
+msgstr "Некорректная маска подсети IPv4."
+
+msgid "Not a valid IPv6 address."
+msgstr "Некорректный адрес IPv6."
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr "Некорректный IPv4 или IPv6-адрес."
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr "Это не IPv6-адрес с длиной префикса."
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr "Это не IPv4-адрес с длиной префикса."
+
+msgid "Is not a number."
+msgstr "Это не число."
+
+msgid "This is not valid time in HH:MM format."
+msgstr "Некорректный формат времени ЧЧ:MM."
+
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr "Некорректный формат времени (ГГГГ-ММ-ДД ЧЧ:MM:СС)."
+
+msgid "This is not a valid domain name."
+msgstr "Некорректное доменное имя."
+
+msgid "MAC address is not valid."
+msgstr "Некорректный MAC-адрес."
+
+msgid "Duid is not valid."
+msgstr "Некорректный уникальный идентификатор DHCPv6 (DUID)."
+
+#, python-format
+msgid "Not in a valid range %(low)s - %(high)s."
+msgstr "Не в диапазоне %(low)s - %(high)s."
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr "Длина должна быть от %(low)s до %(high)s символов."
+
+msgid "Configuration was successfully saved."
+msgstr "Конфигурация успешно сохранена."
+
+msgid "There were some errors in your input."
+msgstr "При вводе обнаружены ошибки."
+
+msgid "Notifications"
+msgstr "Уведомления"
+
+msgid "Number of notifications"
+msgstr "Количество уведомлений"
+
+msgid "Old password you entered was not valid."
+msgstr "Старый пароль неверен."
+
+#, fuzzy
+msgid "System password was successfully saved."
+msgstr "Пароль успешно сохранен."
+
+msgid "Failed to save system password"
+msgstr ""
+
+#, fuzzy
+msgid "Foris password was successfully saved."
+msgstr "Пароль успешно сохранен."
+
+msgid "Failed to save Foris password"
+msgstr ""
+
+#, fuzzy
+msgid "Guide workflow was sucessfully set."
+msgstr "Пароль успешно сохранен."
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+#, fuzzy
+msgid "Network configuration was sucessfully updated."
+msgstr "Конфигурация успешно сохранена."
+
+#, fuzzy
+msgid "Unable to update your network configuration."
+msgstr "Не удалось проверить подключение к сети."
+
+msgid ""
+"You WAN configuration is probably not correct or your WAN interface "
+"hasn't been properly initialized yet."
+msgstr ""
+"Возможно, конфигурация WAN неверна, или ваш интерфейс WAN еще не был "
+"правильно инициализирован."
+
+msgid "WAN port has no link, your internet connection probably won't work."
+msgstr ""
+"Порт WAN не имеет связи, подключение к Интернету, возможно, не будет "
+"работать."
+
+msgid "Wrong HTTP method."
+msgstr "Неверный метод HTTP."
+
+msgid "Wi-Fi reset was successful."
+msgstr "Успешный сброс Wi-Fi."
+
+msgid "Failed to perform Wi-Fi reset."
+msgstr "Не удалось выполнить сброс Wi-Fi."
+
+msgid "Maintenance"
+msgstr "Обслуживание"
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Тестовое сообщение отправлено, проверьте вашу почту."
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr "Не удалось отправить тестовое сообщение, возможно, ошибка в конфигурации."
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+"Конфигурация успешно восстановлена. Обратите внимание, что для "
+"восстановления конфигурации потребуется перезагрузка."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "Не удалось восстановить резервную копию из указанного файла."
+
+msgid "Update was approved."
+msgstr "Обновление было одобрено."
+
+msgid "Update was postponed."
+msgstr "Обновление было отложено."
+
+msgid "Failed to approve the update."
+msgstr "Обновление не одобрено."
+
+msgid "Failed to postpone the update."
+msgstr "Не удалось отложить обновление."
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be "
+"installed or removed shortly."
+msgstr ""
+"Конфигурация успешно сохранена. Выбранные пакеты будут установлены или "
+"удалены."
+
+msgid "Updater is running"
+msgstr "Сервис обновления запущен"
+
+#, fuzzy
+msgid "Failed to finish the guide."
+msgstr "Не удалось отложить обновление."
+
+msgid "About"
+msgstr "Сведения"
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Конфигурация не сохранена из-за внутренней ошибки."
+
+msgid "The password you entered was not valid."
+msgstr "Введенный пароль не подходит."
+
+msgid "Backup file"
+msgstr "Файл резервной копии"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "Use forwarding"
+msgstr "Использовать переадресацию"
+
+msgid "Use provider's DNS resolver"
+msgstr ""
+
+#, fuzzy
+msgid "DNS Forwarder"
+msgstr "Использовать переадресацию"
+
+msgid "Disable DNSSEC"
+msgstr "Отключить DNSSEC"
+
+msgid "Enable DHCP clients in DNS"
+msgstr "Включение DHCP-клиентов в DNS"
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the"
+" local DNS records."
+msgstr ""
+"Это позволит вашему DNS-резольверу размещать имена клиентов DHCP среди "
+"локальных записей DNS."
+
+msgid "Domain of DHCP clients in DNS"
+msgstr "Домен DHCP-клиентов в DNS"
+
+msgid ""
+"This domain will be used as prefix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
+msgstr ""
+"Этот домен будет использоваться в качестве префикса. Например, "
+"результатом для клиента «android-123» и домена «my.lan» будет "
+"«android-123.my.lan»."
+
+msgid "Guest network"
+msgstr "Гостевая сеть"
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN. Devices connected to this network are "
+"allowed to access the internet, but are not allowed to access the "
+"configuration interface of the this device nor the devices in LAN."
+msgstr ""
+
+msgid "Enable guest network"
+msgstr "Включить гостевую сеть"
+
+msgid "Router IP in guest network"
+msgstr "IP-адрес маршрутизатора в гостевой сети"
+
+msgid ""
+"Router's IP address in the guest network. It is necessary that the guest "
+"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
+msgstr ""
+"IP-адрес маршрутизатора для гостевой сети. Необходимо, чтобы IP-адреса "
+"гостевой сети отличались от других сетей (LAN, WAN, VPN и т.д.)."
+
+msgid "Guest network netmask"
+msgstr "Маска гостевой сети"
+
+msgid "Network mask of the guest network."
+msgstr "Маска гостевой сети."
+
+msgid "Enable DHCP"
+msgstr "Включить DHCP"
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+"Включите эту опцию, чтобы автоматически назначать IP-адреса устройствам, "
+"подключенным к маршрутизатору."
+
+msgid "DHCP start"
+msgstr "Начальный адрес пула DHCP"
+
+msgid "DHCP max leases"
+msgstr "Размер пула адресов DHCP"
+
+msgid "Lease time (hours)"
+msgstr ""
+
+msgid "Guest Lan QoS"
+msgstr "QoS гостевой сети"
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, "
+"so that your main network doesn't get slowed-down by it."
+msgstr ""
+"Эта опция ограничивает пропускную способность гостевой сети, чтобы не "
+"замедлять основную сеть."
+
+msgid "Download (kb/s)"
+msgstr "Приём (кбит/с)"
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr "Скорость приёма в гостевой сети (в килобитах в секунду)."
+
+msgid "Upload (kb/s)"
+msgstr "Передача (кбит/с)"
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr "Скорость передачи в гостевой сети (в килобитах в секунду)."
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If "
+"you change the router IP address, all computers in LAN, probably "
+"including the one you are using now, will need to obtain a <strong>new IP"
+" address</strong> which does <strong>not</strong> happen "
+"<strong>immediately</strong>. It is recommended to disconnect and "
+"reconnect all LAN cables after submitting your changes to force the "
+"update. The next page will not load until you obtain a new IP from DHCP "
+"(if DHCP enabled) and you might need to <strong>refresh the page</strong>"
+" in your browser."
+msgstr ""
+"В этом разделе содержатся настройки для локальной сети (LAN). Значения по"
+" умолчанию подходят для большинства сетей. "
+"<br><strong>Примечание:</strong> Если вы измените IP-адрес "
+"маршрутизатора, все компьютеры в локальной сети, вероятно, включая тот, "
+"который вы используете сейчас, должны будут получить <strong>новый "
+"IP-адрес</strong>, что произойдет <strong>не сразу</strong>. "
+"Рекомендуется отключить и повторно подключить все кабели локальной сети "
+"после изменения адреса для принудительного обновления. Следующая страница"
+" не будет загружаться, пока вы не получите новый IP-адрес от DHCP (если "
+"включен DHCP), и вам может потребоваться <strong>обновить "
+"страницу</strong> в браузере."
+
+msgid "LAN mode"
+msgstr ""
+
+#, fuzzy
+msgid "Managed"
+msgstr "Язык"
+
+msgid "Unmanaged"
+msgstr ""
+
+msgid ""
+"Manage mode means that this devices manages the LAN (acts as a router, "
+"can assing IP addresses, ...). Unmanaged mode means that this device acts"
+" as a client in this network. It acts in a similar way as WAN, but it has"
+" opened ports for configuration interface and other services. "
+msgstr ""
+
+msgid "Router IP address"
+msgstr "IP-адрес маршрутизатора"
+
+msgid "Router's IP address in the inner network."
+msgstr "IP-адрес маршрутизатора во внутренней сети."
+
+msgid "Network netmask"
+msgstr "Маска сети"
+
+msgid "Network mask of the inner network."
+msgstr "Маска внутренней сети."
+
+msgid "DHCP (automatic configuration)"
+msgstr "DHCP (автоматическая настройка)"
+
+msgid "Static IP address (manual configuration)"
+msgstr "Статический IP-адрес (ручная настройка)"
+
+msgid "Don't connect this device to LAN"
+msgstr ""
+
+msgid "IPv4 protocol"
+msgstr "Протокол IPv4"
+
+#, fuzzy
+msgid "IPv4 address"
+msgstr "Адрес IPv6"
+
+msgid "Network mask"
+msgstr "Маска подсети"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "DNS server 1 (IPv4)"
+msgstr "DNS-сервер 1 (IPv4)"
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is "
+"capable of working without it."
+msgstr ""
+"Адрес DNS-сервера не требуется, так как встроенная система разрешения "
+"доменных имён может работать без него."
+
+msgid "DNS server 2 (IPv4)"
+msgstr "DNS-сервер 2 (IPv4)"
+
+msgid "DHCP hostname"
+msgstr "Имя сервера DHCP"
+
+msgid "Hostname which will be provided to DHCP server."
+msgstr "Имя компьютера, которое будет предоставлено серверу DHCP."
+
+msgid "Password"
+msgstr "Пароль"
+
+#, fuzzy
+msgid "Current Foris password"
+msgstr "Текущий пароль"
+
+msgid "New password"
+msgstr "Новый пароль"
+
+msgid "New password (repeat)"
+msgstr "Новый пароль (ещё раз)"
+
+msgid "Password (repeat)"
+msgstr "Пароль (повтор)"
+
+msgid "for Foris web interface"
+msgstr ""
+
+msgid ""
+"Set your password for this administration interface. The password must be"
+" at least 6 characters long."
+msgstr ""
+"Установите свой пароль для этого интерфейса администрирования. Пароль "
+"должен быть не короче 6 символов."
+
+msgid "Passwords are not equal."
+msgstr "Пароли не совпадают."
+
+#, fuzzy
+msgid "for Advanced administration"
+msgstr "Расширенное администрирование"
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration options which are not "
+"available here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a "
+"href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
+msgstr ""
+
+msgid "Don't set this password"
+msgstr ""
+
+#, fuzzy
+msgid "Use Foris password"
+msgstr "Пароль"
+
+#, fuzzy
+msgid "Use other password"
+msgstr "Пароль"
+
+msgid "Advanced administration"
+msgstr "Расширенное администрирование"
+
+msgid ""
+"Same password would be used for accessing this administration interface, "
+"for root user in LuCI web interface and for SSH login. Use a strong "
+"password! (If you choose not to set the password for advanced "
+"configuration here, you will have the option to do so later. Until then, "
+"the root account will be blocked.)"
+msgstr ""
+"Один и тот же пароль будет использоваться для данного интерфейса "
+"администрирования, для пользователя root в веб-интерфейсе LuCI и для "
+"авторизации по SSH. Используйте сложный пароль! (Если Вы не установите "
+"пароль для расширенной настройки здесь, можно сделать это позднее. До "
+"этого момента аккаунт root будет заблокирован.)"
+
+msgid "Region and time"
+msgstr "Регион и время"
+
+msgid ""
+"It is important for your device to have the correct time set. If your "
+"device's time is delayed, the procedure of SSL certificate verification "
+"might not work correctly."
+msgstr ""
+
+msgid "Region settings"
+msgstr "Настройки региона"
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct "
+"setting is required to display the right time and for related functions."
+msgstr ""
+"Выберите часовой пояс маршрутизатора для отображения правильного времени "
+"и связанных функций."
+
+msgid "Continent or ocean"
+msgstr "Континент или океан"
+
+msgid "Country"
+msgstr "Страна"
+
+msgid "Timezone"
+msgstr "Часовой пояс"
+
+msgid "Time settings"
+msgstr "Настройки времени"
+
+msgid ""
+"Time should be up-to-date otherise DNS and other services might not work "
+"properly."
+msgstr ""
+"Время должно быть актуальным, иначе DNS и другие службы могут работать "
+"некорректно."
+
+msgid "How to set time"
+msgstr "Как установить время"
+
+msgid "Choose method to store current time into the router."
+msgstr "Способ установки текущего времени в маршрутизаторе."
+
+msgid "via ntp"
+msgstr "Через NTP"
+
+msgid "manually"
+msgstr "Вручную"
+
+msgid "Time"
+msgstr "Синхронизация"
+
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
+msgstr "Время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС."
+
+msgid "Guide Finished"
+msgstr ""
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide. Once "
+"you leave this guide you'll be granted access to the full configuration "
+"interface of this device."
+msgstr ""
+
+#, fuzzy
+msgid "Network interfaces"
+msgstr "Маска сети"
+
+msgid "Notifications settings"
+msgstr "Настройки уведомлений"
+
+msgid "Enable notifications"
+msgstr "Включить уведомления"
+
+msgid "SMTP provider"
+msgstr "Провайдер SMTP"
+
+msgid "Turris"
+msgstr "Turris"
+
+msgid "Custom"
+msgstr "Ручная настройка"
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members "
+"of the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please "
+"select \"Custom\" and enter required settings."
+msgstr ""
+"Если вы выберете в качестве SMTP-провайдера \"Turris\", будут "
+"использоваться серверы, доступные участникам проекта Turris. Они не "
+"требуют дополнительных настроек. Если вы хотите использовать свой сервер "
+"SMTP, выберите \"Ручная настройка\" и введите необходимые данные."
+
+msgid "Recipient's email"
+msgstr "Электронная почта получателя"
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr "Адрес электронной почты получателя. Разделите несколько адресов пробелами."
+
+msgid "Sender's name"
+msgstr "Имя отправителя"
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address"
+" before the \"at\" sign."
+msgstr ""
+"Имя отправителя - будет использовано как часть адреса отправителя до "
+"знака \"@\"."
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and "
+"underscores."
+msgstr ""
+"Имя отправителя может содержать только буквы латинского алфавита, цифры, "
+"точки и подчеркивания."
+
+msgid "Reboot is required"
+msgstr "Требуется перезагрузка"
+
+msgid "Reboot or attention is required"
+msgstr "Требуется перезагрузка или внимание"
+
+msgid "Reboot or attention is required or update was installed"
+msgstr "Требуется перезагрузка или внимание, иначе обновление будет установлено"
+
+msgid "Importance"
+msgstr "Важность"
+
+msgid "Send news"
+msgstr "Сообщать новости"
+
+msgid "Send emails about new features."
+msgstr "Сообщать о новых возможностях."
+
+msgid "SMTP settings"
+msgstr "Настройки SMTP"
+
+msgid "Sender address (From)"
+msgstr "Адрес отправителя (От)"
+
+msgid "This is the address notifications are send from."
+msgstr "Адрес, с которого будут отправляться уведомления."
+
+msgid "Server address"
+msgstr "Адрес сервера"
+
+msgid "Server port"
+msgstr "Порт сервера"
+
+msgid "None"
+msgstr "Нет"
+
+msgid "SSL/TLS"
+msgstr "SSL/TLS"
+
+msgid "STARTTLS"
+msgstr "STARTTLS"
+
+msgid "Security"
+msgstr "Безопасность"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Automatic restarts after software update"
+msgstr "Автоматическая перезагрузка после установки обновлений"
+
+msgid "Delay (days)"
+msgstr "Задержка (в днях)"
+
+msgid ""
+"Number of days that must pass between receiving the request for restart "
+"and the automatic restart itself."
+msgstr "Количество дней с момента запроса до автоматической перезагрузки."
+
+msgid "Reboot time"
+msgstr "Время перезагрузки"
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr "Время автоматической перезагрузки (ЧЧ:MM)."
+
+msgid "Guide workflow"
+msgstr ""
+
+msgid "Updater"
+msgstr "Сервис обновлений"
+
+#, fuzzy
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart "
+"from the standard installation, you can optionally select bundles of "
+"additional software that'd be installed on the router. This software can "
+"be selected from the following list. Please note that only software that "
+"is part of TurrisOS or that has been installed from a package list is "
+"maintained by Updater. Software that has been installed manually or using"
+" opkg is not affected."
+msgstr ""
+"Сервис обновлений — это сервис, который постоянно обновляет все "
+"программное обеспечение TurrisOS. Помимо стандартной поставки, вы можете "
+"выбрать список дополнительных программ, которые будут установлены на "
+"маршрутизаторе. Программное обеспечение можно выбрать из списка ниже. "
+"Обратите внимание: только программы, входящие в состав TurrisOS или "
+"установленные из списка пакетов, поддерживаются сервисом. Программное "
+"обеспечение, установленное вручную или с помощью opkg, не изменяется."
+
+msgid "I agree"
+msgstr "Согласен"
+
+msgid "Use automatic updates (recommended)"
+msgstr "Использовать автоматические обновления (рекомендуется)"
+
+msgid "Turn automatic updates off"
+msgstr "Отключить автоматические обновления"
+
+msgid "Update approvals"
+msgstr "Одобрения обновления"
+
+msgid "Automatic installation"
+msgstr "Автоматическая установка"
+
+msgid "Updates will be installed without user's intervention."
+msgstr "Обновления будут установлены без подтверждения пользователя."
+
+msgid "Delayed updates"
+msgstr "Отложенные обновления"
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+"Обновления будут установлены с регулируемой задержкой. Вы также можете "
+"одобрить вручную."
+
+msgid "Update approval needed"
+msgstr "Обновления требуют одобрения"
+
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr "Вы должны одобрить обновления, иначе они не будут установлены."
+
+msgid ""
+"If you want to use other language than English you can select it from the"
+" following list:"
+msgstr ""
+"Если вы хотите использовать другой язык, помимо английского, выберите его"
+" из следующего списка:"
+
+msgid "WAN"
+msgstr "WAN"
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave this "
+"options untouched unless instructed otherwise by your internet service "
+"provider. Also, in case there is a cable or DSL modem connecting your "
+"router to the network, it is usually not necessary to change this "
+"setting."
+msgstr ""
+"Здесь указываются настройки порта WAN. Как правило, этот параметр не "
+"требует изменений, если иное не указано вашим интернет-провайдером. Кроме"
+" того, если вы используете кабельный или DSL-модем, соединяющий ваш "
+"маршрутизатор с сетью, обычно нет необходимости изменять этот параметр."
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr "PPPoE (для DSL-мостов, модема Turris и т.д.)"
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr "DHCPv6 (автоматическая настройка)"
+
+msgid "6to4 (public IPv4 address required)"
+msgstr "6to4 (требуется публичный IPv4-адрес)"
+
+msgid "6in4 (public IPv4 address required)"
+msgstr "6in4 (требуется публичный IPv4-адрес)"
+
+msgid "Disable IPv6"
+msgstr "Отключить IPv6"
+
+msgid "IP address"
+msgstr "IP-адрес"
+
+msgid "PAP/CHAP username"
+msgstr "Имя пользователя PAP/CHAP"
+
+msgid "PAP/CHAP password"
+msgstr "Пароль PAP/CHAP"
+
+msgid "IPv6 protocol"
+msgstr "Протокол IPv6"
+
+msgid "IPv6 address"
+msgstr "Адрес IPv6"
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. "
+"2001:db8:be13:37da::1/64"
+msgstr ""
+"IPv6-адрес и длина префикса для интерфейса WAN, например, "
+"2001:db8:be13:37da::1/64"
+
+msgid "IPv6 gateway"
+msgstr "Шлюз IPv6"
+
+msgid "IPv6 prefix"
+msgstr "Префикс IPv6"
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr "Диапазон адресов для локальной сети, например, 2001:db8:be13:37da::/64"
+
+msgid "DNS server 1 (IPv6)"
+msgstr "DNS-сервер 1 (IPv6)"
+
+msgid "DNS server 2 (IPv6)"
+msgstr "DNS-сервер 2 (IPv6)"
+
+msgid "Custom DUID"
+msgstr "Пользовательский уникальный идентификатор DHCP (DUID)"
+
+msgid "DUID which will be provided to the DHCPv6 server."
+msgstr "DUID, который будет предоставлен серверу DHCPv6."
+
+msgid "Public IPv4"
+msgstr "Публичный IPv4-адрес"
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4"
+" address manually (e.g. when your WAN interface has a private address "
+"which is mapped to public IP)."
+msgstr ""
+"Чтобы использовать протокол 6to4, вам может потребоваться указать ваш "
+"публичный IPv4-адрес вручную (например, когда ваш wan-интерфейс имеет "
+"частный адрес, который сопоставляется с публичным IP-адресом)."
+
+msgid "use autodetection"
+msgstr "использовать автоопределение"
+
+msgid "Provider IPv4"
+msgstr "Провайдер IPv4-адресов"
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on the provider's "
+"side."
+msgstr ""
+"Этот адрес будет использоваться в качестве конечной точки туннеля со "
+"стороны провайдера."
+
+msgid "Routed IPv6 prefix"
+msgstr "Префикс IPv6 маршрутизации"
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr "IPv6-адреса, перенаправляемые в вашу сеть."
+
+msgid "MTU"
+msgstr "MTU"
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr "Максимальный размер полезного блока данных (MTU) в туннеле (в байтах)."
+
+msgid "Dynamic IPv4 handling"
+msgstr "Динамическая обработка IPv4"
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that "
+"you need to fill in some extra fields to make it work."
+msgstr ""
+"Некоторые провайдеры туннелей позволяют вам иметь публичный динамический "
+"IPv4-адрес. Обратите внимание, что нужно заполнить дополнительные поля, "
+"чтобы они работали."
+
+msgid "Tunnel ID"
+msgstr "ID туннеля"
+
+msgid "ID of your tunnel which was assigned to you by the provider."
+msgstr "Идентификатор туннеля, который был назначен провайдером."
+
+msgid ""
+"Username which will be used to provide credentials to your tunnel "
+"provider."
+msgstr "Имя пользователя, которое будет использоваться вашим провайдером туннелей."
+
+msgid "Key"
+msgstr "Ключ"
+
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr "Ключ, который будет использоваться вашим провайдером туннелей."
+
+msgid "Custom MAC address"
+msgstr "Пользовательский MAC-адрес"
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet"
+" service provider."
+msgstr ""
+"Используйте в случаях, когда ваш интернет-провайдер требует определенный "
+"MAC-адрес."
+
+msgid "MAC address"
+msgstr "MAC-адрес"
+
+msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
+msgstr "Разделяйте двоеточием, например, 00:11:22:33:44:55"
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+"Общий секретный ключ (PSK) WPA2, необходимый для подключения к сети. "
+"Минимальная длина — 8 символов."
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr "Включить Wi-Fi %s"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Hide SSID"
+msgstr "Скрыть SSID"
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+"Если установлено, сеть не будет отображаться при сканировании доступных "
+"сетей."
+
+msgid "Wi-Fi mode"
+msgstr "Режим Wi-Fi"
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have "
+"more interference. The 5 GHz band is a newer standard and may not be "
+"supported by all your devices. It usually has less interference, but the "
+"signal does not carry so well indoors."
+msgstr ""
+"Диапазон 2,4 ГГц более широко поддерживается клиентами, но и больше "
+"подвержен интерференции. Диапазон 5 ГГц — новый стандарт, и может не "
+"поддерживаться всеми вашими устройствами. Обычно он имеет меньше помех, "
+"но сигнал не так хорошо распространяется в помещении."
+
+msgid "Disabled"
+msgstr "Отключён"
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr "802.11n - ширина канала в 20 МГц"
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr "802.11n - ширина канала в 40 МГц"
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr "802.11ac - ширина канала в 20 МГц"
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr "802.11ac - ширина канала в 40 МГц"
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr "802.11ac - ширина канала в 80 МГц"
+
+msgid "802.11n/ac mode"
+msgstr "Режим 802.11n/ac"
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz "
+"wide channels can yield higher throughput but can cause more interference"
+" in the network. If you don't know what to choose, use the default option"
+" with 20 MHz wide channel."
+msgstr ""
+"Измените, чтобы настроить режим работы 802.11n/ac. 802.11n с каналами "
+"шириной 40 МГц обеспечивает более высокую пропускную способность, но "
+"может вызвать больше помех в сети. Если вы не знаете, что выбрать, "
+"используйте параметр по умолчанию с каналом шириной в 20 МГц."
+
+msgid "auto"
+msgstr "авто"
+
+msgid "Network channel"
+msgstr "Канал"
+
+msgid "Network password"
+msgstr "Пароль"
+
+msgid "Guest Wi-Fi"
+msgstr "Гостевой Wi-Fi"
+
+msgid "Set guest Wi-Fi here."
+msgstr "Настройте гостевой Wi-Fi здесь."
+
+msgid "Enable guest Wi-Fi"
+msgstr "Включить гостевой Wi-Fi"
+
+#, fuzzy, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a "
+"href='%(url)s'>the Guest network tab</a>. "
+msgstr ""
+"Включает Wi-Fi для гостей, который отделен от сети LAN. Устройствам, "
+"подключенным к этой сети, разрешен доступ в Интернет, но им не разрешен "
+"доступ к другим устройствам и интерфейсу конфигурации маршрутизатора. "
+"Параметры гостевой сети можно установить на <a href='%(url)s'>вкладке "
+"LAN</a>. "
+
+msgid "SSID for guests"
+msgstr "SSID гостевого Wi-Fi"
+
+msgid "Password for guests"
+msgstr "Пароль гостевого Wi-Fi"
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Если вы хотите использовать свой маршрутизатор в качестве точки доступа "
+"Wi-Fi, включите здесь Wi-Fi и заполните SSID (имя точки доступа) и "
+"соответствующий пароль. Затем вы можете подключить свои мобильные "
+"устройства, используя QR-код, расположенный рядом с формой."
+
+msgid "Wi-Fi settings"
+msgstr "Настройки Wi-Fi"
+
+msgid "Hint"
+msgstr "Подсказка"
+
+msgid "foris version:"
+msgstr "Версия Foris:"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Turris router administration interface"
+msgstr "Интерфейс администрирования маршрутизатора Turris"
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+"Для корректной работы этой страницы требуется JavaScript. Включите его и "
+"обновите страницу."
+
+msgid "Reboot now"
+msgstr "Перезагрузить сейчас"
+
+msgid "Dismiss"
+msgstr "Закрыть"
+
+msgid "Dismiss All"
+msgstr "Закрыть все"
+
+msgid "No new messages."
+msgstr "Нет новых сообщений."
+
+msgid "Project:Turris"
+msgstr "Проект:Turris"
+
+msgid "Log out"
+msgstr "Выйти"
+
+msgid "Log in"
+msgstr "Авторизоваться"
+
+msgid "Foris Configuration Interface"
+msgstr "Интерфейс конфигурации Foris"
+
+msgid "Go to LuCI"
+msgstr "Перейти к LuCI"
+
+msgid "Opened lock"
+msgstr "Открытая блокировка"
+
+msgid "Your connection is not encrypted"
+msgstr "Ваше соединение не зашифровано"
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr "Как установить зашифрованное соединение и почему это важно"
+
+msgid "Connection test"
+msgstr "Проверка соединения"
+
+msgid ""
+"Here you can test you connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes"
+" it takes a while before the connection is fully initialized. So it might"
+" be useful to wait for a while before running this test."
+msgstr ""
+"Здесь можно проверить настройки подключения. Не забудьте нажать кнопку "
+"<strong>Сохранить</strong> перед запуском теста. Обратите внимание: "
+"иногда требуется некоторое время, прежде чем соединение будет полностью "
+"установлено. Поэтому может быть полезно подождать некоторое время, прежде"
+" чем запускать этот тест."
+
+#, fuzzy
+msgid "\"Unable to verify network connection."
+msgstr "Не удалось проверить подключение к сети."
+
+msgid "Test type"
+msgstr "Тип теста"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "IPv4 connectivity"
+msgstr "Работоспособность IPv4"
+
+msgid "IPv4 gateway connectivity"
+msgstr "Работоспособность шлюза IPv4"
+
+msgid "IPv6 connectivity"
+msgstr "Работоспособность IPv6"
+
+msgid "IPv6 gateway connectivity"
+msgstr "Работоспособность шлюза IPv6"
+
+msgid "Test connection"
+msgstr "Проверка соединения"
+
+msgid "DHCP clients"
+msgstr ""
+
+msgid "Expires"
+msgstr ""
+
+#, fuzzy
+msgid "IP Address"
+msgstr "IP-адрес"
+
+#, fuzzy
+msgid "MAC Address"
+msgstr "IP-адрес"
+
+#, fuzzy
+msgid "Hostname"
+msgstr "Имя сервера DHCP"
+
+#, fuzzy
+msgid "Active"
+msgstr "Сохранить"
+
+msgid "No DHCP clients found."
+msgstr ""
+
+msgid ""
+"This network currently doesn't contain any devices. The changes you make "
+"here will become fully functional after you assign a network interface to"
+" this network."
+msgstr ""
+
+msgid ""
+"If you want to use this card for 2.4GHz bands, correction of cables "
+"connected to diplexers is needed! Factory default setting: Cables from "
+"big card connected to 5GHz, cables from small card connected to 2.4GHz "
+"diplexer part."
+msgstr ""
+"Если вы используете карту для диапазона 2,4 ГГц, необходимо корректное "
+"подключение кабелей к диплексерам! Заводская настройка по умолчанию: "
+"кабели с большой карты подключены к 5 ГГц, кабели с небольшой карты "
+"подключены к 2,4-гигагерцевой части диплексера."
+
+msgid "QR code"
+msgstr "QR код"
+
+msgid "Show QR code"
+msgstr ""
+
+msgid "Device"
+msgstr "Устройство"
+
+msgid "Serial number"
+msgstr "Серийный номер"
+
+msgid "Turris OS version"
+msgstr "Версия Turris OS"
+
+msgid "Kernel version"
+msgstr "Версия ядра"
+
+msgid "Foris - administration interface of router Turris"
+msgstr "Foris — интерфейс администрирования маршрутизатора Turris"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "foris guide"
+msgstr ""
+
+msgid "Reset Guided Mode"
+msgstr ""
+
+msgid "Leave Guided Mode"
+msgstr ""
+
+msgid "Next step"
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr "Для правильной работы необходимо перезапустить маршрутизатор."
+
+#, fuzzy
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is "
+"capable of working independently or it can forward your DNS queries your "
+"internet service provider's DNS resolver."
+msgstr ""
+"Маршрутизатор Turris использует собственное разрешение DNS с поддержкой "
+"DNSSEC. Он способен работать самостоятельно или может переадресовывать "
+"DNS-запросы через DNS-сервер вашего интернет-провайдера."
+
+#, fuzzy
+msgid ""
+"The following setting determines the behavior of the DNS resolver. "
+"Usually, it is better to use the ISP's resolver in networks where it "
+"works properly. If it does not work for some reason, it is necessary to "
+"use direct resolving without forwarding."
+msgstr ""
+"Следующая настройка определяет поведение разрешения DNS. Обычно лучше "
+"использовать DNS-сервер интернет-провайдера в сетях, где он работает "
+"должным образом. В случае, если это не работает по какой-либо причине, "
+"необходимо использовать прямое разрешение без переадресации."
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes "
+"with DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC "
+"validation, you are vulnerable to DNS spoofing attacks! Therefore we "
+"<strong>recommend keeping DNSSEC turned on</strong> and resolving the "
+"situation with your ISP as this is a serious flaw on their side."
+msgstr ""
+"В редких случаях интернет-провайдер имеет неправильно настроенную сеть, "
+"которая мешает проверке DNSSEC. Если у вас возникли проблемы с DNS, вы "
+"можете <strong>временно</strong> отключить проверку DNSSEC, чтобы "
+"определить источник проблемы. Однако имейте в виду, что без проверки "
+"DNSSEC вы уязвимы для атак подмены DNS! Поэтому мы <strong>рекомендуем "
+"держать DNSSEC включенным</strong> и разрешать ситуацию с вашим "
+"интернет-провайдером, поскольку это серьезный недостаток с их стороны."
+
+msgid "Discard changes"
+msgstr "Отменить изменения"
+
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when"
+" you need to check that your DNS resolving works as expected. Remember to"
+" click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+"Здесь вы можете протестировать свое интернет-соединение. Этот тест также "
+"полезен, когда вам нужно проверить, что ваше разрешение DNS работает "
+"должным образом. Не забудьте нажать кнопку <strong>«Сохранить»</strong>, "
+"если вы изменили настройки переадресации."
+
+msgid "Unable to verify network connection."
+msgstr "Не удалось проверить подключение к сети."
+
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+msgid "Continue"
+msgstr ""
+
+msgid "Notifications and automatic restarts"
+msgstr "Уведомления и автоматические перезагрузки"
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these"
+" emails. Alternatively, if you choose to use a custom server, you must "
+"enter some additional settings. These settings are the same as you enter "
+"in your email client and you can get them from the provider of your email"
+" inbox. In that case, because of security reasons, it is recommended to "
+"create a dedicated account for your router."
+msgstr ""
+"Вы можете настроить маршрутизатор на уведомление о возникновении "
+"определенного события, например, когда требуется перезагрузка, на "
+"устройстве не осталось места или установлено обновление приложения. Вы "
+"можете использовать серверы Turris для отправки этих писем. Кроме того, "
+"если вы решите использовать сторонний сервер, необходимо ввести "
+"дополнительные настройки. Эти настройки такие же, как вы вводите в свой "
+"почтовый клиент, и их можно получить у поставщика электронной почты. В "
+"этом случае из соображений безопасности рекомендуется создать выделенную "
+"учетную запись для вашего маршрутизатора."
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you"
+" want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+"Кроме того, когда требуется автоматический перезапуск, вы можете указать "
+"время перезапуска. Если у вас отсылаются уведомления по электронной "
+"почте, можно указать интервал между уведомлением и автоматическим "
+"перезапуском."
+
+msgid "Send testing message"
+msgstr "Отправить тестовое сообщение"
+
+msgid "Configuration backup"
+msgstr "Резервное копирование конфигурации"
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface"
+" and for the advanced configuration are not included in the backup."
+msgstr ""
+"Если вам нужно сохранить текущую конфигурацию этого устройства, вы можете"
+" скачать файл резервной копии. Конфигурация сохраняется как "
+"незашифрованный сжатый архив (.tar.bz2). Пароли для этого интерфейса "
+"конфигурации и для расширенной конфигурации не включены в резервную "
+"копию."
+
+msgid "Download configuration backup"
+msgstr "Скачать резервную копию конфигурации"
+
+msgid "Configuration restore"
+msgstr "Восстановить конфигурацию"
+
+msgid ""
+"To restore the configuration from a backup file, upload it using "
+"following form. Keep in mind that IP address of this device might change "
+"during the process, causing unavailability of this interface."
+msgstr ""
+"Чтобы восстановить конфигурацию из файла резервной копии, загрузите ее, "
+"используя следующую форму. Имейте в виду, что IP-адрес этого устройства "
+"может измениться во время процесса, что приведет к недоступности этого "
+"интерфейса."
+
+msgid "Restore from backup"
+msgstr "Восстановить из резервной копии"
+
+msgid "Device reboot"
+msgstr "Перезагрузка устройства"
+
+msgid ""
+"If you need to reboot the device, click on the following button. The "
+"reboot process takes approximately 30 seconds, you will be required to "
+"log in again after the reboot."
+msgstr ""
+"Если вам нужно перезагрузить устройство, нажмите кнопку ниже. Процесс "
+"перезагрузки занимает примерно 30 секунд, после перезагрузки вам "
+"потребуется снова войти в систему."
+
+msgid "Reboot"
+msgstr "Перезагрузить"
+
+msgid ""
+"Here you can configure the settings of the network interfaces on your "
+"device. You can switch the physical network interfaces among networks. If"
+" you are unsure what to set here use the default settings."
+msgstr ""
+
+msgid ""
+"<strong>WAN</strong> acts as an external network connection. Firewall "
+"rules should be applied here. It can only contain a single interface."
+msgstr ""
+
+msgid ""
+"<strong>LAN</strong> acts as a local network connection. LAN should "
+"contain devices which are under your control and you trust them. These "
+"devices can see each other and can access this web interface. It is "
+"recommended that the LAN should contain at least one interface otherwise "
+"you might not be able to configure this device in an easy way."
+msgstr ""
+
+msgid ""
+"<strong>Guest network</strong> acts as a local network connection. Unlike"
+" LAN the devices in the guest network can't access the configuration "
+"interface of this device and are only able to access WAN (internet). This"
+" network should be used for devices which you don't fully trust. Note "
+"that you can also limit download/upload speed of the devices connected to"
+" the guest network."
+msgstr ""
+
+#, python-format
+msgid "Current link speed: %(speed)s Mbit"
+msgstr ""
+
+#, fuzzy
+msgid "Guest Network"
+msgstr "Гостевая сеть"
+
+msgid "Unassigned"
+msgstr ""
+
+#, fuzzy
+msgid "WAN network"
+msgstr "Гостевая сеть"
+
+#, fuzzy
+msgid "LAN network"
+msgstr "Гостевая сеть"
+
+msgid "Unassign"
+msgstr ""
+
+msgid ""
+"In the setup you provided it is <strong>not possible to access the "
+"administration interface</strong> of your device. This means that the "
+"only way to configure your device will be via serial cabel or you need to"
+" a perform factory reset. <br/><br/> <p><strong>Is this really what you "
+"want?</strong></p>"
+msgstr ""
+
+msgid ""
+"You don't have any interface assigned to the LAN network.<br/> Do you "
+"want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
+"order to be able to access the configuration interface of our device?"
+msgstr ""
+
+msgid ""
+"Following notifications occured and haven't been dismissed since last "
+"reboot."
+msgstr "Полученные уведомления не были приняты после последней перезагрузки."
+
+msgid ""
+"Here you can set the guide walkthrough which will guide you through the "
+"basic configuration of your device."
+msgstr ""
+
+msgid "recommended"
+msgstr ""
+
+msgid "Use this workflow"
+msgstr ""
+
+msgid "Failed to query ntp servers."
+msgstr "Ошибка запроса NTP сервера."
+
+msgid "Update time"
+msgstr "Время обновления"
+
+msgid ""
+"Data collection is currently enabled. You can not disable updater without"
+" disabling the data collection first."
+msgstr ""
+"Сбор данных в настоящее время включен. Вы не можете отключить обновление,"
+" не отключив сначала сбор данных."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can refuse the questionable "
+"update temporarily and install it when you are ready. It isn't possible "
+"to decline the update forever and it will be offered to you again "
+"together with the next package installation."
+msgstr ""
+"Обновления могут быть одобрены, если вы хотите убедиться, что обновления "
+"не повредят вашей конкретной конфигурации. Вы можете временно отложить "
+"сомнительные обновления и установить их, когда будете готовы.Невозможно "
+"отказаться от обновления навсегда, и оно будет предложено вам снова "
+"вместе со следующей установкой пакета."
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can e.g. install updates when"
+" you're prepared for a possible rollback to a previous snapshot and deny "
+"the questionable update temporarily. It isn't possible to decline the "
+"update forever and it will be offered to you again together with the next"
+" package installation."
+msgstr ""
+"Подтверждение обновлений может быть полезно если вы хотите быть уверены, "
+"что обновления не повредят вашей конкретной конфигурации. Например, можно"
+" установить обновления, когда вы подготовились к возможному откату к "
+"предыдущему образу системы, или временно отказать в сомнительном "
+"обновлении. Невозможно отказаться от обновления навсегда, и оно будет "
+"предложено вам снова вместе со следующей установкой пакета."
+
+#, fuzzy, python-format
+msgid ""
+"\n"
+"          after %(input)s hours\n"
+"          "
+msgstr "после %(input)s часов"
+
+#, fuzzy, python-format
+msgid ""
+"\n"
+"    Approve update from %(when)s\n"
+"    "
+msgstr "Одобрить обновление от %(when)s"
+
+#, fuzzy
+msgid "List of changes"
+msgstr "Отменить изменения"
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr "Обратите внимание, что после обновления устройство будет перезагружено."
+
+msgid "Install now"
+msgstr "Установить сейчас"
+
+msgid "Deny"
+msgstr "Отклонить"
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+"Пакет не будет установлен, если вы не установите указанные выше "
+"обновления."
+
+#, fuzzy, python-format
+msgid ""
+"\n"
+"    If you don't install the updates manually, they will be installed "
+"automatically after %(time)s.\n"
+"    "
+msgstr ""
+"Если вы не установите обновления вручную, они будут установлены "
+"автоматически после %(time)s."
+
+msgid "Package lists"
+msgstr "Списки пакетов"
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr ""
+"Мы не смогли обнаружить какие-либо беспроводные карты в вашем "
+"маршрутизаторе."
+
+msgid ""
+"If a number of wireless cards doesn't match, you may try to reset the Wi-"
+"Fi settings. Note that this will remove the current Wi-Fi configuration "
+"and restore the default values."
+msgstr ""
+"Если количество беспроводных карт не совпадает, вы можете попытаться "
+"сбросить настройки Wi-Fi. Обратите внимание, что это приведет к удалению "
+"текущей конфигурации Wi-Fi и восстановлению значений по умолчанию."
+
+msgid "Reset Wi-Fi settings"
+msgstr "Сброс настроек Wi-Fi"
+
+msgid ""
+"One of the most important features of router Turris are automatic system "
+"updates. Thanks to this function your router's software stays up to date "
+"and offers better protection against attacks from the Internet."
+msgstr ""
+"Одной из наиболее важных особенностей маршрутизатора Turris являются "
+"автоматические обновления системы. Благодаря этой функции программное "
+"обеспечение вашего маршрутизатора постоянно обновляется и обеспечивает "
+"лучшую защиту от атак из Интернета."
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that "
+"this might weaken the security of your router and network in case flaws "
+"in the software are found."
+msgstr ""
+"Очень <strong>рекомендуется</strong>, чтобы эта функция была "
+"<strong>включена</strong>. Предупреждаем, что если вы решите отключить "
+"ее, то это может ослабить безопасность вашего маршрутизатора и сети в "
+"случае недостатков в программном обеспечении."
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-"
+"eula\">here</a>."
+msgstr ""
+"Включив автоматические обновления, вы соглашаетесь с этим лицензионным "
+"соглашением. Дополнительная информация доступна <a href=\"#\" id"
+"=\"toggle-eula\">здесь</a>."
+
+msgid "Most important points from the license agreement:"
+msgstr "Наиболее важные пункты лицензионного соглашения:"
+
+msgid "Automatic updates are offered to the Turris router owners free of charge."
+msgstr ""
+"Автоматические обновления предлагаются владельцам маршрутизатора Turris "
+"бесплатно."
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr "Обновления подготовлены исключительно CZ.NIC, z. s. p. о."
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional "
+"security features of Turris router."
+msgstr ""
+"Включение автоматических обновлений является необходимым предварительным "
+"условием для дополнительных функций безопасности маршрутизатора Turris."
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+"Автоматические обновления происходят во время их выпуска, пользователь не"
+" может влиять на время установки."
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by "
+"you."
+msgstr ""
+"Наличие автоматического обновления может привести к увеличению "
+"интернет-трафика на вашем маршрутизаторе. Расходы, связанные с этим "
+"увеличением, покрываются вами."
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the"
+" Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+"Автоматические обновления не могут защитить вас от каждой атаки, "
+"исходящей из Интернета. Не забудьте защитить свои рабочие станции и "
+"другие устройства, установив антивирусное программное обеспечение и "
+"объяснив членам вашей семьи, как оставаться в безопасности в Интернете."
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service "
+"and is not responsible for any damages caused by the automatic updates."
+msgstr ""
+"CZ.NIC, z. s. p. o. не гарантирует доступность этой услуги и не несет "
+"ответственности за любые убытки, вызванные автоматическими обновлениями."
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner "
+"of this Turris router and you agree with the full text of the <a "
+"href=\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+"Включив автоматические обновления, вы подтверждаете, что являетесь "
+"владельцем этого маршрутизатора Turris, и соглашаетесь с полным текстом "
+"<a href=\"https://www.turris.cz/omnia-updater-eula\">лицензионного "
+"соглашения</a>."
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, "
+"but could cause problems on some devices."
+msgstr ""
+"Ваш пароль содержит нестандартные символы. Это не запрещено, но может "
+"вызвать проблемы на некоторых устройствах."
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+"Ваш SSID содержит нестандартные символы. Это не запрещено, но может "
+"вызвать проблемы на некоторых устройствах."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Loading..."
+msgstr "Загрузка…"
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+"Не удалось установить соединение, проверив соединение с отключенной "
+"переадресацией."
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible "
+"from %NEW_IP_LINK%. See the note above for more information about IP "
+"address change."
+msgstr ""
+"IP-адрес вашего маршрутизатора был изменен. Он должен быть доступен через"
+" %NEW_IP_LINK%. Дополнительную информацию об изменении IP-адреса см. в "
+"примечании выше."
+
+#, fuzzy
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you "
+"to keep the automatic security updates enabled to receive all recommended"
+" updates for your device. Updating your router on regular basis is the "
+"only way how to ensure you will be protected against known threats that "
+"might target your home router device.<br/><br/>Do you still want to "
+"continue and stay unprotected?"
+msgstr ""
+"Вы не хотите получать обновления для системы безопасности. Мы "
+"настоятельно рекомендуем вам включить автоматические обновления "
+"безопасности для получения всех рекомендованных обновлений для вашего "
+"устройства. Обновление вашего маршрутизатора на регулярной основе — "
+"единственный способ гарантировать, что вы будете защищены от известных "
+"угроз, которые могут быть нацелены на ваш домашний маршрутизатор. \\n\\n "
+"Вы хотите продолжать и оставаться незащищенными?"
+
+#, fuzzy
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication "
+"against attacks on the DNS infrastructure. We strongly recommend keeping "
+"DNSSEC validation enabled unless you know that you will be connecting "
+"your device in the network where DNSSEC is broken. <br/><br/>Do you still"
+" want to continue and stay unprotected?"
+msgstr ""
+"DNSSEC — это технология безопасности, которая защищает DNS-связь от атак "
+"на инфраструктуру DNS. Мы настоятельно рекомендуем включить проверку "
+"подлинности DNSSEC, если вы знаете, что будете подключать свое устройство"
+" в сеть, где DNSSEC работает. \\n\\n Вы хотите продолжать и оставаться "
+"незащищенным?"
+
+msgid "Are you sure you want to restart the router?"
+msgstr "Вы действительно хотите перезагрузить маршрутизатор?"
+
+#, python-format
+msgid "Remaining notifications (%(unread_left)s) will be discarded."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"There are some unsaved changes in the notifications settings.<br/>Do you "
+"want to discard them and test the notifications with the old settings?"
+msgstr ""
+"В настройках уведомлений есть некоторые несохраненные изменения. \\n "
+"Отменить их и проверить уведомления со старыми настройками?"
+
+#, python-format
+msgid "Your device will be rebooted in %(time_left)s seconds."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Your network will be restarted in %(time_left)s seconds."
+msgstr "Ваша сеть перезапускается. Пожалуйста, подождите..."
+
+msgid "A reboot of your device was triggered."
+msgstr ""
+
+#, fuzzy
+msgid "A network restart was triggered."
+msgstr "Перезапуск сети..."
+
+msgid "Trying to reconnect to your device."
+msgstr ""
 
 msgid "This value seems to be invalid."
 msgstr "Это значение кажется некорректным."
@@ -67,12 +1907,9 @@ msgstr "Это значение слишком короткое. Оно долж
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Это значение слишком велико. Оно должно иметь %s символ или меньше."
 
-#, python-format
-msgid ""
-"This value length is invalid. It should be between %s and %s characters long."
-msgstr ""
-"Эта длина значения недопустима. Оно должно быть между %s и %s символов "
-"длиной."
+#, fuzzy, python-format
+msgid "This field should have between %s and %s characters."
+msgstr "Это значение должно быть между %s и %s."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -98,919 +1935,18 @@ msgstr "Это некорректная маска подсети IPv4."
 msgid "This is not a valid IPv4 prefix."
 msgstr "Это некорректный префикс IPv4."
 
-msgid "This is not an IPv6 address with prefix length."
-msgstr "Это не IPv6-адрес с длиной префикса."
-
-msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Некорректный IPv4 или IPv6-адрес."
-
 msgid "This is not a valid IPv6 prefix."
 msgstr "Это некорректный префикс IPv6."
 
 msgid "This is not a valid MAC address."
 msgstr "Это некорректный MAC-адрес."
 
-msgid "This is not a valid domain name."
-msgstr "Некорректное доменное имя."
-
-msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Некорректный формат времени (ГГГГ-ММ-ДД ЧЧ:MM:СС)."
-
-msgid ""
-"Your password contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"Ваш пароль содержит нестандартные символы. Это не запрещено, но может "
-"вызвать проблемы на некоторых устройствах."
-
-msgid ""
-"Your SSID contains non-standard characters. These are not forbidden, but "
-"could cause problems on some devices."
-msgstr ""
-"Ваш SSID содержит нестандартные символы. Это не запрещено, но может вызвать "
-"проблемы на некоторых устройствах."
-
-msgid "OK"
-msgstr "OK"
-
-msgid "Error"
-msgstr "Ошибка"
-
-msgid "Loading..."
-msgstr "Загрузка…"
-
-msgid "Connectivity test failed, testing connection with disabled forwarding."
-msgstr ""
-"Не удалось установить соединение, проверив соединение с отключенной "
-"переадресацией."
-
-msgid ""
-"The IP address of your router has been changed. It should be accessible from "
-"%NEW_IP_LINK%. See the note above for more information about IP address "
-"change."
-msgstr ""
-"IP-адрес вашего маршрутизатора был изменен. Он должен быть доступен через "
-"%NEW_IP_LINK%. Дополнительную информацию об изменении IP-адреса см. в "
-"примечании выше."
-
-msgid ""
-"You have chosen to not receive security updates. We strongly advice you to "
-"keep the automatic security updates enabled to receive all recommended "
-"updates for your device. Updating your router on regular basis is the only "
-"way how to ensure you will be protected against known threats that might "
-"target your home router device.\\n\\nDo you still want to continue and stay "
-"unprotected?"
-msgstr ""
-"Вы не хотите получать обновления для системы безопасности. Мы настоятельно "
-"рекомендуем вам включить автоматические обновления безопасности для "
-"получения всех рекомендованных обновлений для вашего устройства. Обновление "
-"вашего маршрутизатора на регулярной основе — единственный способ "
-"гарантировать, что вы будете защищены от известных угроз, которые могут быть "
-"нацелены на ваш домашний маршрутизатор. \\n\\n Вы хотите продолжать и "
-"оставаться незащищенными?"
-
-msgid ""
-"DNSSEC is a security technology that protects the DNS communication against "
-"attacks on the DNS infrastructure. We strongly recommend keeping DNSSEC "
-"validation enabled unless you know that you will be connecting your device "
-"in the network where DNSSEC is broken.\\n\\nDo you still want to continue "
-"and stay unprotected?"
-msgstr ""
-"DNSSEC — это технология безопасности, которая защищает DNS-связь от атак на "
-"инфраструктуру DNS. Мы настоятельно рекомендуем включить проверку "
-"подлинности DNSSEC, если вы знаете, что будете подключать свое устройство в "
-"сеть, где DNSSEC работает. \\n\\n Вы хотите продолжать и оставаться "
-"незащищенным?"
-
-msgid "Are you sure you want to restart the router?"
-msgstr "Вы действительно хотите перезагрузить маршрутизатор?"
-
-msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
-msgstr "\\n Оставшиеся непрочитанные сообщения (%UNREAD%) будут удалены."
-
-msgid ""
-"There are some unsaved changes in the notifications settings.\\nDo you want "
-"to discard them and test the notifications with the old settings?"
-msgstr ""
-"В настройках уведомлений есть некоторые несохраненные изменения. \\n "
-"Отменить их и проверить уведомления со старыми настройками?"
-
-msgid "Turris router administration interface"
-msgstr "Интерфейс администрирования маршрутизатора Turris"
-
-msgid ""
-"One of the most important features of router Turris are automatic system "
-"updates. Thanks to this function your router's software stays up to date and "
-"offers better protection against attacks from the Internet."
-msgstr ""
-"Одной из наиболее важных особенностей маршрутизатора Turris являются "
-"автоматические обновления системы. Благодаря этой функции программное "
-"обеспечение вашего маршрутизатора постоянно обновляется и обеспечивает "
-"лучшую защиту от атак из Интернета."
-
-msgid ""
-"It is <strong>highly recommended</strong> to have this feature "
-"<strong>turned on</strong>. If you decide to disable it, be warned that this "
-"might weaken the security of your router and network in case flaws in the "
-"software are found."
-msgstr ""
-"Очень <strong>рекомендуется</strong>, чтобы эта функция была "
-"<strong>включена</strong>. Предупреждаем, что если вы решите отключить ее, "
-"то это может ослабить безопасность вашего маршрутизатора и сети в случае "
-"недостатков в программном обеспечении."
-
-msgid ""
-"By turning the automatic updates on, you agree to this feature's license "
-"agreement. More information is available <a href=\"#\" id=\"toggle-eula"
-"\">here</a>."
-msgstr ""
-"Включив автоматические обновления, вы соглашаетесь с этим лицензионным "
-"соглашением. Дополнительная информация доступна <a href=\"#\" id=\"toggle-"
-"eula\">здесь</a>."
-
-msgid "Most important points from the license agreement:"
-msgstr "Наиболее важные пункты лицензионного соглашения:"
-
-msgid ""
-"Automatic updates are offered to the Turris router owners free of charge."
-msgstr ""
-"Автоматические обновления предлагаются владельцам маршрутизатора Turris "
-"бесплатно."
-
-msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
-msgstr "Обновления подготовлены исключительно CZ.NIC, z. s. p. о."
-
-msgid ""
-"Enabling of the automatic updates is a prerequisite for additional security "
-"features of Turris router."
-msgstr ""
-"Включение автоматических обновлений является необходимым предварительным "
-"условием для дополнительных функций безопасности маршрутизатора Turris."
-
-msgid ""
-"Automatic updates take place at the time of their release, the time of "
-"installation cannot be influenced by the user."
-msgstr ""
-"Автоматические обновления происходят во время их выпуска, пользователь не "
-"может влиять на время установки."
-
-msgid ""
-"Having the automatic updates turned on can result in increased Internet "
-"traffic on your router. Expenses related to this increase are covered by you."
-msgstr ""
-"Наличие автоматического обновления может привести к увеличению интернет-"
-"трафика на вашем маршрутизаторе. Расходы, связанные с этим увеличением, "
-"покрываются вами."
-
-msgid ""
-"Automatic updates cannot protect you against every attack coming from the "
-"Internet. Please do not forget to protect your workstations and other "
-"devices by installing antivirus software and explaining to your family "
-"members how to stay safe on the Internet."
-msgstr ""
-"Автоматические обновления не могут защитить вас от каждой атаки, исходящей "
-"из Интернета. Не забудьте защитить свои рабочие станции и другие устройства, "
-"установив антивирусное программное обеспечение и объяснив членам вашей "
-"семьи, как оставаться в безопасности в Интернете."
-
-msgid ""
-"CZ.NIC, z. s. p. o. does not guarantee the availability of this service and "
-"is not responsible for any damages caused by the automatic updates."
-msgstr ""
-"CZ.NIC, z. s. p. o. не гарантирует доступность этой услуги и не несет "
-"ответственности за любые убытки, вызванные автоматическими обновлениями."
-
-msgid ""
-"By enabling of the automatic updates, you confirm that you are the owner of "
-"this Turris router and you agree with the full text of the <a href=\"https://"
-"www.turris.cz/omnia-updater-eula\">license agreement</a>."
-msgstr ""
-"Включив автоматические обновления, вы подтверждаете, что являетесь "
-"владельцем этого маршрутизатора Turris, и соглашаетесь с полным текстом <a "
-"href=\"https://www.turris.cz/omnia-updater-eula\">лицензионного соглашения</"
-"a>."
-
-msgid "Project:Turris"
-msgstr "Проект:Turris"
-
-msgid "Log out"
-msgstr "Выйти"
-
-msgid "Password"
-msgstr "Пароль"
-
-msgid "Log in"
-msgstr "Авторизоваться"
-
-msgid "Foris Configuration Interface"
-msgstr "Интерфейс конфигурации Foris"
-
-msgid "Go to LuCI"
-msgstr "Перейти к LuCI"
-
-msgid "Opened lock"
-msgstr "Открытая блокировка"
-
-msgid "Your connection is not encrypted"
-msgstr "Ваше соединение не зашифровано"
-
-msgid ""
-"A secure connection is an important safety feature of the router and "
-"therefore the entire home network."
-msgstr ""
-"Безопасное соединение является важной функцией безопасности маршрутизатора "
-"и, следовательно, всей домашней сети."
-
-msgid "How to set an encrypted connection and why is it important"
-msgstr "Как установить зашифрованное соединение и почему это важно"
-
-msgid ""
-"Following notifications occured and haven't been dismissed since last reboot."
-msgstr "Полученные уведомления не были приняты после последней перезагрузки."
-
-msgid "Failed to query ntp servers."
-msgstr "Ошибка запроса NTP сервера."
-
-msgid "Update time"
-msgstr "Время обновления"
-
-msgid "Hint"
-msgstr "Подсказка"
-
-msgid "Discard changes"
-msgstr "Отменить изменения"
-
-msgid "Save changes"
-msgstr "Сохранить изменения"
-
-msgid ""
-"Router Turris uses its own DNS resolver with DNSSEC support. It is capable "
-"of working alone or it can forward your DNS queries through your internet "
-"service provider's DNS resolver."
-msgstr ""
-"Маршрутизатор Turris использует собственное разрешение DNS с поддержкой "
-"DNSSEC. Он способен работать самостоятельно или может переадресовывать DNS-"
-"запросы через DNS-сервер вашего интернет-провайдера."
-
-msgid ""
-"The following setting determines the behavior of the DNS resolver. It is "
-"usually better to use the ISP's resolver in networks where it works "
-"properly. In case this does not work for some reason, it is necessary to use "
-"direct resolving without forwarding."
-msgstr ""
-"Следующая настройка определяет поведение разрешения DNS. Обычно лучше "
-"использовать DNS-сервер интернет-провайдера в сетях, где он работает должным "
-"образом. В случае, если это не работает по какой-либо причине, необходимо "
-"использовать прямое разрешение без переадресации."
-
-msgid ""
-"In rare cases ISP's have improperly configured network which interferes with "
-"DNSSEC validation. If you experience problems with DNS, you can "
-"<strong>temporarily</strong> disable DNSSEC validation to determine the "
-"source of the problem. However, keep in mind that without DNSSEC validation, "
-"you are vulnerable to DNS spoofing attacks! Therefore we <strong>recommend "
-"keeping DNSSEC turned on</strong> and resolving the situation with your ISP "
-"as this is a serious flaw on their side."
-msgstr ""
-"В редких случаях интернет-провайдер имеет неправильно настроенную сеть, "
-"которая мешает проверке DNSSEC. Если у вас возникли проблемы с DNS, вы "
-"можете <strong>временно</strong> отключить проверку DNSSEC, чтобы определить "
-"источник проблемы. Однако имейте в виду, что без проверки DNSSEC вы уязвимы "
-"для атак подмены DNS! Поэтому мы <strong>рекомендуем держать DNSSEC "
-"включенным</strong> и разрешать ситуацию с вашим интернет-провайдером, "
-"поскольку это серьезный недостаток с их стороны."
-
-msgid "Save"
-msgstr "Сохранить"
-
-msgid "Connection test"
-msgstr "Проверка соединения"
-
-msgid ""
-"Here you can test your internet connection. This test is also useful when "
-"you need to check that your DNS resolving works as expected. Remember to "
-"click on the <strong>Save</strong> button if you changed your forwarder "
-"setting."
-msgstr ""
-"Здесь вы можете протестировать свое интернет-соединение. Этот тест также "
-"полезен, когда вам нужно проверить, что ваше разрешение DNS работает должным "
-"образом. Не забудьте нажать кнопку <strong>«Сохранить»</strong>, если вы "
-"изменили настройки переадресации."
-
-msgid "Unable to verify network connection."
-msgstr "Не удалось проверить подключение к сети."
-
-msgid "Test type"
-msgstr "Тип теста"
-
-msgid "Status"
-msgstr "Статус"
-
-msgid "DNS"
-msgstr "DNS"
-
-msgid "DNSSEC"
-msgstr "DNSSEC"
-
-msgid "Test connection"
-msgstr "Проверка соединения"
-
-msgid ""
-"If you want to use this card for 2.4GHz bands, correction of cables "
-"connected to diplexers is needed! Factory default setting: Cables from big "
-"card connected to 5GHz, cables from small card connected to 2.4GHz diplexer "
-"part."
-msgstr ""
-"Если вы используете карту для диапазона 2,4 ГГц, необходимо корректное "
-"подключение кабелей к диплексерам! Заводская настройка по умолчанию: кабели "
-"с большой карты подключены к 5 ГГц, кабели с небольшой карты подключены к "
-"2,4-гигагерцевой части диплексера."
-
-msgid "QR code"
-msgstr "QR код"
-
-msgid "We were unable to detect any wireless cards in your router."
-msgstr ""
-"Мы не смогли обнаружить какие-либо беспроводные карты в вашем маршрутизаторе."
-
-msgid ""
-"If a number of wireless cards doesn't match, you may try to reset the Wi-Fi "
-"settings. Note that this will remove the current Wi-Fi configuration and "
-"restore the default values."
-msgstr ""
-"Если количество беспроводных карт не совпадает, вы можете попытаться "
-"сбросить настройки Wi-Fi. Обратите внимание, что это приведет к удалению "
-"текущей конфигурации Wi-Fi и восстановлению значений по умолчанию."
-
-msgid "Reset Wi-Fi settings"
-msgstr "Сброс настроек Wi-Fi"
-
-msgid ""
-"Data collection is currently enabled. You can not disable updater without "
-"disabling the data collection first."
-msgstr ""
-"Сбор данных в настоящее время включен. Вы не можете отключить обновление, не "
-"отключив сначала сбор данных."
-
-msgid "Update approvals"
-msgstr "Одобрения обновления"
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can refuse the questionable update "
-"temporarily and install it when you are ready. It isn't possible to decline "
-"the update forever and it will be offered to you again together with the "
-"next package installation."
-msgstr ""
-"Обновления могут быть одобрены, если вы хотите убедиться, что обновления не "
-"повредят вашей конкретной конфигурации. Вы можете временно отложить "
-"сомнительные обновления и установить их, когда будете готовы.Невозможно "
-"отказаться от обновления навсегда, и оно будет предложено вам снова вместе "
-"со следующей установкой пакета."
-
-msgid ""
-"Update approvals can be useful when you want to make sure that updates won't "
-"harm your specific configuration. You can e.g. install updates when you're "
-"prepared for a possible rollback to a previous snapshot and deny the "
-"questionable update temporarily. It isn't possible to decline the update "
-"forever and it will be offered to you again together with the next package "
-"installation."
-msgstr ""
-"Подтверждение обновлений может быть полезно если вы хотите быть уверены, что "
-"обновления не повредят вашей конкретной конфигурации. Например, можно "
-"установить обновления, когда вы подготовились к возможному откату к "
-"предыдущему образу системы, или временно отказать в сомнительном обновлении. "
-"Невозможно отказаться от обновления навсегда, и оно будет предложено вам "
-"снова вместе со следующей установкой пакета."
+msgid "You have been logged out due to longer inactivity."
+msgstr "Вы вышли из системы из-за длительного бездействия."
 
 #, python-format
-msgid "after %(input)s hours"
-msgstr "после %(input)s часов"
-
-#, python-format
-msgid "Approve update from %(when)s"
-msgstr "Одобрить обновление от %(when)s"
-
-msgid "Note that a reboot will be triggered after the update."
-msgstr ""
-"Обратите внимание, что после обновления устройство будет перезагружено."
-
-msgid "Install now"
-msgstr "Установить сейчас"
-
-msgid "Deny"
-msgstr "Отклонить"
-
-msgid "No package will be installed unless you install the updates above."
-msgstr ""
-"Пакет не будет установлен, если вы не установите указанные выше обновления."
-
-#, python-format
-msgid ""
-"If you don't install the updates manually, they will be installed "
-"automatically after %(time)s."
-msgstr ""
-"Если вы не установите обновления вручную, они будут установлены "
-"автоматически после %(time)s."
-
-msgid "Package lists"
-msgstr "Списки пакетов"
-
-msgid ""
-"With the Turris router you can join Project Turris which is a non-profit "
-"research project founded by the CZ.NIC association, a .CZ domain registry. "
-"By joining the project, your router will act as a probe which analyzes "
-"traffic between your home network and the Internet and helps to identify "
-"malicious data flows. Once such a flow is detected your router notifies the "
-"Turris headquarters which can compare the flow with data from the rest of "
-"the probes and assign it a threat level. If the flow is identified as an "
-"attack Turris headquarters can prepare an update which is distributed to "
-"every Turris router and helps them to protect themselves against the attack."
-msgstr ""
-"С маршрутизатором Turris вы можете присоединиться к Project Turris — "
-"некоммерческому исследовательскому проекту, созданному ассоциацией CZ.NIC, "
-"регистратором домена .CZ. Присоединившись к проекту, ваш маршрутизатор будет "
-"выступать в качестве зонда, который анализирует трафик между вашей домашней "
-"сетью и Интернетом и помогает идентифицировать вредоносные потоки данных. "
-"Как только такой поток обнаружен, ваш маршрутизатор уведомляет штаб-квартиру "
-"Turris, которая может сравнить поток с данными от остальных зондов и "
-"присвоить ему уровень угрозы. Если поток идентифицирован как атака, штаб-"
-"квартира Turris может подготовить обновление, которое распространяется на "
-"каждый маршрутизатор Turris и помогает им защитить себя от атаки."
-
-msgid ""
-"The Updater is currently disabled. You must enable it first to enable data "
-"collection."
-msgstr ""
-"Сервис обновлений отключён. Включите его, прежде чем включать сбор данных."
-
-msgid ""
-"If you want to join the Turris project you need to register on the Turris "
-"portal first. Enter the email address you want to register with or which you "
-"have used for this purpose before:"
-msgstr ""
-"Если вы хотите присоединиться к проекту Turris, вам необходимо сначала "
-"зарегистрироваться на портале Turris. Введите адрес электронной почты, на "
-"который вы хотите зарегистрироваться или который вы использовали до этого:"
-
-msgid "Validate email"
-msgstr "Подтвердить адрес электронной почты"
-
-msgid "Device"
-msgstr "Устройство"
-
-msgid "Serial number"
-msgstr "Серийный номер"
-
-msgid "Turris OS version"
-msgstr "Версия Turris OS"
-
-msgid "Kernel version"
-msgstr "Версия ядра"
-
-msgid "Sending of uCollect data"
-msgstr "Отправка данных uCollect"
-
-#, python-format
-msgid "Time of last update: %(datetime)s"
-msgstr "Время последнего обновления: %(datetime)s"
-
-#, python-format
-msgid "(status updated %d second ago)"
-msgid_plural "(status updated %d seconds ago)"
-msgstr[0] "(статус обновлён %d секунду назад)"
-msgstr[1] "(статус обновлён %d секунды назад)"
-msgstr[2] "(статус обновлён %d секунд назад)"
-
-msgid "Sending of firewall logs"
-msgstr "Отправка журналов брандмауэра"
-
-msgid "Refresh"
-msgstr "Обновить"
-
-msgid "Device registration"
-msgstr "Регистрация устройства"
-
-#, python-format
-msgid ""
-"If you have not registered your device yet, click on the following button to "
-"obtain a registration code. This code must be submitted on the Turris site "
-"in your user profile available at: <a href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Если вы еще не зарегистрировали свое устройство, нажмите кнопку ниже, чтобы "
-"получить регистрационный код. Этот код должен быть представлен на сайте "
-"Turris в вашем профиле пользователя по адресу: <a href=\"%(url)s\">%(url)s</"
-"a>."
-
-msgid "Registration code"
-msgstr "Код регистрации"
-
-msgid ""
-"Unfortunately, it wasn't possible to generate the registration code. This "
-"usually means the router is not connected to the internet. Please, try "
-"registering later. If the problem persists, contact the support."
-msgstr ""
-"К сожалению, создать код регистрации не удалось. Обычно это означает, что "
-"маршрутизатор не подключен к Интернету. Пожалуйста, попробуйте "
-"зарегистрироваться позже. Если проблема не устранена, обратитесь в службу "
-"поддержки."
-
-msgid "Get registration code"
-msgstr "Получить код регистрации"
-
-msgid ""
-"Here you can test you connection settings. Remember to click on the "
-"<strong>Save</strong> button before running the test. Note that sometimes it "
-"takes a while before the connection is fully initialized. So it might be "
-"useful to wait for a while before running this test."
-msgstr ""
-"Здесь можно проверить настройки подключения. Не забудьте нажать кнопку "
-"<strong>Сохранить</strong> перед запуском теста. Обратите внимание: иногда "
-"требуется некоторое время, прежде чем соединение будет полностью "
-"установлено. Поэтому может быть полезно подождать некоторое время, прежде "
-"чем запускать этот тест."
-
-msgid "IPv4 connectivity"
-msgstr "Работоспособность IPv4"
-
-msgid "IPv4 gateway connectivity"
-msgstr "Работоспособность шлюза IPv4"
-
-msgid "IPv6 connectivity"
-msgstr "Работоспособность IPv6"
-
-msgid "IPv6 gateway connectivity"
-msgstr "Работоспособность шлюза IPv6"
-
-msgid "Notifications and automatic restarts"
-msgstr "Уведомления и автоматические перезагрузки"
-
-msgid ""
-"You can set the router to notify you when a specific event occurs, for "
-"example when a reboot is required, no space is left on device or an "
-"application update is installed. You can use Turris servers to send these "
-"emails. Alternatively, if you choose to use a custom server, you must enter "
-"some additional settings. These settings are the same as you enter in your "
-"email client and you can get them from the provider of your email inbox. In "
-"that case, because of security reasons, it is recommended to create a "
-"dedicated account for your router."
-msgstr ""
-"Вы можете настроить маршрутизатор на уведомление о возникновении "
-"определенного события, например, когда требуется перезагрузка, на устройстве "
-"не осталось места или установлено обновление приложения. Вы можете "
-"использовать серверы Turris для отправки этих писем. Кроме того, если вы "
-"решите использовать сторонний сервер, необходимо ввести дополнительные "
-"настройки. Эти настройки такие же, как вы вводите в свой почтовый клиент, и "
-"их можно получить у поставщика электронной почты. В этом случае из "
-"соображений безопасности рекомендуется создать выделенную учетную запись для "
-"вашего маршрутизатора."
-
-msgid ""
-"Also, when an automatic restart is required, you can specify the time you "
-"want it to occur. If you have email notifications enabled, you can also "
-"specify the interval between notification and automatic restart."
-msgstr ""
-"Кроме того, когда требуется автоматический перезапуск, вы можете указать "
-"время перезапуска. Если у вас отсылаются уведомления по электронной почте, "
-"можно указать интервал между уведомлением и автоматическим перезапуском."
-
-msgid "Send testing message"
-msgstr "Отправить тестовое сообщение"
-
-msgid "Configuration backup"
-msgstr "Резервное копирование конфигурации"
-
-msgid ""
-"If you need to save the current configuration of this device, you can "
-"download a backup file. The configuration is saved as an unencrypted "
-"compressed archive (.tar.bz2). Passwords for this configuration interface "
-"and for the advanced configuration are not included in the backup."
-msgstr ""
-"Если вам нужно сохранить текущую конфигурацию этого устройства, вы можете "
-"скачать файл резервной копии. Конфигурация сохраняется как незашифрованный "
-"сжатый архив (.tar.bz2). Пароли для этого интерфейса конфигурации и для "
-"расширенной конфигурации не включены в резервную копию."
-
-msgid "Download configuration backup"
-msgstr "Скачать резервную копию конфигурации"
-
-msgid "Configuration restore"
-msgstr "Восстановить конфигурацию"
-
-msgid ""
-"To restore the configuration from a backup file, upload it using following "
-"form. Keep in mind that IP address of this device might change during the "
-"process, causing unavailability of this interface."
-msgstr ""
-"Чтобы восстановить конфигурацию из файла резервной копии, загрузите ее, "
-"используя следующую форму. Имейте в виду, что IP-адрес этого устройства "
-"может измениться во время процесса, что приведет к недоступности этого "
-"интерфейса."
-
-msgid "Restore from backup"
-msgstr "Восстановить из резервной копии"
-
-msgid "Device reboot"
-msgstr "Перезагрузка устройства"
-
-msgid ""
-"If you need to reboot the device, click on the following button. The reboot "
-"process takes approximately 30 seconds, you will be required to log in again "
-"after the reboot."
-msgstr ""
-"Если вам нужно перезагрузить устройство, нажмите кнопку ниже. Процесс "
-"перезагрузки занимает примерно 30 секунд, после перезагрузки вам потребуется "
-"снова войти в систему."
-
-msgid "Reboot"
-msgstr "Перезагрузить"
-
-msgid "Foris - administration interface of router Turris"
-msgstr "Foris — интерфейс администрирования маршрутизатора Turris"
-
-msgid "Menu"
-msgstr "Меню"
-
-msgid "Network is restarting..."
-msgstr "Перезапуск сети..."
-
-msgid "Your network is being restarted. Wait, please..."
-msgstr "Ваша сеть перезапускается. Пожалуйста, подождите..."
-
-msgid "Rebooting..."
-msgstr "Перезагрузка..."
-
-msgid "Your router is being rebooted."
-msgstr "Ваш маршрутизатор перезагружается."
-
-msgid "Your router needs to be restarted in order to work properly."
-msgstr "Для правильной работы необходимо перезапустить маршрутизатор."
-
-msgid "Reboot now"
-msgstr "Перезагрузить сейчас"
-
-msgid ""
-"This page requires JavaScript for proper function. Please enable it and "
-"refresh the page."
-msgstr ""
-"Для корректной работы этой страницы требуется JavaScript. Включите его и "
-"обновите страницу."
-
-msgid "Language"
-msgstr "Язык"
-
-#, python-format
-msgid ""
-"Device was successfully installed. Last step that is required is a "
-"registration of your device in your user profile on the Turris website <a "
-"href=\"%(url)s\">%(url)s</a>."
-msgstr ""
-"Устройство успешно подключено. Последний шаг, который требуется, — это "
-"регистрация вашего устройства в вашем профиле пользователя на сайте Turris "
-"<a href=\"%(url)s\">%(url)s</a>."
-
-msgid ""
-"<strong>Warning:</strong> this code is valid only for limited time. In case "
-"this code is refused, refresh this page to get a new one."
-msgstr ""
-"<strong>Предупреждение:</strong> этот код действителен только в течение "
-"ограниченного времени. В случае отказа этого кода обновите эту страницу, "
-"чтобы получить новый."
-
-msgid "What next?"
-msgstr "Что дальше?"
-
-#, python-format
-msgid ""
-"You can change any of the previously configured settings in the <a href="
-"\"%(url)s\">standard configuration interface</a>. In case you are interested "
-"in more advanced options, you can use the LuCI interface which is available "
-"from the <a href=\"%(url2)s\">Advanced administration tab</a>."
-msgstr ""
-"Вы можете изменить любые ранее настроенные параметры в <a href=\"%(url)s"
-"\">стандартном интерфейсе конфигурации</a>. Если вас интересуют расширенные "
-"параметры, вы можете использовать интерфейс LuCI, который доступен на "
-"вкладке <a href=\"%(url2)s\">«Расширенное администрирование»</a>."
-
-msgid "Important updates"
-msgstr "Важные обновления"
-
-msgid ""
-"Important updates that require a device restart have been installed. Some "
-"services might not work if you don't restart the device. For details see "
-"below."
-msgstr ""
-"Были установлены важные обновления, которые требуют перезагрузки устройства. "
-"Некоторые службы могут не работать, если вы не перезагрузите устройство. "
-"Подробнее смотрите ниже."
-
-msgid "Continue to the configuration interface"
-msgstr "Перейти к интерфейсу конфигурации"
-
-msgid "Installation finished"
-msgstr "Установка завершена"
-
-msgid ""
-"You have decided to disable the Updater service during the installation."
-msgstr "Вы решили отключить сервис обновлений во время установки."
-
-msgid ""
-"Without the Updater, installed software will not be kept up to date and you "
-"will also not be able to install Updater's package lists."
-msgstr ""
-"Без сервиса обновлений установленное программное обеспечение не будет "
-"обновляться, и вы также не сможете устанавливать пакеты программ."
-
-msgid ""
-"By enabling of the Updater, you can also join our research project: <a href="
-"\"https://project.turris.cz/\">Project Turris</a>."
-msgstr ""
-"Включив сервис обновлений, вы также можете присоединиться к нашему "
-"исследовательскому проекту: <a href=\"https://project.turris.cz/\">Project "
-"Turris</a>."
-
-#, python-format
-msgid ""
-"You can enable the Updater any time on the <a href=\"%(url)s\">Updater</a> "
-"configuration page."
-msgstr ""
-"Вы можете включить сервис обновлений в любое время на странице конфигурации "
-"<a href=\"%(url)s\">«Сервис обновлений»</a>."
-
-msgid ""
-"With Turris router you can join the research project called <a href="
-"\"https://project.turris.cz/\">Project Turris</a>. Thanks to this project, "
-"your router can become a probe that analyzes the traffic between internet "
-"and the home network and identifies suspicious data flows."
-msgstr ""
-"С маршрутизатором Turris вы можете присоединиться к исследовательскому "
-"проекту под названием <a href=\"https://project.turris.cz/\">Project Turris</"
-"a>. Благодаря этому проекту ваш маршрутизатор может стать зондом, который "
-"анализирует трафик между Интернетом и домашней сетью и идентифицирует потоки "
-"подозрительных данных."
-
-#, python-format
-msgid ""
-"You can enable these additional features by following the instructions on "
-"the <a href=\"%(url)s\">Data collection</a> page."
-msgstr ""
-"Вы можете включить эти дополнительные функции, следуя инструкциям на "
-"странице <a href=\"%(url)s\">Сбор данных</a>."
-
-msgid "Synchronize with your computer clock"
-msgstr "Синхронизировать с часами на компьютере"
-
-msgid "Set time manually"
-msgstr "Установить время вручную"
-
-msgid "Synchronization successful."
-msgstr "Синхронизация прошла успешно."
-
-msgid "Next"
-msgstr "Следующий"
-
-msgid "Time settings"
-msgstr "Настройки времени"
-
-msgid "Synchronizing router time with an internet time server."
-msgstr "Синхронизация времени маршрутизатора с сервером времени в Интернете."
-
-msgid "One moment, please..."
-msgstr "Один момент…"
-
-msgid "Done"
-msgstr "Готово"
-
-msgid "Time was successfully synchronized, you can move to the next step."
-msgstr "Время было успешно синхронизировано, можно перейти к следующему шагу."
-
-msgid "Registration failure"
-msgstr "Ошибка регистрации"
-
-msgid "Welcome to configuration of router Turris"
-msgstr "Добро пожаловать в настройки маршрутизатора Turris"
-
-msgid ""
-"Before you start to use the router for the first time, it is necessary to "
-"set it up. The following simple wizard will take you through the "
-"configuration procedure. After it is finished, your router will be ready for "
-"operation."
-msgstr ""
-"Прежде, чем вы начнете использовать маршрутизатор в первый раз, его "
-"необходимо настроить. Следующий простой мастер проведет вас через процедуру "
-"настройки. После его завершения маршрутизатор будет готов к работе."
-
-msgid ""
-"If you want to restore a previously saved configuration or for some other "
-"reason skip this wizard, you can do so after choosing a password in its "
-"first step."
-msgstr ""
-"Если вы хотите восстановить сохраненную ранее конфигурацию или по какой-либо "
-"другой причине пропустить этого мастера настроек, вы можете сделать это "
-"после выбора пароля на первом шаге."
-
-msgid "Begin installation"
-msgstr "Начать установку"
-
-msgid "Checking internet connectivity."
-msgstr "Проверка подключения к Интернету."
-
-msgid "Internet connectivity test passed without error."
-msgstr "Подключение к Интернету прошло без ошибок."
-
-msgid ""
-"Your internet connection has network connectivity but DNS resolving does not "
-"work. This is probably a problem with your ISP. This might also be an issue "
-"with wrong time on your router - you can adjust it in the following step."
-msgstr ""
-"У вашего интернет-соединения есть сетевое подключение, но разрешение DNS не "
-"работает. Вероятно, это проблема с вашим интернет-провайдером. Это также "
-"может быть проблемой с неправильным временем на маршрутизаторе — вы можете "
-"настроить его на следующем шаге."
-
-msgid ""
-"It seems that you have no internet connection, maybe your WAN settings are "
-"not right."
-msgstr ""
-"Кажется, у вас нет подключения к Интернету, возможно, настройки WAN неверны."
-
-msgid "Try again"
-msgstr "Попробуйте снова"
-
-msgid ""
-"In some cases, such as on a slower DSL connection or when DHCP is used, this "
-"error might be due to slow network start-up. You can retest your connection "
-"using the above button if you think this might be the case. You can also "
-"return to previous page to fix the problem by modifying WAN settings."
-msgstr ""
-"В некоторых случаях, например, при медленном подключении DSL или при "
-"использовании DHCP, эта ошибка может быть вызвана медленным запуском сети. "
-"Вы можете повторно протестировать свое соединение, используя кнопку выше, "
-"если считаете, что это может быть так. Вы также можете вернуться на "
-"предыдущую страницу, чтобы устранить проблему, изменив настройки WAN."
-
-msgid "Adjust WAN settings"
-msgstr "Проверьте настройки WAN"
-
-msgid ""
-"Installing additional updates. Router will be restarted several times to "
-"finish the process."
-msgstr ""
-"Установка дополнительных обновлений. Маршрутизатор будет перезагружен "
-"несколько раз для завершения процесса."
-
-msgid "Do not unplug the device during update!"
-msgstr "Не отключайте устройство во время обновления!"
-
-msgid "Check of available updates in progress."
-msgstr "Проверяются доступные обновления."
-
-msgid "Firmware update was successful, you can proceed to the next step."
-msgstr "Обновление прошивки прошло успешно, можно перейти к следующему шагу."
-
-msgid ""
-"Firmware update has failed due to a connection or installation error. You "
-"should check your cable connection before proceeding to the next step. But "
-"do not worry much about the update as the router will run the updater "
-"regularly."
-msgstr ""
-"Обновление прошивки не удалось из-за ошибки подключения или при установке. "
-"Прежде чем переходить к следующему шагу, проверьте подключение кабеля. Но не "
-"беспокойтесь о обновлении, так как маршрутизатор будет регулярно запускать "
-"программу обновления."
-
-msgid "Updater has returned the following error:"
-msgstr "Сервис обновлений вернул ошибку:"
-
-msgid "Device has been restarted."
-msgstr "Устройство было перезагружено."
-
-msgid "Please log in again to continue."
-msgstr "Авторизуйтесь для продолжения."
-
-msgid "Proceed to login"
-msgstr "Войдите в систему"
-
-msgid "Skip wizard"
-msgstr "Пропустить мастер настройки"
-
-msgid "Step"
-msgstr "Шаг"
-
-msgid "foris version:"
-msgstr "Версия Foris:"
-
-msgid "Dismiss"
-msgstr "Закрыть"
-
-msgid "Dismiss All"
-msgstr "Закрыть все"
-
-msgid "No new messages."
-msgstr "Нет новых сообщений."
-
-msgid "Unable to retrieve notifications, please try refreshing the page."
-msgstr "Не удалось получить уведомления, попробуйте обновить страницу."
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr "%Г/%М/%Д %Ч:%М:%С"
 
 msgid "News"
 msgstr "Новости"
@@ -1025,995 +1961,6 @@ msgstr "%(notification)s от %(created_at)s"
 msgid "Notification"
 msgstr "Уведомление"
 
-msgid "This field is required."
-msgstr "Обязательное поле."
-
-msgid "Not a valid IPv4 address."
-msgstr "Некорректный адрес IPv4."
-
-msgid "Not a valid IPv4 netmask address."
-msgstr "Некорректная маска подсети IPv4."
-
-msgid "Not a valid IPv6 address."
-msgstr "Некорректный адрес IPv6."
-
-msgid "This is not an IPv4 address with prefix length."
-msgstr "Это не IPv4-адрес с длиной префикса."
-
-msgid "Is not a number."
-msgstr "Это не число."
-
-msgid "This is not valid time in HH:MM format."
-msgstr "Некорректный формат времени ЧЧ:MM."
-
-msgid "MAC address is not valid."
-msgstr "Некорректный MAC-адрес."
-
-msgid "Duid is not valid."
-msgstr "Некорректный уникальный идентификатор DHCPv6 (DUID)."
-
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
-msgstr "Не в диапазоне %(low)s - %(high)s."
-
-#, python-format
-msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "Длина должна быть от %(low)s до %(high)s символов."
-
-msgid "Configuration was successfully saved."
-msgstr "Конфигурация успешно сохранена."
-
-msgid "There were some errors in your input."
-msgstr "При вводе обнаружены ошибки."
-
-msgid "Notifications"
-msgstr "Уведомления"
-
-msgid "Number of notifications"
-msgstr "Количество уведомлений"
-
-msgid "Old password you entered was not valid."
-msgstr "Старый пароль неверен."
-
-msgid "Password was successfully saved."
-msgstr "Пароль успешно сохранен."
-
-msgid ""
-"You WAN configuration is probably not correct or your WAN interface hasn't "
-"been properly initialized yet."
-msgstr ""
-"Возможно, конфигурация WAN неверна, или ваш интерфейс WAN еще не был "
-"правильно инициализирован."
-
-msgid "WAN port has no link, your internet connection probably won't work."
-msgstr ""
-"Порт WAN не имеет связи, подключение к Интернету, возможно, не будет "
-"работать."
-
-msgid "Wrong HTTP method."
-msgstr "Неверный метод HTTP."
-
-msgid "Wi-Fi reset was successful."
-msgstr "Успешный сброс Wi-Fi."
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr "Не удалось выполнить сброс Wi-Fi."
-
-msgid "Maintenance"
-msgstr "Обслуживание"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "Тестовое сообщение отправлено, проверьте вашу почту."
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly wrong."
-msgstr ""
-"Не удалось отправить тестовое сообщение, возможно, ошибка в конфигурации."
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be required "
-"to apply restored configuration."
-msgstr ""
-"Конфигурация успешно восстановлена. Обратите внимание, что для "
-"восстановления конфигурации потребуется перезагрузка."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "Не удалось восстановить резервную копию из указанного файла."
-
-msgid "Update was approved."
-msgstr "Обновление было одобрено."
-
-msgid "Update was postponed."
-msgstr "Обновление было отложено."
-
-msgid "Failed to approve the update."
-msgstr "Обновление не одобрено."
-
-msgid "Failed to postpone the update."
-msgstr "Не удалось отложить обновление."
-
-msgid ""
-"Configuration was successfully saved. Selected packages should be installed "
-"or removed shortly."
-msgstr ""
-"Конфигурация успешно сохранена. Выбранные пакеты будут установлены или "
-"удалены."
-
-msgid "Updater is running"
-msgstr "Сервис обновления запущен"
-
-msgid "Data collection"
-msgstr "Сбор данных"
-
-msgid ""
-"Failed to update emulated services. Note that you might need to wait till "
-"ucollect is properly installed."
-msgstr ""
-"Не удалось обновить эмулируемые сервисы. Обратите внимание, что вам, "
-"возможно, придется подождать, пока ucollect будет установлен."
-
-#, python-format
-msgid ""
-"An error ocurred when checking the registration: <br><pre>%(error)s</pre>"
-msgstr "Произошла ошибка при проверке регистрации: <br><pre>%(error)s</pre>"
-
-msgid ""
-"Registration for the entered email is valid. Now you can enable the data "
-"collection."
-msgstr ""
-"Регистрация электронной почты подтверждена. Теперь вы можете включить сбор "
-"данных."
-
-#, python-format
-msgid ""
-"This router is currently assigned to a different email address. Please "
-"continue to the <a href=\"%(url)s\">Turris website</a> and use the "
-"registration code <strong>%(reg_num)s</strong> for a re-assignment to your "
-"email address."
-msgstr ""
-"В настоящее время этот маршрутизатор привязан к другому адресу электронной "
-"почты. Перейдите на <a href=\"%(url)s\">сайт Turris</a> и используйте "
-"регистрационный код <strong>%(reg_num)s</strong> для перерегистрации на ваш "
-"адрес электронной почты."
-
-#, python-format
-msgid ""
-"This email address is not registered yet. Please continue to the <a href="
-"\"%(url)s\">Turris website</a> and use the registration code <strong>"
-"%(reg_num)s</strong> to create a new account."
-msgstr ""
-"Этот адрес еще не зарегистрирован. Перейдите на <a href=\"%(url)s\">сайт "
-"Turris</a> и используйте регистрационный код <strong>%(reg_num)s</strong>, "
-"чтобы создать новую учетную запись."
-
-msgid "Router failed to authorize. Please try to validate our email later."
-msgstr ""
-"Ошибка авторизации маршрутизатора. Попробуйте подтвердить электронную почту "
-"позже."
-
-msgid "About"
-msgstr "Сведения"
-
-msgid "Online"
-msgstr "В сети"
-
-msgid "Offline"
-msgstr "Не в сети"
-
-msgid "Unknown status"
-msgstr "Неизвестный статус"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Конфигурация не сохранена из-за внутренней ошибки."
-
-msgid "The password you entered was not valid."
-msgstr "Введенный пароль не подходит."
-
-msgid "Use forwarding"
-msgstr "Использовать переадресацию"
-
-msgid "Disable DNSSEC"
-msgstr "Отключить DNSSEC"
-
-msgid "Enable DHCP clients in DNS"
-msgstr "Включение DHCP-клиентов в DNS"
-
-msgid ""
-"This will enable your DNS resolver to place DHCP client's names among the "
-"local DNS records."
-msgstr ""
-"Это позволит вашему DNS-резольверу размещать имена клиентов DHCP среди "
-"локальных записей DNS."
-
-msgid "Domain of DHCP clients in DNS"
-msgstr "Домен DHCP-клиентов в DNS"
-
-msgid ""
-"This domain will be used as prefix. E.g. The result for client "
-"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
-msgstr ""
-"Этот домен будет использоваться в качестве префикса. Например, результатом "
-"для клиента «android-123» и домена «my.lan» будет «android-123.my.lan»."
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid ""
-"This section contains settings for the local network (LAN). The provided "
-"defaults are suitable for most networks. <br><strong>Note:</strong> If you "
-"change the router IP address, all computers in LAN, probably including the "
-"one you are using now, will need to obtain a <strong>new IP address</strong> "
-"which does <strong>not</strong> happen <strong>immediately</strong>. It is "
-"recommended to disconnect and reconnect all LAN cables after submitting your "
-"changes to force the update. The next page will not load until you obtain a "
-"new IP from DHCP (if DHCP enabled) and you might need to <strong>refresh the "
-"page</strong> in your browser."
-msgstr ""
-"В этом разделе содержатся настройки для локальной сети (LAN). Значения по "
-"умолчанию подходят для большинства сетей. <br><strong>Примечание:</strong> "
-"Если вы измените IP-адрес маршрутизатора, все компьютеры в локальной сети, "
-"вероятно, включая тот, который вы используете сейчас, должны будут получить "
-"<strong>новый IP-адрес</strong>, что произойдет <strong>не сразу</strong>. "
-"Рекомендуется отключить и повторно подключить все кабели локальной сети "
-"после изменения адреса для принудительного обновления. Следующая страница не "
-"будет загружаться, пока вы не получите новый IP-адрес от DHCP (если включен "
-"DHCP), и вам может потребоваться <strong>обновить страницу</strong> в "
-"браузере."
-
-msgid "Router IP address"
-msgstr "IP-адрес маршрутизатора"
-
-msgid "Router's IP address in the inner network."
-msgstr "IP-адрес маршрутизатора во внутренней сети."
-
-msgid "Network netmask"
-msgstr "Маска сети"
-
-msgid "Network mask of the inner network."
-msgstr "Маска внутренней сети."
-
-msgid "Enable DHCP"
-msgstr "Включить DHCP"
-
-msgid ""
-"Enable this option to automatically assign IP addresses to the devices "
-"connected to the router."
-msgstr ""
-"Включите эту опцию, чтобы автоматически назначать IP-адреса устройствам, "
-"подключенным к маршрутизатору."
-
-msgid "DHCP start"
-msgstr "Начальный адрес пула DHCP"
-
-msgid "DHCP max leases"
-msgstr "Размер пула адресов DHCP"
-
-msgid "Guest network"
-msgstr "Гостевая сеть"
-
-msgid "Enable guest network"
-msgstr "Включить гостевую сеть"
-
-#, python-format
-msgid ""
-"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
-"separated  from your ordinary LAN network. Devices connected to this network "
-"are allowed to access the internet, but are not allowed to access other "
-"devices and the configuration interface of the router."
-msgstr ""
-"Гостевая сеть используется для <a href='%(url)s'>гостевого доступа к Wi-"
-"Fi</a>. Она отделена от вашей локальной сети. Устройствам, подключенным к "
-"этой сети, разрешен доступ в Интернет, но не разрешен доступ к другим "
-"устройствам локальной сети и интерфейсу конфигурации маршрутизатора."
-
-msgid "Router IP in guest network"
-msgstr "IP-адрес маршрутизатора в гостевой сети"
-
-msgid ""
-"Router's IP address in the guest network. It is necessary that the guest "
-"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
-msgstr ""
-"IP-адрес маршрутизатора для гостевой сети. Необходимо, чтобы IP-адреса "
-"гостевой сети отличались от других сетей (LAN, WAN, VPN и т.д.)."
-
-msgid "Guest network netmask"
-msgstr "Маска гостевой сети"
-
-msgid "Network mask of the guest network."
-msgstr "Маска гостевой сети."
-
-msgid "Guest Lan QoS"
-msgstr "QoS гостевой сети"
-
-msgid ""
-"This option enables you to set a bandwidth limit for the guest network, so "
-"that your main network doesn't get slowed-down by it."
-msgstr ""
-"Эта опция ограничивает пропускную способность гостевой сети, чтобы не "
-"замедлять основную сеть."
-
-msgid "Download (kb/s)"
-msgstr "Приём (кбит/с)"
-
-msgid "Download speed in guest network (in kilobits per second)."
-msgstr "Скорость приёма в гостевой сети (в килобитах в секунду)."
-
-msgid "Upload (kb/s)"
-msgstr "Передача (кбит/с)"
-
-msgid "Upload speed in guest network (in kilobits per second)."
-msgstr "Скорость передачи в гостевой сети (в килобитах в секунду)."
-
-msgid "Backup file"
-msgstr "Файл резервной копии"
-
-msgid "uCollect"
-msgstr "uCollect"
-
-msgid "Emulated services"
-msgstr "Эмулируемые службы"
-
-msgid ""
-"One of uCollect's features is emulation of some commonly abused services. If "
-"this function is enabled, uCollect is listening for incoming connection "
-"attempts to these services. Enabling of the emulated services has no effect "
-"if another service is already listening on its default port (port numbers "
-"are listed below)."
-msgstr ""
-"Одной из особенностей uCollect является эмуляция некоторых служб, которые "
-"часто пытаются атаковать злоумышленники. Если эта функция включена, uCollect "
-"прослушивает попытки подключения к этим службам. Эмуляция служб не "
-"действует, если другая служба уже использует свой стандартный порт (номера "
-"портов перечислены ниже)."
-
-msgid "Telnet (23/TCP)"
-msgstr "Telnet (23/TCP)"
-
-msgid "Telnet - alternative port (2323/TCP)"
-msgstr "Telnet - альтернативный порт (2323/TCP)"
-
-msgid "HTTP (80/TCP)"
-msgstr "HTTP (80/TCP)"
-
-msgid "Squid HTTP proxy (3128/TCP)"
-msgstr "HTTP-прокси Squid (3128/TCP)"
-
-msgid "Polipo HTTP proxy (8123/TCP)"
-msgstr "HTTP-прокси Polipo (8123/TCP)"
-
-msgid "HTTP proxy (8080/TCP)"
-msgstr "HTTP-прокси (8080/TCP)"
-
-msgid "Collect credentials"
-msgstr "Сбор учетных данных"
-
-msgid ""
-"If this option is enabled, user names and passwords are collected and sent "
-"to server in addition to the IP address of the client."
-msgstr ""
-"Если этот параметр включен, имена пользователей и пароли собираются и "
-"отправляются на сервер в дополнение к IP-адресу клиента."
-
-msgid "Enable data collection"
-msgstr "Включить сбор данных"
-
-msgid "Email"
-msgstr "Электронная почта"
-
-msgid "Failed to query the server."
-msgstr "Ошибка запроса сервера."
-
-msgid "Failed to verify the router's registration."
-msgstr "Не удалось проверить регистрацию маршрутизатора."
-
-msgid "Wi-Fi"
-msgstr "Wi-Fi"
-
-msgid ""
-"WPA2 pre-shared key, that is required to connect to the network. Minimum "
-"length is 8 characters."
-msgstr ""
-"Общий секретный ключ (PSK) WPA2, необходимый для подключения к сети. "
-"Минимальная длина — 8 символов."
-
-#, python-format
-msgid "Enable Wi-Fi %s"
-msgstr "Включить Wi-Fi %s"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "Hide SSID"
-msgstr "Скрыть SSID"
-
-msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-"Если установлено, сеть не будет отображаться при сканировании доступных "
-"сетей."
-
-msgid "Wi-Fi mode"
-msgstr "Режим Wi-Fi"
-
-msgid ""
-"The 2.4 GHz band is more widely supported by clients, but tends to have more "
-"interference. The 5 GHz band is a newer standard and may not be supported by "
-"all your devices. It usually has less interference, but the signal does not "
-"carry so well indoors."
-msgstr ""
-"Диапазон 2,4 ГГц более широко поддерживается клиентами, но и больше "
-"подвержен интерференции. Диапазон 5 ГГц — новый стандарт, и может не "
-"поддерживаться всеми вашими устройствами. Обычно он имеет меньше помех, но "
-"сигнал не так хорошо распространяется в помещении."
-
-msgid "Disabled"
-msgstr "Отключён"
-
-msgid "802.11n - 20 MHz wide channel"
-msgstr "802.11n - ширина канала в 20 МГц"
-
-msgid "802.11n - 40 MHz wide channel"
-msgstr "802.11n - ширина канала в 40 МГц"
-
-msgid "802.11ac - 20 MHz wide channel"
-msgstr "802.11ac - ширина канала в 20 МГц"
-
-msgid "802.11ac - 40 MHz wide channel"
-msgstr "802.11ac - ширина канала в 40 МГц"
-
-msgid "802.11ac - 80 MHz wide channel"
-msgstr "802.11ac - ширина канала в 80 МГц"
-
-msgid "802.11n/ac mode"
-msgstr "Режим 802.11n/ac"
-
-msgid ""
-"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
-"channels can yield higher throughput but can cause more interference in the "
-"network. If you don't know what to choose, use the default option with 20 "
-"MHz wide channel."
-msgstr ""
-"Измените, чтобы настроить режим работы 802.11n/ac. 802.11n с каналами "
-"шириной 40 МГц обеспечивает более высокую пропускную способность, но может "
-"вызвать больше помех в сети. Если вы не знаете, что выбрать, используйте "
-"параметр по умолчанию с каналом шириной в 20 МГц."
-
-msgid "auto"
-msgstr "авто"
-
-msgid "Network channel"
-msgstr "Канал"
-
-msgid "Network password"
-msgstr "Пароль"
-
-msgid "Guest Wi-Fi"
-msgstr "Гостевой Wi-Fi"
-
-msgid "Set guest Wi-Fi here."
-msgstr "Настройте гостевой Wi-Fi здесь."
-
-msgid "Enable guest Wi-Fi"
-msgstr "Включить гостевой Wi-Fi"
-
-#, python-format
-msgid ""
-"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
-"connected to this network are allowed to access the internet, but aren't "
-"allowed to access other devices and the configuration interface of the "
-"router. Parameters of the guest network can be set in <a href='%(url)s'>the "
-"LAN tab</a>. "
-msgstr ""
-"Включает Wi-Fi для гостей, который отделен от сети LAN. Устройствам, "
-"подключенным к этой сети, разрешен доступ в Интернет, но им не разрешен "
-"доступ к другим устройствам и интерфейсу конфигурации маршрутизатора. "
-"Параметры гостевой сети можно установить на <a href='%(url)s'>вкладке LAN</"
-"a>. "
-
-msgid "SSID for guests"
-msgstr "SSID гостевого Wi-Fi"
-
-msgid "Password for guests"
-msgstr "Пароль гостевого Wi-Fi"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here "
-"and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-"Если вы хотите использовать свой маршрутизатор в качестве точки доступа Wi-"
-"Fi, включите здесь Wi-Fi и заполните SSID (имя точки доступа) и "
-"соответствующий пароль. Затем вы можете подключить свои мобильные "
-"устройства, используя QR-код, расположенный рядом с формой."
-
-msgid "Wi-Fi settings"
-msgstr "Настройки Wi-Fi"
-
-msgid "WAN"
-msgstr "WAN"
-
-msgid ""
-"Here you specify your WAN port settings. Usually, you can leave this options "
-"untouched unless instructed otherwise by your internet service provider. "
-"Also, in case there is a cable or DSL modem connecting your router to the "
-"network, it is usually not necessary to change this setting."
-msgstr ""
-"Здесь указываются настройки порта WAN. Как правило, этот параметр не требует "
-"изменений, если иное не указано вашим интернет-провайдером. Кроме того, если "
-"вы используете кабельный или DSL-модем, соединяющий ваш маршрутизатор с "
-"сетью, обычно нет необходимости изменять этот параметр."
-
-msgid "DHCP (automatic configuration)"
-msgstr "DHCP (автоматическая настройка)"
-
-msgid "Static IP address (manual configuration)"
-msgstr "Статический IP-адрес (ручная настройка)"
-
-msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (для DSL-мостов, модема Turris и т.д.)"
-
-msgid "DHCPv6 (automatic configuration)"
-msgstr "DHCPv6 (автоматическая настройка)"
-
-msgid "6to4 (public IPv4 address required)"
-msgstr "6to4 (требуется публичный IPv4-адрес)"
-
-msgid "6in4 (public IPv4 address required)"
-msgstr "6in4 (требуется публичный IPv4-адрес)"
-
-msgid "Disable IPv6"
-msgstr "Отключить IPv6"
-
-msgid "IPv4 protocol"
-msgstr "Протокол IPv4"
-
-msgid "IP address"
-msgstr "IP-адрес"
-
-msgid "Network mask"
-msgstr "Маска подсети"
-
-msgid "Gateway"
-msgstr "Шлюз"
-
-msgid "DHCP hostname"
-msgstr "Имя сервера DHCP"
-
-msgid "Hostname which will be provided to DHCP server."
-msgstr "Имя компьютера, которое будет предоставлено серверу DHCP."
-
-msgid "DNS server 1 (IPv4)"
-msgstr "DNS-сервер 1 (IPv4)"
-
-msgid ""
-"DNS server address is not required as the built-in DNS resolver is capable "
-"of working without it."
-msgstr ""
-"Адрес DNS-сервера не требуется, так как встроенная система разрешения "
-"доменных имён может работать без него."
-
-msgid "DNS server 2 (IPv4)"
-msgstr "DNS-сервер 2 (IPv4)"
-
-msgid "PAP/CHAP username"
-msgstr "Имя пользователя PAP/CHAP"
-
-msgid "PAP/CHAP password"
-msgstr "Пароль PAP/CHAP"
-
-msgid "IPv6 protocol"
-msgstr "Протокол IPv6"
-
-msgid "IPv6 address"
-msgstr "Адрес IPv6"
-
-msgid ""
-"IPv6 address and prefix length for WAN interface, e.g. 2001:db8:"
-"be13:37da::1/64"
-msgstr ""
-"IPv6-адрес и длина префикса для интерфейса WAN, например, 2001:db8:"
-"be13:37da::1/64"
-
-msgid "IPv6 gateway"
-msgstr "Шлюз IPv6"
-
-msgid "IPv6 prefix"
-msgstr "Префикс IPv6"
-
-msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Диапазон адресов для локальной сети, например, 2001:db8:be13:37da::/64"
-
-msgid "DNS server 1 (IPv6)"
-msgstr "DNS-сервер 1 (IPv6)"
-
-msgid "DNS server 2 (IPv6)"
-msgstr "DNS-сервер 2 (IPv6)"
-
-msgid "Custom DUID"
-msgstr "Пользовательский уникальный идентификатор DHCP (DUID)"
-
-msgid "DUID which will be provided to the DHCPv6 server."
-msgstr "DUID, который будет предоставлен серверу DHCPv6."
-
-msgid "Public IPv4"
-msgstr "Публичный IPv4-адрес"
-
-msgid ""
-"In order to use 6to4 protocol, you might need to specify your public IPv4 "
-"address manually (e.g. when your WAN interface has a private address which "
-"is mapped to public IP)."
-msgstr ""
-"Чтобы использовать протокол 6to4, вам может потребоваться указать ваш "
-"публичный IPv4-адрес вручную (например, когда ваш wan-интерфейс имеет "
-"частный адрес, который сопоставляется с публичным IP-адресом)."
-
-msgid "use autodetection"
-msgstr "использовать автоопределение"
-
-msgid "Provider IPv4"
-msgstr "Провайдер IPv4-адресов"
-
-msgid ""
-"This address will be used as a endpoint of the tunnel on the provider's side."
-msgstr ""
-"Этот адрес будет использоваться в качестве конечной точки туннеля со стороны "
-"провайдера."
-
-msgid "Routed IPv6 prefix"
-msgstr "Префикс IPv6 маршрутизации"
-
-msgid "IPv6 addresses which will be routed to your network."
-msgstr "IPv6-адреса, перенаправляемые в вашу сеть."
-
-msgid "MTU"
-msgstr "MTU"
-
-msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr "Максимальный размер полезного блока данных (MTU) в туннеле (в байтах)."
-
-msgid "Dynamic IPv4 handling"
-msgstr "Динамическая обработка IPv4"
-
-msgid ""
-"Some tunnel providers allow you to have public dynamic IPv4. Note that you "
-"need to fill in some extra fields to make it work."
-msgstr ""
-"Некоторые провайдеры туннелей позволяют вам иметь публичный динамический "
-"IPv4-адрес. Обратите внимание, что нужно заполнить дополнительные поля, "
-"чтобы они работали."
-
-msgid "Tunnel ID"
-msgstr "ID туннеля"
-
-msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr "Идентификатор туннеля, который был назначен провайдером."
-
-msgid "Username"
-msgstr "Имя пользователя"
-
-msgid ""
-"Username which will be used to provide credentials to your tunnel provider."
-msgstr ""
-"Имя пользователя, которое будет использоваться вашим провайдером туннелей."
-
-msgid "Key"
-msgstr "Ключ"
-
-msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr "Ключ, который будет использоваться вашим провайдером туннелей."
-
-msgid "Custom MAC address"
-msgstr "Пользовательский MAC-адрес"
-
-msgid ""
-"Useful in cases, when a specific MAC address is required by your internet "
-"service provider."
-msgstr ""
-"Используйте в случаях, когда ваш интернет-провайдер требует определенный MAC-"
-"адрес."
-
-msgid "MAC address"
-msgstr "MAC-адрес"
-
-msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr "Разделяйте двоеточием, например, 00:11:22:33:44:55"
-
-msgid ""
-"Set your password for this administration interface. The password must be at "
-"least 6 characters long."
-msgstr ""
-"Установите свой пароль для этого интерфейса администрирования. Пароль должен "
-"быть не короче 6 символов."
-
-msgid "Current password"
-msgstr "Текущий пароль"
-
-msgid "New password"
-msgstr "Новый пароль"
-
-msgid "New password (repeat)"
-msgstr "Новый пароль (ещё раз)"
-
-msgid "Password (repeat)"
-msgstr "Пароль (повтор)"
-
-msgid "Passwords are not equal."
-msgstr "Пароли не совпадают."
-
-msgid "Use the same password for advanced configuration"
-msgstr "Использовать тот же пароль для расширенного администрирования"
-
-msgid ""
-"Same password would be used for accessing this administration interface, for "
-"root user in LuCI web interface and for SSH login. Use a strong password! "
-"(If you choose not to set the password for advanced configuration here, you "
-"will have the option to do so later. Until then, the root account will be "
-"blocked.)"
-msgstr ""
-"Один и тот же пароль будет использоваться для данного интерфейса "
-"администрирования, для пользователя root в веб-интерфейсе LuCI и для "
-"авторизации по SSH. Используйте сложный пароль! (Если Вы не установите "
-"пароль для расширенной настройки здесь, можно сделать это позднее. До этого "
-"момента аккаунт root будет заблокирован.)"
-
-msgid "Region settings"
-msgstr "Настройки региона"
-
-msgid ""
-"Please select the timezone the router is being operated in. Correct setting "
-"is required to display the right time and for related functions."
-msgstr ""
-"Выберите часовой пояс маршрутизатора для отображения правильного времени и "
-"связанных функций."
-
-msgid "Continent or ocean"
-msgstr "Континент или океан"
-
-msgid "Country"
-msgstr "Страна"
-
-msgid "Timezone"
-msgstr "Часовой пояс"
-
-msgid "Advanced administration"
-msgstr "Расширенное администрирование"
-
-#, python-format
-msgid ""
-"In order to access the advanced configuration possibilities which are not "
-"present here, you must set the root user's password. The advanced "
-"configuration options can be managed either through the <a href=\"//%(host)s/"
-"%(path)s\">LuCI web interface</a> or over SSH."
-msgstr ""
-"Чтобы получить доступ к расширенным возможностям конфигурации, которых здесь "
-"нет, вы должны установить пароль пользователя root. Расширенные параметры "
-"конфигурации могут управляться либо через веб-интерфейс <a href=\"//%(host)s/"
-"%(path)s\">LuCI</a>, либо через SSH."
-
-msgid "Time"
-msgstr "Синхронизация"
-
-msgid ""
-"We could not synchronize the time with a timeserver, probably due to a loss "
-"of connection. It is necessary for the router to have correct time in order "
-"to function properly. Please, synchronize it with your computer's time, or "
-"set it manually."
-msgstr ""
-"Мы не смогли синхронизироваться с сервером времени, вероятно, из-за потери "
-"соединения. Для правильного функционирования маршрутизатора необходимо "
-"выставить правильное время. Синхронизируйте его со временем вашего "
-"компьютера или установите вручную."
-
-msgid "Region and time"
-msgstr "Регион и время"
-
-msgid ""
-"It is important that your router has the current time properly set. If our "
-"router had an older time set some expired SSL certificates might have seemed "
-"like valid."
-msgstr ""
-"Важно, чтобы текущее время было установлено правильно. Если на "
-"маршрутизаторе выставлено старое время, некоторые истекшие сертификаты SSL "
-"могут показаться действительными."
-
-msgid ""
-"Time should be up-to-date otherise DNS and other services might not work "
-"properly."
-msgstr ""
-"Время должно быть актуальным, иначе DNS и другие службы могут работать "
-"некорректно."
-
-msgid "How to set time"
-msgstr "Как установить время"
-
-msgid "Choose method to store current time into the router."
-msgstr "Способ установки текущего времени в маршрутизаторе."
-
-msgid "via ntp"
-msgstr "Через NTP"
-
-msgid "manually"
-msgstr "Вручную"
-
-msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr "Время в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС."
-
-msgid "Updater"
-msgstr "Сервис обновлений"
-
-msgid "I agree"
-msgstr "Согласен"
-
-msgid "Use automatic updates (recommended)"
-msgstr "Использовать автоматические обновления (рекомендуется)"
-
-msgid "Turn automatic updates off"
-msgstr "Отключить автоматические обновления"
-
-msgid ""
-"Updater is a service that keeps all TurrisOS software up to date. Apart from "
-"the standard installation, you can optionally select lists of additional "
-"software that'd be installed on the router. This software can be selected "
-"from the following list. Please note that only software that is part of "
-"TurrisOS or that has been installed from a package list is maintained by "
-"Updater. Software that has been installed manually or using opkg is not "
-"affected."
-msgstr ""
-"Сервис обновлений — это сервис, который постоянно обновляет все программное "
-"обеспечение TurrisOS. Помимо стандартной поставки, вы можете выбрать список "
-"дополнительных программ, которые будут установлены на маршрутизаторе. "
-"Программное обеспечение можно выбрать из списка ниже. Обратите внимание: "
-"только программы, входящие в состав TurrisOS или установленные из списка "
-"пакетов, поддерживаются сервисом. Программное обеспечение, установленное "
-"вручную или с помощью opkg, не изменяется."
-
-msgid "Automatic installation"
-msgstr "Автоматическая установка"
-
-msgid "Updates will be installed without user's intervention."
-msgstr "Обновления будут установлены без подтверждения пользователя."
-
-msgid "Delayed updates"
-msgstr "Отложенные обновления"
-
-msgid ""
-"Updates will be installed with an adjustable delay. You can also approve "
-"them manually."
-msgstr ""
-"Обновления будут установлены с регулируемой задержкой. Вы также можете "
-"одобрить вручную."
-
-msgid "Update approval needed"
-msgstr "Обновления требуют одобрения"
-
-msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr "Вы должны одобрить обновления, иначе они не будут установлены."
-
-msgid ""
-"If you want to use other language than English you can select it from the "
-"following list:"
-msgstr ""
-"Если вы хотите использовать другой язык, помимо английского, выберите его из "
-"следующего списка:"
-
-msgid "Notifications settings"
-msgstr "Настройки уведомлений"
-
-msgid "Enable notifications"
-msgstr "Включить уведомления"
-
-msgid "SMTP provider"
-msgstr "Провайдер SMTP"
-
-msgid "Turris"
-msgstr "Turris"
-
-msgid "Custom"
-msgstr "Ручная настройка"
-
-msgid ""
-"If you set SMTP provider to \"Turris\", the servers provided to members of "
-"the Turris project would be used. These servers do not require any "
-"additional settings. If you want to set your own SMTP server, please select "
-"\"Custom\" and enter required settings."
-msgstr ""
-"Если вы выберете в качестве SMTP-провайдера \"Turris\", будут использоваться "
-"серверы, доступные участникам проекта Turris. Они не требуют дополнительных "
-"настроек. Если вы хотите использовать свой сервер SMTP, выберите \"Ручная "
-"настройка\" и введите необходимые данные."
-
-msgid "Recipient's email"
-msgstr "Электронная почта получателя"
-
-msgid "Email address of recipient. Separate multiple addresses by spaces."
-msgstr ""
-"Адрес электронной почты получателя. Разделите несколько адресов пробелами."
-
-msgid "Sender's name"
-msgstr "Имя отправителя"
-
-msgid ""
-"Name of the sender - will be used as a part of the sender's email address "
-"before the \"at\" sign."
-msgstr ""
-"Имя отправителя - будет использовано как часть адреса отправителя до знака "
-"\"@\"."
-
-msgid ""
-"Sender's name can contain only alphanumeric characters, dots and underscores."
-msgstr ""
-"Имя отправителя может содержать только буквы латинского алфавита, цифры, "
-"точки и подчеркивания."
-
-msgid "Reboot is required"
-msgstr "Требуется перезагрузка"
-
-msgid "Reboot or attention is required"
-msgstr "Требуется перезагрузка или внимание"
-
-msgid "Reboot or attention is required or update was installed"
-msgstr ""
-"Требуется перезагрузка или внимание, иначе обновление будет установлено"
-
-msgid "Importance"
-msgstr "Важность"
-
-msgid "Send news"
-msgstr "Сообщать новости"
-
-msgid "Send emails about new features."
-msgstr "Сообщать о новых возможностях."
-
-msgid "SMTP settings"
-msgstr "Настройки SMTP"
-
-msgid "Sender address (From)"
-msgstr "Адрес отправителя (От)"
-
-msgid "This is the address notifications are send from."
-msgstr "Адрес, с которого будут отправляться уведомления."
-
-msgid "Server address"
-msgstr "Адрес сервера"
-
-msgid "Server port"
-msgstr "Порт сервера"
-
-msgid "None"
-msgstr "Нет"
-
-msgid "SSL/TLS"
-msgstr "SSL/TLS"
-
-msgid "STARTTLS"
-msgstr "STARTTLS"
-
-msgid "Security"
-msgstr "Безопасность"
-
-msgid "Automatic restarts after software update"
-msgstr "Автоматическая перезагрузка после установки обновлений"
-
-msgid "Delay (days)"
-msgstr "Задержка (в днях)"
-
-msgid ""
-"Number of days that must pass between receiving the request for restart and "
-"the automatic restart itself."
-msgstr "Количество дней с момента запроса до автоматической перезагрузки."
-
-msgid "Reboot time"
-msgstr "Время перезагрузки"
-
-msgid "Time of day of automatic reboot in HH:MM format."
-msgstr "Время автоматической перезагрузки (ЧЧ:MM)."
-
-msgid "You have been logged out due to longer inactivity."
-msgstr "Вы вышли из системы из-за длительного бездействия."
-
-msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%Г/%М/%Д %Ч:%М:%С"
-
 msgid "Install"
 msgstr "Установить"
 
@@ -2026,16 +1973,6 @@ msgstr "Улучшить"
 msgid "Downgrade"
 msgstr "Откатить"
 
-#, python-format
-msgid "Configuration wizard - step %s"
-msgstr "Мастер настройки — шаг %s"
-
-msgid "Connectivity test"
-msgstr "Тест подключения"
-
-msgid "Automatic updates"
-msgstr "Автоматические обновления"
-
 #~ msgid "DHCP Client ID"
 #~ msgstr "Идентификатор клиента DHCP"
 
@@ -2043,24 +1980,27 @@ msgstr "Автоматические обновления"
 #~ msgstr "Тестовое сообщение не отправилось из-за внутренней ошибки."
 
 #~ msgid ""
-#~ "Configuration was successfully restored. After installing updates and "
-#~ "rebooting you can return to this page at <a href=\"%(new_url)s\">"
-#~ "%(new_url)s</a> in local network. Please wait a while until router "
-#~ "automatically restarts."
+#~ "Configuration was successfully restored. After"
+#~ " installing updates and rebooting you "
+#~ "can return to this page at <a "
+#~ "href=\"%(new_url)s\">%(new_url)s</a> in local "
+#~ "network. Please wait a while until "
+#~ "router automatically restarts."
 #~ msgstr ""
-#~ "Конфигурация успешно восстановлена. После установки обновлений и "
-#~ "перезагрузки вы можете вернуться к этой странице через <a href="
-#~ "\"%(new_url)s\">%(new_url)s</a> в локальной сети. Подождите, пока "
-#~ "маршрутизатор автоматически перезагрузится."
+#~ "Конфигурация успешно восстановлена. После "
+#~ "установки обновлений и перезагрузки вы "
+#~ "можете вернуться к этой странице через"
+#~ " <a href=\"%(new_url)s\">%(new_url)s</a> в "
+#~ "локальной сети. Подождите, пока маршрутизатор"
+#~ " автоматически перезагрузится."
 
 #~ msgid "IP address of the router could not be determined from the backup."
 #~ msgstr "Не удалось определить IP-адрес маршрутизатора из резервной копии."
 
-#~ msgid ""
-#~ "Configuration could not be loaded, backup file is probably corrupted."
+#~ msgid "Configuration could not be loaded, backup file is probably corrupted."
 #~ msgstr ""
-#~ "Конфигурация не может быть загружена, файл резервной копии, вероятно, "
-#~ "поврежден."
+#~ "Конфигурация не может быть загружена, "
+#~ "файл резервной копии, вероятно, поврежден."
 
 #~ msgid "Invalid request arguments."
 #~ msgstr "Некорректные аргументы запроса."
@@ -2069,86 +2009,119 @@ msgstr "Автоматические обновления"
 #~ msgstr "Домашняя страница"
 
 #~ msgid ""
-#~ "Router's IP address in inner network. Also defines the range of assigned "
-#~ "IP addresses."
+#~ "Router's IP address in inner network."
+#~ " Also defines the range of assigned"
+#~ " IP addresses."
 #~ msgstr ""
-#~ "IP-адрес маршрутизатора во внутренней сети. Также определяет диапазон "
-#~ "назначенных IP-адресов."
+#~ "IP-адрес маршрутизатора во внутренней сети."
+#~ " Также определяет диапазон назначенных "
+#~ "IP-адресов."
 
 #~ msgid "Use Modem Turris"
 #~ msgstr "Использовать модем Turris"
 
 #~ msgid ""
-#~ "Modem Turris (aka SMRT - Small Modem for Router Turris), a simple ADSL/"
-#~ "VDSL modem designed specially for router Turris. Enable this option if "
-#~ "you have Modem Turris connected to your router."
+#~ "Modem Turris (aka SMRT - Small "
+#~ "Modem for Router Turris), a simple "
+#~ "ADSL/VDSL modem designed specially for "
+#~ "router Turris. Enable this option if "
+#~ "you have Modem Turris connected to "
+#~ "your router."
 #~ msgstr ""
-#~ "Модем Turris (aka SMRT - малый модем для маршрутизатора Turris) - простой "
-#~ "модем ADSL/VDSL, разработанный специально для маршрутизатора Turris. "
-#~ "Включите эту опцию, если к маршрутизатору подключен модем Turris."
+#~ "Модем Turris (aka SMRT - малый "
+#~ "модем для маршрутизатора Turris) - "
+#~ "простой модем ADSL/VDSL, разработанный "
+#~ "специально для маршрутизатора Turris. Включите"
+#~ " эту опцию, если к маршрутизатору "
+#~ "подключен модем Turris."
 
 #~ msgid "xDSL VLAN number"
 #~ msgstr "Номер xDSL VLAN"
 
 #~ msgid ""
-#~ "VLAN number for your internet connection. Your ISP might have provided "
-#~ "you this number. If you have VPI and VCI numbers instead, leave this "
-#~ "field empty, a default value will be used automatically."
+#~ "VLAN number for your internet "
+#~ "connection. Your ISP might have provided"
+#~ " you this number. If you have "
+#~ "VPI and VCI numbers instead, leave "
+#~ "this field empty, a default value "
+#~ "will be used automatically."
 #~ msgstr ""
-#~ "Номер VLAN для вашего интернет-соединения, если его предоставляет ваш "
-#~ "интернет-провайдер. Если у вас его нет, но есть номера VPI и VCI, "
-#~ "оставьте это поле пустым, и оно настроится автоматически."
+#~ "Номер VLAN для вашего интернет-соединения, "
+#~ "если его предоставляет ваш интернет-провайдер."
+#~ " Если у вас его нет, но есть"
+#~ " номера VPI и VCI, оставьте это "
+#~ "поле пустым, и оно настроится "
+#~ "автоматически."
 
 #~ msgid "Both VPI and VCI must be filled or both must be empty."
 #~ msgstr ""
-#~ "Оба поля VPI и VCI должны быть заполнены или оба поля должны быть пустыми."
+#~ "Оба поля VPI и VCI должны быть "
+#~ "заполнены или оба поля должны быть "
+#~ "пустыми."
 
 #~ msgid "VPI"
 #~ msgstr "VPI"
 
 #~ msgid ""
-#~ "Virtual Path Identifier (VPI) is a parameter that you might have received "
-#~ "from your ISP. If you have a VLAN number instead, leave this field empty. "
-#~ "You need to fill in both VPI and VCI together."
+#~ "Virtual Path Identifier (VPI) is a "
+#~ "parameter that you might have received"
+#~ " from your ISP. If you have a"
+#~ " VLAN number instead, leave this "
+#~ "field empty. You need to fill in"
+#~ " both VPI and VCI together."
 #~ msgstr ""
-#~ "Идентификатор виртуального пути (VPI) - это параметр, который вы могли "
-#~ "получить от своего интернет-провайдера. Если у вас есть номер VLAN, "
-#~ "оставьте это поле пустым. Вам необходимо заполнить как VPI, так и VCI "
-#~ "вместе."
+#~ "Идентификатор виртуального пути (VPI) - "
+#~ "это параметр, который вы могли получить"
+#~ " от своего интернет-провайдера. Если у "
+#~ "вас есть номер VLAN, оставьте это "
+#~ "поле пустым. Вам необходимо заполнить "
+#~ "как VPI, так и VCI вместе."
 
 #~ msgid "VCI"
 #~ msgstr "VCI"
 
 #~ msgid ""
-#~ "Virtual Circuit Identifier (VCI) is a parameter that you might have "
-#~ "received from your ISP. If you have a VLAN number instead, leave this "
-#~ "field empty. You need to fill in both VPI and VCI together."
+#~ "Virtual Circuit Identifier (VCI) is a"
+#~ " parameter that you might have "
+#~ "received from your ISP. If you "
+#~ "have a VLAN number instead, leave "
+#~ "this field empty. You need to fill"
+#~ " in both VPI and VCI together."
 #~ msgstr ""
-#~ "Идентификатор виртуального контура (VСI) - это параметр, который вы могли "
-#~ "получить от своего интернет-провайдера. Если у вас есть номер VLAN, "
-#~ "оставьте это поле пустым. Вам необходимо заполнить как VPI, так и VCI "
-#~ "вместе."
+#~ "Идентификатор виртуального контура (VСI) - "
+#~ "это параметр, который вы могли получить"
+#~ " от своего интернет-провайдера. Если у "
+#~ "вас есть номер VLAN, оставьте это "
+#~ "поле пустым. Вам необходимо заполнить "
+#~ "как VPI, так и VCI вместе."
 
 #~ msgid ""
-#~ "The Updater is currently disabled. You must enable it first to manage "
+#~ "The Updater is currently disabled. You"
+#~ " must enable it first to manage "
 #~ "package lists."
 #~ msgstr ""
-#~ "Сервис обновлений отключен. Сначала вы должны включить его для управления "
+#~ "Сервис обновлений отключен. Сначала вы "
+#~ "должны включить его для управления "
 #~ "списками пакетов."
 
 #~ msgid ""
-#~ "List of available software was not downloaded from the server yet. Please "
-#~ "come back later."
+#~ "List of available software was not "
+#~ "downloaded from the server yet. Please"
+#~ " come back later."
 #~ msgstr ""
-#~ "Список доступных программ еще не был загружен с сервера. Пожалуйста, "
-#~ "повторите позже."
+#~ "Список доступных программ еще не был "
+#~ "загружен с сервера. Пожалуйста, повторите "
+#~ "позже."
 
 #~ msgid ""
-#~ "Welcome to the Turris administration site. Please, choose a config "
-#~ "section you wish to change from the menu."
+#~ "Welcome to the Turris administration "
+#~ "site. Please, choose a config section"
+#~ " you wish to change from the "
+#~ "menu."
 #~ msgstr ""
-#~ "Добро пожаловать на страницу конфигурации Turris. Выберите раздел "
-#~ "конфигурации, который вы хотите изменить."
+#~ "Добро пожаловать на страницу конфигурации "
+#~ "Turris. Выберите раздел конфигурации, который"
+#~ " вы хотите изменить."
 
 #~ msgid "Continue to configuration interface"
 #~ msgstr "Перейдите к интерфейсу конфигурации"
@@ -2163,8 +2136,7 @@ msgstr "Автоматические обновления"
 #~ msgstr "Неисправно"
 
 #~ msgid "Updates will be performed immediatelly without a user confirmation."
-#~ msgstr ""
-#~ "Обновления будут применены немедленно, без подтверждения пользователя."
+#~ msgstr "Обновления будут применены немедленно, без подтверждения пользователя."
 
 #~ msgid "Delayed approval"
 #~ msgstr "Отсроченное одобрение"
@@ -2183,3 +2155,680 @@ msgstr "Автоматические обновления"
 
 #~ msgid "Guest Network"
 #~ msgstr "Гостевая сеть"
+
+#~ msgid ""
+#~ "This value length is invalid. It "
+#~ "should be between %s and %s "
+#~ "characters long."
+#~ msgstr ""
+#~ "Эта длина значения недопустима. Оно "
+#~ "должно быть между %s и %s символов"
+#~ " длиной."
+
+#~ msgid "\\nRemaining unread messages (%UNREAD%) will be deleted."
+#~ msgstr "\\n Оставшиеся непрочитанные сообщения (%UNREAD%) будут удалены."
+
+#~ msgid ""
+#~ "A secure connection is an important "
+#~ "safety feature of the router and "
+#~ "therefore the entire home network."
+#~ msgstr ""
+#~ "Безопасное соединение является важной функцией"
+#~ " безопасности маршрутизатора и, следовательно,"
+#~ " всей домашней сети."
+
+#~ msgid ""
+#~ "With the Turris router you can "
+#~ "join Project Turris which is a "
+#~ "non-profit research project founded by "
+#~ "the CZ.NIC association, a .CZ domain "
+#~ "registry. By joining the project, your"
+#~ " router will act as a probe "
+#~ "which analyzes traffic between your home"
+#~ " network and the Internet and helps"
+#~ " to identify malicious data flows. "
+#~ "Once such a flow is detected your"
+#~ " router notifies the Turris headquarters"
+#~ " which can compare the flow with "
+#~ "data from the rest of the probes"
+#~ " and assign it a threat level. "
+#~ "If the flow is identified as an"
+#~ " attack Turris headquarters can prepare "
+#~ "an update which is distributed to "
+#~ "every Turris router and helps them "
+#~ "to protect themselves against the "
+#~ "attack."
+#~ msgstr ""
+#~ "С маршрутизатором Turris вы можете "
+#~ "присоединиться к Project Turris — "
+#~ "некоммерческому исследовательскому проекту, "
+#~ "созданному ассоциацией CZ.NIC, регистратором "
+#~ "домена .CZ. Присоединившись к проекту, "
+#~ "ваш маршрутизатор будет выступать в "
+#~ "качестве зонда, который анализирует трафик "
+#~ "между вашей домашней сетью и Интернетом"
+#~ " и помогает идентифицировать вредоносные "
+#~ "потоки данных. Как только такой поток"
+#~ " обнаружен, ваш маршрутизатор уведомляет "
+#~ "штаб-квартиру Turris, которая может сравнить"
+#~ " поток с данными от остальных зондов"
+#~ " и присвоить ему уровень угрозы. Если"
+#~ " поток идентифицирован как атака, "
+#~ "штаб-квартира Turris может подготовить "
+#~ "обновление, которое распространяется на каждый"
+#~ " маршрутизатор Turris и помогает им "
+#~ "защитить себя от атаки."
+
+#~ msgid ""
+#~ "The Updater is currently disabled. You"
+#~ " must enable it first to enable "
+#~ "data collection."
+#~ msgstr ""
+#~ "Сервис обновлений отключён. Включите его, "
+#~ "прежде чем включать сбор данных."
+
+#~ msgid ""
+#~ "If you want to join the Turris "
+#~ "project you need to register on "
+#~ "the Turris portal first. Enter the "
+#~ "email address you want to register "
+#~ "with or which you have used for"
+#~ " this purpose before:"
+#~ msgstr ""
+#~ "Если вы хотите присоединиться к проекту"
+#~ " Turris, вам необходимо сначала "
+#~ "зарегистрироваться на портале Turris. Введите"
+#~ " адрес электронной почты, на который "
+#~ "вы хотите зарегистрироваться или который "
+#~ "вы использовали до этого:"
+
+#~ msgid "Validate email"
+#~ msgstr "Подтвердить адрес электронной почты"
+
+#~ msgid "Sending of uCollect data"
+#~ msgstr "Отправка данных uCollect"
+
+#~ msgid "Time of last update: %(datetime)s"
+#~ msgstr "Время последнего обновления: %(datetime)s"
+
+#~ msgid "(status updated %d second ago)"
+#~ msgid_plural "(status updated %d seconds ago)"
+#~ msgstr[0] "(статус обновлён %d секунду назад)"
+#~ msgstr[1] "(статус обновлён %d секунды назад)"
+#~ msgstr[2] "(статус обновлён %d секунд назад)"
+
+#~ msgid "Sending of firewall logs"
+#~ msgstr "Отправка журналов брандмауэра"
+
+#~ msgid "Refresh"
+#~ msgstr "Обновить"
+
+#~ msgid "Device registration"
+#~ msgstr "Регистрация устройства"
+
+#~ msgid ""
+#~ "If you have not registered your "
+#~ "device yet, click on the following "
+#~ "button to obtain a registration code."
+#~ " This code must be submitted on "
+#~ "the Turris site in your user "
+#~ "profile available at: <a "
+#~ "href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "Если вы еще не зарегистрировали свое "
+#~ "устройство, нажмите кнопку ниже, чтобы "
+#~ "получить регистрационный код. Этот код "
+#~ "должен быть представлен на сайте Turris"
+#~ " в вашем профиле пользователя по "
+#~ "адресу: <a href=\"%(url)s\">%(url)s</a>."
+
+#~ msgid "Registration code"
+#~ msgstr "Код регистрации"
+
+#~ msgid ""
+#~ "Unfortunately, it wasn't possible to "
+#~ "generate the registration code. This "
+#~ "usually means the router is not "
+#~ "connected to the internet. Please, try"
+#~ " registering later. If the problem "
+#~ "persists, contact the support."
+#~ msgstr ""
+#~ "К сожалению, создать код регистрации не"
+#~ " удалось. Обычно это означает, что "
+#~ "маршрутизатор не подключен к Интернету. "
+#~ "Пожалуйста, попробуйте зарегистрироваться позже. "
+#~ "Если проблема не устранена, обратитесь в"
+#~ " службу поддержки."
+
+#~ msgid "Get registration code"
+#~ msgstr "Получить код регистрации"
+
+#~ msgid "Rebooting..."
+#~ msgstr "Перезагрузка..."
+
+#~ msgid "Your router is being rebooted."
+#~ msgstr "Ваш маршрутизатор перезагружается."
+
+#~ msgid ""
+#~ "Device was successfully installed. Last "
+#~ "step that is required is a "
+#~ "registration of your device in your "
+#~ "user profile on the Turris website "
+#~ "<a href=\"%(url)s\">%(url)s</a>."
+#~ msgstr ""
+#~ "Устройство успешно подключено. Последний шаг,"
+#~ " который требуется, — это регистрация "
+#~ "вашего устройства в вашем профиле "
+#~ "пользователя на сайте Turris <a "
+#~ "href=\"%(url)s\">%(url)s</a>."
+
+#~ msgid ""
+#~ "<strong>Warning:</strong> this code is valid"
+#~ " only for limited time. In case "
+#~ "this code is refused, refresh this "
+#~ "page to get a new one."
+#~ msgstr ""
+#~ "<strong>Предупреждение:</strong> этот код "
+#~ "действителен только в течение ограниченного"
+#~ " времени. В случае отказа этого кода"
+#~ " обновите эту страницу, чтобы получить "
+#~ "новый."
+
+#~ msgid "What next?"
+#~ msgstr "Что дальше?"
+
+#~ msgid ""
+#~ "You can change any of the "
+#~ "previously configured settings in the <a"
+#~ " href=\"%(url)s\">standard configuration interface</a>."
+#~ " In case you are interested in "
+#~ "more advanced options, you can use "
+#~ "the LuCI interface which is available"
+#~ " from the <a href=\"%(url2)s\">Advanced "
+#~ "administration tab</a>."
+#~ msgstr ""
+#~ "Вы можете изменить любые ранее "
+#~ "настроенные параметры в <a "
+#~ "href=\"%(url)s\">стандартном интерфейсе конфигурации</a>."
+#~ " Если вас интересуют расширенные параметры,"
+#~ " вы можете использовать интерфейс LuCI, "
+#~ "который доступен на вкладке <a "
+#~ "href=\"%(url2)s\">«Расширенное администрирование»</a>."
+
+#~ msgid "Important updates"
+#~ msgstr "Важные обновления"
+
+#~ msgid ""
+#~ "Important updates that require a device"
+#~ " restart have been installed. Some "
+#~ "services might not work if you "
+#~ "don't restart the device. For details"
+#~ " see below."
+#~ msgstr ""
+#~ "Были установлены важные обновления, которые"
+#~ " требуют перезагрузки устройства. Некоторые "
+#~ "службы могут не работать, если вы "
+#~ "не перезагрузите устройство. Подробнее "
+#~ "смотрите ниже."
+
+#~ msgid "Continue to the configuration interface"
+#~ msgstr "Перейти к интерфейсу конфигурации"
+
+#~ msgid "Installation finished"
+#~ msgstr "Установка завершена"
+
+#~ msgid ""
+#~ "You have decided to disable the "
+#~ "Updater service during the installation."
+#~ msgstr "Вы решили отключить сервис обновлений во время установки."
+
+#~ msgid ""
+#~ "Without the Updater, installed software "
+#~ "will not be kept up to date "
+#~ "and you will also not be able "
+#~ "to install Updater's package lists."
+#~ msgstr ""
+#~ "Без сервиса обновлений установленное "
+#~ "программное обеспечение не будет обновляться,"
+#~ " и вы также не сможете устанавливать"
+#~ " пакеты программ."
+
+#~ msgid ""
+#~ "By enabling of the Updater, you "
+#~ "can also join our research project: "
+#~ "<a href=\"https://project.turris.cz/\">Project Turris</a>."
+#~ msgstr ""
+#~ "Включив сервис обновлений, вы также "
+#~ "можете присоединиться к нашему "
+#~ "исследовательскому проекту: <a "
+#~ "href=\"https://project.turris.cz/\">Project Turris</a>."
+
+#~ msgid ""
+#~ "You can enable the Updater any "
+#~ "time on the <a href=\"%(url)s\">Updater</a>"
+#~ " configuration page."
+#~ msgstr ""
+#~ "Вы можете включить сервис обновлений в"
+#~ " любое время на странице конфигурации "
+#~ "<a href=\"%(url)s\">«Сервис обновлений»</a>."
+
+#~ msgid ""
+#~ "With Turris router you can join "
+#~ "the research project called <a "
+#~ "href=\"https://project.turris.cz/\">Project Turris</a>. "
+#~ "Thanks to this project, your router "
+#~ "can become a probe that analyzes "
+#~ "the traffic between internet and the "
+#~ "home network and identifies suspicious "
+#~ "data flows."
+#~ msgstr ""
+#~ "С маршрутизатором Turris вы можете "
+#~ "присоединиться к исследовательскому проекту "
+#~ "под названием <a "
+#~ "href=\"https://project.turris.cz/\">Project Turris</a>. "
+#~ "Благодаря этому проекту ваш маршрутизатор "
+#~ "может стать зондом, который анализирует "
+#~ "трафик между Интернетом и домашней сетью"
+#~ " и идентифицирует потоки подозрительных "
+#~ "данных."
+
+#~ msgid ""
+#~ "You can enable these additional features"
+#~ " by following the instructions on the"
+#~ " <a href=\"%(url)s\">Data collection</a> page."
+#~ msgstr ""
+#~ "Вы можете включить эти дополнительные "
+#~ "функции, следуя инструкциям на странице "
+#~ "<a href=\"%(url)s\">Сбор данных</a>."
+
+#~ msgid "Synchronize with your computer clock"
+#~ msgstr "Синхронизировать с часами на компьютере"
+
+#~ msgid "Set time manually"
+#~ msgstr "Установить время вручную"
+
+#~ msgid "Synchronization successful."
+#~ msgstr "Синхронизация прошла успешно."
+
+#~ msgid "Next"
+#~ msgstr "Следующий"
+
+#~ msgid "Synchronizing router time with an internet time server."
+#~ msgstr "Синхронизация времени маршрутизатора с сервером времени в Интернете."
+
+#~ msgid "One moment, please..."
+#~ msgstr "Один момент…"
+
+#~ msgid "Done"
+#~ msgstr "Готово"
+
+#~ msgid "Time was successfully synchronized, you can move to the next step."
+#~ msgstr "Время было успешно синхронизировано, можно перейти к следующему шагу."
+
+#~ msgid "Registration failure"
+#~ msgstr "Ошибка регистрации"
+
+#~ msgid "Welcome to configuration of router Turris"
+#~ msgstr "Добро пожаловать в настройки маршрутизатора Turris"
+
+#~ msgid ""
+#~ "Before you start to use the router"
+#~ " for the first time, it is "
+#~ "necessary to set it up. The "
+#~ "following simple wizard will take you"
+#~ " through the configuration procedure. After"
+#~ " it is finished, your router will "
+#~ "be ready for operation."
+#~ msgstr ""
+#~ "Прежде, чем вы начнете использовать "
+#~ "маршрутизатор в первый раз, его "
+#~ "необходимо настроить. Следующий простой мастер"
+#~ " проведет вас через процедуру настройки."
+#~ " После его завершения маршрутизатор будет"
+#~ " готов к работе."
+
+#~ msgid ""
+#~ "If you want to restore a "
+#~ "previously saved configuration or for "
+#~ "some other reason skip this wizard, "
+#~ "you can do so after choosing a "
+#~ "password in its first step."
+#~ msgstr ""
+#~ "Если вы хотите восстановить сохраненную "
+#~ "ранее конфигурацию или по какой-либо "
+#~ "другой причине пропустить этого мастера "
+#~ "настроек, вы можете сделать это после"
+#~ " выбора пароля на первом шаге."
+
+#~ msgid "Begin installation"
+#~ msgstr "Начать установку"
+
+#~ msgid "Checking internet connectivity."
+#~ msgstr "Проверка подключения к Интернету."
+
+#~ msgid "Internet connectivity test passed without error."
+#~ msgstr "Подключение к Интернету прошло без ошибок."
+
+#~ msgid ""
+#~ "Your internet connection has network "
+#~ "connectivity but DNS resolving does not"
+#~ " work. This is probably a problem "
+#~ "with your ISP. This might also be"
+#~ " an issue with wrong time on "
+#~ "your router - you can adjust it"
+#~ " in the following step."
+#~ msgstr ""
+#~ "У вашего интернет-соединения есть сетевое "
+#~ "подключение, но разрешение DNS не "
+#~ "работает. Вероятно, это проблема с вашим"
+#~ " интернет-провайдером. Это также может быть"
+#~ " проблемой с неправильным временем на "
+#~ "маршрутизаторе — вы можете настроить его"
+#~ " на следующем шаге."
+
+#~ msgid ""
+#~ "It seems that you have no internet"
+#~ " connection, maybe your WAN settings "
+#~ "are not right."
+#~ msgstr ""
+#~ "Кажется, у вас нет подключения к "
+#~ "Интернету, возможно, настройки WAN неверны."
+
+#~ msgid "Try again"
+#~ msgstr "Попробуйте снова"
+
+#~ msgid ""
+#~ "In some cases, such as on a "
+#~ "slower DSL connection or when DHCP "
+#~ "is used, this error might be due"
+#~ " to slow network start-up. You "
+#~ "can retest your connection using the "
+#~ "above button if you think this "
+#~ "might be the case. You can also"
+#~ " return to previous page to fix "
+#~ "the problem by modifying WAN settings."
+#~ msgstr ""
+#~ "В некоторых случаях, например, при "
+#~ "медленном подключении DSL или при "
+#~ "использовании DHCP, эта ошибка может "
+#~ "быть вызвана медленным запуском сети. Вы"
+#~ " можете повторно протестировать свое "
+#~ "соединение, используя кнопку выше, если "
+#~ "считаете, что это может быть так. "
+#~ "Вы также можете вернуться на предыдущую"
+#~ " страницу, чтобы устранить проблему, "
+#~ "изменив настройки WAN."
+
+#~ msgid "Adjust WAN settings"
+#~ msgstr "Проверьте настройки WAN"
+
+#~ msgid ""
+#~ "Installing additional updates. Router will "
+#~ "be restarted several times to finish "
+#~ "the process."
+#~ msgstr ""
+#~ "Установка дополнительных обновлений. Маршрутизатор"
+#~ " будет перезагружен несколько раз для "
+#~ "завершения процесса."
+
+#~ msgid "Do not unplug the device during update!"
+#~ msgstr "Не отключайте устройство во время обновления!"
+
+#~ msgid "Check of available updates in progress."
+#~ msgstr "Проверяются доступные обновления."
+
+#~ msgid ""
+#~ "Firmware update has failed due to "
+#~ "a connection or installation error. You"
+#~ " should check your cable connection "
+#~ "before proceeding to the next step. "
+#~ "But do not worry much about the"
+#~ " update as the router will run "
+#~ "the updater regularly."
+#~ msgstr ""
+#~ "Обновление прошивки не удалось из-за "
+#~ "ошибки подключения или при установке. "
+#~ "Прежде чем переходить к следующему шагу,"
+#~ " проверьте подключение кабеля. Но не "
+#~ "беспокойтесь о обновлении, так как "
+#~ "маршрутизатор будет регулярно запускать "
+#~ "программу обновления."
+
+#~ msgid "Updater has returned the following error:"
+#~ msgstr "Сервис обновлений вернул ошибку:"
+
+#~ msgid "Device has been restarted."
+#~ msgstr "Устройство было перезагружено."
+
+#~ msgid "Please log in again to continue."
+#~ msgstr "Авторизуйтесь для продолжения."
+
+#~ msgid "Proceed to login"
+#~ msgstr "Войдите в систему"
+
+#~ msgid "Skip wizard"
+#~ msgstr "Пропустить мастер настройки"
+
+#~ msgid "Step"
+#~ msgstr "Шаг"
+
+#~ msgid "Unable to retrieve notifications, please try refreshing the page."
+#~ msgstr "Не удалось получить уведомления, попробуйте обновить страницу."
+
+#~ msgid "Data collection"
+#~ msgstr "Сбор данных"
+
+#~ msgid ""
+#~ "Failed to update emulated services. Note"
+#~ " that you might need to wait "
+#~ "till ucollect is properly installed."
+#~ msgstr ""
+#~ "Не удалось обновить эмулируемые сервисы. "
+#~ "Обратите внимание, что вам, возможно, "
+#~ "придется подождать, пока ucollect будет "
+#~ "установлен."
+
+#~ msgid ""
+#~ "An error ocurred when checking the "
+#~ "registration: <br><pre>%(error)s</pre>"
+#~ msgstr "Произошла ошибка при проверке регистрации: <br><pre>%(error)s</pre>"
+
+#~ msgid ""
+#~ "Registration for the entered email is"
+#~ " valid. Now you can enable the "
+#~ "data collection."
+#~ msgstr ""
+#~ "Регистрация электронной почты подтверждена. "
+#~ "Теперь вы можете включить сбор данных."
+
+#~ msgid ""
+#~ "This router is currently assigned to "
+#~ "a different email address. Please "
+#~ "continue to the <a href=\"%(url)s\">Turris "
+#~ "website</a> and use the registration "
+#~ "code <strong>%(reg_num)s</strong> for a re-"
+#~ "assignment to your email address."
+#~ msgstr ""
+#~ "В настоящее время этот маршрутизатор "
+#~ "привязан к другому адресу электронной "
+#~ "почты. Перейдите на <a href=\"%(url)s\">сайт"
+#~ " Turris</a> и используйте регистрационный "
+#~ "код <strong>%(reg_num)s</strong> для перерегистрации"
+#~ " на ваш адрес электронной почты."
+
+#~ msgid ""
+#~ "This email address is not registered "
+#~ "yet. Please continue to the <a "
+#~ "href=\"%(url)s\">Turris website</a> and use "
+#~ "the registration code <strong>%(reg_num)s</strong>"
+#~ " to create a new account."
+#~ msgstr ""
+#~ "Этот адрес еще не зарегистрирован. "
+#~ "Перейдите на <a href=\"%(url)s\">сайт "
+#~ "Turris</a> и используйте регистрационный код"
+#~ " <strong>%(reg_num)s</strong>, чтобы создать "
+#~ "новую учетную запись."
+
+#~ msgid "Router failed to authorize. Please try to validate our email later."
+#~ msgstr ""
+#~ "Ошибка авторизации маршрутизатора. Попробуйте "
+#~ "подтвердить электронную почту позже."
+
+#~ msgid "Online"
+#~ msgstr "В сети"
+
+#~ msgid "Offline"
+#~ msgstr "Не в сети"
+
+#~ msgid "Unknown status"
+#~ msgstr "Неизвестный статус"
+
+#~ msgid ""
+#~ "Guest network is used for <a "
+#~ "href='%(url)s'>guest Wi-Fi</a>. It is "
+#~ "separated  from your ordinary LAN "
+#~ "network. Devices connected to this "
+#~ "network are allowed to access the "
+#~ "internet, but are not allowed to "
+#~ "access other devices and the "
+#~ "configuration interface of the router."
+#~ msgstr ""
+#~ "Гостевая сеть используется для <a "
+#~ "href='%(url)s'>гостевого доступа к Wi-Fi</a>."
+#~ " Она отделена от вашей локальной "
+#~ "сети. Устройствам, подключенным к этой "
+#~ "сети, разрешен доступ в Интернет, но "
+#~ "не разрешен доступ к другим устройствам"
+#~ " локальной сети и интерфейсу конфигурации"
+#~ " маршрутизатора."
+
+#~ msgid "uCollect"
+#~ msgstr "uCollect"
+
+#~ msgid "Emulated services"
+#~ msgstr "Эмулируемые службы"
+
+#~ msgid ""
+#~ "One of uCollect's features is emulation"
+#~ " of some commonly abused services. If"
+#~ " this function is enabled, uCollect "
+#~ "is listening for incoming connection "
+#~ "attempts to these services. Enabling of"
+#~ " the emulated services has no effect"
+#~ " if another service is already "
+#~ "listening on its default port (port "
+#~ "numbers are listed below)."
+#~ msgstr ""
+#~ "Одной из особенностей uCollect является "
+#~ "эмуляция некоторых служб, которые часто "
+#~ "пытаются атаковать злоумышленники. Если эта"
+#~ " функция включена, uCollect прослушивает "
+#~ "попытки подключения к этим службам. "
+#~ "Эмуляция служб не действует, если другая"
+#~ " служба уже использует свой стандартный "
+#~ "порт (номера портов перечислены ниже)."
+
+#~ msgid "Telnet (23/TCP)"
+#~ msgstr "Telnet (23/TCP)"
+
+#~ msgid "Telnet - alternative port (2323/TCP)"
+#~ msgstr "Telnet - альтернативный порт (2323/TCP)"
+
+#~ msgid "HTTP (80/TCP)"
+#~ msgstr "HTTP (80/TCP)"
+
+#~ msgid "Squid HTTP proxy (3128/TCP)"
+#~ msgstr "HTTP-прокси Squid (3128/TCP)"
+
+#~ msgid "Polipo HTTP proxy (8123/TCP)"
+#~ msgstr "HTTP-прокси Polipo (8123/TCP)"
+
+#~ msgid "HTTP proxy (8080/TCP)"
+#~ msgstr "HTTP-прокси (8080/TCP)"
+
+#~ msgid "Collect credentials"
+#~ msgstr "Сбор учетных данных"
+
+#~ msgid ""
+#~ "If this option is enabled, user "
+#~ "names and passwords are collected and"
+#~ " sent to server in addition to "
+#~ "the IP address of the client."
+#~ msgstr ""
+#~ "Если этот параметр включен, имена "
+#~ "пользователей и пароли собираются и "
+#~ "отправляются на сервер в дополнение к"
+#~ " IP-адресу клиента."
+
+#~ msgid "Enable data collection"
+#~ msgstr "Включить сбор данных"
+
+#~ msgid "Email"
+#~ msgstr "Электронная почта"
+
+#~ msgid "Failed to query the server."
+#~ msgstr "Ошибка запроса сервера."
+
+#~ msgid "Failed to verify the router's registration."
+#~ msgstr "Не удалось проверить регистрацию маршрутизатора."
+
+#~ msgid "Use the same password for advanced configuration"
+#~ msgstr "Использовать тот же пароль для расширенного администрирования"
+
+#~ msgid ""
+#~ "In order to access the advanced "
+#~ "configuration possibilities which are not "
+#~ "present here, you must set the "
+#~ "root user's password. The advanced "
+#~ "configuration options can be managed "
+#~ "either through the <a "
+#~ "href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+#~ "or over SSH."
+#~ msgstr ""
+#~ "Чтобы получить доступ к расширенным "
+#~ "возможностям конфигурации, которых здесь нет,"
+#~ " вы должны установить пароль пользователя"
+#~ " root. Расширенные параметры конфигурации "
+#~ "могут управляться либо через веб-интерфейс "
+#~ "<a href=\"//%(host)s/%(path)s\">LuCI</a>, либо через"
+#~ " SSH."
+
+#~ msgid ""
+#~ "We could not synchronize the time "
+#~ "with a timeserver, probably due to "
+#~ "a loss of connection. It is "
+#~ "necessary for the router to have "
+#~ "correct time in order to function "
+#~ "properly. Please, synchronize it with "
+#~ "your computer's time, or set it "
+#~ "manually."
+#~ msgstr ""
+#~ "Мы не смогли синхронизироваться с "
+#~ "сервером времени, вероятно, из-за потери "
+#~ "соединения. Для правильного функционирования "
+#~ "маршрутизатора необходимо выставить правильное "
+#~ "время. Синхронизируйте его со временем "
+#~ "вашего компьютера или установите вручную."
+
+#~ msgid ""
+#~ "It is important that your router "
+#~ "has the current time properly set. "
+#~ "If our router had an older time"
+#~ " set some expired SSL certificates "
+#~ "might have seemed like valid."
+#~ msgstr ""
+#~ "Важно, чтобы текущее время было "
+#~ "установлено правильно. Если на маршрутизаторе"
+#~ " выставлено старое время, некоторые "
+#~ "истекшие сертификаты SSL могут показаться "
+#~ "действительными."
+
+#~ msgid "Configuration wizard - step %s"
+#~ msgstr "Мастер настройки — шаг %s"
+
+#~ msgid "Connectivity test"
+#~ msgstr "Тест подключения"
+
+#~ msgid "Automatic updates"
+#~ msgstr "Автоматические обновления"
+
