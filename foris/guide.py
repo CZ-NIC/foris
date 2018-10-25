@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from foris.utils.translators import _
+from foris.utils.translators import gettext_dummy as _
 
 
 WORKFLOW_OLD = "old"
