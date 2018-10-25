@@ -50,9 +50,6 @@ def login(next, session):
         update_csrf_token(save_session=False)
         session.save()
 
-        # update contract status
-        current_state.backend.perform("about", "update_contract_status")
-
         if next and is_safe_redirect(next, bottle.request.get_header('host')):
             bottle.redirect(next)
         else:
