@@ -1,9 +1,19 @@
+98.15 (2018-10-25)
+------------------
+
+* huge translations update
+* guide: show worflow title
+* contract related ifs and conditionals removed
+* text updates
+
 98.14.1 (2018-10-24)
 --------------------
+
 * import fix
 
 98.14 (2018-10-23)
 ------------------
+
 * dns: ability to set custom forwarders added
 * removing data_collect (will be a part of a separete plugin)
 
