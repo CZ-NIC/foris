@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-26 10:20+0200\n"
 "PO-Revision-Date: 2018-10-26 19:49+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Last-Translator: Josef Schlehofer <pepe@bloodkings.eu>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -29,15 +29,14 @@ msgstr ""
 "X-Generator: Weblate 3.3-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
-#, fuzzy
 msgid ""
 "Welcome to Foris web interface. This guide will help you to setup your "
 "device. Firstly it is required to set your password. Note the security of"
 " your home network is in your hands, so try not to use weak passwords."
 msgstr ""
-"Vítejte ve webovém rozhraní Foris. Tento průvodce vám pomůže s nastavením"
-" vašeho zařízení. Nejdříve ne nutné si zvolit heslo. Pozn. bezpečnost "
-"vaší domácí sítě je ve vašich rukách, tak se snažte vyvarovat slabých "
+"Vítejte ve webovém rozhraní Foris. Tento průvodce vám pomůže s nastavením "
+"Vašeho zařízení. Nejdříve je nutné si zvolit heslo. Pozn. bezpečnost vaší "
+"domácí sítě je ve Vašich rukách, tak se snažte vyvarovat používáním slabých "
 "hesel."
 
 msgid "Your password seems to be set. You may proceed to the next step."
@@ -118,7 +117,6 @@ msgstr ""
 "Aktualizoval(a) jste nastavení DNS. Zkuste pustit test připojení, abyste "
 "si ověřil(a), že překlad DNS funguje správně."
 
-#, fuzzy
 msgid "Now you need to configure automatic updates on your device."
 msgstr "Nyní je potřeba nastavit automatické aktualizace vašeho zařízení."
 
@@ -299,16 +297,14 @@ msgstr "Počet upozornění"
 msgid "Old password you entered was not valid."
 msgstr "Zadali jste neplatné původní heslo."
 
-#, fuzzy
 msgid "System password was successfully saved."
 msgstr "Heslo bylo úspěšně uloženo."
 
 msgid "Failed to save system password"
 msgstr "Systémové heslo se nepodařilo uložit"
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Heslo bylo úspěšně uloženo."
+msgstr "Heslo do administrační rozhraní Foris bylo úspěšně uloženo."
 
 msgid "Failed to save Foris password"
 msgstr "Heslo do Foris se nepodařilo uložit"
@@ -443,7 +439,7 @@ msgstr ""
 "doménu „my.lan“ bude výsledek „android-123.my.lan“."
 
 msgid "Guest network"
-msgstr "Sít pro hosty"
+msgstr "Síť pro hosty"
 
 #, python-format
 msgid ""
@@ -454,7 +450,7 @@ msgid ""
 msgstr ""
 
 msgid "Enable guest network"
-msgstr "Zapnout sít pro hosty"
+msgstr "Zapnout síť pro hosty"
 
 msgid "Router IP in guest network"
 msgstr "IP adresa směrovače v rámci sítě pro hosty"
@@ -611,9 +607,8 @@ msgstr "Identifikátor klienta, který bude poslán DHCP serveru."
 msgid "Password"
 msgstr "Heslo"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Stávající heslo"
+msgstr "Současné heslo do administračního rozhraní Foris"
 
 msgid "New password"
 msgstr "Nové heslo"
