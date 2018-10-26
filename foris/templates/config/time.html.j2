@@ -24,7 +24,19 @@
         {% set time_field = time_field|default(form.sections[0].sections[1].active_fields[1]) %}
         {% if form.sections[0].sections[1].active_fields[0].field.get_value() == "ntp" %}
           <div class="row">
-            <label for="field-time"><a href="#" class="button label-button" id="start-ntpdate-button">{% trans %}Update time{% endtrans %}</a></label>
+          <label class="expand-on-mobiles">{% trans %}NTP servers:{% endtrans %}</label>
+          {% for line in ntp_servers %}
+              {% if loop.first %}
+              {{ line }}
+              {% else %}
+          </div>
+          <div class="row">
+              <label class="hide-on-mobiles">&nbsp;</label>{{ line }}
+              {% endif %}
+          {% endfor %}
+          </div>
+          <div class="row">
+            <label for="field-time" class="expand-on-mobiles"><a href="#" class="button label-button" id="start-ntpdate-button">{% trans %}Update time{% endtrans %}</a></label>
             <input id="field-time" name="time" class="grayed" value="{{ time_field.field.get_value() }}" disabled="1"></input>
             <img src="{{ static("img/icon-loading.gif") }}" class="field-loading" id="ntp-loading">
           </div>

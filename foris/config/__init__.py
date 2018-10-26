@@ -381,6 +381,10 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     template = "config/time"
     template_type = "jinja2"
 
+    def render(self, **kwargs):
+        kwargs["ntp_servers"] = self.backend_data["time_settings"]["ntp_servers"]
+        return super().render(**kwargs)
+
     def call_ajax_action(self, action):
         if action == "ntpdate-trigger":
             return current_state.backend.perform("time", "ntpdate_trigger")

@@ -142,3 +142,15 @@ span.password-toggle
   font-size: 130%
   +respond-to('not-mobile', $no-query: true)
     font-size: 110%
+
+.config-form .row label.hide-on-mobiles
+  display: none
+  +respond-to('not-mobile', $no-query: true)
+    display: inline-block
+
+.config-form .row label.expand-on-mobiles
+  width: 100%
+  max-width: 100%
+  +respond-to('not-mobile', $no-query: true)
+    width: inherit
+    max-width: inherit

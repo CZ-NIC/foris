@@ -16,6 +16,7 @@
 
 import base64
 import bottle
+import copy
 
 from datetime import datetime
 
@@ -155,8 +156,12 @@ class UnifiedTimeHandler(BaseConfigHandler):
     """
     userfriendly_title = gettext("Region and time")
 
+    def __init__(self, *args, **kwargs):
+        self.backend_data = current_state.backend.perform("time", "get_settings")
+        super().__init__(*args, **kwargs)
+
     def get_form(self):
-        data = current_state.backend.perform("time", "get_settings")
+        data = copy.deepcopy(self.backend_data)
         data["zonename"] = "%s/%s" % (data["region"], data["city"])
         data["how_to_set_time"] = data["time_settings"]["how_to_set_time"]
         formatted_date = datetime.strptime(
