@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-25 16:25+0200\n"
+"POT-Creation-Date: 2018-10-26 10:20+0200\n"
 "PO-Revision-Date: 2018-07-04 21:41+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language: ru\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 msgid ""
 "Welcome to Foris web interface. This guide will help you to setup your "
-"router. Firstly it is required to set your password. Note the security of"
+"device. Firstly it is required to set your password. Note the security of"
 " your home network is in your hands, so try not to use weak passwords."
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
-"router. Let's configure it now."
+"device. Let's configure it now."
 msgstr ""
 
 msgid ""
@@ -87,7 +87,7 @@ msgid ""
 "whether your DNS resolver is properly set."
 msgstr ""
 
-msgid "Now you need to configure automatic updates ouf your device."
+msgid "Now you need to configure automatic updates on your device."
 msgstr ""
 
 msgid "Please wait till the updater finishes its run."
@@ -168,7 +168,7 @@ msgstr ""
 msgid "The workflow wasn't set yet."
 msgstr ""
 
-msgid "Workflow for older routers and older turris OS versions (before 4.0)."
+msgid "Workflow for older devices and older turris OS versions (before 4.0)."
 msgstr ""
 
 msgid ""
@@ -2831,4 +2831,26 @@ msgstr "Откатить"
 
 #~ msgid "Automatic updates"
 #~ msgstr "Автоматические обновления"
+
+#~ msgid ""
+#~ "Welcome to Foris web interface. This "
+#~ "guide will help you to setup your"
+#~ " router. Firstly it is required to"
+#~ " set your password. Note the security"
+#~ " of your home network is in "
+#~ "your hands, so try not to use "
+#~ "weak passwords."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A proper DNS resolving is one of"
+#~ " the key security features of your"
+#~ " router. Let's configure it now."
+#~ msgstr ""
+
+#~ msgid "Now you need to configure automatic updates ouf your device."
+#~ msgstr ""
+
+#~ msgid "Workflow for older routers and older turris OS versions (before 4.0)."
+#~ msgstr ""
 

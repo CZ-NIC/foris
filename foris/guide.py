@@ -36,7 +36,7 @@ WORKFLOWS = [
 class MessagesDefault():
     PASSWORD_PASSED = [
         _(
-            "Welcome to Foris web interface. This guide will help you to setup your router. "
+            "Welcome to Foris web interface. This guide will help you to setup your device. "
             "Firstly it is required to set your password. Note the security of your home "
             "network is in your hands, so try not to use weak passwords."
         ),
@@ -122,7 +122,7 @@ class MessagesDefault():
 
     DNS_PASSED = [
         _(
-            "A proper DNS resolving is one of the key security features of your router. "
+            "A proper DNS resolving is one of the key security features of your device. "
             "Let's configure it now."
         ),
         _(
@@ -136,7 +136,7 @@ class MessagesDefault():
 
     UPDATER_PASSED = [
         _(
-            "Now you need to configure automatic updates ouf your device."
+            "Now you need to configure automatic updates on your device."
         ),
         _(
             "Please wait till the updater finishes its run."
@@ -297,7 +297,7 @@ class Workflow(object):
     }
     DESCRIPTIONS = {
         WORKFLOW_UNSET: _("The workflow wasn't set yet."),
-        WORKFLOW_OLD: _("Workflow for older routers and older turris OS versions (before 4.0)."),
+        WORKFLOW_OLD: _("Workflow for older devices and older turris OS versions (before 4.0)."),
         WORKFLOW_MIN: _(
             "Just set your password and you are ready to go. "
             "This workflow is aimed to more advanced users who intend not to use the web gui. "
