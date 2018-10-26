@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-26 10:20+0200\n"
-"PO-Revision-Date: 2018-10-26 08:18+0000\n"
-"Last-Translator: Stepan Henek <stepan+github@henek.name>\n"
+"PO-Revision-Date: 2018-10-26 19:49+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
-"Language-Team: Czech "
-"<https://hosted.weblate.org/projects/turris/foris/cs/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 3.3-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -133,6 +133,9 @@ msgid ""
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all iterfaces to LAN."
 msgstr ""
+"Zvolíte chování jako místní server což znamená, že nedává smysl umisťovat "
+"jakékoli rozhraní do WAN nebo sítě pro hosty. Takže je dobrý nápad přiřadit "
+"veškerá rozhraní do LAN."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -140,12 +143,19 @@ msgid ""
 "probably want to act as a client here thus select "
 "<strong>Unmanaged</strong> mode here. "
 msgstr ""
+"Pro fungování jako místní server, není potřeba spravovat LAN (pokud ji i tak "
+"chcete spravovat, resetujte průvodce a zvolte postup Směrovač). Nejspíš "
+"chcete aby fungovalo jako klient proto vyberte režim "
+"<strong>Nespravované</strong>. "
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration iterface when the new settings are applied."
 msgstr ""
+"Pokud zvolíte <strong>statické</strong> nastavení ověřte, že jste IP adresy "
+"zadali správně jinak po uplatnění tohoto nastavení nebude rozhraní pro "
+"nastavování přístupné."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -170,6 +180,8 @@ msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Nastavení zařízení je dokončeno. Nyní by vaše zařízení mělo být schopné "
+"fungovat jako server na místní síti."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
@@ -180,6 +192,9 @@ msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"Nastavení zařízení je dokončeno. Nyní by vaše zařízení mělo být schopné "
+"fungovat jako směrovač a směrovat síťový provoz mezi LAN, WAN a sítí pro "
+"hosty."
 
 msgid "Old"
 msgstr ""
@@ -187,15 +202,14 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#, fuzzy
 msgid "Router"
-msgstr "Země"
+msgstr "Směrovač"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Místní server"
 
 msgid "Unset"
-msgstr ""
+msgstr "Zrušit nastavení"
 
 msgid "The workflow wasn't set yet."
 msgstr ""
@@ -207,6 +221,8 @@ msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web gui. "
 msgstr ""
+"Stačí jen nastavit si heslo a jste připravení. Tento postup je cílen na "
+"pokročilejší uživatele kteří nezamýšlejí použít webové rozhraní. "
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
@@ -288,14 +304,14 @@ msgid "System password was successfully saved."
 msgstr "Heslo bylo úspěšně uloženo."
 
 msgid "Failed to save system password"
-msgstr ""
+msgstr "Systémové heslo se nepodařilo uložit"
 
 #, fuzzy
 msgid "Foris password was successfully saved."
 msgstr "Heslo bylo úspěšně uloženo."
 
 msgid "Failed to save Foris password"
-msgstr ""
+msgstr "Heslo do Foris se nepodařilo uložit"
 
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
@@ -304,13 +320,11 @@ msgstr "Heslo bylo úspěšně uloženo."
 msgid "Failed to set guide workflow."
 msgstr ""
 
-#, fuzzy
 msgid "Network configuration was sucessfully updated."
-msgstr "Nastavení bylo úspěšně uloženo."
+msgstr "Nastavení sítě bylo úspěšně aktualizováno."
 
-#, fuzzy
 msgid "Unable to update your network configuration."
-msgstr "Nepodařilo se ověřit stav připojení."
+msgstr "Nepodařilo se aktualizovat nastavení sítě."
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -401,7 +415,7 @@ msgid "Use forwarding"
 msgstr "Používat přeposílání"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Použít DNS server poskytovatele připojení"
 
 #, fuzzy
 msgid "DNS Forwarder"
@@ -476,7 +490,7 @@ msgid "DHCP max leases"
 msgstr "Počet přidělovaných adres"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Zápůjční čas (hodiny)"
 
 msgid "Guest Lan QoS"
 msgstr "Rychlostní limit sítě pro hosty"
@@ -529,12 +543,11 @@ msgstr ""
 msgid "LAN mode"
 msgstr ""
 
-#, fuzzy
 msgid "Managed"
-msgstr "Jazyk"
+msgstr "Spravováno"
 
 msgid "Unmanaged"
-msgstr ""
+msgstr "Nespravováno"
 
 msgid ""
 "Manage mode means that this devices manages the LAN (acts as a router, "
@@ -562,14 +575,13 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statická IP adresa (ruční nastavení)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Nepřipojovat toto zařízení do LAN"
 
 msgid "IPv4 protocol"
 msgstr "Protokol IPv4"
 
-#, fuzzy
 msgid "IPv4 address"
-msgstr "IPv6 adresa"
+msgstr "IPv4 adresa"
 
 msgid "Network mask"
 msgstr "Maska sítě"
@@ -613,7 +625,7 @@ msgid "Password (repeat)"
 msgstr "Heslo (pro kontrolu)"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "pro webové rozhraní Foris"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -625,9 +637,8 @@ msgstr ""
 msgid "Passwords are not equal."
 msgstr "Zadaná hesla se neshodují."
 
-#, fuzzy
 msgid "for Advanced administration"
-msgstr "Pokročilá správa"
+msgstr "pro pokročilou správu"
 
 #, python-format
 msgid ""
@@ -638,15 +649,14 @@ msgid ""
 msgstr ""
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Nenastavovat toto heslo"
 
 #, fuzzy
 msgid "Use Foris password"
 msgstr "Heslo pro připojení"
 
-#, fuzzy
 msgid "Use other password"
-msgstr "Heslo pro připojení"
+msgstr "Použít jiné heslo"
 
 msgid "Advanced administration"
 msgstr "Pokročilá správa"
@@ -718,7 +728,7 @@ msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Čas ve formátu YYYY-MM-DD HH:MM:SS."
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Průvodce dokončen"
 
 msgid ""
 "Congratulations you've successfully reached the end of this guide. Once "
@@ -726,9 +736,8 @@ msgid ""
 "interface of this device."
 msgstr ""
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Maska sítě"
+msgstr "Síťová rozhraní"
 
 msgid "Notifications settings"
 msgstr "Nastavení upozorňování"
@@ -845,7 +854,7 @@ msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Denní doba automatického restartu ve formátu HH:MM."
 
 msgid "Guide workflow"
-msgstr ""
+msgstr "Průvodce"
 
 msgid "Updater"
 msgstr "Aktualizace"
@@ -1285,29 +1294,25 @@ msgid "Test connection"
 msgstr "Vyzkoušet připojení"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "DHCP klienti"
 
 msgid "Expires"
-msgstr ""
+msgstr "Platnost končí"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "IP adresa"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "IP adresa"
+msgstr "MAC adresa"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "DHCP název stroje"
+msgstr "Název stroje"
 
-#, fuzzy
 msgid "Active"
-msgstr "Uložit"
+msgstr "Aktivní"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Nenalezeni žádní DHCP klienti."
 
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
@@ -1330,7 +1335,7 @@ msgid "QR code"
 msgstr "QR kód"
 
 msgid "Show QR code"
-msgstr ""
+msgstr "Zobrazit QR kód"
 
 msgid "Device"
 msgstr "Zařízení"
@@ -1351,16 +1356,16 @@ msgid "Menu"
 msgstr "Nabídka"
 
 msgid "foris guide"
-msgstr ""
+msgstr "příručka k foris"
 
 msgid "Reset Guided Mode"
-msgstr ""
+msgstr "Resetovat režim průvodce"
 
 msgid "Leave Guided Mode"
-msgstr ""
+msgstr "Opustit režim průvodce"
 
 msgid "Next step"
-msgstr ""
+msgstr "Další krok"
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr "Aby mohl váš router správně fungovat, tak je potřeba provést jeho restart."
@@ -1429,7 +1434,7 @@ msgid "DNSSEC"
 msgstr "DNSSEC"
 
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovat"
 
 msgid "Notifications and automatic restarts"
 msgstr "Upozornění a automatické restarty"
@@ -1521,6 +1526,9 @@ msgid ""
 "device. You can switch the physical network interfaces among networks. If"
 " you are unsure what to set here use the default settings."
 msgstr ""
+"Tady je možné nastavovat síťová rozhraní zařízení. Fyzická rozhraní je možné "
+"přendavat mezi sítěmi. V případě, že si nejste jistí, co zde nastavit, "
+"ponechte výchozí."
 
 msgid ""
 "<strong>WAN</strong> acts as an external network connection. Firewall "
@@ -1546,14 +1554,13 @@ msgstr ""
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
-msgstr ""
+msgstr "Stávající rychlost linky: %(speed)s Mbit"
 
-#, fuzzy
 msgid "Guest Network"
 msgstr "Sít pro hosty"
 
 msgid "Unassigned"
-msgstr ""
+msgstr "Nepřiřazeno"
 
 #, fuzzy
 msgid "WAN network"
@@ -1564,7 +1571,7 @@ msgid "LAN network"
 msgstr "Sít pro hosty"
 
 msgid "Unassign"
-msgstr ""
+msgstr "Zrušit přiřazení"
 
 msgid ""
 "In the setup you provided it is <strong>not possible to access the "
@@ -1591,7 +1598,7 @@ msgid ""
 msgstr ""
 
 msgid "recommended"
-msgstr ""
+msgstr "doporučeno"
 
 msgid "Use this workflow"
 msgstr ""
@@ -1651,9 +1658,8 @@ msgid ""
 "    "
 msgstr "Schválit aktualizaci z %(when)s"
 
-#, fuzzy
 msgid "List of changes"
-msgstr "Zahodit změny"
+msgstr "Seznam změn"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Pozor! Po aktualizaci bude následovat restart zařízení."
@@ -1872,21 +1878,20 @@ msgstr ""
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
-msgstr ""
+msgstr "Vaše zařízení bude restartováno za %(time_left)s sekund."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
-msgstr "Vaše síť se restartuje. Chvíli strpení prosím…"
+msgstr "Vaše síť bude restartována za %(time_left)s sekund."
 
 msgid "A reboot of your device was triggered."
-msgstr ""
+msgstr "Byl spuštěn restart zařízení."
 
-#, fuzzy
 msgid "A network restart was triggered."
-msgstr "Síť se restartuje…"
+msgstr "Byl spuštěn restart sítě."
 
 msgid "Trying to reconnect to your device."
-msgstr ""
+msgstr "Pokus o opětovné připojení k vašemu zařízení."
 
 msgid "This value seems to be invalid."
 msgstr "Tato hodnota se nezdá být platná."
@@ -1935,9 +1940,9 @@ msgstr "Tato hodnota je příliš krátká. Měla by mít nejméně %s znaků."
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Tato hodnota je příliš dlouhá. Měla by mít nejvýše %s znaků."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This field should have between %s and %s characters."
-msgstr "Tato hodnota by měla být z rozsahu %s až %s."
+msgstr "Délka hodnoty v této kolonce by měla být mezi %s až %s znaky."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -2863,4 +2868,3 @@ msgstr "Návrat ke starší verzi"
 
 #~ msgid "Workflow for older routers and older turris OS versions (before 4.0)."
 #~ msgstr ""
-
