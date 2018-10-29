@@ -1,3 +1,9 @@
+98.16 (2018-10-29)
+------------------
+
+* Norwegian Bokmål lanugage added
+* time: display a list of ntp servers
+
 98.15 (2018-10-25)
 ------------------
 
