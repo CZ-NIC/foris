@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-25 16:25+0200\n"
-"PO-Revision-Date: 2018-10-26 08:24+0000\n"
+"PO-Revision-Date: 2018-10-27 18:37+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb/>\n"
@@ -75,132 +75,195 @@ msgid ""
 "configuration interface unless you restart the network on your current "
 "device."
 msgstr ""
+"Nå bør du sette opp ditt LAN-grensesnitt. Merk at når du endrer dine "
+"nettverksinnstillinger, vil du antagelig ikke kunne koble til "
+"oppsettsgrensesnittet med mindre du starter nettverket på ny på din "
+"nåværende enhet."
 
+#, fuzzy
 msgid ""
 "You've configured your LAN interface. Try to test whether settings work "
 "properly and if so you can safely proceed to the next step."
 msgstr ""
+"Du har satt opp LAN-grensesnittet. Test hvorvidt innstillingene virker rett, "
+"og hvis så er tilfelle, kan du fortsette til neste steg."
 
 msgid "Now you need to set the time and timezone of your device."
-msgstr ""
+msgstr "Nå må du sette tid og tidssone for din enhet."
 
+#, fuzzy
 msgid ""
 "Your time and timezone seem to be set. Please make sure that the time "
 "matches the time on your computer if not try to update it via ntp or "
 "manually."
 msgstr ""
+"Din tid og tidssone ser ut til å ha blitt satt. Forsikre deg om at tiden "
+"samsvarer med tiden på din datamaskin, og hvis ikke, prøv å oppdatere den "
+"via NTP, eller manuelt."
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
 "device. Let's configure it now."
 msgstr ""
+"En ordentlig DNS-utleder er en av nøkkelfunksjonene i enheten din. La oss "
+"sette den opp nå."
 
 msgid ""
 "You've updated your DNS configuration. Try to run connection test to see "
 "whether your DNS resolver is properly set."
 msgstr ""
+"Du har oppdatert ditt DNS-oppsett. Prøv å kjøre en tilkoblingstest for å se "
+"hvorvidt din DNS-utleder er satt opp rett."
 
 msgid "Now you need to configure automatic updates on your device."
-msgstr ""
+msgstr "Du må nå sette opp automatiske oppdateringer på enheten din."
 
+#, fuzzy
 msgid "Please wait till the updater finishes its run."
-msgstr ""
+msgstr "Vent til oppdatereren er ferdig."
 
+#, fuzzy
 msgid "You have sucessfully configured your device."
-msgstr ""
+msgstr "Du har satt opp din enhet."
 
+#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all iterfaces to LAN."
 msgstr ""
+"Du har valgt opptreden som lokal tjener. Dette betyr at det ikke gir mening "
+"å putte noen grensensitt i WAN og gjestenettverk. Så det er en god idé å "
+"tildele alle grensesnitt til LAN."
 
+#, fuzzy
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
 "<strong>Unmanaged</strong> mode here. "
 msgstr ""
+"For å opptre som lokal tjener, er det ingen behov for å håndtere LAN (hvis "
+"du fremdeles ønsker å håndtere det, tilbakestill veiledningen og velg Ruter-"
+"oppsettsvei). Du ønsker antagelig klientoppførsel, så velg "
+"<strong>Uhåndtert</strong> modus her. "
 
+#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration iterface when the new settings are applied."
 msgstr ""
+"Hvis du velger <strong>Statisk</strong> oppsett her, forsikre deg om at IP-"
+"adressene er skrevet inn rett, ellers vil du ikke kunne nå dette "
+"oppsettsgrensesnittet når nye innstillinger legges til."
 
+#, fuzzy
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
 "obtain a new IP address of this device. You can obtain it from the DHCP "
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Hvis du velger <strong>DHCP</strong>-modus, må antagelig hente en ny IP-"
+"adresse for denne enheten. Du han hente den fra DHCP-tjeneren som håndterer "
+"ditt lokalnettverk. Deretter må du koble til den nye IP-adressen for å "
+"fortsette veiledningen."
 
+#, fuzzy
 msgid ""
 "Note that either way you might need to re-plug your ethernet cabels after"
 " you update the settings here."
 msgstr ""
+"Merk at uansett kan det hende du må plugge ut og inn ethernett-kabelen etter "
+"du oppdaterer innstillingene her."
 
+#, fuzzy
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
 " means that you can access the configuration interface of your device and"
 " your device is able to access the internet (you can use the connection "
 "test below)."
 msgstr ""
+"Test hvorvidt innstillingene du har skrevet inn virker. Dette betyr at du "
+"kan nå oppsettsgrensesnittet for din enhet og at den kan nå Internett (du "
+"kan bruke tilkoblingstesten nedenfor)."
 
 msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Enhetsoppsettet er fullført. Din enhet bør nå kunne opptre som tjener på "
+"ditt lokalnettverk."
 
+#, fuzzy
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
 "some further configuration updates to fit the device to your needs."
 msgstr ""
+"Minimal enhetsoppsett er fullført. Merk at du kanskje må utføre ytterligere "
+"oppsettsoppdateringer for å skreddersy dine behov."
 
+#, fuzzy
 msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"Enhetsoppsettet er fullført. Din enhet kan nå opptre som ruter og sende "
+"trafikk gjennom blandt annet lokalnettverk, WAN og gjestenettverk."
 
 msgid "Old"
-msgstr ""
+msgstr "Gammel"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimal"
 
 #, fuzzy
 msgid "Router"
 msgstr "Land"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Lokal tjener"
 
 msgid "Unset"
-msgstr ""
+msgstr "Ikke satt"
 
+#, fuzzy
 msgid "The workflow wasn't set yet."
-msgstr ""
+msgstr "Oppsettsvei har ikke blitt valgt enda."
 
+#, fuzzy
 msgid "Workflow for older devices and older turris OS versions (before 4.0)."
-msgstr ""
+msgstr "Oppsettsvei for eldre enheter og eldre Turris OS-versjoner (før 4.0)."
 
+#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web gui. "
 msgstr ""
+"Sett passord og du er klar. Denne oppsettsveien er tiltenkt mer avanserte "
+"brukere som ikke har til hensikt å bruke det grafiske vev-grensesnittet. "
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Etter at du har fullført denne oppsettsveien, vil din enhet kunne opptre som "
+"fullt funksjonell ruter. Det antas at du ønsker et mer eller mindre gjengs "
+"nettverksoppsett."
 
+#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
 "other devices within your local network (e.g. act as a network attached "
 "storage)."
 msgstr ""
+"Denne oppsettsveien hjelper deg å sette opp din enhet for å opptre som lokal "
+"tjener. Dette betyr at enheten vil tilby noen slags tjeneste til andre "
+"enheter i ditt lokalnettverk (f.eks. å opptre som nettverkstilknyttet "
+"lagring)."
 
 msgid "This field is required."
 msgstr "Dette feltet er påkrevd."
@@ -273,21 +336,22 @@ msgid "System password was successfully saved."
 msgstr "Passord lagret."
 
 msgid "Failed to save system password"
-msgstr ""
+msgstr "Klarte ikke å lagre systempassord"
 
 #, fuzzy
 msgid "Foris password was successfully saved."
 msgstr "Passord lagret."
 
 msgid "Failed to save Foris password"
-msgstr ""
+msgstr "Klarte ikke å lagre Foris-passord"
 
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
 msgstr "Passord lagret."
 
+#, fuzzy
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Klarte ikke å sette veiledningsoppsettsvei."
 
 #, fuzzy
 msgid "Network configuration was sucessfully updated."
@@ -301,6 +365,8 @@ msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
 msgstr ""
+"Ditt WAN-oppsett er antagelig ikke rett, eller så har ikke ditt WAN-"
+"grensesnitt blitt satt i gang ordentlig enda."
 
 #, fuzzy
 msgid "WAN port has no link, your internet connection probably won't work."
@@ -315,8 +381,9 @@ msgstr "Gal HTTP-metode."
 msgid "Wi-Fi reset was successful."
 msgstr "Oppsettet ble lagret."
 
+#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr ""
+msgstr "Klarte ikke å tilbakestille Wi-Fi."
 
 msgid "Maintenance"
 msgstr "Vedlikehold"
@@ -341,7 +408,7 @@ msgstr ""
 " kort tid."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Klarte ikke å gjenopprette sikkerhetskopi fra angitt fil."
 
 #, fuzzy
 msgid "Update was approved."
@@ -365,7 +432,7 @@ msgstr ""
 " kort tid."
 
 msgid "Updater is running"
-msgstr ""
+msgstr "Oppdatereren kjører"
 
 #, fuzzy
 msgid "Failed to finish the guide."
@@ -390,7 +457,7 @@ msgid "Use forwarding"
 msgstr "Bruk videresending"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Bruk tilbyderens DNS-utleder"
 
 #, fuzzy
 msgid "DNS Forwarder"
@@ -423,13 +490,17 @@ msgstr ""
 msgid "Guest network"
 msgstr "Gjestenettverk"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
 "separated  from your ordinary LAN. Devices connected to this network are "
 "allowed to access the internet, but are not allowed to access the "
 "configuration interface of the this device nor the devices in LAN."
 msgstr ""
+"Gjestenettverk brukes for <a href='%(url)s'>gjeste-Wi-Fi</a>. Det er avdelt "
+"fra ditt vanlige lokalnettverk. Enheter tilkoblet dette nettverket tillates "
+"tilgang til Internett, men ikke til oppsettsgrensesnittet for denne enheten, "
+"ei heller enhetene i dens lokalnettverk."
 
 msgid "Enable guest network"
 msgstr "Skru på gjenstenettverk"
@@ -526,34 +597,41 @@ msgstr ""
 "siden</strong> i din nettleser."
 
 msgid "LAN mode"
-msgstr ""
+msgstr "LAN-modus"
 
 #, fuzzy
 msgid "Managed"
 msgstr "Språk"
 
 msgid "Unmanaged"
-msgstr ""
+msgstr "Uhåndtert"
 
+#, fuzzy
 msgid ""
 "Manage mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Unmanaged mode means that this device acts"
 " as a client in this network. It acts in a similar way as WAN, but it has"
 " opened ports for configuration interface and other services. "
 msgstr ""
+"Håndtert modus betyr at denne enheten håndterer lokalnettverket (opptrer som "
+"ruter, kan tildele IP-adresser, …). Uhåndtert modus betyr at denne enheten "
+"opptrer som klient i dette nettverket. Den opptrer på samme måte som WAN, "
+"men den har åpnede porter for oppsettsgrensesnittet og andre tjenester. "
 
 msgid "Router IP address"
 msgstr "Ruterens IP-adresse"
 
+#, fuzzy
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Ruterens IP-adresse i det indre nettverket."
 
 #, fuzzy
 msgid "Network netmask"
 msgstr "Nettverksmaske"
 
+#, fuzzy
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Nettverksmasken for det indre nettverket."
 
 msgid "DHCP (automatic configuration)"
 msgstr "DHCP (automatisk oppsett)"
@@ -562,7 +640,7 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statisk IP-adresse (manuelt oppsett)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Ikke koble denne enheten til LAN"
 
 msgid "IPv4 protocol"
 msgstr "IPv4-protokoll"
@@ -578,7 +656,7 @@ msgid "Gateway"
 msgstr "Portner"
 
 msgid "DNS server 1 (IPv4)"
-msgstr ""
+msgstr "DNS-tjener 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
@@ -588,13 +666,13 @@ msgstr ""
 "klarer å finne ut av det."
 
 msgid "DNS server 2 (IPv4)"
-msgstr ""
+msgstr "DNS-tjener 2 (IPv4)"
 
 msgid "DHCP hostname"
-msgstr ""
+msgstr "DHCP-vertsnavn"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Vertsnavn som tilbys til DHCP-tjeneren."
 
 msgid "Password"
 msgstr "Passord"
@@ -613,7 +691,7 @@ msgid "Password (repeat)"
 msgstr "Gjenta passord"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "for Foris vev-grensesnitt"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -638,7 +716,7 @@ msgid ""
 msgstr ""
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Ikke sett dette passordet"
 
 #, fuzzy
 msgid "Use Foris password"
@@ -666,7 +744,7 @@ msgstr ""
 " da, vil root-kontoen forbli blokkert.)"
 
 msgid "Region and time"
-msgstr ""
+msgstr "Tid og sted"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -701,14 +779,17 @@ msgid ""
 "properly."
 msgstr ""
 
+#, fuzzy
 msgid "How to set time"
-msgstr ""
+msgstr "Hvordan sette tid"
 
+#, fuzzy
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Velg metode for lagring av gjeldende tid i ruteren."
 
+#, fuzzy
 msgid "via ntp"
-msgstr ""
+msgstr "via NTP"
 
 #, fuzzy
 msgid "manually"
@@ -718,16 +799,19 @@ msgid "Time"
 msgstr "Tid"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Tid i YYYY-MM-DD HH:MM:SS-format."
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Veiledning fullført"
 
+#, fuzzy
 msgid ""
 "Congratulations you've successfully reached the end of this guide. Once "
 "you leave this guide you'll be granted access to the full configuration "
 "interface of this device."
 msgstr ""
+"Gratulerer, du har fullført veiledningen. Når du forlater den vil du bli "
+"gitt tilgang til hele oppsettsgrensesnittet for denne enheten."
 
 #, fuzzy
 msgid "Network interfaces"
@@ -855,8 +939,9 @@ msgstr "Omstartstid"
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Tid på dagen for automatisk omstart, i formatet HH:MM."
 
+#, fuzzy
 msgid "Guide workflow"
-msgstr ""
+msgstr "Veiledningsoppsettsvei"
 
 msgid "Updater"
 msgstr "Oppdateringsfunksjon"
@@ -944,10 +1029,10 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatisk oppsett)"
 
 msgid "6to4 (public IPv4 address required)"
-msgstr ""
+msgstr "6til4 (offentlig IPv4-adresse kreves)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6i4 (offentlig IPv4-adresse kreves)"
 
 msgid "Disable IPv6"
 msgstr "Skru av IPv6"
@@ -984,28 +1069,32 @@ msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresseområde for lokalnettverk, f.eks. 2001:db8:be13:37da::/64"
 
 msgid "DNS server 1 (IPv6)"
-msgstr ""
+msgstr "DNS-tjener 1 (IPv6)"
 
 msgid "DNS server 2 (IPv6)"
-msgstr ""
+msgstr "DNS-tjener 2 (IPv6)"
 
 msgid "Custom DUID"
-msgstr ""
+msgstr "Egendefinert DUID"
 
 msgid "DUID which will be provided to the DHCPv6 server."
-msgstr ""
+msgstr "DUID som vil bli tilbudt til DHCPv6-tjeneren."
 
 msgid "Public IPv4"
-msgstr ""
+msgstr "Offentlig IPv4"
 
+#, fuzzy
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4"
 " address manually (e.g. when your WAN interface has a private address "
 "which is mapped to public IP)."
 msgstr ""
+"For å kunne bruke 6til4-protokollen, må du angi din offentlige IPv4-adresse "
+"manuelt (f.eks. når ditt WAN-grensesnitt har en privat adresse som er "
+"tilknyttet til offentlig IP)."
 
 msgid "use autodetection"
-msgstr ""
+msgstr "bruk automatisk oppdagelse"
 
 #, fuzzy
 msgid "Provider IPv4"
@@ -1014,45 +1103,51 @@ msgstr "SMTP-tilbyder"
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's "
 "side."
-msgstr ""
+msgstr "Denne adressen brukes som endepunkt for tunnelen på tilbyderens side."
 
 #, fuzzy
 msgid "Routed IPv6 prefix"
 msgstr "IPv6-prefiks"
 
+#, fuzzy
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "IPv6-adresser som vil rutes til ditt nettverk."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Maksimal overføringsenhet i tunnelen (i byte)."
 
 msgid "Dynamic IPv4 handling"
-msgstr ""
+msgstr "Dynamisk IPv4-håndtering"
 
+#, fuzzy
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that "
 "you need to fill in some extra fields to make it work."
 msgstr ""
+"Noen tunneltilbydere lar deg ha en offentlig dynamisk IPv4-adresse. Merk at "
+"du må fylle inn noen ekstrafelter for at det skal virke."
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "Tunnel-ID"
 
+#, fuzzy
 msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr ""
+msgstr "ID for din tunnel som har blitt tildelt deg av tilbyderen."
 
 msgid ""
 "Username which will be used to provide credentials to your tunnel "
 "provider."
 msgstr ""
+"Brukernavn brukt til å tilby identitetsdetaljer til din tunnel-tilbyder."
 
 msgid "Key"
-msgstr ""
+msgstr "Nøkkel"
 
 msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr ""
+msgstr "Nøkkel brukt til å oppgi identitetsdetaljer til din tunneltilbyder."
 
 msgid "Custom MAC address"
 msgstr "Egendefinert MAC-adresse"
@@ -1241,13 +1336,13 @@ msgid "Go to LuCI"
 msgstr "Gå til LuCI"
 
 msgid "Opened lock"
-msgstr ""
+msgstr "Åpnet lås"
 
 msgid "Your connection is not encrypted"
-msgstr ""
+msgstr "Tilkoblingen din er ikke kryptert"
 
 msgid "How to set an encrypted connection and why is it important"
-msgstr ""
+msgstr "Hvordan sette opp en kryptert tilkobling og hvorfor det er viktig"
 
 msgid "Connection test"
 msgstr "Tilkoblingstest"
@@ -1258,6 +1353,10 @@ msgid ""
 " it takes a while before the connection is fully initialized. So it might"
 " be useful to wait for a while before running this test."
 msgstr ""
+"Her kan du teste dine tilkoblingsinnstillinger. Husk å klikke "
+"<strong>Lagre</strong> før du kjører testen. Merk at noen ganger tar det en "
+"stund før tilkoblingen er satt igang rett. Så det kan være nyttig å vente en "
+"stund før du kjører denne testen."
 
 #, fuzzy
 msgid "\"Unable to verify network connection."
@@ -1285,10 +1384,10 @@ msgid "Test connection"
 msgstr "Test forbindelsen"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "DHCP-klienter"
 
 msgid "Expires"
-msgstr ""
+msgstr "Utløper"
 
 #, fuzzy
 msgid "IP Address"
@@ -1306,14 +1405,18 @@ msgstr "Brukernavn"
 msgid "Active"
 msgstr "Lagre"
 
+#, fuzzy
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Fant ingen DHCP-klienter."
 
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
 "here will become fully functional after you assign a network interface to"
 " this network."
 msgstr ""
+"Dette nettverket inneholder for tiden ingen enheter. Endringer du gjør her "
+"vil tre i effekt etter at du tildeler et nettverksgrensesnitt til dette "
+"nettverket."
 
 #, fuzzy
 msgid ""
@@ -1327,10 +1430,10 @@ msgstr ""
 "tilkoblet 5 GHz, kabler fra lite kort tilkoblet 2.4 GHz-diplekserport."
 
 msgid "QR code"
-msgstr ""
+msgstr "QR-kode"
 
 msgid "Show QR code"
-msgstr ""
+msgstr "Vis QR-kode"
 
 msgid "Device"
 msgstr "Enhet"
@@ -1350,20 +1453,21 @@ msgstr "Foris - administrasjonsgrensesnitt for Turris-ruter"
 msgid "Menu"
 msgstr "Meny"
 
+#, fuzzy
 msgid "foris guide"
-msgstr ""
+msgstr "Foris-veiledning"
 
 msgid "Reset Guided Mode"
-msgstr ""
+msgstr "Tilbakestill veiledet modus"
 
 msgid "Leave Guided Mode"
-msgstr ""
+msgstr "Forlat veiledet modus"
 
 msgid "Next step"
-msgstr ""
+msgstr "Neste steg"
 
 msgid "Your router needs to be restarted in order to work properly."
-msgstr ""
+msgstr "Din ruter må startes på nytt for å fungere ordentlig."
 
 #, fuzzy
 msgid ""
@@ -1428,7 +1532,7 @@ msgid "DNSSEC"
 msgstr "DNSSEC"
 
 msgid "Continue"
-msgstr ""
+msgstr "Fortsett"
 
 msgid "Notifications and automatic restarts"
 msgstr "Merknader og automatiske omstarter"
@@ -1514,17 +1618,25 @@ msgstr ""
 msgid "Reboot"
 msgstr "Omstart"
 
+#, fuzzy
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
 "device. You can switch the physical network interfaces among networks. If"
 " you are unsure what to set here use the default settings."
 msgstr ""
+"Her kan du sette opp innstillingene for nettverksgrensesnitt på din enhet. "
+"Du kan bytte det offentlige nettverksgrensesnittet mellom nettverk. Hvis du "
+"er usikker på hva du skal sette her, bruk forvalgte innstillinger."
 
+#, fuzzy
 msgid ""
 "<strong>WAN</strong> acts as an external network connection. Firewall "
 "rules should be applied here. It can only contain a single interface."
 msgstr ""
+"<strong>WAN</strong> opptrer som ekstern nettverkstilkobling. "
+"Brannmursregler skal legges til her. Det kan kun inneholde ett grensesnitt."
 
+#, fuzzy
 msgid ""
 "<strong>LAN</strong> acts as a local network connection. LAN should "
 "contain devices which are under your control and you trust them. These "
@@ -1532,7 +1644,13 @@ msgid ""
 "recommended that the LAN should contain at least one interface otherwise "
 "you might not be able to configure this device in an easy way."
 msgstr ""
+"<strong>LAN</strong> opptrer som lokalnettverksforbindelse. LAN bør "
+"inneholde enheter som du kontrollerer og stoler på. Disse enheten kan se "
+"hverandre og har tilgang til dette vev-grensesnittet. Det anbefales at LAN "
+"burde inneholde minst ett grensesnitt siden du kanskje ikke vil kunne sette "
+"opp denne enheten på en enkel måte."
 
+#, fuzzy
 msgid ""
 "<strong>Guest network</strong> acts as a local network connection. Unlike"
 " LAN the devices in the guest network can't access the configuration "
@@ -1541,17 +1659,23 @@ msgid ""
 "that you can also limit download/upload speed of the devices connected to"
 " the guest network."
 msgstr ""
+"<strong>Gjestenettverk</strong> opptrer som lokal nettverkstilkobling. Ulikt "
+"LAN vil enhetene i gjestenettverk ikke ha tilgang til oppsettsgrensesnittet "
+"for denne enheten, og vil kun ha tilgang til WAN (Internett). Dette "
+"nettverket skal brukes for enheter du ikke har full tillit til. Merk at du "
+"også kan begrense nedlasting-/opplastingshastighet for enhetene tilkoblet i "
+"gjestenettverket."
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
-msgstr ""
+msgstr "Nåværende lenkehastighet: %(speed)s Mbit"
 
 #, fuzzy
 msgid "Guest Network"
 msgstr "Gjestenettverk"
 
 msgid "Unassigned"
-msgstr ""
+msgstr "Ikke tildelt"
 
 #, fuzzy
 msgid "WAN network"
@@ -1562,7 +1686,7 @@ msgid "LAN network"
 msgstr "Gjestenettverk"
 
 msgid "Unassign"
-msgstr ""
+msgstr "Fjern tildeling"
 
 msgid ""
 "In the setup you provided it is <strong>not possible to access the "
@@ -1571,35 +1695,50 @@ msgid ""
 " a perform factory reset. <br/><br/> <p><strong>Is this really what you "
 "want?</strong></p>"
 msgstr ""
+"I oppsettet du angav er det <strong>ikke mulig å få tilgang til "
+"administrasjonsgrensesnittet</strong> for din enhet. Dette betyr at den "
+"eneste måten å sette opp din enhet på er via seriell kabel, eller du må "
+"utføre en fabrikkgjenoppretting. <br/><br/> <p><strong>Er dette virkelig det "
+"du ønsker?</strong>"
 
+#, fuzzy
 msgid ""
 "You don't have any interface assigned to the LAN network.<br/> Do you "
 "want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
 "order to be able to access the configuration interface of our device?"
 msgstr ""
+"Du har ikke noe grensesnitt tildelt LAN-nettverket. <br/>Ønsker du å <strong>"
+"åpne port 22, 80 og 443 på WAN-nettverket</strong> for å kunne ha tilgang "
+"til oppsettsgrenesnittet for din enhet?"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last "
 "reboot."
 msgstr ""
+"Følgende merknader inntraff og har ikke blitt avskjediget siden siste "
+"omstart."
 
+#, fuzzy
 msgid ""
 "Here you can set the guide walkthrough which will guide you through the "
 "basic configuration of your device."
 msgstr ""
+"Her kan du sette veiledningsgjennomgangen som vil geleide deg gjennom "
+"grunnleggende oppsett av din enhet."
 
 msgid "recommended"
-msgstr ""
+msgstr "anbefalt"
 
 msgid "Use this workflow"
-msgstr ""
+msgstr "Bruk denne oppsettsveien"
 
 #, fuzzy
 msgid "Failed to query ntp servers."
 msgstr "Klarte ikke å sende spørring til tjeneren."
 
+#, fuzzy
 msgid "Update time"
-msgstr ""
+msgstr "Oppdater tid"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without"
@@ -1690,6 +1829,9 @@ msgid ""
 "Fi settings. Note that this will remove the current Wi-Fi configuration "
 "and restore the default values."
 msgstr ""
+"Hvis et antall trådløskort ikke stemmer overens, kan du prøve å "
+"tilbakestille Wi-Fi-innstillingene. Merk at dette vil fjerne gjeldende Wi-Fi-"
+"oppsett og gjenopprette forvalgte verdier."
 
 #, fuzzy
 msgid "Reset Wi-Fi settings"
@@ -1856,7 +1998,7 @@ msgstr "Er du sikker på at du vil starte ruteren på nytt?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
-msgstr ""
+msgstr "Gjenstående merknader (%(unread_left)s) vil avskjediges."
 
 #, fuzzy
 msgid ""
@@ -1868,20 +2010,22 @@ msgstr ""
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
-msgstr ""
+msgstr "Din enhet vil starte på ny om %(time_left)s sekunder."
 
 #, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
-msgstr ""
+msgstr "Ditt nettverk vil bli startet på ny om %(time_left)s sekunder."
 
+#, fuzzy
 msgid "A reboot of your device was triggered."
-msgstr ""
+msgstr "En omstart av din enhet ble forespurt."
 
+#, fuzzy
 msgid "A network restart was triggered."
-msgstr ""
+msgstr "En nettverksomstart ble forespurt."
 
 msgid "Trying to reconnect to your device."
-msgstr ""
+msgstr "Prøver å koble til enheten din igjen."
 
 msgid "This value seems to be invalid."
 msgstr "Denne verdien ser ut til å være ugyldig."
@@ -1993,10 +2137,10 @@ msgid "Uninstall"
 msgstr "Avinstaller"
 
 msgid "Upgrade"
-msgstr ""
+msgstr "Oppgrader"
 
 msgid "Downgrade"
-msgstr ""
+msgstr "Nedgrader"
 
 #~ msgid "Sending of the testing message failed because of an internal error."
 #~ msgstr "Foresendelse av meldingen mislyktes som følge av intern feil."
