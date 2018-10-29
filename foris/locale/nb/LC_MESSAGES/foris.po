@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 13:43+0100\n"
-"PO-Revision-Date: 2018-10-27 18:37+0000\n"
+"PO-Revision-Date: 2018-11-01 14:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
+"foris/nb/>\n"
 "Language: nb\n"
-"Language-Team: Norwegian Bokmål "
-"<https://hosted.weblate.org/projects/turris/foris/nb/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.3-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -544,7 +545,7 @@ msgid "DHCP max leases"
 msgstr "Maks. antall DHCP-tildelinger"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Leietid (timer)"
 
 #, fuzzy
 msgid "Guest Lan QoS"
@@ -715,6 +716,9 @@ msgid ""
 "configuration options can be managed either through the <a "
 "href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
 msgstr ""
+"For å få tilgang til avanserte oppsettsvalg som ikke er tilgjengelige her, "
+"må du sette rotbrukerens passord. De kan deretter håndteres gjennom <a href="
+"\"//%(host)s/%(path)s\">LuCI-vev-grensesnittet</a> eller via SSH."
 
 msgid "Don't set this password"
 msgstr "Ikke sett dette passordet"
@@ -752,6 +756,8 @@ msgid ""
 "device's time is delayed, the procedure of SSL certificate verification "
 "might not work correctly."
 msgstr ""
+"Det er viktig at du har satt rett tid på enheten din. Hvis den går seint, "
+"fungerer ikke prosedyren for SSL-sertifikatsbekreftelse."
 
 msgid "Region settings"
 msgstr "Regionsinnstillinger"
@@ -775,10 +781,12 @@ msgstr "Tidssone"
 msgid "Time settings"
 msgstr "Tidsinnstillinger"
 
+#, fuzzy
 msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
+"Tid bør være innstilt rett, ellers fungerer ikke DNS og andre tjenester rett."
 
 #, fuzzy
 msgid "How to set time"
@@ -1739,7 +1747,7 @@ msgid "Failed to query ntp servers."
 msgstr "Klarte ikke å sende spørring til tjeneren."
 
 msgid "NTP servers:"
-msgstr ""
+msgstr "NTP-tjenere:"
 
 #, fuzzy
 msgid "Update time"
@@ -2931,4 +2939,3 @@ msgstr "Nedgrader"
 
 #~ msgid "Unable to retrieve notifications, please try refreshing the page."
 #~ msgstr "Klarer ikke å motta merknader, prøv å gjenoppfriske siden."
-
