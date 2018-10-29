@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 10:20+0200\n"
+"POT-Creation-Date: 2018-10-29 13:43+0100\n"
 "PO-Revision-Date: 2018-04-23 10:06+0000\n"
 "Last-Translator: Roberto Zilli <zetaerre@gmail.com>\n"
 "Language: it\n"
@@ -1584,6 +1584,9 @@ msgstr ""
 
 msgid "Failed to query ntp servers."
 msgstr "Impossibile interrogare i server ntp."
+
+msgid "NTP servers:"
+msgstr ""
 
 msgid "Update time"
 msgstr "Aggiornare l'ora"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 10:20+0200\n"
+"POT-Creation-Date: 2018-10-29 13:43+0100\n"
 "PO-Revision-Date: 2018-10-21 11:28+0000\n"
 "Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
 "Language: nl\n"
@@ -1476,6 +1476,9 @@ msgstr ""
 #, fuzzy
 msgid "Failed to query ntp servers."
 msgstr "Het goedkeuren van de update is mislukt."
+
+msgid "NTP servers:"
+msgstr ""
 
 #, fuzzy
 msgid "Update time"

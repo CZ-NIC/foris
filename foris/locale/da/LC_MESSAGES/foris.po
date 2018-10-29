@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-26 10:20+0200\n"
+"POT-Creation-Date: 2018-10-29 13:43+0100\n"
 "PO-Revision-Date: 2018-10-16 05:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: da\n"
@@ -1580,6 +1580,9 @@ msgstr ""
 #, fuzzy
 msgid "Failed to query ntp servers."
 msgstr "Det lykkedes ikke at forespørge serveren."
+
+msgid "NTP servers:"
+msgstr ""
 
 #, fuzzy
 msgid "Update time"
