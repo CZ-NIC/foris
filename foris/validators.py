@@ -16,8 +16,10 @@
 
 import copy
 import logging
+import ipaddress
 import re
 import socket
+
 from datetime import datetime
 
 from foris.utils.translators import _
@@ -331,6 +333,34 @@ class RequiredWithOtherFields(Validator):
 
         if any(fields_data):
             return all(fields_data)
+        return True
+
+
+class DhcpRangeValidator:
+    def __init__(self, netmask_field, dhcp_start_field, dhcp_limit_field, msg, skip_conditions=[]):
+        """
+        :param skip_conditions: [ lambda data: data['xx'] == 'yy', ]
+        """
+        self.skip_conditions = skip_conditions
+        self.netmask = netmask_field
+        self.start = dhcp_start_field
+        self.limit = dhcp_limit_field
+        self.msg = msg
+
+    def valid(self, data):
+        for condition in self.skip_conditions:
+            if condition(data):
+                return True
+
+        netmask = data[self.netmask]
+        start = int(data[self.start])
+        limit = int(data[self.limit])
+
+        try:
+            ipaddress.IPv4Address(netmask) + start + limit
+        except ipaddress.AddressValueError:
+            return False
+
         return True
 
 

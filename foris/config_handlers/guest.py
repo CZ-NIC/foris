@@ -39,8 +39,8 @@ class GuestHandler(BaseConfigHandler):
         data["guest_ipaddr"] = self.backend_data["ip"]
         data["guest_netmask"] = self.backend_data["netmask"]
         data["guest_dhcp_enabled"] = self.backend_data["dhcp"]["enabled"]
-        data["guest_dhcp_min"] = self.backend_data["dhcp"]["start"]
-        data["guest_dhcp_max"] = self.backend_data["dhcp"]["limit"]
+        data["guest_dhcp_start"] = self.backend_data["dhcp"]["start"]
+        data["guest_dhcp_limit"] = self.backend_data["dhcp"]["limit"]
         data["guest_dhcp_leasetime"] = self.backend_data["dhcp"]["lease_time"] // 60 // 60
         data["guest_qos_enabled"] = self.backend_data["qos"]["enabled"]
         data["guest_qos_download"] = self.backend_data["qos"]["download"]
@@ -50,7 +50,19 @@ class GuestHandler(BaseConfigHandler):
             # Update from post
             data.update(self.data)
 
-        guest_form = fapi.ForisForm("guest", data)
+        guest_form = fapi.ForisForm("guest", data, validators=[
+            validators.DhcpRangeValidator(
+                'guest_netmask', 'guest_dhcp_start', 'guest_dhcp_limit',
+                gettext(
+                    "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
+                    "does not fit into <strong>Guest network netmask</strong>!"
+                ),
+                [
+                    lambda data: not data['guest_enabled'],
+                    lambda data: not data['guest_dhcp_enabled'],
+                ]
+            )
+        ])
         guest_network_section = guest_form.add_section(
             name="guest_network",
             title=_(self.userfriendly_title),
@@ -89,10 +101,10 @@ class GuestHandler(BaseConfigHandler):
                    "the devices connected to the router.")
         ).requires("guest_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_dhcp_min", label=_("DHCP start"),
+            Textbox, name="guest_dhcp_start", label=_("DHCP start"),
         ).requires("guest_dhcp_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_dhcp_max", label=_("DHCP max leases"),
+            Textbox, name="guest_dhcp_limit", label=_("DHCP max leases"),
         ).requires("guest_dhcp_enabled", True)
         guest_network_section.add_field(
             Textbox, name="guest_dhcp_leasetime", label=_("Lease time (hours)"),
@@ -136,8 +148,8 @@ class GuestHandler(BaseConfigHandler):
                     "qos": {"enabled": data["guest_qos_enabled"]},
                 }
                 if data["guest_dhcp_enabled"]:
-                    msg["dhcp"]["start"] = int(data["guest_dhcp_min"])
-                    msg["dhcp"]["limit"] = int(data["guest_dhcp_max"])
+                    msg["dhcp"]["start"] = int(data["guest_dhcp_start"])
+                    msg["dhcp"]["limit"] = int(data["guest_dhcp_limit"])
                     msg["dhcp"]["lease_time"] = int(data["guest_dhcp_leasetime"]) * 60 * 60
 
                 if data["guest_qos_enabled"]:

@@ -24,6 +24,8 @@ from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler
 
+import ipaddress
+
 
 class LanHandler(BaseConfigHandler):
     userfriendly_title = gettext("LAN")
@@ -59,7 +61,19 @@ class LanHandler(BaseConfigHandler):
             # Update from post
             data.update(self.data)
 
-        lan_form = fapi.ForisForm("lan", data)
+        lan_form = fapi.ForisForm("lan", data, validators=[
+            validators.DhcpRangeValidator(
+                'router_netmask', 'router_dhcp_start', 'router_dhcp_limit',
+                gettext(
+                    "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
+                    "does not fit into <strong>Network netmask</strong>!"
+                ),
+                [
+                    lambda data: data['mode'] != 'managed',
+                    lambda data: not data['router_dhcp_enabled'],
+                ]
+            )
+        ])
         lan_main = lan_form.add_section(
             name="set_lan",
             title=_(self.userfriendly_title),

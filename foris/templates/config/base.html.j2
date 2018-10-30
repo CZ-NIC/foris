@@ -65,8 +65,8 @@
                         {% if config_page.get_menu_tag()["show"] %}
                       <span title="{{ config_page.get_menu_tag()["hint"]}}" style="{{"" if config_page.get_menu_tag()["show"] else "display: none" }}" id="{{ config_page.slug }}_menu_tag" class="menu-tag">
                       {{ config_page.get_menu_tag()["text"]|safe }}
-                      {% endif %}
                       </span>
+                      {% endif %}
                       </a>
                     </li>
                     {% elif config_page.is_visible() %}

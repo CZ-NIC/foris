@@ -7,9 +7,12 @@
 		{% include "config/_no_interface_warning.html.j2" %}
 	{% endif %}
 {% endif %}
+    {% include '_messages.html.j2' %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ description|safe }}</p>
-        {% include '_messages.html.j2' %}
+        {% if form.errors %}
+            <p>{{ form.render_errors()|safe }}</p>
+        {% endif %}
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         {% for field in form.active_fields %}
             {% include '_field.html.j2' %}

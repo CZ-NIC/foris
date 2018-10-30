@@ -52,7 +52,7 @@ class ForisFormElement(object):
 
 
 class ForisForm(ForisFormElement):
-    def __init__(self, name, data=None):
+    def __init__(self, name, data=None, validators=[]):
         """
 
         :param name:
@@ -89,6 +89,7 @@ class ForisForm(ForisFormElement):
         self.requirement_map = defaultdict(list)  # mapping: requirement -> list of required_by
         self.callbacks = []
         self.callback_results = {}  # name -> result
+        self.validators = validators
 
     @property
     def data(self):
@@ -143,7 +144,7 @@ class ForisForm(ForisFormElement):
         inputs = [x.field for x in self.get_active_fields()]
         # TODO: creating the form everytime might by a wrong approach...
         logger.debug("Creating Form()...")
-        form = Form(*inputs)
+        form = Form(*inputs, validators=self.validators)
         form.fill(self.data)
         self.__form_cache = form
         return form
@@ -194,8 +195,11 @@ class ForisForm(ForisFormElement):
     def errors(self):
         return self._form.note
 
+    def render_errors(self):
+        return '<div class="message error">%s</div>' % self.errors
+
     def render(self):
-        result = "<div class=\"errors\">%s</div>" % self.errors
+        result = self.render_errors()
         result += "\n".join(c.render() for c in self.children.values())
         return result
 

@@ -53,8 +53,6 @@ Foris.initialize = function () {
   });
 
   Foris.initParsley();
-  Foris.initLanChangeDetection();
-  Foris.initLanFormOverride();
   Foris.initPasswordHiding();
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
@@ -98,46 +96,6 @@ Foris.initParsley = function () {
     parsleyField.$element.parent().parent().find(".server-validation-container").remove();
   });
 
-};
-
-Foris.initLanFormOverride = function () {
-  var lanForm = $("#form-lan-buttons").parents("form:first");
-  lanForm.submit(function(event) {
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: lanForm.attr("action"),
-      data: lanForm.serialize(),
-      success: function(data) {
-        // Nothing to be done here...
-      },
-      error: function(jqXHR, textStatu, errorThrown) {
-      }
-    });
-  });
-}
-
-Foris.initLanChangeDetection = function () {
-  var lanIpChanged = false;
-  $(document).on("change paste", "[name=lan_ipaddr]", function () {
-    var lanField = this;
-    if (!Foris.lanIpChanged) {
-      lanIpChanged = true;
-      $(document).on("submit", "#main-form", function () {
-        // if the value really changed from the default
-        if (lanField.defaultValue != lanField.value) {
-          var newLocation = document.location.protocol + "//" + lanField.value + Foris.scriptname + "/?next=" + document.location.pathname;
-          $(".config-description").after('<div class="message info">' + Foris.messages.lanIpChanged.replace(/%NEW_IP_LINK%/g, '<a href="' + newLocation + '">' + lanField.value + '</a>') + '</div>');
-          // if the page was accessed from the old IP address, wait 10 seconds and do a redirect
-          window.setTimeout(function () {
-            if (lanField.defaultValue == document.location.hostname) {
-              document.location.href = newLocation;
-            }
-          }, 10000);
-        }
-      });
-    }
-  });
 };
 
 Foris.initClickableHints = function () {
