@@ -73,7 +73,13 @@ class NotificationsHandler(BaseConfigHandler):
             name="to",
             label=_("Recipient's email"),
             hint=_("Email address of recipient. Separate multiple addresses by spaces."),
-            required=True
+            required=True,
+            validators=[
+                validators.RegExp(
+                    _("Doesn't contain a list of emails separated by spaces"),
+                    r"^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)( +[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)*$"
+                )
+            ]
         ).requires("enable_smtp", True)
 
         # sender's name for CZ.NIC SMTP only
@@ -166,7 +172,7 @@ class NotificationsHandler(BaseConfigHandler):
                 msg["emails"]["smtp_type"] = "turris" if data["use_turris_smtp"] == "1" \
                     else "custom"
                 msg["emails"]["common"] = {
-                    "to": data["to"].split(" "),
+                    "to": [e for e in data["to"].split(" ") if e],
                     "severity_filter": int(data["severity"]),
                     "send_news": data["news"],
                 }
