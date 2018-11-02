@@ -72,7 +72,7 @@ class DNSHandler(BaseConfigHandler):
         dns_main.add_field(
             Textbox, name="dns_from_dhcp_domain", label=_("Domain of DHCP clients in DNS"),
             hint=_(
-                "This domain will be used as prefix. E.g. The result for client \"android-123\" "
+                "This domain will be used as suffix. E.g. The result for client \"android-123\" "
                 "and domain \"my.lan\" will be \"android-123.my.lan\"."
             ),
             validators=[validators.Domain()],
