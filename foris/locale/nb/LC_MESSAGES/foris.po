@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-02 13:04+0100\n"
-"PO-Revision-Date: 2018-11-01 14:09+0000\n"
+"PO-Revision-Date: 2018-11-03 23:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
+"foris/nb/>\n"
 "Language: nb\n"
-"Language-Team: Norwegian Bokmål "
-"<https://hosted.weblate.org/projects/turris/foris/nb/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.3-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -871,8 +872,9 @@ msgstr "Mottakerens e-postadresse"
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr "E-postadresse til mottaker. Kommainndel adresser."
 
+#, fuzzy
 msgid "Doesn't contain a list of emails separated by spaces"
-msgstr ""
+msgstr "Inneholder ikke en mellomromsinndelt liste over e-poster"
 
 msgid "Sender's name"
 msgstr "Avsendernavn"
@@ -2953,4 +2955,3 @@ msgstr "Nedgrader"
 
 #~ msgid "Unable to retrieve notifications, please try refreshing the page."
 #~ msgstr "Klarer ikke å motta merknader, prøv å gjenoppfriske siden."
-
