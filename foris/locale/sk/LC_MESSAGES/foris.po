@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 13:02+0100\n"
+"POT-Creation-Date: 2018-11-02 13:04+0100\n"
 "PO-Revision-Date: 2018-07-19 03:34+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -753,6 +753,9 @@ msgstr "Adresát"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr "Emailová adresa príjemcu. Viac adries oddeľte pomocou medzier."
+
+msgid "Doesn't contain a list of emails separated by spaces"
+msgstr ""
 
 msgid "Sender's name"
 msgstr "Meno odosielateľa"

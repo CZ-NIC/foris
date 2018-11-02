@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 13:02+0100\n"
+"POT-Creation-Date: 2018-11-02 13:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language: ro\n"
@@ -678,6 +678,9 @@ msgid "Recipient's email"
 msgstr ""
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr ""
+
+msgid "Doesn't contain a list of emails separated by spaces"
 msgstr ""
 
 msgid "Sender's name"

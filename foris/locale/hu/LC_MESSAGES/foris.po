@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 13:02+0100\n"
+"POT-Creation-Date: 2018-11-02 13:04+0100\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -783,6 +783,9 @@ msgstr "Címzett e-mail címe"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr "Címzett e-mail címe. Több cím egymástól szóközzel elválasztva adható meg."
+
+msgid "Doesn't contain a list of emails separated by spaces"
+msgstr ""
 
 msgid "Sender's name"
 msgstr "Feladó neve"
