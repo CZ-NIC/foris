@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 13:43+0100\n"
+"POT-Creation-Date: 2018-11-02 13:02+0100\n"
 "PO-Revision-Date: 2018-11-01 14:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
-"foris/nb/>\n"
 "Language: nb\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/turris/foris/nb/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.3-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -481,8 +480,9 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domenet tilhørende DHCP-klienter i DNS"
 
+#, fuzzy
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
+"This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Domenet vil bli brukt som prefiks. F.eks. vil resultatet av klienten "
@@ -490,6 +490,11 @@ msgstr ""
 
 msgid "Guest network"
 msgstr "Gjestenettverk"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -573,6 +578,11 @@ msgstr "Opplastingshastighet for gjestenettverk (i kilobit per sekund)."
 
 msgid "LAN"
 msgstr "LAN"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
+msgstr ""
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -716,9 +726,9 @@ msgid ""
 "configuration options can be managed either through the <a "
 "href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
 msgstr ""
-"For å få tilgang til avanserte oppsettsvalg som ikke er tilgjengelige her, "
-"må du sette rotbrukerens passord. De kan deretter håndteres gjennom <a href="
-"\"//%(host)s/%(path)s\">LuCI-vev-grensesnittet</a> eller via SSH."
+"For å få tilgang til avanserte oppsettsvalg som ikke er tilgjengelige "
+"her, må du sette rotbrukerens passord. De kan deretter håndteres gjennom "
+"<a href=\"//%(host)s/%(path)s\">LuCI-vev-grensesnittet</a> eller via SSH."
 
 msgid "Don't set this password"
 msgstr "Ikke sett dette passordet"
@@ -756,8 +766,8 @@ msgid ""
 "device's time is delayed, the procedure of SSL certificate verification "
 "might not work correctly."
 msgstr ""
-"Det er viktig at du har satt rett tid på enheten din. Hvis den går seint, "
-"fungerer ikke prosedyren for SSL-sertifikatsbekreftelse."
+"Det er viktig at du har satt rett tid på enheten din. Hvis den går seint,"
+" fungerer ikke prosedyren for SSL-sertifikatsbekreftelse."
 
 msgid "Region settings"
 msgstr "Regionsinnstillinger"
@@ -786,7 +796,8 @@ msgid ""
 "Time should be up-to-date otherise DNS and other services might not work "
 "properly."
 msgstr ""
-"Tid bør være innstilt rett, ellers fungerer ikke DNS og andre tjenester rett."
+"Tid bør være innstilt rett, ellers fungerer ikke DNS og andre tjenester "
+"rett."
 
 #, fuzzy
 msgid "How to set time"
@@ -2939,3 +2950,4 @@ msgstr "Nedgrader"
 
 #~ msgid "Unable to retrieve notifications, please try refreshing the page."
 #~ msgstr "Klarer ikke å motta merknader, prøv å gjenoppfriske siden."
+

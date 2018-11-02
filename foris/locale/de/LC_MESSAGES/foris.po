@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 13:43+0100\n"
+"POT-Creation-Date: 2018-11-02 13:02+0100\n"
 "PO-Revision-Date: 2018-05-12 09:37+0000\n"
 "Last-Translator: Nora Kořánová <nora.koranova@gmail.com>\n"
 "Language: de\n"
@@ -406,8 +406,9 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domäne der DHCP-Geräte im DNS"
 
+#, fuzzy
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
+"This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Diese Domäne wird als Präfix genutzt. Z. B. wäre das Ergebnis für das "
@@ -416,6 +417,11 @@ msgstr ""
 
 msgid "Guest network"
 msgstr "Gastnetzwerk"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -489,6 +495,11 @@ msgstr "Uploadgeschwindigkeit im Gastnetzwerk (kbit/s)."
 
 msgid "LAN"
 msgstr "LAN"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
+msgstr ""
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 98.15\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-29 13:43+0100\n"
+"POT-Creation-Date: 2018-11-02 13:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language: nb_NO\n"
@@ -369,11 +369,16 @@ msgid "Domain of DHCP clients in DNS"
 msgstr ""
 
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
+"This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 
 msgid "Guest network"
+msgstr ""
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
 msgstr ""
 
 #, python-format
@@ -439,6 +444,11 @@ msgid "Upload speed in guest network (in kilobits per second)."
 msgstr ""
 
 msgid "LAN"
+msgstr ""
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
 msgstr ""
 
 msgid ""
@@ -1713,4 +1723,11 @@ msgstr ""
 
 msgid "Downgrade"
 msgstr ""
+
+#~ msgid ""
+#~ "This domain will be used as "
+#~ "prefix. E.g. The result for client "
+#~ "\"android-123\" and domain \"my.lan\" will "
+#~ "be \"android-123.my.lan\"."
+#~ msgstr ""
 

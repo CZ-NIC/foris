@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 13:43+0100\n"
+"POT-Creation-Date: 2018-11-02 13:02+0100\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language: el\n"
@@ -394,12 +394,17 @@ msgid "Domain of DHCP clients in DNS"
 msgstr ""
 
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
+"This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 
 msgid "Guest network"
 msgstr "Δίκτυο επισκεπτών"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -474,6 +479,11 @@ msgstr ""
 
 msgid "LAN"
 msgstr "Τοπικό δίκτυο (LAN)"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
+msgstr ""
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -2505,5 +2515,12 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Workflow for older routers and older turris OS versions (before 4.0)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This domain will be used as "
+#~ "prefix. E.g. The result for client "
+#~ "\"android-123\" and domain \"my.lan\" will "
+#~ "be \"android-123.my.lan\"."
 #~ msgstr ""
 

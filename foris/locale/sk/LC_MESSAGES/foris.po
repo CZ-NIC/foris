@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 13:43+0100\n"
+"POT-Creation-Date: 2018-11-02 13:02+0100\n"
 "PO-Revision-Date: 2018-07-19 03:34+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -399,8 +399,9 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Doména DHCP klientov v DNS"
 
+#, fuzzy
 msgid ""
-"This domain will be used as prefix. E.g. The result for client "
+"This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
 "Táto doména bude použitá ako TLD. Napr. pre klienta \"android-123\" a "
@@ -408,6 +409,11 @@ msgstr ""
 
 msgid "Guest network"
 msgstr "Sieť pre hostí"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -480,6 +486,11 @@ msgstr "Rýchlosť odovzdávania v sieti pre hostí (v kilobitoch za sekundu)."
 
 msgid "LAN"
 msgstr "LAN"
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
+msgstr ""
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
