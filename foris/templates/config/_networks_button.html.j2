@@ -6,7 +6,7 @@
 {% trans %}link speed{% endtrans %}: {{ port.link_speed }} Mbit
 {% endif %}
 </p>
-<button class="button ports-button ports-{{ port_group }}" id="{{ port.id }}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
+<button class="button ports-button ports-{{ port_group }}" id="{{ port.id }}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %} {%if not port.configurable %}disabled{% endif %}>
     {% if port.type == "usb" %}
     <i class="fab fa-usb"></i>
     {% elif port.type == "eth" %}
