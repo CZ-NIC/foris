@@ -1,0 +1,25 @@
+<p class="network-button-description" id="button-description-{{ port.id }}">
+{% trans %}module{% endtrans %}: {% if port.module_id == 0 %}{% trans %}main{% endtrans %}{% else %}{{ port.module_id }}{% endif %}<br/>
+{% trans %}bus{% endtrans %}: {{ port.bus }}<br />
+{% trans %}state{% endtrans %}: {% if port.state == "up" %}{% trans %}alive{% endtrans%}{% else %}{% trans %}off{% endtrans %}{% endif %}<br />
+{% if port.state == "up" and port.link_speed > 0 %}
+{% trans %}link speed{% endtrans %}: {{ port.link_speed }} Mbit
+{% endif %}
+</p>
+<button class="button ports-button ports-{{ port_group }}" id="{{ port.id }}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
+    {% if port.type == "usb" %}
+    <i class="fab fa-usb"></i>
+    {% elif port.type == "eth" %}
+        {% if port.state == "up" %}
+    <i class="far fa-calendar-check"></i>
+        {% else %}
+    <i class="far fa-calendar"></i>
+        {% endif %}
+    {% elif port.type == "3g" or port.type == "4g" %}
+    <i class="fas fa-signal"></i>
+    {% elif port.type == "wifi"%}
+    <i class="fas fa-wifi"></i>
+    {% endif %}
+    <br/>
+    {% if port.module_id > 0 %}{{ port.module_id }}-{% endif %}{{ port.slot }}
+</button>

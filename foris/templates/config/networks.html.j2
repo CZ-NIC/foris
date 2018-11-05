@@ -12,81 +12,29 @@
     <h5>{% trans %}WAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
     {% for port in backend_data.networks.wan %}
-    <button class="button ports-button ports-wan" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
-        {% if port.kind == "usb" %}
-        <i class="fab fa-usb"></i>
-        {% elif port.kind == "eth" %}
-            {% if port.state == "up" %}
-        <i class="far fa-calendar-check"></i>
-            {% else %}
-        <i class="far fa-calendar"></i>
-            {% endif %}
-        {% elif port.kind == "3g" or port.kind == "4g" %}
-        <i class="fas fa-signal"></i>
-        {% endif %}
-        <br/>
-        {{ port.description }}
-    </button>
+        {% set port_group = "wan" %}
+        {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}LAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-lan" data-group="lan">
     {% for port in backend_data.networks.lan %}
-    <button class="button ports-button ports-lan" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
-        {% if port.kind == "usb" %}
-        <i class="fab fa-usb"></i>
-        {% elif port.kind == "eth" %}
-            {% if port.state == "up" %}
-        <i class="far fa-calendar-check"></i>
-            {% else %}
-        <i class="far fa-calendar"></i>
-            {% endif %}
-        {% elif port.kind == "3g" or port.kind == "4g" %}
-        <i class="fas fa-signal"></i>
-        {% endif %}
-        <br/>
-        {{ port.description }}
-    </button>
+        {% set port_group = "lan" %}
+        {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}Guest Network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-guest" data-group="guest">
     {% for port in backend_data.networks.guest %}
-    <button class="button ports-button ports-quest" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
-        {% if port.kind == "usb" %}
-        <i class="fab fa-usb"></i>
-        {% elif port.kind == "eth" %}
-            {% if port.state == "up" %}
-        <i class="far fa-calendar-check"></i>
-            {% else %}
-        <i class="far fa-calendar"></i>
-            {% endif %}
-        {% elif port.kind == "3g" or port.kind == "4g" %}
-        <i class="fas fa-signal"></i>
-        {% endif %}
-        <br/>
-        {{ port.description }}
-    </button>
+        {% set port_group = "guest" %}
+        {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}Unassigned{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-none" data-group="none">
     {% for port in backend_data.networks.none %}
-    <button class="button ports-button ports-none" id="{{port.id}}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %}>
-        {% if port.kind == "usb" %}
-        <i class="fab fa-usb"></i>
-        {% elif port.kind == "eth" %}
-            {% if port.state == "up" %}
-        <i class="far fa-calendar-check"></i>
-            {% else %}
-        <i class="far fa-calendar"></i>
-            {% endif %}
-        {% elif port.kind == "3g" or port.kind == "4g" %}
-        <i class="fas fa-signal"></i>
-        {% endif %}
-        <br/>
-        {{ port.description }}
-    </button>
+        {% set port_group = "none" %}
+        {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
@@ -131,6 +79,13 @@
     height: 4em;
     line-height: 1.5em;
 }
+p.network-button-description {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+    font-style: italic;
+    font-size: 0.85rem;
+    display: none;
+}
 </style>
 <script>
     'use strict';
@@ -144,26 +99,37 @@
         $(`#input_${port_id}`).attr("name", `${button.attr('data-target')}[]`);
 
         $(`#${port_id}`).removeClass("ports-button-clicked");
-        $(`#${port_id}`).detach().appendTo(`#${target_group}`);
-        group.find(".ports-button").show("slide");
-        $(".ports-control-button").hide("slide", () => $(".ports-control-button").remove());
+        $(`#button-description-${port_id}`).hide("slide", () => {
+            group.find(".ports-button").show("slide");
+            $(".ports-control-button").hide("slide", () => $(".ports-control-button").remove());
+            $(`#button-description-${port_id}`).detach().appendTo(`#${target_group}`);
+            $(`#${port_id}`).detach().appendTo(`#${target_group}`);
+        });
     };
     Foris.initPorts = () => {
         $(".ports-button").on("click", (e) => {
             e.preventDefault();
             let button = $(e.target);
             let group = button.parent();
+            let id = $(e.target).attr("id");
 
             // close other opened lists
-            $(".ports-list").not(group).find(".ports-button").show("slide").removeClass("ports-button-clicked");
-            $(".ports-list").find(".ports-control-button").hide("slide", () => {
-                $(".ports-list").not(group).find(".ports-control-button").remove()
+            $(".ports-list").not(group).find(".network-button-description").hide("slide", () => {
+                $(".ports-list").not(group).find(".ports-button").show("slide", () => {
+                    $(".ports-list").not(group).find(".ports-control-button").hide("slide", () => {
+                        $(".ports-list").not(group).find(".ports-control-button").remove()
+                    });
+                }).removeClass("ports-button-clicked");
             });
 
             if (button.hasClass("ports-button-clicked")) {
                 // close control buttons
-                group.find(".ports-button").not(button).show("slide");
-                group.find(".ports-control-button").hide("slide", () => group.find(".ports-control-button").remove());
+                $(`#button-description-${id}`).hide("slide", () => {
+                    group.find(".ports-button").not(button).show("slide");
+                    group.find(".ports-control-button").hide("slide", () => {
+                        group.find(".ports-control-button").remove();
+                    });
+                });
                 button.removeClass("ports-button-clicked");
             } else {
                 // open control buttons
@@ -187,7 +153,9 @@
                     }
                     group.append(`<button class="button ports-control-button grayed" data-port="${button.attr('id')}" data-target="${group_name}" style="display: none;"><i class="fas fa-sign-out-alt"></i> ${group_repr}</button>`);
                 }
-                group.find(".ports-control-button").show("slide");
+                group.find(".ports-control-button").show("slide", () => {
+                    $(`#button-description-${id}`).show("slide")
+                });
                 group.find(".ports-control-button").on("click", Foris.movePortToGroup);
             }
         });
