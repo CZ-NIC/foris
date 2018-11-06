@@ -86,10 +86,14 @@ p.network-button-description {
     font-size: 0.85rem;
     display: none;
 }
+.ports-list button.network-button-disabled {
+    background-color: pink;
+}
 </style>
 <script>
     'use strict';
-    Foris.movePortToGroup = (e) => {
+    Foris.portAnimationInProgress = false;
+    Foris.movePortToGroup = async (e) => {
         let button = $(e.target);
         let group = button.parent();
         let target_group = `ports-list-${button.attr('data-target')}`;
@@ -99,41 +103,73 @@ p.network-button-description {
         $(`#input_${port_id}`).attr("name", `${button.attr('data-target')}[]`);
 
         $(`#${port_id}`).removeClass("ports-button-clicked");
-        $(`#button-description-${port_id}`).hide("slide", () => {
-            group.find(".ports-button").show("slide");
-            $(".ports-control-button").hide("slide", () => $(".ports-control-button").remove());
-            $(`#button-description-${port_id}`).detach().appendTo(`#${target_group}`);
-            $(`#${port_id}`).detach().appendTo(`#${target_group}`);
-        });
+
+        // hide current description
+        $(`#button-description-${port_id}`).hide(200);
+        await $(`#button-description-${port_id}`).promise();
+
+        // hide current button
+        $(`#${port_id}`).hide(200);
+        await $(`#${port_id}`).promise();
+
+        $(`#button-description-${port_id}`).detach().appendTo(`#${target_group}`);
+        $(`#${port_id}`).detach().appendTo(`#${target_group}`);
+
+        // remove controll buttons
+        $(".ports-control-button").hide(200);
+        await $(".ports-control-button").promise();
+
+        $(".ports-control-button").remove();
+
+        // show original buttons
+        $(".ports-button").show(200);
+        await $(".ports-button").promise();
     };
     Foris.initPorts = () => {
-        $(".ports-button").on("click", (e) => {
+        $(".ports-button").on("click", async (e) => {
             e.preventDefault();
             let button = $(e.target);
             let group = button.parent();
             let id = $(e.target).attr("id");
 
-            // close other opened lists
-            $(".ports-list").not(group).find(".network-button-description").hide("slide", () => {
-                $(".ports-list").not(group).find(".ports-button").show("slide", () => {
-                    $(".ports-list").not(group).find(".ports-control-button").hide("slide", () => {
-                        $(".ports-list").not(group).find(".ports-control-button").remove()
-                    });
-                }).removeClass("ports-button-clicked");
-            });
+            if (Foris.portAnimationInProgress) {
+                return;
+            }
+            Foris.portAnimationInProgress = true;
+
+            // wait for current animations to finish
+            await $(".network-button-description,.ports-control-button,.ports-button").promise();
 
             if (button.hasClass("ports-button-clicked")) {
+                // close current description
+                $(".network-button-description").hide(200);
+                await $(".network-button-description").promise();
+
                 // close control buttons
-                $(`#button-description-${id}`).hide("slide", () => {
-                    group.find(".ports-button").not(button).show("slide");
-                    group.find(".ports-control-button").hide("slide", () => {
-                        group.find(".ports-control-button").remove();
-                    });
-                });
+                $(".ports-control-button").hide(200);
+                await $(".ports-control-button").promise();
+
+                $(".ports-control-button").remove();
+
+                // restore original buttons
+                group.find(".ports-button").not(button).show(200);
+                await $(".ports-button").promise();
+
                 button.removeClass("ports-button-clicked");
             } else {
+                // close all description texts
+                $(".network-button-description").hide(200);
+                await $(".network-button-description").promise();
+
+                // close control buttons
+                $(".ports-control-button").hide(200);
+                await $(".ports-control-button").promise();
+
+                // restore original buttons
+                $(".ports-button").show(200);
+                await $(".ports-button").promise();
+
                 // open control buttons
-                group.find(".ports-button").not(button).hide("slide");
                 button.addClass("ports-button-clicked");
                 let targets = [
                     ['wan', "{% trans %}WAN network{% endtrans %}"],
@@ -141,23 +177,46 @@ p.network-button-description {
                     ['guest', "{% trans %}Guest network{% endtrans %}"],
                     ['none', "{% trans %}Unassign{% endtrans %}"],
                 ];
-                for (let target of targets) {
-                    let group_name = target[0], group_repr = target[1];
-                    // no need to include the current group
-                    if (group.attr("data-group") == group_name) {
-                        continue;
+                if (!button.hasClass("grayed")) {
+                    for (let target of targets) {
+                        let group_name = target[0], group_repr = target[1];
+                        // no need to include the current group
+                        if (group.attr("data-group") == group_name) {
+                            continue;
+                        }
+                        // WAN can contain only one port
+                        if (group_name == "wan" && $("#ports-list-wan").find(".ports-button").length > 0) {
+                            continue;
+                        }
+                        group.append(`<button class="button ports-control-button grayed" data-port="${button.attr('id')}" data-target="${group_name}" style="display: none;"><i class="fas fa-sign-out-alt"></i> ${group_repr}</button>`);
                     }
-                    // WAN can contain only one port
-                    if (group_name == "wan" && $("#ports-list-wan").find(".ports-button").length > 0) {
-                        continue;
-                    }
-                    group.append(`<button class="button ports-control-button grayed" data-port="${button.attr('id')}" data-target="${group_name}" style="display: none;"><i class="fas fa-sign-out-alt"></i> ${group_repr}</button>`);
-                }
-                group.find(".ports-control-button").show("slide", () => {
-                    $(`#button-description-${id}`).show("slide")
-                });
-                group.find(".ports-control-button").on("click", Foris.movePortToGroup);
+
+                    // hide buttons
+                    group.find(".ports-button").not(button).hide(200);
+                    await $(".ports-button").promise();
+
+                    // show control buttons
+                    group.find(".ports-control-button").show(200);
+                    await $(".ports-control-button").promise();
+
+                    // show description
+                    $(`#button-description-${id}`).show(200);
+                    await $(`#button-description-${id}`).promise();
+
+                    // set callback
+                    group.find(".ports-control-button").on("click", Foris.movePortToGroup);
+
+                } else {
+                    // hide buttons
+                    group.find(".ports-button").not(button).hide(200);
+                    await $(".ports-button").promise();
+
+                    // show description
+                    $(`#button-description-${id}`).show(200);
+                    await $(`#button-description-${id}`).promise();
+                };
             }
+            Foris.portAnimationInProgress = false;
         });
     };
     Foris.portsMissingWan = () => {
