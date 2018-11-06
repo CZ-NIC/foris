@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import typing
+import copy
 
 from datetime import datetime
 import base64
@@ -279,7 +280,30 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
-        kwargs['backend_data'] = self.backend_data
+        # filter backend data
+        filtered = {e: [] for e in self.backend_data["networks"].keys()}
+        non_configurable = []
+        for network_name, network in self.backend_data["networks"].items():
+            for interface in network:
+                if interface["configurable"]:
+                    filtered[network_name].append(interface)
+                else:
+                    non_configurable.append(interface)
+
+        # try to show wifis
+        kwargs['networks'] = filtered
+        for record in sorted(non_configurable, key=lambda x: x["slot"], reverse=True):
+            if record["type"] == "wifi":
+                lan_record = copy.deepcopy(record)
+                lan_record["id"] += "-lan"
+                lan_record["slot"] = lan_record["bus"] + "-" + lan_record["slot"]
+                filtered["lan"].insert(0, lan_record)
+
+                guest_record = copy.deepcopy(record)
+                guest_record["id"] += "-guest"
+                guest_record["slot"] = guest_record["bus"] + "-" + guest_record["slot"]
+                filtered["guest"].insert(0, guest_record)
+
         return super(NetworksConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):

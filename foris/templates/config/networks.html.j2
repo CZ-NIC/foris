@@ -11,45 +11,53 @@
     <p>{% trans %}<strong>Guest network</strong> acts as a local network connection. Unlike LAN the devices in the guest network can't access the configuration interface of this device and are only able to access WAN (internet). This network should be used for devices which you don't fully trust. Note that you can also limit download/upload speed of the devices connected to the guest network.{% endtrans %}</p>
     <h5>{% trans %}WAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-wan" data-group="wan">
-    {% for port in backend_data.networks.wan %}
+    {% for port in networks.wan %}
         {% set port_group = "wan" %}
         {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}LAN{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-lan" data-group="lan">
-    {% for port in backend_data.networks.lan %}
+    {% for port in networks.lan %}
         {% set port_group = "lan" %}
         {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}Guest Network{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-guest" data-group="guest">
-    {% for port in backend_data.networks.guest %}
+    {% for port in networks.guest %}
         {% set port_group = "guest" %}
         {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <h5>{% trans %}Unassigned{% endtrans %}</h5>
     <div class="ports-list" id="ports-list-none" data-group="none">
-    {% for port in backend_data.networks.none %}
+    {% for port in networks.none %}
         {% set port_group = "none" %}
         {% include 'config/_networks_button.html.j2' %}
     {% endfor %}
     </div>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        {% for port in backend_data.networks.wan %}
+        {% for port in networks.wan %}
+          {% if port.configurable %}
         <input type="hidden" name="wan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+          {% endif %}
         {% endfor %}
-        {% for port in backend_data.networks.lan %}
+        {% for port in networks.lan %}
+          {% if port.configurable %}
         <input type="hidden" name="lan[]" value="{{ port.id }}" id="input_{{ port.id }}">
+          {% endif %}
         {% endfor %}
-        {% for port in backend_data.networks.guest %}
+        {% for port in networks.guest %}
+          {% if port.configurable %}
         <input type="hidden" name="guest[]" value="{{ port.id }}" id="input_{{ port.id }}">
+          {% endif %}
         {% endfor %}
-        {% for port in backend_data.networks.none %}
+        {% for port in networks.none %}
+          {% if port.configurable %}
         <input type="hidden" name="none[]" value="{{ port.id }}" id="input_{{ port.id }}">
+          {% endif %}
         {% endfor %}
         <br>
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
@@ -108,17 +116,13 @@ p.network-button-description {
         $(`#button-description-${port_id}`).hide(200);
         await $(`#button-description-${port_id}`).promise();
 
-        // hide current button
+        // hide current button + control buttons
         $(`#${port_id}`).hide(200);
-        await $(`#${port_id}`).promise();
+        $(".ports-control-button").hide(200);
+        await $(`#${port_id},.ports-control-button`).promise();
 
         $(`#button-description-${port_id}`).detach().appendTo(`#${target_group}`);
         $(`#${port_id}`).detach().appendTo(`#${target_group}`);
-
-        // remove controll buttons
-        $(".ports-control-button").hide(200);
-        await $(".ports-control-button").promise();
-
         $(".ports-control-button").remove();
 
         // show original buttons
@@ -152,7 +156,7 @@ p.network-button-description {
                 $(".ports-control-button").remove();
 
                 // restore original buttons
-                group.find(".ports-button").not(button).show(200);
+                $(".ports-button").not(button).show(200);
                 await $(".ports-button").promise();
 
                 button.removeClass("ports-button-clicked");
