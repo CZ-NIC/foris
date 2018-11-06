@@ -660,14 +660,11 @@ Foris.handleNotificationsCountUpdate = function(new_count) {
   if (new_count > 0) {
     if (old_count > 0) {
       // blink
-      $("#notifications_menu_tag").animate({opacity:0.05}, 200, "linear", function() {
-        $(this).animate({opacity:1}, 200);
-      });
+      $("#notifications_menu_tag").addClass("bounce");
     } else {
       // show
-      $("#notifications_menu_tag").css('opacity', '0');
       $("#notifications_menu_tag").show();
-      $("#notifications_menu_tag").animate({opacity:1}, 200);
+      $("#notifications_menu_tag").addClass("bounce");
     }
   } else {
     if (old_count > 0) {

@@ -620,7 +620,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             return {
                 "show": current_state.updater_is_running,
                 "hint": _("Updater is running"),
-                "text": u"<i class='fas fa-sync'></i>",
+                "text": u"<i class='fas fa-sync rotate'></i>",
             }
         else:
             return ConfigPageMixin.get_menu_tag_static(cls)
