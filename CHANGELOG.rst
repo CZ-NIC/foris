@@ -1,3 +1,10 @@
+98.17 (2018-11-08)
+------------------
+
+* networks: new API + display wifi interfaces
+* maintain: validation of email recp list
+* guest+lan: dhcp range verification
+
 98.16 (2018-10-29)
 ------------------
 
