@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 13:04+0100\n"
+"POT-Creation-Date: 2018-11-08 10:05+0100\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language: el\n"
@@ -1250,6 +1250,32 @@ msgstr "Αποθήκευση"
 msgid "No DHCP clients found."
 msgstr ""
 
+msgid "module"
+msgstr ""
+
+msgid "main"
+msgstr ""
+
+msgid "bus"
+msgstr ""
+
+#, fuzzy
+msgid "state"
+msgstr "Έναρξη DHCP"
+
+msgid "alive"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "link speed"
+msgstr ""
+
+#, python-format
+msgid "Current link speed: %(speed)s Mbit"
+msgstr ""
+
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
 "here will become fully functional after you assign a network interface to"
@@ -1433,10 +1459,6 @@ msgid ""
 " network should be used for devices which you don't fully trust. Note "
 "that you can also limit download/upload speed of the devices connected to"
 " the guest network."
-msgstr ""
-
-#, python-format
-msgid "Current link speed: %(speed)s Mbit"
 msgstr ""
 
 #, fuzzy
