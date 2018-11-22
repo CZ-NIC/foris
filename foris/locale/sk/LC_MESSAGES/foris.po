@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-11-17 22:08+0000\n"
+"PO-Revision-Date: 2018-11-23 22:08+0000\n"
 "Last-Translator: Novak Jiri <jirka.novak@upcmail.cz>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
 "\n"
@@ -1312,9 +1312,8 @@ msgstr "IP adresa"
 msgid "MAC Address"
 msgstr "IP adresa"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "DHCP názov stroja"
+msgstr "Názov stroja"
 
 #, fuzzy
 msgid "Active"
