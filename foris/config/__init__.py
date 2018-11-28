@@ -280,29 +280,22 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
-        # filter backend data
-        filtered = {e: [] for e in self.backend_data["networks"].keys()}
-        non_configurable = []
-        for network_name, network in self.backend_data["networks"].items():
-            for interface in network:
-                if interface["configurable"]:
-                    filtered[network_name].append(interface)
-                else:
-                    non_configurable.append(interface)
+        # place non-configurable intefaces in front of configurable
+        kwargs['networks'] = {}
+        for network_name in self.backend_data["networks"].keys():
+            kwargs['networks'][network_name] = sorted(
+                self.backend_data["networks"][network_name],
+                key=lambda x: (1 if x["configurable"] else 0, x["slot"]), reverse=False
+            )
+            for network in kwargs['networks'][network_name]:
+                if network["type"] == "wifi":
+                    network["slot"] = network["bus"] + network["slot"]
 
-        # try to show wifis
-        kwargs['networks'] = filtered
-        for record in sorted(non_configurable, key=lambda x: x["slot"], reverse=True):
-            if record["type"] == "wifi":
-                lan_record = copy.deepcopy(record)
-                lan_record["id"] += "-lan"
-                lan_record["slot"] = lan_record["bus"] + "-" + lan_record["slot"]
-                filtered["lan"].insert(0, lan_record)
+        # don't display inconfigurable devices in none network (can't be configured anyway)
+        kwargs['networks']['none'] = [
+            e for e in kwargs['networks']['none'] if e ["configurable"]
+        ]
 
-                guest_record = copy.deepcopy(record)
-                guest_record["id"] += "-guest"
-                guest_record["slot"] = guest_record["bus"] + "-" + guest_record["slot"]
-                filtered["guest"].insert(0, guest_record)
 
         return super(NetworksConfigPage, self).render(**kwargs)
 
