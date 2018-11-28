@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-11-23 22:08+0000\n"
+"PO-Revision-Date: 2018-11-29 13:28+0000\n"
 "Last-Translator: Novak Jiri <jirka.novak@upcmail.cz>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
 "\n"
@@ -182,9 +182,8 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#, fuzzy
 msgid "Router"
-msgstr "Krajina"
+msgstr "Smerovač"
 
 msgid "Local Server"
 msgstr ""
@@ -278,34 +277,29 @@ msgstr "Počet upozornení"
 msgid "Old password you entered was not valid."
 msgstr "Vami zadané pôvodné heslo je neplatné."
 
-#, fuzzy
 msgid "System password was successfully saved."
 msgstr "Heslo bolo úspešne uložené."
 
 msgid "Failed to save system password"
 msgstr ""
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Heslo bolo úspešne uložené."
+msgstr "Heslo do Forisa bolo úspešne uložené."
 
 msgid "Failed to save Foris password"
-msgstr ""
+msgstr "Heslo do Forisa sa nepodarilo uložiť"
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Heslo bolo úspešne uložené."
+msgstr "Úspešne nastavené."
 
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Nepodarilo sa nastaviť."
 
-#, fuzzy
 msgid "Network configuration was sucessfully updated."
-msgstr "Nastavenie bolo úspešne uložené."
+msgstr "Nastavenie siete bolo úspešne aktualizované."
 
-#, fuzzy
 msgid "Unable to update your network configuration."
-msgstr "Nepodarilo sa overiť stav pripojenia."
+msgstr "Nepodarilo sa aktualizovať konfiguráciu siete."
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -332,7 +326,9 @@ msgid "Maintenance"
 msgstr "Údržba"
 
 msgid "Testing message was sent, please check your inbox."
-msgstr "Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju schránku."
+msgstr ""
+"Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju mailovú "
+"schránku."
 
 msgid ""
 "Sending of the testing message failed, your configuration is possibly "
@@ -371,20 +367,19 @@ msgstr ""
 "čase nainštalovať alebo odstrániť."
 
 msgid "Updater is running"
-msgstr "Aktualizácie sú spustené"
+msgstr "Aktualizácia prebieha"
 
-#, fuzzy
 msgid "Failed to finish the guide."
-msgstr "Nepodarilo sa odložiť aktualizáciu."
+msgstr "Nepodarilo sa dokončiť sprievodca."
 
 msgid "About"
-msgstr "O routeri"
+msgstr "O zariadení"
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
 
 msgid "The password you entered was not valid."
-msgstr "Vami zadané heslo je neplatné."
+msgstr "Vami zadané heslo nie je platné."
 
 msgid "Backup file"
 msgstr "Súbor so zálohou"
@@ -393,10 +388,10 @@ msgid "DNS"
 msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr "Používať forwardovanie\t"
+msgstr "Používať preposielanie"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Používať DNS servery poskytovateľa pripojenia"
 
 #, fuzzy
 msgid "DNS Forwarder"
