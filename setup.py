@@ -72,12 +72,12 @@ setup(
     author_email="stepan.henek@nic.cz",
     url="https://gitlab.labs.nic.cz/turris/foris/",
     license="GPL-3.0",
-    requires=[
+    install_requires=[
         "bottle",
         "bottle_i18n",
         'pbkdf2',
         'flup',
-        'ubus',
+        "ubus @ git+https://gitlab.labs.nic.cz/turris/python-ubus.git",
     ],
     setup_requires=[
         'babel',
