@@ -1,3 +1,10 @@
+98.18 (2018-11-30)
+------------------
+
+* setup.py: PEP508
+* networks: api updates and cleanups
+* translations updated
+
 98.17 (2018-11-08)
 ------------------
 
