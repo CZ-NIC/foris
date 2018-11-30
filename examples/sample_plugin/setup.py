@@ -55,6 +55,9 @@ setup(
             "static/js/contrib/*",
         ],
     },
+    namespace_packages=[
+        'foris_plugins',
+    ],
     cmdclass={
         "build_py": BuildCmd,  # modify build_py to build the foris files as well
     }
