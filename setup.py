@@ -112,6 +112,9 @@ setup(
             "utils/*.pickle2",
         ]
     },
+    namespace_packages=[
+        'foris_plugins',
+    ],
     cmdclass={
         "build_py": BuildCmd,
     },
