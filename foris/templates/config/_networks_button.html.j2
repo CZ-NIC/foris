@@ -1,12 +1,14 @@
 <p class="network-button-description" id="button-description-{{ port.id }}">
 {% trans %}module{% endtrans %}: {% if port.module_id == 0 %}{% trans %}main{% endtrans %}{% else %}{{ port.module_id }}{% endif %}<br/>
+{% trans %}type{% endtrans %}: {{ port.type }}<br />
 {% trans %}bus{% endtrans %}: {{ port.bus }}<br />
+{% if port.type == "wifi" %}{% trans %}SSID{% endtrans %}: {{ port.ssid }}<br />{% endif %}
 {% trans %}state{% endtrans %}: {% if port.state == "up" %}{% trans %}alive{% endtrans%}{% else %}{% trans %}off{% endtrans %}{% endif %}<br />
 {% if port.state == "up" and port.link_speed > 0 %}
 {% trans %}link speed{% endtrans %}: {{ port.link_speed }} Mbit
 {% endif %}
 </p>
-<button class="button ports-button ports-{{ port_group }}{%if not port.configurable %} grayed{% endif %}" id="{{ port.id }}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %} >
+<button class="button ports-button ports-{{ port_group }}{%if not port.configurable %} grayed{% endif %}" id="{{ port.id }}" {% if port.state == "up" and port.configurable %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %} >
     {% if port.type == "usb" %}
     <i class="fab fa-usb networks-button-icon"></i>
     {% elif port.type == "eth" %}
