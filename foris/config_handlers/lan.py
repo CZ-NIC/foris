@@ -91,13 +91,13 @@ class LanHandler(BaseConfigHandler):
 
         lan_main.add_field(
             Dropdown, name="mode", label=_("LAN mode"), args=[
-                ("managed", _("Managed")),
-                ("unmanaged", _("Unmanaged")),
+                ("managed", _("Router")),
+                ("unmanaged", _("Computer")),
             ],
             hint=_(
-                "Manage mode means that this devices manages the LAN "
+                "Router mode means that this devices manages the LAN "
                 "(acts as a router, can assing IP addresses, ...). "
-                "Unmanaged mode means that this device acts as a client in this network. "
+                "Computer mode means that this device acts as a client in this network. "
                 "It acts in a similar way as WAN, but it has opened ports for configuration "
                 "interface and other services. "
             ),
