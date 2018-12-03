@@ -8,18 +8,19 @@
 </p>
 <button class="button ports-button ports-{{ port_group }}{%if not port.configurable %} grayed{% endif %}" id="{{ port.id }}" {% if port.state == "up" %}title="{% trans speed=port.link_speed%}Current link speed: {{ speed }} Mbit{% endtrans %}"{% endif %} >
     {% if port.type == "usb" %}
-    <i class="fab fa-usb"></i>
+    <i class="fab fa-usb networks-button-icon"></i>
     {% elif port.type == "eth" %}
         {% if port.state == "up" %}
-    <i class="far fa-calendar-check"></i>
+    <i class="far fa-calendar-check networks-button-icon"></i>
         {% else %}
-    <i class="far fa-calendar"></i>
+    <i class="far fa-calendar networks-button-icon"></i>
         {% endif %}
     {% elif port.type == "wwan"%}
-    <i class="fas fa-signal"></i>
+    <i class="fas fa-signal networks-button-icon"></i>
     {% elif port.type == "wifi"%}
-    <i class="fas fa-wifi"></i>
+    <i class="fas fa-wifi networks-button-icon"></i>
     {% endif %}
+    <i class="fas fa-times-circle networks-button-icon-close" style="display:none"></i>
     <br/>
     {% if port.module_id > 0 %}{{ port.module_id }}-{% endif %}{{ port.slot }}
 </button>

@@ -113,6 +113,8 @@ p.network-button-description {
         $(`#${port_id}`).removeClass("ports-button-clicked");
 
         // hide current description
+        $(".networks-button-icon").show();
+        $(".networks-button-icon-close").hide();
         $(`#button-description-${port_id}`).hide(200);
         await $(`#button-description-${port_id}`).promise();
 
@@ -146,6 +148,8 @@ p.network-button-description {
 
             if (button.hasClass("ports-button-clicked")) {
                 // close current description
+                $(".networks-button-icon").show();
+                $(".networks-button-icon-close").hide();
                 $(".network-button-description").hide(200);
                 await $(".network-button-description").promise();
 
@@ -162,6 +166,8 @@ p.network-button-description {
                 button.removeClass("ports-button-clicked");
             } else {
                 // close all description texts
+                $(".networks-button-icon").show();
+                $(".networks-button-icon-close").hide();
                 $(".network-button-description").hide(200);
                 await $(".network-button-description").promise();
 
@@ -204,6 +210,8 @@ p.network-button-description {
                     await $(".ports-control-button").promise();
 
                     // show description
+                    button.find(".networks-button-icon").hide();
+                    button.find(".networks-button-icon-close").show();
                     $(`#button-description-${id}`).show(200);
                     await $(`#button-description-${id}`).promise();
 
@@ -216,6 +224,8 @@ p.network-button-description {
                     await $(".ports-button").promise();
 
                     // show description
+                    button.find(".networks-button-icon").hide();
+                    button.find(".networks-button-icon-close").show();
                     $(`#button-description-${id}`).show(200);
                     await $(`#button-description-${id}`).promise();
                 };
