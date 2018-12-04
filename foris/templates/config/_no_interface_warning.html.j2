@@ -1,5 +1,5 @@
 {% if foris_info.device_customization != "turris" and not foris_info.turris_os_version.startswith("3.") %}
-<div class="message warning">
+<div class="message warning" id="no-interface-warning">
 	{% trans %}This network currently doesn't contain any devices. The changes you make here will become fully functional after you assign a network interface to this network.{% endtrans %}
 </div>
 {% endif %}

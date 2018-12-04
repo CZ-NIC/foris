@@ -721,6 +721,12 @@ Foris.TimeoutPromiss = function(handler, timeout, data) {
     });
 };
 
+Foris.clearNetworkWarnings = function(network_name, data) {
+    if (data.network == network_name && data.action == "ifup") {
+        $("#no-interface-up-warning").hide("slow");
+    }
+}
+
 $(document).ready(function () {
   Foris.initialize();
 

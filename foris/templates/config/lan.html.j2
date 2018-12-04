@@ -3,9 +3,11 @@
 {% block config_base %}
 {% if is_xhr is not defined %}
 <div id="page-config" class="config-page">
-	{% if interface_count < 1 %}
-		{% include "config/_no_interface_warning.html.j2" %}
-	{% endif %}
+  {% if interface_count < 1 %}
+    {% include "config/_no_interface_warning.html.j2" %}
+  {% elif interface_up_count < 1 %}
+    {% include "config/_no_interface_up_warning.html.j2" %}
+  {% endif %}
 {% endif %}
     {% include '_messages.html.j2' %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
@@ -31,5 +33,8 @@
         {% include "config/_dhcp_clients_table.html.j2" %}
     {% endif %}
 </div>
+<script>
+    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("lan", msg.data);
+</script>
 {% endif %}
 {% endblock %}

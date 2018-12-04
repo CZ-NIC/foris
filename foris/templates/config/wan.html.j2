@@ -3,9 +3,21 @@
 {% block config_base %}
 {% if is_xhr is not defined %}
 <div id="page-wan" class="config-page">
-	{% if interface_count < 1 %}
-		{% include "config/_no_interface_warning.html.j2" %}
-	{% endif %}
+  {% if interface_count < 1 %}
+    {% include "config/_no_interface_warning.html.j2" %}
+  {% elif not wan_status.up %}
+    {% if wan_status.proto == "ppoe" %}
+  <div class="message warning" id="no-interface-up-warning">
+    {% trans %}You WAN configuration is probably not correct or your WAN interface hasn't been properly initialized yet.{% endtrans %}
+  </div>
+    {% else %}
+  <div class="message warning" id="no-interface-up-warning">
+    {% trans %}WAN port has no link, your internet connection probably won't work.{% endtrans %}
+  </div>
+    {% endif %}
+  {% elif interface_up_count < 1 %}
+    {% include "config/_no_interface_up_warning.html.j2" %}
+  {% endif %}
 {% endif %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ description|safe }}</p>
@@ -23,5 +35,8 @@
     {% set ipv6_test = form.current_data["wan6_proto"] != "none" %}
     {% include "config/_connection_test.html.j2" %}
 </div>
+<script>
+    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("wan", msg.data);
+</script>
 {% endif %}
 {% endblock %}

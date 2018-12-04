@@ -330,16 +330,8 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
 
     def render(self, **kwargs):
         kwargs['interface_count'] = self.backend_data["interface_count"]
-        if not self.status_data["up"]:
-            if self.status_data["proto"] == "pppoe":
-                messages.warning(_(
-                    "You WAN configuration is probably not correct "
-                    "or your WAN interface hasn't been properly initialized yet."
-                ))
-            else:
-                messages.warning(
-                    _("WAN port has no link, your internet connection probably won't work.")
-                )
+        kwargs['interface_up_count'] = self.backend_data["interface_up_count"]
+        kwargs['wan_status'] = self.status_data
         return super(WanConfigPage, self).render(**kwargs)
 
     def _action_check_connection(self, ipv6=True):
@@ -364,6 +356,7 @@ class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     def render(self, **kwargs):
         kwargs["dhcp_clients"] = self.backend_data["mode_managed"]["dhcp"]["clients"]
         kwargs["interface_count"] = self.backend_data["interface_count"]
+        kwargs["interface_up_count"] = self.backend_data["interface_up_count"]
         for client in kwargs["dhcp_clients"]:
             client["expires"] = datetime.utcfromtimestamp(client["expires"]).strftime(
                 "%Y-%m-%d %H:%M"
@@ -382,6 +375,7 @@ class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     def render(self, **kwargs):
         kwargs["dhcp_clients"] = self.backend_data["dhcp"]["clients"]
         kwargs["interface_count"] = self.backend_data["interface_count"]
+        kwargs["interface_up_count"] = self.backend_data["interface_up_count"]
         for client in kwargs["dhcp_clients"]:
             client["expires"] = datetime.utcfromtimestamp(client["expires"]).strftime(
                 "%Y-%m-%d %H:%M"

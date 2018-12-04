@@ -5,6 +5,8 @@
 <div id="page-config" class="config-page">
 	{% if interface_count < 1 %}
 		{% include "config/_no_interface_warning.html.j2" %}
+	{% elif interface_up_count < 1 %}
+		{% include "config/_no_interface_up_warning.html.j2" %}
 	{% endif %}
 {% endif %}
     {% include '_messages.html.j2' %}
@@ -27,5 +29,8 @@
     {% if form.current_data["guest_dhcp_enabled"] %}
         {% include "config/_dhcp_clients_table.html.j2" %}
     {% endif %}
+<script>
+    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("guest_turris", msg.data);
+</script>
 {% endif %}
 {% endblock %}
