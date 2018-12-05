@@ -1,3 +1,10 @@
+98.19 (2018-12-05)
+------------------
+
+* lan,wan,guest: interface up/down handling
+* networks: ssid for wifis + icon change on click
+* lan: modes renamed
+
 98.18 (2018-11-30)
 ------------------
 
