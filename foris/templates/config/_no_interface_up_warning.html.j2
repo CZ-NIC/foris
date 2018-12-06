@@ -1,0 +1,5 @@
+{% if foris_info.device_customization != "turris" and not foris_info.turris_os_version.startswith("3.") %}
+<div class="message warning" id="no-interface-up-warning">
+  {% trans %}All network interfaces of this network are currently down.{% endtrans %}
+</div>
+{% endif %}
