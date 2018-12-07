@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-11-09 12:08+0000\n"
+"PO-Revision-Date: 2018-12-08 06:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.3-dev\n"
+"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -1752,8 +1752,8 @@ msgstr ""
 "I oppsettet du angav er det <strong>ikke mulig å få tilgang til "
 "administrasjonsgrensesnittet</strong> for din enhet. Dette betyr at den "
 "eneste måten å sette opp din enhet på er via seriell kabel, eller du må "
-"utføre en fabrikkgjenoppretting. <br/><br/> <p><strong>Er dette virkelig "
-"det du ønsker?</strong>"
+"utføre en fabrikkgjenoppretting. <br/><br/> <p><strong>Er dette virkelig det "
+"du ønsker?</strong></p>"
 
 #, fuzzy
 msgid ""
@@ -2170,9 +2170,9 @@ msgstr "Dette er ikke en gyldig MAC-adresse."
 msgid "You have been logged out due to longer inactivity."
 msgstr "Du har blitt utlogget som følge av inaktivitet."
 
-#, python-format
+#, fuzzy, python-format
 msgid "%Y/%m/%d %H:%M:%S"
-msgstr "%d.&nbsp;%m.&nbsp;%Y %H:%M:%S"
+msgstr "%Y/%m/%d %H:%M:%S"
 
 msgid "News"
 msgstr "Nyheter"
