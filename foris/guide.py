@@ -177,7 +177,7 @@ class MessageBridge(MessagesDefault):
             "To act as a local server, there's no need to manage LAN "
             "(if you still want to manage it reset the guide and choose the Router workflow). "
             "You probably want to act as a client here thus select "
-            "<strong>Unmanaged</strong> mode here. "
+            "<strong>Computer</strong> mode here. "
         ),
         _(
             "If you select the <strong>static</strong> configuration be sure that the IP "
