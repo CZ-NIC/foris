@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-12-18 13:09+0000\n"
+"PO-Revision-Date: 2018-12-21 14:14+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
 "\n"
@@ -35,10 +35,10 @@ msgid "Your password seems to be set. You may proceed to the next step."
 msgstr "Twoje hasło zostało ustawione. Możesz przejść do następnego kroku."
 
 msgid "Choose one of the possible setup workflows."
-msgstr "Wybierz jeden z możliwych procesów konfiguracji."
+msgstr "Wybierz jedną z możliwych konfiguracji trybu pracy."
 
 msgid "The workflow was set. You may proceed to next step."
-msgstr "Proces konfiguracji został ustawiony. Możesz przejść do następnego kroku."
+msgstr "Tryb pracy został ustawiony. Możesz przejść do następnego kroku."
 
 msgid "Here you need to decide which interfaces belongs to which network."
 msgstr "Tutaj musisz zdecydować, które interfejsy należą do której sieci."
@@ -204,7 +204,6 @@ msgstr "Stare"
 msgid "Minimal"
 msgstr "Minimalne"
 
-#, fuzzy
 msgid "Router"
 msgstr "Router"
 
@@ -309,9 +308,8 @@ msgstr "Liczba powiadomień"
 msgid "Old password you entered was not valid."
 msgstr "Stare hasło, które wpisałeś, było nieprawidłowe."
 
-#, fuzzy
 msgid "System password was successfully saved."
-msgstr "Hasło zostało pomyślnie zapisane."
+msgstr "Hasło do systemu zostało pomyślnie zapisane."
 
 msgid "Failed to save system password"
 msgstr "Nie udało się zapisać hasła systemowego"
@@ -322,12 +320,11 @@ msgstr "Hasło interfejsu Foris zostało pomyślnie zapisane."
 msgid "Failed to save Foris password"
 msgstr "Nie udało się zapisać hasła interfejsu Foris"
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Hasło zostało pomyślnie zapisane."
+msgstr "Wybrany tryb pracy został pomyślnie ustawiony."
 
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Nie udało się ustawić trybu pracy."
 
 msgid "Network configuration was sucessfully updated."
 msgstr "Konfiguracja sieci została zaktualizowana."
@@ -459,13 +456,17 @@ msgid ""
 " fit into <strong>Guest network netmask</strong>!"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
 "separated  from your ordinary LAN. Devices connected to this network are "
 "allowed to access the internet, but are not allowed to access the "
 "configuration interface of the this device nor the devices in LAN."
 msgstr ""
+"Sieć gościnna służy do ustawienia <a href='%(url)s'>gościnnej sieci Wi-Fi</a>"
+". Jest odseparowana od zwykłej sieci LAN. Urządzenia podłączone do tej sieci "
+"mają dostęp do Internetu, ale nie mają dostępu do interfejsu "
+"konfiguracyjnego tego urządzenia ani urządzeń w sieci LAN."
 
 msgid "Enable guest network"
 msgstr "Włącz sieć gościnną"
@@ -671,6 +672,10 @@ msgid ""
 "configuration options can be managed either through the <a "
 "href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
 msgstr ""
+"Aby uzyskać dostęp do zaawansowanych opcji konfiguracji, które nie są "
+"dostępne tutaj, musisz ustawić hasło użytkownika root. Zaawansowanymi "
+"opcjami konfiguracji można zarządzać za pomocą <a href=\"//%(host)s/%(path)"
+"s\">interfejsu LuCI</a> lub przez SSH."
 
 msgid "Don't set this password"
 msgstr "Nie ustawiaj tego hasła"
@@ -896,6 +901,7 @@ msgstr "Godzina ponownego uruchomienia"
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Czas automatycznego ponownego uruchomienia w formacie HH:MM."
 
+#, fuzzy
 msgid "Guide workflow"
 msgstr "Przewodnik trybu pracy"
 
@@ -1227,10 +1233,10 @@ msgid ""
 "password. You can then set up your mobile devices, using the QR code "
 "available within the form."
 msgstr ""
-"Jeśli chcesz używać routera jako punktu dostępu Wi-Fi, włącz Wi-Fi tutaj "
-"i wprowadź identyfikator SSID (nazwę punktu dostępu) i odpowiednie hasło."
-" Następnie możesz skonfigurować urządzenia mobilne, korzystając z kodu QR"
-" dostępnego w formularzu."
+"Jeśli chcesz używać routera jako punktu dostępu Wi-Fi, włącz tutaj Wi-Fi i "
+"wprowadź identyfikator SSID (nazwę punktu dostępu) i odpowiednie hasło. "
+"Następnie możesz skonfigurować urządzenia mobilne, korzystając z kodu QR "
+"dostępnego w formularzu."
 
 msgid "Wi-Fi settings"
 msgstr "Ustawienia sieci Wi-Fi"
@@ -1453,7 +1459,7 @@ msgstr ""
 "Poniższe ustawienie określa zachowanie rozwiązywania nazw DNS. Zwykle lepiej "
 "jest użyć serwera DNS dostawcy internetu (ISP) który działa poprawnie. Jeśli "
 "to nie zadziała z jakiegoś powodu, konieczne jest bezpośrednie rozwiązanie "
-"nazw bez przekazywania."
+"nazw bez przekierowania."
 
 msgid ""
 "In rare cases ISP's have improperly configured network which interferes "
@@ -1917,25 +1923,26 @@ msgstr ""
 "atakami na infrastrukturę DNS. Zdecydowanie zalecamy włączenie sprawdzania "
 "poprawności DNSSEC, chyba że wiesz, że połączysz urządzenie z siecią, w "
 "której DNSSEC jest uszkodzony.<br/><br/>Czy nadal chcesz kontynuować i "
-"pozostać bez ochrony?"
+"pozostać niechropniony?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Czy na pewno chcesz zrestartować router?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
-msgstr ""
+msgstr "Pozostałe powiadomienia (%(unread_left)s) zostaną odrzucone."
 
 msgid ""
 "There are some unsaved changes in the notifications settings.<br/>Do you "
 "want to discard them and test the notifications with the old settings?"
 msgstr ""
 "W ustawieniach powiadomień są niezapisane zmiany.<br/>Czy chcesz je odrzucić "
-"i przetestować powiadomienia o starych ustawieniach?"
+"i przetestować powiadomienia na poprzednich ustawieniach?"
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
 msgstr ""
+"Twoje urządzenie zostanie ponownie uruchomione w ciągu %(time_left)s sekund."
 
 #, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
