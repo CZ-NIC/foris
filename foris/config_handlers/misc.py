@@ -258,7 +258,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
         time_section = main_section.add_section(
             name="time", title=_("Time settings"),
             description=_(
-                "Time should be up-to-date otherise DNS and other services might not work properly."
+                "Time should be up-to-date otherwise DNS and other services might not work properly."
             )
         )
         time_section.add_field(
