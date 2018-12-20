@@ -32,18 +32,25 @@ class ExceptionInBackend(Exception):
 class Backend(object):
     DEFAULT_TIMEOUT = 30000  # in ms
 
-    def __init__(self, name, path):
+    def __init__(self, name, **kwargs):
         self.name = name
-        self.path = path
 
         if name == "ubus":
             from foris_client.buses.ubus import UbusSender
-            self._instance = UbusSender(path, default_timeout=self.DEFAULT_TIMEOUT)
+            self.path = kwargs["path"]
+            self._instance = UbusSender(kwargs["path"], default_timeout=self.DEFAULT_TIMEOUT)
 
         elif name == "unix-socket":
             from foris_client.buses.unix_socket import UnixSocketSender
+            self.path = kwargs["path"]
             self._instance = UnixSocketSender(
-                path, default_timeout=self.DEFAULT_TIMEOUT)
+                kwargs["path"], default_timeout=self.DEFAULT_TIMEOUT)
+
+        elif name == "mqtt":
+            from foris_client.buses.mqtt import MqttSender
+            self.host = kwargs["host"]
+            self.port = kwargs["port"]
+            self._instance = MqttSender(kwargs["host"], kwargs["port"])
 
     def __repr__(self):
         return "%s('%s')" % (type(self._instance).__name__, self.path)

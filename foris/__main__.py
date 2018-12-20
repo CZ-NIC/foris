@@ -34,10 +34,17 @@ def get_arg_parser():
         help="sets which app should be started (config/...)",
     )
     group.add_argument(
-        "-b", "--backend", choices=["ubus", "unix-socket"], default="ubus", help="backend type"
+        "-b", "--message-bus", choices=["ubus", "unix-socket", "mqtt"], default="ubus",
+        help="message bus type"
     )
     group.add_argument(
-        "--backend-socket", default="/var/run/ubus.sock", help="backend socket path"
+        "--mqtt-port", default=1883, help="mqtt port (default 1883)"
+    )
+    group.add_argument(
+        "--mqtt-host", default="localhost", help="mqtt host (default 'localhost')"
+    )
+    group.add_argument(
+        "--bus-socket", default="/var/run/ubus.sock", help="message bus socket path"
     )
     group.add_argument(
         "--ws-port", default=0, help="websocket server port - insecure (0=autodetect)", type=int
@@ -69,7 +76,12 @@ def main():
     logger.debug("Version %s" % __version__)
 
     # set backend
-    current_state.set_backend(Backend(args.backend, args.backend_socket))
+    if args.message_bus in ["ubus", "unix-socket"]:
+        current_state.set_backend(Backend(args.message_bus, path=args.bus_socket))
+    elif args.message_bus == "mqtt":
+        current_state.set_backend(
+            Backend(args.message_bus, host=args.mqtt_host, port=args.mqtt_port))
+
     # update websocket
     current_state.set_websocket(args.ws_port, args.ws_path, args.wss_port, args.wss_path)
     # set assets path

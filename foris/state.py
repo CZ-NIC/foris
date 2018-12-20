@@ -41,7 +41,14 @@ class ForisState(object):
         self.app = app
 
     def set_backend(self, backend):
-        logger.debug("setting backend to '%s' (path %s)." % (backend.name, backend.path))
+        if backend.name in ["ubus", "unix-socket"]:
+            logger.debug("setting backend to '%s' (path %s)." % (backend.name, backend.path))
+        elif backend.name == "mqtt":
+            logger.debug(
+                "setting backend to '%s' (host %s:%d)." % (
+                    backend.name, backend.host, backend.port
+                )
+            )
         self.backend = backend
 
     def set_websocket(self, ws_port, ws_path, wss_port, wss_path):

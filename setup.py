@@ -78,6 +78,7 @@ setup(
         'pbkdf2',
         'flup',
         "ubus @ git+https://gitlab.labs.nic.cz/turris/python-ubus.git",
+        "paho-mqtt",
     ],
     setup_requires=[
         'babel',
