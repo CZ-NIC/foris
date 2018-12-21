@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-11-01 14:09+0000\n"
+"PO-Revision-Date: 2018-12-21 14:14+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
-"Language-Team: Polish "
-"<https://hosted.weblate.org/projects/turris/foris/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -34,10 +35,10 @@ msgid "Your password seems to be set. You may proceed to the next step."
 msgstr "Twoje hasło zostało ustawione. Możesz przejść do następnego kroku."
 
 msgid "Choose one of the possible setup workflows."
-msgstr "Wybierz jeden z możliwych procesów konfiguracji."
+msgstr "Wybierz jedną z możliwych konfiguracji trybu pracy."
 
 msgid "The workflow was set. You may proceed to next step."
-msgstr "Proces konfiguracji został ustawiony. Możesz przejść do następnego kroku."
+msgstr "Tryb pracy został ustawiony. Możesz przejść do następnego kroku."
 
 msgid "Here you need to decide which interfaces belongs to which network."
 msgstr "Tutaj musisz zdecydować, które interfejsy należą do której sieci."
@@ -140,6 +141,10 @@ msgid ""
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration iterface when the new settings are applied."
 msgstr ""
+"Jeśli wybierzesz konfigurację <strong>statyczną</strong>, upewnij się, że "
+"adresy IP zostały wprowadzone poprawnie. W przeciwnym razie nie będziesz w "
+"stanie uzyskać dostępu do tego interfejsu konfiguracji, gdy nowe ustawienia "
+"zostaną zastosowane."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -147,11 +152,17 @@ msgid ""
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Jeśli wybierzesz konfigurację przez <strong>DHCP</strong>, prawdopodobnie "
+"będziesz musiał uzyskać nowy adres IP dla tego urządzenia. Możesz go uzyskać "
+"z serwera DHCP zarządzającego twoją siecią LAN. Następnie musisz połączyć "
+"się z nowym adresem IP, aby kontynuować korzystanie z przewodnika."
 
 msgid ""
 "Note that either way you might need to re-plug your ethernet cabels after"
 " you update the settings here."
 msgstr ""
+"Zwróć uwagę, że w obu przypadkach może być konieczne ponowne podłączenie "
+"kabli ethernet po zaktualizowaniu ustawień."
 
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
@@ -159,54 +170,71 @@ msgid ""
 " your device is able to access the internet (you can use the connection "
 "test below)."
 msgstr ""
+"Sprawdź, czy podane ustawienia działają poprawnie. Oznacza to, że będziesz "
+"mógł uzyskać dostęp do interfejsu konfiguracyjnego urządzenia, a Twoje "
+"urządzenie będzie mogło uzyskać dostęp do Internetu (możesz użyć poniższego "
+"testu połączenia)."
 
 msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Konfiguracja urządzenia została zakończona. Teraz urządzenie powinno działać "
+"jako serwer w sieci lokalnej."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
 "some further configuration updates to fit the device to your needs."
 msgstr ""
+"Minimalna konfiguracja urządzenia została zakończona. Zauważ, że "
+"prawdopodobnie będziesz musiał wykonać dalszą konfigurację, aby dopasować "
+"ustawienia urządzenia do swoich potrzeb."
 
 msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"Konfiguracja urządzenia została zakończona. Teraz Twoje urządzenie powinno "
+"działać jako router i kierować ruch sieciowy między sieciami LAN, WAN i "
+"siecią gościnną."
 
 msgid "Old"
-msgstr ""
+msgstr "Stare"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimalne"
 
-#, fuzzy
 msgid "Router"
-msgstr "Kraj"
+msgstr "Router"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Serwer lokalny"
 
 msgid "Unset"
-msgstr ""
+msgstr "Niepoprawne"
 
 msgid "The workflow wasn't set yet."
-msgstr ""
+msgstr "Tryb pracy nie został jeszcze ustawiony."
 
 msgid "Workflow for older devices and older turris OS versions (before 4.0)."
 msgstr ""
+"Tryb pracy dla starszych urządzeń i starszych wersji systemu Turris (przed "
+"4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web gui. "
 msgstr ""
 
+#, fuzzy
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Po zakończeniu konfiguracji tego trybu pracy urządzenie będzie mogło działać "
+"jako w pełni funkcjonalny router. Przewodnik zakłada, że chcesz mieć mniej "
+"lub bardziej standardową konfigurację sieci."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -214,6 +242,9 @@ msgid ""
 "other devices within your local network (e.g. act as a network attached "
 "storage)."
 msgstr ""
+"Ten tryb pracy pomoże skonfigurować urządzenie do działania jako serwer "
+"lokalny. Oznacza to, że urządzenie będzie świadczyć usługi dla innych "
+"urządzeń w sieci lokalnej (np. działać jako NAS)."
 
 msgid "This field is required."
 msgstr "To pole jest wymagane."
@@ -277,34 +308,29 @@ msgstr "Liczba powiadomień"
 msgid "Old password you entered was not valid."
 msgstr "Stare hasło, które wpisałeś, było nieprawidłowe."
 
-#, fuzzy
 msgid "System password was successfully saved."
-msgstr "Hasło zostało pomyślnie zapisane."
+msgstr "Hasło do systemu zostało pomyślnie zapisane."
 
 msgid "Failed to save system password"
-msgstr ""
+msgstr "Nie udało się zapisać hasła systemowego"
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Hasło zostało pomyślnie zapisane."
+msgstr "Hasło interfejsu Foris zostało pomyślnie zapisane."
 
 msgid "Failed to save Foris password"
-msgstr ""
+msgstr "Nie udało się zapisać hasła interfejsu Foris"
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Hasło zostało pomyślnie zapisane."
+msgstr "Wybrany tryb pracy został pomyślnie ustawiony."
 
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Nie udało się ustawić trybu pracy."
 
-#, fuzzy
 msgid "Network configuration was sucessfully updated."
-msgstr "Konfiguracja została pomyślnie zapisana."
+msgstr "Konfiguracja sieci została zaktualizowana."
 
-#, fuzzy
 msgid "Unable to update your network configuration."
-msgstr "Nie można zweryfikować połączenia sieciowego."
+msgstr "Nie można zaktualizować ustawień sieciowych."
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -374,7 +400,7 @@ msgstr "Updater jest uruchomiony"
 
 #, fuzzy
 msgid "Failed to finish the guide."
-msgstr "Nie udało się odłożyć aktualizacji."
+msgstr "Nie udało się ukończyć przewodnika."
 
 msgid "About"
 msgstr "O systemie"
@@ -395,11 +421,11 @@ msgid "Use forwarding"
 msgstr "Użyj przekierowania (forwarding)"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Użyj serwerów DNS dostarczanych przez ISP"
 
 #, fuzzy
 msgid "DNS Forwarder"
-msgstr "Użyj przekierowania (forwarding)"
+msgstr "DNS Forwarder"
 
 msgid "Disable DNSSEC"
 msgstr "Wyłącz DNSSEC"
@@ -415,13 +441,12 @@ msgstr "Umożliwia umieszczanie nazw klientów DHCP wśród lokalnych rekordów 
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domena dla klientów DHCP w systemie DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Ta domena będzie używana jako TLD. Na przykład. Wynik dla klienta "
-"\"android-123\" i domeny \"my.lan\" będzie \"android-123.my.lan\"."
+"Ta domena będzie używana jako TLD. Na przykład dla nazwy klienta \"android-"
+"123\" i domeny \"my.lan\" wynikiem będzie \"android-123.my.lan\"."
 
 msgid "Guest network"
 msgstr "Sieć gościnna"
@@ -431,13 +456,17 @@ msgid ""
 " fit into <strong>Guest network netmask</strong>!"
 msgstr ""
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
 "separated  from your ordinary LAN. Devices connected to this network are "
 "allowed to access the internet, but are not allowed to access the "
 "configuration interface of the this device nor the devices in LAN."
 msgstr ""
+"Sieć gościnna służy do ustawienia <a href='%(url)s'>gościnnej sieci Wi-Fi</a>"
+". Jest odseparowana od zwykłej sieci LAN. Urządzenia podłączone do tej sieci "
+"mają dostęp do Internetu, ale nie mają dostępu do interfejsu "
+"konfiguracyjnego tego urządzenia ani urządzeń w sieci LAN."
 
 msgid "Enable guest network"
 msgstr "Włącz sieć gościnną"
@@ -475,7 +504,7 @@ msgid "DHCP max leases"
 msgstr "Liczba przydzielonych adresów"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Czas dzierżawy (godziny)"
 
 msgid "Guest Lan QoS"
 msgstr "Sieć gościnna - QoS"
@@ -531,21 +560,27 @@ msgstr ""
 "trzeba <strong>odświeżyć stronę</strong> w przeglądarce."
 
 msgid "LAN mode"
-msgstr ""
+msgstr "Tryb LAN"
 
 #, fuzzy
 msgid "Managed"
-msgstr "Język"
+msgstr "Zarządzane"
 
+#, fuzzy
 msgid "Unmanaged"
-msgstr ""
+msgstr "Niezarządzane"
 
+#, fuzzy
 msgid ""
 "Manage mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Unmanaged mode means that this device acts"
 " as a client in this network. It acts in a similar way as WAN, but it has"
 " opened ports for configuration interface and other services. "
 msgstr ""
+"Tryb zarządzania oznacza, że to urządzenie zarządza siecią LAN (działa jak "
+"router, może przydzielać adresy IP, ...). Tryb niezarządzany oznacza, że to "
+"urządzenie działa jako klient. Działa on podobnie jak WAN, ale otwiera porty "
+"dla interfejsu konfiguracyjnego i innych usług. "
 
 msgid "Router IP address"
 msgstr "Adres IP routera"
@@ -566,14 +601,13 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statyczny adres IP (ręczna konfiguracja)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Nie podłączaj tego urządzenia do sieci LAN"
 
 msgid "IPv4 protocol"
 msgstr "Protokół IPv4"
 
-#, fuzzy
 msgid "IPv4 address"
-msgstr "Adres IPv6"
+msgstr "Adres IPv4"
 
 msgid "Network mask"
 msgstr "Maska podsieci"
@@ -603,9 +637,8 @@ msgstr "Nazwa hosta, która zostanie przekazana do serwera DHCP."
 msgid "Password"
 msgstr "Hasło"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Aktualne hasło"
+msgstr "Aktualne hasło interfejsu Foris"
 
 msgid "New password"
 msgstr "Nowe hasło"
@@ -617,7 +650,7 @@ msgid "Password (repeat)"
 msgstr "Hasło (powtórzenie)"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "dla interfejsu Foris"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -629,9 +662,8 @@ msgstr ""
 msgid "Passwords are not equal."
 msgstr "Hasła nie są takie same."
 
-#, fuzzy
 msgid "for Advanced administration"
-msgstr "Zaawansowana administracja"
+msgstr "dla zaawansowanej administracji (LuCi)"
 
 #, python-format
 msgid ""
@@ -640,17 +672,19 @@ msgid ""
 "configuration options can be managed either through the <a "
 "href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
 msgstr ""
+"Aby uzyskać dostęp do zaawansowanych opcji konfiguracji, które nie są "
+"dostępne tutaj, musisz ustawić hasło użytkownika root. Zaawansowanymi "
+"opcjami konfiguracji można zarządzać za pomocą <a href=\"//%(host)s/%(path)"
+"s\">interfejsu LuCI</a> lub przez SSH."
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Nie ustawiaj tego hasła"
 
-#, fuzzy
 msgid "Use Foris password"
-msgstr "Hasło sieci"
+msgstr "Użyj hasła interfejsu Foris"
 
-#, fuzzy
 msgid "Use other password"
-msgstr "Hasło sieci"
+msgstr "Użyj innego hasła"
 
 msgid "Advanced administration"
 msgstr "Zaawansowana administracja"
@@ -676,6 +710,9 @@ msgid ""
 "device's time is delayed, the procedure of SSL certificate verification "
 "might not work correctly."
 msgstr ""
+"Ważne jest, aby urządzenie miało ustawiony prawidłowy czas. Jeśli czas "
+"Twojego urządzenia jest opóźniony, procedura weryfikacji certyfikatu SSL "
+"może nie działać poprawnie."
 
 msgid "Region settings"
 msgstr "Ustawienia regionu"
@@ -725,18 +762,21 @@ msgstr "Czas"
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Czas w formacie YYYY-MM-DD HH:MM:SS."
 
+#, fuzzy
 msgid "Guide Finished"
-msgstr ""
+msgstr "Przewodnik zakończony"
 
 msgid ""
 "Congratulations you've successfully reached the end of this guide. Once "
 "you leave this guide you'll be granted access to the full configuration "
 "interface of this device."
 msgstr ""
+"Gratulacje, udało Ci się dotrzeć do końca tego przewodnika. Po opuszczeniu "
+"tego przewodnika otrzymasz pełny dostęp do interfejsu konfiguracyjnego tego "
+"urządzenia."
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Maska sieci"
+msgstr "Interfejsy sieciowe"
 
 msgid "Notifications settings"
 msgstr "Ustawienia powiadomień"
@@ -861,13 +901,13 @@ msgstr "Godzina ponownego uruchomienia"
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Czas automatycznego ponownego uruchomienia w formacie HH:MM."
 
+#, fuzzy
 msgid "Guide workflow"
-msgstr ""
+msgstr "Przewodnik trybu pracy"
 
 msgid "Updater"
 msgstr "Updater"
 
-#, fuzzy
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart "
 "from the standard installation, you can optionally select bundles of "
@@ -879,11 +919,11 @@ msgid ""
 msgstr ""
 "Updater to usługa, która aktualizuje całe oprogramowanie Turris OS. Poza "
 "standardową instalacją możesz opcjonalnie wybrać z listy dodatkowe "
-"oprogramowanie, które ma zostać zainstalowane na routerze. To "
-"oprogramowanie można wybrać z poniższej listy. Należy pamiętać, że "
-"Updater obsługuje tylko oprogramowanie będące częścią Turris OS lub które"
-" zostało zainstalowane z listy pakietów. Oprogramowanie, które zostało "
-"zainstalowane ręcznie lub przy użyciu opkg, nie jest aktualizowane."
+"oprogramowanie, które ma zostać zainstalowane na routerze. To oprogramowanie "
+"można wybrać z poniższej listy. Należy pamiętać, że Updater obsługuje tylko "
+"oprogramowanie będące częścią Turris OS lub które zostało zainstalowane z "
+"listy pakietów. Oprogramowanie, które zostało zainstalowane ręcznie lub przy "
+"użyciu opkg, nie jest aktualizowane."
 
 msgid "I agree"
 msgstr "Zgadzam się"
@@ -1168,7 +1208,7 @@ msgstr "Ustawienia sieci gościnnej Wi-Fi."
 msgid "Enable guest Wi-Fi"
 msgstr "Włącz sieć gościnną Wi-Fi"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1176,11 +1216,10 @@ msgid ""
 "router. Parameters of the guest network can be set in <a "
 "href='%(url)s'>the Guest network tab</a>. "
 msgstr ""
-"Umożliwia stworzenie sieci Wi-Fi dla gości, która jest odseparowana od "
-"sieci LAN. Urządzenia podłączone do tej sieci mają dostęp do Internetu, "
-"ale nie mają dostępu do innych urządzeń i interfejsu konfiguracji "
-"routera. Parametry sieci gościnnej można ustawić w <a "
-"href='%(url)s'>karcie LAN</a>. "
+"Umożliwia stworzenie sieci Wi-Fi dla gości, która jest odseparowana od sieci "
+"LAN. Urządzenia podłączone do tej sieci mają dostęp do Internetu, ale nie "
+"mają dostępu do innych urządzeń i interfejsu konfiguracji routera. Parametry "
+"sieci gościnnej można ustawić w <a href='%(url)s'>karcie Sieć gościnna</a>. "
 
 msgid "SSID for guests"
 msgstr "SSID sieci gościnnej"
@@ -1194,10 +1233,10 @@ msgid ""
 "password. You can then set up your mobile devices, using the QR code "
 "available within the form."
 msgstr ""
-"Jeśli chcesz używać routera jako punktu dostępu Wi-Fi, włącz Wi-Fi tutaj "
-"i wprowadź identyfikator SSID (nazwę punktu dostępu) i odpowiednie hasło."
-" Następnie możesz skonfigurować urządzenia mobilne, korzystając z kodu QR"
-" dostępnego w formularzu."
+"Jeśli chcesz używać routera jako punktu dostępu Wi-Fi, włącz tutaj Wi-Fi i "
+"wprowadź identyfikator SSID (nazwę punktu dostępu) i odpowiednie hasło. "
+"Następnie możesz skonfigurować urządzenia mobilne, korzystając z kodu QR "
+"dostępnego w formularzu."
 
 msgid "Wi-Fi settings"
 msgstr "Ustawienia sieci Wi-Fi"
@@ -1297,55 +1336,51 @@ msgid "Test connection"
 msgstr "Test łączności"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "Klienci DHCP"
 
 msgid "Expires"
-msgstr ""
+msgstr "Wygasa"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "Adres IP"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "Adres IP"
+msgstr "Adres MAC"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Nazwa hosta DHCP"
+msgstr "Nazwa hosta"
 
-#, fuzzy
 msgid "Active"
-msgstr "Zapisz"
+msgstr "Aktywny"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Nie znaleziono klientów DHCP."
 
 msgid "module"
-msgstr ""
+msgstr "moduł"
 
+#, fuzzy
 msgid "main"
-msgstr ""
+msgstr "główny"
 
 msgid "bus"
 msgstr ""
 
-#, fuzzy
 msgid "state"
-msgstr "Nazwa hosta DHCP"
+msgstr "stan"
 
 msgid "alive"
 msgstr ""
 
 msgid "off"
-msgstr ""
+msgstr "wyłączony"
 
 msgid "link speed"
-msgstr ""
+msgstr "prędkość łącza"
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
-msgstr ""
+msgstr "Bieżąca prędkość łącza: %(speed)s Mbit"
 
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
@@ -1368,7 +1403,7 @@ msgid "QR code"
 msgstr "Kod QR"
 
 msgid "Show QR code"
-msgstr ""
+msgstr "Pokaż kod QR"
 
 msgid "Device"
 msgstr "Urządzenie"
@@ -1389,42 +1424,42 @@ msgid "Menu"
 msgstr "Menu"
 
 msgid "foris guide"
-msgstr ""
+msgstr "przewodnik foris"
 
+#, fuzzy
 msgid "Reset Guided Mode"
-msgstr ""
+msgstr "Zresetuj tryb przewodnika"
 
+#, fuzzy
 msgid "Leave Guided Mode"
-msgstr ""
+msgstr "Opuść tryb przewodnika"
 
 msgid "Next step"
-msgstr ""
+msgstr "Następny krok"
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr "Aby router działał poprawnie, musi zostać zrestartowany."
 
-#, fuzzy
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is "
 "capable of working independently or it can forward your DNS queries your "
 "internet service provider's DNS resolver."
 msgstr ""
-"Router Turris używa własnego resolvera do rozwiązywania nazw DNS z "
-"obsługą DNSSEC. Jest w stanie pracować samodzielnie lub może przekazywać "
+"Router Turris używa własnego resolvera do rozwiązywania nazw DNS z obsługą "
+"DNSSEC. Jest w stanie pracować samodzielnie lub może przekazywać "
 "(forwardować) zapytania DNS za pośrednictwem serwera DNS dostawcy usług "
 "internetowych."
 
-#, fuzzy
 msgid ""
 "The following setting determines the behavior of the DNS resolver. "
 "Usually, it is better to use the ISP's resolver in networks where it "
 "works properly. If it does not work for some reason, it is necessary to "
 "use direct resolving without forwarding."
 msgstr ""
-"Poniższe ustawienie określa zachowanie rozwiązywania nazw DNS. Zwykle "
-"lepiej jest użyć serwera DNS dostawcy internetu (ISP) który działa "
-"poprawnie. Jeśli to nie zadziała z jakiegoś powodu, konieczne jest "
-"bezpośrednie rozwiązanie bez przekazywania."
+"Poniższe ustawienie określa zachowanie rozwiązywania nazw DNS. Zwykle lepiej "
+"jest użyć serwera DNS dostawcy internetu (ISP) który działa poprawnie. Jeśli "
+"to nie zadziała z jakiegoś powodu, konieczne jest bezpośrednie rozwiązanie "
+"nazw bez przekierowania."
 
 msgid ""
 "In rare cases ISP's have improperly configured network which interferes "
@@ -1468,7 +1503,7 @@ msgid "DNSSEC"
 msgstr "DNSSEC"
 
 msgid "Continue"
-msgstr ""
+msgstr "Kontynuuj"
 
 msgid "Notifications and automatic restarts"
 msgstr "Powiadomienia i automatyczne restarty"
@@ -1587,18 +1622,16 @@ msgid "Guest Network"
 msgstr "Sieć gościnna"
 
 msgid "Unassigned"
-msgstr ""
+msgstr "Nieprzypisany"
 
-#, fuzzy
 msgid "WAN network"
-msgstr "Sieć gościnna"
+msgstr "Sieć WAN"
 
-#, fuzzy
 msgid "LAN network"
-msgstr "Sieć gościnna"
+msgstr "Sieć LAN"
 
 msgid "Unassign"
-msgstr ""
+msgstr "Usuń przypisanie"
 
 msgid ""
 "In the setup you provided it is <strong>not possible to access the "
@@ -1626,17 +1659,18 @@ msgid ""
 "basic configuration of your device."
 msgstr ""
 
+#, fuzzy
 msgid "recommended"
-msgstr ""
+msgstr "zalecana"
 
 msgid "Use this workflow"
-msgstr ""
+msgstr "Użyj tego trybu pracy"
 
 msgid "Failed to query ntp servers."
 msgstr "Nie można wysłać zapytania do serwerów ntp."
 
 msgid "NTP servers:"
-msgstr ""
+msgstr "Serwery NTP:"
 
 msgid "Update time"
 msgstr "Ostatnia aktualizacja"
@@ -1690,9 +1724,8 @@ msgid ""
 "    "
 msgstr "Zatwierdź aktualizację od %(when)s"
 
-#, fuzzy
 msgid "List of changes"
-msgstr "Odrzuć zmiany"
+msgstr "Lista zmian"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Należy pamiętać, że po aktualizacji nastąpi ponowne uruchomienie."
@@ -1864,7 +1897,6 @@ msgstr ""
 " notatkę powyżej, aby uzyskać więcej informacji na temat zmiany adresu "
 "IP."
 
-#, fuzzy
 msgid ""
 "You have chosen to not receive security updates. We strongly advice you "
 "to keep the automatic security updates enabled to receive all recommended"
@@ -1873,14 +1905,13 @@ msgid ""
 "might target your home router device.<br/><br/>Do you still want to "
 "continue and stay unprotected?"
 msgstr ""
-"Wybrano opcję, aby nie otrzymywać aktualizacji zabezpieczeń. Zdecydowanie"
-" zalecamy włączenie automatycznych aktualizacji zabezpieczeń w celu "
-"uzyskania wszystkich aktualizacji dla tego urządzenia. Regularne "
-"aktualizowanie routera jest jedynym sposobem zapewnienia ochrony przed "
-"zagrożeniami, które mogą dotyczyć Twojego routera domowego.\\n\\nCzy "
-"nadal chcesz kontynuować pracę i pozostać bez ochrony?"
+"Wybrano opcję, aby nie otrzymywać aktualizacji zabezpieczeń. Zdecydowanie "
+"zalecamy włączenie automatycznych aktualizacji zabezpieczeń w celu uzyskania "
+"wszystkich aktualizacji dla tego urządzenia. Regularne aktualizowanie "
+"routera jest jedynym sposobem zapewnienia ochrony przed zagrożeniami, które "
+"mogą dotyczyć Twojego routera domowego.<br/><br/>Czy nadal chcesz "
+"kontynuować i pozostać bez ochrony?"
 
-#, fuzzy
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication "
 "against attacks on the DNS infrastructure. We strongly recommend keeping "
@@ -1888,44 +1919,43 @@ msgid ""
 "your device in the network where DNSSEC is broken. <br/><br/>Do you still"
 " want to continue and stay unprotected?"
 msgstr ""
-"DNSSEC to technologia zabezpieczająca, która chroni komunikację DNS przed"
-" atakami na infrastrukturę DNS. Zdecydowanie zalecamy włączenie "
-"sprawdzania poprawności DNSSEC, chyba że wiesz, że połączysz urządzenie z"
-" siecią, w której DNSSEC jest uszkodzony.\\n\\nCzy nadal chcesz "
-"kontynuować i pozostać bez ochrony?"
+"DNSSEC to technologia zabezpieczająca, która chroni komunikację DNS przed "
+"atakami na infrastrukturę DNS. Zdecydowanie zalecamy włączenie sprawdzania "
+"poprawności DNSSEC, chyba że wiesz, że połączysz urządzenie z siecią, w "
+"której DNSSEC jest uszkodzony.<br/><br/>Czy nadal chcesz kontynuować i "
+"pozostać niechropniony?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Czy na pewno chcesz zrestartować router?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
-msgstr ""
+msgstr "Pozostałe powiadomienia (%(unread_left)s) zostaną odrzucone."
 
-#, fuzzy
 msgid ""
 "There are some unsaved changes in the notifications settings.<br/>Do you "
 "want to discard them and test the notifications with the old settings?"
 msgstr ""
-"W ustawieniach powiadomień są niezapisane zmiany.\\nCzy chcesz je "
-"odrzucić i przetestować powiadomienia o starych ustawieniach?"
+"W ustawieniach powiadomień są niezapisane zmiany.<br/>Czy chcesz je odrzucić "
+"i przetestować powiadomienia na poprzednich ustawieniach?"
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
 msgstr ""
+"Twoje urządzenie zostanie ponownie uruchomione w ciągu %(time_left)s sekund."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
-msgstr "Twoja sieć jest restartowana. Proszę poczekać..."
+msgstr "Twoja sieć zostanie zrestartowana w ciągu %(time_left)s sekund."
 
 msgid "A reboot of your device was triggered."
-msgstr ""
+msgstr "Wybrano ponowne uruchomienie urządzenia."
 
-#, fuzzy
 msgid "A network restart was triggered."
-msgstr "Sieć jest restartowana..."
+msgstr "Uruchomiono restart sieci."
 
 msgid "Trying to reconnect to your device."
-msgstr ""
+msgstr "Próbuję ponownie połączyć się z urządzeniem."
 
 msgid "This value seems to be invalid."
 msgstr "Ta wartość wydaje się być nieprawidłowa."
@@ -1976,7 +2006,7 @@ msgstr "Ta wartość jest za długa. Powinna zawierać %s znaków lub mniej."
 
 #, fuzzy, python-format
 msgid "This field should have between %s and %s characters."
-msgstr "Ta wartość powinna być pomiędzy %s a %s."
+msgstr "To pole powinno zawierać między %s a %s znaków."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -2954,4 +2984,3 @@ msgstr "Cofnij aktualizację"
 
 #~ msgid "Workflow for older routers and older turris OS versions (before 4.0)."
 #~ msgstr ""
-

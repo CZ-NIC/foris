@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-08 10:05+0100\n"
-"PO-Revision-Date: 2018-09-08 18:17+0000\n"
+"PO-Revision-Date: 2018-12-18 13:09+0000\n"
 "Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
-"Language-Team: French "
-"<https://hosted.weblate.org/projects/turris/foris/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -24,24 +25,26 @@ msgid ""
 "device. Firstly it is required to set your password. Note the security of"
 " your home network is in your hands, so try not to use weak passwords."
 msgstr ""
+"Bienvenue sur l’interface web de Foris. Ce guide vous aidera à configurer "
+"votre appareil. Tout d’abord, il est nécessaire de définir votre mot de "
+"passe. Notez que la sécurité de votre réseau domestique est entre vos mains, "
+"alors essayez de ne pas utiliser de mots de passe faibles."
 
 msgid "Your password seems to be set. You may proceed to the next step."
 msgstr ""
+"Votre mot de passe semble être défini. Vous pouvez passer à l’étape suivante."
 
 msgid "Choose one of the possible setup workflows."
-msgstr ""
+msgstr "Sélectionnez l’un des workflows de configuration proposés."
 
-#, fuzzy
 msgid "The workflow was set. You may proceed to next step."
-msgstr ""
-"La mise à jour du Firmware a réussi, vous pouvez passer à l'étape "
-"suivante."
+msgstr "Le workflow a été définit. Vous pouvez passer à l’étape suivante."
 
 msgid "Here you need to decide which interfaces belongs to which network."
-msgstr ""
+msgstr "Ici, vous devez décider quelles interfaces appartiennent à quel réseau."
 
 msgid "If you are in doubt use the current settings."
-msgstr ""
+msgstr "En cas de doute, utilisez les paramètres actuels."
 
 msgid ""
 "You've configured your network interfaces. It seems that you didn't break"
@@ -49,13 +52,16 @@ msgid ""
 msgstr ""
 
 msgid "In order to access the internet you need to configure your WAN interface."
-msgstr ""
+msgstr "Afin d'accéder à Internet, vous devez configurer votre interface WAN."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
 "whether it is working properly and if so you can safely proceed to the "
 "next step."
 msgstr ""
+"Vous avez configuré votre interface WAN. Essayez d’effectuer un test de "
+"connexion pour voir si elle fonctionne correctement et si vous pouvez passer "
+"à l’étape suivante en toute sécurité."
 
 msgid ""
 "Now you should configure your LAN interface. Note that when you change "
@@ -63,39 +69,56 @@ msgid ""
 "configuration interface unless you restart the network on your current "
 "device."
 msgstr ""
+"Vous devez maintenant configurer votre interface LAN. Notez que lorsque vous "
+"modifiez vos paramètres réseau, vous ne pourrez probablement pas vous "
+"connecter à l’interface de configuration si vous ne redémarrez pas le réseau "
+"sur votre appareil actuel."
 
 msgid ""
 "You've configured your LAN interface. Try to test whether settings work "
 "properly and if so you can safely proceed to the next step."
 msgstr ""
+"Vous avez configuré votre interface LAN. Essayez de vérifier si les "
+"paramètres fonctionnent correctement et si c’est le cas, vous pouvez passer "
+"à l'étape suivante en toute sécurité."
 
 msgid "Now you need to set the time and timezone of your device."
 msgstr ""
+"Vous devez maintenant régler l’heure et le fuseau horaire de votre appareil."
 
 msgid ""
 "Your time and timezone seem to be set. Please make sure that the time "
 "matches the time on your computer if not try to update it via ntp or "
 "manually."
 msgstr ""
+"Votre heure et votre fuseau horaire semblent être réglés. Veuillez vous "
+"assurer que l’heure correspond à celle sur votre ordinateur. Si ce n’est pas "
+"le cas, essayez de la mettre à jour via ntp ou manuellement."
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
 "device. Let's configure it now."
 msgstr ""
+"Une résolution DNS efficace est l’une des principales caractéristiques de "
+"sécurité de votre appareil. Configurons-le maintenant."
 
 msgid ""
 "You've updated your DNS configuration. Try to run connection test to see "
 "whether your DNS resolver is properly set."
 msgstr ""
+"Vous avez mis à jour votre configuration DNS. Essayez d’exécuter un test de "
+"connexion pour voir si votre résolveur DNS est correctement configuré."
 
 msgid "Now you need to configure automatic updates on your device."
 msgstr ""
+"Vous devez maintenant configurer les mises à jour automatiques sur votre "
+"appareil."
 
 msgid "Please wait till the updater finishes its run."
-msgstr ""
+msgstr "Veuillez patienter jusqu’à ce que la mise à jour s’achève."
 
 msgid "You have sucessfully configured your device."
-msgstr ""
+msgstr "Vous venez de configurer votre appareil avec succès."
 
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
@@ -158,7 +181,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Router"
-msgstr "Pays"
+msgstr "Routeur"
 
 msgid "Local Server"
 msgstr ""
@@ -252,16 +275,14 @@ msgstr "Nombre de notifications"
 msgid "Old password you entered was not valid."
 msgstr "L'ancien mot de passe n'est pas valable."
 
-#, fuzzy
 msgid "System password was successfully saved."
-msgstr "Mot de passe enregistré avec succès."
+msgstr "Le mot de passe système a été enregistré avec succès."
 
 msgid "Failed to save system password"
 msgstr ""
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Mot de passe enregistré avec succès."
+msgstr "Le mot de passe Foris a été enregistré avec succès."
 
 msgid "Failed to save Foris password"
 msgstr ""
@@ -273,13 +294,11 @@ msgstr "Mot de passe enregistré avec succès."
 msgid "Failed to set guide workflow."
 msgstr ""
 
-#, fuzzy
 msgid "Network configuration was sucessfully updated."
-msgstr "Configuration sauvegardée avec succès."
+msgstr "La configuration du réseau a été mise à jour avec succès."
 
-#, fuzzy
 msgid "Unable to update your network configuration."
-msgstr "Impossible de vérifier la connexion réseau."
+msgstr "Impossible de mettre à jour la configuration de votre réseau."
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -396,13 +415,12 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Domaine des clients DHCP dans le DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Ce domaine sera utilisé comme préfixe. Ex.: Le résultat pour le client "
-"\"android-123\" et le domaine \"mon.lan\" sera \"android-123.mon.lan\"."
+"Ce domaine sera utilisé comme suffixe. Par exemple, le résultat pour le "
+"client «android-123» et le domaine «my.lan» sera «android-123.my.lan»."
 
 msgid "Guest network"
 msgstr "Réseau invité"
@@ -518,9 +536,8 @@ msgstr ""
 msgid "LAN mode"
 msgstr ""
 
-#, fuzzy
 msgid "Managed"
-msgstr "Langue"
+msgstr "Géré"
 
 msgid "Unmanaged"
 msgstr ""
@@ -556,9 +573,8 @@ msgstr ""
 msgid "IPv4 protocol"
 msgstr "Protocole IPv4"
 
-#, fuzzy
 msgid "IPv4 address"
-msgstr "Adresse IPv6"
+msgstr "Adresse IPv4"
 
 msgid "Network mask"
 msgstr "Masque réseau"
@@ -588,9 +604,8 @@ msgstr "Nom d'hôte qui sera assigné au serveur DHCP."
 msgid "Password"
 msgstr "Mot de passe"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Mot de passe actuel"
+msgstr "Mot de passe Foris actuel"
 
 msgid "New password"
 msgstr "Nouveau mot de passe"
@@ -614,9 +629,8 @@ msgstr ""
 msgid "Passwords are not equal."
 msgstr "Les mots de passe ne sont pas identiques."
 
-#, fuzzy
 msgid "for Advanced administration"
-msgstr "Administration avancée"
+msgstr "pour l’administration avancée"
 
 #, python-format
 msgid ""
@@ -629,13 +643,11 @@ msgstr ""
 msgid "Don't set this password"
 msgstr ""
 
-#, fuzzy
 msgid "Use Foris password"
-msgstr "Mot de passe réseau"
+msgstr "Utiliser le mot de passe Foris"
 
-#, fuzzy
 msgid "Use other password"
-msgstr "Mot de passe réseau"
+msgstr "Utiliser un autre mot de passe"
 
 msgid "Advanced administration"
 msgstr "Administration avancée"
@@ -720,9 +732,8 @@ msgid ""
 "interface of this device."
 msgstr ""
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Masque sous-réseau"
+msgstr "Interfaces réseau"
 
 msgid "Notifications settings"
 msgstr "Paramètres de notifications"
@@ -1304,21 +1315,17 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#, fuzzy
 msgid "IP Address"
 msgstr "Adresse IP"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "Adresse IP"
+msgstr "Adresse MAC"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Nom d'hôte DHCP"
+msgstr "Nom d’hôte"
 
-#, fuzzy
 msgid "Active"
-msgstr "Sauvegarder"
+msgstr "Actif"
 
 msgid "No DHCP clients found."
 msgstr ""
@@ -1332,9 +1339,8 @@ msgstr ""
 msgid "bus"
 msgstr ""
 
-#, fuzzy
 msgid "state"
-msgstr "Nom d'hôte DHCP"
+msgstr "état"
 
 msgid "alive"
 msgstr ""
@@ -1407,17 +1413,15 @@ msgstr ""
 "Vous devez redémarrer votre routeur afin qu'il puisse fonctionner "
 "correctement."
 
-#, fuzzy
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is "
 "capable of working independently or it can forward your DNS queries your "
 "internet service provider's DNS resolver."
 msgstr ""
-"Le routeur Turris utilise son propre résolveur DNS avec support DNSSEC. "
-"Il est capable de travailler seul, ou il peut transmettre vos requêtes "
-"DNS au résolveur DNS de votre fournisseur de services internet."
+"Le router Turris utilise son propre résolveur DNS avec support DNSSEC. Il "
+"est capable de travailler soit de manière indépendante ou transmettre vos "
+"requêtes DNS au résolveur DNS de votre fournisseur d’accès Internet."
 
-#, fuzzy
 msgid ""
 "The following setting determines the behavior of the DNS resolver. "
 "Usually, it is better to use the ISP's resolver in networks where it "
@@ -1425,10 +1429,10 @@ msgid ""
 "use direct resolving without forwarding."
 msgstr ""
 "Le paramètre suivant détermine le comportement du résolveur DNS. Il est "
-"généralement préférable d’utiliser le résolveur du FAI dans les réseaux "
-"où il fonctionne correctement. Dans le cas où cela ne fonctionne pas pour"
-" une raison quelconque, il est nécessaire d’utiliser la résolution "
-"directe sans redirection."
+"généralement préférable d’utiliser le résolveur du FAI dans les réseaux où "
+"il fonctionne correctement. Dans le cas où cela ne fonctionne pas pour une "
+"raison quelconque, il est nécessaire d’utiliser la résolution directe sans "
+"redirection."
 
 msgid ""
 "In rare cases ISP's have improperly configured network which interferes "
@@ -1596,13 +1600,11 @@ msgstr "Réseau invité"
 msgid "Unassigned"
 msgstr ""
 
-#, fuzzy
 msgid "WAN network"
-msgstr "Réseau invité"
+msgstr "Réseau WAN"
 
-#, fuzzy
 msgid "LAN network"
-msgstr "Réseau invité"
+msgstr "Réseau LAN"
 
 msgid "Unassign"
 msgstr ""
@@ -1685,12 +1687,15 @@ msgstr ""
 "de refuser une mise-à-jour pour toujours et elle vous sera à nouveau "
 "proposée lors de l'installation suivante de paquets."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          after %(input)s hours\n"
 "          "
-msgstr "après %(input)s heure(s)"
+msgstr ""
+"\n"
+"          après %(input)s heures\n"
+"          "
 
 #, fuzzy, python-format
 msgid ""
@@ -1699,9 +1704,8 @@ msgid ""
 "    "
 msgstr "Approbation de mise à jour à partir de %(when)s"
 
-#, fuzzy
 msgid "List of changes"
-msgstr "Annuler les modifications"
+msgstr "Liste des changements"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Notez qu’un redémarrage sera effectué après la mise à jour."
@@ -1932,16 +1936,15 @@ msgstr ""
 msgid "Your device will be rebooted in %(time_left)s seconds."
 msgstr ""
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
-msgstr "Votre réseau est en cours de redémarrage. Veuillez patienter ..."
+msgstr "Votre réseau sera redémarré dans %(time_left)s secondes."
 
 msgid "A reboot of your device was triggered."
 msgstr ""
 
-#, fuzzy
 msgid "A network restart was triggered."
-msgstr "Redémarrage du réseau en cours ..."
+msgstr "Un redémarrage du réseau a été initié."
 
 msgid "Trying to reconnect to your device."
 msgstr ""
@@ -3002,4 +3005,3 @@ msgstr "Rétrograder"
 
 #~ msgid "Workflow for older routers and older turris OS versions (before 4.0)."
 #~ msgstr ""
-
