@@ -1,3 +1,9 @@
+99.0 (2018-12-21)
+-----------------
+
+* support for mqtt message bus
+* translations updated
+
 98.19.1 (2018-12-05)
 --------------------
 
