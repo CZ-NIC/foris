@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-08 10:05+0100\n"
+"POT-Creation-Date: 2018-12-21 15:23+0100\n"
 "PO-Revision-Date: 2017-04-13 09:26+0000\n"
 "Last-Translator: Tomi <tomi.poutanen@gmail.com>\n"
 "Language: fi\n"
@@ -104,7 +104,7 @@ msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
-"<strong>Unmanaged</strong> mode here. "
+"<strong>Computer</strong> mode here. "
 msgstr ""
 
 msgid ""
@@ -277,14 +277,6 @@ msgid "Network configuration was sucessfully updated."
 msgstr "Asetukset tallennettu."
 
 msgid "Unable to update your network configuration."
-msgstr ""
-
-msgid ""
-"You WAN configuration is probably not correct or your WAN interface "
-"hasn't been properly initialized yet."
-msgstr ""
-
-msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
 
 msgid "Wrong HTTP method."
@@ -475,17 +467,14 @@ msgstr ""
 msgid "LAN mode"
 msgstr ""
 
-msgid "Managed"
-msgstr ""
-
-msgid "Unmanaged"
+msgid "Computer"
 msgstr ""
 
 msgid ""
-"Manage mode means that this devices manages the LAN (acts as a router, "
-"can assing IP addresses, ...). Unmanaged mode means that this device acts"
-" as a client in this network. It acts in a similar way as WAN, but it has"
-" opened ports for configuration interface and other services. "
+"Router mode means that this devices manages the LAN (acts as a router, "
+"can assing IP addresses, ...). Computer mode means that this device acts "
+"as a client in this network. It acts in a similar way as WAN, but it has "
+"opened ports for configuration interface and other services. "
 msgstr ""
 
 msgid "Router IP address"
@@ -625,8 +614,8 @@ msgid "Time settings"
 msgstr ""
 
 msgid ""
-"Time should be up-to-date otherise DNS and other services might not work "
-"properly."
+"Time should be up-to-date otherwise DNS and other services might not work"
+" properly."
 msgstr ""
 
 msgid "How to set time"
@@ -1175,6 +1164,9 @@ msgstr ""
 msgid "main"
 msgstr ""
 
+msgid "type"
+msgstr ""
+
 msgid "bus"
 msgstr ""
 
@@ -1192,6 +1184,9 @@ msgstr ""
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
+msgstr ""
+
+msgid "All network interfaces of this network are currently down."
 msgstr ""
 
 msgid ""
@@ -1493,6 +1488,14 @@ msgid ""
 msgstr ""
 
 msgid "Package lists"
+msgstr ""
+
+msgid ""
+"You WAN configuration is probably not correct or your WAN interface "
+"hasn't been properly initialized yet."
+msgstr ""
+
+msgid "WAN port has no link, your internet connection probably won't work."
 msgstr ""
 
 msgid "We were unable to detect any wireless cards in your router."
@@ -2379,5 +2382,39 @@ msgstr ""
 #~ "prefix. E.g. The result for client "
 #~ "\"android-123\" and domain \"my.lan\" will "
 #~ "be \"android-123.my.lan\"."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To act as a local server, there's"
+#~ " no need to manage LAN (if you"
+#~ " still want to manage it reset "
+#~ "the guide and choose the Router "
+#~ "workflow). You probably want to act "
+#~ "as a client here thus select "
+#~ "<strong>Unmanaged</strong> mode here. "
+#~ msgstr ""
+
+#~ msgid "Managed"
+#~ msgstr ""
+
+#~ msgid "Unmanaged"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Manage mode means that this devices "
+#~ "manages the LAN (acts as a router,"
+#~ " can assing IP addresses, ...). "
+#~ "Unmanaged mode means that this device"
+#~ " acts as a client in this "
+#~ "network. It acts in a similar way"
+#~ " as WAN, but it has opened "
+#~ "ports for configuration interface and "
+#~ "other services. "
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Time should be up-to-date otherise"
+#~ " DNS and other services might not "
+#~ "work properly."
 #~ msgstr ""
 
