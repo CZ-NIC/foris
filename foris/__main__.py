@@ -38,7 +38,7 @@ def get_arg_parser():
         help="message bus type"
     )
     group.add_argument(
-        "--mqtt-port", default=1883, help="mqtt port (default 1883)"
+        "--mqtt-port", default=1883, type=int, help="mqtt port (default 1883)"
     )
     group.add_argument(
         "--mqtt-host", default="localhost", help="mqtt host (default 'localhost')"

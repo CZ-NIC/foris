@@ -53,7 +53,11 @@ class Backend(object):
             self._instance = MqttSender(kwargs["host"], kwargs["port"])
 
     def __repr__(self):
-        return "%s('%s')" % (type(self._instance).__name__, self.path)
+        if self.name in ["unix-socket", "ubus"]:
+            return "%s('%s')" % (type(self._instance).__name__, self.path)
+        elif self.name == "mqtt":
+            return "%s('%s:%d')" % (type(self._instance).__name__, self.host, self.port)
+        return "%s" % type(self._instance).__name__
 
     def perform(self, module, action, data=None, raise_exception_on_failure=True):
         """ Perform backend action
