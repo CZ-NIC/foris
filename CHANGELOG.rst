@@ -1,3 +1,10 @@
+99.1 (2018-12-27)
+-----------------
+
+* small sass/css updates
+* mqtt bus fixes
+* translations updated
+
 99.0 (2018-12-21)
 -----------------
 
