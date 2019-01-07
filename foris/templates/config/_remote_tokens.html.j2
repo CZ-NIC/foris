@@ -1,0 +1,42 @@
+{% if tokens %}
+    <table id="remote-tokens">
+      <thead>
+        <tr>
+          <th>{% trans %}Token{% endtrans %}</th>
+          <th>{% trans %}Status{% endtrans %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+  {% for token in tokens %}
+        <tr id="serial-{{ token["id"] }}-name-{{ token["name"] }}">
+          <td>{{ token["name"] }}</td>
+    {% if token['status'] == 'revoked' %}
+          <td title="{{ token['status_msg'] }}"><i class="fas fa-times"></i></td>
+    {% elif token['status'] == 'generating' %}
+          <td title="{{ token['status_msg'] }}"><i class="fas fa-clock"></i></td>
+    {% elif token['status'] == 'valid' %}
+          <td title="{{ token['status_msg'] }}"><i class="fas fa-check"></i></td>
+    {% else %}
+          <td>{{ token['status'] }}</td>
+    {% endif %}
+          <td>
+            <form action="{{ url("config_ajax", page_name="remote") }}" method="post" class="token-buttons">
+                <input type="hidden" name="token_id" value="{{ token["id"] }}">
+                <input type="hidden" name="name" value="{{ token["name"] }}">
+                <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+    {% if token['status'] == 'valid' %}
+            <button name="action" value="prepare-token" type="submit"><i class="fas fa-box"></i> {% trans %}Prepare Token{% endtrans %}</button>
+    {% endif %}
+    {% if token['status'] != 'revoked' and token['status'] != 'generating' %}
+            <button name="action" value="revoke-token" type="submit"><i class="fas fa-times"></i> {% trans %}Revoke{% endtrans %}</button>
+    {% endif %}
+            </form>
+          </td>
+        </tr>
+  {% endfor %}
+      </tbody>
+    </table>
+{% else %}
+<div id="remote-tokens"></div>
+{% endif %}

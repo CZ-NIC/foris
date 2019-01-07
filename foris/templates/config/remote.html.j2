@@ -1,0 +1,177 @@
+{% extends 'config/base.html.j2' %}
+
+{% block config_base %}
+<div id="page-remote" class="config-page">
+    {% include '_messages.html.j2' %}
+  <p>
+  {% trans %}Here you can set up your router to be configured remotely. The remote configuration is done via secure encrypted connection and each client is required to have a token issued by this device.{% endtrans %}
+  </p>
+
+{% if status == "missing" %}
+  <h3>{% trans %}No certification authority{% endtrans %}</h3>
+  <p>
+  {% trans %}Currently there is no certificate authority(CA) dedicated to remote access. A CA is required to generate access tokens to authenticate. To proceed you need to generate it first.{% endtrans %}
+  <form method='post' action="{{ url("config_action", page_name="remote", action="generate-ca") }}">
+    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+    <button name="download-config" type="submit">{% trans %}Generate CA{% endtrans %}</button>
+  </form>
+  </p>
+
+{% elif status == "generating" %}
+  <h3>{% trans %}Generating certificate authority{% endtrans %}</h3>
+  <p>
+  {% trans %}The CA necessary for the remote administration. The time required for generating CA may differ. Please try to reload this page later.{% endtrans %}
+  </p>
+  <center><img src="{{ static("img/loader.gif") }}" alt="{% trans %}Loading...{% endtrans %}"></center>
+  <br/>
+  <center><form><button name="reload-page" type="submit">{% trans %}Reload page{% endtrans %}</button></form></center>
+
+{% elif status == "ready" %}
+  <h3>{% trans %}Connection parameters{% endtrans %}</h3>
+  <p>
+  {% trans %}You CA seems to be ready to be used. Now you can safely enable/disable the remote access and set some of the parameters.{% endtrans %}
+  </p>
+  <form method='post' action='{{ url("config_page", page_name="remote") }}' class="config-form" id="remote-config-form">
+    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+  {% for field in form.active_fields %}
+    {% include '_field.html.j2' %}
+  {% endfor %}
+    <div class="row">
+      <button name="apply" type="submit">{% trans %}Apply configuration{% endtrans %}</button>
+    </div>
+  </form>
+  {% if backend_data['enabled'] %}
+  <h3>{% trans %}Tokens{% endtrans %}</h3>
+    <p>{% trans %}Here you can create and revoke the client capability to connect to the remote administration.{% endtrans %}</p>
+
+    <form action="{{ url("config_ajax", page_name="remote") }}" method="post" class="config-form" id="create-token-form">
+      <input type="hidden" name="action" value="generate-token">
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      {% for field in generate_token_form.active_fields %}
+        {% include '_field.html.j2' %}
+      {% endfor %}
+      <button type="submit" name="send">{% trans %}Create{% endtrans %}</button>
+    </form>
+
+    {% include 'config/_remote_tokens.html.j2' %}
+
+  {% endif %}
+  <h3>{% trans %}Delete CA{% endtrans %}</h3>
+  <p>
+  {% if form.data['enabled'] %}
+      {% trans %}You can't delete the CA while the remote access is enabled. To delete the CA you need to disable the remote access first.{% endtrans %}
+  {% else %}
+      {% trans %}You can delete the whole CA. Note that all the cerificates issued by this CA will be useless and if you wanted to use this plugin, you'd need to generate a new CA first.{% endtrans %}
+    <form action="{{ url("config_action", page_name="remote", action="delete-ca") }}" method="post" id="delete-ca-form">
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+      <button type="submit" name="send" id="reset-ca-submit">{% trans %}Delete CA{% endtrans %}</button>
+    </form>
+  {% endif %}
+  </p>
+{% endif %}
+
+</div>
+{% if is_xhr is not defined %}
+<script src="{{ static("js/contrib/jquery-qrcode-0.14.0.min.js") }}"></script>
+<script>
+    Foris.WS["remote"] = (msg) => {
+        switch(msg["action"]) {
+            case "generate_ca":
+            case "delete_ca":
+                window.location.reload();
+                break;
+            case "generate_token":
+            case "revoke":
+                Foris.updateTokens();
+                break;
+        }
+    };
+    Foris.updateTokens = () => {
+        $.get('{{ url("config_ajax", page_name="remote") }}', {action: "list-tokens"})
+            .done((response) => {
+                $("#remote-tokens").replaceWith(response);
+                Foris.overrideTokenButtons();
+            })
+            .fail(function(xhr) {
+                if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
+                    window.location.replace(xhr.responseJSON.loginUrl);
+                    return;
+                }
+            });
+    };
+    Foris.overrideTokenButtons = () => {
+        $(".token-buttons").submit((e) => {
+            e.preventDefault();
+            let form = $(e.currentTarget);
+            let action = $(e.originalEvent.explicitOriginalTarget).val();
+            let form_data = {};
+            let serialized = form.serializeArray(); 
+            for (record in serialized) {
+                form_data[serialized[record].name] = serialized[record].value;
+            }
+            let token_id = form_data.token_id;
+            switch (action) {
+                case "revoke-token":
+                    $.ajax({
+                        type: "POST",
+                        url: form.attr('action'),
+                        data: `${form.serialize()}&action=${action}`,
+                        success: (data) => {},
+                    });
+                    form.find("button").prop('disabled', true);
+                    break;
+                case "prepare-token":
+                    $.ajax({
+                        type: "POST",
+                        url: form.attr('action'),
+                        data: `${form.serialize()}&action=${action}`,
+                        success: (data) => {},
+                    })
+                        .done(async (response) => {
+                            form.parent().parent().after(`<tr class="dynamic-link-wrapper" style="display:none;" id="dynamic-link-wrapper-${token_id}" ><td colspan=3>{% trans %}<a href="${response.url}"><div id="remote-qrcode-${token_id}"></div></a><br/>Expires in:{% endtrans %} <span id="remote-expires-${token_id}">${response.expires_in.toFixed(1)}</span>s</td></tr>`);
+                            $(`#dynamic-link-wrapper-${token_id}`).show(200);
+                            // generate qr code
+                            let full_url = `${window.location.protocol}//${window.location.hostname}${window.location.port}${response.url}`;
+                            $(`#remote-qrcode-${token_id}`).empty().qrcode({
+                                size: 200,
+                                text: full_url,
+                            });
+                            // run timeout
+                            for (let i = response.expires_in; i >= 0; i = Math.round((i - 0.1) * 100) / 100) {
+                                await Foris.TimeoutPromiss((left) => $(`#remote-expires-${token_id}`).text(left.toFixed(1)), 0.1, i);
+                            }
+                            $(`#dynamic-link-wrapper-${token_id}`).hide(200);
+                            await $(`#dynamic-link-wrapper-${token_id}`).promise();
+                            $(`#dynamic-link-wrapper-${token_id}`).remove();
+                            form.find("button").prop('disabled', false);
+                        })
+                        .fail(() => form.find("button").prop('disabled', false));
+                    form.find("button").prop('disabled', true);
+                    break;
+            }
+        });
+    };
+    Foris.overrideCreateToken = () => {
+        $("#create-token-form").submit((e) => {
+            e.preventDefault();
+            let form = $(e.currentTarget);
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: (data) => {},
+            });
+            let name_input = form.find("input:text");
+            name_input.val("");
+            name_input.removeClass("field-validation-pass");
+
+            Foris.initParsley();
+        });
+    };
+    $(document).ready(function() {
+        Foris.overrideCreateToken();
+        Foris.overrideTokenButtons();
+    });
+</script>
+{% endif %}
+{% endblock %}
