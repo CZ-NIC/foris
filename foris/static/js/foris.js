@@ -240,11 +240,17 @@ Foris.updateForm = function (form) {
   form.find("input, select, button").attr("disabled", "disabled");
 };
 
+Foris.confirmDialog = function (...vexArgs) {
+    vex.dialog.buttons.YES.text = Foris.messages.vexYes;
+    vex.dialog.buttons.NO.text = Foris.messages.vexNo;
+    vex.dialog.confirm(...vexArgs);
+};
+
 Foris.initEulaForm = function () {
   $("#updater-eula").show();
 
   $('#field-agreed_0').click(function () {
-    vex.dialog.confirm(
+    Foris.confirmDialog(
         {
             unsafeMessage: Foris.messages.confirmDisabledUpdates,
             callback: (value) => {
@@ -488,7 +494,9 @@ Foris.initNotificationTestAlert = function () {
   $(document).on("click", "#notifications-test", function (e) {
     if (showNotificationTestAlert) {
       e.preventDefault();
-      vex.dialog.confirm({
+      vex.dialog.buttons.YES.text = Foris.messages.vexYes;
+      vex.dialog.buttons.NO.text = Foris.messages.vexNo;
+      Foris.confirmDialog({
           unsafeMessage: Foris.messages.unsavedNotificationsAlert,
           callback: (value) => value && $("#notifications-form")[0].reset()
       });

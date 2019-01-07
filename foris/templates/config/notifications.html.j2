@@ -17,7 +17,7 @@
       var extraMessage = "";
       if (unread > 0)
         extraMessage = Foris.messages.confirmRestartExtra(unread);
-      vex.dialog.confirm(
+      Foris.confirmDialog(
         {
             unsafeMessage: `<p><strong>${Foris.messages.confirmRestart}</p></strong>` + extraMessage,
             callback: (value) => {

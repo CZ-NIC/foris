@@ -100,7 +100,7 @@
             let element = $('#field-dnssec_disabled_1');
             element.change(function () {
               if ($(this).is(':checked')) {
-                vex.dialog.confirm(
+                Foris.confirmDialog(
                     {
                         unsafeMessage: Foris.messages.confirmDisabledDNSSEC,
                         callback: (value) => element.prop("checked", value)

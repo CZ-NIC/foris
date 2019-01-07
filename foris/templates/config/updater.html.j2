@@ -134,7 +134,7 @@
 <script>
   $('#field-enabled_0').click(function (e) {
     e.preventDefault();
-    vex.dialog.confirm(
+    Foris.confirmDialog(
         {
             unsafeMessage: Foris.messages.confirmDisabledUpdates,
             callback: (value) => {

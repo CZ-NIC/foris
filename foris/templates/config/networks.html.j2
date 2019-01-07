@@ -246,7 +246,7 @@ p.network-button-description {
             let wan_ports_msg = "{% trans %}You don't have any interface assigned to the LAN network.<br/> Do you want to <strong>open ports 22, 80 and 443 on WAN network</strong> in order to be able to access the configuration interface of our device?{% endtrans %}";
 
             function finalConfirm() {
-                vex.dialog.confirm(
+                Foris.confirmDialog(
                     {
                         unsafeMessage: brick_msg,
                         buttons: [
@@ -261,7 +261,7 @@ p.network-button-description {
                 if (Foris.portsMissingWan()) {
                     finalConfirm();
                 } else {
-                    vex.dialog.confirm(
+                    Foris.confirmDialog(
                         {
                             unsafeMessage: wan_ports_msg,
                             buttons: [
