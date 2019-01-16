@@ -50,7 +50,8 @@ class Backend(object):
             from foris_client.buses.mqtt import MqttSender
             self.host = kwargs["host"]
             self.port = kwargs["port"]
-            self._instance = MqttSender(kwargs["host"], kwargs["port"])
+            self._instance = MqttSender(
+                kwargs["host"], kwargs["port"], default_timeout=self.DEFAULT_TIMEOUT)
 
     def __repr__(self):
         if self.name in ["unix-socket", "ubus"]:
