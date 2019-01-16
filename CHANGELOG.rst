@@ -1,3 +1,10 @@
+99.2 (2019-01-16)
+-----------------
+
+* mqtt add a proper timeout
+* remote tab added
+* js vex translations
+
 99.1 (2018-12-27)
 -----------------
 
