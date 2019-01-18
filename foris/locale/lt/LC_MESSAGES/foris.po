@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-21 15:23+0100\n"
-"PO-Revision-Date: 2017-06-30 22:33+0000\n"
+"PO-Revision-Date: 2019-01-20 01:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/turris/foris/"
+"lt/>\n"
 "Language: lt\n"
-"Language-Team: Lithuanian "
-"<https://hosted.weblate.org/projects/turris/foris/lt/>\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
-"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -25,36 +26,46 @@ msgid ""
 "device. Firstly it is required to set your password. Note the security of"
 " your home network is in your hands, so try not to use weak passwords."
 msgstr ""
+"Sveiki prisijungę prie Foris web sąsajos. Šis gidas padės jus paruošti "
+"įrenginį darbui. Pirmas žingsnis prisijungimo slaptažodžio įvedimas. "
+"Atkreipkite dėmesį, kad jūsų rankose yra jūsų namų tinklo saugumas, "
+"rekomenduojame nenaudoti silpnų slaptažodžių."
 
 msgid "Your password seems to be set. You may proceed to the next step."
-msgstr ""
+msgstr "Slaptažodis įvestas. Galite eiti prie kito etapo."
 
 msgid "Choose one of the possible setup workflows."
-msgstr ""
+msgstr "Pasirinkite vieną iš galimų įrenginio paruošimo darbo eigos būdų."
 
-#, fuzzy
 msgid "The workflow was set. You may proceed to next step."
-msgstr "Programinės įrangos atnaujinimas pavyko, galite pereiti į kitą etapą."
+msgstr "Darbo eigos būdas nustatytas. Galite eiti prie kito etapo."
 
 msgid "Here you need to decide which interfaces belongs to which network."
 msgstr ""
+"Čia turite nuspręsti kaip tinklo interfeisai bus paskirstyti kompiuterių "
+"tinklams."
 
 msgid "If you are in doubt use the current settings."
-msgstr ""
+msgstr "Jei dvejojate naudokite esamus nustatymus."
 
 msgid ""
 "You've configured your network interfaces. It seems that you didn't break"
 " any crucial network settings so you can safely proceed to the next step."
 msgstr ""
+"Parinkote tinklo interfeisų nustatymus. Panašu, kad pagrindiniai tinklo "
+"nustatymai yra tinkami, galite saugiai eiti prie kito etapo."
 
 msgid "In order to access the internet you need to configure your WAN interface."
 msgstr ""
+"Kad galėtumėte naudotis internetu reikia įvesti WAN interfeiso nustatymus."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
 "whether it is working properly and if so you can safely proceed to the "
 "next step."
 msgstr ""
+"Sukonfigūravote WAN interfeisą. Ar jis veikia tinkamai galite patikrinti "
+"paleisdami ryšio testą ir jeigu taip - pereiti prie kito etapo."
 
 msgid ""
 "Now you should configure your LAN interface. Note that when you change "
@@ -62,39 +73,52 @@ msgid ""
 "configuration interface unless you restart the network on your current "
 "device."
 msgstr ""
+"Dabar reikia sukonfigūruoti LAN interfeisą. Atkreipkite dėmesį, kad kai "
+"pakeisite tinklo nustatymus tikriausiai nebegalėsite prisijungti prie "
+"valdymo puslapio nebent atnaujinsite tinklo nustatymus ir įrenginyje iš "
+"kurio jungiatės."
 
 msgid ""
 "You've configured your LAN interface. Try to test whether settings work "
 "properly and if so you can safely proceed to the next step."
 msgstr ""
+"Sukonfigūravote LAN interfeisą. Patikrinkite ar nustatymai tinka, jei taip - "
+"eikite prie kito etapo."
 
 msgid "Now you need to set the time and timezone of your device."
-msgstr ""
+msgstr "Nustatykite įrenginio laikrodį ir laiko zoną."
 
 msgid ""
 "Your time and timezone seem to be set. Please make sure that the time "
 "matches the time on your computer if not try to update it via ntp or "
 "manually."
 msgstr ""
+"Įrenginio laikas ir laiko zona nustatyta. Įsitikinkite, kad laikas sutampa "
+"su laiku kompiuteryje, jei ne pamėginkite atnaujinti laiką per NTP arba "
+"rankiniu būdu."
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
 "device. Let's configure it now."
 msgstr ""
+"Tinkamai veikiantis DNS resolveris yra viena esminių jūsų įrenginio saugumo "
+"savybių. Parenkame jo nustatymus."
 
 msgid ""
 "You've updated your DNS configuration. Try to run connection test to see "
 "whether your DNS resolver is properly set."
 msgstr ""
+"Atnaujinote DNS konfigūraciją. Paleidę ryšio testą įsitikinsite, kad DNS "
+"resolveris veikia tinkamai."
 
 msgid "Now you need to configure automatic updates on your device."
-msgstr ""
+msgstr "Dabar reikia parinkti įrenginio automatinių atnaujinimų nustatymus."
 
 msgid "Please wait till the updater finishes its run."
-msgstr ""
+msgstr "Palaukite kol atnaujinimo procedūra pasibaigs."
 
 msgid "You have sucessfully configured your device."
-msgstr ""
+msgstr "Sėkmingai pabaigėte įrenginio parengimą darbui."
 
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
@@ -150,20 +174,19 @@ msgid ""
 msgstr ""
 
 msgid "Old"
-msgstr ""
+msgstr "Senas"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimalus"
 
-#, fuzzy
 msgid "Router"
-msgstr "Šalis"
+msgstr "Maršrutizatorius"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Vietinis serveris"
 
 msgid "Unset"
-msgstr ""
+msgstr "Neparinkta"
 
 msgid "The workflow wasn't set yet."
 msgstr ""
@@ -216,20 +239,17 @@ msgstr "Nėra skaičius."
 msgid "This is not valid time in HH:MM format."
 msgstr "Laikas neatitinka HH:MM šablono."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Laikas neatitinka HH:MM šablono."
+msgstr "Netinkamas laikas (YYYY-MM-DD HH:MM:SS)."
 
-#, fuzzy
 msgid "This is not a valid domain name."
-msgstr "Netinkamas MAC adresas."
+msgstr "Netinkamas domeno vardas."
 
 msgid "MAC address is not valid."
 msgstr "Netinkamas MAC adresas."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Netinkamas MAC adresas."
+msgstr "Netinkama Duid reikšmė."
 
 #, python-format
 msgid "Not in a valid range %(low)s - %(high)s."
@@ -248,51 +268,44 @@ msgstr "Įvestuose duomenyse yra klaidų."
 msgid "Notifications"
 msgstr "Pranešimai"
 
-#, fuzzy
 msgid "Number of notifications"
-msgstr "Įjungti pranešimus"
+msgstr "Pranešimų skaičius"
 
 msgid "Old password you entered was not valid."
 msgstr "Netinkamas senas slaptažodis."
 
-#, fuzzy
 msgid "System password was successfully saved."
-msgstr "Slaptažodis sėkmingai išsaugotas."
+msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
 
 msgid "Failed to save system password"
-msgstr ""
+msgstr "Nepavyko išsaugoti sistemos slaptažodžio"
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Slaptažodis sėkmingai išsaugotas."
+msgstr "Foris slaptažodis išsaugotas sėkmingai."
 
 msgid "Failed to save Foris password"
-msgstr ""
+msgstr "Nepavyko išsaugoti Foris slaptažodžio"
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Slaptažodis sėkmingai išsaugotas."
+msgstr "Gido darbo eiga sėkmingai parinkta."
 
 msgid "Failed to set guide workflow."
 msgstr ""
 
-#, fuzzy
 msgid "Network configuration was sucessfully updated."
-msgstr "Konfigūracija sėkmingai išsaugota."
+msgstr "Konfigūracija sėkmingai atnaujinta."
 
-#, fuzzy
 msgid "Unable to update your network configuration."
-msgstr "Nepavyko patikrinti tinko ryšio."
+msgstr "Nepavyko atnaujinti tinklo nustatymų."
 
 msgid "Wrong HTTP method."
 msgstr "Klaidingas HTTP metodas."
 
 msgid "Wi-Fi reset was successful."
-msgstr ""
+msgstr "Wi-Fi atstatymas sėkmingas."
 
-#, fuzzy
 msgid "Failed to perform Wi-Fi reset."
-msgstr "Nepavyko patvirtinti atnaujinimo."
+msgstr "Nepavyko atlikti Wi-Fi atstatymo."
 
 msgid "Maintenance"
 msgstr "Priežiūra"
@@ -300,24 +313,21 @@ msgstr "Priežiūra"
 msgid "Testing message was sent, please check your inbox."
 msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly "
 "wrong."
 msgstr ""
-"Testinio pranešimo siuntimas nepavyko, tikriausiai netinkama "
-"konfigūracija.<br>Gauta klaida:<br><pre>%(error)s</pre>"
+"Testinio pranešimo siuntimas nepavyko, tikriausiai nustatymai netinkami."
 
-#, fuzzy
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be "
 "required to apply restored configuration."
 msgstr ""
-"Konfigūracija sėkmingai atkurta. Palaukite kol bus įdiegti atnaujinimai "
-"ir atliktas automatinis įrenginio perkrovimas."
+"Nustatymai sėkmingai atkurti. Atkreipkite dėmesį, kad atkurti nustatymai "
+"būtų naudojami reikia perkrauti įrenginį."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr ""
+msgstr "Nepavyko atstatyti atsarginės kopijos iš pateikto failo."
 
 msgid "Update was approved."
 msgstr "Atnaujinimas patvirtintas."
@@ -341,9 +351,8 @@ msgstr ""
 msgid "Updater is running"
 msgstr ""
 
-#, fuzzy
 msgid "Failed to finish the guide."
-msgstr "Nepavyko atidėti atnaujinimo."
+msgstr "Nepavyko pabaigti gido."
 
 msgid "About"
 msgstr "Apie"
@@ -364,30 +373,32 @@ msgid "Use forwarding"
 msgstr "Naudoti persiuntimą"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Naudoti tiekėjo DNS resolverius"
 
-#, fuzzy
 msgid "DNS Forwarder"
-msgstr "Naudoti persiuntimą"
+msgstr "DNS persiuntėjas"
 
 msgid "Disable DNSSEC"
 msgstr "Išjungti DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr ""
+msgstr "Prijungti DHCP klientus prie DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the"
 " local DNS records."
 msgstr ""
+"Tai leis sukelti DHCP klientų vardus į DNS resolverį šalia lokalių DNS įrašų."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgstr "Domenas DHCP klientams dedamas į DNS"
 
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
+"Šis domenas bus naudojamas kaip sufiksas. Pvz. kliento \"android-123\" ir "
+"domeno \"my.lan\" rezultatas bus \"android-123.my.lan\"."
 
 msgid "Guest network"
 msgstr "Svečių tinklas"
@@ -396,6 +407,8 @@ msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
 " fit into <strong>Guest network netmask</strong>!"
 msgstr ""
+"<strong>DHCP pradžia</strong> ir <strong>DHCP max rezervacijų</strong> "
+"netelpa po <strong>Svečių tinklo kauke</strong>!"
 
 #, python-format
 msgid ""
@@ -408,24 +421,21 @@ msgstr ""
 msgid "Enable guest network"
 msgstr "Įjungti svečių tinklą"
 
-#, fuzzy
 msgid "Router IP in guest network"
-msgstr "Įjungti svečių tinklą"
+msgstr "Maršrutizatoriaus IP svečių tinkle"
 
-#, fuzzy
 msgid ""
 "Router's IP address in the guest network. It is necessary that the guest "
 "network IPs are different from other networks (LAN, WAN, VPN, etc.)."
 msgstr ""
-"Svečių tinklui reikia nurodyti IP adresų ruožą. Šis ruožas privalo "
+"Maršrutizatoriaus IP adresas svečių tinkle. IP adresai svečių tinkle privalo "
 "skirtis nuo adresų naudojamų kituose tinkluose (LAN, WAN, VPN, kt.)."
 
-#, fuzzy
 msgid "Guest network netmask"
-msgstr "Svečių tinklas"
+msgstr "Svečių tinklo adreso kaukė"
 
 msgid "Network mask of the guest network."
-msgstr ""
+msgstr "Tinklo kaukė svečių tinklui."
 
 msgid "Enable DHCP"
 msgstr "Įjungti DHCP"
@@ -444,28 +454,29 @@ msgid "DHCP max leases"
 msgstr "DHCP max rezervacijų"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Rezervacijos laikas (valandomis)"
 
-#, fuzzy
 msgid "Guest Lan QoS"
-msgstr "Svečių tinklas"
+msgstr "Svečių tinklo QoS"
 
 msgid ""
 "This option enables you to set a bandwidth limit for the guest network, "
 "so that your main network doesn't get slowed-down by it."
 msgstr ""
+"Šis nustatymas leidžia nustatyti svečių tinklo greitaveikos ribojimą, tam "
+"kad svečių tinklas nesulėtintų pagrindinio tinklo."
 
 msgid "Download (kb/s)"
-msgstr ""
+msgstr "Parsiuntimas (kb/s)"
 
 msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Parsiuntimo greitis svečių tinkle (kilobitais per sekundę)."
 
 msgid "Upload (kb/s)"
-msgstr ""
+msgstr "Išsiuntimas (kb/s)"
 
 msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Išsiuntimo greitis svečių tinkle (kilobitais per sekundę)."
 
 msgid "LAN"
 msgstr "LAN"
@@ -499,11 +510,10 @@ msgstr ""
 "gali reikėti <strong>perkrauti šį puslapį</strong>."
 
 msgid "LAN mode"
-msgstr ""
+msgstr "LAN rėžimas"
 
-#, fuzzy
 msgid "Computer"
-msgstr "Šalis"
+msgstr "Kompiuteris"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -516,14 +526,13 @@ msgid "Router IP address"
 msgstr "Maršrutizatoriaus IP adresas"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Maršrutizatoriaus IP adresas vidiniame tinkle."
 
-#, fuzzy
 msgid "Network netmask"
 msgstr "Tinklo adreso kaukė"
 
 msgid "Network mask of the inner network."
-msgstr ""
+msgstr "Vidinio tinklo kaukė."
 
 msgid "DHCP (automatic configuration)"
 msgstr "DHCP (automatinė konfigūracija)"
@@ -532,14 +541,13 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statinis IP adresas (ne-automatinė konfigūracija)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Neprijungti šio įrenginio prie LAN"
 
 msgid "IPv4 protocol"
 msgstr "IPv4 protokolas"
 
-#, fuzzy
 msgid "IPv4 address"
-msgstr "IPv6 adresas"
+msgstr "IPv4 adresas"
 
 msgid "Network mask"
 msgstr "Tinklo adreso kaukė"
@@ -547,9 +555,8 @@ msgstr "Tinklo adreso kaukė"
 msgid "Gateway"
 msgstr "Gateway adresas"
 
-#, fuzzy
 msgid "DNS server 1 (IPv4)"
-msgstr "DNS serveris 1"
+msgstr "DNS serveris 1 (IPv4)"
 
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
@@ -558,23 +565,20 @@ msgstr ""
 "DNS serverio adresas yra nebūtinas, integruotas DNS serveris gali veikti "
 "ir be jo."
 
-#, fuzzy
 msgid "DNS server 2 (IPv4)"
-msgstr "DNS serveris 2"
+msgstr "DNS serveris 2 (IPv4)"
 
-#, fuzzy
 msgid "DHCP hostname"
-msgstr "DHCP pradžia"
+msgstr "DHCP vardas"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Įrenginio vardas kuris bus perduodamas DHCP serveriui."
 
 msgid "Password"
 msgstr "Slaptažodis"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Dabartinis slaptažodis"
+msgstr "Esamas Foris slaptažodis"
 
 msgid "New password"
 msgstr "Naujas slaptažodis"
@@ -586,7 +590,7 @@ msgid "Password (repeat)"
 msgstr "Slaptažodis (pakartokite)"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "Foris web sąsajai"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -598,9 +602,8 @@ msgstr ""
 msgid "Passwords are not equal."
 msgstr "Slaptažodžiai nesutampa."
 
-#, fuzzy
 msgid "for Advanced administration"
-msgstr "Platesnis valdymas"
+msgstr "Platesniam valdymui"
 
 #, python-format
 msgid ""
@@ -611,15 +614,13 @@ msgid ""
 msgstr ""
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Nenustatyti šio slaptažodžio"
 
-#, fuzzy
 msgid "Use Foris password"
-msgstr "Tinklo slaptažodis"
+msgstr "Naudoti Foris slaptažodį"
 
-#, fuzzy
 msgid "Use other password"
-msgstr "Tinklo slaptažodis"
+msgstr "Naudoti kitą slaptažodį"
 
 msgid "Advanced administration"
 msgstr "Platesnis valdymas"
@@ -637,15 +638,16 @@ msgstr ""
 "konfigūravimui dabar, galėsite tai padaryti vėliau. Iki tol prisijungimas"
 " prie root paskyros bus blokuojamas.)"
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Perkrovimo laikas"
+msgstr "Regionas ir laikas"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
 "device's time is delayed, the procedure of SSL certificate verification "
 "might not work correctly."
 msgstr ""
+"Svarbu, kad įrenginys turėtų tiksliai nustatytą laiką. Jei laikas įrenginyje "
+"vėluoja SSL sertifikato tikrinimas gali veikti netinkamai."
 
 msgid "Region settings"
 msgstr "Regiono nustatymai"
@@ -674,29 +676,28 @@ msgid ""
 "Time should be up-to-date otherwise DNS and other services might not work"
 " properly."
 msgstr ""
+"Laikas turi būti tikslus, kitaip DNS ir kiti servisai gali tinkamai neveikti."
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Perkrovimo laikas"
+msgstr "Kaip nustatyti laiką"
 
 msgid "Choose method to store current time into the router."
-msgstr ""
+msgstr "Pasirinkite kaip maršrutizatoriuje išsaugoti laiką."
 
 msgid "via ntp"
-msgstr ""
+msgstr "per NTP"
 
-#, fuzzy
 msgid "manually"
-msgstr "Nustatyti laiką rankiniu būdu"
+msgstr "rankiniu būdu"
 
 msgid "Time"
 msgstr "Laikas"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
-msgstr ""
+msgstr "Laikas YYYY-MM-DD HH:MM:SS formatu."
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Gidas baigtas"
 
 msgid ""
 "Congratulations you've successfully reached the end of this guide. Once "
@@ -704,9 +705,8 @@ msgid ""
 "interface of this device."
 msgstr ""
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Tinklo adreso kaukė"
+msgstr "Tinklo interfeisai"
 
 msgid "Notifications settings"
 msgstr "Pranešimų nustatymai"
@@ -743,7 +743,7 @@ msgstr ""
 "tarpo simboliais."
 
 msgid "Doesn't contain a list of emails separated by spaces"
-msgstr ""
+msgstr "Trūksta el. pašto adresų sąrašo atskirtų tarpo simboliais"
 
 msgid "Sender's name"
 msgstr "Siuntėjo vardas"
@@ -784,9 +784,8 @@ msgstr "SMTP nustatymai"
 msgid "Sender address (From)"
 msgstr "Siuntėjo adresas (From)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
-msgstr "Pranešimai bus siunčiami iš šio adreso."
+msgstr "Adresas iš kurio bus siunčiami pranešimai."
 
 msgid "Server address"
 msgstr "Serverio adresas"
@@ -834,7 +833,6 @@ msgstr ""
 msgid "Updater"
 msgstr "Atnaujinimai"
 
-#, fuzzy
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart "
 "from the standard installation, you can optionally select bundles of "
@@ -844,13 +842,13 @@ msgid ""
 "maintained by Updater. Software that has been installed manually or using"
 " opkg is not affected."
 msgstr ""
-"Atnaujinimų servisas užtikrina, kad TurrisOS programinė įranga visada "
-"būtų naujausia. Čia galite pasirinkti papildomus sąrašus programinės "
-"įrangos, kuri bus įdiegta papildomai prie standartinės instaliacijos. "
-"Atkreipkite dėmesį, kad tik TurrisOS programinė įranga ar įranga įdiegta "
-"iš šių sąrašų yra automatiškai prižiūrima atnaujinimų serviso. Programinė"
-" įranga, kuri buvo įdiegta rankiniu būdu arba naudojant opkg nebus "
-"automatiškai atnaujinama."
+"Atnaujinimų servisas užtikrina, kad TurrisOS programinė įranga visada būtų "
+"naujausia. Čia galite pasirinkti papildomus sąrašus programinės įrangos, "
+"kuri bus įdiegta papildomai prie standartinės instaliacijos. Programas "
+"galite pasirinkti iš šio sąrašo. Atkreipkite dėmesį, kad tik TurrisOS "
+"programinė įranga ar įranga įdiegta iš šių sąrašų yra automatiškai "
+"prižiūrima atnaujinimų serviso. Programinė įranga, kuri buvo įdiegta "
+"rankiniu būdu arba naudojant opkg nebus automatiškai atnaujinama."
 
 msgid "I agree"
 msgstr "Sutinku"
@@ -864,30 +862,27 @@ msgstr "Išjungti automatinius atnaujinimus"
 msgid "Update approvals"
 msgstr "Atnaujinimo patvirtinimai"
 
-#, fuzzy
 msgid "Automatic installation"
-msgstr "Pradėti diegimą"
+msgstr "Automatinis diegimas"
 
-#, fuzzy
 msgid "Updates will be installed without user's intervention."
-msgstr "Atnaujinimai bus diegiami po kurio laiko, be naudotojo patvirtinimo."
+msgstr "Atnaujinimai bus diegiami be naudotojo patvirtinimo."
 
-#, fuzzy
 msgid "Delayed updates"
-msgstr "Uždelsimas (dienos)"
+msgstr "Uždelsti atnaujinimai"
 
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
+"Atnaujinimai bus diegiami su reguliuojamu pavėlinimu. Taip pat galėsite "
+"patvirtinti juos rankiniu būdu."
 
-#, fuzzy
 msgid "Update approval needed"
-msgstr "Patvirtinimo nereikia"
+msgstr "Reikalingas atnaujinimų patvirtinimas"
 
-#, fuzzy
 msgid "You have to approve the updates, otherwise they won't be installed."
-msgstr "Pasirinkote išjungti automatinius atnaujinimus diegimo metu."
+msgstr "Turite patvirtinti atnaujinimus, kitu atveju jie nebus diegiami."
 
 msgid ""
 "If you want to use other language than English you can select it from the"
@@ -918,10 +913,10 @@ msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatinė konfigūracija)"
 
 msgid "6to4 (public IPv4 address required)"
-msgstr ""
+msgstr "6to4 (reikalingas viešas IPv4 adresas)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr ""
+msgstr "6in4 (reikalingas viešas IPv4 adresas)"
 
 msgid "Disable IPv6"
 msgstr "Išjungti IPv6"
@@ -955,23 +950,20 @@ msgstr "IPv6 prefiksas"
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresų ruožas vietiniam tinklui, pvz. 2001:db8:be13:37da::/64"
 
-#, fuzzy
 msgid "DNS server 1 (IPv6)"
-msgstr "DNS serveris 1"
+msgstr "DNS serveris 1 (IPv6)"
 
-#, fuzzy
 msgid "DNS server 2 (IPv6)"
-msgstr "DNS serveris 2"
+msgstr "DNS serveris 2 (IPv6)"
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Konfigūruojamas"
+msgstr "Nustatytas DUID"
 
 msgid "DUID which will be provided to the DHCPv6 server."
-msgstr ""
+msgstr "DUID kuris bus pateikiamas DHCPv6 serveriui."
 
 msgid "Public IPv4"
-msgstr ""
+msgstr "Viešas IPv4"
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4"
@@ -980,29 +972,27 @@ msgid ""
 msgstr ""
 
 msgid "use autodetection"
-msgstr ""
+msgstr "naudoti auto-atpažinimą"
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "SMTP tiekėjas"
+msgstr "IPv4 tiekėjas"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's "
 "side."
 msgstr ""
 
-#, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "IPv6 prefiksas"
+msgstr "Maršrutizuojamas IPv6 prefiksas"
 
 msgid "IPv6 addresses which will be routed to your network."
-msgstr ""
+msgstr "IPv6 adresas kuris bus nukreiptas į jūsų tinklą."
 
 msgid "MTU"
-msgstr ""
+msgstr "MTU"
 
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
-msgstr ""
+msgstr "Maksimalus perdavimo dydis tunelyje (baitais)."
 
 msgid "Dynamic IPv4 handling"
 msgstr ""
@@ -1013,7 +1003,7 @@ msgid ""
 msgstr ""
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "Tunelio ID"
 
 msgid "ID of your tunnel which was assigned to you by the provider."
 msgstr ""
@@ -1042,9 +1032,8 @@ msgstr ""
 msgid "MAC address"
 msgstr "MAC adresas"
 
-#, fuzzy
 msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr "Reikšmės atskiriamos dvitaškiu, pavyzdžiui 00:11:22:33:44:55"
+msgstr "Dvitaškis naudojamas kaip skirtukas, pavyzdžiui 00:11:22:33:44:55"
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -1132,7 +1121,7 @@ msgstr "Čia galite keisti svečių Wi-Fi."
 msgid "Enable guest Wi-Fi"
 msgstr "Įjungti svečių Wi-Fi"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1141,10 +1130,9 @@ msgid ""
 "href='%(url)s'>the Guest network tab</a>. "
 msgstr ""
 "Įjungia Wi-Fi svečiams, atskirame tinkle. Įrenginiai prisijungę prie šio "
-"tinklo gali naudotis internetu, tačiau negali pasiekti kitų įrenginių "
-"tinkle ir maršrutizatoriaus konfigūravimo interfeiso. Svečių tinklo "
-"nustatymai gali būti keičiami <a href='%(url)s'>vietinio tinklo "
-"skiltyje</a>. "
+"tinklo gali naudotis internetu, tačiau negali pasiekti kitų įrenginių tinkle "
+"ir maršrutizatoriaus konfigūravimo interfeiso. Svečių tinklo nustatymai gali "
+"būti keičiami <a href='%(url)s'>Svečių tinklo skiltyje</a>. "
 
 msgid "SSID for guests"
 msgstr "SSID svečiams"
@@ -1152,17 +1140,16 @@ msgstr "SSID svečiams"
 msgid "Password for guests"
 msgstr "Slaptažodis svečiams"
 
-#, fuzzy
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
 " and fill in an SSID (the name of the access point) and a corresponding "
 "password. You can then set up your mobile devices, using the QR code "
 "available within the form."
 msgstr ""
-"Jei norite šį maršrutizatorių naudoti kaip belaidžio tinklo prieigos "
-"tašką, įjunkite Wi-Fi čia ir nustatykite SSID (belaidžio tinklo vardą) "
-"bei slaptažodį. Mobilius įrenginius galite sukonfigūruoti nuskenavę QR "
-"kodą esantį šalia nustatymų."
+"Jei norite maršrutizatorių naudoti kaip belaidžio tinklo prieigos tašką, "
+"įjunkite Wi-Fi čia ir nustatykite SSID (belaidžio tinklo vardą) bei "
+"slaptažodį. Mobilius įrenginius galite sukonfigūruoti nuskenavę QR kodą "
+"esantį šalia nustatymų."
 
 msgid "Wi-Fi settings"
 msgstr "Wi-Fi nustatymai"
@@ -1192,9 +1179,8 @@ msgstr "Perkrauti dabar"
 msgid "Dismiss"
 msgstr "Atmesti"
 
-#, fuzzy
 msgid "Dismiss All"
-msgstr "Atmesti"
+msgstr "Atmesti Viską"
 
 msgid "No new messages."
 msgstr "Nėra naujų žinučių."
@@ -1233,9 +1219,8 @@ msgid ""
 " be useful to wait for a while before running this test."
 msgstr ""
 
-#, fuzzy
 msgid "\"Unable to verify network connection."
-msgstr "Nepavyko patikrinti tinko ryšio."
+msgstr "\"Nepavyko patikrinti tinko ryšio."
 
 msgid "Test type"
 msgstr "Testas"
@@ -1264,21 +1249,17 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#, fuzzy
 msgid "IP Address"
-msgstr "IP adresas"
+msgstr "IP Adresas"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "IP adresas"
+msgstr "MAC Adresas"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "DHCP pradžia"
+msgstr "Įrenginio Vardas"
 
-#, fuzzy
 msgid "Active"
-msgstr "Išsaugoti"
+msgstr "Aktyvus"
 
 msgid "No DHCP clients found."
 msgstr ""
@@ -1289,16 +1270,14 @@ msgstr ""
 msgid "main"
 msgstr ""
 
-#, fuzzy
 msgid "type"
-msgstr "Testas"
+msgstr "tipas"
 
 msgid "bus"
 msgstr ""
 
-#, fuzzy
 msgid "state"
-msgstr "DHCP pradžia"
+msgstr "būsena"
 
 msgid "alive"
 msgstr ""
@@ -1372,27 +1351,25 @@ msgstr ""
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is "
 "capable of working independently or it can forward your DNS queries your "
 "internet service provider's DNS resolver."
 msgstr ""
-"Turris maršrutizatorius turi vidinį DNS serverį su DNSSEC funkcija. Jis "
-"gali veikti be papildomos konfigūracijos arba gali persiųsti jūsų DNS "
-"užklausas į jūsų interneto paslaugų tiekėjo DNS serverius."
+"Turris maršrutizatorius turi vidinį DNS resolverį su DNSSEC funkcija. Jis "
+"gali veikti autonomiškai arba persiųsti DNS užklausas į jūsų interneto "
+"paslaugų tiekėjo DNS serverius."
 
-#, fuzzy
 msgid ""
 "The following setting determines the behavior of the DNS resolver. "
 "Usually, it is better to use the ISP's resolver in networks where it "
 "works properly. If it does not work for some reason, it is necessary to "
 "use direct resolving without forwarding."
 msgstr ""
-"Šie nustatymai valdo vidinį DNS serverį. Tinkluose, kuriuose gerai veikia"
-" interneto paslaugų tiekėjo DNS serveriai, dažniausiai geriau naudoti "
-"juos. Jei dėl kokių nors priežasčių tai neveikia, tuomet reikia išjungti "
-"užklausų persiuntimą."
+"Šie nustatymai valdo vidinį DNS resolverį. Dažniausiai tinkluose, kuriuose "
+"gerai veikia interneto paslaugų tiekėjo DNS serveriai, geriau naudoti juos. "
+"Jei dėl kokių nors priežasčių tai neveikia, reikia naudoti tiesioginį "
+"resolvinimą be persiuntimo."
 
 msgid ""
 "In rare cases ISP's have improperly configured network which interferes "
@@ -1549,20 +1526,17 @@ msgid ""
 " the guest network."
 msgstr ""
 
-#, fuzzy
 msgid "Guest Network"
-msgstr "Svečių tinklas"
+msgstr "Svečių Tinklas"
 
 msgid "Unassigned"
 msgstr ""
 
-#, fuzzy
 msgid "WAN network"
-msgstr "Svečių tinklas"
+msgstr "WAN tinklas"
 
-#, fuzzy
 msgid "LAN network"
-msgstr "Svečių tinklas"
+msgstr "LAN tinklas"
 
 msgid "Unassign"
 msgstr ""
@@ -1597,16 +1571,14 @@ msgstr ""
 msgid "Use this workflow"
 msgstr ""
 
-#, fuzzy
 msgid "Failed to query ntp servers."
-msgstr "Nepavyko patvirtinti atnaujinimo."
+msgstr "Nepavyko susisiekti su NTP serveriais."
 
 msgid "NTP servers:"
-msgstr ""
+msgstr "NTP serveriai:"
 
-#, fuzzy
 msgid "Update time"
-msgstr "Atnaujinimas"
+msgstr "Atnaujinimo laikas"
 
 msgid ""
 "Data collection is currently enabled. You can not disable updater without"
@@ -1615,7 +1587,6 @@ msgstr ""
 "Šiuo metu įjungtas duomenų rinkimas. Negalite išjungti automatinių "
 "atnaujinimų, kol nebus išjungtas duomenų rinkimas."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
@@ -1624,12 +1595,11 @@ msgid ""
 "together with the next package installation."
 msgstr ""
 "Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
-"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite "
-"laikinai atidėti įtartinus atnaujinimus ir įdiegti juos tik tuomet kai "
-"būsite tam pasirengę. Negalima atnaujinimų atidėti visam laikui, jie bus "
-"vėl siūlomi įdiegti kartu su kitais atnaujinimais."
+"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite laikinai "
+"atidėti įtartinus atnaujinimus ir įdiegti juos tik tuomet kai būsite tam "
+"pasirengę. Negalima atnaujinimų atidėti visam laikui, jie bus vėl siūlomi "
+"įdiegti kartu su kitų paketų diegimu."
 
-#, fuzzy
 msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can e.g. install updates when"
@@ -1639,40 +1609,42 @@ msgid ""
 " package installation."
 msgstr ""
 "Atnaujinimų patvirtinimai gali būti naudingi jei norite įsitikinti, kad "
-"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite "
-"įdiegti atnaujinimus tuomet tuomet kai būsite pasiruošę galimam <a "
-"href='https://www.turris.cz/doc/en/howto/omnia_factory_reset#rollback_to_latest_snapshot'>sistemos"
-" atstatymui</a> ir laikinai atidėti įtartinus atnaujinimus. Negalima "
-"atnaujinimų atidėti visam laikui, jie bus vėl siūlomi įdiegti kartu su "
-"kitais atnaujinimais."
+"atnaujinimai nesugadins specifinių jūsų pakeitimų sistemoje. Galite laikinai "
+"atidėti įtartinus atnaujinimus ir įdiegti juos tik tuomet tuomet kai būsite "
+"pasiruošę galimam sistemos atstatymui. Negalima atnaujinimų atidėti visam "
+"laikui, jie bus vėl siūlomi įdiegti kartu su kitų paketų diegimu."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          after %(input)s hours\n"
 "          "
-msgstr "po %(input)s valandų"
+msgstr ""
+"\n"
+"          po %(input)s valandų\n"
+"          "
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Approve update from %(when)s\n"
 "    "
-msgstr "Patvirtinti %(when)s atnaujinimą"
+msgstr ""
+"\n"
+"    Patvirtinti %(when)s atnaujinimą\n"
+"    "
 
-#, fuzzy
 msgid "List of changes"
-msgstr "Atmesti pakeitimus"
+msgstr "Pakeitimų sąrašas"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Atkreipkite dėmesį, kad po atnaujinimų bus vykdomas perkrovimas."
 
-#, fuzzy
 msgid "Install now"
-msgstr "Įdiegti"
+msgstr "Įdiegti dabar"
 
 msgid "Deny"
-msgstr ""
+msgstr "Atmesti"
 
 msgid "No package will be installed unless you install the updates above."
 msgstr ""
@@ -1707,20 +1679,18 @@ msgid ""
 "and restore the default values."
 msgstr ""
 
-#, fuzzy
 msgid "Reset Wi-Fi settings"
-msgstr "Wi-Fi nustatymai"
+msgstr "Atstatyti Wi-Fi nustatymus"
 
-#, fuzzy
 msgid ""
 "One of the most important features of router Turris are automatic system "
 "updates. Thanks to this function your router's software stays up to date "
 "and offers better protection against attacks from the Internet."
 msgstr ""
-"Viena iš svarbiausių Turris Omnia maršrutizatoriaus savybių yra "
-"automatiniai sistemos atnaujinimai. Dėl šio funkcionalumo "
-"maršrutizatoriaus programinė įranga yra visada atnaujinta ir suteikia "
-"geresnę apsaugą nuo atakų iš interneto."
+"Viena iš svarbiausių Turris maršrutizatoriaus savybių yra automatiniai "
+"sistemos atnaujinimai. Dėl šio funkcionalumo maršrutizatoriaus programinė "
+"įranga yra visada atnaujinta ir suteikia geresnę apsaugą nuo atakų iš "
+"interneto."
 
 msgid ""
 "It is <strong>highly recommended</strong> to have this feature "
@@ -1745,20 +1715,18 @@ msgstr ""
 msgid "Most important points from the license agreement:"
 msgstr "Esminiai licencijos sutarties punktai:"
 
-#, fuzzy
 msgid "Automatic updates are offered to the Turris router owners free of charge."
-msgstr "Automatiniai atnaujinimai Turris Omnia savininkams suteikiami nemokamai."
+msgstr "Automatiniai atnaujinimai Turris savininkams suteikiami nemokamai."
 
 msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
 msgstr "Atnaujinimus ruošia išskirtinai tik CZ.NIC, z. s. p. o."
 
-#, fuzzy
 msgid ""
 "Enabling of the automatic updates is a prerequisite for additional "
 "security features of Turris router."
 msgstr ""
-"Automatinių atnaujinimų įjungimas yra privalomas norint naudoti kai "
-"kurias Turris Omnia saugumo funkcijas."
+"Automatinių atnaujinimų įjungimas yra privalomas norint naudoti kai kurias "
+"Turris maršrutizatoriaus saugumo funkcijas."
 
 msgid ""
 "Automatic updates take place at the time of their release, the time of "
@@ -1793,16 +1761,14 @@ msgstr ""
 "CZ.NIC, z. s. p. o. negarantuoja šios paslaugos prieinamumo ir neatsako "
 "už jokią automatinių atnaujinimų sukeltą žalą."
 
-#, fuzzy
 msgid ""
 "By enabling of the automatic updates, you confirm that you are the owner "
 "of this Turris router and you agree with the full text of the <a "
 "href=\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
 msgstr ""
-"Įjunkdami automatinius atnaujinimus, jūs patvirtinate, kad esate šio "
-"Turris Omnia maršrutizatoriaus savininkai ir sutinkate su visu <a "
-"href=\"https://www.turris.cz/omnia-updater-eula\">licencijos "
-"sutarties</a> tekstu."
+"Įjunkdami automatinius atnaujinimus, jūs patvirtinate, kad esate šio Turris "
+"maršrutizatoriaus savininkas ir sutinkate su visu <a href=\""
+"https://www.turris.cz/omnia-updater-eula\">licencijos sutarties</a> tekstu."
 
 msgid ""
 "Your password contains non-standard characters. These are not forbidden, "
@@ -1825,7 +1791,7 @@ msgid "Error"
 msgstr "Klaida"
 
 msgid "Loading..."
-msgstr "Kraunasi..."
+msgstr "Kraunama..."
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr "Ryšio testas nesėkmingas, tikrinamas ryšys išjungus persiuntimą."
@@ -1839,7 +1805,6 @@ msgstr ""
 "pasiekiamas adresu %NEW_IP_LINK%. Atkreipkite dėmesį į pastabą viršuje "
 "apie IP adreso keitimą."
 
-#, fuzzy
 msgid ""
 "You have chosen to not receive security updates. We strongly advice you "
 "to keep the automatic security updates enabled to receive all recommended"
@@ -1849,13 +1814,12 @@ msgid ""
 "continue and stay unprotected?"
 msgstr ""
 "Pasirinkote išjungti saugumo atnaujinimus. Mes griežtai patariame "
-"automatinius saugumo atnaujinimus palikti įjungtus, kad jūsų įrenginys "
-"gautu visus atnaujinimus. Reguliarus maršrutizatoriaus atnaujinimas yra "
-"vienintelis būdas užtikrinti apsaugą nuo žinomų grėsmių, kurios gali būti"
-" panaudotos prieš jūsų namų maršrutizatorių.\\n\\nAr tikrai norite "
+"automatinius saugumo atnaujinimus palikti įjungtus, kad jūsų įrenginys gautu "
+"visus atnaujinimus. Reguliarus maršrutizatoriaus atnaujinimas yra "
+"vienintelis būdas užtikrinti apsaugą nuo žinomų grėsmių, kurios gali būti "
+"panaudotos prieš jūsų namų maršrutizatorių.<br/><br/>Ar tikrai norite "
 "atsisakyti apsaugos?"
 
-#, fuzzy
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication "
 "against attacks on the DNS infrastructure. We strongly recommend keeping "
@@ -1865,9 +1829,8 @@ msgid ""
 msgstr ""
 "DNSSEC yra saugumą didinanti technologija kuri apsaugo DNS užklausas nuo "
 "atakų nukreiptų prieš DNS infrastruktūrą. Mes griežtai patariame palikti "
-"DNSSEC tikrinimą įjungta, nebent žinote, kad jungsite savo įrenginį į "
-"tinklą kuriame DNSSEC neveikia.\\n\\nAr tikrai norite atsisakyti "
-"apsaugos?"
+"DNSSEC tikrinimą įjungta, nebent žinote, kad jungsite savo įrenginį į tinklą "
+"kuriame DNSSEC neveikia. <br/><br/>Ar tikrai norite atsisakyti apsaugos?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Ar tikrai norite perkrauti maršrutizatorių?"
@@ -1876,13 +1839,12 @@ msgstr "Ar tikrai norite perkrauti maršrutizatorių?"
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "There are some unsaved changes in the notifications settings.<br/>Do you "
 "want to discard them and test the notifications with the old settings?"
 msgstr ""
-"Pranešimų nustatymai pakeisti ir neišsaugoti.\\nAr norite juos atmesti ir"
-" tikrinti pranešimų siuntimą su senais nustatymais?"
+"Pranešimų nustatymai pakeisti ir neišsaugoti.<br/>Ar norite juos atmesti ir "
+"tikrinti pranešimų siuntimą su senais nustatymais?"
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
@@ -1948,9 +1910,9 @@ msgstr "Reikšmė per trumpa. Turėtų būti mažiausiai %s simbolių ilgio."
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Reikšmė per ilga. Turėtų būti ne daugiau nei %s simbolių ilgio."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This field should have between %s and %s characters."
-msgstr "Reikšmė turi būti tarp %s ir %s."
+msgstr "Reikšmė turi būti tarp %s ir %s simbolių."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -2915,4 +2877,3 @@ msgstr ""
 #~ " DNS and other services might not "
 #~ "work properly."
 #~ msgstr ""
-
