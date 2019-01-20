@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-01-22 08:22+0000\n"
+"Last-Translator: Fln <weblate.org@fln.lt>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/turris/"
+"foris-tzinfo/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,429 +19,430 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 msgid "Kinshasa"
-msgstr ""
+msgstr "Kinšasa"
 
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 msgid "Swaziland"
-msgstr ""
+msgstr "Svazilandas"
 
 msgid "Cameroon"
-msgstr ""
+msgstr "Kamerūnas"
 
 msgid "Aden"
-msgstr ""
+msgstr "Adenas"
 
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Turkmėnistanas"
 
 msgid "Azores"
-msgstr ""
+msgstr "Azorai"
 
 msgid "St. John’s"
-msgstr ""
+msgstr "Sent Džonsas"
 
 msgid "Bougainville Island"
-msgstr ""
+msgstr "Bugenvilio sala"
 
 msgid "Casey"
-msgstr ""
+msgstr "Keisio stotis"
 
 msgid "Niamey"
-msgstr ""
+msgstr "Niamėjus"
 
 msgid "Skopje"
-msgstr ""
+msgstr "Skopjė"
 
 msgid "U.S. Outlying Islands"
-msgstr ""
+msgstr "JAV mažosios aplinkinės salos"
 
 msgid "Dominica"
-msgstr ""
+msgstr "Dominika"
 
 msgid "Kigali"
-msgstr ""
+msgstr "Kigalis"
 
 msgid "Yellowknife"
-msgstr ""
+msgstr "Jelounaifas"
 
 msgid "St. Kitts & Nevis"
-msgstr ""
+msgstr "Sent Kitsas ir Nevis"
 
 msgid "Bahia Banderas"
-msgstr ""
+msgstr "Bahia Banderas"
 
 msgid "Lubumbashi"
-msgstr ""
+msgstr "Lubumbašis"
 
 msgid "Accra"
-msgstr ""
+msgstr "Akra"
 
 msgid "Bamako"
-msgstr ""
+msgstr "Bamakas"
 
 msgid "Jersey"
-msgstr ""
+msgstr "Džersis"
 
 msgid "Macau"
-msgstr ""
+msgstr "Makao"
 
 msgid "Brisbane"
-msgstr ""
+msgstr "Brisbenas"
 
 msgid "Edmonton"
-msgstr ""
+msgstr "Edmontonas"
 
 msgid "Canary"
-msgstr ""
+msgstr "Kanarai"
 
 msgid "South Korea"
-msgstr ""
+msgstr "Pietų Korėja"
 
 msgid "Ushuaia"
-msgstr ""
+msgstr "Ušuaja"
 
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tadžikistanas"
 
 msgid "Vilnius"
-msgstr ""
+msgstr "Vilnius"
 
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolivija"
 
 msgid "Karachi"
-msgstr ""
+msgstr "Karačis"
 
 msgid "Choibalsan"
-msgstr ""
+msgstr "Čoibalsanas"
 
 msgid "Denver"
-msgstr ""
+msgstr "Denveris"
 
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovakija"
 
 msgid "Ho Chi Minh City"
-msgstr ""
+msgstr "Hošiminas"
 
 msgid "Chisinau"
-msgstr ""
+msgstr "Kišiniovas"
 
 msgid "Thimphu"
-msgstr ""
+msgstr "Timpu"
 
 msgid "Cordoba"
-msgstr ""
+msgstr "Kordoba"
 
 msgid "Montenegro"
-msgstr ""
+msgstr "Juodkalnija"
 
 msgid "Bratislava"
-msgstr ""
+msgstr "Bratislava"
 
 msgid "Wallis"
-msgstr ""
+msgstr "Volisas ir Futūna"
 
 msgid "Honolulu"
-msgstr ""
+msgstr "Honolulu"
 
 msgid "America"
-msgstr ""
+msgstr "Amerika"
 
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Kaimanų salos"
 
 msgid "Colombia"
-msgstr ""
+msgstr "Kolumbija"
 
 msgid "Libya"
-msgstr ""
+msgstr "Libija"
 
 msgid "Porto Velho"
-msgstr ""
+msgstr "Porto Veljas"
 
 msgid "Syowa"
-msgstr ""
+msgstr "Šovos stotis"
 
 msgid "Finland"
-msgstr ""
+msgstr "Suomija"
 
 msgid "Central African Republic"
-msgstr ""
+msgstr "Centrinės Afrikos Respublika"
 
 msgid "Uzhhorod"
-msgstr ""
+msgstr "Užhorodas"
 
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Lichtenšteinas"
 
 msgid "Libreville"
-msgstr ""
+msgstr "Librevilis"
 
 msgid "Merida"
-msgstr ""
+msgstr "Merida"
 
 msgid "United States"
-msgstr ""
+msgstr "Jungtinės Amerikos Valstijos"
 
 msgid "Ashgabat"
-msgstr ""
+msgstr "Ašchabadas"
 
 msgid "Portugal"
-msgstr ""
+msgstr "Portugalija"
 
 msgid "Zurich"
-msgstr ""
+msgstr "Ciurichas"
 
 msgid "Cyprus"
-msgstr ""
+msgstr "Kipras"
 
 msgid "Caribbean Netherlands"
-msgstr ""
+msgstr "Karibų Nyderlandai"
 
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnamas"
 
 msgid "Center, North Dakota"
-msgstr ""
+msgstr "Centras, Šiaurės Dakota"
 
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Britų Mergelių salos"
 
 msgid "Istanbul"
-msgstr ""
+msgstr "Stambulas"
 
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitkerno salos"
 
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuveitas"
 
 msgid "Cayenne"
-msgstr ""
+msgstr "Kajena"
 
 msgid "Costa Rica"
-msgstr ""
+msgstr "Kosta Rika"
 
 msgid "Dar es Salaam"
-msgstr ""
+msgstr "Dar es Salamas"
 
 msgid "Louisville"
-msgstr ""
+msgstr "Luisvilis"
 
 msgid "Manila"
-msgstr ""
+msgstr "Manila"
 
 msgid "Hovd"
-msgstr ""
+msgstr "Chovdas"
 
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigerija"
 
 msgid "Ecuador"
-msgstr ""
+msgstr "Ekvadoras"
 
 msgid "Europe"
-msgstr ""
+msgstr "Europa"
 
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Kokosų (Kilingo) Salos"
 
 msgid "Indianapolis"
-msgstr ""
+msgstr "Indianapolis"
 
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 msgid "Pitcairn Islands"
-msgstr ""
+msgstr "Pitkerno salos"
 
 msgid "Palestinian Territories"
-msgstr ""
+msgstr "Palestinos teritorijos"
 
 msgid "Hong Kong"
-msgstr ""
+msgstr "Honkongas"
 
 msgid "St. Kitts"
-msgstr ""
+msgstr "Sent Kitsas"
 
 msgid "Petersburg, Indiana"
-msgstr ""
+msgstr "Peterburgas, Indiana"
 
 msgid "Denmark"
-msgstr ""
+msgstr "Danija"
 
 msgid "Philippines"
-msgstr ""
+msgstr "Filipinai"
 
 msgid "Romania"
-msgstr ""
+msgstr "Rumunija"
 
 msgid "Athens"
-msgstr ""
+msgstr "Atėnai"
 
 msgid "Morocco"
-msgstr ""
+msgstr "Marokas"
 
 msgid "Atikokan"
-msgstr ""
+msgstr "Atikokanas"
 
 msgid "Tell City, Indiana"
-msgstr ""
+msgstr "Tel Sitis, Indiana"
 
 msgid "Oral"
-msgstr ""
+msgstr "Oralas"
 
 msgid "Yerevan"
-msgstr ""
+msgstr "Jerevanas"
 
 msgid "Ittoqqortoormiit"
-msgstr ""
+msgstr "Itokortormitas"
 
 msgid "Port Moresby"
-msgstr ""
+msgstr "Port Morsbis"
 
 msgid "Estonia"
-msgstr ""
+msgstr "Estija"
 
 msgid "Faroe"
-msgstr ""
+msgstr "Farerai"
 
 msgid "Lebanon"
-msgstr ""
+msgstr "Libanas"
 
 msgid "Pacific"
-msgstr ""
+msgstr "Ramiojo vandenyno"
 
 msgid "Hermosillo"
-msgstr ""
+msgstr "Hermosiljas"
 
 msgid "Halifax"
-msgstr ""
+msgstr "Halifaksas"
 
 msgid "Troll"
-msgstr ""
+msgstr "Troll stotis"
 
 msgid "Ust-Nera"
-msgstr ""
+msgstr "Ust Nera"
 
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 msgid "Novokuznetsk"
-msgstr ""
+msgstr "Novokuzneckas"
 
 msgid "Nepal"
-msgstr ""
+msgstr "Nepalas"
 
 msgid "Matamoros"
-msgstr ""
+msgstr "Matamorosas"
 
 msgid "Havana"
-msgstr ""
+msgstr "Havana"
 
 msgid "Suriname"
-msgstr ""
+msgstr "Surinamas"
 
 msgid "Christmas"
-msgstr ""
+msgstr "Kalėdų sala"
 
 msgid "Myanmar (Burma)"
-msgstr ""
+msgstr "Mianmaras (Birma)"
 
 msgid "Phoenix"
-msgstr ""
+msgstr "Finiksas"
 
 msgid "Zagreb"
-msgstr ""
+msgstr "Zagrebas"
 
 msgid "Noronha"
-msgstr ""
+msgstr "Fernando de Noronija"
 
 msgid "Luanda"
-msgstr ""
+msgstr "Luanda"
 
 msgid "Jordan"
-msgstr ""
+msgstr "Jordanija"
 
 msgid "Campo Grande"
-msgstr ""
+msgstr "Kampo Grandė"
 
 msgid "Fakaofo"
-msgstr ""
+msgstr "Fakaofas"
 
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrėja"
 
 msgid "Kralendijk"
-msgstr ""
+msgstr "Kralendeikas"
 
 msgid "Mahe"
-msgstr ""
+msgstr "Mahė"
 
 msgid "Managua"
-msgstr ""
+msgstr "Managva"
 
 msgid "Sarajevo"
-msgstr ""
+msgstr "Sarajevas"
 
 msgid "Magadan"
-msgstr ""
+msgstr "Magadanas"
 
 msgid "Syria"
-msgstr ""
+msgstr "Sirija"
 
 msgid "Dili"
-msgstr ""
+msgstr "Dilis"
 
 msgid "Belgrade"
-msgstr ""
+msgstr "Belgradas"
 
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Pusiaujo Gvinėja"
 
 msgid "Serbia"
-msgstr ""
+msgstr "Serbija"
 
 msgid "Santo Domingo"
-msgstr ""
+msgstr "Santo Domingas"
 
 msgid "Tortola"
-msgstr ""
+msgstr "Tortola"
 
 msgid "Christmas Island"
-msgstr ""
+msgstr "Kalėdų sala"
 
 msgid "Chicago"
-msgstr ""
+msgstr "Čikaga"
 
 msgid "Tahiti"
-msgstr ""
+msgstr "Taitis"
 
 msgid "Monterrey"
-msgstr ""
+msgstr "Monterėjus"
 
 msgid "Regina"
-msgstr ""
+msgstr "Redžaina"
 
 msgid "Lord Howe"
-msgstr ""
+msgstr "Lordo Hau sala"
 
 msgid "Monaco"
-msgstr ""
+msgstr "Monakas"
 
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamos"
 
 msgid "Glace Bay"
-msgstr ""
+msgstr "Gleis Bėjus"
 
 msgid "Perth"
-msgstr ""
+msgstr "Pertas"
 
 msgid "Mawson"
 msgstr ""
