@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2019-01-22 08:22+0000\n"
+"PO-Revision-Date: 2019-01-23 20:05+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/turris/"
 "foris-tzinfo/lt/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
-"X-Generator: Weblate 3.4-dev\n"
+"X-Generator: Weblate 3.4\n"
 
 msgid "Kinshasa"
 msgstr "Kinšasa"
@@ -316,7 +316,7 @@ msgid "Lebanon"
 msgstr "Libanas"
 
 msgid "Pacific"
-msgstr "Ramiojo vandenyno"
+msgstr "Ramusis vandenynas"
 
 msgid "Hermosillo"
 msgstr "Hermosiljas"
@@ -445,73 +445,73 @@ msgid "Perth"
 msgstr "Pertas"
 
 msgid "Mawson"
-msgstr ""
+msgstr "Mausono stotis"
 
 msgid "Srednekolymsk"
-msgstr ""
+msgstr "Srednekolymskas"
 
 msgid "Sao Paulo"
-msgstr ""
+msgstr "San Paulas"
 
 msgid "Hong Kong SAR China"
-msgstr ""
+msgstr "Honkongo SAR Kinija"
 
 msgid "Simferopol"
-msgstr ""
+msgstr "Simferopolis"
 
 msgid "Ghana"
-msgstr ""
+msgstr "Gana"
 
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudo Arabija"
 
 msgid "Bangui"
-msgstr ""
+msgstr "Bangis"
 
 msgid "Cape Verde"
-msgstr ""
+msgstr "Žaliasis Kyšulys"
 
 msgid "Malabo"
-msgstr ""
+msgstr "Malabas"
 
 msgid "Guatemala"
-msgstr ""
+msgstr "Gvatemala"
 
 msgid "Kerguelen"
-msgstr ""
+msgstr "Kergelenas"
 
 msgid "Brussels"
-msgstr ""
+msgstr "Briuselis"
 
 msgid "Rio Gallegos"
-msgstr ""
+msgstr "Rio Galjegosas"
 
 msgid "Kamchatka"
-msgstr ""
+msgstr "Kamčiatka"
 
 msgid "Dubai"
-msgstr ""
+msgstr "Dubajus"
 
 msgid "Addis Ababa"
-msgstr ""
+msgstr "Adis Abeba"
 
 msgid "Norfolk"
-msgstr ""
+msgstr "Norfolkas"
 
 msgid "Lome"
-msgstr ""
+msgstr "Lomė"
 
 msgid "Trinidad & Tobago"
-msgstr ""
+msgstr "Trinidadas ir Tobagas"
 
 msgid "Oman"
-msgstr ""
+msgstr "Omanas"
 
 msgid "Côte d’Ivoire"
-msgstr ""
+msgstr "Dramblio Kaulo Krantas"
 
 msgid "Phnom Penh"
-msgstr ""
+msgstr "Pnompenis"
 
 msgid "Adak"
 msgstr ""
