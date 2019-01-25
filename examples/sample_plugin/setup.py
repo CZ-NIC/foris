@@ -26,12 +26,12 @@ setup(
     author_email="stepan.henek@nic.cz",
     url="https://gitlab.labs.nic.cz/turris/foris-sample-plugin/",
     license="GPL-3.0",
-    requires=[
+    install_requires=[
         "foris",
+        'jinja2',
     ],
     setup_requires=[
         'babel',
-        'jinja2',
         'libsass',
         'foris_plugins_distutils',
     ],
