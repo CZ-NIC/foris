@@ -5,15 +5,22 @@
 {% if is_xhr is not defined %}
     <div id="header">
         <div class="sidebar-content">
-            <a href="{{ url("config_index") }}">
-                <img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}" class="header-side" height="65">
-            </a>
+            <div class="logo-ordinary">
+                <a href="{{ url("config_index") }}">
+                    <img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}" class="header-side">
+                </a>
+            </div>
+            <div class="config-turris-device">
+                {% include '_turris_device.html.j2' %}
+            </div>
             <div class="config-foris-version">
                 {% include '_foris_version.html.j2' %}
             </div>
             <div class="header-top">
               <a href="#menu" class="menu-link"><img src="{{ static("img/icon-menu.png") }}" alt="{% trans %}Menu{% endtrans %}" title="{% trans %}Menu{% endtrans %}"></a>
-              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}" height="50"></a>
+              <div class="logo-mobile">
+              <a href="{{ url("config_index") }}"><img src="{{ static("img/logo-turris.svg") }}" alt="{% trans %}Foris - administration interface of router Turris{% endtrans %}"></a>
+              </div>
             </div>
         </div>
     </div>

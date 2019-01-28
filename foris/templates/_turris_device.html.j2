@@ -1,0 +1,7 @@
+{% if foris_info.device == "mox" %}
+<span class="minor-text"><strong>Turris MOX</strong></span>
+{% elif foris_info.device == "omnia" %}
+<span class="minor-text"><strong>Turris OMNIA</strong></span>
+{% else %}
+<span class="minor-text"><strong>Turris 1.X</strong></span>
+{% endif %}

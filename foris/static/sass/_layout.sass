@@ -27,7 +27,7 @@ body
 #header
   +respond-to('not-mobile', $no-query: true)
     text-align: center
-    padding: 1.5em 0 1em 0
+    padding: 48px 0 16px 0
 
     &:before
       width: $sidebar-width
@@ -74,11 +74,40 @@ body
   display: none
   +respond-to('not-mobile', $no-query: true)
     display: block
-    position: relative
-    top: -1.5em
-    text-align: right
+    text-align: left
     text-decoration: none
+    color: $button-color-grayed
+    margin: 0 1.1em 4px
+    max-height: 1em
+
+.config-turris-device
+  display: none
+  +respond-to('not-mobile', $no-query: true)
+    display: block
+    text-align: left
+    text-decoration: none
+    margin: 0 1.1em
+    max-height: 1em
+
+.logo-ordinary
+  display: none
+  +respond-to('not-mobile', $no-query: true)
+    display: block
     margin: 0 0.5em
+    margin-bottom: 30px
+    width: 184px
+    height: 47px
+
+.logo-mobile
+  display: inline-block
+  padding: 0.3em 1em
+
+  img
+    width: 184px
+    height: 47px
+
+  +respond-to('not-mobile', $no-query: true)
+    display: none
 
 #content-wrap
   background: $background-color
