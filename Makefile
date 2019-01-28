@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2019 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-BRAND ?= turris
-
 COMPILED_CSS = $(wildcard foris/static/css/*)
 
 COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
@@ -23,14 +21,7 @@ COMPILED_L10N = $(wildcard foris/locale/*/LC_MESSAGES/*.mo)
 SASS_COMPILER = compass compile -s compressed -e production
 
 
-all: branding sass
-
-# target: branding - Copy assets for a specified device to its location.
-branding:
-	@echo "-- Preparing branding for '$(BRAND)'"
-	@[ -d branding/$(BRAND) ] || (echo "Directory with '$(BRAND)' branding does not exist" && exit 1)
-	@cp -fr branding/$(BRAND)/. foris/static/
-	@echo
+all: sass
 
 # target: sass - Compile SASS files to CSS files using SASS/Compass compiler.
 sass:
@@ -52,4 +43,4 @@ messages:
 	./setup.py extract_messages --no-location -o foris/locale/foris.pot -F babel.cfg
 	./setup.py update_catalog -D foris -i foris/locale/foris.pot -d foris/locale/
 
-.PHONY: all branding sass messages
+.PHONY: all sass messages

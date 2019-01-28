@@ -17,7 +17,7 @@
 
 import logging
 
-from foris import DEVICE_CUSTOMIZATION, __version__ as version
+from foris import __version__ as version
 from foris.langs import DEFAULT_LANGUAGE
 
 logger = logging.getLogger("foris.state")
@@ -25,7 +25,6 @@ logger = logging.getLogger("foris.state")
 
 class ForisState(object):
     def __init__(self):
-        self.device_customization = DEVICE_CUSTOMIZATION
         self.foris_version = version
         self.language = DEFAULT_LANGUAGE
         self.app = None

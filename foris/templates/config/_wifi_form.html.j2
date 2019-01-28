@@ -8,7 +8,7 @@
         {% for field in section.active_fields %}
             {% set radio_number = field.name.strip("abcdefghijklmnopqrstuvwxyz-_") %}
             {% include '_field.html.j2' %}
-            {% if field.name == "radio0-hwmode" and foris_info.device_customization == "omnia" and field.field.value == "11g" %}
+            {% if field.name == "radio0-hwmode" and foris_info.device == "omnia" and field.field.value == "11g" %}
         <div class="row">
             <p class="form-note">
             {% trans %}If you want to use this card for 2.4GHz bands, correction of cables connected to diplexers is needed! Factory default setting: Cables from big card connected to 5GHz, cables from small card connected to 2.4GHz diplexer part.{% endtrans %}

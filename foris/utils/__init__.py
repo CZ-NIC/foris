@@ -100,16 +100,16 @@ def is_safe_redirect(url, host=None):
 
 def require_customization(required_customization=None):
     """
-    Decorator for methods that require specific device_customization value.
-    Raises bottle HTTPError if current device_customization differs.
+    Decorator for methods that require specific device value.
+    Raises bottle HTTPError if current device differs.
 
-    :param required_customization: required device customization string
+    :param required_customization: required device string
     :return: decorated function
     """
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if current_state.device_customization != required_customization:
+            if current_state.device != required_customization:
                 raise bottle.HTTPError(
                     403, "Requested method is not available in this Foris build.")
             return func(*args, **kwargs)
