@@ -19,7 +19,7 @@
         {% endif %}
     </tbody>
 </table>
-<a href="#" id="test-connection" class="button">{% trans %}Test connection{% endtrans %}</a>
+<a href="#" id="test-connection" class="button" {% if foris_info.guide.current == active_config_page_key %}disabled{% endif %}>{% trans %}Test connection{% endtrans %}</a>
 <script>
     Foris.watched_test = null;
     var update_conn_test_field = function(key, result) {
@@ -61,6 +61,9 @@
             $("#connection-test-fail").hide();
             var self = $(this);
             e.preventDefault();
+            if (self.attr("disabled") == "disabled") {
+                return;
+            }
             self.attr("disabled", "disabled");
             $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection", ipv6_type: {% if ipv6_test %}true{% else %}false{% endif %}})
                     .done(function(response) {
