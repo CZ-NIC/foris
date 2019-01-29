@@ -43,9 +43,7 @@
                 <button type="submit" name="target" class="button" value="save"><i class='fas fa-times'></i> {% trans %}Leave Guided Mode{% endtrans %}</button>
               {% endif %}
               </form>
-              {% if foris_info.guide.current != active_config_page_key %}
-              <a class="button" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {% trans %}Next step{% endtrans %}</a>
-              {% endif %}
+              <a class="button{% if foris_info.guide.current == active_config_page_key %} disabled{% endif %}" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {% trans %}Next step{% endtrans %}</a>
             </div>
           </div>
           {% endif %}
