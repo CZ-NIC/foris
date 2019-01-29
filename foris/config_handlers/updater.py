@@ -45,7 +45,6 @@ class UpdaterHandler(BaseConfigHandler):
         self.backend_data = current_state.backend.perform(
             "updater", "get_settings", {"lang": current_state.language})
         # store setting required for rendering
-        self.branch = self.backend_data["branch"]
         self.current_approval = self.backend_data["approval"]
         self.updater_enabled = self.backend_data["enabled"]
         self.approval_setting_status = self.backend_data["approval_settings"]["status"]
@@ -185,7 +184,6 @@ class UpdaterHandler(BaseConfigHandler):
                     "updater", "update_settings", {
                         "enabled": True,
                         "approval_settings": data["approval_settings"],
-                        "branch": self.branch,
                         "user_lists": user_lists,
                         "languages": languages,
                     }
