@@ -1,3 +1,10 @@
+99.3 (2019-01-29)
+-----------------
+
+* new logo integrated
+* branding removed
+* updater api updated
+
 99.2 (2019-01-16)
 -----------------
 
