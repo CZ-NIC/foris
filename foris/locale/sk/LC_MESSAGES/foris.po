@@ -17,15 +17,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-21 15:23+0100\n"
-"PO-Revision-Date: 2018-11-30 15:33+0000\n"
-"Last-Translator: Milan Drobný <mildro@gmail.com>\n"
+"PO-Revision-Date: 2019-01-22 08:22+0000\n"
+"Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
+"\n"
 "Language: sk\n"
-"Language-Team: Slovak "
-"<https://hosted.weblate.org/projects/turris/foris/sk/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -128,6 +129,9 @@ msgid ""
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all iterfaces to LAN."
 msgstr ""
+"Zvolili ste si chovať sa ako miestny server, čo znamená, že nedáva zmysel "
+"umiestňovať akékoľvek rozhrania do WAN alebo siete pre hostí. Takže je dobrý "
+"nápad priradiť všetky rozhrania do LAN."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -135,12 +139,19 @@ msgid ""
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here. "
 msgstr ""
+"Pre fungovanie ako miestny server nie je potrebné spravovať LAN (pokiaľ ju "
+"tak chcete spravovať, resetujte sprievodcu a vyberte si postup Router). "
+"Najskôr chcete, aby zariadenie fungovalo ako klient a preto vyberte režim "
+"<strong>Počítač</strong>. "
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration iterface when the new settings are applied."
 msgstr ""
+"Pokiaľ si zvolíte <strong>statické</strong> nastavenie, overte si, že ste IP "
+"adresy zadali správne. Inak po uplatnení tohto nastavenia nebude rozhranie "
+"pre nastavovanie prístupné."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -148,11 +159,17 @@ msgid ""
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Pokiaľ vyberiete metódu <strong>DHCP</strong>, pravdepodobne pre toto "
+"zariadenie získate novú IP adresu. Tú môžete zistiť z DHCP servera, ktorý "
+"spravuje vašu sieť. Na túto novú IP adresu sa budete potrebovať pripojiť pre "
+"dokončenie sprievodcu."
 
 msgid ""
 "Note that either way you might need to re-plug your ethernet cabels after"
 " you update the settings here."
 msgstr ""
+"Upozorňujeme, že v oboch prípadoch môže byť po zmene týchto nastavení "
+"potrebné odpojiť a znovu pripojiť ethernetové káble."
 
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
@@ -160,53 +177,69 @@ msgid ""
 " your device is able to access the internet (you can use the connection "
 "test below)."
 msgstr ""
+"Vyskúšajte, či vami zadané nastavenia fungujú správne. To znamená, že môžete "
+"pristupovať k rozhraniu pre nastavovanie svojho zariadenia a to je schopné "
+"pristupovať k Internetu (na to je možné využiť test pripojenia nižšie)."
 
 msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Nastavenie zariadenia je dokončené. Teraz by vaše zariadenie malo byť "
+"schopné fungovať ako server na miestnej sieti."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
 "some further configuration updates to fit the device to your needs."
 msgstr ""
+"Minimálne nastavenie zariadenia je dokončené. Upozorňujeme, že pre "
+"prispôsobenie zariadenia vašim potrebám bude asi potrebné urobiť nejaké "
+"ďalšie zmeny v nastavení."
 
 msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"Nastavenie zariadenia je dokončené. Teraz by vaše zariadenie malo byť "
+"schopné fungovať ako smerovač a riadiť predávanie sieťovej prevádzky medzi "
+"LAN, WAN a sieťou pre hostí."
 
 msgid "Old"
-msgstr ""
+msgstr "Pôvodné"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimálne"
 
 msgid "Router"
 msgstr "Smerovač"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Miestny server"
 
 msgid "Unset"
-msgstr ""
+msgstr "Zrušiť nastavenie"
 
 msgid "The workflow wasn't set yet."
-msgstr ""
+msgstr "Scenár doteraz nebol nastavený."
 
 msgid "Workflow for older devices and older turris OS versions (before 4.0)."
-msgstr ""
+msgstr "Scenár pre staršie zariadenia a staršie verzie turris OS (pred 4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web gui. "
 msgstr ""
+"Stačí len nastaviť si heslo a ste pripravení. Tento postup je cielený na "
+"pokročilejších používateľov, ktorí neplánujú používať webové rozhranie. "
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Po dokončení tohto scenára bude vaše zariadenie schopné fungovať ako plne "
+"funkčný router. Predpokladá, že chcete viac-menej štandardné nastavenie "
+"siete."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -214,6 +247,10 @@ msgid ""
 "other devices within your local network (e.g. act as a network attached "
 "storage)."
 msgstr ""
+"Tento scenár vám pomôže nastaviť svoje zariadenie pre rolu miestneho "
+"servera. To znamená, že zariadenie bude poskytovať nejaký druh služby "
+"ostatným zariadeniam vo vašej miestnej sieti (napr. slúžiť ako sieťové "
+"dátové úložisko)."
 
 msgid "This field is required."
 msgstr "Toto pole je povinné."
@@ -281,7 +318,7 @@ msgid "System password was successfully saved."
 msgstr "Heslo bolo úspešne uložené."
 
 msgid "Failed to save system password"
-msgstr ""
+msgstr "Systémové heslo sa nepodarilo uložiť"
 
 msgid "Foris password was successfully saved."
 msgstr "Heslo do Forisa bolo úspešne uložené."
@@ -381,9 +418,8 @@ msgstr "Používať preposielanie"
 msgid "Use provider's DNS resolver"
 msgstr "Používať DNS servery poskytovateľa pripojenia"
 
-#, fuzzy
 msgid "DNS Forwarder"
-msgstr "Používať forwardovanie\t"
+msgstr "DNS preposielanie"
 
 msgid "Disable DNSSEC"
 msgstr "Vypnúť DNSSEC"
@@ -401,13 +437,12 @@ msgstr ""
 msgid "Domain of DHCP clients in DNS"
 msgstr "Doména DHCP klientov v DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Táto doména bude použitá ako TLD. Napr. pre klienta \"android-123\" a "
-"doménu \"my.lan\" bude výsledok \"android-123.my.lan\"."
+"Táto doména bude použitá ako TLD. Napr. pre klienta „android-123“ a doménu "
+"„my.lan“ bude výsledok „android-123.my.lan“."
 
 msgid "Guest network"
 msgstr "Sieť pre hostí"
@@ -416,6 +451,8 @@ msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
 " fit into <strong>Guest network netmask</strong>!"
 msgstr ""
+"<strong>Začiatok DHCP rozsahu</strong> a <strong>Počet prideľovaných "
+"adries</strong> sa nevojde do <strong>Maska siete pre hostí</strong>!"
 
 #, python-format
 msgid ""
@@ -424,6 +461,10 @@ msgid ""
 "allowed to access the internet, but are not allowed to access the "
 "configuration interface of the this device nor the devices in LAN."
 msgstr ""
+"Sieť pre hostí slúži na <a href='%(url)s'>WiFi pre hostí</a>. Je oddelená od "
+"vašej bežnej miestnej siete. Zariadeniam pripojeným do tejto siete je "
+"umožnené pristupovať k Internetu, ale už nie k rozhraniu pre nastavovanie "
+"routera či k zariadeniam v miestnej sieti."
 
 msgid "Enable guest network"
 msgstr "Povoliť sieť pre hostí"
@@ -462,7 +503,7 @@ msgid "DHCP max leases"
 msgstr "Počet prideľovaných adries"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Čas výpožičky (hodiny)"
 
 msgid "Guest Lan QoS"
 msgstr "Rýchlostný limit siete pre hostí"
@@ -493,6 +534,8 @@ msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
 " fit into <strong>Network netmask</strong>!"
 msgstr ""
+"<strong>Začiatok DHCP rozsahu</strong> a <strong>Počet prideľovaných "
+"adries</strong> sa nevojde do <strong>Maska siete</strong>!"
 
 msgid ""
 "This section contains settings for the local network (LAN). The provided "
@@ -518,11 +561,10 @@ msgstr ""
 "načítať stránku</strong> v prehliadači."
 
 msgid "LAN mode"
-msgstr ""
+msgstr "LAN režim"
 
-#, fuzzy
 msgid "Computer"
-msgstr "Smerovač"
+msgstr "Počítač"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -530,6 +572,10 @@ msgid ""
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services. "
 msgstr ""
+"Režim Router znamená, že toto zariadenie spravuje LAN (slúži ako router, "
+"môže prideľovať IP adresy, …). Režim počítač znamená, že toto zariadenie "
+"funguje v sieti ako klient. Chová sa podobne ako WAN, ale má otvorené porty "
+"pre svoje rozhranie na nastavovanie a ostatné služby. "
 
 msgid "Router IP address"
 msgstr "IP adresa routera"
@@ -550,14 +596,13 @@ msgid "Static IP address (manual configuration)"
 msgstr "Statická IP adresa (ručná konfigurácia)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Nepripájať toto zariadenie do LAN"
 
 msgid "IPv4 protocol"
 msgstr "Protokol IPv4"
 
-#, fuzzy
 msgid "IPv4 address"
-msgstr "IPv6 adresa"
+msgstr "IPv4 adresa"
 
 msgid "Network mask"
 msgstr "Maska podsiete"
@@ -587,9 +632,8 @@ msgstr "Identifikátor klienta, ktorý bude poslaný DHCP serveru."
 msgid "Password"
 msgstr "Heslo"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Aktuálne heslo"
+msgstr "Aktuálne heslo do Forisu"
 
 msgid "New password"
 msgstr "Nové heslo"
@@ -601,7 +645,7 @@ msgid "Password (repeat)"
 msgstr "Heslo (pre kontrolu)"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "pre webové rozhranie Foris"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -613,9 +657,8 @@ msgstr ""
 msgid "Passwords are not equal."
 msgstr "Zadané heslá sa nezhodujú."
 
-#, fuzzy
 msgid "for Advanced administration"
-msgstr "Pokročilé nastavenie"
+msgstr "pre pokročilú správu"
 
 #, python-format
 msgid ""
@@ -624,17 +667,19 @@ msgid ""
 "configuration options can be managed either through the <a "
 "href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
 msgstr ""
+"Pre prístup k voľbám pokročilých nastavenia, ktoré tu nie sú k dispozícii, "
+"je potrebné nastaviť heslo k účtu root. Pokročilé voľby nastavenia je možné "
+"spravovať buď prostredníctvom <a href=\"//%(host)s/%(path)s\">webového "
+"rozhrania LuCI</a> alebo cez SSH."
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Nenastavovať toto heslo"
 
-#, fuzzy
 msgid "Use Foris password"
-msgstr "Heslo pre pripojenie"
+msgstr "Použiť heslo do Forisu"
 
-#, fuzzy
 msgid "Use other password"
-msgstr "Heslo pre pripojenie"
+msgstr "Použiť iné heslo"
 
 msgid "Advanced administration"
 msgstr "Pokročilé nastavenie"
@@ -659,6 +704,8 @@ msgid ""
 "device's time is delayed, the procedure of SSL certificate verification "
 "might not work correctly."
 msgstr ""
+"Je dôležité, aby zariadenie malo nastavený správny čas. Pokiaľ bude "
+"oneskorený, procedúra overovania SSL certifikátov nemusí fungovať správne."
 
 msgid "Region settings"
 msgstr "Nastavenia regiónu"
@@ -682,13 +729,11 @@ msgstr "Časová zóna"
 msgid "Time settings"
 msgstr "Nastavenia času"
 
-#, fuzzy
 msgid ""
 "Time should be up-to-date otherwise DNS and other services might not work"
 " properly."
 msgstr ""
-"Čas by mal byť aktuálny, inak nemusia správne fungovať DNS a ďalšie "
-"služby."
+"Čas by mal byť aktuálny, inak nemusí správne fungovať DNS a ďalšie služby."
 
 msgid "How to set time"
 msgstr "Ako nastaviť čas"
@@ -709,17 +754,19 @@ msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Čas vo formáte YYYY-MM-DD HH:MM:SS."
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Sprievodca dokončený"
 
 msgid ""
 "Congratulations you've successfully reached the end of this guide. Once "
 "you leave this guide you'll be granted access to the full configuration "
 "interface of this device."
 msgstr ""
+"Gratulujeme, úspešne ste dosiahli koniec tohto sprievodcu. Akonáhle tohto "
+"sprievodcu opustíte, získate prístup do kompletného rozhrania pre "
+"nastavovanie zariadenia."
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Maska siete"
+msgstr "Sieťové rozhrania"
 
 msgid "Notifications settings"
 msgstr "Nastavenie upozornení"
@@ -755,7 +802,7 @@ msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr "Emailová adresa príjemcu. Viac adries oddeľte pomocou medzier."
 
 msgid "Doesn't contain a list of emails separated by spaces"
-msgstr ""
+msgstr "Neobsahuje zoznam e-mailov oddelených medzerami"
 
 msgid "Sender's name"
 msgstr "Meno odosielateľa"
@@ -840,12 +887,11 @@ msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Denný čas automatického reštartu vo formáte HH:MM."
 
 msgid "Guide workflow"
-msgstr ""
+msgstr "Scenár sprievodcu"
 
 msgid "Updater"
 msgstr "Updater"
 
-#, fuzzy
 msgid ""
 "Updater is a service that keeps all TurrisOS software up to date. Apart "
 "from the standard installation, you can optionally select bundles of "
@@ -855,14 +901,14 @@ msgid ""
 "maintained by Updater. Software that has been installed manually or using"
 " opkg is not affected."
 msgstr ""
-"Updater je služba systému TurrisOS, ktorá udržiava nainštalovaný softvér "
-"aktuálny. Okrem bežných balíkov, ktoré sú súčasťou systému, si môžete "
-"vybrať ďalšie balíky programov, ktoré sa nainštalujú na router. "
-"Inštaláciu týchto balíkov je možné povoliť v nasledujúcom zozname. Majte "
-"však na pamäti, že Updaterom sú aktualizované iba tie programy, ktoré sú "
-"súčasťou TurrisOS alebo boli nainštalované v rámci inštalácie z vybraných"
-" zoznamov balíkov. Softvér, ktorý ste nainštalovali ručne alebo "
-"prostredníctvom opkg, nie je Updaterom spravovaný."
+"Aktualizácie sú služba systému TurrisOS, ktorá udržiava nainštalovaný "
+"softvér aktuálny. Okrem bežných balíčkov, ktoré sú súčasťou systému, si "
+"môžete vybrať ďalšie balíčky programov, ktoré sa nainštalujú na zariadenie. "
+"Inštaláciu týchto balíčkov je možné vybrať v nasledujúcom zozname. Majte "
+"však na pamäti, že sa aktualizujú iba tie programy, ktoré sú súčasťou "
+"TurrisOS alebo boli nainštalované v rámci inštalácie zo zoznamu balíčkov. "
+"Softvér, ktorý ste nainštalovali ručne alebo prostredníctvom opkg, nie je "
+"Aktualizáciami spravovaný."
 
 msgid "I agree"
 msgstr "Súhlasím"
@@ -1151,7 +1197,7 @@ msgstr "Tu nastavte Wi-Fi pre hostí."
 msgid "Enable guest Wi-Fi"
 msgstr "Povoliť Wi-Fi pre hostí"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1159,10 +1205,10 @@ msgid ""
 "router. Parameters of the guest network can be set in <a "
 "href='%(url)s'>the Guest network tab</a>. "
 msgstr ""
-"Povolí Wi-Fi pre hostí, ktorá je oddelená od vnútornej siete. Zariadenia "
-"v tejto sieti majú prístup k internetu, ale nemajú prístup k ostatným "
-"zariadeniam, ani k nastaveniu routera. Parametre siete pre hostí môžete "
-"nastaviť <a href='%(url)s'>na karte LAN</a>. "
+"Zapne Wi-Fi pre hostí, ktorá je oddelená od vnútornej siete. Zariadenia v "
+"tejto sieti môžu ísť na Internet, ale nemajú prístup k ostatným zariadeniam, "
+"ani k nastaveniu routera. Parametre siete pre hostí môžete nastaviť <a "
+"href='%(url)s'>na karte Sieť pre hostí</a>. "
 
 msgid "SSID for guests"
 msgstr "Názov siete pre hostí"
@@ -1254,9 +1300,8 @@ msgstr ""
 " dlhšiu dobu, než sa pripojenie kompletne zinicializuje, preto nemusí byť"
 " na škodu pred testom pripojenia chvíľu počkať."
 
-#, fuzzy
 msgid "\"Unable to verify network connection."
-msgstr "Nepodarilo sa overiť stav pripojenia."
+msgstr "„Nepodarilo sa overiť stav pripojenia."
 
 msgid "Test type"
 msgstr "Typ testu"
@@ -1280,67 +1325,64 @@ msgid "Test connection"
 msgstr "Otestovať pripojenie"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "DHCP klienti"
 
 msgid "Expires"
-msgstr ""
+msgstr "Platnosť končí"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "IP adresa"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "IP adresa"
+msgstr "MAC adresa"
 
 msgid "Hostname"
 msgstr "Názov stroja"
 
-#, fuzzy
 msgid "Active"
-msgstr "Uložiť"
+msgstr "Aktívna"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Nenašli sa žiadni DHCP klienti."
 
 msgid "module"
-msgstr ""
+msgstr "modul"
 
 msgid "main"
-msgstr ""
+msgstr "hlavné"
 
-#, fuzzy
 msgid "type"
-msgstr "Typ testu"
+msgstr "typ"
 
 msgid "bus"
-msgstr ""
+msgstr "zbernica"
 
-#, fuzzy
 msgid "state"
-msgstr "DHCP názov stroja"
+msgstr "stav"
 
 msgid "alive"
-msgstr ""
+msgstr "aktívny"
 
 msgid "off"
-msgstr ""
+msgstr "vypnutý"
 
 msgid "link speed"
-msgstr ""
+msgstr "rýchlosť linky"
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
-msgstr ""
+msgstr "Aktuálna rýchlosť linky: %(speed)s Mbit"
 
 msgid "All network interfaces of this network are currently down."
-msgstr ""
+msgstr "Všetky sieťové rozhrania tejto siete sú teraz bez komunikácie."
 
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
 "here will become fully functional after you assign a network interface to"
 " this network."
 msgstr ""
+"Táto sieť teraz neobsahuje žiadne zariadenia. Zmeny, ktoré tu urobíte, sa "
+"stanú plne funkčné až potom, čo do tejto siete priradíte sieťové rozhranie."
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1357,7 +1399,7 @@ msgid "QR code"
 msgstr "QR kód"
 
 msgid "Show QR code"
-msgstr ""
+msgstr "Zobraziť QR kód"
 
 msgid "Device"
 msgstr "Zariadenie"
@@ -1378,43 +1420,41 @@ msgid "Menu"
 msgstr "Menu"
 
 msgid "foris guide"
-msgstr ""
+msgstr "sprievodca rozhraním foris"
 
 msgid "Reset Guided Mode"
-msgstr ""
+msgstr "Resetovať režim sprievodcu"
 
 msgid "Leave Guided Mode"
-msgstr ""
+msgstr "Opustiť režim sprievodcu"
 
 msgid "Next step"
-msgstr ""
+msgstr "Ďalší krok"
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
 "Aby mohol váš router správne fungovať, tak je potrebné spraviť jeho "
 "reštart."
 
-#, fuzzy
 msgid ""
 "Router Turris uses its own DNS resolver with DNSSEC support. It is "
 "capable of working independently or it can forward your DNS queries your "
 "internet service provider's DNS resolver."
 msgstr ""
-"Router Turris používa vlastný DNS resolver s podporou DNSSEC. Ten je "
-"schopný pracovať úplne samostatne, ako aj s využitím DNS resolvera "
-"poskytovateľa, prostredníctvom ktorého sa vykonáva tzv. forwardovanie."
+"Router Turris používa vlastný DNS prekladač s podporou DNSSEC. Ten je "
+"schopný pracovať úplne samostatne alebo preposielať otázky na DNS servery "
+"poskytovateľa pripojenia k Internetu."
 
-#, fuzzy
 msgid ""
 "The following setting determines the behavior of the DNS resolver. "
 "Usually, it is better to use the ISP's resolver in networks where it "
 "works properly. If it does not work for some reason, it is necessary to "
 "use direct resolving without forwarding."
 msgstr ""
-"Nasledujúce nastavenie ovplyvňuje práve nastavenie DNS resolvera. V "
-"sieťach, kde správne funguje DNS resolver poskytovateľa, je výhodnejšie "
-"ho používať, pretože to väčšinou vedie k rýchlejšej odozve. Pokiaľ však "
-"tento spôsob nefunguje, je nutné použiť variant bez forwardovania."
+"Nasledujúce nastavenie ovplyvňuje práve nastavenie DNS prekladu. V sieťach, "
+"kde správne funguje DNS server poskytovateľa, je zvyčajne výhodnejšie ho "
+"používať. Pokiaľ však tento spôsob nefunguje, je nutné použiť variant bez "
+"preposielania."
 
 msgid ""
 "In rare cases ISP's have improperly configured network which interferes "
@@ -1458,7 +1498,7 @@ msgid "DNSSEC"
 msgstr "DNSSEC"
 
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovať"
 
 msgid "Notifications and automatic restarts"
 msgstr "Upozornenia a automatické reštarty"
@@ -1552,11 +1592,16 @@ msgid ""
 "device. You can switch the physical network interfaces among networks. If"
 " you are unsure what to set here use the default settings."
 msgstr ""
+"Tu je možné nastavovať sieťové rozhrania zariadenia. Fyzické rozhrania je "
+"možné prehadzovať medzi sieťami. V prípade, že si nie ste istí, čo tu "
+"nastaviť, ponechajte predvolené nastavenia."
 
 msgid ""
 "<strong>WAN</strong> acts as an external network connection. Firewall "
 "rules should be applied here. It can only contain a single interface."
 msgstr ""
+"<strong>WAN</strong> sa chová ako pripojenie do vonkajšej siete. Mali by sa "
+"tu uplatňovať pravidlá brány firewall. Môže obsahovať iba jediné rozhranie."
 
 msgid ""
 "<strong>LAN</strong> acts as a local network connection. LAN should "
@@ -1565,6 +1610,11 @@ msgid ""
 "recommended that the LAN should contain at least one interface otherwise "
 "you might not be able to configure this device in an easy way."
 msgstr ""
+"<strong>LAN</strong> sa chová ako rozhranie do miestnej siete. LAN by mala "
+"obsahovať zariadenia, ktoré sú pod vašou správou a veríte im. Tieto "
+"zariadenia sa môžu navzájom vidieť a pristupovať k tomuto webovému "
+"rozhraniu. Odporúča sa, aby LAN obsahovala aspoň jedno rozhranie, inak svoj "
+"router nebudete môcť nastavovať – aspoň nie tak jednoducho."
 
 msgid ""
 "<strong>Guest network</strong> acts as a local network connection. Unlike"
@@ -1574,24 +1624,28 @@ msgid ""
 "that you can also limit download/upload speed of the devices connected to"
 " the guest network."
 msgstr ""
+"<strong>Sieť pre hostí</strong> sa chová ako pripojenie do miestnej siete. "
+"Na rozdiel od LAN, zariadenia v sieti pre hostí nemôžu pristupovať k "
+"rozhraniu pre nastavovanie routera a sú schopné pristupovať iba k WAN "
+"(Internet). Táto sieť by sa mala používať iba pre zariadenia, ktorým tak "
+"úplne neveríte. Upozorňujeme, že je tiež možné obmedzovať rýchlosť sť"
+"ahovania/odosielania pre zariadenia pripojené k sieti pre hostí."
 
 #, fuzzy
 msgid "Guest Network"
 msgstr "Sieť pre hostí"
 
 msgid "Unassigned"
-msgstr ""
+msgstr "Nepriradené"
 
-#, fuzzy
 msgid "WAN network"
-msgstr "Sieť pre hostí"
+msgstr "WAN sieť"
 
-#, fuzzy
 msgid "LAN network"
-msgstr "Sieť pre hostí"
+msgstr "LAN sieť"
 
 msgid "Unassign"
-msgstr ""
+msgstr "Zrušiť priradenie"
 
 msgid ""
 "In the setup you provided it is <strong>not possible to access the "
@@ -1600,12 +1654,20 @@ msgid ""
 " a perform factory reset. <br/><br/> <p><strong>Is this really what you "
 "want?</strong></p>"
 msgstr ""
+"V nastavení, ktoré ste zadali, <strong>nie je možné pristupovať k rozhraniu "
+"preo správu</strong> tohto routera. To znamená, že jediný spôsob, ako ho "
+"nastavovať, bude prostredníctvom sériového kábla alebo tým, že urobíte reset "
+"do továrenského nastavenia.<br/><br/><p><strong>Skutočne je to to, čo "
+"chcete?</strong></p>"
 
 msgid ""
 "You don't have any interface assigned to the LAN network.<br/> Do you "
 "want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
 "order to be able to access the configuration interface of our device?"
 msgstr ""
+"Nemáte priradené žiadne rozhranie do LAN siete<br/>Skutočne chcete <strong>"
+"otvoriť porty 22, 80 a 443 na WAN sieti</strong>, aby ste boli schopní "
+"pristupovať k rozhraniu pre nastavovanie svojho routera?"
 
 msgid ""
 "Following notifications occured and haven't been dismissed since last "
@@ -1618,18 +1680,20 @@ msgid ""
 "Here you can set the guide walkthrough which will guide you through the "
 "basic configuration of your device."
 msgstr ""
+"Tu je možné nastaviť sprievodcu, ktorý vás prevedie základným nastavením "
+"vášho zariadenia."
 
 msgid "recommended"
-msgstr ""
+msgstr "odporúčané"
 
 msgid "Use this workflow"
-msgstr ""
+msgstr "Použiť tento smer"
 
 msgid "Failed to query ntp servers."
 msgstr "Nepodarilo sa kontaktovať ntp servery."
 
 msgid "NTP servers:"
-msgstr ""
+msgstr "NTP servery:"
 
 msgid "Update time"
 msgstr "Aktualizovať čas"
@@ -1671,23 +1735,28 @@ msgstr ""
 "Odložená aktualizácia Vám bude opäť ponúknutá spoločne s tou "
 "nasledujúcou."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          after %(input)s hours\n"
 "          "
-msgstr "za %(input)s hodín"
+msgstr ""
+"\n"
+"          za %(input)s hodín\n"
+"          "
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Approve update from %(when)s\n"
 "    "
-msgstr "Schválenie aktualizácie z %(when)s"
+msgstr ""
+"\n"
+"    Schváliť aktualizáciu z %(when)s\n"
+"    "
 
-#, fuzzy
 msgid "List of changes"
-msgstr "Zahodiť zmeny"
+msgstr "Zoznam zmien"
 
 msgid "Note that a reboot will be triggered after the update."
 msgstr "Pozor! Po aktualizácii bude nasledovať reštart zariadenia."
@@ -1703,15 +1772,17 @@ msgstr ""
 "Dokiaľ neschválite vyššie spomenuté aktualizácie, nenainštaluje sa žiadny"
 " balíček."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    If you don't install the updates manually, they will be installed "
 "automatically after %(time)s.\n"
 "    "
 msgstr ""
-"Pokiaľ nenainštalujete aktualizácie ručne, nainštalujú sa po %(time)s "
-"automaticky."
+"\n"
+"    Pokiaľ nenainštalujete aktualizácie ručne, nainštalujú sa po %(time)s "
+"automaticky.\n"
+"    "
 
 msgid "Package lists"
 msgstr "Zoznamy balíčkov"
@@ -1870,7 +1941,6 @@ msgstr ""
 "IP adresa Vášho routera sa zmenila. Router by mal byť teraz dostupný na "
 "adrese %NEW_IP_LINK%. Viac informácií o zmene IP adresy nájdete vyššie."
 
-#, fuzzy
 msgid ""
 "You have chosen to not receive security updates. We strongly advice you "
 "to keep the automatic security updates enabled to receive all recommended"
@@ -1879,13 +1949,12 @@ msgid ""
 "might target your home router device.<br/><br/>Do you still want to "
 "continue and stay unprotected?"
 msgstr ""
-"Rozhodli ste sa deaktivovať bezpečnostné aktualizácie. Dôrazne Vám "
-"odporúčame, aby ste nechali automatické bezpečnostné aktualizácie "
-"zapnuté. Iba vďaka pravidelným aktualizáciám softvéru Vášho zariadenia je"
-" možné zaistiť ochranu pred útokmi, ktoré naňho môžu byť "
-"zamerané.\\n\\nSkutočne chcete pokračovať a zostať nechránení?"
+"Rozhodli ste sa vypnúť bezpečnostné aktualizácie. Dôrazne Vám odporúčame "
+"nechať automatické bezpečnostné aktualizácie zapnuté. Iba pravidelnou "
+"aktualizáciou softvéru vášho zariadenia je možné zaistiť ochranu pred "
+"útokmi, ktoré naňho môžu byť zamerané.<br/><br/>Skutočne chcete pokračovať a "
+"zostať nechránení?"
 
-#, fuzzy
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication "
 "against attacks on the DNS infrastructure. We strongly recommend keeping "
@@ -1893,44 +1962,42 @@ msgid ""
 "your device in the network where DNSSEC is broken. <br/><br/>Do you still"
 " want to continue and stay unprotected?"
 msgstr ""
-"DNSSEC je bezpečnostná technológia, ktorá chráni DNS komunikáciu pred "
-"útokmi na jej infraštruktúru. Dôrazne Vám odporúčame, aby ste nechali "
-"DNSSEC validáciu zapnutú, pokiaľ svoj router Turris nebudete pripájať do "
-"siete, v ktorej technológia DNSSEC nefunguje.\\n\\nSkutočne chcete "
-"pokračovať a zostať nechránení?"
+"DNSSEC je bezpečnostná technológia, ktorá chráni DNS komunikáciu pred útokmi "
+"na jej infraštruktúru. Dôrazne Vám odporúčame, aby ste nechali DNSSEC "
+"overovanie zapnuté, pokiaľ svoj router Turris nebudete pripájať do siete, v "
+"ktorej technológia DNSSEC nefunguje.<br/><br/>Skutočne chcete pokračovať a "
+"zostať nechránení?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Skutočne chcete reštartovať router?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
-msgstr ""
+msgstr "Zvyšné oznámenia (%(unread_left)s) budú zahodené."
 
-#, fuzzy
 msgid ""
 "There are some unsaved changes in the notifications settings.<br/>Do you "
 "want to discard them and test the notifications with the old settings?"
 msgstr ""
-"V nastavení boli vykonané zmeny, ktoré neboli uložené.\\nChcete zmeny "
-"zahodiť a poslať testovaciu správu s pôvodným nastavením?"
+"V nastavení upozorňovania boli vykonané zmeny, ktoré doteraz neboli uložené.<"
+"br/>Chcete ich zahodiť a poslať testovaciu správu s pôvodnými nastaveniami?"
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
-msgstr ""
+msgstr "Vaše zariadenie sa reštartuje za %(time_left)s sekúnd."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
-msgstr "Vaša sieť sa reštartuje. Čakajte, prosím..."
+msgstr "Vaša sieť sa reštartuje za %(time_left)s sekúnd."
 
 msgid "A reboot of your device was triggered."
-msgstr ""
+msgstr "Bol spustený reštart zariadenia."
 
-#, fuzzy
 msgid "A network restart was triggered."
-msgstr "Sieť sa reštartuje..."
+msgstr "Bol spustený reštart siete."
 
 msgid "Trying to reconnect to your device."
-msgstr ""
+msgstr "Pokus o opätovné pripojenie k vášmu zariadeniu."
 
 msgid "This value seems to be invalid."
 msgstr "Táto položka je neplatná."
@@ -1979,9 +2046,9 @@ msgstr "Táto položka musí mať najmenej %s znakov."
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Táto položka musí mať najviac %s znakov."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This field should have between %s and %s characters."
-msgstr "Táto položka musí byť v rozsahu od %s do %s."
+msgstr "Dĺžka hodnoty v tejto kolónke by mala byť medzi %s až %s znakmi."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -2988,4 +3055,3 @@ msgstr "Návrat k staršej verzii"
 #~ "ports for configuration interface and "
 #~ "other services. "
 #~ msgstr ""
-

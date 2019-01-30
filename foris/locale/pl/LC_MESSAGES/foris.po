@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-21 15:23+0100\n"
-"PO-Revision-Date: 2018-12-23 15:09+0000\n"
+"PO-Revision-Date: 2019-01-20 01:21+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
 "\n"
@@ -226,24 +226,22 @@ msgstr ""
 "Tryb pracy dla starszych urządzeń i starszych wersji systemu Turris "
 "(przed 4.0)."
 
-#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web gui. "
 msgstr ""
 "Po prostu ustaw hasło i jesteś gotowy do pracy. Ten tryb pracy jest "
 "skierowany do bardziej zaawansowanych użytkowników, którzy nie chcą "
-"korzystać z web gui. "
+"korzystać z panelu web. "
 
-#, fuzzy
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
-"Po zakończeniu konfiguracji tego trybu pracy urządzenie będzie mogło "
-"działać jako w pełni funkcjonalny router. Przewodnik zakłada, że chcesz "
-"mieć mniej lub bardziej standardową konfigurację sieci."
+"Po zakończeniu konfiguracji tego trybu pracy urządzenie będzie mogło działać "
+"jako w pełni funkcjonalny router. Przewodnik zakłada, że chcesz mieć mniej "
+"lub bardziej standardową konfigurację sieci."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -395,7 +393,6 @@ msgstr ""
 msgid "Updater is running"
 msgstr "Updater jest uruchomiony"
 
-#, fuzzy
 msgid "Failed to finish the guide."
 msgstr "Nie udało się ukończyć przewodnika."
 
@@ -420,9 +417,8 @@ msgstr "Użyj przekierowania (forwarding)"
 msgid "Use provider's DNS resolver"
 msgstr "Użyj serwerów DNS dostarczanych przez ISP"
 
-#, fuzzy
 msgid "DNS Forwarder"
-msgstr "DNS Forwarder"
+msgstr "Forwarder DNS"
 
 msgid "Disable DNSSEC"
 msgstr "Wyłącz DNSSEC"
@@ -449,7 +445,6 @@ msgstr ""
 msgid "Guest network"
 msgstr "Sieć gościnna"
 
-#, fuzzy
 msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
 " fit into <strong>Guest network netmask</strong>!"
@@ -532,7 +527,6 @@ msgstr "Szybkość wysyłania w sieci gościnnej (w kilobitach na sekundę)."
 msgid "LAN"
 msgstr "LAN"
 
-#, fuzzy
 msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
 " fit into <strong>Network netmask</strong>!"
@@ -569,7 +563,6 @@ msgstr "Tryb LAN"
 msgid "Computer"
 msgstr "Komputer"
 
-#, fuzzy
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
@@ -761,7 +754,6 @@ msgstr "Czas"
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Czas w formacie YYYY-MM-DD HH:MM:SS."
 
-#, fuzzy
 msgid "Guide Finished"
 msgstr "Przewodnik zakończony"
 
@@ -811,7 +803,6 @@ msgstr ""
 "Adres e-mail odbiorcy. Można zastosować więcej adresów rozdzielonych "
 "spacją."
 
-#, fuzzy
 msgid "Doesn't contain a list of emails separated by spaces"
 msgstr "Nie zawiera listy adresów e-mail oddzielonych spacjami"
 
@@ -901,7 +892,6 @@ msgstr "Godzina ponownego uruchomienia"
 msgid "Time of day of automatic reboot in HH:MM format."
 msgstr "Czas automatycznego ponownego uruchomienia w formacie HH:MM."
 
-#, fuzzy
 msgid "Guide workflow"
 msgstr "Przewodnik trybu pracy"
 
@@ -1359,11 +1349,9 @@ msgstr "Nie znaleziono klientów DHCP."
 msgid "module"
 msgstr "moduł"
 
-#, fuzzy
 msgid "main"
 msgstr "główny"
 
-#, fuzzy
 msgid "type"
 msgstr "typ"
 
@@ -1389,7 +1377,6 @@ msgstr "Bieżąca prędkość łącza: %(speed)s Mbit"
 msgid "All network interfaces of this network are currently down."
 msgstr "Wszystkie interfejsy sieciowe są obecnie niedostępne."
 
-#, fuzzy
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
 "here will become fully functional after you assign a network interface to"
@@ -1437,11 +1424,9 @@ msgstr "Menu"
 msgid "foris guide"
 msgstr "przewodnik foris"
 
-#, fuzzy
 msgid "Reset Guided Mode"
 msgstr "Zresetuj tryb przewodnika"
 
-#, fuzzy
 msgid "Leave Guided Mode"
 msgstr "Opuść tryb przewodnika"
 
@@ -1617,7 +1602,6 @@ msgstr ""
 "miejscu należy zastosować reguły zapory. Może zawierać tylko jeden interfejs "
 "sieciowy."
 
-#, fuzzy
 msgid ""
 "<strong>LAN</strong> acts as a local network connection. LAN should "
 "contain devices which are under your control and you trust them. These "
@@ -1632,7 +1616,6 @@ msgstr ""
 "sieciowy, w przeciwnym razie może nie być możliwe łatwe skonfigurowanie tego "
 "urządzenia."
 
-#, fuzzy
 msgid ""
 "<strong>Guest network</strong> acts as a local network connection. Unlike"
 " LAN the devices in the guest network can't access the configuration "
@@ -1643,8 +1626,8 @@ msgid ""
 msgstr ""
 "<strong>Sieć gościnna</strong> działa jak lokalne połączenie sieciowe. W "
 "przeciwieństwie do sieci LAN urządzenia w sieci gościnnej nie mają dostępu "
-"do interfejsu konfiguracyjnego tego urządzenia i mają dostęp tylko do sieci "
-"WAN (Internet). Ta sieć powinna być używana dla urządzeń, którym nie ufasz w "
+"do interfejsu konfiguracyjnego tego urządzenia ale mają dostęp do sieci WAN "
+"(Internet). Ta sieć powinna być używana dla urządzeń, którym nie ufasz w "
 "pełni. Pamiętaj, że możesz także ograniczyć szybkość pobierania/wysyłania "
 "urządzeń podłączonych do sieci gościnnej."
 
@@ -1664,7 +1647,6 @@ msgstr "Sieć LAN"
 msgid "Unassign"
 msgstr "Usuń przypisanie"
 
-#, fuzzy
 msgid ""
 "In the setup you provided it is <strong>not possible to access the "
 "administration interface</strong> of your device. This means that the "
@@ -1678,7 +1660,6 @@ msgstr ""
 "przywrócenie ustawień fabrycznych. <br/><br/><p> <strong>Czy naprawdę tego "
 "chcesz?</strong></p>"
 
-#, fuzzy
 msgid ""
 "You don't have any interface assigned to the LAN network.<br/> Do you "
 "want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
@@ -1699,8 +1680,9 @@ msgid ""
 "Here you can set the guide walkthrough which will guide you through the "
 "basic configuration of your device."
 msgstr ""
+"Tutaj możesz ustawić przewodnik, który poprowadzi Cię przez podstawową "
+"konfigurację urządzenia."
 
-#, fuzzy
 msgid "recommended"
 msgstr "zalecana"
 
@@ -1751,19 +1733,25 @@ msgstr ""
 "aktualizację . Nie można odroczyć aktualizacji na zawsze, zostanie ona "
 "zaproponowana wraz z następną aktualizacją pakietu."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          after %(input)s hours\n"
 "          "
-msgstr "po %(input)s godzinach"
+msgstr ""
+"\n"
+"          po %(input)s godzinach\n"
+"          "
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Approve update from %(when)s\n"
 "    "
-msgstr "Zatwierdź aktualizację od %(when)s"
+msgstr ""
+"\n"
+"    Zatwierdź aktualizację od %(when)s\n"
+"    "
 
 msgid "List of changes"
 msgstr "Lista zmian"
@@ -1782,15 +1770,17 @@ msgstr ""
 "Pakiet nie zostanie zainstalowany, chyba że zostaną zainstalowane "
 "powyższe aktualizacje."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    If you don't install the updates manually, they will be installed "
 "automatically after %(time)s.\n"
 "    "
 msgstr ""
-"Jeśli instalacja aktualizacji nie zostanie przeprowadzona ręcznie, "
-"zostaną one automatycznie zainstalowane po %(time)s."
+"\n"
+"    Jeśli instalacja aktualizacji nie zostanie przeprowadzona ręcznie, "
+"zostaną one automatycznie zainstalowane po %(time)s.\n"
+"    "
 
 msgid "Package lists"
 msgstr "Listy pakietów"
@@ -2058,7 +2048,7 @@ msgstr "Ta wartość jest za krótka. Powinna zawierać %s znaków lub więcej."
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Ta wartość jest za długa. Powinna zawierać %s znaków lub mniej."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This field should have between %s and %s characters."
 msgstr "To pole powinno zawierać między %s a %s znaków."
 
