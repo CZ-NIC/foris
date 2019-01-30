@@ -41,9 +41,9 @@
                 <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
               {% if foris_info.guide.display_leave_guide(foris_info.guide.current == active_config_page_key) %}
                 <button type="submit" name="target" class="button" value="save"><i class='fas fa-times'></i> {% trans %}Leave Guided Mode{% endtrans %}</button>
+                <a class="button{% if foris_info.guide.current == active_config_page_key %} disabled{% endif %}" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {% trans %}Next step{% endtrans %}</a>
               {% endif %}
               </form>
-              <a class="button{% if foris_info.guide.current == active_config_page_key %} disabled{% endif %}" href="{{ url("config_page", page_name=foris_info.guide.current) }}"><i class='fas fa-share'></i> {% trans %}Next step{% endtrans %}</a>
             </div>
           </div>
           {% endif %}
