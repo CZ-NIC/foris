@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-21 15:23+0100\n"
+"POT-Creation-Date: 2019-01-30 11:00+0100\n"
 "PO-Revision-Date: 2018-12-23 15:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
-"foris/nb_NO/>\n"
 "Language: nb\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -346,6 +345,40 @@ msgstr "Passord lagret."
 msgid "Failed to save Foris password"
 msgstr "Klarte ikke å lagre Foris-passord"
 
+msgid "Remote Access"
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully enabled."
+msgstr "Passord lagret."
+
+msgid ""
+"Failed to enable the remote access. You are probably using a message bus "
+"which doesn't support the remote access or the CA for remote access "
+"hasn't been generated yet."
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully disabled."
+msgstr "Passord lagret."
+
+#, fuzzy
+msgid "Failed to disable remote access."
+msgstr "Klarte ikke å lagre systempassord"
+
+msgid "Wrong HTTP method."
+msgstr "Gal HTTP-metode."
+
+msgid "Starting to generate CA for remote access."
+msgstr ""
+
+#, fuzzy
+msgid "CA for remote access was sucessfully deleted."
+msgstr "Passord lagret."
+
+msgid "Failed to delete CA for remote access."
+msgstr ""
+
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
 msgstr "Passord lagret."
@@ -361,9 +394,6 @@ msgstr "Oppsettet ble lagret."
 #, fuzzy
 msgid "Unable to update your network configuration."
 msgstr "Kunne ikke bekrefte nettverkstilkobling."
-
-msgid "Wrong HTTP method."
-msgstr "Gal HTTP-metode."
 
 #, fuzzy
 msgid "Wi-Fi reset was successful."
@@ -615,10 +645,11 @@ msgid ""
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services. "
 msgstr ""
-"Rutermodus betyr at denne enheten behandler LAN-et (oppfører seg som ruter, "
-"kan tildele IP-adresser, …). Datamaskinmodus betyr at denne enheten oppfører "
-"seg som klient i nettverket. Den oppfører seg på lignende måte som med WAN, "
-"men den har åpnede porter for oppsettsgresesnitt og andre tjenester. "
+"Rutermodus betyr at denne enheten behandler LAN-et (oppfører seg som "
+"ruter, kan tildele IP-adresser, …). Datamaskinmodus betyr at denne "
+"enheten oppfører seg som klient i nettverket. Den oppfører seg på "
+"lignende måte som med WAN, men den har åpnede porter for "
+"oppsettsgresesnitt og andre tjenester. "
 
 msgid "Router IP address"
 msgstr "Ruterens IP-adresse"
@@ -956,6 +987,60 @@ msgstr "Tid på dagen for automatisk omstart, i formatet HH:MM."
 #, fuzzy
 msgid "Guide workflow"
 msgstr "Veiledningsoppsettsvei"
+
+#, fuzzy
+msgid "valid"
+msgstr "levende"
+
+msgid "revoked"
+msgstr ""
+
+#, fuzzy
+msgid "expired"
+msgstr "Utløper"
+
+msgid "generating"
+msgstr ""
+
+msgid "lost"
+msgstr ""
+
+msgid "Enable remote access"
+msgstr ""
+
+msgid "Accessible via WAN"
+msgstr ""
+
+msgid ""
+"If this option is check the device in the WAN network will be able to "
+"connect to the configuration interface. Otherwise only devices on LAN "
+"will be able to access the configuration interface."
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "A port which will be opened for the remote configuration of this device."
+msgstr ""
+
+#, fuzzy
+msgid "Token name"
+msgstr "Avsendernavn"
+
+#, fuzzy
+msgid ""
+"The display name for the token. It must be shorter than 64 characters and"
+" must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Avsenderens navn kan kun inneholde alfanumeriske tegn, dotter og "
+"understreker."
+
+msgid "Token name is invalid."
+msgstr ""
+
+#, fuzzy
+msgid "Token id is invalid."
+msgstr "MAC-adressen er ikke gyldig."
 
 msgid "Updater"
 msgstr "Oppdateringsfunksjon"
@@ -1464,6 +1549,15 @@ msgstr ""
 "her vil tre i effekt etter at du tildeler et nettverksgrensesnitt til "
 "dette nettverket."
 
+msgid "Token"
+msgstr ""
+
+msgid "Prepare Token"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1557,8 +1651,9 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Forkast endringer"
 
-msgid "Save changes"
-msgstr "Lagre endringer"
+#, fuzzy
+msgid "Save"
+msgstr "Brukernavn"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1775,6 +1870,82 @@ msgstr "anbefalt"
 
 msgid "Use this workflow"
 msgstr "Bruk denne oppsettsveien"
+
+msgid ""
+"Here you can set up your router to be configured remotely. The remote "
+"configuration is done via secure encrypted connection and each client is "
+"required to have a token issued by this device."
+msgstr ""
+
+msgid "No certification authority"
+msgstr ""
+
+msgid ""
+"Currently there is no certificate authority(CA) dedicated to remote "
+"access. A CA is required to generate access tokens to authenticate. To "
+"proceed you need to generate it first."
+msgstr ""
+
+msgid "Generate CA"
+msgstr ""
+
+msgid "Generating certificate authority"
+msgstr ""
+
+msgid ""
+"The CA necessary for the remote administration. The time required for "
+"generating CA may differ. Please try to reload this page later."
+msgstr ""
+
+msgid "Loading..."
+msgstr "Laster…"
+
+#, fuzzy
+msgid "Reload page"
+msgstr "Forsinkede oppgraderinger"
+
+#, fuzzy
+msgid "Connection parameters"
+msgstr "Tilkoblingstest"
+
+msgid ""
+"You CA seems to be ready to be used. Now you can safely enable/disable "
+"the remote access and set some of the parameters."
+msgstr ""
+
+#, fuzzy
+msgid "Apply configuration"
+msgstr "Last ned sikkerhetskopi av oppsett"
+
+msgid "Tokens"
+msgstr ""
+
+msgid ""
+"Here you can create and revoke the client capability to connect to the "
+"remote administration."
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Delete CA"
+msgstr ""
+
+msgid ""
+"You can't delete the CA while the remote access is enabled. To delete the"
+" CA you need to disable the remote access first."
+msgstr ""
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+
+msgid ""
+"<a href=\"${response.url}\"><div id=\"remote-"
+"qrcode-${token_id}\"></div></a><br/>Expires in:"
+msgstr ""
 
 #, fuzzy
 msgid "Failed to query ntp servers."
@@ -2008,9 +2179,6 @@ msgstr "OK"
 msgid "Error"
 msgstr "Feil"
 
-msgid "Loading..."
-msgstr "Laster…"
-
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr "Tilkoblingstest mislyktes, tester tilkobling med avskrudd videresending."
 
@@ -2086,6 +2254,12 @@ msgstr "En nettverksomstart ble forespurt."
 
 msgid "Trying to reconnect to your device."
 msgstr "Prøver å koble til enheten din igjen."
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
 
 msgid "This value seems to be invalid."
 msgstr "Denne verdien ser ut til å være ugyldig."
@@ -3013,3 +3187,7 @@ msgstr "Nedgrader"
 #~ " som WAN, men den har åpnede "
 #~ "porter for oppsettsgrensesnittet og andre "
 #~ "tjenester. "
+
+#~ msgid "Save changes"
+#~ msgstr "Lagre endringer"
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-21 15:23+0100\n"
+"POT-Creation-Date: 2019-01-30 11:00+0100\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -303,6 +303,39 @@ msgstr "Jelszó sikeresen elmentve."
 msgid "Failed to save Foris password"
 msgstr ""
 
+msgid "Remote Access"
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully enabled."
+msgstr "Jelszó sikeresen elmentve."
+
+msgid ""
+"Failed to enable the remote access. You are probably using a message bus "
+"which doesn't support the remote access or the CA for remote access "
+"hasn't been generated yet."
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully disabled."
+msgstr "Jelszó sikeresen elmentve."
+
+msgid "Failed to disable remote access."
+msgstr ""
+
+msgid "Wrong HTTP method."
+msgstr "Hibás HTTP-metódus."
+
+msgid "Starting to generate CA for remote access."
+msgstr ""
+
+#, fuzzy
+msgid "CA for remote access was sucessfully deleted."
+msgstr "Jelszó sikeresen elmentve."
+
+msgid "Failed to delete CA for remote access."
+msgstr ""
+
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
 msgstr "Jelszó sikeresen elmentve."
@@ -317,9 +350,6 @@ msgstr "Beállítás mentése sikerült."
 #, fuzzy
 msgid "Unable to update your network configuration."
 msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
-
-msgid "Wrong HTTP method."
-msgstr "Hibás HTTP-metódus."
 
 msgid "Wi-Fi reset was successful."
 msgstr "A Wi-Fi visszaállítása sikerült."
@@ -524,8 +554,8 @@ msgid ""
 msgstr ""
 "Ez a rész tartalmazza a helyi hálózat (LAN) beállításait. A felkínált "
 "alapértelmezések alkalmasak a legtöbb hálózat esetében. "
-"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó IP-"
-"címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
+"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó "
+"IP-címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
 "most használ, szüksége lesz egy <strong>új IP-címre</strong>, amely "
 "<strong>nem</strong> <strong>azonnal</strong> történik meg. Ajánlott az "
 "összes LAN kábel ki- és bedugása a módosítások elfogadása után, hogy a "
@@ -858,6 +888,58 @@ msgstr "Automatikus újraindulás ideje ÓÓ:PP formátumban."
 
 msgid "Guide workflow"
 msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "revoked"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "generating"
+msgstr ""
+
+msgid "lost"
+msgstr ""
+
+msgid "Enable remote access"
+msgstr ""
+
+msgid "Accessible via WAN"
+msgstr ""
+
+msgid ""
+"If this option is check the device in the WAN network will be able to "
+"connect to the configuration interface. Otherwise only devices on LAN "
+"will be able to access the configuration interface."
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "A port which will be opened for the remote configuration of this device."
+msgstr ""
+
+#, fuzzy
+msgid "Token name"
+msgstr "Feladó neve"
+
+#, fuzzy
+msgid ""
+"The display name for the token. It must be shorter than 64 characters and"
+" must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Feladó neve csak alfanumerikus karaktereket, pontot és aláhúzást "
+"tartalmazhat."
+
+msgid "Token name is invalid."
+msgstr ""
+
+#, fuzzy
+msgid "Token id is invalid."
+msgstr "Érvénytelen DUID-cím."
 
 msgid "Updater"
 msgstr "Frissítéskezelő"
@@ -1350,6 +1432,15 @@ msgid ""
 " this network."
 msgstr ""
 
+msgid "Token"
+msgstr ""
+
+msgid "Prepare Token"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1445,8 +1536,9 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Módosítások elvetése"
 
-msgid "Save changes"
-msgstr "Beállítások mentése"
+#, fuzzy
+msgid "Save"
+msgstr "Gépnév"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1626,6 +1718,82 @@ msgid "recommended"
 msgstr ""
 
 msgid "Use this workflow"
+msgstr ""
+
+msgid ""
+"Here you can set up your router to be configured remotely. The remote "
+"configuration is done via secure encrypted connection and each client is "
+"required to have a token issued by this device."
+msgstr ""
+
+msgid "No certification authority"
+msgstr ""
+
+msgid ""
+"Currently there is no certificate authority(CA) dedicated to remote "
+"access. A CA is required to generate access tokens to authenticate. To "
+"proceed you need to generate it first."
+msgstr ""
+
+msgid "Generate CA"
+msgstr ""
+
+msgid "Generating certificate authority"
+msgstr ""
+
+msgid ""
+"The CA necessary for the remote administration. The time required for "
+"generating CA may differ. Please try to reload this page later."
+msgstr ""
+
+msgid "Loading..."
+msgstr "Betöltés..."
+
+#, fuzzy
+msgid "Reload page"
+msgstr "Késleltetett frissítések"
+
+#, fuzzy
+msgid "Connection parameters"
+msgstr "Kapcsolat ellenőrzése"
+
+msgid ""
+"You CA seems to be ready to be used. Now you can safely enable/disable "
+"the remote access and set some of the parameters."
+msgstr ""
+
+#, fuzzy
+msgid "Apply configuration"
+msgstr "Beállítások mentésének  letöltése"
+
+msgid "Tokens"
+msgstr ""
+
+msgid ""
+"Here you can create and revoke the client capability to connect to the "
+"remote administration."
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Delete CA"
+msgstr ""
+
+msgid ""
+"You can't delete the CA while the remote access is enabled. To delete the"
+" CA you need to disable the remote access first."
+msgstr ""
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+
+msgid ""
+"<a href=\"${response.url}\"><div id=\"remote-"
+"qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -1852,9 +2020,6 @@ msgstr "OK"
 msgid "Error"
 msgstr "Hiba"
 
-msgid "Loading..."
-msgstr "Betöltés..."
-
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
 "Kapcsolat ellenőrzése sikertelen, kapcsolat ellenőrzése letiltott "
@@ -1931,6 +2096,12 @@ msgid "A network restart was triggered."
 msgstr "Hálózat újraindítása..."
 
 msgid "Trying to reconnect to your device."
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Cancel"
 msgstr ""
 
 msgid "This value seems to be invalid."
@@ -2088,9 +2259,8 @@ msgstr "Visszalépés"
 #~ " Also defines the range of assigned"
 #~ " IP addresses."
 #~ msgstr ""
-#~ "Útválasztó IP-címe a belső hálózaton."
-#~ " Meghatározza a kiosztott IP-címtartományt"
-#~ " is."
+#~ "Útválasztó IP-címe a belső hálózaton. "
+#~ "Meghatározza a kiosztott IP-címtartományt is."
 
 #~ msgid "Use Modem Turris"
 #~ msgstr "Turris Modem használata"
@@ -2814,8 +2984,8 @@ msgstr "Visszalépés"
 #~ msgstr ""
 #~ "Ha ez a beállítás engedélyezve van, "
 #~ "a felhasználóneveket és jelszavakat gyűjtik"
-#~ " és az ügyfél IP-címe mellett "
-#~ "ezeket is a kiszolgálóhoz küldik."
+#~ " és az ügyfél IP-címe mellett ezeket"
+#~ " is a kiszolgálóhoz küldik."
 
 #~ msgid "Enable data collection"
 #~ msgstr "Adatgyűjtés engedélyezése"
@@ -2927,4 +3097,7 @@ msgstr "Visszalépés"
 #~ "ports for configuration interface and "
 #~ "other services. "
 #~ msgstr ""
+
+#~ msgid "Save changes"
+#~ msgstr "Beállítások mentése"
 

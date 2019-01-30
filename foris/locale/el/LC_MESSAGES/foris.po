@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-21 15:23+0100\n"
+"POT-Creation-Date: 2019-01-30 11:00+0100\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language: el\n"
@@ -269,6 +269,39 @@ msgstr "Ο κωδικός πρόσβασης αποθηκεύτηκε με επ�
 msgid "Failed to save Foris password"
 msgstr ""
 
+msgid "Remote Access"
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully enabled."
+msgstr "Ο κωδικός πρόσβασης αποθηκεύτηκε με επιτυχία."
+
+msgid ""
+"Failed to enable the remote access. You are probably using a message bus "
+"which doesn't support the remote access or the CA for remote access "
+"hasn't been generated yet."
+msgstr ""
+
+#, fuzzy
+msgid "Remote access was sucessfully disabled."
+msgstr "Ο κωδικός πρόσβασης αποθηκεύτηκε με επιτυχία."
+
+msgid "Failed to disable remote access."
+msgstr ""
+
+msgid "Wrong HTTP method."
+msgstr "Εσφαλμένη μέθοδος HTTP."
+
+msgid "Starting to generate CA for remote access."
+msgstr ""
+
+#, fuzzy
+msgid "CA for remote access was sucessfully deleted."
+msgstr "Ο κωδικός πρόσβασης αποθηκεύτηκε με επιτυχία."
+
+msgid "Failed to delete CA for remote access."
+msgstr ""
+
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
 msgstr "Ο κωδικός πρόσβασης αποθηκεύτηκε με επιτυχία."
@@ -282,9 +315,6 @@ msgstr "Η διαμόρφωση αποθηκεύτηκε με επιτυχία."
 
 msgid "Unable to update your network configuration."
 msgstr ""
-
-msgid "Wrong HTTP method."
-msgstr "Εσφαλμένη μέθοδος HTTP."
 
 msgid "Wi-Fi reset was successful."
 msgstr ""
@@ -815,6 +845,58 @@ msgstr "Ώρα αυτόματης επανεκκίνησης σε μορφή HH:
 msgid "Guide workflow"
 msgstr ""
 
+msgid "valid"
+msgstr ""
+
+msgid "revoked"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "generating"
+msgstr ""
+
+msgid "lost"
+msgstr ""
+
+msgid "Enable remote access"
+msgstr ""
+
+msgid "Accessible via WAN"
+msgstr ""
+
+msgid ""
+"If this option is check the device in the WAN network will be able to "
+"connect to the configuration interface. Otherwise only devices on LAN "
+"will be able to access the configuration interface."
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "A port which will be opened for the remote configuration of this device."
+msgstr ""
+
+#, fuzzy
+msgid "Token name"
+msgstr "Όνομα αποστολέα"
+
+#, fuzzy
+msgid ""
+"The display name for the token. It must be shorter than 64 characters and"
+" must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+"Το όνομα του αποστολέα μπορεί να περιέχει μόνο αλφαριθμητικούς "
+"χαρακτήρες, κουκκίδες και κάτω παύλα."
+
+msgid "Token name is invalid."
+msgstr ""
+
+#, fuzzy
+msgid "Token id is invalid."
+msgstr "Η διεύθυνση MAC δεν είναι έγκυρη."
+
 #, fuzzy
 msgid "Updater"
 msgstr "Λογισμικό ενημέρωσης"
@@ -1277,6 +1359,15 @@ msgid ""
 " this network."
 msgstr ""
 
+msgid "Token"
+msgstr ""
+
+msgid "Prepare Token"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1349,8 +1440,9 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Απόρριψη αλλαγών"
 
-msgid "Save changes"
-msgstr "Αποθήκευση αλλαγών"
+#, fuzzy
+msgid "Save"
+msgstr "Έναρξη DHCP"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1502,6 +1594,82 @@ msgid "recommended"
 msgstr ""
 
 msgid "Use this workflow"
+msgstr ""
+
+msgid ""
+"Here you can set up your router to be configured remotely. The remote "
+"configuration is done via secure encrypted connection and each client is "
+"required to have a token issued by this device."
+msgstr ""
+
+msgid "No certification authority"
+msgstr ""
+
+msgid ""
+"Currently there is no certificate authority(CA) dedicated to remote "
+"access. A CA is required to generate access tokens to authenticate. To "
+"proceed you need to generate it first."
+msgstr ""
+
+msgid "Generate CA"
+msgstr ""
+
+msgid "Generating certificate authority"
+msgstr ""
+
+msgid ""
+"The CA necessary for the remote administration. The time required for "
+"generating CA may differ. Please try to reload this page later."
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+#, fuzzy
+msgid "Reload page"
+msgstr "Αναβολή (ημέρες)"
+
+#, fuzzy
+msgid "Connection parameters"
+msgstr "Δοκιμή σύνδεσης"
+
+msgid ""
+"You CA seems to be ready to be used. Now you can safely enable/disable "
+"the remote access and set some of the parameters."
+msgstr ""
+
+#, fuzzy
+msgid "Apply configuration"
+msgstr "DHCP (αυτόματη ρύθμιση)"
+
+msgid "Tokens"
+msgstr ""
+
+msgid ""
+"Here you can create and revoke the client capability to connect to the "
+"remote administration."
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Delete CA"
+msgstr ""
+
+msgid ""
+"You can't delete the CA while the remote access is enabled. To delete the"
+" CA you need to disable the remote access first."
+msgstr ""
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+
+msgid ""
+"<a href=\"${response.url}\"><div id=\"remote-"
+"qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
 
 #, fuzzy
@@ -1680,9 +1848,6 @@ msgstr ""
 msgid "Error"
 msgstr "Σφάλμα"
 
-msgid "Loading..."
-msgstr ""
-
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
 
@@ -1736,6 +1901,12 @@ msgid "A network restart was triggered."
 msgstr ""
 
 msgid "Trying to reconnect to your device."
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Cancel"
 msgstr ""
 
 msgid "This value seems to be invalid."
@@ -2587,4 +2758,7 @@ msgstr ""
 #~ " DNS and other services might not "
 #~ "work properly."
 #~ msgstr ""
+
+#~ msgid "Save changes"
+#~ msgstr "Αποθήκευση αλλαγών"
 
