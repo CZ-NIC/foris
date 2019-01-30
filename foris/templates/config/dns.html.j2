@@ -35,7 +35,7 @@
             <tr><td>{% trans %}DNSSEC{% endtrans %}</td><td class="result" data-result-type="dnssec-conn-test">???</td></tr>
         </tbody>
     </table>
-    <a href="#" id="test-connection" class="button">{% trans %}Test connection{% endtrans %}</a>
+    <a href="#" id="test-connection" class="button" {% if foris_info.guide.current == active_config_page_key %}disabled{% endif %}>{% trans %}Test connection{% endtrans %}</a>
 </div>
 <script>
     Foris.watched_test = null;
@@ -78,6 +78,9 @@
             $("#connection-test-fail").hide();
             var self = $(this);
             e.preventDefault();
+            if (self.attr("disabled") == "disabled") {
+                return;
+            }
             self.attr("disabled", "disabled");
             $.get('{{ url("config_ajax", page_name="dns") }}', {action: "check-connection"})
                     .done(function(response) {
