@@ -1,6 +1,8 @@
 import argparse
 import bottle
 import logging
+import re
+import typing
 
 from foris import __version__
 from foris.state import current_state
@@ -44,6 +46,11 @@ def get_arg_parser():
         "--mqtt-host", default="localhost", help="mqtt host (default 'localhost')"
     )
     group.add_argument(
+        "--mqtt-passwd-file", type=lambda x: read_passwd_file(x),
+        help="path to passwd file (first record will be used to authenticate)",
+        default=None,
+    )
+    group.add_argument(
         "--bus-socket", default="/var/run/ubus.sock", help="message bus socket path"
     )
     group.add_argument(
@@ -80,7 +87,11 @@ def main():
         current_state.set_backend(Backend(args.message_bus, path=args.bus_socket))
     elif args.message_bus == "mqtt":
         current_state.set_backend(
-            Backend(args.message_bus, host=args.mqtt_host, port=args.mqtt_port))
+            Backend(
+                args.message_bus, host=args.mqtt_host, port=args.mqtt_port,
+                credentials=args.mqtt_passwd_file
+            )
+        )
 
     # update websocket
     current_state.set_websocket(args.ws_port, args.ws_path, args.wss_port, args.wss_path)
@@ -103,6 +114,13 @@ def main():
         bottle.run(app=main_app, server="flup", debug=args.debug, bindAddress=None)
     elif args.server == "cgi":
         bottle.run(app=main_app, server="cgi", debug=args.debug)
+
+
+def read_passwd_file(path: str) -> typing.Tuple[str]:
+    """ Returns username and password from passwd file
+    """
+    with open(path, "r") as f:
+        return re.match(r"^([^:]+):(.*)$", f.readlines()[0][:-1]).groups()
 
 
 if __name__ == "__main__":
