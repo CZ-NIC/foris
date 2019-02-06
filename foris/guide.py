@@ -177,7 +177,7 @@ class MessageBridge(MessagesDefault):
             "To act as a local server, there's no need to manage LAN "
             "(if you still want to manage it reset the guide and choose the Router workflow). "
             "You probably want to act as a client here thus select "
-            "<strong>Computer</strong> mode here. "
+            "<strong>Computer</strong> mode here."
         ),
         _(
             "If you select the <strong>static</strong> configuration be sure that the IP "
@@ -300,7 +300,7 @@ class Workflow(object):
         WORKFLOW_OLD: _("Workflow for older devices and older turris OS versions (before 4.0)."),
         WORKFLOW_MIN: _(
             "Just set your password and you are ready to go. "
-            "This workflow is aimed to more advanced users who intend not to use the web gui. "
+            "This workflow is aimed to more advanced users who intend not to use the web GUI."
         ),
         WORKFLOW_ROUTER: _(
             "After you finish this workflow your device will be able to act as a fully "

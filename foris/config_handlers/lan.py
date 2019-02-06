@@ -99,7 +99,7 @@ class LanHandler(BaseConfigHandler):
                 "(acts as a router, can assing IP addresses, ...). "
                 "Computer mode means that this device acts as a client in this network. "
                 "It acts in a similar way as WAN, but it has opened ports for configuration "
-                "interface and other services. "
+                "interface and other services."
             ),
             default="managed",
         )
