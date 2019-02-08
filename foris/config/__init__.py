@@ -220,6 +220,17 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
         wrong_old_password = self.form.callback_results.get('wrong_old_password', False)
         system_password_no_error = self.form.callback_results.get('system_password_no_error', None)
         foris_password_no_error = self.form.callback_results.get('foris_password_no_error', None)
+
+        compromised = self.form.callback_results.get("compromised")
+        if compromised:
+            messages.error(
+                _(
+                    "The password you've entered has been compromised. "
+                    "It appears %(count)d times in '%(list)s' list."
+                ) % dict(count=compromised['count'], list=compromised['list'])
+            )
+            return result
+
         if wrong_old_password:
             messages.error(_("Old password you entered was not valid."))
             return result
@@ -228,12 +239,12 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
             if system_password_no_error:
                 messages.success(_("System password was successfully saved."))
             else:
-                messages.error(_("Failed to save system password"))
+                messages.error(_("Failed to save system password."))
         if foris_password_no_error is not None:
             if foris_password_no_error:
                 messages.success(_("Foris password was successfully saved."))
             else:
-                messages.error(_("Failed to save Foris password"))
+                messages.error(_("Failed to save Foris password."))
 
         return result
 

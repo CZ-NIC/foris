@@ -128,8 +128,15 @@ class PasswordHandler(BaseConfigHandler):
 
             encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
 
-            result = current_state.backend.perform(
-                "password", "set", {"password": encoded_password, "type": "foris"})["result"]
+            passwd_result = current_state.backend.perform(
+                "password", "set", {"password": encoded_password, "type": "foris"})
+            result = passwd_result["result"]
+            if not result and "list" in passwd_result and "count" in passwd_result:
+                return "save_result", {
+                    "compromised": {
+                        "list": passwd_result["list"], "count": passwd_result["count"],
+                    }
+                }
             res = {"foris_password_no_error": result}
 
             if data['set_system_pw'] == SYSTEM_PW_SAME:
