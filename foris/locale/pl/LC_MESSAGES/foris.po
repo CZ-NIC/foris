@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-30 11:00+0100\n"
-"PO-Revision-Date: 2019-01-20 01:21+0000\n"
+"PO-Revision-Date: 2019-01-31 14:46+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
-"Language-Team: Polish "
-"<https://hosted.weblate.org/projects/turris/foris/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -327,38 +328,37 @@ msgid "Failed to save Foris password"
 msgstr "Nie udało się zapisać hasła interfejsu Foris"
 
 msgid "Remote Access"
-msgstr ""
+msgstr "Zdalny dostęp"
 
-#, fuzzy
 msgid "Remote access was sucessfully enabled."
-msgstr "Hasło do systemu zostało pomyślnie zapisane."
+msgstr "Dostęp zdalny został pomyślnie włączony."
 
 msgid ""
 "Failed to enable the remote access. You are probably using a message bus "
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
+"Nie udało się włączyć zdalnego dostępu. Prawdopodobnie używasz magistrali "
+"komunikatów, która nie obsługuje zdalnego dostępu lub urząd certyfikacji (CA)"
+" dla zdalnego dostępu nie został jeszcze wygenerowany."
 
-#, fuzzy
 msgid "Remote access was sucessfully disabled."
-msgstr "Hasło do systemu zostało pomyślnie zapisane."
+msgstr "Zdalny dostęp został pomyślnie wyłączony."
 
-#, fuzzy
 msgid "Failed to disable remote access."
-msgstr "Nie udało się zapisać hasła systemowego"
+msgstr "Nie udało się wyłączyć dostępu zdalnego."
 
 msgid "Wrong HTTP method."
 msgstr "Niewłaściwa metoda HTTP."
 
 msgid "Starting to generate CA for remote access."
-msgstr ""
+msgstr "Zaczynam generować urząd certyfikacji (CA) dla zdalnego dostępu."
 
-#, fuzzy
 msgid "CA for remote access was sucessfully deleted."
-msgstr "Hasło interfejsu Foris zostało pomyślnie zapisane."
+msgstr "Urząd certyfikacji (CA) dla zdalnego dostępu został pomyślnie usunięty."
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
+msgstr "Nie można usunąć urzędu certyfikacji (CA) dla zdalnego dostępu."
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Wybrany tryb pracy został pomyślnie ustawiony."
@@ -926,57 +926,56 @@ msgid "Guide workflow"
 msgstr "Przewodnik trybu pracy"
 
 msgid "valid"
-msgstr ""
+msgstr "ważny"
 
 msgid "revoked"
-msgstr ""
+msgstr "unieważniony"
 
-#, fuzzy
 msgid "expired"
-msgstr "Wygasa"
+msgstr "przedawniony"
 
 msgid "generating"
-msgstr ""
+msgstr "generowanie"
 
 msgid "lost"
-msgstr ""
+msgstr "zagubiony"
 
 msgid "Enable remote access"
-msgstr ""
+msgstr "Włącz dostęp zdalny"
 
 msgid "Accessible via WAN"
-msgstr ""
+msgstr "Dostępne przez WAN"
 
 msgid ""
 "If this option is check the device in the WAN network will be able to "
 "connect to the configuration interface. Otherwise only devices on LAN "
 "will be able to access the configuration interface."
 msgstr ""
+"Jeśli ta opcja jest włączona, urządzenie w sieci WAN będzie mogło połączyć "
+"się z interfejsem konfiguracyjnym. W przeciwnym razie tylko urządzenia w "
+"sieci LAN będą miały dostęp do interfejsu konfiguracyjnego."
 
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgid "A port which will be opened for the remote configuration of this device."
-msgstr ""
+msgstr "Port, który zostanie otwarty do zdalnej konfiguracji tego urządzenia."
 
-#, fuzzy
 msgid "Token name"
-msgstr "Nazwa nadawcy"
+msgstr "Nazwa tokena"
 
-#, fuzzy
 msgid ""
 "The display name for the token. It must be shorter than 64 characters and"
 " must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
-"Nazwa nadawcy może zawierać tylko znaki alfanumeryczne, kropki i "
-"podkreślenia."
+"Wyświetlana nazwa tokena. Musi być krótsza niż 64 znaki i może zawierać "
+"tylko znaki alfanumeryczne, kropki, myślniki i podkreślenia."
 
 msgid "Token name is invalid."
-msgstr ""
+msgstr "Nazwa tokenu jest nieprawidłowa."
 
-#, fuzzy
 msgid "Token id is invalid."
-msgstr "Duid jest nieprawidłowy."
+msgstr "Identyfikator tokenu jest nieprawidłowy."
 
 msgid "Updater"
 msgstr "Updater"
@@ -1439,7 +1438,7 @@ msgid "type"
 msgstr "typ"
 
 msgid "bus"
-msgstr ""
+msgstr "magistrala"
 
 msgid "state"
 msgstr "stan"
@@ -1470,13 +1469,13 @@ msgstr ""
 "sieciowego do tej sieci."
 
 msgid "Token"
-msgstr ""
+msgstr "Token"
 
 msgid "Prepare Token"
-msgstr ""
+msgstr "Przygotowuję token"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Unieważnij"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1570,9 +1569,8 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Odrzuć zmiany"
 
-#, fuzzy
 msgid "Save"
-msgstr "stan"
+msgstr "Zapisz"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1787,76 +1785,94 @@ msgid ""
 "configuration is done via secure encrypted connection and each client is "
 "required to have a token issued by this device."
 msgstr ""
+"Tutaj możesz skonfigurować router do zdalnej konfiguracji. Zdalna "
+"konfiguracja odbywa się za pośrednictwem bezpiecznego szyfrowanego "
+"połączenia, a każdy klient musi mieć token wydany przez to urządzenie."
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Brak urzędu certyfikacji (CA)"
 
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
 "access. A CA is required to generate access tokens to authenticate. To "
 "proceed you need to generate it first."
 msgstr ""
+"Obecnie nie posiadasz urzędu certyfikacji (CA) dedykowanego zdalnemu "
+"dostępowi. Aby wygenerować tokeny dostępu do uwierzytelnienia, wymagany jest "
+"urząd certyfikacji. Aby kontynuować, musisz najpierw go wygenerować."
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Generuje CA"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Generowanie urzędu certyfikacji"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
+"Urząd certyfikacji (CA) niezbędny do zdalnego dostępu. Czas wymagany do "
+"wygenerowania urzędu certyfikacji może być różny. Spróbuj ponownie załadować "
+"tę stronę później."
 
 msgid "Loading..."
 msgstr "Ładuję..."
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Opóźnione aktualizacje"
+msgstr "Odśwież stronę"
 
-#, fuzzy
 msgid "Connection parameters"
-msgstr "Test połączenia"
+msgstr "Parametry połączenia"
 
 msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
+"Wydaje się, że urząd certyfikacji (CA) jest gotowy do użycia. Teraz możesz "
+"bezpiecznie włączyć/wyłączyć zdalny dostęp i ustawić jego parametry."
 
-#, fuzzy
 msgid "Apply configuration"
-msgstr "Pobierz kopię zapasową konfiguracji"
+msgstr "Zastosuj konfigurację"
 
 msgid "Tokens"
-msgstr ""
+msgstr "Tokeny"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to the "
 "remote administration."
 msgstr ""
+"Tutaj możesz utworzyć i unieważnić zdolność klienta do łączenia się ze "
+"zdalną administracją."
 
 msgid "Create"
-msgstr ""
+msgstr "Utwórz"
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Usuń CA"
 
 msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
 " CA you need to disable the remote access first."
 msgstr ""
+"Nie można usunąć urzędu certyfikacji (CA), gdy zdalny dostęp jest włączony. "
+"Aby usunąć urząd certyfikacji, należy najpierw wyłączyć zdalny dostęp."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Możesz usunąć tylko cały urząd certyfikacji (CA). Pamiętaj, że wszystkie "
+"certyfikaty wydane przez ten urząd certyfikacji będą bezużyteczne i jeśli "
+"chcesz korzystać z tej wtyczki, musisz najpierw wygenerować nowy urząd "
+"certyfikacji."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
+"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
+"br/>Wygasa za:"
 
 msgid "Failed to query ntp servers."
 msgstr "Nie można wysłać zapytania do serwerów ntp."
@@ -2168,10 +2184,10 @@ msgid "Trying to reconnect to your device."
 msgstr "Próbuję ponownie połączyć się z urządzeniem."
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potwierdź"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgid "This value seems to be invalid."
 msgstr "Ta wartość wydaje się być nieprawidłowa."
@@ -3239,4 +3255,3 @@ msgstr "Cofnij aktualizację"
 
 #~ msgid "Save changes"
 #~ msgstr "Zapisz zmiany"
-
