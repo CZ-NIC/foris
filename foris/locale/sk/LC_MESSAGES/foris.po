@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-30 11:00+0100\n"
+"POT-Creation-Date: 2019-02-11 11:26+0100\n"
 "PO-Revision-Date: 2019-01-22 08:22+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -132,11 +132,12 @@ msgstr ""
 " umiestňovať akékoľvek rozhrania do WAN alebo siete pre hostí. Takže je "
 "dobrý nápad priradiť všetky rozhrania do LAN."
 
+#, fuzzy
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
-"<strong>Computer</strong> mode here. "
+"<strong>Computer</strong> mode here."
 msgstr ""
 "Pre fungovanie ako miestny server nie je potrebné spravovať LAN (pokiaľ "
 "ju tak chcete spravovať, resetujte sprievodcu a vyberte si postup "
@@ -225,9 +226,10 @@ msgstr "Scenár doteraz nebol nastavený."
 msgid "Workflow for older devices and older turris OS versions (before 4.0)."
 msgstr "Scenár pre staršie zariadenia a staršie verzie turris OS (pred 4.0)."
 
+#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
-" more advanced users who intend not to use the web gui. "
+" more advanced users who intend not to use the web GUI."
 msgstr ""
 "Stačí len nastaviť si heslo a ste pripravení. Tento postup je cielený na "
 "pokročilejších používateľov, ktorí neplánujú používať webové rozhranie. "
@@ -311,19 +313,27 @@ msgstr "Upozornenia"
 msgid "Number of notifications"
 msgstr "Počet upozornení"
 
+#, python-format
+msgid ""
+"The password you've entered has been compromised. It appears %(count)d "
+"times in '%(list)s' list."
+msgstr ""
+
 msgid "Old password you entered was not valid."
 msgstr "Vami zadané pôvodné heslo je neplatné."
 
 msgid "System password was successfully saved."
 msgstr "Heslo bolo úspešne uložené."
 
-msgid "Failed to save system password"
+#, fuzzy
+msgid "Failed to save system password."
 msgstr "Systémové heslo sa nepodarilo uložiť"
 
 msgid "Foris password was successfully saved."
 msgstr "Heslo do Forisa bolo úspešne uložené."
 
-msgid "Failed to save Foris password"
+#, fuzzy
+msgid "Failed to save Foris password."
 msgstr "Heslo do Forisa sa nepodarilo uložiť"
 
 msgid "Remote Access"
@@ -597,11 +607,12 @@ msgstr "LAN režim"
 msgid "Computer"
 msgstr "Počítač"
 
+#, fuzzy
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
 "as a client in this network. It acts in a similar way as WAN, but it has "
-"opened ports for configuration interface and other services. "
+"opened ports for configuration interface and other services."
 msgstr ""
 "Režim Router znamená, že toto zariadenie spravuje LAN (slúži ako router, "
 "môže prideľovať IP adresy, …). Režim počítač znamená, že toto zariadenie "
@@ -1282,13 +1293,13 @@ msgstr "Tu nastavte Wi-Fi pre hostí."
 msgid "Enable guest Wi-Fi"
 msgstr "Povoliť Wi-Fi pre hostí"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
 "allowed to access other devices and the configuration interface of the "
 "router. Parameters of the guest network can be set in <a "
-"href='%(url)s'>the Guest network tab</a>. "
+"href='%(url)s'>the Guest network tab</a>."
 msgstr ""
 "Zapne Wi-Fi pre hostí, ktorá je oddelená od vnútornej siete. Zariadenia v"
 " tejto sieti môžu ísť na Internet, ale nemajú prístup k ostatným "

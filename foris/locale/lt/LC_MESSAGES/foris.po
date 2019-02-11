@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-30 11:00+0100\n"
+"POT-Creation-Date: 2019-02-11 11:26+0100\n"
 "PO-Revision-Date: 2019-01-22 08:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language: lt\n"
@@ -127,11 +127,12 @@ msgstr ""
 " vieno interfeiso WAN arba Svečių tinklui. Rekomenduojame visus "
 "interfeisus priskirti prie LAN."
 
+#, fuzzy
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
-"<strong>Computer</strong> mode here. "
+"<strong>Computer</strong> mode here."
 msgstr ""
 "Dirbant vietiniu serveriu įrenginiui nereikia valdyti LAN (jei vis tik "
 "norite valdyti tinklą pradėkite gidą iš naujo ir pasirinkite "
@@ -219,9 +220,10 @@ msgstr ""
 "Gido rėžimas senesniems įrenginiams ir senesnėms Turris OS versijoms "
 "(prieš 4.0)."
 
+#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
-" more advanced users who intend not to use the web gui. "
+" more advanced users who intend not to use the web GUI."
 msgstr ""
 "Nustatykite slaptažodį ir baigta. Šis gido rėžimas tinkamas patyrusiems "
 "naudotojams, kurie neplanuoja naudotis web sąsaja. "
@@ -304,19 +306,27 @@ msgstr "Pranešimai"
 msgid "Number of notifications"
 msgstr "Pranešimų skaičius"
 
+#, python-format
+msgid ""
+"The password you've entered has been compromised. It appears %(count)d "
+"times in '%(list)s' list."
+msgstr ""
+
 msgid "Old password you entered was not valid."
 msgstr "Netinkamas senas slaptažodis."
 
 msgid "System password was successfully saved."
 msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
 
-msgid "Failed to save system password"
+#, fuzzy
+msgid "Failed to save system password."
 msgstr "Nepavyko išsaugoti sistemos slaptažodžio"
 
 msgid "Foris password was successfully saved."
 msgstr "Foris slaptažodis išsaugotas sėkmingai."
 
-msgid "Failed to save Foris password"
+#, fuzzy
+msgid "Failed to save Foris password."
 msgstr "Nepavyko išsaugoti Foris slaptažodžio"
 
 msgid "Remote Access"
@@ -586,11 +596,12 @@ msgstr "LAN rėžimas"
 msgid "Computer"
 msgstr "Kompiuteris"
 
+#, fuzzy
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
 "as a client in this network. It acts in a similar way as WAN, but it has "
-"opened ports for configuration interface and other services. "
+"opened ports for configuration interface and other services."
 msgstr ""
 "Maršrutizatorius reiškia, kad šis įrenginys valdo LAN (dirba kaip "
 "maršrutizatorius, dalina IP adresus, ...). Kompiuterio rėžimas reikškia "
@@ -1264,13 +1275,13 @@ msgstr "Čia galite keisti svečių Wi-Fi."
 msgid "Enable guest Wi-Fi"
 msgstr "Įjungti svečių Wi-Fi"
 
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
 "allowed to access other devices and the configuration interface of the "
 "router. Parameters of the guest network can be set in <a "
-"href='%(url)s'>the Guest network tab</a>. "
+"href='%(url)s'>the Guest network tab</a>."
 msgstr ""
 "Įjungia Wi-Fi svečiams, atskirame tinkle. Įrenginiai prisijungę prie šio "
 "tinklo gali naudotis internetu, tačiau negali pasiekti kitų įrenginių "

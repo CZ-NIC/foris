@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris 99.3.1\n"
+"Project-Id-Version: Foris 99.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-30 11:00+0100\n"
+"POT-Creation-Date: 2019-02-11 11:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,7 +102,7 @@ msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
-"<strong>Computer</strong> mode here. "
+"<strong>Computer</strong> mode here."
 msgstr ""
 
 msgid ""
@@ -168,7 +168,7 @@ msgstr ""
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
-" more advanced users who intend not to use the web gui. "
+" more advanced users who intend not to use the web GUI."
 msgstr ""
 
 msgid ""
@@ -243,19 +243,25 @@ msgstr ""
 msgid "Number of notifications"
 msgstr ""
 
+#, python-format
+msgid ""
+"The password you've entered has been compromised. It appears %(count)d "
+"times in '%(list)s' list."
+msgstr ""
+
 msgid "Old password you entered was not valid."
 msgstr ""
 
 msgid "System password was successfully saved."
 msgstr ""
 
-msgid "Failed to save system password"
+msgid "Failed to save system password."
 msgstr ""
 
 msgid "Foris password was successfully saved."
 msgstr ""
 
-msgid "Failed to save Foris password"
+msgid "Failed to save Foris password."
 msgstr ""
 
 msgid "Remote Access"
@@ -492,7 +498,7 @@ msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
 "as a client in this network. It acts in a similar way as WAN, but it has "
-"opened ports for configuration interface and other services. "
+"opened ports for configuration interface and other services."
 msgstr ""
 
 msgid "Router IP address"
@@ -1096,7 +1102,7 @@ msgid ""
 "connected to this network are allowed to access the internet, but aren't "
 "allowed to access other devices and the configuration interface of the "
 "router. Parameters of the guest network can be set in <a "
-"href='%(url)s'>the Guest network tab</a>. "
+"href='%(url)s'>the Guest network tab</a>."
 msgstr ""
 
 msgid "SSID for guests"
