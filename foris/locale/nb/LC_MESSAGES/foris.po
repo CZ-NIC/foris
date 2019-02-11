@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-11 11:26+0100\n"
-"PO-Revision-Date: 2018-12-23 15:09+0000\n"
+"PO-Revision-Date: 2019-02-12 15:11+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
+"foris/nb_NO/>\n"
 "Language: nb\n"
-"Language-Team: Norwegian Bokmål "
-"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -354,7 +355,7 @@ msgid "Failed to save Foris password."
 msgstr "Klarte ikke å lagre Foris-passord"
 
 msgid "Remote Access"
-msgstr ""
+msgstr "Fjerntilgang"
 
 #, fuzzy
 msgid "Remote access was sucessfully enabled."
@@ -1026,7 +1027,7 @@ msgid ""
 msgstr ""
 
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgid "A port which will be opened for the remote configuration of this device."
 msgstr ""
@@ -1044,7 +1045,7 @@ msgstr ""
 "understreker."
 
 msgid "Token name is invalid."
-msgstr ""
+msgstr "Symbolnavnet er ugyldig."
 
 #, fuzzy
 msgid "Token id is invalid."
@@ -1558,13 +1559,13 @@ msgstr ""
 "dette nettverket."
 
 msgid "Token"
-msgstr ""
+msgstr "Symbol"
 
 msgid "Prepare Token"
-msgstr ""
+msgstr "Forbered symbol"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Tilbakekall"
 
 #, fuzzy
 msgid ""
@@ -2264,10 +2265,10 @@ msgid "Trying to reconnect to your device."
 msgstr "Prøver å koble til enheten din igjen."
 
 msgid "Confirm"
-msgstr ""
+msgstr "Bekreft"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 msgid "This value seems to be invalid."
 msgstr "Denne verdien ser ut til å være ugyldig."
@@ -3198,4 +3199,3 @@ msgstr "Nedgrader"
 
 #~ msgid "Save changes"
 #~ msgstr "Lagre endringer"
-
