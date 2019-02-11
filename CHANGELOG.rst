@@ -1,3 +1,10 @@
+99.5 (2019-02-11)
+-----------------
+
+* password: display how many times was the compromised password used
+* translations updates
+* small locale fixes
+
 99.4 (2019-01-31)
 -----------------
 
