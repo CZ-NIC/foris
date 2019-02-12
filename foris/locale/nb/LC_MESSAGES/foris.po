@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-11 11:26+0100\n"
-"PO-Revision-Date: 2019-02-12 15:11+0000\n"
+"PO-Revision-Date: 2019-02-12 18:11+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb_NO/>\n"
@@ -333,6 +333,8 @@ msgid ""
 "The password you've entered has been compromised. It appears %(count)d "
 "times in '%(list)s' list."
 msgstr ""
+"Passordet du skrev inn har blitt lekket. Det framtrer %(count)d ganger i \""
+"%(list)s\"-listen."
 
 #, fuzzy
 msgid "Old password you entered was not valid."
@@ -361,11 +363,15 @@ msgstr "Fjerntilgang"
 msgid "Remote access was sucessfully enabled."
 msgstr "Passord lagret."
 
+#, fuzzy
 msgid ""
 "Failed to enable the remote access. You are probably using a message bus "
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
+"Klarte ikke å slå på fjerntilgang. Du bruker antagelig en meldingsbuss som "
+"ikke støtter fjerntilgang, eller så har det ikke blitt generert for "
+"sertifikatsmyndigheten enda."
 
 #, fuzzy
 msgid "Remote access was sucessfully disabled."
@@ -378,15 +384,16 @@ msgstr "Klarte ikke å lagre systempassord"
 msgid "Wrong HTTP method."
 msgstr "Gal HTTP-metode."
 
+#, fuzzy
 msgid "Starting to generate CA for remote access."
-msgstr ""
+msgstr "Starter generering av sertifikatsmyndighet for fjerntilgang."
 
 #, fuzzy
 msgid "CA for remote access was sucessfully deleted."
 msgstr "Passord lagret."
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
+msgstr "Klarte ikke å slette sertifikatsmyndighet for fjerntilgang."
 
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
@@ -1002,35 +1009,39 @@ msgid "valid"
 msgstr "levende"
 
 msgid "revoked"
-msgstr ""
+msgstr "tilbakekalt"
 
 #, fuzzy
 msgid "expired"
 msgstr "Utløper"
 
 msgid "generating"
-msgstr ""
+msgstr "genererer"
 
 msgid "lost"
-msgstr ""
+msgstr "tapt"
 
 msgid "Enable remote access"
-msgstr ""
+msgstr "Skru på fjerntilgang"
 
 msgid "Accessible via WAN"
-msgstr ""
+msgstr "Tilgjengelig via WAN"
 
+#, fuzzy
 msgid ""
 "If this option is check the device in the WAN network will be able to "
 "connect to the configuration interface. Otherwise only devices on LAN "
 "will be able to access the configuration interface."
 msgstr ""
+"Hvis dette valget er huket av vil enheten i WAN-nettverket kunne koble til "
+"oppsettsgrensesnittet. Ellers vil kun enheter på lokalnettverket kunne nå "
+"oppsettsgrensesnittet."
 
 msgid "Port"
 msgstr "Port"
 
 msgid "A port which will be opened for the remote configuration of this device."
-msgstr ""
+msgstr "En port som vil åpnes for fjernoppsett av denne enheten."
 
 #, fuzzy
 msgid "Token name"
@@ -1885,26 +1896,35 @@ msgid ""
 "configuration is done via secure encrypted connection and each client is "
 "required to have a token issued by this device."
 msgstr ""
+"Her kan du sette opp din ruter for oppsett annensteds fra. Fjernoppsett "
+"gjøres via sikret kryptert tilkobling, og hver klient må ha et symbol "
+"utstedt av denne enheten."
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Ingen sertifikatsmyndighet"
 
+#, fuzzy
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
 "access. A CA is required to generate access tokens to authenticate. To "
 "proceed you need to generate it first."
 msgstr ""
+"Det finnes for tiden ingen sertifikatsmyndighet (CA) tilknyttet "
+"fjerntilgang. Det kreves for å generere tilgangssymboler for "
+"identitetsbekreftelse. For å fortsette må du generere den først."
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Generer sertifikatsmyndighet"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Genererer sertifikatsmyndighet"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
+"Sertifikatsmyndighet kreves for administrasjon annensteds fra. Tiden som "
+"kreves for generering varierer. Prøv å gjeninnlaste denne siden senere."
 
 msgid "Loading..."
 msgstr "Laster…"
@@ -1921,40 +1941,52 @@ msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
+"Din sertifikatsmyndighet ser ut til å være klar til bruk. Du kan nå trygt "
+"skru på/av fjerntilgang og sette noen av parameterne."
 
 #, fuzzy
 msgid "Apply configuration"
 msgstr "Last ned sikkerhetskopi av oppsett"
 
 msgid "Tokens"
-msgstr ""
+msgstr "Symboler"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to the "
 "remote administration."
 msgstr ""
+"Her kan du opprette og tilbake klientens mulighet til å koble til "
+"administrasjon annensteds fra."
 
 msgid "Create"
-msgstr ""
+msgstr "Opprett"
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Slett sertifikatsmyndighet"
 
 msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
 " CA you need to disable the remote access first."
 msgstr ""
+"Du kan ikke slette sertifikatsmyndighet mens fjerntilgang er påslått. For å "
+"slette sertifikatsmyndigheten må du skru av fjerntilgang først."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Du kan slette hele sertifikatsmyndigheten. Merk at alle sertifikatene "
+"utstedt av denne sertifikatsmyndigheten vil bli ubrukelige og hvis du ønsket "
+"å bruke programtillegget, ville du ha må generert en ny sertifikatsmyndighet "
+"først."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
+"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
+"br/>Utløper om:"
 
 #, fuzzy
 msgid "Failed to query ntp servers."
