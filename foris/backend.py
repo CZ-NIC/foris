@@ -1,5 +1,5 @@
 # Foris
-# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2019 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ class Backend(object):
             self.host = kwargs["host"]
             self.port = kwargs["port"]
             self.credentials = kwargs["credentials"]
+            self.controller_id = kwargs["controller_id"]
             self._instance = MqttSender(
                 kwargs["host"], kwargs["port"], default_timeout=self.DEFAULT_TIMEOUT,
                 credentials=kwargs["credentials"],
@@ -63,7 +64,9 @@ class Backend(object):
             return "%s('%s:%d')" % (type(self._instance).__name__, self.host, self.port)
         return "%s" % type(self._instance).__name__
 
-    def perform(self, module, action, data=None, raise_exception_on_failure=True):
+    def perform(
+        self, module, action, data=None, raise_exception_on_failure=True, controller_id=None
+    ):
         """ Perform backend action
 
         :returns: None on error, response data otherwise
@@ -73,7 +76,9 @@ class Backend(object):
         response = None
         start_time = time.time()
         try:
-            response = self._instance.send(module, action, data)
+            response = self._instance.send(
+                module, action, data, controller_id=controller_id or self.controller_id
+            )
         except ControllerError as e:
             logger.error("Exception in backend occured.")
             if raise_exception_on_failure:

@@ -51,6 +51,10 @@ def get_arg_parser():
         default=None,
     )
     group.add_argument(
+        "--mqtt-controller-id", type=lambda x: re.match(r"[0-9a-zA-Z]{16}", x).group().upper(),
+        help="sets which controller on the messages bus should be configured (8 bytes in hex)",
+    )
+    group.add_argument(
         "--bus-socket", default="/var/run/ubus.sock", help="message bus socket path"
     )
     group.add_argument(
@@ -89,7 +93,7 @@ def main():
         current_state.set_backend(
             Backend(
                 args.message_bus, host=args.mqtt_host, port=args.mqtt_port,
-                credentials=args.mqtt_passwd_file
+                credentials=args.mqtt_passwd_file, controller_id=args.mqtt_controller_id,
             )
         )
 
