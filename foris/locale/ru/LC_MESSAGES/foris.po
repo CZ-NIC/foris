@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-11 11:26+0100\n"
-"PO-Revision-Date: 2019-01-15 18:21+0000\n"
+"PO-Revision-Date: 2019-02-19 08:18+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
-"Language-Team: Russian "
-"<https://hosted.weblate.org/projects/turris/foris/ru/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -124,17 +125,16 @@ msgstr ""
 "размещать какие-либо интерфейсы в вашей сети WAN и гостевой сети. Поэтому"
 " неплохо назначить все интерфейсы для LAN."
 
-#, fuzzy
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here."
 msgstr ""
-"Чтобы действовать как локальный сервер, нет необходимости управлять LAN "
-"(если вы все еще хотите управлять им, сбросьте начальную настройку и "
-"выберите конфигурацию маршрутизатора). Вы, вероятно, хотите действовать "
-"как клиент, поэтому выберите режим <strong>Компьютер</strong>. "
+"Чтобы действовать как локальный сервер, нет необходимости управлять LAN ("
+"если вы все еще хотите управлять им, сбросьте начальную настройку и выберите "
+"конфигурацию маршрутизатора). Вы, вероятно, хотите действовать как клиент, "
+"поэтому выберите режим <strong>Компьютер</strong> здесь."
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
@@ -219,14 +219,13 @@ msgstr ""
 "Конфигурация для старых устройств и более старых версий ОС Turris (до "
 "версии 4.0)."
 
-#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web GUI."
 msgstr ""
 "Просто установите свой пароль, и вы готовы к работе. Эта конфигурация "
 "предназначена для продвинутых пользователей, которые не используют "
-"Веб-GUI. "
+"веб-интерфейс."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
@@ -312,57 +311,56 @@ msgid ""
 "The password you've entered has been compromised. It appears %(count)d "
 "times in '%(list)s' list."
 msgstr ""
+"Введенный пароль был скомпрометирован. Он появляется %(count)d раз в '%(list)"
+"s2' списке."
 
 msgid "Old password you entered was not valid."
 msgstr "Старый пароль неверен."
 
 msgid "System password was successfully saved."
-msgstr "Системный пароль был успешно сохранен."
+msgstr "Пароль системы успешно сохранен."
 
-#, fuzzy
 msgid "Failed to save system password."
-msgstr "Не удалось сохранить системный пароль"
+msgstr "Не удалось сохранить пароль системы."
 
 msgid "Foris password was successfully saved."
-msgstr "Пароль Foris был успешно сохранен."
+msgstr "Пароль Foris успешно сохранен."
 
-#, fuzzy
 msgid "Failed to save Foris password."
-msgstr "Не удалось сохранить пароль Foris"
+msgstr "Не удалось сохранить пароль Foris."
 
 msgid "Remote Access"
-msgstr ""
+msgstr "Удаленный доступ"
 
-#, fuzzy
 msgid "Remote access was sucessfully enabled."
-msgstr "Системный пароль был успешно сохранен."
+msgstr "Удаленный доступ успешно включен."
 
 msgid ""
 "Failed to enable the remote access. You are probably using a message bus "
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
+"Не удалось включить удаленный доступ. Вы, вероятно, используете шину "
+"сообщений, которая не поддерживает удаленный доступ, или центр сертификации "
+"для удаленного доступа еще не создан."
 
-#, fuzzy
 msgid "Remote access was sucessfully disabled."
-msgstr "Системный пароль был успешно сохранен."
+msgstr "Удаленный доступ успешно отключен."
 
-#, fuzzy
 msgid "Failed to disable remote access."
-msgstr "Не удалось сохранить системный пароль"
+msgstr "Не удалось отключить удаленный доступ."
 
 msgid "Wrong HTTP method."
 msgstr "Неверный метод HTTP."
 
 msgid "Starting to generate CA for remote access."
-msgstr ""
+msgstr "Начинаем генерировать центр сертификации для удаленного доступа."
 
-#, fuzzy
 msgid "CA for remote access was sucessfully deleted."
-msgstr "Пароль Foris был успешно сохранен."
+msgstr "Центр сертификации для удаленного доступа успешно удален."
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
+msgstr "Не удалось удалить центр сертификации для удаленного доступа."
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Начальная настройка конфигурации успешно прошла."
@@ -599,18 +597,17 @@ msgstr "Режим LAN"
 msgid "Computer"
 msgstr "Компьютер"
 
-#, fuzzy
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services."
 msgstr ""
-"Режим Маршрутизатора означает, что это устройство управляет локальной "
-"сетью (действует как маршрутизатор, может назначать IP-адреса, ...). "
-"Режим Компьютера означает, что это устройство выступает в качестве "
-"клиента в этой сети. Он работает аналогично WAN, но открыты порты для "
-"интерфейса конфигурации и других сервисов. "
+"Режим Маршрутизатора означает, что это устройство управляет локальной сетью ("
+"действует как маршрутизатор, может назначать IP-адреса, ...). Режим "
+"Компьютера означает, что это устройство выступает в качестве клиента в этой "
+"сети. Он работает аналогично WAN, но открыты порты для интерфейса "
+"конфигурации и других сервисов."
 
 msgid "Router IP address"
 msgstr "IP-адрес маршрутизатора"
@@ -926,59 +923,57 @@ msgstr "Время автоматической перезагрузки (ЧЧ:M
 msgid "Guide workflow"
 msgstr "Начальная настройка конфигурации"
 
-#, fuzzy
 msgid "valid"
-msgstr "действующий"
+msgstr "действительный"
 
 msgid "revoked"
-msgstr ""
+msgstr "отозван"
 
-#, fuzzy
 msgid "expired"
-msgstr "Истекает"
+msgstr "истёк"
 
 msgid "generating"
-msgstr ""
+msgstr "создаётся"
 
 msgid "lost"
-msgstr ""
+msgstr "утерян"
 
 msgid "Enable remote access"
-msgstr ""
+msgstr "Включить удаленный доступ"
 
 msgid "Accessible via WAN"
-msgstr ""
+msgstr "Доступ через WAN"
 
 msgid ""
 "If this option is check the device in the WAN network will be able to "
 "connect to the configuration interface. Otherwise only devices on LAN "
 "will be able to access the configuration interface."
 msgstr ""
+"Если этот параметр установлен, устройство в сети WAN сможет подключаться к "
+"интерфейсу конфигурации. В противном случае, получить доступ к интерфейсу "
+"конфигурации могут только устройства в локальной сети ."
 
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 msgid "A port which will be opened for the remote configuration of this device."
-msgstr ""
+msgstr "Порт, который будет открыт для удаленной настройки этого устройства."
 
-#, fuzzy
 msgid "Token name"
-msgstr "Имя отправителя"
+msgstr "Имя токена"
 
-#, fuzzy
 msgid ""
 "The display name for the token. It must be shorter than 64 characters and"
 " must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
-"Имя отправителя может содержать только буквы латинского алфавита, цифры, "
-"точки и подчеркивания."
+"Отображаемое имя для токена. Он должен быть короче 64 символов и содержать "
+"только буквенно-цифровые символы, точки, тире и подчеркивания."
 
 msgid "Token name is invalid."
-msgstr ""
+msgstr "Неверное имя токена."
 
-#, fuzzy
 msgid "Token id is invalid."
-msgstr "Некорректный уникальный идентификатор DHCPv6 (DUID)."
+msgstr "Идентификатор токена недействителен."
 
 msgid "Updater"
 msgstr "Сервис обновлений"
@@ -1285,7 +1280,7 @@ msgstr "Настройте гостевой Wi-Fi здесь."
 msgid "Enable guest Wi-Fi"
 msgstr "Включить гостевой Wi-Fi"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1293,11 +1288,11 @@ msgid ""
 "router. Parameters of the guest network can be set in <a "
 "href='%(url)s'>the Guest network tab</a>."
 msgstr ""
-"Включает Wi-Fi для гостей, который отделен от локальной сети. "
-"Устройствам, подключенным к этой сети, разрешен доступ в Интернет, но им "
-"не разрешен доступ к другим устройствам и интерфейсу конфигурации "
+"Включает сеть Wi-Fi для гостей, которая отделена от локальной сети. "
+"Устройствам, подключенным к этой сети, разрешен доступ в Интернет, но им не "
+"разрешен доступ к другим устройствам и интерфейсу конфигурации "
 "маршрутизатора. Параметры гостевой сети можно установить на <a "
-"href='%(url)s'>вкладке гостевой сети</a>. "
+"href='%(url)s'>вкладке гостевой сети</a>."
 
 msgid "SSID for guests"
 msgstr "SSID гостевого Wi-Fi"
@@ -1475,13 +1470,13 @@ msgstr ""
 "интерфейса к этой сети."
 
 msgid "Token"
-msgstr ""
+msgstr "Токен"
 
 msgid "Prepare Token"
-msgstr ""
+msgstr "Подготовьте токен"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Отменить"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1573,9 +1568,8 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Отменить изменения"
 
-#, fuzzy
 msgid "Save"
-msgstr "состояние"
+msgstr "Сохранить"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1791,76 +1785,94 @@ msgid ""
 "configuration is done via secure encrypted connection and each client is "
 "required to have a token issued by this device."
 msgstr ""
+"Здесь вы можете настроить маршрутизатор для удаленной настройки. Удаленная "
+"настройка выполняется через безопасное зашифрованное соединение, и каждому "
+"клиенту необходимо иметь токен, выданный этим устройством."
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Нет центра сертификации"
 
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
 "access. A CA is required to generate access tokens to authenticate. To "
 "proceed you need to generate it first."
 msgstr ""
+"В настоящее время нет центра сертификации (CA), выделенного для удаленного "
+"доступа. ЦС требуется для генерации токенов доступа для аутентификации. "
+"Чтобы продолжить, вам нужно сначала его сгенерировать."
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Создать центр сертификации"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Создание центра сертификации"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
+"Центр сертификации, необходимый для удаленного администрирования. Время, "
+"необходимое для создания ЦС, может отличаться. Пожалуйста, попробуйте "
+"перезагрузить эту страницу позже."
 
 msgid "Loading..."
 msgstr "Загрузка…"
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Отложенные обновления"
+msgstr "Обновить страницу"
 
-#, fuzzy
 msgid "Connection parameters"
-msgstr "Проверка соединения"
+msgstr "Параметры подключения"
 
 msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
+"Ваш центр сертификации готов к использованию. Теперь вы можете безопасно "
+"включать/отключать удаленный доступ и устанавливать некоторые параметры."
 
-#, fuzzy
 msgid "Apply configuration"
-msgstr "Скачать резервную копию конфигурации"
+msgstr "Применить настройки"
 
 msgid "Tokens"
-msgstr ""
+msgstr "Токен"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to the "
 "remote administration."
 msgstr ""
+"Здесь вы можете создать и отменить возможность подключения клиента к "
+"удаленному администрированию."
 
 msgid "Create"
-msgstr ""
+msgstr "Создать"
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Удалить центр сертификации"
 
 msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
 " CA you need to disable the remote access first."
 msgstr ""
+"Вы не можете удалить центр сертификации, пока включен удаленный доступ. Для "
+"удаления ЦС необходимо сначала отключить удаленный доступ."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Вы можете удалить весь центр сертификации. Обратите внимание, что все "
+"сертификаты, выданные этим центр сертификации, будут бесполезными, и если Вы "
+"захотите использовать этот плагин снова, придётся сначала создать новый "
+"центр сертификации."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
+"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
+"br/>Истекает в:"
 
 msgid "Failed to query ntp servers."
 msgstr "Ошибка запроса NTP сервера."
@@ -2174,10 +2186,10 @@ msgid "Trying to reconnect to your device."
 msgstr "Попытка повторного подключения к вашему устройству."
 
 msgid "Confirm"
-msgstr ""
+msgstr "Подтвердить"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 msgid "This value seems to be invalid."
 msgstr "Это значение кажется некорректным."
@@ -3202,4 +3214,3 @@ msgstr "Откатить"
 
 #~ msgid "Save changes"
 #~ msgstr "Сохранить изменения"
-
