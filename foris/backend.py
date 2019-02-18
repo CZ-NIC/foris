@@ -34,6 +34,7 @@ class Backend(object):
 
     def __init__(self, name, **kwargs):
         self.name = name
+        self.controller_id = None
 
         if name == "ubus":
             from foris_client.buses.ubus import UbusSender
