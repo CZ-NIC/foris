@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import typing
+
 from foris import fapi
 from foris import validators
 from foris.form import Checkbox, Dropdown, PasswordWithHide, Radio, Textbox, HorizontalLine
@@ -27,15 +29,28 @@ from .base import BaseConfigHandler
 class WifiHandler(BaseConfigHandler):
     userfriendly_title = gettext("Wi-Fi")
 
+    def get_form(self):
+        ajax_form = WifiEditForm(self.data)
+
+        return ajax_form.foris_form
+
+
+class WifiEditForm(fapi.ForisAjaxForm):
+    template_name = "config/_wifi_edit.html.j2"
+
+    def __init__(self, data, controller_id=None):
+        super().__init__(data, controller_id)
+        self.title = _("Setting WiFi for '%s'") % controller_id
+
     @staticmethod
     def prefixed(index, name):
         return "radio%d-%s" % (index, name)
 
-    def _backend_data_to_form_data(self, backend_data):
+    def convert_data_from_backend_to_form(self, backend_data: dict) -> dict:
         form_data = {}
         for device in backend_data["devices"]:
             def prefixed(name):
-                return WifiHandler.prefixed(device["id"], name)
+                return WifiEditForm.prefixed(device["id"], name)
             form_data[prefixed("device_enabled")] = device["enabled"]
             form_data[prefixed("ssid")] = device["SSID"]
             form_data[prefixed("ssid_hidden")] = device["hidden"]
@@ -49,6 +64,82 @@ class WifiHandler(BaseConfigHandler):
 
         return form_data
 
+    def convert_data_from_form_to_backend(
+        self, form_data: dict, device_ids: typing.List[str]
+    ) -> dict:
+
+        res = []
+
+        for dev_id in device_ids:
+
+            def prefixed(name):
+                return WifiEditForm.prefixed(dev_id, name)
+
+            dev_rec = {"id": dev_id}
+            dev_rec["enabled"] = form_data[prefixed("device_enabled")]
+            if dev_rec["enabled"]:
+                dev_rec["SSID"] = form_data[prefixed("ssid")]
+                dev_rec["hidden"] = form_data[prefixed("ssid_hidden")]
+                dev_rec["hwmode"] = form_data[prefixed("hwmode")]
+                dev_rec["htmode"] = form_data[prefixed("htmode")]
+                dev_rec["channel"] = int(form_data[prefixed("channel")])
+                dev_rec["guest_wifi"] = {}
+                dev_rec["guest_wifi"]["enabled"] = form_data.get(prefixed("guest_enabled"), False)
+                dev_rec["password"] = form_data[prefixed("password")]
+                if dev_rec["guest_wifi"]["enabled"]:
+                    dev_rec["guest_wifi"]["SSID"] = form_data[prefixed("guest_ssid")]
+                    dev_rec["guest_wifi"]["password"] = form_data[prefixed("guest_password")]
+
+            res.append(dev_rec)
+
+        return {"devices": res}
+
+    def make_form(self, data: typing.Optional[dict]) -> fapi.ForisForm:
+
+        backend_data = current_state.backend.perform(
+            "wifi", "get_settings", controller_id=self.controller_id)
+        form_data = self.convert_data_from_backend_to_form(backend_data)
+        if data:
+            form_data.update(data)
+
+        wifi_form = fapi.ForisForm("wifi", form_data)
+        wifi_form.add_section(
+            name="wifi",
+            title=_("Wi-Fi"),
+            description=_(
+                "If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
+                "here and fill in an SSID (the name of the access point) and a "
+                "corresponding password. You can then set up your mobile devices, "
+                "using the QR code available within the form."
+            )
+        )
+
+        # Add wifi section
+        wifi_section = wifi_form.add_section(
+            name="wifi_settings",
+            title=_("Wi-Fi settings"),
+        )
+
+        for idx, device in enumerate(backend_data["devices"]):
+            prefix = WifiEditForm.prefixed(device["id"], "")
+            device_form_data = {
+                k[len(prefix):]: v for k, v in form_data.items()
+                if k.startswith(prefix)
+            }  # prefix removed
+            self._prepare_device_fields(
+                wifi_section, device, device_form_data, len(backend_data["devices"]) - 1 == idx
+            )
+
+        def form_cb(data):
+            update_data = self.convert_data_from_form_to_backend(
+                data, [e["id"] for e in backend_data["devices"]])
+            res = current_state.backend.perform(
+                "wifi", "update_settings", update_data, controller_id=self.controller_id)
+            return "save_result", res
+
+        wifi_form.add_callback(form_cb)
+        return wifi_form
+
     def _prepare_device_fields(self, section, device, form_data, last=False):
         HINTS = {
             'password': _(
@@ -58,7 +149,7 @@ class WifiHandler(BaseConfigHandler):
         }
 
         def prefixed(name):
-            return WifiHandler.prefixed(device["id"], name)
+            return WifiEditForm.prefixed(device["id"], name)
 
         # get corresponding band
         bands = [e for e in device["available_bands"] if e["hwmode"] == form_data["hwmode"]]
@@ -179,73 +270,3 @@ class WifiHandler(BaseConfigHandler):
             wifi_main.add_field(
                 HorizontalLine, name=prefixed("wifi-separator"), class_="wifi-separator"
             ).requires(prefixed("device_enabled"), True)
-
-    def _form_data_to_backend_data(self, form_data, device_ids):
-        res = []
-
-        for dev_id in device_ids:
-
-            def prefixed(name):
-                return WifiHandler.prefixed(dev_id, name)
-
-            dev_rec = {"id": dev_id}
-            dev_rec["enabled"] = form_data[prefixed("device_enabled")]
-            if dev_rec["enabled"]:
-                dev_rec["SSID"] = form_data[prefixed("ssid")]
-                dev_rec["hidden"] = form_data[prefixed("ssid_hidden")]
-                dev_rec["hwmode"] = form_data[prefixed("hwmode")]
-                dev_rec["htmode"] = form_data[prefixed("htmode")]
-                dev_rec["channel"] = int(form_data[prefixed("channel")])
-                dev_rec["guest_wifi"] = {}
-                dev_rec["guest_wifi"]["enabled"] = form_data.get(prefixed("guest_enabled"), False)
-                dev_rec["password"] = form_data[prefixed("password")]
-                if dev_rec["guest_wifi"]["enabled"]:
-                    dev_rec["guest_wifi"]["SSID"] = form_data[prefixed("guest_ssid")]
-                    dev_rec["guest_wifi"]["password"] = form_data[prefixed("guest_password")]
-
-            res.append(dev_rec)
-
-        return {"devices": res}
-
-    def get_form(self):
-        backend_data = current_state.backend.perform("wifi", "get_settings")
-        form_data = self._backend_data_to_form_data(backend_data)
-        if self.data:
-            form_data.update(self.data)
-
-        wifi_form = fapi.ForisForm("wifi", form_data)
-        wifi_form.add_section(
-            name="wifi",
-            title=_(self.userfriendly_title),
-            description=_(
-                "If you want to use your router as a Wi-Fi access point, enable Wi-Fi "
-                "here and fill in an SSID (the name of the access point) and a "
-                "corresponding password. You can then set up your mobile devices, "
-                "using the QR code available within the form."
-            )
-        )
-
-        # Add wifi section
-        wifi_section = wifi_form.add_section(
-            name="wifi_settings",
-            title=_("Wi-Fi settings"),
-        )
-
-        for idx, device in enumerate(backend_data["devices"]):
-            prefix = WifiHandler.prefixed(device["id"], "")
-            device_form_data = {
-                k[len(prefix):]: v for k, v in form_data.items()
-                if k.startswith(prefix)
-            }  # prefix removed
-            self._prepare_device_fields(
-                wifi_section, device, device_form_data, len(backend_data["devices"]) - 1 == idx
-            )
-
-        def form_cb(data):
-            update_data = self._form_data_to_backend_data(
-                data, [e["id"] for e in backend_data["devices"]])
-            res = current_state.backend.perform("wifi", "update_settings", update_data)
-            return "save_result", res  # store {"result": ...} to be used later...
-
-        wifi_form.add_callback(form_cb)
-        return wifi_form

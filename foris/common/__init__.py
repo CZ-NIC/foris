@@ -147,6 +147,40 @@ def reboot():
 
 
 @login_required
+def backend_api():
+
+    data = bottle.request.POST.decode()
+
+    def wrong_format():
+        raise bottle.HTTPError(400, "wrong incomming message format")
+
+    controller_id = data.get("controller_id")
+
+    if "action" not in data or "module" not in data or "kind" not in data:
+        wrong_format()
+
+    if data["kind"] != "request":
+        wrong_format()
+
+    msg_data = data.get("data")
+    if msg_data:
+        try:
+            msg_data = json.loads(msg_data)
+        except ValueError:
+            wrong_format()
+
+    resp = current_state.backend.perform(
+        data["module"], data["action"], msg_data, controller_id=controller_id
+    )
+
+    res = bottle.response.copy(cls=bottle.HTTPResponse)
+    res.content_type = 'application/json'
+    res.body = json.dumps(resp)
+    res.status = 200
+    raise res
+
+
+@login_required
 def leave_guide():
     current_state.backend.perform("web", "update_guide", {
         "enabled": False,
@@ -189,6 +223,7 @@ def init_default_app(index, include_static=False):
     app.install(CSRFPlugin())
     app.route("/", name="index", callback=index)
     app.route("/", method="POST", name="login", callback=index)
+    app.route("/backend-api", method="POST", name="backend-api", callback=backend_api)
     app.route("/lang/<lang:re:\w{2}>", name="change_lang", callback=change_lang)
     app.route("/logout", name="logout", callback=logout)
     app.route("/reboot", name="reboot", callback=reboot)

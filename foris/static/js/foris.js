@@ -208,14 +208,14 @@ Foris.initPasswordHiding = function() {
 
 Foris.afterAjaxUpdateFunctions = [];
 Foris.afterAjaxUpdate = function(response, status, xhr) {
-  for (var i=0; i < Foris.afterAjaxUpdateFunctions.length; i++) {
-    Foris.afterAjaxUpdateFunctions[i](response, status, xhr);
+  for (let afterFunction of Foris.afterAjaxUpdateFunctions) {
+      afterFunction(response, status, xhr);
   }
 }
 
 Foris.updateForm = function (form) {
   var serialized = form.serializeArray();
-  serialized.push({name: 'update', value: '1'});
+  serialized.push({name: '_update', value: '1'});
 
   var idSelector = form.attr("id") ? " #" + form.attr("id") : "";
   form.load(form.attr("action") + idSelector, serialized, function (response, status, xhr) {
@@ -231,10 +231,10 @@ Foris.updateForm = function (form) {
     }
 
     $(this).children(':first').unwrap();
-    Foris.initParsley();
-    Foris.initPasswordHiding();
-    Foris.afterAjaxUpdate();
-    Foris.initClicksQR();
+    Foris.initParsley(response, status, xhr);
+    Foris.initPasswordHiding(response, status, xhr);
+    Foris.afterAjaxUpdate(response, status, xhr);
+    Foris.initClicksQR(response, status, xhr);
     $(document).trigger('formupdate', [form]);
   });
   form.find("input, select, button").attr("disabled", "disabled");
@@ -734,6 +734,28 @@ Foris.clearNetworkWarnings = function(network_name, data) {
         $("#no-interface-up-warning").hide("slow");
     }
 }
+
+Foris.performBackendQuery = async (controller_id, module, action, data) => {
+    let csrf = $('meta[name=csrf]').prop("content");
+    let output = {
+        module: module,
+        kind: "request",
+        action: action,
+    };
+    if (controller_id) {
+        output.controller_id = controller_id;
+    }
+    if (data) {
+        output.data = JSON.stringify(data);
+    }
+    output.csrf_token = csrf;
+    return await $.ajax({
+        type: "POST",
+        url: Foris.backendPath,
+        dataType: "json",
+        data: output,
+    });
+};
 
 $(document).ready(function () {
   Foris.initialize();

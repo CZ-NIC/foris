@@ -1,7 +1,5 @@
-# coding=utf-8
-
 # Foris
-# Copyright (C) 2018 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2019 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,12 +26,13 @@ from bottle import Bottle, request, template, response, jinja2_template
 from urllib.parse import urlencode
 import bottle
 
+from foris import fapi
 from foris.common import login
 from foris.guide import Workflow
 from foris.utils.translators import gettext_dummy as gettext, _
 from foris.config_handlers import (
     backups, dns, misc, notifications, wan, lan, updater, wifi, networks,
-    guest, profile, remote
+    guest, profile, remote, subordinates
 )
 from foris.utils import login_required, messages, is_safe_redirect
 from foris.middleware.bottle_csrf import CSRFPlugin
@@ -46,8 +45,7 @@ logger = logging.getLogger(__name__)
 
 class ConfigPageMixin(object):
     # page url part /config/<slug>
-    typing.Optional[str]
-    slug = None
+    slug: typing.Optional[str] = None
     menu_order = 50
     template = "config/main"
     template_type = "simple"
@@ -67,6 +65,13 @@ class ConfigPageMixin(object):
         :return: dict of picklable AJAX results
         """
         raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
+
+    def get_page_form(self, form_name: str, data: dict, controller_id: str) -> typing.Tuple[
+            fapi.ForisAjaxForm, typing.Callable[[dict], typing.Tuple['str', 'str']]
+    ]:
+        """Returns appropriate foris form and handler to generate response
+        """
+        raise bottle.HTTPError(404, "No forms specified for this page.")
 
     def call_insecure(self, identifier):
         """Handels insecure request (no login required)
@@ -427,9 +432,273 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
         return ConfigPageMixin.is_enabled_static(cls)
 
 
+class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHandler):
+    slug = "subordinates"
+    menu_order = 12
+
+    template = "config/subordinates"
+    userfriendly_title = gettext("Subordinates")
+    template_type = "jinja2"
+
+    def render(self, **kwargs):
+        data = current_state.backend.perform("subordinates", "list")
+
+        kwargs["subordinates"] = data["subordinates"]
+
+        return super().render(**kwargs)
+
+    def save(self, *args, **kwargs):
+        super(SubordinatesConfigPage, self).save(no_messages=True, *args, **kwargs)
+        data = self.form.callback_results
+        if data["result"]:
+            messages.success(_(
+                "Token was successfully added and client '%(controller_id)s' "
+                "should be visible in a moment."
+            ) % dict(controller_id=data["controller_id"]))
+        else:
+            messages.error(_("Failed to add token."))
+
+        return data["result"]
+
+    def _check_and_get_controller_id(self):
+        if bottle.request.method != 'POST':
+            messages.error(_("Wrong HTTP method."))
+            bottle.redirect(reverse("config_page", page_name="remote"))
+
+        form = self.get_controller_id_form(bottle.request.POST.decode())
+        if not form.data["controller_id"]:
+            raise bottle.HTTPError(404, "controller_id not found")
+        return form.data["controller_id"]
+
+    def _ajax_list_subordinates(self):
+        data = current_state.backend.perform("subordinates", "list")
+        view = bottle.request.GET.decode().get("view")
+        return template(
+            "config/_subordinates_list.html.j2",
+            subordinates=data["subordinates"],
+            view = view,
+            template_adapter=bottle.Jinja2Template,
+        )
+
+    def _ajax_delete(self):
+        controller_id = self._check_and_get_controller_id()
+        res = current_state.backend.perform(
+            "subordinates", "del", {"controller_id": controller_id})
+        if res["result"]:
+            return template(
+                "config/_subordinates_message.html.j2",
+                message={
+                    "classes": ['success'],
+                    "text": _("Subordinate '%(controller_id)s' was successfully deleted.")
+                    % dict(controller_id=controller_id)
+                },
+                template_adapter=bottle.Jinja2Template,
+            )
+        else:
+            return template(
+                "config/_subordinates_message.html.j2",
+                message={
+                    "classes": ['error'],
+                    "text": _("Failed to delete subordinate '%(controller_id)s'.")
+                    % dict(controller_id=controller_id)
+                },
+                template_adapter=bottle.Jinja2Template,
+            )
+
+    def _ajax_set_enabled(self, enabled):
+        controller_id = self._check_and_get_controller_id()
+        res = current_state.backend.perform("subordinates", "set_enabled", {
+            "controller_id": controller_id,
+            "enabled": enabled,
+        })
+        if res["result"]:
+            if enabled:
+                message = {
+                    "classes": ['success'],
+                    "text": _("Subordinate '%(controller_id)s' was sucessfuly enabled.")
+                    % dict(controller_id=controller_id)
+                }
+            else:
+                message = {
+                    "classes": ['success'],
+                    "text": _("Subordinate '%(controller_id)s' was sucessfuly disabled.")
+                    % dict(controller_id=controller_id)
+                }
+        else:
+            if enabled:
+                message = {
+                    "classes": ['error'],
+                    "text": _("Failed to enable subordinate '%(controller_id)s'.")
+                    % dict(controller_id=controller_id)
+                }
+            else:
+                message = {
+                    "classes": ['error'],
+                    "text": _("Failed to disable subordinate '%(controller_id)s'.")
+                    % dict(controller_id=controller_id)
+                }
+
+        return template(
+            "config/_subordinates_message.html.j2",
+            message=message,
+            template_adapter=bottle.Jinja2Template,
+        )
+
+    def _ajax_update_sub(self):
+        controller_id = self._check_and_get_controller_id()
+        form = self.get_subordinate_update_form(bottle.request.POST.decode())
+        form.save()
+        if form.callback_results["result"]:
+            message = {
+                "classes": ['success'],
+                "text": _("Subordinate '%(controller_id)s' was sucessfully updated.")
+                % dict(controller_id=controller_id)
+            }
+
+        else:
+            message = {
+                "classes": ['error'],
+                "text": _("Failed to update subordinate '%(controller_id)s'.")
+                % dict(controller_id=controller_id)
+            }
+
+        res = template(
+            "config/_subordinates_message.html.j2",
+            message=message,
+            dom_id="edit-form-message",
+            template_adapter=bottle.Jinja2Template,
+        )
+        return res
+
+    def _ajax_update_subsub(self):
+        controller_id = self._check_and_get_controller_id()
+        form = self.get_subsubordinate_update_form(bottle.request.POST.decode())
+        form.save()
+        if form.callback_results["result"]:
+            message = {
+                "classes": ['success'],
+                "text": _("Subsubordinate '%(controller_id)s' was sucessfully updated.")
+                % dict(controller_id=controller_id)
+            }
+
+        else:
+            message = {
+                "classes": ['error'],
+                "text": _("Failed to update subsubordinate '%(controller_id)s'.")
+                % dict(controller_id=controller_id)
+            }
+
+        return template(
+            "config/_subordinates_message.html.j2",
+            message=message,
+            dom_id="edit-form-message",
+            template_adapter=bottle.Jinja2Template,
+        )
+
+    def call_ajax_action(self, action):
+        if action == "list":
+            return self._ajax_list_subordinates()
+        elif action == "disable":
+            return self._ajax_set_enabled(False)
+        elif action == "enable":
+            return self._ajax_set_enabled(True)
+        elif action == "delete":
+            return self._ajax_delete()
+        elif action == "update_sub":
+            return self._ajax_update_sub()
+        elif action == "update_subsub":
+            return self._ajax_update_subsub()
+        raise ValueError("Unknown AJAX action.")
+
+    @classmethod
+    def is_visible(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @classmethod
+    def is_enabled(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
+
+    def get_page_form(self, form_name: str, data: dict, controller_id: str) -> typing.Tuple[
+            fapi.ForisAjaxForm, typing.Callable[[dict], typing.Tuple['str', 'str']]
+    ]:
+        """Returns appropriate foris form and handler to generate response
+        """
+        form: fapi.ForisAjaxForm
+        if form_name == "sub-form":
+            form = subordinates.SubordinatesEditForm(data)
+
+            def prepare_message(results: dict) -> dict:
+                if results["result"]:
+                    message = {
+                        "classes": ['success'],
+                        "text": _("Subordinate '%(controller_id)s' was sucessfully updated.")
+                        % dict(controller_id=data["controller_id"])
+                    }
+
+                else:
+                    message = {
+                        "classes": ['error'],
+                        "text": _("Failed to update subordinate '%(controller_id)s'.")
+                        % dict(controller_id=data["controller_id"])
+                    }
+                return message
+
+            form.url = reverse("config_ajax_form", page_name="subordinates", form_name="sub-form")
+            return form, prepare_message
+
+        elif form_name == "subsub-form":
+            form = subordinates.SubsubordinatesEditForm(data)
+
+            def prepare_message(results: dict) -> dict:
+                if results["result"]:
+                    message = {
+                        "classes": ['success'],
+                        "text": _("Subsubordinate '%(controller_id)s' was sucessfully updated.")
+                        % dict(controller_id=data["controller_id"])
+                    }
+
+                else:
+                    message = {
+                        "classes": ['error'],
+                        "text": _("Failed to update subsubordinate '%(controller_id)s'.")
+                        % dict(controller_id=data["controller_id"])
+                    }
+                return message
+
+            form.url = reverse(
+                "config_ajax_form", page_name="subordinates", form_name="subsub-form")
+            return form, prepare_message
+
+        elif form_name == "wifi-form":
+            form = wifi.WifiEditForm(data, controller_id=controller_id)
+
+            def prepare_message(results: dict) -> dict:
+                if results["result"]:
+                    message = {
+                        "classes": ['success'],
+                        "text": _("Wifi settings was sucessfully updated.")
+                    }
+
+                else:
+                    message = {
+                        "classes": ['error'],
+                        "text": _("Failed to update Wifi settings.")
+                    }
+                return message
+
+            form.url = reverse("config_ajax_form", page_name="subordinates", form_name="wifi-form")
+            return form, prepare_message
+
+        raise bottle.HTTPError(404, "No form '%s' not found." % form_name)
+
+
 class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
     slug = "profile"
-    menu_order = 12
+    menu_order = 13
     template = "config/profile"
     template_type = "jinja2"
 
@@ -472,7 +741,7 @@ class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
 
 class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
     slug = "networks"
-    menu_order = 13
+    menu_order = 14
     template = "config/networks"
     template_type = "jinja2"
 
@@ -490,9 +759,8 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
 
         # don't display inconfigurable devices in none network (can't be configured anyway)
         kwargs['networks']['none'] = [
-            e for e in kwargs['networks']['none'] if e ["configurable"]
+            e for e in kwargs['networks']['none'] if e["configurable"]
         ]
-
 
         return super(NetworksConfigPage, self).render(**kwargs)
 
@@ -520,7 +788,7 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
 
 class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     slug = "wan"
-    menu_order = 14
+    menu_order = 15
 
     template = "config/wan"
     template_type = "jinja2"
@@ -545,7 +813,7 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
 
 class LanConfigPage(ConfigPageMixin, lan.LanHandler):
     slug = "lan"
-    menu_order = 15
+    menu_order = 16
 
     template = "config/lan"
     template_type = "jinja2"
@@ -564,7 +832,7 @@ class LanConfigPage(ConfigPageMixin, lan.LanHandler):
 
 class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
     slug = "guest"
-    menu_order = 16
+    menu_order = 17
 
     template = "config/guest"
     template_type = "jinja2"
@@ -584,7 +852,7 @@ class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
     slug = "time"
-    menu_order = 17
+    menu_order = 18
 
     template = "config/time"
     template_type = "jinja2"
@@ -601,7 +869,7 @@ class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
 
 class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
     slug = "dns"
-    menu_order = 18
+    menu_order = 19
 
     template = "config/dns"
     template_type = "jinja2"
@@ -618,7 +886,7 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
 class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
     slug = "wifi"
-    menu_order = 19
+    menu_order = 20
 
     template = "config/wifi"
     template_type = "jinja2"
@@ -649,7 +917,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
 class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
     slug = "maintenance"
-    menu_order = 20
+    menu_order = 21
 
     template = "config/maintenance"
     template_type = "jinja2"
@@ -730,7 +998,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
 
 class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
     slug = "updater"
-    menu_order = 21
+    menu_order = 22
 
     template = "config/updater"
     template_type = "jinja2"
@@ -853,6 +1121,7 @@ config_pages = {
     e.slug: e for e in [
         NotificationsConfigPage,
         RemoteConfigPage,
+        SubordinatesConfigPage,
         PasswordConfigPage,
         ProfileConfigPage,
         NetworksConfigPage,
@@ -938,7 +1207,7 @@ def config_page_post(page_name):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
-        if request.POST.pop("update", None):
+        if request.POST.pop("_update", None):
             # if update was requested, just render the page - otherwise handle actions as usual
             pass
         else:
@@ -975,7 +1244,7 @@ def config_action_post(page_name, action):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
-        if request.POST.pop("update", None):
+        if request.POST.pop("_update", None):
             # if update was requested, just render the page - otherwise handle actions as usual
             return config_page.render(is_xhr=True)
     # check if the button click wasn't any sub-action
@@ -1013,6 +1282,39 @@ def config_ajax(page_name):
         raise bottle.HTTPError(404, "Unknown action.")
 
 
+@login_required
+def config_ajax_form(page_name, form_name):
+    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
+    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    ConfigPage = get_config_page(page_name)
+    config_page = ConfigPage()
+    if not request.is_xhr:
+        raise bottle.HTTPError(400, "Should be ajax request")
+    try:
+        trigger = request.POST.pop("_update", None) is None
+
+        controller_id = request.POST.pop("_controller_id", None)
+        form, response_handler = config_page.get_page_form(
+            form_name, request.POST.decode(), controller_id
+        )
+
+        message = None
+        if form.foris_form.validate() and trigger:
+            form.foris_form.save()
+            message = response_handler(form.foris_form.callback_results)
+
+        return template(
+            form.template_name,
+            message=message,
+            form=form.foris_form,
+            ajax_form=form,
+            template_adapter=bottle.Jinja2Template,
+        )
+    except (ValueError, KeyError):
+        raise bottle.HTTPError(404, "Form not found.")
+    raise bottle.HTTPError(404, "Form not found.")
+
+
 def config_insecure(page_name, identifier):
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.GET.decode())
@@ -1028,6 +1330,8 @@ def init_app():
     app.route("/", name="config_index", callback=index)
     app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"),
               callback=config_ajax)
+    app.route("/<page_name:re:.+>/ajax/form/<form_name:re:.+>", name="config_ajax_form", method=("POST"),
+              callback=config_ajax_form)
     app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST",
               callback=config_action_post)
     app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action",

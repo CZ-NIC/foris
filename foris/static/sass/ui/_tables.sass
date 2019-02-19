@@ -1,11 +1,17 @@
 table
-
-  tbody
-    tr
-      td
-        padding: 0.2em 0.5em
-
-  thead
-    th
-      font-weight: bold
-      padding: 0.2em 0.5em
+  td, th
+    padding: 0.3em 0.8em
+    border-bottom: 1px solid #fff
+  tr:first-child td
+    padding-top: 0.5em
+  tbody tr
+    &:nth-child(2n) td
+      background: #f2f2f2
+    &:hover td
+      border-bottom: 1px solid #00a2e2
+  th
+    font-weight: bold
+    border-bottom: 1px solid #ddd
+    margin-bottom: 2px
+  tbody td
+    text-align: center

@@ -1,0 +1,18 @@
+<div id="subordinates-edit" style="display: none">
+    <h3>{{ ajax_form.title }}</h3>
+    <form id="form-{{ form.name }}" class="config-form" action="{{ ajax_form.url }}" method="post" autocomplete="off" novalidate>
+        <p class="config-description">{{ form.sections[0].description|safe }}</p>
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% include 'config/_wifi_form.html.j2' %}
+        <script src="{{ static("js/contrib/jquery-qrcode-0.14.0.min.js") }}"></script>
+        <script>
+            $(document).ready(function() {
+                Foris.initWiFiQR();
+            });
+        </script>
+        <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
+            <a href="#" class="button grayed">{% trans %}Close{% endtrans %}</a>
+            <button type="submit" name="apply" class="button">{% trans %}Apply{% endtrans %}</button>
+        </div>
+    </form>
+</div>

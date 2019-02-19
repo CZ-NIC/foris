@@ -17,6 +17,7 @@
 from collections import defaultdict, OrderedDict
 import copy
 import logging
+import typing
 
 from bottle import MultiDict
 
@@ -25,6 +26,31 @@ from foris import validators as validators_module
 
 
 logger = logging.getLogger(__name__)
+
+
+class ForisAjaxForm(object):
+    title: typing.Optional[str] = None
+    template_name: typing.Optional[str] = None
+    url: typing.Optional[str] = None
+    controller_id: typing.Optional[str] = None
+
+    def make_form(self, data: typing.Optional[dict]):
+        raise NotImplementedError()
+
+    def convert_data_from_form_to_backend(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def convert_data_from_backend_to_form(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def __init__(self, data=None, controller_id=None):
+        self.controller_id = controller_id
+        self.foris_form = self.make_form(data)
+        # inject controller id
+        if controller_id:  # controller_id used for queries
+            self.foris_form.add_section("hidden", title="").add_field(
+                Hidden, name="_controller_id", required=True, default=self.controller_id
+            )
 
 
 class ForisFormElement(object):
@@ -52,6 +78,7 @@ class ForisFormElement(object):
 
 
 class ForisForm(ForisFormElement):
+
     def __init__(self, name, data=None, validators=[]):
         """
 
