@@ -35,8 +35,7 @@
   $(document).ready(function() {
     Foris.initNotificationReboot();
   });
-  // redefine
-  Foris.WS["router_notifications"] = function(msg) {
+  Foris.addWsHanlder("router_notifications", (msg) => {
     if (msg.action == "create" || msg.action == "mark_as_displayed") {
       // Update nav
       Foris.handleNotificationsCountUpdate(msg.data.new_count);
@@ -51,7 +50,7 @@
           location.reload();
         });
     }
-  }
+  });
   Foris.initNotifications("{{ get_csrf_token() }}");
 </script>
 

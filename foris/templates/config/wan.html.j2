@@ -36,7 +36,7 @@
     {% include "config/_connection_test.html.j2" %}
 </div>
 <script>
-    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("wan", msg.data);
+  Foris.addWsHanlder("networks", (msg) => Foris.clearNetworkWarnings("wan", msg.data));
 </script>
 {% endif %}
 {% endblock %}

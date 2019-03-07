@@ -35,6 +35,7 @@
     <meta name="foris-wss-path" content="{{ foris_info.websockets["wss_path"] }}">
     {% endif %}
     <meta name="csrf" content="{{ get_csrf_token() }}">
+    <meta name="controller-id" content="{{ foris_info.backend.controller_id if foris_info.backend.controller_id else "" }}">
     <script src="{{ static("js/contrib/jquery-3.3.1.min.js") }}"></script>
     <script src="{{ static("js/contrib/parsley.min.js") }}"></script>
     <script src="{{ static("js/contrib/vex.combined.min.js") }}"></script>

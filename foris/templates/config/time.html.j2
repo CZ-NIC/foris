@@ -121,7 +121,7 @@
         Foris.ntp_override();
     });
     Foris.watched_ntpdate = null;
-    Foris.WS["time"] = function(msg) {
+    Foris.addWsHanlder("time", (msg) => {
         switch(msg["action"]) {
             case "ntpdate_started":
                 if (msg.data.id != Foris.watched_ntpdate) {
@@ -142,7 +142,7 @@
                 $("#start-ntpdate-button").toggleClass("grayed");
                 break;
         }
-    }
+    });
     $(document).ready(function() {
         Foris.ntp_override();
     });

@@ -57,6 +57,7 @@ Foris.initialize = function () {
   Foris.initClickableHints();
   Foris.initSmoothScrolling();
   Foris.applySVGFallback();
+  Foris.initWsHandlers();
   Foris.initWebsockets();
   Foris.initRebootRequired();
 };
@@ -130,31 +131,43 @@ Foris.applySVGFallback = function() {
   }
 };
 
+Foris.WsHandlers = {};
 
-Foris.WS = {
-  maintain: function(msg) {
-    switch (msg.action) {
-        case "reboot":
-            Foris.handleReboot(msg.data.ips, msg.data.remains);
-            break;
-        case "reboot_required":
-            $('#reboot-required-notice').show("slow");
-            break;;
-        case "network-restart":
-            Foris.handleNetworkRestart(msg.data.ips, msg.data.remains);
-            break;
-    }
-  },
-  router_notifications: function(msg) {
-    if (msg.action == "create" || msg.action == "mark_as_displayed") {
-        Foris.handleNotificationsCountUpdate(msg.data.new_count);
-    }
-  },
-  updater: function(msg) {
-    if (msg.action == "run") {
-        Foris.handleUpdaterRun(msg.data.status != "exit" && msg.data.status != "failed");
-    }
-  }
+Foris.addWsHanlder = (module, handler, controller_id) => {
+    controller_id = controller_id || $('meta[name=controller-id]').attr("content");
+    let moduleHandler = Foris.WsHandlers[module] || {};
+    let handlers = moduleHandler[controller_id] || [];
+    handlers.push(handler);
+    moduleHandler[controller_id] = handlers;
+    Foris.WsHandlers[module] = moduleHandler;
+};
+
+Foris.initWsHandlers = () => {
+    Foris.addWsHanlder("maintain", (msg) => {
+        switch (msg.action) {
+            case "reboot":
+                Foris.handleReboot(msg.data.ips, msg.data.remains);
+                break;
+            case "reboot_required":
+                $('#reboot-required-notice').show("slow");
+                break;;
+            case "network-restart":
+                Foris.handleNetworkRestart(msg.data.ips, msg.data.remains);
+                break;
+        }
+    });
+
+    Foris.addWsHanlder("router_notifications", (msg) => {
+        if (msg.action == "create" || msg.action == "mark_as_displayed") {
+            Foris.handleNotificationsCountUpdate(msg.data.new_count);
+        }
+    });
+
+    Foris.addWsHanlder("updater", (msg) => {
+        if (msg.action == "run") {
+            Foris.handleUpdaterRun(msg.data.status != "exit" && msg.data.status != "failed");
+        }
+    });
 };
 
 Foris.initWebsockets = function() {
@@ -170,16 +183,23 @@ Foris.initWebsockets = function() {
   ws = new WebSocket(url);
 
   ws.onopen = function () {
-    var output = JSON.stringify({"action": "subscribe", "params": Object.keys(Foris.WS)});
+    var output = JSON.stringify({"action": "subscribe", "params": Object.keys(Foris.WsHandlers)});
     ws.send(output);
-    console.log("WS registering for: " + Object.keys(Foris.WS));
+    console.log("WS registering for: " + Object.keys(Foris.WsHandlers));
   };
 
   ws.onmessage = function (e) {
     console.log("WS message received: " + e.data);
     var parsed = JSON.parse(e.data);
-    if (Foris.WS.hasOwnProperty(parsed["module"])) {
-      Foris.WS[parsed["module"]](parsed);
+    if (Foris.WsHandlers.hasOwnProperty(parsed.module)) {
+      // filter using controller_id
+      for (let key in Foris.WsHandlers[parsed.module]) {
+        if (key == parsed.controller_id || key == "+") {  // '+' means perform every time
+          for (let action of Foris.WsHandlers[parsed.module][key]) {
+              action(parsed);
+          }
+        }
+      }
     }
   };
 

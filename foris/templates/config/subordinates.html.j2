@@ -220,7 +220,7 @@
                 await state_element.animate({opacity: '1.0'}, 50);
             }
         };
-        Foris.WS["subordinates"] = async function(msg) {
+        Foris.addWsHanlder("subordinates", async (msg) => {
             switch(msg.action) {
               case "add_sub":
               case "add_subsub":
@@ -229,14 +229,14 @@
                 await Foris.loadSubordinatesList();
                 break;
             }
-        }
-        Foris.WS["remote"] = function(msg) {
+        });
+        Foris.addWsHanlder("remote", async (msg) => {
             switch(msg.action) {
                 case "advertize":
                     Foris.updateSubordinateState(msg.data);
                     break;
             };
-        };
+        }, '+');
         $(document).ready(function() {
             Foris.loadSubordinatesList();
             Foris.afterAjaxUpdateFunctions.push(Foris.suboridnatesOverrideEditClose);

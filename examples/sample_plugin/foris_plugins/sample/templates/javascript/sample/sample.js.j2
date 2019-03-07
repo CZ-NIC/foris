@@ -6,8 +6,8 @@ Foris.sampleMessages = {
     chartValueAxis: "{% trans %}Value axis{% endtrans %}"
 }
 
-// Register on websockets events (just reload chart is used
-Foris.WS["sample"] = function(msg) {
+// Register on websockets events (just reload chart is used)
+Foris.addWsHanlder("sample", (msg) => {
     switch(msg.action) {
         case "reload_chart":
             $.get('{{ url("config_ajax", page_name="sample") }}', {action: "get_records"})
@@ -17,4 +17,4 @@ Foris.WS["sample"] = function(msg) {
                 })
             break;
     }
-}
+});

@@ -74,7 +74,7 @@
 {% if is_xhr is not defined %}
 <script src="{{ static("js/contrib/jquery-qrcode-0.14.0.min.js") }}"></script>
 <script>
-    Foris.WS["remote"] = (msg) => {
+    Foris.addWsHanlder("remote", (msg) => {
         switch(msg["action"]) {
             case "generate_ca":
             case "delete_ca":
@@ -85,7 +85,7 @@
                 Foris.updateTokens();
                 break;
         }
-    };
+    });
     Foris.updateTokens = () => {
         $.get('{{ url("config_ajax", page_name="remote") }}', {action: "list-tokens"})
             .done((response) => {

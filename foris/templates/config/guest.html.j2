@@ -30,7 +30,7 @@
         {% include "config/_dhcp_clients_table.html.j2" %}
     {% endif %}
 <script>
-    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("guest_turris", msg.data);
+    Foris.addWsHanlder("networks", (msg) => Foris.clearNetworkWarnings("guest_turris", msg.data));
 </script>
 {% endif %}
 {% endblock %}

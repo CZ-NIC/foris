@@ -34,7 +34,7 @@
     {% endif %}
 </div>
 <script>
-    Foris.WS["networks"] = (msg) => Foris.clearNetworkWarnings("lan", msg.data);
+    Foris.addWsHanlder("networks", (msg) => Foris.clearNetworkWarnings("lan", msg.data));
 </script>
 {% endif %}
 {% endblock %}

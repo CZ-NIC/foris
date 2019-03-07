@@ -31,7 +31,7 @@
             resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
         }
     }
-    Foris.WS["wan"] = function(msg) {
+    Foris.addWsHanlder("wan", (msg) => {
         switch(msg["action"]) {
             case "connection_test":
                 if (msg["data"]["test_id"] != Foris.watched_test) {
@@ -55,7 +55,7 @@
                 $("#test-connection").show();
                 break;
         }
-    }
+    });
     $(document).ready(function() {
         $("#test-connection").click(function(e) {
             $("#connection-test-fail").hide();
