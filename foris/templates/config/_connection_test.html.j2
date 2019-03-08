@@ -11,11 +11,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr><td>{% trans %}IPv4 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4-conn-test">???</td></tr>
-        <tr><td>{% trans %}IPv4 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4_gateway-conn-test">???</td></tr>
+        <tr><td>{% trans %}IPv4 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4-conn-test"><i class="fas fa-question-circle"></i></td></tr>
+        <tr><td>{% trans %}IPv4 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv4_gateway-conn-test"><i class="fas fa-question-circle"></i></td></tr>
         {% if ipv6_test %}
-        <tr><td>{% trans %}IPv6 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6-conn-test">???</td></tr>
-        <tr><td>{% trans %}IPv6 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6_gateway-conn-test">???</td></tr>
+        <tr><td>{% trans %}IPv6 connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6-conn-test"><i class="fas fa-question-circle"></i></td></tr>
+        <tr><td>{% trans %}IPv6 gateway connectivity{% endtrans %}</td><td class="result" data-result-type="ipv6_gateway-conn-test"><i class="fas fa-question-circle"></i></td></tr>
         {% endif %}
     </tbody>
 </table>
@@ -26,9 +26,9 @@
         var field = key + "-conn-test";
         var resultBox = $("#test-results").find(".result[data-result-type=" + field + "]");
         if (result) {
-            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").text(Foris.messages.ok);
+            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").html('<i class="fas fa-check-circle"></i>');
         } else {
-            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
+            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").html('<i class="fas fa-exclamation-circle"></i>');
         }
     }
     Foris.addWsHanlder("wan", (msg) => {
@@ -67,7 +67,7 @@
             self.attr("disabled", "disabled");
             $.get('{{ url("config_ajax", page_name="wan") }}', {action: "check-connection", ipv6_type: {% if ipv6_test %}true{% else %}false{% endif %}})
                     .done(function(response) {
-                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
+                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").html('<i class="fas fa-spinner rotate"></i>');
                         $("#test-connection").hide();
                         Foris.watched_test = response["test_id"];
                     })

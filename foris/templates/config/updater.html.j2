@@ -142,7 +142,7 @@
                     let disable = $('#field-enabled_0');
                     $('#field-enabled_1').prop("checked", false);
                     disable.prop("checked", true);
-                    disable.parent().append('<img src="' + Foris.scriptname + '/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+                    disable.parent().append(' <i class="fas fa-spinner rotate"></i>');
                     Foris.updateForm(disable.closest("form"));
                 } else {
                     $('#field-enabled_0').prop("checked", false);

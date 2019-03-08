@@ -48,7 +48,7 @@ var Foris = {
 Foris.initialize = function () {
   $(document).on("change", ".has-requirements", function () {
     var input = $(this);
-    input.parent().append('<img src="' + Foris.scriptname + '/static/img/icon-loading.gif" class="field-loading" alt="' + Foris.messages.loading + '">');
+    input.parent().append(' <i class="fas fa-spinner rotate"></i>');
     Foris.updateForm(input.closest("form"));
   });
 

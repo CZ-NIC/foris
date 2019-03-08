@@ -39,7 +39,6 @@
           <div class="row">
             <label for="field-time" class="expand-on-mobiles"><a href="#" class="button label-button" id="start-ntpdate-button">{% trans %}Update time{% endtrans %}</a></label>
             <input id="field-time" name="time" class="grayed" value="{{ time_field.field.get_value() }}" disabled="1"></input>
-            <img src="{{ static("img/icon-loading.gif") }}" class="field-loading" id="ntp-loading">
           </div>
           {% else %}
           <div class="row">
@@ -97,7 +96,7 @@
             $.get('{{ url("config_ajax", page_name="time") }}', {action: "ntpdate-trigger"})
                     .done(function(response) {
                         Foris.watched_ntpdate = response.id;
-                        $("#ntp-loading").show();
+                        $("#field-time").parent().append(' <i class="fas fa-spinner rotate" id="ntp-loading"></i>');
                     })
                     .fail(function(xhr) {
                         if (xhr.responseJSON && xhr.responseJSON.loggedOut && xhr.responseJSON.loginUrl) {
@@ -138,7 +137,7 @@
                     Foris.update_time(new Date(msg.data.time));
                 }
                 Foris.watched_ntpdate = null;
-                $("#ntp-loading").hide();
+                $("#ntp-loading").remove();
                 $("#start-ntpdate-button").toggleClass("grayed");
                 break;
         }

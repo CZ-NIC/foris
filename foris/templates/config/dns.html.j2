@@ -31,8 +31,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>{% trans %}DNS{% endtrans %}</td><td class="result" data-result-type="dns-conn-test">???</td></tr>
-            <tr><td>{% trans %}DNSSEC{% endtrans %}</td><td class="result" data-result-type="dnssec-conn-test">???</td></tr>
+            <tr><td>{% trans %}DNS{% endtrans %}</td><td class="result" data-result-type="dns-conn-test"><i class="fas fa-question-circle"></i></td></tr>
+            <tr><td>{% trans %}DNSSEC{% endtrans %}</td><td class="result" data-result-type="dnssec-conn-test"><i class="fas fa-question-circle"></i></td></tr>
         </tbody>
     </table>
     <a href="#" id="test-connection" class="button" {% if foris_info.guide.current == active_config_page_key %}disabled{% endif %}>{% trans %}Test connection{% endtrans %}</a>
@@ -43,9 +43,9 @@
         var field = key + "-conn-test";
         var resultBox = $("#test-results").find(".result[data-result-type=" + field + "]");
         if (result) {
-            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").text(Foris.messages.ok);
+            resultBox.removeClass("test-fail").removeClass("test-loading").addClass("test-success").html('<i class="fas fa-check-circle"></i>');
         } else {
-            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").text(Foris.messages.error);
+            resultBox.removeClass("test-success").removeClass("test-loading").addClass("test-fail").html('<i class="fas fa-exclamation-circle"></i>');
         }
     }
     Foris.addWsHanlder("wan", (msg) => {
@@ -84,7 +84,7 @@
             self.attr("disabled", "disabled");
             $.get('{{ url("config_ajax", page_name="dns") }}', {action: "check-connection"})
                     .done(function(response) {
-                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").text(Foris.messages.loading);
+                        $("#test-results").find(".result").removeClass("test-success").removeClass("test-fail").addClass("test-loading").html('<i class="fas fa-spinner rotate"></i>');
                         $("#test-connection").hide();
                         Foris.watched_test = response["test_id"];
                     })
