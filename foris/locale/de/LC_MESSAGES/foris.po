@@ -16,17 +16,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 11:26+0100\n"
+"POT-Creation-Date: 2019-03-08 14:38+0100\n"
 "PO-Revision-Date: 2019-02-19 08:18+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
-"\n"
 "Language: de\n"
+"Language-Team: German "
+"<https://hosted.weblate.org/projects/turris/foris/de/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -153,9 +152,9 @@ msgid ""
 "<strong>Computer</strong> mode here."
 msgstr ""
 "Um als lokaler Server zu arbeiten, ist es nicht erforderlich, das LAN zu "
-"verwalten (wenn Sie es trotzdem verwalten möchten, setzen Sie den Leitfaden "
-"zurück und wählen Sie den Router-Workflow). Sie könnten hier wahrscheinlich "
-"als Client auftreten, wählen Sie also hier den Modus "
+"verwalten (wenn Sie es trotzdem verwalten möchten, setzen Sie den "
+"Leitfaden zurück und wählen Sie den Router-Workflow). Sie könnten hier "
+"wahrscheinlich als Client auftreten, wählen Sie also hier den Modus "
 "<strong>Computer</strong>."
 
 msgid ""
@@ -246,8 +245,8 @@ msgid ""
 " more advanced users who intend not to use the web GUI."
 msgstr ""
 "Setzen Sie einfach Ihr Passwort und schon können Sie loslegen. Dieser "
-"Workflow richtet sich an fortgeschrittenere Benutzer, die beabsichtigen, die "
-"Web-GUI nicht zu verwenden."
+"Workflow richtet sich an fortgeschrittenere Benutzer, die beabsichtigen, "
+"die Web-GUI nicht zu verwenden."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
@@ -383,6 +382,65 @@ msgstr "CA für Remote-Zugriff wurde erfolgreich gelöscht."
 
 msgid "Failed to delete CA for remote access."
 msgstr "CA für den Fernzugriff konnte nicht gelöscht werden."
+
+msgid "Subordinates"
+msgstr ""
+
+#, python-format
+msgid ""
+"Token was successfully added and client '%(controller_id)s' should be "
+"visible in a moment."
+msgstr ""
+
+msgid "Failed to add token."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was successfully deleted."
+msgstr "CA für Remote-Zugriff wurde erfolgreich gelöscht."
+
+#, python-format
+msgid "Failed to delete subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+msgstr "Der Fernzugriff wurde erfolgreich aktiviert."
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+msgstr "Der Fernzugriff wurde erfolgreich deaktiviert."
+
+#, python-format
+msgid "Failed to enable subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Failed to disable subordinate '%(controller_id)s'."
+msgstr "Der Fernzugriff konnte nicht deaktiviert werden."
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Die Netzwerkkonfiguration wurde erfolgreich aktualisiert."
+
+#, python-format
+msgid "Failed to update subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Die Netzwerkkonfiguration wurde erfolgreich aktualisiert."
+
+#, python-format
+msgid "Failed to update subsubordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy
+msgid "Wifi settings was sucessfully updated."
+msgstr "Die Netzwerkkonfiguration wurde erfolgreich aktualisiert."
+
+msgid "Failed to update Wifi settings."
+msgstr ""
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Der Leitfaden-Workflow wurde erfolgreich eingestellt."
@@ -631,11 +689,11 @@ msgid ""
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services."
 msgstr ""
-"Der Router-Modus bedeutet, dass diese Geräte das LAN verwalten (fungiert als "
-"Router, kann IP-Adressen vergeben,....). Computermodus bedeutet, dass dieses "
-"Gerät als Client in diesem Netzwerk arbeitet. Es verhält sich ähnlich wie "
-"WAN, hat aber Ports für Konfigurationsschnittstellen und andere Dienste "
-"geöffnet."
+"Der Router-Modus bedeutet, dass diese Geräte das LAN verwalten (fungiert "
+"als Router, kann IP-Adressen vergeben,....). Computermodus bedeutet, dass"
+" dieses Gerät als Client in diesem Netzwerk arbeitet. Es verhält sich "
+"ähnlich wie WAN, hat aber Ports für Konfigurationsschnittstellen und "
+"andere Dienste geöffnet."
 
 msgid "Router IP address"
 msgstr "IP-Adresse des Routers"
@@ -1014,6 +1072,41 @@ msgstr "Der Token-Name ist ungültig."
 msgid "Token id is invalid."
 msgstr "Die Token-ID ist ungültig."
 
+#, fuzzy
+msgid "Token file"
+msgstr "Tokenname"
+
+#, python-format
+msgid "Edit subordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subordinate here. Subordinates are directly connected to"
+" this device."
+msgstr ""
+
+#, fuzzy
+msgid "Custom Name"
+msgstr "Rechnername"
+
+#, python-format
+msgid "Nicer name for your device '%(controller_id)s'."
+msgstr ""
+
+#, python-format
+msgid "Edit subsubordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subsubordinate here. Subsubordinates are devices which "
+"are not directly connected to this device but they are connected with a "
+"subordinated."
+msgstr ""
+
+#, python-format
+msgid "Nicer name for your device with serial '%(controller_id)s'."
+msgstr ""
+
 msgid "Updater"
 msgstr "Updater"
 
@@ -1237,6 +1330,24 @@ msgstr "Doppelpunkte werden als Trennzeichen verwendet, z.B. 00:11:22:22:33:44:5
 msgid "Wi-Fi"
 msgstr "WLAN"
 
+#, python-format
+msgid "Configure WiFi for '%s'"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann "
+"aktivieren Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) "
+"und das zugehörige Kennwort ein.<br><br>Danach können Sie Ihre "
+"Mobilgeräte mittels des angezeigten QR-Codes einfach konfigurieren."
+
+msgid "Wi-Fi settings"
+msgstr "WLAN Einstellungen"
+
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
 "length is 8 characters."
@@ -1333,30 +1444,16 @@ msgid ""
 "href='%(url)s'>the Guest network tab</a>."
 msgstr ""
 "Aktiviert WLAN für Gäste, das vom LAN-Netzwerk getrennt ist. Mit diesem "
-"Netzwerk verbundene Geräte dürfen auf das Internet zugreifen, aber nicht auf "
-"andere Geräte und die Konfigurationsschnittstelle des Routers. Die Parameter "
-"des Gastnetzes können in <a href='%(url)s'>der Registerkarte Gastnetz</a> "
-"eingestellt werden."
+"Netzwerk verbundene Geräte dürfen auf das Internet zugreifen, aber nicht "
+"auf andere Geräte und die Konfigurationsschnittstelle des Routers. Die "
+"Parameter des Gastnetzes können in <a href='%(url)s'>der Registerkarte "
+"Gastnetz</a> eingestellt werden."
 
 msgid "SSID for guests"
 msgstr "SSID für Gäste"
 
 msgid "Password for guests"
 msgstr "Passwort für Gäste"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
-" and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-"Wenn Sie den Router als WLAN-Zugangspunkt verwenden wollen, dann "
-"aktivieren Sie die WLAN-Option. Geben Sie dann die SSID (Netzwerkname) "
-"und das zugehörige Kennwort ein.<br><br>Danach können Sie Ihre "
-"Mobilgeräte mittels des angezeigten QR-Codes einfach konfigurieren."
-
-msgid "Wi-Fi settings"
-msgstr "WLAN Einstellungen"
 
 msgid "Hint"
 msgstr "Hilfe"
@@ -1521,6 +1618,31 @@ msgstr "Token vorbereiten"
 
 msgid "Revoke"
 msgstr "Widerrufen"
+
+#, fuzzy
+msgid "Close"
+msgstr "verloren"
+
+msgid "Apply"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "State"
+msgstr "Zustand"
+
+#, fuzzy
+msgid "Devices"
+msgstr "Gerät"
+
+#, fuzzy
+msgid "Channels"
+msgstr "Netzwerkkanal"
+
+msgid "Currently there are no subordinates."
+msgstr ""
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1874,9 +1996,6 @@ msgstr ""
 "die Generierung der CA kann unterschiedlich sein. Bitte versuchen Sie "
 "später, diese Seite neu zu laden."
 
-msgid "Loading..."
-msgstr "Lädt..."
-
 msgid "Reload page"
 msgstr "Seite neu laden"
 
@@ -1931,6 +2050,30 @@ msgid ""
 msgstr ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Läuft ab in:"
+
+msgid ""
+"\n"
+"        On this tab you can set up other turris devices which can be "
+"controlled\n"
+"        by this device. You need to generate token on the remote tab on "
+"the device\n"
+"        you wan't to control. And insert the token here."
+msgstr ""
+
+msgid "Add subordinate device"
+msgstr ""
+
+msgid "Upload token"
+msgstr ""
+
+msgid "Subordinate devices"
+msgstr ""
+
+msgid "Wifi"
+msgstr ""
+
+msgid "Loading subordinates..."
+msgstr ""
 
 msgid "Failed to query ntp servers."
 msgstr "Fehler beim Abfragen des Network Time Protocol (NTP) Servers."
@@ -2171,6 +2314,9 @@ msgstr "OK"
 
 msgid "Error"
 msgstr "Fehler"
+
+msgid "Loading..."
+msgstr "Lädt..."
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
@@ -3349,3 +3495,4 @@ msgstr "Ältere Version"
 
 #~ msgid "Save changes"
 #~ msgstr "Änderung speichern"
+

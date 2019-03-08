@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 11:26+0100\n"
+"POT-Creation-Date: 2019-03-08 14:38+0100\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -343,6 +343,65 @@ msgstr "Jelszó sikeresen elmentve."
 msgid "Failed to delete CA for remote access."
 msgstr ""
 
+msgid "Subordinates"
+msgstr ""
+
+#, python-format
+msgid ""
+"Token was successfully added and client '%(controller_id)s' should be "
+"visible in a moment."
+msgstr ""
+
+msgid "Failed to add token."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was successfully deleted."
+msgstr "Jelszó sikeresen elmentve."
+
+#, python-format
+msgid "Failed to delete subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+msgstr "Jelszó sikeresen elmentve."
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+msgstr "Jelszó sikeresen elmentve."
+
+#, python-format
+msgid "Failed to enable subordinate '%(controller_id)s'."
+msgstr ""
+
+#, python-format
+msgid "Failed to disable subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Beállítás mentése sikerült."
+
+#, python-format
+msgid "Failed to update subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Beállítás mentése sikerült."
+
+#, python-format
+msgid "Failed to update subsubordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy
+msgid "Wifi settings was sucessfully updated."
+msgstr "Beállítás mentése sikerült."
+
+msgid "Failed to update Wifi settings."
+msgstr ""
+
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
 msgstr "Jelszó sikeresen elmentve."
@@ -561,8 +620,8 @@ msgid ""
 msgstr ""
 "Ez a rész tartalmazza a helyi hálózat (LAN) beállításait. A felkínált "
 "alapértelmezések alkalmasak a legtöbb hálózat esetében. "
-"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó IP-"
-"címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
+"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó "
+"IP-címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
 "most használ, szüksége lesz egy <strong>új IP-címre</strong>, amely "
 "<strong>nem</strong> <strong>azonnal</strong> történik meg. Ajánlott az "
 "összes LAN kábel ki- és bedugása a módosítások elfogadása után, hogy a "
@@ -948,6 +1007,41 @@ msgstr ""
 msgid "Token id is invalid."
 msgstr "Érvénytelen DUID-cím."
 
+#, fuzzy
+msgid "Token file"
+msgstr "Feladó neve"
+
+#, python-format
+msgid "Edit subordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subordinate here. Subordinates are directly connected to"
+" this device."
+msgstr ""
+
+#, fuzzy
+msgid "Custom Name"
+msgstr "Gépnév"
+
+#, python-format
+msgid "Nicer name for your device '%(controller_id)s'."
+msgstr ""
+
+#, python-format
+msgid "Edit subsubordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subsubordinate here. Subsubordinates are devices which "
+"are not directly connected to this device but they are connected with a "
+"subordinated."
+msgstr ""
+
+#, python-format
+msgid "Nicer name for your device with serial '%(controller_id)s'."
+msgstr ""
+
 msgid "Updater"
 msgstr "Frissítéskezelő"
 
@@ -1162,6 +1256,24 @@ msgstr "Kettőspont mint elválasztójel, például 00:11:22:33:44:55"
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
+#, python-format
+msgid "Configure WiFi for '%s'"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Ha az útválasztót Wi-Fi hozzáférési pontkénr szeretné használni, akkor "
+"itt kell a Wi-Fi-t bekapcsolni és az SSID-jét (a hozzáférési pont nevét),"
+" illetve megfelelő jelszót kitölteni. Ezután mobil eszközei is "
+"beállíthatók a mezők melletti QR-kód segítségével."
+
+msgid "Wi-Fi settings"
+msgstr "Wi-Fi beállítások"
+
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
 "length is 8 characters."
@@ -1267,20 +1379,6 @@ msgstr "SSID vendégek számára"
 
 msgid "Password for guests"
 msgstr "Jelszó vendégek számára"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
-" and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-"Ha az útválasztót Wi-Fi hozzáférési pontkénr szeretné használni, akkor "
-"itt kell a Wi-Fi-t bekapcsolni és az SSID-jét (a hozzáférési pont nevét),"
-" illetve megfelelő jelszót kitölteni. Ezután mobil eszközei is "
-"beállíthatók a mezők melletti QR-kód segítségével."
-
-msgid "Wi-Fi settings"
-msgstr "Wi-Fi beállítások"
 
 msgid "Hint"
 msgstr "Tipp"
@@ -1446,6 +1544,30 @@ msgid "Prepare Token"
 msgstr ""
 
 msgid "Revoke"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "State"
+msgstr "Gépnév"
+
+#, fuzzy
+msgid "Devices"
+msgstr "Készülék"
+
+#, fuzzy
+msgid "Channels"
+msgstr "Hálózati csatorna"
+
+msgid "Currently there are no subordinates."
 msgstr ""
 
 msgid ""
@@ -1753,9 +1875,6 @@ msgid ""
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
 
-msgid "Loading..."
-msgstr "Betöltés..."
-
 #, fuzzy
 msgid "Reload page"
 msgstr "Késleltetett frissítések"
@@ -1801,6 +1920,30 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
+msgstr ""
+
+msgid ""
+"\n"
+"        On this tab you can set up other turris devices which can be "
+"controlled\n"
+"        by this device. You need to generate token on the remote tab on "
+"the device\n"
+"        you wan't to control. And insert the token here."
+msgstr ""
+
+msgid "Add subordinate device"
+msgstr ""
+
+msgid "Upload token"
+msgstr ""
+
+msgid "Subordinate devices"
+msgstr ""
+
+msgid "Wifi"
+msgstr ""
+
+msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2026,6 +2169,9 @@ msgstr "OK"
 
 msgid "Error"
 msgstr "Hiba"
+
+msgid "Loading..."
+msgstr "Betöltés..."
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
@@ -2266,9 +2412,8 @@ msgstr "Visszalépés"
 #~ " Also defines the range of assigned"
 #~ " IP addresses."
 #~ msgstr ""
-#~ "Útválasztó IP-címe a belső hálózaton."
-#~ " Meghatározza a kiosztott IP-címtartományt"
-#~ " is."
+#~ "Útválasztó IP-címe a belső hálózaton. "
+#~ "Meghatározza a kiosztott IP-címtartományt is."
 
 #~ msgid "Use Modem Turris"
 #~ msgstr "Turris Modem használata"
@@ -2992,8 +3137,8 @@ msgstr "Visszalépés"
 #~ msgstr ""
 #~ "Ha ez a beállítás engedélyezve van, "
 #~ "a felhasználóneveket és jelszavakat gyűjtik"
-#~ " és az ügyfél IP-címe mellett "
-#~ "ezeket is a kiszolgálóhoz küldik."
+#~ " és az ügyfél IP-címe mellett ezeket"
+#~ " is a kiszolgálóhoz küldik."
 
 #~ msgid "Enable data collection"
 #~ msgstr "Adatgyűjtés engedélyezése"
@@ -3113,7 +3258,8 @@ msgstr "Visszalépés"
 #~ "Just set your password and you are"
 #~ " ready to go. This workflow is "
 #~ "aimed to more advanced users who "
-#~ "intend not to use the web gui. \n"
+#~ "intend not to use the web gui."
+#~ " \n"
 #~ msgstr ""
 
 #~ msgid "Failed to save system password"

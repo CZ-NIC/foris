@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 11:26+0100\n"
+"POT-Creation-Date: 2019-03-08 14:38+0100\n"
 "PO-Revision-Date: 2019-02-25 03:18+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
-"foris/nb_NO/>\n"
 "Language: nb\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -333,8 +332,8 @@ msgid ""
 "The password you've entered has been compromised. It appears %(count)d "
 "times in '%(list)s' list."
 msgstr ""
-"Passordet du skrev inn har blitt lekket. Det framtrer %(count)d ganger i \""
-"%(list)s\"-listen."
+"Passordet du skrev inn har blitt lekket. Det framtrer %(count)d ganger i "
+"\"%(list)s\"-listen."
 
 #, fuzzy
 msgid "Old password you entered was not valid."
@@ -369,8 +368,8 @@ msgid ""
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
-"Klarte ikke å slå på fjerntilgang. Du bruker antagelig en meldingsbuss som "
-"ikke støtter fjerntilgang, eller så har det ikke blitt generert for "
+"Klarte ikke å slå på fjerntilgang. Du bruker antagelig en meldingsbuss "
+"som ikke støtter fjerntilgang, eller så har det ikke blitt generert for "
 "sertifikatsmyndigheten enda."
 
 #, fuzzy
@@ -394,6 +393,65 @@ msgstr "Passord lagret."
 
 msgid "Failed to delete CA for remote access."
 msgstr "Klarte ikke å slette sertifikatsmyndighet for fjerntilgang."
+
+msgid "Subordinates"
+msgstr ""
+
+#, python-format
+msgid ""
+"Token was successfully added and client '%(controller_id)s' should be "
+"visible in a moment."
+msgstr ""
+
+msgid "Failed to add token."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was successfully deleted."
+msgstr "Passord lagret."
+
+#, python-format
+msgid "Failed to delete subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+msgstr "Passord lagret."
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+msgstr "Passord lagret."
+
+#, python-format
+msgid "Failed to enable subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Failed to disable subordinate '%(controller_id)s'."
+msgstr "Klarte ikke å lagre systempassord"
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Oppsettet ble lagret."
+
+#, python-format
+msgid "Failed to update subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Oppsettet ble lagret."
+
+#, python-format
+msgid "Failed to update subsubordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy
+msgid "Wifi settings was sucessfully updated."
+msgstr "Oppsettet ble lagret."
+
+msgid "Failed to update Wifi settings."
+msgstr ""
 
 #, fuzzy
 msgid "Guide workflow was sucessfully set."
@@ -1033,9 +1091,9 @@ msgid ""
 "connect to the configuration interface. Otherwise only devices on LAN "
 "will be able to access the configuration interface."
 msgstr ""
-"Hvis dette valget er huket av vil enheten i WAN-nettverket kunne koble til "
-"oppsettsgrensesnittet. Ellers vil kun enheter på lokalnettverket kunne nå "
-"oppsettsgrensesnittet."
+"Hvis dette valget er huket av vil enheten i WAN-nettverket kunne koble "
+"til oppsettsgrensesnittet. Ellers vil kun enheter på lokalnettverket "
+"kunne nå oppsettsgrensesnittet."
 
 msgid "Port"
 msgstr "Port"
@@ -1061,6 +1119,41 @@ msgstr "Symbolnavnet er ugyldig."
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "MAC-adressen er ikke gyldig."
+
+#, fuzzy
+msgid "Token file"
+msgstr "Avsendernavn"
+
+#, python-format
+msgid "Edit subordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subordinate here. Subordinates are directly connected to"
+" this device."
+msgstr ""
+
+#, fuzzy
+msgid "Custom Name"
+msgstr "Brukernavn"
+
+#, python-format
+msgid "Nicer name for your device '%(controller_id)s'."
+msgstr ""
+
+#, python-format
+msgid "Edit subsubordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subsubordinate here. Subsubordinates are devices which "
+"are not directly connected to this device but they are connected with a "
+"subordinated."
+msgstr ""
+
+#, python-format
+msgid "Nicer name for your device with serial '%(controller_id)s'."
+msgstr ""
 
 msgid "Updater"
 msgstr "Oppdateringsfunksjon"
@@ -1285,6 +1378,25 @@ msgstr "Koloninndelt, for eksempel 00:11:22:33:44:55"
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
+#, python-format
+msgid "Configure WiFi for '%s'"
+msgstr ""
+
+#, fuzzy
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Hvis du ønsker å bruke ruteren din som et Wi-Fi-tilgangspunkt, skru på "
+"Wi-Fi her og fyll inn en SSID (navnet på tilgangspunktet) og et "
+"tilhørende passord. Du kan så sette opp dine mobilenheter ved bruk av en "
+"QR-kode ved siden av skjemaet."
+
+msgid "Wi-Fi settings"
+msgstr "Wi-Fi -innstillinger"
+
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
 "length is 8 characters."
@@ -1390,21 +1502,6 @@ msgstr "SSID for gjester"
 
 msgid "Password for guests"
 msgstr "Passord for gjester"
-
-#, fuzzy
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
-" and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-"Hvis du ønsker å bruke ruteren din som et Wi-Fi-tilgangspunkt, skru på "
-"Wi-Fi her og fyll inn en SSID (navnet på tilgangspunktet) og et "
-"tilhørende passord. Du kan så sette opp dine mobilenheter ved bruk av en "
-"QR-kode ved siden av skjemaet."
-
-msgid "Wi-Fi settings"
-msgstr "Wi-Fi -innstillinger"
 
 msgid "Hint"
 msgstr "Hint"
@@ -1578,6 +1675,31 @@ msgstr "Forbered symbol"
 
 msgid "Revoke"
 msgstr "Tilbakekall"
+
+#, fuzzy
+msgid "Close"
+msgstr "tapt"
+
+msgid "Apply"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "State"
+msgstr "Brukernavn"
+
+#, fuzzy
+msgid "Devices"
+msgstr "Enhet"
+
+#, fuzzy
+msgid "Channels"
+msgstr "Nettverkskanal"
+
+msgid "Currently there are no subordinates."
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -1927,9 +2049,6 @@ msgstr ""
 "Sertifikatsmyndighet kreves for administrasjon annensteds fra. Tiden som "
 "kreves for generering varierer. Prøv å gjeninnlaste denne siden senere."
 
-msgid "Loading..."
-msgstr "Laster…"
-
 #, fuzzy
 msgid "Reload page"
 msgstr "Forsinkede oppgraderinger"
@@ -1942,8 +2061,8 @@ msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
-"Din sertifikatsmyndighet ser ut til å være klar til bruk. Du kan nå trygt "
-"skru på/av fjerntilgang og sette noen av parameterne."
+"Din sertifikatsmyndighet ser ut til å være klar til bruk. Du kan nå trygt"
+" skru på/av fjerntilgang og sette noen av parameterne."
 
 #, fuzzy
 msgid "Apply configuration"
@@ -1969,8 +2088,8 @@ msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
 " CA you need to disable the remote access first."
 msgstr ""
-"Du kan ikke slette sertifikatsmyndighet mens fjerntilgang er påslått. For å "
-"slette sertifikatsmyndigheten må du skru av fjerntilgang først."
+"Du kan ikke slette sertifikatsmyndighet mens fjerntilgang er påslått. For"
+" å slette sertifikatsmyndigheten må du skru av fjerntilgang først."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
@@ -1978,16 +2097,40 @@ msgid ""
 "generate a new CA first."
 msgstr ""
 "Du kan slette hele sertifikatsmyndigheten. Merk at alle sertifikatene "
-"utstedt av denne sertifikatsmyndigheten vil bli ubrukelige og hvis du ønsket "
-"å bruke programtillegget, ville du ha må generert en ny sertifikatsmyndighet "
-"først."
+"utstedt av denne sertifikatsmyndigheten vil bli ubrukelige og hvis du "
+"ønsket å bruke programtillegget, ville du ha må generert en ny "
+"sertifikatsmyndighet først."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
-"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
-"br/>Utløper om:"
+"<a href=\"${response.url}\"><div id=\"remote-"
+"qrcode-${token_id}\"></div></a><br/>Utløper om:"
+
+msgid ""
+"\n"
+"        On this tab you can set up other turris devices which can be "
+"controlled\n"
+"        by this device. You need to generate token on the remote tab on "
+"the device\n"
+"        you wan't to control. And insert the token here."
+msgstr ""
+
+msgid "Add subordinate device"
+msgstr ""
+
+msgid "Upload token"
+msgstr ""
+
+msgid "Subordinate devices"
+msgstr ""
+
+msgid "Wifi"
+msgstr ""
+
+msgid "Loading subordinates..."
+msgstr ""
 
 #, fuzzy
 msgid "Failed to query ntp servers."
@@ -2220,6 +2363,9 @@ msgstr "OK"
 
 msgid "Error"
 msgstr "Feil"
+
+msgid "Loading..."
+msgstr "Laster…"
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr "Tilkoblingstest mislyktes, tester tilkobling med avskrudd videresending."
@@ -3232,3 +3378,4 @@ msgstr "Nedgrader"
 
 #~ msgid "Save changes"
 #~ msgstr "Lagre endringer"
+

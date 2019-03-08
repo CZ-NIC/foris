@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-11 11:26+0100\n"
+"POT-Creation-Date: 2019-03-08 14:38+0100\n"
 "PO-Revision-Date: 2019-01-22 08:22+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -368,6 +368,65 @@ msgid "CA for remote access was sucessfully deleted."
 msgstr "Heslo do Forisa bolo úspešne uložené."
 
 msgid "Failed to delete CA for remote access."
+msgstr ""
+
+msgid "Subordinates"
+msgstr ""
+
+#, python-format
+msgid ""
+"Token was successfully added and client '%(controller_id)s' should be "
+"visible in a moment."
+msgstr ""
+
+msgid "Failed to add token."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was successfully deleted."
+msgstr "Heslo do Forisa bolo úspešne uložené."
+
+#, python-format
+msgid "Failed to delete subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+msgstr "Heslo bolo úspešne uložené."
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+msgstr "Heslo bolo úspešne uložené."
+
+#, python-format
+msgid "Failed to enable subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Failed to disable subordinate '%(controller_id)s'."
+msgstr "Systémové heslo sa nepodarilo uložiť"
+
+#, fuzzy, python-format
+msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+#, python-format
+msgid "Failed to update subordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy, python-format
+msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+#, python-format
+msgid "Failed to update subsubordinate '%(controller_id)s'."
+msgstr ""
+
+#, fuzzy
+msgid "Wifi settings was sucessfully updated."
+msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+msgid "Failed to update Wifi settings."
 msgstr ""
 
 msgid "Guide workflow was sucessfully set."
@@ -985,6 +1044,41 @@ msgstr ""
 msgid "Token id is invalid."
 msgstr "Duid nie je platné."
 
+#, fuzzy
+msgid "Token file"
+msgstr "Meno odosielateľa"
+
+#, python-format
+msgid "Edit subordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subordinate here. Subordinates are directly connected to"
+" this device."
+msgstr ""
+
+#, fuzzy
+msgid "Custom Name"
+msgstr "Názov stroja"
+
+#, python-format
+msgid "Nicer name for your device '%(controller_id)s'."
+msgstr ""
+
+#, python-format
+msgid "Edit subsubordinate '%(controller_id)s'"
+msgstr ""
+
+msgid ""
+"You can edit you subsubordinate here. Subsubordinates are devices which "
+"are not directly connected to this device but they are connected with a "
+"subordinated."
+msgstr ""
+
+#, python-format
+msgid "Nicer name for your device with serial '%(controller_id)s'."
+msgstr ""
+
 msgid "Updater"
 msgstr "Updater"
 
@@ -1207,6 +1301,25 @@ msgstr "Oddeľovačom je dvojbodka, napr. 00:11:22:33:44:55"
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
+#, python-format
+msgid "Configure WiFi for '%s'"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+"Pokiaľ chcete používať tento router na pripájanie ďalších zariadení k "
+"internetu pomocou Wi-Fi, zapnite ju v nasledujúcom formulári a vyberte si"
+" SSID (názov prístupového bodu) a príslušné heslo.<br><br>Mobilné "
+"zariadenia môžete jednoducho nastaviť načítaním QR kódu zobrazeného "
+"vnútri formulára."
+
+msgid "Wi-Fi settings"
+msgstr "Nastavenie Wi-Fi"
+
 msgid ""
 "WPA2 pre-shared key, that is required to connect to the network. Minimum "
 "length is 8 characters."
@@ -1311,21 +1424,6 @@ msgstr "Názov siete pre hostí"
 
 msgid "Password for guests"
 msgstr "Heslo k sieti pre hostí"
-
-msgid ""
-"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
-" and fill in an SSID (the name of the access point) and a corresponding "
-"password. You can then set up your mobile devices, using the QR code "
-"available within the form."
-msgstr ""
-"Pokiaľ chcete používať tento router na pripájanie ďalších zariadení k "
-"internetu pomocou Wi-Fi, zapnite ju v nasledujúcom formulári a vyberte si"
-" SSID (názov prístupového bodu) a príslušné heslo.<br><br>Mobilné "
-"zariadenia môžete jednoducho nastaviť načítaním QR kódu zobrazeného "
-"vnútri formulára."
-
-msgid "Wi-Fi settings"
-msgstr "Nastavenie Wi-Fi"
 
 msgid "Hint"
 msgstr "Pomocník"
@@ -1488,6 +1586,30 @@ msgid "Prepare Token"
 msgstr ""
 
 msgid "Revoke"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgid "State"
+msgstr "stav"
+
+#, fuzzy
+msgid "Devices"
+msgstr "Zariadenie"
+
+#, fuzzy
+msgid "Channels"
+msgstr "Kanál"
+
+msgid "Currently there are no subordinates."
 msgstr ""
 
 msgid ""
@@ -1824,9 +1946,6 @@ msgid ""
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
 
-msgid "Loading..."
-msgstr "Načítava sa..."
-
 #, fuzzy
 msgid "Reload page"
 msgstr "Aktualizácie s oneskorením"
@@ -1872,6 +1991,30 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
+msgstr ""
+
+msgid ""
+"\n"
+"        On this tab you can set up other turris devices which can be "
+"controlled\n"
+"        by this device. You need to generate token on the remote tab on "
+"the device\n"
+"        you wan't to control. And insert the token here."
+msgstr ""
+
+msgid "Add subordinate device"
+msgstr ""
+
+msgid "Upload token"
+msgstr ""
+
+msgid "Subordinate devices"
+msgstr ""
+
+msgid "Wifi"
+msgstr ""
+
+msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2109,6 +2252,9 @@ msgstr "OK"
 
 msgid "Error"
 msgstr "Chyba"
+
+msgid "Loading..."
+msgstr "Načítava sa..."
 
 msgid "Connectivity test failed, testing connection with disabled forwarding."
 msgstr ""
