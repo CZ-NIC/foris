@@ -1,6 +1,6 @@
 import os
 
 # this file is automatically updated when distutils are running the setup
-__version__ = "99.6.1"
+__version__ = "99.7"
 
 BASE_DIR = os.path.dirname(__file__)

@@ -1,3 +1,10 @@
+99.7 (2019-03-08)
+-----------------
+
+* translations updated
+* ui improvements: new spinner using css and fontawesome
+* subordinates tab added
+
 99.6.1 (2019-02-18)
 -------------------
 
