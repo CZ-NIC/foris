@@ -1292,6 +1292,7 @@ def config_ajax_form(page_name, form_name):
         raise bottle.HTTPError(400, "Should be ajax request")
     try:
         trigger = request.POST.pop("_update", None) is None
+        hide = request.POST.pop("_hide", False)
 
         controller_id = request.POST.pop("_controller_id", None)
         form, response_handler = config_page.get_page_form(
@@ -1306,6 +1307,7 @@ def config_ajax_form(page_name, form_name):
         return template(
             form.template_name,
             message=message,
+            hide=hide,
             form=form.foris_form,
             ajax_form=form,
             template_adapter=bottle.Jinja2Template,

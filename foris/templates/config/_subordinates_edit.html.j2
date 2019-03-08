@@ -1,4 +1,4 @@
-<div id="subordinates-edit" style="display: none">
+<div id="subordinates-edit" {% if hide %}style="display: none"{% endif %}>
     <h3>{{ ajax_form.title }}</h3>
     {% include 'config/_message.html.j2' %}
     <form id="sub-form" class="config-form" action="{{ ajax_form.url }}" method="post" autocomplete="off" novalidate>

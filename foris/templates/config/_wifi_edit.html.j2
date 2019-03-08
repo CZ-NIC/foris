@@ -1,4 +1,4 @@
-<div id="subordinates-edit" style="display: none">
+<div id="subordinates-edit" {% if hide %}style="display: none"{% endif %}>
     <h3>{{ ajax_form.title }}</h3>
     <form id="form-{{ form.name }}" class="config-form" action="{{ ajax_form.url }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ form.sections[0].description|safe }}</p>

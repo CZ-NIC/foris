@@ -40,7 +40,7 @@ class WifiEditForm(fapi.ForisAjaxForm):
 
     def __init__(self, data, controller_id=None):
         super().__init__(data, controller_id)
-        self.title = _("Setting WiFi for '%s'") % controller_id
+        self.title = _("Configure WiFi for '%s'") % controller_id
 
     @staticmethod
     def prefixed(index, name):
