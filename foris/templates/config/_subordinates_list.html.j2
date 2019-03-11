@@ -2,7 +2,7 @@
     <form action="{{ url("config_ajax_form", page_name="subordinates", form_name=form_name) }}" method="post" class="subordinate-buttons">
         <input type="hidden" name="controller_id" value="{{ controller_id }}">
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        <button name="action" value="edit" type="submit"><i class="fas fa-edit"></i></button>
+        <button name="action" value="edit" type="submit" style="display: none"><i class="fas fa-edit"></i></button>
     </form>
 {% endmacro -%}
 {% macro sub_buttons(controller_id, enabled, form_class) -%}

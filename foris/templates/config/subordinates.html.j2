@@ -64,6 +64,10 @@
             Foris.setSubordinatesTimeouts();
         }
         Foris.setSubordinatesTimeouts = () => {
+            for (timeout in Foris.subordinateKeepAliveTimeouts) {
+                clearTimeout(Foris.subordinateKeepAliveTimeouts[timeout]);
+            }
+            Foris.subordinateKeepAliveTimeouts = {};
             $(".sub-connection").each((idx, val) => {
                 let id = $(val).attr("id");
                 if (id) {
@@ -75,15 +79,22 @@
             $("#subordinates-edit form").submit(async (e) => {
                 e.preventDefault();
                 let form = $(e.currentTarget);
-                resp = await $.ajax({
+                resp = $.ajax({
                     type: "POST",
                     url: form.attr('action'),
                     data: form.serialize()
                 });
-                $("#subordinates-edit").replaceWith(resp);
-                await Foris.suboridnatesOverrideEditClose();
-                await Foris.loadSubordinatesList();
-                $(".subordinate-buttons button").hide();
+                form.find("input, select, button").attr("disabled", "disabled");
+                try {
+                    let new_form = await resp;
+                    $("#subordinates-edit").replaceWith(new_form);
+                    await Foris.suboridnatesOverrideEditClose();
+                    await Foris.overrideSubordinatesEditButton();
+                    await Foris.loadSubordinatesList();
+                    $(".subordinate-buttons button").hide();
+                } catch(err) {
+                    alert(err);
+                }
             });
         };
         Foris.overrideSubordinatesButtons = async () => {
@@ -151,7 +162,7 @@
                                     data: `&csrf_token=${form_data["csrf_token"]}&_controller_id=${form_data["controller_id"]}&_update=1`,
                                 });
                         }
-
+                        Foris.subordinateInEditMode = true;
                         await $("#subordinates-edit").promise();
                         $("#subordinates-edit").replaceWith(resp);
                         $(".subordinate-buttons button").hide('slow');
@@ -167,14 +178,18 @@
         };
         Foris.suboridnatesOverrideEditClose = async () => {
             $("#subordinates-edit").find("a.button").click(async (e) => {
+                Foris.subordinateInEditMode = false;
                 e.preventDefault();
                 $("#subordinates-edit").hide('slow');
                 await $("#subordinates-edit").promise();
                 $("#subordinates-edit").replaceWith("<div id='subordinates-edit'></div>");
-                $(".subordinate-buttons button").show('slow');
-                await $(".subordinate-buttons button").promise();
+                if (Foris.subordinatesGetView() == "subordinates") {
+                    $(".subordinate-buttons button").show('slow');
+                    await $(".subordinate-buttons button").promise();
+                }
             });
         };
+        Foris.subordinateInEditMode = false;
         Foris.subordinatesAlive = {};
         Foris.subordinateKeepAliveTimeouts = {};
         Foris.subordinateSetKeepAliveTimeout = (controller_id) => {
@@ -185,6 +200,7 @@
                 state_element.removeClass();
                 state_element.addClass("state fas fa-exclamation-circle");
                 delete Foris.subordinateKeepAliveTimeouts[controller_id];
+                $(`div[data-controller-id=${controller_id}]`).replaceWith("<div id='subordinates-edit'>Chyba</div>");
             }, 3000);
         };
         Foris.updateSubordinateState = async (data) => {
@@ -208,6 +224,9 @@
                         Foris.queryBackendWifi(data.id);
                     }
                     Foris.subordinatesAlive[data.id] = true;
+                    if (!Foris.subordinateInEditMode) {
+                        $(`#sub-${data.id}`).find("button[value=edit]").show("slow");
+                    }
                     break;
                 case 'exitted':
                     state_element.addClass("state fas fa-exclamation-circle");

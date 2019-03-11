@@ -544,57 +544,6 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
             template_adapter=bottle.Jinja2Template,
         )
 
-    def _ajax_update_sub(self):
-        controller_id = self._check_and_get_controller_id()
-        form = self.get_subordinate_update_form(bottle.request.POST.decode())
-        form.save()
-        if form.callback_results["result"]:
-            message = {
-                "classes": ['success'],
-                "text": _("Subordinate '%(controller_id)s' was sucessfully updated.")
-                % dict(controller_id=controller_id)
-            }
-
-        else:
-            message = {
-                "classes": ['error'],
-                "text": _("Failed to update subordinate '%(controller_id)s'.")
-                % dict(controller_id=controller_id)
-            }
-
-        res = template(
-            "config/_subordinates_message.html.j2",
-            message=message,
-            dom_id="edit-form-message",
-            template_adapter=bottle.Jinja2Template,
-        )
-        return res
-
-    def _ajax_update_subsub(self):
-        controller_id = self._check_and_get_controller_id()
-        form = self.get_subsubordinate_update_form(bottle.request.POST.decode())
-        form.save()
-        if form.callback_results["result"]:
-            message = {
-                "classes": ['success'],
-                "text": _("Subsubordinate '%(controller_id)s' was sucessfully updated.")
-                % dict(controller_id=controller_id)
-            }
-
-        else:
-            message = {
-                "classes": ['error'],
-                "text": _("Failed to update subsubordinate '%(controller_id)s'.")
-                % dict(controller_id=controller_id)
-            }
-
-        return template(
-            "config/_subordinates_message.html.j2",
-            message=message,
-            dom_id="edit-form-message",
-            template_adapter=bottle.Jinja2Template,
-        )
-
     def call_ajax_action(self, action):
         if action == "list":
             return self._ajax_list_subordinates()
@@ -604,10 +553,6 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
             return self._ajax_set_enabled(True)
         elif action == "delete":
             return self._ajax_delete()
-        elif action == "update_sub":
-            return self._ajax_update_sub()
-        elif action == "update_subsub":
-            return self._ajax_update_subsub()
         raise ValueError("Unknown AJAX action.")
 
     @classmethod

@@ -1,5 +1,6 @@
-<div id="subordinates-edit" {% if hide %}style="display: none"{% endif %}>
+<div id="subordinates-edit" {% if hide %}style="display: none"{% endif %} data-controller-id="{{ ajax_form.controller_id }}">
     <h3>{{ ajax_form.title }}</h3>
+    {% include 'config/_message.html.j2' %}
     <form id="form-{{ form.name }}" class="config-form" action="{{ ajax_form.url }}" method="post" autocomplete="off" novalidate>
         <p class="config-description">{{ form.sections[0].description|safe }}</p>
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
