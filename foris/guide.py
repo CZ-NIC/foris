@@ -62,7 +62,7 @@ class MessagesDefault():
 
     NETWORKS_PASSED = [
         _(
-            "Here you need to decide which interfaces belongs to which network."
+            "Here you need to decide which interfaces belong to which network."
         ),
         _(
             "If you are in doubt use the current settings."
@@ -79,7 +79,7 @@ class MessagesDefault():
 
     WAN_PASSED = [
         _(
-            "In order to access the internet you need to configure your WAN interface."
+            "In order to access the internet, you need to configure your WAN interface."
         ),
         _(
             "You've configured your WAN interface. "
@@ -147,7 +147,7 @@ class MessagesDefault():
     ]
 
     FINISHED_PASSED = [
-        _("You have sucessfully configured your device.")
+        _("You have successfully configured your device.")
     ]
     FINISHED_CURRENT = FINISHED_PASSED
 
@@ -163,7 +163,7 @@ class MessageBridge(MessagesDefault):
         _(
             "You chose to act as local server this means that it doesn't make sense to put "
             "any interfaces to your WAN and Guest Network. So it is a good idea to assign all "
-            "iterfaces to LAN."
+            "interfaces to LAN."
         ),
         MessagesDefault.NETWORKS_PASSED[2],
     ]
@@ -182,7 +182,7 @@ class MessageBridge(MessagesDefault):
         _(
             "If you select the <strong>static</strong> configuration be sure that the IP "
             "addresses are entered correctly otherwise you won't be able to access this "
-            "configuration iterface when the new settings are applied."
+            "configuration interface when the new settings are applied."
         ),
         _(
             "If you select the <strong>DHCP</strong> method you probably you need to obtain "
@@ -191,7 +191,7 @@ class MessageBridge(MessagesDefault):
             "address to proceed the guide."
         ),
         _(
-            "Note that either way you might need to re-plug your ethernet cabels after you update "
+            "Note that either way you might need to re-plug your ethernet cables after you update "
             "the settings here."
         ),
         _(
@@ -297,7 +297,7 @@ class Workflow(object):
     }
     DESCRIPTIONS = {
         WORKFLOW_UNSET: _("The workflow wasn't set yet."),
-        WORKFLOW_OLD: _("Workflow for older devices and older turris OS versions (before 4.0)."),
+        WORKFLOW_OLD: _("Workflow for older devices and older Turris OS versions (before 4.0)."),
         WORKFLOW_MIN: _(
             "Just set your password and you are ready to go. "
             "This workflow is aimed to more advanced users who intend not to use the web GUI."
@@ -310,7 +310,7 @@ class Workflow(object):
         WORKFLOW_BRIDGE: _(
             "This workflow will help you to setup your device to act as a local server. "
             "It means that the device will provide some kind of service to other devices "
-            "within your local network (e.g. act as a network attached storage)."
+            "within your local network (e.g. act as a network-attached storage)."
         ),
     }
 
