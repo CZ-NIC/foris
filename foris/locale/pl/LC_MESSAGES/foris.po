@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 14:38+0100\n"
+"POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2019-02-12 15:11+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language: pl\n"
@@ -39,7 +39,8 @@ msgstr "Wybierz jedną z możliwych konfiguracji trybu pracy."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Tryb pracy został ustawiony. Możesz przejść do następnego kroku."
 
-msgid "Here you need to decide which interfaces belongs to which network."
+#, fuzzy
+msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Tutaj musisz zdecydować, które interfejsy należą do której sieci."
 
 msgid "If you are in doubt use the current settings."
@@ -53,7 +54,8 @@ msgstr ""
 "podałeś kluczowe ustawienia sieci, więc możesz bezpiecznie przejść do "
 "następnego kroku."
 
-msgid "In order to access the internet you need to configure your WAN interface."
+#, fuzzy
+msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Aby uzyskać dostęp do Internetu, musisz skonfigurować interfejs WAN."
 
 msgid ""
@@ -116,13 +118,15 @@ msgstr "Teraz możesz skonfigurować automatyczne aktualizacje na swoim urządze
 msgid "Please wait till the updater finishes its run."
 msgstr "Poczekaj, aż aktualizator zakończy swoje działanie."
 
-msgid "You have sucessfully configured your device."
+#, fuzzy
+msgid "You have successfully configured your device."
 msgstr "Pomyślnie skonfigurowałeś swoje urządzenie."
 
+#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
-"to assign all iterfaces to LAN."
+"to assign all interfaces to LAN."
 msgstr ""
 "Postanowiłeś działać jako serwer lokalny, co oznacza, że nie ma sensu "
 "umieszczać żadnych interfejsów w sieci WAN i Guest Network. Dobrym "
@@ -139,10 +143,11 @@ msgstr ""
 "pracy routera). Prawdopodobnie chcesz działać jako klient, wybierz tryb "
 "<strong>Komputer</strong>."
 
+#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
-"this configuration iterface when the new settings are applied."
+"this configuration interface when the new settings are applied."
 msgstr ""
 "Jeśli wybierzesz konfigurację <strong>statyczną</strong>, upewnij się, że"
 " adresy IP zostały wprowadzone poprawnie. W przeciwnym razie nie będziesz"
@@ -161,8 +166,9 @@ msgstr ""
 "połączyć się z nowym adresem IP, aby kontynuować korzystanie z "
 "przewodnika."
 
+#, fuzzy
 msgid ""
-"Note that either way you might need to re-plug your ethernet cabels after"
+"Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
 "Zwróć uwagę, że w obu przypadkach może być konieczne ponowne podłączenie "
@@ -220,7 +226,8 @@ msgstr "Niepoprawne"
 msgid "The workflow wasn't set yet."
 msgstr "Tryb pracy nie został jeszcze ustawiony."
 
-msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+#, fuzzy
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
 "Tryb pracy dla starszych urządzeń i starszych wersji systemu Turris "
 "(przed 4.0)."
@@ -242,10 +249,11 @@ msgstr ""
 "działać jako w pełni funkcjonalny router. Przewodnik zakłada, że chcesz "
 "mieć mniej lub bardziej standardową konfigurację sieci."
 
+#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
-"other devices within your local network (e.g. act as a network attached "
+"other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
 "Ten tryb pracy pomoże skonfigurować urządzenie do działania jako serwer "

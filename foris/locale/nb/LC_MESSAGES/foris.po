@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 14:38+0100\n"
+"POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2019-03-09 19:04+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
-"foris/nb_NO/>\n"
 "Language: nb\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -42,7 +41,8 @@ msgstr "Velg av de mulige oppsettsveiene."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Fastvare oppdatert, du kan fortsette til neste steg."
 
-msgid "Here you need to decide which interfaces belongs to which network."
+#, fuzzy
+msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Her kan du velge hvilket grensesnitt som tilhører hvilket nettverk."
 
 msgid "If you are in doubt use the current settings."
@@ -57,7 +57,7 @@ msgstr ""
 "neste steg."
 
 #, fuzzy
-msgid "In order to access the internet you need to configure your WAN interface."
+msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "For å få tilgang til Internett, må du sette opp din WAN-grensesnitt."
 
 #, fuzzy
@@ -123,14 +123,14 @@ msgid "Please wait till the updater finishes its run."
 msgstr "Vent til oppdatereren er ferdig."
 
 #, fuzzy
-msgid "You have sucessfully configured your device."
+msgid "You have successfully configured your device."
 msgstr "Du har satt opp din enhet."
 
 #, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
-"to assign all iterfaces to LAN."
+"to assign all interfaces to LAN."
 msgstr ""
 "Du har valgt opptreden som lokal tjener. Dette betyr at det ikke gir "
 "mening å putte noen grensensitt i WAN og gjestenettverk. Så det er en god"
@@ -152,7 +152,7 @@ msgstr ""
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
-"this configuration iterface when the new settings are applied."
+"this configuration interface when the new settings are applied."
 msgstr ""
 "Hvis du velger <strong>Statisk</strong> oppsett her, forsikre deg om at "
 "IP-adressene er skrevet inn rett, ellers vil du ikke kunne nå dette "
@@ -172,7 +172,7 @@ msgstr ""
 
 #, fuzzy
 msgid ""
-"Note that either way you might need to re-plug your ethernet cabels after"
+"Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
 "Merk at uansett kan det hende du må plugge ut og inn ethernett-kabelen "
@@ -233,7 +233,7 @@ msgid "The workflow wasn't set yet."
 msgstr "Oppsettsvei har ikke blitt valgt enda."
 
 #, fuzzy
-msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr "Oppsettsvei for eldre enheter og eldre Turris OS-versjoner (før 4.0)."
 
 #, fuzzy
@@ -258,7 +258,7 @@ msgstr ""
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
-"other devices within your local network (e.g. act as a network attached "
+"other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
 "Denne oppsettsveien hjelper deg å sette opp din enhet for å opptre som "
@@ -3379,3 +3379,4 @@ msgstr "Nedgrader"
 
 #~ msgid "Save changes"
 #~ msgstr "Lagre endringer"
+

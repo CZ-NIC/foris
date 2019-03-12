@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 14:38+0100\n"
+"POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2019-01-22 08:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language: lt\n"
@@ -39,7 +39,8 @@ msgstr "Pasirinkite vieną iš galimų įrenginio paruošimo darbo eigos būdų.
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Gido rėžimas parinktas. Galite eiti prie kito etapo."
 
-msgid "Here you need to decide which interfaces belongs to which network."
+#, fuzzy
+msgid "Here you need to decide which interfaces belong to which network."
 msgstr ""
 "Čia turite nuspręsti kaip tinklo interfeisai bus paskirstyti kompiuterių "
 "tinklams."
@@ -54,7 +55,8 @@ msgstr ""
 "Parinkote tinklo interfeisų nustatymus. Panašu, kad pagrindiniai tinklo "
 "nustatymai yra tinkami, galite saugiai eiti prie kito etapo."
 
-msgid "In order to access the internet you need to configure your WAN interface."
+#, fuzzy
+msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Kad galėtumėte naudotis internetu reikia įvesti WAN interfeiso nustatymus."
 
 msgid ""
@@ -115,13 +117,15 @@ msgstr "Dabar reikia parinkti įrenginio automatinių atnaujinimų nustatymus."
 msgid "Please wait till the updater finishes its run."
 msgstr "Palaukite kol atnaujinimo procedūra pasibaigs."
 
-msgid "You have sucessfully configured your device."
+#, fuzzy
+msgid "You have successfully configured your device."
 msgstr "Sėkmingai pabaigėte įrenginio parengimą darbui."
 
+#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
-"to assign all iterfaces to LAN."
+"to assign all interfaces to LAN."
 msgstr ""
 "Kadangi pasirinkote lokalaus serverio rėžimą nėra tikslinga priskirti jei"
 " vieno interfeiso WAN arba Svečių tinklui. Rekomenduojame visus "
@@ -139,10 +143,11 @@ msgstr ""
 "maršrutizatoriaus gido rėžimą). Tikriausiai norite, kad įrenginys būtų "
 "tinklo klientas, tad pasirinkite <strong>Kompiuterio</strong> rėžimą. "
 
+#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
-"this configuration iterface when the new settings are applied."
+"this configuration interface when the new settings are applied."
 msgstr ""
 "Jei pasirinkote <strong>statinę</strong> konfigūraciją įsitikinkite kad "
 "įvestas tinkamas IP adresas, nes kitaip negalėsite pasiekti šios web "
@@ -158,8 +163,9 @@ msgstr ""
 "naują įrenginio adresą. Jį galite gauti iš DHCP serverio, kuris valdo "
 "jūsų LAN. Tęsti gidą galėsite prisijungę naujuoju adresu."
 
+#, fuzzy
 msgid ""
-"Note that either way you might need to re-plug your ethernet cabels after"
+"Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
 "Atkreipkite dėmesį, kad bet kuriuo atveju, po nustatymų pakeitimo jums "
@@ -215,7 +221,8 @@ msgstr "Neparinkta"
 msgid "The workflow wasn't set yet."
 msgstr "Neparinktas gido rėžimas."
 
-msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+#, fuzzy
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
 "Gido rėžimas senesniems įrenginiams ir senesnėms Turris OS versijoms "
 "(prieš 4.0)."
@@ -237,10 +244,11 @@ msgstr ""
 "pilnavertis maršrutizatorius. Manoma, kad norėsite turėti daugiau mažiau "
 "įprastą tinklo topologiją."
 
+#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
-"other devices within your local network (e.g. act as a network attached "
+"other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
 "Šis gido rėžimas padės parengti įrenginį vietinio serverio rolei. Tai "

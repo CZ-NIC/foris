@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 14:38+0100\n"
+"POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2019-02-19 08:18+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language: de\n"
@@ -51,7 +51,8 @@ msgstr ""
 "Der Workflow wurde eingestellt. Sie können mit dem nächsten Schritt "
 "fortfahren."
 
-msgid "Here you need to decide which interfaces belongs to which network."
+#, fuzzy
+msgid "Here you need to decide which interfaces belong to which network."
 msgstr ""
 "Hier müssen Sie sich entscheiden, welche Schnittstelle zu welchem "
 "Netzwerk gehört."
@@ -69,7 +70,8 @@ msgstr ""
 " keine wichtigen Netzwerkeinstellungen falsch konfiguriert und Sie können"
 " mit dem nächsten Schritt fortfahren."
 
-msgid "In order to access the internet you need to configure your WAN interface."
+#, fuzzy
+msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Für den Internetzugriff müssen Sie ihre WAN Schnittstelle konfigurieren."
 
 msgid ""
@@ -133,13 +135,15 @@ msgstr "Jetzt müssen Sie automatische Updates auf Ihrem Gerät konfigurieren."
 msgid "Please wait till the updater finishes its run."
 msgstr "Bitte warten Sie, bis der Updater seinen Lauf beendet hat."
 
-msgid "You have sucessfully configured your device."
+#, fuzzy
+msgid "You have successfully configured your device."
 msgstr "Sie haben Ihr Gerät erfolgreich konfiguriert."
 
+#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
-"to assign all iterfaces to LAN."
+"to assign all interfaces to LAN."
 msgstr ""
 "Sie haben sich dafür entschieden, als lokaler Server zu arbeiten, d.h. es"
 " macht keinen Sinn, Schnittstellen zu Ihrem WAN und Gastnetzwerk "
@@ -157,10 +161,11 @@ msgstr ""
 "wahrscheinlich als Client auftreten, wählen Sie also hier den Modus "
 "<strong>Computer</strong>."
 
+#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
-"this configuration iterface when the new settings are applied."
+"this configuration interface when the new settings are applied."
 msgstr ""
 "Wenn Sie die Konfiguration <strong>statisch</strong> auswählen, "
 "vergewissern Sie sich, dass die IP-Adressen korrekt eingegeben wurden, da"
@@ -178,8 +183,9 @@ msgstr ""
 " es vom DHCP-Server beziehen, der Ihr LAN verwaltet. Dann müssen Sie sich"
 " mit der neuen IP-Adresse verbinden, um mit dem Leitfaden fortzufahren."
 
+#, fuzzy
 msgid ""
-"Note that either way you might need to re-plug your ethernet cabels after"
+"Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
 "Beachten Sie, dass Sie auf jeden Fall Ihre Ethernet-Kabel neu anschließen"
@@ -237,7 +243,8 @@ msgstr "Ungesetzt"
 msgid "The workflow wasn't set yet."
 msgstr "Der Workflow war noch nicht festgelegt."
 
-msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+#, fuzzy
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr "Workflow für ältere Geräte und ältere Turris OS-Versionen (vor 4.0)."
 
 msgid ""
@@ -257,10 +264,11 @@ msgstr ""
 "vollwertiger Router arbeiten. Es wird davon ausgegangen, dass Sie eine "
 "mehr oder weniger standardmäßige Netzwerkeinrichtung wünschen."
 
+#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
-"other devices within your local network (e.g. act as a network attached "
+"other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
 "Dieser Workflow hilft Ihnen, Ihr Gerät so einzurichten, dass es als "

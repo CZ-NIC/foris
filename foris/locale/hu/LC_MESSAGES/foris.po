@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08 14:38+0100\n"
+"POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -38,7 +38,8 @@ msgstr "Válasszon egyet a lehetséges beállítási munkafolyamatok közül."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "A munkafolyamat beállítva, jöhet a következő lépés."
 
-msgid "Here you need to decide which interfaces belongs to which network."
+#, fuzzy
+msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Itt kell eldönteni, hogy mely interfész mely hálózathoz tartozik."
 
 msgid "If you are in doubt use the current settings."
@@ -51,7 +52,8 @@ msgstr ""
 "Hálózati interfészek beállítva. Úgy tűnik, nem romlott el semmilyen "
 "fontos hálózati beállítás, így nyugodtan jöhet a következő lépés."
 
-msgid "In order to access the internet you need to configure your WAN interface."
+#, fuzzy
+msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Az internet hozzáférése érdekében a WAN interfészt kell beállítani."
 
 msgid ""
@@ -111,13 +113,15 @@ msgstr "Most be kell állítania az automatikus frissítéseket a készüléken.
 msgid "Please wait till the updater finishes its run."
 msgstr "Kérem várjon, míg az updater befejezi a munkát."
 
-msgid "You have sucessfully configured your device."
+#, fuzzy
+msgid "You have successfully configured your device."
 msgstr "Sikeresen beállította a készüléket."
 
+#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
-"to assign all iterfaces to LAN."
+"to assign all interfaces to LAN."
 msgstr ""
 "Azt választotta, hogy helyi kiszolgálóként működik, ez azt jelenti, hogy "
 "nincs értelme semmilyen interfészt a WAN-ba és Vendég hálózatba tenni. "
@@ -135,10 +139,11 @@ msgstr ""
 "munkafolyamatot). Valószínűleg ügyfélként szeretne működni most, ezért "
 "válassza a <strong>Felügyelet nélküli</strong> módot itt "
 
+#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
-"this configuration iterface when the new settings are applied."
+"this configuration interface when the new settings are applied."
 msgstr ""
 "Ha a <strong>Statikus</strong> beállítást választja, ellenőrizze, hogy az"
 " IP címek helyesen legyenek, egyébként nem fogja tudni ezt a beállítási "
@@ -155,8 +160,9 @@ msgstr ""
 "szerezheti be, ami felügyeli a LAN-t. Ezután az új IP-címhez kell "
 "csatlakoznia, hogy folytassa az útmutatót."
 
+#, fuzzy
 msgid ""
-"Note that either way you might need to re-plug your ethernet cabels after"
+"Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
 "Vegye figyelembe, hogy lehet, hogy újra kell csatlakoztatnia az ethernet "
@@ -206,7 +212,7 @@ msgstr ""
 msgid "The workflow wasn't set yet."
 msgstr ""
 
-msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
 
 msgid ""
@@ -223,7 +229,7 @@ msgstr ""
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
-"other devices within your local network (e.g. act as a network attached "
+"other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
 
@@ -3278,5 +3284,18 @@ msgstr "Visszalépés"
 #~ " WAN, but it has opened ports "
 #~ "for configuration interface and other "
 #~ "services. "
+#~ msgstr ""
+
+#~ msgid "Workflow for older devices and older turris OS versions (before 4.0)."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This workflow will help you to "
+#~ "setup your device to act as a "
+#~ "local server. It means that the "
+#~ "device will provide some kind of "
+#~ "service to other devices within your "
+#~ "local network (e.g. act as a "
+#~ "network attached storage)."
 #~ msgstr ""
 
