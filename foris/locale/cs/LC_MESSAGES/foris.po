@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-12 12:23+0100\n"
 "PO-Revision-Date: 2019-03-14 07:04+0000\n"
-"Last-Translator: Josef Schlehofer <pepe@bloodkings.eu>\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -48,9 +48,8 @@ msgstr "Vyberte si jeden z možných scénářů nastavení."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Scénář byl nastaven, můžete pokračovat k dalšímu kroku."
 
-#, fuzzy
 msgid "Here you need to decide which interfaces belong to which network."
-msgstr "Zde je třeba si zvolit, která síťová rozhraní patří do které sítě."
+msgstr "Zde je třeba rozhodnout, která síťová rozhraní patří do které sítě."
 
 msgid "If you are in doubt use the current settings."
 msgstr "Pokud váháte, použijte stávající nastavení."
@@ -62,7 +61,6 @@ msgstr ""
 "Nastavili jste sítová rozhraní. Zdá se, že jste si nerozbili žádná "
 "důležitá nastavení sítě a tak můžete pokračovat na další krok."
 
-#, fuzzy
 msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Pro přístup k Internetu potřebujete nastavit WAN rozhraní."
 
@@ -124,19 +122,17 @@ msgstr "Nyní je třeba nastavit automatické aktualizace vašeho zařízení."
 msgid "Please wait till the updater finishes its run."
 msgstr "Vyčkejte, dokud automatické aktualizace nebudou dokončeny."
 
-#, fuzzy
 msgid "You have successfully configured your device."
 msgstr "Úspěšně jste nastavili své zařízení."
 
-#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all interfaces to LAN."
 msgstr ""
-"Zvolíte chování jako místní server což znamená, že nedává smysl umisťovat"
-" jakékoli rozhraní do WAN nebo sítě pro hosty. Takže je dobrý nápad "
-"přiřadit veškerá rozhraní do LAN."
+"Zvolíte chování jako místní server což znamená, že nedává smysl umisťovat "
+"jakékoli rozhraní do WAN nebo sítě pro hosty. Takže je dobrý nápad přiřadit "
+"veškerá rozhraní do LAN."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -148,15 +144,14 @@ msgstr ""
 "chcete spravovat, resetuje průvodce a zvolte postup Router). Nejspíš chcete "
 "aby fungovalo jako klient a proto vyberte režim <strong>Počítač</strong>."
 
-#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
-"Pokud zvolíte <strong>statické</strong> nastavení ověřte, že jste IP "
-"adresy zadali správně jinak po uplatnění tohoto nastavení nebude rozhraní"
-" pro nastavování přístupné."
+"Pokud zvolíte <strong>statické</strong> nastavení ověřte, že jste IP adresy "
+"zadali správně jinak po uplatnění tohoto nového nastavení nebude rozhraní "
+"pro nastavování přístupné."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -169,7 +164,6 @@ msgstr ""
 "který spravuje vaši síť. Na tuto novou IP adresu se budete potřebovat "
 "připojit pro dokončení průvodce."
 
-#, fuzzy
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
@@ -229,9 +223,8 @@ msgstr "Zrušit nastavení"
 msgid "The workflow wasn't set yet."
 msgstr "Scénář doposud nebyl nastaven."
 
-#, fuzzy
 msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
-msgstr "Scénář pro starší zařízení a starší verze turris OS (před 4.0)."
+msgstr "Scénář pro starší zařízení a starší verze Turris OS (před 4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
@@ -249,17 +242,15 @@ msgstr ""
 " funkční router. Předpokládá se, že chcete více méně standardní nastavení"
 " sítě."
 
-#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
 "other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
-"Tento scénář vám pomůže nastavit své zařízení pro roli místního serveru. "
-"To znamená, že zařízení bude poskytovat nějaký druh služby ostatním "
-"zařízením na vaší místní síti (např. sloužit jako síťové datové "
-"úložiště)."
+"Tento scénář vám pomůže nastavit své zařízení pro roli místního serveru. To "
+"znamená, že zařízení bude poskytovat nějaký druh služby ostatním zařízením "
+"na vaší místní síti (např. sloužit jako síťové datové úložiště)."
 
 msgid "This field is required."
 msgstr "Tuto kolonku je třeba vyplnit."
