@@ -1,3 +1,9 @@
+99.7.1 (2019-03-12)
+-------------------
+
+* translations: small fixes
+* subordinates: small ui fixes
+
 99.7 (2019-03-08)
 -----------------
 
