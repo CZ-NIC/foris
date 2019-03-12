@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-08 14:38+0100\n"
-"PO-Revision-Date: 2019-02-21 11:18+0000\n"
-"Last-Translator: Josef Schlehofer <pepe@bloodkings.eu>\n"
+"PO-Revision-Date: 2019-03-09 19:04+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
-"Language-Team: Czech "
-"<https://hosted.weblate.org/projects/turris/foris/cs/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -213,7 +213,7 @@ msgid "Minimal"
 msgstr "Minimální"
 
 msgid "Router"
-msgstr "Router"
+msgstr "Směrovač"
 
 msgid "Local Server"
 msgstr "Místní server"
@@ -370,63 +370,64 @@ msgid "Failed to delete CA for remote access."
 msgstr "Nepodařilo se smazat cert. autoritu pro přístup na dálku."
 
 msgid "Subordinates"
-msgstr ""
+msgstr "Podřízené"
 
 #, python-format
 msgid ""
 "Token was successfully added and client '%(controller_id)s' should be "
 "visible in a moment."
 msgstr ""
+"Token byl úspěšně přidán a klient „%(controller_id)s“ by v tuto chvíli už "
+"měl být viditelný."
 
 msgid "Failed to add token."
-msgstr ""
+msgstr "Token se nepodařilo smazat."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Cert. autorita pro přístup na dálku byla úspěšně smazána."
+msgstr "Podřízené „%(controller_id)s“ bylo úspěšně smazáno."
 
 #, python-format
 msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nepodařilo se smazat podřízené „%(controller_id)s“."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Přístup na dálku byl úspěšně zapnut."
+msgstr "Podřízené „%(controller_id)s“ bylo úspěšně zapnuto."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Přístup na dálku byl úspěšně vypnut."
+msgstr "Podřízené „%(controller_id)s“ bylo úspěšně vypnuto."
 
 #, python-format
 msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nepodařilo se zapnout podřízené „%(controller_id)s“."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr "Přístup na dálku se nepodařilo vypnout."
+msgstr "Nepodařilo se vypnout podřízené „%(controller_id)s“."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Nastavení sítě bylo úspěšně aktualizováno."
+msgstr "Podřízené „%(controller_id)s“ bylo úspěšně aktualizováno."
 
 #, python-format
 msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nepodařilo se aktualizovat podřízené „%(controller_id)s“."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Nastavení sítě bylo úspěšně aktualizováno."
+msgstr "Podřízené „%(controller_id)s“ bylo úspěšně aktualizováno."
 
 #, python-format
 msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nepodařilo se aktualizovat pořízené „%(controller_id)s“."
 
-#, fuzzy
 msgid "Wifi settings was sucessfully updated."
-msgstr "Nastavení sítě bylo úspěšně aktualizováno."
+msgstr "Nastavení WiFi bylo úspěšně aktualizováno."
 
 msgid "Failed to update Wifi settings."
-msgstr ""
+msgstr "Nastavení WiFi se nepodařilo uplatnit."
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Scénář průvodce úspěšně nastaven."
@@ -1035,40 +1036,44 @@ msgstr "Název tokenu není platný."
 msgid "Token id is invalid."
 msgstr "Identifikátor tokenu není platný."
 
-#, fuzzy
 msgid "Token file"
-msgstr "Název tokenu"
+msgstr "Soubor s tokenem"
 
 #, python-format
 msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
+msgstr "Upravit podřízené „%(controller_id)s“"
 
 msgid ""
 "You can edit you subordinate here. Subordinates are directly connected to"
 " this device."
 msgstr ""
+"Zde je možné upravit podřízená. Ta jsou připojena přímo k tomuto zařízení."
 
-#, fuzzy
 msgid "Custom Name"
-msgstr "Název stroje"
+msgstr "Uživatelsky určený název"
 
 #, python-format
 msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
+msgstr "Člověku srozumitelný název pro zařízení „%(controller_id)s“."
 
 #, python-format
 msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
+msgstr "Upravit podřízené „%(controller_id)s“"
 
 msgid ""
 "You can edit you subsubordinate here. Subsubordinates are devices which "
 "are not directly connected to this device but they are connected with a "
 "subordinated."
 msgstr ""
+"Podřízená je možné upravovat zde. Podřízená jsou zařízení jsou ta, která "
+"nejsou přímo připojená k tomuto zařízení, ale jsou připojena pomocí "
+"podřízeného."
 
 #, python-format
 msgid "Nicer name for your device with serial '%(controller_id)s'."
 msgstr ""
+"Člověku srozumitelnější název pro zařízení se sériovým číslem "
+"„%(controller_id)s“."
 
 msgid "Updater"
 msgstr "Aktualizace"
@@ -1189,7 +1194,7 @@ msgid "IPv6 gateway"
 msgstr "IPv6 výchozí brána"
 
 msgid "IPv6 prefix"
-msgstr "IPv6 prefix"
+msgstr "IPv6 předpona"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
 msgstr "Adresní rozsah pro vnitřní síť, např. 2001:db8:be13:37da::/64"
@@ -1294,7 +1299,7 @@ msgstr "Wi-Fi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
-msgstr ""
+msgstr "Nastavit WiFi pro „%s“"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
@@ -1578,30 +1583,26 @@ msgstr "Připravit token"
 msgid "Revoke"
 msgstr "Odvolat platnost"
 
-#, fuzzy
 msgid "Close"
-msgstr "ztraceno"
+msgstr "Zavřít"
 
 msgid "Apply"
-msgstr ""
+msgstr "Použít"
 
 msgid "ID"
-msgstr ""
+msgstr "Identif."
 
-#, fuzzy
 msgid "State"
-msgstr "stav"
+msgstr "Stav"
 
-#, fuzzy
 msgid "Devices"
 msgstr "Zařízení"
 
-#, fuzzy
 msgid "Channels"
-msgstr "Kanál"
+msgstr "Kanály"
 
 msgid "Currently there are no subordinates."
-msgstr ""
+msgstr "V tuto chvíli zde nejsou žádná podřízená."
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -2002,21 +2003,27 @@ msgid ""
 "the device\n"
 "        you wan't to control. And insert the token here."
 msgstr ""
+"\n"
+"        Na této kartě je možné nasatvit ostatní turris zařízení, které je "
+"možné\n"
+"        z tohoto. Na zařízení, které chcete ovládat je třeba na kartě "
+"vzdálené\n"
+"        vytvořit token. Ten pak vložte sem."
 
 msgid "Add subordinate device"
-msgstr ""
+msgstr "Přidat podřízené zařízení"
 
 msgid "Upload token"
-msgstr ""
+msgstr "Nahrát token"
 
 msgid "Subordinate devices"
-msgstr ""
+msgstr "Podřízená zařízení"
 
 msgid "Wifi"
-msgstr ""
+msgstr "Wifi"
 
 msgid "Loading subordinates..."
-msgstr ""
+msgstr "Načítání podřízených…"
 
 msgid "Failed to query ntp servers."
 msgstr "Nepodařilo se kontaktovat ntp servery."
@@ -3340,4 +3347,3 @@ msgstr "Návrat ke starší verzi"
 
 #~ msgid "Save changes"
 #~ msgstr "Uložit změny"
-

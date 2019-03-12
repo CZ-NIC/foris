@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-08 14:38+0100\n"
-"PO-Revision-Date: 2019-02-19 08:18+0000\n"
+"PO-Revision-Date: 2019-03-12 06:04+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
+"\n"
 "Language: ru\n"
-"Language-Team: Russian "
-"<https://hosted.weblate.org/projects/turris/foris/ru/>\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -362,63 +363,63 @@ msgid "Failed to delete CA for remote access."
 msgstr "Не удалось удалить центр сертификации для удаленного доступа."
 
 msgid "Subordinates"
-msgstr ""
+msgstr "Нижестоящий"
 
 #, python-format
 msgid ""
 "Token was successfully added and client '%(controller_id)s' should be "
 "visible in a moment."
 msgstr ""
+"Токен был успешно добавлен и клиент '%(controller_id)s' сейчас будет виден."
 
 msgid "Failed to add token."
-msgstr ""
+msgstr "Не удалось добавить токен."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Центр сертификации для удаленного доступа успешно удален."
+msgstr "Нижестоящий '%(controller_id)s' был успешно удален."
 
 #, python-format
 msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Не удалось удалить нижестоящий '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Удаленный доступ успешно включен."
+msgstr "Нижестоящий '%(controller_id)s' успешно включен."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Удаленный доступ успешно отключен."
+msgstr "Нижестоящий '%(controller_id)s' успешно отключен."
 
 #, python-format
 msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Не удалось включить нижестоящий '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr "Не удалось отключить удаленный доступ."
+msgstr "Не удалось отключить нижестоящий '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Конфигурация сети была успешно обновлена."
+msgstr "Нижестоящий '%(controller_id)s' был успешно обновлён."
 
 #, python-format
 msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Не удалось обновить нижестоящий '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Конфигурация сети была успешно обновлена."
+msgstr "Нижестоящий нижестоящего '%(controller_id)s' был успешно обновлён."
 
 #, python-format
 msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Не удалось обновить нижестоящий нижестоящего '%(controller_id)s'."
 
-#, fuzzy
 msgid "Wifi settings was sucessfully updated."
-msgstr "Конфигурация сети была успешно обновлена."
+msgstr "Настройки WiFi были успешно обновлены."
 
 msgid "Failed to update Wifi settings."
-msgstr ""
+msgstr "Не удалось обновить настройки WiFi."
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Начальная настройка конфигурации успешно прошла."
@@ -1033,40 +1034,44 @@ msgstr "Неверное имя токена."
 msgid "Token id is invalid."
 msgstr "Идентификатор токена недействителен."
 
-#, fuzzy
 msgid "Token file"
-msgstr "Имя токена"
+msgstr "Файл токена"
 
 #, python-format
 msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
+msgstr "Редактировать нижестоящий '%(controller_id)s'"
 
 msgid ""
 "You can edit you subordinate here. Subordinates are directly connected to"
 " this device."
 msgstr ""
+"Вы можете редактировать нижестоящие здесь. Нижестоящие напрямую связаны с "
+"этим устройством."
 
-#, fuzzy
 msgid "Custom Name"
-msgstr "Имя хоста"
+msgstr "Пользовательское имя"
 
 #, python-format
 msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
+msgstr "Хорошее имя для вашего устройства '%(controller_id)s'."
 
 #, python-format
 msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
+msgstr "Изменить нижестоящий нижестоящего '%(controller_id)s'"
 
 msgid ""
 "You can edit you subsubordinate here. Subsubordinates are devices which "
 "are not directly connected to this device but they are connected with a "
 "subordinated."
 msgstr ""
+"Вы можете редактировать свое нижестоящих здесь. Нижестоящие нижестоящих - "
+"устройства, которые не связаны напрямую с этим устройством, но связаны с "
+"нижестоящим."
 
 #, python-format
 msgid "Nicer name for your device with serial '%(controller_id)s'."
 msgstr ""
+"Хорошее имя для вашего устройства с серийным номером '%(controller_id)s'."
 
 msgid "Updater"
 msgstr "Сервис обновлений"
@@ -1289,7 +1294,7 @@ msgstr "Wi-Fi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
-msgstr ""
+msgstr "Настройте WiFi для '%s'"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
@@ -1575,30 +1580,26 @@ msgstr "Подготовьте токен"
 msgid "Revoke"
 msgstr "Отменить"
 
-#, fuzzy
 msgid "Close"
-msgstr "утерян"
+msgstr "Закрыть"
 
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 msgid "ID"
-msgstr ""
+msgstr "Идентификатор"
 
-#, fuzzy
 msgid "State"
-msgstr "состояние"
+msgstr "Состояние"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Устройство"
+msgstr "Устройства"
 
-#, fuzzy
 msgid "Channels"
-msgstr "Канал"
+msgstr "Каналы"
 
 msgid "Currently there are no subordinates."
-msgstr ""
+msgstr "В настоящее время нет нижестоящих."
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -2002,21 +2003,26 @@ msgid ""
 "the device\n"
 "        you wan't to control. And insert the token here."
 msgstr ""
+"\n"
+"        На этой вкладке можно настроить другие устройства Turris, которыми "
+"можно управлять с этого устройства. Вам нужно сгенерировать токен на "
+"удаленной вкладке на устройстве, которое надо контролировать. Затем вставьте "
+"токен здесь."
 
 msgid "Add subordinate device"
-msgstr ""
+msgstr "Добавить нижестоящее устройство"
 
 msgid "Upload token"
-msgstr ""
+msgstr "Загрузить токен"
 
 msgid "Subordinate devices"
-msgstr ""
+msgstr "Нижестоящие устройства"
 
 msgid "Wifi"
-msgstr ""
+msgstr "WiFi"
 
 msgid "Loading subordinates..."
-msgstr ""
+msgstr "Загрузка нижестоящих..."
 
 msgid "Failed to query ntp servers."
 msgstr "Ошибка запроса NTP сервера."
@@ -3361,4 +3367,3 @@ msgstr "Откатить"
 
 #~ msgid "Save changes"
 #~ msgstr "Сохранить изменения"
-
