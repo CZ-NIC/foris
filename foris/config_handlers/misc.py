@@ -292,6 +292,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
             region, city = data["zonename"].split("/")
             msg = {
                 "city": city,
+                "country": data["country"],
                 "region": region,
                 "timezone": tzinfo.get_zoneinfo_for_tz(data["zonename"]),
                 "time_settings": {
