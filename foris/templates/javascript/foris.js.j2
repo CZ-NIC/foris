@@ -23,6 +23,9 @@ Foris.messages.networkRestartTriggered = "{% trans %}A network restart was trigg
 Foris.messages.tryingToReconnect = "{% trans %}Trying to reconnect to your device.{% endtrans %}";
 Foris.messages.vexYes = "{% trans %}Confirm{% endtrans %}";
 Foris.messages.vexNo = "{% trans %}Cancel{% endtrans %}";
+Foris.messages.subordinatesSubordinatesFailed = (controller_id) => {
+  return `{% trans controller_id="${controller_id}" %}Connection to '{{ controller_id }}' was interrupted.{% endtrans %}`;
+};
 
 Foris.pingPath = "{{ url('ping') }}";
 Foris.backendPath = "{{ url('backend-api') }}";

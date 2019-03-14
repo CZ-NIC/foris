@@ -200,7 +200,8 @@
                 state_element.removeClass();
                 state_element.addClass("state fas fa-exclamation-circle");
                 delete Foris.subordinateKeepAliveTimeouts[controller_id];
-                $(`div[data-controller-id=${controller_id}]`).replaceWith("<div id='subordinates-edit'>Chyba</div>");
+                $(`div[data-controller-id=${controller_id}]`).replaceWith(`<div id='subordinates-edit' class='message error' data-controller-id='${controller_id}'>${Foris.messages.subordinatesSubordinatesFailed(controller_id)}</div>`);
+                Foris.subordinateInEditMode = false;
             }, 3000);
         };
         Foris.updateSubordinateState = async (data) => {
@@ -226,6 +227,10 @@
                     Foris.subordinatesAlive[data.id] = true;
                     if (!Foris.subordinateInEditMode) {
                         $(`#sub-${data.id}`).find("button[value=edit]").show("slow");
+                        let message = $(`div[data-controller-id=${data.id}].message`);
+                        message.hide("slow");
+                        await message.promise();
+                        message.replaceWith("<div id='subordinates-edit'></div>");
                     }
                     break;
                 case 'exitted':
