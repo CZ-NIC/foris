@@ -5,19 +5,20 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-12 12:23+0100\n"
-"PO-Revision-Date: 2019-02-12 15:11+0000\n"
+"PO-Revision-Date: 2019-03-14 07:04+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
+"\n"
 "Language: pl\n"
-"Language-Team: Polish "
-"<https://hosted.weblate.org/projects/turris/foris/pl/>\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && "
-"(n%100<10 || n%100>=20) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.5.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -39,7 +40,6 @@ msgstr "Wybierz jedną z możliwych konfiguracji trybu pracy."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Tryb pracy został ustawiony. Możesz przejść do następnego kroku."
 
-#, fuzzy
 msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Tutaj musisz zdecydować, które interfejsy należą do której sieci."
 
@@ -54,7 +54,6 @@ msgstr ""
 "podałeś kluczowe ustawienia sieci, więc możesz bezpiecznie przejść do "
 "następnego kroku."
 
-#, fuzzy
 msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Aby uzyskać dostęp do Internetu, musisz skonfigurować interfejs WAN."
 
@@ -118,19 +117,17 @@ msgstr "Teraz możesz skonfigurować automatyczne aktualizacje na swoim urządze
 msgid "Please wait till the updater finishes its run."
 msgstr "Poczekaj, aż aktualizator zakończy swoje działanie."
 
-#, fuzzy
 msgid "You have successfully configured your device."
 msgstr "Pomyślnie skonfigurowałeś swoje urządzenie."
 
-#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all interfaces to LAN."
 msgstr ""
 "Postanowiłeś działać jako serwer lokalny, co oznacza, że nie ma sensu "
-"umieszczać żadnych interfejsów w sieci WAN i Guest Network. Dobrym "
-"pomysłem jest przypisanie wszystkich interfejsów do sieci LAN."
+"umieszczać żadnych interfejsów w sieci WAN i Guest Network. Dobrym pomysłem "
+"jest przypisanie wszystkich interfejsów do sieci LAN."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -143,16 +140,15 @@ msgstr ""
 "pracy routera). Prawdopodobnie chcesz działać jako klient, wybierz tryb "
 "<strong>Komputer</strong>."
 
-#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
-"Jeśli wybierzesz konfigurację <strong>statyczną</strong>, upewnij się, że"
-" adresy IP zostały wprowadzone poprawnie. W przeciwnym razie nie będziesz"
-" w stanie uzyskać dostępu do tego interfejsu konfiguracji, gdy nowe "
-"ustawienia zostaną zastosowane."
+"Jeśli wybierzesz konfigurację <strong>statyczną</strong>, upewnij się, że "
+"adresy IP zostały wprowadzone poprawnie. W przeciwnym razie nie będziesz w "
+"stanie uzyskać dostępu do tego interfejsu konfiguracji, gdy nowe ustawienia "
+"zostaną zastosowane."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -166,7 +162,6 @@ msgstr ""
 "połączyć się z nowym adresem IP, aby kontynuować korzystanie z "
 "przewodnika."
 
-#, fuzzy
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
@@ -226,11 +221,10 @@ msgstr "Niepoprawne"
 msgid "The workflow wasn't set yet."
 msgstr "Tryb pracy nie został jeszcze ustawiony."
 
-#, fuzzy
 msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
-"Tryb pracy dla starszych urządzeń i starszych wersji systemu Turris "
-"(przed 4.0)."
+"Tryb pracy dla starszych urządzeń i starszych wersji systemu Turris (przed "
+"4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
@@ -249,7 +243,6 @@ msgstr ""
 "działać jako w pełni funkcjonalny router. Przewodnik zakłada, że chcesz "
 "mieć mniej lub bardziej standardową konfigurację sieci."
 
-#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
@@ -376,63 +369,65 @@ msgid "Failed to delete CA for remote access."
 msgstr "Nie można usunąć urzędu certyfikacji (CA) dla zdalnego dostępu."
 
 msgid "Subordinates"
-msgstr ""
+msgstr "Urządzenia podrzędne"
 
 #, python-format
 msgid ""
 "Token was successfully added and client '%(controller_id)s' should be "
 "visible in a moment."
 msgstr ""
+"Token został pomyślnie dodany, a klient '%(controller_id)s' powinien być "
+"widoczny za chwilę."
 
 msgid "Failed to add token."
-msgstr ""
+msgstr "Nie udało się dodać tokena."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Urząd certyfikacji (CA) dla zdalnego dostępu został pomyślnie usunięty."
+msgstr "Urządzenie podrzędne '%(controller_id)s' zostało pomyślnie usunięte."
 
 #, python-format
 msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nie można usunąć urządzenia podrzędnego '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Zdalny dostęp został pomyślnie włączony."
+msgstr "Urządzenie podrzędne '%(controller_id)s' zostało pomyślnie włączone."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Zdalny dostęp został pomyślnie wyłączony."
+msgstr "Urządzenie podrzędne '%(controller_id)s' zostało pomyślnie wyłączone."
 
 #, python-format
 msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nie można włączyć urządzenia podrzędnego '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr "Nie udało się wyłączyć dostępu zdalnego."
+msgstr "Nie można wyłączyć urządzenia podrzędnego '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Konfiguracja sieci została zaktualizowana."
+msgstr ""
+"Urządzenie podrzędne '%(controller_id)s' zostało pomyślnie zaktualizowane."
 
 #, python-format
 msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
+msgstr "Nie można zaktualizować urządzenia podrzędnego '%(controller_id)s'."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Konfiguracja sieci została zaktualizowana."
+msgstr ""
 
 #, python-format
 msgid "Failed to update subsubordinate '%(controller_id)s'."
 msgstr ""
 
-#, fuzzy
 msgid "Wifi settings was sucessfully updated."
-msgstr "Konfiguracja sieci została zaktualizowana."
+msgstr "Konfiguracja sieci Wifi została zaktualizowana."
 
 msgid "Failed to update Wifi settings."
-msgstr ""
+msgstr "Nie udało się zaktualizować ustawień Wifi."
 
 msgid "Guide workflow was sucessfully set."
 msgstr "Wybrany tryb pracy został pomyślnie ustawiony."
@@ -1051,9 +1046,8 @@ msgstr "Nazwa tokenu jest nieprawidłowa."
 msgid "Token id is invalid."
 msgstr "Identyfikator tokenu jest nieprawidłowy."
 
-#, fuzzy
 msgid "Token file"
-msgstr "Nazwa tokena"
+msgstr "Plik tokenu"
 
 #, python-format
 msgid "Edit subordinate '%(controller_id)s'"
@@ -1064,13 +1058,12 @@ msgid ""
 " this device."
 msgstr ""
 
-#, fuzzy
 msgid "Custom Name"
-msgstr "Nazwa hosta"
+msgstr "Nazwa niestandardowa"
 
-#, python-format
+#, fuzzy, python-format
 msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
+msgstr "Ładniejsza nazwa dla twojego urządzenia '%(controller_id)s'."
 
 #, python-format
 msgid "Edit subsubordinate '%(controller_id)s'"
@@ -1085,6 +1078,8 @@ msgstr ""
 #, python-format
 msgid "Nicer name for your device with serial '%(controller_id)s'."
 msgstr ""
+"Ładniejsza nazwa dla twojego urządzenia z numerem seryjnym "
+"'%(controller_id)s'."
 
 msgid "Updater"
 msgstr "Updater"
@@ -1305,7 +1300,7 @@ msgstr "Wi-Fi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
-msgstr ""
+msgstr "Skonfiguruj WiFi dla '%s'"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
@@ -1592,25 +1587,22 @@ msgstr "Unieważnij"
 
 #, fuzzy
 msgid "Close"
-msgstr "zagubiony"
+msgstr "Zamknij"
 
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgid "State"
-msgstr "stan"
+msgstr "Stan"
 
-#, fuzzy
 msgid "Devices"
-msgstr "Urządzenie"
+msgstr "Urządzenia"
 
-#, fuzzy
 msgid "Channels"
-msgstr "Kanał"
+msgstr "Kanały"
 
 msgid "Currently there are no subordinates."
 msgstr ""
@@ -2019,21 +2011,27 @@ msgid ""
 "the device\n"
 "        you wan't to control. And insert the token here."
 msgstr ""
+"\n"
+"        Na tej karcie możesz skonfigurować inne urządzenia turris, które "
+"można kontrolować\n"
+"przez to urządzenie. Musisz wygenerować token na karcie zdalnej urządzenia\n"
+"które chcesz kontrolować. Potem wstawić tutaj token."
 
 msgid "Add subordinate device"
-msgstr ""
+msgstr "Dodaj urządzenie podrzędne"
 
 msgid "Upload token"
-msgstr ""
+msgstr "Prześlij token"
 
 msgid "Subordinate devices"
-msgstr ""
+msgstr "Urządzenia podrzędne"
 
+#, fuzzy
 msgid "Wifi"
-msgstr ""
+msgstr "Wifi"
 
 msgid "Loading subordinates..."
-msgstr ""
+msgstr "Ładowanie urządzeń podrzędnych..."
 
 msgid "Failed to query ntp servers."
 msgstr "Nie można wysłać zapytania do serwerów ntp."
@@ -3419,4 +3417,3 @@ msgstr "Cofnij aktualizację"
 
 #~ msgid "Save changes"
 #~ msgstr "Zapisz zmiany"
-
