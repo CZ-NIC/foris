@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-12 12:23+0100\n"
-"PO-Revision-Date: 2019-03-14 07:04+0000\n"
+"PO-Revision-Date: 2019-03-16 22:04+0000\n"
 "Last-Translator: Krzysztof Kulesza <github@cmza.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/turris/foris/pl/>"
 "\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -1585,7 +1585,6 @@ msgstr "Przygotowuję token"
 msgid "Revoke"
 msgstr "Unieważnij"
 
-#, fuzzy
 msgid "Close"
 msgstr "Zamknij"
 
@@ -2026,7 +2025,6 @@ msgstr "Prześlij token"
 msgid "Subordinate devices"
 msgstr "Urządzenia podrzędne"
 
-#, fuzzy
 msgid "Wifi"
 msgstr "Wifi"
 
