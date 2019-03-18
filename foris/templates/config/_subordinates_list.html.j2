@@ -47,7 +47,7 @@
         </tr>
       {% for subsub in sub.subsubordinates %}
         <tr id="sub-{{ subsub.controller_id }}" class="sub-line {{ should_be_connected_class(subsub.enabled, sub.enabled) }}" >
-            <td><i class="fas fa-angle-right"></i>
+            <td class="indented-item"><i class="fas fa-level-up-alt rotate-90"></i>
                 {{ subsub.options.custom_name or subsub.controller_id }}
             </td>
             <td>
@@ -75,7 +75,7 @@
         </tr>
       {% for subsub in sub.subsubordinates %}
         <tr id="sub-{{ subsub.controller_id }}" class="sub-line {{ should_be_connected_class(subsub.enabled, sub.enabled) }}">
-            <td><i class="fas fa-angle-right"></i>
+            <td class="indented-item"><i class="fas fa-level-up-alt rotate-90"></i>
                 {{ subsub.options.custom_name or subsub.controller_id }}
             </td>
             <td>
