@@ -60,6 +60,7 @@ Foris.initialize = function () {
   Foris.initWsHandlers();
   Foris.initWebsockets();
   Foris.initRebootRequired();
+  Foris.initMenuExpand();
 };
 
 Foris.initParsley = function () {
@@ -776,6 +777,25 @@ Foris.performBackendQuery = async (controller_id, module, action, data) => {
         data: output,
     });
 };
+
+Foris.initMenuExpand = () => {
+    $("#menu nav li.nav-expandable").click((e) => {
+        e.preventDefault();
+        let current = $(e.currentTarget);
+        let self_slug = current.attr("data-self-name");
+        if (self_slug && !current.hasClass("subpage-active")) {
+            $(`.parent-name-${self_slug}`).toggle("slow");
+            let expand_tag = current.find(".expand-tag i");
+            if (expand_tag.hasClass("fa-caret-square-down")) {
+                expand_tag.removeClass();
+                expand_tag.addClass("fas fa-caret-square-up");
+            } else {
+                expand_tag.removeClass();
+                expand_tag.addClass("fas fa-caret-square-down");
+            }
+        }
+    });
+}
 
 $(document).ready(function () {
   Foris.initialize();
