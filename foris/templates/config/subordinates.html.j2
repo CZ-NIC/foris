@@ -11,7 +11,7 @@
         you wan't to control. And insert the token here.
     {%- endtrans %}
     </p>
-    <h3>{% trans %}Add subordinate device{% endtrans %}</h3>
+    <h3>{% trans %}Add device{% endtrans %}</h3>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
         {% include '_messages.html.j2' %}
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
@@ -23,14 +23,14 @@
         </div>
     </form>
 {% if is_xhr is not defined %}
-    <h3>{% trans %}Subordinate devices{% endtrans %}</h3>
+    <h3>{% trans %}Device list{% endtrans %}</h3>
     {% set subpage = request.params.get("view", "subordinates") %}
-    <a href="{{ request.fullpath }}?view=subordinates" class="button{% if subpage == "subordinates" %} disabled{% endif %}">{% trans %}Subordinates{% endtrans %}</a>
+    <a href="{{ request.fullpath }}?view=subordinates" class="button{% if subpage == "subordinates" %} disabled{% endif %}">{% trans %}Devices{% endtrans %}</a>
     <a href="{{ request.fullpath }}?view=wifi" class="button{% if subpage == "wifi" %} disabled{% endif %}">{% trans %}Wifi{% endtrans %}</a>
     <hr>
     <div id="subordinates-message"></div>
     <div id="subordinates-table">
-    {% trans %}Loading subordinates...{% endtrans %}
+    {% trans %}Loading manged devices...{% endtrans %}
     </div>
     <br />
     <div id="subordinates-edit">

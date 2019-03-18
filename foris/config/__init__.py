@@ -437,7 +437,7 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
     menu_order = 12
 
     template = "config/subordinates"
-    userfriendly_title = gettext("Subordinates")
+    userfriendly_title = gettext("Managed devices")
     template_type = "jinja2"
 
     def render(self, **kwargs):
@@ -580,7 +580,7 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
                 if results["result"]:
                     message = {
                         "classes": ['success'],
-                        "text": _("Subordinate '%(controller_id)s' was sucessfully updated.")
+                        "text": _("Device '%(controller_id)s' was sucessfully updated.")
                         % dict(controller_id=data["controller_id"])
                     }
 

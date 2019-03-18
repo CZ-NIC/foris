@@ -22,7 +22,6 @@ from foris import fapi
 from foris.form import File, Hidden, Textbox
 from foris.state import current_state
 from foris.utils.translators import (
-    gettext_dummy as gettext,
     gettext as _,
 )
 
@@ -30,7 +29,6 @@ from .base import BaseConfigHandler
 
 
 class SubordinatesConfigHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Subordinates")
 
     def get_form(self):
         form = fapi.ForisForm("suboridinates", self.data)
@@ -69,7 +67,7 @@ class SubordinatesEditForm(fapi.ForisAjaxForm):
     def __init__(self, data, controller_id=None):
         self.subordinate_controller_id = data["controller_id"]
         super().__init__(data, controller_id)
-        self.title = _("Edit subordinate '%(controller_id)s'") % dict(
+        self.title = _("Edit device '%(controller_id)s'") % dict(
             controller_id=data["controller_id"])
 
     def convert_data_from_backend_to_form(self, backend_data):
@@ -101,7 +99,7 @@ class SubordinatesEditForm(fapi.ForisAjaxForm):
         sub_form = fapi.ForisForm("update_sub", form_data)
         sub_section = sub_form.add_section(
             "subordinate_section", title="", description=_(
-                "You can edit you subordinate here. Subordinates are directly connected to this "
+                "You can edit managed devices here. These managed devices are directly connected to this "
                 "device."
             )
         )
@@ -129,7 +127,7 @@ class SubsubordinatesEditForm(fapi.ForisAjaxForm):
     def __init__(self, data, controller_id=None):
         self.subsubordinate_controller_id = data["controller_id"]
         super().__init__(data, controller_id)
-        self.title = _("Edit subsubordinate '%(controller_id)s'") % dict(
+        self.title = _("Edit managed device '%(controller_id)s'") % dict(
             controller_id=data["controller_id"])
 
     def convert_data_from_backend_to_form(self, backend_data):
@@ -165,9 +163,9 @@ class SubsubordinatesEditForm(fapi.ForisAjaxForm):
         sub_form = fapi.ForisForm("update_subsub", form_data)
         sub_section = sub_form.add_section(
             "subsubordinate_section", title="", description=_(
-                "You can edit you subsubordinate here. Subsubordinates are "
-                "devices which are not directly connected to this device but "
-                "they are connected with a subordinated."
+                "You can edit managed devices here. These devices are not "
+                "not directly connected to this device but "
+                "they are connected through another managed device."
             )
         )
         sub_section.add_field(
