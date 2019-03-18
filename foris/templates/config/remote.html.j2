@@ -6,6 +6,9 @@
   <p>
   {% trans %}Here you can set up your router to be configured remotely. The remote configuration is done via secure encrypted connection and each client is required to have a token issued by this device.{% endtrans %}
   </p>
+  <p>
+  {% trans %}This can be useful when you plan to access configuration interface via mobile app, another Turris router or you intend to write your own client.{% endtrans %}
+  </p>
 
 {% if status == "missing" %}
   <h3>{% trans %}No certification authority{% endtrans %}</h3>
