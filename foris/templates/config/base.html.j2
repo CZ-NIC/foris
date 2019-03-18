@@ -74,6 +74,21 @@
                       {% endif %}
                       </a>
                     </li>
+                    {% for subpage in config_page.subpages %}
+                        {% if subpage.is_visible() and subpage.is_enabled() %}
+                    <li class="{{ "active" if active_config_page_key is defined and subpage.slug == active_config_page_key else "" }} submenu-item">
+                      <a href="{{ url("config_page", page_name=subpage.slug) }}"><i class="fas fa-level-up-alt rotate-90"></i> {{ subpage.userfriendly_title }}
+                            {% if subpage.get_menu_tag()["show"] %}
+                      <span title="{{ subpage.get_menu_tag()["hint"]}}" style="{{"" if subpage.get_menu_tag()["show"] else "display: none" }}" id="{{ subpage.slug }}_menu_tag" class="menu-tag">
+                      {{ subpage.get_menu_tag()["text"]|safe }}
+                      </span>
+                            {% endif %}
+                      </a>
+                        {% elif subpage.is_visible() %}
+                            <li><span class="link-disabled">{{ subpage.userfriendly_title }}</span></li>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
                     {% elif config_page.is_visible() %}
                     <li><span class="link-disabled">{{ config_page.userfriendly_title }}</span></li>
                     {% endif %}

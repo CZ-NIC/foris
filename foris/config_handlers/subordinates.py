@@ -22,10 +22,12 @@ from foris import fapi
 from foris.form import File, Hidden, Textbox
 from foris.state import current_state
 from foris.utils.translators import (
+    gettext_dummy as gettext,
     gettext as _,
 )
 
 from .base import BaseConfigHandler
+from .wifi import WifiEditForm
 
 
 class SubordinatesConfigHandler(BaseConfigHandler):
@@ -189,3 +191,11 @@ class SubsubordinatesEditForm(fapi.ForisAjaxForm):
         sub_form.add_callback(form_cb)
 
         return sub_form
+
+
+class SubordinatesWifiHandler(BaseConfigHandler):
+    userfriendly_title = gettext("Wi-Fi")
+
+    def get_form(self):
+        ajax_form = WifiEditForm(self.data)
+        return ajax_form.foris_form

@@ -22,8 +22,7 @@ import logging
 import time
 import uuid
 
-from bottle import Bottle, request, template, response, jinja2_template
-from urllib.parse import urlencode
+from bottle import Bottle, request, template, response
 import bottle
 
 from foris import fapi
@@ -49,6 +48,8 @@ class ConfigPageMixin(object):
     menu_order = 50
     template = "config/main"
     template_type = "simple"
+
+    subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
 
     def call_action(self, action):
         """Call config page action.
@@ -432,6 +433,12 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
         return ConfigPageMixin.is_enabled_static(cls)
 
 
+class SubordinatesWifiConfigPage(ConfigPageMixin, subordinates.SubordinatesWifiHandler):
+    slug = "suboridnates-wifi"
+    menu_order = 1  # submenu
+    template = "config/subordinates"
+
+
 class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHandler):
     slug = "subordinates"
     menu_order = 12
@@ -439,6 +446,10 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
     template = "config/subordinates"
     userfriendly_title = gettext("Managed devices")
     template_type = "jinja2"
+
+    subpages = [
+        SubordinatesWifiConfigPage
+    ]
 
     def render(self, **kwargs):
         data = current_state.backend.perform("subordinates", "list")
@@ -1088,6 +1099,10 @@ def get_config_pages():
     """ Returns sorted config pages
     """
     res = sorted(config_pages.values(), key=lambda e: (e.menu_order, e.slug))
+
+    # sort subpages
+    for page in res:
+        page.subpages.sort(key=lambda e: (e.menu_order, e.slug))
     return res
 
 
