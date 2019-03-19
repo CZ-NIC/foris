@@ -135,7 +135,7 @@ Foris.applySVGFallback = function() {
 Foris.WsHandlers = {};
 
 Foris.addWsHanlder = (module, handler, controller_id) => {
-    controller_id = controller_id || $('meta[name=controller-id]').attr("content");
+    controller_id = controller_id || $('meta[name=controller-id]').attr("content") || '+';
     let moduleHandler = Foris.WsHandlers[module] || {};
     let handlers = moduleHandler[controller_id] || [];
     handlers.push(handler);
