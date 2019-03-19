@@ -9,7 +9,7 @@
         On this tab you can set up other turris devices which can be controlled
         by this device. You need to generate token on the remote tab on the device
         you wan't to control. And insert the token here.
-    {%- endtrans %}
+    {% endtrans -%}
     </p>
     <h3>{% trans %}Add device{% endtrans %}</h3>
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" enctype="multipart/form-data" autocomplete="off" novalidate>
@@ -24,10 +24,6 @@
     </form>
 {% if is_xhr is not defined %}
     <h3>{% trans %}Device list{% endtrans %}</h3>
-    {% set subpage = request.params.get("view", "subordinates") %}
-    <a href="{{ request.fullpath }}?view=subordinates" class="button{% if subpage == "subordinates" %} disabled{% endif %}">{% trans %}Devices{% endtrans %}</a>
-    <a href="{{ request.fullpath }}?view=wifi" class="button{% if subpage == "wifi" %} disabled{% endif %}">{% trans %}Wifi{% endtrans %}</a>
-    <hr>
     <div id="subordinates-message"></div>
     <div id="subordinates-table">
     {% trans %}Loading manged devices...{% endtrans %}
@@ -36,29 +32,8 @@
     <div id="subordinates-edit">
     </div>
     <script>
-        Foris.queryBackendWifi = async (controller_id) => {
-            let run = async () => {
-                try {
-                    resp = await Foris.performBackendQuery(controller_id, "wifi", "get_settings");
-                    $(`#sub-${controller_id}`).find(".wifi-count").text(resp.devices.length);
-                    let channels = [];
-                    for (let device of resp.devices) {
-                        if (device.enabled) {
-                            channels.push(device.channel == 0 ? "*": device.channel);
-                        }
-                    };
-                    $(`#sub-${controller_id}`).find(".wifi-channels").text(channels.join(", "));
-                } catch(err) {
-                    $(`#sub-${controller_id}`).find(".wifi-count").text("?");
-                    $(`#sub-${controller_id}`).find(".wifi-channels").text("?");
-                }
-            };
-            run();  // call async don't wait for it
-        };
-        Foris.subordinatesGetView = () => (new URLSearchParams(window.location.search)).get("view") || "subordinates";
         Foris.loadSubordinatesList = async () => {
-            let urlParams = new URLSearchParams(window.location.search);
-            let resp = await $.get('{{ url("config_ajax", page_name="subordinates") }}', {action: "list", view: Foris.subordinatesGetView()});
+            let resp = await $.get('{{ url("config_ajax", page_name="subordinates") }}', {action: "list"});
             $("#subordinates-table").replaceWith(resp);
             Foris.overrideSubordinatesButtons();
             Foris.setSubordinatesTimeouts();
@@ -139,30 +114,19 @@
                         break;
                     case "edit":
 
-                        switch (Foris.subordinatesGetView()) {
-                            case "subordinates":
-                                if (form.attr("class").includes("subsub-form")) {
-                                    resp = await $.ajax({
-                                        type: "POST",
-                                        url: '{{ url("config_ajax_form", page_name="subordinates", form_name="subsub-form") }}',
-                                        data: `&csrf_token=${form_data["csrf_token"]}&controller_id=${form_data["controller_id"]}&_update=1`,
-                                    });
-                                } else {
-                                    resp = await $.ajax({
-                                        type: "POST",
-                                        url: '{{ url("config_ajax_form", page_name="subordinates", form_name="sub-form") }}',
-                                        data: `&csrf_token=${form_data["csrf_token"]}&controller_id=${form_data["controller_id"]}&_update=1`,
-                                    });
-                                }
-                                break;
-                            case "wifi":
-                                resp = await $.ajax({
-                                    type: "POST",
-                                    url: '{{ url("config_ajax_form", page_name="subordinates", form_name="wifi-form") }}',
-                                    data: `&csrf_token=${form_data["csrf_token"]}&_controller_id=${form_data["controller_id"]}&_update=1`,
-                                });
+                        if (form.attr("class").includes("subsub-form")) {
+                            resp = await $.ajax({
+                                type: "POST",
+                                url: '{{ url("config_ajax_form", page_name="subordinates", form_name="subsub-form") }}',
+                                data: `&csrf_token=${form_data["csrf_token"]}&controller_id=${form_data["controller_id"]}&_update=1`,
+                            });
+                        } else {
+                            resp = await $.ajax({
+                                type: "POST",
+                                url: '{{ url("config_ajax_form", page_name="subordinates", form_name="sub-form") }}',
+                                data: `&csrf_token=${form_data["csrf_token"]}&controller_id=${form_data["controller_id"]}&_update=1`,
+                            });
                         }
-                        Foris.subordinateInEditMode = true;
                         await $("#subordinates-edit").promise();
                         $("#subordinates-edit").replaceWith(resp);
                         $(".subordinate-buttons button").hide('slow');
@@ -178,18 +142,14 @@
         };
         Foris.suboridnatesOverrideEditClose = async () => {
             $("#subordinates-edit").find("a.button").click(async (e) => {
-                Foris.subordinateInEditMode = false;
                 e.preventDefault();
                 $("#subordinates-edit").hide('slow');
                 await $("#subordinates-edit").promise();
                 $("#subordinates-edit").replaceWith("<div id='subordinates-edit'></div>");
-                if (Foris.subordinatesGetView() == "subordinates") {
-                    $(".subordinate-buttons button").show('slow');
-                    await $(".subordinate-buttons button").promise();
-                }
+                $(".subordinate-buttons button").show('slow');
+                await $(".subordinate-buttons button").promise();
             });
         };
-        Foris.subordinateInEditMode = false;
         Foris.subordinatesAlive = {};
         Foris.subordinateKeepAliveTimeouts = {};
         Foris.subordinateSetKeepAliveTimeout = (controller_id) => {
@@ -201,7 +161,6 @@
                 state_element.addClass("state fas fa-exclamation-circle");
                 delete Foris.subordinateKeepAliveTimeouts[controller_id];
                 $(`div[data-controller-id=${controller_id}]`).replaceWith(`<div id='subordinates-edit' class='message error' data-controller-id='${controller_id}'>${Foris.messages.subordinatesSubordinatesFailed(controller_id)}</div>`);
-                Foris.subordinateInEditMode = false;
             }, 3000);
         };
         Foris.updateSubordinateState = async (data) => {
@@ -222,16 +181,12 @@
                     state_element.addClass("state fas fa-check-circle");
                     Foris.subordinateSetKeepAliveTimeout(data.id);
                     if (!Foris.subordinatesAlive[data.id]) {  // query backend if needed
-                        Foris.queryBackendWifi(data.id);
                     }
                     Foris.subordinatesAlive[data.id] = true;
-                    if (!Foris.subordinateInEditMode) {
-                        $(`#sub-${data.id}`).find("button[value=edit]").show("slow");
-                        let message = $(`div[data-controller-id=${data.id}].message`);
-                        message.hide("slow");
-                        await message.promise();
-                        message.replaceWith("<div id='subordinates-edit'></div>");
-                    }
+                    let message = $(`div[data-controller-id=${data.id}].message`);
+                    message.hide("slow");
+                    await message.promise();
+                    message.replaceWith("<div id='subordinates-edit'></div>");
                     break;
                 case 'exitted':
                     state_element.addClass("state fas fa-exclamation-circle");

@@ -46,6 +46,8 @@ class BaseConfigPage(object):
     menu_order = 50
     slug: typing.Optional[str] = None
     page_name: typing.Optional[str] = None
+    userfriendly_title: typing.Optional[str]
+    menu_title: typing.Optional[str] = None
     subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
 
     @staticmethod
@@ -444,23 +446,22 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
         return ConfigPageMixin.is_enabled_static(cls)
 
 
-class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHandler):
+class SubordinatesSetupPage(ConfigPageMixin, subordinates.SubordinatesConfigHandler):
     slug = "subordinates"
     menu_order = 1  # submenu
 
-    template = "config/subordinates"
-    userfriendly_title = gettext("Set up")
+    template = "config/subordinates_setup"
+    menu_title = gettext("Set up")
+    userfriendly_title = gettext("Managed devices: Set up")
     template_type = "jinja2"
 
     def render(self, **kwargs):
         data = current_state.backend.perform("subordinates", "list")
-
         kwargs["subordinates"] = data["subordinates"]
-
         return super().render(**kwargs)
 
     def save(self, *args, **kwargs):
-        super(SubordinatesConfigPage, self).save(no_messages=True, *args, **kwargs)
+        super(SubordinatesSetupPage, self).save(no_messages=True, *args, **kwargs)
         data = self.form.callback_results
         if data["result"]:
             messages.success(_(
@@ -484,11 +485,9 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
 
     def _ajax_list_subordinates(self):
         data = current_state.backend.perform("subordinates", "list")
-        view = bottle.request.GET.decode().get("view")
         return template(
-            "config/_subordinates_list.html.j2",
+            "config/_subordinates_list_setup.html.j2",
             subordinates=data["subordinates"],
-            view = view,
             template_adapter=bottle.Jinja2Template,
         )
 
@@ -630,7 +629,54 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
                 "config_ajax_form", page_name="subordinates", form_name="subsub-form")
             return form, prepare_message
 
-        elif form_name == "wifi-form":
+        raise bottle.HTTPError(404, "No form '%s' not found." % form_name)
+
+
+class SubordinatesWifiPage(ConfigPageMixin):
+    slug = "subordinates-wifi"
+    menu_order = 2  # submenu
+
+    template = "config/subordinates_wifi"
+    menu_title = gettext("Wi-Fi")
+    userfriendly_title = gettext("Managed devices: Wi-Fi")
+    template_type = "jinja2"
+
+    def render(self, **kwargs):
+        data = current_state.backend.perform("subordinates", "list")
+        kwargs["subordinates"] = data["subordinates"]
+        return super().render(**kwargs)
+
+    @classmethod
+    def is_visible(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @classmethod
+    def is_enabled(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
+
+    def _ajax_list_subordinates(self):
+        data = current_state.backend.perform("subordinates", "list")
+        return template(
+            "config/_subordinates_list_wifi.html.j2",
+            subordinates=data["subordinates"],
+            template_adapter=bottle.Jinja2Template,
+        )
+
+    def call_ajax_action(self, action):
+        if action == "list":
+            return self._ajax_list_subordinates()
+        raise ValueError("Unknown AJAX action.")
+
+    def get_page_form(self, form_name: str, data: dict, controller_id: str) -> typing.Tuple[
+            fapi.ForisAjaxForm, typing.Callable[[dict], typing.Tuple['str', 'str']]
+    ]:
+        """Returns appropriate foris form and handler to generate response
+        """
+        if form_name == "wifi-form":
             form = wifi.WifiEditForm(data, controller_id=controller_id)
 
             def prepare_message(results: dict) -> dict:
@@ -647,7 +693,7 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
                     }
                 return message
 
-            form.url = reverse("config_ajax_form", page_name="subordinates", form_name="wifi-form")
+            form.url = reverse("config_ajax_form", page_name="subordinates-wifi", form_name="wifi-form")
             return form, prepare_message
 
         raise bottle.HTTPError(404, "No form '%s' not found." % form_name)
@@ -658,8 +704,21 @@ class SubordinatesJoinedPage(JoinedPages):
     name = "subordinates-main"
 
     subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = [
-        SubordinatesConfigPage,
+        SubordinatesSetupPage,
+        SubordinatesWifiPage,
     ]
+
+    @classmethod
+    def is_visible(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @classmethod
+    def is_enabled(cls):
+        if current_state.backend.name != "mqtt":
+            return False
+        return ConfigPageMixin.is_enabled_static(cls)
 
 
 class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):

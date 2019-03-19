@@ -1,0 +1,52 @@
+{% macro sub_buttons(controller_id, enabled, form_class) -%}
+    <form action="{{ url("config_ajax", page_name="subordinates") }}" method="post" class="subordinate-buttons {{ form_class }}">
+        <input type="hidden" name="controller_id" value="{{ controller_id }}">
+        <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+        {% if enabled %}
+        <button name="action" value="disable" type="submit"><i class="fas fa-pause"></i></button>
+        {% else %}
+        <button name="action" value="enable" type="submit"><i class="fas fa-play"></i></button>
+        {% endif %}
+        <button name="action" value="delete" type="submit"><i class="fas fa-trash-alt"></i> </button>
+        <button name="action" value="edit" type="submit"><i class="fas fa-edit"></i></button>
+    </form>
+{%- endmacro %}
+{% macro convert_state(enabled, sup_enabled) -%}
+    {% if enabled and sup_enabled %}
+    <i class="fas fa-question-circle state"></i>
+    {% else %}
+    <i class="fas fa-pause-circle state"></i>
+    {% endif %}
+{%- endmacro %}
+{%- macro should_be_connected_class(enabled, sup_enabled) %}
+{% if enabled and sup_enabled %} sub-connection{% endif %}
+{%- endmacro %}
+{% if subordinates %}
+<table id="subordinates-table">
+    <thead><th>{% trans %}ID{% endtrans %}</th><th>{% trans %}State{% endtrans %}</th><th></th></thead>
+    <tbody>
+  {% for sub in subordinates %}
+        <tr id="sub-{{ sub.controller_id }}" class="sub-line {{ should_be_connected_class(sub.enabled, True) }}">
+            <td>{{ sub.options.custom_name or sub.controller_id }}</td>
+            <td>
+                {{ convert_state(sub.enabled, True) }}
+            </td>
+            <td>{{ sub_buttons(sub.controller_id, sub.enabled, "sub-form") }}</td>
+        </tr>
+    {% for subsub in sub.subsubordinates %}
+        <tr id="sub-{{ subsub.controller_id }}" class="sub-line {{ should_be_connected_class(subsub.enabled, sub.enabled) }}">
+            <td class="indented-item"><i class="fas fa-level-up-alt rotate-90"></i>
+                {{ subsub.options.custom_name or subsub.controller_id }}
+            </td>
+            <td>
+                {{ convert_state(subsub.enabled, sub.enabled) }}
+            </td>
+            <td>{{ sub_buttons(subsub.controller_id, subsub.enabled, "subsub-form") }}</td>
+        </tr>
+    {% endfor %}
+  {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p id="subordinates-table">{% trans %}Currently there are no managed devices.{% endtrans %}</p>
+{% endif %}

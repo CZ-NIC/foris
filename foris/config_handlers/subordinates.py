@@ -194,7 +194,6 @@ class SubsubordinatesEditForm(fapi.ForisAjaxForm):
 
 
 class SubordinatesWifiHandler(BaseConfigHandler):
-    userfriendly_title = gettext("Wi-Fi")
 
     def get_form(self):
         ajax_form = WifiEditForm(self.data)
