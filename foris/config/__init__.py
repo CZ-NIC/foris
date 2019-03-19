@@ -42,14 +42,62 @@ from foris.state import current_state
 logger = logging.getLogger(__name__)
 
 
-class ConfigPageMixin(object):
-    # page url part /config/<slug>
-    slug: typing.Optional[str] = None
+class BaseConfigPage(object):
     menu_order = 50
+    slug: typing.Optional[str] = None
+    page_name: typing.Optional[str] = None
+    subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
+
+    @staticmethod
+    def get_menu_tag_static(cls):
+        if current_state.guide.enabled and current_state.guide.current == cls.slug:
+            return {
+                "show": True,
+                "hint": "",
+                "text": "<i class='fas fa-reply'></i>",
+            }
+        else:
+            return {
+                "show": False,
+                "hint": "",
+                "text": "",
+            }
+
+    @classmethod
+    def get_menu_tag(cls):
+        return ConfigPageMixin.get_menu_tag_static(cls)
+
+    @staticmethod
+    def is_visible_static(cls):
+        if current_state.guide.enabled:
+            return cls.slug in current_state.guide.steps
+
+        return True
+
+    @classmethod
+    def is_visible(cls):
+        return ConfigPageMixin.is_visible_static(cls)
+
+    @staticmethod
+    def is_enabled_static(cls):
+        if current_state.guide.enabled:
+            return cls.slug in current_state.guide.available_tabs
+
+        return True
+
+    @classmethod
+    def is_enabled(cls):
+        return ConfigPageMixin.is_enabled_static(cls)
+
+    @classmethod
+    def subpage_slugs(cls):
+        return [e.slug for e in cls.subpages]
+
+
+class ConfigPageMixin(BaseConfigPage):
+    # page url part /config/<slug>
     template = "config/main"
     template_type = "simple"
-
-    subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
 
     def call_action(self, action):
         """Call config page action.
@@ -115,46 +163,9 @@ class ConfigPageMixin(object):
             messages.warning(_("There were some errors in your input."))
         return result
 
-    @staticmethod
-    def get_menu_tag_static(cls):
-        if current_state.guide.enabled and current_state.guide.current == cls.slug:
-            return {
-                "show": True,
-                "hint": "",
-                "text": "<i class='fas fa-reply'></i>",
-            }
-        else:
-            return {
-                "show": False,
-                "hint": "",
-                "text": "",
-            }
 
-    @classmethod
-    def get_menu_tag(cls):
-        return ConfigPageMixin.get_menu_tag_static(cls)
-
-    @staticmethod
-    def is_visible_static(cls):
-        if current_state.guide.enabled:
-            return cls.slug in current_state.guide.steps
-
-        return True
-
-    @classmethod
-    def is_visible(cls):
-        return ConfigPageMixin.is_visible_static(cls)
-
-    @staticmethod
-    def is_enabled_static(cls):
-        if current_state.guide.enabled:
-            return cls.slug in current_state.guide.available_tabs
-
-        return True
-
-    @classmethod
-    def is_enabled(cls):
-        return ConfigPageMixin.is_enabled_static(cls)
+class JoinedPages(BaseConfigPage):
+    userfriendly_title = None
 
 
 class NotificationsConfigPage(ConfigPageMixin):
@@ -433,23 +444,13 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
         return ConfigPageMixin.is_enabled_static(cls)
 
 
-class SubordinatesWifiConfigPage(ConfigPageMixin, subordinates.SubordinatesWifiHandler):
-    slug = "suboridnates-wifi"
-    menu_order = 1  # submenu
-    template = "config/subordinates"
-
-
 class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHandler):
     slug = "subordinates"
-    menu_order = 12
+    menu_order = 1  # submenu
 
     template = "config/subordinates"
-    userfriendly_title = gettext("Managed devices")
+    userfriendly_title = gettext("Set up")
     template_type = "jinja2"
-
-    subpages = [
-        SubordinatesWifiConfigPage
-    ]
 
     def render(self, **kwargs):
         data = current_state.backend.perform("subordinates", "list")
@@ -650,6 +651,15 @@ class SubordinatesConfigPage(ConfigPageMixin, subordinates.SubordinatesConfigHan
             return form, prepare_message
 
         raise bottle.HTTPError(404, "No form '%s' not found." % form_name)
+
+
+class SubordinatesJoinedPage(JoinedPages):
+    userfriendly_title = gettext("Managed devices")
+    name = "subordinates-main"
+
+    subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = [
+        SubordinatesConfigPage,
+    ]
 
 
 class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
@@ -1077,7 +1087,7 @@ config_pages = {
     e.slug: e for e in [
         NotificationsConfigPage,
         RemoteConfigPage,
-        SubordinatesConfigPage,
+        SubordinatesJoinedPage,
         PasswordConfigPage,
         ProfileConfigPage,
         NetworksConfigPage,
@@ -1113,18 +1123,30 @@ def add_config_page(page_class):
     """
     if page_class.slug is None:
         raise Exception("Page %s doesn't define a propper slug" % page_class)
-    if page_class.slug in config_pages:
+    page_map = {k: v for k, v in config_pages.items()}
+
+    for page in config_pages.values():
+        for subpage in page.subpages:
+            page_map[subpage.slug] = subpage
+
+    if page_class.slug in page_map:
         raise Exception("Error when adding page %s slug '%s' is already used in %s" % (
-            page_class, page_class.slug, config_pages[page_class.slug]
+            page_class, page_class.slug, page_map[page_class.slug]
         ))
     config_pages[page_class.slug] = page_class
 
 
 def get_config_page(page_name):
     ConfigPage = config_pages.get(page_name, None)
-    if ConfigPage is None:
-        raise bottle.HTTPError(404, "Unknown configuration page.")
-    return ConfigPage
+    if ConfigPage:
+        return ConfigPage
+
+    # Try to iterate through subpages
+    for page in config_pages.values():
+        for subpage in page.subpages:
+            if subpage.slug == page_name:
+                return subpage
+    raise bottle.HTTPError(404, "Unknown configuration page.")
 
 
 def _redirect_to_default_location():

@@ -1,5 +1,27 @@
 {% extends '_layout.html.j2' %}
 
+{% macro write_active(page) -%}
+{% if active_config_page_key is defined and active_config_page_key == page.slug %} active{% endif %}
+{% endmacro -%}
+
+{% macro render_menu_item(page, parent, display) -%}
+  {% if page.is_visible() and page.is_enabled() %}
+  <li class="{{ write_active(page) }}{% if parent %} submenu-item parent-name-{{ parent.name }}{% endif %}{% if active_config_page_key in page.subpage_slugs() %} subpage-active{% endif %}{% if not page.slug %} nav-expandable{% endif %}" {% if not display %}style="display: none;"{% endif %} data-self-name="{{ page.name if page.name else "" }}">
+      <a href="{{ url("config_page", page_name=page.slug) if page.slug else "#" }}">{% if parent %}<i class="fas fa-level-up-alt rotate-90"></i> {% endif %}{{ page.userfriendly_title }}
+    {% if page.subpages and active_config_page_key not in page.subpage_slugs() %}
+    <span title="{% trans %}Expandable{% endtrans %}" id="{{ page.slug or page.name }}_expand" class="expand-tag"><i class='fas fa-caret-square-down'></i></span>
+    {% elif page.get_menu_tag()["show"] %}
+        <span title="{{ page.get_menu_tag()["hint"]}}" style="{{"" if page.get_menu_tag()["show"] else "display: none" }}" id="{{ page.slug or page.name }}_menu_tag" class="menu-tag">
+  {{ page.get_menu_tag()["text"]|safe }}
+        </span>
+    {% endif %}
+      </a>
+  </li>
+  {% elif page.is_visible() %}
+        <li><span class="link-disabled"{% if not display %}style="display: none;"{% endif %}>{{ page.userfriendly_title }}</span></li>
+  {% endif %}
+{% endmacro -%}
+
 {% block base %}
 
 {% if is_xhr is not defined %}
@@ -65,32 +87,10 @@
                 <ul>
                 {% for config_page in get_config_pages() %}
                     {% if config_page.is_visible() and config_page.is_enabled() %}
-                    <li{{ ' class="active"' if active_config_page_key is defined and config_page.slug == active_config_page_key else "" }}>
-                      <a href="{{ url("config_page", page_name=config_page.slug) }}">{{ config_page.userfriendly_title }}
-                        {% if config_page.get_menu_tag()["show"] %}
-                      <span title="{{ config_page.get_menu_tag()["hint"]}}" style="{{"" if config_page.get_menu_tag()["show"] else "display: none" }}" id="{{ config_page.slug }}_menu_tag" class="menu-tag">
-                      {{ config_page.get_menu_tag()["text"]|safe }}
-                      </span>
-                      {% endif %}
-                      </a>
-                    </li>
-                    {% for subpage in config_page.subpages %}
-                        {% if subpage.is_visible() and subpage.is_enabled() %}
-                    <li class="{{ "active" if active_config_page_key is defined and subpage.slug == active_config_page_key else "" }} submenu-item">
-                      <a href="{{ url("config_page", page_name=subpage.slug) }}"><i class="fas fa-level-up-alt rotate-90"></i> {{ subpage.userfriendly_title }}
-                            {% if subpage.get_menu_tag()["show"] %}
-                      <span title="{{ subpage.get_menu_tag()["hint"]}}" style="{{"" if subpage.get_menu_tag()["show"] else "display: none" }}" id="{{ subpage.slug }}_menu_tag" class="menu-tag">
-                      {{ subpage.get_menu_tag()["text"]|safe }}
-                      </span>
-                            {% endif %}
-                      </a>
-                        {% elif subpage.is_visible() %}
-                            <li><span class="link-disabled">{{ subpage.userfriendly_title }}</span></li>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                    {% elif config_page.is_visible() %}
-                    <li><span class="link-disabled">{{ config_page.userfriendly_title }}</span></li>
+                    {{ render_menu_item(config_page, None, True) }}
+                      {% for subpage in config_page.subpages %}
+                          {{ render_menu_item(subpage, config_page, config_page.slug == active_config_page_key or active_config_page_key in config_page.subpage_slugs()) }}
+                      {% endfor %}
                     {% endif %}
                 {% endfor %}
                 </ul>
