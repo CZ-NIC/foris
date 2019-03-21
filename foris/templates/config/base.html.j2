@@ -6,12 +6,12 @@
 
 {% macro render_menu_item(page, parent, display) -%}
   {% if page.is_visible() and page.is_enabled() %}
-  <li class="{{ write_active(page) }}{% if parent %} submenu-item parent-name-{{ parent.name }}{% endif %}{% if active_config_page_key in page.subpage_slugs() %} subpage-active{% endif %}{% if not page.slug %} nav-expandable{% endif %}" {% if not display %}style="display: none;"{% endif %} data-self-name="{{ page.name if page.name else "" }}">
-      <a href="{{ url("config_page", page_name=page.slug) if page.slug else "#" }}">{% if parent %}<i class="fas fa-level-up-alt rotate-90"></i> {% endif %}{{ page.menu_title if page.menu_title else page.userfriendly_title }}
+  <li class="{{ write_active(page) }}{% if parent %} submenu-item parent-name-{{ parent.slug }}{% endif %}{% if active_config_page_key in page.subpage_slugs() %} subpage-active{% endif %}{% if page.no_url %} nav-expandable{% endif %}" {% if not display %}style="display: none;"{% endif %} data-self-name="{{ page.slug if page.slug else "" }}">
+      <a href="{{ url("config_page", page_name=page.slug) if not page.no_url else "#" }}">{% if parent %}<i class="fas fa-level-up-alt rotate-90"></i> {% endif %}{{ page.menu_title if page.menu_title else page.userfriendly_title }}
     {% if page.subpages and active_config_page_key not in page.subpage_slugs() %}
-    <span title="{% trans %}Expandable{% endtrans %}" id="{{ page.slug or page.name }}_expand" class="expand-tag"><i class='fas fa-caret-square-down'></i></span>
+    <span title="{% trans %}Expandable{% endtrans %}" id="{{ page.slug }}_expand" class="expand-tag"><i class='fas fa-caret-square-down'></i></span>
     {% elif page.get_menu_tag()["show"] %}
-        <span title="{{ page.get_menu_tag()["hint"]}}" style="{{"" if page.get_menu_tag()["show"] else "display: none" }}" id="{{ page.slug or page.name }}_menu_tag" class="menu-tag">
+        <span title="{{ page.get_menu_tag()["hint"]}}" style="{{"" if page.get_menu_tag()["show"] else "display: none" }}" id="{{ page.slug }}_menu_tag" class="menu-tag">
   {{ page.get_menu_tag()["text"]|safe }}
         </span>
     {% endif %}

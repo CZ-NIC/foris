@@ -27,9 +27,9 @@ from foris.utils.translators import _
 
 
 class BaseConfigPage(object):
+    no_url = False
     menu_order = 50
     slug: typing.Optional[str] = None
-    page_name: typing.Optional[str] = None
     userfriendly_title: typing.Optional[str]
     menu_title: typing.Optional[str] = None
     subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
@@ -152,3 +152,4 @@ class ConfigPageMixin(BaseConfigPage):
 
 class JoinedPages(BaseConfigPage):
     userfriendly_title = None
+    no_url = True
