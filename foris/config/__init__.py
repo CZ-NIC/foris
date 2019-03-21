@@ -31,7 +31,6 @@ from .pages.base import ConfigPageMixin, JoinedPages  # TODO refactor plugins an
 from .pages.notifications import NotificationsConfigPage
 from .pages.password import PasswordConfigPage
 from .pages.remote import RemoteConfigPage
-from .pages.subordinates import SubordinatesJoinedPage
 from .pages.guide import ProfileConfigPage, GuideFinishedPage
 from .pages.networks import NetworksConfigPage
 from .pages.wan import WanConfigPage
@@ -51,7 +50,6 @@ config_pages = {
     e.slug: e for e in [
         NotificationsConfigPage,
         RemoteConfigPage,
-        SubordinatesJoinedPage,
         PasswordConfigPage,
         ProfileConfigPage,
         NetworksConfigPage,
