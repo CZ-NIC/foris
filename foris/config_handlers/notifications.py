@@ -41,7 +41,7 @@ class NotificationsHandler(BaseConfigHandler):
         data["security"] = data["emails"]["smtp_custom"]["security"]
         data["username"] = data["emails"]["smtp_custom"]["username"]
         data["password"] = data["emails"]["smtp_custom"]["password"]
-        data["delay"] = data["reboots"]["delay"]
+        data["delay"] = str(data["reboots"]["delay"])
         data["reboot_time"] = data["reboots"]["time"]
 
         if self.data:
