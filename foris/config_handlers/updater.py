@@ -46,7 +46,9 @@ class UpdaterHandler(BaseConfigHandler):
             "updater", "get_settings", {"lang": current_state.language})
         # store setting required for rendering
         self.current_approval = self.backend_data["approval"]
-        self.updater_enabled = self.backend_data["enabled"]
+        # update can be in 3 states: True, False, None
+        # None means that it is not set in this case we want to prefill True
+        self.updater_enabled = False if self.backend_data["enabled"] is False else True
         self.approval_setting_status = self.backend_data["approval_settings"]["status"]
         self.approval_setting_delay = self.backend_data["approval_settings"].get(
             "delay", self.APPROVAL_DEFAULT_DELAY)
@@ -54,7 +56,7 @@ class UpdaterHandler(BaseConfigHandler):
     def get_form(self):
         data = copy.deepcopy(self.backend_data)
 
-        data["enabled"] = "1" if data["enabled"] else "0"
+        data["enabled"] = "0" if data["enabled"] is False else "1"
         data["approval_status"] = data["approval_settings"]["status"]
         if "delay" in data["approval_settings"]:
             data["approval_delay"] = data["approval_settings"]["delay"]
