@@ -38,7 +38,8 @@ class WifiHandler(BaseConfigHandler):
 class WifiEditForm(fapi.ForisAjaxForm):
     template_name = "config/_wifi_edit.html.j2"
 
-    def __init__(self, data, controller_id=None):
+    def __init__(self, data, controller_id=None, enable_guest=True):
+        self.enable_guest = enable_guest
         super().__init__(data, controller_id)
         self.title = _("Configure WiFi for '%s'") % controller_id
 
@@ -237,7 +238,7 @@ class WifiEditForm(fapi.ForisAjaxForm):
             hint=HINTS['password']
         ).requires(prefixed("device_enabled"), True)
 
-        if current_state.app == "config":
+        if current_state.app == "config" and self.enable_guest:
             # Guest wi-fi part
             guest_section = wifi_main.add_section(
                 name=prefixed("set_guest_wifi"),
