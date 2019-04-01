@@ -1,3 +1,15 @@
+99.7.3 (2019-03-13)
+-------------------
+
+* wifi: added enable_guest option to wifi form (without this option it is not possible to set wifi)
+* maintain: disappearing zero in automatic restarts form fix
+* updater: api changes - enabled() can have tree states now
+* refactoring: config pages splitted into separate modules
+* disable WS filtering when controller-id is not set (fixes fitler notifications from ubus)
+* second level menus implemented
+* remote: description updated
+* subordiantes: moved to a separate plugin
+
 99.7.2 (2019-03-13)
 -------------------
 
