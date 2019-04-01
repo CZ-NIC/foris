@@ -26,8 +26,6 @@ from foris.middleware.bottle_csrf import CSRFPlugin
 from foris.utils.routing import reverse
 from foris.state import current_state
 
-from .pages.base import ConfigPageMixin, JoinedPages  # TODO refactor plugins and remove this import
-
 from .pages.notifications import NotificationsConfigPage
 from .pages.password import PasswordConfigPage
 from .pages.remote import RemoteConfigPage
