@@ -91,6 +91,7 @@ setup(
         "foris",
         "foris.config_handlers",
         "foris.config",
+        "foris.config.pages",
         "foris.common",
         "foris.langs",
         "foris.plugins",
