@@ -1,6 +1,7 @@
 import argparse
 import bottle
 import logging
+import os
 import re
 import typing
 
@@ -16,47 +17,55 @@ def get_arg_parser():
     :return: instance of ArgumentParser
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('--version', action='version', version=__version__)
+    parser.add_argument("--version", action="version", version=__version__)
     group = parser.add_argument_group("run server")
     group.add_argument("-H", "--host", default="0.0.0.0")
     group.add_argument("-p", "--port", type=int, default=8080)
-    group.add_argument("--session-timeout", type=int, default=900,
-                       help="session timeout (in seconds)")
+    group.add_argument(
+        "--session-timeout", type=int, default=900, help="session timeout (in seconds)"
+    )
     group.add_argument("-s", "--server", choices=["wsgiref", "flup", "cgi"], default="wsgiref")
     group.add_argument("-d", "--debug", action="store_true")
-    group.add_argument("--noauth", action="store_true",
-                       help="disable authentication (available only in debug mode)")
+    group.add_argument(
+        "--noauth",
+        action="store_true",
+        help="disable authentication (available only in debug mode)",
+    )
     parser.add_argument("-R", "--routes", action="store_true", help="print routes and exit")
     group.add_argument(
-        "-S", "--static", action="store_true",
-        help="serve static files directly through foris app (should be used for debug only)"
+        "-S",
+        "--static",
+        action="store_true",
+        help="serve static files directly through foris app (should be used for debug only)",
     )
     group.add_argument(
-        "-a", "--app", choices=["config"], default="config",
+        "-a",
+        "--app",
+        choices=["config"],
+        default="config",
         help="sets which app should be started (config/...)",
     )
     group.add_argument(
-        "-b", "--message-bus", choices=["ubus", "unix-socket", "mqtt"], default="ubus",
-        help="message bus type"
+        "-b",
+        "--message-bus",
+        choices=["ubus", "unix-socket", "mqtt"],
+        default="ubus",
+        help="message bus type",
     )
+    group.add_argument("--mqtt-port", default=1883, type=int, help="mqtt port (default 1883)")
+    group.add_argument("--mqtt-host", default="localhost", help="mqtt host (default 'localhost')")
     group.add_argument(
-        "--mqtt-port", default=1883, type=int, help="mqtt port (default 1883)"
-    )
-    group.add_argument(
-        "--mqtt-host", default="localhost", help="mqtt host (default 'localhost')"
-    )
-    group.add_argument(
-        "--mqtt-passwd-file", type=lambda x: read_passwd_file(x),
+        "--mqtt-passwd-file",
+        type=lambda x: read_passwd_file(x),
         help="path to passwd file (first record will be used to authenticate)",
         default=None,
     )
     group.add_argument(
-        "--mqtt-controller-id", type=lambda x: re.match(r"[0-9a-zA-Z]{16}", x).group().upper(),
+        "--mqtt-controller-id",
+        type=lambda x: re.match(r"[0-9a-zA-Z]{16}", x).group().upper(),
         help="sets which controller on the messages bus should be configured (8 bytes in hex)",
     )
-    group.add_argument(
-        "--bus-socket", default="/var/run/ubus.sock", help="message bus socket path"
-    )
+    group.add_argument("--bus-socket", default="/var/run/ubus.sock", help="message bus socket path")
     group.add_argument(
         "--ws-port", default=0, help="websocket server port - insecure (0=autodetect)", type=int
     )
@@ -64,14 +73,16 @@ def get_arg_parser():
         "--wss-port", default=0, help="websocket server port - secure (0=autodetect)", type=int
     )
     group.add_argument(
-        "--ws-path", default="/foris-ws", help="websocket server url path - insecure", type=str,
+        "--ws-path", default="/foris-ws", help="websocket server url path - insecure", type=str
     )
     group.add_argument(
-        "--wss-path", default="/foris-ws", help="websocket server url path - secure", type=str,
+        "--wss-path", default="/foris-ws", help="websocket server url path - secure", type=str
     )
     group.add_argument(
-        "-A", "--assets", default="/tmp/.foris_workdir/dynamic_assets",
-        help="Path where dynamic foris assets will be generated."
+        "-A",
+        "--assets",
+        default="/tmp/.foris_workdir/dynamic_assets",
+        help="Path where dynamic foris assets will be generated.",
     )
 
     return parser
@@ -86,14 +97,27 @@ def main():
     logger = logging.getLogger("foris")
     logger.debug("Version %s" % __version__)
 
+    # try to include sentry (if installed)
+    try:
+        import sentry_sdk
+        from sentry_sdk.integrations.bottle import BottleIntegration
+
+        dsn = os.environ["SENTRY_DSN"]
+        sentry_sdk.init(dsn=dsn, integrations=[BottleIntegration()])
+    except (ImportError, KeyError):
+        pass
+
     # set backend
     if args.message_bus in ["ubus", "unix-socket"]:
         current_state.set_backend(Backend(args.message_bus, path=args.bus_socket))
     elif args.message_bus == "mqtt":
         current_state.set_backend(
             Backend(
-                args.message_bus, host=args.mqtt_host, port=args.mqtt_port,
-                credentials=args.mqtt_passwd_file, controller_id=args.mqtt_controller_id,
+                args.message_bus,
+                host=args.mqtt_host,
+                port=args.mqtt_port,
+                credentials=args.mqtt_passwd_file,
+                controller_id=args.mqtt_controller_id,
             )
         )
 
@@ -104,6 +128,7 @@ def main():
 
     if args.app == "config":
         from foris.config_app import prepare_config_app
+
         main_app = prepare_config_app(args)
 
     if args.routes:

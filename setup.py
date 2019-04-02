@@ -16,6 +16,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def merge_po_files():
     from babel.messages.pofile import read_po, write_po
+
     trans_dirs = glob.glob(os.path.join(BASE_DIR, "foris/locale/*/LC_MESSAGES/"))
 
     # iterate through translations
@@ -53,6 +54,7 @@ class BuildCmd(build_py):
 
         # compile translation
         from babel.messages import frontend as babel
+
         distribution = copy.copy(self.distribution)
         cmd = babel.compile_catalog(distribution)
         cmd.directory = os.path.join(os.path.dirname(__file__), "foris", "locale")
@@ -75,18 +77,14 @@ setup(
     install_requires=[
         "bottle",
         "bottle_i18n",
-        'pbkdf2',
-        'flup',
+        "pbkdf2",
+        "flup",
         "ubus @ git+https://gitlab.labs.nic.cz/turris/python-ubus.git",
         "paho-mqtt",
     ],
-    setup_requires=[
-        'babel',
-        'jinja2',
-    ],
-    provides=[
-        "foris"
-    ],
+    setup_requires=["babel", "jinja2"],
+    provides=["foris"],
+    extras_require={"sentry": ["sentry-sdk>=0.7.9"]},
     packages=[
         "foris",
         "foris.config_handlers",
@@ -101,7 +99,7 @@ setup(
         "foris_plugins",
     ],
     package_data={
-        '': [
+        "": [
             "LICENSE",
             "locale/**/LC_MESSAGES/*.mo",
             "templates/**",
@@ -114,15 +112,7 @@ setup(
             "utils/*.pickle2",
         ]
     },
-    namespace_packages=[
-        'foris_plugins',
-    ],
-    cmdclass={
-        "build_py": BuildCmd,
-    },
-    entry_points={
-        "console_scripts": [
-            "foris = foris.__main__:main",
-        ]
-    },
+    namespace_packages=["foris_plugins"],
+    cmdclass={"build_py": BuildCmd},
+    entry_points={"console_scripts": ["foris = foris.__main__:main"]},
 )
