@@ -1,4 +1,9 @@
-99.7.3 (2019-03-13)
+99.7.4 (2019-04-03)
+-------------------
+
+* setup.py: missing package fix
+
+99.7.3 (2019-04-02)
 -------------------
 
 * wifi: added enable_guest option to wifi form (without this option it is not possible to set wifi)
