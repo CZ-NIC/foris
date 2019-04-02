@@ -41,6 +41,8 @@ from .pages.maintenance import MaintenanceConfigPage
 from .pages.updater import UpdaterConfigPage
 from .pages.about import AboutConfigPage
 
+from .pages.base import ConfigPageMixin, JoinedPages  # noqa: F401  plugin compatibility
+
 
 logger = logging.getLogger(__name__)
 
