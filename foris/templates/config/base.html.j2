@@ -86,8 +86,8 @@
             <nav>
                 <ul>
                 {% for config_page in get_config_pages() %}
-                    {% if config_page.is_visible() and config_page.is_enabled() %}
                     {{ render_menu_item(config_page, None, True) }}
+                    {% if config_page.is_visible() and config_page.is_enabled() %}
                       {% for subpage in config_page.subpages %}
                           {{ render_menu_item(subpage, config_page, config_page.slug == active_config_page_key or active_config_page_key in config_page.subpage_slugs()) }}
                       {% endfor %}
