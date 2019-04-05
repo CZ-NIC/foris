@@ -155,6 +155,9 @@ Foris.initWsHandlers = () => {
             case "network-restart":
                 Foris.handleNetworkRestart(msg.data.ips, msg.data.remains);
                 break;
+            case "lighttpd-restart":
+                Foris.handleForisRestart(msg.data.remains);
+                break;
         }
     });
 
@@ -663,6 +666,40 @@ Foris.handleNetworkRestart = async function(ips, time, step=0.1) {
   for (var i = 0; i < ips.length; i++) {
     urls.push(window.location.protocol + "//" + ips[i] + port + Foris.pingPath);
   }
+
+  var restartLanDoneCallback = function(url, jqXHR) {
+    if (jqXHR.status == 0) {
+        return false;
+    }
+    if (jqXHR.status == 200) {
+        if (jqXHR.responseJSON && jqXHR.responseJSON.loginUrl) {
+            window.location = jqXHR.responseJSON.loginUrl;
+        }
+    }
+  }
+
+  // start the machinery
+  Foris.waitForUnreachable(window.location.pathname, function (xhr, text, error) {
+    var pathname = window.location.pathname;
+    Foris.SpinnerDisplay(Foris.messages.tryingToReconnect);
+    Foris.waitForReachable(urls, {next: pathname}, restartLanDoneCallback, 2000);
+  }, 5);
+};
+
+Foris.handleForisRestart = async function(time, step=0.1) {
+  if (Foris.SpinnerIsShown()) {
+    return; // already running
+  }
+  for (i = time / 1000; i >= 0; i = Math.round((i - step) * 100) / 100) {
+    await Foris.TimeoutPromiss((left) => Foris.SpinnerDisplay(Foris.messages.forisRestartIn(left)), step, i);
+  }
+  await Foris.TimeoutPromiss(() => Foris.SpinnerDisplay(Foris.messages.forisRestartTriggered), 1);
+
+  var port = window.location.port == "" ? "" : ":" + window.location.port;
+  var protocol = window.location.protocol;
+  var pathname = window.location.pathname;
+  var search = window.location.search;
+  var urls = [window.location.protocol + "//" + window.location.hostname + port + Foris.pingPath];
 
   var restartLanDoneCallback = function(url, jqXHR) {
     if (jqXHR.status == 0) {

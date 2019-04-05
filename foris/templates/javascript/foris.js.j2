@@ -18,8 +18,12 @@ Foris.messages.rebootIn = (left) => {
 Foris.messages.networkRestartIn = (left) => {
   return `{% trans time_left="${left.toFixed(1)}" %}Your network will be restarted in {{ time_left }} seconds.{% endtrans %}`;
 };
+Foris.messages.forisRestartIn = (left) => {
+  return `{% trans time_left="${left.toFixed(1)}" %}Foris will be restarted in {{ time_left }} seconds.{% endtrans %}`;
+};
 Foris.messages.rebootTriggered = "{% trans %}A reboot of your device was triggered.{% endtrans %}";
 Foris.messages.networkRestartTriggered = "{% trans %}A network restart was triggered.{% endtrans %}";
+Foris.messages.forisRestartTriggered = "{% trans %}Foris restart was triggered.{% endtrans %}";
 Foris.messages.tryingToReconnect = "{% trans %}Trying to reconnect to your device.{% endtrans %}";
 Foris.messages.vexYes = "{% trans %}Confirm{% endtrans %}";
 Foris.messages.vexNo = "{% trans %}Cancel{% endtrans %}";
