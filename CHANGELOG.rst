@@ -1,3 +1,10 @@
+99.8 (2019-04-05)
+-----------------
+
+* add sentry indicator to global state
+* handle lighttpd restarts
+* menu: display steps fix
+
 99.7.5 (2019-04-03)
 -------------------
 
