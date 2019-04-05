@@ -101,10 +101,13 @@ def main():
     try:
         import sentry_sdk
         from sentry_sdk.integrations.bottle import BottleIntegration
-
-        dsn = os.environ["SENTRY_DSN"]
-        sentry_sdk.init(dsn=dsn, integrations=[BottleIntegration()])
-    except (ImportError, KeyError):
+        try:
+            dsn = os.environ["SENTRY_DSN"]
+            sentry_sdk.init(dsn=dsn, integrations=[BottleIntegration()])
+            current_state.set_sentry(True)
+        except (KeyError, sentry_sdk.utils.BadDsn):
+            pass
+    except (ImportError):
         pass
 
     # set backend

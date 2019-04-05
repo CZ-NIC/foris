@@ -1,6 +1,6 @@
 # coding=utf-8
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2019 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,29 +30,31 @@ class ForisState(object):
         self.app = None
         self.reboot_required = False
         self.assets_path = None
+        self.sentry_running = False
 
     def update_lang(self, lang):
-        logger.debug("current lang updated to '%s'" % lang)
+        logger.debug(f"current lang updated to '{lang}'")
         self.language = lang
 
     def set_app(self, app):
-        logger.debug("current app updated to '%s'" % app)
+        logger.debug(f"current app updated to '{app}'")
         self.app = app
 
     def set_backend(self, backend):
         if backend.name in ["ubus", "unix-socket"]:
-            logger.debug("setting backend to '%s' (path %s)." % (backend.name, backend.path))
+            logger.debug(f"setting backend to '{backend.name}' (path {backend.path}).")
         elif backend.name == "mqtt":
             logger.debug(
-                "setting backend to '%s' (host %s:%d)." % (
-                    backend.name, backend.host, backend.port
-                )
+                f"setting backend to '{backend.name}' (host {backend.host}:{backend.port})."
             )
         self.backend = backend
 
     def set_websocket(self, ws_port, ws_path, wss_port, wss_path):
         self.websockets = {
-            "ws_port": ws_port, "ws_path": ws_path, "wss_port": wss_port, "wss_path": wss_path
+            "ws_port": ws_port,
+            "ws_path": ws_path,
+            "wss_port": wss_port,
+            "wss_path": wss_path,
         }
 
     def update_reboot_required(self, required):
@@ -60,7 +62,7 @@ class ForisState(object):
         :param required: True if reboot is required False otherwise
         :type required: boolean
         """
-        logger.debug("setting reboot_required=%s" % required)
+        logger.debug(f"setting reboot_required={required}")
         self.reboot_required = required
 
     def update_notification_count(self, new_count):
@@ -69,7 +71,7 @@ class ForisState(object):
         :param new_count: new notificaton count
         :type new_count: int
         """
-        logger.debug("setting notification_count=%d" % new_count)
+        logger.debug(f"setting notification_count={new_count}")
         self.notification_count = new_count
 
     def repr(self):
@@ -80,7 +82,7 @@ class ForisState(object):
         :param running: True if updater is running False otherwise
         :type running: boolean
         """
-        logger.debug("setting updater_is_running=%s" % running)
+        logger.debug(f"setting updater_is_running={running}")
         self.updater_is_running = running
 
     def set_turris_os_version(self, version):
@@ -98,17 +100,22 @@ class ForisState(object):
         self.device = device
 
     def update_password_set(self, password_set):
-        logger.debug("setting password_set=%s" % password_set)
+        logger.debug(f"setting password_set={password_set}")
         self.password_set = password_set
 
     def update_guide(self, guide_data):
         from foris.guide import Guide
-        logger.debug("setting guide_data (%s)" % guide_data)
+
+        logger.debug(f"setting guide_data ({guide_data})")
         self.guide = Guide(guide_data)
 
     def set_assets_path(self, assets_path):
-        logger.debug("setting assets_path to '%s'" % assets_path)
+        logger.debug(f"setting assets_path to '{assets_path}'")
         self.assets_path = assets_path
+
+    def set_sentry(self, running):
+        logger.debug(f"setting sentry_running to '{running}'")
+        self.sentry_running = running
 
 
 current_state = ForisState()
