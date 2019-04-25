@@ -316,14 +316,7 @@ class GuideFinishedHandler(BaseConfigHandler):
 
     def get_form(self):
         finished_form = fapi.ForisForm("guide_finished", {})
-        finished_form.add_section(
-            name="guide_finished",  title=_(self.userfriendly_title),
-            description=_(
-                "Congratulations you've successfully reached the end of this guide. "
-                "Once you leave this guide you'll be granted access to the "
-                "full configuration interface of this device."
-            )
-        )
+        finished_form.add_section(name="guide_finished", title=_(self.userfriendly_title))
 
         def guide_finished_cb(data):
             res = current_state.backend.perform("web", "update_guide", {

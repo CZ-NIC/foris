@@ -5,7 +5,22 @@
 <div id="page-config" class="config-page">
 {% endif %}
     <form id="main-form" class="config-form" action="{{ request.fullpath }}" method="post" autocomplete="off" novalidate>
-        <p class="config-description">{{ description|safe }}</p>
+        <p class="config-description">
+            {% trans -%}
+            Congratulations you've successfully reached the end of this guide.
+            Once you leave this guide you'll be granted access to the
+            full configuration interface of this device.
+            {%- endtrans %}
+        </p>
+        <p>
+            {% trans -%}
+            To further <strong>improve your security</strong> consider enabling data
+            collect (start by selecting it in updater tab). This will allow
+            you to be part of our security research to discover new
+            attackers and it will also give you access to dynamic updates
+            to your firewall to block all already known attackers.
+            {%- endtrans %}
+        </p>
         {% include '_messages.html.j2' %}
         <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
