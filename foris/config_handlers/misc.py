@@ -322,8 +322,14 @@ class GuideFinishedHandler(BaseConfigHandler):
                 "Congratulations you've successfully reached the end of this guide. "
                 "Once you leave this guide you'll be granted access to the "
                 "full configuration interface of this device."
-            )
-        )
+                "</p><p>"
+                "To further <strong>improve your security</strong> consider enabling data "
+                "collect (start by selecting it in updater tab). This will allow "
+                "you to be part of our security research to discover new "
+                "attackers and it will also give you access to dynamic updates "
+                "to your firewall to block all already known attackers."
+            ),
+
 
         def guide_finished_cb(data):
             res = current_state.backend.perform("web", "update_guide", {
