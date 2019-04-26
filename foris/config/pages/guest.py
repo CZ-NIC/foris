@@ -34,8 +34,11 @@ class GuestConfigPage(ConfigPageMixin, guest.GuestHandler):
         kwargs["interface_count"] = self.backend_data["interface_count"]
         kwargs["interface_up_count"] = self.backend_data["interface_up_count"]
         for client in kwargs["dhcp_clients"]:
-            client["expires"] = datetime.utcfromtimestamp(client["expires"]).strftime(
-                "%Y-%m-%d %H:%M"
-            )
+            if client["expires"] > 0:
+                client["expires"] = datetime.utcfromtimestamp(client["expires"]).strftime(
+                    "%Y-%m-%d %H:%M"
+                )
+            else:
+                client["expires"] = "N/A"
 
         return super(GuestConfigPage, self).render(**kwargs)
