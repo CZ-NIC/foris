@@ -1,3 +1,11 @@
+99.9 (2019-04-29)
+-----------------
+
+* about: remove board_name field
+* lan+guest: dhcp leases display fix
+* translations updated
+* guide: finished text updated
+
 99.8 (2019-04-05)
 -----------------
 
