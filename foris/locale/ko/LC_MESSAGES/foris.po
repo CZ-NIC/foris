@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: 2018-04-04 09:21+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language: ko\n"
@@ -235,11 +235,62 @@ msgstr "%(low)s - %(high)s 사이에 있지 않습니다."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "길이는 %(low)s ~ %(high)s자 이내여야 합니다."
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr "내부 오류가 발생해 환경설정을 저장하지 못했습니다."
+
+msgid "The password you entered was not valid."
+msgstr "입력한 암호가 올바르지 않습니다."
+
+msgid "About"
+msgstr "정보"
+
 msgid "Configuration was successfully saved."
 msgstr "환경설정을 성공적으로 저장했습니다."
 
 msgid "There were some errors in your input."
 msgstr "입력한 내용 중에 오류가 있습니다."
+
+#, fuzzy
+msgid "Guide workflow was sucessfully set."
+msgstr "암호가 성공적으로 저장되었습니다."
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to finish the guide."
+msgstr "업데이트 연기에 실패했습니다."
+
+msgid "Maintenance"
+msgstr "유지보수"
+
+msgid "Wrong HTTP method."
+msgstr "잘못된 HTTP 메소드 입니다."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "테스트 메시지를 보냈으니, 메일함을 확인해주세요."
+
+#, fuzzy
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr "환경 설정에 문제가 있어 메시지 발송에 실패했습니다.<br>오류 메시지:<br><pre>%(error)s</pre>"
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원을 완료하려면 재시작해야 합니다."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "파일로부터 백업 복원에 실패했습니다."
+
+#, fuzzy
+msgid "Network configuration was sucessfully updated."
+msgstr "환경설정을 성공적으로 저장했습니다."
+
+#, fuzzy
+msgid "Unable to update your network configuration."
+msgstr "네트워크 연결을 확인할 수 없습니다."
 
 msgid "Notifications"
 msgstr "알림"
@@ -290,9 +341,6 @@ msgstr "암호가 성공적으로 저장되었습니다."
 msgid "Failed to disable remote access."
 msgstr ""
 
-msgid "Wrong HTTP method."
-msgstr "잘못된 HTTP 메소드 입니다."
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -302,106 +350,6 @@ msgstr "암호가 성공적으로 저장되었습니다."
 
 msgid "Failed to delete CA for remote access."
 msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "암호가 성공적으로 저장되었습니다."
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "암호가 성공적으로 저장되었습니다."
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "암호가 성공적으로 저장되었습니다."
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "환경설정을 성공적으로 저장했습니다."
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "환경설정을 성공적으로 저장했습니다."
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy
-msgid "Wifi settings was sucessfully updated."
-msgstr "환경설정을 성공적으로 저장했습니다."
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-#, fuzzy
-msgid "Guide workflow was sucessfully set."
-msgstr "암호가 성공적으로 저장되었습니다."
-
-msgid "Failed to set guide workflow."
-msgstr ""
-
-#, fuzzy
-msgid "Network configuration was sucessfully updated."
-msgstr "환경설정을 성공적으로 저장했습니다."
-
-#, fuzzy
-msgid "Unable to update your network configuration."
-msgstr "네트워크 연결을 확인할 수 없습니다."
-
-msgid "Wi-Fi reset was successful."
-msgstr ""
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr ""
-
-msgid "Maintenance"
-msgstr "유지보수"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "테스트 메시지를 보냈으니, 메일함을 확인해주세요."
-
-#, fuzzy
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr "환경 설정에 문제가 있어 메시지 발송에 실패했습니다.<br>오류 메시지:<br><pre>%(error)s</pre>"
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr "환경설정을 성공적으로 복원했습니다. 환경설정을 복원을 완료하려면 재시작해야 합니다."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "파일로부터 백업 복원에 실패했습니다."
 
 msgid "Update was approved."
 msgstr "업데이트가 승인되었습니다."
@@ -423,18 +371,11 @@ msgstr "환경설정이 성공적으로 저장되었습니다. 선택된 패키�
 msgid "Updater is running"
 msgstr "업데이트 진행중"
 
-#, fuzzy
-msgid "Failed to finish the guide."
-msgstr "업데이트 연기에 실패했습니다."
+msgid "Wi-Fi reset was successful."
+msgstr ""
 
-msgid "About"
-msgstr "정보"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "내부 오류가 발생해 환경설정을 저장하지 못했습니다."
-
-msgid "The password you entered was not valid."
-msgstr "입력한 암호가 올바르지 않습니다."
+msgid "Failed to perform Wi-Fi reset."
+msgstr ""
 
 msgid "Backup file"
 msgstr ""
@@ -736,12 +677,6 @@ msgstr ""
 msgid "Guide Finished"
 msgstr ""
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-
 msgid "Network interfaces"
 msgstr ""
 
@@ -904,39 +839,6 @@ msgstr ""
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "올바르지 않은 MAC 주소입니다."
-
-msgid "Token file"
-msgstr ""
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-msgid "Custom Name"
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
-msgstr ""
 
 msgid "Updater"
 msgstr ""
@@ -1399,22 +1301,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-msgid "State"
-msgstr ""
-
-#, fuzzy
-msgid "Devices"
-msgstr "기기"
-
-msgid "Channels"
-msgstr ""
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1439,6 +1325,9 @@ msgstr "Turris OS 버전"
 
 msgid "Kernel version"
 msgstr "커널 버전"
+
+msgid "Expandable"
+msgstr ""
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - Turris 라우터 관리 인터페이스"
@@ -1501,6 +1390,22 @@ msgid "Unable to verify network connection."
 msgstr "네트워크 연결을 확인할 수 없습니다."
 
 msgid "DNSSEC"
+msgstr ""
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
 msgstr ""
 
 msgid "Continue"
@@ -1657,6 +1562,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1721,30 +1631,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -1973,11 +1859,19 @@ msgstr ""
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "네트워크가 재시작되었습니다. 잠시만 기다려주세요..."
 
+#, fuzzy, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr "네트워크가 재시작되었습니다. 잠시만 기다려주세요..."
+
 msgid "A reboot of your device was triggered."
 msgstr ""
 
 #, fuzzy
 msgid "A network restart was triggered."
+msgstr "네트워크를 재시작 하는 중..."
+
+#, fuzzy
+msgid "Foris restart was triggered."
 msgstr "네트워크를 재시작 하는 중..."
 
 msgid "Trying to reconnect to your device."
@@ -2931,5 +2825,134 @@ msgstr "다운그레이드"
 #~ "service to other devices within your "
 #~ "local network (e.g. act as a "
 #~ "network attached storage)."
+#~ msgstr ""
+
+#~ msgid "Subordinates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Token was successfully added and client"
+#~ " '%(controller_id)s' should be visible in"
+#~ " a moment."
+#~ msgstr ""
+
+#~ msgid "Failed to add token."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was successfully deleted."
+#~ msgstr "암호가 성공적으로 저장되었습니다."
+
+#~ msgid "Failed to delete subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+#~ msgstr "암호가 성공적으로 저장되었습니다."
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+#~ msgstr "암호가 성공적으로 저장되었습니다."
+
+#~ msgid "Failed to enable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Failed to disable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "환경설정을 성공적으로 저장했습니다."
+
+#~ msgid "Failed to update subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "환경설정을 성공적으로 저장했습니다."
+
+#~ msgid "Failed to update subsubordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Wifi settings was sucessfully updated."
+#~ msgstr "환경설정을 성공적으로 저장했습니다."
+
+#~ msgid "Failed to update Wifi settings."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Congratulations you've successfully reached "
+#~ "the end of this guide. Once you"
+#~ " leave this guide you'll be granted"
+#~ " access to the full configuration "
+#~ "interface of this device."
+#~ msgstr ""
+
+#~ msgid "Token file"
+#~ msgstr ""
+
+#~ msgid "Edit subordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subordinate here. "
+#~ "Subordinates are directly connected to "
+#~ "this device."
+#~ msgstr ""
+
+#~ msgid "Custom Name"
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Edit subsubordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subsubordinate here."
+#~ " Subsubordinates are devices which are "
+#~ "not directly connected to this device"
+#~ " but they are connected with a "
+#~ "subordinated."
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device with serial '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "State"
+#~ msgstr ""
+
+#~ msgid "Devices"
+#~ msgstr "기기"
+
+#~ msgid "Channels"
+#~ msgstr ""
+
+#~ msgid "Currently there are no subordinates."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        On this tab you can set"
+#~ " up other turris devices which can"
+#~ " be controlled\n"
+#~ "        by this device. You need "
+#~ "to generate token on the remote "
+#~ "tab on the device\n"
+#~ "        you wan't to control. And insert the token here."
+#~ msgstr ""
+
+#~ msgid "Add subordinate device"
+#~ msgstr ""
+
+#~ msgid "Upload token"
+#~ msgstr ""
+
+#~ msgid "Subordinate devices"
+#~ msgstr ""
+
+#~ msgid "Wifi"
+#~ msgstr ""
+
+#~ msgid "Loading subordinates..."
 #~ msgstr ""
 

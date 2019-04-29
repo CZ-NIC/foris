@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: 2019-01-22 08:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language: lt\n"
@@ -302,11 +302,59 @@ msgstr "Nėra iš leidžiamo intervalo %(low)s - %(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Ilgis turi būti nuo %(low)s iki %(high)s simbolių."
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nepavyko išsaugoti konfigūracijos dėl vidinės sistemos klaidos."
+
+msgid "The password you entered was not valid."
+msgstr "Slaptažodis kurį įvedėte yra neteisingas."
+
+msgid "About"
+msgstr "Apie"
+
 msgid "Configuration was successfully saved."
 msgstr "Konfigūracija sėkmingai išsaugota."
 
 msgid "There were some errors in your input."
 msgstr "Įvestuose duomenyse yra klaidų."
+
+msgid "Guide workflow was sucessfully set."
+msgstr "Gido rėžimas sėkmingai parinktas."
+
+msgid "Failed to set guide workflow."
+msgstr "Nepavyko nustatyti gido rėžimo."
+
+msgid "Failed to finish the guide."
+msgstr "Nepavyko pabaigti gido."
+
+msgid "Maintenance"
+msgstr "Priežiūra"
+
+msgid "Wrong HTTP method."
+msgstr "Klaidingas HTTP metodas."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr "Testinio pranešimo siuntimas nepavyko, tikriausiai nustatymai netinkami."
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+"Nustatymai sėkmingai atkurti. Atkreipkite dėmesį, kad atkurti nustatymai "
+"būtų naudojami reikia perkrauti įrenginį."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "Nepavyko atstatyti atsarginės kopijos iš pateikto failo."
+
+msgid "Network configuration was sucessfully updated."
+msgstr "Konfigūracija sėkmingai atnaujinta."
+
+msgid "Unable to update your network configuration."
+msgstr "Nepavyko atnaujinti tinklo nustatymų."
 
 msgid "Notifications"
 msgstr "Pranešimai"
@@ -358,9 +406,6 @@ msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
 msgid "Failed to disable remote access."
 msgstr "Nepavyko išsaugoti sistemos slaptažodžio"
 
-msgid "Wrong HTTP method."
-msgstr "Klaidingas HTTP metodas."
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -370,104 +415,6 @@ msgstr "Foris slaptažodis išsaugotas sėkmingai."
 
 msgid "Failed to delete CA for remote access."
 msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Foris slaptažodis išsaugotas sėkmingai."
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr "Nepavyko išsaugoti sistemos slaptažodžio"
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Konfigūracija sėkmingai atnaujinta."
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Konfigūracija sėkmingai atnaujinta."
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy
-msgid "Wifi settings was sucessfully updated."
-msgstr "Konfigūracija sėkmingai atnaujinta."
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-msgid "Guide workflow was sucessfully set."
-msgstr "Gido rėžimas sėkmingai parinktas."
-
-msgid "Failed to set guide workflow."
-msgstr "Nepavyko nustatyti gido rėžimo."
-
-msgid "Network configuration was sucessfully updated."
-msgstr "Konfigūracija sėkmingai atnaujinta."
-
-msgid "Unable to update your network configuration."
-msgstr "Nepavyko atnaujinti tinklo nustatymų."
-
-msgid "Wi-Fi reset was successful."
-msgstr "Wi-Fi atstatymas sėkmingas."
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr "Nepavyko atlikti Wi-Fi atstatymo."
-
-msgid "Maintenance"
-msgstr "Priežiūra"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "Testinis pranešimas išsiųstas, patikrinkite pašto dėžutę."
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr "Testinio pranešimo siuntimas nepavyko, tikriausiai nustatymai netinkami."
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr ""
-"Nustatymai sėkmingai atkurti. Atkreipkite dėmesį, kad atkurti nustatymai "
-"būtų naudojami reikia perkrauti įrenginį."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "Nepavyko atstatyti atsarginės kopijos iš pateikto failo."
 
 msgid "Update was approved."
 msgstr "Atnaujinimas patvirtintas."
@@ -491,17 +438,11 @@ msgstr ""
 msgid "Updater is running"
 msgstr "Atnaujinimų servisas dirba"
 
-msgid "Failed to finish the guide."
-msgstr "Nepavyko pabaigti gido."
+msgid "Wi-Fi reset was successful."
+msgstr "Wi-Fi atstatymas sėkmingas."
 
-msgid "About"
-msgstr "Apie"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nepavyko išsaugoti konfigūracijos dėl vidinės sistemos klaidos."
-
-msgid "The password you entered was not valid."
-msgstr "Slaptažodis kurį įvedėte yra neteisingas."
+msgid "Failed to perform Wi-Fi reset."
+msgstr "Nepavyko atlikti Wi-Fi atstatymo."
 
 msgid "Backup file"
 msgstr "Atsarginės kopijos failas"
@@ -857,14 +798,6 @@ msgstr "Laikas YYYY-MM-DD HH:MM:SS formatu."
 msgid "Guide Finished"
 msgstr "Gidas baigtas"
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-"Sveikinam sėkmingai pasiekus gido pabaigą. Išėjus iš šio gido galėsite "
-"prieiti prie visų įrenginio nustatymų valdymo."
-
 msgid "Network interfaces"
 msgstr "Tinklo interfeisai"
 
@@ -1043,41 +976,6 @@ msgstr ""
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "Netinkama Duid reikšmė."
-
-#, fuzzy
-msgid "Token file"
-msgstr "Siuntėjo vardas"
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-#, fuzzy
-msgid "Custom Name"
-msgstr "Įrenginio Vardas"
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
-msgstr ""
 
 msgid "Updater"
 msgstr "Atnaujinimai"
@@ -1583,24 +1481,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgid "State"
-msgstr "būsena"
-
-#, fuzzy
-msgid "Devices"
-msgstr "Įrenginys"
-
-#, fuzzy
-msgid "Channels"
-msgstr "Tinklo kanalas"
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1629,6 +1509,9 @@ msgstr "Turris OS versija"
 
 msgid "Kernel version"
 msgstr "Branduolio versija"
+
+msgid "Expandable"
+msgstr ""
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - Turris maršrutizatoriaus valdymo interfeisas"
@@ -1711,6 +1594,25 @@ msgstr "Nepavyko patikrinti tinko ryšio."
 
 msgid "DNSSEC"
 msgstr "DNSSEC"
+
+#, fuzzy
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+"Sveikinam sėkmingai pasiekus gido pabaigą. Išėjus iš šio gido galėsite "
+"prieiti prie visų įrenginio nustatymų valdymo."
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
+msgstr ""
 
 msgid "Continue"
 msgstr "Tęsti"
@@ -1906,6 +1808,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1971,30 +1878,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2294,10 +2177,18 @@ msgstr "Įrenginys persikraus po %(time_left)s sekundžių."
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Tinklas bus perkrautas po %(time_left)s sekundžių."
 
+#, fuzzy, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr "Tinklas bus perkrautas po %(time_left)s sekundžių."
+
 msgid "A reboot of your device was triggered."
 msgstr "Pradėtas įrenginio perkrovimas."
 
 msgid "A network restart was triggered."
+msgstr "Pradėtas tinklo perkrovimas."
+
+#, fuzzy
+msgid "Foris restart was triggered."
 msgstr "Pradėtas tinklo perkrovimas."
 
 msgid "Trying to reconnect to your device."
@@ -3326,4 +3217,125 @@ msgstr "Atstatyti senesnę"
 
 #~ msgid "Save changes"
 #~ msgstr "Išsaugoti pakeitimus"
+
+#~ msgid "Subordinates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Token was successfully added and client"
+#~ " '%(controller_id)s' should be visible in"
+#~ " a moment."
+#~ msgstr ""
+
+#~ msgid "Failed to add token."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was successfully deleted."
+#~ msgstr "Foris slaptažodis išsaugotas sėkmingai."
+
+#~ msgid "Failed to delete subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+#~ msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+#~ msgstr "Sistemos slaptažodis išsaugotas sėkmingai."
+
+#~ msgid "Failed to enable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Failed to disable subordinate '%(controller_id)s'."
+#~ msgstr "Nepavyko išsaugoti sistemos slaptažodžio"
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Konfigūracija sėkmingai atnaujinta."
+
+#~ msgid "Failed to update subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Konfigūracija sėkmingai atnaujinta."
+
+#~ msgid "Failed to update subsubordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Wifi settings was sucessfully updated."
+#~ msgstr "Konfigūracija sėkmingai atnaujinta."
+
+#~ msgid "Failed to update Wifi settings."
+#~ msgstr ""
+
+#~ msgid "Token file"
+#~ msgstr "Siuntėjo vardas"
+
+#~ msgid "Edit subordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subordinate here. "
+#~ "Subordinates are directly connected to "
+#~ "this device."
+#~ msgstr ""
+
+#~ msgid "Custom Name"
+#~ msgstr "Įrenginio Vardas"
+
+#~ msgid "Nicer name for your device '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Edit subsubordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subsubordinate here."
+#~ " Subsubordinates are devices which are "
+#~ "not directly connected to this device"
+#~ " but they are connected with a "
+#~ "subordinated."
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device with serial '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "State"
+#~ msgstr "būsena"
+
+#~ msgid "Devices"
+#~ msgstr "Įrenginys"
+
+#~ msgid "Channels"
+#~ msgstr "Tinklo kanalas"
+
+#~ msgid "Currently there are no subordinates."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        On this tab you can set"
+#~ " up other turris devices which can"
+#~ " be controlled\n"
+#~ "        by this device. You need "
+#~ "to generate token on the remote "
+#~ "tab on the device\n"
+#~ "        you wan't to control. And insert the token here."
+#~ msgstr ""
+
+#~ msgid "Add subordinate device"
+#~ msgstr ""
+
+#~ msgid "Upload token"
+#~ msgstr ""
+
+#~ msgid "Subordinate devices"
+#~ msgstr ""
+
+#~ msgid "Wifi"
+#~ msgstr ""
+
+#~ msgid "Loading subordinates..."
+#~ msgstr ""
 

@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: 2019-04-06 14:05+0000\n"
 "Last-Translator: Florian <floflr@zaclys.net>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
-"\n"
 "Language: fr\n"
+"Language-Team: French "
+"<https://hosted.weblate.org/projects/turris/foris/fr/>\n"
+"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.6-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -265,11 +264,67 @@ msgstr "Pas dans une plage valide %(low)s - %(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "La longueur doit être comprise en %(low)s et %(high)s caractères."
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr ""
+"La Configuration n'a pas pu être enregistrée en raison d'une erreur "
+"interne."
+
+msgid "The password you entered was not valid."
+msgstr "Le mot de passe saisi n'est pas valide."
+
+msgid "About"
+msgstr "À propos"
+
 msgid "Configuration was successfully saved."
 msgstr "Configuration sauvegardée avec succès."
 
 msgid "There were some errors in your input."
 msgstr "Il y avait des erreurs dans l'information que vous avez entrée."
+
+#, fuzzy
+msgid "Guide workflow was sucessfully set."
+msgstr "Mot de passe enregistré avec succès."
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to finish the guide."
+msgstr "Le report de la mise à jour a échoué."
+
+msgid "Maintenance"
+msgstr "Maintenance"
+
+msgid "Wrong HTTP method."
+msgstr "Méthode HTTP incorrecte."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+"Le message de test a été envoyé, veuillez vérifier votre boîte de "
+"réception."
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr ""
+"L'envoi du message de test a échoué, votre configuration est peut-être "
+"incorrecte."
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+"La configuration a été restaurée avec succès. Notez qu'un redémarrage "
+"sera nécessaire pour appliquer la configuration restaurée."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "Échec de la restauration de la sauvegarde à partir du fichier founit."
+
+msgid "Network configuration was sucessfully updated."
+msgstr "La configuration du réseau a été mise à jour avec succès."
+
+msgid "Unable to update your network configuration."
+msgstr "Impossible de mettre à jour la configuration de votre réseau."
 
 msgid "Notifications"
 msgstr "Notifications"
@@ -319,9 +374,6 @@ msgstr "Le mot de passe système a été enregistré avec succès."
 msgid "Failed to disable remote access."
 msgstr ""
 
-msgid "Wrong HTTP method."
-msgstr "Méthode HTTP incorrecte."
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -331,109 +383,6 @@ msgstr "Le mot de passe Foris a été enregistré avec succès."
 
 msgid "Failed to delete CA for remote access."
 msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Le mot de passe Foris a été enregistré avec succès."
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Le mot de passe système a été enregistré avec succès."
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Le mot de passe système a été enregistré avec succès."
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "La configuration du réseau a été mise à jour avec succès."
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "La configuration du réseau a été mise à jour avec succès."
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy
-msgid "Wifi settings was sucessfully updated."
-msgstr "La configuration du réseau a été mise à jour avec succès."
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-#, fuzzy
-msgid "Guide workflow was sucessfully set."
-msgstr "Mot de passe enregistré avec succès."
-
-msgid "Failed to set guide workflow."
-msgstr ""
-
-msgid "Network configuration was sucessfully updated."
-msgstr "La configuration du réseau a été mise à jour avec succès."
-
-msgid "Unable to update your network configuration."
-msgstr "Impossible de mettre à jour la configuration de votre réseau."
-
-msgid "Wi-Fi reset was successful."
-msgstr "La réinitialisation Wi-Fi a réussi."
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr "Échec de la réinitialisation du Wi-Fi."
-
-msgid "Maintenance"
-msgstr "Maintenance"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr ""
-"Le message de test a été envoyé, veuillez vérifier votre boîte de "
-"réception."
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr ""
-"L'envoi du message de test a échoué, votre configuration est peut-être "
-"incorrecte."
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr ""
-"La configuration a été restaurée avec succès. Notez qu'un redémarrage "
-"sera nécessaire pour appliquer la configuration restaurée."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "Échec de la restauration de la sauvegarde à partir du fichier founit."
 
 msgid "Update was approved."
 msgstr "La mise à jour a été approuvée."
@@ -457,20 +406,11 @@ msgstr ""
 msgid "Updater is running"
 msgstr "Programme de mise à jour est en cours d'exécution"
 
-#, fuzzy
-msgid "Failed to finish the guide."
-msgstr "Le report de la mise à jour a échoué."
+msgid "Wi-Fi reset was successful."
+msgstr "La réinitialisation Wi-Fi a réussi."
 
-msgid "About"
-msgstr "À propos"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr ""
-"La Configuration n'a pas pu être enregistrée en raison d'une erreur "
-"interne."
-
-msgid "The password you entered was not valid."
-msgstr "Le mot de passe saisi n'est pas valide."
+msgid "Failed to perform Wi-Fi reset."
+msgstr "Échec de la réinitialisation du Wi-Fi."
 
 msgid "Backup file"
 msgstr "Fichier de sauvegarde"
@@ -814,12 +754,6 @@ msgstr "Heure en format AAAA-MM-JJ HH:MM:SS."
 msgid "Guide Finished"
 msgstr ""
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-
 msgid "Network interfaces"
 msgstr "Interfaces réseau"
 
@@ -1001,41 +935,6 @@ msgstr ""
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "DUID non valide."
-
-#, fuzzy
-msgid "Token file"
-msgstr "Nom de l’expéditeur"
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-#, fuzzy
-msgid "Custom Name"
-msgstr "Nom d’hôte"
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
-msgstr ""
 
 msgid "Updater"
 msgstr "Updater"
@@ -1562,24 +1461,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgid "State"
-msgstr "état"
-
-#, fuzzy
-msgid "Devices"
-msgstr "Appareil"
-
-#, fuzzy
-msgid "Channels"
-msgstr "Canal de réseau"
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1608,6 +1489,9 @@ msgstr "Version Turris OS"
 
 msgid "Kernel version"
 msgstr "Version du noyau"
+
+msgid "Expandable"
+msgstr ""
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - interface d’administration du routeur Turris"
@@ -1695,6 +1579,22 @@ msgstr "Impossible de vérifier la connexion réseau."
 
 msgid "DNSSEC"
 msgstr "DNSSEC"
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
+msgstr ""
 
 msgid "Continue"
 msgstr ""
@@ -1867,6 +1767,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1932,30 +1837,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2269,10 +2150,18 @@ msgstr ""
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Votre réseau sera redémarré dans %(time_left)s secondes."
 
+#, fuzzy, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr "Votre réseau sera redémarré dans %(time_left)s secondes."
+
 msgid "A reboot of your device was triggered."
 msgstr ""
 
 msgid "A network restart was triggered."
+msgstr "Un redémarrage du réseau a été initié."
+
+#, fuzzy
+msgid "Foris restart was triggered."
 msgstr "Un redémarrage du réseau a été initié."
 
 msgid "Trying to reconnect to your device."
@@ -3445,3 +3334,133 @@ msgstr "Rétrograder"
 #~ "local network (e.g. act as a "
 #~ "network attached storage)."
 #~ msgstr ""
+
+#~ msgid "Subordinates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Token was successfully added and client"
+#~ " '%(controller_id)s' should be visible in"
+#~ " a moment."
+#~ msgstr ""
+
+#~ msgid "Failed to add token."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was successfully deleted."
+#~ msgstr "Le mot de passe Foris a été enregistré avec succès."
+
+#~ msgid "Failed to delete subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+#~ msgstr "Le mot de passe système a été enregistré avec succès."
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+#~ msgstr "Le mot de passe système a été enregistré avec succès."
+
+#~ msgid "Failed to enable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Failed to disable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "La configuration du réseau a été mise à jour avec succès."
+
+#~ msgid "Failed to update subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "La configuration du réseau a été mise à jour avec succès."
+
+#~ msgid "Failed to update subsubordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Wifi settings was sucessfully updated."
+#~ msgstr "La configuration du réseau a été mise à jour avec succès."
+
+#~ msgid "Failed to update Wifi settings."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Congratulations you've successfully reached "
+#~ "the end of this guide. Once you"
+#~ " leave this guide you'll be granted"
+#~ " access to the full configuration "
+#~ "interface of this device."
+#~ msgstr ""
+
+#~ msgid "Token file"
+#~ msgstr "Nom de l’expéditeur"
+
+#~ msgid "Edit subordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subordinate here. "
+#~ "Subordinates are directly connected to "
+#~ "this device."
+#~ msgstr ""
+
+#~ msgid "Custom Name"
+#~ msgstr "Nom d’hôte"
+
+#~ msgid "Nicer name for your device '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Edit subsubordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subsubordinate here."
+#~ " Subsubordinates are devices which are "
+#~ "not directly connected to this device"
+#~ " but they are connected with a "
+#~ "subordinated."
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device with serial '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "State"
+#~ msgstr "état"
+
+#~ msgid "Devices"
+#~ msgstr "Appareil"
+
+#~ msgid "Channels"
+#~ msgstr "Canal de réseau"
+
+#~ msgid "Currently there are no subordinates."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        On this tab you can set"
+#~ " up other turris devices which can"
+#~ " be controlled\n"
+#~ "        by this device. You need "
+#~ "to generate token on the remote "
+#~ "tab on the device\n"
+#~ "        you wan't to control. And insert the token here."
+#~ msgstr ""
+
+#~ msgid "Add subordinate device"
+#~ msgstr ""
+
+#~ msgid "Upload token"
+#~ msgstr ""
+
+#~ msgid "Subordinate devices"
+#~ msgstr ""
+
+#~ msgid "Wifi"
+#~ msgstr ""
+
+#~ msgid "Loading subordinates..."
+#~ msgstr ""
+

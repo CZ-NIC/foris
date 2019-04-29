@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris 99.7\n"
+"Project-Id-Version: Foris 99.8\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -231,10 +231,56 @@ msgstr ""
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr ""
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr ""
+
+msgid "The password you entered was not valid."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
 msgid "Configuration was successfully saved."
 msgstr ""
 
 msgid "There were some errors in your input."
+msgstr ""
+
+msgid "Guide workflow was sucessfully set."
+msgstr ""
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+msgid "Failed to finish the guide."
+msgstr ""
+
+msgid "Maintenance"
+msgstr ""
+
+msgid "Wrong HTTP method."
+msgstr ""
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr ""
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+
+msgid "Failed to restore the backup from the provided file."
+msgstr ""
+
+msgid "Network configuration was sucessfully updated."
+msgstr ""
+
+msgid "Unable to update your network configuration."
 msgstr ""
 
 msgid "Notifications"
@@ -282,9 +328,6 @@ msgstr ""
 msgid "Failed to disable remote access."
 msgstr ""
 
-msgid "Wrong HTTP method."
-msgstr ""
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -292,101 +335,6 @@ msgid "CA for remote access was sucessfully deleted."
 msgstr ""
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr ""
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr ""
-
-#, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr ""
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr ""
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr ""
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-msgid "Wifi settings was sucessfully updated."
-msgstr ""
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-msgid "Guide workflow was sucessfully set."
-msgstr ""
-
-msgid "Failed to set guide workflow."
-msgstr ""
-
-msgid "Network configuration was sucessfully updated."
-msgstr ""
-
-msgid "Unable to update your network configuration."
-msgstr ""
-
-msgid "Wi-Fi reset was successful."
-msgstr ""
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr ""
-
-msgid "Maintenance"
-msgstr ""
-
-msgid "Testing message was sent, please check your inbox."
-msgstr ""
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr ""
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr ""
-
-msgid "Failed to restore the backup from the provided file."
 msgstr ""
 
 msgid "Update was approved."
@@ -409,16 +357,10 @@ msgstr ""
 msgid "Updater is running"
 msgstr ""
 
-msgid "Failed to finish the guide."
+msgid "Wi-Fi reset was successful."
 msgstr ""
 
-msgid "About"
-msgstr ""
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr ""
-
-msgid "The password you entered was not valid."
+msgid "Failed to perform Wi-Fi reset."
 msgstr ""
 
 msgid "Backup file"
@@ -721,12 +663,6 @@ msgstr ""
 msgid "Guide Finished"
 msgstr ""
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-
 msgid "Network interfaces"
 msgstr ""
 
@@ -887,39 +823,6 @@ msgid "Token name is invalid."
 msgstr ""
 
 msgid "Token id is invalid."
-msgstr ""
-
-msgid "Token file"
-msgstr ""
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-msgid "Custom Name"
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
 msgstr ""
 
 msgid "Updater"
@@ -1376,21 +1279,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-msgid "State"
-msgstr ""
-
-msgid "Devices"
-msgstr ""
-
-msgid "Channels"
-msgstr ""
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1414,6 +1302,9 @@ msgid "Turris OS version"
 msgstr ""
 
 msgid "Kernel version"
+msgstr ""
+
+msgid "Expandable"
 msgstr ""
 
 msgid "Foris - administration interface of router Turris"
@@ -1477,6 +1368,22 @@ msgid "Unable to verify network connection."
 msgstr ""
 
 msgid "DNSSEC"
+msgstr ""
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
 msgstr ""
 
 msgid "Continue"
@@ -1621,6 +1528,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1683,30 +1595,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -1927,10 +1815,17 @@ msgstr ""
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr ""
 
+#, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr ""
+
 msgid "A reboot of your device was triggered."
 msgstr ""
 
 msgid "A network restart was triggered."
+msgstr ""
+
+msgid "Foris restart was triggered."
 msgstr ""
 
 msgid "Trying to reconnect to your device."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -280,11 +280,65 @@ msgstr "Érvénytelen tartomány %(low)s-%(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "A karakterhossznak a %(low)s-%(high)s tartományban kell lennie."
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Beállítás belső hiba miatt nem menthető."
+
+msgid "The password you entered was not valid."
+msgstr "A megadott jelszó érvénytelen."
+
+msgid "About"
+msgstr "Névjegy"
+
 msgid "Configuration was successfully saved."
 msgstr "Beállítás mentése sikerült."
 
 msgid "There were some errors in your input."
 msgstr "Adatbevitelében néhány hiba található."
+
+#, fuzzy
+msgid "Guide workflow was sucessfully set."
+msgstr "Jelszó sikeresen elmentve."
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+#, fuzzy
+msgid "Failed to finish the guide."
+msgstr "Frissítés elhalasztása nem sikerült."
+
+msgid "Maintenance"
+msgstr "Karbantartás"
+
+msgid "Wrong HTTP method."
+msgstr "Hibás HTTP-metódus."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr "Tesztüzenet elküldve, ellenőrizze a postaládáját."
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr ""
+"Tesztüzenet elküldése nem sikerült, a beállítás valószínűleg nem "
+"megfelelő."
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+"Beállítás sikeresen visszaállítva. Újraindítás is szükséges a beállítások"
+" alkalmazásához."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "Nem sikerült visszaállítani a biztonsági mentést a megadott fájlból."
+
+#, fuzzy
+msgid "Network configuration was sucessfully updated."
+msgstr "Beállítás mentése sikerült."
+
+#, fuzzy
+msgid "Unable to update your network configuration."
+msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
 
 msgid "Notifications"
 msgstr "Értesítések"
@@ -336,9 +390,6 @@ msgstr "Jelszó sikeresen elmentve."
 msgid "Failed to disable remote access."
 msgstr ""
 
-msgid "Wrong HTTP method."
-msgstr "Hibás HTTP-metódus."
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -348,109 +399,6 @@ msgstr "Jelszó sikeresen elmentve."
 
 msgid "Failed to delete CA for remote access."
 msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Jelszó sikeresen elmentve."
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Jelszó sikeresen elmentve."
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Jelszó sikeresen elmentve."
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Beállítás mentése sikerült."
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Beállítás mentése sikerült."
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy
-msgid "Wifi settings was sucessfully updated."
-msgstr "Beállítás mentése sikerült."
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-#, fuzzy
-msgid "Guide workflow was sucessfully set."
-msgstr "Jelszó sikeresen elmentve."
-
-msgid "Failed to set guide workflow."
-msgstr ""
-
-#, fuzzy
-msgid "Network configuration was sucessfully updated."
-msgstr "Beállítás mentése sikerült."
-
-#, fuzzy
-msgid "Unable to update your network configuration."
-msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
-
-msgid "Wi-Fi reset was successful."
-msgstr "A Wi-Fi visszaállítása sikerült."
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr "A Wi-Fi visszaállítása sikertelen."
-
-msgid "Maintenance"
-msgstr "Karbantartás"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr "Tesztüzenet elküldve, ellenőrizze a postaládáját."
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr ""
-"Tesztüzenet elküldése nem sikerült, a beállítás valószínűleg nem "
-"megfelelő."
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr ""
-"Beállítás sikeresen visszaállítva. Újraindítás is szükséges a beállítások"
-" alkalmazásához."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "Nem sikerült visszaállítani a biztonsági mentést a megadott fájlból."
 
 msgid "Update was approved."
 msgstr "Frissítés jóváhagyva."
@@ -474,18 +422,11 @@ msgstr ""
 msgid "Updater is running"
 msgstr "A Frissítéskekzelő fut"
 
-#, fuzzy
-msgid "Failed to finish the guide."
-msgstr "Frissítés elhalasztása nem sikerült."
+msgid "Wi-Fi reset was successful."
+msgstr "A Wi-Fi visszaállítása sikerült."
 
-msgid "About"
-msgstr "Névjegy"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Beállítás belső hiba miatt nem menthető."
-
-msgid "The password you entered was not valid."
-msgstr "A megadott jelszó érvénytelen."
+msgid "Failed to perform Wi-Fi reset."
+msgstr "A Wi-Fi visszaállítása sikertelen."
 
 msgid "Backup file"
 msgstr "Biztonsági mentés"
@@ -831,12 +772,6 @@ msgstr "Az idő ÉÉÉÉ-HH-NN ÓÓ:PP:MM formátumban."
 msgid "Guide Finished"
 msgstr ""
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-
 #, fuzzy
 msgid "Network interfaces"
 msgstr "Hálózati maszk"
@@ -1012,41 +947,6 @@ msgstr ""
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "Érvénytelen DUID-cím."
-
-#, fuzzy
-msgid "Token file"
-msgstr "Feladó neve"
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-#, fuzzy
-msgid "Custom Name"
-msgstr "Gépnév"
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
-msgstr ""
 
 msgid "Updater"
 msgstr "Frissítéskezelő"
@@ -1558,24 +1458,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgid "State"
-msgstr "Gépnév"
-
-#, fuzzy
-msgid "Devices"
-msgstr "Készülék"
-
-#, fuzzy
-msgid "Channels"
-msgstr "Hálózati csatorna"
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1604,6 +1486,9 @@ msgstr "Turris OS verzió"
 
 msgid "Kernel version"
 msgstr "Kernel verzió"
+
+msgid "Expandable"
+msgstr ""
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - a Turris router adminisztrációs felülete"
@@ -1691,6 +1576,22 @@ msgstr "Nem lehet ellenőrizni a hálózati kapcsolatot."
 
 msgid "DNSSEC"
 msgstr "DNSSEC"
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
+msgstr ""
 
 msgid "Continue"
 msgstr ""
@@ -1861,6 +1762,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1926,30 +1832,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2247,11 +2129,19 @@ msgstr ""
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "A hálózat újraindul. Kérem várjon..."
 
+#, fuzzy, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr "A hálózat újraindul. Kérem várjon..."
+
 msgid "A reboot of your device was triggered."
 msgstr ""
 
 #, fuzzy
 msgid "A network restart was triggered."
+msgstr "Hálózat újraindítása..."
+
+#, fuzzy
+msgid "Foris restart was triggered."
 msgstr "Hálózat újraindítása..."
 
 msgid "Trying to reconnect to your device."
@@ -3297,5 +3187,134 @@ msgstr "Visszalépés"
 #~ "service to other devices within your "
 #~ "local network (e.g. act as a "
 #~ "network attached storage)."
+#~ msgstr ""
+
+#~ msgid "Subordinates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Token was successfully added and client"
+#~ " '%(controller_id)s' should be visible in"
+#~ " a moment."
+#~ msgstr ""
+
+#~ msgid "Failed to add token."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was successfully deleted."
+#~ msgstr "Jelszó sikeresen elmentve."
+
+#~ msgid "Failed to delete subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+#~ msgstr "Jelszó sikeresen elmentve."
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+#~ msgstr "Jelszó sikeresen elmentve."
+
+#~ msgid "Failed to enable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Failed to disable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Beállítás mentése sikerült."
+
+#~ msgid "Failed to update subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Beállítás mentése sikerült."
+
+#~ msgid "Failed to update subsubordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Wifi settings was sucessfully updated."
+#~ msgstr "Beállítás mentése sikerült."
+
+#~ msgid "Failed to update Wifi settings."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Congratulations you've successfully reached "
+#~ "the end of this guide. Once you"
+#~ " leave this guide you'll be granted"
+#~ " access to the full configuration "
+#~ "interface of this device."
+#~ msgstr ""
+
+#~ msgid "Token file"
+#~ msgstr "Feladó neve"
+
+#~ msgid "Edit subordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subordinate here. "
+#~ "Subordinates are directly connected to "
+#~ "this device."
+#~ msgstr ""
+
+#~ msgid "Custom Name"
+#~ msgstr "Gépnév"
+
+#~ msgid "Nicer name for your device '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Edit subsubordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subsubordinate here."
+#~ " Subsubordinates are devices which are "
+#~ "not directly connected to this device"
+#~ " but they are connected with a "
+#~ "subordinated."
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device with serial '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "State"
+#~ msgstr "Gépnév"
+
+#~ msgid "Devices"
+#~ msgstr "Készülék"
+
+#~ msgid "Channels"
+#~ msgstr "Hálózati csatorna"
+
+#~ msgid "Currently there are no subordinates."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        On this tab you can set"
+#~ " up other turris devices which can"
+#~ " be controlled\n"
+#~ "        by this device. You need "
+#~ "to generate token on the remote "
+#~ "tab on the device\n"
+#~ "        you wan't to control. And insert the token here."
+#~ msgstr ""
+
+#~ msgid "Add subordinate device"
+#~ msgstr ""
+
+#~ msgid "Upload token"
+#~ msgstr ""
+
+#~ msgid "Subordinate devices"
+#~ msgstr ""
+
+#~ msgid "Wifi"
+#~ msgstr ""
+
+#~ msgid "Loading subordinates..."
 #~ msgstr ""
 

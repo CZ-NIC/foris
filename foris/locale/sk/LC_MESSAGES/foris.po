@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 12:23+0100\n"
+"POT-Creation-Date: 2019-04-29 12:56+0200\n"
 "PO-Revision-Date: 2019-01-22 08:22+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -309,11 +309,63 @@ msgstr "Musí byť z rozsahu %(low)s - %(high)s."
 msgid "Length must be from %(low)s to %(high)s characters."
 msgstr "Dĺžka musí byť od %(low)s do %(high)s znakov."
 
+msgid "Configuration could not be saved due to an internal error."
+msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
+
+msgid "The password you entered was not valid."
+msgstr "Vami zadané heslo nie je platné."
+
+msgid "About"
+msgstr "O zariadení"
+
 msgid "Configuration was successfully saved."
 msgstr "Nastavenie bolo úspešne uložené."
 
 msgid "There were some errors in your input."
 msgstr "Niektoré z vami zadaných údajov nie sú platné."
+
+msgid "Guide workflow was sucessfully set."
+msgstr "Úspešne nastavené."
+
+msgid "Failed to set guide workflow."
+msgstr "Nepodarilo sa nastaviť."
+
+msgid "Failed to finish the guide."
+msgstr "Nepodarilo sa dokončiť sprievodca."
+
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgid "Wrong HTTP method."
+msgstr "Neplatná HTTP metóda."
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+"Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju mailovú "
+"schránku."
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr ""
+"Odoslanie testovacej správy sa nepodarilo – je možné, že vaše nastavenia "
+"nie sú správne."
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+"Nastavenie bolo úspešne obnovené. Pamätajte však, že aby sa obnovené "
+"nastavenie uplatnilo, bude potrebné spraviť reštart."
+
+msgid "Failed to restore the backup from the provided file."
+msgstr "Z poskytnutého súboru sa nepodarilo obnoviť zálohu."
+
+msgid "Network configuration was sucessfully updated."
+msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+msgid "Unable to update your network configuration."
+msgstr "Nepodarilo sa aktualizovať konfiguráciu siete."
 
 msgid "Notifications"
 msgstr "Upozornenia"
@@ -365,9 +417,6 @@ msgstr "Heslo bolo úspešne uložené."
 msgid "Failed to disable remote access."
 msgstr "Systémové heslo sa nepodarilo uložiť"
 
-msgid "Wrong HTTP method."
-msgstr "Neplatná HTTP metóda."
-
 msgid "Starting to generate CA for remote access."
 msgstr ""
 
@@ -377,108 +426,6 @@ msgstr "Heslo do Forisa bolo úspešne uložené."
 
 msgid "Failed to delete CA for remote access."
 msgstr ""
-
-msgid "Subordinates"
-msgstr ""
-
-#, python-format
-msgid ""
-"Token was successfully added and client '%(controller_id)s' should be "
-"visible in a moment."
-msgstr ""
-
-msgid "Failed to add token."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was successfully deleted."
-msgstr "Heslo do Forisa bolo úspešne uložené."
-
-#, python-format
-msgid "Failed to delete subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
-msgstr "Heslo bolo úspešne uložené."
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
-msgstr "Heslo bolo úspešne uložené."
-
-#, python-format
-msgid "Failed to enable subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Failed to disable subordinate '%(controller_id)s'."
-msgstr "Systémové heslo sa nepodarilo uložiť"
-
-#, fuzzy, python-format
-msgid "Subordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Nastavenie siete bolo úspešne aktualizované."
-
-#, python-format
-msgid "Failed to update subordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy, python-format
-msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
-msgstr "Nastavenie siete bolo úspešne aktualizované."
-
-#, python-format
-msgid "Failed to update subsubordinate '%(controller_id)s'."
-msgstr ""
-
-#, fuzzy
-msgid "Wifi settings was sucessfully updated."
-msgstr "Nastavenie siete bolo úspešne aktualizované."
-
-msgid "Failed to update Wifi settings."
-msgstr ""
-
-msgid "Guide workflow was sucessfully set."
-msgstr "Úspešne nastavené."
-
-msgid "Failed to set guide workflow."
-msgstr "Nepodarilo sa nastaviť."
-
-msgid "Network configuration was sucessfully updated."
-msgstr "Nastavenie siete bolo úspešne aktualizované."
-
-msgid "Unable to update your network configuration."
-msgstr "Nepodarilo sa aktualizovať konfiguráciu siete."
-
-msgid "Wi-Fi reset was successful."
-msgstr "Zresetovanie nastavenia Wi-Fi prebehlo úspešne."
-
-msgid "Failed to perform Wi-Fi reset."
-msgstr "Nepodarilo sa zresetovať nastavenie Wi-Fi."
-
-msgid "Maintenance"
-msgstr "Údržba"
-
-msgid "Testing message was sent, please check your inbox."
-msgstr ""
-"Testovacia správa bola odoslaná, skontrolujte si, prosím, svoju mailovú "
-"schránku."
-
-msgid ""
-"Sending of the testing message failed, your configuration is possibly "
-"wrong."
-msgstr ""
-"Odoslanie testovacej správy sa nepodarilo – je možné, že vaše nastavenia "
-"nie sú správne."
-
-msgid ""
-"Configuration was successfully restored. Note that a reboot will be "
-"required to apply restored configuration."
-msgstr ""
-"Nastavenie bolo úspešne obnovené. Pamätajte však, že aby sa obnovené "
-"nastavenie uplatnilo, bude potrebné spraviť reštart."
-
-msgid "Failed to restore the backup from the provided file."
-msgstr "Z poskytnutého súboru sa nepodarilo obnoviť zálohu."
 
 msgid "Update was approved."
 msgstr "Aktualizácia bola schválená."
@@ -502,17 +449,11 @@ msgstr ""
 msgid "Updater is running"
 msgstr "Aktualizácia prebieha"
 
-msgid "Failed to finish the guide."
-msgstr "Nepodarilo sa dokončiť sprievodca."
+msgid "Wi-Fi reset was successful."
+msgstr "Zresetovanie nastavenia Wi-Fi prebehlo úspešne."
 
-msgid "About"
-msgstr "O zariadení"
-
-msgid "Configuration could not be saved due to an internal error."
-msgstr "Nastavenie sa nepodarilo uložiť kvôli vnútornej chybe."
-
-msgid "The password you entered was not valid."
-msgstr "Vami zadané heslo nie je platné."
+msgid "Failed to perform Wi-Fi reset."
+msgstr "Nepodarilo sa zresetovať nastavenie Wi-Fi."
 
 msgid "Backup file"
 msgstr "Súbor so zálohou"
@@ -865,15 +806,6 @@ msgstr "Čas vo formáte YYYY-MM-DD HH:MM:SS."
 msgid "Guide Finished"
 msgstr "Sprievodca dokončený"
 
-msgid ""
-"Congratulations you've successfully reached the end of this guide. Once "
-"you leave this guide you'll be granted access to the full configuration "
-"interface of this device."
-msgstr ""
-"Gratulujeme, úspešne ste dosiahli koniec tohto sprievodcu. Akonáhle tohto"
-" sprievodcu opustíte, získate prístup do kompletného rozhrania pre "
-"nastavovanie zariadenia."
-
 msgid "Network interfaces"
 msgstr "Sieťové rozhrania"
 
@@ -1051,41 +983,6 @@ msgstr ""
 #, fuzzy
 msgid "Token id is invalid."
 msgstr "Duid nie je platné."
-
-#, fuzzy
-msgid "Token file"
-msgstr "Meno odosielateľa"
-
-#, python-format
-msgid "Edit subordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subordinate here. Subordinates are directly connected to"
-" this device."
-msgstr ""
-
-#, fuzzy
-msgid "Custom Name"
-msgstr "Názov stroja"
-
-#, python-format
-msgid "Nicer name for your device '%(controller_id)s'."
-msgstr ""
-
-#, python-format
-msgid "Edit subsubordinate '%(controller_id)s'"
-msgstr ""
-
-msgid ""
-"You can edit you subsubordinate here. Subsubordinates are devices which "
-"are not directly connected to this device but they are connected with a "
-"subordinated."
-msgstr ""
-
-#, python-format
-msgid "Nicer name for your device with serial '%(controller_id)s'."
-msgstr ""
 
 msgid "Updater"
 msgstr "Updater"
@@ -1602,24 +1499,6 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgid "State"
-msgstr "stav"
-
-#, fuzzy
-msgid "Devices"
-msgstr "Zariadenie"
-
-#, fuzzy
-msgid "Channels"
-msgstr "Kanál"
-
-msgid "Currently there are no subordinates."
-msgstr ""
-
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
 "connected to diplexers is needed! Factory default setting: Cables from "
@@ -1648,6 +1527,9 @@ msgstr "Verzia Turris OS"
 
 msgid "Kernel version"
 msgstr "Verzia jadra"
+
+msgid "Expandable"
+msgstr ""
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - administračné rozhranie routera Turris"
@@ -1733,6 +1615,26 @@ msgstr "Nepodarilo sa overiť stav pripojenia."
 
 msgid "DNSSEC"
 msgstr "DNSSEC"
+
+#, fuzzy
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+"Gratulujeme, úspešne ste dosiahli koniec tohto sprievodcu. Akonáhle tohto"
+" sprievodcu opustíte, získate prístup do kompletného rozhrania pre "
+"nastavovanie zariadenia."
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
+msgstr ""
 
 msgid "Continue"
 msgstr "Pokračovať"
@@ -1934,6 +1836,11 @@ msgid ""
 "required to have a token issued by this device."
 msgstr ""
 
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
 msgid "No certification authority"
 msgstr ""
 
@@ -1999,30 +1906,6 @@ msgstr ""
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
-msgstr ""
-
-msgid ""
-"\n"
-"        On this tab you can set up other turris devices which can be "
-"controlled\n"
-"        by this device. You need to generate token on the remote tab on "
-"the device\n"
-"        you wan't to control. And insert the token here."
-msgstr ""
-
-msgid "Add subordinate device"
-msgstr ""
-
-msgid "Upload token"
-msgstr ""
-
-msgid "Subordinate devices"
-msgstr ""
-
-msgid "Wifi"
-msgstr ""
-
-msgid "Loading subordinates..."
 msgstr ""
 
 msgid "Failed to query ntp servers."
@@ -2327,10 +2210,18 @@ msgstr "Vaše zariadenie sa reštartuje za %(time_left)s sekúnd."
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Vaša sieť sa reštartuje za %(time_left)s sekúnd."
 
+#, fuzzy, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr "Vaša sieť sa reštartuje za %(time_left)s sekúnd."
+
 msgid "A reboot of your device was triggered."
 msgstr "Bol spustený reštart zariadenia."
 
 msgid "A network restart was triggered."
+msgstr "Bol spustený reštart siete."
+
+#, fuzzy
+msgid "Foris restart was triggered."
 msgstr "Bol spustený reštart siete."
 
 msgid "Trying to reconnect to your device."
@@ -3401,4 +3292,125 @@ msgstr "Návrat k staršej verzii"
 
 #~ msgid "Save changes"
 #~ msgstr "Uložiť zmeny"
+
+#~ msgid "Subordinates"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Token was successfully added and client"
+#~ " '%(controller_id)s' should be visible in"
+#~ " a moment."
+#~ msgstr ""
+
+#~ msgid "Failed to add token."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was successfully deleted."
+#~ msgstr "Heslo do Forisa bolo úspešne uložené."
+
+#~ msgid "Failed to delete subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly enabled."
+#~ msgstr "Heslo bolo úspešne uložené."
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfuly disabled."
+#~ msgstr "Heslo bolo úspešne uložené."
+
+#~ msgid "Failed to enable subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Failed to disable subordinate '%(controller_id)s'."
+#~ msgstr "Systémové heslo sa nepodarilo uložiť"
+
+#~ msgid "Subordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+#~ msgid "Failed to update subordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Subsubordinate '%(controller_id)s' was sucessfully updated."
+#~ msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+#~ msgid "Failed to update subsubordinate '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Wifi settings was sucessfully updated."
+#~ msgstr "Nastavenie siete bolo úspešne aktualizované."
+
+#~ msgid "Failed to update Wifi settings."
+#~ msgstr ""
+
+#~ msgid "Token file"
+#~ msgstr "Meno odosielateľa"
+
+#~ msgid "Edit subordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subordinate here. "
+#~ "Subordinates are directly connected to "
+#~ "this device."
+#~ msgstr ""
+
+#~ msgid "Custom Name"
+#~ msgstr "Názov stroja"
+
+#~ msgid "Nicer name for your device '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "Edit subsubordinate '%(controller_id)s'"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can edit you subsubordinate here."
+#~ " Subsubordinates are devices which are "
+#~ "not directly connected to this device"
+#~ " but they are connected with a "
+#~ "subordinated."
+#~ msgstr ""
+
+#~ msgid "Nicer name for your device with serial '%(controller_id)s'."
+#~ msgstr ""
+
+#~ msgid "ID"
+#~ msgstr ""
+
+#~ msgid "State"
+#~ msgstr "stav"
+
+#~ msgid "Devices"
+#~ msgstr "Zariadenie"
+
+#~ msgid "Channels"
+#~ msgstr "Kanál"
+
+#~ msgid "Currently there are no subordinates."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "        On this tab you can set"
+#~ " up other turris devices which can"
+#~ " be controlled\n"
+#~ "        by this device. You need "
+#~ "to generate token on the remote "
+#~ "tab on the device\n"
+#~ "        you wan't to control. And insert the token here."
+#~ msgstr ""
+
+#~ msgid "Add subordinate device"
+#~ msgstr ""
+
+#~ msgid "Upload token"
+#~ msgstr ""
+
+#~ msgid "Subordinate devices"
+#~ msgstr ""
+
+#~ msgid "Wifi"
+#~ msgstr ""
+
+#~ msgid "Loading subordinates..."
+#~ msgstr ""
 
