@@ -62,7 +62,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
     def render(self, **kwargs):
         kwargs['is_updater_enabled'] = lambda: self.updater_enabled
-        kwargs['agreed_collect'] = self.agreed_collect
+        kwargs['always_on_reasons'] = self.always_on_reasons
         kwargs['current_approval'] = self.current_approval
         kwargs['get_approval_setting_status'] = lambda: self.approval_setting_status
         kwargs['get_approval_setting_delay'] = lambda: self.approval_setting_delay

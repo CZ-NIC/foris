@@ -7,8 +7,10 @@
 {% include '_messages.html.j2' %}
 
   <p>{{ form.sections[0].description|safe }}</p>
-{% if agreed_collect %}
-  <div class="message info">{% trans %}Data collection is currently enabled. You can not disable updater without disabling the data collection first.{% endtrans %}</div>
+{% if always_on_reasons %}
+  {% for reason in always_on_reasons %}
+  <div class="message info">{{ reason|safe }}</div>
+  {% endfor %}
 {% else %}
     {% include 'includes/updater_eula.html.j2' %}
 {% endif %}
@@ -17,7 +19,7 @@
     <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
 
 {# main updater switch #}
-{% if not agreed_collect %}
+{% if not always_on_reasons %}
     <div class="row" id="updater-toggle">
       {{ form.sections[0].active_fields[0].render()|safe }}
 </div>
