@@ -108,10 +108,14 @@
 {% if is_updater_enabled() %}
   <h2>{% trans %}Package lists{% endtrans %}</h2>
   {% for field in form.sections[0].sections[1].active_fields %}
-  <div class="row">
+  <div class="row" style="border: 2px solid {% if field.field.checked %}green{% else %}gray{% endif %}; border-radius: 5px; padding-left: 1em; margin-bottom: 0.5em">
     {{ field.render()|safe }}
-    {{ field.label_tag|safe }}
+    <label for="{{ field.html_id }}" style="max-width: 85%; float: none; margin-left: 1em">
+    {{ field.field.description|safe }}
+      <div style="font-weight: normal">
     {{ field.hint }}
+      </div>
+    </label>
   </div>
   {% endfor %}
   <div id="language-install">
