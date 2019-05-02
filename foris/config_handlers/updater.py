@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import copy
+import pkg_resources
 
 from foris import fapi, validators
 from foris.form import Checkbox, Radio, RadioSingle, Number, Hidden
@@ -37,13 +38,13 @@ class UpdaterHandler(BaseConfigHandler):
 
     def __init__(self, *args, **kwargs):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
-        agreed = current_state.backend.perform(
-            "data_collect", "get", raise_exception_on_failure=False
-        )
-        self.agreed_collect = False if agreed is None else agreed["agreed"]
+        self.can_disable_updater: bool = True
+        for entry_point in pkg_resources.iter_entry_points("foris_can_disable_updater"):
+            self.can_disable_updater = can_disable_updater and entry_point.load()()
 
         self.backend_data = current_state.backend.perform(
-            "updater", "get_settings", {"lang": current_state.language})
+            "updater", "get_settings", {"lang": current_state.language}
+        )
         # store setting required for rendering
         self.current_approval = self.backend_data["approval"]
         # update can be in 3 states: True, False, None
@@ -51,7 +52,8 @@ class UpdaterHandler(BaseConfigHandler):
         self.updater_enabled = False if self.backend_data["enabled"] is False else True
         self.approval_setting_status = self.backend_data["approval_settings"]["status"]
         self.approval_setting_delay = self.backend_data["approval_settings"].get(
-            "delay", self.APPROVAL_DEFAULT_DELAY)
+            "delay", self.APPROVAL_DEFAULT_DELAY
+        )
 
     def get_form(self):
         data = copy.deepcopy(self.backend_data)
@@ -60,7 +62,7 @@ class UpdaterHandler(BaseConfigHandler):
         data["approval_status"] = data["approval_settings"]["status"]
         if "delay" in data["approval_settings"]:
             data["approval_delay"] = data["approval_settings"]["delay"]
-        for userlist in [e for e in data['user_lists'] if not e["hidden"]]:
+        for userlist in [e for e in data["user_lists"] if not e["hidden"]]:
             data["install_%s" % userlist["name"]] = userlist["enabled"]
         for lang in data["languages"]:
             data["language_%s" % lang["code"]] = lang["enabled"]
@@ -76,34 +78,45 @@ class UpdaterHandler(BaseConfigHandler):
         main_section = form.add_section(
             name="main",
             title=_(self.userfriendly_title),
-            description=_("Updater is a service that keeps all TurrisOS "
-                          "software up to date. Apart from the standard "
-                          "installation, you can optionally select bundles of "
-                          "additional software that'd be installed on the "
-                          "router. This software can be selected from the "
-                          "following list. "
-                          "Please note that only software that is part of "
-                          "TurrisOS or that has been installed from a package "
-                          "list is maintained by Updater. Software that has "
-                          "been installed manually or using opkg is not "
-                          "affected.")
+            description=_(
+                "Updater is a service that keeps all TurrisOS "
+                "software up to date. Apart from the standard "
+                "installation, you can optionally select bundles of "
+                "additional software that'd be installed on the "
+                "router. This software can be selected from the "
+                "following list. "
+                "Please note that only software that is part of "
+                "TurrisOS or that has been installed from a package "
+                "list is maintained by Updater. Software that has "
+                "been installed manually or using opkg is not "
+                "affected."
+            ),
         )
         main_section.add_field(
-            Radio, name="enabled", label=_("I agree"), default="1",
-            args=(("1", _("Use automatic updates (recommended)")),
-                  ("0", _("Turn automatic updates off"))),
+            Radio,
+            name="enabled",
+            label=_("I agree"),
+            default="1",
+            args=(
+                ("1", _("Use automatic updates (recommended)")),
+                ("0", _("Turn automatic updates off")),
+            ),
         )
 
         approval_section = main_section.add_section(name="approvals", title=_("Update approvals"))
         approval_section.add_field(
-            RadioSingle, name=UpdaterHandler.APPROVAL_NO, group="approval_status",
+            RadioSingle,
+            name=UpdaterHandler.APPROVAL_NO,
+            group="approval_status",
             label=_("Automatic installation"),
             hint=_("Updates will be installed without user's intervention."),
             default=data["approval_status"],
         )
 
         approval_section.add_field(
-            RadioSingle, name=UpdaterHandler.APPROVAL_TIMEOUT, group="approval_status",
+            RadioSingle,
+            name=UpdaterHandler.APPROVAL_TIMEOUT,
+            group="approval_status",
             label=_("Delayed updates"),
             hint=_(
                 "Updates will be installed with an adjustable delay. "
@@ -112,30 +125,35 @@ class UpdaterHandler(BaseConfigHandler):
             default=data["approval_status"],
         )
         approval_section.add_field(
-            Number, name="approval_delay", validators=[validators.InRange(1, 24 * 7)],
-            default=UpdaterHandler.APPROVAL_DEFAULT_DELAY, min=1, max=24 * 7, required=True,
-        ).requires(
-            UpdaterHandler.APPROVAL_TIMEOUT, UpdaterHandler.APPROVAL_TIMEOUT
-        ).requires(
+            Number,
+            name="approval_delay",
+            validators=[validators.InRange(1, 24 * 7)],
+            default=UpdaterHandler.APPROVAL_DEFAULT_DELAY,
+            min=1,
+            max=24 * 7,
+            required=True,
+        ).requires(UpdaterHandler.APPROVAL_TIMEOUT, UpdaterHandler.APPROVAL_TIMEOUT).requires(
             UpdaterHandler.APPROVAL_NO, UpdaterHandler.APPROVAL_TIMEOUT
         ).requires(
             UpdaterHandler.APPROVAL_NEEDED, UpdaterHandler.APPROVAL_TIMEOUT
         )
 
         approval_section.add_field(
-            RadioSingle, name=UpdaterHandler.APPROVAL_NEEDED, group="approval_status",
+            RadioSingle,
+            name=UpdaterHandler.APPROVAL_NEEDED,
+            group="approval_status",
             label=_("Update approval needed"),
             hint=_("You have to approve the updates, otherwise they won't be installed."),
             default=data["approval_status"],
         )
 
-        package_lists_main = main_section.add_section(
-            name="select_package_lists", title=None,
-        )
-        for userlist in [e for e in data['user_lists'] if not e["hidden"]]:
+        package_lists_main = main_section.add_section(name="select_package_lists", title=None)
+        for userlist in [e for e in data["user_lists"] if not e["hidden"]]:
             package_lists_main.add_field(
-                Checkbox, name="install_%s" % userlist["name"], label=userlist["title"],
-                hint=userlist["msg"]
+                Checkbox,
+                name="install_%s" % userlist["name"],
+                label=userlist["title"],
+                hint=userlist["msg"],
             ).requires("enabled", "1")
 
         language_lists_main = main_section.add_section(
@@ -143,22 +161,22 @@ class UpdaterHandler(BaseConfigHandler):
             title=_(
                 "If you want to use other language than English you can select it from the "
                 "following list:"
-            )
+            ),
         )
         for lang in data["languages"]:
             language_lists_main.add_field(
-                Checkbox, name="language_%s" % lang["code"], label=lang["code"].upper())
+                Checkbox, name="language_%s" % lang["code"], label=lang["code"].upper()
+            )
 
         if self.backend_data["approval"]["present"]:
             # field for hidden approval
             current_approval_section = main_section.add_section(name="current_approval", title="")
             current_approval_section.add_field(
-                Hidden, name="approval-id", default=self.backend_data["approval"]["hash"])
+                Hidden, name="approval-id", default=self.backend_data["approval"]["hash"]
+            )
 
         # this will be filled according to action
-        main_section.add_field(
-            Hidden, name="target"
-        )
+        main_section.add_field(Hidden, name="target")
 
         def form_cb(data):
             data["enabled"] = True if data["enabled"] == "1" else False
@@ -171,35 +189,37 @@ class UpdaterHandler(BaseConfigHandler):
                 elif data[self.APPROVAL_NO] == self.APPROVAL_NO:
                     data["approval_settings"] = {"status": self.APPROVAL_NO}
 
-                if self.agreed_collect:
+                if self.can_disable_updater:
                     data["enabled"] = True
 
                 languages = [k[9:] for k, v in data.items() if v and k.startswith("language_")]
                 user_lists = [k[8:] for k, v in data.items() if v and k.startswith("install_")]
                 # merge with enabled hidden user lists
                 user_lists += [
-                    e["name"] for e in self.backend_data["user_lists"]
+                    e["name"]
+                    for e in self.backend_data["user_lists"]
                     if e["hidden"] and e["enabled"]
                 ]
 
                 res = current_state.backend.perform(
-                    "updater", "update_settings", {
+                    "updater",
+                    "update_settings",
+                    {
                         "enabled": True,
                         "approval_settings": data["approval_settings"],
                         "user_lists": user_lists,
                         "languages": languages,
-                    }
+                    },
                 )
             elif data["enabled"] and data["target"] in ["grant", "deny"]:
                 res = current_state.backend.perform(
-                    "updater", "resolve_approval",
-                    {"hash": data["approval-id"], "solution": data["target"]}
+                    "updater",
+                    "resolve_approval",
+                    {"hash": data["approval-id"], "solution": data["target"]},
                 )
             else:
                 res = current_state.backend.perform(
-                    "updater", "update_settings", {
-                        "enabled": False,
-                    }
+                    "updater", "update_settings", {"enabled": False}
                 )
 
             res["target"] = data["target"]
