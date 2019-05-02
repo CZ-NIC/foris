@@ -12,7 +12,7 @@
   </div>
     {% else %}
   <div class="message warning" id="no-interface-up-warning">
-    {% trans %}WAN port has no link, your internet connection probably won't work.{% endtrans %}
+    {% trans %}WAN port has no link or it hasn't been configured yet. Your internet connection probably won't work.{% endtrans %}
   </div>
     {% endif %}
   {% elif interface_up_count < 1 %}
