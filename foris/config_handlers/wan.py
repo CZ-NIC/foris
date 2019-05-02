@@ -42,9 +42,11 @@ class WanHandler(BaseConfigHandler):
         res = {}
 
         # WAN
-        res["proto"] = data["wan_settings"]["wan_type"]
+        # Convert none (initial setup) to dhcp (default)
+        res["proto"] = "dhcp" if data["wan_settings"]["wan_type"] == "none" \
+            else data["wan_settings"]["wan_type"]
         if res["proto"] == "dhcp":
-            res["hostname"] = data["wan_settings"]["wan_dhcp"].get("hostname", "")
+            res["hostname"] = data["wan_settings"].get("wan_dhcp", {}).get("hostname", "")
         elif res["proto"] == "static":
             res["ipaddr"] = data["wan_settings"]["wan_static"]["ip"]
             res["netmask"] = data["wan_settings"]["wan_static"]["netmask"]
