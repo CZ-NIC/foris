@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2018-11-02 12:00+0000\n"
 "Last-Translator: Zoli <boritek@gmail.com>\n"
 "Language: hu\n"
@@ -263,6 +263,10 @@ msgstr "Nem szabályos ÓÓ:PP időformátum."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Nem szabályos (ÉÉÉÉ-HH-NN ÓÓ:PP:MM) időformátum."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Értéke %s és %s között legyen."
+
 msgid "This is not a valid domain name."
 msgstr "Nem érvényes tartománynév."
 
@@ -272,8 +276,8 @@ msgstr "Érvénytelen MAC-cím."
 msgid "Duid is not valid."
 msgstr "Érvénytelen DUID-cím."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Érvénytelen tartomány %(low)s-%(high)s."
 
 #, python-format
@@ -567,8 +571,8 @@ msgid ""
 msgstr ""
 "Ez a rész tartalmazza a helyi hálózat (LAN) beállításait. A felkínált "
 "alapértelmezések alkalmasak a legtöbb hálózat esetében. "
-"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó "
-"IP-címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
+"<br><strong>Megjegyzés:</strong> ha megváltoztatjuk az útválasztó IP-"
+"címét, minden számítógépnek a LAN-on, talán köztük annak is amelyiket "
 "most használ, szüksége lesz egy <strong>új IP-címre</strong>, amely "
 "<strong>nem</strong> <strong>azonnal</strong> történik meg. Ajánlott az "
 "összes LAN kábel ki- és bedugása a módosítások elfogadása után, hogy a "
@@ -1844,13 +1848,6 @@ msgid "Update time"
 msgstr "Frissítés ideje"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"Az adatgyűjtés jelenleg engedélyezett. Nem lehet letiltani a "
-"frissítéskezelőt úgy, hogy először az adatgyűjtés ne legyen letiltva."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1878,12 +1875,12 @@ msgstr ""
 "visszautasítani a frissítést, és a következő csomag telepítésénél újra "
 "fel fogja ajánlani."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
-msgstr "%(input)s óra után"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -1921,6 +1918,10 @@ msgstr ""
 msgid "Package lists"
 msgstr "Csomaglisták"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Késleltetett frissítések"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
@@ -1928,7 +1929,10 @@ msgstr ""
 "A WAN konfiguráció valószínűleg nem megfelelő, vagy a WAN interfész még "
 "nem lett megfelelően inicializálva."
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "WAN port kapcsolattal nem rendelkezik, az internet-kapcsolat valószínűleg"
 " nem fog működni."
@@ -2308,8 +2312,9 @@ msgstr "Visszalépés"
 #~ " Also defines the range of assigned"
 #~ " IP addresses."
 #~ msgstr ""
-#~ "Útválasztó IP-címe a belső hálózaton. "
-#~ "Meghatározza a kiosztott IP-címtartományt is."
+#~ "Útválasztó IP-címe a belső hálózaton."
+#~ " Meghatározza a kiosztott IP-címtartományt"
+#~ " is."
 
 #~ msgid "Use Modem Turris"
 #~ msgstr "Turris Modem használata"
@@ -3033,8 +3038,8 @@ msgstr "Visszalépés"
 #~ msgstr ""
 #~ "Ha ez a beállítás engedélyezve van, "
 #~ "a felhasználóneveket és jelszavakat gyűjtik"
-#~ " és az ügyfél IP-címe mellett ezeket"
-#~ " is a kiszolgálóhoz küldik."
+#~ " és az ügyfél IP-címe mellett "
+#~ "ezeket is a kiszolgálóhoz küldik."
 
 #~ msgid "Enable data collection"
 #~ msgstr "Adatgyűjtés engedélyezése"
@@ -3317,4 +3322,20 @@ msgstr "Visszalépés"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "Az adatgyűjtés jelenleg engedélyezett. Nem "
+#~ "lehet letiltani a frissítéskezelőt úgy, "
+#~ "hogy először az adatgyűjtés ne legyen"
+#~ " letiltva."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr "%(input)s óra után"
 

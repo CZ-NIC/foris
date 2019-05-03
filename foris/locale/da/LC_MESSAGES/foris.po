@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2018-10-16 05:25+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language: da\n"
@@ -221,6 +221,10 @@ msgstr "Dette er ikke gyldigt timeformat i TT:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Dette er ikke gyldigt timeformat i TT:MM."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Denne værdi skal være mellem %s og %s."
+
 #, fuzzy
 msgid "This is not a valid domain name."
 msgstr "Dette er ikke et gyldigt domænenavn."
@@ -232,8 +236,8 @@ msgstr "MAC adressen er ikke gyldig."
 msgid "Duid is not valid."
 msgstr "MAC adressen er ikke gyldig."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Ikke i et gyldigt interval %(low)s - %(high)s."
 
 #, python-format
@@ -1817,13 +1821,6 @@ msgid "Update time"
 msgstr "Opdater"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"Dataindsamling er aktiveret. Du kan ikke deaktivere opdateringsfunktionen"
-" uden at deaktivere dataindsamling først."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1854,12 +1851,12 @@ msgstr ""
 "Det er ikke muligt at nægte opdateringen for evigt, den vil blive "
 "foreslået til dig sammen med den næste opdatering igen."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
-msgstr "efter %(input)s timer"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -1900,12 +1897,19 @@ msgstr ""
 msgid "Package lists"
 msgstr "Pakkelister"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Forsinkede opdateringer"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
 msgstr ""
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "WAN porten har ikke noget link, din internetforbindelse vil formentlig "
 "ikke virke."
@@ -3361,4 +3365,19 @@ msgstr ""
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "Dataindsamling er aktiveret. Du kan ikke"
+#~ " deaktivere opdateringsfunktionen uden at "
+#~ "deaktivere dataindsamling først."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr "efter %(input)s timer"
 

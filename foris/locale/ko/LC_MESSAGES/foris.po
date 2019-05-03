@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2018-04-04 09:21+0000\n"
 "Last-Translator: Jaehoon You <teslamint@gmail.com>\n"
 "Language: ko\n"
@@ -217,6 +217,10 @@ msgstr "올바른 HH:MM 시간 형식이 아닙니다."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "올바른 시간 형식(YYYY-MM-DD HH:MM:SS)이 아닙니다."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "%(low)s - %(high)s 사이에 있지 않습니다."
+
 msgid "This is not a valid domain name."
 msgstr "올바르지 않은 도메인 이름입니다."
 
@@ -227,8 +231,8 @@ msgstr "올바르지 않은 MAC 주소입니다."
 msgid "Duid is not valid."
 msgstr "올바르지 않은 MAC 주소입니다."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "%(low)s - %(high)s 사이에 있지 않습니다."
 
 #, python-format
@@ -1643,11 +1647,6 @@ msgid "Update time"
 msgstr ""
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr "데이터 수집이 활성화되어 있습니다. 데이터 수집을 끄지 않으면 업데이트를 비활성화할 수 없습니다."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1670,12 +1669,12 @@ msgstr ""
 " 돌아갈 수 있도록 준비하고 나서 업데이트를 설치하거나 의심가는 업데이트는 일시적으로 거절할 수 있습니다. 업데이트를 영원히 거부할"
 " 수는 없으며, 다음 패키지 설치 때 같이 제안받게 됩니다."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
-msgstr "%(input)s 시간 후"
+msgstr ""
 
 #, python-format
 msgid ""
@@ -1711,12 +1710,18 @@ msgstr ""
 msgid "Package lists"
 msgstr ""
 
+msgid "Save and update"
+msgstr ""
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
 msgstr ""
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr "WAN 포트가 연결되지 않아, 인터넷 연결이 동작하지 않을 수 있습니다."
 
 msgid "We were unable to detect any wireless cards in your router."
@@ -2955,4 +2960,16 @@ msgstr "다운그레이드"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr "데이터 수집이 활성화되어 있습니다. 데이터 수집을 끄지 않으면 업데이트를 비활성화할 수 없습니다."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr "%(input)s 시간 후"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2018-10-21 11:28+0000\n"
 "Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
 "Language: nl\n"
@@ -218,6 +218,10 @@ msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Deze waarde moet tussen %s en %s liggen."
+
 #, fuzzy
 msgid "This is not a valid domain name."
 msgstr "Ongeldig IPv6 netmask adres."
@@ -229,8 +233,8 @@ msgstr "Ongeldig MAC-adres."
 msgid "Duid is not valid."
 msgstr "Ongeldig MAC-adres."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Buiten het toegestane bereik %(low)s - %(high)s."
 
 #, python-format
@@ -1715,11 +1719,6 @@ msgid "Update time"
 msgstr "Update"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1739,7 +1738,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
 msgstr ""
 
@@ -1778,12 +1777,19 @@ msgstr ""
 msgid "Package lists"
 msgstr "Pakketlijsten"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Vertraging (dagen)"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
 msgstr ""
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "De WAN-poort heeft geen verbinding, de internetverbinding zal "
 "waarschijnlijk niet werken."
@@ -3070,5 +3076,17 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Loading subordinates..."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
 #~ msgstr ""
 

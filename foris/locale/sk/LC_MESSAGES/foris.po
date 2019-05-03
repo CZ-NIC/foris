@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2019-01-22 08:22+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
 "Language: sk\n"
@@ -292,6 +292,10 @@ msgstr "Toto nie je platný čas vo formáte HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Toto nie je platný čas (vo formáte YYYY-MM-DD HH:MM:SS)."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Táto položka musí byť v rozsahu od %s do %s."
+
 msgid "This is not a valid domain name."
 msgstr "Toto nie je platné doménové meno."
 
@@ -301,8 +305,8 @@ msgstr "Nie je platná MAC adresa."
 msgid "Duid is not valid."
 msgstr "Duid nie je platné."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Musí byť z rozsahu %(low)s - %(high)s."
 
 #, python-format
@@ -1918,13 +1922,6 @@ msgid "Update time"
 msgstr "Aktualizovať čas"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"Aktuálne máte povolený zber dát. Pokiaľ chcete Updater vypnúť, zakážte "
-"najskôr zber dát."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1957,12 +1954,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
 msgstr ""
-"\n"
-"          za %(input)s hodín\n"
-"          "
 
 #, python-format
 msgid ""
@@ -2006,6 +2000,10 @@ msgstr ""
 msgid "Package lists"
 msgstr "Zoznamy balíčkov"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Aktualizácie s oneskorením"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
@@ -2013,7 +2011,10 @@ msgstr ""
 "Vaše nastavenie WAN pravdepodobne nie je správne alebo WAN rozhranie ešte"
 " nebolo správne zinicializované."
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "Do konektoru WAN nie je zapojený kábel, vaše pripojenie do internetu "
 "zrejme nebude fungovať."
@@ -3413,4 +3414,22 @@ msgstr "Návrat k staršej verzii"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "Aktuálne máte povolený zber dát. Pokiaľ"
+#~ " chcete Updater vypnúť, zakážte najskôr "
+#~ "zber dát."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr ""
+#~ "\n"
+#~ "          za %(input)s hodín\n"
+#~ "          "
 

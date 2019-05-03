@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2019-01-22 08:21+0000\n"
 "Last-Translator: Fln <weblate.org@fln.lt>\n"
 "Language: lt\n"
@@ -285,6 +285,10 @@ msgstr "Laikas neatitinka HH:MM šablono."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Netinkamas laikas (YYYY-MM-DD HH:MM:SS)."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Reikšmė turi būti tarp %s ir %s."
+
 msgid "This is not a valid domain name."
 msgstr "Netinkamas domeno vardas."
 
@@ -294,8 +298,8 @@ msgstr "Netinkamas MAC adresas."
 msgid "Duid is not valid."
 msgstr "Netinkama Duid reikšmė."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Nėra iš leidžiamo intervalo %(low)s - %(high)s."
 
 #, python-format
@@ -1890,13 +1894,6 @@ msgid "Update time"
 msgstr "Atnaujinimo laikas"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"Šiuo metu įjungtas duomenų rinkimas. Negalite išjungti automatinių "
-"atnaujinimų, kol nebus išjungtas duomenų rinkimas."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1927,12 +1924,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
 msgstr ""
-"\n"
-"          po %(input)s valandų\n"
-"          "
 
 #, python-format
 msgid ""
@@ -1976,6 +1970,10 @@ msgstr ""
 msgid "Package lists"
 msgstr "Paketų sąrašai"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Uždelsti atnaujinimai"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
@@ -1983,7 +1981,10 @@ msgstr ""
 "Jūsų WAN nustatymai netinkami arba WAN interfeisas dar nėra paruoštas "
 "darbui."
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr "WAN lizde nėra signalo, interneto ryšys tikriausiai neveiks."
 
 msgid "We were unable to detect any wireless cards in your router."
@@ -3338,4 +3339,22 @@ msgstr "Atstatyti senesnę"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "Šiuo metu įjungtas duomenų rinkimas. "
+#~ "Negalite išjungti automatinių atnaujinimų, kol"
+#~ " nebus išjungtas duomenų rinkimas."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr ""
+#~ "\n"
+#~ "          po %(input)s valandų\n"
+#~ "          "
 

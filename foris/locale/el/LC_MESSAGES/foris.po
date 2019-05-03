@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2017-06-17 17:39+0000\n"
 "Last-Translator: lamprakis <lamprakisa@yahoo.gr>\n"
 "Language: el\n"
@@ -220,6 +220,10 @@ msgstr "Δεν είναι έγκυρος χρόνος με μορφή ΗΗ:ΜΜ.
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Δεν είναι έγκυρος χρόνος με μορφή ΗΗ:ΜΜ."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Εκτός έγκυρου εύρους %(low)s-%(high)s."
+
 #, fuzzy
 msgid "This is not a valid domain name."
 msgstr "Αυτή δεν είναι έγκυρη διεύθυνση IPv4 ή IPv6."
@@ -231,8 +235,8 @@ msgstr "Η διεύθυνση MAC δεν είναι έγκυρη."
 msgid "Duid is not valid."
 msgstr "Η διεύθυνση MAC δεν είναι έγκυρη."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Εκτός έγκυρου εύρους %(low)s-%(high)s."
 
 #, python-format
@@ -1716,11 +1720,6 @@ msgid "Update time"
 msgstr "Ενημέρωση"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1740,7 +1739,7 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
 msgstr ""
 
@@ -1779,12 +1778,19 @@ msgstr ""
 msgid "Package lists"
 msgstr "Λίστες πακέτων"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Αναβολή (ημέρες)"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
 msgstr ""
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "Η θύρα WAN δεν έχει σύνδεση, η σύνδεσή σας στο διαδίκτυο πιθανότατα δεν "
 "θα λειτουργήσει."
@@ -3029,5 +3035,17 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Loading subordinates..."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
 #~ msgstr ""
 

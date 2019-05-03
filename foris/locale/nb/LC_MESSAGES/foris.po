@@ -5,19 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Foris\n"
+"Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2019-05-03 08:54+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
-"foris/nb_NO/>\n"
 "Language: nb\n"
+"Language-Team: Norwegian Bokmål "
+"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -298,6 +297,10 @@ msgstr "Dette er ikke gyldig tid i HH:MM format."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Dette er ikke en gyldig MAC-adresse."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Verdien må være mellom %s og %s."
+
 msgid "This is not a valid domain name."
 msgstr "Dette er ikke et gyldig domenenavn."
 
@@ -308,8 +311,8 @@ msgstr "MAC-adressen er ikke gyldig."
 msgid "Duid is not valid."
 msgstr "MAC-adressen er ikke gyldig."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Ikke i gyldig rekkevidde %(low)s - %(high)s."
 
 #, python-format
@@ -2026,14 +2029,6 @@ msgstr "NTP-tjenere:"
 msgid "Update time"
 msgstr "Oppdater tid"
 
-#, fuzzy
-msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"Datainnsamling er skrudd av for øyeblikket. Du kan ikke skru av oppdatereren "
-"uten å skru av datainnsamling først."
-
 msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
@@ -2062,12 +2057,12 @@ msgstr ""
 "ikke mulig å avslå oppdateringen for godt, og den vil bli tilbudt deg "
 "igjen sammen med neste pakkeinstallasjon."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
-msgstr "etter %(input)s timer"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -2107,6 +2102,10 @@ msgstr ""
 msgid "Package lists"
 msgstr "Pakkelister"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Forsinkede oppgraderinger"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
@@ -2115,7 +2114,9 @@ msgstr ""
 "grensesnitt blitt satt i gang ordentlig enda."
 
 #, fuzzy
-msgid "WAN port has no link, your internet connection probably won't work."
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "WAN-porten har ingen lenke, internettilknytningen din vil formodentlig "
 "ikke virke."
@@ -3410,3 +3411,20 @@ msgstr "Nedgrader"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr "Laster inn underlegenheter…"
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "Datainnsamling er skrudd av for "
+#~ "øyeblikket. Du kan ikke skru av "
+#~ "oppdatereren uten å skru av "
+#~ "datainnsamling først."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr "etter %(input)s timer"
+

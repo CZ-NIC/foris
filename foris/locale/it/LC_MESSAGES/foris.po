@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 12:56+0200\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
 "PO-Revision-Date: 2018-04-23 10:06+0000\n"
 "Last-Translator: Roberto Zilli <zetaerre@gmail.com>\n"
 "Language: it\n"
@@ -220,6 +220,10 @@ msgstr "Quest'orario non è valido per il formato HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Quest'orario non è valido per il formato (YYYY-MM-DD HH:MM:SS)."
 
+#, fuzzy, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr "Questo valore dovrebbe essere compreso tra %s e %s."
+
 msgid "This is not a valid domain name."
 msgstr "Questo non è un nome di dominio valido."
 
@@ -229,8 +233,8 @@ msgstr "MAC address non valido."
 msgid "Duid is not valid."
 msgstr "Duid non valido."
 
-#, python-format
-msgid "Not in a valid range %(low)s - %(high)s."
+#, fuzzy, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
 msgstr "Non in un intervallo valido %(low)s - %(high)s."
 
 #, python-format
@@ -1821,13 +1825,6 @@ msgid "Update time"
 msgstr "Aggiornare l'ora"
 
 msgid ""
-"Data collection is currently enabled. You can not disable updater without"
-" disabling the data collection first."
-msgstr ""
-"La raccolta dei dati è attualmente abilitata. Non è possibile disattivare"
-" l'aggiornamento senza disattivare prima la raccolta dati."
-
-msgid ""
 "Update approvals can be useful when you want to make sure that updates "
 "won't harm your specific configuration. You can refuse the questionable "
 "update temporarily and install it when you are ready. It isn't possible "
@@ -1857,12 +1854,12 @@ msgstr ""
 "sempre l'aggiornamento, esso sarà nuovamente insieme all'installazione "
 "successiva del pacchetto."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
-"          after %(input)s hours\n"
+"          after %(input)s days\n"
 "          "
-msgstr "dopo %(input)s ore"
+msgstr ""
 
 #, fuzzy, python-format
 msgid ""
@@ -1902,6 +1899,10 @@ msgstr ""
 msgid "Package lists"
 msgstr "Lista dei pacchetti"
 
+#, fuzzy
+msgid "Save and update"
+msgstr "Aggiornamenti ritardati"
+
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
 "hasn't been properly initialized yet."
@@ -1909,7 +1910,10 @@ msgstr ""
 "Probabilmente la configurazione WAN non è corretta o l'interfaccia WAN "
 "non è stata ancora correttamente inizializzata."
 
-msgid "WAN port has no link, your internet connection probably won't work."
+#, fuzzy
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
 msgstr ""
 "La porta WAN non ha alcun collegamento, la connessione a Internet "
 "probabilmente non funzionerà."
@@ -3379,4 +3383,20 @@ msgstr "Ripristino"
 
 #~ msgid "Loading subordinates..."
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Data collection is currently enabled. "
+#~ "You can not disable updater without "
+#~ "disabling the data collection first."
+#~ msgstr ""
+#~ "La raccolta dei dati è attualmente "
+#~ "abilitata. Non è possibile disattivare "
+#~ "l'aggiornamento senza disattivare prima la "
+#~ "raccolta dati."
+
+#~ msgid ""
+#~ "\n"
+#~ "          after %(input)s hours\n"
+#~ "          "
+#~ msgstr "dopo %(input)s ore"
 
