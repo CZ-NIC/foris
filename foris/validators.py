@@ -59,7 +59,7 @@ class RegExp(Validator):
         self.reg_exp = re.compile(reg_exp)
         super(RegExp, self).__init__(msg)
         self.js_validator = ("pattern", "%s" % convert_to_anchored_pattern(reg_exp))
-        self.extra_data['parsley-error-message'] = msg
+        self.extra_data["parsley-error-message"] = msg
 
     def valid(self, value):
         return bool(self.reg_exp.match(value or ""))
@@ -106,7 +106,7 @@ class IPv4Netmask(Validator):
         was_zero = False
         for byte in addr:
             for i in range(8):
-                if not (byte & 1 << (7-i)):
+                if not (byte & 1 << (7 - i)):
                     was_zero = True
                 elif was_zero:  # 1 and we have seen zero already
                     return False
@@ -204,7 +204,7 @@ class Time(RegExp):
         pattern = r"^([01][0-9]|2[0-3]):([0-5][0-9])$"
         super(Time, self).__init__(_("This is not valid time in HH:MM format."), pattern)
         self.js_validator = ("pattern", pattern)
-        self.extra_data['parsley-error-message'] = self.msg
+        self.extra_data["parsley-error-message"] = self.msg
 
 
 class Datetime(Validator):
@@ -221,12 +221,32 @@ class Datetime(Validator):
             return False
 
 
+class FloatRange(Validator):
+    """
+    Float range validator
+    """
+
+    js_validator = "floatrange"
+
+    def __init__(self, low, high):
+        self.error_msg = _(
+            "This value should be between %(low)s and %(high)s."
+        ) % dict(low=low, high=high)
+        self._low = low
+        self._high = high
+        super(FloatRange, self).__init__(self.error_msg)
+        self.js_validator_params = "[%s,%s]" % (low, high)
+
+    def valid(self, value):
+        return float(self._low) <= float(value) <= float(self._high)
+
+
 class Domain(Validator):
     js_validator = ("extratype", "domain")
 
     def __init__(self):
         super(Domain, self).__init__(_("This is not a valid domain name."))
-        self.extra_data['parsley-validation-maxlength'] = '255'
+        self.extra_data["parsley-validation-maxlength"] = "255"
         self.reg_exp = re.compile(r"^([a-zA-Z0-9-]{1,63}\.?)*$")
 
     def valid(self, value):
@@ -238,7 +258,7 @@ class MacAddress(Validator):
 
     def __init__(self):
         super(MacAddress, self).__init__(_("MAC address is not valid."))
-        self.extra_data['parsley-validation-minlength'] = '17'
+        self.extra_data["parsley-validation-minlength"] = "17"
         self.reg_exp = re.compile(r"^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$")
 
     def valid(self, value):
@@ -264,9 +284,10 @@ class InRange(Validator):
     def __init__(self, low, high):
         self._low = low
         self._high = high
-        super(InRange, self).__init__(_("Not in a valid range %(low)s - %(high)s.")
-                                      % dict(low=low, high=high))
-        self.js_validator_params = "[%s,%s]" % (low, high)
+        super(InRange, self).__init__(
+            _("Not in a valid range %(low).1f - %(high).1f.") % dict(low=low, high=high)
+        )
+        self.js_validator_params = "[%.1f,%.1f]" % (low, high)
 
     def valid(self, value):
         try:
@@ -282,8 +303,9 @@ class LenRange(Validator):
     def __init__(self, low, high):
         self._low = low
         self._high = high
-        super(LenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.")
-                                       % dict(low=low, high=high))
+        super(LenRange, self).__init__(
+            _("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high)
+        )
         self.js_validator_params = "[%s,%s]" % (low, high)
 
     def valid(self, value):
@@ -294,13 +316,15 @@ class ByteLenRange(Validator):
     """
     Length range validator that takes each byte of string as a single character.
     """
+
     js_validator = "bytelength"
 
     def __init__(self, low, high):
         self._low = low
         self._high = high
-        super(ByteLenRange, self).__init__(_("Length must be from %(low)s to %(high)s characters.")
-                                           % dict(low=low, high=high))
+        super(ByteLenRange, self).__init__(
+            _("Length must be from %(low)s to %(high)s characters.") % dict(low=low, high=high)
+        )
         self.js_validator_params = "[%s,%s]" % (low, high)
 
     def valid(self, value):

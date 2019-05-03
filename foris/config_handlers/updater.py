@@ -22,7 +22,7 @@ import pkg_resources
 import typing
 
 from foris import fapi, validators
-from foris.form import Checkbox, Radio, RadioSingle, Number, Hidden
+from foris.form import Checkbox, Radio, RadioSingle, Number, Hidden, Textbox
 from foris.state import current_state
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -39,7 +39,7 @@ class UpdaterHandler(BaseConfigHandler):
     APPROVAL_TIMEOUT = "delayed"
     APPROVAL_NEEDED = "on"
     APPROVAL_DEFAULT = APPROVAL_NO
-    APPROVAL_DEFAULT_DELAY = 24
+    APPROVAL_DEFAULT_DELAY = 1.0
 
     def __init__(self, *args, **kwargs):
         super(UpdaterHandler, self).__init__(*args, **kwargs)
@@ -71,7 +71,7 @@ class UpdaterHandler(BaseConfigHandler):
         data["enabled"] = "0" if data["enabled"] is False else "1"
         data["approval_status"] = data["approval_settings"]["status"]
         if "delay" in data["approval_settings"]:
-            data["approval_delay"] = data["approval_settings"]["delay"]
+            data["approval_delay"] = "%.1f" % (data["approval_settings"]["delay"] / 24.0)
         for userlist in [e for e in data["user_lists"] if not e["hidden"]]:
             data["install_%s" % userlist["name"]] = userlist["enabled"]
         for lang in data["languages"]:
@@ -135,12 +135,10 @@ class UpdaterHandler(BaseConfigHandler):
             default=data["approval_status"],
         )
         approval_section.add_field(
-            Number,
+            Textbox,
             name="approval_delay",
-            validators=[validators.InRange(1, 24 * 7)],
+            validators=[validators.FloatRange(0.1, 31.0)],
             default=UpdaterHandler.APPROVAL_DEFAULT_DELAY,
-            min=1,
-            max=24 * 7,
             required=True,
         ).requires(UpdaterHandler.APPROVAL_TIMEOUT, UpdaterHandler.APPROVAL_TIMEOUT).requires(
             UpdaterHandler.APPROVAL_NO, UpdaterHandler.APPROVAL_TIMEOUT
@@ -195,7 +193,7 @@ class UpdaterHandler(BaseConfigHandler):
                     data["approval_settings"] = {"status": self.APPROVAL_NEEDED}
                 elif data[self.APPROVAL_TIMEOUT] == self.APPROVAL_TIMEOUT:
                     data["approval_settings"] = {"status": self.APPROVAL_TIMEOUT}
-                    data["approval_settings"]["delay"] = int(data["approval_delay"])
+                    data["approval_settings"]["delay"] = int(float(data["approval_delay"]) * 24)
                 elif data[self.APPROVAL_NO] == self.APPROVAL_NO:
                     data["approval_settings"] = {"status": self.APPROVAL_NO}
 

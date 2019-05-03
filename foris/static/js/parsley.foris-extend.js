@@ -3,6 +3,12 @@ window.ParsleyValidator
         var byteLength = encodeURI(value).replace(/%../g, "?").length;
         return byteLength >= arrayRange[0] && byteLength <= arrayRange[1];
       }, 32)
+    .addValidator('floatrange', function ( value, range ) {
+        if (isNaN(value)) {
+            return false;
+        }
+        return parseFloat(range[0]) <=  parseFloat(value) && parseFloat(value) <= parseFloat(range[1]);
+      }, 32)
     .addValidator('extratype', function( val, type ) {
         var regExp;
         var isIPv4 = function(val) {
