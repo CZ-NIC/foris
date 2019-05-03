@@ -50,19 +50,25 @@ class GuestHandler(BaseConfigHandler):
             # Update from post
             data.update(self.data)
 
-        guest_form = fapi.ForisForm("guest", data, validators=[
-            validators.DhcpRangeValidator(
-                'guest_netmask', 'guest_dhcp_start', 'guest_dhcp_limit',
-                gettext(
-                    "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
-                    "does not fit into <strong>Guest network netmask</strong>!"
-                ),
-                [
-                    lambda data: not data['guest_enabled'],
-                    lambda data: not data['guest_dhcp_enabled'],
-                ]
-            )
-        ])
+        guest_form = fapi.ForisForm(
+            "guest",
+            data,
+            validators=[
+                validators.DhcpRangeValidator(
+                    "guest_netmask",
+                    "guest_dhcp_start",
+                    "guest_dhcp_limit",
+                    gettext(
+                        "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
+                        "does not fit into <strong>Guest network netmask</strong>!"
+                    ),
+                    [
+                        lambda data: not data["guest_enabled"],
+                        lambda data: not data["guest_dhcp_enabled"],
+                    ],
+                )
+            ],
+        )
         guest_network_section = guest_form.add_section(
             name="guest_network",
             title=_(self.userfriendly_title),
@@ -71,48 +77,61 @@ class GuestHandler(BaseConfigHandler):
                 "from your ordinary LAN. Devices connected to this network are allowed "
                 "to access the internet, but are not allowed to access the configuration "
                 "interface of the this device nor the devices in LAN."
-            ) % dict(url=reverse("config_page", page_name="wifi")),
+            )
+            % dict(url=reverse("config_page", page_name="wifi")),
         )
         guest_network_section.add_field(
-            Checkbox, name="guest_enabled",
-            label=_("Enable guest network"), default=False,
+            Checkbox, name="guest_enabled", label=_("Enable guest network"), default=False
         )
         guest_network_section.add_field(
-            Textbox, name="guest_ipaddr", label=_("Router IP in guest network"),
+            Textbox,
+            name="guest_ipaddr",
+            label=_("Router IP in guest network"),
             default=DEFAULT_GUEST_IP,
             validators=validators.IPv4(),
             hint=_(
                 "Router's IP address in the guest network. It is necessary that "
                 "the guest network IPs are different from other networks "
                 "(LAN, WAN, VPN, etc.)."
-            )
+            ),
         ).requires("guest_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_netmask", label=_("Guest network netmask"),
+            Textbox,
+            name="guest_netmask",
+            label=_("Guest network netmask"),
             default=DEFAULT_GUEST_MASK,
             validators=validators.IPv4Netmask(),
-            hint=_("Network mask of the guest network.")
+            hint=_("Network mask of the guest network."),
         ).requires("guest_enabled", True)
 
         guest_network_section.add_field(
-            Checkbox, name="guest_dhcp_enabled", label=_("Enable DHCP"),
-            preproc=lambda val: bool(int(val)), default=True,
-            hint=_("Enable this option to automatically assign IP addresses to "
-                   "the devices connected to the router.")
+            Checkbox,
+            name="guest_dhcp_enabled",
+            label=_("Enable DHCP"),
+            preproc=lambda val: bool(int(val)),
+            default=True,
+            hint=_(
+                "Enable this option to automatically assign IP addresses to "
+                "the devices connected to the router."
+            ),
         ).requires("guest_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_dhcp_start", label=_("DHCP start"),
+            Textbox, name="guest_dhcp_start", label=_("DHCP start")
         ).requires("guest_dhcp_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_dhcp_limit", label=_("DHCP max leases"),
+            Textbox, name="guest_dhcp_limit", label=_("DHCP max leases")
         ).requires("guest_dhcp_enabled", True)
         guest_network_section.add_field(
-            Textbox, name="guest_dhcp_leasetime", label=_("Lease time (hours)"),
-            validators=[validators.InRange(1, 7 * 24)]
+            Textbox,
+            name="guest_dhcp_leasetime",
+            label=_("Lease time (hours)"),
+            validators=[validators.InRange(1, 7 * 24)],
         ).requires("guest_dhcp_enabled", True)
 
         guest_network_section.add_field(
-            Checkbox, name="guest_qos_enabled", label=_("Guest Lan QoS"),
+            Checkbox,
+            name="guest_qos_enabled",
+            label=_("Guest Lan QoS"),
             hint=_(
                 "This option enables you to set a bandwidth limit for the guest network, "
                 "so that your main network doesn't get slowed-down by it."
@@ -121,20 +140,18 @@ class GuestHandler(BaseConfigHandler):
 
         guest_network_section.add_field(
             Number,
-            name="guest_qos_download", label=_("Download (kb/s)"),
+            name="guest_qos_download",
+            label=_("Download (kb/s)"),
             validators=[validators.PositiveInteger()],
-            hint=_(
-                "Download speed in guest network (in kilobits per second)."
-            ),
+            hint=_("Download speed in guest network (in kilobits per second)."),
             default=1024,
         ).requires("guest_qos_enabled", True)
         guest_network_section.add_field(
             Number,
-            name="guest_qos_upload", label=_("Upload (kb/s)"),
+            name="guest_qos_upload",
+            label=_("Upload (kb/s)"),
             validators=[validators.PositiveInteger()],
-            hint=_(
-                "Upload speed in guest network (in kilobits per second)."
-            ),
+            hint=_("Upload speed in guest network (in kilobits per second)."),
             default=1024,
         ).requires("guest_qos_enabled", True)
 

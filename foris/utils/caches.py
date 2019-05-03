@@ -38,6 +38,7 @@ class PerRequest(object):
     """
     Ceched per request
     """
+
     backend_data = SimpleCache("backend_data")
 
 

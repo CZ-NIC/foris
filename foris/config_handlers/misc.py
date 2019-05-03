@@ -21,13 +21,9 @@ import copy
 from datetime import datetime
 
 from foris import fapi, validators
-from foris.form import (
-    Password, Textbox, Dropdown
-)
+from foris.form import Password, Textbox, Dropdown
 from foris.state import current_state
-from foris.utils import (
-    tzinfo, localized_sorted, check_password
-)
+from foris.utils import tzinfo, localized_sorted, check_password
 from foris.utils.translators import gettext_dummy as gettext, _
 
 from .base import BaseConfigHandler
@@ -57,46 +53,53 @@ class PasswordHandler(BaseConfigHandler):
             label_pass2 = _("Password (repeat)")
 
         pw_foris = pw_form.add_section(
-            name="foris_pw", title=_("for Foris web interface"),
+            name="foris_pw",
+            title=_("for Foris web interface"),
             description=_(
                 "Set your password for this administration "
                 "interface. The password must be at least 6 "
                 "characters long."
-            )
+            ),
         )
         pw_foris.add_field(
-            Password, name="password", label=label_pass1, required=True,
-            validators=validators.LenRange(6, 128)
+            Password,
+            name="password",
+            label=label_pass1,
+            required=True,
+            validators=validators.LenRange(6, 128),
         )
         pw_foris.add_field(
-            Password, name="password_validation",
+            Password,
+            name="password_validation",
             label=label_pass2,
             required=True,
             validators=validators.EqualTo(
-                "password", "password_validation",
-                _("Passwords are not equal.")
-            )
+                "password", "password_validation", _("Passwords are not equal.")
+            ),
         )
         system_pw = pw_form.add_section(
-            name="system_pw", title=_("for Advanced administration"),
+            name="system_pw",
+            title=_("for Advanced administration"),
             description=_(
                 "In order to access the advanced configuration options which are "
                 "not available here, you must set the root user's password. The advanced "
                 "configuration options can be managed either through the "
-                "<a href=\"//%(host)s/%(path)s\">LuCI web interface</a> "
+                '<a href="//%(host)s/%(path)s">LuCI web interface</a> '
                 "or via SSH."
-            ) % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'}
+            )
+            % {"host": bottle.request.get_header("host"), "path": "cgi-bin/luci"},
         )
-        SYSTEM_PW_SKIP = 'skip'
-        SYSTEM_PW_SAME = 'same'
-        SYSTEM_PW_CUSTOM = 'custom'
+        SYSTEM_PW_SKIP = "skip"
+        SYSTEM_PW_SAME = "same"
+        SYSTEM_PW_CUSTOM = "custom"
         SYSTEM_PW_OPTIONS = (
             (SYSTEM_PW_SKIP, _("Don't set this password")),
             (SYSTEM_PW_SAME, _("Use Foris password")),
             (SYSTEM_PW_CUSTOM, _("Use other password")),
         )
         system_pw.add_field(
-            Dropdown, name="set_system_pw",
+            Dropdown,
+            name="set_system_pw",
             label=_("Advanced administration"),
             hint=_(
                 "Same password would be used for accessing this administration "
@@ -108,46 +111,59 @@ class PasswordHandler(BaseConfigHandler):
             ),
             args=SYSTEM_PW_OPTIONS,
             default=SYSTEM_PW_SKIP,
-            )
+        )
         system_pw.add_field(
-            Password, name="system_password", label=_("Password"), required=True,
-            validators=validators.LenRange(6, 128)
+            Password,
+            name="system_password",
+            label=_("Password"),
+            required=True,
+            validators=validators.LenRange(6, 128),
         ).requires("set_system_pw", SYSTEM_PW_CUSTOM)
         system_pw.add_field(
-            Password, name="system_password_validation", label=_("New password (repeat)"),
+            Password,
+            name="system_password_validation",
+            label=_("New password (repeat)"),
             required=True,
             validators=validators.EqualTo(
                 "system_password", "system_password_validation", _("Passwords are not equal.")
-            )
+            ),
         ).requires("set_system_pw", SYSTEM_PW_CUSTOM)
 
         def pw_form_cb(data):
             if self.change:
-                if not check_password(data['old_password']):
-                    return "save_result", {'wrong_old_password': True}
+                if not check_password(data["old_password"]):
+                    return "save_result", {"wrong_old_password": True}
 
             encoded_password = base64.b64encode(data["password"].encode("utf-8")).decode("utf-8")
 
             passwd_result = current_state.backend.perform(
-                "password", "set", {"password": encoded_password, "type": "foris"})
+                "password", "set", {"password": encoded_password, "type": "foris"}
+            )
             result = passwd_result["result"]
             if not result and "list" in passwd_result and "count" in passwd_result:
-                return "save_result", {
-                    "compromised": {
-                        "list": passwd_result["list"], "count": passwd_result["count"],
-                    }
-                }
+                return (
+                    "save_result",
+                    {
+                        "compromised": {
+                            "list": passwd_result["list"],
+                            "count": passwd_result["count"],
+                        }
+                    },
+                )
             res = {"foris_password_no_error": result}
 
-            if data['set_system_pw'] == SYSTEM_PW_SAME:
+            if data["set_system_pw"] == SYSTEM_PW_SAME:
                 result = current_state.backend.perform(
-                    "password", "set", {"password": encoded_password, "type": "system"})["result"]
+                    "password", "set", {"password": encoded_password, "type": "system"}
+                )["result"]
                 res["system_password_no_error"] = result
-            elif data['set_system_pw'] == SYSTEM_PW_CUSTOM:
-                encoded_pw = base64.b64encode(
-                    data["system_password"].encode("utf-8")).decode("utf-8")
+            elif data["set_system_pw"] == SYSTEM_PW_CUSTOM:
+                encoded_pw = base64.b64encode(data["system_password"].encode("utf-8")).decode(
+                    "utf-8"
+                )
                 result = current_state.backend.perform(
-                    "password", "set", {"password": encoded_pw, "type": "system"})["result"]
+                    "password", "set", {"password": encoded_pw, "type": "system"}
+                )["result"]
                 res["system_password_no_error"] = result
 
             return "save_result", res
@@ -161,6 +177,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
     """
     Setting of the region information and time
     """
+
     userfriendly_title = gettext("Region and time")
 
     def __init__(self, *args, **kwargs):
@@ -172,7 +189,8 @@ class UnifiedTimeHandler(BaseConfigHandler):
         data["zonename"] = "%s/%s" % (data["region"], data["city"])
         data["how_to_set_time"] = data["time_settings"]["how_to_set_time"]
         formatted_date = datetime.strptime(
-            data["time_settings"]["time"], "%Y-%m-%dT%H:%M:%S.%f").strftime("%Y-%m-%d %H:%M:%S")
+            data["time_settings"]["time"], "%Y-%m-%dT%H:%M:%S.%f"
+        ).strftime("%Y-%m-%d %H:%M:%S")
         data["time"] = formatted_date
         data["ntp_time"] = formatted_date
 
@@ -189,20 +207,22 @@ class UnifiedTimeHandler(BaseConfigHandler):
 
         # section just for common description
         main_section = region_and_time_form.add_section(
-            name="region_and_time",  title=_(self.userfriendly_title),
+            name="region_and_time",
+            title=_(self.userfriendly_title),
             description=_(
                 "It is important for your device to have the correct time set. "
                 "If your device's time is delayed, the procedure of SSL certificate verification "
                 "might not work correctly."
-            )
+            ),
         )
         # region section
         region_section = main_section.add_section(
-            name="timezone", title=_("Region settings"),
+            name="timezone",
+            title=_("Region settings"),
             description=_(
                 "Please select the timezone the router is being operated in. "
                 "Correct setting is required to display the right time and for related functions."
-            )
+            ),
         )
 
         lang = current_state.language
@@ -218,8 +238,11 @@ class UnifiedTimeHandler(BaseConfigHandler):
             :param key_getter:
             :return: list of args
             """
-            args = localized_sorted(((key_getter(x), translation_function(x)) for x in items),
-                                    lang=lang, key=lambda x: x[1])
+            args = localized_sorted(
+                ((key_getter(x), translation_function(x)) for x in items),
+                lang=lang,
+                key=lambda x: x[1],
+            )
             if len(args) > 1:
                 return [(None, "-" * 16)] + args
             return args
@@ -232,12 +255,17 @@ class UnifiedTimeHandler(BaseConfigHandler):
         )
 
         # Get region and offer available countries
-        region = region_and_time_form.current_data.get('region')
+        region = region_and_time_form.current_data.get("region")
         countries = construct_args(
-            tzinfo.countries_in_region(region), lambda x: _(tzinfo.countries[x]))
+            tzinfo.countries_in_region(region), lambda x: _(tzinfo.countries[x])
+        )
         region_section.add_field(
-            Dropdown, name="country", label=_("Country"), required=True,
-            default=tzinfo.get_country_for_tz(data["zonename"]), args=countries,
+            Dropdown,
+            name="country",
+            label=_("Country"),
+            required=True,
+            default=tzinfo.get_country_for_tz(data["zonename"]),
+            args=countries,
         ).requires("region")
 
         # Get country and offer available timezones
@@ -250,43 +278,46 @@ class UnifiedTimeHandler(BaseConfigHandler):
         timezones = construct_args(
             tzinfo.timezones_in_region_and_country(region, country),
             translation_function=lambda x: _(x[2]),
-            key_getter=lambda x: x[0]
+            key_getter=lambda x: x[0],
         )
 
         # Offer timezones - but only if a country is selected and is not None (ensured by the
         # requires() method)
         region_section.add_field(
-            Dropdown, name="zonename", label=_("Timezone"), required=True,
+            Dropdown,
+            name="zonename",
+            label=_("Timezone"),
+            required=True,
             default=data["zonename"],
-            args=timezones
+            args=timezones,
         ).requires("country", lambda x: country and x is not None)
 
         # time section
         time_section = main_section.add_section(
-            name="time", title=_("Time settings"),
+            name="time",
+            title=_("Time settings"),
             description=_(
                 "Time should be up-to-date otherwise DNS and other services might not work properly."
-            )
+            ),
         )
         time_section.add_field(
-            Dropdown, name="how_to_set_time", label=_("How to set time"),
+            Dropdown,
+            name="how_to_set_time",
+            label=_("How to set time"),
             description=_("Choose method to store current time into the router."),
             default="ntp",
-            args=(
-                ("ntp", _("via ntp")),
-                ("manual", _("manually")),
-            )
+            args=(("ntp", _("via ntp")), ("manual", _("manually"))),
         )
         time_section.add_field(
-            Textbox, name="time",
+            Textbox,
+            name="time",
             validators=validators.Datetime(),
             label=_("Time"),
             hint=_("Time in YYYY-MM-DD HH:MM:SS format."),
         ).requires("how_to_set_time", "manual")
-        time_section.add_field(
-            Textbox, name="ntp_time",
-            label=_("Time"),
-        ).requires("how_to_set_time", "ntp")
+        time_section.add_field(Textbox, name="ntp_time", label=_("Time")).requires(
+            "how_to_set_time", "ntp"
+        )
 
         def region_form_cb(data):
             region, city = data["zonename"].split("/")
@@ -295,14 +326,15 @@ class UnifiedTimeHandler(BaseConfigHandler):
                 "country": data["country"],
                 "region": region,
                 "timezone": tzinfo.get_zoneinfo_for_tz(data["zonename"]),
-                "time_settings": {
-                    "how_to_set_time": data["how_to_set_time"],
-                }
+                "time_settings": {"how_to_set_time": data["how_to_set_time"]},
             }
 
             if data["how_to_set_time"] == "manual":
-                msg["time_settings"]["time"] = datetime.strptime(
-                    data["time"], "%Y-%m-%d %H:%M:%S").replace(microsecond=1).isoformat()
+                msg["time_settings"]["time"] = (
+                    datetime.strptime(data["time"], "%Y-%m-%d %H:%M:%S")
+                    .replace(microsecond=1)
+                    .isoformat()
+                )
 
             res = current_state.backend.perform("time", "update_settings", msg)
             return "save_result", res  # store {"result": ...} to be used later...
@@ -319,9 +351,7 @@ class GuideFinishedHandler(BaseConfigHandler):
         finished_form.add_section(name="guide_finished", title=_(self.userfriendly_title))
 
         def guide_finished_cb(data):
-            res = current_state.backend.perform("web", "update_guide", {
-                "enabled": False,
-            })
+            res = current_state.backend.perform("web", "update_guide", {"enabled": False})
             return "save_result", res  # store {"result": ...} to be used later...
 
         finished_form.add_callback(guide_finished_cb)

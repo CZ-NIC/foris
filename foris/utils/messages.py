@@ -4,7 +4,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-_SESSION_KEY = '_messages'
+_SESSION_KEY = "_messages"
 
 # tuple of (priority, level_name)
 INFO = (0, "info")
@@ -27,11 +27,7 @@ class Message(object):
         self.extra_classes = extra_classes
 
     def to_json(self):
-        return {
-            "text": self.text,
-            "level": self.level,
-            "extra_classes": self.extra_classes,
-        }
+        return {"text": self.text, "level": self.level, "extra_classes": self.extra_classes}
 
     @staticmethod
     def from_json(json):
@@ -56,6 +52,7 @@ def get_messages(level=None, min_level=None):
     :param level: get messages with exact level
     :param min_level: get messages with level specified or higher
     """
+
     def should_show():
         if level and msg.level[0] == level[0]:
             return True
@@ -65,7 +62,7 @@ def get_messages(level=None, min_level=None):
             return True
         return False
 
-    session = bottle.request.environ['foris.session']
+    session = bottle.request.environ["foris.session"]
     messages = session.get(_SESSION_KEY, [])
     all_messages = messages[:]
     for msg in all_messages:
@@ -123,7 +120,7 @@ def add_message(text, level=INFO, extra_classes=[]):
     :param level: severity level
     :param extra_classes: extra classes of the message
     """
-    session = bottle.request.environ['foris.session']
+    session = bottle.request.environ["foris.session"]
     messages = session.get(_SESSION_KEY, [])
     messages.append(Message(text, level, extra_classes).to_json())
     session[_SESSION_KEY] = messages
@@ -135,10 +132,12 @@ def set_template_defaults():
     adapter.
 
     """
-    bottle.SimpleTemplate.defaults['get_messages'] = get_messages
-    bottle.SimpleTemplate.defaults['get_alert_messages'] = \
-        functools.partial(get_messages, min_level=WARNING)
+    bottle.SimpleTemplate.defaults["get_messages"] = get_messages
+    bottle.SimpleTemplate.defaults["get_alert_messages"] = functools.partial(
+        get_messages, min_level=WARNING
+    )
 
-    bottle.Jinja2Template.defaults['get_messages'] = get_messages
-    bottle.Jinja2Template.defaults['get_alert_messages'] = \
-        functools.partial(get_messages, min_level=WARNING)
+    bottle.Jinja2Template.defaults["get_messages"] = get_messages
+    bottle.Jinja2Template.defaults["get_alert_messages"] = functools.partial(
+        get_messages, min_level=WARNING
+    )

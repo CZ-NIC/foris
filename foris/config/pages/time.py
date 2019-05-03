@@ -25,6 +25,7 @@ from .base import ConfigPageMixin
 
 class TimeConfigPage(ConfigPageMixin, misc.UnifiedTimeHandler):
     """ Timezone / Time configuration """
+
     slug = "time"
     menu_order = 18
 

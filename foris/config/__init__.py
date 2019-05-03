@@ -47,7 +47,8 @@ from .pages.base import ConfigPageMixin, JoinedPages  # noqa: F401  plugin compa
 logger = logging.getLogger(__name__)
 
 config_pages = {
-    e.slug: e for e in [
+    e.slug: e
+    for e in [
         NotificationsConfigPage,
         RemoteConfigPage,
         PasswordConfigPage,
@@ -92,9 +93,10 @@ def add_config_page(page_class):
             page_map[subpage.slug] = subpage
 
     if page_class.slug in page_map:
-        raise Exception("Error when adding page %s slug '%s' is already used in %s" % (
-            page_class, page_class.slug, page_map[page_class.slug]
-        ))
+        raise Exception(
+            "Error when adding page %s slug '%s' is already used in %s"
+            % (page_class, page_class.slug, page_map[page_class.slug])
+        )
     config_pages[page_class.slug] = page_class
 
 
@@ -132,8 +134,8 @@ def config_page_get(page_name):
     if current_state.guide.enabled and page_name not in current_state.guide.available_tabs:
         bottle.redirect(reverse("config_page", page_name=current_state.guide.current))
 
-    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page_key"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page_key"] = page_name
     ConfigPage = get_config_page(page_name)
 
     # test if page is enabled otherwise redirect to default
@@ -146,8 +148,8 @@ def config_page_get(page_name):
 
 @login_required
 def config_page_post(page_name):
-    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page_key"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page_key"] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
@@ -170,8 +172,8 @@ def config_page_post(page_name):
 
 @login_required
 def config_action(page_name, action):
-    bottle.SimpleTemplate.defaults['active_config_page'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page"] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     try:
@@ -183,8 +185,8 @@ def config_action(page_name, action):
 
 @login_required
 def config_action_post(page_name, action):
-    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page_key"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page_key"] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage(request.POST.decode())
     if request.is_xhr:
@@ -212,8 +214,8 @@ def config_action_post(page_name, action):
 
 @login_required
 def config_ajax(page_name):
-    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page_key"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page_key"] = page_name
     action = request.params.get("action")
     if not action:
         raise bottle.HTTPError(404, "AJAX action not specified.")
@@ -228,8 +230,8 @@ def config_ajax(page_name):
 
 @login_required
 def config_ajax_form(page_name, form_name):
-    bottle.SimpleTemplate.defaults['active_config_page_key'] = page_name
-    bottle.Jinja2Template.defaults['active_config_page_key'] = page_name
+    bottle.SimpleTemplate.defaults["active_config_page_key"] = page_name
+    bottle.Jinja2Template.defaults["active_config_page_key"] = page_name
     ConfigPage = get_config_page(page_name)
     config_page = ConfigPage()
     if not request.is_xhr:
@@ -274,36 +276,44 @@ def init_app():
     app = Bottle()
     app.install(CSRFPlugin())
     app.route("/", name="config_index", callback=index)
-    app.route("/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"),
-              callback=config_ajax)
-    app.route("/<page_name:re:.+>/ajax/form/<form_name:re:.+>", name="config_ajax_form", method=("POST"),
-              callback=config_ajax_form)
-    app.route("/<page_name:re:.+>/action/<action:re:.+>", method="POST",
-              callback=config_action_post)
-    app.route("/<page_name:re:.+>/action/<action:re:.+>", name="config_action",
-              callback=config_action)
-    app.route("/<page_name:re:.+>/insecure/<identifier:re:[0-9a-zA-Z-]+>",
-              name="config_insecure", callback=config_insecure)
-    app.route("/<page_name:re:.+>/", method="POST",
-              callback=config_page_post)
-    app.route("/<page_name:re:.+>/", name="config_page",
-              callback=config_page_get)
-    bottle.SimpleTemplate.defaults['get_config_pages'] = get_config_pages
-    bottle.Jinja2Template.defaults['get_config_pages'] = get_config_pages
+    app.route(
+        "/<page_name:re:.+>/ajax", name="config_ajax", method=("GET", "POST"), callback=config_ajax
+    )
+    app.route(
+        "/<page_name:re:.+>/ajax/form/<form_name:re:.+>",
+        name="config_ajax_form",
+        method=("POST"),
+        callback=config_ajax_form,
+    )
+    app.route(
+        "/<page_name:re:.+>/action/<action:re:.+>", method="POST", callback=config_action_post
+    )
+    app.route(
+        "/<page_name:re:.+>/action/<action:re:.+>", name="config_action", callback=config_action
+    )
+    app.route(
+        "/<page_name:re:.+>/insecure/<identifier:re:[0-9a-zA-Z-]+>",
+        name="config_insecure",
+        callback=config_insecure,
+    )
+    app.route("/<page_name:re:.+>/", method="POST", callback=config_page_post)
+    app.route("/<page_name:re:.+>/", name="config_page", callback=config_page_get)
+    bottle.SimpleTemplate.defaults["get_config_pages"] = get_config_pages
+    bottle.Jinja2Template.defaults["get_config_pages"] = get_config_pages
     return app
 
 
 def login_redirect():
     next_url = bottle.request.GET.get("next")
-    if next_url and is_safe_redirect(next_url, bottle.request.get_header('host')):
+    if next_url and is_safe_redirect(next_url, bottle.request.get_header("host")):
         bottle.redirect(next_url)
     bottle.redirect(reverse("config_index"))
 
 
 @bottle.jinja2_view("index.html.j2")
 def top_index():
-    session = bottle.request.environ['foris.session']
-    if bottle.request.method == 'POST':
+    session = bottle.request.environ["foris.session"]
+    if bottle.request.method == "POST":
         next = bottle.request.POST.get("next", None)
         login(next, session)
         # if login passes it will redirect to a proper page
@@ -323,6 +333,6 @@ def top_index():
 
     return dict(
         luci_path="//%(host)s/%(path)s"
-        % {'host': bottle.request.get_header('host'), 'path': 'cgi-bin/luci'},
-        next=next
+        % {"host": bottle.request.get_header("host"), "path": "cgi-bin/luci"},
+        next=next,
     )

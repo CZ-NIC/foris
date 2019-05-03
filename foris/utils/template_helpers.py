@@ -29,7 +29,7 @@ def shorten_text(text, max_chars, etc="..."):
     """ Shortens text. "Very long text" -> "Very long..."
     """
     if len(text) > max_chars:
-        return text[:max_chars - len(etc)] + etc
+        return text[: max_chars - len(etc)] + etc
     return text
 
 
@@ -38,7 +38,7 @@ def external_url(path):
 
 
 def remove_html_tags(text):
-    return re.sub(r'<[^>]*>', '', text)
+    return re.sub(r"<[^>]*>", "", text)
 
 
 def translate_datetime(datetime_instance, default="%Y/%m/%d %H:%M:%S"):
@@ -72,19 +72,16 @@ def make_notification_title(notification):
     :param notification: notification to create title for
     :return: translated string with notification title
     """
-    notification_titles = {
-        "news": _("News"),
-        "update": _("Update"),
-        "error": _("Error"),
-    }
+    notification_titles = {"news": _("News"), "update": _("Update"), "error": _("Error")}
 
     # minor abuse of gettext follows...
     locale_date = translate_datetime(
-        datetime.strptime(notification["created_at"], "%Y-%m-%dT%H:%M:%S"))
+        datetime.strptime(notification["created_at"], "%Y-%m-%dT%H:%M:%S")
+    )
 
     return _("%(notification)s from %(created_at)s") % dict(
         notification=notification_titles.get(notification["severity"], _("Notification")),
-        created_at=locale_date
+        created_at=locale_date,
     )
 
 
@@ -95,19 +92,20 @@ def transform_notification_message(msg):
 def prepare_approval_item_message(approval_item, show_operation=True):
     if approval_item["op"] == "install":
         return ((_("Install") + " ") if show_operation else "") + u"%s (%s)" % (
-            approval_item["name"], approval_item["new_ver"]
+            approval_item["name"],
+            approval_item["new_ver"],
         )
     elif approval_item["op"] == "remove":
-        return ((_("Uninstall") + " ") if show_operation else "") + u"%s" % (
-            approval_item["name"],
-        )
+        return ((_("Uninstall") + " ") if show_operation else "") + u"%s" % (approval_item["name"],)
     elif approval_item["op"] == "upgrade":
         return ((_("Upgrade") + " ") if show_operation else "") + "%s (%s)" % (
-            approval_item["name"], approval_item["new_ver"]
+            approval_item["name"],
+            approval_item["new_ver"],
         )
     elif approval_item["op"] == "downgrade":
         return ((_("Downgrade") + " ") if show_operation else "") + "%s (%s)" % (
-            approval_item["name"], approval_item["new_ver"]
+            approval_item["name"],
+            approval_item["new_ver"],
         )
 
 

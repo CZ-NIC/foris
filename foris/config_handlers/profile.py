@@ -28,6 +28,7 @@ from foris.utils.translators import gettext_dummy as gettext, _
 class ProfileHandler(BaseConfigHandler):
     """ Profile settings handler
     """
+
     userfriendly_title = gettext("Guide workflow")
 
     def __init__(self, *args, **kwargs):
@@ -49,10 +50,7 @@ class ProfileHandler(BaseConfigHandler):
 
         def profile_form_cb(data):
             result = current_state.backend.perform(
-                "web", "update_guide", {
-                    "enabled": True,
-                    "workflow": data["workflow"],
-                }
+                "web", "update_guide", {"enabled": True, "workflow": data["workflow"]}
             )
             return "save_result", result
 

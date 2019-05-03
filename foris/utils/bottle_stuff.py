@@ -28,19 +28,21 @@ from . import is_user_authenticated, template_helpers
 
 
 def prepare_template_defaults():
-    bottle.SimpleTemplate.defaults['trans'] = lambda msgid: gettext(msgid)  # workaround
-    bottle.SimpleTemplate.defaults['translation_names'] = translation_names
-    bottle.SimpleTemplate.defaults['translations'] = [e for e in translations]
-    bottle.SimpleTemplate.defaults['iso2to3'] = iso2to3
-    bottle.SimpleTemplate.defaults['ngettext'] = \
-        lambda singular, plural, n: ngettext(singular, plural, n)
-    bottle.SimpleTemplate.defaults['foris_info'] = current_state
+    bottle.SimpleTemplate.defaults["trans"] = lambda msgid: gettext(msgid)  # workaround
+    bottle.SimpleTemplate.defaults["translation_names"] = translation_names
+    bottle.SimpleTemplate.defaults["translations"] = [e for e in translations]
+    bottle.SimpleTemplate.defaults["iso2to3"] = iso2to3
+    bottle.SimpleTemplate.defaults["ngettext"] = lambda singular, plural, n: ngettext(
+        singular, plural, n
+    )
+    bottle.SimpleTemplate.defaults["foris_info"] = current_state
 
     # template defaults
     # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
     # because bool(user_authenticated) is always True - it means bool(<function ...>)
-    bottle.SimpleTemplate.defaults["user_authenticated"] =\
-        lambda: bottle.request.environ["foris.session"].get("user_authenticated")
+    bottle.SimpleTemplate.defaults["user_authenticated"] = lambda: bottle.request.environ[
+        "foris.session"
+    ].get("user_authenticated")
     bottle.SimpleTemplate.defaults["request"] = bottle.request
     bottle.SimpleTemplate.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
     bottle.SimpleTemplate.defaults["static"] = static_path
@@ -48,19 +50,21 @@ def prepare_template_defaults():
     bottle.SimpleTemplate.defaults["get_csrf_token"] = get_csrf_token
     bottle.SimpleTemplate.defaults["helpers"] = template_helpers
 
-    bottle.Jinja2Template.defaults['trans'] = lambda msgid: gettext(msgid)  # workaround
-    bottle.Jinja2Template.defaults['translation_names'] = translation_names
-    bottle.Jinja2Template.defaults['translations'] = [e for e in translations]
-    bottle.Jinja2Template.defaults['iso2to3'] = iso2to3
-    bottle.Jinja2Template.defaults['ngettext'] = \
-        lambda singular, plural, n: ngettext(singular, plural, n)
-    bottle.Jinja2Template.defaults['foris_info'] = current_state
+    bottle.Jinja2Template.defaults["trans"] = lambda msgid: gettext(msgid)  # workaround
+    bottle.Jinja2Template.defaults["translation_names"] = translation_names
+    bottle.Jinja2Template.defaults["translations"] = [e for e in translations]
+    bottle.Jinja2Template.defaults["iso2to3"] = iso2to3
+    bottle.Jinja2Template.defaults["ngettext"] = lambda singular, plural, n: ngettext(
+        singular, plural, n
+    )
+    bottle.Jinja2Template.defaults["foris_info"] = current_state
 
     # template defaults
     # this is not really straight-forward, check for user_authenticated() (with brackets) in template,
     # because bool(user_authenticated) is always True - it means bool(<function ...>)
-    bottle.Jinja2Template.defaults["user_authenticated"] =\
-        lambda: bottle.request.environ["foris.session"].get("user_authenticated")
+    bottle.Jinja2Template.defaults["user_authenticated"] = lambda: bottle.request.environ[
+        "foris.session"
+    ].get("user_authenticated")
     bottle.Jinja2Template.defaults["request"] = bottle.request
     bottle.Jinja2Template.defaults["url"] = lambda name, **kwargs: reverse(name, **kwargs)
     bottle.Jinja2Template.defaults["static"] = static_path
@@ -76,18 +80,21 @@ def disable_caching(authenticated_only=True):
     :param authenticated_only: apply only if user is authenticated
     """
     if not authenticated_only or authenticated_only and is_user_authenticated():
-        bottle.response.headers['Cache-Control'] = "no-store, no-cache, must-revalidate, " \
-                                                   "no-transform, max-age=0, post-check=0, pre-check=0"
-        bottle.response.headers['Pragma'] = "no-cache"
+        bottle.response.headers["Cache-Control"] = (
+            "no-store, no-cache, must-revalidate, "
+            "no-transform, max-age=0, post-check=0, pre-check=0"
+        )
+        bottle.response.headers["Pragma"] = "no-cache"
 
 
 def clickjacking_protection():
     # we don't use frames at all, we can safely deny opening pages in frames
-    bottle.response.headers['X-Frame-Options'] = 'DENY'
+    bottle.response.headers["X-Frame-Options"] = "DENY"
 
 
 def clear_lazy_cache():
     from foris.caches import lazy_cache
+
     lazy_cache.clear()
 
 
@@ -100,12 +107,12 @@ def route_list(app, prefix1="", prefix2=""):
             if not filter:
                 # simple token
                 path2 += name
-            elif filter == 're':
+            elif filter == "re":
                 # insert regexp
                 path2 += token
 
-        if route.method == 'PROXY':
-            res += route_list(route.config['mountpoint.target'], prefix1=path1, prefix2=path2)
+        if route.method == "PROXY":
+            res += route_list(route.config["mountpoint.target"], prefix1=path1, prefix2=path2)
         else:
             res.append((route.method, path1, path2))
     return res

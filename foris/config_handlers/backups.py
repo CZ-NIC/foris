@@ -30,16 +30,17 @@ class MaintenanceHandler(BaseConfigHandler):
     def get_form(self):
         maintenance_form = fapi.ForisForm("maintenance", self.data)
         maintenance_main = maintenance_form.add_section(
-            name="restore_backup", title=_(self.userfriendly_title))
-        maintenance_main.add_field(
-            File, name="backup_file", label=_("Backup file"), required=True)
+            name="restore_backup", title=_(self.userfriendly_title)
+        )
+        maintenance_main.add_field(File, name="backup_file", label=_("Backup file"), required=True)
 
         def maintenance_form_cb(data):
             data = current_state.backend.perform(
-                "maintain", "restore_backup",
-                {"backup": base64.b64encode(data["backup_file"].file.read()).decode("utf-8")}
+                "maintain",
+                "restore_backup",
+                {"backup": base64.b64encode(data["backup_file"].file.read()).decode("utf-8")},
             )
-            return "save_result", {'result': data["result"]}
+            return "save_result", {"result": data["result"]}
 
         maintenance_form.add_callback(maintenance_form_cb)
         return maintenance_form

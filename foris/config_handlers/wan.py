@@ -17,12 +17,7 @@
 from .base import BaseConfigHandler
 from foris import fapi, validators
 from foris.state import current_state
-from foris.form import (
-    Checkbox,
-    Dropdown,
-    Textbox,
-    Number,
-)
+from foris.form import Checkbox, Dropdown, Textbox, Number
 
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -43,8 +38,11 @@ class WanHandler(BaseConfigHandler):
 
         # WAN
         # Convert none (initial setup) to dhcp (default)
-        res["proto"] = "dhcp" if data["wan_settings"]["wan_type"] == "none" \
+        res["proto"] = (
+            "dhcp"
+            if data["wan_settings"]["wan_type"] == "none"
             else data["wan_settings"]["wan_type"]
+        )
         if res["proto"] == "dhcp":
             res["hostname"] = data["wan_settings"].get("wan_dhcp", {}).get("hostname", "")
         elif res["proto"] == "static":
@@ -73,15 +71,19 @@ class WanHandler(BaseConfigHandler):
             res["6in4_mtu"] = data["wan6_settings"]["wan6_6in4"]["mtu"]
             res["6in4_server_ipv4"] = data["wan6_settings"]["wan6_6in4"]["server_ipv4"]
             res["6in4_ipv6_prefix"] = data["wan6_settings"]["wan6_6in4"]["ipv6_prefix"]
-            res["6in4_dynamic_enabled"] = \
-                data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["enabled"]
+            res["6in4_dynamic_enabled"] = data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"][
+                "enabled"
+            ]
             if res["6in4_dynamic_enabled"]:
-                res["6in4_tunnel_id"] = \
-                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["tunnel_id"]
-                res["6in4_username"] = \
-                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["username"]
-                res["6in4_key"] = \
-                    data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"]["password_or_key"]
+                res["6in4_tunnel_id"] = data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"][
+                    "tunnel_id"
+                ]
+                res["6in4_username"] = data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"][
+                    "username"
+                ]
+                res["6in4_key"] = data["wan6_settings"]["wan6_6in4"]["dynamic_ipv4"][
+                    "password_or_key"
+                ]
 
         # MAC
         res["custom_mac"] = data["mac_settings"]["custom_mac_enabled"]
@@ -106,7 +108,8 @@ class WanHandler(BaseConfigHandler):
             dns1 = data.get("ipv4_dns1", None)
             dns2 = data.get("ipv4_dns2", None)
             res["wan_settings"]["wan_static"].update(
-                {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v})
+                {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v}
+            )
         elif data["proto"] == "pppoe":
             res["wan_settings"]["wan_pppoe"] = {}
             res["wan_settings"]["wan_pppoe"]["username"] = data["username"]
@@ -122,7 +125,8 @@ class WanHandler(BaseConfigHandler):
             dns1 = data.get("ipv6_dns1", None)
             dns2 = data.get("ipv6_dns2", None)
             res["wan6_settings"]["wan6_static"].update(
-                {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v})
+                {k: v for k, v in {"dns1": dns1, "dns2": dns2}.items() if v}
+            )
         if data["wan6_proto"] == "dhcpv6":
             res["wan6_settings"]["wan6_dhcpv6"] = {"duid": data.get("ip6duid", "")}
         if data["wan6_proto"] == "6to4":
@@ -141,8 +145,11 @@ class WanHandler(BaseConfigHandler):
             }
 
         # MAC
-        res["mac_settings"] = {"custom_mac_enabled": True, "custom_mac": data["macaddr"]} \
-            if "custom_mac" in data and data["custom_mac"] else {"custom_mac_enabled": False}
+        res["mac_settings"] = (
+            {"custom_mac_enabled": True, "custom_mac": data["macaddr"]}
+            if "custom_mac" in data and data["custom_mac"]
+            else {"custom_mac_enabled": False}
+        )
 
         return res
 
@@ -164,7 +171,7 @@ class WanHandler(BaseConfigHandler):
                 "provider. Also, in case there is a cable or DSL modem connecting your "
                 "router to the network, it is usually not necessary to change this "
                 "setting."
-            )
+            ),
         )
         WAN_DHCP = "dhcp"
         WAN_STATIC = "static"
@@ -193,108 +200,131 @@ class WanHandler(BaseConfigHandler):
 
         # protocol
         wan_main.add_field(
-            Dropdown, name="proto", label=_("IPv4 protocol"), args=WAN_OPTIONS, default=WAN_DHCP)
+            Dropdown, name="proto", label=_("IPv4 protocol"), args=WAN_OPTIONS, default=WAN_DHCP
+        )
 
         # static ipv4
         wan_main.add_field(
-            Textbox, name="ipaddr", label=_("IP address"), required=True,
-            validators=validators.IPv4()
-        ).requires("proto", WAN_STATIC)
-        wan_main.add_field(
-            Textbox, name="netmask", label=_("Network mask"), required=True,
-            validators=validators.IPv4Netmask()
-        ).requires("proto", WAN_STATIC)
-        wan_main.add_field(
-            Textbox, name="gateway", label=_("Gateway"), required=True,
+            Textbox,
+            name="ipaddr",
+            label=_("IP address"),
+            required=True,
             validators=validators.IPv4(),
+        ).requires("proto", WAN_STATIC)
+        wan_main.add_field(
+            Textbox,
+            name="netmask",
+            label=_("Network mask"),
+            required=True,
+            validators=validators.IPv4Netmask(),
+        ).requires("proto", WAN_STATIC)
+        wan_main.add_field(
+            Textbox, name="gateway", label=_("Gateway"), required=True, validators=validators.IPv4()
         ).requires("proto", WAN_STATIC)
 
         wan_main.add_field(
-            Textbox, name="hostname", label=_("DHCP hostname"),
+            Textbox,
+            name="hostname",
+            label=_("DHCP hostname"),
             validators=validators.Domain(),
-            hint=_(
-                "Hostname which will be provided to DHCP server."
-            )
+            hint=_("Hostname which will be provided to DHCP server."),
         ).requires("proto", WAN_DHCP)
 
         # DNS servers
         wan_main.add_field(
-            Textbox, name="ipv4_dns1", label=_("DNS server 1 (IPv4)"),
+            Textbox,
+            name="ipv4_dns1",
+            label=_("DNS server 1 (IPv4)"),
             validators=validators.IPv4(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("proto", WAN_STATIC)
         wan_main.add_field(
-            Textbox, name="ipv4_dns2", label=_("DNS server 2 (IPv4)"),
+            Textbox,
+            name="ipv4_dns2",
+            label=_("DNS server 2 (IPv4)"),
             validators=validators.IPv4(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("proto", WAN_STATIC)
 
         # xDSL settings
-        wan_main.add_field(
-            Textbox, name="username", label=_("PAP/CHAP username"),
-        ).requires("proto", WAN_PPPOE)
-        wan_main.add_field(
-            Textbox, name="password", label=_("PAP/CHAP password"),
-        ).requires("proto", WAN_PPPOE)
+        wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username")).requires(
+            "proto", WAN_PPPOE
+        )
+        wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password")).requires(
+            "proto", WAN_PPPOE
+        )
 
         # IPv6 configuration
         wan_main.add_field(
-            Dropdown, name="wan6_proto", label=_("IPv6 protocol"),
-            args=WAN6_OPTIONS, default=WAN6_NONE,
+            Dropdown,
+            name="wan6_proto",
+            label=_("IPv6 protocol"),
+            args=WAN6_OPTIONS,
+            default=WAN6_NONE,
         )
         wan_main.add_field(
-            Textbox, name="ip6addr", label=_("IPv6 address"),
-            validators=validators.IPv6Prefix(), required=True,
+            Textbox,
+            name="ip6addr",
+            label=_("IPv6 address"),
+            validators=validators.IPv6Prefix(),
+            required=True,
             hint=_(
-                "IPv6 address and prefix length for WAN interface, "
-                "e.g. 2001:db8:be13:37da::1/64"
+                "IPv6 address and prefix length for WAN interface, " "e.g. 2001:db8:be13:37da::1/64"
             ),
         ).requires("wan6_proto", WAN6_STATIC)
         wan_main.add_field(
-            Textbox, name="ip6gw", label=_("IPv6 gateway"),
-            validators=validators.IPv6(), required=True
+            Textbox,
+            name="ip6gw",
+            label=_("IPv6 gateway"),
+            validators=validators.IPv6(),
+            required=True,
         ).requires("wan6_proto", WAN6_STATIC)
         wan_main.add_field(
-            Textbox, name="ip6prefix", label=_("IPv6 prefix"),
+            Textbox,
+            name="ip6prefix",
+            label=_("IPv6 prefix"),
             validators=validators.IPv6Prefix(),
-            hint=_(
-                "Address range for local network, "
-                "e.g. 2001:db8:be13:37da::/64"
-            )
+            hint=_("Address range for local network, " "e.g. 2001:db8:be13:37da::/64"),
         ).requires("wan6_proto", WAN6_STATIC)
         # DNS servers
         wan_main.add_field(
-            Textbox, name="ipv6_dns1", label=_("DNS server 1 (IPv6)"),
+            Textbox,
+            name="ipv6_dns1",
+            label=_("DNS server 1 (IPv6)"),
             validators=validators.IPv6(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("wan6_proto", WAN6_STATIC)
         wan_main.add_field(
-            Textbox, name="ipv6_dns2", label=_("DNS server 2 (IPv6)"),
+            Textbox,
+            name="ipv6_dns2",
+            label=_("DNS server 2 (IPv6)"),
             validators=validators.IPv6(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("wan6_proto", WAN6_STATIC)
         wan_main.add_field(
-            Textbox, name="ip6duid", label=_("Custom DUID"),
+            Textbox,
+            name="ip6duid",
+            label=_("Custom DUID"),
             validators=validators.Duid(),
             placeholder=self.status_data["last_seen_duid"],
-            hint=_(
-                "DUID which will be provided to the DHCPv6 server."
-            )
+            hint=_("DUID which will be provided to the DHCPv6 server."),
         ).requires("wan6_proto", WAN6_DHCP)
         wan_main.add_field(
-            Textbox, name="6to4_ipaddr", label=_("Public IPv4"),
+            Textbox,
+            name="6to4_ipaddr",
+            label=_("Public IPv4"),
             validators=validators.IPv4(),
             hint=_(
                 "In order to use 6to4 protocol, you might need to specify your public IPv4 "
@@ -305,32 +335,34 @@ class WanHandler(BaseConfigHandler):
             required=False,
         ).requires("wan6_proto", WAN6_6TO4)
         wan_main.add_field(
-            Textbox, name="6in4_server_ipv4", label=_("Provider IPv4"),
+            Textbox,
+            name="6in4_server_ipv4",
+            label=_("Provider IPv4"),
             validators=validators.IPv4(),
-            hint=_(
-                "This address will be used as a endpoint of the tunnel on the provider's side."
-            ),
+            hint=_("This address will be used as a endpoint of the tunnel on the provider's side."),
             required=True,
         ).requires("wan6_proto", WAN6_6IN4)
         wan_main.add_field(
-            Textbox, name="6in4_ipv6_prefix", label=_("Routed IPv6 prefix"),
+            Textbox,
+            name="6in4_ipv6_prefix",
+            label=_("Routed IPv6 prefix"),
             validators=validators.IPv6Prefix(),
-            hint=_(
-                "IPv6 addresses which will be routed to your network."
-            ),
+            hint=_("IPv6 addresses which will be routed to your network."),
             required=True,
         ).requires("wan6_proto", WAN6_6IN4)
         wan_main.add_field(
-            Number, name="6in4_mtu", label=_("MTU"),
+            Number,
+            name="6in4_mtu",
+            label=_("MTU"),
             validators=validators.InRange(1280, 1500),
-            hint=_(
-                "Maximum Transmission Unit in the tunnel (in bytes)."
-            ),
+            hint=_("Maximum Transmission Unit in the tunnel (in bytes)."),
             required=True,
             default="1480",
         ).requires("wan6_proto", WAN6_6IN4)
         wan_main.add_field(
-            Checkbox, name="6in4_dynamic_enabled", label=_("Dynamic IPv4 handling"),
+            Checkbox,
+            name="6in4_dynamic_enabled",
+            label=_("Dynamic IPv4 handling"),
             hint=_(
                 "Some tunnel providers allow you to have public dynamic IPv4. "
                 "Note that you need to fill in some extra fields to make it work."
@@ -338,42 +370,47 @@ class WanHandler(BaseConfigHandler):
             default=False,
         ).requires("wan6_proto", WAN6_6IN4)
         wan_main.add_field(
-            Textbox, name="6in4_tunnel_id", label=_("Tunnel ID"),
+            Textbox,
+            name="6in4_tunnel_id",
+            label=_("Tunnel ID"),
             validators=validators.NotEmpty(),
-            hint=_(
-                "ID of your tunnel which was assigned to you by the provider."
-            ),
+            hint=_("ID of your tunnel which was assigned to you by the provider."),
             required=True,
         ).requires("6in4_dynamic_enabled", True)
         wan_main.add_field(
-            Textbox, name="6in4_username", label=_("Username"),
+            Textbox,
+            name="6in4_username",
+            label=_("Username"),
             validators=validators.NotEmpty(),
-            hint=_(
-                "Username which will be used to provide credentials to your tunnel provider."
-            ),
+            hint=_("Username which will be used to provide credentials to your tunnel provider."),
             required=True,
         ).requires("6in4_dynamic_enabled", True)
         wan_main.add_field(
-            Textbox, name="6in4_key", label=_("Key"),
+            Textbox,
+            name="6in4_key",
+            label=_("Key"),
             validators=validators.NotEmpty(),
-            hint=_(
-                "Key which will be used to provide credentials to your tunnel provider."
-            ),
+            hint=_("Key which will be used to provide credentials to your tunnel provider."),
             required=True,
         ).requires("6in4_dynamic_enabled", True)
 
         # custom MAC
         wan_main.add_field(
-            Checkbox, name="custom_mac", label=_("Custom MAC address"),
+            Checkbox,
+            name="custom_mac",
+            label=_("Custom MAC address"),
             hint=_(
                 "Useful in cases, when a specific MAC address is required by "
                 "your internet service provider."
-            )
+            ),
         )
 
         wan_main.add_field(
-            Textbox, name="macaddr", label=_("MAC address"),
-            validators=validators.MacAddress(), required=True,
+            Textbox,
+            name="macaddr",
+            label=_("MAC address"),
+            validators=validators.MacAddress(),
+            required=True,
             hint=_("Colon is used as a separator, for example 00:11:22:33:44:55"),
         ).requires("custom_mac", True)
 

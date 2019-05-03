@@ -47,8 +47,7 @@ class ForisPlugin(object):
         """
         for lang, default_translation in translations.items():
             local_translation = gettext.translation(
-                "messages", os.path.join(self.DIRNAME, "locale"),
-                languages=[lang], fallback=True
+                "messages", os.path.join(self.DIRNAME, "locale"), languages=[lang], fallback=True
             )
             default_translation.add_fallback(local_translation)
 

@@ -229,9 +229,9 @@ class FloatRange(Validator):
     js_validator = "floatrange"
 
     def __init__(self, low, high):
-        self.error_msg = _(
-            "This value should be between %(low)s and %(high)s."
-        ) % dict(low=low, high=high)
+        self.error_msg = _("This value should be between %(low)s and %(high)s.") % dict(
+            low=low, high=high
+        )
         self._low = low
         self._high = high
         super(FloatRange, self).__init__(self.error_msg)

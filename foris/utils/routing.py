@@ -23,17 +23,17 @@ import re
 from foris import BASE_DIR
 from foris.state import current_state
 from foris.utils.dynamic_assets import store_template
+
 logger = logging.getLogger("utils.routing")
 
-static_md5_map = {
-}
+static_md5_map = {}
 
 
 def _get_prefix_and_script_name():
     script_name = bottle.request.script_name
     prefix = bottle.request.app.config.get("prefix")
     if prefix:
-        path_depth = len([p for p in prefix.split('/') if p])
+        path_depth = len([p for p in prefix.split("/") if p])
         script_name, path_info = bottle.path_shift(script_name, "/", -path_depth)
     return script_name, prefix
 
@@ -64,10 +64,9 @@ def reverse(name, **kargs):
             if route.config.get("mountpoint"):
                 config = route.config
                 try:
-                    prefix = config['mountpoint.prefix'].rstrip("/")
-                    path = config['mountpoint.target'].router.build(name, **kargs)
-                    return _normalize_path_end(
-                        "".join([script_name.rstrip("/"), prefix, path]))
+                    prefix = config["mountpoint.prefix"].rstrip("/")
+                    path = config["mountpoint.target"].router.build(name, **kargs)
+                    return _normalize_path_end("".join([script_name.rstrip("/"), prefix, path]))
                 except bottle.RouteBuildError as e:
                     if str(e).startswith("Missing URL"):
                         raise e
@@ -83,7 +82,7 @@ def generated_static(name, *args):
 
 def static(name, *args):
     script_name, _ = _get_prefix_and_script_name()
-    script_name = script_name.strip('/')
+    script_name = script_name.strip("/")
     script_name = "/%s" % script_name if script_name else ""
     filename = ("%s/static/%s" % (script_name, name)) % args
     md5 = static_md5("static/" + name)
@@ -100,7 +99,7 @@ def static_md5(filename):
     if filename in static_md5_map:
         return static_md5_map[filename]
 
-    match = re.match(r'(?:static)?/*plugins/+(\w+)/+(.+)', filename)
+    match = re.match(r"(?:static)?/*plugins/+(\w+)/+(.+)", filename)
     os_path = None
     if match:
         plugin_name, plugin_file = match.groups()
@@ -109,7 +108,7 @@ def static_md5(filename):
             if plugin.PLUGIN_NAME == plugin_name:
                 os_path = os.path.join(plugin.DIRNAME, "static", plugin_file)
     else:
-        match = re.match(r'(?:static)?/*generated/+([a-z]{2})/+(.+)', filename)
+        match = re.match(r"(?:static)?/*generated/+([a-z]{2})/+(.+)", filename)
         if match:
             language, template = match.groups()
             os_path = os.path.join(current_state.assets_path, current_state.app, language, template)
@@ -136,6 +135,6 @@ def static_md5(filename):
 
 def get_root():
     root = bottle.request.script_name
-    root = root.strip('/')
+    root = root.strip("/")
     root = "/%s" % root if root else ""
     return root

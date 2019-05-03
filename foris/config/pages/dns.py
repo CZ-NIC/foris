@@ -33,7 +33,8 @@ class DNSConfigPage(ConfigPageMixin, dns.DNSHandler):
 
     def _action_check_connection(self):
         return current_state.backend.perform(
-            "wan", "connection_test_trigger", {"test_kinds": ["dns"]})
+            "wan", "connection_test_trigger", {"test_kinds": ["dns"]}
+        )
 
     def call_ajax_action(self, action):
         if action == "check-connection":

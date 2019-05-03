@@ -50,8 +50,10 @@ class WifiEditForm(fapi.ForisAjaxForm):
     def convert_data_from_backend_to_form(self, backend_data: dict) -> dict:
         form_data = {}
         for device in backend_data["devices"]:
+
             def prefixed(name):
                 return WifiEditForm.prefixed(device["id"], name)
+
             form_data[prefixed("device_enabled")] = device["enabled"]
             form_data[prefixed("ssid")] = device["SSID"]
             form_data[prefixed("ssid_hidden")] = device["hidden"]
@@ -98,7 +100,8 @@ class WifiEditForm(fapi.ForisAjaxForm):
     def make_form(self, data: typing.Optional[dict]) -> fapi.ForisForm:
 
         backend_data = current_state.backend.perform(
-            "wifi", "get_settings", controller_id=self.controller_id)
+            "wifi", "get_settings", controller_id=self.controller_id
+        )
         form_data = self.convert_data_from_backend_to_form(backend_data)
         if data:
             form_data.update(data)
@@ -112,20 +115,16 @@ class WifiEditForm(fapi.ForisAjaxForm):
                 "here and fill in an SSID (the name of the access point) and a "
                 "corresponding password. You can then set up your mobile devices, "
                 "using the QR code available within the form."
-            )
+            ),
         )
 
         # Add wifi section
-        wifi_section = wifi_form.add_section(
-            name="wifi_settings",
-            title=_("Wi-Fi settings"),
-        )
+        wifi_section = wifi_form.add_section(name="wifi_settings", title=_("Wi-Fi settings"))
 
         for idx, device in enumerate(backend_data["devices"]):
             prefix = WifiEditForm.prefixed(device["id"], "")
             device_form_data = {
-                k[len(prefix):]: v for k, v in form_data.items()
-                if k.startswith(prefix)
+                k[len(prefix) :]: v for k, v in form_data.items() if k.startswith(prefix)
             }  # prefix removed
             self._prepare_device_fields(
                 wifi_section, device, device_form_data, len(backend_data["devices"]) - 1 == idx
@@ -133,9 +132,11 @@ class WifiEditForm(fapi.ForisAjaxForm):
 
         def form_cb(data):
             update_data = self.convert_data_from_form_to_backend(
-                data, [e["id"] for e in backend_data["devices"]])
+                data, [e["id"] for e in backend_data["devices"]]
+            )
             res = current_state.backend.perform(
-                "wifi", "update_settings", update_data, controller_id=self.controller_id)
+                "wifi", "update_settings", update_data, controller_id=self.controller_id
+            )
             return "save_result", res
 
         wifi_form.add_callback(form_cb)
@@ -143,7 +144,7 @@ class WifiEditForm(fapi.ForisAjaxForm):
 
     def _prepare_device_fields(self, section, device, form_data, last=False):
         HINTS = {
-            'password': _(
+            "password": _(
                 "WPA2 pre-shared key, that is required to connect to the "
                 "network. Minimum length is 8 characters."
             )
@@ -161,27 +162,35 @@ class WifiEditForm(fapi.ForisAjaxForm):
         else:
             band = bands[0]
 
-        wifi_main = section.add_section(
-            name=prefixed("set_wifi"),
-            title=None,
+        wifi_main = section.add_section(name=prefixed("set_wifi"), title=None)
+        wifi_main.add_field(
+            Checkbox,
+            name=prefixed("device_enabled"),
+            label=_("Enable Wi-Fi %s") % (device["id"] + 1),
+            default=True,
         )
         wifi_main.add_field(
-            Checkbox, name=prefixed("device_enabled"),
-            label=_("Enable Wi-Fi %s") % (device["id"] + 1), default=True,
-        )
-        wifi_main.add_field(
-            Textbox, name=prefixed("ssid"), label=_("SSID"),
-            required=True, validators=validators.ByteLenRange(1, 32)
+            Textbox,
+            name=prefixed("ssid"),
+            label=_("SSID"),
+            required=True,
+            validators=validators.ByteLenRange(1, 32),
         ).requires(prefixed("device_enabled"), True)
         wifi_main.add_field(
-            Checkbox, name=prefixed("ssid_hidden"), label=_("Hide SSID"), default=False,
-            hint=_("If set, network is not visible when scanning for available networks.")
+            Checkbox,
+            name=prefixed("ssid_hidden"),
+            label=_("Hide SSID"),
+            default=False,
+            hint=_("If set, network is not visible when scanning for available networks."),
         ).requires(prefixed("device_enabled"), True)
 
         wifi_main.add_field(
-            Radio, name=prefixed("hwmode"), label=_("Wi-Fi mode"),
+            Radio,
+            name=prefixed("hwmode"),
+            label=_("Wi-Fi mode"),
             args=[
-                e for e in (("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)"))
+                e
+                for e in (("11g", "2.4 GHz (g)"), ("11a", "5 GHz (a)"))
                 if e[0] in [b["hwmode"] for b in device["available_bands"]]
             ],
             hint=_(
@@ -190,7 +199,7 @@ class WifiEditForm(fapi.ForisAjaxForm):
                 " standard and may not be supported by all your devices. It "
                 "usually has less interference, but the signal does not "
                 "carry so well indoors."
-            )
+            ),
         ).requires(prefixed("device_enabled"), True)
 
         htmodes = (
@@ -202,40 +211,44 @@ class WifiEditForm(fapi.ForisAjaxForm):
             ("VHT80", _("802.11ac - 80 MHz wide channel")),
         )
         wifi_main.add_field(
-            Dropdown, name=prefixed("htmode"), label=_("802.11n/ac mode"),
+            Dropdown,
+            name=prefixed("htmode"),
+            label=_("802.11n/ac mode"),
             args=[e for e in htmodes if e[0] in band["available_htmodes"]],
             hint=_(
                 "Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz wide "
                 "channels can yield higher throughput but can cause more interference in the "
                 "network. If you don't know what to choose, use the default option with 20 MHz "
                 "wide channel."
-            )
-        ).requires(
-            prefixed("device_enabled"), True
-        ).requires(
-            prefixed("hwmode"), lambda val:  val in ("11g", "11a")
+            ),
+        ).requires(prefixed("device_enabled"), True).requires(
+            prefixed("hwmode"), lambda val: val in ("11g", "11a")
         )  # this req is added to rerender htmodes when hwmode changes
 
         channels = [("0", _("auto"))] + [
-            (str(e["number"]), (
-                "%d (%d MHz%s)" % (e["number"], e["frequency"], ", DFS" if e["radar"] else "")
-            ))
+            (
+                str(e["number"]),
+                ("%d (%d MHz%s)" % (e["number"], e["frequency"], ", DFS" if e["radar"] else "")),
+            )
             for e in band["available_channels"]
         ]
         wifi_main.add_field(
-            Dropdown, name=prefixed("channel"), label=_("Network channel"),
-            default="0", args=channels,
-        ).requires(
-            prefixed("device_enabled"), True
-        ).requires(
-            prefixed("hwmode"), lambda val:  val in ("11g", "11a")
+            Dropdown,
+            name=prefixed("channel"),
+            label=_("Network channel"),
+            default="0",
+            args=channels,
+        ).requires(prefixed("device_enabled"), True).requires(
+            prefixed("hwmode"), lambda val: val in ("11g", "11a")
         )  # this req is added to rerender channel list when hwmode changes
 
         wifi_main.add_field(
-            PasswordWithHide, name=prefixed("password"), label=_("Network password"),
+            PasswordWithHide,
+            name=prefixed("password"),
+            label=_("Network password"),
             required=True,
             validators=validators.ByteLenRange(8, 63),
-            hint=HINTS['password']
+            hint=HINTS["password"],
         ).requires(prefixed("device_enabled"), True)
 
         if current_state.app == "config" and self.enable_guest:
@@ -243,27 +256,37 @@ class WifiEditForm(fapi.ForisAjaxForm):
             guest_section = wifi_main.add_section(
                 name=prefixed("set_guest_wifi"),
                 title=_("Guest Wi-Fi"),
-                description=_("Set guest Wi-Fi here.")
+                description=_("Set guest Wi-Fi here."),
             )
             guest_section.add_field(
-                Checkbox, name=prefixed("guest_enabled"),
-                label=_("Enable guest Wi-Fi"), default=False,
+                Checkbox,
+                name=prefixed("guest_enabled"),
+                label=_("Enable guest Wi-Fi"),
+                default=False,
                 hint=_(
                     "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
                     "connected to this network are allowed to access the internet, but aren't "
                     "allowed to access other devices and the configuration interface of the "
                     "router. Parameters of the guest network can be set in <a href='%(url)s'>the "
                     "Guest network tab</a>."
-                ) % dict(url=reverse("config_page", page_name="guest"))
+                )
+                % dict(url=reverse("config_page", page_name="guest")),
             ).requires(prefixed("device_enabled"), True)
             guest_section.add_field(
-                Textbox, name=prefixed("guest_ssid"), label=_("SSID for guests"),
-                required=True, validators=validators.ByteLenRange(1, 32),
+                Textbox,
+                name=prefixed("guest_ssid"),
+                label=_("SSID for guests"),
+                required=True,
+                validators=validators.ByteLenRange(1, 32),
             ).requires(prefixed("guest_enabled"), True)
             guest_section.add_field(
-                PasswordWithHide, name=prefixed("guest_password"), label=_("Password for guests"),
-                required=True, default="", validators=validators.ByteLenRange(8, 63),
-                hint=HINTS['password'],
+                PasswordWithHide,
+                name=prefixed("guest_password"),
+                label=_("Password for guests"),
+                required=True,
+                default="",
+                validators=validators.ByteLenRange(8, 63),
+                hint=HINTS["password"],
             ).requires(prefixed("guest_enabled"), True)
 
         # Horizontal line separating wi-fi cards

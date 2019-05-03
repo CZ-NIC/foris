@@ -29,11 +29,7 @@ from foris.middleware.sessions import SessionMiddleware
 from foris.middleware.reporting import ReportingMiddleware
 from foris.plugins import ForisPluginLoader
 from foris.state import current_state
-from foris.utils.bottle_stuff import (
-    prepare_template_defaults,
-    route_list_cmdline,
-    route_list_debug,
-)
+from foris.utils.bottle_stuff import prepare_template_defaults, route_list_cmdline, route_list_debug
 from foris.utils import messages
 from foris.utils import dynamic_assets
 
@@ -57,9 +53,10 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     # internationalization
     i18n_defaults(bottle.SimpleTemplate, bottle.request)
     i18n_defaults(bottle.Jinja2Template, bottle.request)
-    bottle.Jinja2Template.settings["extensions"] = ['foris.utils.translators.i18n']
+    bottle.Jinja2Template.settings["extensions"] = ["foris.utils.translators.i18n"]
     bottle.Jinja2Template.settings["bytecode_cache"] = jinja2.FileSystemBytecodeCache(
-        directory=current_state.assets_path)
+        directory=current_state.assets_path
+    )
 
     # setup default template defaults
     prepare_template_defaults()
@@ -85,8 +82,8 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
     init_common_app(app, None)
     for route in app.routes:
         if route.config.get("mountpoint"):
-            mounted = route.config['mountpoint.target']
-            prefix = route.config['mountpoint.prefix']
+            mounted = route.config["mountpoint.target"]
+            prefix = route.config["mountpoint.prefix"]
             init_common_app(mounted, prefix)
 
     if load_plugins:
@@ -95,10 +92,15 @@ def prepare_common_app(args, app_name, init_function, top_index, logger, load_pl
         loader.autoload_plugins()
 
     # i18n middleware
-    app = I18NMiddleware(app, I18NPlugin(
-        domain="messages", lang_code=DEFAULT_LANGUAGE, default=DEFAULT_LANGUAGE,
-        locale_dir=os.path.join(BASE_DIR, "locale")
-    ))
+    app = I18NMiddleware(
+        app,
+        I18NPlugin(
+            domain="messages",
+            lang_code=DEFAULT_LANGUAGE,
+            default=DEFAULT_LANGUAGE,
+            locale_dir=os.path.join(BASE_DIR, "locale"),
+        ),
+    )
 
     # obtains required data from backend (this will happen everytime when a request arrives)
     app = BackendData(app)

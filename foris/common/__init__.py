@@ -24,17 +24,11 @@ import re
 from functools import wraps
 
 from foris import BASE_DIR
-from foris.utils import (
-    redirect_unauthenticated, is_safe_redirect, login_required, check_password,
-)
+from foris.utils import redirect_unauthenticated, is_safe_redirect, login_required, check_password
 from foris.middleware.bottle_csrf import update_csrf_token, CSRFValidationError, CSRFPlugin
 from foris.utils.routing import reverse
 from foris.utils.translators import translations, set_current_language
-from foris.utils.bottle_stuff import (
-    clickjacking_protection,
-    clear_lazy_cache,
-    disable_caching,
-)
+from foris.utils.bottle_stuff import clickjacking_protection, clear_lazy_cache, disable_caching
 from foris.state import current_state
 
 
@@ -50,7 +44,7 @@ def login(next, session):
         update_csrf_token(save_session=False)
         session.save()
 
-        if next and is_safe_redirect(next, bottle.request.get_header('host')):
+        if next and is_safe_redirect(next, bottle.request.get_header("host")):
             bottle.redirect(next)
         else:
             bottle.redirect(reverse("index"))
@@ -88,8 +82,8 @@ def change_lang(lang):
     if lang in translations:
         if set_current_language(lang):
             bottle.request.app.lang = lang
-        backlink = bottle.request.GET.get('backlink')
-        if backlink and is_safe_redirect(backlink, bottle.request.get_header('host')):
+        backlink = bottle.request.GET.get("backlink")
+        if backlink and is_safe_redirect(backlink, bottle.request.get_header("host")):
             bottle.redirect(backlink)
         bottle.redirect(reverse("index"))
     else:
@@ -102,6 +96,7 @@ def static(filename):
     :type filename: str
     :return: http response
     """
+
     def prepare_response(filename, fs_root):
         response = bottle.static_file(filename, root=fs_root)
         response.add_header("Cache-Control", "public, max-age=31536000")
@@ -110,7 +105,7 @@ def static(filename):
     if not bottle.DEBUG:
         logger.warning("Static files should be handled externally in production mode.")
 
-    match = re.match(r'/*plugins/+(\w+)/+(.+)', filename)
+    match = re.match(r"/*plugins/+(\w+)/+(.+)", filename)
     if match:
         plugin_name, plugin_file = match.groups()
 
@@ -121,7 +116,7 @@ def static(filename):
 
         return bottle.HTTPError(404, "File does not exist.")
 
-    match = re.match(r'/*generated/+([a-z]{2})/+(.+)', filename)
+    match = re.match(r"/*generated/+([a-z]{2})/+(.+)", filename)
     if match:
         filename = "/".join(match.groups())
         return prepare_response(
@@ -138,7 +133,7 @@ def reboot():
     if bottle.request.is_xhr:
         # return a list of ip addresses where to connect after reboot is performed
         res = bottle.response.copy(cls=bottle.HTTPResponse)
-        res.content_type = 'application/json'
+        res.content_type = "application/json"
         res.body = json.dumps(data)
         res.status = 200
         raise res
@@ -174,7 +169,7 @@ def backend_api():
     )
 
     res = bottle.response.copy(cls=bottle.HTTPResponse)
-    res.content_type = 'application/json'
+    res.content_type = "application/json"
     res.body = json.dumps(resp)
     res.status = 200
     raise res
@@ -182,9 +177,7 @@ def backend_api():
 
 @login_required
 def leave_guide():
-    current_state.backend.perform("web", "update_guide", {
-        "enabled": False,
-    })
+    current_state.backend.perform("web", "update_guide", {"enabled": False})
     bottle.redirect(reverse("/"))
 
 
@@ -196,17 +189,20 @@ def reset_guide():
 
 def ping():
     res = bottle.response.copy(cls=bottle.HTTPResponse)
-    res.content_type = 'application/json'
+    res.content_type = "application/json"
 
-    next = bottle.request.GET.get('next', None)
+    next = bottle.request.GET.get("next", None)
     login_url = "%s://%s" % (bottle.request.urlparts.scheme, bottle.request.urlparts.netloc)
-    login_url = "%s%s?next=%s" % (login_url, reverse("login"), next) if next else \
-        "%s%s" % (login_url, reverse("login"))
+    login_url = (
+        "%s%s?next=%s" % (login_url, reverse("login"), next)
+        if next
+        else "%s%s" % (login_url, reverse("login"))
+    )
     res.body = json.dumps(dict(msg="pong", loginUrl=login_url))
     res.status = 200
-    res.set_header('Access-Control-Allow-Origin', '*')
-    res.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-    res.set_header('Access-Control-Allow-Headers', 'Origin, Accept, Content-Type, X-Requested-With')
+    res.set_header("Access-Control-Allow-Origin", "*")
+    res.set_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+    res.set_header("Access-Control-Allow-Headers", "Origin, Accept, Content-Type, X-Requested-With")
     raise res
 
 
@@ -230,7 +226,7 @@ def init_default_app(index, include_static=False):
     app.route("/leave_guide", method="POST", name="leave_guide", callback=leave_guide)
     app.route("/reset_guide", method="POST", name="reset_guide", callback=reset_guide)
     if include_static:
-        app.route('/static/<filename:re:.*>', name="static", callback=static)
+        app.route("/static/<filename:re:.*>", name="static", callback=static)
     # route for testing whether the foris app is alive (used in js)
     app.route("/ping", name="ping", method=("GET", "OPTIONS"), callback=ping)
     return app
@@ -248,7 +244,7 @@ def init_common_app(app, prefix):
     """
     app.catchall = False  # caught by ReportingMiddleware
     app.error_handler[403] = foris_403_handler
-    app.add_hook('after_request', clickjacking_protection)
-    app.add_hook('after_request', disable_caching)
-    app.add_hook('after_request', clear_lazy_cache)
-    app.config['prefix'] = prefix
+    app.add_hook("after_request", clickjacking_protection)
+    app.add_hook("after_request", disable_caching)
+    app.add_hook("after_request", clear_lazy_cache)
+    app.config["prefix"] = prefix

@@ -32,22 +32,14 @@ class BaseConfigPage(object):
     slug: typing.Optional[str] = None
     userfriendly_title: typing.Optional[str]
     menu_title: typing.Optional[str] = None
-    subpages: typing.Iterable[typing.Type['ConfigPageMixin']] = []
+    subpages: typing.Iterable[typing.Type["ConfigPageMixin"]] = []
 
     @staticmethod
     def get_menu_tag_static(cls):
         if current_state.guide.enabled and current_state.guide.current == cls.slug:
-            return {
-                "show": True,
-                "hint": "",
-                "text": "<i class='fas fa-reply'></i>",
-            }
+            return {"show": True, "hint": "", "text": "<i class='fas fa-reply'></i>"}
         else:
-            return {
-                "show": False,
-                "hint": "",
-                "text": "",
-            }
+            return {"show": False, "hint": "", "text": ""}
 
     @classmethod
     def get_menu_tag(cls):
@@ -101,9 +93,9 @@ class ConfigPageMixin(BaseConfigPage):
         """
         raise bottle.HTTPError(404, "No AJAX actions specified for this page.")
 
-    def get_page_form(self, form_name: str, data: dict, controller_id: str) -> typing.Tuple[
-            fapi.ForisAjaxForm, typing.Callable[[dict], typing.Tuple['str', 'str']]
-    ]:
+    def get_page_form(
+        self, form_name: str, data: dict, controller_id: str
+    ) -> typing.Tuple[fapi.ForisAjaxForm, typing.Callable[[dict], typing.Tuple["str", "str"]]]:
         """Returns appropriate foris form and handler to generate response
         """
         raise bottle.HTTPError(404, "No forms specified for this page.")
@@ -119,11 +111,12 @@ class ConfigPageMixin(BaseConfigPage):
     def default_template(self, **kwargs):
         if self.template_type == "jinja2":
             page_template = "%s.html.j2" % self.template
-            kwargs['template_adapter'] = bottle.Jinja2Template
+            kwargs["template_adapter"] = bottle.Jinja2Template
         else:
             page_template = self.template
         return template(
-            page_template, title=_(kwargs.pop('title', self.userfriendly_title)), **kwargs)
+            page_template, title=_(kwargs.pop("title", self.userfriendly_title)), **kwargs
+        )
 
     def render(self, **kwargs):
         try:

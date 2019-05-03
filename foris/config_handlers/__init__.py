@@ -17,6 +17,4 @@
 from .base import BaseConfigHandler
 
 
-__all__ = [
-    'BaseConfigHandler',
-]
+__all__ = ["BaseConfigHandler"]

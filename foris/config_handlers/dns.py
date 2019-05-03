@@ -45,35 +45,44 @@ class DNSHandler(BaseConfigHandler):
         dns_form = fapi.ForisForm("dns", data)
         dns_main = dns_form.add_section(name="set_dns", title=_(self.userfriendly_title))
         dns_main.add_field(
-            Checkbox, name="forwarding_enabled", label=_("Use forwarding"),
+            Checkbox,
+            name="forwarding_enabled",
+            label=_("Use forwarding"),
             preproc=lambda val: bool(int(val)),
         )
         available_forwarders = sorted(available_forwarders, key=lambda x: x[0])
         # fill in text for forwarder (first with "" name)
         available_forwarders[0][1] = _("Use provider's DNS resolver")
         dns_main.add_field(
-            Dropdown, name="forwarder", label=_("DNS Forwarder"),
-            args=available_forwarders,
+            Dropdown, name="forwarder", label=_("DNS Forwarder"), args=available_forwarders
         ).requires("forwarding_enabled", True)
 
         dns_main.add_field(
-            Checkbox, name="dnssec_disabled", label=_("Disable DNSSEC"),
-            preproc=lambda val: bool(int(val)), default=False
+            Checkbox,
+            name="dnssec_disabled",
+            label=_("Disable DNSSEC"),
+            preproc=lambda val: bool(int(val)),
+            default=False,
         )
 
         dns_main.add_field(
-            Checkbox, name="dns_from_dhcp_enabled", label=_("Enable DHCP clients in DNS"),
+            Checkbox,
+            name="dns_from_dhcp_enabled",
+            label=_("Enable DHCP clients in DNS"),
             hint=_(
                 "This will enable your DNS resolver to place DHCP client's "
                 "names among the local DNS records."
             ),
-            preproc=lambda val: bool(int(val)), default=False,
+            preproc=lambda val: bool(int(val)),
+            default=False,
         )
         dns_main.add_field(
-            Textbox, name="dns_from_dhcp_domain", label=_("Domain of DHCP clients in DNS"),
+            Textbox,
+            name="dns_from_dhcp_domain",
+            label=_("Domain of DHCP clients in DNS"),
             hint=_(
-                "This domain will be used as suffix. E.g. The result for client \"android-123\" "
-                "and domain \"my.lan\" will be \"android-123.my.lan\"."
+                'This domain will be used as suffix. E.g. The result for client "android-123" '
+                'and domain "my.lan" will be "android-123.my.lan".'
             ),
             validators=[validators.Domain()],
         ).requires("dns_from_dhcp_enabled", True)

@@ -32,19 +32,18 @@ class ProfileConfigPage(ConfigPageMixin, profile.ProfileHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
-        kwargs['workflows'] = [
+        kwargs["workflows"] = [
             Workflow(
-                e, self.backend_data["current_workflow"] == e,
-                self.backend_data["recommended_workflow"] == e
-            ) for e in self.backend_data["available_workflows"]
+                e,
+                self.backend_data["current_workflow"] == e,
+                self.backend_data["recommended_workflow"] == e,
+            )
+            for e in self.backend_data["available_workflows"]
         ]
 
         # perform some workflow sorting
-        SCORE = {
-            "router": 1,  # router first
-            "bridge": 2,
-        }
-        kwargs['workflows'].sort(key=lambda e: (SCORE.get(e.name, 99), e.name))
+        SCORE = {"router": 1, "bridge": 2}  # router first
+        kwargs["workflows"].sort(key=lambda e: (SCORE.get(e.name, 99), e.name))
         return super(ProfileConfigPage, self).render(**kwargs)
 
     def save(self, *args, **kwargs):

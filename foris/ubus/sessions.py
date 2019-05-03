@@ -27,6 +27,7 @@ def not_destroyed(func):
         if self.destroyed:
             raise SessionDestroyed()
         return func(self, *args, **kwargs)
+
     return wrapped
 
 
@@ -35,15 +36,16 @@ def not_readonly(func):
         if self.readonly:
             raise SessionReadOnly()
         return func(self, *args, **kwargs)
+
     return wrapped
 
 
 class UbusSession(object):
-    ANONYMOUS = '00000000000000000000000000000000'
+    ANONYMOUS = "00000000000000000000000000000000"
 
     def _load_data(self, data):
         self.session_id = data["ubus_rpc_session"]
-        self._data = data['data'].get("foris", {})
+        self._data = data["data"].get("foris", {})
         self.expires_in = data["expires"]
 
     def _create(self, timeout):
@@ -79,9 +81,11 @@ class UbusSession(object):
     def save(self):
         try:
             filtered_data = {k: v for k, v in self._data.items() if k not in self.filtered_keys}
-            call("session", "set", {
-                "ubus_rpc_session": self.session_id, "values": {"foris": filtered_data}
-            })
+            call(
+                "session",
+                "set",
+                {"ubus_rpc_session": self.session_id, "values": {"foris": filtered_data}},
+            )
             logger.debug("foris session '%s' stored: %s" % (self.session_id, filtered_data))
         except RuntimeError:
             logger.debug("Failed to store session data.")
@@ -140,11 +144,11 @@ class UbusSession(object):
     @not_readonly
     @not_destroyed
     def grant(self, obj, function, scope="ubus"):
-        call("session", "grant", {
-            "ubus_rpc_session": self.session_id,
-            "scope": scope,
-            "objects": [[obj, function]],
-        })
+        call(
+            "session",
+            "grant",
+            {"ubus_rpc_session": self.session_id, "scope": scope, "objects": [[obj, function]]},
+        )
         logger.debug(
             "Session '%s' (scope='%s') granted '%s'.'%s'" % (self.session_id, scope, obj, function)
         )

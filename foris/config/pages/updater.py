@@ -36,7 +36,7 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
     template_type = "jinja2"
 
     def _action_resolve_approval(self):
-        if bottle.request.method != 'POST':
+        if bottle.request.method != "POST":
             raise bottle.HTTPError(405, "Method not allowed.")
         try:
             approval_id = bottle.request.POST.get("approval_id")
@@ -53,7 +53,8 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
 
         bottle.response.set_header("Content-Type", "application/json")
         return current_state.backend.perform(
-            "updater", "resolve_approval", {"hash": approval_id, "solution": solution})
+            "updater", "resolve_approval", {"hash": approval_id, "solution": solution}
+        )
 
     def call_ajax_action(self, action):
         if action == "resolve_approval":
@@ -61,14 +62,15 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
         raise ValueError("Unknown action.")
 
     def render(self, **kwargs):
-        kwargs['is_updater_enabled'] = lambda: self.updater_enabled
-        kwargs['always_on_reasons'] = self.always_on_reasons
-        kwargs['current_approval'] = self.current_approval
-        kwargs['get_approval_setting_status'] = lambda: self.approval_setting_status
-        kwargs['get_approval_setting_delay'] = lambda: self.approval_setting_delay
-        if kwargs['current_approval']['present']:
-            kwargs['current_approval']['time'] = datetime.strptime(
-                kwargs['current_approval']['time'].split(".", 1)[0], "%Y-%m-%dT%H:%M:%S")
+        kwargs["is_updater_enabled"] = lambda: self.updater_enabled
+        kwargs["always_on_reasons"] = self.always_on_reasons
+        kwargs["current_approval"] = self.current_approval
+        kwargs["get_approval_setting_status"] = lambda: self.approval_setting_status
+        kwargs["get_approval_setting_delay"] = lambda: self.approval_setting_delay
+        if kwargs["current_approval"]["present"]:
+            kwargs["current_approval"]["time"] = datetime.strptime(
+                kwargs["current_approval"]["time"].split(".", 1)[0], "%Y-%m-%dT%H:%M:%S"
+            )
 
         return super(UpdaterConfigPage, self).render(**kwargs)
 
@@ -91,8 +93,12 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             return result
 
         if result:
-            messages.success(_("Configuration was successfully saved. Selected "
-                               "packages should be installed or removed shortly."))
+            messages.success(
+                _(
+                    "Configuration was successfully saved. Selected "
+                    "packages should be installed or removed shortly."
+                )
+            )
         else:
             messages.warning(_("There were some errors in your input."))
         return result

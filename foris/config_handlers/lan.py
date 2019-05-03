@@ -42,8 +42,9 @@ class LanHandler(BaseConfigHandler):
         data["router_dhcp_enabled"] = self.backend_data["mode_managed"]["dhcp"]["enabled"]
         data["router_dhcp_start"] = self.backend_data["mode_managed"]["dhcp"]["start"]
         data["router_dhcp_limit"] = self.backend_data["mode_managed"]["dhcp"]["limit"]
-        data["router_dhcp_leasetime"] = self.backend_data["mode_managed"]["dhcp"]["lease_time"] \
-            // (60 * 60)
+        data["router_dhcp_leasetime"] = self.backend_data["mode_managed"]["dhcp"]["lease_time"] // (
+            60 * 60
+        )
         data["client_proto_4"] = self.backend_data["mode_unmanaged"]["lan_type"]
         data["client_ip_4"] = self.backend_data["mode_unmanaged"]["lan_static"]["ip"]
         data["client_netmask_4"] = self.backend_data["mode_unmanaged"]["lan_static"]["netmask"]
@@ -55,45 +56,54 @@ class LanHandler(BaseConfigHandler):
         if dns2:
             data["client_dns2_4"] = dns2
         data["client_hostname_4"] = self.backend_data["mode_unmanaged"]["lan_dhcp"].get(
-            "hostname", "")
+            "hostname", ""
+        )
 
         if self.data:
             # Update from post
             data.update(self.data)
 
-        lan_form = fapi.ForisForm("lan", data, validators=[
-            validators.DhcpRangeValidator(
-                'router_netmask', 'router_dhcp_start', 'router_dhcp_limit',
-                gettext(
-                    "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
-                    "does not fit into <strong>Network netmask</strong>!"
-                ),
-                [
-                    lambda data: data['mode'] != 'managed',
-                    lambda data: not data['router_dhcp_enabled'],
-                ]
-            )
-        ])
+        lan_form = fapi.ForisForm(
+            "lan",
+            data,
+            validators=[
+                validators.DhcpRangeValidator(
+                    "router_netmask",
+                    "router_dhcp_start",
+                    "router_dhcp_limit",
+                    gettext(
+                        "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> "
+                        "does not fit into <strong>Network netmask</strong>!"
+                    ),
+                    [
+                        lambda data: data["mode"] != "managed",
+                        lambda data: not data["router_dhcp_enabled"],
+                    ],
+                )
+            ],
+        )
         lan_main = lan_form.add_section(
             name="set_lan",
             title=_(self.userfriendly_title),
-            description=_("This section contains settings for the local network (LAN). The provided"
-                          " defaults are suitable for most networks. <br><strong>Note:</strong> If "
-                          "you change the router IP address, all computers in LAN, probably "
-                          "including the one you are using now, will need to obtain a <strong>new "
-                          "IP address</strong> which does <strong>not</strong> happen <strong>"
-                          "immediately</strong>. It is recommended to disconnect and reconnect all "
-                          "LAN cables after submitting your changes to force the update. The next "
-                          "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
-                          " and you might need to <strong>refresh the page</strong> in your "
-                          "browser.")
+            description=_(
+                "This section contains settings for the local network (LAN). The provided"
+                " defaults are suitable for most networks. <br><strong>Note:</strong> If "
+                "you change the router IP address, all computers in LAN, probably "
+                "including the one you are using now, will need to obtain a <strong>new "
+                "IP address</strong> which does <strong>not</strong> happen <strong>"
+                "immediately</strong>. It is recommended to disconnect and reconnect all "
+                "LAN cables after submitting your changes to force the update. The next "
+                "page will not load until you obtain a new IP from DHCP (if DHCP enabled)"
+                " and you might need to <strong>refresh the page</strong> in your "
+                "browser."
+            ),
         )
 
         lan_main.add_field(
-            Dropdown, name="mode", label=_("LAN mode"), args=[
-                ("managed", _("Router")),
-                ("unmanaged", _("Computer")),
-            ],
+            Dropdown,
+            name="mode",
+            label=_("LAN mode"),
+            args=[("managed", _("Router")), ("unmanaged", _("Computer"))],
             hint=_(
                 "Router mode means that this devices manages the LAN "
                 "(acts as a router, can assing IP addresses, ...). "
@@ -106,30 +116,41 @@ class LanHandler(BaseConfigHandler):
 
         # managed options
         lan_main.add_field(
-            Textbox, name="router_ip", label=_("Router IP address"),
+            Textbox,
+            name="router_ip",
+            label=_("Router IP address"),
             validators=validators.IPv4(),
-            hint=_("Router's IP address in the inner network.")
+            hint=_("Router's IP address in the inner network."),
         ).requires("mode", "managed")
         lan_main.add_field(
-            Textbox, name="router_netmask", label=_("Network netmask"),
+            Textbox,
+            name="router_netmask",
+            label=_("Network netmask"),
             validators=validators.IPv4Netmask(),
-            hint=_("Network mask of the inner network.")
+            hint=_("Network mask of the inner network."),
         ).requires("mode", "managed")
         lan_main.add_field(
-            Checkbox, name="router_dhcp_enabled", label=_("Enable DHCP"),
-            preproc=lambda val: bool(int(val)), default=True,
-            hint=_("Enable this option to automatically assign IP addresses to "
-                   "the devices connected to the router.")
+            Checkbox,
+            name="router_dhcp_enabled",
+            label=_("Enable DHCP"),
+            preproc=lambda val: bool(int(val)),
+            default=True,
+            hint=_(
+                "Enable this option to automatically assign IP addresses to "
+                "the devices connected to the router."
+            ),
         ).requires("mode", "managed")
+        lan_main.add_field(Number, name="router_dhcp_start", label=_("DHCP start")).requires(
+            "router_dhcp_enabled", True
+        )
+        lan_main.add_field(Number, name="router_dhcp_limit", label=_("DHCP max leases")).requires(
+            "router_dhcp_enabled", True
+        )
         lan_main.add_field(
-            Number, name="router_dhcp_start", label=_("DHCP start"),
-        ).requires("router_dhcp_enabled", True)
-        lan_main.add_field(
-            Number, name="router_dhcp_limit", label=_("DHCP max leases"),
-        ).requires("router_dhcp_enabled", True)
-        lan_main.add_field(
-            Number, name="router_dhcp_leasetime", label=_("Lease time (hours)"),
-            validators=[validators.InRange(1, 7 * 24)]
+            Number,
+            name="router_dhcp_leasetime",
+            label=_("Lease time (hours)"),
+            validators=[validators.InRange(1, 7 * 24)],
         ).requires("router_dhcp_enabled", True)
 
         # unmanaged options
@@ -142,53 +163,67 @@ class LanHandler(BaseConfigHandler):
             (LAN_NONE, _("Don't connect this device to LAN")),
         )
         lan_main.add_field(
-            Dropdown, name="client_proto_4", label=_("IPv4 protocol"), args=LAN_OPTIONS,
-            default=LAN_DHCP
+            Dropdown,
+            name="client_proto_4",
+            label=_("IPv4 protocol"),
+            args=LAN_OPTIONS,
+            default=LAN_DHCP,
         ).requires("mode", "unmanaged")
         # unmanaged static
         lan_main.add_field(
-            Textbox, name="client_ip_4", label=_("IPv4 address"), required=True,
-            validators=validators.IPv4()
-        ).requires("client_proto_4", LAN_STATIC)
-        lan_main.add_field(
-            Textbox, name="client_netmask_4", label=_("Network mask"), required=True,
-            validators=validators.IPv4Netmask()
-        ).requires("client_proto_4", LAN_STATIC)
-        lan_main.add_field(
-            Textbox, name="client_gateway_4", label=_("Gateway"), required=True,
+            Textbox,
+            name="client_ip_4",
+            label=_("IPv4 address"),
+            required=True,
             validators=validators.IPv4(),
         ).requires("client_proto_4", LAN_STATIC)
         lan_main.add_field(
-            Textbox, name="client_dns1_4", label=_("DNS server 1 (IPv4)"),
+            Textbox,
+            name="client_netmask_4",
+            label=_("Network mask"),
+            required=True,
+            validators=validators.IPv4Netmask(),
+        ).requires("client_proto_4", LAN_STATIC)
+        lan_main.add_field(
+            Textbox,
+            name="client_gateway_4",
+            label=_("Gateway"),
+            required=True,
+            validators=validators.IPv4(),
+        ).requires("client_proto_4", LAN_STATIC)
+        lan_main.add_field(
+            Textbox,
+            name="client_dns1_4",
+            label=_("DNS server 1 (IPv4)"),
             validators=validators.IPv4(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("client_proto_4", LAN_STATIC)
         lan_main.add_field(
-            Textbox, name="client_dns2_4", label=_("DNS server 2 (IPv4)"),
+            Textbox,
+            name="client_dns2_4",
+            label=_("DNS server 2 (IPv4)"),
             validators=validators.IPv4(),
             hint=_(
                 "DNS server address is not required as the built-in "
                 "DNS resolver is capable of working without it."
-            )
+            ),
         ).requires("client_proto_4", LAN_STATIC)
         # unamanaged dhcp
         lan_main.add_field(
-            Textbox, name="client_hostname_4", label=_("DHCP hostname"),
+            Textbox,
+            name="client_hostname_4",
+            label=_("DHCP hostname"),
             validators=validators.Domain(),
-            hint=_(
-                "Hostname which will be provided to DHCP server."
-            )
+            hint=_("Hostname which will be provided to DHCP server."),
         ).requires("client_proto_4", LAN_DHCP)
 
         def lan_form_cb(data):
             msg = {"mode": data["mode"]}
             if msg["mode"] == "managed":
-                dhcp = {
-                    "enabled": data["router_dhcp_enabled"],
-                }
+                dhcp = {"enabled": data["router_dhcp_enabled"]}
                 if dhcp["enabled"]:
                     dhcp["start"] = int(data["router_dhcp_start"])
                     dhcp["limit"] = int(data["router_dhcp_limit"])
@@ -199,9 +234,7 @@ class LanHandler(BaseConfigHandler):
                     "dhcp": dhcp,
                 }
             elif data["mode"] == "unmanaged":
-                msg["mode_unmanaged"] = {
-                    "lan_type": data["client_proto_4"],
-                }
+                msg["mode_unmanaged"] = {"lan_type": data["client_proto_4"]}
                 if data["client_proto_4"] == "static":
                     msg["mode_unmanaged"]["lan_static"] = {
                         "ip": data["client_ip_4"],

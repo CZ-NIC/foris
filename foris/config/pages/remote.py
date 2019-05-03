@@ -83,7 +83,7 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
         return result
 
     def _check_post(self):
-        if bottle.request.method != 'POST':
+        if bottle.request.method != "POST":
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="remote"))
 
@@ -102,8 +102,7 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
             raise bottle.HTTPError(404, "token_id not found")
 
         bottle.response.set_header("Content-Type", "application/json")
-        return current_state.backend.perform(
-            "remote", "revoke", {"id": form.data["token_id"]})
+        return current_state.backend.perform("remote", "revoke", {"id": form.data["token_id"]})
 
     def _ajax_generate_token(self):
         self._check_post()
@@ -113,7 +112,8 @@ class RemoteConfigPage(ConfigPageMixin, remote.RemoteHandler):
 
         bottle.response.set_header("Content-Type", "application/json")
         return current_state.backend.perform(
-            "remote", "generate_token", {"name": form.data["name"]})
+            "remote", "generate_token", {"name": form.data["name"]}
+        )
 
     def _ajax_prepare_token(self):
         self._check_post()

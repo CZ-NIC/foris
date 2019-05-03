@@ -32,20 +32,19 @@ class NetworksConfigPage(ConfigPageMixin, networks.NetworksHandler):
 
     def render(self, **kwargs):
         # place non-configurable intefaces in front of configurable
-        kwargs['networks'] = {}
+        kwargs["networks"] = {}
         for network_name in self.backend_data["networks"].keys():
-            kwargs['networks'][network_name] = sorted(
+            kwargs["networks"][network_name] = sorted(
                 self.backend_data["networks"][network_name],
-                key=lambda x: (1 if x["configurable"] else 0, x["slot"]), reverse=False
+                key=lambda x: (1 if x["configurable"] else 0, x["slot"]),
+                reverse=False,
             )
-            for network in kwargs['networks'][network_name]:
+            for network in kwargs["networks"][network_name]:
                 if network["type"] == "wifi":
                     network["slot"] = network["bus"] + network["slot"]
 
         # don't display inconfigurable devices in none network (can't be configured anyway)
-        kwargs['networks']['none'] = [
-            e for e in kwargs['networks']['none'] if e["configurable"]
-        ]
+        kwargs["networks"]["none"] = [e for e in kwargs["networks"]["none"] if e["configurable"]]
 
         return super(NetworksConfigPage, self).render(**kwargs)
 

@@ -25,8 +25,7 @@ import bottle
 logger = logging.getLogger("foris.utils.dynamic_assets")
 
 
-dynamic_assets_map = {
-}
+dynamic_assets_map = {}
 
 current_assets_path = None
 
@@ -70,7 +69,8 @@ def store_template(template_name, lang):
         f.flush()
 
     logger.debug(
-        "Generated template '%s' (%s) was stored to '%s'.", template_name, lang, target_path)
+        "Generated template '%s' (%s) was stored to '%s'.", template_name, lang, target_path
+    )
 
     # mark present
     dynamic_assets_map[(template_name, lang)] = True

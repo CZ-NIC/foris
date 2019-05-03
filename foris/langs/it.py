@@ -1,7 +1,7 @@
 # coding=utf-8
 
-iso2 = 'it'
-iso3 = 'ita'
+iso2 = "it"
+iso3 = "ita"
 
 
 name = "Italiano"

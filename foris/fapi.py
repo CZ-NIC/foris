@@ -78,7 +78,6 @@ class ForisFormElement(object):
 
 
 class ForisForm(ForisFormElement):
-
     def __init__(self, name, data=None, validators=[]):
         """
 
@@ -155,7 +154,9 @@ class ForisForm(ForisFormElement):
             if field.name in data:
                 if issubclass(field.type, Checkbox):
                     # coerce checkbox values to boolean
-                    new_data[field.name] = False if data[field.name] == "0" else bool(data[field.name])
+                    new_data[field.name] = (
+                        False if data[field.name] == "0" else bool(data[field.name])
+                    )
         # get names of active fields according to new_data
         active_field_names = [x.name for x in self.get_active_fields(data=new_data)]
         # get new dict of data of active fields
@@ -264,7 +265,9 @@ class ForisForm(ForisFormElement):
             elif operation == "save_result":
                 for k, v in cb_result[1].items():
                     if k in self.callback_results:
-                        raise ValueError("save_result callback returned result with duplicate name: '%s'" % k)
+                        raise ValueError(
+                            "save_result callback returned result with duplicate name: '%s'" % k
+                        )
                     self.callback_results[k] = v
             else:
                 raise NotImplementedError("Unsupported callback operation: %s" % operation)
@@ -307,16 +310,28 @@ class Section(ForisFormElement):
         return self._add(Section(self._main_form, *args, **kwargs))
 
     def render(self):
-        content = "\n".join(c.render() for c in self.children.values()
-                            if c.has_requirements(self._main_form.data))
-        return "<section>\n<h2>%(title)s</h2>\n<p>%(description)s</p>\n%(content)s\n</section>" \
-               % dict(title=self.title, description=self.description, content=content)
+        content = "\n".join(
+            c.render() for c in self.children.values() if c.has_requirements(self._main_form.data)
+        )
+        return (
+            "<section>\n<h2>%(title)s</h2>\n<p>%(description)s</p>\n%(content)s\n</section>"
+            % dict(title=self.title, description=self.description, content=content)
+        )
 
 
 class Field(ForisFormElement):
     def __init__(
-        self, main_form, type, name, label=None, required=False, preproc=None, validators=None,
-        hint="", multifield=False, **kwargs
+        self,
+        main_form,
+        type,
+        name,
+        label=None,
+        required=False,
+        preproc=None,
+        validators=None,
+        hint="",
+        multifield=False,
+        **kwargs
     ):
         """
 
@@ -387,11 +402,11 @@ class Field(ForisFormElement):
         classes = classes.split(" ")
         classes.extend(self._generate_html_classes())
         if classes:
-            attrs['class'] = " ".join(classes)
+            attrs["class"] = " ".join(classes)
         # append HTML data
         html_data = self._generate_html_data()
         for key, value in html_data.items():
-            attrs['data-%s' % key] = value
+            attrs["data-%s" % key] = value
         # multifield magic
         rendered_name = self.name
         if self.multifield:
@@ -413,7 +428,9 @@ class Field(ForisFormElement):
         else:
             field.set_value(self._main_form.data.get(self.name) or "")
         if field.note:
-            field.attrs['class'] = " ".join(field.attrs['class'].split(" ") + ["field-validation-fail"])
+            field.attrs["class"] = " ".join(
+                field.attrs["class"].split(" ") + ["field-validation-fail"]
+            )
         self.__field_cache = field
         return self.__field_cache
 
@@ -427,8 +444,7 @@ class Field(ForisFormElement):
             if issubclass(self.type, Radio):
                 label = "<label>%s</label>" % websafe(text)
             if issubclass(self.type, Input):
-                label = "<label for=\"%s\">%s</label>"\
-                        % (self.field.id, websafe(text))
+                label = '<label for="%s">%s</label>' % (self.field.id, websafe(text))
             else:
                 label = ""
 

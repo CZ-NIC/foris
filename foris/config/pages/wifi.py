@@ -36,7 +36,7 @@ class WifiConfigPage(ConfigPageMixin, wifi.WifiHandler):
 
     def _action_reset(self):
 
-        if bottle.request.method != 'POST':
+        if bottle.request.method != "POST":
             messages.error(_("Wrong HTTP method."))
             bottle.redirect(reverse("config_page", page_name="wifi"))
 

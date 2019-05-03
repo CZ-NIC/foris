@@ -15,9 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from foris import fapi, validators
-from foris.form import (
-    Password, Textbox, Dropdown, Checkbox, Radio, Number, Email, Time,
-)
+from foris.form import Password, Textbox, Dropdown, Checkbox, Radio, Number, Email, Time
 from foris.state import current_state
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -51,10 +49,12 @@ class NotificationsHandler(BaseConfigHandler):
         notifications_form = fapi.ForisForm("notifications", data)
 
         notifications = notifications_form.add_section(
-            name="notifications", title=_("Notifications settings"))
+            name="notifications", title=_("Notifications settings")
+        )
         # notifications settings
         notifications.add_field(
-            Checkbox, name="enable_smtp", label=_("Enable notifications"), default=False)
+            Checkbox, name="enable_smtp", label=_("Enable notifications"), default=False
+        )
 
         notifications.add_field(
             Radio,
@@ -62,10 +62,12 @@ class NotificationsHandler(BaseConfigHandler):
             label=_("SMTP provider"),
             default="0",
             args=(("1", _("Turris")), ("0", _("Custom"))),
-            hint=_("If you set SMTP provider to \"Turris\", the servers provided to members of the "
-                   "Turris project would be used. These servers do not require any additional "
-                   "settings. If you want to set your own SMTP server, please select \"Custom\" "
-                   "and enter required settings.")
+            hint=_(
+                'If you set SMTP provider to "Turris", the servers provided to members of the '
+                "Turris project would be used. These servers do not require any additional "
+                'settings. If you want to set your own SMTP server, please select "Custom" '
+                "and enter required settings."
+            ),
         ).requires("enable_smtp", True)
 
         notifications.add_field(
@@ -77,9 +79,9 @@ class NotificationsHandler(BaseConfigHandler):
             validators=[
                 validators.RegExp(
                     _("Doesn't contain a list of emails separated by spaces"),
-                    r"^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)( +[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)*$"
+                    r"^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)( +[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+ *)*$",
                 )
-            ]
+            ],
         ).requires("enable_smtp", True)
 
         # sender's name for CZ.NIC SMTP only
@@ -87,16 +89,20 @@ class NotificationsHandler(BaseConfigHandler):
             Textbox,
             name="sender_name",
             label=_("Sender's name"),
-            hint=_("Name of the sender - will be used as a part of the "
-                   "sender's email address before the \"at\" sign."),
+            hint=_(
+                "Name of the sender - will be used as a part of the "
+                'sender\'s email address before the "at" sign.'
+            ),
             validators=[
                 validators.RegExp(
-                    _("Sender's name can contain only alphanumeric characters, dots "
-                      "and underscores."),
-                    r"^[0-9a-zA-Z_\.-]+$"
+                    _(
+                        "Sender's name can contain only alphanumeric characters, dots "
+                        "and underscores."
+                    ),
+                    r"^[0-9a-zA-Z_\.-]+$",
                 )
             ],
-            required=True
+            required=True,
         ).requires("enable_smtp", True).requires("use_turris_smtp", "1")
 
         SEVERITY_OPTIONS = (
@@ -105,62 +111,70 @@ class NotificationsHandler(BaseConfigHandler):
             (3, _("Reboot or attention is required or update was installed")),
         )
         notifications.add_field(
-            Dropdown, name="severity", label=_("Importance"),
-            args=SEVERITY_OPTIONS, default=1
+            Dropdown, name="severity", label=_("Importance"), args=SEVERITY_OPTIONS, default=1
         ).requires("enable_smtp", True)
         notifications.add_field(
-            Checkbox, name="news", label=_("Send news"),
+            Checkbox,
+            name="news",
+            label=_("Send news"),
             hint=_("Send emails about new features."),
-            default=True
+            default=True,
         ).requires("enable_smtp", True)
 
         # SMTP settings (custom server)
         smtp = notifications_form.add_section(name="smtp", title=_("SMTP settings"))
         smtp.add_field(
-            Email, name="from", label=_("Sender address (From)"),
+            Email,
+            name="from",
+            label=_("Sender address (From)"),
             hint=_("This is the address notifications are send from."),
-        required=True).requires("enable_smtp", True).requires("use_turris_smtp", "0")
-        smtp.add_field(
-            Textbox, name="server", label=_("Server address"),
+            required=True,
         ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
+        smtp.add_field(Textbox, name="server", label=_("Server address")).requires(
+            "enable_smtp", True
+        ).requires("use_turris_smtp", "0")
         smtp.add_field(
-            Number, name="port", label=_("Server port"),
+            Number,
+            name="port",
+            label=_("Server port"),
             validators=[validators.PositiveInteger()],
-            required=True
+            required=True,
         ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
-        SECURITY_OPTIONS = (
-            ("none", _("None")),
-            ("ssl", _("SSL/TLS")),
-            ("starttls", _("STARTTLS")),
-        )
+        SECURITY_OPTIONS = (("none", _("None")), ("ssl", _("SSL/TLS")), ("starttls", _("STARTTLS")))
         smtp.add_field(
-            Dropdown, name="security", label=_("Security"), args=SECURITY_OPTIONS,
-            default="none"
+            Dropdown, name="security", label=_("Security"), args=SECURITY_OPTIONS, default="none"
         ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
 
-        smtp.add_field(
-            Textbox, name="username", label=_("Username"),
-        ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
-        smtp.add_field(
-            Password, name="password", label=_("Password"),
-        ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
+        smtp.add_field(Textbox, name="username", label=_("Username")).requires(
+            "enable_smtp", True
+        ).requires("use_turris_smtp", "0")
+        smtp.add_field(Password, name="password", label=_("Password")).requires(
+            "enable_smtp", True
+        ).requires("use_turris_smtp", "0")
 
         # reboot time
         reboot = notifications_form.add_section(
-            name="reboot", title=_("Automatic restarts after software update"))
-        reboot.add_field(
-            Number, name="delay", label=_("Delay (days)"),
-            hint=_("Number of days that must pass between receiving the request "
-                   "for restart and the automatic restart itself."),
-            validators=[validators.PositiveInteger(), validators.InRange(0, 10)],
-            required=True
+            name="reboot", title=_("Automatic restarts after software update")
         )
         reboot.add_field(
-            Time, name="reboot_time", label=_("Reboot time"),
+            Number,
+            name="delay",
+            label=_("Delay (days)"),
+            hint=_(
+                "Number of days that must pass between receiving the request "
+                "for restart and the automatic restart itself."
+            ),
+            validators=[validators.PositiveInteger(), validators.InRange(0, 10)],
+            required=True,
+        )
+        reboot.add_field(
+            Time,
+            name="reboot_time",
+            label=_("Reboot time"),
             hint=_("Time of day of automatic reboot in HH:MM format."),
             validators=[validators.Time()],
-            required=True
+            required=True,
         )
 
         def notifications_form_cb(data):
@@ -169,8 +183,9 @@ class NotificationsHandler(BaseConfigHandler):
                 "emails": {"enabled": data["enable_smtp"]},
             }
             if data["enable_smtp"]:
-                msg["emails"]["smtp_type"] = "turris" if data["use_turris_smtp"] == "1" \
-                    else "custom"
+                msg["emails"]["smtp_type"] = (
+                    "turris" if data["use_turris_smtp"] == "1" else "custom"
+                )
                 msg["emails"]["common"] = {
                     "to": [e for e in data["to"].split(" ") if e],
                     "severity_filter": int(data["severity"]),

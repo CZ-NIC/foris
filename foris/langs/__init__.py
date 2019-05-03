@@ -19,9 +19,9 @@ import pkgutil
 
 
 # english is default
-DEFAULT_LANGUAGE = 'en'
-iso2to3 = {'en': 'eng'}
-translation_names = {'en': 'English'}
+DEFAULT_LANGUAGE = "en"
+iso2to3 = {"en": "eng"}
+translation_names = {"en": "English"}
 translations = []
 
 for loader, name, _ in pkgutil.iter_modules([os.path.dirname(__file__)]):

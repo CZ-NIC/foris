@@ -30,6 +30,7 @@ from foris.utils.translators import gettext_dummy as gettext, _
 class NetworksHandler(BaseConfigHandler):
     """ Networks settings handler
     """
+
     userfriendly_title = gettext("Network interfaces")
 
     def load_backend_data(self):
@@ -50,7 +51,8 @@ class NetworksHandler(BaseConfigHandler):
 
         networks_form = fapi.ForisForm("networks", self.data)
         ports_section = networks_form.add_section(
-            name="set_ports", title=_(self.userfriendly_title))
+            name="set_ports", title=_(self.userfriendly_title)
+        )
         checkboxes = []
         for kind in ["wan", "lan", "guest", "none"]:
             checkboxes += [(e["id"], e["id"]) for e in self.backend_data["networks"][kind]]
@@ -74,13 +76,16 @@ class NetworksHandler(BaseConfigHandler):
             https_on_wan = bool(data.get("https_on_wan", "0"))
 
             result = current_state.backend.perform(
-                "networks", "update_settings", {
+                "networks",
+                "update_settings",
+                {
                     "firewall": {
-                        "ssh_on_wan": ssh_on_wan, "http_on_wan": http_on_wan,
-                        "https_on_wan": https_on_wan
+                        "ssh_on_wan": ssh_on_wan,
+                        "http_on_wan": http_on_wan,
+                        "https_on_wan": https_on_wan,
                     },
-                    "networks": {"lan": lan, "wan": wan, "guest": guest, "none": none}
-                }
+                    "networks": {"lan": lan, "wan": wan, "guest": guest, "none": none},
+                },
             )
             return "save_result", result
 

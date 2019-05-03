@@ -31,9 +31,9 @@ class WanConfigPage(ConfigPageMixin, wan.WanHandler):
     template_type = "jinja2"
 
     def render(self, **kwargs):
-        kwargs['interface_count'] = self.backend_data["interface_count"]
-        kwargs['interface_up_count'] = self.backend_data["interface_up_count"]
-        kwargs['wan_status'] = self.status_data
+        kwargs["interface_count"] = self.backend_data["interface_count"]
+        kwargs["interface_up_count"] = self.backend_data["interface_up_count"]
+        kwargs["wan_status"] = self.status_data
         return super(WanConfigPage, self).render(**kwargs)
 
     def _action_check_connection(self, ipv6=True):

@@ -93,16 +93,16 @@ class ReportingMiddleware(object):
             return self.app(environ, start_response)
         except (Exception, ExceptionInBackend) as e:
             template_vars = {}
-            if 'bottle.request.post' in environ:
-                environ['bottle.request.post'] = dict(
-                    filter_sensitive_params(environ['bottle.request.post'],
-                                            self.sensitive_params))
+            if "bottle.request.post" in environ:
+                environ["bottle.request.post"] = dict(
+                    filter_sensitive_params(environ["bottle.request.post"], self.sensitive_params)
+                )
             # update environ
             environ["foris.version"] = current_state.foris_version
             environ["foris.language"] = current_state.language
             environ["foris.backend"] = current_state.backend
 
-            template_vars['environ'] = html_escape(pformat(environ))
+            template_vars["environ"] = html_escape(pformat(environ))
             # Handles backend exceptions in same manner as
             if isinstance(e, ExceptionInBackend):
                 error = "Remote Exception: %s" % e.remote_description
@@ -112,21 +112,20 @@ class ReportingMiddleware(object):
                 error = repr(_e())
                 trace = format_exc()
                 extra = ""
-            template_vars['error'] = html_escape(error)
-            template_vars['trace'] = html_escape(trace)
-            template_vars['extra'] = extra
-            template_vars['dump_file'] = "%s/%s" % (get_root(), self.dump_file)
-            environ['wsgi.errors'].write(format_exc())
-            headers = [('Content-Type', 'text/html; charset=UTF-8')]
+            template_vars["error"] = html_escape(error)
+            template_vars["trace"] = html_escape(trace)
+            template_vars["extra"] = extra
+            template_vars["dump_file"] = "%s/%s" % (get_root(), self.dump_file)
+            environ["wsgi.errors"].write(format_exc())
+            headers = [("Content-Type", "text/html; charset=UTF-8")]
             err = ERROR_TEMPLATE % template_vars
-            start_response('500 INTERNAL SERVER ERROR', headers)
+            start_response("500 INTERNAL SERVER ERROR", headers)
             with open("/tmp/%s" % self.dump_file, "wb") as f:
                 f.write(err.encode("UTF-8"))
             return [tob(err)]
 
     def install_dump_route(self, app):
         def foris_error():
-            return static_file(
-                self.dump_file, "/tmp", mimetype="text/plain", download=True)
+            return static_file(self.dump_file, "/tmp", mimetype="text/plain", download=True)
 
         app.route("/%s" % self.dump_file, callback=foris_error)

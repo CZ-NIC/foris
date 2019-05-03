@@ -61,11 +61,11 @@ class RemoteHandler(BaseConfigHandler):
 
         form = fapi.ForisForm("remote", data)
         config_section = form.add_section(name="set_remote", title=_(self.userfriendly_title))
+        config_section.add_field(Checkbox, name="enabled", label=_("Enable remote access"))
         config_section.add_field(
-            Checkbox, name="enabled", label=_("Enable remote access"),
-        )
-        config_section.add_field(
-            Checkbox, name="wan_access", label=_("Accessible via WAN"),
+            Checkbox,
+            name="wan_access",
+            label=_("Accessible via WAN"),
             hint=_(
                 "If this option is check the device in the WAN network will be able to connect "
                 "to the configuration interface. Otherwise only devices on LAN will be able to "
@@ -73,24 +73,23 @@ class RemoteHandler(BaseConfigHandler):
             ),
         ).requires("enabled", True)
         config_section.add_field(
-            Number, name="port", label=_("Port"),
-            hint=_(
-                "A port which will be opened for the remote configuration "
-                "of this device."
-            ),
+            Number,
+            name="port",
+            label=_("Port"),
+            hint=_("A port which will be opened for the remote configuration " "of this device."),
             validator=[InRange(1, 2 ** 16 - 1)],
             default=11884,
         ).requires("enabled", True)
 
         def form_callback(data):
-            msg = {"enabled": data['enabled']}
+            msg = {"enabled": data["enabled"]}
 
             if msg["enabled"]:
                 msg["port"] = int(data["port"])
-                msg["wan_access"] = data['wan_access']
+                msg["wan_access"] = data["wan_access"]
 
             res = current_state.backend.perform("remote", "update_settings", msg)
-            res['enabled'] = msg['enabled']
+            res["enabled"] = msg["enabled"]
 
             return "save_result", res  # store {"result": ...} to be used later...
 
@@ -101,12 +100,16 @@ class RemoteHandler(BaseConfigHandler):
         generate_token_form = fapi.ForisForm("generate_remote_token", data)
         token_section = generate_token_form.add_section("generate_token", title=None)
         token_section.add_field(
-            Textbox, name="name", label=_("Token name"), required=True,
-            hint=_("The display name for the token. It must be shorter than 64 characters "
-                   "and must contain only alphanumeric characters, dots, dashes and "
-                   "underscores."),
-            validators=[
-                RegExp(_("Token name is invalid."), r'[a-zA-Z0-9_.-]+'), LenRange(1, 63)]
+            Textbox,
+            name="name",
+            label=_("Token name"),
+            required=True,
+            hint=_(
+                "The display name for the token. It must be shorter than 64 characters "
+                "and must contain only alphanumeric characters, dots, dashes and "
+                "underscores."
+            ),
+            validators=[RegExp(_("Token name is invalid."), r"[a-zA-Z0-9_.-]+"), LenRange(1, 63)],
         )
         return generate_token_form
 
@@ -114,13 +117,17 @@ class RemoteHandler(BaseConfigHandler):
         token_id_form = fapi.ForisForm("token_id_form", data)
         token_section = token_id_form.add_section("token_id_section", title=None)
         token_section.add_field(
-            Textbox, name="token_id", label="", required=True,
-            validators=[
-                RegExp(_("Token id is invalid."), r'([a-zA-Z0-9][a-zA-Z0-9])+')]
+            Textbox,
+            name="token_id",
+            label="",
+            required=True,
+            validators=[RegExp(_("Token id is invalid."), r"([a-zA-Z0-9][a-zA-Z0-9])+")],
         )
         token_section.add_field(
-            Textbox, name="name", label=_("Token name"), required=False,
-            validators=[
-                RegExp(_("Token name is invalid."), r'[a-zA-Z0-9_.-]+'), LenRange(1, 63)],
+            Textbox,
+            name="name",
+            label=_("Token name"),
+            required=False,
+            validators=[RegExp(_("Token name is invalid."), r"[a-zA-Z0-9_.-]+"), LenRange(1, 63)],
         )
         return token_id_form

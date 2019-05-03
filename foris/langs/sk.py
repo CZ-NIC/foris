@@ -1,6 +1,6 @@
 # coding=utf-8
 
-iso2 = 'sk'
-iso3 = 'svk'
+iso2 = "sk"
+iso3 = "svk"
 
-name = u'Slovenčina'
+name = u"Slovenčina"

@@ -42,7 +42,6 @@ translations = _LangDict(
 
 
 class SimpleDelayedTranslator(object):
-
     def __init__(self, text):
         self.text = text
 
@@ -54,8 +53,9 @@ class SimpleDelayedTranslator(object):
 
 
 gettext = lambda x: translations[current_state.language].gettext(x)
-ngettext = lambda singular, plural, n: \
-    translations[current_state.language].ngettext(singular, plural, n)
+ngettext = lambda singular, plural, n: translations[current_state.language].ngettext(
+    singular, plural, n
+)
 gettext_dummy = lambda x: SimpleDelayedTranslator(x)
 
 _ = gettext
@@ -67,8 +67,7 @@ def set_current_language(language):
     :param lang: language code to save
     :return: True on success, False otherwise
     """
-    if current_state.backend.perform(
-            "web", "set_language", {"language": language})["result"]:
+    if current_state.backend.perform("web", "set_language", {"language": language})["result"]:
         # Update info variable
         current_state.update_lang(language)
         return True

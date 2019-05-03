@@ -64,4 +64,4 @@ def prefix_to_mask_4(subnet):
     :param prefix: int
     :return mask: str
     """
-    return ip_num_to_str_4(int('1' * subnet + '0' * (32 - subnet), 2))
+    return ip_num_to_str_4(int("1" * subnet + "0" * (32 - subnet), 2))

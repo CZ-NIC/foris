@@ -24,72 +24,46 @@ WORKFLOW_MIN = "min"
 WORKFLOW_ROUTER = "router"
 WORKFLOW_BRIDGE = "bridge"
 WORKFLOW_UNSET = "unset"
-WORKFLOWS = [
-    WORKFLOW_UNSET,
-    WORKFLOW_OLD,
-    WORKFLOW_MIN,
-    WORKFLOW_ROUTER,
-    WORKFLOW_BRIDGE,
-]
+WORKFLOWS = [WORKFLOW_UNSET, WORKFLOW_OLD, WORKFLOW_MIN, WORKFLOW_ROUTER, WORKFLOW_BRIDGE]
 
 
-class MessagesDefault():
+class MessagesDefault:
     PASSWORD_PASSED = [
         _(
             "Welcome to Foris web interface. This guide will help you to setup your device. "
             "Firstly it is required to set your password. Note the security of your home "
             "network is in your hands, so try not to use weak passwords."
         ),
-        _(
-            "Your password seems to be set. You may proceed to the next step."
-        ),
+        _("Your password seems to be set. You may proceed to the next step."),
     ]
-    PASSWORD_CURRENT = [
-        PASSWORD_PASSED[0],
-    ]
+    PASSWORD_CURRENT = [PASSWORD_PASSED[0]]
 
     PROFILE_PASSED = [
-        _(
-            "Choose one of the possible setup workflows."
-        ),
-        _(
-            "The workflow was set. You may proceed to next step."
-        )
+        _("Choose one of the possible setup workflows."),
+        _("The workflow was set. You may proceed to next step."),
     ]
-    PROFILE_CURRENT = [
-        PROFILE_PASSED[0],
-    ]
+    PROFILE_CURRENT = [PROFILE_PASSED[0]]
 
     NETWORKS_PASSED = [
-        _(
-            "Here you need to decide which interfaces belong to which network."
-        ),
-        _(
-            "If you are in doubt use the current settings."
-        ),
+        _("Here you need to decide which interfaces belong to which network."),
+        _("If you are in doubt use the current settings."),
         _(
             "You've configured your network interfaces. "
             "It seems that you didn't break any crucial network settings so you can safely "
             "proceed to the next step."
         ),
     ]
-    NETWORKS_CURRENT = [
-        NETWORKS_PASSED[0],
-    ]
+    NETWORKS_CURRENT = [NETWORKS_PASSED[0]]
 
     WAN_PASSED = [
-        _(
-            "In order to access the internet, you need to configure your WAN interface."
-        ),
+        _("In order to access the internet, you need to configure your WAN interface."),
         _(
             "You've configured your WAN interface. "
             "Try to run connection test to see whether it is working properly and "
             "if so you can safely proceed to the next step."
         ),
     ]
-    WAN_CURRENT = [
-        WAN_PASSED[0],
-    ]
+    WAN_CURRENT = [WAN_PASSED[0]]
 
     LAN_PASSED = [
         _(
@@ -103,22 +77,16 @@ class MessagesDefault():
             "you can safely proceed to the next step."
         ),
     ]
-    LAN_CURRENT = [
-        LAN_PASSED[0],
-    ]
+    LAN_CURRENT = [LAN_PASSED[0]]
 
     TIME_PASSED = [
-        _(
-            "Now you need to set the time and timezone of your device."
-        ),
+        _("Now you need to set the time and timezone of your device."),
         _(
             "Your time and timezone seem to be set. Please make sure that the time matches "
             "the time on your computer if not try to update it via ntp or manually."
         ),
     ]
-    TIME_CURRENT = [
-        TIME_PASSED[0],
-    ]
+    TIME_CURRENT = [TIME_PASSED[0]]
 
     DNS_PASSED = [
         _(
@@ -128,27 +96,17 @@ class MessagesDefault():
         _(
             "You've updated your DNS configuration. "
             "Try to run connection test to see whether your DNS resolver is properly set."
-        )
+        ),
     ]
-    DNS_CURRENT = [
-        DNS_PASSED[0],
-    ]
+    DNS_CURRENT = [DNS_PASSED[0]]
 
     UPDATER_PASSED = [
-        _(
-            "Now you need to configure automatic updates on your device."
-        ),
-        _(
-            "Please wait till the updater finishes its run."
-        ),
+        _("Now you need to configure automatic updates on your device."),
+        _("Please wait till the updater finishes its run."),
     ]
-    UPDATER_CURRENT = [
-        UPDATER_PASSED[0]
-    ]
+    UPDATER_CURRENT = [UPDATER_PASSED[0]]
 
-    FINISHED_PASSED = [
-        _("You have successfully configured your device.")
-    ]
+    FINISHED_PASSED = [_("You have successfully configured your device.")]
     FINISHED_CURRENT = FINISHED_PASSED
 
     @classmethod
@@ -167,10 +125,7 @@ class MessageBridge(MessagesDefault):
         ),
         MessagesDefault.NETWORKS_PASSED[2],
     ]
-    NETWORKS_CURRENT = [
-        NETWORKS_PASSED[0],
-        NETWORKS_PASSED[1],
-    ]
+    NETWORKS_CURRENT = [NETWORKS_PASSED[0], NETWORKS_PASSED[1]]
 
     LAN_PASSED = [
         _(
@@ -199,14 +154,9 @@ class MessageBridge(MessagesDefault):
             "This means that you can access the configuration interface of your device "
             "and your device is able to access the internet "
             "(you can use the connection test below)."
-        )
+        ),
     ]
-    LAN_CURRENT = [
-        LAN_PASSED[0],
-        LAN_PASSED[1],
-        LAN_PASSED[2],
-        LAN_PASSED[3],
-    ]
+    LAN_CURRENT = [LAN_PASSED[0], LAN_PASSED[1], LAN_PASSED[2], LAN_PASSED[3]]
 
     FINISHED_PASSED = [
         _(
@@ -247,7 +197,6 @@ def get_guide_messages(step, current, workflow):
 
 
 class Guide(object):
-
     def __init__(self, backend_data):
         self.enabled = backend_data["enabled"]
         self.workflow = backend_data["workflow"]

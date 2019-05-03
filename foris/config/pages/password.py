@@ -35,9 +35,9 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
 
     def save(self, *args, **kwargs):
         result = super(PasswordConfigPage, self).save(no_messages=True, *args, **kwargs)
-        wrong_old_password = self.form.callback_results.get('wrong_old_password', False)
-        system_password_no_error = self.form.callback_results.get('system_password_no_error', None)
-        foris_password_no_error = self.form.callback_results.get('foris_password_no_error', None)
+        wrong_old_password = self.form.callback_results.get("wrong_old_password", False)
+        system_password_no_error = self.form.callback_results.get("system_password_no_error", None)
+        foris_password_no_error = self.form.callback_results.get("foris_password_no_error", None)
 
         compromised = self.form.callback_results.get("compromised")
         if compromised:
@@ -45,7 +45,8 @@ class PasswordConfigPage(ConfigPageMixin, misc.PasswordHandler):
                 _(
                     "The password you've entered has been compromised. "
                     "It appears %(count)d times in '%(list)s' list."
-                ) % dict(count=compromised['count'], list=compromised['list'])
+                )
+                % dict(count=compromised["count"], list=compromised["list"])
             )
             return result
 

@@ -14,9 +14,9 @@ class NonSerializable:
 @pytest.fixture
 def session_fixture():
     session = UbusSession(TIMEOUT)
-    session['test1'] = 1
-    session['test2'] = "2"
-    session['test3'] = True
+    session["test1"] = 1
+    session["test2"] = "2"
+    session["test3"] = True
     session.save()
     yield session.session_id
     session.destroy()
@@ -34,55 +34,55 @@ def test_obtain_session(session_fixture):
     session = UbusSession(TIMEOUT, session_fixture)
     assert session.expires_in == TIMEOUT
     assert len(session) == 3
-    assert sorted([e for e in session]) == ['test1', 'test2', 'test3']
-    assert session['test1'] == 1
-    assert session['test2'] == "2"
-    assert session['test3']
-    assert session.get('test3', False)
+    assert sorted([e for e in session]) == ["test1", "test2", "test3"]
+    assert session["test1"] == 1
+    assert session["test2"] == "2"
+    assert session["test3"]
+    assert session.get("test3", False)
 
 
 def test_save():
     session = UbusSession(TIMEOUT)
-    session['test1'] = 1
-    session['test2'] = 2
-    session['test3'] = 3
+    session["test1"] = 1
+    session["test2"] = 2
+    session["test3"] = 3
     session.save()
 
     session = UbusSession(TIMEOUT, session_id=session.session_id)
     assert len(session) == 3
-    assert sorted([e for e in session]) == ['test1', 'test2', 'test3']
+    assert sorted([e for e in session]) == ["test1", "test2", "test3"]
     assert [session[s] for s in sorted([e for e in session])] == [1, 2, 3]
-    assert session['test1'] == 1
-    assert session['test2'] == 2
-    assert session['test3'] == 3
-    assert 'test1' in session
-    assert 'test2' in session
-    assert 'test3' in session
+    assert session["test1"] == 1
+    assert session["test2"] == 2
+    assert session["test3"] == 3
+    assert "test1" in session
+    assert "test2" in session
+    assert "test3" in session
 
-    del session['test2']
-    session['test1'] = 0
-    session['test4'] = 4
-    session['test5'] = 5
+    del session["test2"]
+    session["test1"] = 0
+    session["test4"] = 4
+    session["test5"] = 5
     session.save()
 
     session = UbusSession(TIMEOUT, session_id=session.session_id)
     assert len(session) == 4
-    assert sorted([e for e in session]) == ['test1', 'test3', 'test4', 'test5']
+    assert sorted([e for e in session]) == ["test1", "test3", "test4", "test5"]
     assert [session[s] for s in sorted([e for e in session])] == [0, 3, 4, 5]
-    assert session['test1'] == 0
-    assert session['test2'] is None
-    assert session['test3'] == 3
-    assert session['test4'] == 4
-    assert session['test5'] == 5
-    assert session.get('test2') is None
-    assert session.get('test2', True)
-    assert session.get('test5', False) == 5
+    assert session["test1"] == 0
+    assert session["test2"] is None
+    assert session["test3"] == 3
+    assert session["test4"] == 4
+    assert session["test5"] == 5
+    assert session.get("test2") is None
+    assert session.get("test2", True)
+    assert session.get("test5", False) == 5
 
-    assert 'test1' in session
-    assert 'test2' not in session
-    assert 'test3' in session
-    assert 'test4' in session
-    assert 'test5' in session
+    assert "test1" in session
+    assert "test2" not in session
+    assert "test3" in session
+    assert "test4" in session
+    assert "test5" in session
 
     session.destroy()
 
@@ -98,19 +98,19 @@ def test_destroy(session_fixture):
         session.destroy()
 
     with pytest.raises(SessionDestroyed):
-        session['test1']
+        session["test1"]
 
     with pytest.raises(SessionDestroyed):
-        session['test2'] = 5
+        session["test2"] = 5
 
     with pytest.raises(SessionDestroyed):
-        del session['test3']
+        del session["test3"]
 
     with pytest.raises(SessionDestroyed):
         [e for e in session]
 
     with pytest.raises(SessionDestroyed):
-        'test1' in session
+        "test1" in session
 
     with pytest.raises(SessionDestroyed):
         len(session)

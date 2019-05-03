@@ -34,7 +34,7 @@ logger = logging.getLogger("foris.utils")
 
 
 def is_user_authenticated():
-    session = bottle.request.environ['foris.session']
+    session = bottle.request.environ["foris.session"]
     return session.get("user_authenticated", False)
 
 
@@ -48,15 +48,15 @@ def redirect_unauthenticated(redirect_url=None):
     if not no_auth and not is_user_authenticated():
 
         # test silent
-        silent = bottle.request.GET.get('silent', 'false') == "true"
-        silent = silent or bottle.request.POST.get('silent', 'false') == "true"
+        silent = bottle.request.GET.get("silent", "false") == "true"
+        silent = silent or bottle.request.POST.get("silent", "false") == "true"
         if not silent:
             write_message()
 
         if bottle.request.is_xhr:
             # "raise" JSON response if requested by XHR
             res = bottle.response.copy(cls=bottle.HTTPResponse)
-            res.content_type = 'application/json'
+            res.content_type = "application/json"
             res.body = json.dumps(dict(success=False, loggedOut=True, loginUrl=redirect_url))
             res.status = 403
             raise res
@@ -72,10 +72,12 @@ def login_required(func=None, redirect_url=None):
     :param redirect_url:
     :return:
     """
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         redirect_unauthenticated(redirect_url)
         return func(*args, **kwargs)
+
     return wrapper
 
 
@@ -94,8 +96,9 @@ def is_safe_redirect(url, host=None):
         logger.warning("Possible CRLF injection attempt: \n%s", bottle.request.environ)
         return False
     url_components = urlparse(url)
-    return ((not url_components.scheme or url_components.scheme in ['http', 'https'])
-            and (not url_components.netloc or url_components.netloc == host))
+    return (not url_components.scheme or url_components.scheme in ["http", "https"]) and (
+        not url_components.netloc or url_components.netloc == host
+    )
 
 
 def require_customization(required_customization=None):
@@ -106,14 +109,18 @@ def require_customization(required_customization=None):
     :param required_customization: required device string
     :return: decorated function
     """
+
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if current_state.device != required_customization:
                 raise bottle.HTTPError(
-                    403, "Requested method is not available in this Foris build.")
+                    403, "Requested method is not available in this Foris build."
+                )
             return func(*args, **kwargs)
+
         return wrapper
+
     return decorator
 
 
@@ -137,6 +144,7 @@ class LazyCache(object):
     """
     Simple per request cache of lazy objects
     """
+
     def __init__(self):
         self.clear()
 
@@ -156,7 +164,7 @@ class LazyCache(object):
         logger.debug("Lazy cache object '%s' removed." % name)
 
     def clear(self):
-        super(LazyCache, self).__setattr__('_attr_dict', {})
+        super(LazyCache, self).__setattr__("_attr_dict", {})
 
 
 def localized_sorted(iterable, lang, key=None, reverse=False):
@@ -172,8 +180,8 @@ def localized_sorted(iterable, lang, key=None, reverse=False):
     """
     alphabet = {
         # FIXME: "ch" should be sorted after h in Czech
-        'cs': u" AÁÅBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
-              u"aáåbcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
+        "cs": u" AÁÅBCČDĎEÉĚFGHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ"
+        u"aáåbcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
     }
 
     alphabet = alphabet.get(lang)
@@ -198,8 +206,9 @@ def localized_sorted(iterable, lang, key=None, reverse=False):
 
 def check_password(password):
     res = current_state.backend.perform(
-        "password", "check",
-        {"password": base64.b64encode(password.encode("utf-8")).decode("utf-8")}
+        "password",
+        "check",
+        {"password": base64.b64encode(password.encode("utf-8")).decode("utf-8")},
     )
 
     # consider unset password as successful auth

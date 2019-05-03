@@ -1,6 +1,6 @@
 # coding=utf-8
 
-iso2 = 'ru'
-iso3 = 'rus'
+iso2 = "ru"
+iso3 = "rus"
 
-name = u'Русский'
+name = u"Русский"

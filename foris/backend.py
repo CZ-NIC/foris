@@ -38,23 +38,27 @@ class Backend(object):
 
         if name == "ubus":
             from foris_client.buses.ubus import UbusSender
+
             self.path = kwargs["path"]
             self._instance = UbusSender(kwargs["path"], default_timeout=self.DEFAULT_TIMEOUT)
 
         elif name == "unix-socket":
             from foris_client.buses.unix_socket import UnixSocketSender
+
             self.path = kwargs["path"]
-            self._instance = UnixSocketSender(
-                kwargs["path"], default_timeout=self.DEFAULT_TIMEOUT)
+            self._instance = UnixSocketSender(kwargs["path"], default_timeout=self.DEFAULT_TIMEOUT)
 
         elif name == "mqtt":
             from foris_client.buses.mqtt import MqttSender
+
             self.host = kwargs["host"]
             self.port = kwargs["port"]
             self.credentials = kwargs["credentials"]
             self.controller_id = kwargs["controller_id"]
             self._instance = MqttSender(
-                kwargs["host"], kwargs["port"], default_timeout=self.DEFAULT_TIMEOUT,
+                kwargs["host"],
+                kwargs["port"],
+                default_timeout=self.DEFAULT_TIMEOUT,
                 credentials=kwargs["credentials"],
             )
 
@@ -98,8 +102,7 @@ class Backend(object):
             raise e
         finally:
             logger.debug(
-                "Query took %f: %s.%s - %s",
-                time.time() - start_time, module, action, data
+                "Query took %f: %s.%s - %s", time.time() - start_time, module, action, data
             )
 
         return response

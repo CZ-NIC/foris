@@ -46,7 +46,8 @@ class NotificationsConfigPage(ConfigPageMixin):
     def _action_dismiss_notifications(self):
         notification_ids = bottle.request.POST.getall("notification_ids[]")
         response = current_state.backend.perform(
-            "router_notifications", "mark_as_displayed", {"ids": notification_ids})
+            "router_notifications", "mark_as_displayed", {"ids": notification_ids}
+        )
         return response["result"], notification_ids
 
     def call_ajax_action(self, action):

@@ -101,6 +101,7 @@ def main():
     try:
         import sentry_sdk
         from sentry_sdk.integrations.bottle import BottleIntegration
+
         try:
             dsn = os.environ["SENTRY_DSN"]
             sentry_sdk.init(dsn=dsn, integrations=[BottleIntegration()])

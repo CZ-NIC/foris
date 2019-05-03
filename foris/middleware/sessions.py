@@ -24,7 +24,6 @@ logger = logging.getLogger("middleware.sessions")
 
 
 class SessionProxy(object):
-
     def __init__(self, env_key, timeout):
         self.cookie_set_needed = False
         self.cookie_unset_needed = False
@@ -45,20 +44,20 @@ class SessionProxy(object):
 
     def set_cookie(self):
         self.cookie_set_needed = True
-        self._cookie_set_text = "; ".join([
-            "%s=%s" % (self.env_key, self.session_id),
-            "httponly",
-            "Path=/",
-        ])
+        self._cookie_set_text = "; ".join(
+            ["%s=%s" % (self.env_key, self.session_id), "httponly", "Path=/"]
+        )
 
     def unset_cookie(self):
         self.cookie_unset_needed = True
-        self._cookie_unset_text = "; ".join([
-            "%s=%s" % (self.env_key, self.session_id),
-            "expires=%s" % datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %T %zGMT"),
-            "httponly",
-            "Path=/",
-        ])
+        self._cookie_unset_text = "; ".join(
+            [
+                "%s=%s" % (self.env_key, self.session_id),
+                "expires=%s" % datetime.strftime(datetime.utcnow(), "%a, %d %b %Y %T %zGMT"),
+                "httponly",
+                "Path=/",
+            ]
+        )
 
     @property
     def set_cookie_text(self):
@@ -100,9 +99,7 @@ class SessionWsProxy(SessionProxy):
 
 
 class SessionForisProxy(SessionProxy):
-    DONT_STORE_IN_ANONYMOUS = [
-        "user_authenticated",
-    ]
+    DONT_STORE_IN_ANONYMOUS = ["user_authenticated"]
 
     def __init__(self, env_key, timeout, session_id):
         super(SessionForisProxy, self).__init__(env_key, timeout)
@@ -171,13 +168,10 @@ class SessionForisProxy(SessionProxy):
 
 
 class SessionMiddleware(object):
-
     @staticmethod
     def _get_cookie(name, cookies):
-        filtered = [
-            e.strip() for e in cookies.split(";") if e.strip().startswith("%s=" % name)
-        ]
-        return filtered[0][len(name) + 1:] if filtered else None
+        filtered = [e.strip() for e in cookies.split(";") if e.strip().startswith("%s=" % name)]
+        return filtered[0][len(name) + 1 :] if filtered else None
 
     def __init__(self, wrap_app, timeout, env_key="foris.session", ws_key="foris.ws.session"):
         self.timeout = timeout
@@ -186,7 +180,7 @@ class SessionMiddleware(object):
         self.wrap_app = self.app = wrap_app
 
     def __call__(self, environ, start_response):
-        cookies = environ.get('HTTP_COOKIE', "")
+        cookies = environ.get("HTTP_COOKIE", "")
         session_key = self._get_cookie(self.env_key, cookies)
         session_key = session_key if session_key else UbusSession.ANONYMOUS
         ws_session_key = self._get_cookie(self.ws_key, cookies)
@@ -213,15 +207,15 @@ class SessionMiddleware(object):
         def session_start_response(status, headers, exc_info=None):
             # update ws session cookies
             if ws_session and ws_session.cookie_set_needed:
-                headers.append(('Set-cookie', ws_session.set_cookie_text))
+                headers.append(("Set-cookie", ws_session.set_cookie_text))
             elif ws_session and ws_session.cookie_unset_needed:
-                headers.append(('Set-cookie', ws_session.unset_cookie_text))
+                headers.append(("Set-cookie", ws_session.unset_cookie_text))
 
             # update foris session cookies
             if session.cookie_set_needed:
-                headers.append(('Set-cookie', session.set_cookie_text))
+                headers.append(("Set-cookie", session.set_cookie_text))
             elif session.cookie_unset_needed:
-                headers.append(('Set-cookie', session.unset_cookie_text))
+                headers.append(("Set-cookie", session.unset_cookie_text))
 
             # Store the current session if it was modified
             if session.tainted:
