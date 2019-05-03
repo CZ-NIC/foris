@@ -75,6 +75,7 @@ setup(
     url="https://gitlab.labs.nic.cz/turris/foris/",
     license="GPL-3.0",
     install_requires=[
+        "jinja2",
         "bottle",
         "bottle_i18n",
         "pbkdf2",
