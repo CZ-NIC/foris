@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 15:07+0200\n"
-"PO-Revision-Date: 2019-05-03 13:03+0000\n"
+"PO-Revision-Date: 2019-05-05 17:49+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/turris/foris/cs/>\n"
 "Language: cs\n"
-"Language-Team: Czech "
-"<https://hosted.weblate.org/projects/turris/foris/cs/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -284,9 +284,9 @@ msgstr "Tohle není platný čas ve formátu HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Tohle není platný čas (ve formátu YYYY-MM-DD HH:MM:SS)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Tato hodnota by měla být z rozsahu %s až %s."
+msgstr "Tato hodnota by měla být z rozsahu %(low)s až %(high)s."
 
 msgid "This is not a valid domain name."
 msgstr "Tohle není platný doménový název."
@@ -297,9 +297,9 @@ msgstr "Není platná MAC adresa."
 msgid "Duid is not valid."
 msgstr "Duid není platné."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Není z platného rozsahu %(low)s až %(high)s."
+msgstr "Není z platného rozsahu %(low).1f až %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
@@ -1956,6 +1956,9 @@ msgid ""
 "          after %(input)s days\n"
 "          "
 msgstr ""
+"\n"
+"          po %(input)s dnech\n"
+"          "
 
 #, python-format
 msgid ""
@@ -1999,9 +2002,8 @@ msgstr ""
 msgid "Package lists"
 msgstr "Seznamy balíčků"
 
-#, fuzzy
 msgid "Save and update"
-msgstr "Odložené aktualizace"
+msgstr "Uložit a aktualizovat"
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -2010,13 +2012,12 @@ msgstr ""
 "Vaše nastavení WAN pravděpodobně není správné nebo WAN rozhraní ještě "
 "nebylo řádně zinicializováno."
 
-#, fuzzy
 msgid ""
 "WAN port has no link or it hasn't been configured yet. Your internet "
 "connection probably won't work."
 msgstr ""
-"Do zdířky WAN není zapojený kabel, vaše připojení do Internetu zřejmě "
-"nebude fungovat."
+"Do zdířky WAN není zapojený kabel nebo ještě nebyla nastavená. Vaše "
+"připojení do Internetu zřejmě nebude fungovat."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Ve vašem zařízení nebyly nalezeny žádné Wi-Fi karty."
@@ -3399,4 +3400,3 @@ msgstr "Návrat ke starší verzi"
 #~ "\n"
 #~ "          za %(input)s hodin\n"
 #~ "          "
-
