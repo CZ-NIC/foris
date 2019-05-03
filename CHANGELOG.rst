@@ -1,3 +1,13 @@
+99.10 (2019-05-02)
+------------------
+
+* translations updated
+* updater: change approval delay from hours(int) to days(float)
+* updater: user entry points to determine whether updater can be disabled
+* updater: user-list UI update
+* wan: better no link message
+* wan: convert initial 'none' protocol to 'dhcp'
+
 99.9 (2019-04-29)
 -----------------
 
