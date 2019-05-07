@@ -93,12 +93,15 @@ class UpdaterConfigPage(ConfigPageMixin, updater.UpdaterHandler):
             return result
 
         if result:
-            messages.success(
-                _(
-                    "Configuration was successfully saved. Selected "
-                    "packages should be installed or removed shortly."
+            if self.form.callback_results.get("enabled", False):
+                messages.success(
+                    _(
+                        "Configuration was successfully saved. Selected "
+                        "packages should be installed or removed shortly."
+                    )
                 )
-            )
+            else:
+                messages.success(_("Configuration was successfully saved."))
         else:
             messages.warning(_("There were some errors in your input."))
         return result

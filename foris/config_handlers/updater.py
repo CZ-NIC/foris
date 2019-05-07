@@ -231,6 +231,7 @@ class UpdaterHandler(BaseConfigHandler):
                 )
 
             res["target"] = data["target"]
+            res["enabled"] = data["enabled"]
             return "save_result", res
 
         form.add_callback(form_cb)
