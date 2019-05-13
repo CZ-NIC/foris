@@ -17,15 +17,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 15:07+0200\n"
-"PO-Revision-Date: 2019-03-16 22:04+0000\n"
+"PO-Revision-Date: 2019-05-05 17:49+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/turris/foris/de/>"
+"\n"
 "Language: de\n"
-"Language-Team: German "
-"<https://hosted.weblate.org/projects/turris/foris/de/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -301,9 +302,9 @@ msgstr "Dies ist keine Uhrzeit im Anzeigeformat HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Dies ist keine Uhrzeit im Anzeigeformat (YYYY-MM-DD HH:MM:SS)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Die Eingabe muss zwischen %s und %s liegen."
+msgstr "Dieser Wert sollte zwischen %(low)s und %(high)s liegen."
 
 msgid "This is not a valid domain name."
 msgstr "Dies ist kein gültiger Domainname."
@@ -314,9 +315,9 @@ msgstr "Ungültige MAC-Adresse."
 msgid "Duid is not valid."
 msgstr "Duid ist nicht gültig."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Nicht im Bereich %(low)s - %(high)s."
+msgstr "Nicht im gültigen Bereich %(low).1f - %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
@@ -1560,7 +1561,7 @@ msgid "Kernel version"
 msgstr "Kernelversion"
 
 msgid "Expandable"
-msgstr ""
+msgstr "Erweiterbar"
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - Administrationsschnittstelle des Turris-Routers"
@@ -1650,15 +1651,14 @@ msgstr "Die Netzwerkverbindung konnte nicht überprüft werden."
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid ""
 "Congratulations you've successfully reached the end of this guide.\n"
 "            Once you leave this guide you'll be granted access to the\n"
 "            full configuration interface of this device."
 msgstr ""
-"Herzlichen Glückwunschfür das Erreichen des Endes dieses Leitfadens. "
-"Sobald Sie diesen Leitfaden verlassen, erhalten Sie Zugriff auf die "
-"vollständige Konfigurationsoberfläche dieses Geräts."
+"Herzlichen Glückwunsch für das Erreichen des Endes dieses Leitfadens. \n"
+"            Sobald Sie diesen Leitfaden verlassen, erhalten Sie Zugriff auf\n"
+"           die vollständige Konfigurationsoberfläche dieses Geräts."
 
 msgid ""
 "To further <strong>improve your security</strong> consider enabling data\n"
@@ -1669,6 +1669,16 @@ msgid ""
 "\n"
 "            to your firewall to block all already known attackers."
 msgstr ""
+"Um Ihre <strong>Sicherheit weiter zu verbessern</strong>, sollten Sie die "
+"Aktivierung der Datensamlung in\n"
+"            Betracht ziehen (durch Auswahl in der Registerkarte Updater "
+"starten). Dies ermöglicht\n"
+"            Ihnen ein Teil unserer Sicherheitsforschung zu werden, um neue "
+"Angreifer zu\n"
+"            identifizieren und gibt Ihnen auch Zugang zu dynamischer "
+"Aktualisierung\n"
+"            Ihrer Firewall, um alle bereits bekannten Angreifer zu "
+"blockieren."
 
 msgid "Continue"
 msgstr "Weiter"
@@ -1882,6 +1892,9 @@ msgid ""
 "This can be useful when you plan to access configuration interface via "
 "mobile app, another Turris router or you intend to write your own client."
 msgstr ""
+"Dies kann nützlich sein, wenn Sie planen, über eine mobile App oder einen "
+"anderen Turris-Router auf die Konfigurationsoberfläche zuzugreifen oder "
+"einen eigenen Client zu schreiben."
 
 msgid "No certification authority"
 msgstr "Keine Zertifizierungsstelle"
@@ -2010,6 +2023,9 @@ msgid ""
 "          after %(input)s days\n"
 "          "
 msgstr ""
+"\n"
+"          nach %(input)s Tagen\n"
+"          "
 
 #, python-format
 msgid ""
@@ -2053,9 +2069,8 @@ msgstr ""
 msgid "Package lists"
 msgstr "Liste der Softwarepakete"
 
-#, fuzzy
 msgid "Save and update"
-msgstr "Verzögerte Updates"
+msgstr "Speichern und aktualisieren"
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -2064,13 +2079,12 @@ msgstr ""
 "Ihre WAN Konfiguration ist wahrscheinlich inkorrekt oder Ihre WAN-"
 "Schnittstelle ist noch nicht ordnungsgemäß initialisiert."
 
-#, fuzzy
 msgid ""
 "WAN port has no link or it hasn't been configured yet. Your internet "
 "connection probably won't work."
 msgstr ""
-"Es ist kein Kabel am WAN-Port angeschlossen. Ihre Internetverbindung wird"
-" wahrscheinlich nicht funktionieren."
+"Der WAN-Port ist nicht verbunden oder wurde noch nicht konfiguriert. Ihre "
+"Internetverbindung wird wahrscheinlich nicht funktionieren."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "In Ihrem Router wurden keine WLAN-Karten erkannt."
@@ -2270,9 +2284,9 @@ msgstr "Ihr Gerät wird in %(time_left)s Sekunden neu gestartet."
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Ihr Netzwerk wird in %(time_left)s Sekunden neu gestartet."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Foris will be restarted in %(time_left)s seconds."
-msgstr "Ihr Netzwerk wird in %(time_left)s Sekunden neu gestartet."
+msgstr "Foris wird in %(time_left)s Sekunden neu gestartet."
 
 msgid "A reboot of your device was triggered."
 msgstr "Ein Neustart des Geräts wurde ausgelöst."
@@ -2280,9 +2294,8 @@ msgstr "Ein Neustart des Geräts wurde ausgelöst."
 msgid "A network restart was triggered."
 msgstr "Ein Netzwerkneustart wurde ausgelöst."
 
-#, fuzzy
 msgid "Foris restart was triggered."
-msgstr "Ein Netzwerkneustart wurde ausgelöst."
+msgstr "Der Neustart von Foris wurde ausgelöst."
 
 msgid "Trying to reconnect to your device."
 msgstr "Versuche wieder mit Ihrem Gerät zu verbinden."
@@ -3567,4 +3580,3 @@ msgstr "Ältere Version"
 #~ "\n"
 #~ "          nach %(input)s Stunden\n"
 #~ "          "
-

@@ -17,15 +17,16 @@ msgstr ""
 "Project-Id-Version: Foris 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-03 15:07+0200\n"
-"PO-Revision-Date: 2019-01-22 08:22+0000\n"
+"PO-Revision-Date: 2019-05-05 17:49+0000\n"
 "Last-Translator: Vladimír Záhradník <vladimir.zahradnik@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/turris/foris/sk/>"
+"\n"
 "Language: sk\n"
-"Language-Team: Slovak "
-"<https://hosted.weblate.org/projects/turris/foris/sk/>\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -46,9 +47,8 @@ msgstr "Vyberte si jeden z možných spôsobov inštalácie."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Nastavenie prebehlo, môžete prejsť k ďalšiemu kroku."
 
-#, fuzzy
 msgid "Here you need to decide which interfaces belong to which network."
-msgstr "Tu sa musíte rozhodnúť, ktoré rozhrania patria ku ktorej sieti."
+msgstr "Tu sa treba rozhodnúť, ktoré sieťové rozhrania patria do ktorej siete."
 
 msgid "If you are in doubt use the current settings."
 msgstr "Ak ste na pochybách, ponechajte aktuálne nastavenia."
@@ -60,9 +60,8 @@ msgstr ""
 "Nastavenie sieťových rozhraní prebehlo. Zdá sa, že je všetko v poriadku a"
 " tak je možné pokračovať na ďalší krok."
 
-#, fuzzy
 msgid "In order to access the internet, you need to configure your WAN interface."
-msgstr "Pre prístup k Internetu je potrebné nakonfigurovať WAN rozhranie."
+msgstr "Pre prístup k Internetu potrebujete nastaviť WAN rozhranie."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
@@ -122,41 +121,37 @@ msgstr "Teraz je potrebné nastaviť automatické aktualizácie vášho zariaden
 msgid "Please wait till the updater finishes its run."
 msgstr "Počkajte, kým automatické aktualizácie nebudú dokončené."
 
-#, fuzzy
 msgid "You have successfully configured your device."
 msgstr "Úspešne ste nastavili svoje zariadenie."
 
-#, fuzzy
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all interfaces to LAN."
 msgstr ""
-"Zvolili ste si chovať sa ako miestny server, čo znamená, že nedáva zmysel"
-" umiestňovať akékoľvek rozhrania do WAN alebo siete pre hostí. Takže je "
-"dobrý nápad priradiť všetky rozhrania do LAN."
+"Zvolili ste si chovať sa ako miestny server, čo znamená, že nedáva zmysel "
+"umiestňovať akékoľvek rozhrania do WAN alebo siete pre hostí. Takže je dobrý "
+"nápad priradiť všetky rozhrania do LAN."
 
-#, fuzzy
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
 "want to manage it reset the guide and choose the Router workflow). You "
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here."
 msgstr ""
-"Pre fungovanie ako miestny server nie je potrebné spravovať LAN (pokiaľ "
-"ju tak chcete spravovať, resetujte sprievodcu a vyberte si postup "
-"Router). Najskôr chcete, aby zariadenie fungovalo ako klient a preto "
-"vyberte režim <strong>Počítač</strong>. "
+"Pre fungovanie ako miestny server nie je potrebné spravovať LAN (pokiaľ ju "
+"tak chcete spravovať, resetujte sprievodcu a vyberte si postup Router). "
+"Najskôr chcete, aby zariadenie fungovalo ako klient a preto vyberte režim "
+"<strong>Počítač</strong>."
 
-#, fuzzy
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
-"Pokiaľ si zvolíte <strong>statické</strong> nastavenie, overte si, že ste"
-" IP adresy zadali správne. Inak po uplatnení tohto nastavenia nebude "
-"rozhranie pre nastavovanie prístupné."
+"Pokiaľ si zvolíte <strong>statické</strong> nastavenie, overte si, že ste IP "
+"adresy zadali správne. Inak po uplatnení tohto nastavenia nebude rozhranie "
+"pre nastavovanie prístupné."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -169,7 +164,6 @@ msgstr ""
 " spravuje vašu sieť. Na túto novú IP adresu sa budete potrebovať pripojiť"
 " pre dokončenie sprievodcu."
 
-#, fuzzy
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
@@ -229,17 +223,15 @@ msgstr "Zrušiť nastavenie"
 msgid "The workflow wasn't set yet."
 msgstr "Scenár doteraz nebol nastavený."
 
-#, fuzzy
 msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
-msgstr "Scenár pre staršie zariadenia a staršie verzie turris OS (pred 4.0)."
+msgstr "Scenár pre staršie zariadenia a staršie verzie Turris OS (pred 4.0)."
 
-#, fuzzy
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web GUI."
 msgstr ""
 "Stačí len nastaviť si heslo a ste pripravení. Tento postup je cielený na "
-"pokročilejších používateľov, ktorí neplánujú používať webové rozhranie. "
+"pokročilejších používateľov, ktorí neplánujú použiť webové rozhranie."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
@@ -250,7 +242,6 @@ msgstr ""
 " funkčný router. Predpokladá, že chcete viac-menej štandardné nastavenie "
 "siete."
 
-#, fuzzy
 msgid ""
 "This workflow will help you to setup your device to act as a local "
 "server. It means that the device will provide some kind of service to "
@@ -292,9 +283,9 @@ msgstr "Toto nie je platný čas vo formáte HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Toto nie je platný čas (vo formáte YYYY-MM-DD HH:MM:SS)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Táto položka musí byť v rozsahu od %s do %s."
+msgstr "Táto hodnota by mala byť v rozsahu %(low)s až %(high)s."
 
 msgid "This is not a valid domain name."
 msgstr "Toto nie je platné doménové meno."
@@ -305,9 +296,9 @@ msgstr "Nie je platná MAC adresa."
 msgid "Duid is not valid."
 msgstr "Duid nie je platné."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Musí byť z rozsahu %(low)s - %(high)s."
+msgstr "Nie je z platného rozsahu %(low).1f až %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
@@ -382,6 +373,8 @@ msgid ""
 "The password you've entered has been compromised. It appears %(count)d "
 "times in '%(list)s' list."
 msgstr ""
+"Heslo, ktoré ste zadali, bolo kompromitované. Objavuje se %(count)d krát v "
+"zozname „%(list)s“."
 
 msgid "Old password you entered was not valid."
 msgstr "Vami zadané pôvodné heslo je neplatné."
@@ -389,47 +382,44 @@ msgstr "Vami zadané pôvodné heslo je neplatné."
 msgid "System password was successfully saved."
 msgstr "Heslo bolo úspešne uložené."
 
-#, fuzzy
 msgid "Failed to save system password."
-msgstr "Systémové heslo sa nepodarilo uložiť"
+msgstr "Systémové heslo sa nepodarilo uložiť."
 
 msgid "Foris password was successfully saved."
 msgstr "Heslo do Forisa bolo úspešne uložené."
 
-#, fuzzy
 msgid "Failed to save Foris password."
-msgstr "Heslo do Forisa sa nepodarilo uložiť"
+msgstr "Heslo do Forisu sa nepodarilo uložiť."
 
 msgid "Remote Access"
-msgstr ""
+msgstr "Prístup na diaľku"
 
-#, fuzzy
 msgid "Remote access was sucessfully enabled."
-msgstr "Heslo bolo úspešne uložené."
+msgstr "Prístup na diaľku bol úspešne zapnutý."
 
 msgid ""
 "Failed to enable the remote access. You are probably using a message bus "
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
+"Nepodarilo sa zapnúť prístup na diaľku. Pravdepodobne používate zbernicu "
+"správ, ktorá nepodporuje prístup na diaľku alebo doteraz ešte nebola "
+"vytvorená certifikačná autorita pre prístup na diaľku."
 
-#, fuzzy
 msgid "Remote access was sucessfully disabled."
-msgstr "Heslo bolo úspešne uložené."
+msgstr "Prístup na diaľku bol úspešne vypnutý."
 
-#, fuzzy
 msgid "Failed to disable remote access."
-msgstr "Systémové heslo sa nepodarilo uložiť"
+msgstr "Prístup na diaľku sa nepodarilo vypnúť."
 
 msgid "Starting to generate CA for remote access."
-msgstr ""
+msgstr "Zahajuje sa vytváranie cert. autority za účelom prístupu na diaľku."
 
-#, fuzzy
 msgid "CA for remote access was sucessfully deleted."
-msgstr "Heslo do Forisa bolo úspešne uložené."
+msgstr "Cert. autorita pre prístup na diaľku bola úspešne vymazaná."
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
+msgstr "Nepodarilo sa vymazať cert. autoritu pre prístup na diaľku."
 
 msgid "Update was approved."
 msgstr "Aktualizácia bola schválená."
@@ -619,7 +609,6 @@ msgstr "LAN režim"
 msgid "Computer"
 msgstr "Počítač"
 
-#, fuzzy
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
 "can assing IP addresses, ...). Computer mode means that this device acts "
@@ -628,8 +617,8 @@ msgid ""
 msgstr ""
 "Režim Router znamená, že toto zariadenie spravuje LAN (slúži ako router, "
 "môže prideľovať IP adresy, …). Režim počítač znamená, že toto zariadenie "
-"funguje v sieti ako klient. Chová sa podobne ako WAN, ale má otvorené "
-"porty pre svoje rozhranie na nastavovanie a ostatné služby. "
+"funguje v sieti ako klient. Chová sa podobne ako WAN, ale má otvorené porty "
+"pre svoje rozhranie pre nastavovanie a ostatné služby."
 
 msgid "Router IP address"
 msgstr "IP adresa routera"
@@ -934,59 +923,57 @@ msgstr "Denný čas automatického reštartu vo formáte HH:MM."
 msgid "Guide workflow"
 msgstr "Scenár sprievodcu"
 
-#, fuzzy
 msgid "valid"
-msgstr "aktívny"
+msgstr "platné"
 
 msgid "revoked"
-msgstr ""
+msgstr "odvolané"
 
-#, fuzzy
 msgid "expired"
-msgstr "Platnosť končí"
+msgstr "platnosť skončila"
 
 msgid "generating"
-msgstr ""
+msgstr "vytvára sa"
 
 msgid "lost"
-msgstr ""
+msgstr "stratené"
 
 msgid "Enable remote access"
-msgstr ""
+msgstr "Povoliť prístup na diaľku"
 
 msgid "Accessible via WAN"
-msgstr ""
+msgstr "Prístupné z WAN"
 
 msgid ""
 "If this option is check the device in the WAN network will be able to "
 "connect to the configuration interface. Otherwise only devices on LAN "
 "will be able to access the configuration interface."
 msgstr ""
+"Pokiaľ je táto voľba zaškrtnutá, zariadenie vo WAN sieti bude schopné sa "
+"pripojiť k nastavovaciemu rozhraniu. V opačnom prípade bude toto rozhranie "
+"prístupné iba zariadeniam v LAN."
 
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 msgid "A port which will be opened for the remote configuration of this device."
-msgstr ""
+msgstr "Port, ktorý bude otvorený pre nastavovanie tohto zariadenia na diaľku."
 
-#, fuzzy
 msgid "Token name"
-msgstr "Meno odosielateľa"
+msgstr "Názov tokenu"
 
-#, fuzzy
 msgid ""
 "The display name for the token. It must be shorter than 64 characters and"
 " must contain only alphanumeric characters, dots, dashes and underscores."
 msgstr ""
-"Meno odosielateľa môže obsahovať iba alfanumerické znaky, bodky a "
-"podčiarkovníky."
+"Zobrazovaný názov tokenu. Je potrebné, aby bol kratší ako 64 znakov a môže "
+"obsahovať iba písmená a číslice, ďalej ešte bodky, pomlčky a podčiarkovníky."
 
 msgid "Token name is invalid."
-msgstr ""
+msgstr "Názov tokenu nie je platný."
 
-#, fuzzy
 msgid "Token id is invalid."
-msgstr "Duid nie je platné."
+msgstr "Identifikátor tokenu nie je platný."
 
 msgid "Updater"
 msgstr "Updater"
@@ -1212,7 +1199,7 @@ msgstr "Wi-Fi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
-msgstr ""
+msgstr "Nastaviť WiFi pre „%s“"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
@@ -1315,7 +1302,7 @@ msgstr "Tu nastavte Wi-Fi pre hostí."
 msgid "Enable guest Wi-Fi"
 msgstr "Povoliť Wi-Fi pre hostí"
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Enables Wi-Fi for guests, which is separated from LAN network. Devices "
 "connected to this network are allowed to access the internet, but aren't "
@@ -1323,10 +1310,10 @@ msgid ""
 "router. Parameters of the guest network can be set in <a "
 "href='%(url)s'>the Guest network tab</a>."
 msgstr ""
-"Zapne Wi-Fi pre hostí, ktorá je oddelená od vnútornej siete. Zariadenia v"
-" tejto sieti môžu ísť na Internet, ale nemajú prístup k ostatným "
-"zariadeniam, ani k nastaveniu routera. Parametre siete pre hostí môžete "
-"nastaviť <a href='%(url)s'>na karte Sieť pre hostí</a>. "
+"Zapne Wi-Fi pre hostí, ktorá je oddelená od vnútornej siete. Zariadenia v "
+"tejto sieti môžu ísť na Internet, ale nemajú prístup k ostatným zariadeniam, "
+"ani k nastaveniu routera. Parametre siete pre hostí môžete nastaviť <a "
+"href='%(url)s'>na karte Sieť pre hostí</a>."
 
 msgid "SSID for guests"
 msgstr "Názov siete pre hostí"
@@ -1489,19 +1476,19 @@ msgstr ""
 "rozhranie."
 
 msgid "Token"
-msgstr ""
+msgstr "Token"
 
 msgid "Prepare Token"
-msgstr ""
+msgstr "Pripraviť token"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Odvolať platnosť"
 
 msgid "Close"
-msgstr ""
+msgstr "Zavrieť"
 
 msgid "Apply"
-msgstr ""
+msgstr "Použiť"
 
 msgid ""
 "If you want to use this card for 2.4GHz bands, correction of cables "
@@ -1533,7 +1520,7 @@ msgid "Kernel version"
 msgstr "Verzia jadra"
 
 msgid "Expandable"
-msgstr ""
+msgstr "Rozšíriteľné"
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - administračné rozhranie routera Turris"
@@ -1599,9 +1586,8 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Zahodiť zmeny"
 
-#, fuzzy
 msgid "Save"
-msgstr "stav"
+msgstr "Uložiť"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1620,15 +1606,14 @@ msgstr "Nepodarilo sa overiť stav pripojenia."
 msgid "DNSSEC"
 msgstr "DNSSEC"
 
-#, fuzzy
 msgid ""
 "Congratulations you've successfully reached the end of this guide.\n"
 "            Once you leave this guide you'll be granted access to the\n"
 "            full configuration interface of this device."
 msgstr ""
-"Gratulujeme, úspešne ste dosiahli koniec tohto sprievodcu. Akonáhle tohto"
-" sprievodcu opustíte, získate prístup do kompletného rozhrania pre "
-"nastavovanie zariadenia."
+"Gratulujeme, úspešne ste sa dostali na koniec tohto sprievodcu.  \n"
+"            Akonáhle tohto sprievodcu opustíte, získate prístup\n"
+"            do kompletného rozhrania pre nastavovanie zariadenia."
 
 msgid ""
 "To further <strong>improve your security</strong> consider enabling data\n"
@@ -1639,6 +1624,12 @@ msgid ""
 "\n"
 "            to your firewall to block all already known attackers."
 msgstr ""
+"Pre ďalšie <strong>posilnenie bezpečnosti</strong> zvážte zapnutie\n"
+"            zberu dát (začnite jeho výberom na karte aktualizácií). Tým sa "
+"budete\n"
+"            môcť stať súčasťou nášho bezpečnostného výskumu, ktorý objavuje\n"
+"            nových útočníkov a tiež sprístupní dynamické aktualizácie\n"
+"            pre bránu firewall pre blokovanie už známych útočníkov."
 
 msgid "Continue"
 msgstr "Pokračovať"
@@ -1839,78 +1830,98 @@ msgid ""
 "configuration is done via secure encrypted connection and each client is "
 "required to have a token issued by this device."
 msgstr ""
+"Tu je možné nastaviť, aby router bolo možné nastavovať na diaľku. "
+"Nastavovanie sa deje prostredníctvom bezpečného, zašifrovaného pripojenia a "
+"pre každého klienta je potrebné vydať token týmto zariadením."
 
 msgid ""
 "This can be useful when you plan to access configuration interface via "
 "mobile app, another Turris router or you intend to write your own client."
 msgstr ""
+"To sa môže hodiť, pokiaľ plánujete pristupovať k rozhraniu s nastaveniami z "
+"mobilnej aplikácie, iného routera Turris alebo zvažujete vytvoriť svojho "
+"vlastného klienta."
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Žiadna certifikačná autorita"
 
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
 "access. A CA is required to generate access tokens to authenticate. To "
 "proceed you need to generate it first."
 msgstr ""
+"V tejto chvíli tu nie je certifikačná autorita (CA) vyhradená pre prístup na "
+"diaľku. Tá je potrebná na vytváranie prístupových tokenov pre overovanie. "
+"Aby bolo možné pokračovať, najskôr je potrebné takúto autoritu vytvoriť."
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Vytvoriť cert. autoritu"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Vytvára sa certifikačná autorita"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
+"Certifikačná autorita nutná pre správu na diaľku. Čas potrebný na vytvorenie "
+"CA môže byť rôzny. Skúste túto stránku načítať neskôr znovu."
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Aktualizácie s oneskorením"
+msgstr "Znovu načítať stránku"
 
-#, fuzzy
 msgid "Connection parameters"
-msgstr "Test pripojenia"
+msgstr "Parametre pripojenia"
 
 msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
+"Vaša certifikačná autorita vyzerá byť pripravená. Teraz môžete bezpečne "
+"zapnúť/vypnúť prístup na diaľku a nastaviť niektoré parametre."
 
-#, fuzzy
 msgid "Apply configuration"
-msgstr "Prevziať zálohu konfigurácie"
+msgstr "Uplatniť nastavenie"
 
 msgid "Tokens"
-msgstr ""
+msgstr "Tokeny"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to the "
 "remote administration."
 msgstr ""
+"Tu je možné vytvárať a odvolávať schopnosť klientov pripájať sa pre správu "
+"na diaľku."
 
 msgid "Create"
-msgstr ""
+msgstr "Vytvoriť"
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Vymazať cert. autoritu"
 
 msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
 " CA you need to disable the remote access first."
 msgstr ""
+"Pokiaľ je prístup na diaľku zapnutý, nie je možné zmazať cert. autoritu. Na "
+"vymazanie cert. autority je potrebné najskôr vypnúť prístup na diaľku."
 
 msgid ""
 "You can delete the whole CA. Note that all the cerificates issued by this"
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Je možné vymazať celú cert. autoritu. Uvedomte si však, že všetky "
+"certifikáty, ktoré boli pomocou nej vydané, sa stanú nepoužiteľné a pokiaľ "
+"budete tento zásuvný modul chcieť využívať, bude najskôr potrebné vytvoriť "
+"novú cert. autoritu."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
+"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
+"br/>Platnosť končí v:"
 
 msgid "Failed to query ntp servers."
 msgstr "Nepodarilo sa kontaktovať ntp servery."
@@ -1957,6 +1968,9 @@ msgid ""
 "          after %(input)s days\n"
 "          "
 msgstr ""
+"\n"
+"          po %(input)s dňoch\n"
+"          "
 
 #, python-format
 msgid ""
@@ -2000,9 +2014,8 @@ msgstr ""
 msgid "Package lists"
 msgstr "Zoznamy balíčkov"
 
-#, fuzzy
 msgid "Save and update"
-msgstr "Aktualizácie s oneskorením"
+msgstr "Uložiť a aktualizovať"
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -2011,13 +2024,12 @@ msgstr ""
 "Vaše nastavenie WAN pravdepodobne nie je správne alebo WAN rozhranie ešte"
 " nebolo správne zinicializované."
 
-#, fuzzy
 msgid ""
 "WAN port has no link or it hasn't been configured yet. Your internet "
 "connection probably won't work."
 msgstr ""
-"Do konektoru WAN nie je zapojený kábel, vaše pripojenie do internetu "
-"zrejme nebude fungovať."
+"Do portu WAN nie je zapojený kábel alebo sieť ešte nebolo nastavená. Vaše "
+"pripojenie do Internetu zrejme nebude fungovať."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr "Vo Vašom zariadení sa nenašli žiadne Wi-Fi karty."
@@ -2211,9 +2223,9 @@ msgstr "Vaše zariadenie sa reštartuje za %(time_left)s sekúnd."
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Vaša sieť sa reštartuje za %(time_left)s sekúnd."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Foris will be restarted in %(time_left)s seconds."
-msgstr "Vaša sieť sa reštartuje za %(time_left)s sekúnd."
+msgstr "Rozhranie Foris sa reštartuje za %(time_left)s sekúnd."
 
 msgid "A reboot of your device was triggered."
 msgstr "Bol spustený reštart zariadenia."
@@ -2221,18 +2233,17 @@ msgstr "Bol spustený reštart zariadenia."
 msgid "A network restart was triggered."
 msgstr "Bol spustený reštart siete."
 
-#, fuzzy
 msgid "Foris restart was triggered."
-msgstr "Bol spustený reštart siete."
+msgstr "Bol spustený reštart rozhrania Foris."
 
 msgid "Trying to reconnect to your device."
 msgstr "Pokus o opätovné pripojenie k vášmu zariadeniu."
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdiť"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 msgid "This value seems to be invalid."
 msgstr "Táto položka je neplatná."
@@ -3432,4 +3443,3 @@ msgstr "Návrat k staršej verzii"
 #~ "\n"
 #~ "          za %(input)s hodín\n"
 #~ "          "
-
