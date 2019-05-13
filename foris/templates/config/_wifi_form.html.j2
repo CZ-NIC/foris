@@ -8,11 +8,13 @@
         {% for field in section.active_fields %}
             {% set radio_number = field.name.strip("abcdefghijklmnopqrstuvwxyz-_") %}
             {% include '_field.html.j2' %}
-            {% if field.name == "radio0-hwmode" and foris_info.device == "omnia" and field.field.value == "11g" %}
+            {% if field.name.endswith("-hwmode") and form.band_conflict %}
         <div class="row">
-            <p class="form-note">
-            {% trans %}If you want to use this card for 2.4GHz bands, correction of cables connected to diplexers is needed! Factory default setting: Cables from big card connected to 5GHz, cables from small card connected to 2.4GHz diplexer part.{% endtrans %}
-            <p>
+            <div class="server-validation-container-persistent">
+                <ul>
+                    <li>{% trans %}You set both WiFi cards to the same band. This usually does not make sense, could make cards interfere with each other (thus hinder performance) and might violate local regulation as well.{% endtrans %}</li>
+                </ul>
+            </div>
         </div>
             {% endif %}
             {% if field.name.endswith("-password") %}

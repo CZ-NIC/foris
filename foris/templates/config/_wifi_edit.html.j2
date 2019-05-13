@@ -13,7 +13,7 @@
         </script>
         <div id="{{ 'form-%s-buttons' % form.name }}" class="form-buttons">
             <a href="#" class="button grayed">{% trans %}Close{% endtrans %}</a>
-            <button type="submit" name="apply" class="button">{% trans %}Apply{% endtrans %}</button>
+            <button type="submit" name="apply" class="button {% if form.band_conflict %}grayed{% endif %}"{% if form.band_conflict %} disabled{% endif %}>{% trans %}Apply{% endtrans %}</button>
         </div>
     </form>
 </div>

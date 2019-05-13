@@ -106,7 +106,19 @@ class WifiEditForm(fapi.ForisAjaxForm):
         if data:
             form_data.update(data)
 
+        used_bands = []
+        for field_name, band in [(k, v) for k, v in form_data.items() if k.endswith("hwmode")]:
+            # radioX-hwmode => X
+            radio_number = field_name.split("-", 1)[0][len("radio"):]
+            radio_enabled = form_data.get(f"radio{radio_number}-device_enabled", False)
+            if (isinstance(radio_enabled, bool) and radio_enabled) or radio_enabled == "1":
+                used_bands.append(band)
+
         wifi_form = fapi.ForisForm("wifi", form_data)
+
+        # display conflict message when two wifis are using the same band
+        wifi_form.band_conflict = not (len(used_bands) == len(set(used_bands)))
+
         wifi_form.add_section(
             name="wifi",
             title=_("Wi-Fi"),

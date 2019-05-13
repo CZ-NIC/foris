@@ -81,7 +81,7 @@ input[type="file"]
     border-color: $error-color
     color: $error-color
 
-  .validation-container, .server-validation-container
+  .validation-container, .server-validation-container, .server-validation-container-persistent
     color: $error-color
     width: 100%
 
@@ -95,7 +95,7 @@ input[type="file"]
     margin: 0.5em 0
     padding: 0.5em
 
-  .validation-container, .server-validation-container, .hint-text
+  .validation-container, .server-validation-container, .hint-text, .server-validation-container-persistent
     +respond-to('not-mobile', $no-query: true)
       margin-left: 12.5em
       max-width: 18.5em
