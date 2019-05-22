@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  Foris\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-27 16:39+0200\n"
-"PO-Revision-Date: 2019-05-21 12:42+0000\n"
+"POT-Creation-Date: 2019-05-03 15:07+0200\n"
+"PO-Revision-Date: 2019-05-27 14:40+0000\n"
 "Last-Translator: Luuk van der Duim <luukvanderduim@gmail.com>\n"
 "Language: nl\n"
 "Language-Team: Dutch "
@@ -357,9 +357,8 @@ msgstr "Het wachtwoord is succesvol gewijzigd."
 msgid "Failed to save system password."
 msgstr ""
 
-#, fuzzy
 msgid "Foris password was successfully saved."
-msgstr "Het wachtwoord is succesvol gewijzigd."
+msgstr "Foris wachtwoord opslaan geslaagd."
 
 #, fuzzy
 msgid "Failed to save Foris password."
