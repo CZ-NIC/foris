@@ -1,3 +1,10 @@
+100.0 (2019-05-27)
+------------------
+
+* translations updated
+* wifi: don't allow to set the same band for different wifi cards
+* update: alert text fix
+
 99.10 (2019-05-02)
 ------------------
 
