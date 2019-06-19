@@ -66,7 +66,22 @@ class GuestHandler(BaseConfigHandler):
                         lambda data: not data["guest_enabled"],
                         lambda data: not data["guest_dhcp_enabled"],
                     ],
-                )
+                ),
+                validators.DhcpRangeRouterIpValidator(
+                    "guest_ipaddr",
+                    "guest_netmask",
+                    "guest_dhcp_start",
+                    "guest_dhcp_limit",
+                    gettext(
+                        "<strong>Router IP</strong> should not be within DHCP range "
+                        "defined by <strong>DHCP start</strong> and <strong>DHCP max leases "
+                        "</strong>"
+                    ),
+                    [
+                        lambda data: not data["guest_dhcp_enabled"],
+                        lambda data: not data["guest_enabled"],
+                    ],
+                ),
             ],
         )
         guest_network_section = guest_form.add_section(

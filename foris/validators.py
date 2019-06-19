@@ -388,6 +388,47 @@ class DhcpRangeValidator:
         return True
 
 
+class DhcpRangeRouterIpValidator:
+    def __init__(
+        self,
+        router_ip_field,
+        netmask_field,
+        dhcp_start_field,
+        dhcp_limit_field,
+        msg,
+        skip_conditions=[],
+    ):
+        """
+        :param skip_conditions: [ lambda data: data['xx'] == 'yy', ]
+        """
+        self.skip_conditions = skip_conditions
+        self.router_ip = router_ip_field
+        self.netmask = netmask_field
+        self.start = dhcp_start_field
+        self.limit = dhcp_limit_field
+        self.msg = msg
+
+    def valid(self, data):
+        for condition in self.skip_conditions:
+            if condition(data):
+                return True
+
+        router_ip = data[self.router_ip]
+        netmask = data[self.netmask]
+        start = int(data[self.start])
+        limit = int(data[self.limit])
+
+        start_ip = ipaddress.ip_network(f"{router_ip}/{netmask}", False).network_address
+
+        try:
+            if start_ip + start <= ipaddress.ip_address(router_ip) <= start_ip + start + limit:
+                return False
+        except ipaddress.AddressValueError:
+            return False
+
+        return True
+
+
 def validators_as_data_dict(validators):
     data = {}
     for v in validators:
