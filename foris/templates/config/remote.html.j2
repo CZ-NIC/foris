@@ -106,7 +106,7 @@
         $(".token-buttons").submit((e) => {
             e.preventDefault();
             let form = $(e.currentTarget);
-            let action = $(e.originalEvent.explicitOriginalTarget).val();
+            let action = $(document.activeElement).attr("value");
             let form_data = {};
             let serialized = form.serializeArray(); 
             for (record in serialized) {
