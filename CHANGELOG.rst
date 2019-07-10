@@ -1,3 +1,12 @@
+100.1 (2019-07-10)
+------------------
+
+* translations updated
+* remote: fix non-clickable buttons in Chrome
+* lan+guest: check whether Router IP is not within DHCP range
+* time: show Time settings during initial configuration
+* updater: show only 'Save' when updater is disabled
+
 100.0 (2019-05-27)
 ------------------
 
