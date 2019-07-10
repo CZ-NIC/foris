@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-05-27 16:39+0200\n"
-"PO-Revision-Date: 2019-04-06 14:05+0000\n"
-"Last-Translator: Florian <floflr@zaclys.net>\n"
+"PO-Revision-Date: 2019-06-05 14:18+0000\n"
+"Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
-"Language-Team: French "
-"<https://hosted.weblate.org/projects/turris/foris/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.7-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -52,9 +53,8 @@ msgid ""
 " any crucial network settings so you can safely proceed to the next step."
 msgstr ""
 
-#, fuzzy
 msgid "In order to access the internet, you need to configure your WAN interface."
-msgstr "Afin d'accéder à Internet, vous devez configurer votre interface WAN."
+msgstr "Afin d’accéder à Internet, vous devez configurer votre interface WAN."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
@@ -120,7 +120,6 @@ msgstr ""
 msgid "Please wait till the updater finishes its run."
 msgstr "Veuillez patienter jusqu’à ce que la mise à jour s’achève."
 
-#, fuzzy
 msgid "You have successfully configured your device."
 msgstr "Vous venez de configurer votre appareil avec succès."
 
@@ -183,12 +182,11 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#, fuzzy
 msgid "Router"
 msgstr "Routeur"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Serveur local"
 
 msgid "Unset"
 msgstr ""
@@ -247,9 +245,9 @@ msgstr "Ce n'est pas une heure valide au format HH:MM."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Ce n'est pas une heure valide (YYYY-MM-DD HH:MM:SS)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Cette valeur doit être comprise entre %s et %s."
+msgstr "Cette valeur doit être comprise entre %(low)s et %(high)s."
 
 msgid "This is not a valid domain name."
 msgstr "Ceci n'est pas un nom de domaine valide."
@@ -260,9 +258,9 @@ msgstr "Adresse MAC non valide."
 msgid "Duid is not valid."
 msgstr "DUID non valide."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Pas dans une plage valide %(low)s - %(high)s."
+msgstr "Pas dans une plage valide %(low).1f - %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
@@ -354,16 +352,14 @@ msgstr ""
 msgid "Foris password was successfully saved."
 msgstr "Le mot de passe Foris a été enregistré avec succès."
 
-#, fuzzy
 msgid "Failed to save Foris password."
-msgstr "Utiliser le mot de passe Foris"
+msgstr "Échec de la sauvegarde du mot de passe Foris."
 
 msgid "Remote Access"
-msgstr ""
+msgstr "Accès à distance"
 
-#, fuzzy
 msgid "Remote access was sucessfully enabled."
-msgstr "Le mot de passe système a été enregistré avec succès."
+msgstr "L’accès à distance a été activé avec succès."
 
 msgid ""
 "Failed to enable the remote access. You are probably using a message bus "
@@ -371,22 +367,20 @@ msgid ""
 "hasn't been generated yet."
 msgstr ""
 
-#, fuzzy
 msgid "Remote access was sucessfully disabled."
-msgstr "Le mot de passe système a été enregistré avec succès."
+msgstr "L’accès à distance a été désactivé avec succès."
 
 msgid "Failed to disable remote access."
-msgstr ""
+msgstr "Échec de la désactivation de l'accès à distance."
 
 msgid "Starting to generate CA for remote access."
-msgstr ""
+msgstr "Début de la génération de l'AC pour l'accès à distance."
 
-#, fuzzy
 msgid "CA for remote access was sucessfully deleted."
-msgstr "Le mot de passe Foris a été enregistré avec succès."
+msgstr "L’AC pour l’accès à distance a été supprimée avec succès."
 
 msgid "Failed to delete CA for remote access."
-msgstr ""
+msgstr "Échec de la suppression de l'AC pour l'accès à distance."
 
 msgid "Update was approved."
 msgstr "La mise à jour a été approuvée."
@@ -426,11 +420,10 @@ msgid "Use forwarding"
 msgstr "Utiliser la redirection"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Utiliser le résolveur DNS du fournisseur"
 
-#, fuzzy
 msgid "DNS Forwarder"
-msgstr "Utiliser la redirection"
+msgstr "DNS Transitaire"
 
 msgid "Disable DNSSEC"
 msgstr "Désactiver DNSSEC"
@@ -508,7 +501,7 @@ msgid "DHCP max leases"
 msgstr "Baux maximum DHCP"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Durée du bail (heures)"
 
 msgid "Guest Lan QoS"
 msgstr "QoS du Réseau Lan invité"
@@ -567,11 +560,10 @@ msgstr ""
 "page</strong> dans votre navigateur."
 
 msgid "LAN mode"
-msgstr ""
+msgstr "Mode LAN"
 
-#, fuzzy
 msgid "Computer"
-msgstr "Routeur"
+msgstr "Ordinateur"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -599,7 +591,7 @@ msgid "Static IP address (manual configuration)"
 msgstr "Adresse IP statique (configuration manuelle)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "Ne pas connecter cet appareil au réseau local"
 
 msgid "IPv4 protocol"
 msgstr "Protocole IPv4"
@@ -648,7 +640,7 @@ msgid "Password (repeat)"
 msgstr "Mot de passe (répétez)"
 
 msgid "for Foris web interface"
-msgstr ""
+msgstr "pour l’interface Web de Foris"
 
 msgid ""
 "Set your password for this administration interface. The password must be"
@@ -889,25 +881,25 @@ msgid "Guide workflow"
 msgstr ""
 
 msgid "valid"
-msgstr ""
+msgstr "valide"
 
 msgid "revoked"
-msgstr ""
+msgstr "révoqué"
 
 msgid "expired"
-msgstr ""
+msgstr "expiré"
 
 msgid "generating"
-msgstr ""
+msgstr "génération"
 
 msgid "lost"
-msgstr ""
+msgstr "perdu"
 
 msgid "Enable remote access"
-msgstr ""
+msgstr "Activer l’accès à distance"
 
 msgid "Accessible via WAN"
-msgstr ""
+msgstr "Accessible via WAN"
 
 msgid ""
 "If this option is check the device in the WAN network will be able to "
@@ -920,10 +912,10 @@ msgstr "Port"
 
 msgid "A port which will be opened for the remote configuration of this device."
 msgstr ""
+"Un port qui sera ouvert pour la configuration à distance de ce périphérique."
 
-#, fuzzy
 msgid "Token name"
-msgstr "Nom de l’expéditeur"
+msgstr "Nom du jeton"
 
 #, fuzzy
 msgid ""
@@ -934,11 +926,10 @@ msgstr ""
 "alphanumériques, des points et des caractères de soulignement."
 
 msgid "Token name is invalid."
-msgstr ""
+msgstr "Le nom du jeton n’est pas valide."
 
-#, fuzzy
 msgid "Token id is invalid."
-msgstr "DUID non valide."
+msgstr "L’ID de jeton n’est pas valide."
 
 msgid "Updater"
 msgstr "Updater"
@@ -1172,7 +1163,7 @@ msgstr "Wi-Fi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
-msgstr ""
+msgstr "Configurer le WiFi pour '%s'"
 
 msgid ""
 "If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
@@ -1366,9 +1357,8 @@ msgstr ""
 "complètement initialisée. Il peut donc être utile d'attendre un certain "
 "temps avant d'exécuter ce test."
 
-#, fuzzy
 msgid "\"Unable to verify network connection."
-msgstr "Impossible de vérifier la connexion réseau."
+msgstr "\"Impossible de vérifier la connexion réseau."
 
 msgid "Test type"
 msgstr "Type de test"
@@ -1392,10 +1382,10 @@ msgid "Test connection"
 msgstr "Test de connexion"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "Clients DHCP"
 
 msgid "Expires"
-msgstr ""
+msgstr "Expire le"
 
 msgid "IP Address"
 msgstr "Adresse IP"
@@ -1410,17 +1400,16 @@ msgid "Active"
 msgstr "Actif"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Aucun client DHCP trouvé."
 
 msgid "module"
-msgstr ""
+msgstr "module"
 
 msgid "main"
-msgstr ""
+msgstr "principal"
 
-#, fuzzy
 msgid "type"
-msgstr "Type de test"
+msgstr "type"
 
 msgid "bus"
 msgstr ""
@@ -1435,14 +1424,15 @@ msgid "off"
 msgstr ""
 
 msgid "link speed"
-msgstr ""
+msgstr "vitesse du lien"
 
 #, python-format
 msgid "Current link speed: %(speed)s Mbit"
-msgstr ""
+msgstr "Vitesse actuelle de la liaison : %(speed)s Mbit"
 
 msgid "All network interfaces of this network are currently down."
 msgstr ""
+"Toutes les interfaces réseau de ce réseau sont actuellement hors service."
 
 msgid ""
 "This network currently doesn't contain any devices. The changes you make "
@@ -1451,19 +1441,19 @@ msgid ""
 msgstr ""
 
 msgid "Token"
-msgstr ""
+msgstr "Jeton"
 
 msgid "Prepare Token"
-msgstr ""
+msgstr "Préparer le jeton"
 
 msgid "Revoke"
-msgstr ""
+msgstr "Révoquer"
 
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer"
 
 msgid ""
 "You set both WiFi cards to the same band. This usually does not make "
@@ -1475,7 +1465,7 @@ msgid "QR code"
 msgstr "Code QR"
 
 msgid "Show QR code"
-msgstr ""
+msgstr "Afficher le code QR"
 
 msgid "Device"
 msgstr "Appareil"
@@ -1490,7 +1480,7 @@ msgid "Kernel version"
 msgstr "Version du noyau"
 
 msgid "Expandable"
-msgstr ""
+msgstr "Extensible"
 
 msgid "Foris - administration interface of router Turris"
 msgstr "Foris - interface d’administration du routeur Turris"
@@ -1499,16 +1489,16 @@ msgid "Menu"
 msgstr "Menu"
 
 msgid "foris guide"
-msgstr ""
+msgstr "Guide de Foris"
 
 msgid "Reset Guided Mode"
-msgstr ""
+msgstr "Réinitialiser le mode guidé"
 
 msgid "Leave Guided Mode"
-msgstr ""
+msgstr "Quitter le mode guidé"
 
 msgid "Next step"
-msgstr ""
+msgstr "Étape suivante"
 
 msgid "Your router needs to be restarted in order to work properly."
 msgstr ""
@@ -1557,9 +1547,8 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Annuler les modifications"
 
-#, fuzzy
 msgid "Save"
-msgstr "état"
+msgstr "Sauvegarder"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1596,7 +1585,7 @@ msgid ""
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 msgid "Notifications and automatic restarts"
 msgstr "Notifications et redémarrages automatiques"
@@ -1755,7 +1744,7 @@ msgid ""
 msgstr ""
 
 msgid "recommended"
-msgstr ""
+msgstr "recommandé"
 
 msgid "Use this workflow"
 msgstr ""
@@ -1772,7 +1761,7 @@ msgid ""
 msgstr ""
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Aucune autorité de certification"
 
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
@@ -1781,35 +1770,32 @@ msgid ""
 msgstr ""
 
 msgid "Generate CA"
-msgstr ""
+msgstr "Générer une AC"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Génération de l’autorité de certification"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Mises à jour reportées"
+msgstr "Recharger la page"
 
-#, fuzzy
 msgid "Connection parameters"
-msgstr "Test de connexion"
+msgstr "Paramètres de connexion"
 
 msgid ""
 "You CA seems to be ready to be used. Now you can safely enable/disable "
 "the remote access and set some of the parameters."
 msgstr ""
 
-#, fuzzy
 msgid "Apply configuration"
-msgstr "Télécharger sauvegarde de la configuration"
+msgstr "Appliquer la configuration"
 
 msgid "Tokens"
-msgstr ""
+msgstr "Jetons"
 
 msgid ""
 "Here you can create and revoke the client capability to connect to the "
@@ -1817,10 +1803,10 @@ msgid ""
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 msgid "Delete CA"
-msgstr ""
+msgstr "Supprimer AC"
 
 msgid ""
 "You can't delete the CA while the remote access is enabled. To delete the"
@@ -1832,17 +1818,22 @@ msgid ""
 " CA will be useless and if you wanted to use this plugin, you'd need to "
 "generate a new CA first."
 msgstr ""
+"Vous pouvez supprimer l’ensemble de l’AC. Notez que tous les certificats "
+"émis par cette autorité de certification seront inutiles et si vous "
+"souhaitez utiliser ce plugin, vous devrez générer une nouvelle AC d’abord."
 
 msgid ""
 "<a href=\"${response.url}\"><div id=\"remote-"
 "qrcode-${token_id}\"></div></a><br/>Expires in:"
 msgstr ""
+"<a href=\"${response.url}\"><div id=\"remote-qrcode-${token_id}\"></div></a><"
+"br/>Expire dans :"
 
 msgid "Failed to query ntp servers."
 msgstr "Échec lors de l'interrogation des serveurs de temps NTP."
 
 msgid "NTP servers:"
-msgstr ""
+msgstr "Serveurs NTP :"
 
 msgid "Update time"
 msgstr "Synchroniser"
@@ -1883,13 +1874,19 @@ msgid ""
 "          after %(input)s days\n"
 "          "
 msgstr ""
+"\n"
+"          après %(input)s jours\n"
+"          "
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Approve update from %(when)s\n"
 "    "
-msgstr "Approbation de mise à jour à partir de %(when)s"
+msgstr ""
+"\n"
+"    Approuver la mise à jour à partir de %(when)s\n"
+"    "
 
 msgid "List of changes"
 msgstr "Liste des changements"
@@ -1921,9 +1918,8 @@ msgstr ""
 msgid "Package lists"
 msgstr "Listes de paquets"
 
-#, fuzzy
 msgid "Save and update"
-msgstr "Mises à jour reportées"
+msgstr "Sauvegarder et mettre à jour"
 
 msgid ""
 "You WAN configuration is probably not correct or your WAN interface "
@@ -1932,13 +1928,12 @@ msgstr ""
 "Votre configuration WAN n'est probablement pas correcte ou votre "
 "interface WAN n'a pas encore été correctement initialisée."
 
-#, fuzzy
 msgid ""
 "WAN port has no link or it hasn't been configured yet. Your internet "
 "connection probably won't work."
 msgstr ""
-"Le port WAN n'a pas de lien, votre connexion internet ne va probablement "
-"pas fonctionner."
+"Le port WAN n’a pas de lien ou n’a pas encore été configuré. Votre connexion "
+"Internet ne fonctionnera probablement pas."
 
 msgid "We were unable to detect any wireless cards in your router."
 msgstr ""
@@ -2108,7 +2103,6 @@ msgstr ""
 "connues qui peuvent cibler votre routeur domestique.\\n\\nVoulez-vous "
 "toujours continuer et rester sans protection ?"
 
-#, fuzzy
 msgid ""
 "DNSSEC is a security technology that protects the DNS communication "
 "against attacks on the DNS infrastructure. We strongly recommend keeping "
@@ -2116,11 +2110,11 @@ msgid ""
 "your device in the network where DNSSEC is broken. <br/><br/>Do you still"
 " want to continue and stay unprotected?"
 msgstr ""
-"DNSSEC est une technologie de sécurité qui protège les communications DNS"
-" contre les attaques sur l’infrastructure DNS. Nous recommandons "
-"fortement de garder la validation de DNSSEC activée, sauf si vous savez "
-"que vous connecterez votre appareil dans un réseau où DNSSEC est "
-"cassé.\\n\\nVoulez-vous toujours continuer et rester sans protection ?"
+"DNSSEC est une technologie de sécurité qui protège les communications DNS "
+"contre les attaques sur l’infrastructure DNS. Nous recommandons fortement de "
+"garder la validation de DNSSEC activée, sauf si vous savez que vous "
+"connecterez votre appareil dans un réseau où DNSSEC est cassé.<br/><br/"
+">Voulez-vous toujours continuer et rester sans protection ?"
 
 msgid "Are you sure you want to restart the router?"
 msgstr "Êtes-vous sûr de vouloir redémarrer le routeur ?"
@@ -2129,45 +2123,43 @@ msgstr "Êtes-vous sûr de vouloir redémarrer le routeur ?"
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "There are some unsaved changes in the notifications settings.<br/>Do you "
 "want to discard them and test the notifications with the old settings?"
 msgstr ""
 "Il y a quelques modifications non enregistrées dans les paramètres de "
-"notifications.\\nVoulez-vous les ignorer et tester les notifications avec"
-" les anciens paramètres ?"
+"notifications.<br/>Voulez-vous les ignorer et tester les notifications avec "
+"les anciens paramètres ?"
 
 #, python-format
 msgid "Your device will be rebooted in %(time_left)s seconds."
-msgstr ""
+msgstr "Votre appareil sera redémarré dans %(time_left)s secondes."
 
 #, python-format
 msgid "Your network will be restarted in %(time_left)s seconds."
 msgstr "Votre réseau sera redémarré dans %(time_left)s secondes."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Foris will be restarted in %(time_left)s seconds."
-msgstr "Votre réseau sera redémarré dans %(time_left)s secondes."
+msgstr "Foris sera redémarré dans %(time_left)s secondes."
 
 msgid "A reboot of your device was triggered."
-msgstr ""
+msgstr "Un redémarrage de votre appareil a été déclenché."
 
 msgid "A network restart was triggered."
 msgstr "Un redémarrage du réseau a été initié."
 
-#, fuzzy
 msgid "Foris restart was triggered."
-msgstr "Un redémarrage du réseau a été initié."
+msgstr "Un redémarrage de Foris a été initié."
 
 msgid "Trying to reconnect to your device."
 msgstr ""
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmer"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 msgid "This value seems to be invalid."
 msgstr "Cette valeur semble être invalide."
@@ -2216,9 +2208,9 @@ msgstr "Cette valeur est trop courte. Elle doit comporter %s caractères ou plus
 msgid "This value is too long. It should have %s characters or fewer."
 msgstr "Cette valeur est trop longue. Elle doit comporter %s caractères ou moins."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This field should have between %s and %s characters."
-msgstr "Cette valeur doit être comprise entre %s et %s."
+msgstr "Ce champs doit être contenir entre %s et %s caractères."
 
 #, python-format
 msgid "You must select at least %s choices."
@@ -3497,4 +3489,3 @@ msgstr "Rétrograder"
 #~ "carte connectés à 5GHz, câbles de "
 #~ "la petite carte connectés à la "
 #~ "partie 2,4 GHz du diplexeur."
-
