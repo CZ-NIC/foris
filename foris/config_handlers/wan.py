@@ -166,7 +166,7 @@ class WanHandler(BaseConfigHandler):
             name="set_wan",
             title=_(self.userfriendly_title),
             description=_(
-                "Here you specify your WAN port settings. Usually, you can leave this "
+                "Here you specify your WAN port settings. Usually, you can leave these "
                 "options untouched unless instructed otherwise by your internet service "
                 "provider. Also, in case there is a cable or DSL modem connecting your "
                 "router to the network, it is usually not necessary to change this "
