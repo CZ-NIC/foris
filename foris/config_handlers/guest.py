@@ -91,7 +91,7 @@ class GuestHandler(BaseConfigHandler):
                 "Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is separated  "
                 "from your ordinary LAN. Devices connected to this network are allowed "
                 "to access the internet, but are not allowed to access the configuration "
-                "interface of the this device nor the devices in LAN."
+                "interface of this device nor the devices in LAN."
             )
             % dict(url=reverse("config_page", page_name="wifi")),
         )
