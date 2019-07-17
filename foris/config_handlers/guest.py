@@ -63,8 +63,8 @@ class GuestHandler(BaseConfigHandler):
                         "does not fit into <strong>Guest network netmask</strong>!"
                     ),
                     [
-                        lambda data: not data["guest_enabled"],
-                        lambda data: not data["guest_dhcp_enabled"],
+                        lambda data: not data.get("guest_enabled"),
+                        lambda data: not data.get("guest_dhcp_enabled"),
                     ],
                 ),
                 validators.DhcpRangeRouterIpValidator(
@@ -78,8 +78,8 @@ class GuestHandler(BaseConfigHandler):
                         "</strong>"
                     ),
                     [
-                        lambda data: not data["guest_dhcp_enabled"],
-                        lambda data: not data["guest_enabled"],
+                        lambda data: not data.get("guest_dhcp_enabled"),
+                        lambda data: not data.get("guest_enabled"),
                     ],
                 ),
             ],
