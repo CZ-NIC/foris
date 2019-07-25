@@ -253,12 +253,12 @@ class WanHandler(BaseConfigHandler):
         ).requires("proto", WAN_STATIC)
 
         # xDSL settings
-        wan_main.add_field(Textbox, name="username", label=_("PAP/CHAP username")).requires(
-            "proto", WAN_PPPOE
-        )
-        wan_main.add_field(Textbox, name="password", label=_("PAP/CHAP password")).requires(
-            "proto", WAN_PPPOE
-        )
+        wan_main.add_field(
+            Textbox, name="username", label=_("PAP/CHAP username"), required=True,
+        ).requires("proto", WAN_PPPOE)
+        wan_main.add_field(
+            Textbox, name="password", label=_("PAP/CHAP password"), required=True,
+        ).requires("proto", WAN_PPPOE)
 
         # IPv6 configuration
         wan_main.add_field(
