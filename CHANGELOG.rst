@@ -1,4 +1,4 @@
-100.3 (2019-07-xx)
+100.3 (2019-07-25)
 ------------------
 
 * wan: make PPPoE credentials mandatory
