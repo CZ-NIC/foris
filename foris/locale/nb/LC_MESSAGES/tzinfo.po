@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris TZ info translations\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-01 16:27+0100\n"
-"PO-Revision-Date: 2019-08-01 05:12+0000\n"
+"PO-Revision-Date: 2019-08-03 19:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris-tzinfo/nb_NO/>\n"
@@ -335,13 +335,14 @@ msgid "Palau"
 msgstr ""
 
 msgid "Novokuznetsk"
-msgstr ""
+msgstr "Novokuznetsk"
 
 msgid "Nepal"
 msgstr "Nepal"
 
+#, fuzzy
 msgid "Matamoros"
-msgstr ""
+msgstr "Matamoros"
 
 msgid "Havana"
 msgstr "Havanna"
