@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-08-01 05:12+0000\n"
+"PO-Revision-Date: 2019-08-10 15:23+0000\n"
 "Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
@@ -201,6 +201,7 @@ msgstr "Oud"
 msgid "Minimal"
 msgstr "Minimaal"
 
+#, fuzzy
 msgid "Router"
 msgstr "Router"
 
@@ -243,6 +244,7 @@ msgstr ""
 "betekent dat het apparaat diensten kan bieden aan andere apparatuur in uw "
 "lokale netwerk (bijvoorbeeld dienst doen als network attached storage)."
 
+#, fuzzy
 msgid "This field is required."
 msgstr "Dit veld is verplicht."
 
@@ -523,16 +525,19 @@ msgstr "Gastnetwerk"
 msgid "Network mask of the guest network."
 msgstr ""
 
+#, fuzzy
 msgid "Enable DHCP"
 msgstr "DHCP inschakelen"
 
+#, fuzzy
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
-"Schakel deze optie in om apparaten die verbonden zijn met deze router "
-"automatisch IP-adressen toe te kennen."
+"Schakel deze optie in om automatisch IP-adressen toe te wijzen aan de "
+"apparaten die met de router zijn verbonden."
 
+#, fuzzy
 msgid "DHCP start"
 msgstr "DHCP start"
 
@@ -584,12 +589,13 @@ msgid ""
 " in your browser."
 msgstr ""
 
+#, fuzzy
 msgid "LAN mode"
-msgstr ""
+msgstr "LAN-modus"
 
 #, fuzzy
 msgid "Computer"
-msgstr "Land"
+msgstr "Computer"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -597,12 +603,19 @@ msgid ""
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services."
 msgstr ""
+"De routermodus betekent dat deze apparaten het LAN beheren (werkt als een "
+"router, kan IP-adressen toekennen, ....). De computermodus betekent dat dit "
+"apparaat als een client in dit netwerk fungeert. Het werkt op dezelfde "
+"manier als WAN, maar het heeft poorten geopend voor de configuratie-"
+"interface en andere diensten."
 
+#, fuzzy
 msgid "Router IP address"
-msgstr "Router IP-adres"
+msgstr "IP-adres router"
 
+#, fuzzy
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Het IP-adres van de router in het interne netwerk."
 
 #, fuzzy
 msgid "Network netmask"
@@ -627,9 +640,11 @@ msgstr "IPv4-protocol"
 msgid "IPv4 address"
 msgstr "IPv6-adres"
 
+#, fuzzy
 msgid "Network mask"
 msgstr "Subnetmasker"
 
+#, fuzzy
 msgid "Gateway"
 msgstr "Gateway"
 
@@ -637,6 +652,7 @@ msgstr "Gateway"
 msgid "DNS server 1 (IPv4)"
 msgstr "Primaire DNS"
 
+#, fuzzy
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
@@ -650,17 +666,18 @@ msgstr "Secundaire DNS"
 
 #, fuzzy
 msgid "DHCP hostname"
-msgstr "DHCP start"
+msgstr "DHCP-hostnaam"
 
+#, fuzzy
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Hostnaam die aan de DHCP-server zal worden verstrekt."
 
 msgid "Password"
 msgstr "Wachtwoord"
 
 #, fuzzy
 msgid "Current Foris password"
-msgstr "Huidig wachtwoord"
+msgstr "Huidig Foris-wachtwoord"
 
 msgid "New password"
 msgstr "Nieuw wachtwoord"
@@ -719,15 +736,15 @@ msgid ""
 "the root account will be blocked.)"
 msgstr ""
 "Hetzelfde wachtwoord zal worden gebruikt voor toegang tot deze "
-"administratie-interface, voor de root-gebruiker in LuCI web-interface en "
-"voor SSH-login. Gebruik een sterk wachtwoord! (Als u ervoor kiest om hier"
-" geen wachtwoord in te stellen voor geavanceerde configuratie, dan hebt u"
-" de optie om dat later te doen. Tot die tijd zal root-account worden "
+"beheerinterface, voor de root-gebruiker in de LuCI-webinterface en voor de "
+"SSH-login. Gebruik een sterk wachtwoord! (Als je ervoor kiest om het "
+"wachtwoord voor geavanceerde configuratie hier niet in te stellen, dan hebt "
+"je de mogelijkheid om dit later te doen. Tot die tijd wordt het root account "
 "geblokkeerd.)"
 
 #, fuzzy
 msgid "Region and time"
-msgstr "Herstarttijd"
+msgstr "Regio en tijd"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -1045,6 +1062,7 @@ msgstr ""
 msgid "Disable IPv6"
 msgstr "IPv6 uitschakelen"
 
+#, fuzzy
 msgid "IP address"
 msgstr "IP-adres"
 
@@ -1270,6 +1288,7 @@ msgstr "SSID voor gasten"
 msgid "Password for guests"
 msgstr "Wachtwoord voor gasten"
 
+#, fuzzy
 msgid "Hint"
 msgstr "Hint"
 
@@ -1343,20 +1362,25 @@ msgstr "Testtype"
 msgid "Status"
 msgstr "Status"
 
+#, fuzzy
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "IPv4-connectiviteit"
 
+#, fuzzy
 msgid "IPv4 gateway connectivity"
-msgstr ""
+msgstr "Connectiviteit van de IPv4-Gateway"
 
+#, fuzzy
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "IPv6-connectiviteit"
 
+#, fuzzy
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "Connectiviteit van IPv6-gateway"
 
+#, fuzzy
 msgid "Test connection"
-msgstr ""
+msgstr "Verbinding testen"
 
 msgid "DHCP clients"
 msgstr ""
@@ -1513,7 +1537,7 @@ msgstr "Wijzigingen verwerpen"
 
 #, fuzzy
 msgid "Save"
-msgstr "DHCP start"
+msgstr "Opslaan"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1604,8 +1628,9 @@ msgid ""
 "log in again after the reboot."
 msgstr ""
 
+#, fuzzy
 msgid "Reboot"
-msgstr "Herstart"
+msgstr "Opnieuw opstarten"
 
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
@@ -2075,8 +2100,9 @@ msgstr "U moet tussen de %s en %s keuzes kiezen."
 msgid "This value should be the same."
 msgstr "Deze waarde moet gelijk zijn."
 
+#, fuzzy
 msgid "This is not a valid IPv4 address."
-msgstr ""
+msgstr "Dit is geen geldig IPv4-adres."
 
 msgid "This is not a valid IPv4 netmask."
 msgstr ""
@@ -2084,11 +2110,13 @@ msgstr ""
 msgid "This is not a valid IPv4 prefix."
 msgstr ""
 
+#, fuzzy
 msgid "This is not a valid IPv6 prefix."
-msgstr ""
+msgstr "Dit is geen geldig IPv6-voorvoegsel."
 
+#, fuzzy
 msgid "This is not a valid MAC address."
-msgstr ""
+msgstr "Dit is geen geldig MAC-adres."
 
 msgid "You have been logged out due to longer inactivity."
 msgstr ""
