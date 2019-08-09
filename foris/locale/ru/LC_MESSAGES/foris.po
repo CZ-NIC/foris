@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-07-23 11:07+0000\n"
+"PO-Revision-Date: 2019-08-10 15:23+0000\n"
 "Last-Translator: Алексей Леньшин <alenshin@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/turris/foris/ru/>"
 "\n"
@@ -603,7 +603,7 @@ msgstr ""
 "страницу</strong> в браузере."
 
 msgid "LAN mode"
-msgstr "Режим LAN"
+msgstr "Режим локальной сети"
 
 msgid "Computer"
 msgstr "Компьютер"
@@ -670,7 +670,7 @@ msgid "DHCP hostname"
 msgstr "Имя сервера DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Имя компьютера, которое будет предоставлено серверу DHCP."
+msgstr "Имя хоста, которое будет предоставлено серверу DHCP."
 
 msgid "Password"
 msgstr "Пароль"
@@ -873,7 +873,7 @@ msgid "Send news"
 msgstr "Сообщать новости"
 
 msgid "Send emails about new features."
-msgstr "Сообщать о новых возможностях."
+msgstr "Отправлять сообщение о новых функциях."
 
 msgid "SMTP settings"
 msgstr "Настройки SMTP"
@@ -1055,7 +1055,7 @@ msgstr ""
 "сетью, обычно нет необходимости изменять этот параметр."
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (для DSL-мостов, модема Turris и т.д.)"
+msgstr "PPPoE (для мостов DSL, модема Turris и т.д.)"
 
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (автоматическая настройка)"
@@ -1412,7 +1412,7 @@ msgid "IPv6 gateway connectivity"
 msgstr "Работоспособность шлюза IPv6"
 
 msgid "Test connection"
-msgstr "Проверка соединения"
+msgstr "Тест соединения"
 
 msgid "DHCP clients"
 msgstr "Клиенты DHCP"
@@ -1712,7 +1712,7 @@ msgstr ""
 "потребуется снова войти в систему."
 
 msgid "Reboot"
-msgstr "Перезагрузить"
+msgstr "Перезагрузка"
 
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
