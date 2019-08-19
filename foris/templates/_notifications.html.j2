@@ -14,6 +14,11 @@
       {% set ns.show_dismiss_all = True %}
         <a href="#" class="dismiss" title="{% trans %}Dismiss{% endtrans %}" data-id="{{ notification["id"] }}">&times;</a>
       {% endif %}
+      {% for name, description in notification["actions"].items() %}
+        <div class="buttons">
+            <a href="#" class="button action_needed">{{ description }}</a>
+        </div>
+      {% endfor %}
     </div>
   {% endfor %}
   </div>

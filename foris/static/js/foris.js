@@ -474,8 +474,21 @@ Foris.initNotifications = function (csrf_token) {
   });
   $(".notification.action_needed a").on("click", function(e) {
     e.preventDefault();
-    var url = $(".notification.action_needed a").attr("href");
-    $.get(url, {}, function(data){});
+    var id = $(this).data("id");
+    $.post(Foris.scriptname + "/main/notifications/ajax",
+        {
+          action: "trigger-action",
+          notification_id: id,
+          csrf_token: csrf_token
+        },
+        function(data) {
+          if (data.success) {
+            //for (var i=0; i < data.displayedIDs.length; i++) {
+            //  $("#notification_" + data.displayedIDs[i]).fadeOut(800);
+            //}
+          }
+        }
+    );
   });
   $("#dismiss-all-notifications").on("click", function(e) {
     e.preventDefault();
