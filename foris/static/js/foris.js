@@ -472,9 +472,9 @@ Foris.initNotifications = function (csrf_token) {
         }
     );
   });
-  $(".notification.restart a").on("click", function(e) {
+  $(".notification.action_needed a").on("click", function(e) {
     e.preventDefault();
-    var url = $(".notification.restart a").attr("href");
+    var url = $(".notification.action_needed a").attr("href");
     $.get(url, {}, function(data){});
   });
   $("#dismiss-all-notifications").on("click", function(e) {

@@ -6,7 +6,7 @@
     <div class="notification {{ notification["severity"] }}" id="notification_{{ notification["id"] }}">
       <h2>{{ helpers.make_notification_title(notification)|safe }}</h2>
       {{ helpers.transform_notification_message(notification["msg"])|safe }}
-      {% if notification["severity"] == "restart" %}
+      {% if notification["severity"] == "action_needed" %}
         <div class="buttons">
             <a href="{{ url("reboot") }}" class="button reboot">{% trans %}Reboot now{% endtrans %}</a>
         </div>

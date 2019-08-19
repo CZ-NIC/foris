@@ -72,7 +72,7 @@ def make_notification_title(notification):
     :param notification: notification to create title for
     :return: translated string with notification title
     """
-    notification_titles = {"news": _("News"), "update": _("Update"), "error": _("Error")}
+    notification_titles = {"announcement": _("News"), "info": _("Update"), "error": _("Error")}
 
     # minor abuse of gettext follows...
     locale_date = translate_datetime(
