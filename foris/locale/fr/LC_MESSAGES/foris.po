@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-06-05 14:18+0000\n"
-"Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
+"PO-Revision-Date: 2019-08-27 13:07+0000\n"
+"Last-Translator: Swann Martinet <swann.ranskassa@laposte.net>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
+"\n"
 "Language: fr\n"
-"Language-Team: French "
-"<https://hosted.weblate.org/projects/turris/foris/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -40,7 +41,6 @@ msgstr "Sélectionnez l’un des workflows de configuration proposés."
 msgid "The workflow was set. You may proceed to next step."
 msgstr "Le workflow a été définit. Vous pouvez passer à l’étape suivante."
 
-#, fuzzy
 msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Ici, vous devez décider quelles interfaces appartiennent à quel réseau."
 
@@ -51,6 +51,8 @@ msgid ""
 "You've configured your network interfaces. It seems that you didn't break"
 " any crucial network settings so you can safely proceed to the next step."
 msgstr ""
+"Vous avez configuré vos interfaces réseaux. Vous ne semblez pas avoir briser "
+"de paramètres réseau cruciaux et vous pouvez donc aller à l'étape suivante."
 
 msgid "In order to access the internet, you need to configure your WAN interface."
 msgstr "Afin d’accéder à Internet, vous devez configurer votre interface WAN."
@@ -249,7 +251,7 @@ msgid "This value should be between %(low)s and %(high)s."
 msgstr "Cette valeur doit être comprise entre %(low)s et %(high)s."
 
 msgid "This is not a valid domain name."
-msgstr "Ceci n'est pas un nom de domaine valide."
+msgstr "Ceci n’est pas un nom de domaine valide."
 
 msgid "MAC address is not valid."
 msgstr "Adresse MAC non valide."
@@ -616,23 +618,23 @@ msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
 msgstr ""
-"L'adresse du serveur DNS n’est pas nécessaire car le résolveur DNS "
-"intégré est capable de travailler sans elle."
+"L’adresse du serveur DNS n’est pas nécessaire car le résolveur DNS intégré "
+"est capable de fonctionner sans elle."
 
 msgid "DNS server 2 (IPv4)"
 msgstr "Serveur DNS 2 (IPv4)"
 
 msgid "DHCP hostname"
-msgstr "Nom d'hôte DHCP"
+msgstr "Nom d’hôte DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Nom d'hôte qui sera assigné au serveur DHCP."
+msgstr "Nom d’hôte qui sera assigné au serveur DHCP."
 
 msgid "Password"
 msgstr "Mot de passe"
 
 msgid "Current Foris password"
-msgstr "Mot de passe Foris actuel"
+msgstr "Mot de passe actuel de Foris"
 
 msgid "New password"
 msgstr "Nouveau mot de passe"
@@ -694,7 +696,7 @@ msgstr ""
 " sera bloqué.)"
 
 msgid "Region and time"
-msgstr "Temps et région"
+msgstr "Région et heure"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -813,7 +815,7 @@ msgstr ""
 "alphanumériques, des points et des caractères de soulignement."
 
 msgid "Reboot is required"
-msgstr "Redémarrage nécessaire"
+msgstr "Un redémarrage est nécessaire"
 
 msgid "Reboot or attention is required"
 msgstr "Un redémarrage ou une attention particulière est nécessaire"
@@ -3508,4 +3510,3 @@ msgstr "Rétrograder"
 #~ "configuration interface of the this "
 #~ "device nor the devices in LAN."
 #~ msgstr ""
-
