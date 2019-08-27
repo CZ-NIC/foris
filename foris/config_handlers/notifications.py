@@ -129,10 +129,11 @@ class NotificationsHandler(BaseConfigHandler):
             label=_("Sender address (From)"),
             hint=_("This is the address notifications are send from."),
             required=True,
+            placeholder="router@example.com",
         ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
-        smtp.add_field(Textbox, name="server", label=_("Server address")).requires(
-            "enable_smtp", True
-        ).requires("use_turris_smtp", "0")
+        smtp.add_field(
+            Textbox, name="server", label=_("Server address"), placeholder="example.com"
+        ).requires("enable_smtp", True).requires("use_turris_smtp", "0")
         smtp.add_field(
             Number,
             name="port",
