@@ -5,18 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-05-27 14:40+0000\n"
-"Last-Translator: Luuk van der Duim <luukvanderduim@gmail.com>\n"
+"PO-Revision-Date: 2019-08-10 15:23+0000\n"
+"Last-Translator: powerburner-nl <peter.mulder.1981@gmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/turris/foris/nl/>\n"
 "Language: nl\n"
-"Language-Team: Dutch "
-"<https://hosted.weblate.org/projects/turris/foris/nl/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.8-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -41,26 +41,28 @@ msgid "Here you need to decide which interfaces belong to which network."
 msgstr "Hier kunt u kiezen welke interfaces aan welk netwerk toebehoren."
 
 msgid "If you are in doubt use the current settings."
-msgstr "Als u het niet precies weet, kiest u de huidige instellingen."
+msgstr "Als u het niet precies weet dan kiest u de huidige instellingen."
 
 msgid ""
 "You've configured your network interfaces. It seems that you didn't break"
 " any crucial network settings so you can safely proceed to the next step."
 msgstr ""
-"U hebt uw netwerkinterface ingesteld. Alles lijkt nog heel, u kunt dus "
+"U hebt uw netwerkinterface ingesteld. Alles lijkt nog heel, dus u kunt "
 "doorgaan met de volgende stap."
 
 msgid "In order to access the internet, you need to configure your WAN interface."
-msgstr "Om het internet op te kunnen, moet u uw 'WAN interface' configureren."
+msgstr ""
+"Om toegang tot het internet te krijgen moet uw WAN-interface worden "
+"geconfigureerd."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
 "whether it is working properly and if so you can safely proceed to the "
 "next step."
 msgstr ""
-"U hebt uw 'WAN interface' ingesteld. Test uw internetverbinding om te "
-"controleren of alles naar behoren werkt. Zo ja, dan kunt u doorgaan met "
-"de volgende stap."
+"U hebt uw WAN-interface' ingesteld. Test uw internetverbinding om te "
+"controleren of alles naar behoren werkt. Als dit het geval is dan kunt u "
+"doorgaan met de volgende stap."
 
 msgid ""
 "Now you should configure your LAN interface. Note that when you change "
@@ -68,61 +70,60 @@ msgid ""
 "configuration interface unless you restart the network on your current "
 "device."
 msgstr ""
-"Nu volgt het instellen van de 'LAN interface'. Let op dat als u uw "
-"netwerkinstellingen wijzigt, u mogelijk uw verbinding met deze "
-"configuratie verliest totdat u hetnetwerk op het apparaat waarop u werkt "
-"heeft herstart."
+"Nu volgt het instellen van de LAN-interface. Let op dat als u uw "
+"netwerkinstellingen wijzigt, u mogelijk uw verbinding met de configuratie-"
+"interface verliest tenzij u het netwerk op het huidige apparaat herstart."
 
 msgid ""
 "You've configured your LAN interface. Try to test whether settings work "
 "properly and if so you can safely proceed to the next step."
 msgstr ""
-"U hebt uw 'LAN interface' ingesteld. Kijk of uw instellingen naar behoren"
-" werken. Zo ja, ga dan door met de volgende stap."
+"U hebt uw LAN-interface ingesteld. Kijk of uw instellingen naar behoren "
+"werken. Als dit zo is dan kunt u doorgaan met de volgende stap."
 
 msgid "Now you need to set the time and timezone of your device."
-msgstr "Hier stelt u de tijd en tijdzone op uw apparaat in."
+msgstr "Hier stelt u de tijd en tijdzone van uw apparaat in."
 
 msgid ""
 "Your time and timezone seem to be set. Please make sure that the time "
 "matches the time on your computer if not try to update it via ntp or "
 "manually."
 msgstr ""
-"Uw tijd en tijdzone zijn vastgelegd. Vergewis u ervan dat de tijd "
-"overeenkomt met die op uw computer. Zo niet, probeer deze dan met 'ntp' "
-"of handmatig bij te stellen."
+"Uw tijd en tijdzone zijn ingesteld. Zorg ervoor dat de tijd overeenkomt met "
+"de tijd op uw computer. Als dit niet zo is, probeer deze dan via ntp bij te "
+"werken of stel deze handmatig in."
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
 "device. Let's configure it now."
 msgstr ""
-"Correcte DNS herleiding is één van de kern veiligheidselementen van uw "
-"apparaat. Laten we dat eens instellen."
+"Correcte DNS-omzetting is één van de belangrijke veiligheidskenmerken van uw "
+"apparaat. We gaan dat nu instellen."
 
 msgid ""
 "You've updated your DNS configuration. Try to run connection test to see "
 "whether your DNS resolver is properly set."
 msgstr ""
-"U hebt uw DNS instellingen bijgewerkt. Test uw internetverbinding om te "
-"controleren of de ingestelde DNS herleiding goed werkt."
+"U hebt uw DNS-instellingen bijgewerkt. Test uw internetverbinding om te "
+"controleren of de ingestelde DNS-omzetting goed werkt."
 
 msgid "Now you need to configure automatic updates on your device."
 msgstr "Nu volgt het instellen van automatische updates."
 
 msgid "Please wait till the updater finishes its run."
-msgstr "Een ogenblik geduld alstublieft. Wacht tot de update voltooid is."
+msgstr "Een ogenblik geduld alstublieft. Wacht tot de update is voltooid."
 
 msgid "You have successfully configured your device."
-msgstr "U hebt het instellen van het apparaat suuccesvol doorlopen."
+msgstr "Het instellen van uw apparaat is gelukt."
 
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all interfaces to LAN."
 msgstr ""
-"U hebt ervoor gekozen om als lokale server op te treden. Dat betekent dat"
-"  WAN- of Gastnetwerkinterfaces zinloos zijn. Wijs alle aanwezige "
-"interfaces aan het LAN toe."
+"U heeft ervoor gekozen om als lokale server op te treden. Dit betekent dat "
+"het nutteloos is om een interface aan WAN- of gast-netwerkinterfaces toe te "
+"wijzen. Het is beter om alle interfaces aan het LAN toe te wijzen."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -130,19 +131,19 @@ msgid ""
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here."
 msgstr ""
-"De lokale server hoeft het LAN niet te beheren. (Mocht u dat toch willen,"
-" herstart dan de handleiding en volg het 'Router'-stappenplan. ) "
-"Waarschijnlijkst is dat u als client in het netwerk wilt dienen. Kies "
-"hier <strong>Computer</strong> modus."
+"Om als lokale server te fungeren, hoeft u geen LAN te beheren. Als u het LAN "
+"nog steeds wilt beheren, start dan de instelhulp opnieuw en kies voor "
+"Router. Waarschijnlijk wilt u hier als client optreden, dus kies hier voor "
+"de <strong>Computer</strong>-modus."
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
-"Als u de <strong>statisch</strong> configuratie kiest, let er dan op dat "
-"het IP adressen die u invoert kloppen, anders kunt u na het toepassen dit"
-" confguratiescherm niet meer bereiken."
+"Als u <strong>statisch</strong> kiest, let er dan op dat de IP-adressen "
+"correct zijn ingevoerd, anders kunt u na het toepassen van de instellingen "
+"dit configuratiescherm niet meer benaderen."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -150,11 +151,17 @@ msgid ""
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Als u <strong>DHCP</strong> kiest dan moet u het nieuwe IP-adres van dit "
+"apparaat gebruiken. U kunt deze vinden bij de DHCP-server die uw LAN "
+"beheert. Vervolgens moet u verbinding maken met het nieuwe IP-adres om "
+"verder te gaan met de instelgids."
 
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
+"Let op dat welke optie u ook kiest, u mogelijk de ethernetkabel opnieuw moet "
+"inpluggen."
 
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
@@ -162,54 +169,70 @@ msgid ""
 " your device is able to access the internet (you can use the connection "
 "test below)."
 msgstr ""
+"Controleer alstublieft of de door u gekozen instellingen correct werken. Dit "
+"houdt in dat u de configuratie-interface van uw apparaat kunt bereiken en "
+"dat uw apparaat toegang heeft tot het internet (u kunt de onderstaande "
+"verbindingstest gebruiken)."
 
 msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Het instellen van het apparaat is voltooid. Nu zou uw apparaat in staat "
+"moeten zijn om als een server op uw lokale netwerk te fungeren."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
 "some further configuration updates to fit the device to your needs."
 msgstr ""
+"De basisconfiguratie van het apparaat is voltooid. Let op dat uw mogelijk "
+"nog wat instellingen moet doen om aanvullende functies te activeren."
 
 msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"Het instellen van het apparaat is voltooid. Nu kan uw apparaat als router "
+"fungeren en netwerkverkeer tussen LAN, WAN en gastnetwerk routeren."
 
 msgid "Old"
-msgstr ""
+msgstr "Oud"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimaal"
 
 #, fuzzy
 msgid "Router"
-msgstr "Land"
+msgstr "Router"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Lokale server"
 
 msgid "Unset"
-msgstr ""
+msgstr "Niet ingesteld"
 
 msgid "The workflow wasn't set yet."
-msgstr ""
+msgstr "De werkwijze was nog niet ingesteld."
 
 msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
+"Werkwijze voor oudere apparaten en oudere Turris OS-versies (ouder dan 4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web GUI."
 msgstr ""
+"Stel gewoon uw wachtwoord in en u kunt bent klaar. Deze werkwijze is gericht "
+"op gevorderde gebruikers die niet van plan zijn om de web-GUI te gebruiken."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Nadat u deze workflow heeft voltooid, kan uw apparaat als een volledig "
+"functionele router fungeren. Het gaat ervan uit dat u een standaard "
+"netwerkinstelling wilt hebben."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -217,21 +240,25 @@ msgid ""
 "other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
+"Met deze workflow wordt het apparaat als lokale server ingesteld. Dit "
+"betekent dat het apparaat diensten kan bieden aan andere apparatuur in uw "
+"lokale netwerk (bijvoorbeeld dienst doen als network attached storage)."
 
+#, fuzzy
 msgid "This field is required."
-msgstr "Dit is een verplicht veld."
+msgstr "Dit veld is verplicht."
 
 msgid "Not a valid IPv4 address."
-msgstr "Ongeldig IPv4 adres."
+msgstr "Ongeldig IPv4-adres."
 
 msgid "Not a valid IPv4 netmask address."
-msgstr "Ongeldig IPv4 netmask adres."
+msgstr "Ongeldig IPv4-netmaskeradres."
 
 msgid "Not a valid IPv6 address."
-msgstr "Ongeldig IPv6 adres."
+msgstr "Ongeldig IPv6-adres."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Ongeldig IPv6 netmask adres."
+msgstr "Dit is geen geldig IPv4- of IPv6-adres."
 
 msgid "This is not an IPv6 address with prefix length."
 msgstr "Dit is geen IPv6-adres met een prefix-lengte."
@@ -243,40 +270,38 @@ msgid "Is not a number."
 msgstr "Dit is geen getal."
 
 msgid "This is not valid time in HH:MM format."
-msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
+msgstr "Dit is geen geldige tijd in UU:mm-indeling."
 
-#, fuzzy
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Dit is een ongeldig tijdformaat (HH:MM)."
+msgstr "Dit is geen geldige tijd (JJJJ-MM-DD UU:mm:ss)."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Deze waarde moet tussen %s en %s liggen."
+msgstr "Deze waarde moet tussen %(low)s en %(high)s liggen."
 
 #, fuzzy
 msgid "This is not a valid domain name."
-msgstr "Ongeldig IPv6 netmask adres."
+msgstr "Dit is geen geldige domeinnaam."
 
 msgid "MAC address is not valid."
 msgstr "Ongeldig MAC-adres."
 
-#, fuzzy
 msgid "Duid is not valid."
-msgstr "Ongeldig MAC-adres."
+msgstr "Duid is ongeldig."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Buiten het toegestane bereik %(low)s - %(high)s."
+msgstr "Niet in een geldig bereik %(low).1f - %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "De lengte moet tussen %(low)s en %(high)s posities liggen."
+msgstr "De lengte moet %(low)s tot %(high)s tekens zijn."
 
 msgid "Configuration could not be saved due to an internal error."
-msgstr "De configuratie kon niet worden opgeslagen vanwege een interne fout."
+msgstr "De configuratie kon door een interne fout niet worden opgeslagen."
 
 msgid "The password you entered was not valid."
-msgstr ""
+msgstr "Het wachtwoord dat u hebt ingevoerd is ongeldig."
 
 msgid "About"
 msgstr "Over ons"
@@ -287,33 +312,30 @@ msgstr "De instellingen zijn succesvol opgeslagen."
 msgid "There were some errors in your input."
 msgstr "Niet alle velden zijn correct ingevuld."
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Het wachtwoord is succesvol gewijzigd."
+msgstr "Gids-workflow is succesvol ingesteld."
 
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Kan de gids-workflow niet instellen."
 
-#, fuzzy
 msgid "Failed to finish the guide."
-msgstr "Het uitstellen van de update is mislukt."
+msgstr "Voltooien van de gids is mislukt."
 
 msgid "Maintenance"
 msgstr "Onderhoud"
 
 msgid "Wrong HTTP method."
-msgstr "Ongeldige HTTP-methode."
+msgstr "Verkeerde HTTP-methode."
 
 msgid "Testing message was sent, please check your inbox."
-msgstr "Het testbericht is verzonden, controleer je e-mail."
+msgstr "Het testbericht is verzonden, controleer uw e-mail."
 
-#, fuzzy
 msgid ""
 "Sending of the testing message failed, your configuration is possibly "
 "wrong."
 msgstr ""
-"Het testbericht kon niet verzonden worden, mogelijk zijn de opgegeven "
-"instellingen onjuist:<br/>Foutmelding:<pre>%(error)s</pre>"
+"Het verzenden van het testbericht is mislukt. Uw configuratie is mogelijk "
+"onjuist."
 
 #, fuzzy
 msgid ""
@@ -503,16 +525,19 @@ msgstr "Gastnetwerk"
 msgid "Network mask of the guest network."
 msgstr ""
 
+#, fuzzy
 msgid "Enable DHCP"
 msgstr "DHCP inschakelen"
 
+#, fuzzy
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
-"Schakel deze optie in om apparaten die verbonden zijn met deze router "
-"automatisch IP-adressen toe te kennen."
+"Schakel deze optie in om automatisch IP-adressen toe te wijzen aan de "
+"apparaten die met de router zijn verbonden."
 
+#, fuzzy
 msgid "DHCP start"
 msgstr "DHCP start"
 
@@ -564,12 +589,13 @@ msgid ""
 " in your browser."
 msgstr ""
 
+#, fuzzy
 msgid "LAN mode"
-msgstr ""
+msgstr "LAN-modus"
 
 #, fuzzy
 msgid "Computer"
-msgstr "Land"
+msgstr "Computer"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -577,12 +603,19 @@ msgid ""
 "as a client in this network. It acts in a similar way as WAN, but it has "
 "opened ports for configuration interface and other services."
 msgstr ""
+"De routermodus betekent dat deze apparaten het LAN beheren (werkt als een "
+"router, kan IP-adressen toekennen, ....). De computermodus betekent dat dit "
+"apparaat als een client in dit netwerk fungeert. Het werkt op dezelfde "
+"manier als WAN, maar het heeft poorten geopend voor de configuratie-"
+"interface en andere diensten."
 
+#, fuzzy
 msgid "Router IP address"
-msgstr "Router IP-adres"
+msgstr "IP-adres router"
 
+#, fuzzy
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "Het IP-adres van de router in het interne netwerk."
 
 #, fuzzy
 msgid "Network netmask"
@@ -607,9 +640,11 @@ msgstr "IPv4-protocol"
 msgid "IPv4 address"
 msgstr "IPv6-adres"
 
+#, fuzzy
 msgid "Network mask"
 msgstr "Subnetmasker"
 
+#, fuzzy
 msgid "Gateway"
 msgstr "Gateway"
 
@@ -617,6 +652,7 @@ msgstr "Gateway"
 msgid "DNS server 1 (IPv4)"
 msgstr "Primaire DNS"
 
+#, fuzzy
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
@@ -630,17 +666,18 @@ msgstr "Secundaire DNS"
 
 #, fuzzy
 msgid "DHCP hostname"
-msgstr "DHCP start"
+msgstr "DHCP-hostnaam"
 
+#, fuzzy
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "Hostnaam die aan de DHCP-server zal worden verstrekt."
 
 msgid "Password"
 msgstr "Wachtwoord"
 
 #, fuzzy
 msgid "Current Foris password"
-msgstr "Huidig wachtwoord"
+msgstr "Huidig Foris-wachtwoord"
 
 msgid "New password"
 msgstr "Nieuw wachtwoord"
@@ -699,15 +736,15 @@ msgid ""
 "the root account will be blocked.)"
 msgstr ""
 "Hetzelfde wachtwoord zal worden gebruikt voor toegang tot deze "
-"administratie-interface, voor de root-gebruiker in LuCI web-interface en "
-"voor SSH-login. Gebruik een sterk wachtwoord! (Als u ervoor kiest om hier"
-" geen wachtwoord in te stellen voor geavanceerde configuratie, dan hebt u"
-" de optie om dat later te doen. Tot die tijd zal root-account worden "
+"beheerinterface, voor de root-gebruiker in de LuCI-webinterface en voor de "
+"SSH-login. Gebruik een sterk wachtwoord! (Als je ervoor kiest om het "
+"wachtwoord voor geavanceerde configuratie hier niet in te stellen, dan hebt "
+"je de mogelijkheid om dit later te doen. Tot die tijd wordt het root account "
 "geblokkeerd.)"
 
 #, fuzzy
 msgid "Region and time"
-msgstr "Herstarttijd"
+msgstr "Regio en tijd"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -895,19 +932,19 @@ msgid "Guide workflow"
 msgstr ""
 
 msgid "valid"
-msgstr ""
+msgstr "geldig"
 
 msgid "revoked"
-msgstr ""
+msgstr "ingetrokken"
 
 msgid "expired"
-msgstr ""
+msgstr "verlopen"
 
 msgid "generating"
-msgstr ""
+msgstr "aan het genereren"
 
 msgid "lost"
-msgstr ""
+msgstr "verloren"
 
 msgid "Enable remote access"
 msgstr ""
@@ -1025,6 +1062,7 @@ msgstr ""
 msgid "Disable IPv6"
 msgstr "IPv6 uitschakelen"
 
+#, fuzzy
 msgid "IP address"
 msgstr "IP-adres"
 
@@ -1081,7 +1119,7 @@ msgid ""
 msgstr ""
 
 msgid "use autodetection"
-msgstr ""
+msgstr "automatische detectie gebruiken"
 
 #, fuzzy
 msgid "Provider IPv4"
@@ -1250,6 +1288,7 @@ msgstr "SSID voor gasten"
 msgid "Password for guests"
 msgstr "Wachtwoord voor gasten"
 
+#, fuzzy
 msgid "Hint"
 msgstr "Hint"
 
@@ -1323,20 +1362,25 @@ msgstr "Testtype"
 msgid "Status"
 msgstr "Status"
 
+#, fuzzy
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "IPv4-connectiviteit"
 
+#, fuzzy
 msgid "IPv4 gateway connectivity"
-msgstr ""
+msgstr "Connectiviteit van de IPv4-Gateway"
 
+#, fuzzy
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "IPv6-connectiviteit"
 
+#, fuzzy
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "Connectiviteit van IPv6-gateway"
 
+#, fuzzy
 msgid "Test connection"
-msgstr ""
+msgstr "Verbinding testen"
 
 msgid "DHCP clients"
 msgstr ""
@@ -1409,7 +1453,7 @@ msgid "Prepare Token"
 msgstr ""
 
 msgid "Revoke"
-msgstr ""
+msgstr "Intrekken"
 
 msgid "Close"
 msgstr ""
@@ -1493,7 +1537,7 @@ msgstr "Wijzigingen verwerpen"
 
 #, fuzzy
 msgid "Save"
-msgstr "DHCP start"
+msgstr "Opslaan"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1584,8 +1628,9 @@ msgid ""
 "log in again after the reboot."
 msgstr ""
 
+#, fuzzy
 msgid "Reboot"
-msgstr "Herstart"
+msgstr "Opnieuw opstarten"
 
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
@@ -1675,7 +1720,7 @@ msgid ""
 msgstr ""
 
 msgid "No certification authority"
-msgstr ""
+msgstr "Geen certificeringsinstantie"
 
 msgid ""
 "Currently there is no certificate authority(CA) dedicated to remote "
@@ -1684,19 +1729,18 @@ msgid ""
 msgstr ""
 
 msgid "Generate CA"
-msgstr ""
+msgstr "CA genereren"
 
 msgid "Generating certificate authority"
-msgstr ""
+msgstr "Certificaatautoriteit genereren"
 
 msgid ""
 "The CA necessary for the remote administration. The time required for "
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Vertraging (dagen)"
+msgstr "Pagina opnieuw laden"
 
 #, fuzzy
 msgid "Connection parameters"
@@ -2056,8 +2100,9 @@ msgstr "U moet tussen de %s en %s keuzes kiezen."
 msgid "This value should be the same."
 msgstr "Deze waarde moet gelijk zijn."
 
+#, fuzzy
 msgid "This is not a valid IPv4 address."
-msgstr ""
+msgstr "Dit is geen geldig IPv4-adres."
 
 msgid "This is not a valid IPv4 netmask."
 msgstr ""
@@ -2065,11 +2110,13 @@ msgstr ""
 msgid "This is not a valid IPv4 prefix."
 msgstr ""
 
+#, fuzzy
 msgid "This is not a valid IPv6 prefix."
-msgstr ""
+msgstr "Dit is geen geldig IPv6-voorvoegsel."
 
+#, fuzzy
 msgid "This is not a valid MAC address."
-msgstr ""
+msgstr "Dit is geen geldig MAC-adres."
 
 msgid "You have been logged out due to longer inactivity."
 msgstr ""
@@ -3172,4 +3219,3 @@ msgstr ""
 #~ "Following notifications occured and haven't"
 #~ " been dismissed since last reboot."
 #~ msgstr ""
-
