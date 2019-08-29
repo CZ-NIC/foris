@@ -71,7 +71,7 @@ class MaintenanceConfigPage(ConfigPageMixin, backups.MaintenanceHandler):
             "create",
             {
                 "msg": "_(This is a testing notification. Please ignore me.)",
-                "severity": "news",
+                "severity": "announcement",
                 "immediate": True,
             },
         )
