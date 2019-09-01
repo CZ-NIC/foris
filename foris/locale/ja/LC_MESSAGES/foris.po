@@ -5,17 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-09-02 15:24+0000\n"
+"Last-Translator: Scott Anecito <scott.anecito@protonmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/turris/foris/ja/"
+">\n"
 "Language: ja\n"
-"Language-Team: none\n"
-"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.9-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -147,16 +149,16 @@ msgid ""
 msgstr ""
 
 msgid "Old"
-msgstr ""
+msgstr "古い"
 
 msgid "Minimal"
-msgstr ""
+msgstr "最小限"
 
 msgid "Router"
-msgstr ""
+msgstr "ルーター"
 
 msgid "Local Server"
-msgstr ""
+msgstr "ローカルサ ーバー"
 
 msgid "Unset"
 msgstr ""
@@ -186,16 +188,16 @@ msgid ""
 msgstr ""
 
 msgid "This field is required."
-msgstr ""
+msgstr "このフィールドは必須です。"
 
 msgid "Not a valid IPv4 address."
-msgstr ""
+msgstr "有効なIPv4のアドレスではありません。"
 
 msgid "Not a valid IPv4 netmask address."
 msgstr ""
 
 msgid "Not a valid IPv6 address."
-msgstr ""
+msgstr "有効なIPv6のアドレスではありません。"
 
 msgid "This is not a valid IPv4 or IPv6 address."
 msgstr ""
@@ -2916,4 +2918,3 @@ msgstr ""
 #~ "Following notifications occured and haven't"
 #~ " been dismissed since last reboot."
 #~ msgstr ""
-
