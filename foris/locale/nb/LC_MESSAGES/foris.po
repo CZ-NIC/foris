@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-06-05 14:18+0000\n"
+"PO-Revision-Date: 2019-08-10 15:23+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
+"foris/nb_NO/>\n"
 "Language: nb\n"
-"Language-Team: Norwegian Bokmål "
-"<https://hosted.weblate.org/projects/turris/foris/nb_NO/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.8-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -218,9 +219,8 @@ msgstr "Gammel"
 msgid "Minimal"
 msgstr "Minimal"
 
-#, fuzzy
 msgid "Router"
-msgstr "Land"
+msgstr "Ruter"
 
 msgid "Local Server"
 msgstr "Lokal tjener"
@@ -588,9 +588,8 @@ msgstr ""
 "Skru på dette for å automatisk tildele IP-adresser til enhetene tilkoblet"
 " ruteren."
 
-#, fuzzy
 msgid "DHCP start"
-msgstr "DHCP-startadresse"
+msgstr "DHCP start"
 
 msgid "DHCP max leases"
 msgstr "Maks. antall DHCP-tildelinger"
@@ -659,9 +658,8 @@ msgstr ""
 msgid "LAN mode"
 msgstr "LAN-modus"
 
-#, fuzzy
 msgid "Computer"
-msgstr "Land"
+msgstr "Datamaskin"
 
 #, fuzzy
 msgid ""
@@ -679,9 +677,8 @@ msgstr ""
 msgid "Router IP address"
 msgstr "Ruterens IP-adresse"
 
-#, fuzzy
 msgid "Router's IP address in the inner network."
-msgstr "Ruterens IP-adresse i det indre nettverket."
+msgstr "Ruterens IP-adresse i internnettverket."
 
 #, fuzzy
 msgid "Network netmask"
@@ -697,8 +694,9 @@ msgstr "DHCP (automatisk oppsett)"
 msgid "Static IP address (manual configuration)"
 msgstr "Statisk IP-adresse (manuelt oppsett)"
 
+#, fuzzy
 msgid "Don't connect this device to LAN"
-msgstr "Ikke koble denne enheten til LAN"
+msgstr "Ikke koble til denne enheten til LAN"
 
 msgid "IPv4 protocol"
 msgstr "IPv4-protokoll"
@@ -720,8 +718,8 @@ msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
 msgstr ""
-"DNS-tjeneradresse er ikke påkrevd, siden den innebygde DNS-utlederen "
-"klarer å finne ut av det."
+"DNS-tjener kreves ikke, siden den innebygde DNS-fortolkeren kan fungere uten "
+"det."
 
 msgid "DNS server 2 (IPv4)"
 msgstr "DNS-tjener 2 (IPv4)"
@@ -730,14 +728,13 @@ msgid "DHCP hostname"
 msgstr "DHCP-vertsnavn"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Vertsnavn som tilbys til DHCP-tjeneren."
+msgstr "Vertsnavn som skal tilbys til DHCP-tjeneren."
 
 msgid "Password"
 msgstr "Passord"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Nåværende passord"
+msgstr "Nåværende Foris-passord"
 
 msgid "New password"
 msgstr "Nytt passord"
@@ -805,7 +802,7 @@ msgstr ""
 " da, vil root-kontoen forbli blokkert.)"
 
 msgid "Region and time"
-msgstr "Tid og sted"
+msgstr "Region og tid"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -887,7 +884,7 @@ msgid "Turris"
 msgstr "Turris"
 
 msgid "Custom"
-msgstr "Egenvalgt"
+msgstr "Egendefinert"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members "
@@ -900,9 +897,8 @@ msgstr ""
 "innstillinger. Hvis du ønsker å sette din egen SMTP-tjener, velg "
 "\"egenvalgt\" og skriv inn påkrevde innstillinger."
 
-#, fuzzy
 msgid "Recipient's email"
-msgstr "Mottakerens e-postadresse"
+msgstr "Mottagerens e-post"
 
 #, fuzzy
 msgid "Email address of recipient. Separate multiple addresses by spaces."
@@ -926,8 +922,7 @@ msgid ""
 "Sender's name can contain only alphanumeric characters, dots and "
 "underscores."
 msgstr ""
-"Avsenderens navn kan kun inneholde alfanumeriske tegn, dotter og "
-"understreker."
+"Avsendernavn kan kun inneholde alfanumeriske tegn, punktum og understreker."
 
 msgid "Reboot is required"
 msgstr "Omstart kreves"
@@ -935,11 +930,8 @@ msgstr "Omstart kreves"
 msgid "Reboot or attention is required"
 msgstr "Omstart eller oppmerksomhet kreves"
 
-#, fuzzy
 msgid "Reboot or attention is required or update was installed"
-msgstr ""
-"Omstart eller oppmerksomhet kreves, eller så ble en oppgradering "
-"installert"
+msgstr "Omstart eller oppmerksomhet kreves, eller oppdatering installert"
 
 msgid "Importance"
 msgstr "Viktighet"
@@ -947,6 +939,7 @@ msgstr "Viktighet"
 msgid "Send news"
 msgstr "Send nyheter"
 
+#, fuzzy
 msgid "Send emails about new features."
 msgstr "Send e-poster om nye funksjoner."
 
@@ -954,7 +947,7 @@ msgid "SMTP settings"
 msgstr "SMTP-innstillinger"
 
 msgid "Sender address (From)"
-msgstr "Forsendelsesadresse (Fra)"
+msgstr "Avsenderadresse (Fra)"
 
 msgid "This is the address notifications are send from."
 msgstr "Dette er e-postadressen merknader sendes fra."
@@ -1148,9 +1141,11 @@ msgstr "PPPoE (for DSL-broer, Turris-modem, osv.)"
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatisk oppsett)"
 
+#, fuzzy
 msgid "6to4 (public IPv4 address required)"
 msgstr "6til4 (offentlig IPv4-adresse kreves)"
 
+#, fuzzy
 msgid "6in4 (public IPv4 address required)"
 msgstr "6i4 (offentlig IPv4-adresse kreves)"
 
@@ -1161,10 +1156,10 @@ msgid "IP address"
 msgstr "IP-adresse"
 
 msgid "PAP/CHAP username"
-msgstr "PAP/CHAP -brukernavn"
+msgstr "PAP/CHAP-brukernavn"
 
 msgid "PAP/CHAP password"
-msgstr "PAP/CHAP -passord"
+msgstr "PAP/CHAP-passord"
 
 msgid "IPv6 protocol"
 msgstr "IPv6-protokoll"
@@ -1269,7 +1264,7 @@ msgid "Key which will be used to provide credentials to your tunnel provider."
 msgstr "Nøkkel brukt til å oppgi identitetsdetaljer til din tunneltilbyder."
 
 msgid "Custom MAC address"
-msgstr "Egendefinert MAC-adresse"
+msgstr "Egendefinert MAV-adresse"
 
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet"
@@ -1279,9 +1274,8 @@ msgstr "Nyttig i fall der en spesifikk MAC-adresse kreves av din internettilbyde
 msgid "MAC address"
 msgstr "MAC-adresse"
 
-#, fuzzy
 msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
-msgstr "Koloninndelt, for eksempel 00:11:22:33:44:55"
+msgstr "Kolon brukes som inndeler, for eksempel 00:11:22:33:44:55"
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
@@ -1494,19 +1488,19 @@ msgid "Status"
 msgstr "Status"
 
 msgid "IPv4 connectivity"
-msgstr "IPv4-forbindelse"
+msgstr "IPv4-tilknytning"
 
 msgid "IPv4 gateway connectivity"
 msgstr "IPv4-portnerforbindelse"
 
 msgid "IPv6 connectivity"
-msgstr "IPv6-forbindelse"
+msgstr "IPv6-tilknytning"
 
 msgid "IPv6 gateway connectivity"
 msgstr "IPv6-portnerforbindelse"
 
 msgid "Test connection"
-msgstr "Test forbindelsen"
+msgstr "Test forbindelse"
 
 msgid "DHCP clients"
 msgstr "DHCP-klienter"
@@ -1686,9 +1680,8 @@ msgstr ""
 msgid "Discard changes"
 msgstr "Forkast endringer"
 
-#, fuzzy
 msgid "Save"
-msgstr "Brukernavn"
+msgstr "Lagre"
 
 msgid ""
 "Here you can test your internet connection. This test is also useful when"
@@ -1819,7 +1812,7 @@ msgstr ""
 "etterpå."
 
 msgid "Reboot"
-msgstr "Omstart"
+msgstr "Start på ny"
 
 #, fuzzy
 msgid ""
@@ -3465,4 +3458,3 @@ msgstr "Nedgrader"
 #~ "Fabrikksforvalg: Kabler fra stort kort "
 #~ "tilkoblet 5 GHz, kabler fra lite "
 #~ "kort tilkoblet 2.4 GHz-diplekserport."
-
