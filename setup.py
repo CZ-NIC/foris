@@ -59,6 +59,7 @@ class BuildCmd(build_py):
         cmd = babel.compile_catalog(distribution)
         cmd.directory = os.path.join(os.path.dirname(__file__), "foris", "locale")
         cmd.domain = "messages"
+        cmd.use_fuzzy = True
         cmd.ensure_finalized()
         cmd.run()
 
