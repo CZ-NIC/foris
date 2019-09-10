@@ -1,3 +1,10 @@
+100.4 (2019-09-10)
+------------------
+
+* translations updated
+* maintenance: add placeholder for 'Sender address and 'Server address'
+* maintenance: Generate testing notification as an error
+
 100.3 (2019-07-25)
 ------------------
 
