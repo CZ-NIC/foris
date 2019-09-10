@@ -1768,7 +1768,6 @@ msgstr ""
 "úplne neveríte. Upozorňujeme, že je tiež možné obmedzovať rýchlosť "
 "sťahovania/odosielania pre zariadenia pripojené k sieti pre hostí."
 
-#, fuzzy
 msgid "Guest Network"
 msgstr "Sieť pre hostí"
 
