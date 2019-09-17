@@ -15,8 +15,18 @@
             </tr>
             <tr>
                 <th>{% trans %}Turris OS version{% endtrans %}</th>
+                {% if data['os_branch']['mode'] == 'version' %}
+                <td>{{ data['os_version'] }} ({{ data['os_branch']['value'] }})</td>
+                {% else %}
                 <td>{{ data['os_version'] }}</td>
+                {% endif %}
             </tr>
+            {% if data['os_branch']['mode'] == 'branch' %}
+            <tr>
+                <th>{% trans %}Turris OS branch{% endtrans %}</th>
+                <td>{{ data['os_branch']['value'] }}</td>
+            </tr>
+            {% endif %}
             <tr>
                 <th>{% trans %}Kernel version{% endtrans %}</th>
                 <td>{{ data['kernel'] }}</td>
