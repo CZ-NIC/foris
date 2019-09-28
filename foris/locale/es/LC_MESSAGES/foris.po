@@ -1,0 +1,1962 @@
+# Translations template for Foris.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the Foris project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Foris 100.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-07-17 13:57+0200\n"
+"PO-Revision-Date: 2019-09-13 17:23+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/turris/foris/es/>"
+"\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9-dev\n"
+"Generated-By: Babel 2.6.0\n"
+
+msgid ""
+"Welcome to Foris web interface. This guide will help you to setup your "
+"device. Firstly it is required to set your password. Note the security of"
+" your home network is in your hands, so try not to use weak passwords."
+msgstr ""
+
+msgid "Your password seems to be set. You may proceed to the next step."
+msgstr ""
+
+msgid "Choose one of the possible setup workflows."
+msgstr ""
+
+msgid "The workflow was set. You may proceed to next step."
+msgstr ""
+
+msgid "Here you need to decide which interfaces belong to which network."
+msgstr ""
+
+msgid "If you are in doubt use the current settings."
+msgstr ""
+
+msgid ""
+"You've configured your network interfaces. It seems that you didn't break"
+" any crucial network settings so you can safely proceed to the next step."
+msgstr ""
+
+msgid "In order to access the internet, you need to configure your WAN interface."
+msgstr ""
+
+msgid ""
+"You've configured your WAN interface. Try to run connection test to see "
+"whether it is working properly and if so you can safely proceed to the "
+"next step."
+msgstr ""
+
+msgid ""
+"Now you should configure your LAN interface. Note that when you change "
+"your network settings you probably won't be able to connect to the "
+"configuration interface unless you restart the network on your current "
+"device."
+msgstr ""
+
+msgid ""
+"You've configured your LAN interface. Try to test whether settings work "
+"properly and if so you can safely proceed to the next step."
+msgstr ""
+
+msgid "Now you need to set the time and timezone of your device."
+msgstr ""
+
+msgid ""
+"Your time and timezone seem to be set. Please make sure that the time "
+"matches the time on your computer if not try to update it via ntp or "
+"manually."
+msgstr ""
+
+msgid ""
+"A proper DNS resolving is one of the key security features of your "
+"device. Let's configure it now."
+msgstr ""
+
+msgid ""
+"You've updated your DNS configuration. Try to run connection test to see "
+"whether your DNS resolver is properly set."
+msgstr ""
+
+msgid "Now you need to configure automatic updates on your device."
+msgstr ""
+
+msgid "Please wait till the updater finishes its run."
+msgstr ""
+
+msgid "You have successfully configured your device."
+msgstr ""
+
+msgid ""
+"You chose to act as local server this means that it doesn't make sense to"
+" put any interfaces to your WAN and Guest Network. So it is a good idea "
+"to assign all interfaces to LAN."
+msgstr ""
+
+msgid ""
+"To act as a local server, there's no need to manage LAN (if you still "
+"want to manage it reset the guide and choose the Router workflow). You "
+"probably want to act as a client here thus select "
+"<strong>Computer</strong> mode here."
+msgstr ""
+
+msgid ""
+"If you select the <strong>static</strong> configuration be sure that the "
+"IP addresses are entered correctly otherwise you won't be able to access "
+"this configuration interface when the new settings are applied."
+msgstr ""
+
+msgid ""
+"If you select the <strong>DHCP</strong> method you probably you need to "
+"obtain a new IP address of this device. You can obtain it from the DHCP "
+"server which is managing your LAN. Then you need to connect to the new IP"
+" address to proceed the guide."
+msgstr ""
+
+msgid ""
+"Note that either way you might need to re-plug your ethernet cables after"
+" you update the settings here."
+msgstr ""
+
+msgid ""
+"Please test whether the settings you provided are correctly working. This"
+" means that you can access the configuration interface of your device and"
+" your device is able to access the internet (you can use the connection "
+"test below)."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device should be able to act as a "
+"server on your local network."
+msgstr ""
+
+msgid ""
+"Minimal device setup is finished. Note that you probably need to perform "
+"some further configuration updates to fit the device to your needs."
+msgstr ""
+
+msgid ""
+"The device setup is finished. Now your device is able to act as a router "
+"and route network traffic among LAN, WAN and guest network."
+msgstr ""
+
+msgid "Old"
+msgstr ""
+
+msgid "Minimal"
+msgstr ""
+
+msgid "Router"
+msgstr ""
+
+msgid "Local Server"
+msgstr ""
+
+msgid "Unset"
+msgstr ""
+
+msgid "The workflow wasn't set yet."
+msgstr ""
+
+msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
+msgstr ""
+
+msgid ""
+"Just set your password and you are ready to go. This workflow is aimed to"
+" more advanced users who intend not to use the web GUI."
+msgstr ""
+
+msgid ""
+"After you finish this workflow your device will be able to act as a fully"
+" functional router. It assumes that you want to have more or less "
+"standard network setup."
+msgstr ""
+
+msgid ""
+"This workflow will help you to setup your device to act as a local "
+"server. It means that the device will provide some kind of service to "
+"other devices within your local network (e.g. act as a network-attached "
+"storage)."
+msgstr ""
+
+msgid "This field is required."
+msgstr ""
+
+msgid "Not a valid IPv4 address."
+msgstr ""
+
+msgid "Not a valid IPv4 netmask address."
+msgstr ""
+
+msgid "Not a valid IPv6 address."
+msgstr ""
+
+msgid "This is not a valid IPv4 or IPv6 address."
+msgstr ""
+
+msgid "This is not an IPv6 address with prefix length."
+msgstr ""
+
+msgid "This is not an IPv4 address with prefix length."
+msgstr ""
+
+msgid "Is not a number."
+msgstr ""
+
+msgid "This is not valid time in HH:MM format."
+msgstr ""
+
+msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
+msgstr ""
+
+#, python-format
+msgid "This value should be between %(low)s and %(high)s."
+msgstr ""
+
+msgid "This is not a valid domain name."
+msgstr "Este no es un nombre de dominio válido."
+
+msgid "MAC address is not valid."
+msgstr ""
+
+msgid "Duid is not valid."
+msgstr ""
+
+#, python-format
+msgid "Not in a valid range %(low).1f - %(high).1f."
+msgstr ""
+
+#, python-format
+msgid "Length must be from %(low)s to %(high)s characters."
+msgstr ""
+
+msgid "Configuration could not be saved due to an internal error."
+msgstr ""
+
+msgid "The password you entered was not valid."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Configuration was successfully saved."
+msgstr ""
+
+msgid "There were some errors in your input."
+msgstr ""
+
+msgid "Guide workflow was sucessfully set."
+msgstr ""
+
+msgid "Failed to set guide workflow."
+msgstr ""
+
+msgid "Failed to finish the guide."
+msgstr ""
+
+msgid "Maintenance"
+msgstr ""
+
+msgid "Wrong HTTP method."
+msgstr ""
+
+msgid "Testing message was sent, please check your inbox."
+msgstr ""
+
+msgid ""
+"Sending of the testing message failed, your configuration is possibly "
+"wrong."
+msgstr ""
+
+msgid ""
+"Configuration was successfully restored. Note that a reboot will be "
+"required to apply restored configuration."
+msgstr ""
+
+msgid "Failed to restore the backup from the provided file."
+msgstr ""
+
+msgid "Network configuration was sucessfully updated."
+msgstr ""
+
+msgid "Unable to update your network configuration."
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Number of notifications"
+msgstr ""
+
+#, python-format
+msgid ""
+"The password you've entered has been compromised. It appears %(count)d "
+"times in '%(list)s' list."
+msgstr ""
+
+msgid "Old password you entered was not valid."
+msgstr ""
+
+msgid "System password was successfully saved."
+msgstr ""
+
+msgid "Failed to save system password."
+msgstr ""
+
+msgid "Foris password was successfully saved."
+msgstr ""
+
+msgid "Failed to save Foris password."
+msgstr ""
+
+msgid "Remote Access"
+msgstr ""
+
+msgid "Remote access was sucessfully enabled."
+msgstr ""
+
+msgid ""
+"Failed to enable the remote access. You are probably using a message bus "
+"which doesn't support the remote access or the CA for remote access "
+"hasn't been generated yet."
+msgstr ""
+
+msgid "Remote access was sucessfully disabled."
+msgstr ""
+
+msgid "Failed to disable remote access."
+msgstr ""
+
+msgid "Starting to generate CA for remote access."
+msgstr ""
+
+msgid "CA for remote access was sucessfully deleted."
+msgstr ""
+
+msgid "Failed to delete CA for remote access."
+msgstr ""
+
+msgid "Update was approved."
+msgstr ""
+
+msgid "Update was postponed."
+msgstr ""
+
+msgid "Failed to approve the update."
+msgstr ""
+
+msgid "Failed to postpone the update."
+msgstr ""
+
+msgid ""
+"Configuration was successfully saved. Selected packages should be "
+"installed or removed shortly."
+msgstr ""
+
+msgid "Updater is running"
+msgstr ""
+
+msgid "Wi-Fi reset was successful."
+msgstr ""
+
+msgid "Failed to perform Wi-Fi reset."
+msgstr ""
+
+msgid "Backup file"
+msgstr ""
+
+msgid "DNS"
+msgstr ""
+
+msgid "Use forwarding"
+msgstr ""
+
+msgid "Use provider's DNS resolver"
+msgstr ""
+
+msgid "DNS Forwarder"
+msgstr ""
+
+msgid "Disable DNSSEC"
+msgstr ""
+
+msgid "Enable DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This will enable your DNS resolver to place DHCP client's names among the"
+" local DNS records."
+msgstr ""
+
+msgid "Domain of DHCP clients in DNS"
+msgstr ""
+
+msgid ""
+"This domain will be used as suffix. E.g. The result for client "
+"\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
+msgstr ""
+
+msgid "Guest network"
+msgstr ""
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Guest network netmask</strong>!"
+msgstr ""
+
+msgid ""
+"<strong>Router IP</strong> should not be within DHCP range defined by "
+"<strong>DHCP start</strong> and <strong>DHCP max leases </strong>"
+msgstr ""
+
+#, python-format
+msgid ""
+"Guest network is used for <a href='%(url)s'>guest Wi-Fi</a>. It is "
+"separated  from your ordinary LAN. Devices connected to this network are "
+"allowed to access the internet, but are not allowed to access the "
+"configuration interface of this device nor the devices in LAN."
+msgstr ""
+
+msgid "Enable guest network"
+msgstr ""
+
+msgid "Router IP in guest network"
+msgstr ""
+
+msgid ""
+"Router's IP address in the guest network. It is necessary that the guest "
+"network IPs are different from other networks (LAN, WAN, VPN, etc.)."
+msgstr ""
+
+msgid "Guest network netmask"
+msgstr ""
+
+msgid "Network mask of the guest network."
+msgstr ""
+
+msgid "Enable DHCP"
+msgstr ""
+
+msgid ""
+"Enable this option to automatically assign IP addresses to the devices "
+"connected to the router."
+msgstr ""
+
+msgid "DHCP start"
+msgstr ""
+
+msgid "DHCP max leases"
+msgstr ""
+
+msgid "Lease time (hours)"
+msgstr ""
+
+msgid "Guest Lan QoS"
+msgstr ""
+
+msgid ""
+"This option enables you to set a bandwidth limit for the guest network, "
+"so that your main network doesn't get slowed-down by it."
+msgstr ""
+
+msgid "Download (kb/s)"
+msgstr ""
+
+msgid "Download speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "Upload (kb/s)"
+msgstr ""
+
+msgid "Upload speed in guest network (in kilobits per second)."
+msgstr ""
+
+msgid "LAN"
+msgstr ""
+
+msgid ""
+"<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
+" fit into <strong>Network netmask</strong>!"
+msgstr ""
+
+msgid ""
+"This section contains settings for the local network (LAN). The provided "
+"defaults are suitable for most networks. <br><strong>Note:</strong> If "
+"you change the router IP address, all computers in LAN, probably "
+"including the one you are using now, will need to obtain a <strong>new IP"
+" address</strong> which does <strong>not</strong> happen "
+"<strong>immediately</strong>. It is recommended to disconnect and "
+"reconnect all LAN cables after submitting your changes to force the "
+"update. The next page will not load until you obtain a new IP from DHCP "
+"(if DHCP enabled) and you might need to <strong>refresh the page</strong>"
+" in your browser."
+msgstr ""
+
+msgid "LAN mode"
+msgstr ""
+
+msgid "Computer"
+msgstr ""
+
+msgid ""
+"Router mode means that this devices manages the LAN (acts as a router, "
+"can assing IP addresses, ...). Computer mode means that this device acts "
+"as a client in this network. It acts in a similar way as WAN, but it has "
+"opened ports for configuration interface and other services."
+msgstr ""
+
+msgid "Router IP address"
+msgstr ""
+
+msgid "Router's IP address in the inner network."
+msgstr ""
+
+msgid "Network netmask"
+msgstr ""
+
+msgid "Network mask of the inner network."
+msgstr ""
+
+msgid "DHCP (automatic configuration)"
+msgstr ""
+
+msgid "Static IP address (manual configuration)"
+msgstr ""
+
+msgid "Don't connect this device to LAN"
+msgstr ""
+
+msgid "IPv4 protocol"
+msgstr ""
+
+msgid "IPv4 address"
+msgstr ""
+
+msgid "Network mask"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "DNS server 1 (IPv4)"
+msgstr ""
+
+msgid ""
+"DNS server address is not required as the built-in DNS resolver is "
+"capable of working without it."
+msgstr ""
+
+msgid "DNS server 2 (IPv4)"
+msgstr ""
+
+msgid "DHCP hostname"
+msgstr ""
+
+msgid "Hostname which will be provided to DHCP server."
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Current Foris password"
+msgstr ""
+
+msgid "New password"
+msgstr ""
+
+msgid "New password (repeat)"
+msgstr ""
+
+msgid "Password (repeat)"
+msgstr ""
+
+msgid "for Foris web interface"
+msgstr ""
+
+msgid ""
+"Set your password for this administration interface. The password must be"
+" at least 6 characters long."
+msgstr ""
+
+msgid "Passwords are not equal."
+msgstr ""
+
+msgid "for Advanced administration"
+msgstr ""
+
+#, python-format
+msgid ""
+"In order to access the advanced configuration options which are not "
+"available here, you must set the root user's password. The advanced "
+"configuration options can be managed either through the <a "
+"href=\"//%(host)s/%(path)s\">LuCI web interface</a> or via SSH."
+msgstr ""
+
+msgid "Don't set this password"
+msgstr ""
+
+msgid "Use Foris password"
+msgstr ""
+
+msgid "Use other password"
+msgstr ""
+
+msgid "Advanced administration"
+msgstr ""
+
+msgid ""
+"Same password would be used for accessing this administration interface, "
+"for root user in LuCI web interface and for SSH login. Use a strong "
+"password! (If you choose not to set the password for advanced "
+"configuration here, you will have the option to do so later. Until then, "
+"the root account will be blocked.)"
+msgstr ""
+
+msgid "Region and time"
+msgstr ""
+
+msgid ""
+"It is important for your device to have the correct time set. If your "
+"device's time is delayed, the procedure of SSL certificate verification "
+"might not work correctly."
+msgstr ""
+
+msgid "Region settings"
+msgstr ""
+
+msgid ""
+"Please select the timezone the router is being operated in. Correct "
+"setting is required to display the right time and for related functions."
+msgstr ""
+
+msgid "Continent or ocean"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Timezone"
+msgstr ""
+
+msgid "Time settings"
+msgstr ""
+
+msgid ""
+"Time should be up-to-date otherwise DNS and other services might not work"
+" properly."
+msgstr ""
+
+msgid "How to set time"
+msgstr ""
+
+msgid "Choose method to store current time into the router."
+msgstr ""
+
+msgid "via ntp"
+msgstr ""
+
+msgid "manually"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time in YYYY-MM-DD HH:MM:SS format."
+msgstr ""
+
+msgid "Guide Finished"
+msgstr ""
+
+msgid "Network interfaces"
+msgstr ""
+
+msgid "Notifications settings"
+msgstr ""
+
+msgid "Enable notifications"
+msgstr ""
+
+msgid "SMTP provider"
+msgstr ""
+
+msgid "Turris"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid ""
+"If you set SMTP provider to \"Turris\", the servers provided to members "
+"of the Turris project would be used. These servers do not require any "
+"additional settings. If you want to set your own SMTP server, please "
+"select \"Custom\" and enter required settings."
+msgstr ""
+
+msgid "Recipient's email"
+msgstr ""
+
+msgid "Email address of recipient. Separate multiple addresses by spaces."
+msgstr ""
+
+msgid "Doesn't contain a list of emails separated by spaces"
+msgstr ""
+
+msgid "Sender's name"
+msgstr ""
+
+msgid ""
+"Name of the sender - will be used as a part of the sender's email address"
+" before the \"at\" sign."
+msgstr ""
+
+msgid ""
+"Sender's name can contain only alphanumeric characters, dots and "
+"underscores."
+msgstr ""
+
+msgid "Reboot is required"
+msgstr ""
+
+msgid "Reboot or attention is required"
+msgstr ""
+
+msgid "Reboot or attention is required or update was installed"
+msgstr ""
+
+msgid "Importance"
+msgstr ""
+
+msgid "Send news"
+msgstr ""
+
+msgid "Send emails about new features."
+msgstr ""
+
+msgid "SMTP settings"
+msgstr ""
+
+msgid "Sender address (From)"
+msgstr ""
+
+msgid "This is the address notifications are send from."
+msgstr ""
+
+msgid "Server address"
+msgstr ""
+
+msgid "Server port"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "SSL/TLS"
+msgstr ""
+
+msgid "STARTTLS"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Automatic restarts after software update"
+msgstr ""
+
+msgid "Delay (days)"
+msgstr ""
+
+msgid ""
+"Number of days that must pass between receiving the request for restart "
+"and the automatic restart itself."
+msgstr ""
+
+msgid "Reboot time"
+msgstr ""
+
+msgid "Time of day of automatic reboot in HH:MM format."
+msgstr ""
+
+msgid "Guide workflow"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "revoked"
+msgstr ""
+
+msgid "expired"
+msgstr ""
+
+msgid "generating"
+msgstr ""
+
+msgid "lost"
+msgstr ""
+
+msgid "Enable remote access"
+msgstr ""
+
+msgid "Accessible via WAN"
+msgstr ""
+
+msgid ""
+"If this option is check the device in the WAN network will be able to "
+"connect to the configuration interface. Otherwise only devices on LAN "
+"will be able to access the configuration interface."
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "A port which will be opened for the remote configuration of this device."
+msgstr ""
+
+msgid "Token name"
+msgstr ""
+
+msgid ""
+"The display name for the token. It must be shorter than 64 characters and"
+" must contain only alphanumeric characters, dots, dashes and underscores."
+msgstr ""
+
+msgid "Token name is invalid."
+msgstr ""
+
+msgid "Token id is invalid."
+msgstr ""
+
+msgid "Updater"
+msgstr ""
+
+msgid ""
+"Updater is a service that keeps all TurrisOS software up to date. Apart "
+"from the standard installation, you can optionally select bundles of "
+"additional software that'd be installed on the router. This software can "
+"be selected from the following list. Please note that only software that "
+"is part of TurrisOS or that has been installed from a package list is "
+"maintained by Updater. Software that has been installed manually or using"
+" opkg is not affected."
+msgstr ""
+
+msgid "I agree"
+msgstr ""
+
+msgid "Use automatic updates (recommended)"
+msgstr ""
+
+msgid "Turn automatic updates off"
+msgstr ""
+
+msgid "Update approvals"
+msgstr ""
+
+msgid "Automatic installation"
+msgstr ""
+
+msgid "Updates will be installed without user's intervention."
+msgstr ""
+
+msgid "Delayed updates"
+msgstr ""
+
+msgid ""
+"Updates will be installed with an adjustable delay. You can also approve "
+"them manually."
+msgstr ""
+
+msgid "Update approval needed"
+msgstr ""
+
+msgid "You have to approve the updates, otherwise they won't be installed."
+msgstr ""
+
+msgid ""
+"If you want to use other language than English you can select it from the"
+" following list:"
+msgstr ""
+
+msgid "WAN"
+msgstr ""
+
+msgid ""
+"Here you specify your WAN port settings. Usually, you can leave these "
+"options untouched unless instructed otherwise by your internet service "
+"provider. Also, in case there is a cable or DSL modem connecting your "
+"router to the network, it is usually not necessary to change this "
+"setting."
+msgstr ""
+
+msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
+msgstr ""
+
+msgid "DHCPv6 (automatic configuration)"
+msgstr ""
+
+msgid "6to4 (public IPv4 address required)"
+msgstr ""
+
+msgid "6in4 (public IPv4 address required)"
+msgstr ""
+
+msgid "Disable IPv6"
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "PAP/CHAP username"
+msgstr ""
+
+msgid "PAP/CHAP password"
+msgstr ""
+
+msgid "IPv6 protocol"
+msgstr ""
+
+msgid "IPv6 address"
+msgstr ""
+
+msgid ""
+"IPv6 address and prefix length for WAN interface, e.g. "
+"2001:db8:be13:37da::1/64"
+msgstr ""
+
+msgid "IPv6 gateway"
+msgstr ""
+
+msgid "IPv6 prefix"
+msgstr ""
+
+msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
+msgstr ""
+
+msgid "DNS server 1 (IPv6)"
+msgstr ""
+
+msgid "DNS server 2 (IPv6)"
+msgstr ""
+
+msgid "Custom DUID"
+msgstr ""
+
+msgid "DUID which will be provided to the DHCPv6 server."
+msgstr ""
+
+msgid "Public IPv4"
+msgstr ""
+
+msgid ""
+"In order to use 6to4 protocol, you might need to specify your public IPv4"
+" address manually (e.g. when your WAN interface has a private address "
+"which is mapped to public IP)."
+msgstr ""
+
+msgid "use autodetection"
+msgstr ""
+
+msgid "Provider IPv4"
+msgstr ""
+
+msgid ""
+"This address will be used as a endpoint of the tunnel on the provider's "
+"side."
+msgstr ""
+
+msgid "Routed IPv6 prefix"
+msgstr ""
+
+msgid "IPv6 addresses which will be routed to your network."
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Maximum Transmission Unit in the tunnel (in bytes)."
+msgstr ""
+
+msgid "Dynamic IPv4 handling"
+msgstr ""
+
+msgid ""
+"Some tunnel providers allow you to have public dynamic IPv4. Note that "
+"you need to fill in some extra fields to make it work."
+msgstr ""
+
+msgid "Tunnel ID"
+msgstr ""
+
+msgid "ID of your tunnel which was assigned to you by the provider."
+msgstr ""
+
+msgid ""
+"Username which will be used to provide credentials to your tunnel "
+"provider."
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Key which will be used to provide credentials to your tunnel provider."
+msgstr ""
+
+msgid "Custom MAC address"
+msgstr ""
+
+msgid ""
+"Useful in cases, when a specific MAC address is required by your internet"
+" service provider."
+msgstr ""
+
+msgid "MAC address"
+msgstr ""
+
+msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
+msgstr ""
+
+msgid "Wi-Fi"
+msgstr ""
+
+#, python-format
+msgid "Configure WiFi for '%s'"
+msgstr ""
+
+msgid ""
+"If you want to use your router as a Wi-Fi access point, enable Wi-Fi here"
+" and fill in an SSID (the name of the access point) and a corresponding "
+"password. You can then set up your mobile devices, using the QR code "
+"available within the form."
+msgstr ""
+
+msgid "Wi-Fi settings"
+msgstr ""
+
+msgid ""
+"WPA2 pre-shared key, that is required to connect to the network. Minimum "
+"length is 8 characters."
+msgstr ""
+
+#, python-format
+msgid "Enable Wi-Fi %s"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+msgid "Hide SSID"
+msgstr ""
+
+msgid "If set, network is not visible when scanning for available networks."
+msgstr ""
+
+msgid "Wi-Fi mode"
+msgstr ""
+
+msgid ""
+"The 2.4 GHz band is more widely supported by clients, but tends to have "
+"more interference. The 5 GHz band is a newer standard and may not be "
+"supported by all your devices. It usually has less interference, but the "
+"signal does not carry so well indoors."
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "802.11n - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11n - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 20 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 40 MHz wide channel"
+msgstr ""
+
+msgid "802.11ac - 80 MHz wide channel"
+msgstr ""
+
+msgid "802.11n/ac mode"
+msgstr ""
+
+msgid ""
+"Change this to adjust 802.11n/ac mode of operation. 802.11n with 40 MHz "
+"wide channels can yield higher throughput but can cause more interference"
+" in the network. If you don't know what to choose, use the default option"
+" with 20 MHz wide channel."
+msgstr ""
+
+msgid "auto"
+msgstr ""
+
+msgid "Network channel"
+msgstr ""
+
+msgid "Network password"
+msgstr ""
+
+msgid "Guest Wi-Fi"
+msgstr ""
+
+msgid "Set guest Wi-Fi here."
+msgstr ""
+
+msgid "Enable guest Wi-Fi"
+msgstr ""
+
+#, python-format
+msgid ""
+"Enables Wi-Fi for guests, which is separated from LAN network. Devices "
+"connected to this network are allowed to access the internet, but aren't "
+"allowed to access other devices and the configuration interface of the "
+"router. Parameters of the guest network can be set in <a "
+"href='%(url)s'>the Guest network tab</a>."
+msgstr ""
+
+msgid "SSID for guests"
+msgstr ""
+
+msgid "Password for guests"
+msgstr ""
+
+msgid "Hint"
+msgstr ""
+
+msgid "foris version:"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Turris router administration interface"
+msgstr ""
+
+msgid ""
+"This page requires JavaScript for proper function. Please enable it and "
+"refresh the page."
+msgstr ""
+
+msgid "Reboot now"
+msgstr ""
+
+msgid "Dismiss"
+msgstr ""
+
+msgid "Dismiss All"
+msgstr ""
+
+msgid "No new messages."
+msgstr ""
+
+msgid "Project:Turris"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "Log in"
+msgstr ""
+
+msgid "Foris Configuration Interface"
+msgstr ""
+
+msgid "Go to LuCI"
+msgstr ""
+
+msgid "Opened lock"
+msgstr ""
+
+msgid "Your connection is not encrypted"
+msgstr ""
+
+msgid "How to set an encrypted connection and why is it important"
+msgstr ""
+
+msgid "Connection test"
+msgstr ""
+
+msgid ""
+"Here you can test your connection settings. Remember to click on the "
+"<strong>Save</strong> button before running the test. Note that sometimes"
+" it takes a while before the connection is fully initialized. So it might"
+" be useful to wait for a while before running this test."
+msgstr ""
+
+msgid "\"Unable to verify network connection."
+msgstr ""
+
+msgid "Test type"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "IPv4 connectivity"
+msgstr ""
+
+msgid "IPv4 gateway connectivity"
+msgstr ""
+
+msgid "IPv6 connectivity"
+msgstr ""
+
+msgid "IPv6 gateway connectivity"
+msgstr ""
+
+msgid "Test connection"
+msgstr ""
+
+msgid "DHCP clients"
+msgstr ""
+
+msgid "Expires"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "MAC Address"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "No DHCP clients found."
+msgstr ""
+
+msgid "module"
+msgstr ""
+
+msgid "main"
+msgstr ""
+
+msgid "type"
+msgstr ""
+
+msgid "bus"
+msgstr ""
+
+msgid "state"
+msgstr ""
+
+msgid "alive"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "link speed"
+msgstr ""
+
+#, python-format
+msgid "Current link speed: %(speed)s Mbit"
+msgstr ""
+
+msgid "All network interfaces of this network are currently down."
+msgstr ""
+
+msgid ""
+"This network currently doesn't contain any devices. The changes you make "
+"here will become fully functional after you assign a network interface to"
+" this network."
+msgstr ""
+
+msgid "Token"
+msgstr ""
+
+msgid "Prepare Token"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid ""
+"You set both WiFi cards to the same band. This usually does not make "
+"sense, could make cards interfere with each other (thus hinder "
+"performance) and might violate local regulation as well."
+msgstr ""
+
+msgid "QR code"
+msgstr ""
+
+msgid "Show QR code"
+msgstr ""
+
+msgid "Device"
+msgstr ""
+
+msgid "Serial number"
+msgstr ""
+
+msgid "Turris OS version"
+msgstr ""
+
+msgid "Kernel version"
+msgstr ""
+
+msgid "Expandable"
+msgstr ""
+
+msgid "Foris - administration interface of router Turris"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "foris guide"
+msgstr ""
+
+msgid "Reset Guided Mode"
+msgstr ""
+
+msgid "Leave Guided Mode"
+msgstr ""
+
+msgid "Next step"
+msgstr ""
+
+msgid "Your router needs to be restarted in order to work properly."
+msgstr ""
+
+msgid ""
+"Router Turris uses its own DNS resolver with DNSSEC support. It is "
+"capable of working independently or it can forward your DNS queries your "
+"internet service provider's DNS resolver."
+msgstr ""
+
+msgid ""
+"The following setting determines the behavior of the DNS resolver. "
+"Usually, it is better to use the ISP's resolver in networks where it "
+"works properly. If it does not work for some reason, it is necessary to "
+"use direct resolving without forwarding."
+msgstr ""
+
+msgid ""
+"In rare cases ISP's have improperly configured network which interferes "
+"with DNSSEC validation. If you experience problems with DNS, you can "
+"<strong>temporarily</strong> disable DNSSEC validation to determine the "
+"source of the problem. However, keep in mind that without DNSSEC "
+"validation, you are vulnerable to DNS spoofing attacks! Therefore we "
+"<strong>recommend keeping DNSSEC turned on</strong> and resolving the "
+"situation with your ISP as this is a serious flaw on their side."
+msgstr ""
+
+msgid "Discard changes"
+msgstr ""
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid ""
+"Here you can test your internet connection. This test is also useful when"
+" you need to check that your DNS resolving works as expected. Remember to"
+" click on the <strong>Save</strong> button if you changed your forwarder "
+"setting."
+msgstr ""
+
+msgid "Unable to verify network connection."
+msgstr ""
+
+msgid "DNSSEC"
+msgstr ""
+
+msgid ""
+"Congratulations you've successfully reached the end of this guide.\n"
+"            Once you leave this guide you'll be granted access to the\n"
+"            full configuration interface of this device."
+msgstr ""
+
+msgid ""
+"To further <strong>improve your security</strong> consider enabling data\n"
+"            collect (start by selecting it in updater tab). This will "
+"allow\n"
+"            you to be part of our security research to discover new\n"
+"            attackers and it will also give you access to dynamic updates"
+"\n"
+"            to your firewall to block all already known attackers."
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Notifications and automatic restarts"
+msgstr ""
+
+msgid ""
+"You can set the router to notify you when a specific event occurs, for "
+"example when a reboot is required, no space is left on device or an "
+"application update is installed. You can use Turris servers to send these"
+" emails. Alternatively, if you choose to use a custom server, you must "
+"enter some additional settings. These settings are the same as you enter "
+"in your email client and you can get them from the provider of your email"
+" inbox. In that case, because of security reasons, it is recommended to "
+"create a dedicated account for your router."
+msgstr ""
+
+msgid ""
+"Also, when an automatic restart is required, you can specify the time you"
+" want it to occur. If you have email notifications enabled, you can also "
+"specify the interval between notification and automatic restart."
+msgstr ""
+
+msgid "Send testing message"
+msgstr ""
+
+msgid "Configuration backup"
+msgstr ""
+
+msgid ""
+"If you need to save the current configuration of this device, you can "
+"download a backup file. The configuration is saved as an unencrypted "
+"compressed archive (.tar.bz2). Passwords for this configuration interface"
+" and for the advanced configuration are not included in the backup."
+msgstr ""
+
+msgid "Download configuration backup"
+msgstr ""
+
+msgid "Configuration restore"
+msgstr ""
+
+msgid ""
+"To restore the configuration from a backup file, upload it using "
+"following form. Keep in mind that IP address of this device might change "
+"during the process, causing unavailability of this interface."
+msgstr ""
+
+msgid "Restore from backup"
+msgstr ""
+
+msgid "Device reboot"
+msgstr ""
+
+msgid ""
+"If you need to reboot the device, click on the following button. The "
+"reboot process takes approximately 30 seconds, you will be required to "
+"log in again after the reboot."
+msgstr ""
+
+msgid "Reboot"
+msgstr ""
+
+msgid ""
+"Here you can configure the settings of the network interfaces on your "
+"device. You can switch the physical network interfaces among networks. If"
+" you are unsure what to set here use the default settings."
+msgstr ""
+
+msgid ""
+"<strong>WAN</strong> acts as an external network connection. Firewall "
+"rules should be applied here. It can only contain a single interface."
+msgstr ""
+
+msgid ""
+"<strong>LAN</strong> acts as a local network connection. LAN should "
+"contain devices which are under your control and you trust them. These "
+"devices can see each other and can access this web interface. It is "
+"recommended that the LAN should contain at least one interface otherwise "
+"you might not be able to configure this device in an easy way."
+msgstr ""
+
+msgid ""
+"<strong>Guest network</strong> acts as a local network connection. Unlike"
+" LAN the devices in the guest network can't access the configuration "
+"interface of this device and are only able to access WAN (internet). This"
+" network should be used for devices which you don't fully trust. Note "
+"that you can also limit download/upload speed of the devices connected to"
+" the guest network."
+msgstr ""
+
+msgid "Guest Network"
+msgstr ""
+
+msgid "Unassigned"
+msgstr ""
+
+msgid "WAN network"
+msgstr ""
+
+msgid "LAN network"
+msgstr ""
+
+msgid "Unassign"
+msgstr ""
+
+msgid ""
+"In the setup you provided it is <strong>not possible to access the "
+"administration interface</strong> of your device. This means that the "
+"only way to configure your device will be via serial cabel or you need to"
+" a perform factory reset. <br/><br/> <p><strong>Is this really what you "
+"want?</strong></p>"
+msgstr ""
+
+msgid ""
+"You don't have any interface assigned to the LAN network.<br/> Do you "
+"want to <strong>open ports 22, 80 and 443 on WAN network</strong> in "
+"order to be able to access the configuration interface of our device?"
+msgstr ""
+
+msgid ""
+"Following notifications occurred and haven't been dismissed since the "
+"last reboot."
+msgstr ""
+
+msgid ""
+"Here you can set the guide walkthrough which will guide you through the "
+"basic configuration of your device."
+msgstr ""
+
+msgid "recommended"
+msgstr ""
+
+msgid "Use this workflow"
+msgstr ""
+
+msgid ""
+"Here you can set up your router to be configured remotely. The remote "
+"configuration is done via secure encrypted connection and each client is "
+"required to have a token issued by this device."
+msgstr ""
+
+msgid ""
+"This can be useful when you plan to access configuration interface via "
+"mobile app, another Turris router or you intend to write your own client."
+msgstr ""
+
+msgid "No certification authority"
+msgstr ""
+
+msgid ""
+"Currently there is no certificate authority(CA) dedicated to remote "
+"access. A CA is required to generate access tokens to authenticate. To "
+"proceed you need to generate it first."
+msgstr ""
+
+msgid "Generate CA"
+msgstr ""
+
+msgid "Generating certificate authority"
+msgstr ""
+
+msgid ""
+"The CA necessary for the remote administration. The time required for "
+"generating CA may differ. Please try to reload this page later."
+msgstr ""
+
+msgid "Reload page"
+msgstr ""
+
+msgid "Connection parameters"
+msgstr ""
+
+msgid ""
+"You CA seems to be ready to be used. Now you can safely enable/disable "
+"the remote access and set some of the parameters."
+msgstr ""
+
+msgid "Apply configuration"
+msgstr ""
+
+msgid "Tokens"
+msgstr ""
+
+msgid ""
+"Here you can create and revoke the client capability to connect to the "
+"remote administration."
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Delete CA"
+msgstr ""
+
+msgid ""
+"You can't delete the CA while the remote access is enabled. To delete the"
+" CA you need to disable the remote access first."
+msgstr ""
+
+msgid ""
+"You can delete the whole CA. Note that all the cerificates issued by this"
+" CA will be useless and if you wanted to use this plugin, you'd need to "
+"generate a new CA first."
+msgstr ""
+
+msgid ""
+"<a href=\"${response.url}\"><div id=\"remote-"
+"qrcode-${token_id}\"></div></a><br/>Expires in:"
+msgstr ""
+
+msgid "Failed to query ntp servers."
+msgstr ""
+
+msgid "NTP servers:"
+msgstr ""
+
+msgid "Update time"
+msgstr ""
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can refuse the questionable "
+"update temporarily and install it when you are ready. It isn't possible "
+"to decline the update forever and it will be offered to you again "
+"together with the next package installation."
+msgstr ""
+
+msgid ""
+"Update approvals can be useful when you want to make sure that updates "
+"won't harm your specific configuration. You can e.g. install updates when"
+" you're prepared for a possible rollback to a previous snapshot and deny "
+"the questionable update temporarily. It isn't possible to decline the "
+"update forever and it will be offered to you again together with the next"
+" package installation."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"          after %(input)s days\n"
+"          "
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"    Approve update from %(when)s\n"
+"    "
+msgstr ""
+
+msgid "List of changes"
+msgstr ""
+
+msgid "Note that a reboot will be triggered after the update."
+msgstr ""
+
+msgid "Install now"
+msgstr ""
+
+msgid "Deny"
+msgstr ""
+
+msgid "No package will be installed unless you install the updates above."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"    If you don't install the updates manually, they will be installed "
+"automatically after %(time)s.\n"
+"    "
+msgstr ""
+
+msgid "Package lists"
+msgstr ""
+
+msgid "Save and update"
+msgstr ""
+
+msgid ""
+"You WAN configuration is probably not correct or your WAN interface "
+"hasn't been properly initialized yet."
+msgstr ""
+
+msgid ""
+"WAN port has no link or it hasn't been configured yet. Your internet "
+"connection probably won't work."
+msgstr ""
+
+msgid "We were unable to detect any wireless cards in your router."
+msgstr ""
+
+msgid ""
+"If a number of wireless cards doesn't match, you may try to reset the Wi-"
+"Fi settings. Note that this will remove the current Wi-Fi configuration "
+"and restore the default values."
+msgstr ""
+
+msgid "Reset Wi-Fi settings"
+msgstr ""
+
+msgid ""
+"One of the most important features of router Turris are automatic system "
+"updates. Thanks to this function your router's software stays up to date "
+"and offers better protection against attacks from the Internet."
+msgstr ""
+
+msgid ""
+"It is <strong>highly recommended</strong> to have this feature "
+"<strong>turned on</strong>. If you decide to disable it, be warned that "
+"this might weaken the security of your router and network in case flaws "
+"in the software are found."
+msgstr ""
+
+msgid ""
+"By turning the automatic updates on, you agree to this feature's license "
+"agreement. More information is available <a href=\"#\" id=\"toggle-"
+"eula\">here</a>."
+msgstr ""
+
+msgid "Most important points from the license agreement:"
+msgstr ""
+
+msgid "Automatic updates are offered to the Turris router owners free of charge."
+msgstr ""
+
+msgid "Updates are prepared exclusively by CZ.NIC, z. s. p. o."
+msgstr ""
+
+msgid ""
+"Enabling of the automatic updates is a prerequisite for additional "
+"security features of Turris router."
+msgstr ""
+
+msgid ""
+"Automatic updates take place at the time of their release, the time of "
+"installation cannot be influenced by the user."
+msgstr ""
+
+msgid ""
+"Having the automatic updates turned on can result in increased Internet "
+"traffic on your router. Expenses related to this increase are covered by "
+"you."
+msgstr ""
+
+msgid ""
+"Automatic updates cannot protect you against every attack coming from the"
+" Internet. Please do not forget to protect your workstations and other "
+"devices by installing antivirus software and explaining to your family "
+"members how to stay safe on the Internet."
+msgstr ""
+
+msgid ""
+"CZ.NIC, z. s. p. o. does not guarantee the availability of this service "
+"and is not responsible for any damages caused by the automatic updates."
+msgstr ""
+
+msgid ""
+"By enabling of the automatic updates, you confirm that you are the owner "
+"of this Turris router and you agree with the full text of the <a "
+"href=\"https://www.turris.cz/omnia-updater-eula\">license agreement</a>."
+msgstr ""
+
+msgid ""
+"Your password contains non-standard characters. These are not forbidden, "
+"but could cause problems on some devices."
+msgstr ""
+
+msgid ""
+"Your SSID contains non-standard characters. These are not forbidden, but "
+"could cause problems on some devices."
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Connectivity test failed, testing connection with disabled forwarding."
+msgstr ""
+
+msgid ""
+"The IP address of your router has been changed. It should be accessible "
+"from %NEW_IP_LINK%. See the note above for more information about IP "
+"address change."
+msgstr ""
+
+msgid ""
+"You have chosen to not receive security updates. We strongly advice you "
+"to keep the automatic security updates enabled to receive all recommended"
+" updates for your device. Updating your router on regular basis is the "
+"only way how to ensure you will be protected against known threats that "
+"might target your home router device.<br/><br/>Do you still want to "
+"continue and stay unprotected?"
+msgstr ""
+
+msgid ""
+"DNSSEC is a security technology that protects the DNS communication "
+"against attacks on the DNS infrastructure. We strongly recommend keeping "
+"DNSSEC validation enabled unless you know that you will be connecting "
+"your device in the network where DNSSEC is broken. <br/><br/>Do you still"
+" want to continue and stay unprotected?"
+msgstr ""
+
+msgid "Are you sure you want to restart the router?"
+msgstr ""
+
+#, python-format
+msgid "Remaining notifications (%(unread_left)s) will be discarded."
+msgstr ""
+
+msgid ""
+"There are some unsaved changes in the notifications settings.<br/>Do you "
+"want to discard them and test the notifications with the old settings?"
+msgstr ""
+
+#, python-format
+msgid "Your device will be rebooted in %(time_left)s seconds."
+msgstr ""
+
+#, python-format
+msgid "Your network will be restarted in %(time_left)s seconds."
+msgstr ""
+
+#, python-format
+msgid "Foris will be restarted in %(time_left)s seconds."
+msgstr ""
+
+msgid "A reboot of your device was triggered."
+msgstr ""
+
+msgid "A network restart was triggered."
+msgstr ""
+
+msgid "Foris restart was triggered."
+msgstr ""
+
+msgid "Trying to reconnect to your device."
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "This value seems to be invalid."
+msgstr ""
+
+msgid "This value should be a valid email."
+msgstr ""
+
+msgid "This value should be a valid url."
+msgstr ""
+
+msgid "This value should be a valid number."
+msgstr ""
+
+msgid "This value should be a valid integer."
+msgstr ""
+
+msgid "This value should be digits."
+msgstr ""
+
+msgid "This value should be alphanumeric."
+msgstr ""
+
+msgid "This value should not be blank."
+msgstr ""
+
+msgid "This value is required."
+msgstr ""
+
+#, python-format
+msgid "This value should be greater than or equal to %s."
+msgstr ""
+
+#, python-format
+msgid "This value should be lower than or equal to %s."
+msgstr ""
+
+#, python-format
+msgid "This value should be between %s and %s."
+msgstr ""
+
+#, python-format
+msgid "This value is too short. It should have %s characters or more."
+msgstr ""
+
+#, python-format
+msgid "This value is too long. It should have %s characters or fewer."
+msgstr ""
+
+#, python-format
+msgid "This field should have between %s and %s characters."
+msgstr ""
+
+#, python-format
+msgid "You must select at least %s choices."
+msgstr ""
+
+#, python-format
+msgid "You must select %s choices or fewer."
+msgstr ""
+
+#, python-format
+msgid "You must select between %s and %s choices."
+msgstr ""
+
+msgid "This value should be the same."
+msgstr ""
+
+msgid "This is not a valid IPv4 address."
+msgstr "Esta no es una dirección IPv4 válida."
+
+msgid "This is not a valid IPv4 netmask."
+msgstr ""
+
+msgid "This is not a valid IPv4 prefix."
+msgstr ""
+
+msgid "This is not a valid IPv6 prefix."
+msgstr "Este no es un prefijo IPv6 válido."
+
+msgid "This is not a valid MAC address."
+msgstr "Esta no es una dirección MAC válida."
+
+msgid "You have been logged out due to longer inactivity."
+msgstr ""
+
+#, python-format
+msgid "%Y/%m/%d %H:%M:%S"
+msgstr ""
+
+msgid "News"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+#, python-format
+msgid "%(notification)s from %(created_at)s"
+msgstr ""
+
+msgid "Notification"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "Uninstall"
+msgstr ""
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Downgrade"
+msgstr ""
