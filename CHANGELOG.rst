@@ -1,3 +1,8 @@
+100.6 (2019-10-17)
+------------------
+
+* about: show Turris OS version or branch in about tab
+
 100.5 (2019-09-28)
 ------------------
 
