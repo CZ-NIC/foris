@@ -72,7 +72,7 @@ setup(
     description="Web administration interface for OpenWrt based on NETCONF",
     author="CZ.NIC, z. s. p. o.",
     author_email="stepan.henek@nic.cz",
-    url="https://gitlab.labs.nic.cz/turris/foris/",
+    url="https://gitlab.labs.nic.cz/turris/foris/foris/",
     license="GPL-3.0",
     install_requires=[
         "jinja2",

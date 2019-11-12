@@ -25,7 +25,7 @@ setup(
     description="Sample plugin for foris web interface",
     author="CZ.NIC, z. s. p. o.",
     author_email="stepan.henek@nic.cz",
-    url="https://gitlab.labs.nic.cz/turris/foris-sample-plugin/",
+    url="https://gitlab.labs.nic.cz/turris/foris/foris-sample-plugin/",
     license="GPL-3.0",
     install_requires=["foris", "jinja2"],
     setup_requires=["babel", "libsass", "foris_plugins_distutils"],
@@ -48,7 +48,7 @@ setup(
     namespace_packages=["foris_plugins"],
     cmdclass={"build_py": BuildCmd},  # modify build_py to build the foris files as well
     dependency_links=[
-        "git+https://gitlab.labs.nic.cz/turris/foris-plugins-distutils.git"
+        "git+https://gitlab.labs.nic.cz/turris/foris/foris-plugins-distutils.git"
         "#egg=foris_plugins_distutils"
     ],
 )
