@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-09-13 17:23+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"PO-Revision-Date: 2019-10-16 18:53+0000\n"
+"Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.9\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -178,7 +178,7 @@ msgid ""
 msgstr ""
 
 msgid "Old"
-msgstr ""
+msgstr "Ancien"
 
 msgid "Minimal"
 msgstr ""
@@ -189,8 +189,9 @@ msgstr "Routeur"
 msgid "Local Server"
 msgstr "Serveur local"
 
+#, fuzzy
 msgid "Unset"
-msgstr ""
+msgstr "Non défini"
 
 msgid "The workflow wasn't set yet."
 msgstr ""
@@ -348,7 +349,7 @@ msgid "System password was successfully saved."
 msgstr "Le mot de passe système a été enregistré avec succès."
 
 msgid "Failed to save system password."
-msgstr ""
+msgstr "Échec de la sauvegarde du mot de passe système."
 
 msgid "Foris password was successfully saved."
 msgstr "Le mot de passe Foris a été enregistré avec succès."
@@ -670,7 +671,7 @@ msgid ""
 msgstr ""
 
 msgid "Don't set this password"
-msgstr ""
+msgstr "Ne définissez pas ce mot de passe"
 
 msgid "Use Foris password"
 msgstr "Utiliser le mot de passe Foris"
@@ -689,11 +690,10 @@ msgid ""
 "the root account will be blocked.)"
 msgstr ""
 "Le même mot de passe serait utilisé pour accéder à cette interface "
-"d'administration, pour l'utilisateur root dans l'interface web LuCI et "
-"pour la connexion SSH. Utiliser un mot de passe fort! (Si vous choisissez"
-" de ne pas configurer le mot de passe pour la configuration avancée ici, "
-"vous aurez la possibilité de le faire plus tard. D'ici là, le compte root"
-" sera bloqué.)"
+"d'administration, pour l'utilisateur root dans l'interface web LuCI et pour "
+"la connexion SSH. Utiliser un mot de passe fort ! (Si vous choisissez de ne "
+"pas configurer le mot de passe pour la configuration avancée ici, vous aurez "
+"la possibilité de le faire plus tard. D'ici là, le compte root sera bloqué.)"
 
 msgid "Region and time"
 msgstr "Région et heure"
@@ -754,7 +754,7 @@ msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr "Heure en format AAAA-MM-JJ HH:MM:SS."
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Guide terminé"
 
 msgid "Network interfaces"
 msgstr "Interfaces réseau"
@@ -818,7 +818,7 @@ msgid "Reboot is required"
 msgstr "Un redémarrage est nécessaire"
 
 msgid "Reboot or attention is required"
-msgstr "Un redémarrage ou une attention particulière est nécessaire"
+msgstr "Un redémarrage ou une attention particulière est requise"
 
 msgid "Reboot or attention is required or update was installed"
 msgstr ""
@@ -862,7 +862,7 @@ msgid "Security"
 msgstr "Sécurité"
 
 msgid "Username"
-msgstr "Nom d'utilisateur"
+msgstr "Nom d’utilisateur"
 
 msgid "Automatic restarts after software update"
 msgstr "Redémarrage automatique après mise à jour"
@@ -1030,7 +1030,7 @@ msgid "6to4 (public IPv4 address required)"
 msgstr "6to4 (adresse IPv4 publique requise)"
 
 msgid "6in4 (public IPv4 address required)"
-msgstr "6to4 (adresse IPv4 publique requise)"
+msgstr "6in4 (adresse IPv4 publique requise)"
 
 msgid "Disable IPv6"
 msgstr "Désactiver IPv6"
@@ -1080,7 +1080,7 @@ msgid "DUID which will be provided to the DHCPv6 server."
 msgstr "Nom d'hôte qui sera assigné au serveur DHCP."
 
 msgid "Public IPv4"
-msgstr "IPv4 Publique"
+msgstr "IPv4 publique"
 
 msgid ""
 "In order to use 6to4 protocol, you might need to specify your public IPv4"
@@ -1149,7 +1149,7 @@ msgstr ""
 "votre fournisseur de tunnel."
 
 msgid "Custom MAC address"
-msgstr "Personnaliser l'adresse MAC"
+msgstr "Adresse MAC personnalisée"
 
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet"
@@ -1379,13 +1379,13 @@ msgid "IPv4 connectivity"
 msgstr "Connectivité IPv4"
 
 msgid "IPv4 gateway connectivity"
-msgstr "Connectivité passerelle IPv4"
+msgstr "Connectivité de la passerelle IPv4"
 
 msgid "IPv6 connectivity"
 msgstr "Connectivité IPv6"
 
 msgid "IPv6 gateway connectivity"
-msgstr "Connectivité passerelle IPv6"
+msgstr "Connectivité de la passerelle IPv6"
 
 msgid "Test connection"
 msgstr "Test de connexion"
@@ -1429,8 +1429,9 @@ msgstr "état"
 msgid "alive"
 msgstr ""
 
+#, fuzzy
 msgid "off"
-msgstr ""
+msgstr "éteint"
 
 msgid "link speed"
 msgstr "vitesse du lien"
@@ -1713,8 +1714,9 @@ msgstr ""
 msgid "Guest Network"
 msgstr "Réseau invité"
 
+#, fuzzy
 msgid "Unassigned"
-msgstr ""
+msgstr "Non attribué"
 
 msgid "WAN network"
 msgstr "Réseau WAN"
@@ -2164,7 +2166,7 @@ msgid "Foris restart was triggered."
 msgstr "Un redémarrage de Foris a été initié."
 
 msgid "Trying to reconnect to your device."
-msgstr ""
+msgstr "Tentative de re-connexion à votre appareil."
 
 msgid "Confirm"
 msgstr "Confirmer"
