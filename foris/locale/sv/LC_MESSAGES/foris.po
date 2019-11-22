@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-10-19 19:52+0000\n"
+"PO-Revision-Date: 2019-11-23 17:04+0000\n"
 "Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris/sv/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -689,9 +689,8 @@ msgid ""
 " properly."
 msgstr ""
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Tidpunkt för omstart"
+msgstr "Hur man ställer in tid"
 
 msgid "Choose method to store current time into the router."
 msgstr ""
@@ -919,18 +918,16 @@ msgstr ""
 msgid "Updates will be installed without user's intervention."
 msgstr ""
 
-#, fuzzy
 msgid "Delayed updates"
-msgstr "Fördröjning (dagar)"
+msgstr "Fördröjda uppdateringar"
 
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
 
-#, fuzzy
 msgid "Update approval needed"
-msgstr "Uppdateringen godkändes."
+msgstr "Uppdateringsgodkännande behövs"
 
 msgid "You have to approve the updates, otherwise they won't be installed."
 msgstr ""
@@ -1277,13 +1274,11 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#, fuzzy
 msgid "IP Address"
-msgstr "Serveradress"
+msgstr "IP-adress"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "Serveradress"
+msgstr "MAC-adress"
 
 msgid "Hostname"
 msgstr "Värdnamn"
