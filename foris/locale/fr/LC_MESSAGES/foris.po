@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-12-27 15:27+0000\n"
+"PO-Revision-Date: 2019-12-28 14:54+0000\n"
 "Last-Translator: Éfrit <Efrit@posteo.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
@@ -141,12 +141,20 @@ msgid ""
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here."
 msgstr ""
+"Pour agir comme un serveur local, il n’est pas nécessaire de gérer le réseau "
+"local (si vous souhaitez tout de même le gérer, réinitialisez le guide et "
+"choisissez le flux de travaux Routeur). Vous voulez probablement agir comme "
+"un client alors sélectionnez le mode <strong>Ordinateur</strong> ici."
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
+"Si vous sélectionnez la configuration <strong>statique</strong>, assurez-"
+"vous que les adresses IP soient correctement saisies, autrement vous ne "
+"pourrez plus accéder à cette interface de configuration lorsque les nouveaux "
+"paramètres seront appliqués."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -154,11 +162,18 @@ msgid ""
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Si vous sélectionnez la méthode <strong>DHCP</strong>, vous avez "
+"probablement besoin d’obtenir une nouvelle adresse IP pour cet appareil. "
+"Vous pouvez l’obtenir auprès du serveur DHCP qui gère votre réseau local. "
+"Vous devez ensuite vous connectez à la nouvelle adresse IP pour continuer ce "
+"guide."
 
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
+"Notez que dans les deux cas vous pourrez avoir besoin de rebrancher vos "
+"câbles Ethernet après avoir mis à jour vos paramètres ici."
 
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
@@ -166,27 +181,39 @@ msgid ""
 " your device is able to access the internet (you can use the connection "
 "test below)."
 msgstr ""
+"Veuillez vérifier si les paramètres que vous avez fournis fonctionnent "
+"correctement. Cela signifie que vous pouvez accéder à l’interface de "
+"configuration de votre appareil et que celui-ci est capable d’accéder à "
+"Internet (vous pouvez utiliser le test de connexion ci-dessous)."
 
 msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"L’installation de l’appareil est terminée. Celui-ci devrait désormais "
+"pouvoir agir comme un serveur sur votre réseau local."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
 "some further configuration updates to fit the device to your needs."
 msgstr ""
+"L’installation minimale de l’appareil est terminée. Notez qu’il est "
+"probablement nécessaire que vous réalisiez des mises à jour de configuration "
+"supplémentaires pour que l’appareil réponde à vos besoins."
 
 msgid ""
 "The device setup is finished. Now your device is able to act as a router "
 "and route network traffic among LAN, WAN and guest network."
 msgstr ""
+"L’installation de l’appareil est terminée. Celui-ci peut désormais agir "
+"comme un routeur et donc router le trafic réseau entre les réseaux local, "
+"étendu et invité."
 
 msgid "Old"
 msgstr "Ancien"
 
 msgid "Minimal"
-msgstr ""
+msgstr "Minimal"
 
 msgid "Router"
 msgstr "Routeur"
@@ -194,26 +221,33 @@ msgstr "Routeur"
 msgid "Local Server"
 msgstr "Serveur local"
 
-#, fuzzy
 msgid "Unset"
 msgstr "Non défini"
 
 msgid "The workflow wasn't set yet."
-msgstr ""
+msgstr "Le flux de travaux n’était pas encore défini."
 
 msgid "Workflow for older devices and older Turris OS versions (before 4.0)."
 msgstr ""
+"Flux de travaux pour d’anciens appareils et d’anciennes versions du SE "
+"Turris (avant la 4.0)."
 
 msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web GUI."
 msgstr ""
+"Définissez seulement votre mot de passe et vous serez prêt. Ce flux de "
+"travaux vise les utilisateurs avancés qui n’ont pas l’intention d’utiliser l’"
+"interface graphique Web."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Après avoir terminé ce flux de travaux, votre appareil sera capable d’agir "
+"comme un routeur pleinement fonctionnel. Cela suppose que vous voulez plus "
+"ou moins une installation réseau standard."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -221,85 +255,86 @@ msgid ""
 "other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
+"Ce flux de travaux vous aidera à configurer votre appareil pour agir comme "
+"un serveur local. Cela signifie qu’il fournira certains types de services "
+"aux autres appareils dans votre réseau local (p. ex. agir comme un serveur "
+"de stockage en réseau)."
 
 msgid "This field is required."
 msgstr "Ce champ est obligatoire."
 
 msgid "Not a valid IPv4 address."
-msgstr "Adresse IPv4 non valide."
+msgstr "Adresse IPv4 invalide."
 
 msgid "Not a valid IPv4 netmask address."
-msgstr "Masque de sous-réseau IPv4 non valide."
+msgstr "Masque de sous-réseau IPv4 invalide."
 
 msgid "Not a valid IPv6 address."
-msgstr "Adresse IPV6 non valide."
+msgstr "Adresse IPv6 invalide."
 
 msgid "This is not a valid IPv4 or IPv6 address."
-msgstr "Ce n’est pas une adresse IPv4 ou IPv6 valide."
+msgstr "Ceci n’est pas une adresse IPv4 ou IPv6 valide."
 
 msgid "This is not an IPv6 address with prefix length."
-msgstr "Ceci n'est pas une adresse IPv6 avec la longueur de préfixe associée."
+msgstr "Ceci n’est pas une adresse IPv6 avec la longueur de préfixe associée."
 
 msgid "This is not an IPv4 address with prefix length."
-msgstr "Ceci n'est pas une adresse IPv4 avec une longueur de préfixe associée."
+msgstr "Ceci n’est pas une adresse IPv4 avec une longueur de préfixe associée."
 
 msgid "Is not a number."
-msgstr "Ce n'est pas un nombre."
+msgstr "Ceci n’est pas un nombre."
 
 msgid "This is not valid time in HH:MM format."
-msgstr "Ce n'est pas une heure valide au format HH:MM."
+msgstr "Ceci n’est pas une heure valide au format HH:MM."
 
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
-msgstr "Ce n'est pas une heure valide (YYYY-MM-DD HH:MM:SS)."
+msgstr "Ceci n’est pas une heure valide (YYYY-MM-DD HH:MM:SS)."
 
 #, python-format
 msgid "This value should be between %(low)s and %(high)s."
 msgstr "Cette valeur doit être comprise entre %(low)s et %(high)s."
 
 msgid "This is not a valid domain name."
-msgstr "Ce n’est pas un nom de domaine valide."
+msgstr "Ceci n’est pas un nom de domaine valide."
 
 msgid "MAC address is not valid."
-msgstr "Adresse MAC non valide."
+msgstr "Adresse MAC invalide."
 
 msgid "Duid is not valid."
-msgstr "DUID non valide."
+msgstr "DUID invalide."
 
 #, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Pas dans une plage valide %(low).1f - %(high).1f."
+msgstr "Pas dans une plage valide %(low).1f – %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
-msgstr "La longueur doit être comprise en %(low)s et %(high)s caractères."
+msgstr "La longueur doit être comprise entre %(low)s et %(high)s caractères."
 
 msgid "Configuration could not be saved due to an internal error."
 msgstr ""
-"La Configuration n'a pas pu être enregistrée en raison d'une erreur "
-"interne."
+"La configuration n’a pas pu être enregistrée en raison d’une erreur interne."
 
 msgid "The password you entered was not valid."
-msgstr "Le mot de passe saisi n'est pas valide."
+msgstr "Le mot de passe saisi n’est pas valide."
 
 msgid "About"
 msgstr "À propos"
 
 msgid "Configuration was successfully saved."
-msgstr "Configuration sauvegardée avec succès."
+msgstr "Configuration enregistrée avec succès."
 
 msgid "There were some errors in your input."
-msgstr "Il y avait des erreurs dans l'information que vous avez entrée."
+msgstr "Il y avait des erreurs dans votre saisie."
 
-#, fuzzy
 msgid "Guide workflow was sucessfully set."
-msgstr "Mot de passe enregistré avec succès."
+msgstr "Le flux de travaux du guide a été réglé avec succès."
 
 msgid "Failed to set guide workflow."
-msgstr ""
+msgstr "Échec du réglage du flux de travaux du guide."
 
-#, fuzzy
 msgid "Failed to finish the guide."
-msgstr "Le report de la mise à jour a échoué."
+msgstr "Fin du guide échouée."
 
 msgid "Maintenance"
 msgstr "Maintenance"
@@ -316,18 +351,18 @@ msgid ""
 "Sending of the testing message failed, your configuration is possibly "
 "wrong."
 msgstr ""
-"L'envoi du message de test a échoué, votre configuration est peut-être "
+"L’envoi du message de test a échoué, votre configuration est peut-être "
 "incorrecte."
 
 msgid ""
 "Configuration was successfully restored. Note that a reboot will be "
 "required to apply restored configuration."
 msgstr ""
-"La configuration a été restaurée avec succès. Notez qu'un redémarrage "
-"sera nécessaire pour appliquer la configuration restaurée."
+"La configuration a été restaurée avec succès. Notez qu’un réamorçage sera "
+"nécessaire pour appliquer la configuration restaurée."
 
 msgid "Failed to restore the backup from the provided file."
-msgstr "Échec de la restauration de la sauvegarde à partir du fichier founit."
+msgstr "Échec de la restauration de la sauvegarde à partir du fichier fourni."
 
 msgid "Network configuration was sucessfully updated."
 msgstr "La configuration du réseau a été mise à jour avec succès."
@@ -346,21 +381,23 @@ msgid ""
 "The password you've entered has been compromised. It appears %(count)d "
 "times in '%(list)s' list."
 msgstr ""
+"Le mot de passe que vous avez saisi a été compromis. Il apparaît %(count)d "
+"fois dans la liste « %(list)s »."
 
 msgid "Old password you entered was not valid."
-msgstr "L'ancien mot de passe n'est pas valable."
+msgstr "L’ancien mot de passe que vous avez saisi n’est pas valide."
 
 msgid "System password was successfully saved."
 msgstr "Le mot de passe système a été enregistré avec succès."
 
 msgid "Failed to save system password."
-msgstr "Échec de la sauvegarde du mot de passe système."
+msgstr "Échec de l’enregistrement du mot de passe système."
 
 msgid "Foris password was successfully saved."
 msgstr "Le mot de passe Foris a été enregistré avec succès."
 
 msgid "Failed to save Foris password."
-msgstr "Échec de la sauvegarde du mot de passe Foris."
+msgstr "Échec de l’enregistrement du mot de passe Foris."
 
 msgid "Remote Access"
 msgstr "Accès à distance"
@@ -373,21 +410,24 @@ msgid ""
 "which doesn't support the remote access or the CA for remote access "
 "hasn't been generated yet."
 msgstr ""
+"Échec de l’activation de l’accès à distance. Vous utilisez probablement un "
+"bus de messages qui ne prend pas en charge l’accès à distance ou l’AC pour l’"
+"accès à distance n’a pas encore été générée."
 
 msgid "Remote access was sucessfully disabled."
 msgstr "L’accès à distance a été désactivé avec succès."
 
 msgid "Failed to disable remote access."
-msgstr "Échec de la désactivation de l'accès à distance."
+msgstr "Échec de la désactivation de l’accès à distance."
 
 msgid "Starting to generate CA for remote access."
-msgstr "Début de la génération de l'AC pour l'accès à distance."
+msgstr "Début de la génération de l’AC pour l’accès à distance."
 
 msgid "CA for remote access was sucessfully deleted."
 msgstr "L’AC pour l’accès à distance a été supprimée avec succès."
 
 msgid "Failed to delete CA for remote access."
-msgstr "Échec de la suppression de l'AC pour l'accès à distance."
+msgstr "Échec de la suppression de l’AC pour l’accès à distance."
 
 msgid "Update was approved."
 msgstr "La mise à jour a été approuvée."
@@ -396,10 +436,10 @@ msgid "Update was postponed."
 msgstr "La mise à jour a été reportée."
 
 msgid "Failed to approve the update."
-msgstr "L'approbation de la mise à jour a échoué."
+msgstr "Échec de l’approbation de la mise à jour."
 
 msgid "Failed to postpone the update."
-msgstr "Le report de la mise à jour a échoué."
+msgstr "Échec du report de la mise à jour."
 
 msgid ""
 "Configuration was successfully saved. Selected packages should be "
@@ -409,7 +449,7 @@ msgstr ""
 "devraient être installés ou supprimés sous peu."
 
 msgid "Updater is running"
-msgstr "Programme de mise à jour est en cours d'exécution"
+msgstr "Le programme de mises à jour est en cours d’exécution"
 
 msgid "Wi-Fi reset was successful."
 msgstr "La réinitialisation Wi-Fi a réussi."
@@ -430,13 +470,13 @@ msgid "Use provider's DNS resolver"
 msgstr "Utiliser le résolveur DNS du fournisseur"
 
 msgid "DNS Forwarder"
-msgstr "DNS Transitaire"
+msgstr "Transitaire DNS"
 
 msgid "Disable DNSSEC"
 msgstr "Désactiver DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr "Activation des clients DHCP dans le DNS"
+msgstr "Activer les clients DHCP dans le DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the"
