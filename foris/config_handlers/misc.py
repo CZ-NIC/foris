@@ -320,7 +320,7 @@ class UnifiedTimeHandler(BaseConfigHandler):
         )
 
         def region_form_cb(data):
-            region, city = data["zonename"].split("/")
+            region, city = data["zonename"].split("/", maxsplit=1)
             msg = {
                 "city": city,
                 "country": data["country"],
