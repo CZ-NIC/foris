@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2018-01-06 16:08+0000\n"
-"Last-Translator: Mathias Tillman <master.homer@gmail.com>\n"
+"PO-Revision-Date: 2019-11-23 17:04+0000\n"
+"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/turris/foris/sv/>"
+"\n"
 "Language: sv\n"
-"Language-Team: Swedish "
-"<https://hosted.weblate.org/projects/turris/foris/sv/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -153,9 +154,8 @@ msgstr ""
 msgid "Minimal"
 msgstr ""
 
-#, fuzzy
 msgid "Router"
-msgstr "Land"
+msgstr "Router"
 
 msgid "Local Server"
 msgstr ""
@@ -525,9 +525,8 @@ msgstr ""
 msgid "LAN mode"
 msgstr ""
 
-#, fuzzy
 msgid "Computer"
-msgstr "Land"
+msgstr "Dator"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -590,9 +589,8 @@ msgstr ""
 msgid "Password"
 msgstr "Lösenord"
 
-#, fuzzy
 msgid "Current Foris password"
-msgstr "Nuvarande lösenord"
+msgstr "Nuvarande Foris-lösenord"
 
 msgid "New password"
 msgstr "Nytt lösenord"
@@ -655,9 +653,8 @@ msgstr ""
 " sätta lösenordet för avancerad konfigurering här kommer du ha möjlighet "
 "att göra det senare. Tills dess kommer root-kontot vara blockerat.)"
 
-#, fuzzy
 msgid "Region and time"
-msgstr "Tidpunkt för omstart"
+msgstr "Region och tid"
 
 msgid ""
 "It is important for your device to have the correct time set. If your "
@@ -692,9 +689,8 @@ msgid ""
 " properly."
 msgstr ""
 
-#, fuzzy
 msgid "How to set time"
-msgstr "Tidpunkt för omstart"
+msgstr "Hur man ställer in tid"
 
 msgid "Choose method to store current time into the router."
 msgstr ""
@@ -793,7 +789,6 @@ msgstr "SMTP-inställningar"
 msgid "Sender address (From)"
 msgstr "Avsändarens adress (Från)"
 
-#, fuzzy
 msgid "This is the address notifications are send from."
 msgstr "Detta är adressen aviseringar skickas från."
 
@@ -844,10 +839,10 @@ msgid "valid"
 msgstr ""
 
 msgid "revoked"
-msgstr ""
+msgstr "återkallad"
 
 msgid "expired"
-msgstr ""
+msgstr "utgången"
 
 msgid "generating"
 msgstr ""
@@ -923,18 +918,16 @@ msgstr ""
 msgid "Updates will be installed without user's intervention."
 msgstr ""
 
-#, fuzzy
 msgid "Delayed updates"
-msgstr "Fördröjning (dagar)"
+msgstr "Fördröjda uppdateringar"
 
 msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
 
-#, fuzzy
 msgid "Update approval needed"
-msgstr "Uppdateringen godkändes."
+msgstr "Uppdateringsgodkännande behövs"
 
 msgid "You have to approve the updates, otherwise they won't be installed."
 msgstr ""
@@ -1005,9 +998,8 @@ msgstr ""
 msgid "DNS server 2 (IPv6)"
 msgstr ""
 
-#, fuzzy
 msgid "Custom DUID"
-msgstr "Anpassad"
+msgstr "Anpassad DUID"
 
 msgid "DUID which will be provided to the DHCPv6 server."
 msgstr ""
@@ -1024,9 +1016,8 @@ msgstr ""
 msgid "use autodetection"
 msgstr ""
 
-#, fuzzy
 msgid "Provider IPv4"
-msgstr "SMTP-leverantör"
+msgstr "Leverantör IPv4"
 
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's "
@@ -1283,17 +1274,14 @@ msgstr ""
 msgid "Expires"
 msgstr ""
 
-#, fuzzy
 msgid "IP Address"
-msgstr "Serveradress"
+msgstr "IP-adress"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "Serveradress"
+msgstr "MAC-adress"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Användarnamn"
+msgstr "Värdnamn"
 
 msgid "Active"
 msgstr ""
@@ -1628,9 +1616,8 @@ msgid ""
 "generating CA may differ. Please try to reload this page later."
 msgstr ""
 
-#, fuzzy
 msgid "Reload page"
-msgstr "Fördröjning (dagar)"
+msgstr "Ladda om sida"
 
 msgid "Connection parameters"
 msgstr ""
@@ -1652,7 +1639,7 @@ msgid ""
 msgstr ""
 
 msgid "Create"
-msgstr ""
+msgstr "Skapa"
 
 msgid "Delete CA"
 msgstr ""
@@ -3040,4 +3027,3 @@ msgstr ""
 #~ "Following notifications occured and haven't"
 #~ " been dismissed since last reboot."
 #~ msgstr ""
-
