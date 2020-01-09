@@ -1,3 +1,8 @@
+100.7 (2020-01-09)
+------------------
+
+* time: fix storing of three-level names timezones
+
 100.6 (2019-10-17)
 ------------------
 
