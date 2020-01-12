@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2020-01-11 21:21+0000\n"
-"Last-Translator: Éfrit <Efrit@posteo.net>\n"
+"PO-Revision-Date: 2020-01-13 14:43+0000\n"
+"Last-Translator: Florian <floflr@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/turris/foris/fr/>"
 "\n"
 "Language: fr\n"
@@ -1048,7 +1048,7 @@ msgid "Automatic installation"
 msgstr "Installation automatique"
 
 msgid "Updates will be installed without user's intervention."
-msgstr "Mises à jour seront installées sans intervention de l'utilisateur."
+msgstr "Les mises à jour seront installées sans intervention de l'utilisateur."
 
 msgid "Delayed updates"
 msgstr "Mises à jour reportées"
@@ -1057,8 +1057,8 @@ msgid ""
 "Updates will be installed with an adjustable delay. You can also approve "
 "them manually."
 msgstr ""
-"Les mises-à-jour seront installées selon un délai pouvant être ajusté. "
-"Vous pouvez aussi les approuver manuellement."
+"Les mises à jour seront installées selon un délai pouvant être ajusté. Vous "
+"pouvez aussi les approuver manuellement."
 
 msgid "Update approval needed"
 msgstr "Approbation pour la mise à jour est nécessaire"
@@ -1147,7 +1147,6 @@ msgstr "Serveur DNS 2 (IPv6)"
 msgid "Custom DUID"
 msgstr "DUID personnalisé"
 
-#, fuzzy
 msgid "DUID which will be provided to the DHCPv6 server."
 msgstr "Nom d'hôte qui sera assigné au serveur DHCP."
 
@@ -1786,7 +1785,6 @@ msgstr ""
 msgid "Guest Network"
 msgstr "Réseau invité"
 
-#, fuzzy
 msgid "Unassigned"
 msgstr "Non attribué"
 
