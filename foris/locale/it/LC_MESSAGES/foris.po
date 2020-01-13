@@ -5,18 +5,19 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:  Foris\n"
+"Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2018-04-23 10:06+0000\n"
-"Last-Translator: Roberto Zilli <zetaerre@gmail.com>\n"
+"PO-Revision-Date: 2020-01-13 14:43+0000\n"
+"Last-Translator: Francesco Bisignani <tassobaramba2@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/turris/foris/it/>"
+"\n"
 "Language: it\n"
-"Language-Team: Italian "
-"<https://hosted.weblate.org/projects/turris/foris/it/>\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10.1\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -191,7 +192,7 @@ msgid ""
 msgstr ""
 
 msgid "This field is required."
-msgstr "Questo campo è obbligatorio."
+msgstr "Campo richiesto."
 
 msgid "Not a valid IPv4 address."
 msgstr "Non è un indirizzo IPv4 valido."
@@ -398,39 +399,38 @@ msgid "DNS"
 msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr "Usare l'inoltro"
+msgstr "Usa server inoltratore"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Usa risolutore DNS del provider"
 
 #, fuzzy
 msgid "DNS Forwarder"
 msgstr "Usare l'inoltro"
 
 msgid "Disable DNSSEC"
-msgstr "Disabilitare DNSSEC"
+msgstr "Disabilita DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr "Abilita il client DHCP nel DNS"
+msgstr "Abilita client DHCP nel DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the"
 " local DNS records."
 msgstr ""
-"Ciò consentirà al resolver DNS di inserire i nomi del client DHCP tra i "
-"record DNS locali."
+"Ciò permetterà al risolutore DNS d'inserire i nomi del tuo client DHCP nel "
+"registro DNS locale."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr "Dominio dei client DHCP nel DNS"
+msgstr "Dominio del client DHCP nel DNS"
 
-#, fuzzy
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
-"Questo dominio verrà utilizzato come prefisso. Ad esempio il risultato "
-"per il client \"android-123\" e il dominio \"lan\" sarà "
-"\"android-123.lan\"."
+"Questo dominio sarà usato come suffisso. Per esempio, inserendo \"android-"
+"123\" come nome del client e \"my.lan\" come dominio il risultato sarà \""
+"android-123.my.lan\"."
 
 msgid "Guest network"
 msgstr "Rete ospiti"
@@ -479,17 +479,17 @@ msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
-"Abilitare questa opzione per assegnare automaticamente un indirizzo IP a "
-"tutte le periferiche collegate a questo router."
+"Attivando questa opzione, un indirizzo IP sarà assegnato automaticamente a "
+"ogni dispositivo connesso al router."
 
 msgid "DHCP start"
-msgstr "Inizio DHCP"
+msgstr "Avvia DHCP"
 
 msgid "DHCP max leases"
-msgstr "DHCP numero di rilasci (max)"
+msgstr "Numero massimo di prestiti del DHCP"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Tempo del prestito (in ore)"
 
 msgid "Guest Lan QoS"
 msgstr "QoS Lan ospiti"
@@ -590,7 +590,7 @@ msgid "Network mask"
 msgstr "Maschera di rete"
 
 msgid "Gateway"
-msgstr "gateway"
+msgstr "Gateway"
 
 msgid "DNS server 1 (IPv4)"
 msgstr "Server DNS primario (IPv4)"
@@ -598,18 +598,16 @@ msgstr "Server DNS primario (IPv4)"
 msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
-msgstr ""
-"L'indirizzo del server DNS non è necessario perché il resolver DNS "
-"incorporato è in grado di lavorare senza di esso."
+msgstr "Grazie al risolutore DNS incorporato, non è richiesto un indirizzo DNS."
 
 msgid "DNS server 2 (IPv4)"
 msgstr "Server DNS secondario (IPv4)"
 
 msgid "DHCP hostname"
-msgstr "Nome host DHCP"
+msgstr "Nome dell'host DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr "Nome host che verrà fornito al server DHCP."
+msgstr "Il nome dell'host che verrà dato al server DHCP."
 
 msgid "Password"
 msgstr "Password"
@@ -1351,44 +1349,40 @@ msgid "Status"
 msgstr "Stato"
 
 msgid "IPv4 connectivity"
-msgstr "Connettività IPv4"
+msgstr "Connessione IPv4"
 
 msgid "IPv4 gateway connectivity"
-msgstr "connettività gateway IPv4"
+msgstr "Gateway connessione IPv4"
 
 msgid "IPv6 connectivity"
-msgstr "connettività IPv6"
+msgstr "Connessione IPv6"
 
 msgid "IPv6 gateway connectivity"
-msgstr "connettività gateway IPv6"
+msgstr "Gateway connessione IPv6"
 
 msgid "Test connection"
 msgstr "Test di connessione"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "Client DHCP"
 
 msgid "Expires"
-msgstr ""
+msgstr "Scadenza"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "Indirizzo IP"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "Indirizzo IP"
+msgstr "Indirizzo MAC"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Nome host DHCP"
+msgstr "Nome dell'host"
 
-#, fuzzy
 msgid "Active"
-msgstr "Salva"
+msgstr "Attivo"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "Nessun client DHCP trovato."
 
 msgid "module"
 msgstr ""
@@ -1457,16 +1451,16 @@ msgid "Show QR code"
 msgstr ""
 
 msgid "Device"
-msgstr "Periferica"
+msgstr "Dispositivo"
 
 msgid "Serial number"
 msgstr "Numero di serie"
 
 msgid "Turris OS version"
-msgstr "Turris OS versione"
+msgstr "Versione SO Turris"
 
 msgid "Kernel version"
-msgstr "Versione Kernel"
+msgstr "Versione del Kernel"
 
 msgid "Expandable"
 msgstr ""
@@ -2098,7 +2092,7 @@ msgstr ""
 "continuare e rimanere non protetto?"
 
 msgid "Are you sure you want to restart the router?"
-msgstr "Sei sicuro di voler riavviare il router?"
+msgstr "Vuoi davvero riavviare il router?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
@@ -2143,7 +2137,7 @@ msgid "Confirm"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 msgid "This value seems to be invalid."
 msgstr "Questo valore sembra non valido."
@@ -3431,4 +3425,3 @@ msgstr "Ripristino"
 #~ "configuration interface of the this "
 #~ "device nor the devices in LAN."
 #~ msgstr ""
-
