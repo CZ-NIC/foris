@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2020-01-11 21:21+0000\n"
+"PO-Revision-Date: 2020-01-16 00:21+0000\n"
 "Last-Translator: Scott Anecito <scott.anecito@linux.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/turris/foris/ja/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10.1\n"
+"X-Generator: Weblate 3.11-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -457,7 +457,7 @@ msgid "DHCP max leases"
 msgstr ""
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "リース時間 (アワー )"
 
 msgid "Guest Lan QoS"
 msgstr ""
@@ -544,7 +544,7 @@ msgid "Network mask"
 msgstr ""
 
 msgid "Gateway"
-msgstr ""
+msgstr "ゲートウェイ"
 
 msgid "DNS server 1 (IPv4)"
 msgstr ""
@@ -558,7 +558,7 @@ msgid "DNS server 2 (IPv4)"
 msgstr ""
 
 msgid "DHCP hostname"
-msgstr ""
+msgstr "DHCPホスト名"
 
 msgid "Hostname which will be provided to DHCP server."
 msgstr ""
@@ -800,7 +800,7 @@ msgid "expired"
 msgstr "期限切れ"
 
 msgid "generating"
-msgstr ""
+msgstr "生成中"
 
 msgid "lost"
 msgstr ""
@@ -914,7 +914,7 @@ msgid "Disable IPv6"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
+msgstr "IP アドレス"
 
 msgid "PAP/CHAP username"
 msgstr "PAP/CHAP ユーザー名"
@@ -1213,19 +1213,19 @@ msgid "IPv6 connectivity"
 msgstr "IPv6 接続"
 
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "IPv6 ゲートウェイ接続"
 
 msgid "Test connection"
 msgstr ""
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "DHCP クライアント"
 
 msgid "Expires"
-msgstr ""
+msgstr "期限切れ"
 
 msgid "IP Address"
-msgstr ""
+msgstr "IP アドレス"
 
 msgid "MAC Address"
 msgstr ""
@@ -1846,7 +1846,7 @@ msgid "Confirm"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 msgid "This value seems to be invalid."
 msgstr ""
