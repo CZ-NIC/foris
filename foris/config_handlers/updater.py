@@ -161,7 +161,7 @@ class UpdaterHandler(BaseConfigHandler):
                 Checkbox,
                 name="install_%s" % userlist["name"],
                 label=userlist["title"],
-                hint=userlist["msg"],
+                hint=userlist["description"],
             ).requires("enabled", "1")
 
         language_lists_main = main_section.add_section(
