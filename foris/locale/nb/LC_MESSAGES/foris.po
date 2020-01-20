@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-11-10 16:04+0000\n"
+"PO-Revision-Date: 2020-01-21 13:52+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 3.11-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -514,9 +514,8 @@ msgstr ""
 "Dette medføre at DNS-fortolkeren plasserer DHCP-klienters navn i de "
 "lokale DNS-oppføringene."
 
-#, fuzzy
 msgid "Domain of DHCP clients in DNS"
-msgstr "Domenet tilhørende DHCP-klienter i DNS"
+msgstr "Domene for DHCP-klienter i DNS"
 
 #, fuzzy
 msgid ""
@@ -867,9 +866,8 @@ msgstr "Tid i YYYY-MM-DD HH:MM:SS-format."
 msgid "Guide Finished"
 msgstr "Veiledning fullført"
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Nettverksmaske"
+msgstr "Nettverksgrensesnitt"
 
 msgid "Notifications settings"
 msgstr "Merknadsinnstillinger"
@@ -1513,23 +1511,18 @@ msgstr "DHCP-klienter"
 msgid "Expires"
 msgstr "Utløper"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "IP-adresse"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "IP-adresse"
+msgstr "MAC-adresse"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Brukernavn"
+msgstr "Vertsnavn"
 
-#, fuzzy
 msgid "Active"
-msgstr "Lagre"
+msgstr "Aktiv"
 
-#, fuzzy
 msgid "No DHCP clients found."
 msgstr "Fant ingen DHCP-klienter."
 
@@ -1869,12 +1862,11 @@ msgstr ""
 "tillit til. Merk at du også kan begrense nedlasting-/opplastingshastighet"
 " for enhetene tilkoblet i gjestenettverket."
 
-#, fuzzy
 msgid "Guest Network"
 msgstr "Gjestenettverk"
 
 msgid "Unassigned"
-msgstr "Ikke tildelt"
+msgstr "Utildelt"
 
 #, fuzzy
 msgid "WAN network"
@@ -2315,7 +2307,7 @@ msgstr ""
 "forbli ubeskyttet?"
 
 msgid "Are you sure you want to restart the router?"
-msgstr "Er du sikker på at du vil starte ruteren på nytt?"
+msgstr "Er du sikker på at du ønsker å starte ruteren på ny?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
@@ -2439,6 +2431,7 @@ msgstr "Dette er ikke en gyldig IPv4-nettmaske."
 msgid "This is not a valid IPv4 prefix."
 msgstr "Dette er ikke et gyldig IPv4-prefiks."
 
+#, fuzzy
 msgid "This is not a valid IPv6 prefix."
 msgstr "Dette er ikke et gyldig IPv6-prefiks."
 
