@@ -75,6 +75,18 @@
               <a href="{{ url("reboot")}}" class="button" id="reboot-required-button">{% trans %}Reboot now{% endtrans %}</a>
             </div>
           </div>
+          {% set reforis_redirect = helpers.reforis_redirect(request) %}
+          {% if reforis_redirect %}
+          <div id="reforis-redirect" class="message warning">
+            <span>
+            {% trans %}
+                This config page has been deprecated. Although it still might work,
+                you are adviced to use the newer configuration interface
+            {% endtrans %}
+            </span>
+            <a href="{{ reforis_redirect }}">ReForis</a>.
+          </div>
+          {% endif %}
           <h1>{{ title }}</h1>
 {% endif %}
 {% block config_base %}{% endblock %}

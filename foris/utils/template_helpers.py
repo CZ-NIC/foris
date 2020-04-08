@@ -16,13 +16,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import csv
+import logging
+import pathlib
 import re
-
-from bottle import html_escape
 from datetime import datetime, timedelta
 
-from .routing import external_route
+import bottle
+from bottle import html_escape
 from foris.utils.translators import _
+
+from .routing import external_route
 
 
 def shorten_text(text, max_chars, etc="..."):
@@ -111,3 +115,25 @@ def prepare_approval_item_message(approval_item, show_operation=True):
 
 def increase_time(orig_time, days=0, hours=0, minutes=0, seconds=0):
     return orig_time + timedelta(days, hours, minutes, seconds)
+
+
+REFORIS_LINKS_FILE = pathlib.Path("/usr/share/foris/reforis-links.csv")
+
+logger = logging.getLogger(__file__)
+
+
+def reforis_redirect(request: bottle.BaseRequest) -> str:
+    if REFORIS_LINKS_FILE.exists():
+        try:
+            with REFORIS_LINKS_FILE.open() as f:
+                reader = csv.reader(f)
+                for from_path, to_path in reader:
+                    if request.path.endswith(from_path):
+                        return to_path
+        except Exception:
+            logger.warning("Failed to read reforis links file '%s'", REFORIS_LINKS_FILE)
+
+    else:
+        logger.warning("Reforis links file '%s' does not exist.", REFORIS_LINKS_FILE)
+
+    return ""
