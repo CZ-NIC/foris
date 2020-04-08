@@ -155,15 +155,6 @@ class UpdaterHandler(BaseConfigHandler):
             default=data["approval_status"],
         )
 
-        package_lists_main = main_section.add_section(name="select_package_lists", title=None)
-        for userlist in [e for e in data["user_lists"] if not e["hidden"]]:
-            package_lists_main.add_field(
-                Checkbox,
-                name="install_%s" % userlist["name"],
-                label=userlist["title"],
-                hint=userlist["msg"],
-            ).requires("enabled", "1")
-
         language_lists_main = main_section.add_section(
             name="select_languages",
             title=_(
@@ -201,21 +192,14 @@ class UpdaterHandler(BaseConfigHandler):
                     data["enabled"] = True
 
                 languages = [k[9:] for k, v in data.items() if v and k.startswith("language_")]
-                user_lists = [k[8:] for k, v in data.items() if v and k.startswith("install_")]
-                # merge with enabled hidden user lists
-                user_lists += [
-                    e["name"]
-                    for e in self.backend_data["user_lists"]
-                    if e["hidden"] and e["enabled"]
-                ]
-
+                
                 res = current_state.backend.perform(
                     "updater",
                     "update_settings",
                     {
                         "enabled": True,
                         "approval_settings": data["approval_settings"],
-                        "user_lists": user_lists,
+                        "user_lists": [],
                         "languages": languages,
                     },
                 )

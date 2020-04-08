@@ -7,132 +7,131 @@
 {% include '_messages.html.j2' %}
 
   <p>{{ form.sections[0].description|safe }}</p>
-{% if always_on_reasons %}
-  {% for reason in always_on_reasons %}
-  <div class="message info">{{ reason|safe }}</div>
-  {% endfor %}
-{% else %}
-    {% include 'includes/updater_eula.html.j2' %}
-{% endif %}
 
-  <form id="main-form" class="config-form" action="{{ url("config_page", page_name="updater") }}" method="post" autocomplete="off" novalidate>
-    <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-
-{# main updater switch #}
-{% if not always_on_reasons %}
-    <div class="row" id="updater-toggle">
-      {{ form.sections[0].active_fields[0].render()|safe }}
-</div>
-{% endif %}
-
-{# approval settings #}
-{% if is_updater_enabled() %}
-  <h4>{% trans %}Update approvals{% endtrans %}</h4>
-  <div id="updater-approvals">
-  {% if foris_info.device == "turris" %}
-    <p>{% trans %}Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can refuse the questionable update temporarily and install it when you are ready. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.{% endtrans %}</p>
-  {% else %}
-    <p>{% trans %}Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can e.g. install updates when you're prepared for a possible rollback to a previous snapshot and deny the questionable update temporarily. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.{% endtrans %}</p>
-  {% endif %}
-  {% for field in form.sections[0].sections[0].active_fields %}
-    <div class="row">
-    {% if field.name == "approval_delay" %}
-      <div id="approval-timeout-line">
-        <label for="{{ field.field.id }}">
-          {% trans input=field.render()|safe %}
-          after {{ input }} days
-          {% endtrans %}
-        </label>
-      </div>
-    {% else %}
-      <label for="{{ field.field.id }}">
-        {{ field.render()|safe }}
-        {{ field.field.description }}
-      </label>
-    {% endif %}
-    {% if field.hint %}
-      <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ helpers.remove_html_tags(field.hint) }}" alt="{% trans %}Hint{% endtrans %}: {{ helpers.remove_html_tags(field.hint) }}">
-      <div class="hint-text" style="display: none">{{ field.hint|safe }}</div>
-    {% endif %}
-    {% if field.errors %}
-      <div class="server-validation-container">
-        <ul>
-          <li>{{ field.errors }}</li>
-        </ul>
-      </div>
-    {% endif %}
-    </div>
-  {% endfor %}
-  </div>
-  {# current approval #}
-  {% if get_approval_setting_status() in ["on", "delayed"] and current_approval["present"] and current_approval["status"] in ["asked", "denied"] %}
-  <div id="current-approval">
-    <h4>
-    {% trans when=current_approval["time"].strftime("%Y-%m-%d %H:%M:%S") %}
-    Approve update from {{ when }}
-    {% endtrans %}
-    </h4>
-    {# render hidden field with approval id #}
-    {{ form.sections[0].sections[3].active_fields[0].render()|safe }}
-    <h5>{% trans %}List of changes{% endtrans %}</h5>
-    <ul id="updater-approve-changes">
-    {% for record in current_approval["plan"] %}
-    <li class="tooltip" title="{{ helpers.prepare_approval_item_message(record, False) }}">
-      {{ helpers.shorten_text(helpers.prepare_approval_item_message(record), 40) }}
-    </li>
+{% if foris_info.guide.enabled %}
+  {% if always_on_reasons %}
+    {% for reason in always_on_reasons %}
+    <div class="message info">{{ reason|safe }}</div>
     {% endfor %}
-    </ul>
-    {% if current_approval["reboot"] %}
-    <div id="updater-reboot-text">
-      <strong>{% trans %}Note that a reboot will be triggered after the update.{% endtrans %}</strong>
-    </div>
-    {% endif %}
-    <div class="row button-row">
-      <button type="submit" name="target" class="button" value="grant">{% trans %}Install now{% endtrans %}</button>
-    {% if current_approval["status"] == "asked" %}
-      <button type="submit" name="target" class="button" value="deny">{% trans %}Deny{% endtrans %}</button>
-    {% endif %}
-    </div>
-    {% if current_approval["status"] == "denied" %}
-    <p>{% trans %}No package will be installed unless you install the updates above.{% endtrans %}</p>
-    {% endif %}
-    {% if current_approval["status"] == "asked" and get_approval_setting_status() == "delayed" %}
-    <p>
-    {% trans time=helpers.increase_time(current_approval["time"], get_approval_setting_delay()).strftime("%Y-%m-%d %H:%M:%S") %}
-    If you don't install the updates manually, they will be installed automatically after {{ time }}.
-    {% endtrans %}
-    </p>
-    {% endif %}
+  {% else %}
+      {% include 'includes/updater_eula.html.j2' %}
+  {% endif %}
+  
+    <form id="main-form" class="config-form" action="{{ url("config_page", page_name="updater") }}" method="post" autocomplete="off" novalidate>
+      <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
+  
+  {# main updater switch #}
+  {% if not always_on_reasons %}
+      <div class="row" id="updater-toggle">
+        {{ form.sections[0].active_fields[0].render()|safe }}
   </div>
   {% endif %}
-{% endif %}
 
-{% if is_updater_enabled() %}
-  <h2>{% trans %}Package lists{% endtrans %}</h2>
-  {% for field in form.sections[0].sections[1].active_fields %}
-  <div class="row" style="border: 2px solid {% if field.field.checked %}green{% else %}gray{% endif %}; border-radius: 5px; padding-left: 1em; margin-bottom: 0.5em">
-    {{ field.render()|safe }}
-    <label for="{{ field.html_id }}" style="max-width: 85%; float: none; margin-left: 1em">
-    {{ field.field.description|safe }}
-      <div style="font-weight: normal">
-    {{ field.hint }}
+  {# approval settings #}
+  {% if is_updater_enabled() %}
+    <h4>{% trans %}Update approvals{% endtrans %}</h4>
+    <div id="updater-approvals">
+    {% if foris_info.device == "turris" %}
+      <p>{% trans %}Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can refuse the questionable update temporarily and install it when you are ready. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.{% endtrans %}</p>
+    {% else %}
+      <p>{% trans %}Update approvals can be useful when you want to make sure that updates won't harm your specific configuration. You can e.g. install updates when you're prepared for a possible rollback to a previous snapshot and deny the questionable update temporarily. It isn't possible to decline the update forever and it will be offered to you again together with the next package installation.{% endtrans %}</p>
+    {% endif %}
+    {% for field in form.sections[0].sections[0].active_fields %}
+      <div class="row">
+      {% if field.name == "approval_delay" %}
+        <div id="approval-timeout-line">
+          <label for="{{ field.field.id }}">
+            {% trans input=field.render()|safe %}
+            after {{ input }} days
+            {% endtrans %}
+          </label>
+        </div>
+      {% else %}
+        <label for="{{ field.field.id }}">
+          {{ field.render()|safe }}
+          {{ field.field.description }}
+        </label>
+      {% endif %}
+      {% if field.hint %}
+        <img class="field-hint" src="{{ static("img/icon-help.png") }}" title="{{ helpers.remove_html_tags(field.hint) }}" alt="{% trans %}Hint{% endtrans %}: {{ helpers.remove_html_tags(field.hint) }}">
+        <div class="hint-text" style="display: none">{{ field.hint|safe }}</div>
+      {% endif %}
+      {% if field.errors %}
+        <div class="server-validation-container">
+          <ul>
+            <li>{{ field.errors }}</li>
+          </ul>
+        </div>
+      {% endif %}
       </div>
-    </label>
-  </div>
-  {% endfor %}
-  <div id="language-install">
-  <h5>{{ form.sections[0].sections[2].title }}</h5>
-  {% for field in form.sections[0].sections[2].active_fields %}
-    <div class="language-install-box">{{ field.render()|safe }} {{ field.label_tag|safe }}</div>
-  {% endfor %}
-  </div>
-{% endif %}
-    <div class="form-buttons">
-      <a href="{{ request.fullpath }}" class="button grayed">{% trans %}Discard changes{% endtrans %}</a>
-      <button type="submit" name="target" class="button" value="save">{% if is_updater_enabled() %}{% trans %}Save and update{% endtrans %}{% else %}{% trans %}Save{% endtrans %}{% endif %}</button>
+    {% endfor %}
     </div>
-
-  </form>
+    {# current approval #}
+    {% if get_approval_setting_status() in ["on", "delayed"] and current_approval["present"] and current_approval["status"] in ["asked", "denied"] %}
+    <div id="current-approval">
+      <h4>
+      {% trans when=current_approval["time"].strftime("%Y-%m-%d %H:%M:%S") %}
+      Approve update from {{ when }}
+      {% endtrans %}
+      </h4>
+      {# render hidden field with approval id #}
+      {{ form.sections[0].sections[3].active_fields[0].render()|safe }}
+      <h5>{% trans %}List of changes{% endtrans %}</h5>
+      <ul id="updater-approve-changes">
+      {% for record in current_approval["plan"] %}
+      <li class="tooltip" title="{{ helpers.prepare_approval_item_message(record, False) }}">
+        {{ helpers.shorten_text(helpers.prepare_approval_item_message(record), 40) }}
+      </li>
+      {% endfor %}
+      </ul>
+      {% if current_approval["reboot"] %}
+      <div id="updater-reboot-text">
+        <strong>{% trans %}Note that a reboot will be triggered after the update.{% endtrans %}</strong>
+      </div>
+      {% endif %}
+      <div class="row button-row">
+        <button type="submit" name="target" class="button" value="grant">{% trans %}Install now{% endtrans %}</button>
+      {% if current_approval["status"] == "asked" %}
+        <button type="submit" name="target" class="button" value="deny">{% trans %}Deny{% endtrans %}</button>
+      {% endif %}
+      </div>
+      {% if current_approval["status"] == "denied" %}
+      <p>{% trans %}No package will be installed unless you install the updates above.{% endtrans %}</p>
+      {% endif %}
+      {% if current_approval["status"] == "asked" and get_approval_setting_status() == "delayed" %}
+      <p>
+      {% trans time=helpers.increase_time(current_approval["time"], get_approval_setting_delay()).strftime("%Y-%m-%d %H:%M:%S") %}
+      If you don't install the updates manually, they will be installed automatically after {{ time }}.
+      {% endtrans %}
+      </p>
+      {% endif %}
+    </div>
+    {% endif %}
+  {% endif %}
+  
+  {% if is_updater_enabled() %}
+    <div id="language-install">
+    <h5>{{ form.sections[0].sections[2].title }}</h5>
+    {% for field in form.sections[0].sections[2].active_fields %}
+      <div class="language-install-box">{{ field.render()|safe }} {{ field.label_tag|safe }}</div>
+    {% endfor %}
+    </div>
+  {% endif %}
+      <div class="form-buttons">
+        <a href="{{ request.fullpath }}" class="button grayed">{% trans %}Discard changes{% endtrans %}</a>
+        <button type="submit" name="target" class="button" value="save">{% if is_updater_enabled() %}{% trans %}Save and update{% endtrans %}{% else %}{% trans %}Save{% endtrans %}{% endif %}</button>
+      </div>
+  
+    </form>
+{% else %}
+    <h5>Deprecated functionality!</h5>
+    <div>
+        <p>Updater settings and packages has moved to reForis.</p>
+        <p>
+        <a href="/reforis/package-management/packages">Continue to reforis</a>
+        </p>
+    </div>
+{% endif %}
 
 
 {% if is_xhr is not defined %}
