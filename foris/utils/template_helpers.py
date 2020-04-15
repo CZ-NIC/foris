@@ -117,23 +117,24 @@ def increase_time(orig_time, days=0, hours=0, minutes=0, seconds=0):
     return orig_time + timedelta(days, hours, minutes, seconds)
 
 
-REFORIS_LINKS_FILE = pathlib.Path("/usr/share/foris/reforis-links.csv")
+REFORIS_LINKS_DIR = pathlib.Path("/usr/share/foris/reforis-links/")
 
 logger = logging.getLogger(__file__)
 
 
 def reforis_redirect(request: bottle.BaseRequest) -> str:
-    if REFORIS_LINKS_FILE.exists():
+    if not REFORIS_LINKS_DIR.exists():
+        logger.warning("Reforis links file '%s' does not exist.", REFORIS_LINKS_DIR)
+        return ""
+
+    for path in REFORIS_LINKS_DIR.glob("*.csv"):
         try:
-            with REFORIS_LINKS_FILE.open() as f:
+            with path.open() as f:
                 reader = csv.reader(f)
                 for from_path, to_path in reader:
                     if request.path.endswith(from_path):
                         return to_path
         except Exception:
-            logger.warning("Failed to read reforis links file '%s'", REFORIS_LINKS_FILE)
-
-    else:
-        logger.warning("Reforis links file '%s' does not exist.", REFORIS_LINKS_FILE)
+            logger.warning("Failed to read reforis links file '%s'", path)
 
     return ""
