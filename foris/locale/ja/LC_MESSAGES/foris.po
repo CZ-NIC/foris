@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-09-02 15:24+0000\n"
-"Last-Translator: Scott Anecito <scott.anecito@protonmail.com>\n"
+"PO-Revision-Date: 2020-01-16 00:21+0000\n"
+"Last-Translator: Scott Anecito <scott.anecito@linux.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/turris/foris/ja/"
 ">\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 3.11-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -245,7 +245,7 @@ msgid "The password you entered was not valid."
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "情報"
 
 msgid "Configuration was successfully saved."
 msgstr ""
@@ -457,7 +457,7 @@ msgid "DHCP max leases"
 msgstr ""
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "リース時間 (アワー )"
 
 msgid "Guest Lan QoS"
 msgstr ""
@@ -544,7 +544,7 @@ msgid "Network mask"
 msgstr ""
 
 msgid "Gateway"
-msgstr ""
+msgstr "ゲートウェイ"
 
 msgid "DNS server 1 (IPv4)"
 msgstr ""
@@ -558,7 +558,7 @@ msgid "DNS server 2 (IPv4)"
 msgstr ""
 
 msgid "DHCP hostname"
-msgstr ""
+msgstr "DHCPホスト名"
 
 msgid "Hostname which will be provided to DHCP server."
 msgstr ""
@@ -768,7 +768,7 @@ msgid "Security"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "ユーザー名"
 
 msgid "Automatic restarts after software update"
 msgstr ""
@@ -791,16 +791,16 @@ msgid "Guide workflow"
 msgstr ""
 
 msgid "valid"
-msgstr ""
+msgstr "有効"
 
 msgid "revoked"
 msgstr ""
 
 msgid "expired"
-msgstr ""
+msgstr "期限切れ"
 
 msgid "generating"
-msgstr ""
+msgstr "生成中"
 
 msgid "lost"
 msgstr ""
@@ -914,13 +914,13 @@ msgid "Disable IPv6"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
+msgstr "IP アドレス"
 
 msgid "PAP/CHAP username"
-msgstr ""
+msgstr "PAP/CHAP ユーザー名"
 
 msgid "PAP/CHAP password"
-msgstr ""
+msgstr "PAP/CHAP パスワード"
 
 msgid "IPv6 protocol"
 msgstr ""
@@ -995,7 +995,7 @@ msgid ""
 msgstr ""
 
 msgid "Tunnel ID"
-msgstr ""
+msgstr "トンネル ID"
 
 msgid "ID of your tunnel which was assigned to you by the provider."
 msgstr ""
@@ -1006,7 +1006,7 @@ msgid ""
 msgstr ""
 
 msgid "Key"
-msgstr ""
+msgstr "暗号キー"
 
 msgid "Key which will be used to provide credentials to your tunnel provider."
 msgstr ""
@@ -1071,7 +1071,7 @@ msgid ""
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 msgid "802.11n - 20 MHz wide channel"
 msgstr ""
@@ -1099,7 +1099,7 @@ msgid ""
 msgstr ""
 
 msgid "auto"
-msgstr ""
+msgstr "自動"
 
 msgid "Network channel"
 msgstr ""
@@ -1204,28 +1204,28 @@ msgid "Status"
 msgstr ""
 
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "IPv4 接続"
 
 msgid "IPv4 gateway connectivity"
 msgstr ""
 
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "IPv6 接続"
 
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "IPv6 ゲートウェイ接続"
 
 msgid "Test connection"
 msgstr ""
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "DHCP クライアント"
 
 msgid "Expires"
-msgstr ""
+msgstr "期限切れ"
 
 msgid "IP Address"
-msgstr ""
+msgstr "IP アドレス"
 
 msgid "MAC Address"
 msgstr ""
@@ -1304,16 +1304,16 @@ msgid "Show QR code"
 msgstr ""
 
 msgid "Device"
-msgstr ""
+msgstr "デバイス"
 
 msgid "Serial number"
-msgstr ""
+msgstr "シリアル番号"
 
 msgid "Turris OS version"
-msgstr ""
+msgstr "Turris OSのバージョン"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "カーネル バージョン"
 
 msgid "Expandable"
 msgstr ""
@@ -1458,7 +1458,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "再起動"
 
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
@@ -1846,7 +1846,7 @@ msgid "Confirm"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 msgid "This value seems to be invalid."
 msgstr ""
