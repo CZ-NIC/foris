@@ -14,7 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import csv
 import logging
+import pathlib
 
 from bottle import Bottle, request, template, response
 import bottle
@@ -41,7 +43,14 @@ from .pages.maintenance import MaintenanceConfigPage
 from .pages.updater import UpdaterConfigPage
 from .pages.about import AboutConfigPage
 
-from .pages.base import ConfigPageMixin, JoinedPages  # noqa: F401  plugin compatibility
+from .pages.base import (
+    ConfigPageMixin,
+    JoinedPages,
+    ExternalConfigPage,
+)  # noqa: F401  plugin compatibility
+
+
+EXTERNAL_LINKS_DIR = pathlib.Path("/usr/share/foris/external-links/")
 
 
 logger = logging.getLogger(__name__)
@@ -98,6 +107,35 @@ def add_config_page(page_class):
             % (page_class, page_class.slug, page_map[page_class.slug])
         )
     config_pages[page_class.slug] = page_class
+
+
+def add_external_page(name: str, title: str, url: str, order: int = 50):
+    class External(ExternalConfigPage):
+        slug = name
+        userfriendly_title = title
+        external_url = url
+        menu_order = order
+
+    add_config_page(External)
+
+
+def populate_external_pages():
+    for path in EXTERNAL_LINKS_DIR.glob("*.csv"):
+        try:
+            with path.open() as f:
+                reader = csv.reader(f)
+                for slug, title, url, order in reader:
+                    order = int(order or "50")
+
+                    logger.debug(
+                        "Adding external page %s - '%s' -> %s (%d)", slug, title, url, order
+                    )
+                    add_external_page(slug, title, url, order)
+        except Exception:
+            logger.warn("Failed to read external file '%s'", path)
+
+
+populate_external_pages()
 
 
 def get_config_page(page_name):

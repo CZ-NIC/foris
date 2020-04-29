@@ -27,6 +27,7 @@ from foris.utils.translators import _
 
 
 class BaseConfigPage(object):
+    external_url: typing.Optional[str] = None
     no_url = False
     menu_order = 50
     slug: typing.Optional[str] = None
@@ -70,6 +71,16 @@ class BaseConfigPage(object):
     @classmethod
     def subpage_slugs(cls):
         return [e.slug for e in cls.subpages]
+
+
+class ExternalConfigPage(BaseConfigPage):
+    @classmethod
+    def get_menu_tag(cls):
+        return {
+            "show": not current_state.guide.enabled,
+            "hint": "External link",
+            "text": "<i class='fas fa-external-link-alt'></i>",
+        }
 
 
 class ConfigPageMixin(BaseConfigPage):
