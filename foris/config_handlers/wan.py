@@ -1,5 +1,5 @@
 # Foris - web administration interface for OpenWrt based on NETCONF
-# Copyright (C) 2017 CZ.NIC, z.s.p.o. <http://www.nic.cz>
+# Copyright (C) 2017, 2020 CZ.NIC, z.s.p.o. <http://www.nic.cz>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 from .base import BaseConfigHandler
 from foris import fapi, validators
 from foris.state import current_state
-from foris.form import Checkbox, Dropdown, Textbox, Number
+from foris.form import Checkbox, Dropdown, Textbox, Number, PasswordWithHide
 
 from foris.utils.translators import gettext_dummy as gettext, _
 
@@ -257,7 +257,7 @@ class WanHandler(BaseConfigHandler):
             Textbox, name="username", label=_("PAP/CHAP username"), required=True,
         ).requires("proto", WAN_PPPOE)
         wan_main.add_field(
-            Textbox, name="password", label=_("PAP/CHAP password"), required=True,
+            PasswordWithHide, name="password", label=_("PAP/CHAP password"), required=True,
         ).requires("proto", WAN_PPPOE)
 
         # IPv6 configuration
