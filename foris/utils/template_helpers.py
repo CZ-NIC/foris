@@ -134,7 +134,8 @@ def reforis_redirect(request: bottle.BaseRequest) -> str:
                 for from_path, to_path in reader:
                     if request.path.endswith(from_path):
                         return to_path
-        except Exception:
+        except Exception as e:
             logger.warning("Failed to read reforis links file '%s'", path)
+            logger.warning("Reason: %r", e)
 
     return ""
