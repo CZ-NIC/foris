@@ -134,8 +134,9 @@ def populate_external_pages():
                         "Adding external page %s - '%s' -> %s (%d)", slug, title, url, order
                     )
                     add_external_page(slug, title, url, order)
-        except Exception:
-            logger.warn("Failed to read external file '%s'", path)
+        except Exception as e:
+            logger.warning("Failed to read external file '%s'", path)
+            logger.warning("Reason: %r", e)
 
 
 populate_external_pages()

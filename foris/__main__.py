@@ -84,6 +84,13 @@ def get_arg_parser():
         default="/tmp/.foris_workdir/dynamic_assets",
         help="Path where dynamic foris assets will be generated.",
     )
+    parser.add_argument(
+        "-l",
+        "--log-file",
+        default=None,
+        help="file where the logs will we appended",
+        required=False,
+    )
 
     return parser
 
@@ -95,7 +102,12 @@ def main():
     # setup logging
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.WARNING)
     logger = logging.getLogger("foris")
-    logger.debug("Version %s" % __version__)
+
+    if args.log_file:
+        file_handler = logging.FileHandler(args.log_file)
+        logging.getLogger().addHandler(file_handler)
+
+    logger.debug("Version %s", __version__)
 
     # try to include sentry (if installed)
     try:
@@ -108,7 +120,7 @@ def main():
             current_state.set_sentry(True)
         except (KeyError, sentry_sdk.utils.BadDsn):
             pass
-    except (ImportError):
+    except ImportError:
         pass
 
     # set backend
