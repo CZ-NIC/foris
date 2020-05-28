@@ -124,8 +124,11 @@ def populate_external_pages():
         try:
             with path.open() as f:
                 reader = csv.reader(f)
-                for slug, title, url, order in reader:
-                    order = int(order or "50")
+                for row in reader:
+                    slug, title, url = row[:3]
+                    order = 50
+                    if len(row) == 4:
+                        order = int(row[3])
 
                     logger.debug(
                         "Adding external page %s - '%s' -> %s (%d)", slug, title, url, order
