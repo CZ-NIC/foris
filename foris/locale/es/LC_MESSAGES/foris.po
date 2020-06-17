@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris 100.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-09-13 17:23+0000\n"
+"PO-Revision-Date: 2020-05-29 15:20+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/turris/foris/es/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 4.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 msgid ""
@@ -25,35 +25,48 @@ msgid ""
 "device. Firstly it is required to set your password. Note the security of"
 " your home network is in your hands, so try not to use weak passwords."
 msgstr ""
+"Le damos la bienvenida a la interfaz web de Foris. Esta guía le ayudará a "
+"configurar el dispositivo. Ante todo debe establecer su contraseña. Observe "
+"que la seguridad de su red doméstica está en sus manos; trate de evitar las "
+"contraseñas débiles."
 
 msgid "Your password seems to be set. You may proceed to the next step."
 msgstr ""
+"Parece que su contraseña està ya configurada. Podrìa proceder con el "
+"siguiente paso."
 
 msgid "Choose one of the possible setup workflows."
-msgstr ""
+msgstr "Elija uno de los posibles flujos de trabajo de configuraciòn."
 
 msgid "The workflow was set. You may proceed to next step."
 msgstr ""
+"Se ha establecido el flujo de trabajo. Puede continuar al paso siguiente."
 
 msgid "Here you need to decide which interfaces belong to which network."
-msgstr ""
+msgstr "Aquí ha de decidir cuáles interfaces pertenecen a cuál red."
 
 msgid "If you are in doubt use the current settings."
-msgstr ""
+msgstr "Ante cualquier duda, utilice las configuraciones actuales."
 
 msgid ""
 "You've configured your network interfaces. It seems that you didn't break"
 " any crucial network settings so you can safely proceed to the next step."
 msgstr ""
+"Ha configurado las interfaces de su red. Parece que las configuraciones "
+"cruciales de la red son funcionales, así que puede continuar al paso "
+"siguiente."
 
 msgid "In order to access the internet, you need to configure your WAN interface."
-msgstr ""
+msgstr "Para acceder a internet debe configurar la interfaz WAN."
 
 msgid ""
 "You've configured your WAN interface. Try to run connection test to see "
 "whether it is working properly and if so you can safely proceed to the "
 "next step."
 msgstr ""
+"Ha configurado la interfaz WAN. Pruebe a ejecutar una prueba de conexión "
+"para saber si funciona adecuadamente; si es así, puede continuar al paso "
+"siguiente."
 
 msgid ""
 "Now you should configure your LAN interface. Note that when you change "
@@ -61,45 +74,61 @@ msgid ""
 "configuration interface unless you restart the network on your current "
 "device."
 msgstr ""
+"Ahora deberìa configurar su interfaz LAN. Note que cuando cambie su "
+"configuraciòn de red, puede que no pueda conectar con el interfaz de "
+"configuraciòn a no ser que reinicie la red en su dispositivo actual."
 
 msgid ""
 "You've configured your LAN interface. Try to test whether settings work "
 "properly and if so you can safely proceed to the next step."
 msgstr ""
+"Ha configurado el interfaz LAN. Intente probar que las opciones funcionan "
+"correctamente. Si es asì, puede proceder con el siguiente paso."
 
 msgid "Now you need to set the time and timezone of your device."
-msgstr ""
+msgstr "Ahora debe establecer la hora y el huso horario del dispositivo."
 
 msgid ""
 "Your time and timezone seem to be set. Please make sure that the time "
 "matches the time on your computer if not try to update it via ntp or "
 "manually."
 msgstr ""
+"Su hora local parece estar ya configurada. Por favor, asegùrese que la hora "
+"coincide con la hora en su equipo. Si no, intente actualizar via ntp o "
+"manualmente."
 
 msgid ""
 "A proper DNS resolving is one of the key security features of your "
 "device. Let's configure it now."
 msgstr ""
+"Una resolución de DNS correcta es una de las prestaciones de seguridad más "
+"importantes del dispositivo. Configurémosla ahora."
 
 msgid ""
 "You've updated your DNS configuration. Try to run connection test to see "
 "whether your DNS resolver is properly set."
 msgstr ""
+"Ha actualizado la configuración de DNS. Pruebe a ejecutar una prueba de "
+"conexión para saber si se ha configurado correctamente la resolución de DNS."
 
 msgid "Now you need to configure automatic updates on your device."
 msgstr ""
+"Ahora necesita configurar las actualizaciones automaticas en su dispositivo."
 
 msgid "Please wait till the updater finishes its run."
-msgstr ""
+msgstr "Por favor, espera hasta que la actualizaciòn finalize."
 
 msgid "You have successfully configured your device."
-msgstr ""
+msgstr "Ha configurado satisfactoriamente su dispositivo."
 
 msgid ""
 "You chose to act as local server this means that it doesn't make sense to"
 " put any interfaces to your WAN and Guest Network. So it is a good idea "
 "to assign all interfaces to LAN."
 msgstr ""
+"Ha elegido actuar como servidor local, lo que significa que no tiene sentido "
+"poner ningùn interfaz a su WAN y a su red de invitados. Con lo caul, es una "
+"buena idea asignar todos los interfazes a la LAN."
 
 msgid ""
 "To act as a local server, there's no need to manage LAN (if you still "
@@ -107,12 +136,19 @@ msgid ""
 "probably want to act as a client here thus select "
 "<strong>Computer</strong> mode here."
 msgstr ""
+"Para actuar como servidor locak, no es necesario administrar LAN (si todavìa "
+"quiere administrar, reinicia la guìa y elija el flujo de trabajo del router)"
+". Probablemente quiere actuar como cliente aqui, por lo cual, seleccione "
+"modo de <strong>Equipo </strong>aqui."
 
 msgid ""
 "If you select the <strong>static</strong> configuration be sure that the "
 "IP addresses are entered correctly otherwise you won't be able to access "
 "this configuration interface when the new settings are applied."
 msgstr ""
+"Si seleccionò configuraciòn<strong>estàtica</strong>, asegùreseque las "
+"direcciones IP son correctas ya que de no serlo, no serà posible acceder a "
+"la configuraciòn del interface cuando la nueva configuraciòn sea aplicada."
 
 msgid ""
 "If you select the <strong>DHCP</strong> method you probably you need to "
@@ -120,11 +156,17 @@ msgid ""
 "server which is managing your LAN. Then you need to connect to the new IP"
 " address to proceed the guide."
 msgstr ""
+"Si seleccionò el mètodo <strong>DHCP</strong>, probablemente necesite "
+"obtener una nueva direcciòn IP de este dispositivo. Puede obtenerlo del "
+"servidor DHCP, el cual es administrado en su LAN. Entonces necesitarà "
+"contectar a la nueva direcciòn IP para proceder con la guìa."
 
 msgid ""
 "Note that either way you might need to re-plug your ethernet cables after"
 " you update the settings here."
 msgstr ""
+"Note que en cualquier caso necesitarà re-conectar sus cables ethernet "
+"despuès de la actualizaciòn de los parametros aqui."
 
 msgid ""
 "Please test whether the settings you provided are correctly working. This"
@@ -137,6 +179,8 @@ msgid ""
 "The device setup is finished. Now your device should be able to act as a "
 "server on your local network."
 msgstr ""
+"Ha finalizado la configuración del dispositivo. Ahora debería ser capaz de "
+"actuar como servidor en su red local."
 
 msgid ""
 "Minimal device setup is finished. Note that you probably need to perform "
@@ -152,13 +196,13 @@ msgid "Old"
 msgstr ""
 
 msgid "Minimal"
-msgstr ""
+msgstr "Mìnimo"
 
 msgid "Router"
-msgstr ""
+msgstr "Enrutador"
 
 msgid "Local Server"
-msgstr ""
+msgstr "Servidor local"
 
 msgid "Unset"
 msgstr ""
@@ -173,12 +217,18 @@ msgid ""
 "Just set your password and you are ready to go. This workflow is aimed to"
 " more advanced users who intend not to use the web GUI."
 msgstr ""
+"Simplemente establezca su contraseña y estarà listo para comenzar. Este "
+"flujo de trabajo està pensado para usuarios mas avanzados que no utilizan el "
+"interfaz web."
 
 msgid ""
 "After you finish this workflow your device will be able to act as a fully"
 " functional router. It assumes that you want to have more or less "
 "standard network setup."
 msgstr ""
+"Despuès de finalizar este flujo de trabajo, su equipo serà capaz de actuar "
+"como un router. Se\n"
+"asume que usted quiere tener mas o menos una configuraciòn estàndar."
 
 msgid ""
 "This workflow will help you to setup your device to act as a local "
@@ -186,9 +236,13 @@ msgid ""
 "other devices within your local network (e.g. act as a network-attached "
 "storage)."
 msgstr ""
+"Este flujo de trabajo le ayudarà a configurar su dispositivo para actuar "
+"como servidor local. Esto significa que el equipo proveerà algùn tipo de "
+"servicio a otros equipos en su red local(ejemplo: unidad de almacenamiento "
+"de red)."
 
 msgid "This field is required."
-msgstr ""
+msgstr "Este campo es obligatorio."
 
 msgid "Not a valid IPv4 address."
 msgstr ""
@@ -222,7 +276,7 @@ msgid "This value should be between %(low)s and %(high)s."
 msgstr ""
 
 msgid "This is not a valid domain name."
-msgstr "Este no es un nombre de dominio válido."
+msgstr "Esto no es un nombre de dominio vàlido."
 
 msgid "MAC address is not valid."
 msgstr ""
@@ -245,7 +299,7 @@ msgid "The password you entered was not valid."
 msgstr ""
 
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 msgid "Configuration was successfully saved."
 msgstr ""
@@ -266,7 +320,7 @@ msgid "Maintenance"
 msgstr ""
 
 msgid "Wrong HTTP method."
-msgstr ""
+msgstr "El método HTTP es incorrecto."
 
 msgid "Testing message was sent, please check your inbox."
 msgstr ""
@@ -291,7 +345,7 @@ msgid "Unable to update your network configuration."
 msgstr ""
 
 msgid "Notifications"
-msgstr ""
+msgstr "Notificaciones"
 
 msgid "Number of notifications"
 msgstr ""
@@ -374,38 +428,42 @@ msgid "Backup file"
 msgstr ""
 
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 msgid "Use forwarding"
-msgstr ""
+msgstr "Utilizar reenvío"
 
 msgid "Use provider's DNS resolver"
-msgstr ""
+msgstr "Utilizar resolución DNS del proveedor"
 
 msgid "DNS Forwarder"
-msgstr ""
+msgstr "Reenviador DNS"
 
 msgid "Disable DNSSEC"
-msgstr ""
+msgstr "Desactivar DNSSEC"
 
 msgid "Enable DHCP clients in DNS"
-msgstr ""
+msgstr "Activar clientes DHCP en DNS"
 
 msgid ""
 "This will enable your DNS resolver to place DHCP client's names among the"
 " local DNS records."
 msgstr ""
+"Esto permitirá que la resolución de DNS coloque los nombres de los clientes "
+"DHCP en los registros locales de DNS."
 
 msgid "Domain of DHCP clients in DNS"
-msgstr ""
+msgstr "Dominio de clientes DHCP en DNS"
 
 msgid ""
 "This domain will be used as suffix. E.g. The result for client "
 "\"android-123\" and domain \"my.lan\" will be \"android-123.my.lan\"."
 msgstr ""
+"Se utilizará este dominio como sufijo; por ejemplo, el resultado del cliente "
+"«android-123» y el dominio «my.lan» será «android-123.my.lan»."
 
 msgid "Guest network"
-msgstr ""
+msgstr "Red de invitados"
 
 msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
@@ -443,21 +501,23 @@ msgid "Network mask of the guest network."
 msgstr ""
 
 msgid "Enable DHCP"
-msgstr ""
+msgstr "Activar DHCP"
 
 msgid ""
 "Enable this option to automatically assign IP addresses to the devices "
 "connected to the router."
 msgstr ""
+"Active esta opción para asignar automáticamente direcciones IP a los "
+"dispositivos conectados con el enrutador."
 
 msgid "DHCP start"
-msgstr ""
+msgstr "Inicio de DHCP"
 
 msgid "DHCP max leases"
-msgstr ""
+msgstr "Máximo de concesiones de DHCP"
 
 msgid "Lease time (hours)"
-msgstr ""
+msgstr "Tiempo de concesión (horas)"
 
 msgid "Guest Lan QoS"
 msgstr ""
@@ -466,21 +526,23 @@ msgid ""
 "This option enables you to set a bandwidth limit for the guest network, "
 "so that your main network doesn't get slowed-down by it."
 msgstr ""
+"Esta opción le permite definir un límite de ancho de banda para la red de "
+"invitados, de modo que esta no aminore la velocidad de su red principal."
 
 msgid "Download (kb/s)"
 msgstr ""
 
 msgid "Download speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Velocidad de descarga en red de invitados (en kilobits por segundo)."
 
 msgid "Upload (kb/s)"
 msgstr ""
 
 msgid "Upload speed in guest network (in kilobits per second)."
-msgstr ""
+msgstr "Velocidad de carga en red de invitados (en kilobits por segundo)."
 
 msgid "LAN"
-msgstr ""
+msgstr "LAN"
 
 msgid ""
 "<strong>DHCP start</strong> and <strong>DHCP max leases</strong> does not"
@@ -501,10 +563,10 @@ msgid ""
 msgstr ""
 
 msgid "LAN mode"
-msgstr ""
+msgstr "Modo de LAN"
 
 msgid "Computer"
-msgstr ""
+msgstr "Equipo"
 
 msgid ""
 "Router mode means that this devices manages the LAN (acts as a router, "
@@ -514,10 +576,10 @@ msgid ""
 msgstr ""
 
 msgid "Router IP address"
-msgstr ""
+msgstr "Dirección IP del enrutador"
 
 msgid "Router's IP address in the inner network."
-msgstr ""
+msgstr "La dirección IP del enrutador en la red interna."
 
 msgid "Network netmask"
 msgstr ""
@@ -526,25 +588,25 @@ msgid "Network mask of the inner network."
 msgstr ""
 
 msgid "DHCP (automatic configuration)"
-msgstr ""
+msgstr "DHCP (configuración automática)"
 
 msgid "Static IP address (manual configuration)"
-msgstr ""
+msgstr "Dirección IP estática (configuración manual)"
 
 msgid "Don't connect this device to LAN"
-msgstr ""
+msgstr "No conectar este dispositivo con la LAN"
 
 msgid "IPv4 protocol"
-msgstr ""
+msgstr "Protocolo IPv4"
 
 msgid "IPv4 address"
 msgstr ""
 
 msgid "Network mask"
-msgstr ""
+msgstr "Máscara de red"
 
 msgid "Gateway"
-msgstr ""
+msgstr "Puerta de enlace"
 
 msgid "DNS server 1 (IPv4)"
 msgstr ""
@@ -553,18 +615,20 @@ msgid ""
 "DNS server address is not required as the built-in DNS resolver is "
 "capable of working without it."
 msgstr ""
+"No es necesaria la dirección del servidor DNS, ya que la resolución de DNS "
+"incorporada es capaz de funcionar sin esta."
 
 msgid "DNS server 2 (IPv4)"
 msgstr ""
 
 msgid "DHCP hostname"
-msgstr ""
+msgstr "Nombre de anfitrión DHCP"
 
 msgid "Hostname which will be provided to DHCP server."
-msgstr ""
+msgstr "El nombre de anfitrión que se proporcionará al servidor DHCP."
 
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 msgid "Current Foris password"
 msgstr ""
@@ -610,7 +674,7 @@ msgid "Use other password"
 msgstr ""
 
 msgid "Advanced administration"
-msgstr ""
+msgstr "Administración avanzada"
 
 msgid ""
 "Same password would be used for accessing this administration interface, "
@@ -667,31 +731,31 @@ msgid "manually"
 msgstr ""
 
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
 msgid "Time in YYYY-MM-DD HH:MM:SS format."
 msgstr ""
 
 msgid "Guide Finished"
-msgstr ""
+msgstr "Guía finalizada"
 
 msgid "Network interfaces"
-msgstr ""
+msgstr "Interfaces de red"
 
 msgid "Notifications settings"
-msgstr ""
+msgstr "Configuración de notificaciones"
 
 msgid "Enable notifications"
 msgstr ""
 
 msgid "SMTP provider"
-msgstr ""
+msgstr "Proveedor SMTP"
 
 msgid "Turris"
-msgstr ""
+msgstr "Turris"
 
 msgid "Custom"
-msgstr ""
+msgstr "Personalizado"
 
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members "
@@ -701,7 +765,7 @@ msgid ""
 msgstr ""
 
 msgid "Recipient's email"
-msgstr ""
+msgstr "Dirección de correo de destinatario"
 
 msgid "Email address of recipient. Separate multiple addresses by spaces."
 msgstr ""
@@ -710,7 +774,7 @@ msgid "Doesn't contain a list of emails separated by spaces"
 msgstr ""
 
 msgid "Sender's name"
-msgstr ""
+msgstr "Nombre de remitente"
 
 msgid ""
 "Name of the sender - will be used as a part of the sender's email address"
@@ -721,51 +785,55 @@ msgid ""
 "Sender's name can contain only alphanumeric characters, dots and "
 "underscores."
 msgstr ""
+"El nombre de remitente puede contener únicamente caracteres alfanuméricos, "
+"puntos y guiones bajos."
 
 msgid "Reboot is required"
-msgstr ""
+msgstr "Se necesita reiniciar"
 
 msgid "Reboot or attention is required"
-msgstr ""
+msgstr "Se necesita reiniciar o una atención concreta"
 
 msgid "Reboot or attention is required or update was installed"
 msgstr ""
+"Se necesita reiniciar, alguna atención concreta o se ha instalado una "
+"actualización"
 
 msgid "Importance"
-msgstr ""
+msgstr "Importancia"
 
 msgid "Send news"
-msgstr ""
+msgstr "Enviar noticias"
 
 msgid "Send emails about new features."
 msgstr ""
 
 msgid "SMTP settings"
-msgstr ""
+msgstr "Configuración de SMTP"
 
 msgid "Sender address (From)"
-msgstr ""
+msgstr "Dirección de remitente (De)"
 
 msgid "This is the address notifications are send from."
-msgstr ""
+msgstr "Esta es la dirección desde la que se envían las notificaciones."
 
 msgid "Server address"
-msgstr ""
+msgstr "Dirección del servidor"
 
 msgid "Server port"
-msgstr ""
+msgstr "Puerto del servidor"
 
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 msgid "SSL/TLS"
 msgstr ""
 
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 msgid "Security"
-msgstr ""
+msgstr "Seguridad"
 
 msgid "Username"
 msgstr ""
@@ -780,6 +848,8 @@ msgid ""
 "Number of days that must pass between receiving the request for restart "
 "and the automatic restart itself."
 msgstr ""
+"Número de días que deben transcurrir entre la recepción de la solicitud de "
+"reinicio y el reinicio automático."
 
 msgid "Reboot time"
 msgstr ""
@@ -818,7 +888,7 @@ msgid ""
 msgstr ""
 
 msgid "Port"
-msgstr ""
+msgstr "Puerto"
 
 msgid "A port which will be opened for the remote configuration of this device."
 msgstr ""
@@ -886,9 +956,11 @@ msgid ""
 "If you want to use other language than English you can select it from the"
 " following list:"
 msgstr ""
+"Si quiere utilizar una lengua distinta del español, puede seleccionarla en "
+"esta lista:"
 
 msgid "WAN"
-msgstr ""
+msgstr "WAN"
 
 msgid ""
 "Here you specify your WAN port settings. Usually, you can leave these "
@@ -914,7 +986,7 @@ msgid "Disable IPv6"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
+msgstr "Dirección IP"
 
 msgid "PAP/CHAP username"
 msgstr ""
@@ -1026,7 +1098,7 @@ msgid "Colon is used as a separator, for example 00:11:22:33:44:55"
 msgstr ""
 
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wifi"
 
 #, python-format
 msgid "Configure WiFi for '%s'"
@@ -1185,7 +1257,7 @@ msgid "How to set an encrypted connection and why is it important"
 msgstr ""
 
 msgid "Connection test"
-msgstr ""
+msgstr "Prueba de conexión"
 
 msgid ""
 "Here you can test your connection settings. Remember to click on the "
@@ -1204,40 +1276,40 @@ msgid "Status"
 msgstr ""
 
 msgid "IPv4 connectivity"
-msgstr ""
+msgstr "Conectividad IPv4"
 
 msgid "IPv4 gateway connectivity"
-msgstr ""
+msgstr "Conectividad de puerta de enlace IPv4"
 
 msgid "IPv6 connectivity"
-msgstr ""
+msgstr "Conectividad IPv6"
 
 msgid "IPv6 gateway connectivity"
-msgstr ""
+msgstr "Conectividad de puerta de enlace IPv6"
 
 msgid "Test connection"
-msgstr ""
+msgstr "Probar conexión"
 
 msgid "DHCP clients"
-msgstr ""
+msgstr "Clientes DHCP"
 
 msgid "Expires"
-msgstr ""
+msgstr "Caducidad"
 
 msgid "IP Address"
-msgstr ""
+msgstr "Dirección IP"
 
 msgid "MAC Address"
-msgstr ""
+msgstr "Dirección MAC"
 
 msgid "Hostname"
-msgstr ""
+msgstr "Nombre de anfitrión"
 
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 msgid "No DHCP clients found."
-msgstr ""
+msgstr "No se encontró ningún cliente DHCP."
 
 msgid "module"
 msgstr ""
@@ -1304,16 +1376,16 @@ msgid "Show QR code"
 msgstr ""
 
 msgid "Device"
-msgstr ""
+msgstr "Dispositivo"
 
 msgid "Serial number"
-msgstr ""
+msgstr "Número de serie"
 
 msgid "Turris OS version"
-msgstr ""
+msgstr "Versión de Turris OS"
 
 msgid "Kernel version"
-msgstr ""
+msgstr "Versión del núcleo"
 
 msgid "Expandable"
 msgstr ""
@@ -1398,7 +1470,7 @@ msgid ""
 msgstr ""
 
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 msgid "Notifications and automatic restarts"
 msgstr ""
@@ -1458,7 +1530,7 @@ msgid ""
 msgstr ""
 
 msgid "Reboot"
-msgstr ""
+msgstr "Reiniciar"
 
 msgid ""
 "Here you can configure the settings of the network interfaces on your "
@@ -1489,10 +1561,10 @@ msgid ""
 msgstr ""
 
 msgid "Guest Network"
-msgstr ""
+msgstr "Red de invitados"
 
 msgid "Unassigned"
-msgstr ""
+msgstr "Sin asignar"
 
 msgid "WAN network"
 msgstr ""
@@ -1807,7 +1879,7 @@ msgid ""
 msgstr ""
 
 msgid "Are you sure you want to restart the router?"
-msgstr ""
+msgstr "¿Confirma que quiere reiniciar el enrutador?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
@@ -1846,7 +1918,7 @@ msgid "Confirm"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgid "This value seems to be invalid."
 msgstr ""
@@ -1915,7 +1987,7 @@ msgid "This value should be the same."
 msgstr ""
 
 msgid "This is not a valid IPv4 address."
-msgstr "Esta no es una dirección IPv4 válida."
+msgstr "Esto no es una direcciòn IPv4 vàlida."
 
 msgid "This is not a valid IPv4 netmask."
 msgstr ""
@@ -1924,10 +1996,10 @@ msgid "This is not a valid IPv4 prefix."
 msgstr ""
 
 msgid "This is not a valid IPv6 prefix."
-msgstr "Este no es un prefijo IPv6 válido."
+msgstr "Esto no es un prefijo IPv6 vàlido."
 
 msgid "This is not a valid MAC address."
-msgstr "Esta no es una dirección MAC válida."
+msgstr "Esta no es una direcciòn MAC vàlida."
 
 msgid "You have been logged out due to longer inactivity."
 msgstr ""
