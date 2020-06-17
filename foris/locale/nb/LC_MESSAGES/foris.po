@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2019-09-11 23:23+0000\n"
+"PO-Revision-Date: 2020-03-26 16:46+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -514,9 +514,8 @@ msgstr ""
 "Dette medføre at DNS-fortolkeren plasserer DHCP-klienters navn i de "
 "lokale DNS-oppføringene."
 
-#, fuzzy
 msgid "Domain of DHCP clients in DNS"
-msgstr "Domenet tilhørende DHCP-klienter i DNS"
+msgstr "Domene for DHCP-klienter i DNS"
 
 #, fuzzy
 msgid ""
@@ -541,6 +540,8 @@ msgid ""
 "<strong>Router IP</strong> should not be within DHCP range defined by "
 "<strong>DHCP start</strong> and <strong>DHCP max leases </strong>"
 msgstr ""
+"<strong>Router IP</strong> skal være i avgrensningen definert av <strong>"
+"DHCP start</strong> og<strong>Maks DHCP-tildelinger</strong>"
 
 #, fuzzy, python-format
 msgid ""
@@ -590,11 +591,13 @@ msgstr ""
 msgid "DHCP start"
 msgstr "DHCP start"
 
+#, fuzzy
 msgid "DHCP max leases"
-msgstr "Maks. antall DHCP-tildelinger"
+msgstr "Maks DHCP-tildelinger"
 
+#, fuzzy
 msgid "Lease time (hours)"
-msgstr "Leietid (timer)"
+msgstr "Tildelningstid (timer)"
 
 #, fuzzy
 msgid "Guest Lan QoS"
@@ -865,9 +868,8 @@ msgstr "Tid i YYYY-MM-DD HH:MM:SS-format."
 msgid "Guide Finished"
 msgstr "Veiledning fullført"
 
-#, fuzzy
 msgid "Network interfaces"
-msgstr "Nettverksmaske"
+msgstr "Nettverksgrensesnitt"
 
 msgid "Notifications settings"
 msgstr "Merknadsinnstillinger"
@@ -884,16 +886,17 @@ msgstr "Turris"
 msgid "Custom"
 msgstr "Egendefinert"
 
+#, fuzzy
 msgid ""
 "If you set SMTP provider to \"Turris\", the servers provided to members "
 "of the Turris project would be used. These servers do not require any "
 "additional settings. If you want to set your own SMTP server, please "
 "select \"Custom\" and enter required settings."
 msgstr ""
-"Hvis du setter SMTP-tilbyder til \"Turris\", vil tjenerne tilbudt til "
-"medlemmer av Turris-prosjektet bli brukt. Disse krever ingen ytterligere "
-"innstillinger. Hvis du ønsker å sette din egen SMTP-tjener, velg "
-"\"egenvalgt\" og skriv inn påkrevde innstillinger."
+"Hvis du har satt SMTP-tilbyder til \"Turris\", vil tjenerne tilbudt av "
+"medlemmene av Turris-prosjektet brukes. Disse tjenerne krever ingen "
+"ytterligere innstillinger. Hvis du ønsker å sette din egen SMTP-tjener, velg "
+"\"Egendefinert\" og skriv inn påkrevd oppsett."
 
 msgid "Recipient's email"
 msgstr "Mottagerens e-post"
@@ -913,8 +916,8 @@ msgid ""
 "Name of the sender - will be used as a part of the sender's email address"
 " before the \"at\" sign."
 msgstr ""
-"Navnet på avsenderen - vil bli brukt som del av avsenderens e-postadresse"
-" før krøllalfa-tegnet."
+"Navn på avsender - brukes som del av senderens e-postadresse, før \""
+"krøllalfa\"-tegnet."
 
 msgid ""
 "Sender's name can contain only alphanumeric characters, dots and "
@@ -932,7 +935,7 @@ msgid "Reboot or attention is required or update was installed"
 msgstr "Omstart eller oppmerksomhet kreves, eller oppdatering installert"
 
 msgid "Importance"
-msgstr "Viktighet"
+msgstr "Viktighetsgrad"
 
 msgid "Send news"
 msgstr "Send nyheter"
@@ -948,7 +951,7 @@ msgid "Sender address (From)"
 msgstr "Avsenderadresse (Fra)"
 
 msgid "This is the address notifications are send from."
-msgstr "Dette er e-postadressen merknader sendes fra."
+msgstr "Dette er adressen merknader sendes fra."
 
 msgid "Server address"
 msgstr "Tjeneradresse"
@@ -1134,7 +1137,7 @@ msgstr ""
 " innstillingen."
 
 msgid "PPPoE (for DSL bridges, Modem Turris, etc.)"
-msgstr "PPPoE (for DSL-broer, Turris-modem, osv.)"
+msgstr "PPPoE (for DSL-broer, Turris-modem, osv)."
 
 msgid "DHCPv6 (automatic configuration)"
 msgstr "DHCPv6 (automatisk oppsett)"
@@ -1179,7 +1182,7 @@ msgid "IPv6 prefix"
 msgstr "IPv6-prefiks"
 
 msgid "Address range for local network, e.g. 2001:db8:be13:37da::/64"
-msgstr "Adresseområde for lokalnettverk, f.eks. 2001:db8:be13:37da::/64"
+msgstr "Adresserekkevidde for lokalnettverk, f.eks. 2001:db8:be13:37da::/64"
 
 msgid "DNS server 1 (IPv6)"
 msgstr "DNS-tjener 1 (IPv6)"
@@ -1190,8 +1193,9 @@ msgstr "DNS-tjener 2 (IPv6)"
 msgid "Custom DUID"
 msgstr "Egendefinert DUID"
 
+#, fuzzy
 msgid "DUID which will be provided to the DHCPv6 server."
-msgstr "DUID som vil bli tilbudt til DHCPv6-tjeneren."
+msgstr "DUID tilbudt av DHCPv6-tjeneren."
 
 msgid "Public IPv4"
 msgstr "Offentlig IPv4"
@@ -1202,64 +1206,67 @@ msgid ""
 " address manually (e.g. when your WAN interface has a private address "
 "which is mapped to public IP)."
 msgstr ""
-"For å kunne bruke 6til4-protokollen, må du angi din offentlige "
-"IPv4-adresse manuelt (f.eks. når ditt WAN-grensesnitt har en privat "
-"adresse som er tilknyttet til offentlig IP)."
+"For å kunne bruke 6to4-protokoll, kan det ende du trenger å angi din "
+"offentlige IPv4-adresse manuelt (f.eks. når ditt WAN-grensesnitt har en "
+"privatadresse som er tilknyttet en offentlig IP)."
 
 msgid "use autodetection"
 msgstr "bruk automatisk oppdagelse"
 
 #, fuzzy
 msgid "Provider IPv4"
-msgstr "SMTP-tilbyder"
+msgstr "IPv4-tilbyder"
 
+#, fuzzy
 msgid ""
 "This address will be used as a endpoint of the tunnel on the provider's "
 "side."
-msgstr "Denne adressen brukes som endepunkt for tunnelen på tilbyderens side."
+msgstr "Denne adressen brukes som sluttpunkt for tunnelen på tilbyderens side."
 
 #, fuzzy
 msgid "Routed IPv6 prefix"
-msgstr "IPv6-prefiks"
+msgstr "Rutet IPv6-prefiks"
 
 #, fuzzy
 msgid "IPv6 addresses which will be routed to your network."
-msgstr "IPv6-adresser som vil rutes til ditt nettverk."
+msgstr "IPv6-adresser som skal rutes til ditt nettverk."
 
 msgid "MTU"
 msgstr "MTU"
 
+#, fuzzy
 msgid "Maximum Transmission Unit in the tunnel (in bytes)."
 msgstr "Maksimal overføringsenhet i tunnelen (i byte)."
 
 msgid "Dynamic IPv4 handling"
 msgstr "Dynamisk IPv4-håndtering"
 
-#, fuzzy
 msgid ""
 "Some tunnel providers allow you to have public dynamic IPv4. Note that "
 "you need to fill in some extra fields to make it work."
 msgstr ""
-"Noen tunneltilbydere lar deg ha en offentlig dynamisk IPv4-adresse. Merk "
-"at du må fylle inn noen ekstrafelter for at det skal virke."
+"Noen tunneltilbydere tillater deg å ha offentlig dynamisk IPv4. Merk at du "
+"må fylle inn noen ekstra felter for å få det til å virke."
 
 msgid "Tunnel ID"
 msgstr "Tunnel-ID"
 
-#, fuzzy
 msgid "ID of your tunnel which was assigned to you by the provider."
-msgstr "ID for din tunnel som har blitt tildelt deg av tilbyderen."
+msgstr "ID for din tunnel, slik den ble tildelt deg av tilbyderen."
 
 msgid ""
 "Username which will be used to provide credentials to your tunnel "
 "provider."
-msgstr "Brukernavn brukt til å tilby identitetsdetaljer til din tunnel-tilbyder."
+msgstr ""
+"Brukernavn for å angi identitetsbekreftelsesdetaljer til din tunneltilbyder."
 
 msgid "Key"
 msgstr "Nøkkel"
 
 msgid "Key which will be used to provide credentials to your tunnel provider."
-msgstr "Nøkkel brukt til å oppgi identitetsdetaljer til din tunneltilbyder."
+msgstr ""
+"Nøkkel brukt til å oppgi identitetbekreftelsesdetaljer til din "
+"tunneltilbyder."
 
 msgid "Custom MAC address"
 msgstr "Egendefinert MAV-adresse"
@@ -1267,7 +1274,9 @@ msgstr "Egendefinert MAV-adresse"
 msgid ""
 "Useful in cases, when a specific MAC address is required by your internet"
 " service provider."
-msgstr "Nyttig i fall der en spesifikk MAC-adresse kreves av din internettilbyder."
+msgstr ""
+"Nyttig i fall en spesifikk MAC-adresse kreves av din "
+"internettjenestetilbyder."
 
 msgid "MAC address"
 msgstr "MAC-adresse"
@@ -1315,9 +1324,7 @@ msgid "Hide SSID"
 msgstr "Skjul SSID"
 
 msgid "If set, network is not visible when scanning for available networks."
-msgstr ""
-"Hvis satt vil ikke nettverket være synlig når det skannes etter "
-"tilgjengelige nettverk."
+msgstr "Skjuler nettverket fra nettverkslister."
 
 msgid "Wi-Fi mode"
 msgstr "Wi-Fi -modul"
@@ -1506,23 +1513,18 @@ msgstr "DHCP-klienter"
 msgid "Expires"
 msgstr "Utløper"
 
-#, fuzzy
 msgid "IP Address"
 msgstr "IP-adresse"
 
-#, fuzzy
 msgid "MAC Address"
-msgstr "IP-adresse"
+msgstr "MAC-adresse"
 
-#, fuzzy
 msgid "Hostname"
-msgstr "Brukernavn"
+msgstr "Vertsnavn"
 
-#, fuzzy
 msgid "Active"
-msgstr "Lagre"
+msgstr "Aktiv"
 
-#, fuzzy
 msgid "No DHCP clients found."
 msgstr "Fant ingen DHCP-klienter."
 
@@ -1862,12 +1864,11 @@ msgstr ""
 "tillit til. Merk at du også kan begrense nedlasting-/opplastingshastighet"
 " for enhetene tilkoblet i gjestenettverket."
 
-#, fuzzy
 msgid "Guest Network"
 msgstr "Gjestenettverk"
 
 msgid "Unassigned"
-msgstr "Ikke tildelt"
+msgstr "Utildelt"
 
 #, fuzzy
 msgid "WAN network"
@@ -2308,7 +2309,7 @@ msgstr ""
 "forbli ubeskyttet?"
 
 msgid "Are you sure you want to restart the router?"
-msgstr "Er du sikker på at du vil starte ruteren på nytt?"
+msgstr "Er du sikker på at du ønsker å starte ruteren på ny?"
 
 #, python-format
 msgid "Remaining notifications (%(unread_left)s) will be discarded."
@@ -2432,6 +2433,7 @@ msgstr "Dette er ikke en gyldig IPv4-nettmaske."
 msgid "This is not a valid IPv4 prefix."
 msgstr "Dette er ikke et gyldig IPv4-prefiks."
 
+#, fuzzy
 msgid "This is not a valid IPv6 prefix."
 msgstr "Dette er ikke et gyldig IPv6-prefiks."
 
