@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Foris\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-17 13:57+0200\n"
-"PO-Revision-Date: 2020-03-26 16:46+0000\n"
+"PO-Revision-Date: 2020-06-17 21:45+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/turris/"
 "foris/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.0-dev\n"
+"X-Generator: Weblate 4.1.1-dev\n"
 "Generated-By: Babel 2.6.0\n"
 
 #, fuzzy
@@ -297,9 +297,9 @@ msgstr "Dette er ikke gyldig tid i HH:MM format."
 msgid "This is not a valid time (YYYY-MM-DD HH:MM:SS)."
 msgstr "Dette er ikke en gyldig MAC-adresse."
 
-#, fuzzy, python-format
+#, python-format
 msgid "This value should be between %(low)s and %(high)s."
-msgstr "Verdien må være mellom %s og %s."
+msgstr "Verdien må være mellom %(low)s og %(high)s."
 
 msgid "This is not a valid domain name."
 msgstr "Dette er ikke et gyldig domenenavn."
@@ -311,9 +311,9 @@ msgstr "MAC-adressen er ikke gyldig."
 msgid "Duid is not valid."
 msgstr "MAC-adressen er ikke gyldig."
 
-#, fuzzy, python-format
+#, python-format
 msgid "Not in a valid range %(low).1f - %(high).1f."
-msgstr "Ikke i gyldig rekkevidde %(low)s - %(high)s."
+msgstr "Ikke i gyldig rekkevidde %(low).1f - %(high).1f."
 
 #, python-format
 msgid "Length must be from %(low)s to %(high)s characters."
@@ -2078,12 +2078,15 @@ msgstr ""
 "          etter %(input)s dager\n"
 "          "
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Approve update from %(when)s\n"
 "    "
-msgstr "Godkjenn oppdatering fra %(when)s"
+msgstr ""
+"\n"
+"    Godkjenn oppdatering fra %(when)s\n"
+"    "
 
 #, fuzzy
 msgid "List of changes"
@@ -2103,15 +2106,17 @@ msgstr ""
 "Ingen pakke vil bli installert med mindre du installerer oppdateringene "
 "ovenfor."
 
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    If you don't install the updates manually, they will be installed "
 "automatically after %(time)s.\n"
 "    "
 msgstr ""
-"Hvis du ikke installerer oppdateringene manuelt, vil de installeres "
-"automatisk etter %(time)s."
+"\n"
+"    Hvis du ikke installerer oppdateringene manuelt, vil de installeres "
+"automatisk etter %(time)s.\n"
+"    "
 
 msgid "Package lists"
 msgstr "Pakkelister"
