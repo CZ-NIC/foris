@@ -1,3 +1,11 @@
+101.0 (2020-06-19)
+----------------
+
+* add ability to create external links in menu
+* internal redirect from foris pages
+* wan: make pppoe password hidden by default
+* update translations
+
 100.7 (2020-01-09)
 ------------------
 
