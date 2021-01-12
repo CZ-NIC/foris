@@ -18,10 +18,10 @@
     {% if user_authenticated() %}
         <a href="{{ url("logout") }}">{% trans %}Log out{% endtrans %}</a>
     {% else %}
-        <form action="{{ request.fullpath }}{{ '?next=%s' % next if next else '' }}" method="POST">
+        <form action="{{ request.fullpath }}{{ ('?next=%s' % next if next else '')|e }}" method="POST">
             <input type="hidden" name="csrf_token" value="{{ get_csrf_token() }}">
-        {% if request.GET.get("next") %}
-            <input type="hidden" name="next" value="{{ request.GET['next'] }}">
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next|e }}">
         {% endif %}
             <label for="field-password">{% trans %}Password{% endtrans %}</label>
             <input id="field-password" type="password" name="password" placeholder="{% trans %}Password{% endtrans %}" autofocus>
