@@ -65,7 +65,7 @@ def get_arg_parser():
         type=lambda x: re.match(r"[0-9a-zA-Z]{16}", x).group().upper(),
         help="sets which controller on the messages bus should be configured (8 bytes in hex)",
     )
-    group.add_argument("--bus-socket", default="/var/run/ubus.sock", help="message bus socket path")
+    group.add_argument("--bus-socket", default="/var/run/ubus/ubus.sock", help="message bus socket path")
     group.add_argument(
         "--ws-port", default=0, help="websocket server port - insecure (0=autodetect)", type=int
     )
