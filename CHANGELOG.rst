@@ -1,3 +1,9 @@
+101.1.2 (2021-04-23)
+--------------------
+
+* change default path of ubus.sock to be aligned with changes in OpenWrt 21.02
+* remove unused requirements.txt
+
 101.1.1 (2021-01-12)
 --------------------
 
